@@ -4,6 +4,7 @@ from datetime import date, datetime, timedelta
 from pathlib import Path
 
 from dash import Dash, Input, Output, State, callback_context, dash_table, dcc, html
+from flask import jsonify
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -55,6 +56,11 @@ app = Dash(
 server = app.server
 
 
+@server.get("/health")
+def health():
+    return jsonify({"status": "ok", "app": "suntrain-dashboard"})
+
+
 def metric_card(title: str, subtitle: str, value_id: str) -> html.Div:
     return html.Div(
         className="metric-card",
@@ -101,6 +107,24 @@ def build_empty_figure(title: str) -> go.Figure:
     return fig
 
 
+def build_error_figure(title: str, message: str) -> go.Figure:
+    fig = build_empty_figure(title)
+    fig.update_layout(
+        annotations=[
+            dict(
+                text=f"Could not load this view.<br><span style='font-size:12px'>{message}</span>",
+                x=0.5,
+                y=0.5,
+                xref="paper",
+                yref="paper",
+                showarrow=False,
+                font=dict(size=14),
+            )
+        ]
+    )
+    return fig
+
+
 def format_count(value: object) -> str:
     try:
         return f"{int(value):,}"
@@ -135,6 +159,32 @@ def map_zoom_for_bounds(lat_span: float, lon_span: float) -> float:
     return 11.4
 
 
+def serialize_filters(start_date, end_date, lines, groups, directions, stations, hours) -> dict[str, object]:
+    return {
+        "start_date": start_date,
+        "end_date": end_date,
+        "lines": lines or [],
+        "groups": groups or [],
+        "directions": directions or [],
+        "stations": stations or [],
+        "hours": hours or [],
+    }
+
+
+def deserialize_filters(data: dict[str, object]) -> tuple[dict[str, object], object]:
+    payload = data or serialize_filters(DEFAULT_START, DEFAULT_END, [DEFAULT_LINE], [], [], [], [])
+    filters = get_filter_state(
+        payload["start_date"],
+        payload["end_date"],
+        payload.get("lines"),
+        payload.get("groups"),
+        payload.get("directions"),
+        payload.get("stations"),
+        payload.get("hours"),
+    )
+    return payload, filters
+
+
 app.layout = html.Div(
     className="page-shell",
     children=[
@@ -142,6 +192,10 @@ app.layout = html.Div(
         html.Div(className="page-glow page-glow-a"),
         html.Div(className="page-glow page-glow-b"),
         dcc.Download(id="download-data"),
+        dcc.Store(
+            id="filter-store",
+            data=serialize_filters(DEFAULT_START, DEFAULT_END, [DEFAULT_LINE], [], [], [], []),
+        ),
         html.Main(
             id="main-content",
             className="app",
@@ -310,6 +364,7 @@ app.layout = html.Div(
                 html.Section(
                     className="status-banner",
                     children=[
+                        html.Div(id="status-message", className="status-message"),
                         html.Div(
                             className="status-grid",
                             children=[
@@ -350,14 +405,14 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Services by Origin Departure Hour"),
-                                        dcc.Graph(id="origin-hour-graph", config={"displayModeBar": False}),
+                                        dcc.Loading(dcc.Graph(id="origin-hour-graph", config={"displayModeBar": False})),
                                     ],
                                 ),
                                 html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Stop-Level Activity by Scheduled Departure Hour"),
-                                        dcc.Graph(id="stop-hour-graph", config={"displayModeBar": False}),
+                                        dcc.Loading(dcc.Graph(id="stop-hour-graph", config={"displayModeBar": False})),
                                     ],
                                 ),
                             ],
@@ -369,14 +424,14 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Direction Mix"),
-                                        dcc.Graph(id="direction-graph", config={"displayModeBar": False}),
+                                        dcc.Loading(dcc.Graph(id="direction-graph", config={"displayModeBar": False})),
                                     ],
                                 ),
                                 html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Service Stop Pattern Mix"),
-                                        dcc.Graph(id="pattern-graph", config={"displayModeBar": False}),
+                                        dcc.Loading(dcc.Graph(id="pattern-graph", config={"displayModeBar": False})),
                                     ],
                                 ),
                             ],
@@ -398,7 +453,7 @@ app.layout = html.Div(
                                     className="viz-card viz-card-full",
                                     children=[
                                         html.Div(className="viz-title", children="Top Station Activity"),
-                                        dcc.Graph(id="station-graph", config={"displayModeBar": False}),
+                                        dcc.Loading(dcc.Graph(id="station-graph", config={"displayModeBar": False})),
                                     ],
                                 ),
                             ],
@@ -417,28 +472,30 @@ app.layout = html.Div(
                             className="viz-card map-card",
                             children=[
                                 html.Div(className="viz-title", children="Interactive Station Map"),
-                                dcc.Graph(id="station-map-graph", config={"displayModeBar": False}),
+                                dcc.Loading(dcc.Graph(id="station-map-graph", config={"displayModeBar": False})),
                             ],
                         ),
                         html.Div(
                             className="table-card",
                             children=[
                                 html.Div(className="viz-title", children="Stations in Current Map View"),
-                                dash_table.DataTable(
-                                    id="map-station-table",
-                                    page_size=12,
-                                    sort_action="native",
-                                    style_table={"overflowX": "auto"},
-                                    style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
-                                    style_cell={
-                                        "backgroundColor": "transparent",
-                                        "color": COLORS["ink"],
-                                        "borderBottom": f"1px solid {COLORS['grid']}",
-                                        "padding": "10px 12px",
-                                        "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
-                                        "fontSize": "13px",
-                                        "textAlign": "left",
-                                    },
+                                dcc.Loading(
+                                    dash_table.DataTable(
+                                        id="map-station-table",
+                                        page_size=12,
+                                        sort_action="native",
+                                        style_table={"overflowX": "auto"},
+                                        style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
+                                        style_cell={
+                                            "backgroundColor": "transparent",
+                                            "color": COLORS["ink"],
+                                            "borderBottom": f"1px solid {COLORS['grid']}",
+                                            "padding": "10px 12px",
+                                            "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
+                                            "fontSize": "13px",
+                                            "textAlign": "left",
+                                        },
+                                    )
                                 ),
                             ],
                         ),
@@ -459,28 +516,30 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Peak Load by Service"),
-                                        dcc.Graph(id="peak-train-graph", config={"displayModeBar": False}),
+                                        dcc.Loading(dcc.Graph(id="peak-train-graph", config={"displayModeBar": False})),
                                     ],
                                 ),
                                 html.Div(
                                     className="table-card compact-card",
                                     children=[
                                         html.Div(className="viz-title", children="Service Summary"),
-                                        dash_table.DataTable(
-                                            id="service-table",
-                                            page_size=10,
-                                            sort_action="native",
-                                            style_table={"overflowX": "auto"},
-                                            style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
-                                            style_cell={
-                                                "backgroundColor": "transparent",
-                                                "color": COLORS["ink"],
-                                                "borderBottom": f"1px solid {COLORS['grid']}",
-                                                "padding": "10px 12px",
-                                                "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
-                                                "fontSize": "13px",
-                                                "textAlign": "left",
-                                            },
+                                        dcc.Loading(
+                                            dash_table.DataTable(
+                                                id="service-table",
+                                                page_size=10,
+                                                sort_action="native",
+                                                style_table={"overflowX": "auto"},
+                                                style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
+                                                style_cell={
+                                                    "backgroundColor": "transparent",
+                                                    "color": COLORS["ink"],
+                                                    "borderBottom": f"1px solid {COLORS['grid']}",
+                                                    "padding": "10px 12px",
+                                                    "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
+                                                    "fontSize": "13px",
+                                                    "textAlign": "left",
+                                                },
+                                            )
                                         ),
                                     ],
                                 ),
@@ -514,26 +573,28 @@ app.layout = html.Div(
                             className="table-card",
                             children=[
                                 html.Div(className="viz-title", children="Preview Rows"),
-                                dash_table.DataTable(
-                                    id="preview-table",
-                                    page_size=20,
-                                    sort_action="native",
-                                    filter_action="native",
-                                    fixed_rows={"headers": True},
-                                    style_table={"overflowX": "auto", "maxHeight": "680px"},
-                                    style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
-                                    style_cell={
-                                        "backgroundColor": "transparent",
-                                        "color": COLORS["ink"],
-                                        "borderBottom": f"1px solid {COLORS['grid']}",
-                                        "padding": "10px 12px",
-                                        "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
-                                        "fontSize": "13px",
-                                        "textAlign": "left",
-                                        "minWidth": "110px",
-                                        "width": "110px",
-                                        "maxWidth": "220px",
-                                    },
+                                dcc.Loading(
+                                    dash_table.DataTable(
+                                        id="preview-table",
+                                        page_size=20,
+                                        sort_action="native",
+                                        filter_action="native",
+                                        fixed_rows={"headers": True},
+                                        style_table={"overflowX": "auto", "maxHeight": "680px"},
+                                        style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
+                                        style_cell={
+                                            "backgroundColor": "transparent",
+                                            "color": COLORS["ink"],
+                                            "borderBottom": f"1px solid {COLORS['grid']}",
+                                            "padding": "10px 12px",
+                                            "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
+                                            "fontSize": "13px",
+                                            "textAlign": "left",
+                                            "minWidth": "110px",
+                                            "width": "110px",
+                                            "maxWidth": "220px",
+                                        },
+                                    )
                                 ),
                             ],
                         ),
@@ -543,6 +604,18 @@ app.layout = html.Div(
         ),
     ],
 )
+@app.callback(
+    Output("filter-store", "data"),
+    Input("date-range", "start_date"),
+    Input("date-range", "end_date"),
+    Input("line-filter", "value"),
+    Input("group-filter", "value"),
+    Input("direction-filter", "value"),
+    Input("station-filter", "value"),
+    Input("hour-filter", "value"),
+)
+def sync_filter_store(start_date, end_date, lines, groups, directions, stations, hours):
+    return serialize_filters(start_date, end_date, lines, groups, directions, stations, hours)
 
 
 @app.callback(
@@ -615,6 +688,7 @@ def update_station_options(start_date, end_date, lines, groups, directions, sele
 
 
 @app.callback(
+    Output("status-message", "children"),
     Output("selection-summary", "children"),
     Output("metric-stop-rows", "children"),
     Output("metric-services", "children"),
@@ -622,151 +696,182 @@ def update_station_options(start_date, end_date, lines, groups, directions, sele
     Output("metric-days", "children"),
     Output("metric-boardings", "children"),
     Output("metric-peak-load", "children"),
+    Input("filter-store", "data"),
+)
+def update_summary(data):
+    try:
+        payload, filters = deserialize_filters(data)
+        kpis = get_kpis(filters)
+        selection_parts = [f"{payload['start_date']} to {payload['end_date']}"]
+        if payload["lines"]:
+            selection_parts.append(", ".join(payload["lines"][:3]) + (" +" if len(payload["lines"]) > 3 else ""))
+        if payload["groups"]:
+            selection_parts.append(", ".join(payload["groups"][:2]) + (" +" if len(payload["groups"]) > 2 else ""))
+        if payload["directions"]:
+            selection_parts.append(" / ".join(payload["directions"]))
+        if payload["stations"]:
+            selection_parts.append(", ".join(payload["stations"][:2]) + (" +" if len(payload["stations"]) > 2 else ""))
+        if payload["hours"]:
+            selection_parts.append(f"hours {min(payload['hours']):02d}:00-{max(payload['hours']):02d}:59")
+        return (
+            "",
+            " · ".join(selection_parts),
+            format_count(kpis["stop_rows"]),
+            format_count(kpis["services"]),
+            format_count(kpis["stations"]),
+            format_count(kpis["days"]),
+            format_count(kpis["boardings"]),
+            format_count(kpis["peak_load"]),
+        )
+    except Exception as exc:
+        message = html.Div(f"Dashboard summary error: {exc}", className="status-error")
+        return (message, "Current selection unavailable", "0", "0", "0", "0", "0", "0")
+
+
+@app.callback(
     Output("origin-hour-graph", "figure"),
     Output("stop-hour-graph", "figure"),
     Output("direction-graph", "figure"),
+    Output("pattern-graph", "figure"),
+    Input("filter-store", "data"),
+)
+def update_overview_panel(data):
+    try:
+        _, filters = deserialize_filters(data)
+        origin_hourly = get_origin_departure_activity(filters)
+        stop_hourly = get_hourly_activity(filters)
+        direction = get_direction_flow(filters)
+        patterns = get_service_patterns(filters)
+
+        if origin_hourly.empty:
+            origin_fig = build_empty_figure("Services by Origin Departure Hour")
+        else:
+            origin_fig = px.bar(
+                origin_hourly,
+                x="origin_departure_hour",
+                y="services",
+                color="boardings",
+                color_continuous_scale=["#ffe2bd", COLORS["accent"], "#7a3414"],
+                hover_data={"alightings": ":,.0f", "max_peak_load": ":,.0f", "origin_departure_hour": True},
+            )
+            origin_fig.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                margin=dict(l=20, r=20, t=20, b=20),
+                xaxis_title="Origin departure hour",
+                yaxis_title="Services",
+                coloraxis_colorbar_title="Boardings",
+            )
+            origin_fig.update_xaxes(dtick=1, gridcolor=COLORS["grid"])
+            origin_fig.update_yaxes(gridcolor=COLORS["grid"])
+
+        if stop_hourly.empty:
+            stop_fig = build_empty_figure("Stop-Level Activity by Scheduled Departure Hour")
+        else:
+            stop_fig = px.line(
+                stop_hourly,
+                x="departure_hour",
+                y=["boardings", "alightings"],
+                markers=True,
+                color_discrete_sequence=[COLORS["teal"], COLORS["berry"]],
+            )
+            stop_fig.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                margin=dict(l=20, r=20, t=20, b=20),
+                xaxis_title="Scheduled departure hour",
+                yaxis_title="Passengers",
+                legend_title_text="",
+            )
+            stop_fig.update_xaxes(dtick=1, gridcolor=COLORS["grid"])
+            stop_fig.update_yaxes(gridcolor=COLORS["grid"])
+
+        if direction.empty:
+            direction_fig = build_empty_figure("Direction Mix")
+        else:
+            direction_fig = px.bar(
+                direction,
+                x="Direction",
+                y=["boardings", "alightings"],
+                barmode="group",
+                color_discrete_sequence=[COLORS["accent"], COLORS["accent_soft"]],
+            )
+            direction_fig.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                margin=dict(l=20, r=20, t=20, b=20),
+                xaxis_title="Direction",
+                yaxis_title="Passengers",
+                legend_title_text="",
+            )
+
+        if patterns.empty:
+            pattern_fig = build_empty_figure("Service Stop Pattern Mix")
+        else:
+            pattern_fig = px.bar(
+                patterns,
+                x="stop_count",
+                y="service_count",
+                color="service_count",
+                color_continuous_scale=["#f3d7b6", COLORS["berry"]],
+            )
+            pattern_fig.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                margin=dict(l=20, r=20, t=20, b=20),
+                xaxis_title="Recorded stops per service",
+                yaxis_title="Services",
+                coloraxis_showscale=False,
+            )
+        return origin_fig, stop_fig, direction_fig, pattern_fig
+    except Exception as exc:
+        return (
+            build_error_figure("Services by Origin Departure Hour", str(exc)),
+            build_error_figure("Stop-Level Activity by Scheduled Departure Hour", str(exc)),
+            build_error_figure("Direction Mix", str(exc)),
+            build_error_figure("Service Stop Pattern Mix", str(exc)),
+        )
+
+
+@app.callback(
     Output("station-graph", "figure"),
     Output("station-map-graph", "figure"),
     Output("map-station-table", "data"),
     Output("map-station-table", "columns"),
-    Output("pattern-graph", "figure"),
-    Output("peak-train-graph", "figure"),
-    Output("service-table", "data"),
-    Output("service-table", "columns"),
-    Output("preview-table", "data"),
-    Output("preview-table", "columns"),
-    Output("preview-table", "page_size"),
-    Output("overview-panel", "style"),
-    Output("stations-panel", "style"),
-    Output("map-panel", "style"),
-    Output("services-panel", "style"),
-    Output("rows-panel", "style"),
-    Input("date-range", "start_date"),
-    Input("date-range", "end_date"),
-    Input("line-filter", "value"),
-    Input("group-filter", "value"),
-    Input("direction-filter", "value"),
-    Input("station-filter", "value"),
-    Input("hour-filter", "value"),
-    Input("view-tabs", "value"),
-    Input("preview-row-count", "value"),
+    Input("filter-store", "data"),
 )
-def update_dashboard(start_date, end_date, lines, groups, directions, stations, hours, active_tab, preview_row_count):
-    filters = get_filter_state(start_date, end_date, lines, groups, directions, stations, hours)
-    kpis = get_kpis(filters)
-    origin_hourly = get_origin_departure_activity(filters)
-    stop_hourly = get_hourly_activity(filters)
-    direction = get_direction_flow(filters)
-    station = get_station_activity(filters).head(18)
-    station_map = get_station_map_data(filters)
-    line_paths = get_line_paths(filters)
-    patterns = get_service_patterns(filters)
-    peak_trains = get_peak_trains(filters, limit=18)
-    service_summary = get_service_summary(filters, limit=200)
-    preview = get_preview_rows(filters, limit=100)
+def update_station_panel(data):
+    try:
+        _, filters = deserialize_filters(data)
+        station = get_station_activity(filters).head(18)
+        station_map = get_station_map_data(filters)
+        line_paths = get_line_paths(filters)
 
-    selection_parts = [f"{start_date} to {end_date}"]
-    if lines:
-        selection_parts.append(", ".join(lines[:3]) + (" +" if len(lines) > 3 else ""))
-    if groups:
-        selection_parts.append(", ".join(groups[:2]) + (" +" if len(groups) > 2 else ""))
-    if directions:
-        selection_parts.append(" / ".join(directions))
-    if stations:
-        selection_parts.append(", ".join(stations[:2]) + (" +" if len(stations) > 2 else ""))
-    if hours:
-        selection_parts.append(f"hours {min(hours):02d}:00-{max(hours):02d}:59")
-    selection_summary = " · ".join(selection_parts)
+        if station.empty:
+            station_fig = build_empty_figure("Top Station Activity")
+        else:
+            station_fig = px.bar(
+                station.sort_values("boardings"),
+                x="boardings",
+                y="Station_Name",
+                orientation="h",
+                color="avg_departure_load",
+                color_continuous_scale=["#ffe2bd", COLORS["accent"], "#7a3414"],
+                custom_data=["Station_Name"],
+            )
+            station_fig.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                margin=dict(l=20, r=20, t=20, b=20),
+                xaxis_title="Boardings",
+                yaxis_title="Station",
+                coloraxis_colorbar_title="Avg load",
+            )
+            station_fig.update_yaxes(categoryorder="total ascending")
 
-    if origin_hourly.empty:
-        origin_fig = build_empty_figure("Services by Origin Departure Hour")
-    else:
-        origin_fig = px.bar(
-            origin_hourly,
-            x="origin_departure_hour",
-            y="services",
-            color="boardings",
-            color_continuous_scale=["#ffe2bd", COLORS["accent"], "#7a3414"],
-            hover_data={"alightings": ":,.0f", "max_peak_load": ":,.0f", "origin_departure_hour": True},
-        )
-        origin_fig.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            margin=dict(l=20, r=20, t=20, b=20),
-            xaxis_title="Origin departure hour",
-            yaxis_title="Services",
-            coloraxis_colorbar_title="Boardings",
-        )
-        origin_fig.update_xaxes(dtick=1, gridcolor=COLORS["grid"])
-        origin_fig.update_yaxes(gridcolor=COLORS["grid"])
+        if station_map.empty:
+            return station_fig, build_empty_figure("Station Map"), [], []
 
-    if stop_hourly.empty:
-        stop_fig = build_empty_figure("Stop-Level Activity by Scheduled Departure Hour")
-    else:
-        stop_fig = px.line(
-            stop_hourly,
-            x="departure_hour",
-            y=["boardings", "alightings"],
-            markers=True,
-            color_discrete_sequence=[COLORS["teal"], COLORS["berry"]],
-        )
-        stop_fig.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            margin=dict(l=20, r=20, t=20, b=20),
-            xaxis_title="Scheduled departure hour",
-            yaxis_title="Passengers",
-            legend_title_text="",
-        )
-        stop_fig.update_xaxes(dtick=1, gridcolor=COLORS["grid"])
-        stop_fig.update_yaxes(gridcolor=COLORS["grid"])
-
-    if direction.empty:
-        direction_fig = build_empty_figure("Direction Mix")
-    else:
-        direction_fig = px.bar(
-            direction,
-            x="Direction",
-            y=["boardings", "alightings"],
-            barmode="group",
-            color_discrete_sequence=[COLORS["accent"], COLORS["accent_soft"]],
-        )
-        direction_fig.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            margin=dict(l=20, r=20, t=20, b=20),
-            xaxis_title="Direction",
-            yaxis_title="Passengers",
-            legend_title_text="",
-        )
-
-    if station.empty:
-        station_fig = build_empty_figure("Top Station Activity")
-    else:
-        station_fig = px.bar(
-            station.sort_values("boardings"),
-            x="boardings",
-            y="Station_Name",
-            orientation="h",
-            color="avg_departure_load",
-            color_continuous_scale=["#ffe2bd", COLORS["accent"], "#7a3414"],
-            custom_data=["Station_Name"],
-        )
-        station_fig.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            margin=dict(l=20, r=20, t=20, b=20),
-            xaxis_title="Boardings",
-            yaxis_title="Station",
-            coloraxis_colorbar_title="Avg load",
-        )
-        station_fig.update_yaxes(categoryorder="total ascending")
-
-    if station_map.empty:
-        station_map_fig = build_empty_figure("Station Map")
-        map_station_records = []
-        map_station_columns = []
-    else:
         station_map = station_map.copy()
         station_map["line_names_label"] = station_map["line_names"].apply(lambda values: ", ".join(values))
         lat_span = float(station_map["latitude"].max() - station_map["latitude"].min())
@@ -785,7 +890,7 @@ def update_dashboard(start_date, end_date, lines, groups, directions, stations, 
                         line={"width": 3, "color": palette[idx % len(palette)]},
                         name=line_name,
                         hoverinfo="skip",
-                        opacity=0.5,
+                        opacity=0.55,
                     )
                 )
 
@@ -820,17 +925,13 @@ def update_dashboard(start_date, end_date, lines, groups, directions, stations, 
             plot_bgcolor="rgba(0,0,0,0)",
             mapbox=dict(
                 style="carto-positron",
-                center={
-                    "lat": float(station_map["latitude"].mean()),
-                    "lon": float(station_map["longitude"].mean()),
-                },
+                center={"lat": float(station_map["latitude"].mean()), "lon": float(station_map["longitude"].mean())},
                 zoom=map_zoom_for_bounds(lat_span, lon_span),
             ),
             margin=dict(l=0, r=0, t=20, b=0),
             height=720,
             legend=dict(orientation="h", yanchor="bottom", y=1.01, xanchor="left", x=0),
         )
-        map_station_view = station_map.copy()
         map_station_columns = [
             {"name": "Station", "id": "Station_Name"},
             {"name": "Lines", "id": "line_names_label"},
@@ -838,79 +939,77 @@ def update_dashboard(start_date, end_date, lines, groups, directions, stations, 
             {"name": "Alightings", "id": "alightings"},
             {"name": "Services", "id": "services"},
         ]
-        map_station_records = map_station_view[["Station_Name", "line_names_label", "boardings", "alightings", "services"]].to_dict("records")
+        map_station_records = station_map[["Station_Name", "line_names_label", "boardings", "alightings", "services"]].to_dict("records")
+        return station_fig, station_map_fig, map_station_records, map_station_columns
+    except Exception as exc:
+        return build_error_figure("Top Station Activity", str(exc)), build_error_figure("Station Map", str(exc)), [], []
 
-    if patterns.empty:
-        pattern_fig = build_empty_figure("Service Stop Pattern Mix")
-    else:
-        pattern_fig = px.bar(
-            patterns,
-            x="stop_count",
-            y="service_count",
-            color="service_count",
-            color_continuous_scale=["#f3d7b6", COLORS["berry"]],
-        )
-        pattern_fig.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            margin=dict(l=20, r=20, t=20, b=20),
-            xaxis_title="Recorded stops per service",
-            yaxis_title="Services",
-            coloraxis_showscale=False,
-        )
 
-    if peak_trains.empty:
-        peak_fig = build_empty_figure("Peak Load by Service")
-    else:
-        peak_trains["label"] = (
-            peak_trains["Train_Number"]
-            + " · "
-            + peak_trains["line_name"]
-            + " · "
-            + peak_trains["direction"]
-        )
-        peak_fig = px.bar(
-            peak_trains.sort_values("peak_load"),
-            x="peak_load",
-            y="label",
-            orientation="h",
-            color="total_boardings",
-            color_continuous_scale=["#dff5ee", COLORS["teal"]],
-        )
-        peak_fig.update_layout(
-            paper_bgcolor="rgba(0,0,0,0)",
-            plot_bgcolor="rgba(0,0,0,0)",
-            margin=dict(l=20, r=20, t=20, b=20),
-            xaxis_title="Peak departure load",
-            yaxis_title="Service",
-            coloraxis_colorbar_title="Boardings",
-        )
+@app.callback(
+    Output("peak-train-graph", "figure"),
+    Output("service-table", "data"),
+    Output("service-table", "columns"),
+    Input("filter-store", "data"),
+)
+def update_service_panel(data):
+    try:
+        _, filters = deserialize_filters(data)
+        peak_trains = get_peak_trains(filters, limit=18)
+        service_summary = get_service_summary(filters, limit=200)
+        service_columns = [{"name": col.replace("_", " "), "id": col} for col in service_summary.columns]
 
-    service_columns = [{"name": col.replace("_", " "), "id": col} for col in service_summary.columns]
-    preview_columns = [{"name": col.replace("_", " "), "id": col} for col in preview.columns]
+        if peak_trains.empty:
+            peak_fig = build_empty_figure("Peak Load by Service")
+        else:
+            peak_trains["label"] = peak_trains["Train_Number"] + " · " + peak_trains["line_name"] + " · " + peak_trains["direction"]
+            peak_fig = px.bar(
+                peak_trains.sort_values("peak_load"),
+                x="peak_load",
+                y="label",
+                orientation="h",
+                color="total_boardings",
+                color_continuous_scale=["#dff5ee", COLORS["teal"]],
+            )
+            peak_fig.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                margin=dict(l=20, r=20, t=20, b=20),
+                xaxis_title="Peak departure load",
+                yaxis_title="Service",
+                coloraxis_colorbar_title="Boardings",
+            )
+        return peak_fig, service_summary.to_dict("records"), service_columns
+    except Exception as exc:
+        return build_error_figure("Peak Load by Service", str(exc)), [], []
 
+
+@app.callback(
+    Output("preview-table", "data"),
+    Output("preview-table", "columns"),
+    Output("preview-table", "page_size"),
+    Input("filter-store", "data"),
+    Input("preview-row-count", "value"),
+)
+def update_rows_panel(data, preview_row_count):
+    try:
+        _, filters = deserialize_filters(data)
+        preview = get_preview_rows(filters, limit=100)
+        preview_columns = [{"name": col.replace("_", " "), "id": col} for col in preview.columns]
+        return preview.to_dict("records"), preview_columns, preview_row_count or 20
+    except Exception:
+        return [], [], preview_row_count or 20
+
+
+@app.callback(
+    Output("overview-panel", "style"),
+    Output("stations-panel", "style"),
+    Output("map-panel", "style"),
+    Output("services-panel", "style"),
+    Output("rows-panel", "style"),
+    Input("view-tabs", "value"),
+)
+def update_tab_visibility(active_tab):
     return (
-        selection_summary,
-        format_count(kpis["stop_rows"]),
-        format_count(kpis["services"]),
-        format_count(kpis["stations"]),
-        format_count(kpis["days"]),
-        format_count(kpis["boardings"]),
-        format_count(kpis["peak_load"]),
-        origin_fig,
-        stop_fig,
-        direction_fig,
-        station_fig,
-        station_map_fig,
-        map_station_records,
-        map_station_columns,
-        pattern_fig,
-        peak_fig,
-        service_summary.to_dict("records"),
-        service_columns,
-        preview.to_dict("records"),
-        preview_columns,
-        preview_row_count or 20,
         tab_style(active_tab == "overview"),
         tab_style(active_tab == "stations"),
         tab_style(active_tab == "map"),

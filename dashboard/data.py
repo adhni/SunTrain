@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+from functools import lru_cache
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Iterable
@@ -100,14 +101,24 @@ def _build_where(filters: FilterState) -> tuple[str, list[str]]:
     return " WHERE " + " AND ".join(clauses), params
 
 
-def _fetch_df(query: str, params: list[str] | None = None) -> pd.DataFrame:
+@lru_cache(maxsize=256)
+def _fetch_records(query: str, params: tuple[str, ...]) -> tuple[tuple[str, ...], tuple[tuple[object, ...], ...]]:
     con = _connect()
     try:
-        return con.execute(query, params or []).fetchdf()
+        cursor = con.execute(query, list(params))
+        columns = tuple(item[0] for item in cursor.description)
+        rows = tuple(tuple(row) for row in cursor.fetchall())
+        return columns, rows
     finally:
         con.close()
 
 
+def _fetch_df(query: str, params: list[str] | None = None) -> pd.DataFrame:
+    columns, rows = _fetch_records(query, tuple(params or ()))
+    return pd.DataFrame(list(rows), columns=list(columns))
+
+
+@lru_cache(maxsize=1)
 def get_metadata() -> dict[str, object]:
     query = f"""
         SELECT
@@ -118,11 +129,8 @@ def get_metadata() -> dict[str, object]:
           LIST(DISTINCT Direction ORDER BY Direction) AS directions
         FROM {_source_sql()}
     """
-    con = _connect()
-    try:
-        row = con.execute(query).fetchone()
-    finally:
-        con.close()
+    columns, rows = _fetch_records(query, ())
+    row = rows[0]
 
     return {
         "min_date": row[0].isoformat(),

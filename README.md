@@ -66,4 +66,5 @@ Notes:
 - The app queries the warehouse Parquet directly through DuckDB, so it can handle additional dates without rebuilding a single-day dashboard dataset.
 - The app reads `SUNTRAIN_PARQUET_GLOB`, so you can later point it at one file or a partition glob under `data/warehouse/`.
 - Arrival and departure times are formatted in the UI as `HH:MM`.
+- A basic health endpoint is available at `/health`.
 - `render.yaml` is included as a starting point for Render deployment later.

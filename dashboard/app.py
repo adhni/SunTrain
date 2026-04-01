@@ -5,6 +5,7 @@ from pathlib import Path
 
 from dash import Dash, Input, Output, State, callback_context, dash_table, dcc, html
 from flask import jsonify
+import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
@@ -14,6 +15,7 @@ from dashboard.data import (
     get_filtered_export,
     get_hourly_activity,
     get_kpis,
+    get_line_capacity_summary,
     get_line_paths,
     get_metadata,
     get_origin_departure_activity,
@@ -30,7 +32,6 @@ from dashboard.data import (
 META = get_metadata()
 DEFAULT_START = "2023-07-10" if META["min_date"] <= "2023-07-10" <= META["max_date"] else META["min_date"]
 DEFAULT_END = DEFAULT_START
-DEFAULT_LINE = "Werribee" if "Werribee" in META["lines"] else META["lines"][0]
 ROOT = Path(__file__).resolve().parents[1]
 COLORS = {
     "ink": "#1b2432",
@@ -47,6 +48,7 @@ COLORS = {
 HOUR_OPTIONS = [{"label": f"{hour:02d}:00", "value": hour} for hour in range(24)]
 MORNING_PEAK_HOURS = [7, 8, 9]
 AFTERNOON_PEAK_HOURS = [16, 17, 18]
+COMMUTER_DAY_TYPES = ["Normal Weekday"]
 
 app = Dash(
     __name__,
@@ -159,10 +161,11 @@ def map_zoom_for_bounds(lat_span: float, lon_span: float) -> float:
     return 11.4
 
 
-def serialize_filters(start_date, end_date, lines, groups, directions, stations, hours) -> dict[str, object]:
+def serialize_filters(start_date, end_date, day_types, lines, groups, directions, stations, hours) -> dict[str, object]:
     return {
         "start_date": start_date,
         "end_date": end_date,
+        "day_types": day_types or [],
         "lines": lines or [],
         "groups": groups or [],
         "directions": directions or [],
@@ -172,10 +175,11 @@ def serialize_filters(start_date, end_date, lines, groups, directions, stations,
 
 
 def deserialize_filters(data: dict[str, object]) -> tuple[dict[str, object], object]:
-    payload = data or serialize_filters(DEFAULT_START, DEFAULT_END, [DEFAULT_LINE], [], [], [], [])
+    payload = data or serialize_filters(DEFAULT_START, DEFAULT_END, [], [], [], [], [], [])
     filters = get_filter_state(
         payload["start_date"],
         payload["end_date"],
+        payload.get("day_types"),
         payload.get("lines"),
         payload.get("groups"),
         payload.get("directions"),
@@ -194,7 +198,7 @@ app.layout = html.Div(
         dcc.Download(id="download-data"),
         dcc.Store(
             id="filter-store",
-            data=serialize_filters(DEFAULT_START, DEFAULT_END, [DEFAULT_LINE], [], [], [], []),
+            data=serialize_filters(DEFAULT_START, DEFAULT_END, [], [], [], [], [], []),
         ),
         html.Main(
             id="main-content",
@@ -248,11 +252,27 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field",
                                                     children=[
+                                                        html.Label("Day Type", className="finder-label"),
+                                                        dcc.Dropdown(
+                                                            id="day-type-filter",
+                                                            options=[
+                                                                {"label": day_type, "value": day_type}
+                                                                for day_type in META["day_types"]
+                                                            ],
+                                                            value=[],
+                                                            multi=True,
+                                                            placeholder="All day types",
+                                                        ),
+                                                    ],
+                                                ),
+                                                html.Div(
+                                                    className="finder-field",
+                                                    children=[
                                                         html.Label("Lines", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="line-filter",
                                                             options=[{"label": line, "value": line} for line in META["lines"]],
-                                                            value=[DEFAULT_LINE],
+                                                            value=[],
                                                             multi=True,
                                                             placeholder="Select line(s)",
                                                         ),
@@ -323,6 +343,9 @@ app.layout = html.Div(
                                                 html.Button("Full FY", id="preset-full-range", className="finder-chip"),
                                                 html.Button("Morning Peak", id="preset-morning-peak", className="finder-chip"),
                                                 html.Button("Afternoon Peak", id="preset-afternoon-peak", className="finder-chip"),
+                                                html.Button("Weekday All-Day", id="preset-weekday-all-day", className="finder-chip"),
+                                                html.Button("Weekday AM Inbound", id="preset-weekday-am-inbound", className="finder-chip"),
+                                                html.Button("Weekday PM Outbound", id="preset-weekday-pm-outbound", className="finder-chip"),
                                                 html.Button("Reset Filters", id="reset-filters", className="finder-chip"),
                                                 html.Button("Download CSV", id="download-button", className="primary-button"),
                                             ],
@@ -346,6 +369,13 @@ app.layout = html.Div(
                                             children=[
                                                 html.H3("Direction guide"),
                                                 html.P("U = toward Flinders Street. D = away from Flinders Street."),
+                                            ],
+                                        ),
+                                        html.Div(
+                                            className="finder-panel",
+                                            children=[
+                                                html.H3("Commuter presets"),
+                                                html.P("Weekday AM inbound uses `Normal Weekday`, `U`, and `07:00-09:59`. Weekday PM outbound uses `Normal Weekday`, `D`, and `16:00-18:59`."),
                                             ],
                                         ),
                                         html.Div(
@@ -384,6 +414,7 @@ app.layout = html.Div(
                     className="view-tabs",
                     children=[
                         dcc.Tab(label="Overview", value="overview"),
+                        dcc.Tab(label="Lines", value="lines"),
                         dcc.Tab(label="Stations", value="stations"),
                         dcc.Tab(label="Map", value="map"),
                         dcc.Tab(label="Services", value="services"),
@@ -418,6 +449,18 @@ app.layout = html.Div(
                             ],
                         ),
                         html.Div(
+                            className="viz-grid",
+                            children=[
+                                html.Div(
+                                    className="viz-card viz-card-full",
+                                    children=[
+                                        html.Div(className="viz-title", children="Weekday Commuter Split by Line"),
+                                        dcc.Loading(dcc.Graph(id="line-commuter-split-graph", config={"displayModeBar": False})),
+                                    ],
+                                ),
+                            ],
+                        ),
+                        html.Div(
                             className="viz-grid viz-grid-two",
                             children=[
                                 html.Div(
@@ -432,6 +475,90 @@ app.layout = html.Div(
                                     children=[
                                         html.Div(className="viz-title", children="Service Stop Pattern Mix"),
                                         dcc.Loading(dcc.Graph(id="pattern-graph", config={"displayModeBar": False})),
+                                    ],
+                                ),
+                            ],
+                        ),
+                    ],
+                ),
+                html.Div(
+                    id="lines-panel",
+                    className="tab-panel",
+                    children=[
+                        section_title(
+                            "Line Demand and Capacity Signals",
+                            "These charts compare train lines using service-level metrics. Read average boardings as demand captured by a service, and average peak load as the busiest onboard load observed on that service.",
+                        ),
+                        html.Div(
+                            className="viz-grid viz-grid-two",
+                            children=[
+                                html.Div(
+                                    className="viz-card",
+                                    children=[
+                                        html.Div(className="viz-title", children="Average Boardings per Service by Line"),
+                                        dcc.Loading(dcc.Graph(id="line-boardings-graph", config={"displayModeBar": False})),
+                                    ],
+                                ),
+                                html.Div(
+                                    className="viz-card",
+                                    children=[
+                                        html.Div(className="viz-title", children="Demand vs Peak Load by Line"),
+                                        dcc.Loading(dcc.Graph(id="line-capacity-scatter", config={"displayModeBar": False})),
+                                    ],
+                                ),
+                            ],
+                        ),
+                        html.Div(
+                            className="viz-grid viz-grid-two",
+                            children=[
+                                html.Div(
+                                    className="table-card compact-card",
+                                    children=[
+                                        html.Div(className="viz-title", children="Line Summary"),
+                                        dcc.Loading(
+                                            dash_table.DataTable(
+                                                id="line-summary-table",
+                                                page_size=15,
+                                                sort_action="native",
+                                                style_table={"overflowX": "auto"},
+                                                style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
+                                                style_cell={
+                                                    "backgroundColor": "transparent",
+                                                    "color": COLORS["ink"],
+                                                    "borderBottom": f"1px solid {COLORS['grid']}",
+                                                    "padding": "10px 12px",
+                                                    "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
+                                                    "fontSize": "13px",
+                                                    "textAlign": "left",
+                                                },
+                                            )
+                                        ),
+                                    ],
+                                ),
+                                html.Div(
+                                    className="viz-card nuance-card",
+                                    children=[
+                                        html.Div(className="viz-title", children="How to Read This"),
+                                        html.Div(
+                                            className="nuance-copy",
+                                            children=[
+                                                html.P(
+                                                    "Average boardings per service is a demand metric. It tells you how many passengers boarded the typical service on a line during the filtered window."
+                                                ),
+                                                html.P(
+                                                    "Average peak load per service is the stronger crowding proxy. It looks at the busiest onboard moment of each service, then averages those peaks by line."
+                                                ),
+                                                html.P(
+                                                    "The commuter split chart below compares two fixed slices side by side: weekday AM inbound (`U`, `07:00-09:59`) and weekday PM outbound (`D`, `16:00-18:59`). It respects your current date range and line, group, and station scope."
+                                                ),
+                                                html.P(
+                                                    "These are not literal train capacities. The source dataset rounds passenger counts to the nearest 10 and does not include rolling-stock capacity, so load factor needs a separate train-capacity lookup."
+                                                ),
+                                                html.P(
+                                                    "Some values in `Line_Name` behave more like corridor or operating group labels than simple passenger lines. Treat those as network buckets unless you explicitly want that broader grouping."
+                                                ),
+                                            ],
+                                        ),
                                     ],
                                 ),
                             ],
@@ -608,19 +735,21 @@ app.layout = html.Div(
     Output("filter-store", "data"),
     Input("date-range", "start_date"),
     Input("date-range", "end_date"),
+    Input("day-type-filter", "value"),
     Input("line-filter", "value"),
     Input("group-filter", "value"),
     Input("direction-filter", "value"),
     Input("station-filter", "value"),
     Input("hour-filter", "value"),
 )
-def sync_filter_store(start_date, end_date, lines, groups, directions, stations, hours):
-    return serialize_filters(start_date, end_date, lines, groups, directions, stations, hours)
+def sync_filter_store(start_date, end_date, day_types, lines, groups, directions, stations, hours):
+    return serialize_filters(start_date, end_date, day_types, lines, groups, directions, stations, hours)
 
 
 @app.callback(
     Output("date-range", "start_date"),
     Output("date-range", "end_date"),
+    Output("day-type-filter", "value"),
     Output("line-filter", "value"),
     Output("group-filter", "value"),
     Output("direction-filter", "value"),
@@ -631,28 +760,52 @@ def sync_filter_store(start_date, end_date, lines, groups, directions, stations,
     Input("preset-full-range", "n_clicks"),
     Input("preset-morning-peak", "n_clicks"),
     Input("preset-afternoon-peak", "n_clicks"),
+    Input("preset-weekday-all-day", "n_clicks"),
+    Input("preset-weekday-am-inbound", "n_clicks"),
+    Input("preset-weekday-pm-outbound", "n_clicks"),
     Input("reset-filters", "n_clicks"),
     State("date-range", "start_date"),
     State("date-range", "end_date"),
+    State("line-filter", "value"),
     prevent_initial_call=True,
 )
-def apply_presets(_one_day, _one_week, _full_range, _morning_peak, _afternoon_peak, _reset, start_date, end_date):
+def apply_presets(
+    _one_day,
+    _one_week,
+    _full_range,
+    _morning_peak,
+    _afternoon_peak,
+    _weekday_all_day,
+    _weekday_am_inbound,
+    _weekday_pm_outbound,
+    _reset,
+    start_date,
+    end_date,
+    current_lines,
+):
     triggered = callback_context.triggered[0]["prop_id"].split(".")[0]
     start = start_date or DEFAULT_START
     end = end_date or DEFAULT_END
+    lines = current_lines or []
     if triggered == "preset-one-day":
-        return start, start, [DEFAULT_LINE], [], [], [], []
+        return start, start, [], lines, [], [], [], []
     if triggered == "preset-one-week":
         start_obj = parse_iso(start)
         end_obj = min(start_obj + timedelta(days=6), parse_iso(META["max_date"]))
-        return start, end_obj.isoformat(), [DEFAULT_LINE], [], [], [], []
+        return start, end_obj.isoformat(), [], lines, [], [], [], []
     if triggered == "preset-full-range":
-        return META["min_date"], META["max_date"], [DEFAULT_LINE], [], [], [], []
+        return META["min_date"], META["max_date"], [], lines, [], [], [], []
     if triggered == "preset-morning-peak":
-        return start, end, [DEFAULT_LINE], [], [], [], MORNING_PEAK_HOURS
+        return start, end, [], lines, [], [], [], MORNING_PEAK_HOURS
     if triggered == "preset-afternoon-peak":
-        return start, end, [DEFAULT_LINE], [], [], [], AFTERNOON_PEAK_HOURS
-    return DEFAULT_START, DEFAULT_END, [DEFAULT_LINE], [], [], [], []
+        return start, end, [], lines, [], [], [], AFTERNOON_PEAK_HOURS
+    if triggered == "preset-weekday-all-day":
+        return start, end, COMMUTER_DAY_TYPES, lines, [], [], [], []
+    if triggered == "preset-weekday-am-inbound":
+        return start, end, COMMUTER_DAY_TYPES, lines, [], ["U"], [], MORNING_PEAK_HOURS
+    if triggered == "preset-weekday-pm-outbound":
+        return start, end, COMMUTER_DAY_TYPES, lines, [], ["D"], [], AFTERNOON_PEAK_HOURS
+    return DEFAULT_START, DEFAULT_END, [], [], [], [], [], []
 
 
 @app.callback(
@@ -660,6 +813,7 @@ def apply_presets(_one_day, _one_week, _full_range, _morning_peak, _afternoon_pe
     Output("station-filter", "value"),
     Input("date-range", "start_date"),
     Input("date-range", "end_date"),
+    Input("day-type-filter", "value"),
     Input("line-filter", "value"),
     Input("group-filter", "value"),
     Input("direction-filter", "value"),
@@ -668,8 +822,8 @@ def apply_presets(_one_day, _one_week, _full_range, _morning_peak, _afternoon_pe
     Input("station-graph", "clickData"),
     Input("station-map-graph", "clickData"),
 )
-def update_station_options(start_date, end_date, lines, groups, directions, selected_stations, hours, station_bar_click, station_map_click):
-    filters = get_filter_state(start_date, end_date, lines, groups, directions, [], hours)
+def update_station_options(start_date, end_date, day_types, lines, groups, directions, selected_stations, hours, station_bar_click, station_map_click):
+    filters = get_filter_state(start_date, end_date, day_types, lines, groups, directions, [], hours)
     stations = get_station_options(filters)
     selected = [station for station in (selected_stations or []) if station in stations]
 
@@ -703,8 +857,12 @@ def update_summary(data):
         payload, filters = deserialize_filters(data)
         kpis = get_kpis(filters)
         selection_parts = [f"{payload['start_date']} to {payload['end_date']}"]
+        if payload["day_types"]:
+            selection_parts.append(", ".join(payload["day_types"][:2]) + (" +" if len(payload["day_types"]) > 2 else ""))
         if payload["lines"]:
             selection_parts.append(", ".join(payload["lines"][:3]) + (" +" if len(payload["lines"]) > 3 else ""))
+        else:
+            selection_parts.append("All lines")
         if payload["groups"]:
             selection_parts.append(", ".join(payload["groups"][:2]) + (" +" if len(payload["groups"]) > 2 else ""))
         if payload["directions"]:
@@ -830,6 +988,156 @@ def update_overview_panel(data):
             build_error_figure("Stop-Level Activity by Scheduled Departure Hour", str(exc)),
             build_error_figure("Direction Mix", str(exc)),
             build_error_figure("Service Stop Pattern Mix", str(exc)),
+        )
+
+
+@app.callback(
+    Output("line-boardings-graph", "figure"),
+    Output("line-capacity-scatter", "figure"),
+    Output("line-commuter-split-graph", "figure"),
+    Output("line-summary-table", "data"),
+    Output("line-summary-table", "columns"),
+    Input("filter-store", "data"),
+)
+def update_lines_panel(data):
+    try:
+        payload, filters = deserialize_filters(data)
+        line_summary = get_line_capacity_summary(filters)
+        line_columns = [{"name": col.replace("_", " "), "id": col} for col in line_summary.columns]
+
+        if line_summary.empty:
+            empty = build_empty_figure("Average Boardings per Service by Line")
+            return empty, build_empty_figure("Demand vs Peak Load by Line"), build_empty_figure("Weekday Commuter Split by Line"), [], []
+
+        boardings_fig = px.bar(
+            line_summary.sort_values("avg_boardings_per_service"),
+            x="avg_boardings_per_service",
+            y="Line_Name",
+            orientation="h",
+            color="avg_peak_load_per_service",
+            color_continuous_scale=["#ffe2bd", COLORS["accent"], "#7a3414"],
+            hover_data={
+                "services": ":,.0f",
+                "business_dates": ":,.0f",
+                "avg_trains_per_day": ":,.1f",
+                "median_boardings_per_service": ":,.1f",
+                "avg_peak_load_per_service": ":,.1f",
+            },
+        )
+        boardings_fig.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=20, r=20, t=20, b=20),
+            xaxis_title="Average boardings per service",
+            yaxis_title="Line",
+            coloraxis_colorbar_title="Avg peak load",
+        )
+        boardings_fig.update_yaxes(categoryorder="total ascending")
+        boardings_fig.update_xaxes(gridcolor=COLORS["grid"])
+
+        scatter_fig = px.scatter(
+            line_summary,
+            x="avg_boardings_per_service",
+            y="avg_peak_load_per_service",
+            size="services",
+            color="business_dates",
+            text="Line_Name",
+            hover_data={
+                "avg_trains_per_day": ":,.1f",
+                "services": ":,.0f",
+                "median_boardings_per_service": ":,.1f",
+                "median_peak_load_per_service": ":,.1f",
+                "max_peak_load": ":,.0f",
+                "avg_recorded_stops_per_service": ":,.1f",
+            },
+            color_continuous_scale=["#dff5ee", COLORS["teal"], "#0b3d3a"],
+            size_max=34,
+        )
+        scatter_fig.update_traces(textposition="top center")
+        scatter_fig.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=20, r=20, t=20, b=20),
+            xaxis_title="Average boardings per service",
+            yaxis_title="Average peak load per service",
+            coloraxis_colorbar_title="Business dates",
+        )
+        scatter_fig.update_xaxes(gridcolor=COLORS["grid"])
+        scatter_fig.update_yaxes(gridcolor=COLORS["grid"])
+
+        commuter_slices = []
+        for label, directions, hours, color in (
+            ("Weekday AM Inbound", ["U"], MORNING_PEAK_HOURS, COLORS["teal"]),
+            ("Weekday PM Outbound", ["D"], AFTERNOON_PEAK_HOURS, COLORS["berry"]),
+        ):
+            commuter_filters = get_filter_state(
+                payload["start_date"],
+                payload["end_date"],
+                COMMUTER_DAY_TYPES,
+                payload.get("lines"),
+                payload.get("groups"),
+                directions,
+                payload.get("stations"),
+                hours,
+            )
+            commuter_df = get_line_capacity_summary(commuter_filters)
+            if commuter_df.empty:
+                continue
+            commuter_df = commuter_df.copy()
+            commuter_df["slice"] = label
+            commuter_df["slice_color"] = color
+            commuter_slices.append(commuter_df)
+
+        if commuter_slices:
+            commuter_df = pd.concat(commuter_slices, ignore_index=True)
+            commuter_rank = (
+                commuter_df.groupby("Line_Name", as_index=False)["avg_peak_load_per_service"]
+                .max()
+                .sort_values("avg_peak_load_per_service", ascending=True)
+            )
+            commuter_df["Line_Name"] = pd.Categorical(
+                commuter_df["Line_Name"],
+                categories=commuter_rank["Line_Name"].tolist(),
+                ordered=True,
+            )
+            commuter_fig = px.bar(
+                commuter_df.sort_values("Line_Name"),
+                x="avg_peak_load_per_service",
+                y="Line_Name",
+                color="slice",
+                orientation="h",
+                barmode="group",
+                color_discrete_map={
+                    "Weekday AM Inbound": COLORS["teal"],
+                    "Weekday PM Outbound": COLORS["berry"],
+                },
+                hover_data={
+                    "avg_boardings_per_service": ":,.1f",
+                    "avg_trains_per_day": ":,.1f",
+                    "services": ":,.0f",
+                    "business_dates": ":,.0f",
+                },
+            )
+            commuter_fig.update_layout(
+                paper_bgcolor="rgba(0,0,0,0)",
+                plot_bgcolor="rgba(0,0,0,0)",
+                margin=dict(l=20, r=20, t=20, b=20),
+                xaxis_title="Average peak load per service",
+                yaxis_title="Line",
+                legend_title_text="",
+            )
+            commuter_fig.update_xaxes(gridcolor=COLORS["grid"])
+        else:
+            commuter_fig = build_empty_figure("Weekday Commuter Split by Line")
+
+        return boardings_fig, scatter_fig, commuter_fig, line_summary.to_dict("records"), line_columns
+    except Exception as exc:
+        return (
+            build_error_figure("Average Boardings per Service by Line", str(exc)),
+            build_error_figure("Demand vs Peak Load by Line", str(exc)),
+            build_error_figure("Weekday Commuter Split by Line", str(exc)),
+            [],
+            [],
         )
 
 
@@ -1002,6 +1310,7 @@ def update_rows_panel(data, preview_row_count):
 
 @app.callback(
     Output("overview-panel", "style"),
+    Output("lines-panel", "style"),
     Output("stations-panel", "style"),
     Output("map-panel", "style"),
     Output("services-panel", "style"),
@@ -1011,6 +1320,7 @@ def update_rows_panel(data, preview_row_count):
 def update_tab_visibility(active_tab):
     return (
         tab_style(active_tab == "overview"),
+        tab_style(active_tab == "lines"),
         tab_style(active_tab == "stations"),
         tab_style(active_tab == "map"),
         tab_style(active_tab == "services"),
@@ -1023,6 +1333,7 @@ def update_tab_visibility(active_tab):
     Input("download-button", "n_clicks"),
     State("date-range", "start_date"),
     State("date-range", "end_date"),
+    State("day-type-filter", "value"),
     State("line-filter", "value"),
     State("group-filter", "value"),
     State("direction-filter", "value"),
@@ -1030,8 +1341,8 @@ def update_tab_visibility(active_tab):
     State("hour-filter", "value"),
     prevent_initial_call=True,
 )
-def download_filtered_rows(_n_clicks, start_date, end_date, lines, groups, directions, stations, hours):
-    filters = get_filter_state(start_date, end_date, lines, groups, directions, stations, hours)
+def download_filtered_rows(_n_clicks, start_date, end_date, day_types, lines, groups, directions, stations, hours):
+    filters = get_filter_state(start_date, end_date, day_types, lines, groups, directions, stations, hours)
     df = get_filtered_export(filters)
     if df.empty:
         df = get_preview_rows(filters, limit=1)

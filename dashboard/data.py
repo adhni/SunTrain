@@ -18,6 +18,7 @@ DEFAULT_PARQUET_GLOB = ROOT / "data/warehouse/train_service_passenger_counts*.pa
 class FilterState:
     start_date: str
     end_date: str
+    day_types: tuple[str, ...] = ()
     lines: tuple[str, ...] = ()
     groups: tuple[str, ...] = ()
     directions: tuple[str, ...] = ()
@@ -52,6 +53,7 @@ def _normalize_hours(values: Iterable[int] | None) -> tuple[int, ...]:
 def get_filter_state(
     start_date: str,
     end_date: str,
+    day_types: Iterable[str] | None,
     lines: Iterable[str] | None,
     groups: Iterable[str] | None,
     directions: Iterable[str] | None,
@@ -61,6 +63,7 @@ def get_filter_state(
     return FilterState(
         start_date=start_date,
         end_date=end_date,
+        day_types=_normalize_multi(day_types),
         lines=_normalize_multi(lines),
         groups=_normalize_multi(groups),
         directions=_normalize_multi(directions),
@@ -72,6 +75,11 @@ def get_filter_state(
 def _build_where(filters: FilterState) -> tuple[str, list[str]]:
     clauses = ["Business_Date BETWEEN ? AND ?"]
     params: list[str] = [filters.start_date, filters.end_date]
+
+    if filters.day_types:
+        placeholders = ", ".join("?" for _ in filters.day_types)
+        clauses.append(f"Day_Type IN ({placeholders})")
+        params.extend(filters.day_types)
 
     if filters.lines:
         placeholders = ", ".join("?" for _ in filters.lines)
@@ -124,6 +132,7 @@ def get_metadata() -> dict[str, object]:
         SELECT
           MIN(Business_Date) AS min_date,
           MAX(Business_Date) AS max_date,
+          LIST(DISTINCT Day_Type ORDER BY Day_Type) AS day_types,
           LIST(DISTINCT Line_Name ORDER BY Line_Name) AS lines,
           LIST(DISTINCT "Group" ORDER BY "Group") AS groups,
           LIST(DISTINCT Direction ORDER BY Direction) AS directions
@@ -135,9 +144,10 @@ def get_metadata() -> dict[str, object]:
     return {
         "min_date": row[0].isoformat(),
         "max_date": row[1].isoformat(),
-        "lines": [value for value in row[2] if value is not None],
-        "groups": [value for value in row[3] if value is not None],
-        "directions": [value for value in row[4] if value is not None],
+        "day_types": [value for value in row[2] if value is not None],
+        "lines": [value for value in row[3] if value is not None],
+        "groups": [value for value in row[4] if value is not None],
+        "directions": [value for value in row[5] if value is not None],
     }
 
 
@@ -372,6 +382,55 @@ def get_service_patterns(filters: FilterState) -> pd.DataFrame:
         ) t
         GROUP BY 1
         ORDER BY 1
+    """
+    return _fetch_df(query, params)
+
+
+def get_line_capacity_summary(filters: FilterState) -> pd.DataFrame:
+    where_sql, params = _build_where(filters)
+    query = f"""
+        WITH filtered AS (
+          SELECT *
+          FROM {_source_sql()}
+          {where_sql}
+        ), service_level AS (
+          SELECT
+            Business_Date,
+            Line_Name,
+            Direction,
+            Train_Number,
+            SUM(Passenger_Boardings) AS total_boardings,
+            SUM(Passenger_Alightings) AS total_alightings,
+            MAX(Passenger_Departure_Load) AS peak_load,
+            COUNT(*) AS stop_rows
+          FROM filtered
+          GROUP BY 1, 2, 3, 4
+        ), line_daily AS (
+          SELECT
+            Line_Name,
+            Business_Date,
+            COUNT(*) AS services_on_day
+          FROM service_level
+          GROUP BY 1, 2
+        )
+        SELECT
+          s.Line_Name,
+          COUNT(*) AS services,
+          COUNT(DISTINCT s.Business_Date) AS business_dates,
+          ROUND(AVG(d.services_on_day), 1) AS avg_trains_per_day,
+          ROUND(AVG(s.total_boardings), 1) AS avg_boardings_per_service,
+          ROUND(MEDIAN(s.total_boardings), 1) AS median_boardings_per_service,
+          ROUND(AVG(s.total_alightings), 1) AS avg_alightings_per_service,
+          ROUND(AVG(s.peak_load), 1) AS avg_peak_load_per_service,
+          ROUND(MEDIAN(s.peak_load), 1) AS median_peak_load_per_service,
+          MAX(s.peak_load) AS max_peak_load,
+          ROUND(AVG(s.stop_rows), 1) AS avg_recorded_stops_per_service
+        FROM service_level s
+        JOIN line_daily d
+          ON s.Line_Name = d.Line_Name
+         AND s.Business_Date = d.Business_Date
+        GROUP BY 1
+        ORDER BY avg_boardings_per_service DESC, s.Line_Name
     """
     return _fetch_df(query, params)
 

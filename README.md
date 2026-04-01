@@ -37,6 +37,55 @@ WHERE Business_Date = DATE '2023-07-10'
 LIMIT 20;
 ```
 
+## Source Reference
+
+Official source page:
+
+- `https://opendata.transport.vic.gov.au/dataset/train-service-passenger-counts/resource/162887ef-1dba-4d9b-83bd-baee229229c6`
+
+Direct CSV download:
+
+- `https://opendata.transport.vic.gov.au/dataset/46b559b9-1846-4bf9-8ca6-fa4458f090ba/resource/162887ef-1dba-4d9b-83bd-baee229229c6/download/train_service_passenger_counts_fy_2023_2024.csv`
+
+Key notes from the official data dictionary:
+
+- One business date covers services operating from `03:00` to `02:59` the following day.
+- `Direction`: `U` means toward Flinders Street, `D` means away from Flinders Street.
+- `Passenger_Boardings`, `Passenger_Alightings`, `Passenger_Arrival_Load`, and `Passenger_Departure_Load` are rounded to the nearest `10`.
+- `Mode` is the operator category, e.g. `Metro` or `V/Line`.
+- `Station_Chainage` is the recorded station distance from Southern Cross Station.
+- Scheduled arrival and departure times are stored in `HH:mm:ss`.
+
+Relevant fields from the official reference table:
+
+| Field | Meaning |
+| --- | --- |
+| `Business_Date` | Business date the service operates on |
+| `Day_of_Week` | Calendar day name, or `Public Holiday` when masked |
+| `Day_Type` | Day classification such as `Normal Weekday`, `Saturday`, `Sunday`, `School Holiday`, `Public Holiday` |
+| `Mode` | Operator category |
+| `Train_Number` | Unique train service identifier on a business date |
+| `Line_Name` | Train line |
+| `Group` | Location/service group |
+| `Direction` | `U` toward Flinders Street, `D` away from Flinders Street |
+| `Origin_Station` | Service origin station |
+| `Destination_Station` | Service destination station |
+| `Station_Name` | Station for the stop-level row |
+| `Station_Latitude` | Station latitude |
+| `Station_Longitude` | Station longitude |
+| `Station_Chainage` | Distance from Southern Cross |
+| `Stop_Sequence_Number` | Stop order within the service |
+| `Arrival_Time_Scheduled` | Scheduled arrival time |
+| `Departure_Time_Scheduled` | Scheduled departure time |
+| `Passenger_Boardings` | Rounded count boarding at that stop |
+| `Passenger_Alightings` | Rounded count alighting at that stop |
+| `Passenger_Arrival_Load` | Rounded onboard count on arrival |
+| `Passenger_Departure_Load` | Rounded onboard count on departure |
+
+Planning caveat:
+
+- The dataset does not include train vehicle capacity directly. Capacity planning in this repo should therefore treat `Passenger_Departure_Load` as observed demand/load, and use a separate rolling-stock capacity lookup if load factors are needed.
+
 ## EDA Script
 
 Run:

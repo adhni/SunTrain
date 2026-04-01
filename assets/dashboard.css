@@ -387,6 +387,26 @@ body {
   min-height: 100%;
 }
 
+.nuance-card {
+  background: linear-gradient(160deg, rgba(28, 39, 51, 0.98), rgba(15, 118, 110, 0.94));
+  color: #f8f6f1;
+}
+
+.nuance-card .viz-title {
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.nuance-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.nuance-copy p {
+  margin: 0;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+}
+
 .map-card {
   margin-bottom: 16px;
 }

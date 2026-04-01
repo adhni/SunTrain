@@ -97,3 +97,4 @@ Set this environment variable:
 
 - The current tracked Parquet warehouse file is included in the repo, so the first deploy can run without an external database.
 - If you later add much larger Parquet files, consider moving the warehouse onto a Render disk or object storage instead of keeping all data in git.
+- The repo pins Python with [.python-version](/Users/adhni/Desktop/SunTrain/.python-version) so Render does not fall back to its current default `3.14.x`, which can break `pyarrow` wheel installs.

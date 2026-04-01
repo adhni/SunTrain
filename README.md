@@ -67,4 +67,33 @@ Notes:
 - The app reads `SUNTRAIN_PARQUET_GLOB`, so you can later point it at one file or a partition glob under `data/warehouse/`.
 - Arrival and departure times are formatted in the UI as `HH:MM`.
 - A basic health endpoint is available at `/health`.
-- `render.yaml` is included as a starting point for Render deployment later.
+- `render.yaml` is included for Render deployment.
+
+## Deploying To Render
+
+The repo is ready to deploy as a Python web service.
+
+### Option 1: Use `render.yaml`
+
+1. Push the repo to GitHub.
+2. In Render, choose `New +` -> `Blueprint`.
+3. Connect the GitHub repo and select this repository.
+4. Render will read `render.yaml` and create the web service automatically.
+
+### Option 2: Create The Web Service Manually
+
+Use these settings:
+
+- Environment: `Python`
+- Build Command: `pip install -r requirements.txt`
+- Start Command: `gunicorn --bind 0.0.0.0:$PORT --workers 1 --threads 4 --timeout 120 dashboard.app:server`
+- Health Check Path: `/health`
+
+Set this environment variable:
+
+- `SUNTRAIN_PARQUET_GLOB=data/warehouse/train_service_passenger_counts*.parquet`
+
+### Deployment Notes
+
+- The current tracked Parquet warehouse file is included in the repo, so the first deploy can run without an external database.
+- If you later add much larger Parquet files, consider moving the warehouse onto a Render disk or object storage instead of keeping all data in git.

@@ -46,3 +46,24 @@ python3 scripts/werribee_eda.py
 ```
 
 This reads `data/processed/werribee/werribee_2023-07-10.parquet` and writes charts to `reports/figures/werribee_2023-07-10/`.
+
+## Dashboard
+
+The repo now includes a multi-day Dash app backed directly by DuckDB.
+
+Run locally:
+
+```bash
+python3 -m venv .venv
+./.venv/bin/pip install -r requirements.txt
+./.venv/bin/python app.py
+```
+
+Then open `http://127.0.0.1:8050`.
+
+Notes:
+
+- The app queries the warehouse Parquet directly through DuckDB, so it can handle additional dates without rebuilding a single-day dashboard dataset.
+- The app reads `SUNTRAIN_PARQUET_GLOB`, so you can later point it at one file or a partition glob under `data/warehouse/`.
+- Arrival and departure times are formatted in the UI as `HH:MM`.
+- `render.yaml` is included as a starting point for Render deployment later.

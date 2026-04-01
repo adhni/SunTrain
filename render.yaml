@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: suntrain-dashboard
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn dashboard.app:server
+    envVars:
+      - key: SUNTRAIN_PARQUET_GLOB
+        value: data/warehouse/train_service_passenger_counts*.parquet

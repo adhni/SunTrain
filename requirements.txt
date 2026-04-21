@@ -4,3 +4,4 @@ gunicorn==23.0.0
 pandas==2.3.3
 plotly==6.6.0
 pyarrow==21.0.0
+pytest==8.4.2

@@ -3,7 +3,7 @@ from __future__ import annotations
 from datetime import date, datetime, timedelta
 from pathlib import Path
 
-from dash import Dash, Input, Output, State, callback_context, dash_table, dcc, html
+from dash import Dash, Input, Output, State, callback_context, dash_table, dcc, html, no_update
 from flask import jsonify
 import pandas as pd
 import plotly.express as px
@@ -230,38 +230,27 @@ app.layout = html.Div(
                             className="finder-shell",
                             children=[
                                 html.Div(
-                                    className="finder-grid",
+                                    className="finder-controls",
                                     children=[
                                         html.Div(
-                                            className="finder-fields",
+                                            className="finder-fields finder-fields-primary",
                                             children=[
                                                 html.Div(
                                                     className="finder-field finder-field-wide",
                                                     children=[
                                                         html.Label("Business Date Range", className="finder-label"),
-                                                        dcc.DatePickerRange(
-                                                            id="date-range",
-                                                            min_date_allowed=META["min_date"],
-                                                            max_date_allowed=META["max_date"],
-                                                            start_date=DEFAULT_START,
-                                                            end_date=DEFAULT_END,
-                                                            display_format="YYYY-MM-DD",
-                                                        ),
-                                                    ],
-                                                ),
-                                                html.Div(
-                                                    className="finder-field",
-                                                    children=[
-                                                        html.Label("Day Type", className="finder-label"),
-                                                        dcc.Dropdown(
-                                                            id="day-type-filter",
-                                                            options=[
-                                                                {"label": day_type, "value": day_type}
-                                                                for day_type in META["day_types"]
+                                                        html.Div(
+                                                            className="finder-date-range",
+                                                            children=[
+                                                                dcc.DatePickerRange(
+                                                                    id="date-range",
+                                                                    min_date_allowed=META["min_date"],
+                                                                    max_date_allowed=META["max_date"],
+                                                                    start_date=DEFAULT_START,
+                                                                    end_date=DEFAULT_END,
+                                                                    display_format="YYYY-MM-DD",
+                                                                )
                                                             ],
-                                                            value=[],
-                                                            multi=True,
-                                                            placeholder="All day types",
                                                         ),
                                                     ],
                                                 ),
@@ -281,19 +270,6 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field",
                                                     children=[
-                                                        html.Label("Groups", className="finder-label"),
-                                                        dcc.Dropdown(
-                                                            id="group-filter",
-                                                            options=[{"label": group, "value": group} for group in META["groups"]],
-                                                            value=[],
-                                                            multi=True,
-                                                            placeholder="All groups",
-                                                        ),
-                                                    ],
-                                                ),
-                                                html.Div(
-                                                    className="finder-field",
-                                                    children=[
                                                         html.Label("Directions", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="direction-filter",
@@ -304,6 +280,76 @@ app.layout = html.Div(
                                                             value=[],
                                                             multi=True,
                                                             placeholder="All directions",
+                                                        ),
+                                                    ],
+                                                ),
+                                            ],
+                                        ),
+                                        html.Div(
+                                            className="finder-toolbar",
+                                            children=[
+                                                html.Div(
+                                                    className="finder-preset-field",
+                                                    children=[
+                                                        html.Label("Quick Select", className="finder-label"),
+                                                        dcc.Dropdown(
+                                                            id="preset-dropdown",
+                                                            options=[
+                                                                {"label": "1 Day", "value": "one-day"},
+                                                                {"label": "1 Week", "value": "one-week"},
+                                                                {"label": "Full FY", "value": "full-range"},
+                                                                {"label": "Morning Peak", "value": "morning-peak"},
+                                                                {"label": "Afternoon Peak", "value": "afternoon-peak"},
+                                                                {"label": "Weekday All-Day", "value": "weekday-all-day"},
+                                                                {"label": "Weekday AM Inbound", "value": "weekday-am-inbound"},
+                                                                {"label": "Weekday PM Outbound", "value": "weekday-pm-outbound"},
+                                                            ],
+                                                            value=None,
+                                                            clearable=True,
+                                                            placeholder="Quick select…",
+                                                        ),
+                                                    ],
+                                                ),
+                                                html.Button(
+                                                    "Advanced filters ▾",
+                                                    id="advanced-filters-toggle",
+                                                    className="finder-chip finder-toggle-button",
+                                                ),
+                                                html.Button("Reset Filters", id="reset-filters", className="finder-chip"),
+                                                html.Button("Download CSV", id="download-button", className="primary-button"),
+                                            ],
+                                        ),
+                                        html.Div(
+                                            id="advanced-filters",
+                                            className="finder-fields finder-fields-advanced",
+                                            style={"display": "none"},
+                                            children=[
+                                                html.Div(
+                                                    className="finder-field",
+                                                    children=[
+                                                        html.Label("Day Type", className="finder-label"),
+                                                        dcc.Dropdown(
+                                                            id="day-type-filter",
+                                                            options=[
+                                                                {"label": day_type, "value": day_type}
+                                                                for day_type in META["day_types"]
+                                                            ],
+                                                            value=[],
+                                                            multi=True,
+                                                            placeholder="All day types",
+                                                        ),
+                                                    ],
+                                                ),
+                                                html.Div(
+                                                    className="finder-field",
+                                                    children=[
+                                                        html.Label("Groups", className="finder-label"),
+                                                        dcc.Dropdown(
+                                                            id="group-filter",
+                                                            options=[{"label": group, "value": group} for group in META["groups"]],
+                                                            value=[],
+                                                            multi=True,
+                                                            placeholder="All groups",
                                                         ),
                                                     ],
                                                 ),
@@ -335,56 +381,6 @@ app.layout = html.Div(
                                                 ),
                                             ],
                                         ),
-                                        html.Div(
-                                            className="finder-actions",
-                                            children=[
-                                                html.Button("1 Day", id="preset-one-day", className="finder-chip"),
-                                                html.Button("1 Week", id="preset-one-week", className="finder-chip"),
-                                                html.Button("Full FY", id="preset-full-range", className="finder-chip"),
-                                                html.Button("Morning Peak", id="preset-morning-peak", className="finder-chip"),
-                                                html.Button("Afternoon Peak", id="preset-afternoon-peak", className="finder-chip"),
-                                                html.Button("Weekday All-Day", id="preset-weekday-all-day", className="finder-chip"),
-                                                html.Button("Weekday AM Inbound", id="preset-weekday-am-inbound", className="finder-chip"),
-                                                html.Button("Weekday PM Outbound", id="preset-weekday-pm-outbound", className="finder-chip"),
-                                                html.Button("Reset Filters", id="reset-filters", className="finder-chip"),
-                                                html.Button("Download CSV", id="download-button", className="primary-button"),
-                                            ],
-                                        ),
-                                    ],
-                                ),
-                                html.Div(
-                                    className="finder-support",
-                                    children=[
-                                        html.Div(
-                                            className="finder-panel",
-                                            children=[
-                                                html.H3("How to read this"),
-                                                html.P(
-                                                    "The new origin-departure chart groups each train by its first scheduled departure time in the filtered window, while the stop-level chart keeps the familiar per-stop activity view."
-                                                ),
-                                            ],
-                                        ),
-                                        html.Div(
-                                            className="finder-panel",
-                                            children=[
-                                                html.H3("Direction guide"),
-                                                html.P("U = toward Flinders Street. D = away from Flinders Street."),
-                                            ],
-                                        ),
-                                        html.Div(
-                                            className="finder-panel",
-                                            children=[
-                                                html.H3("Commuter presets"),
-                                                html.P("Weekday AM inbound uses `Normal Weekday`, `U`, and `07:00-09:59`. Weekday PM outbound uses `Normal Weekday`, `D`, and `16:00-18:59`."),
-                                            ],
-                                        ),
-                                        html.Div(
-                                            className="finder-panel",
-                                            children=[
-                                                html.H3("Current focus"),
-                                                html.P(id="selection-summary"),
-                                            ],
-                                        ),
                                     ],
                                 ),
                             ],
@@ -398,11 +394,8 @@ app.layout = html.Div(
                         html.Div(
                             className="status-grid",
                             children=[
-                                metric_card("Recorded Stops", "Rows in the filtered stop-level dataset", "metric-stop-rows"),
-                                metric_card("Train Services", "Distinct train runs in the current selection", "metric-services"),
-                                metric_card("Stations Served", "Distinct stations touched by the filter", "metric-stations"),
-                                metric_card("Business Dates", "How many business dates are in view", "metric-days"),
                                 metric_card("Total Boardings", "Rounded boardings summed across filtered rows", "metric-boardings"),
+                                metric_card("Train Services", "Distinct train runs in the current selection", "metric-services"),
                                 metric_card("Peak Onboard Load", "Highest departure load observed", "metric-peak-load"),
                             ],
                         ),
@@ -414,11 +407,8 @@ app.layout = html.Div(
                     className="view-tabs",
                     children=[
                         dcc.Tab(label="Overview", value="overview"),
-                        dcc.Tab(label="Lines", value="lines"),
-                        dcc.Tab(label="Stations", value="stations"),
-                        dcc.Tab(label="Map", value="map"),
-                        dcc.Tab(label="Services", value="services"),
-                        dcc.Tab(label="Explore Rows", value="rows"),
+                        dcc.Tab(label="Lines & Services", value="lines"),
+                        dcc.Tab(label="Network", value="network"),
                     ],
                 ),
                 html.Div(
@@ -563,78 +553,9 @@ app.layout = html.Div(
                                 ),
                             ],
                         ),
-                    ],
-                ),
-                html.Div(
-                    id="stations-panel",
-                    className="tab-panel",
-                    children=[
                         section_title(
-                            "Stations",
-                            "Compare stations by demand and focus the selection before jumping into the full map view.",
-                        ),
-                        html.Div(
-                            className="viz-grid",
-                            children=[
-                                html.Div(
-                                    className="viz-card viz-card-full",
-                                    children=[
-                                        html.Div(className="viz-title", children="Top Station Activity"),
-                                        dcc.Loading(dcc.Graph(id="station-graph", config={"displayModeBar": False})),
-                                    ],
-                                ),
-                            ],
-                        ),
-                    ],
-                ),
-                html.Div(
-                    id="map-panel",
-                    className="tab-panel",
-                    children=[
-                        section_title(
-                            "Network Map",
-                            "A dedicated station map with route traces, visible station markers, and click-to-filter behavior.",
-                        ),
-                        html.Div(
-                            className="viz-card map-card",
-                            children=[
-                                html.Div(className="viz-title", children="Interactive Station Map"),
-                                dcc.Loading(dcc.Graph(id="station-map-graph", config={"displayModeBar": False})),
-                            ],
-                        ),
-                        html.Div(
-                            className="table-card",
-                            children=[
-                                html.Div(className="viz-title", children="Stations in Current Map View"),
-                                dcc.Loading(
-                                    dash_table.DataTable(
-                                        id="map-station-table",
-                                        page_size=12,
-                                        sort_action="native",
-                                        style_table={"overflowX": "auto"},
-                                        style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
-                                        style_cell={
-                                            "backgroundColor": "transparent",
-                                            "color": COLORS["ink"],
-                                            "borderBottom": f"1px solid {COLORS['grid']}",
-                                            "padding": "10px 12px",
-                                            "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
-                                            "fontSize": "13px",
-                                            "textAlign": "left",
-                                        },
-                                    )
-                                ),
-                            ],
-                        ),
-                    ],
-                ),
-                html.Div(
-                    id="services-panel",
-                    className="tab-panel",
-                    children=[
-                        section_title(
-                            "Services",
-                            "Spot the heaviest services and review origin-to-destination summaries with first departure times in HH:MM.",
+                            "Service Leaders",
+                            "Review the busiest services and their origin-to-destination summaries without leaving the line view.",
                         ),
                         html.Div(
                             className="viz-grid viz-grid-two",
@@ -675,8 +596,68 @@ app.layout = html.Div(
                     ],
                 ),
                 html.Div(
-                    id="rows-panel",
+                    id="network-panel",
                     className="tab-panel",
+                    children=[
+                        section_title(
+                            "Network",
+                            "Compare station demand first, then inspect the map and filtered station list below.",
+                        ),
+                        html.Div(
+                            className="viz-grid",
+                            children=[
+                                html.Div(
+                                    className="viz-card viz-card-full",
+                                    children=[
+                                        html.Div(className="viz-title", children="Top Station Activity"),
+                                        dcc.Loading(dcc.Graph(id="station-graph", config={"displayModeBar": False})),
+                                    ],
+                                ),
+                            ],
+                        ),
+                        html.Div(
+                            className="viz-card map-card",
+                            children=[
+                                html.Div(className="viz-title", children="Interactive Station Map"),
+                                dcc.Loading(dcc.Graph(id="station-map-graph", config={"displayModeBar": False})),
+                            ],
+                        ),
+                        html.Div(
+                            className="table-card",
+                            children=[
+                                html.Div(className="viz-title", children="Stations in Current Map View"),
+                                dcc.Loading(
+                                    dash_table.DataTable(
+                                        id="map-station-table",
+                                        page_size=12,
+                                        sort_action="native",
+                                        style_table={"overflowX": "auto"},
+                                        style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
+                                        style_cell={
+                                            "backgroundColor": "transparent",
+                                            "color": COLORS["ink"],
+                                            "borderBottom": f"1px solid {COLORS['grid']}",
+                                            "padding": "10px 12px",
+                                            "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
+                                            "fontSize": "13px",
+                                            "textAlign": "left",
+                                        },
+                                    )
+                                ),
+                            ],
+                        ),
+                    ],
+                ),
+                html.Div(
+                    className="raw-data-toggle-row",
+                    children=[
+                        html.Button("▼ View raw data", id="raw-data-toggle", className="raw-data-toggle"),
+                    ],
+                ),
+                html.Div(
+                    id="raw-data-section",
+                    className="raw-data-section",
+                    style={"display": "none"},
                     children=[
                         section_title(
                             "Explore Raw Rows",
@@ -747,6 +728,16 @@ def sync_filter_store(start_date, end_date, day_types, lines, groups, directions
 
 
 @app.callback(
+    Output("advanced-filters", "style"),
+    Output("advanced-filters-toggle", "children"),
+    Input("advanced-filters-toggle", "n_clicks"),
+)
+def toggle_advanced_filters(n_clicks):
+    is_open = bool(n_clicks and n_clicks % 2 == 1)
+    return ({"display": "grid"} if is_open else {"display": "none"}), ("Advanced filters ▲" if is_open else "Advanced filters ▾")
+
+
+@app.callback(
     Output("date-range", "start_date"),
     Output("date-range", "end_date"),
     Output("day-type-filter", "value"),
@@ -755,14 +746,7 @@ def sync_filter_store(start_date, end_date, day_types, lines, groups, directions
     Output("direction-filter", "value"),
     Output("station-filter", "value"),
     Output("hour-filter", "value"),
-    Input("preset-one-day", "n_clicks"),
-    Input("preset-one-week", "n_clicks"),
-    Input("preset-full-range", "n_clicks"),
-    Input("preset-morning-peak", "n_clicks"),
-    Input("preset-afternoon-peak", "n_clicks"),
-    Input("preset-weekday-all-day", "n_clicks"),
-    Input("preset-weekday-am-inbound", "n_clicks"),
-    Input("preset-weekday-pm-outbound", "n_clicks"),
+    Input("preset-dropdown", "value"),
     Input("reset-filters", "n_clicks"),
     State("date-range", "start_date"),
     State("date-range", "end_date"),
@@ -770,14 +754,7 @@ def sync_filter_store(start_date, end_date, day_types, lines, groups, directions
     prevent_initial_call=True,
 )
 def apply_presets(
-    _one_day,
-    _one_week,
-    _full_range,
-    _morning_peak,
-    _afternoon_peak,
-    _weekday_all_day,
-    _weekday_am_inbound,
-    _weekday_pm_outbound,
+    preset_value,
     _reset,
     start_date,
     end_date,
@@ -787,25 +764,29 @@ def apply_presets(
     start = start_date or DEFAULT_START
     end = end_date or DEFAULT_END
     lines = current_lines or []
-    if triggered == "preset-one-day":
+    if triggered == "reset-filters":
+        return DEFAULT_START, DEFAULT_END, [], [], [], [], [], []
+    if not preset_value:
+        return (no_update,) * 8
+    if preset_value == "one-day":
         return start, start, [], lines, [], [], [], []
-    if triggered == "preset-one-week":
+    if preset_value == "one-week":
         start_obj = parse_iso(start)
         end_obj = min(start_obj + timedelta(days=6), parse_iso(META["max_date"]))
         return start, end_obj.isoformat(), [], lines, [], [], [], []
-    if triggered == "preset-full-range":
+    if preset_value == "full-range":
         return META["min_date"], META["max_date"], [], lines, [], [], [], []
-    if triggered == "preset-morning-peak":
+    if preset_value == "morning-peak":
         return start, end, [], lines, [], [], [], MORNING_PEAK_HOURS
-    if triggered == "preset-afternoon-peak":
+    if preset_value == "afternoon-peak":
         return start, end, [], lines, [], [], [], AFTERNOON_PEAK_HOURS
-    if triggered == "preset-weekday-all-day":
+    if preset_value == "weekday-all-day":
         return start, end, COMMUTER_DAY_TYPES, lines, [], [], [], []
-    if triggered == "preset-weekday-am-inbound":
+    if preset_value == "weekday-am-inbound":
         return start, end, COMMUTER_DAY_TYPES, lines, [], ["U"], [], MORNING_PEAK_HOURS
-    if triggered == "preset-weekday-pm-outbound":
+    if preset_value == "weekday-pm-outbound":
         return start, end, COMMUTER_DAY_TYPES, lines, [], ["D"], [], AFTERNOON_PEAK_HOURS
-    return DEFAULT_START, DEFAULT_END, [], [], [], [], [], []
+    return (no_update,) * 8
 
 
 @app.callback(
@@ -843,47 +824,24 @@ def update_station_options(start_date, end_date, day_types, lines, groups, direc
 
 @app.callback(
     Output("status-message", "children"),
-    Output("selection-summary", "children"),
-    Output("metric-stop-rows", "children"),
-    Output("metric-services", "children"),
-    Output("metric-stations", "children"),
-    Output("metric-days", "children"),
     Output("metric-boardings", "children"),
+    Output("metric-services", "children"),
     Output("metric-peak-load", "children"),
     Input("filter-store", "data"),
 )
 def update_summary(data):
     try:
-        payload, filters = deserialize_filters(data)
+        _, filters = deserialize_filters(data)
         kpis = get_kpis(filters)
-        selection_parts = [f"{payload['start_date']} to {payload['end_date']}"]
-        if payload["day_types"]:
-            selection_parts.append(", ".join(payload["day_types"][:2]) + (" +" if len(payload["day_types"]) > 2 else ""))
-        if payload["lines"]:
-            selection_parts.append(", ".join(payload["lines"][:3]) + (" +" if len(payload["lines"]) > 3 else ""))
-        else:
-            selection_parts.append("All lines")
-        if payload["groups"]:
-            selection_parts.append(", ".join(payload["groups"][:2]) + (" +" if len(payload["groups"]) > 2 else ""))
-        if payload["directions"]:
-            selection_parts.append(" / ".join(payload["directions"]))
-        if payload["stations"]:
-            selection_parts.append(", ".join(payload["stations"][:2]) + (" +" if len(payload["stations"]) > 2 else ""))
-        if payload["hours"]:
-            selection_parts.append(f"hours {min(payload['hours']):02d}:00-{max(payload['hours']):02d}:59")
         return (
             "",
-            " · ".join(selection_parts),
-            format_count(kpis["stop_rows"]),
-            format_count(kpis["services"]),
-            format_count(kpis["stations"]),
-            format_count(kpis["days"]),
             format_count(kpis["boardings"]),
+            format_count(kpis["services"]),
             format_count(kpis["peak_load"]),
         )
     except Exception as exc:
         message = html.Div(f"Dashboard summary error: {exc}", className="status-error")
-        return (message, "Current selection unavailable", "0", "0", "0", "0", "0", "0")
+        return (message, "0", "0", "0")
 
 
 @app.callback(
@@ -1311,21 +1269,25 @@ def update_rows_panel(data, preview_row_count):
 @app.callback(
     Output("overview-panel", "style"),
     Output("lines-panel", "style"),
-    Output("stations-panel", "style"),
-    Output("map-panel", "style"),
-    Output("services-panel", "style"),
-    Output("rows-panel", "style"),
+    Output("network-panel", "style"),
     Input("view-tabs", "value"),
 )
 def update_tab_visibility(active_tab):
     return (
         tab_style(active_tab == "overview"),
         tab_style(active_tab == "lines"),
-        tab_style(active_tab == "stations"),
-        tab_style(active_tab == "map"),
-        tab_style(active_tab == "services"),
-        tab_style(active_tab == "rows"),
+        tab_style(active_tab == "network"),
     )
+
+
+@app.callback(
+    Output("raw-data-section", "style"),
+    Output("raw-data-toggle", "children"),
+    Input("raw-data-toggle", "n_clicks"),
+)
+def toggle_raw_data(n_clicks):
+    is_open = bool(n_clicks and n_clicks % 2 == 1)
+    return ({"display": "block"} if is_open else {"display": "none"}), ("▲ Hide raw data" if is_open else "▼ View raw data")
 
 
 @app.callback(

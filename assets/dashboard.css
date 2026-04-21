@@ -159,17 +159,20 @@ body {
   backdrop-filter: blur(8px);
 }
 
-.finder-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 12px;
-  align-items: start;
-}
-
 .finder-fields {
   display: grid;
-  grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(180px, 1fr));
   gap: 12px;
+}
+
+.finder-fields-primary {
+  grid-template-columns: minmax(0, 1.4fr) repeat(2, minmax(180px, 1fr));
+}
+
+.finder-fields-advanced {
+  grid-template-columns: repeat(4, minmax(180px, 1fr));
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .finder-field {
@@ -195,15 +198,25 @@ body {
   color: rgba(255, 255, 255, 0.82);
 }
 
-.finder-actions {
-  display: flex;
-  flex-direction: column;
+.finder-controls {
+  display: grid;
+  gap: 12px;
+}
+
+.finder-toolbar {
+  display: grid;
+  grid-template-columns: minmax(240px, 1fr) repeat(3, auto);
   gap: 10px;
-  min-width: 168px;
+  align-items: end;
+}
+
+.finder-preset-field {
+  min-width: 0;
 }
 
 .finder-chip,
-.primary-button {
+.primary-button,
+.raw-data-toggle {
   appearance: none;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.16);
@@ -211,6 +224,7 @@ body {
   font: inherit;
   font-weight: 700;
   transition: background 120ms ease, transform 120ms ease;
+  white-space: nowrap;
 }
 
 .finder-chip {
@@ -220,11 +234,16 @@ body {
 }
 
 .finder-chip:hover,
-.primary-button:hover {
+.primary-button:hover,
+.raw-data-toggle:hover {
   transform: translateY(-1px);
 }
 
 .finder-chip:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.finder-toggle-button {
   background: rgba(255, 255, 255, 0.18);
 }
 
@@ -235,32 +254,20 @@ body {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
 }
 
-.finder-support {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 14px;
+.raw-data-toggle-row {
+  margin: 18px 0 12px;
 }
 
-.finder-panel {
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.1);
-  padding: 14px 16px;
-  backdrop-filter: blur(10px);
+.raw-data-toggle {
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--ink);
+  border-color: var(--line);
+  padding: 12px 16px;
+  box-shadow: var(--shadow);
 }
 
-.finder-panel h3 {
-  margin: 0 0 8px;
-  font-size: 1rem;
-  color: white;
-}
-
-.finder-panel p {
-  margin: 0;
-  color: rgba(255, 255, 255, 0.88);
-  font-size: 0.9rem;
-  line-height: 1.55;
+.raw-data-section {
+  margin-top: 0;
 }
 
 .status-banner,
@@ -429,12 +436,29 @@ body {
   min-width: 140px;
 }
 
-.dash-dropdown .Select-control,
-.DateRangePickerInput {
+.dash-dropdown .Select-control {
   border-radius: 14px !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
   background: rgba(255, 255, 255, 0.92) !important;
   box-shadow: none !important;
+}
+
+.finder-date-range {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: none;
+  padding: 0 12px;
+}
+
+.finder-date-range .DateRangePicker {
+  width: 100%;
+}
+
+.finder-date-range .DateRangePickerInput {
+  width: 100%;
+  border: 0 !important;
+  background: transparent !important;
 }
 
 .dash-table-container .dash-spreadsheet-container .dash-spreadsheet-inner table {
@@ -443,19 +467,14 @@ body {
 }
 
 @media (max-width: 1200px) {
-  .finder-grid,
-  .finder-support,
+  .finder-toolbar,
+  .finder-fields-advanced,
   .viz-grid-two {
     grid-template-columns: 1fr;
   }
 
-  .finder-fields {
+  .finder-fields-primary {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .finder-actions {
-    flex-direction: row;
-    flex-wrap: wrap;
   }
 }
 
@@ -464,7 +483,8 @@ body {
     padding: 20px 14px 52px;
   }
 
-  .finder-fields,
+  .finder-fields-primary,
+  .finder-fields-advanced,
   .viz-grid,
   .viz-grid-two {
     grid-template-columns: 1fr;

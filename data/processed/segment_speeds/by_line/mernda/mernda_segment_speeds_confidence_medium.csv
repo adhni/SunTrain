@@ -1,0 +1,5 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+mernda,Mernda,Victoria Park,Jolimont,2.518,5.32,3.73,29.2,40.7,4.52,33.4,1.59,11.5,2888,460,medium
+mernda,Mernda,Mernda,Hawkstowe,2.296,2.67,3.02,51.7,45.7,2.84,48.5,0.35,5.9,25774,26223,medium
+mernda,Mernda,Thornbury,Croxton,1.006,1.54,1.43,42.9,49.2,1.49,40.6,0.12,6.3,25733,25922,medium
+mernda,Mernda,Rushall,Clifton Hill,0.942,2.88,1.67,20.0,33.9,2.27,24.9,1.21,13.9,25732,25923,medium

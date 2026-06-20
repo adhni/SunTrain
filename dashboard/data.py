@@ -386,6 +386,170 @@ def get_service_patterns(filters: FilterState) -> pd.DataFrame:
     return _fetch_df(query, params)
 
 
+def get_segment_speeds(filters: FilterState) -> pd.DataFrame:
+    where_sql, params = _build_where(filters)
+    query = f"""
+        WITH filtered AS (
+          SELECT *
+          FROM {_source_sql()}
+          {where_sql}
+        ), ordered_stops AS (
+          SELECT
+            Business_Date,
+            Line_Name,
+            Direction,
+            Train_Number,
+            Stop_Sequence_Number,
+            LAG(Station_Name) OVER w AS from_station,
+            Station_Name AS to_station,
+            LAG(Station_Chainage) OVER w AS from_chainage,
+            Station_Chainage AS to_chainage,
+            LAG(Departure_Time_Scheduled) OVER w AS from_departure_time,
+            Arrival_Time_Scheduled AS to_arrival_time
+          FROM filtered
+          WINDOW w AS (
+            PARTITION BY Business_Date, Line_Name, Direction, Train_Number
+            ORDER BY Stop_Sequence_Number
+          )
+        ), segments AS (
+          SELECT
+            Business_Date,
+            Line_Name,
+            Direction,
+            Train_Number,
+            from_station,
+            to_station,
+            ABS(to_chainage - from_chainage) / 1000.0 AS segment_km,
+            CASE
+              WHEN from_departure_time IS NULL THEN NULL
+              WHEN to_arrival_time >= from_departure_time
+                THEN date_diff('second', from_departure_time, to_arrival_time) / 60.0
+              ELSE
+                (86400 + date_diff('second', from_departure_time, to_arrival_time)) / 60.0
+            END AS run_minutes
+          FROM ordered_stops
+        )
+        SELECT
+          Line_Name,
+          Direction,
+          from_station,
+          to_station,
+          ROUND(AVG(segment_km), 3) AS segment_km,
+          ROUND(AVG(run_minutes), 2) AS avg_run_minutes,
+          ROUND(MIN(run_minutes), 2) AS min_run_minutes,
+          ROUND(MAX(run_minutes), 2) AS max_run_minutes,
+          ROUND(AVG(segment_km / NULLIF(run_minutes / 60.0, 0)), 1) AS avg_scheduled_kmh,
+          COUNT(*) AS observed_segments
+        FROM segments
+        WHERE from_station IS NOT NULL
+          AND run_minutes IS NOT NULL
+          AND run_minutes > 0
+        GROUP BY 1, 2, 3, 4
+        ORDER BY avg_scheduled_kmh DESC, observed_segments DESC, Line_Name, Direction, from_station, to_station
+    """
+    return _fetch_df(query, params)
+
+
+def get_segment_speed_pairs(filters: FilterState) -> pd.DataFrame:
+    where_sql, params = _build_where(filters)
+    query = f"""
+        WITH filtered AS (
+          SELECT *
+          FROM {_source_sql()}
+          {where_sql}
+        ), ordered_stops AS (
+          SELECT
+            Business_Date,
+            Line_Name,
+            Direction,
+            Train_Number,
+            Stop_Sequence_Number,
+            LAG(Station_Name) OVER w AS from_station,
+            Station_Name AS to_station,
+            LAG(Station_Chainage) OVER w AS from_chainage,
+            Station_Chainage AS to_chainage,
+            LAG(Departure_Time_Scheduled) OVER w AS from_departure_time,
+            Arrival_Time_Scheduled AS to_arrival_time
+          FROM filtered
+          WINDOW w AS (
+            PARTITION BY Business_Date, Line_Name, Direction, Train_Number
+            ORDER BY Stop_Sequence_Number
+          )
+        ), segments AS (
+          SELECT
+            Line_Name,
+            Direction,
+            from_station,
+            to_station,
+            ABS(to_chainage - from_chainage) / 1000.0 AS segment_km,
+            CASE
+              WHEN from_departure_time IS NULL THEN NULL
+              WHEN to_arrival_time >= from_departure_time
+                THEN date_diff('second', from_departure_time, to_arrival_time) / 60.0
+              ELSE
+                (86400 + date_diff('second', from_departure_time, to_arrival_time)) / 60.0
+            END AS run_minutes
+          FROM ordered_stops
+        ), directional AS (
+          SELECT
+            Line_Name,
+            Direction,
+            from_station,
+            to_station,
+            AVG(segment_km) AS segment_km,
+            AVG(run_minutes) AS avg_run_minutes,
+            AVG(segment_km / NULLIF(run_minutes / 60.0, 0)) AS avg_scheduled_kmh,
+            COUNT(*) AS observed_segments
+          FROM segments
+          WHERE from_station IS NOT NULL
+            AND run_minutes IS NOT NULL
+            AND run_minutes > 0
+          GROUP BY 1, 2, 3, 4
+        )
+        SELECT
+          u.Line_Name,
+          u.from_station AS citybound_from_station,
+          u.to_station AS citybound_to_station,
+          ROUND(u.segment_km, 3) AS segment_km,
+          ROUND(u.avg_run_minutes, 2) AS citybound_avg_run_minutes,
+          ROUND(d.avg_run_minutes, 2) AS outbound_avg_run_minutes,
+          ROUND(u.avg_scheduled_kmh, 1) AS citybound_avg_scheduled_kmh,
+          ROUND(d.avg_scheduled_kmh, 1) AS outbound_avg_scheduled_kmh,
+          ROUND((u.avg_run_minutes + d.avg_run_minutes) / 2.0, 2) AS paired_avg_run_minutes,
+          ROUND(u.segment_km / NULLIF(((u.avg_run_minutes + d.avg_run_minutes) / 2.0) / 60.0, 0), 1) AS paired_avg_scheduled_kmh,
+          ROUND(ABS(u.avg_run_minutes - d.avg_run_minutes), 2) AS minute_gap,
+          ROUND(ABS(u.avg_scheduled_kmh - d.avg_scheduled_kmh), 1) AS kmh_gap,
+          u.observed_segments AS citybound_observed_segments,
+          d.observed_segments AS outbound_observed_segments
+        FROM directional u
+        JOIN directional d
+          ON u.Line_Name = d.Line_Name
+         AND u.Direction = 'U'
+         AND d.Direction = 'D'
+         AND u.from_station = d.to_station
+         AND u.to_station = d.from_station
+        ORDER BY segment_km DESC, citybound_from_station, citybound_to_station
+    """
+    return _fetch_df(query, params)
+
+
+def classify_segment_speed_confidence(segment_pairs: pd.DataFrame) -> pd.DataFrame:
+    if segment_pairs.empty:
+        labeled = segment_pairs.copy()
+        labeled["confidence_band"] = pd.Series(dtype="object")
+        return labeled
+
+    labeled = segment_pairs.copy()
+
+    high_confidence = (labeled["kmh_gap"] <= 5.0) & (labeled["minute_gap"] <= 0.5)
+    medium_confidence = (labeled["kmh_gap"] <= 15.0) & (labeled["minute_gap"] <= 2.0)
+
+    labeled["confidence_band"] = "low"
+    labeled.loc[medium_confidence, "confidence_band"] = "medium"
+    labeled.loc[high_confidence, "confidence_band"] = "high"
+    return labeled
+
+
 def get_line_capacity_summary(filters: FilterState) -> pd.DataFrame:
     where_sql, params = _build_where(filters)
     query = f"""

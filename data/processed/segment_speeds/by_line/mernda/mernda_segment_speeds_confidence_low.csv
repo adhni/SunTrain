@@ -1,0 +1,14 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+mernda,Mernda,Middle Gorge,South Morang,2.521,1.67,2.67,90.8,56.7,2.17,69.8,1.0,34.0,25770,26273,low
+mernda,Mernda,Keon Park,Ruthven,1.591,2.67,1.67,35.8,57.3,2.17,44.1,1.0,21.5,13932,14136,low
+mernda,Mernda,Thomastown,Keon Park,1.55,1.67,2.67,55.8,34.9,2.17,42.9,1.0,20.9,13931,14134,low
+mernda,Mernda,Reservoir,Regent,1.329,2.67,1.72,29.9,47.1,2.19,36.3,0.96,17.2,25733,25920,low
+mernda,Mernda,Bell,Thornbury,1.086,0.67,1.91,97.7,35.6,1.29,50.6,1.24,62.2,25733,25922,low
+mernda,Mernda,Ruthven,Reservoir,1.002,0.67,1.67,90.1,36.1,1.17,51.5,1.0,54.1,24193,24702,low
+mernda,Mernda,Northcote,Merri,0.925,1.67,0.67,33.3,83.2,1.17,47.6,1.0,50.0,25733,25922,low
+mernda,Mernda,Preston,Bell,0.765,1.67,0.67,27.5,68.8,1.17,39.3,1.0,41.3,25733,25921,low
+mernda,Mernda,West Richmond,Jolimont,0.754,1.67,0.67,27.1,67.9,1.17,38.8,1.0,40.7,22623,27492,low
+mernda,Mernda,Collingwood,North Richmond,0.671,1.67,0.67,24.2,60.4,1.17,34.5,1.0,36.2,22623,27491,low
+mernda,Mernda,Victoria Park,Collingwood,0.589,0.67,1.67,53.0,21.2,1.17,30.3,1.0,31.8,22624,27491,low
+mernda,Mernda,North Richmond,West Richmond,0.504,0.67,1.67,45.4,18.1,1.17,25.9,1.0,27.2,22623,27491,low
+mernda,Mernda,Merri,Rushall,0.498,0.67,1.67,44.7,17.9,1.17,25.6,1.0,26.8,25732,25922,low

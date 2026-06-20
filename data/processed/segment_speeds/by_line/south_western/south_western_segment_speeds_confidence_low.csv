@@ -1,0 +1,8 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+south_western,South Western,Winchelsea,Waurn Ponds,29.052,21.75,19.16,80.3,91.1,20.45,85.2,2.59,10.8,1286,1287,low
+south_western,South Western,Tarneit,Deer Park,11.5,7.17,9.02,96.8,76.6,8.09,85.2,1.84,20.2,13230,13179,low
+south_western,South Western,North Geelong,North Shore,11.208,3.02,3.41,223.1,201.1,3.22,209.1,0.39,22.0,10682,11241,low
+south_western,South Western,Waurn Ponds,South Geelong,10.26,14.25,16.38,43.3,39.2,15.31,40.2,2.13,4.1,503,681,low
+south_western,South Western,Warrnambool,Sherwood Park,6.013,6.0,10.42,60.1,36.1,8.21,43.9,4.42,24.1,1286,1287,low
+south_western,South Western,Footscray,Southern Cross,5.623,10.14,8.1,33.3,41.7,9.12,37.0,2.04,8.4,18702,19367,low
+south_western,South Western,Deer Park,Sunshine,5.375,7.65,5.07,42.6,63.8,6.36,50.7,2.58,21.3,13900,14443,low

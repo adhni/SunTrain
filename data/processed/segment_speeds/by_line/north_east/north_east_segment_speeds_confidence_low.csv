@@ -1,0 +1,13 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+north_east,North East,Seymour,Broadmeadows,81.916,62.17,49.12,83.8,100.1,55.65,88.3,13.05,16.2,1081,1089,low
+north_east,North East,Avenel,Seymour,28.361,14.0,11.03,121.5,154.3,12.52,136.0,2.97,32.7,1081,1089,low
+north_east,North East,Nagambie,Seymour,27.542,21.25,18.32,78.1,90.3,19.79,83.5,2.93,12.1,1136,1142,low
+north_east,North East,Seymour,Broadford,23.482,14.02,17.43,100.5,80.9,15.73,89.6,3.41,19.6,430,527,low
+north_east,North East,Broadmeadows,Southern Cross,16.8,26.73,23.83,40.1,43.3,25.28,39.9,2.89,3.2,4177,3470,low
+north_east,North East,Broadmeadows,North Melbourne,15.12,18.94,16.75,51.6,55.3,17.85,50.8,2.19,3.8,868,1496,low
+north_east,North East,Seymour,Tallarook,8.46,6.0,10.07,84.6,50.7,8.03,63.2,4.07,33.9,4384,4440,low
+north_east,North East,Donnybrook,Craigieburn,6.959,9.01,5.08,46.4,82.4,7.05,59.2,3.93,36.0,2825,2732,low
+north_east,North East,Essendon,North Melbourne,6.327,11.0,7.75,34.7,50.2,9.38,40.5,3.25,15.5,850,872,low
+north_east,North East,Albury,Wodonga,5.97,9.0,14.2,39.8,25.2,11.6,30.9,5.2,14.6,1081,1089,low
+north_east,North East,Shepparton,Mooroopna,4.86,5.7,9.82,52.4,30.2,7.76,37.6,4.13,22.1,1136,1142,low
+north_east,North East,North Melbourne,Southern Cross,1.68,7.0,4.91,14.5,20.6,5.95,16.9,2.09,6.1,1718,2368,low

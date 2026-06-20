@@ -1,0 +1,14 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+frankston,Frankston,Mordialloc,Richmond,23.897,36.0,33.0,39.8,43.4,34.5,41.6,3.0,3.6,1,1,low
+frankston,Frankston,Moorabbin,Caulfield,6.66,8.33,12.67,48.5,31.5,10.5,38.1,4.33,17.0,12,1,low
+frankston,Frankston,Seaford,Carrum,3.258,3.67,2.67,53.3,73.3,3.17,61.7,1.0,20.0,32457,35760,low
+frankston,Frankston,Aspendale,Mordialloc,2.619,3.68,2.67,42.7,58.9,3.17,49.5,1.01,16.2,34596,37337,low
+frankston,Frankston,Frankston,Kananook,2.483,2.67,4.05,55.9,36.9,3.36,44.4,1.38,18.9,32436,35715,low
+frankston,Frankston,Kananook,Seaford,2.086,1.67,2.67,75.1,46.9,2.17,57.8,1.0,28.2,32448,35756,low
+frankston,Frankston,Mordialloc,Parkdale,1.764,1.67,2.67,63.5,39.6,2.17,48.8,1.01,23.9,10921,12110,low
+frankston,Frankston,Highett,Moorabbin,1.618,1.7,2.45,57.4,41.1,2.07,46.8,0.75,16.3,33477,37179,low
+frankston,Frankston,Carrum,Bonbeach,1.484,1.67,2.85,53.4,31.8,2.26,39.4,1.18,21.7,34606,37334,low
+frankston,Frankston,Malvern,Armadale,1.44,1.67,2.67,51.8,32.4,2.17,39.9,1.0,19.4,32461,36095,low
+frankston,Frankston,Cheltenham,Southland,1.125,1.67,0.7,40.5,98.1,1.18,57.1,0.97,57.6,33481,37176,low
+frankston,Frankston,Armadale,Toorak,0.757,1.67,0.67,27.3,68.1,1.17,38.9,1.0,40.9,32461,36096,low
+frankston,Frankston,Bentleigh,Mckinnon,0.631,0.97,1.67,46.4,22.7,1.32,28.7,0.7,23.7,31664,35305,low

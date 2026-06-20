@@ -1,0 +1,12 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+williamstown,Williamstown,Footscray,South Kensington,2.131,2.67,2.67,47.9,47.9,2.67,47.9,0.0,0.0,15101,14372,high
+williamstown,Williamstown,South Kensington,North Melbourne,1.812,2.67,2.47,40.8,45.7,2.57,42.3,0.2,4.9,15101,14375,high
+williamstown,Williamstown,North Williamstown,Newport,1.71,2.51,1.67,41.7,61.6,2.09,49.2,0.84,19.8,18441,20003,low
+williamstown,Williamstown,North Melbourne,Southern Cross,1.68,2.84,2.67,36.0,37.8,2.75,36.6,0.18,1.8,15102,14396,high
+williamstown,Williamstown,Spotswood,Yarraville,1.678,1.67,1.67,60.4,60.4,1.67,60.4,0.0,0.0,15102,14369,high
+williamstown,Williamstown,Newport,Spotswood,1.335,1.67,2.67,48.1,30.0,2.17,37.0,1.0,18.0,15104,14368,low
+williamstown,Williamstown,Southern Cross,Flinders Street,1.232,4.01,3.53,18.5,21.2,3.77,19.6,0.47,2.7,15102,14396,high
+williamstown,Williamstown,Williamstown,Williamstown Beach,1.023,1.67,2.21,36.8,28.5,1.94,31.6,0.55,8.3,18439,20003,medium
+williamstown,Williamstown,Seddon,Footscray,0.995,1.67,0.82,35.8,81.5,1.24,48.1,0.85,45.7,15102,14370,low
+williamstown,Williamstown,Yarraville,Seddon,0.924,1.67,1.67,33.3,33.3,1.67,33.3,0.0,0.0,15103,14369,high
+williamstown,Williamstown,Williamstown Beach,North Williamstown,0.916,1.67,1.67,33.0,33.0,1.67,33.0,0.0,0.0,18441,20003,high

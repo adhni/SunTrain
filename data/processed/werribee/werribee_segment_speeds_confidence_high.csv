@@ -1,0 +1,10 @@
+Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+Werribee,Footscray,North Melbourne,3.943,4.81,4.67,49.4,50.7,4.74,49.9,0.14,1.3,13380,13615,high
+Werribee,Laverton,Westona,2.472,3.67,3.83,40.5,38.8,3.75,39.5,0.17,1.7,19552,20055,high
+Werribee,Footscray,South Kensington,2.131,2.67,2.67,47.9,47.9,2.67,47.9,0.0,0.0,19185,20317,high
+Werribee,South Kensington,North Melbourne,1.812,2.67,2.54,40.7,43.9,2.61,41.7,0.14,3.2,19184,20319,high
+Werribee,North Melbourne,Southern Cross,1.68,2.95,2.67,34.9,37.8,2.81,35.9,0.28,2.9,32318,33765,high
+Werribee,Spotswood,Yarraville,1.678,1.66,1.67,60.8,60.4,1.66,60.5,0.0,0.4,19189,20313,high
+Werribee,Altona,Seaholme,1.021,1.67,1.67,36.8,36.8,1.67,36.8,0.0,0.0,19549,20056,high
+Werribee,Williams Landing,Aircraft,0.974,2.67,2.33,21.9,26.4,2.5,23.4,0.34,4.5,22891,23736,high
+Werribee,Yarraville,Seddon,0.924,1.67,1.67,33.3,33.3,1.67,33.3,0.0,0.0,19187,20314,high

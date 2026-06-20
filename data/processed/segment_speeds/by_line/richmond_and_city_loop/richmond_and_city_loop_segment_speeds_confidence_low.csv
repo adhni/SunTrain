@@ -1,0 +1,2 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+richmond_and_city_loop,Richmond and City Loop,Richmond,Flinders Street,2.565,11.88,4.06,16.5,38.0,7.97,19.3,7.82,21.5,86,16,low

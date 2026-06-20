@@ -1,0 +1,7 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+northern,Northern,Rochester,Elmore,16.846,13.22,13.19,77.3,77.4,13.21,76.5,0.03,0.1,943,937,high
+northern,Northern,Woodend,Gisborne,14.404,11.01,11.18,78.5,78.6,11.1,77.9,0.17,0.1,370,881,high
+northern,Northern,Goornong,Huntly,14.027,8.0,7.99,105.2,105.3,8.0,105.3,0.01,0.1,943,937,high
+northern,Northern,Epsom,Bendigo,7.526,8.15,7.89,56.3,57.4,8.02,56.3,0.26,1.1,1652,1651,high
+northern,Northern,Riddells Creek,Clarkefield,6.486,4.89,5.04,80.0,77.3,4.97,78.4,0.15,2.7,6069,6399,high
+northern,Northern,Macedon,Gisborne,5.553,4.52,4.39,74.7,76.8,4.46,74.7,0.13,2.1,6113,6457,high

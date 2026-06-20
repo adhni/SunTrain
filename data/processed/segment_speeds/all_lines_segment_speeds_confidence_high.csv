@@ -1,0 +1,227 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+alamein,Alamein,Glenferrie,Richmond,4.323,5.67,6.15,45.8,44.8,5.91,43.9,0.48,1.0,245,488,high
+alamein,Alamein,Hawthorn,Burnley,1.554,1.67,1.67,55.9,55.9,1.67,55.9,0.0,0.0,7135,7141,high
+alamein,Alamein,Burnley,Richmond,1.535,2.67,2.67,34.5,34.5,2.67,34.5,0.01,0.1,3709,249,high
+alamein,Alamein,Camberwell,Auburn,1.245,1.67,1.81,44.8,42.5,1.74,43.0,0.14,2.3,7133,7139,high
+alamein,Alamein,Glenferrie,Hawthorn,1.234,1.67,1.67,44.4,44.4,1.67,44.4,0.0,0.0,7135,7140,high
+alamein,Alamein,Ashburton,Burwood,1.222,1.67,1.67,44.0,44.0,1.67,44.0,0.0,0.0,20011,21086,high
+alamein,Alamein,Flagstaff,Southern Cross,1.17,1.67,1.67,42.1,42.1,1.67,42.1,0.0,0.0,3150,1945,high
+alamein,Alamein,Parliament,Melbourne Central,1.127,1.67,1.67,40.6,40.6,1.67,40.6,0.0,0.0,3150,1945,high
+alamein,Alamein,Burnley,East Richmond,0.965,1.67,1.67,34.7,34.7,1.67,34.7,0.0,0.0,3426,6892,high
+alamein,Alamein,Auburn,Glenferrie,0.84,1.67,1.67,30.2,30.2,1.67,30.2,0.0,0.0,7135,7140,high
+alamein,Alamein,Richmond,Parliament,0.816,2.67,2.67,18.4,18.4,2.67,18.4,0.0,0.0,3150,1944,high
+alamein,Alamein,East Richmond,Richmond,0.57,1.67,1.67,20.5,20.5,1.67,20.5,0.0,0.0,3426,6892,high
+belgrave,Belgrave,Box Hill,Richmond,12.366,12.73,12.67,58.3,58.6,12.7,58.4,0.06,0.3,666,204,high
+belgrave,Belgrave,Boronia,Bayswater,2.537,2.7,2.67,56.4,57.1,2.69,56.7,0.04,0.7,17368,18078,high
+belgrave,Belgrave,Upwey,Upper Ferntree Gully,2.516,3.7,3.41,40.9,45.0,3.55,42.5,0.28,4.1,16808,17317,high
+belgrave,Belgrave,Blackburn,Box Hill,2.511,3.68,3.68,41.0,41.0,3.68,40.9,0.01,0.0,3363,1866,high
+belgrave,Belgrave,Heathmont,Ringwood,2.367,2.84,2.67,50.6,53.3,2.75,51.6,0.18,2.7,15457,15973,high
+belgrave,Belgrave,Nunawading,Blackburn,2.126,2.67,2.67,47.8,47.8,2.67,47.8,0.0,0.1,14258,14177,high
+belgrave,Belgrave,Burnley,Richmond,1.535,2.67,2.67,34.5,34.5,2.67,34.5,0.0,0.0,5819,6071,high
+belgrave,Belgrave,Glenferrie,Hawthorn,1.234,1.67,1.67,44.4,44.4,1.67,44.4,0.0,0.0,6576,6595,high
+belgrave,Belgrave,Flagstaff,Southern Cross,1.17,1.67,1.67,42.1,42.1,1.67,42.1,0.0,0.0,5392,9862,high
+belgrave,Belgrave,Tecoma,Upwey,1.162,1.67,1.99,41.8,36.8,1.83,38.2,0.32,5.0,16807,17317,high
+belgrave,Belgrave,Canterbury,East Camberwell,1.11,1.67,1.67,40.0,40.0,1.67,40.0,0.0,0.0,8456,8430,high
+belgrave,Belgrave,Burnley,East Richmond,0.965,1.67,1.67,34.7,34.7,1.67,34.7,0.0,0.0,448,201,high
+belgrave,Belgrave,East Camberwell,Camberwell,0.87,1.68,1.67,31.2,31.3,1.67,31.2,0.01,0.1,8456,8428,high
+belgrave,Belgrave,Blackburn,Laburnum,0.859,1.67,1.71,30.9,30.5,1.69,30.5,0.05,0.4,11655,13405,high
+belgrave,Belgrave,Auburn,Glenferrie,0.84,1.67,1.67,30.2,30.2,1.67,30.2,0.0,0.0,6576,6595,high
+belgrave,Belgrave,Richmond,Parliament,0.816,2.67,2.67,18.3,18.4,2.67,18.4,0.0,0.0,5392,9861,high
+belgrave,Belgrave,Chatham,Canterbury,0.762,1.16,1.16,48.4,48.1,1.16,39.4,0.01,0.3,8456,8430,high
+belgrave,Belgrave,Melbourne Central,Flagstaff,0.684,1.26,1.36,39.5,36.0,1.31,31.3,0.09,3.5,5392,9862,high
+belgrave,Belgrave,East Richmond,Richmond,0.57,1.67,1.67,20.5,20.5,1.67,20.5,0.0,0.0,448,201,high
+craigieburn,Craigieburn,Craigieburn,North Melbourne,24.418,23.67,23.33,62.0,62.8,23.5,62.3,0.33,0.8,3,2,high
+craigieburn,Craigieburn,Moonee Ponds,North Melbourne,5.207,6.67,7.0,46.9,44.6,6.83,45.7,0.33,2.2,7,9,high
+craigieburn,Craigieburn,Ascot Vale,Newmarket,1.51,1.67,1.87,54.4,50.1,1.77,51.2,0.21,4.2,26218,26586,high
+craigieburn,Craigieburn,Pascoe Vale,Strathmore,1.481,1.67,1.87,53.3,49.3,1.77,50.3,0.2,4.0,26319,27395,high
+craigieburn,Craigieburn,Melbourne Central,Parliament,1.127,1.67,1.67,40.6,40.6,1.67,40.6,0.0,0.0,14916,10735,high
+craigieburn,Craigieburn,Essendon,Moonee Ponds,1.12,1.67,1.67,40.3,40.3,1.67,40.3,0.0,0.0,26226,26589,high
+craigieburn,Craigieburn,Moonee Ponds,Ascot Vale,1.076,1.67,1.67,38.7,38.7,1.67,38.7,0.0,0.0,26219,26580,high
+craigieburn,Craigieburn,Newmarket,Kensington,0.726,0.67,0.67,65.3,65.3,0.67,65.3,0.0,0.0,26216,26588,high
+craigieburn,Craigieburn,Flagstaff,Melbourne Central,0.684,1.67,1.67,24.6,24.6,1.67,24.6,0.0,0.0,14918,10734,high
+craigieburn,Craigieburn,Strathmore,Glenbervie,0.66,0.67,0.67,59.1,59.4,0.67,59.1,0.01,0.3,26315,27395,high
+craigieburn,Craigieburn,North Melbourne,Flagstaff,0.51,2.5,2.67,12.6,11.5,2.58,11.9,0.17,1.2,14921,10734,high
+cranbourne,Cranbourne,Caulfield,South Yarra,6.373,7.42,7.52,51.8,51.1,7.47,51.2,0.1,0.7,10854,10224,high
+cranbourne,Cranbourne,Merinda Park,Lynbrook,2.852,2.67,2.67,64.2,64.2,2.67,64.2,0.0,0.0,21775,22265,high
+cranbourne,Cranbourne,Clayton,Huntingdale,2.229,2.67,2.9,50.2,47.0,2.78,48.1,0.23,3.1,17451,16872,high
+cranbourne,Cranbourne,Caulfield,Malvern,1.681,2.67,2.67,37.8,37.8,2.67,37.8,0.0,0.0,6028,6376,high
+cranbourne,Cranbourne,South Yarra,Richmond,1.616,2.67,2.67,36.4,36.4,2.67,36.4,0.0,0.0,16880,16606,high
+cranbourne,Cranbourne,Sandown Park,Springvale,1.187,1.67,1.67,42.7,42.7,1.67,42.7,0.0,0.0,17664,17293,high
+cranbourne,Cranbourne,Oakleigh,Hughesdale,1.111,1.67,1.67,40.0,40.0,1.67,40.0,0.0,0.0,17079,16514,high
+cranbourne,Cranbourne,Hughesdale,Murrumbeena,1.053,1.67,1.67,37.9,37.9,1.67,37.9,0.0,0.0,17079,16515,high
+cranbourne,Cranbourne,Murrumbeena,Carnegie,0.889,1.67,1.67,32.0,32.0,1.67,32.0,0.0,0.0,17079,16515,high
+eastern,Eastern,Sale,Rosedale,25.694,18.64,19.05,82.8,80.9,18.84,81.8,0.42,1.9,777,777,high
+eastern,Eastern,Berwick,Dandenong,13.382,10.0,10.0,80.3,80.3,10.0,80.3,0.0,0.0,189,195,high
+eastern,Eastern,Yarragon,Warragul,12.325,8.28,8.06,89.8,92.4,8.17,90.6,0.22,2.6,4051,4254,high
+eastern,Eastern,Drouin,Longwarry,8.724,6.49,6.82,81.3,77.8,6.66,78.6,0.33,3.5,4051,4454,high
+eastern,Eastern,Caulfield,Richmond,7.989,9.84,9.46,48.8,51.1,9.65,49.7,0.38,2.2,4526,3142,high
+eastern,Eastern,Warragul,Drouin,7.623,6.07,6.31,75.4,73.1,6.19,73.9,0.24,2.3,4900,4926,high
+eastern,Eastern,Tynong,Nar Nar Goon,4.967,4.12,4.09,72.8,73.4,4.11,72.6,0.04,0.6,3856,4253,high
+eastern,Eastern,Garfield,Tynong,4.102,4.09,4.15,60.6,60.0,4.12,59.8,0.06,0.6,3856,4259,high
+eastern,Eastern,Flinders Street,Southern Cross,1.232,4.03,4.0,18.4,18.5,4.01,18.4,0.02,0.1,4337,4302,high
+flemington_racecourse,Flemington Racecourse,North Melbourne,Southern Cross,1.68,3.0,2.76,34.5,36.7,2.88,35.0,0.24,2.2,1718,1974,high
+frankston,Frankston,Mentone,Cheltenham,1.933,2.67,2.67,43.5,43.5,2.67,43.5,0.0,0.0,33378,36969,high
+frankston,Frankston,Chelsea,Edithvale,1.701,1.67,1.67,61.2,61.2,1.67,61.2,0.0,0.0,34600,37335,high
+frankston,Frankston,Caulfield,Malvern,1.681,2.67,2.7,37.8,37.5,2.68,37.6,0.03,0.3,35170,36095,high
+frankston,Frankston,South Yarra,Richmond,1.616,2.67,2.67,36.4,36.4,2.67,36.4,0.0,0.0,35180,39399,high
+frankston,Frankston,Parkdale,Mentone,1.571,1.81,1.67,53.4,56.6,1.74,54.1,0.15,3.1,10920,12110,high
+frankston,Frankston,Ormond,Glenhuntly,1.564,1.67,1.67,56.3,56.3,1.67,56.3,0.0,0.0,31664,35305,high
+frankston,Frankston,Edithvale,Aspendale,1.353,1.67,1.67,48.7,48.7,1.67,48.7,0.0,0.0,34598,37335,high
+frankston,Frankston,Toorak,Hawksburn,1.275,1.67,1.67,45.9,45.9,1.67,45.9,0.0,0.0,32458,36097,high
+frankston,Frankston,Bonbeach,Chelsea,1.246,1.67,1.67,44.9,44.8,1.67,44.8,0.0,0.0,34602,37333,high
+frankston,Frankston,Southland,Highett,1.237,1.67,1.67,44.5,44.5,1.67,44.5,0.0,0.0,33480,37178,high
+frankston,Frankston,Hawksburn,South Yarra,1.22,1.78,1.67,42.1,43.9,1.72,42.5,0.11,1.8,32457,36102,high
+frankston,Frankston,Moorabbin,Patterson,1.061,1.66,1.77,38.6,36.6,1.72,37.1,0.11,2.0,31664,35303,high
+frankston,Frankston,Mckinnon,Ormond,0.818,1.67,1.76,29.4,28.4,1.71,28.6,0.09,1.0,31664,35305,high
+glen_waverley,Glen Waverley,Holmesglen,East Malvern,1.906,2.3,2.32,53.7,52.9,2.31,49.5,0.01,0.8,25379,25884,high
+glen_waverley,Glen Waverley,Syndal,Mount Waverley,1.882,2.41,2.42,48.8,48.5,2.42,46.7,0.01,0.3,25380,25884,high
+glen_waverley,Glen Waverley,Heyington,Burnley,1.784,2.42,2.43,46.1,45.9,2.42,44.2,0.01,0.2,25005,25319,high
+glen_waverley,Glen Waverley,Burnley,Richmond,1.535,2.67,2.77,34.5,33.5,2.72,33.9,0.11,1.1,16,5832,high
+glen_waverley,Glen Waverley,Mount Waverley,Jordanville,1.393,1.67,1.91,50.1,45.5,1.79,46.7,0.25,4.6,25380,25884,high
+glen_waverley,Glen Waverley,Tooronga,Kooyong,1.305,1.67,1.86,47.0,43.7,1.76,44.5,0.19,3.3,25007,25318,high
+glen_waverley,Glen Waverley,Flagstaff,Southern Cross,1.17,1.67,1.67,42.1,42.1,1.67,42.1,0.0,0.0,254,14824,high
+glen_waverley,Glen Waverley,Kooyong,Heyington,1.168,1.92,1.91,38.1,38.2,1.91,36.6,0.01,0.1,25006,25319,high
+glen_waverley,Glen Waverley,Darling,Glen Iris,1.155,1.67,1.67,41.6,41.6,1.67,41.6,0.0,0.0,25008,25317,high
+glen_waverley,Glen Waverley,East Malvern,Darling,1.068,1.67,1.67,38.4,38.4,1.67,38.4,0.0,0.1,25379,25884,high
+glen_waverley,Glen Waverley,Burnley,East Richmond,0.965,1.68,1.67,34.6,34.7,1.67,34.6,0.01,0.2,25294,20709,high
+glen_waverley,Glen Waverley,Glen Iris,Gardiner,0.916,1.87,1.91,30.5,30.0,1.89,29.1,0.04,0.5,25008,25318,high
+glen_waverley,Glen Waverley,Richmond,Parliament,0.816,2.67,2.67,18.4,18.3,2.67,18.4,0.0,0.0,254,14823,high
+glen_waverley,Glen Waverley,East Richmond,Richmond,0.57,1.67,1.67,20.5,20.5,1.67,20.5,0.0,0.0,25294,20709,high
+hurstbridge,Hurstbridge,Diamond Creek,Eltham,5.241,6.8,6.67,46.3,47.2,6.73,46.7,0.13,0.9,12007,12741,high
+hurstbridge,Hurstbridge,Greensborough,Watsonia,3.013,3.67,3.9,49.3,46.8,3.78,47.8,0.24,2.5,21599,22360,high
+hurstbridge,Hurstbridge,Eltham,Montmorency,2.643,3.67,3.91,43.2,40.6,3.79,41.8,0.24,2.6,20242,20520,high
+hurstbridge,Hurstbridge,Watsonia,Macleod,2.211,2.67,2.67,49.7,49.7,2.67,49.7,0.0,0.0,21598,22361,high
+hurstbridge,Hurstbridge,Montmorency,Greensborough,1.812,2.69,2.86,40.6,39.4,2.78,39.2,0.16,1.2,20244,20523,high
+hurstbridge,Hurstbridge,Jolimont,Flinders Street,1.673,3.29,3.74,31.1,32.6,3.52,28.6,0.45,1.5,25955,1180,high
+hurstbridge,Hurstbridge,Alphington,Fairfield,1.304,1.67,1.67,46.9,46.9,1.67,46.9,0.0,0.0,24490,23716,high
+hurstbridge,Hurstbridge,Clifton Hill,Victoria Park,1.179,1.67,1.76,42.4,40.9,1.71,41.3,0.09,1.6,25823,26402,high
+hurstbridge,Hurstbridge,Heidelberg,Eaglemont,0.953,1.67,1.84,34.3,31.9,1.75,32.6,0.17,2.4,24491,23715,high
+hurstbridge,Hurstbridge,Eaglemont,Ivanhoe,0.945,1.67,1.67,34.0,34.0,1.67,34.0,0.0,0.0,24494,23715,high
+hurstbridge,Hurstbridge,Fairfield,Dennis,0.756,1.67,1.67,27.2,27.2,1.67,27.2,0.0,0.0,24489,23717,high
+lilydale,Lilydale,Box Hill,Richmond,12.366,12.67,12.67,58.6,58.6,12.67,58.6,0.0,0.0,436,226,high
+lilydale,Lilydale,Camberwell,Richmond,6.408,7.73,7.79,49.9,50.2,7.76,49.6,0.06,0.3,1171,1942,high
+lilydale,Lilydale,Croydon,Ringwood East,3.269,3.67,3.67,53.5,53.5,3.67,53.4,0.0,0.0,10521,10669,high
+lilydale,Lilydale,Blackburn,Box Hill,2.511,3.69,3.57,40.9,42.4,3.63,41.5,0.12,1.5,3702,1624,high
+lilydale,Lilydale,Nunawading,Blackburn,2.126,2.67,2.67,47.8,47.8,2.67,47.8,0.0,0.0,18378,18246,high
+lilydale,Lilydale,Burnley,Richmond,1.535,2.67,2.69,34.5,34.3,2.68,34.4,0.02,0.2,14737,10282,high
+lilydale,Lilydale,Camberwell,Auburn,1.245,1.67,1.85,44.8,41.7,1.76,42.4,0.19,3.1,18824,19275,high
+lilydale,Lilydale,Glenferrie,Hawthorn,1.234,1.67,1.67,44.4,44.4,1.67,44.4,0.0,0.0,18830,19276,high
+lilydale,Lilydale,Union,Chatham,1.204,1.9,1.67,39.6,43.3,1.78,40.5,0.23,3.8,20253,20270,high
+lilydale,Lilydale,Flagstaff,Southern Cross,1.17,1.67,1.67,42.1,42.1,1.67,42.1,0.0,0.0,12642,13041,high
+lilydale,Lilydale,Parliament,Melbourne Central,1.127,1.67,1.95,40.6,36.3,1.81,37.4,0.28,4.3,12643,13039,high
+lilydale,Lilydale,Canterbury,East Camberwell,1.11,1.67,1.67,40.0,40.0,1.67,40.0,0.0,0.0,20252,20270,high
+lilydale,Lilydale,Burnley,East Richmond,0.965,1.67,1.67,34.7,34.7,1.67,34.7,0.0,0.0,3850,8596,high
+lilydale,Lilydale,East Camberwell,Camberwell,0.87,1.67,1.67,31.2,31.3,1.67,31.3,0.0,0.1,20249,20271,high
+lilydale,Lilydale,Blackburn,Laburnum,0.859,1.67,1.81,30.9,29.0,1.74,29.7,0.14,2.0,23437,25741,high
+lilydale,Lilydale,Auburn,Glenferrie,0.84,1.67,1.67,30.2,30.2,1.67,30.2,0.0,0.0,18830,19275,high
+lilydale,Lilydale,Richmond,Parliament,0.816,2.67,2.67,18.4,18.4,2.67,18.4,0.0,0.0,12643,13039,high
+lilydale,Lilydale,Chatham,Canterbury,0.762,1.43,1.44,37.0,36.9,1.44,31.8,0.0,0.1,20252,20270,high
+lilydale,Lilydale,Melbourne Central,Flagstaff,0.684,1.18,1.26,42.8,39.5,1.22,33.6,0.09,3.3,12642,13040,high
+lilydale,Lilydale,East Richmond,Richmond,0.57,1.67,1.66,20.5,20.6,1.67,20.5,0.0,0.0,3851,8596,high
+mernda,Mernda,South Morang,Epping,3.173,3.74,3.67,51.6,51.9,3.71,51.4,0.08,0.3,25783,26516,high
+mernda,Mernda,Thomastown,Ruthven,3.141,4.67,4.67,40.4,40.4,4.67,40.4,0.0,0.0,10262,10564,high
+mernda,Mernda,Hawkstowe,Middle Gorge,2.423,2.67,2.67,54.5,54.5,2.67,54.5,0.0,0.0,25772,26273,high
+mernda,Mernda,Epping,Lalor,2.099,2.67,2.91,47.2,44.1,2.79,45.2,0.24,3.2,24179,24684,high
+mernda,Mernda,Jolimont,Flinders Street,1.673,3.27,3.74,31.2,32.7,3.51,28.6,0.47,1.5,25559,1306,high
+mernda,Mernda,Lalor,Thomastown,1.631,1.67,1.67,58.7,58.7,1.67,58.7,0.0,0.0,24193,24689,high
+mernda,Mernda,Clifton Hill,Victoria Park,1.179,1.67,1.78,42.4,40.4,1.72,41.1,0.11,2.0,25514,27951,high
+mernda,Mernda,Regent,Preston,1.146,1.88,1.67,38.0,41.2,1.77,38.8,0.21,3.2,25733,25921,high
+mernda,Mernda,Croxton,Northcote,0.644,1.67,1.67,23.2,23.2,1.67,23.2,0.0,0.0,25733,25922,high
+north_east,North East,Wangaratta,Benalla,38.738,23.0,23.02,101.1,101.0,23.01,101.0,0.02,0.1,1065,1073,high
+north_east,North East,Euroa,Avenel,35.023,19.0,19.0,110.6,110.6,19.0,110.6,0.0,0.0,1081,1089,high
+north_east,North East,Wodonga,Chiltern,27.852,17.0,17.02,98.3,98.2,17.01,98.2,0.02,0.1,1081,1089,high
+north_east,North East,Tallarook,Broadford,15.022,9.23,9.19,97.9,98.3,9.21,97.9,0.04,0.4,4384,4440,high
+north_east,North East,Broadford,Kilmore East,11.705,8.01,7.79,87.7,90.4,7.9,88.9,0.21,2.7,4814,4967,high
+north_east,North East,Kilmore East,Wandong,8.228,6.1,6.31,81.2,78.8,6.2,79.6,0.21,2.4,4814,4967,high
+north_east,North East,Wandong,Wallan,7.834,6.46,6.18,73.4,76.4,6.32,74.4,0.28,2.9,693,529,high
+north_east,North East,Heathcote Junction,Wallan,5.898,5.0,5.0,70.8,70.8,5.0,70.8,0.0,0.0,4121,4438,high
+northern,Northern,Rochester,Elmore,16.846,13.22,13.19,77.3,77.4,13.21,76.5,0.03,0.1,943,937,high
+northern,Northern,Woodend,Gisborne,14.404,11.01,11.18,78.5,78.6,11.1,77.9,0.17,0.1,370,881,high
+northern,Northern,Goornong,Huntly,14.027,8.0,7.99,105.2,105.3,8.0,105.3,0.01,0.1,943,937,high
+northern,Northern,Epsom,Bendigo,7.526,8.15,7.89,56.3,57.4,8.02,56.3,0.26,1.1,1652,1651,high
+northern,Northern,Riddells Creek,Clarkefield,6.486,4.89,5.04,80.0,77.3,4.97,78.4,0.15,2.7,6069,6399,high
+northern,Northern,Macedon,Gisborne,5.553,4.52,4.39,74.7,76.8,4.46,74.7,0.13,2.1,6113,6457,high
+pakenham,Pakenham,Dandenong,Westall,8.556,8.0,8.0,64.2,64.2,8.0,64.2,0.0,0.0,1,1,high
+pakenham,Pakenham,Berwick,Hallam,7.124,6.66,6.67,64.1,64.0,6.67,64.1,0.01,0.1,6557,7056,high
+pakenham,Pakenham,Caulfield,South Yarra,6.373,7.37,7.51,52.1,51.1,7.44,51.4,0.13,1.0,17177,20114,high
+pakenham,Pakenham,Officer,Beaconsfield,4.46,3.67,3.67,73.0,73.0,3.67,73.0,0.0,0.0,19971,21354,high
+pakenham,Pakenham,Springvale,Clayton,3.984,4.67,4.67,51.2,51.2,4.67,51.2,0.0,0.0,3047,2098,high
+pakenham,Pakenham,Dandenong,Noble Park,3.818,5.67,5.68,40.4,40.4,5.68,40.4,0.0,0.0,3059,2108,high
+pakenham,Pakenham,Beaconsfield,Berwick,2.413,2.67,2.67,54.3,54.3,2.67,54.3,0.0,0.0,19971,21354,high
+pakenham,Pakenham,Cardinia Road,Officer,2.231,2.67,2.67,50.2,50.2,2.67,50.2,0.0,0.0,19971,21354,high
+pakenham,Pakenham,Clayton,Huntingdale,2.229,2.67,2.87,50.2,47.3,2.77,48.3,0.21,2.8,23984,27262,high
+pakenham,Pakenham,Caulfield,Malvern,1.681,2.67,2.67,37.8,37.8,2.67,37.8,0.0,0.0,5834,6184,high
+pakenham,Pakenham,South Yarra,Richmond,1.616,2.67,2.67,36.3,36.4,2.67,36.3,0.0,0.0,23016,26297,high
+pakenham,Pakenham,Sandown Park,Springvale,1.187,1.67,1.67,42.7,42.7,1.67,42.7,0.0,0.0,23810,25692,high
+pakenham,Pakenham,Oakleigh,Hughesdale,1.111,1.67,1.67,40.0,40.0,1.67,40.0,0.0,0.0,23449,26717,high
+pakenham,Pakenham,Hughesdale,Murrumbeena,1.053,1.67,1.67,37.9,37.9,1.67,37.9,0.0,0.0,23449,26718,high
+pakenham,Pakenham,Murrumbeena,Carnegie,0.889,1.67,1.67,32.0,32.0,1.67,32.0,0.0,0.0,23448,26719,high
+pakenham,Pakenham,East Pakenham,Pakenham,0.0,2.67,3.03,0.0,0.0,2.85,0.0,0.37,0.0,1534,1635,high
+richmond_and_city_loop,Richmond and City Loop,Southern Cross,Flinders Street,1.232,4.94,5.0,15.0,14.8,4.97,14.9,0.06,0.2,48681,46491,high
+richmond_and_city_loop,Richmond and City Loop,Parliament,Melbourne Central,1.127,1.67,1.67,40.6,40.5,1.67,40.5,0.0,0.0,2011,1908,high
+richmond_and_city_loop,Richmond and City Loop,Richmond,Parliament,0.816,2.67,3.0,18.4,16.3,2.83,17.3,0.33,2.0,2011,1,high
+richmond_and_city_loop,Richmond and City Loop,Melbourne Central,Flagstaff,0.684,1.67,1.67,24.6,24.6,1.67,24.6,0.0,0.0,2011,1908,high
+sandringham,Sandringham,Richmond,Flinders Street,2.565,4.02,3.65,38.3,42.2,3.84,40.1,0.37,3.9,28696,28947,high
+sandringham,Sandringham,Hampton,Brighton Beach,1.735,2.72,2.67,39.0,39.0,2.69,38.7,0.05,0.0,28361,29293,high
+sandringham,Sandringham,South Yarra,Richmond,1.616,2.67,2.67,36.3,36.4,2.67,36.4,0.0,0.0,28697,28945,high
+sandringham,Sandringham,Balaclava,Windsor,1.597,1.67,1.67,57.5,57.5,1.67,57.5,0.0,0.0,28704,28933,high
+sandringham,Sandringham,Brighton Beach,Middle Brighton,1.45,1.83,1.67,49.0,52.2,1.75,49.8,0.16,3.1,28356,29298,high
+sandringham,Sandringham,Gardenvale,Elsternwick,1.396,1.67,1.67,50.2,50.3,1.67,50.2,0.0,0.1,28836,29301,high
+sandringham,Sandringham,Prahran,South Yarra,1.311,1.67,1.67,47.2,47.2,1.67,47.2,0.0,0.0,28700,28937,high
+sandringham,Sandringham,Elsternwick,Ripponlea,1.126,1.67,1.67,40.5,40.5,1.67,40.5,0.0,0.0,28705,28933,high
+sandringham,Sandringham,Windsor,Prahran,0.761,1.67,1.86,27.4,25.4,1.76,25.9,0.19,2.0,28700,28935,high
+sandringham,Sandringham,Ripponlea,Balaclava,0.743,1.67,1.67,26.7,26.7,1.67,26.7,0.0,0.0,28704,28933,high
+south_western,South Western,Geelong,Footscray,74.932,52.04,51.63,86.4,87.1,51.84,86.7,0.41,0.7,925,827,high
+south_western,South Western,Camperdown,Colac,45.001,28.08,28.58,96.2,94.5,28.33,95.3,0.5,1.7,1286,1287,high
+south_western,South Western,Little River,Deer Park,37.964,20.0,20.26,113.9,113.7,20.13,113.2,0.26,0.2,241,332,high
+south_western,South Western,Wyndham Vale,Sunshine,28.0,18.27,18.14,92.0,93.9,18.2,92.3,0.13,1.9,881,472,high
+south_western,South Western,Lara,Wyndham Vale,25.267,12.54,12.41,122.2,123.2,12.47,121.5,0.13,1.0,4247,3412,high
+south_western,South Western,Tarneit,Sunshine,16.875,14.44,14.19,71.0,71.9,14.31,70.7,0.25,0.9,2513,2484,high
+south_western,South Western,Little River,Wyndham Vale,15.339,8.27,8.08,112.0,114.2,8.17,112.6,0.19,2.2,9911,10984,high
+south_western,South Western,North Geelong,Lara,12.557,7.99,8.0,95.3,94.2,7.99,94.3,0.02,1.2,695,725,high
+south_western,South Western,Wyndham Vale,Tarneit,11.125,6.94,7.29,96.8,93.3,7.11,93.8,0.35,3.4,15402,15617,high
+south_western,South Western,Lara,Little River,9.928,6.02,6.08,99.0,98.4,6.05,98.5,0.06,0.7,10232,11134,high
+south_western,South Western,South Geelong,Geelong,1.826,3.02,3.31,36.3,33.7,3.17,34.6,0.29,2.6,13205,13127,high
+south_western,South Western,North Shore,Lara,1.349,6.04,6.13,13.4,13.3,6.09,13.3,0.09,0.1,4494,4168,high
+stony_point,Stony Point,Hastings,Tyabb,5.15,4.67,4.67,66.2,66.2,4.67,66.2,0.0,0.0,2721,2403,high
+stony_point,Stony Point,Somerville,Baxter,3.843,3.67,3.67,62.9,62.9,3.67,62.9,0.0,0.0,2721,2405,high
+stony_point,Stony Point,Morradoo,Bittern,2.288,2.67,2.67,51.5,51.5,2.67,51.5,0.0,0.0,2721,2403,high
+stony_point,Stony Point,Crib Point,Morradoo,1.872,2.67,2.67,42.1,42.1,2.67,42.1,0.0,0.0,2721,2403,high
+sunbury,Sunbury,Diggers Rest,Watergardens,9.518,6.9,6.67,83.1,85.7,6.78,84.2,0.23,2.6,16957,17459,high
+sunbury,Sunbury,Keilor Plains,St Albans,1.665,1.67,1.67,59.9,59.9,1.67,59.9,0.0,0.0,25591,26659,high
+sunbury,Sunbury,Albion,Sunshine,1.396,1.72,1.67,49.3,50.3,1.69,49.5,0.05,0.9,25357,26666,high
+sunbury,Sunbury,Melbourne Central,Parliament,1.127,1.67,1.67,40.6,40.6,1.67,40.6,0.0,0.0,13008,10384,high
+sunbury,Sunbury,Middle Footscray,Footscray,0.983,1.92,1.67,32.1,35.4,1.79,32.9,0.25,3.3,21974,22745,high
+sunbury,Sunbury,Flagstaff,Melbourne Central,0.684,1.67,1.67,24.6,24.6,1.67,24.6,0.0,0.0,13011,10384,high
+sunbury,Sunbury,North Melbourne,Flagstaff,0.51,2.51,2.67,12.6,11.5,2.59,11.8,0.16,1.1,13012,10384,high
+upfield,Upfield,Melbourne Central,Parliament,1.127,1.67,1.67,40.6,40.6,1.67,40.6,0.0,0.0,11859,6972,high
+upfield,Upfield,Jewell,Royal Park,1.041,1.67,1.67,37.5,37.5,1.67,37.5,0.0,0.0,19573,19422,high
+upfield,Upfield,Flemington Bridge,Macaulay,0.808,0.67,0.67,72.7,72.7,0.67,72.7,0.0,0.0,19569,19424,high
+upfield,Upfield,Moreland,Anstey,0.741,0.67,0.67,66.7,66.7,0.67,66.7,0.0,0.0,19577,19418,high
+upfield,Upfield,Fawkner,Merlynston,0.733,1.67,1.67,26.4,26.4,1.67,26.4,0.0,0.0,19255,19302,high
+upfield,Upfield,Anstey,Brunswick,0.731,1.67,1.67,26.3,26.3,1.67,26.3,0.0,0.0,19574,19418,high
+upfield,Upfield,Flagstaff,Melbourne Central,0.684,1.67,1.67,24.6,24.6,1.67,24.6,0.0,0.0,11859,6972,high
+upfield,Upfield,North Melbourne,Flagstaff,0.51,2.47,2.67,12.8,11.5,2.57,11.9,0.19,1.3,11861,6970,high
+werribee,Werribee,Footscray,North Melbourne,3.943,4.81,4.67,49.4,50.7,4.74,49.9,0.14,1.3,13380,13615,high
+werribee,Werribee,Laverton,Westona,2.472,3.67,3.83,40.5,38.8,3.75,39.6,0.17,1.7,19849,20374,high
+werribee,Werribee,Footscray,South Kensington,2.131,2.67,2.67,47.9,47.9,2.67,47.9,0.0,0.0,19185,20317,high
+werribee,Werribee,South Kensington,North Melbourne,1.812,2.67,2.54,40.7,43.9,2.61,41.7,0.14,3.2,19184,20319,high
+werribee,Werribee,North Melbourne,Southern Cross,1.68,2.95,2.67,34.9,37.8,2.81,35.9,0.28,2.9,32318,33765,high
+werribee,Werribee,Spotswood,Yarraville,1.678,1.66,1.67,60.8,60.4,1.66,60.5,0.0,0.4,19189,20313,high
+werribee,Werribee,Altona,Seaholme,1.021,1.67,1.67,36.8,36.8,1.67,36.8,0.0,0.0,19846,20375,high
+werribee,Werribee,Williams Landing,Aircraft,0.974,2.67,2.32,21.9,26.4,2.49,23.4,0.34,4.5,23474,24355,high
+werribee,Werribee,Yarraville,Seddon,0.924,1.67,1.67,33.3,33.3,1.67,33.3,0.0,0.0,19187,20314,high
+western,Western,Ballan,Bacchus Marsh,28.548,18.67,18.73,92.6,91.9,18.7,91.6,0.06,0.7,8745,8873,high
+western,Western,Clunes,Creswick,18.064,13.04,13.01,83.2,83.3,13.02,83.2,0.03,0.1,659,642,high
+western,Western,Talbot,Clunes,17.239,13.02,13.0,79.5,79.5,13.01,79.5,0.02,0.1,659,642,high
+western,Western,Bacchus Marsh,Melton,13.803,8.74,8.66,95.7,100.3,8.7,95.2,0.09,4.5,8913,8753,high
+western,Western,Caroline Springs,Ardeer,6.176,6.16,6.0,60.9,62.3,6.08,60.9,0.16,1.4,1355,1636,high
+western,Western,Caroline Springs,Deer Park,3.475,3.9,4.03,54.1,51.8,3.97,52.6,0.13,2.3,10986,10297,high
+western,Western,Deer Park,Ardeer,2.701,3.02,3.0,53.7,54.0,3.01,53.8,0.02,0.3,10986,10297,high
+williamstown,Williamstown,Footscray,South Kensington,2.131,2.67,2.67,47.9,47.9,2.67,47.9,0.0,0.0,15101,14372,high
+williamstown,Williamstown,South Kensington,North Melbourne,1.812,2.67,2.47,40.8,45.7,2.57,42.3,0.2,4.9,15101,14375,high
+williamstown,Williamstown,North Melbourne,Southern Cross,1.68,2.84,2.67,36.0,37.8,2.75,36.6,0.18,1.8,15102,14396,high
+williamstown,Williamstown,Spotswood,Yarraville,1.678,1.67,1.67,60.4,60.4,1.67,60.4,0.0,0.0,15102,14369,high
+williamstown,Williamstown,Southern Cross,Flinders Street,1.232,4.01,3.53,18.5,21.2,3.77,19.6,0.47,2.7,15102,14396,high
+williamstown,Williamstown,Yarraville,Seddon,0.924,1.67,1.67,33.3,33.3,1.67,33.3,0.0,0.0,15103,14369,high
+williamstown,Williamstown,Williamstown Beach,North Williamstown,0.916,1.67,1.67,33.0,33.0,1.67,33.0,0.0,0.0,18441,20003,high

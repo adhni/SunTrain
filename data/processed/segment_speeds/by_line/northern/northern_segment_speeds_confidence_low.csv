@@ -1,0 +1,10 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+northern,Northern,Swan Hill,Kerang,56.561,44.0,48.11,77.1,70.6,46.05,73.7,4.11,6.5,693,692,low
+northern,Northern,Gisborne,Watergardens,41.04,26.99,31.0,91.7,79.5,29.0,84.9,4.0,12.2,865,640,low
+northern,Northern,Clarkefield,Watergardens,27.233,18.0,22.0,90.8,74.3,20.0,81.7,4.0,16.5,225,231,low
+northern,Northern,Echuca,Rochester,26.605,21.22,25.75,75.6,62.1,23.49,68.0,4.53,13.4,943,937,low
+northern,Northern,Clarkefield,Sunbury,12.13,11.72,7.79,62.6,93.7,9.76,74.6,3.93,31.0,5844,5938,low
+northern,Northern,Eaglehawk,Bendigo,7.851,10.47,8.01,47.8,58.8,9.24,51.0,2.47,11.0,1382,1360,low
+northern,Northern,Huntly,Epsom,6.099,7.03,5.01,52.1,73.1,6.02,60.8,2.01,20.9,943,937,low
+northern,Northern,Footscray,Southern Cross,5.623,10.13,8.02,33.3,42.1,9.08,37.2,2.11,8.8,6886,7206,low
+northern,Northern,Bendigo,Kangaroo Flat,4.829,3.68,6.72,85.4,43.6,5.2,55.7,3.04,41.8,6520,7234,low

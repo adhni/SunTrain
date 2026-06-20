@@ -1,0 +1,8 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+western,Western,Ballan,Bacchus Marsh,28.548,18.67,18.73,92.6,91.9,18.7,91.6,0.06,0.7,8745,8873,high
+western,Western,Clunes,Creswick,18.064,13.04,13.01,83.2,83.3,13.02,83.2,0.03,0.1,659,642,high
+western,Western,Talbot,Clunes,17.239,13.02,13.0,79.5,79.5,13.01,79.5,0.02,0.1,659,642,high
+western,Western,Bacchus Marsh,Melton,13.803,8.74,8.66,95.7,100.3,8.7,95.2,0.09,4.5,8913,8753,high
+western,Western,Caroline Springs,Ardeer,6.176,6.16,6.0,60.9,62.3,6.08,60.9,0.16,1.4,1355,1636,high
+western,Western,Caroline Springs,Deer Park,3.475,3.9,4.03,54.1,51.8,3.97,52.6,0.13,2.3,10986,10297,high
+western,Western,Deer Park,Ardeer,2.701,3.02,3.0,53.7,54.0,3.01,53.8,0.02,0.3,10986,10297,high

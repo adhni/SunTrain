@@ -1,0 +1,12 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+belgrave,Belgrave,Union,Richmond,10.354,11.86,9.92,52.5,62.7,10.89,57.1,1.94,10.2,1068,203,medium
+belgrave,Belgrave,Camberwell,Richmond,6.408,7.97,7.36,48.6,53.1,7.67,50.1,0.61,4.5,1927,2390,medium
+belgrave,Belgrave,Box Hill,Camberwell,5.958,6.31,7.3,57.6,49.7,6.81,52.5,0.99,8.0,4862,6039,medium
+belgrave,Belgrave,Camberwell,Glenferrie,2.085,2.74,3.67,46.0,34.1,3.2,39.1,0.93,11.9,4648,5754,medium
+belgrave,Belgrave,Upper Ferntree Gully,Ferntree Gully,1.771,2.67,3.48,39.8,31.1,3.08,34.6,0.82,8.7,17370,17879,medium
+belgrave,Belgrave,Hawthorn,Burnley,1.554,2.34,1.67,42.2,55.9,2.01,46.5,0.68,13.8,6576,6595,medium
+belgrave,Belgrave,Ringwood,Heatherdale,1.356,1.91,2.54,44.3,33.8,2.22,36.6,0.62,10.5,14259,14176,medium
+belgrave,Belgrave,Camberwell,Auburn,1.245,1.67,2.16,44.8,36.6,1.91,39.1,0.49,8.2,6576,6595,medium
+belgrave,Belgrave,Southern Cross,Flinders Street,1.232,4.52,2.67,16.6,27.7,3.59,20.6,1.85,11.1,5392,9864,medium
+belgrave,Belgrave,Union,Chatham,1.204,2.18,1.67,35.0,43.3,1.92,37.6,0.51,8.3,8456,8428,medium
+belgrave,Belgrave,Parliament,Melbourne Central,1.127,1.67,2.0,40.6,35.4,1.84,36.8,0.34,5.1,5392,9862,medium

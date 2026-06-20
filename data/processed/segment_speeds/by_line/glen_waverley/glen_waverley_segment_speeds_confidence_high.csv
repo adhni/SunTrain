@@ -1,0 +1,15 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+glen_waverley,Glen Waverley,Holmesglen,East Malvern,1.906,2.3,2.32,53.7,52.9,2.31,49.5,0.01,0.8,25379,25884,high
+glen_waverley,Glen Waverley,Syndal,Mount Waverley,1.882,2.41,2.42,48.8,48.5,2.42,46.7,0.01,0.3,25380,25884,high
+glen_waverley,Glen Waverley,Heyington,Burnley,1.784,2.42,2.43,46.1,45.9,2.42,44.2,0.01,0.2,25005,25319,high
+glen_waverley,Glen Waverley,Burnley,Richmond,1.535,2.67,2.77,34.5,33.5,2.72,33.9,0.11,1.1,16,5832,high
+glen_waverley,Glen Waverley,Mount Waverley,Jordanville,1.393,1.67,1.91,50.1,45.5,1.79,46.7,0.25,4.6,25380,25884,high
+glen_waverley,Glen Waverley,Tooronga,Kooyong,1.305,1.67,1.86,47.0,43.7,1.76,44.5,0.19,3.3,25007,25318,high
+glen_waverley,Glen Waverley,Flagstaff,Southern Cross,1.17,1.67,1.67,42.1,42.1,1.67,42.1,0.0,0.0,254,14824,high
+glen_waverley,Glen Waverley,Kooyong,Heyington,1.168,1.92,1.91,38.1,38.2,1.91,36.6,0.01,0.1,25006,25319,high
+glen_waverley,Glen Waverley,Darling,Glen Iris,1.155,1.67,1.67,41.6,41.6,1.67,41.6,0.0,0.0,25008,25317,high
+glen_waverley,Glen Waverley,East Malvern,Darling,1.068,1.67,1.67,38.4,38.4,1.67,38.4,0.0,0.1,25379,25884,high
+glen_waverley,Glen Waverley,Burnley,East Richmond,0.965,1.68,1.67,34.6,34.7,1.67,34.6,0.01,0.2,25294,20709,high
+glen_waverley,Glen Waverley,Glen Iris,Gardiner,0.916,1.87,1.91,30.5,30.0,1.89,29.1,0.04,0.5,25008,25318,high
+glen_waverley,Glen Waverley,Richmond,Parliament,0.816,2.67,2.67,18.4,18.3,2.67,18.4,0.0,0.0,254,14823,high
+glen_waverley,Glen Waverley,East Richmond,Richmond,0.57,1.67,1.67,20.5,20.5,1.67,20.5,0.0,0.0,25294,20709,high

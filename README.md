@@ -85,6 +85,43 @@ Relevant fields from the official reference table:
 Planning caveat:
 
 - The dataset does not include train vehicle capacity directly. Capacity planning in this repo should therefore treat `Passenger_Departure_Load` as observed demand/load, and use a separate rolling-stock capacity lookup if load factors are needed.
+- The dataset includes scheduled stop times and `Station_Chainage`, which is enough to estimate scheduled inter-station speed. That metric should be treated as timetable-based rather than actual observed train speed.
+
+## Segment Speed Analysis
+
+You can estimate scheduled speed between consecutive stations with:
+
+- distance from `Station_Chainage`
+- run time from previous-station `Departure_Time_Scheduled` to current-station `Arrival_Time_Scheduled`
+
+The reusable DuckDB query lives at `sql/segment_speeds.sql`.
+
+To materialize the Werribee segment-speed review with confidence buckets, run:
+
+```bash
+./.venv/bin/python scripts/werribee_segment_speeds.py
+```
+
+This writes:
+
+- `data/processed/werribee/werribee_segment_speeds_confidence_all.csv`
+- `data/processed/werribee/werribee_segment_speeds_confidence_high.csv`
+- `data/processed/werribee/werribee_segment_speeds_confidence_medium.csv`
+- `data/processed/werribee/werribee_segment_speeds_confidence_low.csv`
+
+To materialize the same review for every line in the warehouse, run:
+
+```bash
+./.venv/bin/python scripts/export_segment_speeds.py
+```
+
+This writes:
+
+- `data/processed/segment_speeds/all_lines_segment_speeds_confidence_all.csv`
+- `data/processed/segment_speeds/all_lines_segment_speeds_confidence_high.csv`
+- `data/processed/segment_speeds/all_lines_segment_speeds_confidence_medium.csv`
+- `data/processed/segment_speeds/all_lines_segment_speeds_confidence_low.csv`
+- per-line folders under `data/processed/segment_speeds/by_line/`
 
 ## EDA Script
 

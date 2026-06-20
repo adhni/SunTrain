@@ -1,0 +1,10 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+stony_point,Stony Point,Baxter,Leawarra,6.208,5.67,6.67,65.7,55.9,6.17,60.4,1.0,9.9,2720,2405,medium
+stony_point,Stony Point,Hastings,Tyabb,5.15,4.67,4.67,66.2,66.2,4.67,66.2,0.0,0.0,2721,2403,high
+stony_point,Stony Point,Tyabb,Somerville,4.022,4.67,3.67,51.7,65.8,4.17,57.9,1.0,14.1,2721,2405,medium
+stony_point,Stony Point,Somerville,Baxter,3.843,3.67,3.67,62.9,62.9,3.67,62.9,0.0,0.0,2721,2405,high
+stony_point,Stony Point,Bittern,Hastings,3.68,2.67,3.67,82.8,60.2,3.17,69.7,1.0,22.6,2721,2403,low
+stony_point,Stony Point,Morradoo,Bittern,2.288,2.67,2.67,51.5,51.5,2.67,51.5,0.0,0.0,2721,2403,high
+stony_point,Stony Point,Crib Point,Morradoo,1.872,2.67,2.67,42.1,42.1,2.67,42.1,0.0,0.0,2721,2403,high
+stony_point,Stony Point,Leawarra,Frankston,1.842,5.6,1.67,19.9,66.3,3.63,30.4,3.93,46.4,2720,2405,low
+stony_point,Stony Point,Stony Point,Crib Point,1.759,1.67,4.0,63.3,26.4,2.83,37.2,2.33,36.9,2721,2403,low

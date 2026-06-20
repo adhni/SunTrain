@@ -1,0 +1,5 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+flemington_racecourse,Flemington Racecourse,Flemington Racecourse,Southern Cross,6.588,12.86,11.25,31.2,35.2,12.05,32.8,1.61,4.0,365,53,medium
+flemington_racecourse,Flemington Racecourse,Flemington Racecourse,Flinders Street,5.356,15.44,14.82,20.9,21.7,15.13,21.2,0.62,0.9,294,399,medium
+flemington_racecourse,Flemington Racecourse,Flemington Racecourse,North Melbourne,4.908,8.78,8.22,33.9,36.0,8.5,34.6,0.55,2.1,738,877,medium
+flemington_racecourse,Flemington Racecourse,Southern Cross,Flinders Street,1.232,4.33,3.66,17.4,20.3,3.99,18.5,0.68,2.9,1813,1726,medium

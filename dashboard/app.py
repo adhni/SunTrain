@@ -10,6 +10,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 from dashboard.data import (
+    classify_segment_speed_confidence,
     get_direction_flow,
     get_filter_state,
     get_filtered_export,
@@ -21,6 +22,7 @@ from dashboard.data import (
     get_origin_departure_activity,
     get_peak_trains,
     get_preview_rows,
+    get_segment_speed_pairs,
     get_service_patterns,
     get_service_summary,
     get_station_activity,
@@ -44,6 +46,11 @@ COLORS = {
     "berry": "#b4235f",
     "grid": "#d8c8b2",
     "olive": "#6b7a18",
+}
+CONFIDENCE_COLORS = {
+    "high": COLORS["teal"],
+    "medium": COLORS["accent"],
+    "low": COLORS["berry"],
 }
 HOUR_OPTIONS = [{"label": f"{hour:02d}:00", "value": hour} for hour in range(24)]
 MORNING_PEAK_HOURS = [7, 8, 9]
@@ -408,6 +415,7 @@ app.layout = html.Div(
                     children=[
                         dcc.Tab(label="Overview", value="overview"),
                         dcc.Tab(label="Lines & Services", value="lines"),
+                        dcc.Tab(label="Segment Speed", value="segments"),
                         dcc.Tab(label="Network", value="network"),
                     ],
                 ),
@@ -590,6 +598,92 @@ app.layout = html.Div(
                                             )
                                         ),
                                     ],
+                                ),
+                            ],
+                        ),
+                    ],
+                ),
+                html.Div(
+                    id="segments-panel",
+                    className="tab-panel",
+                    children=[
+                        section_title(
+                            "Segment Speed Review",
+                            "This view pairs citybound and outbound timings for the same station-to-station segment. Confidence bands mark how symmetrical the timetable looks across both directions.",
+                        ),
+                        html.Div(
+                            className="viz-grid viz-grid-two",
+                            children=[
+                                html.Div(
+                                    className="viz-card",
+                                    children=[
+                                        html.Div(className="viz-title", children="Paired Scheduled Speed by Segment"),
+                                        dcc.Loading(dcc.Graph(id="segment-speed-graph", config={"displayModeBar": False})),
+                                    ],
+                                ),
+                                html.Div(
+                                    className="viz-card",
+                                    children=[
+                                        html.Div(className="viz-title", children="Distance vs Paired Speed"),
+                                        dcc.Loading(dcc.Graph(id="segment-scatter-graph", config={"displayModeBar": False})),
+                                    ],
+                                ),
+                            ],
+                        ),
+                        html.Div(
+                            className="viz-grid viz-grid-two",
+                            children=[
+                                html.Div(
+                                    className="viz-card",
+                                    children=[
+                                        html.Div(className="viz-title", children="Largest Direction Gaps"),
+                                        dcc.Loading(dcc.Graph(id="segment-gap-graph", config={"displayModeBar": False})),
+                                    ],
+                                ),
+                                html.Div(
+                                    className="viz-card nuance-card",
+                                    children=[
+                                        html.Div(className="viz-title", children="How to Read Segment Speed"),
+                                        html.Div(id="segment-summary-card", className="nuance-copy"),
+                                    ],
+                                ),
+                            ],
+                        ),
+                        html.Div(
+                            className="table-card",
+                            children=[
+                                html.Div(className="viz-title", children="Segment Pair Review"),
+                                dcc.Loading(
+                                    dash_table.DataTable(
+                                        id="segment-table",
+                                        page_size=12,
+                                        sort_action="native",
+                                        style_table={"overflowX": "auto"},
+                                        style_header={"backgroundColor": COLORS["ink"], "color": "#fffdf9", "border": "none"},
+                                        style_cell={
+                                            "backgroundColor": "transparent",
+                                            "color": COLORS["ink"],
+                                            "borderBottom": f"1px solid {COLORS['grid']}",
+                                            "padding": "10px 12px",
+                                            "fontFamily": "'Avenir Next', 'Segoe UI', sans-serif",
+                                            "fontSize": "13px",
+                                            "textAlign": "left",
+                                        },
+                                        style_data_conditional=[
+                                            {
+                                                "if": {"filter_query": "{confidence_band} = 'high'"},
+                                                "backgroundColor": "rgba(15, 118, 110, 0.10)",
+                                            },
+                                            {
+                                                "if": {"filter_query": "{confidence_band} = 'medium'"},
+                                                "backgroundColor": "rgba(217, 108, 6, 0.10)",
+                                            },
+                                            {
+                                                "if": {"filter_query": "{confidence_band} = 'low'"},
+                                                "backgroundColor": "rgba(180, 35, 95, 0.10)",
+                                            },
+                                        ],
+                                    )
                                 ),
                             ],
                         ),
@@ -1250,6 +1344,190 @@ def update_service_panel(data):
 
 
 @app.callback(
+    Output("segment-speed-graph", "figure"),
+    Output("segment-scatter-graph", "figure"),
+    Output("segment-gap-graph", "figure"),
+    Output("segment-summary-card", "children"),
+    Output("segment-table", "data"),
+    Output("segment-table", "columns"),
+    Input("filter-store", "data"),
+)
+def update_segment_panel(data):
+    try:
+        payload, filters = deserialize_filters(data)
+        segment_pairs = classify_segment_speed_confidence(get_segment_speed_pairs(filters))
+
+        if segment_pairs.empty:
+            requested_directions = payload.get("directions") or []
+            note_lines = [
+                html.P("This view needs paired citybound and outbound records for the same segment in the current filter scope."),
+            ]
+            if requested_directions and set(requested_directions) != {"U", "D"}:
+                note_lines.append(html.P("Clear the direction filter, or include both `U` and `D`, to rebuild paired segments."))
+            note_lines.append(html.P("Station filters can also remove matching pairs if only one side of a segment remains in scope."))
+            return (
+                build_empty_figure("Paired Scheduled Speed by Segment"),
+                build_empty_figure("Distance vs Paired Speed"),
+                build_empty_figure("Largest Direction Gaps"),
+                note_lines,
+                [],
+                [],
+            )
+
+        segment_pairs = segment_pairs.copy()
+        segment_pairs["paired_observed_segments"] = segment_pairs[
+            ["citybound_observed_segments", "outbound_observed_segments"]
+        ].min(axis=1)
+        segment_pairs["segment_label"] = (
+            segment_pairs["Line_Name"]
+            + " · "
+            + segment_pairs["citybound_from_station"]
+            + " → "
+            + segment_pairs["citybound_to_station"]
+        )
+
+        ranked_speed = segment_pairs.sort_values(
+            ["confidence_band", "paired_avg_scheduled_kmh", "paired_observed_segments"],
+            ascending=[True, False, False],
+        ).head(18)
+        speed_fig = px.bar(
+            ranked_speed.sort_values("paired_avg_scheduled_kmh"),
+            x="paired_avg_scheduled_kmh",
+            y="segment_label",
+            orientation="h",
+            color="confidence_band",
+            color_discrete_map=CONFIDENCE_COLORS,
+            hover_data={
+                "segment_km": ":.3f",
+                "paired_avg_run_minutes": ":.2f",
+                "citybound_avg_scheduled_kmh": ":.1f",
+                "outbound_avg_scheduled_kmh": ":.1f",
+                "kmh_gap": ":.1f",
+                "paired_observed_segments": ":,.0f",
+            },
+        )
+        speed_fig.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=20, r=20, t=20, b=20),
+            xaxis_title="Paired scheduled speed (km/h)",
+            yaxis_title="Segment",
+            legend_title_text="Confidence",
+        )
+        speed_fig.update_xaxes(gridcolor=COLORS["grid"])
+
+        scatter_fig = px.scatter(
+            segment_pairs,
+            x="segment_km",
+            y="paired_avg_scheduled_kmh",
+            color="confidence_band",
+            size="paired_observed_segments",
+            hover_name="segment_label",
+            hover_data={
+                "paired_avg_run_minutes": ":.2f",
+                "citybound_avg_scheduled_kmh": ":.1f",
+                "outbound_avg_scheduled_kmh": ":.1f",
+                "minute_gap": ":.2f",
+                "kmh_gap": ":.1f",
+                "paired_observed_segments": ":,.0f",
+            },
+            color_discrete_map=CONFIDENCE_COLORS,
+            size_max=34,
+        )
+        scatter_fig.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=20, r=20, t=20, b=20),
+            xaxis_title="Segment distance (km)",
+            yaxis_title="Paired scheduled speed (km/h)",
+            legend_title_text="Confidence",
+        )
+        scatter_fig.update_xaxes(gridcolor=COLORS["grid"])
+        scatter_fig.update_yaxes(gridcolor=COLORS["grid"])
+
+        gap_view = segment_pairs.sort_values(["kmh_gap", "minute_gap"], ascending=False).head(18)
+        gap_fig = px.bar(
+            gap_view.sort_values("kmh_gap"),
+            x="kmh_gap",
+            y="segment_label",
+            orientation="h",
+            color="confidence_band",
+            color_discrete_map=CONFIDENCE_COLORS,
+            hover_data={
+                "minute_gap": ":.2f",
+                "citybound_avg_run_minutes": ":.2f",
+                "outbound_avg_run_minutes": ":.2f",
+                "citybound_avg_scheduled_kmh": ":.1f",
+                "outbound_avg_scheduled_kmh": ":.1f",
+            },
+        )
+        gap_fig.update_layout(
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            margin=dict(l=20, r=20, t=20, b=20),
+            xaxis_title="Direction gap (km/h)",
+            yaxis_title="Segment",
+            legend_title_text="Confidence",
+        )
+        gap_fig.update_xaxes(gridcolor=COLORS["grid"])
+
+        counts = segment_pairs["confidence_band"].value_counts()
+        summary_children = [
+            html.P(
+                f"{len(segment_pairs):,} paired segments in scope. "
+                f"High confidence: {int(counts.get('high', 0))}, "
+                f"medium: {int(counts.get('medium', 0))}, "
+                f"low: {int(counts.get('low', 0))}."
+            ),
+            html.P(
+                "Paired speed uses the same segment distance in both directions and averages the citybound and outbound scheduled run-times."
+            ),
+            html.P(
+                "Low confidence usually means the timetable is materially asymmetric across direction, so treat those rows as analytical flags rather than literal operating speed."
+            ),
+        ]
+
+        table_df = segment_pairs[
+            [
+                "confidence_band",
+                "Line_Name",
+                "citybound_from_station",
+                "citybound_to_station",
+                "segment_km",
+                "paired_avg_scheduled_kmh",
+                "citybound_avg_scheduled_kmh",
+                "outbound_avg_scheduled_kmh",
+                "paired_avg_run_minutes",
+                "minute_gap",
+                "kmh_gap",
+                "paired_observed_segments",
+            ]
+        ].sort_values(
+            ["confidence_band", "paired_avg_scheduled_kmh", "paired_observed_segments"],
+            ascending=[True, False, False],
+        )
+        table_columns = [{"name": col.replace("_", " "), "id": col} for col in table_df.columns]
+        return (
+            speed_fig,
+            scatter_fig,
+            gap_fig,
+            summary_children,
+            table_df.to_dict("records"),
+            table_columns,
+        )
+    except Exception as exc:
+        message = [html.P(f"Could not load segment speed review. {exc}")]
+        return (
+            build_error_figure("Paired Scheduled Speed by Segment", str(exc)),
+            build_error_figure("Distance vs Paired Speed", str(exc)),
+            build_error_figure("Largest Direction Gaps", str(exc)),
+            message,
+            [],
+            [],
+        )
+
+
+@app.callback(
     Output("preview-table", "data"),
     Output("preview-table", "columns"),
     Output("preview-table", "page_size"),
@@ -1269,6 +1547,7 @@ def update_rows_panel(data, preview_row_count):
 @app.callback(
     Output("overview-panel", "style"),
     Output("lines-panel", "style"),
+    Output("segments-panel", "style"),
     Output("network-panel", "style"),
     Input("view-tabs", "value"),
 )
@@ -1276,6 +1555,7 @@ def update_tab_visibility(active_tab):
     return (
         tab_style(active_tab == "overview"),
         tab_style(active_tab == "lines"),
+        tab_style(active_tab == "segments"),
         tab_style(active_tab == "network"),
     )
 

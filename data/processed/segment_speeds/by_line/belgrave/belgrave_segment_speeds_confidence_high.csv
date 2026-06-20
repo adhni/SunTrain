@@ -1,0 +1,20 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+belgrave,Belgrave,Box Hill,Richmond,12.366,12.73,12.67,58.3,58.6,12.7,58.4,0.06,0.3,666,204,high
+belgrave,Belgrave,Boronia,Bayswater,2.537,2.7,2.67,56.4,57.1,2.69,56.7,0.04,0.7,17368,18078,high
+belgrave,Belgrave,Upwey,Upper Ferntree Gully,2.516,3.7,3.41,40.9,45.0,3.55,42.5,0.28,4.1,16808,17317,high
+belgrave,Belgrave,Blackburn,Box Hill,2.511,3.68,3.68,41.0,41.0,3.68,40.9,0.01,0.0,3363,1866,high
+belgrave,Belgrave,Heathmont,Ringwood,2.367,2.84,2.67,50.6,53.3,2.75,51.6,0.18,2.7,15457,15973,high
+belgrave,Belgrave,Nunawading,Blackburn,2.126,2.67,2.67,47.8,47.8,2.67,47.8,0.0,0.1,14258,14177,high
+belgrave,Belgrave,Burnley,Richmond,1.535,2.67,2.67,34.5,34.5,2.67,34.5,0.0,0.0,5819,6071,high
+belgrave,Belgrave,Glenferrie,Hawthorn,1.234,1.67,1.67,44.4,44.4,1.67,44.4,0.0,0.0,6576,6595,high
+belgrave,Belgrave,Flagstaff,Southern Cross,1.17,1.67,1.67,42.1,42.1,1.67,42.1,0.0,0.0,5392,9862,high
+belgrave,Belgrave,Tecoma,Upwey,1.162,1.67,1.99,41.8,36.8,1.83,38.2,0.32,5.0,16807,17317,high
+belgrave,Belgrave,Canterbury,East Camberwell,1.11,1.67,1.67,40.0,40.0,1.67,40.0,0.0,0.0,8456,8430,high
+belgrave,Belgrave,Burnley,East Richmond,0.965,1.67,1.67,34.7,34.7,1.67,34.7,0.0,0.0,448,201,high
+belgrave,Belgrave,East Camberwell,Camberwell,0.87,1.68,1.67,31.2,31.3,1.67,31.2,0.01,0.1,8456,8428,high
+belgrave,Belgrave,Blackburn,Laburnum,0.859,1.67,1.71,30.9,30.5,1.69,30.5,0.05,0.4,11655,13405,high
+belgrave,Belgrave,Auburn,Glenferrie,0.84,1.67,1.67,30.2,30.2,1.67,30.2,0.0,0.0,6576,6595,high
+belgrave,Belgrave,Richmond,Parliament,0.816,2.67,2.67,18.3,18.4,2.67,18.4,0.0,0.0,5392,9861,high
+belgrave,Belgrave,Chatham,Canterbury,0.762,1.16,1.16,48.4,48.1,1.16,39.4,0.01,0.3,8456,8430,high
+belgrave,Belgrave,Melbourne Central,Flagstaff,0.684,1.26,1.36,39.5,36.0,1.31,31.3,0.09,3.5,5392,9862,high
+belgrave,Belgrave,East Richmond,Richmond,0.57,1.67,1.67,20.5,20.5,1.67,20.5,0.0,0.0,448,201,high

@@ -1,0 +1,21 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+lilydale,Lilydale,Box Hill,Richmond,12.366,12.67,12.67,58.6,58.6,12.67,58.6,0.0,0.0,436,226,high
+lilydale,Lilydale,Camberwell,Richmond,6.408,7.73,7.79,49.9,50.2,7.76,49.6,0.06,0.3,1171,1942,high
+lilydale,Lilydale,Croydon,Ringwood East,3.269,3.67,3.67,53.5,53.5,3.67,53.4,0.0,0.0,10521,10669,high
+lilydale,Lilydale,Blackburn,Box Hill,2.511,3.69,3.57,40.9,42.4,3.63,41.5,0.12,1.5,3702,1624,high
+lilydale,Lilydale,Nunawading,Blackburn,2.126,2.67,2.67,47.8,47.8,2.67,47.8,0.0,0.0,18378,18246,high
+lilydale,Lilydale,Burnley,Richmond,1.535,2.67,2.69,34.5,34.3,2.68,34.4,0.02,0.2,14737,10282,high
+lilydale,Lilydale,Camberwell,Auburn,1.245,1.67,1.85,44.8,41.7,1.76,42.4,0.19,3.1,18824,19275,high
+lilydale,Lilydale,Glenferrie,Hawthorn,1.234,1.67,1.67,44.4,44.4,1.67,44.4,0.0,0.0,18830,19276,high
+lilydale,Lilydale,Union,Chatham,1.204,1.9,1.67,39.6,43.3,1.78,40.5,0.23,3.8,20253,20270,high
+lilydale,Lilydale,Flagstaff,Southern Cross,1.17,1.67,1.67,42.1,42.1,1.67,42.1,0.0,0.0,12642,13041,high
+lilydale,Lilydale,Parliament,Melbourne Central,1.127,1.67,1.95,40.6,36.3,1.81,37.4,0.28,4.3,12643,13039,high
+lilydale,Lilydale,Canterbury,East Camberwell,1.11,1.67,1.67,40.0,40.0,1.67,40.0,0.0,0.0,20252,20270,high
+lilydale,Lilydale,Burnley,East Richmond,0.965,1.67,1.67,34.7,34.7,1.67,34.7,0.0,0.0,3850,8596,high
+lilydale,Lilydale,East Camberwell,Camberwell,0.87,1.67,1.67,31.2,31.3,1.67,31.3,0.0,0.1,20249,20271,high
+lilydale,Lilydale,Blackburn,Laburnum,0.859,1.67,1.81,30.9,29.0,1.74,29.7,0.14,2.0,23437,25741,high
+lilydale,Lilydale,Auburn,Glenferrie,0.84,1.67,1.67,30.2,30.2,1.67,30.2,0.0,0.0,18830,19275,high
+lilydale,Lilydale,Richmond,Parliament,0.816,2.67,2.67,18.4,18.4,2.67,18.4,0.0,0.0,12643,13039,high
+lilydale,Lilydale,Chatham,Canterbury,0.762,1.43,1.44,37.0,36.9,1.44,31.8,0.0,0.1,20252,20270,high
+lilydale,Lilydale,Melbourne Central,Flagstaff,0.684,1.18,1.26,42.8,39.5,1.22,33.6,0.09,3.3,12642,13040,high
+lilydale,Lilydale,East Richmond,Richmond,0.57,1.67,1.66,20.5,20.6,1.67,20.5,0.0,0.0,3851,8596,high

@@ -1,0 +1,13 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+north_east,North East,Springhurst,Benalla,62.31,39.0,38.0,95.9,98.4,38.5,97.1,1.0,2.5,16,16,medium
+north_east,North East,Mooroopna,Murchison East,29.853,23.72,24.95,75.6,71.9,24.34,73.6,1.24,3.7,1136,1142,medium
+north_east,North East,Benalla,Violet Town,26.122,14.0,15.03,112.0,104.3,14.51,108.0,1.03,7.6,1081,1089,medium
+north_east,North East,Springhurst,Wangaratta,23.572,14.0,13.0,101.0,108.8,13.5,104.8,1.0,7.8,1065,1073,medium
+north_east,North East,Murchison East,Nagambie,21.188,17.31,16.71,73.5,76.3,17.01,74.7,0.6,2.8,1136,1142,medium
+north_east,North East,Violet Town,Euroa,18.191,10.0,11.0,109.1,99.2,10.5,103.9,1.0,9.9,1081,1089,medium
+north_east,North East,Donnybrook,Broadmeadows,16.257,17.15,15.7,57.6,63.4,16.43,59.4,1.44,5.8,1989,2144,medium
+north_east,North East,Wallan,Donnybrook,14.41,8.3,9.15,104.5,94.6,8.73,99.1,0.85,9.9,4814,4876,medium
+north_east,North East,Chiltern,Springhurst,13.752,9.0,8.0,91.7,103.1,8.5,97.1,1.0,11.5,1081,1089,medium
+north_east,North East,Craigieburn,Broadmeadows,9.298,7.89,8.88,71.2,64.5,8.38,66.5,0.98,6.7,2825,2732,medium
+north_east,North East,Broadmeadows,Essendon,8.793,13.5,15.0,39.1,35.4,14.25,37.0,1.5,3.8,850,1090,medium
+north_east,North East,Wandong,Heathcote Junction,1.936,3.0,2.69,38.8,44.8,2.84,40.9,0.31,6.0,4121,4438,medium

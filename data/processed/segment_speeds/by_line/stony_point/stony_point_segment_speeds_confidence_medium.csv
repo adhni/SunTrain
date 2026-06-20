@@ -1,0 +1,3 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+stony_point,Stony Point,Baxter,Leawarra,6.208,5.67,6.67,65.7,55.9,6.17,60.4,1.0,9.9,2720,2405,medium
+stony_point,Stony Point,Tyabb,Somerville,4.022,4.67,3.67,51.7,65.8,4.17,57.9,1.0,14.1,2721,2405,medium

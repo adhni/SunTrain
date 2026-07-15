@@ -168,7 +168,7 @@ def get_kpis(filters: FilterState) -> dict[str, object]:
     query = f"""
         SELECT
           COUNT(*) AS stop_rows,
-          COUNT(DISTINCT Train_Number) AS services,
+          COUNT(DISTINCT (Business_Date, Line_Name, Direction, Train_Number)) AS services,
           COUNT(DISTINCT Station_Name) AS stations,
           COUNT(DISTINCT Business_Date) AS days,
           SUM(Passenger_Boardings) AS boardings,
@@ -188,7 +188,7 @@ def get_hourly_activity(filters: FilterState) -> pd.DataFrame:
           EXTRACT('hour' FROM Departure_Time_Scheduled) AS departure_hour,
           SUM(Passenger_Boardings) AS boardings,
           SUM(Passenger_Alightings) AS alightings,
-          COUNT(DISTINCT Train_Number) AS services
+          COUNT(DISTINCT (Business_Date, Line_Name, Direction, Train_Number)) AS services
         FROM {_source_sql()}
         {where_sql}
         GROUP BY 1
@@ -199,35 +199,54 @@ def get_hourly_activity(filters: FilterState) -> pd.DataFrame:
 
 def get_origin_departure_activity(filters: FilterState) -> pd.DataFrame:
     where_sql, params = _build_where(filters)
+    origin_filters = FilterState(
+        start_date=filters.start_date,
+        end_date=filters.end_date,
+        day_types=filters.day_types,
+        lines=filters.lines,
+        groups=filters.groups,
+        directions=filters.directions,
+    )
+    origin_where_sql, origin_params = _build_where(origin_filters)
     query = f"""
         WITH filtered AS (
           SELECT *
           FROM {_source_sql()}
           {where_sql}
+        ), service_totals AS (
+          SELECT
+            Business_Date,
+            Line_Name,
+            Direction,
+            Train_Number,
+            SUM(Passenger_Boardings) AS total_boardings,
+            SUM(Passenger_Alightings) AS total_alightings,
+            MAX(Passenger_Departure_Load) AS peak_load
+          FROM filtered
+          GROUP BY 1, 2, 3, 4
         ), service_origin AS (
           SELECT
             Business_Date,
             Line_Name,
             Direction,
             Train_Number,
-            MIN(Departure_Time_Scheduled) AS origin_departure_time,
-            SUM(Passenger_Boardings) AS total_boardings,
-            SUM(Passenger_Alightings) AS total_alightings,
-            MAX(Passenger_Departure_Load) AS peak_load
-          FROM filtered
+            MIN(Departure_Time_Scheduled) AS origin_departure_time
+          FROM {_source_sql()}
+          {origin_where_sql}
           GROUP BY 1, 2, 3, 4
         )
         SELECT
-          EXTRACT('hour' FROM origin_departure_time) AS origin_departure_hour,
+          EXTRACT('hour' FROM o.origin_departure_time) AS origin_departure_hour,
           COUNT(*) AS services,
-          SUM(total_boardings) AS boardings,
-          SUM(total_alightings) AS alightings,
-          MAX(peak_load) AS max_peak_load
-        FROM service_origin
+          SUM(s.total_boardings) AS boardings,
+          SUM(s.total_alightings) AS alightings,
+          MAX(s.peak_load) AS max_peak_load
+        FROM service_totals s
+        JOIN service_origin o USING (Business_Date, Line_Name, Direction, Train_Number)
         GROUP BY 1
         ORDER BY 1
     """
-    return _fetch_df(query, params)
+    return _fetch_df(query, params + origin_params)
 
 
 def get_station_activity(filters: FilterState) -> pd.DataFrame:
@@ -238,7 +257,7 @@ def get_station_activity(filters: FilterState) -> pd.DataFrame:
           SUM(Passenger_Boardings) AS boardings,
           SUM(Passenger_Alightings) AS alightings,
           AVG(Passenger_Departure_Load) AS avg_departure_load,
-          COUNT(DISTINCT Train_Number) AS services
+          COUNT(DISTINCT (Business_Date, Line_Name, Direction, Train_Number)) AS services
         FROM {_source_sql()}
         {where_sql}
         GROUP BY 1
@@ -257,7 +276,7 @@ def get_station_map_data(filters: FilterState) -> pd.DataFrame:
           LIST(DISTINCT Line_Name ORDER BY Line_Name) AS line_names,
           SUM(Passenger_Boardings) AS boardings,
           SUM(Passenger_Alightings) AS alightings,
-          COUNT(DISTINCT Train_Number) AS services
+          COUNT(DISTINCT (Business_Date, Line_Name, Direction, Train_Number)) AS services
         FROM {_source_sql()}
         {where_sql}
         GROUP BY 1
@@ -289,7 +308,7 @@ def get_direction_flow(filters: FilterState) -> pd.DataFrame:
         SELECT
           Direction,
           COUNT(*) AS stop_rows,
-          COUNT(DISTINCT Train_Number) AS services,
+          COUNT(DISTINCT (Business_Date, Line_Name, Direction, Train_Number)) AS services,
           SUM(Passenger_Boardings) AS boardings,
           SUM(Passenger_Alightings) AS alightings
         FROM {_source_sql()}
@@ -349,17 +368,18 @@ def get_peak_trains(filters: FilterState, limit: int = 15) -> pd.DataFrame:
     where_sql, params = _build_where(filters)
     query = f"""
         SELECT
+          Business_Date,
+          Line_Name AS line_name,
+          Direction AS direction,
           Train_Number,
-          MIN(Line_Name) AS line_name,
-          MIN(Direction) AS direction,
           MAX(Passenger_Departure_Load) AS peak_load,
           SUM(Passenger_Boardings) AS total_boardings,
           SUM(Passenger_Alightings) AS total_alightings,
           COUNT(*) AS stop_rows
         FROM {_source_sql()}
         {where_sql}
-        GROUP BY 1
-        ORDER BY peak_load DESC, Train_Number
+        GROUP BY 1, 2, 3, 4
+        ORDER BY peak_load DESC, Business_Date, line_name, Train_Number
         LIMIT {limit}
     """
     return _fetch_df(query, params)
@@ -374,11 +394,13 @@ def get_service_patterns(filters: FilterState) -> pd.DataFrame:
         FROM (
           SELECT
             Business_Date,
+            Line_Name,
+            Direction,
             Train_Number,
             COUNT(*) AS stop_count
           FROM {_source_sql()}
           {where_sql}
-          GROUP BY 1, 2
+          GROUP BY 1, 2, 3, 4
         ) t
         GROUP BY 1
         ORDER BY 1

@@ -52,6 +52,42 @@ CONFIDENCE_COLORS = {
     "medium": COLORS["accent"],
     "low": COLORS["berry"],
 }
+GRAPH_CONFIG = {
+    "displayModeBar": "hover",
+    "displaylogo": False,
+    "responsive": True,
+}
+TABLE_LABELS = {
+    "Business_Date": "Business date",
+    "Day_of_Week": "Day",
+    "Day_Type": "Day type",
+    "Line_Name": "Line",
+    "Train_Number": "Train number",
+    "Direction": "Direction",
+    "Station_Name": "Station",
+    "Stop_Sequence_Number": "Stop #",
+    "Arrival_Time": "Arrival",
+    "Departure_Time": "Departure",
+    "Arrival_Time_HHMM": "Arrival",
+    "Departure_Time_HHMM": "Departure",
+    "origin_station": "Origin",
+    "destination_station": "Destination",
+    "first_departure": "First departure",
+    "last_arrival": "Last arrival",
+    "recorded_stops": "Recorded stops",
+    "total_boardings": "Total boardings",
+    "total_alightings": "Total alightings",
+    "peak_load": "Peak load",
+    "avg_trains_per_day": "Avg trains/day",
+    "avg_boardings_per_service": "Avg boardings/service",
+    "median_boardings_per_service": "Median boardings/service",
+    "avg_alightings_per_service": "Avg alightings/service",
+    "avg_peak_load_per_service": "Avg peak load/service",
+    "median_peak_load_per_service": "Median peak load/service",
+    "max_peak_load": "Max peak load",
+    "avg_recorded_stops_per_service": "Avg recorded stops/service",
+    "confidence_band": "Confidence",
+}
 HOUR_OPTIONS = [{"label": f"{hour:02d}:00", "value": hour} for hour in range(24)]
 MORNING_PEAK_HOURS = [7, 8, 9]
 AFTERNOON_PEAK_HOURS = [16, 17, 18]
@@ -85,10 +121,44 @@ def section_title(title: str, note: str) -> html.Div:
     return html.Div(
         className="section-heading",
         children=[
-            html.Div(title, className="section-title"),
-            html.Div(note, className="section-note"),
+            html.H2(title, className="section-title"),
+            html.P(note, className="section-note"),
         ],
     )
+
+
+def build_table_columns(frame: pd.DataFrame) -> list[dict[str, str]]:
+    return [
+        {"name": TABLE_LABELS.get(col, col.replace("_", " ").title()), "id": col}
+        for col in frame.columns
+    ]
+
+
+def scope_option(values: list[str] | None, all_label: str) -> str:
+    values = values or []
+    if not values:
+        return all_label
+    if len(values) == 1:
+        return values[0]
+    return f"{len(values)} selected"
+
+
+def scope_summary(payload: dict[str, object], kpis: dict[str, object]) -> html.Div:
+    start_date = payload.get("start_date") or DEFAULT_START
+    end_date = payload.get("end_date") or start_date
+    date_label = start_date if start_date == end_date else f"{start_date} to {end_date}"
+    parts = [
+        f"{date_label}",
+        f"Lines: {scope_option(payload.get('lines'), 'all')}",
+        f"Directions: {scope_option(payload.get('directions'), 'all')}",
+        f"{format_count(kpis.get('days'))} days",
+        f"{format_count(kpis.get('stations'))} stations",
+    ]
+    if payload.get("stations"):
+        parts.append(f"Stations: {scope_option(payload.get('stations'), 'all')}")
+    if payload.get("hours"):
+        parts.append(f"Hours: {scope_option([f'{int(hour):02d}:00' for hour in payload['hours']], 'all')}")
+    return html.Div(" · ".join(parts), className="status-context")
 
 
 def build_empty_figure(title: str) -> go.Figure:
@@ -223,6 +293,10 @@ app.layout = html.Div(
                                     "Explore every recorded service-stop entry across the full FY 2023-2024 warehouse. "
                                     "Start with one day on one line, then widen out to compare stations, service patterns, and demand by origin departure time."
                                 ),
+                                html.P(
+                                    "Business dates run from 03:00 to 02:59 the following day. Passenger counts are rounded to the nearest 10.",
+                                    className="hero-help",
+                                ),
                                 html.Div(
                                     className="hero-meta",
                                     children=[
@@ -245,7 +319,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field finder-field-wide",
                                                     children=[
-                                                        html.Label("Business Date Range", className="finder-label"),
+                                                        html.Label("Business Date Range", htmlFor="date-range", className="finder-label"),
                                                         html.Div(
                                                             className="finder-date-range",
                                                             children=[
@@ -264,7 +338,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field",
                                                     children=[
-                                                        html.Label("Lines", className="finder-label"),
+                                                        html.Label("Lines", htmlFor="line-filter", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="line-filter",
                                                             options=[{"label": line, "value": line} for line in META["lines"]],
@@ -277,7 +351,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field",
                                                     children=[
-                                                        html.Label("Directions", className="finder-label"),
+                                                        html.Label("Directions", htmlFor="direction-filter", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="direction-filter",
                                                             options=[
@@ -298,7 +372,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-preset-field",
                                                     children=[
-                                                        html.Label("Quick Select", className="finder-label"),
+                                                        html.Label("Quick Select", htmlFor="preset-dropdown", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="preset-dropdown",
                                                             options=[
@@ -321,6 +395,7 @@ app.layout = html.Div(
                                                     "Advanced filters ▾",
                                                     id="advanced-filters-toggle",
                                                     className="finder-chip finder-toggle-button",
+                                                    **{"aria-expanded": False, "aria-controls": "advanced-filters"},
                                                 ),
                                                 html.Button("Reset Filters", id="reset-filters", className="finder-chip"),
                                                 html.Button("Download CSV", id="download-button", className="primary-button"),
@@ -334,7 +409,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field",
                                                     children=[
-                                                        html.Label("Day Type", className="finder-label"),
+                                                        html.Label("Day Type", htmlFor="day-type-filter", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="day-type-filter",
                                                             options=[
@@ -350,7 +425,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field",
                                                     children=[
-                                                        html.Label("Groups", className="finder-label"),
+                                                        html.Label("Service group", htmlFor="group-filter", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="group-filter",
                                                             options=[{"label": group, "value": group} for group in META["groups"]],
@@ -363,7 +438,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field",
                                                     children=[
-                                                        html.Label("Stations", className="finder-label"),
+                                                        html.Label("Stations", htmlFor="station-filter", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="station-filter",
                                                             options=[],
@@ -376,7 +451,7 @@ app.layout = html.Div(
                                                 html.Div(
                                                     className="finder-field",
                                                     children=[
-                                                        html.Label("Hours", className="finder-label"),
+                                                        html.Label("Hours", htmlFor="hour-filter", className="finder-label"),
                                                         dcc.Dropdown(
                                                             id="hour-filter",
                                                             options=HOUR_OPTIONS,
@@ -397,13 +472,19 @@ app.layout = html.Div(
                 html.Section(
                     className="status-banner",
                     children=[
-                        html.Div(id="status-message", className="status-message"),
+                        html.Div(
+                            id="status-message",
+                            className="status-message",
+                            role="status",
+                            **{"aria-live": "polite"},
+                        ),
                         html.Div(
                             className="status-grid",
                             children=[
                                 metric_card("Total Boardings", "Rounded boardings summed across filtered rows", "metric-boardings"),
-                                metric_card("Train Services", "Distinct train runs in the current selection", "metric-services"),
-                                metric_card("Peak Onboard Load", "Highest departure load observed", "metric-peak-load"),
+                                metric_card("Train Services", "Distinct date, line, direction, and train runs", "metric-services"),
+                                metric_card("Days in Scope", "Business dates represented by the current selection", "metric-days"),
+                                metric_card("Highest Filtered Load", "Highest departure load remaining after filters", "metric-peak-load"),
                             ],
                         ),
                     ],
@@ -434,14 +515,14 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Services by Origin Departure Hour"),
-                                        dcc.Loading(dcc.Graph(id="origin-hour-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="origin-hour-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                                 html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Stop-Level Activity by Scheduled Departure Hour"),
-                                        dcc.Loading(dcc.Graph(id="stop-hour-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="stop-hour-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                             ],
@@ -453,7 +534,7 @@ app.layout = html.Div(
                                     className="viz-card viz-card-full",
                                     children=[
                                         html.Div(className="viz-title", children="Weekday Commuter Split by Line"),
-                                        dcc.Loading(dcc.Graph(id="line-commuter-split-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="line-commuter-split-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                             ],
@@ -465,14 +546,14 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Direction Mix"),
-                                        dcc.Loading(dcc.Graph(id="direction-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="direction-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                                 html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Service Stop Pattern Mix"),
-                                        dcc.Loading(dcc.Graph(id="pattern-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="pattern-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                             ],
@@ -484,8 +565,8 @@ app.layout = html.Div(
                     className="tab-panel",
                     children=[
                         section_title(
-                            "Line Demand and Capacity Signals",
-                            "These charts compare train lines using service-level metrics. Read average boardings as demand captured by a service, and average peak load as the busiest onboard load observed on that service.",
+                            "Line Demand and Crowding Signals",
+                            "These charts compare lines using service-level demand metrics. Average peak load is a crowding proxy, not a literal capacity or load factor.",
                         ),
                         html.Div(
                             className="viz-grid viz-grid-two",
@@ -494,14 +575,14 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Average Boardings per Service by Line"),
-                                        dcc.Loading(dcc.Graph(id="line-boardings-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="line-boardings-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                                 html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Demand vs Peak Load by Line"),
-                                        dcc.Loading(dcc.Graph(id="line-capacity-scatter", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="line-capacity-scatter", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                             ],
@@ -572,7 +653,7 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Peak Load by Service"),
-                                        dcc.Loading(dcc.Graph(id="peak-train-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="peak-train-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                                 html.Div(
@@ -618,14 +699,14 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Paired Scheduled Speed by Segment"),
-                                        dcc.Loading(dcc.Graph(id="segment-speed-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="segment-speed-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                                 html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Distance vs Paired Speed"),
-                                        dcc.Loading(dcc.Graph(id="segment-scatter-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="segment-scatter-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                             ],
@@ -637,7 +718,7 @@ app.layout = html.Div(
                                     className="viz-card",
                                     children=[
                                         html.Div(className="viz-title", children="Largest Direction Gaps"),
-                                        dcc.Loading(dcc.Graph(id="segment-gap-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="segment-gap-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                                 html.Div(
@@ -704,7 +785,7 @@ app.layout = html.Div(
                                     className="viz-card viz-card-full",
                                     children=[
                                         html.Div(className="viz-title", children="Top Station Activity"),
-                                        dcc.Loading(dcc.Graph(id="station-graph", config={"displayModeBar": False})),
+                                        dcc.Loading(dcc.Graph(id="station-graph", config=GRAPH_CONFIG)),
                                     ],
                                 ),
                             ],
@@ -713,7 +794,13 @@ app.layout = html.Div(
                             className="viz-card map-card",
                             children=[
                                 html.Div(className="viz-title", children="Interactive Station Map"),
-                                dcc.Loading(dcc.Graph(id="station-map-graph", config={"displayModeBar": False})),
+                                dcc.Loading(
+                                    dcc.Graph(
+                                        id="station-map-graph",
+                                        config=GRAPH_CONFIG,
+                                        style={"height": "min(60vh, 560px)"},
+                                    )
+                                ),
                             ],
                         ),
                         html.Div(
@@ -745,7 +832,12 @@ app.layout = html.Div(
                 html.Div(
                     className="raw-data-toggle-row",
                     children=[
-                        html.Button("▼ View raw data", id="raw-data-toggle", className="raw-data-toggle"),
+                        html.Button(
+                            "▼ View raw data",
+                            id="raw-data-toggle",
+                            className="raw-data-toggle",
+                            **{"aria-expanded": False, "aria-controls": "raw-data-section"},
+                        ),
                     ],
                 ),
                 html.Div(
@@ -824,11 +916,16 @@ def sync_filter_store(start_date, end_date, day_types, lines, groups, directions
 @app.callback(
     Output("advanced-filters", "style"),
     Output("advanced-filters-toggle", "children"),
+    Output("advanced-filters-toggle", "aria-expanded"),
     Input("advanced-filters-toggle", "n_clicks"),
 )
 def toggle_advanced_filters(n_clicks):
     is_open = bool(n_clicks and n_clicks % 2 == 1)
-    return ({"display": "grid"} if is_open else {"display": "none"}), ("Advanced filters ▲" if is_open else "Advanced filters ▾")
+    return (
+        {"display": "grid"} if is_open else {"display": "none"},
+        "Advanced filters ▲" if is_open else "Advanced filters ▾",
+        is_open,
+    )
 
 
 @app.callback(
@@ -920,22 +1017,24 @@ def update_station_options(start_date, end_date, day_types, lines, groups, direc
     Output("status-message", "children"),
     Output("metric-boardings", "children"),
     Output("metric-services", "children"),
+    Output("metric-days", "children"),
     Output("metric-peak-load", "children"),
     Input("filter-store", "data"),
 )
 def update_summary(data):
     try:
-        _, filters = deserialize_filters(data)
+        payload, filters = deserialize_filters(data)
         kpis = get_kpis(filters)
         return (
-            "",
+            scope_summary(payload, kpis),
             format_count(kpis["boardings"]),
             format_count(kpis["services"]),
+            format_count(kpis["days"]),
             format_count(kpis["peak_load"]),
         )
     except Exception as exc:
         message = html.Div(f"Dashboard summary error: {exc}", className="status-error")
-        return (message, "0", "0", "0")
+        return (message, "0", "0", "0", "0")
 
 
 @app.callback(
@@ -952,6 +1051,12 @@ def update_overview_panel(data):
         stop_hourly = get_hourly_activity(filters)
         direction = get_direction_flow(filters)
         patterns = get_service_patterns(filters)
+
+        if not direction.empty:
+            direction = direction.copy()
+            direction["Direction"] = direction["Direction"].map(
+                {"U": "Toward city", "D": "Away from city"}
+            ).fillna(direction["Direction"])
 
         if origin_hourly.empty:
             origin_fig = build_empty_figure("Services by Origin Departure Hour")
@@ -1055,7 +1160,7 @@ def update_lines_panel(data):
     try:
         payload, filters = deserialize_filters(data)
         line_summary = get_line_capacity_summary(filters)
-        line_columns = [{"name": col.replace("_", " "), "id": col} for col in line_summary.columns]
+        line_columns = build_table_columns(line_summary)
 
         if line_summary.empty:
             empty = build_empty_figure("Average Boardings per Service by Line")
@@ -1289,7 +1394,6 @@ def update_station_panel(data):
                 zoom=map_zoom_for_bounds(lat_span, lon_span),
             ),
             margin=dict(l=0, r=0, t=20, b=0),
-            height=720,
             legend=dict(orientation="h", yanchor="bottom", y=1.01, xanchor="left", x=0),
         )
         map_station_columns = [
@@ -1316,12 +1420,20 @@ def update_service_panel(data):
         _, filters = deserialize_filters(data)
         peak_trains = get_peak_trains(filters, limit=18)
         service_summary = get_service_summary(filters, limit=200)
-        service_columns = [{"name": col.replace("_", " "), "id": col} for col in service_summary.columns]
+        service_columns = build_table_columns(service_summary)
 
         if peak_trains.empty:
             peak_fig = build_empty_figure("Peak Load by Service")
         else:
-            peak_trains["label"] = peak_trains["Train_Number"] + " · " + peak_trains["line_name"] + " · " + peak_trains["direction"]
+            peak_trains["label"] = (
+                peak_trains["Business_Date"].astype(str)
+                + " · "
+                + peak_trains["Train_Number"].astype(str)
+                + " · "
+                + peak_trains["line_name"].astype(str)
+                + " · "
+                + peak_trains["direction"].map({"U": "toward city", "D": "away from city"}).fillna(peak_trains["direction"].astype(str))
+            )
             peak_fig = px.bar(
                 peak_trains.sort_values("peak_load"),
                 x="peak_load",
@@ -1506,7 +1618,7 @@ def update_segment_panel(data):
             ["confidence_band", "paired_avg_scheduled_kmh", "paired_observed_segments"],
             ascending=[True, False, False],
         )
-        table_columns = [{"name": col.replace("_", " "), "id": col} for col in table_df.columns]
+        table_columns = build_table_columns(table_df)
         return (
             speed_fig,
             scatter_fig,
@@ -1538,7 +1650,7 @@ def update_rows_panel(data, preview_row_count):
     try:
         _, filters = deserialize_filters(data)
         preview = get_preview_rows(filters, limit=100)
-        preview_columns = [{"name": col.replace("_", " "), "id": col} for col in preview.columns]
+        preview_columns = build_table_columns(preview)
         return preview.to_dict("records"), preview_columns, preview_row_count or 20
     except Exception:
         return [], [], preview_row_count or 20
@@ -1563,11 +1675,16 @@ def update_tab_visibility(active_tab):
 @app.callback(
     Output("raw-data-section", "style"),
     Output("raw-data-toggle", "children"),
+    Output("raw-data-toggle", "aria-expanded"),
     Input("raw-data-toggle", "n_clicks"),
 )
 def toggle_raw_data(n_clicks):
     is_open = bool(n_clicks and n_clicks % 2 == 1)
-    return ({"display": "block"} if is_open else {"display": "none"}), ("▲ Hide raw data" if is_open else "▼ View raw data")
+    return (
+        {"display": "block"} if is_open else {"display": "none"},
+        "▲ Hide raw data" if is_open else "▼ View raw data",
+        is_open,
+    )
 
 
 @app.callback(

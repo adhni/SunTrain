@@ -239,6 +239,63 @@ def test_segment_station_filter_preserves_adjacent_stops(monkeypatch, tmp_path):
     assert not ((segments["from_station"] == "Alpha") & (segments["to_station"] == "Charlie")).any()
 
 
+def test_segment_hour_filter_preserves_adjacent_stops(monkeypatch, tmp_path):
+    import pandas as pd
+
+    rows = []
+    for index, (station, hour) in enumerate(
+        [("Alpha", 7), ("Bravo", 8), ("Charlie", 9), ("Delta", 10)]
+    ):
+        timestamp = pd.Timestamp(f"2023-07-10 {hour:02d}:00:00")
+        rows.append(
+            {
+                "Business_Date": "2023-07-10",
+                "Day_of_Week": "Monday",
+                "Day_Type": "Normal Weekday",
+                "Mode": "Metro",
+                "Train_Number": "3003",
+                "Line_Name": "Hourly Line",
+                "Group": "Test Group",
+                "Direction": "U",
+                "Origin_Station": "Alpha",
+                "Destination_Station": "Delta",
+                "Station_Name": station,
+                "Station_Latitude": -37.0,
+                "Station_Longitude": 144.0,
+                "Station_Chainage": index * 1000,
+                "Stop_Sequence_Number": index + 1,
+                "Arrival_Time_Scheduled": timestamp,
+                "Departure_Time_Scheduled": timestamp,
+                "Passenger_Boardings": 0,
+                "Passenger_Alightings": 0,
+                "Passenger_Arrival_Load": 0,
+                "Passenger_Departure_Load": 0,
+            }
+        )
+
+    path = tmp_path / "hourly-stops.parquet"
+    pd.DataFrame(rows).to_parquet(path, index=False)
+    data_module = _load_data_module(monkeypatch, path)
+    filters = data_module.get_filter_state(
+        "2023-07-10",
+        "2023-07-10",
+        [],
+        ["Hourly Line"],
+        [],
+        ["U"],
+        [],
+        [7, 9],
+    )
+
+    segments = data_module.get_segment_speeds(filters)
+
+    assert set(zip(segments["from_station"], segments["to_station"])) == {
+        ("Alpha", "Bravo"),
+        ("Charlie", "Delta"),
+    }
+    assert not ((segments["from_station"] == "Alpha") & (segments["to_station"] == "Charlie")).any()
+
+
 def test_segment_speed_pairs_and_confidence(monkeypatch, tmp_path):
     import pandas as pd
 

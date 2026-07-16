@@ -72,7 +72,12 @@ def get_filter_state(
     )
 
 
-def _build_where(filters: FilterState, *, include_stations: bool = True) -> tuple[str, list[str]]:
+def _build_where(
+    filters: FilterState,
+    *,
+    include_stations: bool = True,
+    include_hours: bool = True,
+) -> tuple[str, list[str]]:
     clauses = ["Business_Date BETWEEN ? AND ?"]
     params: list[str] = [filters.start_date, filters.end_date]
 
@@ -101,7 +106,7 @@ def _build_where(filters: FilterState, *, include_stations: bool = True) -> tupl
         clauses.append(f"Station_Name IN ({placeholders})")
         params.extend(filters.stations)
 
-    if filters.hours:
+    if include_hours and filters.hours:
         placeholders = ", ".join("?" for _ in filters.hours)
         clauses.append(f"EXTRACT('hour' FROM Departure_Time_Scheduled) IN ({placeholders})")
         params.extend(str(hour) for hour in filters.hours)
@@ -110,15 +115,22 @@ def _build_where(filters: FilterState, *, include_stations: bool = True) -> tupl
 
 
 def _build_segment_filters(filters: FilterState) -> tuple[str, str, list[str]]:
-    where_sql, params = _build_where(filters, include_stations=False)
-    if not filters.stations:
-        return where_sql, "", params
+    where_sql, params = _build_where(filters, include_stations=False, include_hours=False)
+    segment_clauses = []
 
-    placeholders = ", ".join("?" for _ in filters.stations)
-    station_sql = f" AND (from_station IN ({placeholders}) OR to_station IN ({placeholders}))"
-    params.extend(filters.stations)
-    params.extend(filters.stations)
-    return where_sql, station_sql, params
+    if filters.stations:
+        placeholders = ", ".join("?" for _ in filters.stations)
+        segment_clauses.append(f"(from_station IN ({placeholders}) OR to_station IN ({placeholders}))")
+        params.extend(filters.stations)
+        params.extend(filters.stations)
+
+    if filters.hours:
+        placeholders = ", ".join("?" for _ in filters.hours)
+        segment_clauses.append(f"EXTRACT('hour' FROM from_departure_time) IN ({placeholders})")
+        params.extend(str(hour) for hour in filters.hours)
+
+    segment_sql = "".join(f" AND {clause}" for clause in segment_clauses)
+    return where_sql, segment_sql, params
 
 
 @lru_cache(maxsize=256)
@@ -453,6 +465,7 @@ def get_segment_speeds(filters: FilterState) -> pd.DataFrame:
             Train_Number,
             from_station,
             to_station,
+            from_departure_time,
             ABS(to_chainage - from_chainage) / 1000.0 AS segment_km,
             CASE
               WHEN from_departure_time IS NULL THEN NULL
@@ -516,6 +529,7 @@ def get_segment_speed_pairs(filters: FilterState) -> pd.DataFrame:
             Direction,
             from_station,
             to_station,
+            from_departure_time,
             ABS(to_chainage - from_chainage) / 1000.0 AS segment_km,
             CASE
               WHEN from_departure_time IS NULL THEN NULL

@@ -1,0 +1,7 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+lilydale,Lilydale,Glenferrie,Richmond,4.323,5.76,4.22,45.1,63.1,4.99,52.0,1.54,18.0,6451,7514,low
+lilydale,Lilydale,Richmond,Flinders Street,2.565,4.2,2.77,37.5,57.1,3.49,44.1,1.43,19.6,15100,15999,low
+lilydale,Lilydale,Ringwood East,Ringwood,2.007,2.82,1.99,43.2,63.6,2.4,50.1,0.83,20.4,16046,16287,low
+lilydale,Lilydale,Heatherdale,Mitcham,1.928,1.67,2.67,69.4,43.4,2.17,53.4,1.0,26.0,18378,18244,low
+lilydale,Lilydale,Mitcham,Nunawading,1.672,2.43,1.67,42.9,60.2,2.05,49.0,0.76,17.2,18378,18244,low
+lilydale,Lilydale,Laburnum,Box Hill,1.652,2.67,1.85,37.2,55.4,2.26,43.9,0.82,18.3,23437,25741,low

@@ -1,0 +1,13 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+alamein,Alamein,Glenferrie,Richmond,4.323,5.67,6.15,45.8,44.8,5.91,43.9,0.48,1.0,245,488,high
+alamein,Alamein,Hawthorn,Burnley,1.554,1.67,1.67,55.9,55.9,1.67,55.9,0.0,0.0,7135,7141,high
+alamein,Alamein,Burnley,Richmond,1.535,2.67,2.67,34.5,34.5,2.67,34.5,0.01,0.1,3709,249,high
+alamein,Alamein,Camberwell,Auburn,1.245,1.67,1.81,44.8,42.5,1.74,43.0,0.14,2.3,7133,7139,high
+alamein,Alamein,Glenferrie,Hawthorn,1.234,1.67,1.67,44.4,44.4,1.67,44.4,0.0,0.0,7135,7140,high
+alamein,Alamein,Ashburton,Burwood,1.222,1.67,1.67,44.0,44.0,1.67,44.0,0.0,0.0,20011,21086,high
+alamein,Alamein,Flagstaff,Southern Cross,1.17,1.67,1.67,42.1,42.1,1.67,42.1,0.0,0.0,3150,1945,high
+alamein,Alamein,Parliament,Melbourne Central,1.127,1.67,1.67,40.6,40.6,1.67,40.6,0.0,0.0,3150,1945,high
+alamein,Alamein,Burnley,East Richmond,0.965,1.67,1.67,34.7,34.7,1.67,34.7,0.0,0.0,3426,6892,high
+alamein,Alamein,Auburn,Glenferrie,0.84,1.67,1.67,30.2,30.2,1.67,30.2,0.0,0.0,7135,7140,high
+alamein,Alamein,Richmond,Parliament,0.816,2.67,2.67,18.4,18.4,2.67,18.4,0.0,0.0,3150,1944,high
+alamein,Alamein,East Richmond,Richmond,0.57,1.67,1.67,20.5,20.5,1.67,20.5,0.0,0.0,3426,6892,high

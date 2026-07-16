@@ -1,0 +1,12 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+hurstbridge,Hurstbridge,Clifton Hill,Jolimont,3.697,5.25,7.67,42.5,28.9,6.46,34.3,2.42,13.6,4,1,low
+hurstbridge,Hurstbridge,Macleod,Rosanna,1.915,2.56,1.69,45.9,68.1,2.12,54.1,0.86,22.1,23415,23847,low
+hurstbridge,Hurstbridge,Heidelberg,Ivanhoe,1.898,2.35,3.6,51.0,32.0,2.98,38.3,1.24,19.0,1413,2777,low
+hurstbridge,Hurstbridge,Rosanna,Heidelberg,1.753,1.67,2.67,63.0,39.4,2.17,48.5,1.0,23.6,23414,23847,low
+hurstbridge,Hurstbridge,Ivanhoe,Darebin,0.929,0.67,1.41,83.6,46.6,1.04,53.8,0.74,37.0,24493,23715,low
+hurstbridge,Hurstbridge,Dennis,Westgarth,0.847,0.67,1.67,76.2,30.5,1.17,43.6,1.0,45.7,24489,23717,low
+hurstbridge,Hurstbridge,Darebin,Alphington,0.757,1.67,0.67,27.3,68.1,1.17,38.9,1.0,40.9,24491,23716,low
+hurstbridge,Hurstbridge,West Richmond,Jolimont,0.754,1.67,0.67,27.1,67.9,1.17,38.8,1.0,40.7,25817,23146,low
+hurstbridge,Hurstbridge,Collingwood,North Richmond,0.671,1.67,0.67,24.2,60.4,1.17,34.5,1.0,36.2,25818,23143,low
+hurstbridge,Hurstbridge,Victoria Park,Collingwood,0.589,0.67,1.67,53.0,21.2,1.17,30.3,1.0,31.8,25819,23141,low
+hurstbridge,Hurstbridge,North Richmond,West Richmond,0.504,0.67,1.67,45.3,18.1,1.17,25.9,1.0,27.2,25818,23143,low

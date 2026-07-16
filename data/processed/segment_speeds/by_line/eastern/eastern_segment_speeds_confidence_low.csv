@@ -1,0 +1,12 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+eastern,Eastern,Bairnsdale,Stratford,52.653,37.71,40.74,83.8,77.6,39.23,80.5,3.03,6.2,739,739,low
+eastern,Eastern,Garfield,Dandenong,44.657,34.6,32.22,77.6,83.2,33.41,80.2,2.38,5.6,189,195,low
+eastern,Eastern,Garfield,Pakenham,17.658,15.25,10.9,71.3,98.2,13.08,81.0,4.35,26.9,658,475,low
+eastern,Eastern,Drouin,Garfield,17.255,11.47,16.83,91.3,64.9,14.15,73.2,5.36,26.4,849,477,low
+eastern,Eastern,Stratford,Sale,16.094,15.38,13.35,62.8,72.4,14.37,67.2,2.03,9.6,739,739,low
+eastern,Eastern,Traralgon,Morwell,13.617,8.41,11.31,97.9,73.8,9.86,82.9,2.9,24.1,4900,4931,low
+eastern,Eastern,Dandenong,Clayton,10.682,12.41,14.44,52.3,45.3,13.43,47.7,2.03,7.0,4085,3976,low
+eastern,Eastern,Moe,Trafalgar,9.915,6.14,8.07,99.0,79.1,7.11,83.7,1.93,19.8,4051,4259,low
+eastern,Eastern,Clayton,Caulfield,8.726,14.27,11.4,37.1,47.0,12.83,40.8,2.87,10.0,4085,3976,low
+eastern,Eastern,Nar Nar Goon,Pakenham,8.589,9.69,5.1,54.7,101.5,7.39,69.7,4.59,46.8,4026,4229,low
+eastern,Eastern,Bunyip,Garfield,4.193,3.47,4.98,75.3,52.4,4.22,59.6,1.51,22.8,4051,4454,low

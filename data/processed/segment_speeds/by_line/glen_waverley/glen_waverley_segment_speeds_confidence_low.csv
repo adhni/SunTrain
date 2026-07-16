@@ -1,0 +1,5 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+glen_waverley,Glen Waverley,Richmond,Flinders Street,2.565,4.14,2.82,37.5,56.8,3.48,44.3,1.32,19.3,25293,13097,low
+glen_waverley,Glen Waverley,Jordanville,Holmesglen,1.959,1.92,2.67,63.8,44.1,2.29,51.2,0.75,19.7,25379,25884,low
+glen_waverley,Glen Waverley,Glen Waverley,Syndal,1.34,1.67,2.81,48.2,29.7,2.24,35.9,1.15,18.6,25363,25882,low
+glen_waverley,Glen Waverley,Melbourne Central,Flagstaff,0.684,0.7,1.28,60.3,38.8,0.99,41.3,0.58,21.5,254,14824,low

@@ -1,0 +1,8 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+upfield,Upfield,Upfield,Gowrie,4.126,3.67,5.0,67.5,49.5,4.33,57.1,1.33,18.0,19257,19301,low
+upfield,Upfield,Gowrie,Fawkner,1.505,1.67,2.7,54.2,33.5,2.18,41.4,1.03,20.7,19255,19302,low
+upfield,Upfield,Royal Park,Flemington Bridge,1.399,1.67,2.67,50.4,31.5,2.17,38.7,1.0,18.9,19570,19423,low
+upfield,Upfield,Coburg,Moreland,1.332,1.67,2.67,48.0,30.0,2.17,36.9,1.0,18.0,19579,19418,low
+upfield,Upfield,Merlynston,Batman,1.267,0.67,1.67,114.0,45.6,1.17,65.2,1.0,68.4,19253,19302,low
+upfield,Upfield,Batman,Coburg,1.109,2.67,0.68,24.9,99.0,1.68,39.7,1.99,74.1,19630,19688,low
+upfield,Upfield,Brunswick,Jewell,0.81,1.67,0.67,29.2,72.9,1.17,41.7,1.0,43.7,19574,19418,low

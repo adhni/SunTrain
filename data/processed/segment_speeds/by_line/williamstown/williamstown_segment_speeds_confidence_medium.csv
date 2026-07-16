@@ -1,0 +1,2 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+williamstown,Williamstown,Williamstown,Williamstown Beach,1.023,1.67,2.21,36.8,28.5,1.94,31.6,0.55,8.3,18439,20003,medium

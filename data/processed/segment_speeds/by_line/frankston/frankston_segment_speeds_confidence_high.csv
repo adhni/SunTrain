@@ -1,0 +1,14 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+frankston,Frankston,Mentone,Cheltenham,1.933,2.67,2.67,43.5,43.5,2.67,43.5,0.0,0.0,33378,36969,high
+frankston,Frankston,Chelsea,Edithvale,1.701,1.67,1.67,61.2,61.2,1.67,61.2,0.0,0.0,34600,37335,high
+frankston,Frankston,Caulfield,Malvern,1.681,2.67,2.7,37.8,37.5,2.68,37.6,0.03,0.3,35170,36095,high
+frankston,Frankston,South Yarra,Richmond,1.616,2.67,2.67,36.4,36.4,2.67,36.4,0.0,0.0,35180,39399,high
+frankston,Frankston,Parkdale,Mentone,1.571,1.81,1.67,53.4,56.6,1.74,54.1,0.15,3.1,10920,12110,high
+frankston,Frankston,Ormond,Glenhuntly,1.564,1.67,1.67,56.3,56.3,1.67,56.3,0.0,0.0,31664,35305,high
+frankston,Frankston,Edithvale,Aspendale,1.353,1.67,1.67,48.7,48.7,1.67,48.7,0.0,0.0,34598,37335,high
+frankston,Frankston,Toorak,Hawksburn,1.275,1.67,1.67,45.9,45.9,1.67,45.9,0.0,0.0,32458,36097,high
+frankston,Frankston,Bonbeach,Chelsea,1.246,1.67,1.67,44.9,44.8,1.67,44.8,0.0,0.0,34602,37333,high
+frankston,Frankston,Southland,Highett,1.237,1.67,1.67,44.5,44.5,1.67,44.5,0.0,0.0,33480,37178,high
+frankston,Frankston,Hawksburn,South Yarra,1.22,1.78,1.67,42.1,43.9,1.72,42.5,0.11,1.8,32457,36102,high
+frankston,Frankston,Moorabbin,Patterson,1.061,1.66,1.77,38.6,36.6,1.72,37.1,0.11,2.0,31664,35303,high
+frankston,Frankston,Mckinnon,Ormond,0.818,1.67,1.76,29.4,28.4,1.71,28.6,0.09,1.0,31664,35305,high

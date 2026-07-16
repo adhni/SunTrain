@@ -1,0 +1,9 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+western,Western,Ballarat,Ballan,34.353,18.68,22.14,110.9,94.5,20.41,101.0,3.46,16.5,8745,8873,low
+western,Western,Melton,Sunshine,24.882,16.05,14.04,93.1,106.4,15.05,99.2,2.01,13.3,470,238,low
+western,Western,Creswick,Ballarat,18.736,19.01,15.0,59.1,74.9,17.01,66.1,4.01,15.8,659,642,low
+western,Western,Maryborough,Talbot,14.375,10.03,15.01,86.1,57.5,12.52,68.9,4.98,28.6,659,642,low
+western,Western,Footscray,Southern Cross,5.623,10.14,8.07,33.3,41.9,9.1,37.1,2.07,8.5,14196,13787,low
+western,Western,Deer Park,Sunshine,5.375,7.17,5.0,45.4,64.5,6.08,53.0,2.17,19.1,1385,1649,low
+western,Western,Cobblebank,Rockbank,4.504,3.26,4.02,84.1,67.3,3.64,74.2,0.76,16.9,11393,10875,low
+western,Western,Wendouree,Ballarat,4.486,4.13,6.73,65.7,40.6,5.43,49.6,2.6,25.1,8502,8858,low

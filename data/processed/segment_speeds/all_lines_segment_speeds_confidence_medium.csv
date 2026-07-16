@@ -1,0 +1,154 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+alamein,Alamein,Camberwell,Glenferrie,2.085,2.68,3.67,46.7,34.1,3.17,39.4,0.98,12.6,245,488,medium
+alamein,Alamein,Riversdale,Camberwell,1.528,2.95,2.41,31.4,39.8,2.68,34.2,0.54,8.3,20030,21840,medium
+alamein,Alamein,Southern Cross,Flinders Street,1.232,4.44,2.67,16.9,27.7,3.56,20.8,1.78,10.8,3151,1945,medium
+alamein,Alamein,Melbourne Central,Flagstaff,0.684,1.33,1.03,37.0,48.0,1.18,34.7,0.3,11.0,3150,1945,medium
+alamein,Alamein,Willison,Riversdale,0.418,1.55,1.08,17.8,28.3,1.31,19.1,0.47,10.5,20011,21088,medium
+belgrave,Belgrave,Union,Richmond,10.354,11.86,9.92,52.5,62.7,10.89,57.1,1.94,10.2,1068,203,medium
+belgrave,Belgrave,Camberwell,Richmond,6.408,7.97,7.36,48.6,53.1,7.67,50.1,0.61,4.5,1927,2390,medium
+belgrave,Belgrave,Box Hill,Camberwell,5.958,6.31,7.3,57.6,49.7,6.81,52.5,0.99,8.0,4862,6039,medium
+belgrave,Belgrave,Camberwell,Glenferrie,2.085,2.74,3.67,46.0,34.1,3.2,39.1,0.93,11.9,4648,5754,medium
+belgrave,Belgrave,Upper Ferntree Gully,Ferntree Gully,1.771,2.67,3.48,39.8,31.1,3.08,34.6,0.82,8.7,17370,17879,medium
+belgrave,Belgrave,Hawthorn,Burnley,1.554,2.34,1.67,42.2,55.9,2.01,46.5,0.68,13.8,6576,6595,medium
+belgrave,Belgrave,Ringwood,Heatherdale,1.356,1.91,2.54,44.3,33.8,2.22,36.6,0.62,10.5,14259,14176,medium
+belgrave,Belgrave,Camberwell,Auburn,1.245,1.67,2.16,44.8,36.6,1.91,39.1,0.49,8.2,6576,6595,medium
+belgrave,Belgrave,Southern Cross,Flinders Street,1.232,4.52,2.67,16.6,27.7,3.59,20.6,1.85,11.1,5392,9864,medium
+belgrave,Belgrave,Union,Chatham,1.204,2.18,1.67,35.0,43.3,1.92,37.6,0.51,8.3,8456,8428,medium
+belgrave,Belgrave,Parliament,Melbourne Central,1.127,1.67,2.0,40.6,35.4,1.84,36.8,0.34,5.1,5392,9862,medium
+craigieburn,Craigieburn,Essendon,North Melbourne,6.327,8.67,7.67,43.8,49.5,8.17,46.5,1.0,5.7,9,735,medium
+craigieburn,Craigieburn,Kensington,North Melbourne,1.895,3.93,2.67,29.3,42.6,3.3,34.4,1.27,13.4,26215,26594,medium
+craigieburn,Craigieburn,Parliament,Flinders Street,1.749,3.02,2.36,34.8,46.5,2.69,39.0,0.65,11.7,14912,10737,medium
+craigieburn,Craigieburn,North Melbourne,Southern Cross,1.68,3.49,2.85,29.4,35.8,3.17,31.8,0.64,6.4,10479,15976,medium
+craigieburn,Craigieburn,Southern Cross,Flinders Street,1.232,4.18,3.51,17.8,21.3,3.85,19.2,0.67,3.5,11434,15749,medium
+craigieburn,Craigieburn,North Melbourne,Flinders Street,0.448,7.14,6.09,3.8,4.5,6.61,4.1,1.05,0.7,1045,882,medium
+cranbourne,Cranbourne,Lynbrook,Dandenong,8.304,7.74,6.67,64.4,74.7,7.2,69.2,1.07,10.3,21774,22269,medium
+cranbourne,Cranbourne,Malvern,South Yarra,4.692,4.67,5.67,60.3,49.7,5.17,54.5,1.0,10.6,6028,6378,medium
+cranbourne,Cranbourne,Dandenong,Yarraman,2.155,2.67,3.51,48.5,37.4,3.09,41.9,0.84,11.1,17666,17291,medium
+cranbourne,Cranbourne,Huntingdale,Oakleigh,1.697,2.05,1.67,52.2,61.1,1.86,54.8,0.38,8.9,17449,16873,medium
+eastern,Eastern,Moe,Warragul,30.314,17.19,18.17,107.2,101.7,17.68,102.9,0.98,5.5,849,672,medium
+eastern,Eastern,Pakenham,Dandenong,26.999,19.0,20.97,86.1,77.9,19.99,81.1,1.98,8.1,4148,4101,medium
+eastern,Eastern,Rosedale,Traralgon,22.34,17.67,16.38,75.9,81.9,17.03,78.7,1.3,6.0,777,777,medium
+eastern,Eastern,Dandenong,Caulfield,19.408,25.29,24.49,46.3,48.1,24.89,46.8,0.81,1.8,441,515,medium
+eastern,Eastern,Morwell,Moe,14.648,10.97,12.55,82.8,73.2,11.76,74.7,1.58,9.7,4900,4931,medium
+eastern,Eastern,Pakenham,Berwick,13.617,9.0,10.0,90.8,81.7,9.5,86.0,1.0,9.1,189,195,medium
+eastern,Eastern,Trafalgar,Yarragon,8.074,6.06,5.72,80.1,85.7,5.89,82.2,0.34,5.6,4051,4259,medium
+eastern,Eastern,Longwarry,Bunyip,4.338,4.08,3.68,64.7,73.4,3.88,67.1,0.4,8.7,4051,4454,medium
+eastern,Eastern,Richmond,Flinders Street,2.565,4.98,4.0,31.1,38.5,4.49,34.3,0.98,7.4,4526,3142,medium
+flemington_racecourse,Flemington Racecourse,Flemington Racecourse,Southern Cross,6.588,12.86,11.25,31.2,35.2,12.05,32.8,1.61,4.0,365,53,medium
+flemington_racecourse,Flemington Racecourse,Flemington Racecourse,Flinders Street,5.356,15.44,14.82,20.9,21.7,15.13,21.2,0.62,0.9,294,399,medium
+flemington_racecourse,Flemington Racecourse,Flemington Racecourse,North Melbourne,4.908,8.78,8.22,33.9,36.0,8.5,34.6,0.55,2.1,738,877,medium
+flemington_racecourse,Flemington Racecourse,Southern Cross,Flinders Street,1.232,4.33,3.66,17.4,20.3,3.99,18.5,0.68,2.9,1813,1726,medium
+frankston,Frankston,Cheltenham,Caulfield,10.64,11.83,12.73,54.1,50.2,12.28,52.0,0.89,4.0,2689,3271,medium
+frankston,Frankston,Caulfield,South Yarra,6.373,6.77,7.67,56.6,49.9,7.22,52.9,0.9,6.7,19,3295,medium
+frankston,Frankston,Mordialloc,Mentone,3.335,3.83,4.73,52.7,42.8,4.28,46.7,0.9,9.9,22460,24858,medium
+frankston,Frankston,Richmond,Flinders Street,2.565,4.46,3.5,35.0,44.8,3.98,38.7,0.96,9.8,35176,39406,medium
+frankston,Frankston,Glenhuntly,Caulfield,1.673,3.71,2.67,27.4,37.6,3.19,31.5,1.05,10.3,31662,35309,medium
+frankston,Frankston,Patterson,Bentleigh,0.913,1.46,1.3,43.1,50.9,1.38,39.7,0.16,7.8,31664,35304,medium
+glen_waverley,Glen Waverley,Glen Waverley,Burnley,16.893,19.17,20.0,53.1,50.7,19.58,51.8,0.83,2.5,6,3,medium
+glen_waverley,Glen Waverley,Darling,Richmond,8.88,13.68,12.69,39.0,42.0,13.19,40.4,0.99,3.0,242,483,medium
+glen_waverley,Glen Waverley,Southern Cross,Flinders Street,1.232,4.0,2.67,18.5,27.7,3.34,22.2,1.33,9.2,258,14825,medium
+glen_waverley,Glen Waverley,Parliament,Melbourne Central,1.127,1.67,2.01,40.6,35.3,1.84,36.7,0.35,5.3,254,14824,medium
+glen_waverley,Glen Waverley,Gardiner,Tooronga,1.017,1.67,1.42,36.6,50.0,1.54,39.5,0.24,13.4,25007,25318,medium
+hurstbridge,Hurstbridge,Ivanhoe,Clifton Hill,5.542,8.83,6.9,38.7,49.4,7.86,42.3,1.94,10.7,1413,2778,medium
+hurstbridge,Hurstbridge,Eltham,Greensborough,4.455,7.0,6.0,38.2,44.6,6.5,41.1,1.0,6.4,2,1,medium
+hurstbridge,Hurstbridge,Hurstbridge,Wattle Glen,2.961,3.67,5.0,48.5,35.5,4.34,41.0,1.34,12.9,11991,12722,medium
+hurstbridge,Hurstbridge,Victoria Park,Jolimont,2.518,4.17,5.13,36.5,30.2,4.65,32.5,0.96,6.3,54,3261,medium
+hurstbridge,Hurstbridge,Wattle Glen,Diamond Creek,2.428,3.67,2.86,39.7,51.9,3.27,44.6,0.8,12.2,11993,12726,medium
+hurstbridge,Hurstbridge,Westgarth,Clifton Hill,0.949,2.87,1.67,20.2,34.0,2.27,25.1,1.2,13.9,24487,23716,medium
+lilydale,Lilydale,Union,Richmond,10.354,11.95,10.03,52.1,62.6,10.99,56.5,1.92,10.5,1098,475,medium
+lilydale,Lilydale,Mooroolbark,Ringwood East,6.613,7.67,8.4,51.8,47.4,8.03,49.4,0.73,4.3,5527,5618,medium
+lilydale,Lilydale,Box Hill,Camberwell,5.958,6.15,7.75,58.8,47.1,6.95,51.4,1.6,11.7,5582,6679,medium
+lilydale,Lilydale,Lilydale,Mooroolbark,4.693,4.67,6.0,60.3,46.9,5.34,52.8,1.34,13.4,15391,15682,medium
+lilydale,Lilydale,Union,Camberwell,3.946,4.84,4.19,49.6,58.0,4.51,52.5,0.65,8.3,247,1891,medium
+lilydale,Lilydale,Mooroolbark,Croydon,3.344,3.67,4.42,54.7,46.1,4.04,49.6,0.75,8.7,10522,10669,medium
+lilydale,Lilydale,Camberwell,Glenferrie,2.085,2.69,3.67,46.6,34.1,3.18,39.4,0.98,12.5,6476,7541,medium
+lilydale,Lilydale,Box Hill,Union,2.012,2.62,3.66,46.7,33.1,3.14,38.5,1.04,13.6,21605,22636,medium
+lilydale,Lilydale,Hawthorn,Burnley,1.554,1.97,1.67,49.8,55.9,1.82,51.3,0.3,6.2,18828,19277,medium
+lilydale,Lilydale,Ringwood,Heatherdale,1.356,1.85,2.55,45.4,33.3,2.2,37.0,0.69,12.1,18378,18244,medium
+lilydale,Lilydale,Southern Cross,Flinders Street,1.232,4.35,2.67,17.2,27.7,3.51,21.1,1.68,10.5,12648,13041,medium
+mernda,Mernda,Victoria Park,Jolimont,2.518,5.32,3.73,29.2,40.7,4.52,33.4,1.59,11.5,2888,460,medium
+mernda,Mernda,Mernda,Hawkstowe,2.296,2.67,3.02,51.7,45.7,2.84,48.5,0.35,5.9,25774,26223,medium
+mernda,Mernda,Thornbury,Croxton,1.006,1.54,1.43,42.9,49.2,1.49,40.6,0.12,6.3,25733,25922,medium
+mernda,Mernda,Rushall,Clifton Hill,0.942,2.88,1.67,20.0,33.9,2.27,24.9,1.21,13.9,25732,25923,medium
+north_east,North East,Springhurst,Benalla,62.31,39.0,38.0,95.9,98.4,38.5,97.1,1.0,2.5,16,16,medium
+north_east,North East,Mooroopna,Murchison East,29.853,23.72,24.95,75.6,71.9,24.34,73.6,1.24,3.7,1136,1142,medium
+north_east,North East,Benalla,Violet Town,26.122,14.0,15.03,112.0,104.3,14.51,108.0,1.03,7.6,1081,1089,medium
+north_east,North East,Springhurst,Wangaratta,23.572,14.0,13.0,101.0,108.8,13.5,104.8,1.0,7.8,1065,1073,medium
+north_east,North East,Murchison East,Nagambie,21.188,17.31,16.71,73.5,76.3,17.01,74.7,0.6,2.8,1136,1142,medium
+north_east,North East,Violet Town,Euroa,18.191,10.0,11.0,109.1,99.2,10.5,103.9,1.0,9.9,1081,1089,medium
+north_east,North East,Donnybrook,Broadmeadows,16.257,17.15,15.7,57.6,63.4,16.43,59.4,1.44,5.8,1989,2144,medium
+north_east,North East,Wallan,Donnybrook,14.41,8.3,9.15,104.5,94.6,8.73,99.1,0.85,9.9,4814,4876,medium
+north_east,North East,Chiltern,Springhurst,13.752,9.0,8.0,91.7,103.1,8.5,97.1,1.0,11.5,1081,1089,medium
+north_east,North East,Craigieburn,Broadmeadows,9.298,7.89,8.88,71.2,64.5,8.38,66.5,0.98,6.7,2825,2732,medium
+north_east,North East,Broadmeadows,Essendon,8.793,13.5,15.0,39.1,35.4,14.25,37.0,1.5,3.8,850,1090,medium
+north_east,North East,Wandong,Heathcote Junction,1.936,3.0,2.69,38.8,44.8,2.84,40.9,0.31,6.0,4121,4438,medium
+northern,Northern,Gisborne,Footscray,58.593,42.0,40.0,83.7,87.9,41.0,85.7,2.0,4.2,225,231,medium
+northern,Northern,Kerang,Pyramid,39.576,27.02,28.0,87.9,84.8,27.51,86.3,0.98,3.1,693,692,medium
+northern,Northern,Pyramid,Dingee,38.109,30.01,29.0,76.2,78.8,29.51,77.5,1.01,2.7,693,692,medium
+northern,Northern,Castlemaine,Kyneton,34.02,21.91,20.66,95.7,103.0,21.28,95.9,1.26,7.2,1355,1039,medium
+northern,Northern,Sunbury,Footscray,32.656,24.04,22.18,82.5,89.1,23.11,84.8,1.87,6.6,5346,5644,medium
+northern,Northern,Kangaroo Flat,Castlemaine,31.977,19.63,18.93,98.4,102.1,19.28,99.5,0.7,3.7,6520,7234,medium
+northern,Northern,Gisborne,Sunbury,25.937,15.5,14.0,101.4,111.2,14.75,105.5,1.5,9.8,20,10,medium
+northern,Northern,Castlemaine,Malmsbury,23.391,12.75,13.26,111.4,106.3,13.0,107.9,0.5,5.2,4930,5818,medium
+northern,Northern,Raywood,Eaglehawk,22.268,18.03,16.99,74.1,78.6,17.51,76.3,1.04,4.5,693,692,medium
+northern,Northern,Dingee,Raywood,19.065,13.0,14.84,88.0,77.1,13.92,82.2,1.84,10.9,693,692,medium
+northern,Northern,Watergardens,Footscray,17.553,18.77,17.11,56.6,62.3,17.94,58.7,1.66,5.7,1315,871,medium
+northern,Northern,Elmore,Goornong,16.792,13.4,12.88,75.3,78.7,13.14,76.7,0.52,3.5,943,937,medium
+northern,Northern,Kyneton,Woodend,13.423,9.11,7.99,88.8,102.8,8.55,94.2,1.12,14.0,6490,7338,medium
+northern,Northern,Malmsbury,Kyneton,10.629,7.9,6.73,80.9,95.3,7.32,87.2,1.17,14.4,4695,5818,medium
+northern,Northern,Woodend,Macedon,8.851,6.04,6.77,88.0,78.8,6.41,82.9,0.73,9.2,6120,6457,medium
+northern,Northern,Gisborne,Riddells Creek,7.321,5.66,6.05,78.2,72.7,5.85,75.0,0.39,5.5,6062,6399,medium
+pakenham,Pakenham,Hallam,Dandenong,6.258,5.69,4.67,66.1,80.5,5.18,72.5,1.02,14.4,20490,21949,medium
+pakenham,Pakenham,Malvern,South Yarra,4.692,4.67,5.66,60.3,49.7,5.16,54.5,0.99,10.6,5833,6185,medium
+pakenham,Pakenham,Dandenong,Yarraman,2.155,2.67,3.39,48.5,39.1,3.03,42.7,0.73,9.4,20755,23583,medium
+pakenham,Pakenham,Huntingdale,Oakleigh,1.697,2.08,1.67,51.6,61.1,1.87,54.4,0.41,9.4,23982,27264,medium
+richmond_and_city_loop,Richmond and City Loop,Flagstaff,Southern Cross,1.17,2.32,1.67,31.8,42.1,1.99,35.2,0.65,10.3,2011,1908,medium
+sandringham,Sandringham,Sandringham,Hampton,1.459,1.67,2.02,52.5,43.5,1.84,47.5,0.35,9.0,28356,29286,medium
+south_western,South Western,Lara,Deer Park,47.892,24.21,26.0,119.0,110.5,25.1,114.5,1.79,8.5,743,20,medium
+south_western,South Western,Little River,Sunshine,43.339,27.0,26.33,96.4,99.2,26.67,97.5,0.67,2.8,80,60,medium
+south_western,South Western,Sherwood Park,Terang,40.499,28.02,26.48,86.7,91.8,27.25,89.2,1.54,5.1,1286,1287,medium
+south_western,South Western,Lara,Tarneit,36.392,20.0,18.05,111.7,121.1,19.02,114.8,1.95,9.4,430,222,medium
+south_western,South Western,Tarneit,Footscray,23.506,20.03,19.51,70.4,72.3,19.77,71.3,0.52,1.9,89,176,medium
+south_western,South Western,Terang,Camperdown,22.229,16.88,18.07,81.0,75.9,17.48,76.3,1.19,5.1,1286,1287,medium
+south_western,South Western,Birregurra,Winchelsea,20.546,14.02,14.94,87.9,82.5,14.48,85.1,0.92,5.4,1286,1287,medium
+south_western,South Western,Colac,Birregurra,19.151,14.51,15.83,79.4,74.0,15.17,75.8,1.32,5.5,1286,1287,medium
+south_western,South Western,Waurn Ponds,Geelong,12.086,14.4,15.39,51.1,48.8,14.9,48.7,0.99,2.3,913,618,medium
+south_western,South Western,Sunshine,Footscray,6.631,6.0,5.08,66.3,78.6,5.54,71.8,0.92,12.3,17374,17972,medium
+south_western,South Western,Corio,Lara,6.41,5.04,4.44,76.4,88.2,4.74,81.1,0.6,11.7,10463,10613,medium
+south_western,South Western,North Geelong,Corio,6.147,5.06,5.81,73.1,63.8,5.43,67.9,0.75,9.3,4275,3782,medium
+south_western,South Western,Marshall,South Geelong,5.215,4.28,5.07,74.0,61.9,4.67,67.0,0.78,12.1,8603,8354,medium
+south_western,South Western,North Shore,Corio,5.061,3.03,3.49,100.4,88.8,3.26,93.1,0.46,11.6,6188,7073,medium
+south_western,South Western,Waurn Ponds,Marshall,5.045,5.07,6.2,59.9,49.0,5.64,53.7,1.13,10.9,8395,8549,medium
+south_western,South Western,Geelong,North Geelong,2.477,3.55,4.26,42.7,35.5,3.9,38.1,0.71,7.2,15652,15935,medium
+stony_point,Stony Point,Baxter,Leawarra,6.208,5.67,6.67,65.7,55.9,6.17,60.4,1.0,9.9,2720,2405,medium
+stony_point,Stony Point,Tyabb,Somerville,4.022,4.67,3.67,51.7,65.8,4.17,57.9,1.0,14.1,2721,2405,medium
+sunbury,Sunbury,Sunshine,Footscray,6.631,7.53,6.69,53.5,59.6,7.11,56.0,0.84,6.1,1673,1913,medium
+sunbury,Sunbury,Footscray,North Melbourne,3.943,4.7,3.67,50.4,64.5,4.18,56.5,1.03,14.1,23647,24664,medium
+sunbury,Sunbury,Watergardens,Keilor Plains,3.676,3.67,4.48,60.1,50.1,4.07,54.2,0.81,10.1,25593,26659,medium
+sunbury,Sunbury,Ginifer,Albion,2.318,3.67,2.67,37.9,52.2,3.17,43.9,1.0,14.2,25359,26665,medium
+sunbury,Sunbury,Parliament,Flinders Street,1.749,3.0,2.37,35.0,46.2,2.69,39.0,0.63,11.3,13007,10384,medium
+sunbury,Sunbury,North Melbourne,Southern Cross,1.68,3.38,2.8,30.5,36.1,3.09,32.6,0.59,5.7,10020,13695,medium
+sunbury,Sunbury,Southern Cross,Flinders Street,1.232,4.07,3.54,18.2,21.2,3.81,19.4,0.53,3.0,10323,13527,medium
+sunbury,Sunbury,North Melbourne,Flinders Street,0.448,7.19,6.24,3.8,4.4,6.72,4.0,0.95,0.6,616,599,medium
+upfield,Upfield,Parliament,Flinders Street,1.749,3.0,2.27,35.0,48.8,2.63,39.9,0.73,13.8,11858,6972,medium
+upfield,Upfield,North Melbourne,Southern Cross,1.68,3.37,2.78,30.6,36.5,3.07,32.8,0.59,5.9,7786,12688,medium
+upfield,Upfield,Macaulay,North Melbourne,1.574,2.93,2.33,33.5,42.6,2.63,35.9,0.6,9.1,19567,19424,medium
+upfield,Upfield,Southern Cross,Flinders Street,1.232,4.0,3.47,18.5,21.6,3.74,19.8,0.53,3.2,7662,12562,medium
+upfield,Upfield,North Melbourne,Flinders Street,0.448,7.11,6.12,3.8,4.4,6.62,4.1,0.99,0.6,696,637,medium
+werribee,Werribee,Laverton,Newport,10.45,8.83,8.2,71.6,77.8,8.51,73.7,0.63,6.2,13801,14672,medium
+werribee,Werribee,Seaholme,Newport,5.572,8.48,6.67,39.5,50.1,7.58,44.1,1.82,10.6,19843,20377,medium
+werribee,Werribee,Newport,Footscray,4.932,5.74,6.26,51.6,47.6,6.0,49.3,0.51,4.1,13380,13613,medium
+werribee,Werribee,Southern Cross,Flinders Street,1.232,4.02,3.38,18.4,22.3,3.7,20.0,0.63,3.9,32320,33770,medium
+werribee,Werribee,North Melbourne,Flinders Street,0.448,7.0,5.67,3.8,4.7,6.33,4.2,1.33,0.9,319,289,medium
+western,Western,Ararat,Beaufort,46.011,26.05,28.05,106.0,98.4,27.05,102.1,2.0,7.6,1454,1471,medium
+western,Western,Beaufort,Wendouree,41.469,24.04,23.03,103.5,108.1,23.54,105.7,1.0,4.5,1454,1471,medium
+western,Western,Bacchus Marsh,Rockbank,21.303,13.17,12.06,97.2,106.2,12.61,101.3,1.11,9.0,1357,1449,medium
+western,Western,Melton,Caroline Springs,16.032,10.0,9.0,97.2,106.9,9.5,101.3,1.0,9.7,20,20,medium
+western,Western,Cobblebank,Caroline Springs,13.036,8.67,9.31,90.5,85.0,8.99,87.0,0.64,5.6,1371,1409,medium
+western,Western,Rockbank,Deer Park,12.007,8.68,8.02,83.7,89.9,8.35,86.3,0.66,6.2,1385,1417,medium
+western,Western,Rockbank,Caroline Springs,8.532,5.8,5.07,88.8,101.4,5.44,94.1,0.73,12.6,11393,10935,medium
+western,Western,Melton,Rockbank,7.5,5.5,6.0,83.6,75.0,5.75,78.3,0.5,8.6,28,28,medium
+western,Western,Sunshine,Footscray,6.631,6.0,5.17,66.4,77.7,5.58,71.3,0.83,11.3,14196,13787,medium
+western,Western,Melton,Cobblebank,2.996,3.82,4.69,47.8,39.7,4.26,42.2,0.87,8.1,12764,12284,medium
+western,Western,Ardeer,Sunshine,2.674,5.22,4.02,31.1,39.9,4.62,34.7,1.2,8.8,12341,11933,medium
+williamstown,Williamstown,Williamstown,Williamstown Beach,1.023,1.67,2.21,36.8,28.5,1.94,31.6,0.55,8.3,18439,20003,medium

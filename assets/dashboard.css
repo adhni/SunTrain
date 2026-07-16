@@ -83,7 +83,7 @@ body {
 
 .hero {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   background: linear-gradient(135deg, rgba(15, 118, 110, 0.96), rgba(17, 94, 89, 0.92) 54%, rgba(180, 83, 9, 0.88));
   color: white;
   border-radius: 28px;
@@ -130,6 +130,12 @@ body {
   line-height: 1.6;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.92);
+}
+
+.hero-help {
+  margin-top: 8px !important;
+  font-size: 0.88rem !important;
+  color: rgba(255, 255, 255, 0.78) !important;
 }
 
 .hero-meta {
@@ -239,6 +245,14 @@ body {
   transform: translateY(-1px);
 }
 
+.finder-chip:focus-visible,
+.primary-button:focus-visible,
+.raw-data-toggle:focus-visible,
+.skip-link:focus-visible {
+  outline: 3px solid #fbbf24;
+  outline-offset: 3px;
+}
+
 .finder-chip:hover {
   background: rgba(255, 255, 255, 0.18);
 }
@@ -288,6 +302,13 @@ body {
 .status-message {
   min-height: 4px;
   margin-bottom: 10px;
+}
+
+.status-context {
+  margin: 0 0 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .status-error {
@@ -360,12 +381,14 @@ body {
 }
 
 .section-title {
+  margin: 0;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.85rem;
   line-height: 1.08;
 }
 
 .section-note {
+  margin-bottom: 0;
   margin-top: 6px;
   color: var(--muted);
   line-height: 1.6;
@@ -443,6 +466,16 @@ body {
   box-shadow: none !important;
 }
 
+.dash-dropdown .Select-control:focus-within,
+.dash-dropdown.is-focused .Select-control {
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18) !important;
+}
+
+.Select-menu-outer {
+  z-index: 3000 !important;
+}
+
 .finder-date-range {
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -510,5 +543,16 @@ body {
 
   .status-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
   }
 }

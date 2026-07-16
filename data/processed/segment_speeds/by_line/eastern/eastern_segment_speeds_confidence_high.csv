@@ -1,0 +1,10 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+eastern,Eastern,Sale,Rosedale,25.694,18.64,19.05,82.8,80.9,18.84,81.8,0.42,1.9,777,777,high
+eastern,Eastern,Berwick,Dandenong,13.382,10.0,10.0,80.3,80.3,10.0,80.3,0.0,0.0,189,195,high
+eastern,Eastern,Yarragon,Warragul,12.325,8.28,8.06,89.8,92.4,8.17,90.6,0.22,2.6,4051,4254,high
+eastern,Eastern,Drouin,Longwarry,8.724,6.49,6.82,81.3,77.8,6.66,78.6,0.33,3.5,4051,4454,high
+eastern,Eastern,Caulfield,Richmond,7.989,9.84,9.46,48.8,51.1,9.65,49.7,0.38,2.2,4526,3142,high
+eastern,Eastern,Warragul,Drouin,7.623,6.07,6.31,75.4,73.1,6.19,73.9,0.24,2.3,4900,4926,high
+eastern,Eastern,Tynong,Nar Nar Goon,4.967,4.12,4.09,72.8,73.4,4.11,72.6,0.04,0.6,3856,4253,high
+eastern,Eastern,Garfield,Tynong,4.102,4.09,4.15,60.6,60.0,4.12,59.8,0.06,0.6,3856,4259,high
+eastern,Eastern,Flinders Street,Southern Cross,1.232,4.03,4.0,18.4,18.5,4.01,18.4,0.02,0.1,4337,4302,high

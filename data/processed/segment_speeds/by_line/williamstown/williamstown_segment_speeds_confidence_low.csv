@@ -1,0 +1,4 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+williamstown,Williamstown,North Williamstown,Newport,1.71,2.51,1.67,41.7,61.6,2.09,49.2,0.84,19.8,18441,20003,low
+williamstown,Williamstown,Newport,Spotswood,1.335,1.67,2.67,48.1,30.0,2.17,37.0,1.0,18.0,15104,14368,low
+williamstown,Williamstown,Seddon,Footscray,0.995,1.67,0.82,35.8,81.5,1.24,48.1,0.85,45.7,15102,14370,low

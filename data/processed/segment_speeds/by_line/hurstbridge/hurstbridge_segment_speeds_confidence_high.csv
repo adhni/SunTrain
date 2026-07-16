@@ -1,0 +1,12 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+hurstbridge,Hurstbridge,Diamond Creek,Eltham,5.241,6.8,6.67,46.3,47.2,6.73,46.7,0.13,0.9,12007,12741,high
+hurstbridge,Hurstbridge,Greensborough,Watsonia,3.013,3.67,3.9,49.3,46.8,3.78,47.8,0.24,2.5,21599,22360,high
+hurstbridge,Hurstbridge,Eltham,Montmorency,2.643,3.67,3.91,43.2,40.6,3.79,41.8,0.24,2.6,20242,20520,high
+hurstbridge,Hurstbridge,Watsonia,Macleod,2.211,2.67,2.67,49.7,49.7,2.67,49.7,0.0,0.0,21598,22361,high
+hurstbridge,Hurstbridge,Montmorency,Greensborough,1.812,2.69,2.86,40.6,39.4,2.78,39.2,0.16,1.2,20244,20523,high
+hurstbridge,Hurstbridge,Jolimont,Flinders Street,1.673,3.29,3.74,31.1,32.6,3.52,28.6,0.45,1.5,25955,1180,high
+hurstbridge,Hurstbridge,Alphington,Fairfield,1.304,1.67,1.67,46.9,46.9,1.67,46.9,0.0,0.0,24490,23716,high
+hurstbridge,Hurstbridge,Clifton Hill,Victoria Park,1.179,1.67,1.76,42.4,40.9,1.71,41.3,0.09,1.6,25823,26402,high
+hurstbridge,Hurstbridge,Heidelberg,Eaglemont,0.953,1.67,1.84,34.3,31.9,1.75,32.6,0.17,2.4,24491,23715,high
+hurstbridge,Hurstbridge,Eaglemont,Ivanhoe,0.945,1.67,1.67,34.0,34.0,1.67,34.0,0.0,0.0,24494,23715,high
+hurstbridge,Hurstbridge,Fairfield,Dennis,0.756,1.67,1.67,27.2,27.2,1.67,27.2,0.0,0.0,24489,23717,high

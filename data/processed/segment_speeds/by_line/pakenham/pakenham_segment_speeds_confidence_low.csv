@@ -1,0 +1,10 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+pakenham,Pakenham,Pakenham,Cardinia Road,4.513,3.67,6.0,73.8,45.2,4.84,56.0,2.34,28.7,19971,21354,low
+pakenham,Pakenham,Berwick,Narre Warren,3.776,2.67,3.69,85.0,61.5,3.18,71.3,1.02,23.5,13932,14893,low
+pakenham,Pakenham,Narre Warren,Hallam,3.348,3.67,2.67,54.8,75.3,3.17,63.4,1.0,20.5,13933,14893,low
+pakenham,Pakenham,Richmond,Flinders Street,2.565,6.39,3.41,31.6,46.1,4.9,31.4,2.98,14.5,1694,26298,low
+pakenham,Pakenham,Westall,Clayton,2.126,1.67,2.71,76.5,47.2,2.19,58.3,1.04,29.3,20946,25149,low
+pakenham,Pakenham,Springvale,Westall,1.858,2.68,1.67,41.6,66.9,2.17,51.3,1.01,25.2,20746,23097,low
+pakenham,Pakenham,Carnegie,Caulfield,1.747,2.9,1.67,36.9,62.9,2.28,46.0,1.23,26.0,23447,26720,low
+pakenham,Pakenham,Noble Park,Sandown Park,1.693,1.51,2.67,74.9,38.1,2.09,48.6,1.15,36.9,23812,25692,low
+pakenham,Pakenham,Yarraman,Noble Park,1.663,2.51,1.67,41.0,59.9,2.09,47.8,0.84,18.8,20754,23584,low

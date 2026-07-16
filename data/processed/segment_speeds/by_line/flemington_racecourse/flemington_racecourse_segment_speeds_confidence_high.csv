@@ -1,0 +1,2 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+flemington_racecourse,Flemington Racecourse,North Melbourne,Southern Cross,1.68,3.0,2.76,34.5,36.7,2.88,35.0,0.24,2.2,1718,1974,high

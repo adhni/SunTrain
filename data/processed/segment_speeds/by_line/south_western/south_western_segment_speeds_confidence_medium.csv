@@ -1,0 +1,17 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+south_western,South Western,Lara,Deer Park,47.892,24.21,26.0,119.0,110.5,25.1,114.5,1.79,8.5,743,20,medium
+south_western,South Western,Little River,Sunshine,43.339,27.0,26.33,96.4,99.2,26.67,97.5,0.67,2.8,80,60,medium
+south_western,South Western,Sherwood Park,Terang,40.499,28.02,26.48,86.7,91.8,27.25,89.2,1.54,5.1,1286,1287,medium
+south_western,South Western,Lara,Tarneit,36.392,20.0,18.05,111.7,121.1,19.02,114.8,1.95,9.4,430,222,medium
+south_western,South Western,Tarneit,Footscray,23.506,20.03,19.51,70.4,72.3,19.77,71.3,0.52,1.9,89,176,medium
+south_western,South Western,Terang,Camperdown,22.229,16.88,18.07,81.0,75.9,17.48,76.3,1.19,5.1,1286,1287,medium
+south_western,South Western,Birregurra,Winchelsea,20.546,14.02,14.94,87.9,82.5,14.48,85.1,0.92,5.4,1286,1287,medium
+south_western,South Western,Colac,Birregurra,19.151,14.51,15.83,79.4,74.0,15.17,75.8,1.32,5.5,1286,1287,medium
+south_western,South Western,Waurn Ponds,Geelong,12.086,14.4,15.39,51.1,48.8,14.9,48.7,0.99,2.3,913,618,medium
+south_western,South Western,Sunshine,Footscray,6.631,6.0,5.08,66.3,78.6,5.54,71.8,0.92,12.3,17374,17972,medium
+south_western,South Western,Corio,Lara,6.41,5.04,4.44,76.4,88.2,4.74,81.1,0.6,11.7,10463,10613,medium
+south_western,South Western,North Geelong,Corio,6.147,5.06,5.81,73.1,63.8,5.43,67.9,0.75,9.3,4275,3782,medium
+south_western,South Western,Marshall,South Geelong,5.215,4.28,5.07,74.0,61.9,4.67,67.0,0.78,12.1,8603,8354,medium
+south_western,South Western,North Shore,Corio,5.061,3.03,3.49,100.4,88.8,3.26,93.1,0.46,11.6,6188,7073,medium
+south_western,South Western,Waurn Ponds,Marshall,5.045,5.07,6.2,59.9,49.0,5.64,53.7,1.13,10.9,8395,8549,medium
+south_western,South Western,Geelong,North Geelong,2.477,3.55,4.26,42.7,35.5,3.9,38.1,0.71,7.2,15652,15935,medium

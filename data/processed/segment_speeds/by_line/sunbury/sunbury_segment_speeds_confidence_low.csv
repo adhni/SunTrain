@@ -1,0 +1,6 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+sunbury,Sunbury,Sunbury,Diggers Rest,5.585,3.67,6.02,91.4,55.7,4.84,69.2,2.35,35.7,16959,17457,low
+sunbury,Sunbury,Sunshine,Tottenham,3.151,2.67,3.67,70.9,51.5,3.17,59.7,1.0,19.4,21979,22737,low
+sunbury,Sunbury,St Albans,Ginifer,1.867,1.67,2.72,67.2,42.0,2.19,51.1,1.05,25.2,25360,26663,low
+sunbury,Sunbury,Tottenham,West Footscray,1.778,1.67,2.67,64.0,40.0,2.17,49.2,1.0,24.0,21975,22741,low
+sunbury,Sunbury,West Footscray,Middle Footscray,0.719,1.67,0.67,25.9,64.7,1.17,37.0,1.0,38.8,21974,22744,low

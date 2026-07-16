@@ -1,0 +1,10 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+mernda,Mernda,South Morang,Epping,3.173,3.74,3.67,51.6,51.9,3.71,51.4,0.08,0.3,25783,26516,high
+mernda,Mernda,Thomastown,Ruthven,3.141,4.67,4.67,40.4,40.4,4.67,40.4,0.0,0.0,10262,10564,high
+mernda,Mernda,Hawkstowe,Middle Gorge,2.423,2.67,2.67,54.5,54.5,2.67,54.5,0.0,0.0,25772,26273,high
+mernda,Mernda,Epping,Lalor,2.099,2.67,2.91,47.2,44.1,2.79,45.2,0.24,3.2,24179,24684,high
+mernda,Mernda,Jolimont,Flinders Street,1.673,3.27,3.74,31.2,32.7,3.51,28.6,0.47,1.5,25559,1306,high
+mernda,Mernda,Lalor,Thomastown,1.631,1.67,1.67,58.7,58.7,1.67,58.7,0.0,0.0,24193,24689,high
+mernda,Mernda,Clifton Hill,Victoria Park,1.179,1.67,1.78,42.4,40.4,1.72,41.1,0.11,2.0,25514,27951,high
+mernda,Mernda,Regent,Preston,1.146,1.88,1.67,38.0,41.2,1.77,38.8,0.21,3.2,25733,25921,high
+mernda,Mernda,Croxton,Northcote,0.644,1.67,1.67,23.2,23.2,1.67,23.2,0.0,0.0,25733,25922,high

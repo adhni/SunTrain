@@ -1,0 +1,8 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+sunbury,Sunbury,Diggers Rest,Watergardens,9.518,6.9,6.67,83.1,85.7,6.78,84.2,0.23,2.6,16957,17459,high
+sunbury,Sunbury,Keilor Plains,St Albans,1.665,1.67,1.67,59.9,59.9,1.67,59.9,0.0,0.0,25591,26659,high
+sunbury,Sunbury,Albion,Sunshine,1.396,1.72,1.67,49.3,50.3,1.69,49.5,0.05,0.9,25357,26666,high
+sunbury,Sunbury,Melbourne Central,Parliament,1.127,1.67,1.67,40.6,40.6,1.67,40.6,0.0,0.0,13008,10384,high
+sunbury,Sunbury,Middle Footscray,Footscray,0.983,1.92,1.67,32.1,35.4,1.79,32.9,0.25,3.3,21974,22745,high
+sunbury,Sunbury,Flagstaff,Melbourne Central,0.684,1.67,1.67,24.6,24.6,1.67,24.6,0.0,0.0,13011,10384,high
+sunbury,Sunbury,North Melbourne,Flagstaff,0.51,2.51,2.67,12.6,11.5,2.59,11.8,0.16,1.1,13012,10384,high

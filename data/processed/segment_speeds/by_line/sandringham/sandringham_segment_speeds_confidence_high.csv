@@ -1,0 +1,11 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+sandringham,Sandringham,Richmond,Flinders Street,2.565,4.02,3.65,38.3,42.2,3.84,40.1,0.37,3.9,28696,28947,high
+sandringham,Sandringham,Hampton,Brighton Beach,1.735,2.72,2.67,39.0,39.0,2.69,38.7,0.05,0.0,28361,29293,high
+sandringham,Sandringham,South Yarra,Richmond,1.616,2.67,2.67,36.3,36.4,2.67,36.4,0.0,0.0,28697,28945,high
+sandringham,Sandringham,Balaclava,Windsor,1.597,1.67,1.67,57.5,57.5,1.67,57.5,0.0,0.0,28704,28933,high
+sandringham,Sandringham,Brighton Beach,Middle Brighton,1.45,1.83,1.67,49.0,52.2,1.75,49.8,0.16,3.1,28356,29298,high
+sandringham,Sandringham,Gardenvale,Elsternwick,1.396,1.67,1.67,50.2,50.3,1.67,50.2,0.0,0.1,28836,29301,high
+sandringham,Sandringham,Prahran,South Yarra,1.311,1.67,1.67,47.2,47.2,1.67,47.2,0.0,0.0,28700,28937,high
+sandringham,Sandringham,Elsternwick,Ripponlea,1.126,1.67,1.67,40.5,40.5,1.67,40.5,0.0,0.0,28705,28933,high
+sandringham,Sandringham,Windsor,Prahran,0.761,1.67,1.86,27.4,25.4,1.76,25.9,0.19,2.0,28700,28935,high
+sandringham,Sandringham,Ripponlea,Balaclava,0.743,1.67,1.67,26.7,26.7,1.67,26.7,0.0,0.0,28704,28933,high

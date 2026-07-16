@@ -1,0 +1,6 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+alamein,Alamein,Camberwell,Glenferrie,2.085,2.68,3.67,46.7,34.1,3.17,39.4,0.98,12.6,245,488,medium
+alamein,Alamein,Riversdale,Camberwell,1.528,2.95,2.41,31.4,39.8,2.68,34.2,0.54,8.3,20030,21840,medium
+alamein,Alamein,Southern Cross,Flinders Street,1.232,4.44,2.67,16.9,27.7,3.56,20.8,1.78,10.8,3151,1945,medium
+alamein,Alamein,Melbourne Central,Flagstaff,0.684,1.33,1.03,37.0,48.0,1.18,34.7,0.3,11.0,3150,1945,medium
+alamein,Alamein,Willison,Riversdale,0.418,1.55,1.08,17.8,28.3,1.31,19.1,0.47,10.5,20011,21088,medium

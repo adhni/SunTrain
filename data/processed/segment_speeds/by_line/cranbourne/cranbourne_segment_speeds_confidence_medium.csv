@@ -1,0 +1,5 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+cranbourne,Cranbourne,Lynbrook,Dandenong,8.304,7.74,6.67,64.4,74.7,7.2,69.2,1.07,10.3,21774,22269,medium
+cranbourne,Cranbourne,Malvern,South Yarra,4.692,4.67,5.67,60.3,49.7,5.17,54.5,1.0,10.6,6028,6378,medium
+cranbourne,Cranbourne,Dandenong,Yarraman,2.155,2.67,3.51,48.5,37.4,3.09,41.9,0.84,11.1,17666,17291,medium
+cranbourne,Cranbourne,Huntingdale,Oakleigh,1.697,2.05,1.67,52.2,61.1,1.86,54.8,0.38,8.9,17449,16873,medium

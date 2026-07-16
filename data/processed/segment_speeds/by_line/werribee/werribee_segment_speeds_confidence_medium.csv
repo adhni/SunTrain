@@ -1,0 +1,6 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+werribee,Werribee,Laverton,Newport,10.45,8.83,8.2,71.6,77.8,8.51,73.7,0.63,6.2,13801,14672,medium
+werribee,Werribee,Seaholme,Newport,5.572,8.48,6.67,39.5,50.1,7.58,44.1,1.82,10.6,19843,20377,medium
+werribee,Werribee,Newport,Footscray,4.932,5.74,6.26,51.6,47.6,6.0,49.3,0.51,4.1,13380,13613,medium
+werribee,Werribee,Southern Cross,Flinders Street,1.232,4.02,3.38,18.4,22.3,3.7,20.0,0.63,3.9,32320,33770,medium
+werribee,Werribee,North Melbourne,Flinders Street,0.448,7.0,5.67,3.8,4.7,6.33,4.2,1.33,0.9,319,289,medium

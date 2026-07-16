@@ -1,0 +1,17 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+pakenham,Pakenham,Dandenong,Westall,8.556,8.0,8.0,64.2,64.2,8.0,64.2,0.0,0.0,1,1,high
+pakenham,Pakenham,Berwick,Hallam,7.124,6.66,6.67,64.1,64.0,6.67,64.1,0.01,0.1,6557,7056,high
+pakenham,Pakenham,Caulfield,South Yarra,6.373,7.37,7.51,52.1,51.1,7.44,51.4,0.13,1.0,17177,20114,high
+pakenham,Pakenham,Officer,Beaconsfield,4.46,3.67,3.67,73.0,73.0,3.67,73.0,0.0,0.0,19971,21354,high
+pakenham,Pakenham,Springvale,Clayton,3.984,4.67,4.67,51.2,51.2,4.67,51.2,0.0,0.0,3047,2098,high
+pakenham,Pakenham,Dandenong,Noble Park,3.818,5.67,5.68,40.4,40.4,5.68,40.4,0.0,0.0,3059,2108,high
+pakenham,Pakenham,Beaconsfield,Berwick,2.413,2.67,2.67,54.3,54.3,2.67,54.3,0.0,0.0,19971,21354,high
+pakenham,Pakenham,Cardinia Road,Officer,2.231,2.67,2.67,50.2,50.2,2.67,50.2,0.0,0.0,19971,21354,high
+pakenham,Pakenham,Clayton,Huntingdale,2.229,2.67,2.87,50.2,47.3,2.77,48.3,0.21,2.8,23984,27262,high
+pakenham,Pakenham,Caulfield,Malvern,1.681,2.67,2.67,37.8,37.8,2.67,37.8,0.0,0.0,5834,6184,high
+pakenham,Pakenham,South Yarra,Richmond,1.616,2.67,2.67,36.3,36.4,2.67,36.3,0.0,0.0,23016,26297,high
+pakenham,Pakenham,Sandown Park,Springvale,1.187,1.67,1.67,42.7,42.7,1.67,42.7,0.0,0.0,23810,25692,high
+pakenham,Pakenham,Oakleigh,Hughesdale,1.111,1.67,1.67,40.0,40.0,1.67,40.0,0.0,0.0,23449,26717,high
+pakenham,Pakenham,Hughesdale,Murrumbeena,1.053,1.67,1.67,37.9,37.9,1.67,37.9,0.0,0.0,23449,26718,high
+pakenham,Pakenham,Murrumbeena,Carnegie,0.889,1.67,1.67,32.0,32.0,1.67,32.0,0.0,0.0,23448,26719,high
+pakenham,Pakenham,East Pakenham,Pakenham,0.0,2.67,3.03,0.0,0.0,2.85,0.0,0.37,0.0,1534,1635,high

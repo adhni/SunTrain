@@ -1,0 +1,12 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+craigieburn,Craigieburn,Craigieburn,North Melbourne,24.418,23.67,23.33,62.0,62.8,23.5,62.3,0.33,0.8,3,2,high
+craigieburn,Craigieburn,Moonee Ponds,North Melbourne,5.207,6.67,7.0,46.9,44.6,6.83,45.7,0.33,2.2,7,9,high
+craigieburn,Craigieburn,Ascot Vale,Newmarket,1.51,1.67,1.87,54.4,50.1,1.77,51.2,0.21,4.2,26218,26586,high
+craigieburn,Craigieburn,Pascoe Vale,Strathmore,1.481,1.67,1.87,53.3,49.3,1.77,50.3,0.2,4.0,26319,27395,high
+craigieburn,Craigieburn,Melbourne Central,Parliament,1.127,1.67,1.67,40.6,40.6,1.67,40.6,0.0,0.0,14916,10735,high
+craigieburn,Craigieburn,Essendon,Moonee Ponds,1.12,1.67,1.67,40.3,40.3,1.67,40.3,0.0,0.0,26226,26589,high
+craigieburn,Craigieburn,Moonee Ponds,Ascot Vale,1.076,1.67,1.67,38.7,38.7,1.67,38.7,0.0,0.0,26219,26580,high
+craigieburn,Craigieburn,Newmarket,Kensington,0.726,0.67,0.67,65.3,65.3,0.67,65.3,0.0,0.0,26216,26588,high
+craigieburn,Craigieburn,Flagstaff,Melbourne Central,0.684,1.67,1.67,24.6,24.6,1.67,24.6,0.0,0.0,14918,10734,high
+craigieburn,Craigieburn,Strathmore,Glenbervie,0.66,0.67,0.67,59.1,59.4,0.67,59.1,0.01,0.3,26315,27395,high
+craigieburn,Craigieburn,North Melbourne,Flagstaff,0.51,2.5,2.67,12.6,11.5,2.58,11.9,0.17,1.2,14921,10734,high

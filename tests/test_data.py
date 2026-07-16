@@ -66,3 +66,422 @@ def test_service_summary_and_export_shape(monkeypatch, sample_parquet):
     assert len(exported) == 4
     assert "Arrival_Time_HHMM" in exported.columns
     assert "Departure_Time_HHMM" in exported.columns
+
+
+def test_origin_departure_uses_first_stop_for_overnight_service(monkeypatch, tmp_path):
+    import pandas as pd
+
+    common = {
+        "Business_Date": "2023-07-10",
+        "Day_of_Week": "Monday",
+        "Day_Type": "Normal Weekday",
+        "Mode": "Metro",
+        "Train_Number": "9001",
+        "Line_Name": "Night Line",
+        "Group": "Night Group",
+        "Direction": "U",
+        "Origin_Station": "Alpha",
+        "Destination_Station": "Bravo",
+        "Station_Latitude": -37.0,
+        "Station_Longitude": 144.0,
+        "Passenger_Boardings": 10,
+        "Passenger_Alightings": 0,
+        "Passenger_Arrival_Load": 0,
+        "Passenger_Departure_Load": 10,
+    }
+    frame = pd.DataFrame(
+        [
+            {
+                **common,
+                "Station_Name": "Alpha",
+                "Station_Chainage": 0,
+                "Stop_Sequence_Number": 1,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 23:57:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 23:58:00"),
+            },
+            {
+                **common,
+                "Station_Name": "Bravo",
+                "Station_Chainage": 3000,
+                "Stop_Sequence_Number": 2,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 00:03:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 00:04:00"),
+            },
+        ]
+    )
+    path = tmp_path / "overnight-origin.parquet"
+    frame.to_parquet(path, index=False)
+
+    data_module = _load_data_module(monkeypatch, path)
+    filters = data_module.get_filter_state(
+        "2023-07-10", "2023-07-10", [], ["Night Line"], [], ["U"], ["Alpha"], []
+    )
+
+    activity = data_module.get_origin_departure_activity(filters)
+
+    assert activity.to_dict("records") == [
+        {
+            "origin_departure_hour": 23,
+            "services": 1,
+            "boardings": 10.0,
+            "alightings": 0.0,
+            "max_peak_load": 10,
+        }
+    ]
+
+
+def test_segment_speeds_calculates_scheduled_speed(monkeypatch, sample_parquet):
+    data_module = _load_data_module(monkeypatch, sample_parquet)
+    filters = data_module.get_filter_state("2023-07-10", "2023-07-10", [], ["Werribee"], [], ["U"], [], [])
+
+    segment_speeds = data_module.get_segment_speeds(filters)
+
+    assert segment_speeds.to_dict("records") == [
+        {
+            "Line_Name": "Werribee",
+            "Direction": "U",
+            "from_station": "Werribee",
+            "to_station": "Newport",
+            "segment_km": 1.0,
+            "avg_run_minutes": 20.0,
+            "min_run_minutes": 20.0,
+            "max_run_minutes": 20.0,
+            "avg_scheduled_kmh": 3.0,
+            "observed_segments": 1,
+        }
+    ]
+
+
+def test_segment_speeds_handles_after_midnight_rollover(monkeypatch, tmp_path):
+    import pandas as pd
+
+    frame = pd.DataFrame(
+        [
+            {
+                "Business_Date": "2023-07-10",
+                "Day_of_Week": "Monday",
+                "Day_Type": "Normal Weekday",
+                "Mode": "Metro",
+                "Train_Number": "9001",
+                "Line_Name": "Night Line",
+                "Group": "Night Group",
+                "Direction": "U",
+                "Origin_Station": "Alpha",
+                "Destination_Station": "Bravo",
+                "Station_Name": "Alpha",
+                "Station_Latitude": -37.0,
+                "Station_Longitude": 144.0,
+                "Station_Chainage": 0,
+                "Stop_Sequence_Number": 1,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 23:57:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 23:58:00"),
+                "Passenger_Boardings": 0,
+                "Passenger_Alightings": 0,
+                "Passenger_Arrival_Load": 0,
+                "Passenger_Departure_Load": 0,
+            },
+            {
+                "Business_Date": "2023-07-10",
+                "Day_of_Week": "Monday",
+                "Day_Type": "Normal Weekday",
+                "Mode": "Metro",
+                "Train_Number": "9001",
+                "Line_Name": "Night Line",
+                "Group": "Night Group",
+                "Direction": "U",
+                "Origin_Station": "Alpha",
+                "Destination_Station": "Bravo",
+                "Station_Name": "Bravo",
+                "Station_Latitude": -37.1,
+                "Station_Longitude": 144.1,
+                "Station_Chainage": 3000,
+                "Stop_Sequence_Number": 2,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-11 00:03:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-11 00:04:00"),
+                "Passenger_Boardings": 0,
+                "Passenger_Alightings": 0,
+                "Passenger_Arrival_Load": 0,
+                "Passenger_Departure_Load": 0,
+            },
+        ]
+    )
+    path = tmp_path / "overnight.parquet"
+    frame.to_parquet(path, index=False)
+
+    data_module = _load_data_module(monkeypatch, path)
+    filters = data_module.get_filter_state("2023-07-10", "2023-07-10", [], ["Night Line"], [], ["U"], [], [])
+
+    segment_speeds = data_module.get_segment_speeds(filters)
+
+    assert segment_speeds.to_dict("records") == [
+        {
+            "Line_Name": "Night Line",
+            "Direction": "U",
+            "from_station": "Alpha",
+            "to_station": "Bravo",
+            "segment_km": 3.0,
+            "avg_run_minutes": 5.0,
+            "min_run_minutes": 5.0,
+            "max_run_minutes": 5.0,
+            "avg_scheduled_kmh": 36.0,
+            "observed_segments": 1,
+        }
+    ]
+
+
+def test_segment_station_filter_preserves_adjacent_stops(monkeypatch, tmp_path):
+    import pandas as pd
+
+    common = {
+        "Business_Date": "2023-07-10",
+        "Day_of_Week": "Monday",
+        "Day_Type": "Normal Weekday",
+        "Mode": "Metro",
+        "Line_Name": "Three Stop Line",
+        "Group": "Test Group",
+        "Station_Latitude": -37.0,
+        "Station_Longitude": 144.0,
+        "Passenger_Boardings": 0,
+        "Passenger_Alightings": 0,
+        "Passenger_Arrival_Load": 0,
+        "Passenger_Departure_Load": 0,
+    }
+    routes = [
+        ("1001", "U", "Alpha", "Charlie", [("Alpha", 0), ("Bravo", 2000), ("Charlie", 4000)], 7),
+        ("2002", "D", "Charlie", "Alpha", [("Charlie", 4000), ("Bravo", 2000), ("Alpha", 0)], 8),
+    ]
+    rows = []
+    for train, direction, origin, destination, stops, start_hour in routes:
+        for index, (station, chainage) in enumerate(stops):
+            minute = 0 if index == 0 else index * 6 - 1
+            arrival = pd.Timestamp(f"2023-07-10 {start_hour:02d}:{minute:02d}:00")
+            departure = arrival if index == 0 else arrival + pd.Timedelta(minutes=1)
+            rows.append(
+                {
+                    **common,
+                    "Train_Number": train,
+                    "Direction": direction,
+                    "Origin_Station": origin,
+                    "Destination_Station": destination,
+                    "Station_Name": station,
+                    "Station_Chainage": chainage,
+                    "Stop_Sequence_Number": index + 1,
+                    "Arrival_Time_Scheduled": arrival,
+                    "Departure_Time_Scheduled": departure,
+                }
+            )
+
+    path = tmp_path / "three-stops.parquet"
+    pd.DataFrame(rows).to_parquet(path, index=False)
+    data_module = _load_data_module(monkeypatch, path)
+    filters = data_module.get_filter_state(
+        "2023-07-10",
+        "2023-07-10",
+        [],
+        ["Three Stop Line"],
+        [],
+        ["U", "D"],
+        ["Alpha", "Charlie"],
+        [],
+    )
+
+    segments = data_module.get_segment_speeds(filters)
+    paired = data_module.get_segment_speed_pairs(filters)
+
+    assert set(zip(segments["from_station"], segments["to_station"])) == {
+        ("Alpha", "Bravo"),
+        ("Bravo", "Charlie"),
+        ("Charlie", "Bravo"),
+        ("Bravo", "Alpha"),
+    }
+    assert set(zip(paired["citybound_from_station"], paired["citybound_to_station"])) == {
+        ("Alpha", "Bravo"),
+        ("Bravo", "Charlie"),
+    }
+    assert not ((segments["from_station"] == "Alpha") & (segments["to_station"] == "Charlie")).any()
+
+
+def test_segment_hour_filter_preserves_adjacent_stops(monkeypatch, tmp_path):
+    import pandas as pd
+
+    rows = []
+    for index, (station, hour) in enumerate(
+        [("Alpha", 7), ("Bravo", 8), ("Charlie", 9), ("Delta", 10)]
+    ):
+        timestamp = pd.Timestamp(f"2023-07-10 {hour:02d}:00:00")
+        rows.append(
+            {
+                "Business_Date": "2023-07-10",
+                "Day_of_Week": "Monday",
+                "Day_Type": "Normal Weekday",
+                "Mode": "Metro",
+                "Train_Number": "3003",
+                "Line_Name": "Hourly Line",
+                "Group": "Test Group",
+                "Direction": "U",
+                "Origin_Station": "Alpha",
+                "Destination_Station": "Delta",
+                "Station_Name": station,
+                "Station_Latitude": -37.0,
+                "Station_Longitude": 144.0,
+                "Station_Chainage": index * 1000,
+                "Stop_Sequence_Number": index + 1,
+                "Arrival_Time_Scheduled": timestamp,
+                "Departure_Time_Scheduled": timestamp,
+                "Passenger_Boardings": 0,
+                "Passenger_Alightings": 0,
+                "Passenger_Arrival_Load": 0,
+                "Passenger_Departure_Load": 0,
+            }
+        )
+
+    path = tmp_path / "hourly-stops.parquet"
+    pd.DataFrame(rows).to_parquet(path, index=False)
+    data_module = _load_data_module(monkeypatch, path)
+    filters = data_module.get_filter_state(
+        "2023-07-10",
+        "2023-07-10",
+        [],
+        ["Hourly Line"],
+        [],
+        ["U"],
+        [],
+        [7, 9],
+    )
+
+    segments = data_module.get_segment_speeds(filters)
+
+    assert set(zip(segments["from_station"], segments["to_station"])) == {
+        ("Alpha", "Bravo"),
+        ("Charlie", "Delta"),
+    }
+    assert not ((segments["from_station"] == "Alpha") & (segments["to_station"] == "Charlie")).any()
+
+
+def test_segment_speed_pairs_and_confidence(monkeypatch, tmp_path):
+    import pandas as pd
+
+    frame = pd.DataFrame(
+        [
+            {
+                "Business_Date": "2023-07-10",
+                "Day_of_Week": "Monday",
+                "Day_Type": "Normal Weekday",
+                "Mode": "Metro",
+                "Train_Number": "1001",
+                "Line_Name": "Pair Line",
+                "Group": "Pair Group",
+                "Direction": "U",
+                "Origin_Station": "Alpha",
+                "Destination_Station": "Bravo",
+                "Station_Name": "Alpha",
+                "Station_Latitude": -37.0,
+                "Station_Longitude": 144.0,
+                "Station_Chainage": 0,
+                "Stop_Sequence_Number": 1,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 07:00:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 07:00:00"),
+                "Passenger_Boardings": 0,
+                "Passenger_Alightings": 0,
+                "Passenger_Arrival_Load": 0,
+                "Passenger_Departure_Load": 0,
+            },
+            {
+                "Business_Date": "2023-07-10",
+                "Day_of_Week": "Monday",
+                "Day_Type": "Normal Weekday",
+                "Mode": "Metro",
+                "Train_Number": "1001",
+                "Line_Name": "Pair Line",
+                "Group": "Pair Group",
+                "Direction": "U",
+                "Origin_Station": "Alpha",
+                "Destination_Station": "Bravo",
+                "Station_Name": "Bravo",
+                "Station_Latitude": -37.1,
+                "Station_Longitude": 144.1,
+                "Station_Chainage": 3000,
+                "Stop_Sequence_Number": 2,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 07:03:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 07:04:00"),
+                "Passenger_Boardings": 0,
+                "Passenger_Alightings": 0,
+                "Passenger_Arrival_Load": 0,
+                "Passenger_Departure_Load": 0,
+            },
+            {
+                "Business_Date": "2023-07-10",
+                "Day_of_Week": "Monday",
+                "Day_Type": "Normal Weekday",
+                "Mode": "Metro",
+                "Train_Number": "2002",
+                "Line_Name": "Pair Line",
+                "Group": "Pair Group",
+                "Direction": "D",
+                "Origin_Station": "Bravo",
+                "Destination_Station": "Alpha",
+                "Station_Name": "Bravo",
+                "Station_Latitude": -37.1,
+                "Station_Longitude": 144.1,
+                "Station_Chainage": 3000,
+                "Stop_Sequence_Number": 1,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 08:00:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 08:00:00"),
+                "Passenger_Boardings": 0,
+                "Passenger_Alightings": 0,
+                "Passenger_Arrival_Load": 0,
+                "Passenger_Departure_Load": 0,
+            },
+            {
+                "Business_Date": "2023-07-10",
+                "Day_of_Week": "Monday",
+                "Day_Type": "Normal Weekday",
+                "Mode": "Metro",
+                "Train_Number": "2002",
+                "Line_Name": "Pair Line",
+                "Group": "Pair Group",
+                "Direction": "D",
+                "Origin_Station": "Bravo",
+                "Destination_Station": "Alpha",
+                "Station_Name": "Alpha",
+                "Station_Latitude": -37.0,
+                "Station_Longitude": 144.0,
+                "Station_Chainage": 0,
+                "Stop_Sequence_Number": 2,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 08:03:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 08:04:00"),
+                "Passenger_Boardings": 0,
+                "Passenger_Alightings": 0,
+                "Passenger_Arrival_Load": 0,
+                "Passenger_Departure_Load": 0,
+            },
+        ]
+    )
+    path = tmp_path / "paired.parquet"
+    frame.to_parquet(path, index=False)
+
+    data_module = _load_data_module(monkeypatch, path)
+    filters = data_module.get_filter_state("2023-07-10", "2023-07-10", [], ["Pair Line"], [], ["U", "D"], [], [])
+
+    paired = data_module.get_segment_speed_pairs(filters)
+    labeled = data_module.classify_segment_speed_confidence(paired)
+
+    assert paired.to_dict("records") == [
+        {
+            "Line_Name": "Pair Line",
+            "citybound_from_station": "Alpha",
+            "citybound_to_station": "Bravo",
+            "segment_km": 3.0,
+            "citybound_avg_run_minutes": 3.0,
+            "outbound_avg_run_minutes": 3.0,
+            "citybound_avg_scheduled_kmh": 60.0,
+            "outbound_avg_scheduled_kmh": 60.0,
+            "paired_avg_run_minutes": 3.0,
+            "paired_avg_scheduled_kmh": 60.0,
+            "minute_gap": 0.0,
+            "kmh_gap": 0.0,
+            "citybound_observed_segments": 1,
+            "outbound_observed_segments": 1,
+        }
+    ]
+    assert labeled["confidence_band"].tolist() == ["high"]

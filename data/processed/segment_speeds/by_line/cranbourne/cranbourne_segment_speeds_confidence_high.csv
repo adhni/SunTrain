@@ -1,0 +1,10 @@
+line_slug,Line_Name,citybound_from_station,citybound_to_station,segment_km,citybound_avg_run_minutes,outbound_avg_run_minutes,citybound_avg_scheduled_kmh,outbound_avg_scheduled_kmh,paired_avg_run_minutes,paired_avg_scheduled_kmh,minute_gap,kmh_gap,citybound_observed_segments,outbound_observed_segments,confidence_band
+cranbourne,Cranbourne,Caulfield,South Yarra,6.373,7.42,7.52,51.8,51.1,7.47,51.2,0.1,0.7,10854,10224,high
+cranbourne,Cranbourne,Merinda Park,Lynbrook,2.852,2.67,2.67,64.2,64.2,2.67,64.2,0.0,0.0,21775,22265,high
+cranbourne,Cranbourne,Clayton,Huntingdale,2.229,2.67,2.9,50.2,47.0,2.78,48.1,0.23,3.1,17451,16872,high
+cranbourne,Cranbourne,Caulfield,Malvern,1.681,2.67,2.67,37.8,37.8,2.67,37.8,0.0,0.0,6028,6376,high
+cranbourne,Cranbourne,South Yarra,Richmond,1.616,2.67,2.67,36.4,36.4,2.67,36.4,0.0,0.0,16880,16606,high
+cranbourne,Cranbourne,Sandown Park,Springvale,1.187,1.67,1.67,42.7,42.7,1.67,42.7,0.0,0.0,17664,17293,high
+cranbourne,Cranbourne,Oakleigh,Hughesdale,1.111,1.67,1.67,40.0,40.0,1.67,40.0,0.0,0.0,17079,16514,high
+cranbourne,Cranbourne,Hughesdale,Murrumbeena,1.053,1.67,1.67,37.9,37.9,1.67,37.9,0.0,0.0,17079,16515,high
+cranbourne,Cranbourne,Murrumbeena,Carnegie,0.889,1.67,1.67,32.0,32.0,1.67,32.0,0.0,0.0,17079,16515,high

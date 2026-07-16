@@ -254,7 +254,7 @@ def get_origin_departure_activity(filters: FilterState) -> pd.DataFrame:
             Line_Name,
             Direction,
             Train_Number,
-            MIN(Departure_Time_Scheduled) AS origin_departure_time
+            ARG_MIN(Departure_Time_Scheduled, Stop_Sequence_Number) AS origin_departure_time
           FROM {_source_sql()}
           {origin_where_sql}
           GROUP BY 1, 2, 3, 4

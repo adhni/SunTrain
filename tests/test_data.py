@@ -68,6 +68,68 @@ def test_service_summary_and_export_shape(monkeypatch, sample_parquet):
     assert "Departure_Time_HHMM" in exported.columns
 
 
+def test_origin_departure_uses_first_stop_for_overnight_service(monkeypatch, tmp_path):
+    import pandas as pd
+
+    common = {
+        "Business_Date": "2023-07-10",
+        "Day_of_Week": "Monday",
+        "Day_Type": "Normal Weekday",
+        "Mode": "Metro",
+        "Train_Number": "9001",
+        "Line_Name": "Night Line",
+        "Group": "Night Group",
+        "Direction": "U",
+        "Origin_Station": "Alpha",
+        "Destination_Station": "Bravo",
+        "Station_Latitude": -37.0,
+        "Station_Longitude": 144.0,
+        "Passenger_Boardings": 10,
+        "Passenger_Alightings": 0,
+        "Passenger_Arrival_Load": 0,
+        "Passenger_Departure_Load": 10,
+    }
+    frame = pd.DataFrame(
+        [
+            {
+                **common,
+                "Station_Name": "Alpha",
+                "Station_Chainage": 0,
+                "Stop_Sequence_Number": 1,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 23:57:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 23:58:00"),
+            },
+            {
+                **common,
+                "Station_Name": "Bravo",
+                "Station_Chainage": 3000,
+                "Stop_Sequence_Number": 2,
+                "Arrival_Time_Scheduled": pd.Timestamp("2023-07-10 00:03:00"),
+                "Departure_Time_Scheduled": pd.Timestamp("2023-07-10 00:04:00"),
+            },
+        ]
+    )
+    path = tmp_path / "overnight-origin.parquet"
+    frame.to_parquet(path, index=False)
+
+    data_module = _load_data_module(monkeypatch, path)
+    filters = data_module.get_filter_state(
+        "2023-07-10", "2023-07-10", [], ["Night Line"], [], ["U"], ["Alpha"], []
+    )
+
+    activity = data_module.get_origin_departure_activity(filters)
+
+    assert activity.to_dict("records") == [
+        {
+            "origin_departure_hour": 23,
+            "services": 1,
+            "boardings": 10.0,
+            "alightings": 0.0,
+            "max_peak_load": 10,
+        }
+    ]
+
+
 def test_segment_speeds_calculates_scheduled_speed(monkeypatch, sample_parquet):
     data_module = _load_data_module(monkeypatch, sample_parquet)
     filters = data_module.get_filter_state("2023-07-10", "2023-07-10", [], ["Werribee"], [], ["U"], [], [])

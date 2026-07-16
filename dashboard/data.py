@@ -72,7 +72,7 @@ def get_filter_state(
     )
 
 
-def _build_where(filters: FilterState) -> tuple[str, list[str]]:
+def _build_where(filters: FilterState, *, include_stations: bool = True) -> tuple[str, list[str]]:
     clauses = ["Business_Date BETWEEN ? AND ?"]
     params: list[str] = [filters.start_date, filters.end_date]
 
@@ -96,7 +96,7 @@ def _build_where(filters: FilterState) -> tuple[str, list[str]]:
         clauses.append(f"Direction IN ({placeholders})")
         params.extend(filters.directions)
 
-    if filters.stations:
+    if include_stations and filters.stations:
         placeholders = ", ".join("?" for _ in filters.stations)
         clauses.append(f"Station_Name IN ({placeholders})")
         params.extend(filters.stations)
@@ -107,6 +107,18 @@ def _build_where(filters: FilterState) -> tuple[str, list[str]]:
         params.extend(str(hour) for hour in filters.hours)
 
     return " WHERE " + " AND ".join(clauses), params
+
+
+def _build_segment_filters(filters: FilterState) -> tuple[str, str, list[str]]:
+    where_sql, params = _build_where(filters, include_stations=False)
+    if not filters.stations:
+        return where_sql, "", params
+
+    placeholders = ", ".join("?" for _ in filters.stations)
+    station_sql = f" AND (from_station IN ({placeholders}) OR to_station IN ({placeholders}))"
+    params.extend(filters.stations)
+    params.extend(filters.stations)
+    return where_sql, station_sql, params
 
 
 @lru_cache(maxsize=256)
@@ -409,7 +421,7 @@ def get_service_patterns(filters: FilterState) -> pd.DataFrame:
 
 
 def get_segment_speeds(filters: FilterState) -> pd.DataFrame:
-    where_sql, params = _build_where(filters)
+    where_sql, station_sql, params = _build_segment_filters(filters)
     query = f"""
         WITH filtered AS (
           SELECT *
@@ -466,6 +478,7 @@ def get_segment_speeds(filters: FilterState) -> pd.DataFrame:
         WHERE from_station IS NOT NULL
           AND run_minutes IS NOT NULL
           AND run_minutes > 0
+          {station_sql}
         GROUP BY 1, 2, 3, 4
         ORDER BY avg_scheduled_kmh DESC, observed_segments DESC, Line_Name, Direction, from_station, to_station
     """
@@ -473,7 +486,7 @@ def get_segment_speeds(filters: FilterState) -> pd.DataFrame:
 
 
 def get_segment_speed_pairs(filters: FilterState) -> pd.DataFrame:
-    where_sql, params = _build_where(filters)
+    where_sql, station_sql, params = _build_segment_filters(filters)
     query = f"""
         WITH filtered AS (
           SELECT *
@@ -526,6 +539,7 @@ def get_segment_speed_pairs(filters: FilterState) -> pd.DataFrame:
           WHERE from_station IS NOT NULL
             AND run_minutes IS NOT NULL
             AND run_minutes > 0
+            {station_sql}
           GROUP BY 1, 2, 3, 4
         )
         SELECT

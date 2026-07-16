@@ -167,6 +167,78 @@ def test_segment_speeds_handles_after_midnight_rollover(monkeypatch, tmp_path):
     ]
 
 
+def test_segment_station_filter_preserves_adjacent_stops(monkeypatch, tmp_path):
+    import pandas as pd
+
+    common = {
+        "Business_Date": "2023-07-10",
+        "Day_of_Week": "Monday",
+        "Day_Type": "Normal Weekday",
+        "Mode": "Metro",
+        "Line_Name": "Three Stop Line",
+        "Group": "Test Group",
+        "Station_Latitude": -37.0,
+        "Station_Longitude": 144.0,
+        "Passenger_Boardings": 0,
+        "Passenger_Alightings": 0,
+        "Passenger_Arrival_Load": 0,
+        "Passenger_Departure_Load": 0,
+    }
+    routes = [
+        ("1001", "U", "Alpha", "Charlie", [("Alpha", 0), ("Bravo", 2000), ("Charlie", 4000)], 7),
+        ("2002", "D", "Charlie", "Alpha", [("Charlie", 4000), ("Bravo", 2000), ("Alpha", 0)], 8),
+    ]
+    rows = []
+    for train, direction, origin, destination, stops, start_hour in routes:
+        for index, (station, chainage) in enumerate(stops):
+            minute = 0 if index == 0 else index * 6 - 1
+            arrival = pd.Timestamp(f"2023-07-10 {start_hour:02d}:{minute:02d}:00")
+            departure = arrival if index == 0 else arrival + pd.Timedelta(minutes=1)
+            rows.append(
+                {
+                    **common,
+                    "Train_Number": train,
+                    "Direction": direction,
+                    "Origin_Station": origin,
+                    "Destination_Station": destination,
+                    "Station_Name": station,
+                    "Station_Chainage": chainage,
+                    "Stop_Sequence_Number": index + 1,
+                    "Arrival_Time_Scheduled": arrival,
+                    "Departure_Time_Scheduled": departure,
+                }
+            )
+
+    path = tmp_path / "three-stops.parquet"
+    pd.DataFrame(rows).to_parquet(path, index=False)
+    data_module = _load_data_module(monkeypatch, path)
+    filters = data_module.get_filter_state(
+        "2023-07-10",
+        "2023-07-10",
+        [],
+        ["Three Stop Line"],
+        [],
+        ["U", "D"],
+        ["Alpha", "Charlie"],
+        [],
+    )
+
+    segments = data_module.get_segment_speeds(filters)
+    paired = data_module.get_segment_speed_pairs(filters)
+
+    assert set(zip(segments["from_station"], segments["to_station"])) == {
+        ("Alpha", "Bravo"),
+        ("Bravo", "Charlie"),
+        ("Charlie", "Bravo"),
+        ("Bravo", "Alpha"),
+    }
+    assert set(zip(paired["citybound_from_station"], paired["citybound_to_station"])) == {
+        ("Alpha", "Bravo"),
+        ("Bravo", "Charlie"),
+    }
+    assert not ((segments["from_station"] == "Alpha") & (segments["to_station"] == "Charlie")).any()
+
+
 def test_segment_speed_pairs_and_confidence(monkeypatch, tmp_path):
     import pandas as pd
 

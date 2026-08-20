@@ -68,6 +68,20 @@ def test_service_summary_and_export_shape(monkeypatch, sample_parquet):
     assert "Departure_Time_HHMM" in exported.columns
 
 
+def test_filtered_export_does_not_use_the_shared_query_cache(monkeypatch, sample_parquet):
+    data_module = _load_data_module(monkeypatch, sample_parquet)
+    filters = data_module.get_filter_state("2023-07-10", "2023-07-11", [], [], [], [], [], [])
+
+    def fail_if_cached(*_args, **_kwargs):
+        raise AssertionError("export rows must not be retained in the shared query cache")
+
+    monkeypatch.setattr(data_module, "_fetch_records", fail_if_cached)
+
+    exported = data_module.get_filtered_export(filters)
+
+    assert len(exported) == 4
+
+
 def test_origin_departure_uses_first_stop_for_overnight_service(monkeypatch, tmp_path):
     import pandas as pd
 

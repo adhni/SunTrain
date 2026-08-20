@@ -700,4 +700,8 @@ def get_filtered_export(filters: FilterState) -> pd.DataFrame:
         {where_sql}
         ORDER BY Business_Date, Line_Name, Train_Number, Stop_Sequence_Number
     """
-    return _fetch_df(query, params)
+    con = _connect()
+    try:
+        return con.execute(query, params).fetchdf()
+    finally:
+        con.close()

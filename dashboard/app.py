@@ -589,7 +589,7 @@ app.layout = html.Div(
                     parent_className="view-tabs-parent",
                     mobile_breakpoint=0,
                     children=[
-                        dcc.Tab(label="Train Replay", value="replay"),
+                        dcc.Tab(label="Transport Replay", value="replay"),
                         dcc.Tab(label="Overview", value="overview"),
                     ],
                 ),

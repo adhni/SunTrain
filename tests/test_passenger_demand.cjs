@@ -66,3 +66,12 @@ test('station demand remains available when a train has no resolved railway path
     const noGeometry={...services[0],legs:['unresolved']};
     assert.equal(snapshot(buildIndex([noGeometry],day),60,120).total,30);
 });
+
+test('tram and bus calls do not create false demand or missing train counts',()=>{
+    const tram={...services[0],mode:'tram'};
+    const bus={...services[0],mode:'bus'};
+    const mixed=snapshot(buildIndex([services[0],tram,bus],day),60,120);
+    assert.equal(mixed.total,30);
+    assert.equal(mixed.missingCalls,0);
+    assert.equal(snapshot(buildIndex([tram,bus],day),60,120).rows.length,0);
+});

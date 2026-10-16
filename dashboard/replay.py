@@ -13,6 +13,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from dashboard import data
+from dashboard import transit
 
 ROOT = Path(__file__).resolve().parents[1]
 MELBOURNE = ZoneInfo("Australia/Melbourne")
@@ -92,11 +93,11 @@ def get_replay_day(business_date: str) -> dict:
                         for name in sorted(glob.glob(source)))
     geometry = geometry_file()
     modified = geometry.stat().st_mtime_ns if geometry.exists() else 0
-    return _get_day(business_date, source, fingerprint, str(geometry), modified)
+    return _get_day(business_date, source, fingerprint, str(geometry), modified, transit.fingerprint())
 
 
 @lru_cache(maxsize=4)
-def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path: str, modified: int) -> dict:
+def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path: str, modified: int, transit_fingerprint: tuple) -> dict:
     geometry = _read_geometry(geometry_path, modified)
     # Parameterize the source as well as the date; honor SUNTRAIN_PARQUET_GLOB.
     con = data._connect()
@@ -152,6 +153,7 @@ def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path:
         services.append({
             "id": json.dumps([business_date, *key], separators=(",", ":")),
             "operator": operator, "line": line, "direction": direction, "number": str(number),
+            "mode": "train",
             "origin": stops[0][4], "destination": stops[0][5], "stops": service_stops,
             "legs": legs, "timing_uncertain": uncertain,
         })
@@ -159,9 +161,11 @@ def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path:
     start = int(datetime.combine(day, time(3), MELBOURNE).timestamp())
     end = int(datetime.combine(day + timedelta(days=1), time(3), MELBOURNE).timestamp())
     end = max([end, *[s["stops"][-1][2] for s in services]])
-    return {"business_date": business_date, "revision": hashlib.sha256(repr((fingerprint, geometry_path, modified)).encode()).hexdigest()[:16],
+    payload = {"business_date": business_date, "revision": hashlib.sha256(repr((fingerprint, geometry_path, modified, transit_fingerprint)).encode()).hexdigest()[:16],
             "start": start, "end": end,
             "initial": int(datetime.combine(day, time(8), MELBOURNE).timestamp()),
             "services": services, "stations": stations, "paths": paths,
             "geometry": geometry.get("metadata", {}), "approximate_legs": approximate_legs,
             "total_legs": total_legs, "excluded_services": excluded}
+    transit.add_transit(payload, transit_fingerprint)
+    return payload

@@ -64,3 +64,21 @@ test('old straight fallback paths cannot animate or enter selected-route highlig
     assert.deepEqual(features[0].geometry.coordinates, path.coordinates);
     assert.equal(features[0].properties.quality, 'track');
 });
+
+test('tram/bus patterns expand relative GTFS times once and follow their shape', () => {
+    const {hydrate, routeFeatures, vehicleColor} = require('../assets/train_replay.js');
+    const transitDay = {...day, paths: {curve: {...path, quality: 'shape'}},
+        transit_patterns: {p: {stops: [[0, 0, 10], [1, 20, 30]], legs: ['curve']}},
+        services: [{id: 'bus', mode: 'bus', operator: 'PTV bus', line: 'Bus 1', direction: 'A', number: 'one', pattern: 'p', departure: 100}]};
+    const bus = hydrate(transitDay).services[0];
+    assert.deepEqual(bus.stops[0], [0,100,110,null,null,null,null]);
+    hydrate(transitDay);
+    assert.equal(bus.stops[0][1],100);
+    assert.equal(servicePosition(bus,115,transitDay).lon,1.5);
+    assert.equal(servicePosition(bus,115,transitDay).load,null);
+    assert.equal(routeFeatures(transitDay.paths,bus.legs).length,1);
+    const filters = {modes:['tram'],operators:[],lines:[],directions:[],stations:[],number:''};
+    assert.equal(matches(bus,filters,transitDay),false);
+    assert.equal(matches(bus,{...filters,modes:['bus']},transitDay),true);
+    assert.notEqual(vehicleColor(bus),vehicleColor({...bus,mode:'tram'}));
+});

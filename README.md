@@ -161,11 +161,15 @@ Notes:
 
 ## Train Replay
 
-The **Train Replay** tab animates recorded Metro and V/Line services for one business date at a time. Choose a date, press **Play**, or drag the timeline. Filter by operator, line, direction, station served or train number. Station filters keep each matching service's entire journey. Click a train to inspect its scheduled stops and passenger loads; **Size by passengers** makes higher loads more prominent.
+The **Train Replay** tab animates recorded Metro and V/Line services for one business date at a time. Choose a date, press **Play**, or drag the timeline. Filter by operator, line, direction, station served or train number. Station filters keep each matching service's entire journey. Click a train to inspect its scheduled stops and passenger loads; **Size trains by passengers** makes higher loads more prominent.
 
 The site has two main tabs: **Train Replay** and **Overview**. Overview contains **Summary**, **Lines & Services**, **Segment Speed**, and **Network** sub-tabs; it remembers your selected sub-tab when you return from replay.
 
 Use **Dark mode** in the header or replay map toolbar to switch the site, charts, and map backgrounds together. The theme is saved in this browser. The map toolbar toggle also works in fullscreen, and changing themes preserves playback, filters, and the map view.
+
+Choose **Passenger heatmap** or **Both** under the map to explore station boardings in the previous **15, 30, or 60 minutes**. The heatmap follows the replay clock and service filters. Marker colors use a fixed scale of **0, 100, 500, 2,000, and 5,000+ boardings**; hover or click a station for its exact aggregate. The softer glow shows relative concentration around nearby stations and varies with zoom. This measures boarding events, so a passenger boarding another train can be counted again. It does not measure unique passengers, platform crowding, or on-board load.
+
+Counts use recorded boardings at scheduled departure times, in a right-closed rolling window, from the selected business date's services only. Zero counts stay zero; unavailable counts are excluded and reported separately. Seeking backwards recomputes the window. Unresolved train paths do not prevent station demand from being shown. Prefix sums run in the browser, and the heatmap refreshes at minute boundaries (at most five times per second during fast playback) without server queries. Fullscreen retains the view/window controls and scale.
 
 Train Replay is the opening view and first tab, with the map initially focused on metropolitan Melbourne. **Melbourne** restores that view, while **Fit selection** shows the full extent of the filtered services. **Follow train** keeps a selected train centered during playback; dragging the map or choosing a view stops following.
 
@@ -192,7 +196,7 @@ Validation:
 
 ```bash
 ./.venv/bin/python -m pytest -q
-node --test tests/test_replay_animation.cjs
+node --test tests/test_replay_animation.cjs tests/test_passenger_demand.cjs
 ```
 
 ## Deploying To Render

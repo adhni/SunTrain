@@ -57,13 +57,37 @@ def build_replay_panel(metadata, default_date):
                                     **{"data-theme-toggle": "true", "aria-pressed": False}),
                     ]),
                 ]),
-                html.Div(id="replay-map", className="replay-map", role="region", **{"aria-label": "Historical train replay map"}),
+                html.Div(className="replay-map-wrap", children=[
+                    html.Div(id="replay-map", className="replay-map", role="region", **{"aria-label": "Historical train replay and passenger demand map"}),
+                    html.Details(id="replay-demand-legend", className="replay-demand-legend", hidden=True, open=True,
+                               **{"aria-label": "Passenger boarding scale"}, children=[
+                        html.Summary(children=[
+                            html.Strong("Station boardings", className="replay-demand-title"),
+                            html.Div(id="replay-demand-range", className="replay-muted"),
+                            html.Div(id="replay-demand-scale", className="replay-demand-scale"),
+                        ]),
+                        html.Div(id="replay-demand-total", className="replay-demand-total"),
+                        html.Div(id="replay-demand-note", className="replay-muted"),
+                        html.Div("Marker colors use this fixed scale. Glow shows nearby concentration.", className="replay-muted"),
+                    ]),
+                ]),
+                html.Div(className="replay-demand-controls", children=[
+                    html.Div(children=[html.Label("Map view", className="finder-label"),
+                        dcc.RadioItems(id="replay-map-mode", options=[{"label": " Trains", "value": "trains"},
+                            {"label": " Passenger heatmap", "value": "demand"}, {"label": " Both", "value": "both"}],
+                            value="trains", inline=True, className="replay-map-modes")]),
+                    html.Div(id="replay-demand-window-field", hidden=True, children=[
+                        field("Boarding window", dcc.Dropdown(id="replay-demand-window", options=[
+                            {"label": f"Last {n} minutes", "value": n} for n in (15, 30, 60)],
+                            value=30, clearable=False, searchable=False)),
+                    ]),
+                ]),
                 html.Div(className="replay-map-footer", children=[
                     dcc.Checklist(id="replay-display", options=[{"label": " Railway paths", "value": "routes"},
                                   {"label": " Stations", "value": "stations"},
-                                  {"label": " Size by passengers", "value": "load"}], value=["routes", "stations"], inline=True),
+                                  {"label": " Size trains by passengers", "value": "load"}], value=["routes", "stations"], inline=True),
                     html.Span("Estimated positions from scheduled times", className="replay-estimate"),
-                    html.Span("Bigger dots mean more passengers on board. Sizes are scaled for readability; click a train for its recorded count.",
+                    html.Span("Bigger train dots mean more passengers on board. Sizes are scaled for readability; click a train for its recorded count.",
                               id="replay-size-help", className="replay-estimate", hidden=True),
                 ]),
                 html.Div(className="replay-transport", children=[
@@ -119,6 +143,7 @@ def register_replay_callbacks(app):
         Input("replay-day", "data"), Input("view-tabs", "value"), Input("replay-date", "date"),
         Input("replay-operators", "value"), Input("replay-lines", "value"), Input("replay-directions", "value"),
         Input("replay-stations", "value"), Input("replay-number", "value"), Input("replay-display", "value"),
+        Input("replay-map-mode", "value"), Input("replay-demand-window", "value"),
         Input("replay-speed", "value"), Input("replay-play", "n_clicks"), Input("replay-restart", "n_clicks"),
         Input("replay-back", "n_clicks"), Input("replay-forward", "n_clicks"), Input("replay-fit", "n_clicks"),
     )

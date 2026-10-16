@@ -30,6 +30,7 @@ from dashboard.data import (
     get_station_map_data,
     get_station_options,
 )
+from dashboard.replay_view import build_replay_panel, register_replay_callbacks
 
 
 META = get_metadata()
@@ -356,7 +357,7 @@ app.layout = html.Div(
         ),
         html.Main(
             id="main-content",
-            className="app",
+            className="app replay-active",
             tabIndex=-1,
             children=[
                 html.Section(
@@ -375,17 +376,23 @@ app.layout = html.Div(
                                     ]
                                 ),
                                 html.Div(
-                                    className="dataset-note",
+                                    className="brand-tools",
                                     children=[
-                                        html.Strong("FY 2023-2024"),
-                                        html.Span("Business day: 03:00-02:59"),
-                                        html.Span("Counts rounded to nearest 10"),
+                                        html.Div(className="dataset-note", children=[
+                                            html.Strong("FY 2023-2024"),
+                                            html.Span("Business day: 03:00-02:59"),
+                                            html.Span("Counts rounded to nearest 10"),
+                                        ]),
+                                        html.Button("Dark mode", id="theme-toggle", className="theme-toggle",
+                                                    **{"data-theme-toggle": "true", "aria-pressed": False}),
                                     ],
                                 ),
                             ],
                         ),
                         html.Div(
+                            id="analysis-filters",
                             className="finder-shell",
+                            style={"display": "none"},
                             children=[
                                 html.Div(
                                     className="finder-controls",
@@ -554,7 +561,9 @@ app.layout = html.Div(
                     ],
                 ),
                 html.Section(
+                    id="analysis-summary",
                     className="dashboard-summary",
+                    style={"display": "none"},
                     children=[
                         html.Div(
                             id="status-message",
@@ -575,21 +584,29 @@ app.layout = html.Div(
                 ),
                 dcc.Tabs(
                     id="view-tabs",
-                    value="overview",
+                    value="replay",
                     className="view-tabs",
                     parent_className="view-tabs-parent",
                     mobile_breakpoint=0,
                     children=[
+                        dcc.Tab(label="Train Replay", value="replay"),
                         dcc.Tab(label="Overview", value="overview"),
-                        dcc.Tab(label="Lines & Services", value="lines"),
-                        dcc.Tab(label="Segment Speed", value="segments"),
-                        dcc.Tab(label="Network", value="network"),
                     ],
                 ),
+                html.Div(id="overview-navigation", style={"display": "none"}, children=[
+                    dcc.Tabs(id="overview-tabs", value="overview", className="view-tabs overview-tabs",
+                             parent_className="overview-tabs-parent", mobile_breakpoint=0, children=[
+                                 dcc.Tab(label="Summary", value="overview"),
+                                 dcc.Tab(label="Lines & Services", value="lines"),
+                                 dcc.Tab(label="Segment Speed", value="segments"),
+                                 dcc.Tab(label="Network", value="network"),
+                             ]),
+                ]),
+                build_replay_panel(META, DEFAULT_START),
                 html.Div(
                     id="overview-panel",
                     className="tab-panel",
-                    style=tab_style(True),
+                    style=tab_style(False),
                     children=[
                         section_title(
                             "Demand Through the Day",
@@ -911,7 +928,9 @@ app.layout = html.Div(
                     ],
                 ),
                 html.Div(
+                    id="analysis-data-actions",
                     className="data-actions",
+                    style={"display": "none"},
                     children=[
                         html.Button(
                             "View raw data",
@@ -1172,9 +1191,10 @@ def update_summary(data):
     Output("pattern-graph", "figure"),
     Input("filter-store", "data"),
     Input("view-tabs", "value"),
+    Input("overview-tabs", "value"),
 )
-def update_overview_panel(data, active_tab):
-    if active_tab != "overview":
+def update_overview_panel(data, active_tab, overview_tab="overview"):
+    if active_tab != "overview" or overview_tab != "overview":
         raise PreventUpdate
     try:
         _, filters = deserialize_filters(data)
@@ -1267,9 +1287,10 @@ def update_overview_panel(data, active_tab):
     Output("line-summary-table", "columns"),
     Input("filter-store", "data"),
     Input("view-tabs", "value"),
+    Input("overview-tabs", "value"),
 )
-def update_lines_panel(data, active_tab):
-    if active_tab != "lines":
+def update_lines_panel(data, active_tab, overview_tab="overview"):
+    if active_tab != "overview" or overview_tab != "lines":
         raise PreventUpdate
     try:
         payload, filters = deserialize_filters(data)
@@ -1413,9 +1434,10 @@ def update_lines_panel(data, active_tab):
     Output("map-station-table", "columns"),
     Input("filter-store", "data"),
     Input("view-tabs", "value"),
+    Input("overview-tabs", "value"),
 )
-def update_station_panel(data, active_tab):
-    if active_tab != "network":
+def update_station_panel(data, active_tab, overview_tab="overview"):
+    if active_tab != "overview" or overview_tab != "network":
         raise PreventUpdate
     try:
         _, filters = deserialize_filters(data)
@@ -1503,7 +1525,14 @@ def update_station_panel(data, active_tab):
             font=dict(family='"Avenir Next", "Segoe UI", sans-serif', color=COLORS["ink"], size=13),
             hoverlabel=dict(bgcolor="#ffffff", bordercolor=COLORS["grid"], font=dict(color=COLORS["ink"])),
             mapbox=dict(
-                style="carto-positron",
+                style={
+                    "version": 8, "metadata": {"suntrain-theme": "light"},
+                    "sources": {"basemap": {"type": "raster", "tiles": ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
+                        "tileSize": 256, "maxzoom": 19,
+                        "attribution": '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'}},
+                    "layers": [{"id": "background", "type": "background", "paint": {"background-color": "#edf1ef"}},
+                        {"id": "basemap", "type": "raster", "source": "basemap", "paint": {"raster-saturation": -0.85, "raster-contrast": -0.05}}],
+                },
                 center={"lat": float(station_map["latitude"].mean()), "lon": float(station_map["longitude"].mean())},
                 zoom=map_zoom_for_bounds(lat_span, lon_span),
             ),
@@ -1529,9 +1558,10 @@ def update_station_panel(data, active_tab):
     Output("service-table", "columns"),
     Input("filter-store", "data"),
     Input("view-tabs", "value"),
+    Input("overview-tabs", "value"),
 )
-def update_service_panel(data, active_tab):
-    if active_tab != "lines":
+def update_service_panel(data, active_tab, overview_tab="overview"):
+    if active_tab != "overview" or overview_tab != "lines":
         raise PreventUpdate
     try:
         _, filters = deserialize_filters(data)
@@ -1575,9 +1605,10 @@ def update_service_panel(data, active_tab):
     Output("segment-table", "columns"),
     Input("filter-store", "data"),
     Input("view-tabs", "value"),
+    Input("overview-tabs", "value"),
 )
-def update_segment_panel(data, active_tab):
-    if active_tab != "segments":
+def update_segment_panel(data, active_tab, overview_tab="overview"):
+    if active_tab != "overview" or overview_tab != "segments":
         raise PreventUpdate
     try:
         payload, filters = deserialize_filters(data)
@@ -1768,14 +1799,28 @@ def update_rows_panel(data, preview_row_count, raw_data_clicks):
     Output("lines-panel", "style"),
     Output("segments-panel", "style"),
     Output("network-panel", "style"),
+    Output("replay-panel", "style"),
+    Output("analysis-filters", "style"),
+    Output("analysis-summary", "style"),
+    Output("analysis-data-actions", "style"),
+    Output("overview-navigation", "style"),
+    Output("main-content", "className"),
     Input("view-tabs", "value"),
+    Input("overview-tabs", "value"),
 )
-def update_tab_visibility(active_tab):
+def update_tab_visibility(active_tab, overview_tab="overview"):
+    analysis_view = overview_tab if active_tab == "overview" else None
     return (
+        tab_style(analysis_view == "overview"),
+        tab_style(analysis_view == "lines"),
+        tab_style(analysis_view == "segments"),
+        tab_style(analysis_view == "network"),
+        tab_style(active_tab == "replay"),
+        {"display": "none"} if active_tab == "replay" else {},
+        {"display": "none"} if active_tab == "replay" else {},
+        {"display": "none"} if active_tab == "replay" else {},
         tab_style(active_tab == "overview"),
-        tab_style(active_tab == "lines"),
-        tab_style(active_tab == "segments"),
-        tab_style(active_tab == "network"),
+        "app replay-active" if active_tab == "replay" else "app",
     )
 
 
@@ -1815,6 +1860,9 @@ def download_filtered_rows(_n_clicks, start_date, end_date, day_types, lines, gr
     df = get_filtered_export(filters)
     filename = f"suntrain_export_{start_date}_to_{end_date}.csv"
     return dcc.send_data_frame(df.to_csv, filename, index=False)
+
+
+load_replay_day = register_replay_callbacks(app)
 
 
 if __name__ == "__main__":

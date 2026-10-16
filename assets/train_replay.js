@@ -97,6 +97,8 @@
     class Replay {
         constructor() {
             this.day = null; this.filtered = []; this.selected = null;
+            this.mapMode = "trains"; this.demandWindow = 30;
+            this.demandIndex = []; this.demandSnapshot = null; this.demandMinute = null;
             this.active = false; this.playing = false; this.now = 0; this.speed = 60;
             this.display = ["routes", "stations"]; this.frame = null; this.busy = false;
             this.graph = null; this.staticDirty = true; this.lastUI = 0; this.lastPaint = 0;
@@ -140,15 +142,25 @@
                 this.graph.on("dragstart", () => this.setFollow(false));
                 // Train playback must not wait for external background tiles.
                 this.graph.once("style.load", () => {
-                    for (const id of ["routes", "stations", "selected-route", "trains", "selected-train"]) {
+                    for (const id of ["routes", "stations", "selected-route", "trains", "selected-train", "demand"]) {
                         this.graph.addSource(`replay-${id}`, {type: "geojson", data: collection([])});
                     }
                     this.graph.addLayer({id: "replay-routes", type: "line", source: "replay-routes",
                         paint: {"line-color": ["case", ["==", ["get", "quality"], "track"], "#75978f", "#bd873d"], "line-width": 2, "line-opacity": 0.55}});
+                    this.graph.addLayer({id: "replay-demand-glow", type: "heatmap", source: "replay-demand", layout: {visibility: "none"},
+                        paint: {"heatmap-weight": ["interpolate", ["linear"], ["get", "boardings"], 0, 0, 1000, 1],
+                            "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 6, 22, 10, 38, 14, 60],
+                            "heatmap-intensity": 1.8, "heatmap-opacity": 0.65,
+                            "heatmap-color": ["interpolate", ["linear"], ["heatmap-density"],
+                                0, "rgba(68,1,84,0)", 0.15, "rgba(68,1,84,0.5)", 0.3, "#3b528b", 0.5, "#21918c", 0.75, "#5ec962", 1, "#fde725"]}});
                     this.graph.addLayer({id: "replay-selected-route", type: "line", source: "replay-selected-route",
                         paint: {"line-color": "#115d51", "line-width": 4, "line-opacity": 0.8}});
                     this.graph.addLayer({id: "replay-stations", type: "circle", source: "replay-stations",
                         paint: {"circle-color": "#6d8980", "circle-radius": 2.5, "circle-stroke-width": 0.7, "circle-stroke-color": "white"}});
+                    this.graph.addLayer({id: "replay-demand-stations", type: "circle", source: "replay-demand", layout: {visibility: "none", "circle-sort-key": ["get", "boardings"]},
+                        paint: {"circle-color": ["interpolate", ["linear"], ["get", "boardings"], ...root.suntrainDemand.scale.flat()],
+                            "circle-radius": ["interpolate", ["linear"], ["get", "boardings"], 0, 5, 500, 7, 2000, 10, 5000, 13],
+                            "circle-stroke-color": "#fff", "circle-stroke-width": 1.5, "circle-opacity": 0.95}});
                     this.graph.addLayer({id: "replay-selected-train", type: "circle", source: "replay-selected-train",
                         paint: {"circle-color": "#18232d", "circle-radius": 11, "circle-opacity": 0.85}});
                     this.graph.addLayer({id: "replay-trains", type: "circle", source: "replay-trains",
@@ -158,6 +170,7 @@
                     this.graph.on("click", "replay-trains", e => this.select(e.features[0].properties.id));
                     this.graph.on("mousemove", "replay-trains", e => {
                         this.graph.getCanvas().style.cursor = "pointer";
+                        this.demandPopupId = null;
                         const feature = e.features[0], service = this.filtered.find(s => s.id === feature.properties.id);
                         if (!service) return;
                         const content = node("div", undefined, "replay-map-tooltip");
@@ -168,11 +181,27 @@
                         this.popup.setLngLat(feature.geometry.coordinates).setDOMContent(content).addTo(this.graph);
                     });
                     this.graph.on("mouseleave", "replay-trains", () => { this.graph.getCanvas().style.cursor = ""; this.popup.remove(); });
+                    for (const event of ["click", "mousemove"]) this.graph.on(event, "replay-demand-stations", e => {
+                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) return;
+                        this.graph.getCanvas().style.cursor = "pointer";
+                        this.showDemandPopup(Number(e.features[0].properties.id));
+                    });
+                    this.graph.on("mouseleave", "replay-demand-stations", () => {
+                        this.demandPopupId = null; this.graph.getCanvas().style.cursor = ""; this.popup.remove();
+                    });
                     this.graph.on("click", "replay-stations", e => {
+                        if (this.mapMode !== "trains") {
+                            if (!this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) this.showDemandPopup(Number(e.features[0].properties.id));
+                            return;
+                        }
                         if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) return;
                         this.popup.setLngLat(e.features[0].geometry.coordinates).setDOMContent(node("strong", e.features[0].properties.name)).addTo(this.graph);
                     });
                     this.mapReady = true;
+                    this.demandLegendMedia = root.matchMedia("(max-width: 520px)");
+                    const resizeLegend = () => { $("replay-demand-legend").open = !this.demandLegendMedia.matches; };
+                    this.demandLegendMedia.addEventListener("change", resizeLegend);
+                    resizeLegend();
                     this.applyTheme();
                     root.dash_clientside.set_props("replay-fullscreen", {disabled: false});
                     this.observer = new ResizeObserver(() => { this.graph.resize(); this.revealTab(); });
@@ -262,8 +291,8 @@
             }
         }
         setFollow(value) {
-            this.followSelected = !!value && !!this.selected;
-            root.dash_clientside.set_props("replay-follow", {children: this.followSelected ? "Following train" : "Follow train", disabled: !this.selected});
+            this.followSelected = !!value && !!this.selected && this.mapMode !== "demand";
+            root.dash_clientside.set_props("replay-follow", {children: this.followSelected ? "Following train" : "Follow train", disabled: !this.selected || this.mapMode === "demand"});
             $("replay-follow")?.setAttribute("aria-pressed", String(this.followSelected));
         }
         metroView() {
@@ -296,6 +325,7 @@
             if (this.mapReady) {
                 root.suntrainTheme.styleMap(this.graph);
                 this.graph.setPaintProperty("replay-selected-route", "line-color", dark ? "#8ae1ca" : "#115d51");
+                this.graph.setPaintProperty("replay-demand-stations", "circle-stroke-color", dark ? "#e4eef0" : "#fff");
                 this.graph.setPaintProperty("replay-stations", "circle-color", dark ? "#a6bdb5" : "#6d8980");
                 this.graph.setPaintProperty("replay-stations", "circle-stroke-color", dark ? "#17212b" : "#fff");
                 this.graph.setPaintProperty("replay-selected-train", "circle-color", dark ? "#f2f8fa" : "#18232d");
@@ -322,6 +352,8 @@
             const sizeHelp = $("replay-size-help");
             if (sizeHelp) sizeHelp.hidden = !display.includes("load");
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
+            this.demandIndex = root.suntrainDemand.buildIndex(this.filtered, this.day);
+            this.demandMinute = null; this.demandPopupId = null; this.popup?.remove();
             if (this.selected && !this.filtered.some(s => s.id === this.selected.id)) {
                 this.selected = null; this.emptyDetails();
             }
@@ -442,8 +474,66 @@
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
             const stations = this.display.includes("stations") ? [...stationIds].map(i => this.day.stations[i]) : [];
             this.graph.getSource("replay-routes").setData(collection(routes));
-            this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name}))));
+            this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: this.day.stations.indexOf(s)}))));
             this.graph.getSource("replay-selected-route").setData(collection(selected));
+        }
+        setMapMode(mode, minutes) {
+            mode = ["trains", "demand", "both"].includes(mode) ? mode : "trains";
+            minutes = [15, 30, 60].includes(Number(minutes)) ? Number(minutes) : 30;
+            const changed = this.mapMode !== mode || this.demandWindow !== minutes;
+            this.mapMode = mode; this.demandWindow = minutes;
+            $("replay-panel").classList.toggle("replay-demand-only", mode === "demand");
+            for (const id of ["replay-trains", "replay-selected-train", "replay-selected-route"])
+                this.graph.setLayoutProperty(id, "visibility", mode === "demand" ? "none" : "visible");
+            for (const id of ["replay-demand-glow", "replay-demand-stations"])
+                this.graph.setLayoutProperty(id, "visibility", mode === "trains" ? "none" : "visible");
+            $("replay-demand-legend").hidden = mode === "trains";
+            $("replay-demand-window-field").hidden = mode === "trains";
+            $("replay-legend").hidden = mode === "demand";
+            if (changed) {
+                this.demandMinute = null; this.demandPopupId = null; this.popup?.remove();
+                this.setFollow(this.followSelected);
+            }
+        }
+        showDemandPopup(id) {
+            const row = this.demandSnapshot?.rows.find(row => row.id === id);
+            if (!row) return;
+            this.demandPopupId = id;
+            const content = node("div", undefined, "replay-map-tooltip");
+            const label = !row.knownCalls && row.missingCalls ? "Boardings unavailable" : `${row.boardings.toLocaleString()} recorded boardings`;
+            content.append(node("strong", row.name), node("div", `${label} · last ${this.demandWindow} minutes`),
+                node("div", `${shortTime.format(new Date(this.demandSnapshot.start * 1000))}–${shortTime.format(new Date(this.demandSnapshot.end * 1000))}`));
+            if (!row.knownCalls && !row.missingCalls) content.append(node("div", "No recorded departures in this window."));
+            if (row.missingCalls) content.append(node("div", `${row.missingCalls} departure counts unavailable.`));
+            content.append(node("div", "Counts rounded to the nearest 10."));
+            this.popup.setLngLat([row.lon, row.lat]).setDOMContent(content).addTo(this.graph);
+        }
+        paintDemand(force) {
+            if (this.mapMode === "trains") return;
+            const minute = Math.floor(this.now / 60), clock = performance.now();
+            if (!force && (this.demandMinute === minute || clock - this.demandPaintTime < 200)) return;
+            this.demandMinute = minute; this.demandPaintTime = clock;
+            this.demandSnapshot = root.suntrainDemand.snapshot(this.demandIndex, minute * 60, this.demandWindow * 60);
+            const snapshot = this.demandSnapshot;
+            this.graph.getSource("replay-demand").setData(collection(snapshot.features));
+            if (!$("replay-demand-scale").childElementCount) {
+                for (const [count, color] of root.suntrainDemand.scale) {
+                    const tick = node("span");
+                    const swatch = node("i"); swatch.style.background = color;
+                    tick.append(swatch, document.createTextNode(count.toLocaleString() + (count === 5000 ? "+" : "")));
+                    $("replay-demand-scale").append(tick);
+                }
+            }
+            setText("replay-demand-range", `Last ${this.demandWindow} min · ${shortTime.format(new Date(snapshot.start * 1000))}–${shortTime.format(new Date(snapshot.end * 1000))}`);
+            setText("replay-demand-total", !snapshot.knownCalls && snapshot.missingCalls ? "Boarding counts unavailable" :
+                `${snapshot.total.toLocaleString()} boardings · ${snapshot.stationCount} stations`);
+            const notes = [];
+            if (!snapshot.stationCount) notes.push("No recorded boardings in this window.");
+            if (snapshot.missingCalls) notes.push(`${snapshot.missingCalls} departure counts unavailable.`);
+            if (snapshot.start < this.day.start) notes.push("Selected day only; earlier boardings excluded.");
+            if (!notes.length) notes.push("Selected day & filters · counts rounded to 10");
+            setText("replay-demand-note", notes.join(" "));
+            if (this.demandPopupId !== null && this.demandPopupId !== undefined) this.showDemandPopup(this.demandPopupId);
         }
         async paint(force = false) {
             if (!this.active || !this.day || this.loading || !this.mapReady) return;
@@ -466,6 +556,7 @@
                 if (this.staticDirty) {
                     this.updateStaticLayers(); this.staticDirty = false;
                 }
+                this.paintDemand(force);
                 this.activePositions = trains;
                 this.missingPositions = missingCount;
                 const selectedVisible = selectedPosition && selectedPosition.lon !== null && selectedPosition.lat !== null;
@@ -480,7 +571,7 @@
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     setText("replay-clock-date", dateFormat.format(new Date(this.now * 1000)));
                     setText("replay-active-count", activeCount.toLocaleString());
-                    setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString()} position${missingCount === 1 ? "" : "s"} unavailable` : "");
+                    setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString()} train position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");
                     if (slider) { slider.value = String(this.now); slider.setAttribute("aria-valuetext", `${clockFormat.format(new Date(this.now * 1000))} ${dateFormat.format(new Date(this.now * 1000))}`); }
                     this.detailStatus(selectedPosition);
@@ -494,13 +585,16 @@
                 if (this.paintAgain) { this.paintAgain = false; requestAnimationFrame(() => this.paint(true)); }
             }
         }
-        async sync(day, tab, date, operators, lines, directions, stations, number, display, speed, trigger) {
+        async sync(day, tab, date, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger) {
             this.lastTrigger = trigger;
             this.active = tab === "replay";
             if (!this.active) { this.pause(); if (this.isFullscreen()) this.exitFullscreen(); return; }
             this.revealTab();
             if (!day || day.business_date !== date || day.error) {
                 this.pause(); this.loading = true;
+                this.demandMinute = null; this.demandSnapshot = null; this.demandPopupId = null; this.popup?.remove();
+                if ($("replay-demand-legend")) $("replay-demand-legend").hidden = true;
+                setText("replay-position-note", "");
                 root.dash_clientside.set_props("replay-play", {disabled: true});
                 if ($("replay-map")) $("replay-map").classList.add("replay-is-loading");
                 setText("replay-active-count", "—"); setText("replay-matching-count", day?.error ? " · Could not load this day" : " · Loading this day…");
@@ -513,6 +607,7 @@
             if (!this.mapReady && !await this.connect()) return;
             if (!this.active || this.day.business_date !== day.business_date) return;
             this.speed = Number(speed) || 60;
+            this.setMapMode(mode, demandWindow);
             const filters = {operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             const filterSignature = JSON.stringify([filters, display]);
             if (newDay || this.filterSignature !== filterSignature) {
@@ -536,10 +631,10 @@
     // Exposed diagnostics support browser verification without transmitting frames.
     root.suntrainReplay = replay;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainReplay: {
-        sync: function (day, tab, date, operators, lines, directions, stations, number, display, speed, play, restart, back, forward, fit) {
+        sync: function (day, tab, date, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit) {
             const context = root.dash_clientside.callback_context;
             const trigger = context.triggered_id || context.triggered?.[0]?.prop_id?.split(".")[0];
-            replay.sync(day, tab, date, operators, lines, directions, stations, number, display, speed, trigger).catch(error => {
+            replay.sync(day, tab, date, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger).catch(error => {
                 console.error("Train replay failed", error); replay.pause();
                 setText("replay-load-message", "The replay could not start. Reload this page to try again.");
             });

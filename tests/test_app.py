@@ -139,16 +139,16 @@ def test_reset_clears_filters_and_preset_command(app_module, monkeypatch):
 
 
 @pytest.mark.parametrize(
-    ("callback_name", "inactive_tab"),
+    ("callback_name", "subtab"),
     [
-        ("update_overview_panel", "lines"),
-        ("update_lines_panel", "network"),
-        ("update_service_panel", "segments"),
-        ("update_segment_panel", "overview"),
-        ("update_station_panel", "lines"),
+        ("update_overview_panel", "overview"),
+        ("update_lines_panel", "lines"),
+        ("update_service_panel", "lines"),
+        ("update_segment_panel", "segments"),
+        ("update_station_panel", "network"),
     ],
 )
-def test_inactive_panels_do_not_query(app_module, monkeypatch, callback_name, inactive_tab):
+def test_inactive_panels_do_not_query(app_module, monkeypatch, callback_name, subtab):
     monkeypatch.setattr(
         app_module,
         "deserialize_filters",
@@ -156,7 +156,9 @@ def test_inactive_panels_do_not_query(app_module, monkeypatch, callback_name, in
     )
 
     with pytest.raises(PreventUpdate):
-        getattr(app_module, callback_name)({}, inactive_tab)
+        getattr(app_module, callback_name)({}, "replay", subtab)
+    with pytest.raises(PreventUpdate):
+        getattr(app_module, callback_name)({}, "overview", "other")
 
 
 def test_raw_preview_does_not_query_while_collapsed(app_module, monkeypatch):
@@ -186,6 +188,7 @@ def test_heavy_callbacks_include_active_tab_input(app_module):
             if f"{graph_id}.figure" in key
         )
         assert {"id": "view-tabs", "property": "value"} in callback["inputs"]
+        assert {"id": "overview-tabs", "property": "value"} in callback["inputs"]
 
 
 def test_export_limit_prevents_materialization(app_module, monkeypatch):
@@ -256,3 +259,38 @@ def test_index_route_renders(app_module):
 
     assert response.status_code == 200
     assert b"SunTrain" in response.data
+
+
+def test_replay_only_loads_when_visible_and_date_changes(app_module, monkeypatch):
+    import dashboard.replay_view as replay_view
+
+    calls = []
+    monkeypatch.setattr(replay_view, "get_replay_day", lambda day: calls.append(day) or {"business_date": day})
+    with pytest.raises(PreventUpdate):
+        app_module.load_replay_day("2023-07-10", "overview", None)
+    assert app_module.load_replay_day("2023-07-10", "replay", None) == ({"business_date": "2023-07-10"}, "")
+    with pytest.raises(PreventUpdate):
+        app_module.load_replay_day("2023-07-10", "replay", {"business_date": "2023-07-10"})
+    app_module.load_replay_day("2023-07-11", "replay", {"business_date": "2023-07-10"})
+    assert calls == ["2023-07-10", "2023-07-11"]
+
+
+def test_replay_hides_shared_filters_and_restores_them_on_exit(app_module):
+    replay = app_module.update_tab_visibility("replay")
+    overview = app_module.update_tab_visibility("overview")
+    assert replay[4] == {"display": "block"}
+    assert replay[5:8] == ({"display": "none"},) * 3
+    assert replay[-1] == "app replay-active"
+    assert overview[4] == {"display": "none"}
+    assert overview[5:8] == ({}, {}, {})
+
+
+@pytest.mark.parametrize("subtab,index", [("overview", 0), ("lines", 1), ("segments", 2), ("network", 3)])
+def test_overview_only_shows_selected_subtab(app_module, subtab, index):
+    styles = app_module.update_tab_visibility("overview", subtab)
+    for position in range(4):
+        assert styles[position] == {"display": "block" if position == index else "none"}
+    assert styles[8] == {"display": "block"}
+    hidden = app_module.update_tab_visibility("replay", subtab)
+    assert hidden[:4] == ({"display": "none"},) * 4
+    assert hidden[8] == {"display": "none"}

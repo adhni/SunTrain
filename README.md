@@ -159,6 +159,42 @@ Notes:
 - A basic health endpoint is available at `/health`.
 - `render.yaml` is included for Render deployment.
 
+## Train Replay
+
+The **Train Replay** tab animates recorded Metro and V/Line services for one business date at a time. Choose a date, press **Play**, or drag the timeline. Filter by operator, line, direction, station served or train number. Station filters keep each matching service's entire journey. Click a train to inspect its scheduled stops and passenger loads; **Size by passengers** makes higher loads more prominent.
+
+The site has two main tabs: **Train Replay** and **Overview**. Overview contains **Summary**, **Lines & Services**, **Segment Speed**, and **Network** sub-tabs; it remembers your selected sub-tab when you return from replay.
+
+Use **Dark mode** in the header or replay map toolbar to switch the site, charts, and map backgrounds together. The theme is saved in this browser. The map toolbar toggle also works in fullscreen, and changing themes preserves playback, filters, and the map view.
+
+Train Replay is the opening view and first tab, with the map initially focused on metropolitan Melbourne. **Melbourne** restores that view, while **Fit selection** shows the full extent of the filtered services. **Follow train** keeps a selected train centered during playback; dragging the map or choosing a view stops following.
+
+**Fullscreen** expands the map with playback controls, speeds up to **2,000×**, and a **Filters** button for the date, line and operator controls. Selected-train details appear over the map and can be closed. Use **Exit fullscreen** or **Escape** to return. Browsers without native fullscreen expand the map to fill the browser window instead.
+
+Positions are estimates interpolated between scheduled stops, with trains stationary during scheduled dwell times. They are not recorded GPS positions. Passenger counts are rounded to the nearest 10 and do not indicate capacity percentages. Each marker represents a recorded service, rather than a tracked physical vehicle across multiple journeys.
+
+Playback runs in the browser after loading the selected day. Midnight, the 03:00 business-day boundary and Melbourne daylight-saving changes are handled in stop order. The timeline extends when services assigned to a business date finish after the following 03:00. Ambiguous repeated-hour times are marked; invalid service timing is omitted with a visible count.
+
+The replay uses MapLibre GL JS 5.6.1, vendored with its [license](assets/maplibre-LICENSE.txt), and attributed OpenStreetMap background tiles. The background needs an internet connection; train playback and the prepared railway geometry do not make external data requests.
+
+Railway curves are prepared locally in `data/reference/rail_paths.json` from the official [Transport Victoria GTFS Schedule](https://opendata.transport.vic.gov.au/dataset/gtfs-schedule), under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The pinned geographic reference is dated **15 October 2026**, so it may differ from the FY 2023–24 network. It supplies geometry only. No external timetable replaces the historical services or passenger counts. Unmatched or ambiguous paths use amber station links, with their count shown below the map.
+
+To rebuild the geographic reference from a downloaded official archive:
+
+```bash
+curl --fail --location https://data.ptv.vic.gov.au/downloads/gtfs.zip --output /tmp/suntrain-gtfs.zip
+./.venv/bin/python scripts/prepare_replay_geometry.py /tmp/suntrain-gtfs.zip --source-date YYYY-MM-DD
+```
+
+Use the archive's actual publication date. Preparation retains train shapes only and caches intermediate geometry under `.cache/`; the full archive is not required by the app. Set `SUNTRAIN_RAIL_GEOMETRY` to use another prepared reference. Without a reference, replay still works using clearly labeled approximate station links. Train data continues to use `SUNTRAIN_PARQUET_GLOB`.
+
+Validation:
+
+```bash
+./.venv/bin/python -m pytest -q
+node --test tests/test_replay_animation.cjs
+```
+
 ## Deploying To Render
 
 The repo is ready to deploy as a Python web service.

@@ -14,6 +14,8 @@ import math
 import re
 import sys
 from datetime import timedelta
+from bisect import bisect_right
+import heapq
 from collections import defaultdict
 from pathlib import Path
 from zipfile import ZipFile
@@ -28,7 +30,8 @@ from dashboard.replay import GEOMETRY_PATH, cumulative_distances, pattern_key
 
 
 def station_name(name):
-    return re.sub(r"[^a-z0-9]", "", re.sub(r"\s+(railway\s+)?station$", "", name.lower()))
+    normalized = re.sub(r"[^a-z0-9]", "", re.sub(r"\s+(railway\s+)?station$", "", name.lower()))
+    return {"jolimontmcg": "jolimont"}.get(normalized, normalized)
 
 
 def records(archive, name):
@@ -60,6 +63,28 @@ def simplify(points, tolerance=0.000065):
     return points[sorted(keep)].tolist()
 
 
+def anchored_shape(raw, stops):
+    """Keep each stop occurrence anchored to its GTFS distance, including on loops."""
+    raw = sorted(raw)
+    distances = [row[1] for row in raw]
+    points = [row[2] for row in raw]
+    if len(points) < 2 or any(b < a for a, b in zip(distances, distances[1:])):
+        raise ValueError("Invalid shape distances")
+    positions = []
+    for distance, _ in stops:
+        if distance < distances[0] - 1 or distance > distances[-1] + 1:
+            raise ValueError("Stop outside shape distances")
+        i = min(max(0, bisect_right(distances, distance) - 1), len(points) - 2)
+        length = distances[i + 1] - distances[i]
+        positions.append(i + (min(1, max(0, (distance - distances[i]) / length)) if length else 0))
+    output, indices = [point_at(points, positions[0])], [0]
+    for start, end in zip(positions, positions[1:]):
+        section = simplify(clip_path(points, start, end, point_at(points, start), point_at(points, end)))
+        output.extend(section[1:])
+        indices.append(len(output) - 1)
+    return output, indices
+
+
 def load_variants(filename):
     variants = []
     with ZipFile(filename) as outer:
@@ -68,37 +93,51 @@ def load_variants(filename):
                 routes = {r["route_id"]: r for r in records(archive, "routes.txt")
                           if int(r["route_type"]) in (1, 2) or 100 <= int(r["route_type"]) < 200
                           or 400 <= int(r["route_type"]) < 500}
-                trips = {r["trip_id"]: r["shape_id"] for r in records(archive, "trips.txt")
+                trips = {r["trip_id"]: (r["shape_id"], r["route_id"]) for r in records(archive, "trips.txt")
                          if r["route_id"] in routes and r["shape_id"]}
-                shape_routes = defaultdict(set)
-                for r in records(archive, "trips.txt"):
-                    if r["trip_id"] in trips:
-                        shape_routes[r["shape_id"]].add(routes[r["route_id"]]["route_long_name"])
-                stops = {r["stop_id"]: station_name(r["stop_name"]) for r in records(archive, "stops.txt")
-                         if r.get("platform_code", "") != "R-Bus"}
-                positions = defaultdict(set)
+                stops = {r["stop_id"]: r for r in records(archive, "stops.txt")}
+                trip_stops, rejected = defaultdict(list), set()
                 for r in records(archive, "stop_times.txt"):
-                    shape = trips.get(r["trip_id"])
-                    if shape and r["stop_id"] in stops and r.get("shape_dist_traveled"):
-                        positions[shape].add((float(r["shape_dist_traveled"]), stops[r["stop_id"]]))
+                    trip = r["trip_id"]
+                    if trip not in trips:
+                        continue
+                    stop = stops.get(r["stop_id"])
+                    if stop is None or not r.get("shape_dist_traveled") or \
+                            "replacement" in stop["stop_name"].lower() or stop.get("platform_code", "").lower() in ("r-bus", "replacement bus"):
+                        rejected.add(trip)
+                        continue
+                    trip_stops[trip].append((int(r["stop_sequence"]), float(r["shape_dist_traveled"]), station_name(stop["stop_name"])))
+                positions, shape_routes = defaultdict(set), defaultdict(set)
+                for trip, sequence in trip_stops.items():
+                    if trip in rejected:
+                        continue
+                    ordered = sorted(sequence)
+                    if any(b[1] < a[1] for a, b in zip(ordered, ordered[1:])):
+                        continue
+                    shape, route = trips[trip]
+                    positions[shape].update((distance, name) for _, distance, name in ordered)
+                    shape_routes[shape].add(routes[route]["route_long_name"])
                 points = defaultdict(list)
                 for r in records(archive, "shapes.txt"):
                     if r["shape_id"] in positions:
-                        points[r["shape_id"]].append((int(r["shape_pt_sequence"]),
+                        points[r["shape_id"]].append((int(r["shape_pt_sequence"]), float(r["shape_dist_traveled"]),
                                                      [round(float(r["shape_pt_lon"]), 6), round(float(r["shape_pt_lat"]), 6)]))
                 seen = set()
-                for shape, shape_points in points.items():
-                    names = []
-                    for _, name in sorted(positions[shape]):
-                        if not names or names[-1] != name:
-                            names.append(name)
-                    coordinates = simplify([p for _, p in sorted(shape_points)])
-                    signature = hashlib.sha256(json.dumps([names, coordinates]).encode()).hexdigest()
-                    if len(names) > 1 and signature not in seen:
+                for shape, raw in points.items():
+                    occurrences = []
+                    for distance, name in sorted(positions[shape]):
+                        if not occurrences or occurrences[-1][1] != name:
+                            occurrences.append((distance, name))
+                    if len(occurrences) < 2:
+                        continue
+                    coordinates, indices = anchored_shape(raw, occurrences)
+                    names = [name for _, name in occurrences]
+                    signature = hashlib.sha256(json.dumps([names, coordinates, indices]).encode()).hexdigest()
+                    if signature not in seen:
                         seen.add(signature)
-                        variants.append({"names": names, "points": coordinates, "operator": operator,
-                                         "routes": " ".join(sorted(shape_routes[shape])).lower()})
-                print(f"{operator}: {len(points)} railway shapes; {len(seen)} distinct paths", flush=True)
+                        variants.append({"names": names, "points": coordinates, "stop_indices": indices,
+                                         "operator": operator, "routes": " ".join(sorted(shape_routes[shape])).lower()})
+                print(f"{operator}: {len(points)} rail shapes; {len(seen)} distinct paths; {len(rejected)} replacement/invalid trips excluded", flush=True)
     return variants
 
 
@@ -114,82 +153,193 @@ def ordered_indices(needles, haystack):
     return indices
 
 
-def project(point, coordinates):
-    """Nearest segment and fraction, with longitude scaled at Victorian latitudes."""
-    points = np.asarray(coordinates)
-    scale = np.array([math.cos(math.radians(point[1])), 1.0])
-    starts = points[:-1] * scale
-    vectors = (points[1:] - points[:-1]) * scale
-    lengths = np.sum(vectors ** 2, axis=1)
-    fraction = np.clip(np.sum((np.array(point) * scale - starts) * vectors, axis=1) / np.maximum(lengths, 1e-20), 0, 1)
-    distance = np.sum((starts + vectors * fraction[:, None] - np.array(point) * scale) ** 2, axis=1)
-    index = int(np.argmin(distance))
-    return index + float(fraction[index]), math.sqrt(float(distance[index])) * 111_195
+def point_at(points, position):
+    index = min(int(position), len(points) - 2)
+    fraction = position - index
+    return [round(points[index][axis] + fraction * (points[index + 1][axis] - points[index][axis]), 6) for axis in (0, 1)]
 
 
 def clip_path(points, start, end, a, b):
     if start > end:
         return clip_path(list(reversed(points)), len(points) - 1 - start, len(points) - 1 - end, a, b)
-    def at(position):
-        index = min(int(position), len(points) - 2)
-        fraction = position - index
-        return [round(points[index][axis] + fraction * (points[index + 1][axis] - points[index][axis]), 6) for axis in (0, 1)]
-    result = [a, at(start), *points[int(start) + 1:math.ceil(end)], at(end), b]
+    result = [a, point_at(points, start), *points[int(start) + 1:math.ceil(end)], point_at(points, end), b]
     return [p for i, p in enumerate(result) if i == 0 or p != result[i - 1]]
 
 
+def passes_stations(points, stations, tolerance=80):
+    """Reject shapes that physically pass recorded stops out of journey order."""
+    if not stations:
+        return False
+    curve = np.asarray(points)
+    candidates = np.asarray(stations)
+    nearby = candidates[(candidates[:, 0] >= curve[:, 0].min() - 0.001) &
+                        (candidates[:, 0] <= curve[:, 0].max() + 0.001) &
+                        (candidates[:, 1] >= curve[:, 1].min() - 0.001) &
+                        (candidates[:, 1] <= curve[:, 1].max() + 0.001)]
+    if not len(nearby):
+        return False
+    scale = np.array([math.cos(math.radians(float(curve[:, 1].mean()))), 1.0])
+    starts, vectors = curve[:-1] * scale, (curve[1:] - curve[:-1]) * scale
+    offset = nearby[:, None, :] * scale - starts
+    fractions = np.clip(np.sum(offset * vectors, axis=2) / np.maximum(np.sum(vectors ** 2, axis=1), 1e-20), 0, 1)
+    distances = np.sum((offset - fractions[:, :, None] * vectors) ** 2, axis=2)
+    return bool(np.any(distances < (tolerance / 111_195) ** 2))
+
+
+def context_size(observed, leg, sequence, start, end):
+    """Count the surrounding recorded stops supported by this oriented shape."""
+    if start > end:
+        return context_size(observed, leg, list(reversed(sequence)), len(sequence) - 1 - start, len(sequence) - 1 - end)
+    def prefix_size(needles, haystack):
+        count, cursor = 0, 0
+        for name in needles:
+            try:
+                cursor = haystack.index(name, cursor) + 1
+            except ValueError:
+                break
+            count += 1
+        return count
+    return 2 + prefix_size(observed[:leg][::-1], sequence[:start][::-1]) + prefix_size(observed[leg + 2:], sequence[end + 1:])
+
+
 def build_geometry(variants, patterns):
-    index = defaultdict(set)
+    """Match ordered journeys; compose rail segments only when the corridor is unique."""
+    index, graph = defaultdict(set), defaultdict(dict)
     for i, variant in enumerate(variants):
+        variant = dict(variant)
+        variants[i] = variant
+        variant["names"] = list(map(station_name, variant["names"]))
         for name in variant["names"]:
             index[name].add(i)
-    projection_cache, pair_cache, paths, mappings = {}, {}, {}, {}
-    def projection(i, point):
-        key = (i, tuple(point))
-        if key not in projection_cache:
-            projection_cache[key] = project(point, variants[i]["points"])
-        return projection_cache[key]
+        for j, (a, b) in enumerate(zip(variant["names"], variant["names"][1:])):
+            if a == b:
+                continue
+            start, end = variant["stop_indices"][j:j + 2]
+            if start >= end:
+                continue
+            curve = clip_path(variant["points"], start, end, point_at(variant["points"], start), point_at(variant["points"], end))
+            length = cumulative_distances(curve)[-1]
+            for origin, destination, points in ((a, b, curve), (b, a, list(reversed(curve)))):
+                graph[(variant["operator"], origin)].setdefault(destination, []).append((length, points, variant["routes"]))
 
-    def pick_path(a_name, b_name, a, b, candidates):
-        candidates = tuple(sorted(candidates))
-        key = (a_name, b_name, tuple(a), tuple(b), candidates)
-        if key in pair_cache:
-            return pair_cache[key]
-        choices = []
-        for i in candidates:
-            start, da = projection(i, a)
-            end, db = projection(i, b)
-            if da > 500 or db > 500 or abs(start - end) < 0.001:
-                continue
-            points = clip_path(variants[i]["points"], start, end, a, b)
-            length = cumulative_distances(points)[-1]
-            direct = cumulative_distances([a, b])[-1]
-            if length > max(direct * 5, direct + 10_000):
-                continue
-            choices.append((length, points))
-        choices.sort(key=lambda item: item[0])
-        # Distinct alternatives cannot be established from sparse historical stops.
-        ambiguous = choices and any(length > choices[0][0] * 1.3 + 500 for length, _ in choices[1:])
-        points = choices[0][1] if choices and not ambiguous else [a, b]
-        quality = "track" if choices and not ambiguous else "approximate"
-        identifier = hashlib.sha256(json.dumps([quality, points]).encode()).hexdigest()[:20]
+    paths, mappings, pair_cache = {}, {}, {}
+
+    def save(points, reason=None, method="shape"):
+        quality = "track" if points else "approximate"
+        identifier = hashlib.sha256(json.dumps([quality, points, reason]).encode()).hexdigest()[:20]
         paths[identifier] = {"coordinates": points, "quality": quality}
-        pair_cache[key] = identifier
+        if reason:
+            paths[identifier]["reason"] = reason
+        else:
+            paths[identifier]["method"] = method
         return identifier
 
-    for n, (operator, line, names, coordinates) in enumerate(patterns):
-        normalized = [station_name(name) for name in names]
-        full = set.intersection(*(index[name] for name in normalized)) if normalized else set()
-        full = {i for i in full if variants[i]["operator"] == operator and
-                (ordered_indices(normalized, variants[i]["names"]) is not None or
-                 ordered_indices(normalized, list(reversed(variants[i]["names"]))) is not None)}
-        matching_line = {i for i in full if station_name(line) in station_name(variants[i]["routes"])}
-        if matching_line:
-            full = matching_line
+    def choose(choices):
+        if not choices:
+            return None
+        choices = sorted(choices, key=lambda item: item[0])
+        if any(length > choices[0][0] * 1.3 + 500 for length, _ in choices[1:]):
+            return None
+        return choices[0][1]
+
+    def unique_corridor(operator, line, origin, destination, blocked, blocked_points, limit):
+        """A graph fallback may join shapes, but must not guess between corridors."""
+        def route(omit=None):
+            queue, best = [(0, origin, [])], {origin: 0}
+            while queue:
+                distance, node, chain = heapq.heappop(queue)
+                if distance > best[node] or distance > limit:
+                    continue
+                if node == destination:
+                    return chain
+                for neighbor, edges in graph.get((operator, node), {}).items():
+                    if neighbor in blocked or (node, neighbor) == omit or (neighbor, node) == omit:
+                        continue
+                    matching = [edge for edge in edges if station_name(line) in station_name(edge[2])]
+                    edges = matching or edges
+                    curve = choose([(length, points) for length, points, _ in edges if not passes_stations(points, blocked_points)])
+                    if curve is None:
+                        continue
+                    candidate = distance + cumulative_distances(curve)[-1]
+                    if candidate < best.get(neighbor, float("inf")):
+                        best[neighbor] = candidate
+                        heapq.heappush(queue, (candidate, neighbor, chain + [(node, neighbor, curve)]))
+            return None
+        chain = route()
+        if not chain or any(route((a, b)) is not None for a, b, _ in chain):
+            return None
+        points = []
+        for _, _, curve in chain:
+            if points and cumulative_distances([points[-1], curve[0]])[-1] > 100:
+                return None
+            points.extend(curve if not points or points[-1] != curve[0] else curve[1:])
+        return points
+
+    for n, (operator, line, names, points) in enumerate(patterns):
+        normalized = list(map(station_name, names))
+        full = []
+        candidates = set.intersection(*(index[name] for name in normalized)) if normalized else set()
+        for i in sorted(candidates):
+            if variants[i]["operator"] != operator:
+                continue
+            for reverse in (False, True):
+                sequence = list(reversed(variants[i]["names"])) if reverse else variants[i]["names"]
+                indices = ordered_indices(normalized, sequence)
+                if indices is not None:
+                    full.append((i, [len(sequence) - 1 - k if reverse else k for k in indices]))
+        matching = [match for match in full if station_name(line) in station_name(variants[match[0]]["routes"])]
+        full = matching or full
         legs = []
-        for j, (a, b) in enumerate(zip(coordinates, coordinates[1:])):
-            candidates = full or (index[normalized[j]] & index[normalized[j + 1]])
-            legs.append(pick_path(normalized[j], normalized[j + 1], a, b, candidates))
+        for j, (a, b) in enumerate(zip(points, points[1:])):
+            a_name, b_name = normalized[j:j + 2]
+            blocked = frozenset(normalized) - {a_name, b_name}
+            blocked_points = [point for name, point in zip(normalized, points) if name in blocked]
+            cache_key = (operator, line, a_name, b_name, tuple(a), tuple(b), blocked, tuple((i, tuple(indices[j:j + 2])) for i, indices in full))
+            if cache_key in pair_cache:
+                legs.append(pair_cache[cache_key])
+                continue
+            spans = [(i, indices[j], indices[j + 1]) for i, indices in full]
+            if not spans:
+                for i in sorted(index[a_name] & index[b_name]):
+                    v = variants[i]
+                    if v["operator"] != operator:
+                        continue
+                    spans.extend((i, start, end) for start, name in enumerate(v["names"]) if name == a_name
+                                 for end, other in enumerate(v["names"]) if other == b_name and start != end)
+            choices = []
+            direct = cumulative_distances([a, b])[-1]
+            limit = max(direct * 5, direct + 10_000)
+            for i, start, end in spans:
+                v = variants[i]
+                if blocked.intersection(v["names"][min(start, end) + 1:max(start, end)]):
+                    continue
+                first, last = v["stop_indices"][start], v["stop_indices"][end]
+                if cumulative_distances([a, point_at(v["points"], first)])[-1] > 500 or cumulative_distances([point_at(v["points"], last), b])[-1] > 500:
+                    continue
+                curve = clip_path(v["points"], first, last, a, b)
+                length = cumulative_distances(curve)[-1]
+                if 0 < length <= limit and not passes_stations(curve, blocked_points):
+                    choices.append((context_size(normalized, j, v["names"], start, end), length, curve, v["routes"]))
+            if choices:
+                # Extra outer-line overlap must not outweigh a valid local corridor.
+                if any(choice[0] > 2 for choice in choices):
+                    choices = [choice for choice in choices if choice[0] > 2]
+            preferred = [choice for choice in choices if station_name(line) in station_name(choice[3])]
+            choices = preferred or choices
+            curve = choose([(length, curve) for _, length, curve, _ in choices])
+            method = "shape"
+            if not choices:
+                curve = unique_corridor(operator, line, a_name, b_name, blocked, blocked_points, limit)
+                if curve:
+                    # Keep joins inside each station's platform area.
+                    if cumulative_distances([a, curve[0]])[-1] > 500 or cumulative_distances([curve[-1], b])[-1] > 500:
+                        curve = None
+                    else:
+                        curve = [a, *curve, b]
+                        method = "segments"
+            identifier = save(curve, method=method) if curve else save([], reason="ambiguous" if choices else "unmatched")
+            pair_cache[cache_key] = identifier
+            legs.append(identifier)
         mappings[pattern_key(operator, line, names)] = legs
         if n % 200 == 0:
             print(f"Matched {n + 1}/{len(patterns)} historical stop patterns", flush=True)
@@ -203,7 +353,7 @@ def main():
     parser.add_argument("--output", type=Path, default=GEOMETRY_PATH)
     args = parser.parse_args()
     archive_checksum = _checksum(args.archive)
-    cache = Path(__file__).resolve().parents[1] / ".cache" / f"rail-variants-{archive_checksum[:16]}.json"
+    cache = Path(__file__).resolve().parents[1] / ".cache" / f"rail-variants-v2-{archive_checksum[:16]}.json"
     if cache.exists():
         variants = json.loads(cache.read_text())
     else:
@@ -237,7 +387,7 @@ def main():
     finally:
         con.close()
     mappings, paths = build_geometry(variants, patterns)
-    metadata = {"source": "Transport Victoria GTFS Schedule", "source_date": args.source_date,
+    metadata = {"matcher_version": 2, "source": "Transport Victoria GTFS Schedule", "source_date": args.source_date,
                 "source_url": "https://opendata.transport.vic.gov.au/dataset/gtfs-schedule",
                 "download_url": "https://data.ptv.vic.gov.au/downloads/gtfs.zip",
                 "archive_sha256": archive_checksum,

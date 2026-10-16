@@ -25,6 +25,8 @@ def pattern_key(operator: str, line: str, stations: list[str]) -> str:
 
 
 def cumulative_distances(points: list[list[float]]) -> list[float]:
+    if not points:
+        return []
     distances = [0.0]
     for (lon1, lat1), (lon2, lat2) in zip(points, points[1:]):
         x = math.radians(lon2 - lon1) * math.cos(math.radians((lat1 + lat2) / 2))
@@ -140,10 +142,8 @@ def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path:
             path_id = pattern[i] if i < len(pattern) else None
             reference = geometry.get("paths", {}).get(path_id)
             if reference is None:
-                a, b = (stations[service_stops[j][0]] for j in (i, i + 1))
-                points = [[a["lon"], a["lat"]], [b["lon"], b["lat"]]]
-                path_id = "estimate-" + hashlib.sha256(json.dumps(points).encode()).hexdigest()[:16]
-                reference = {"coordinates": points, "quality": "approximate"}
+                path_id = "unresolved"
+                reference = {"coordinates": [], "quality": "approximate", "reason": "unmatched"}
             if path_id not in paths:
                 paths[path_id] = {**reference, "distances": cumulative_distances(reference["coordinates"])}
             legs.append(path_id)

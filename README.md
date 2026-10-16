@@ -177,7 +177,7 @@ Playback runs in the browser after loading the selected day. Midnight, the 03:00
 
 The replay uses MapLibre GL JS 5.6.1, vendored with its [license](assets/maplibre-LICENSE.txt), and attributed OpenStreetMap background tiles. The background needs an internet connection; train playback and the prepared railway geometry do not make external data requests.
 
-Railway curves are prepared locally in `data/reference/rail_paths.json` from the official [Transport Victoria GTFS Schedule](https://opendata.transport.vic.gov.au/dataset/gtfs-schedule), under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The pinned geographic reference is dated **15 October 2026**, so it may differ from the FY 2023–24 network. It supplies geometry only. No external timetable replaces the historical services or passenger counts. Unmatched or ambiguous paths use amber station links, with their count shown below the map.
+Railway curves are prepared locally in `data/reference/rail_paths.json` from the official [Transport Victoria GTFS Schedule](https://opendata.transport.vic.gov.au/dataset/gtfs-schedule), under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The pinned geographic reference is dated **15 October 2026**, so it may differ from the FY 2023–24 network. It supplies geometry only. No external timetable replaces the historical services or passenger counts. Unmatched or ambiguous paths are left as gaps. Train markers are hidden between those stops and reappear at the next recorded station; active-service counts include services whose positions are unavailable. The map and selected-service details explain these gaps. Selected-route highlights contain resolved railway geometry only.
 
 To rebuild the geographic reference from a downloaded official archive:
 
@@ -186,7 +186,7 @@ curl --fail --location https://data.ptv.vic.gov.au/downloads/gtfs.zip --output /
 ./.venv/bin/python scripts/prepare_replay_geometry.py /tmp/suntrain-gtfs.zip --source-date YYYY-MM-DD
 ```
 
-Use the archive's actual publication date. Preparation retains train shapes only and caches intermediate geometry under `.cache/`; the full archive is not required by the app. Set `SUNTRAIN_RAIL_GEOMETRY` to use another prepared reference. Without a reference, replay still works using clearly labeled approximate station links. Train data continues to use `SUNTRAIN_PARQUET_GLOB`.
+Use the archive's actual publication date. Preparation excludes replacement-bus trips, normalizes known station aliases (including Jolimont-MCG), and anchors each stop occurrence to its GTFS shape distance before simplification. Ordered journey stops and geometric checks for out-of-order station crossings constrain route matching; a unique corridor can be composed from verified station-to-station rail segments when no single shape covers a journey leg. Ambiguous corridors remain unresolved. Preparation retains train shapes only and caches intermediate geometry under `.cache/`; the full archive is not required by the app. Set `SUNTRAIN_RAIL_GEOMETRY` to use another prepared reference. Without a reference, replay shows trains at recorded stations and hides their positions between stops. Train data continues to use `SUNTRAIN_PARQUET_GLOB`.
 
 Validation:
 

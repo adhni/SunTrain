@@ -42,7 +42,8 @@ def build_replay_panel(metadata, default_date):
             html.Div(className="replay-map-card", children=[
                 html.Div(className="replay-map-toolbar", children=[
                     html.Div([html.Strong("—", id="replay-active-count"), html.Span(" active trains"),
-                              html.Span("", id="replay-matching-count", className="replay-muted")]),
+                              html.Span("", id="replay-matching-count", className="replay-muted"),
+                              html.Span("", id="replay-position-note", className="replay-approximate")]),
                     html.Div(className="replay-map-actions", children=[
                         html.Button("Melbourne", id="replay-melbourne", className="finder-chip", title="Return to metropolitan Melbourne"),
                         html.Button("Fit selection", id="replay-fit", className="finder-chip", title="Show the full extent of the filtered services"),

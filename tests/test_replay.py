@@ -63,8 +63,8 @@ def test_replay_loads_complete_services_from_configured_source(monkeypatch, samp
     assert day["approximate_legs"] == day["total_legs"] == 1
     path = day["paths"][service["legs"][0]]
     assert path["quality"] == "approximate"
-    assert path["distances"][0] == 0
-    assert path["distances"][-1] > 1000
+    assert path["coordinates"] == []
+    assert path["distances"] == []
     assert get_replay_day("2023-07-10") is day
     assert get_replay_day("2023-07-11")["services"][0]["number"] == "2002"
 
@@ -84,8 +84,8 @@ def test_geometry_uses_observed_station_order_to_select_a_branch():
 
     a, b, c, branch = [144.0, -37.0], [144.01, -37.0], [144.02, -37.0], [144.01, -37.01]
     variants = [
-        {"names": ["alpha", "bravo", "charlie"], "points": [a, b, c], "operator": "Metro", "routes": "Example"},
-        {"names": ["alpha", "branch", "charlie"], "points": [a, branch, c], "operator": "Metro", "routes": "Example"},
+        {"names": ["alpha", "bravo", "charlie"], "points": [a, b, c], "stop_indices": [0, 1, 2], "operator": "Metro", "routes": "Example"},
+        {"names": ["alpha", "branch", "charlie"], "points": [a, branch, c], "stop_indices": [0, 1, 2], "operator": "Metro", "routes": "Example"},
     ]
     patterns, paths = build_geometry(variants, [("Metro", "Example", ["Alpha", "Branch", "Charlie"], [a, branch, c])])
     ids = patterns[pattern_key("Metro", "Example", ["Alpha", "Branch", "Charlie"])]
@@ -100,8 +100,8 @@ def test_geometry_flags_unresolvable_express_branch():
 
     a, b, detour = [144.0, -37.0], [144.04, -37.0], [144.02, -37.05]
     variants = [
-        {"names": ["alpha", "bravo"], "points": [a, b], "operator": "Metro", "routes": "Example"},
-        {"names": ["alpha", "bravo"], "points": [a, detour, b], "operator": "Metro", "routes": "Example"},
+        {"names": ["alpha", "bravo"], "points": [a, b], "stop_indices": [0, 1], "operator": "Metro", "routes": "Example"},
+        {"names": ["alpha", "bravo"], "points": [a, detour, b], "stop_indices": [0, 2], "operator": "Metro", "routes": "Example"},
     ]
     patterns, paths = build_geometry(variants, [("Metro", "Example", ["Alpha", "Bravo"], [a, b])])
     identifier = patterns[pattern_key("Metro", "Example", ["Alpha", "Bravo"])][0]

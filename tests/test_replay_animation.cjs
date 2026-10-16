@@ -43,3 +43,24 @@ test('line colors remain stable across days and filter selections', () => {
     assert.equal(lineColor('Werribee'), lineColor('Werribee'));
     assert.notEqual(lineColor('Werribee'), lineColor('Sunbury'));
 });
+
+test('unresolved legs hide positions between stations and reappear at arrival', () => {
+    const missingDay = {...day, paths: {curve: {coordinates: [], distances: [], quality: 'approximate'}}};
+    const missing = servicePosition(service, 15, missingDay);
+    assert.equal(missing.lon, null);
+    assert.equal(missing.lat, null);
+    assert.equal(missing.state, 'Position unavailable');
+    assert.equal(missing.load, 50);
+    assert.equal(missing.next, 'Bravo');
+    assert.equal(servicePosition(service, 20, missingDay).lon, 2);
+    assert.equal(servicePosition(service, 20, missingDay).approximate, false);
+});
+test('old straight fallback paths cannot animate or enter selected-route highlights', () => {
+    const {routeFeatures} = require('../assets/train_replay.js');
+    const paths = {curve: path, shortcut: {...path, quality: 'approximate'}};
+    assert.equal(pointAlong(paths.shortcut, 0.5), null);
+    const features = routeFeatures(paths, ['shortcut', 'curve', 'curve']);
+    assert.equal(features.length, 1);
+    assert.deepEqual(features[0].geometry.coordinates, path.coordinates);
+    assert.equal(features[0].properties.quality, 'track');
+});

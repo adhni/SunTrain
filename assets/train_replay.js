@@ -24,6 +24,7 @@
         return lo;
     }
     function pointAlong(path, fraction) {
+        if (!path || path.quality !== "track" || path.coordinates.length < 2) return null;
         const points = path.coordinates, distances = path.distances;
         if (fraction <= 0 || !distances.length || !distances[distances.length - 1]) return points[0];
         if (fraction >= 1) return points[points.length - 1];
@@ -55,9 +56,10 @@
         if (duration <= 0) return null;
         const path = day.paths[service.legs[i]];
         const point = pointAlong(path, (now - stop[2]) / duration);
-        return {lon: point[0], lat: point[1], load: stop[4], index: i, state: "Between stations",
+        return {lon: point ? point[0] : null, lat: point ? point[1] : null, load: stop[4], index: i,
+                state: point ? "Between stations" : "Position unavailable",
                 station: day.stations[stop[0]].name, next: day.stations[next[0]].name,
-                approximate: path.quality !== "track"};
+                approximate: !point};
     }
     function matches(service, filters, day) {
         const inScope = (values, value) => !values.length || values.includes(value);
@@ -66,7 +68,15 @@
             (!filters.number || service.number.toLowerCase().includes(filters.number.toLowerCase().trim())) &&
             (!filters.stations.length || service.stops.some(stop => filters.stations.includes(day.stations[stop[0]].name)));
     }
-    const core = {pointAlong, servicePosition, matches, lineColor};
+    function routeFeatures(paths, ids) {
+        return [...new Set(ids)].flatMap(id => {
+            const path = paths[id];
+            if (!path || path.quality !== "track" || path.coordinates.length < 2) return [];
+            return [{type: "Feature", properties: {quality: path.quality},
+                geometry: {type: "LineString", coordinates: path.coordinates}}];
+        });
+    }
+    const core = {pointAlong, servicePosition, matches, lineColor, routeFeatures};
     if (typeof module !== "undefined" && module.exports) module.exports = core;
     if (!root.document) return;
 
@@ -83,8 +93,6 @@
     }
     const collection = features => ({type: "FeatureCollection", features});
     const pointFeature = (coordinates, properties = {}) => ({type: "Feature", properties, geometry: {type: "Point", coordinates}});
-    const lineFeature = (path, properties = {}) => ({type: "Feature", properties,
-        geometry: {type: "LineString", coordinates: path.coordinates.length > 1 ? path.coordinates : [path.coordinates[0], path.coordinates[0]]}});
     const MELBOURNE_BOUNDS = [[144.55, -38.15], [145.6, -37.48]];
     class Replay {
         constructor() {
@@ -280,7 +288,7 @@
                 attribution.append(link, document.createTextNode(" · "), license,
                     document.createTextNode(". Route geography may differ from FY 2023–24. Passenger counts are rounded to the nearest 10."));
             } else {
-                attribution.textContent = "Railway geometry is unavailable. Paths are approximate station links. Passenger counts are rounded to the nearest 10.";
+                attribution.textContent = "Railway geometry is unavailable. Train positions are shown at stations only. Passenger counts are rounded to the nearest 10.";
             }
         }
         applyTheme() {
@@ -326,7 +334,7 @@
             }
             const pieces = [];
             if (!this.filtered.length) pieces.push(this.day.services.length ? "No services match these filters. Clear a filter to explore this day." : "No recorded services for this business date.");
-            if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs use approximate station links (amber).`);
+            if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved railway paths. These are left as gaps; train positions are hidden between those stops.`);
             else if (total) pieces.push("All selected journey legs have matched railway geometry.");
             if (uncertain) pieces.push(`${uncertain} services contain ambiguous daylight-saving times; earliest consistent times are shown.`);
             if (this.day.excluded_services) pieces.push(`${this.day.excluded_services} services omitted because their source times or coordinates are invalid.`);
@@ -386,6 +394,8 @@
             const line = node("div", service.line, "replay-detail-line"); line.style.color = lineColor(service.line);
             host.append(line, node("h3", `Train ${service.number}`), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
                 node("p", `${service.operator === "VLine" ? "V/Line" : service.operator} · ${service.direction === "U" ? "Toward city" : "Away from city"}`, "replay-muted"));
+            const unresolved = service.legs.filter(id => this.day.paths[id]?.quality !== "track").length;
+            if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved railway geometry. The route has gaps and this train is hidden between those stops.`, "replay-approximate replay-small"));
             const live = node("div", undefined, "replay-service-status"); live.id = "replay-service-status"; host.append(live);
             host.append(node("h4", "Scheduled stops"));
             const scroll = node("div", undefined, "replay-stop-list"), table = node("table");
@@ -414,7 +424,7 @@
                 host.dataset.signature = signature; host.replaceChildren(node("strong", text));
                 if (position) {
                     host.append(node("div", position.load === null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
-                    if (position.approximate) host.append(node("div", "Approximate route between these stations", "replay-approximate"));
+                    if (position.approximate) host.append(node("div", "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
                 }
                 if (this.selected.timing_uncertain) host.append(node("div", "Daylight-saving times are ambiguous for this service.", "replay-approximate"));
                 $("replay-details").querySelectorAll("tr[data-stop-index]").forEach(row => {
@@ -423,17 +433,13 @@
             }
         }
         updateStaticLayers() {
-            const routes = [], selected = [];
-            const seen = new Set(), stationIds = new Set();
+            const ids = [], stationIds = new Set();
             for (const service of this.filtered) {
                 for (const stop of service.stops) stationIds.add(stop[0]);
-                for (const id of service.legs) {
-                    if (!seen.has(id) && this.display.includes("routes")) {
-                        seen.add(id); const path = this.day.paths[id]; routes.push(lineFeature(path, {quality: path.quality}));
-                    }
-                }
+                if (this.display.includes("routes")) ids.push(...service.legs);
             }
-            if (this.selected) for (const id of this.selected.legs) selected.push(lineFeature(this.day.paths[id]));
+            const routes = routeFeatures(this.day.paths, ids);
+            const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
             const stations = this.display.includes("stations") ? [...stationIds].map(i => this.day.stations[i]) : [];
             this.graph.getSource("replay-routes").setData(collection(routes));
             this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name}))));
@@ -446,30 +452,35 @@
             const started = performance.now(), generation = this.generation;
             try {
                 const trains = [];
-                let selectedPosition = null;
+                let selectedPosition = null, activeCount = 0, missingCount = 0;
                 for (const service of this.filtered) {
                     const position = servicePosition(service, this.now, this.day);
                     if (!position) continue;
+                    activeCount++;
+                    if (service.id === this.selected?.id) selectedPosition = position;
+                    if (position.lon === null || position.lat === null) { missingCount++; continue; }
                     const size = this.display.includes("load") ? 8 + Math.min(22, Math.sqrt(Math.max(0, position.load || 0)) * 0.6) : 11;
                     trains.push(pointFeature([position.lon, position.lat], {id: service.id, color: lineColor(service.line), radius: size / 2,
                         load: position.load, approximate: position.approximate}));
-                    if (service.id === this.selected?.id) selectedPosition = position;
                 }
                 if (this.staticDirty) {
                     this.updateStaticLayers(); this.staticDirty = false;
                 }
                 this.activePositions = trains;
+                this.missingPositions = missingCount;
+                const selectedVisible = selectedPosition && selectedPosition.lon !== null && selectedPosition.lat !== null;
                 this.graph.getSource("replay-trains").setData(collection(trains));
-                this.graph.getSource("replay-selected-train").setData(collection(selectedPosition ? [pointFeature([selectedPosition.lon, selectedPosition.lat])] : []));
+                this.graph.getSource("replay-selected-train").setData(collection(selectedVisible ? [pointFeature([selectedPosition.lon, selectedPosition.lat])] : []));
                 if (generation !== this.generation) { this.staticDirty = true; this.paintAgain = true; return; }
                 if (this.needsFit) this.metroView();
-                if (this.followSelected && selectedPosition) this.graph.setCenter([selectedPosition.lon, selectedPosition.lat]);
+                if (this.followSelected && selectedVisible) this.graph.setCenter([selectedPosition.lon, selectedPosition.lat]);
                 else if (this.followSelected && this.now > this.selected.stops[this.selected.stops.length - 1][2]) this.setFollow(false);
                 if (force || performance.now() - this.lastUI >= 200 || !this.playing) {
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     setText("replay-clock-date", dateFormat.format(new Date(this.now * 1000)));
-                    setText("replay-active-count", trains.length.toLocaleString());
+                    setText("replay-active-count", activeCount.toLocaleString());
+                    setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString()} position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");
                     if (slider) { slider.value = String(this.now); slider.setAttribute("aria-valuetext", `${clockFormat.format(new Date(this.now * 1000))} ${dateFormat.format(new Date(this.now * 1000))}`); }
                     this.detailStatus(selectedPosition);

@@ -27,6 +27,16 @@ from scripts.prepare_replay_geometry import anchored_shape, clip_path, point_at,
 from scripts.prepare_transit_replay import active_services, records as raw_records, seconds
 
 SOURCES = {
+    "brisbane": {
+        "name": "Brisbane", "first": "2026-10-05", "last": "2026-10-11", "timezone": "Australia/Brisbane",
+        "captured": "2026-10-03", "url": "https://files.mobilitydatabase.org/mdb-3048/mdb-3048-202610030017/mdb-3048-202610030017.zip",
+        "sha256": "cdc4d9e4a5731cef518a34c519e6ce91d93f8484574d0b37457308def887b940",
+        "source": "Translink / Queensland Department of Transport and Main Roads historical GTFS via MobilityDatabase",
+        "source_url": "https://www.data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-translink",
+        "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Timetable and railway geometry: Translink, Department of Transport and Main Roads, Queensland Government · archive captured 3 October 2026",
+        "note": "Queensland Rail suburban and interurban SEQ services only, using October 2026 route patterns. G:link, Brisbane Metro buses, other buses and ferries are excluded. No individual train passenger loads.",
+    },
     "perth": {
         "name": "Perth", "first": "2026-10-05", "last": "2026-10-11", "timezone": "Australia/Perth",
         "captured": "2026-10-01", "url": "https://files.mobilitydatabase.org/mdb-1086/mdb-1086-202610010042/mdb-1086-202610010042.zip",
@@ -82,6 +92,8 @@ def selected_route(city, route, agencies):
         return agency == "2" and route["route_type"] == "2"
     if city == "perth":
         return agency == "WES-RAI" and route["route_type"] == "2"
+    if city == "brisbane":
+        return agency == "5" and route["route_type"] == "2"
     raise ValueError(f"Unsupported city: {city}")
 
 

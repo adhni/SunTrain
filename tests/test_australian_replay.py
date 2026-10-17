@@ -55,6 +55,7 @@ def test_city_loader_has_correct_local_clock_and_never_queries_melbourne_warehou
     day = get_replay_day(source["first"], city)
     clock = datetime.fromtimestamp(day["initial"], ZoneInfo(source["timezone"]))
     assert clock.date().isoformat() == source["first"] and clock.hour == 8
+    assert clock.utcoffset().total_seconds() / 3600 == {"sydney": 11, "adelaide": 9.5, "perth": 8, "brisbane": 10}[city]
     assert day["timezone"] == source["timezone"]
     assert not day["passenger_data"]
     assert all("stops" not in service for service in day["services"])
@@ -114,3 +115,13 @@ def test_spaced_official_csv_headers_are_normalized_without_changing_coordinates
     buffer.seek(0)
     with ZipFile(buffer) as archive:
         assert list(records(archive, "shapes.txt")) == [{"shape_id": "a", "shape_pt_lat": "-31.5", "shape_pt_lon": "115.8", "shape_pt_sequence": "1"}]
+
+
+def test_brisbane_scope_keeps_queensland_rail_and_excludes_other_modes():
+    assert selected_route("brisbane", {"agency_id": "5", "route_type": "2"}, {})
+    assert not selected_route("brisbane", {"agency_id": "5", "route_type": "3"}, {})
+    assert not selected_route("brisbane", {"agency_id": "3", "route_type": "0"}, {})
+    with gzip.open(ROOT / "data/reference/brisbane/2026-10-05.json.gz", "rt") as stream:
+        reference = json.load(stream)
+    assert {p["operator"] for p in reference["patterns"].values()} == {"Queensland Rail"}
+    assert not reference["metadata"]["unresolved_geometry_patterns"]

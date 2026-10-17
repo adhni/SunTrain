@@ -12,6 +12,8 @@ Scope is explicitly **Sydney Trains** (`agency_id=x0001`, rail type 2) and **Syd
 
 Native stop/shape distance anchors preserve ordered railway paths, including loops and branch services. Every projected station must match within 150 m; unresolved paths remain gaps. Metro's source `routes.txt` marks its timings as indicative (`exact_times=0`); replay positions remain schedule estimates. The feed includes no `frequencies.txt` requiring generated departures.
 
+Prepared reference: **526,111 bytes**, **1,860 shared patterns**, with **no omitted trips or unresolved geometry**. The seven dates have 2,078–3,226 services; the Monday public-holiday date differs from ordinary weekdays. Sydney uses `Australia/Sydney`, including daylight saving. All seven dates loaded successfully, and Chrome checks covered playback, filters, the last date, fullscreen, mobile layout and returning to Melbourne.
+
 **NSW TrainLink remains separate.** The same archive includes intercity agency `X0000` (e.g. BMT, CCN, SCO) and regional trains/coaches under other agencies (including 711 and extended route types). Do not include them via an indiscriminate rail-type filter. Replacement bus agencies and bus types are also excluded even when names resemble train lines.
 
 **Later modes:** the complete archive includes light rail (extended type 900, with Sydney and Newcastle represented separately), many bus operators and ferries. Future additions should retain operator scope, distinguish rail replacement buses, and apply each route's calendars and shapes. Their presence in the archive is confirmed; their complete replay has not been validated or enabled.
@@ -50,12 +52,37 @@ The actual `shapes.txt` headers contain leading spaces and native shape distance
 
 **Licence:** this is the **PTA Spatial Data Licence**, not CC BY. It permits use, reproduction and redistribution subject to its terms. The replay explicitly states that source data is **available free of charge from www.transperth.wa.gov.au**, links the licence and states independence from the data provider. No official branding, logos or map artwork are used. Retain this notice in any exported derivative or future redistribution.
 
+## Brisbane / South East Queensland
+
+The supplied [MobilityDatabase mdb-668](https://mobilitydatabase.org/feeds/gtfs/mdb-668) is **deprecated**, with a documented redirect to **mdb-3048**, whose producer URL is `https://gtfsrt.api.translink.com.au/gtfs/SEQ_SCH_GTFS.zip`. Despite the successor's “SEQ School Services” subtitle, its actual archive includes **rail, light rail, buses and ferries**, not just school buses. The [official Queensland catalogue](https://www.data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-translink) licenses the SEQ data and lists train route-mapping material, but its resource URL still uses the older `GTFS/SEQ_GTFS.zip` path. Inspect the actual files and documented replacement rather than deciding scope from the archive's name.
+
+The public archive captured **3 October 2026** actually downloaded successfully. `feed_info.txt` gives **3 October–2 December 2026**, supporting **5–11 October 2026** and adjoining service dates. A 2024 historical ZIP was not obtained from the public sources checked, so this is an explicitly labelled permitted fallback. Source URL and SHA-256 are pinned in preparation and bundled metadata.
+
+Only **agency 5, Queensland Rail**, route type 2, is included. Through-running and short-turn services retain official route names/codes, stopping patterns, headsigns and colours; there are **46 active route groups**, rather than an invented remapping into a fixed list of line badges. This includes suburban/interurban SEQ railway journeys in the archive. Use **Fit selection** to include outlying termini beyond the initial Brisbane/SEQ view. There are no regional long-distance Queensland Rail services inferred from a map or current timetable.
+
+The source omits native shape distances, so complete ordered stop sequences use the established projection onto each trip's own shape within 150 m. The **232,395-byte** reference has **706 shared patterns**, **no omitted trips and no unresolved geometry**. Daily services are 501 on the Monday public holiday, 838 on Tuesday–Thursday, 864 Friday, 725 Saturday and 650 Sunday. Timezone is `Australia/Brisbane`; Queensland does not inherit Sydney's daylight-saving offset.
+
+**Later modes:** G:link is light rail (type 0), Brisbane Metro is a bus service, and the archive contains other SEQ buses and ferries, including CityCat-related services. These are excluded by explicit railway operator/type selection. Before enabling them, verify each mode's actual service dates, shapes, route/provider classification and any rail-replacement buses. The current official train T-code mapping spreadsheet is useful for a future label update, but must not be applied retroactively without checking the selected feed.
+
+**Passenger data:** the [June 2024 official OD ZIP](https://www.data.qld.gov.au/dataset/aeee186f-da4c-41cd-a6b2-85d11c7bd503/resource/6ad1614f-0a3f-4054-993c-0f8e5bea94e0/download/202406jun-tl-org-dest-trips.zip) actually downloaded successfully (**2,346,781 bytes**), containing a CSV and explanatory PDF. Rows group quantity by operator, month, route, direction, broad weekday/weekend **time bands**, ticket type, origin stop and destination stop. They are not exact-day/hour observations or individual train loads. The documentation says **Airtrain is excluded**, and some paper tickets have `n/a` destinations. Those gaps must not become zero demand or invented station pairs. The 2024 passenger period also does not match this October 2026 schedule replay. [Monthly performance datasets](https://www.data.qld.gov.au/dataset/translink-monthly-performance-data) offer aggregate patronage comparisons. Passenger features remain unavailable for this addition.
+
+**Licence:** the official timetable catalogue returns **Creative Commons Attribution 4.0**. Replay attribution credits Translink, Department of Transport and Main Roads, Queensland Government, and links the data source and licence. No official map artwork or logos are used.
+
 ## Rebuild and extension checks
 
 ```bash
 ./.venv/bin/python scripts/prepare_australian_replay.py sydney
+./.venv/bin/python scripts/prepare_australian_replay.py adelaide
+./.venv/bin/python scripts/prepare_australian_replay.py perth
+./.venv/bin/python scripts/prepare_australian_replay.py brisbane
 ```
 
 Sources are pinned by URL, capture date and SHA-256. Downloads go to `.cache/australian-cities/<city>/`; compact references go to `data/reference/<city>/<first-date>.json.gz`. Preparation uses source calendars and date exceptions, GTFS hours beyond 24 and local time zones, with 03:00 carry-ins preserved and no duplicate occurrence within a day. Shapes remain shared; only one selected day is loaded in the browser.
 
 Before extending dates or adding a mode, inspect the actual archive's dates, operators, route types, trip overrides/frequencies and geometry. Never use current timetables under historical labels. Preserve local clocks, branch paths, same-day uniqueness, shared relative stop schedules, attribution and empty paths for unresolved geometry. Passenger data requires a separate granularity and date check.
+
+## Validation of this addition
+
+All four prepared references loaded successfully for **every supported date**, with no omitted timetable trips, no unresolved geometry patterns, and no duplicate occurrences within a day. The source archives are used only during offline preparation; browsers receive a compact selected day with shared pattern stops.
+
+**106 Python tests and 23 JavaScript tests passed**. New checks cover rail/operator scoping, original path endpoints, native-distance loops, Adelaide's historical closure and absent Port Dock, spaced CSV headers, and the four distinct local UTC offsets. Chrome checks passed separately for Sydney, Adelaide, Perth and Brisbane: map loading with no missing positions at 08:00, line filtering, 2,000× playback without server POSTs, the final supported date, fullscreen, mobile layout and switching back to Melbourne. Source notes and future passenger/mode opportunities are recorded above.

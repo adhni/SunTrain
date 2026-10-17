@@ -34,6 +34,22 @@ Prepared reference: **80,680 bytes**, **106 shared patterns**, 35 days, **no omi
 
 **Licence:** the official Data.SA catalogue labels [Adelaide Metro GTFS](https://data.sa.gov.au/data/dataset/https-gtfs-adelaidemetro-com-au) **CC BY 4.0**. The replay credits Adelaide Metro and the Department for Infrastructure and Transport, Government of South Australia. No official logos or map artwork are copied.
 
+## Perth
+
+The [official spatial data page](https://www.transperth.wa.gov.au/About/Spatial-Data-Access) supplies a current timetable, not an indexed historical ZIP archive. No 2024 ZIP was obtained. The publicly downloadable [MobilityDatabase archive mdb-1086](https://mobilitydatabase.org/feeds/gtfs/mdb-1086), captured **1 October 2026**, has calendars beginning 29 September and supports the fallback **5–11 October 2026**. The ZIP actually downloaded successfully (about 26 MB); its URL and SHA-256 are pinned in the preparation script and bundle.
+
+Scope is the suburban rail agency **WES-RAI**, type 2: Airport, Armadale, Ellenbrook, Fremantle, Mandurah, Midland, Thornlie-Cockburn and Yanchep, plus Stadium Special services only on their active calendar dates. **Transwa regional trains** (agency TRA-TRA) and regional buses are excluded. The names and colours come from that historical feed, rather than a current hard-coded network.
+
+The selected period follows the actual [Yanchep opening in July 2024](https://metronet.wa.gov.au/projects/yanchep-rail-extension), [Ellenbrook opening in December 2024](https://www.metronet.wa.gov.au/news/latest-news/category/gnarla-biddi/ellenbrook-line-officially-open), and [Thornlie–Cockburn opening in June 2025](https://www.metronet.wa.gov.au/news/latest-news/20k-locals-celebrated-thornlie-cockburn-line-opening). These lines must not be backdated into a May–June 2024 replay. A future earlier-period extension must obtain the earlier archive and its closures, not just trim the current map.
+
+The actual `shapes.txt` headers contain leading spaces and native shape distances are absent. Preparation normalizes CSV field names, then reuses the existing whole-journey ordered projection within 150 m. The resulting **92,943-byte** reference has **109 shared patterns**, with **no omitted trips or geometry gaps**. Daily services range from 1,023 to 1,465. Timezone is **Australia/Perth**, without daylight saving.
+
+**Later modes:** the archive includes bus and ferry services. CAT routes are buses; regional operator names in the combined feed require explicit geographic/operator scoping before a bus extension. No buses or ferries are enabled in this rail-first addition.
+
+**Passenger data:** [PTA transport performance](https://www.pta.wa.gov.au/about-us/priorities-and-performance/transport-performance) actually provides historical monthly network/mode/line boarding tables, including 2023–24, 2024–25 and later financial years. These support aggregate trend/line comparisons, not hourly station demand or individual train loads. A matching public station-level historical file was not obtained, so passenger features remain unavailable.
+
+**Licence:** this is the **PTA Spatial Data Licence**, not CC BY. It permits use, reproduction and redistribution subject to its terms. The replay explicitly states that source data is **available free of charge from www.transperth.wa.gov.au**, links the licence and states independence from the data provider. No official branding, logos or map artwork are used. Retain this notice in any exported derivative or future redistribution.
+
 ## Rebuild and extension checks
 
 ```bash

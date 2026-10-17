@@ -1,14 +1,16 @@
 import gzip
+import io
 import json
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from zipfile import ZipFile
 
 import pytest
 
 from dashboard.cities import city_settings
 from dashboard.replay import cumulative_distances, get_replay_day
-from scripts.prepare_australian_replay import SOURCES, path_legs, selected_route
+from scripts.prepare_australian_replay import SOURCES, path_legs, records, selected_route
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -96,3 +98,19 @@ def test_adelaide_historical_closure_shortens_trains_and_port_dock_is_not_open_y
     assert any(p["destination"] == "Woodville" for p in closure)
     assert not any("Outer Harbor" in (p["origin"], p["destination"]) for p in closure)
     assert any(p["destination"] == "Outer Harbor" for p in following_week)
+
+
+def test_perth_excludes_regional_trains_and_retains_free_source_notice():
+    assert selected_route("perth", {"agency_id": "WES-RAI", "route_type": "2"}, {})
+    assert not selected_route("perth", {"agency_id": "TRA-TRA", "route_type": "2"}, {})
+    assert not selected_route("perth", {"agency_id": "PAT-CIR", "route_type": "3"}, {})
+    assert "available free of charge from www.transperth.wa.gov.au" in SOURCES["perth"]["attribution"]
+
+
+def test_spaced_official_csv_headers_are_normalized_without_changing_coordinates():
+    buffer = io.BytesIO()
+    with ZipFile(buffer, "w") as archive:
+        archive.writestr("shapes.txt", "shape_id, shape_pt_lat, shape_pt_lon, shape_pt_sequence\na, -31.5, 115.8, 1\n")
+    buffer.seek(0)
+    with ZipFile(buffer) as archive:
+        assert list(records(archive, "shapes.txt")) == [{"shape_id": "a", "shape_pt_lat": "-31.5", "shape_pt_lon": "115.8", "shape_pt_sequence": "1"}]

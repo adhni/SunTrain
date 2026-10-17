@@ -24,9 +24,19 @@ sys.path.insert(0, str(ROOT))
 from dashboard.replay import cumulative_distances
 from scripts.prepare_boston_replay import fetch, project_stops
 from scripts.prepare_replay_geometry import anchored_shape, clip_path, point_at, simplify
-from scripts.prepare_transit_replay import active_services, records, seconds
+from scripts.prepare_transit_replay import active_services, records as raw_records, seconds
 
 SOURCES = {
+    "perth": {
+        "name": "Perth", "first": "2026-10-05", "last": "2026-10-11", "timezone": "Australia/Perth",
+        "captured": "2026-10-01", "url": "https://files.mobilitydatabase.org/mdb-1086/mdb-1086-202610010042/mdb-1086-202610010042.zip",
+        "sha256": "9f4482331fb37dbd71708ccdd187f092be42ad7f2e3536e798416bf99422b9fa",
+        "source": "Public Transport Authority (WA) historical GTFS via MobilityDatabase",
+        "source_url": "https://www.transperth.wa.gov.au/About/Spatial-Data-Access",
+        "license": "PTA Spatial Data Licence", "license_url": "https://www.transperth.wa.gov.au/About/Spatial-Data-Access",
+        "attribution": "Source data is available free of charge from www.transperth.wa.gov.au · Public Transport Authority (WA) · archive captured 1 October 2026",
+        "note": "Perth suburban rail uses the October 2026 network, after the Yanchep, Ellenbrook and Thornlie–Cockburn openings. Transwa, buses and ferries are excluded. No individual train passenger loads.",
+    },
     "adelaide": {
         "name": "Adelaide", "first": "2024-05-27", "last": "2024-06-30", "timezone": "Australia/Adelaide",
         "captured": "2024-05-24", "url": "https://gtfs.adelaidemetro.com.au/v1/static/1430/google_transit.zip",
@@ -50,6 +60,12 @@ SOURCES = {
 }
 
 
+def records(archive, filename):
+    # Some official feeds, notably PTA shapes, put spaces in CSV field names.
+    for row in raw_records(archive, filename):
+        yield {key.strip(): value.strip() if isinstance(value, str) else value for key, value in row.items() if key is not None}
+
+
 def file_hash(path):
     digest = hashlib.sha256()
     with path.open("rb") as stream:
@@ -64,6 +80,8 @@ def selected_route(city, route, agencies):
         return (agency == "x0001" and route["route_type"] == "2") or (agency == "SMNW" and route["route_type"] in {"1", "401"})
     if city == "adelaide":
         return agency == "2" and route["route_type"] == "2"
+    if city == "perth":
+        return agency == "WES-RAI" and route["route_type"] == "2"
     raise ValueError(f"Unsupported city: {city}")
 
 

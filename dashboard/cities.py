@@ -66,6 +66,14 @@ CITIES = {
         "operators": [("Adelaide Metro", "Adelaide Metro (Keolis Downer)")],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
+    "perth": {
+        "name": "Perth", "timezone": "Australia/Perth",
+        "bounds": [[115.56, -32.57], [116.16, -31.48]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "One week of Perth suburban railway schedules on the October 2026 network. Individual train passenger counts are unavailable.",
+        "modes": [("Trains", "train")], "operators": [("Public Transport Authority (WA)", "Transperth")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

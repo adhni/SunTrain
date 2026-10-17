@@ -454,7 +454,7 @@
             if (!this.filtered.length) pieces.push(this.day.services.length ? "No services match these filters. Clear a filter to explore this day." : "No recorded services for this business date.");
             if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
             else if (total) pieces.push("All selected journey legs have route geometry.");
-            if (!this.day.transit?.available) pieces.push("Trams and buses are available for 24–30 June 2024 after preparing the archived timetable.");
+            if (!this.day.transit?.available) pieces.push("Tram and bus timetables are unavailable for this date.");
             if (uncertain) pieces.push(`${uncertain} services contain ambiguous daylight-saving times; earliest consistent times are shown.`);
             if (this.day.excluded_services) pieces.push(`${this.day.excluded_services} services omitted because their source times or coordinates are invalid.`);
             setText("replay-quality", pieces.join(" "));

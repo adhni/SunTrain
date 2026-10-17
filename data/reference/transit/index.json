@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "start_date": "2024-05-27",
+    "end_date": "2024-06-30",
+    "source": "PTV GTFS Schedule",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "chunks": [
+    {
+      "start_date": "2024-05-27",
+      "end_date": "2024-06-02",
+      "source_date": "2024-05-27",
+      "source_url": "https://files.mobilitydatabase.org/mdb-657/mdb-657-202405270004/mdb-657-202405270004.zip",
+      "file": "2024-05-27.json.gz"
+    },
+    {
+      "start_date": "2024-06-03",
+      "end_date": "2024-06-07",
+      "source_date": "2024-06-03",
+      "source_url": "https://files.mobilitydatabase.org/mdb-657/mdb-657-202406030013/mdb-657-202406030013.zip",
+      "file": "2024-06-03.json.gz"
+    },
+    {
+      "start_date": "2024-06-08",
+      "end_date": "2024-06-16",
+      "source_date": "2024-06-08",
+      "source_url": "https://files.mobilitydatabase.org/mdb-657/mdb-657-202406071511/mdb-657-202406071511.zip",
+      "file": "2024-06-08.json.gz"
+    },
+    {
+      "start_date": "2024-06-17",
+      "end_date": "2024-06-23",
+      "source_date": "2024-06-17",
+      "source_url": "https://files.mobilitydatabase.org/mdb-657/mdb-657-202406170018/mdb-657-202406170018.zip",
+      "file": "2024-06-17.json.gz"
+    },
+    {
+      "start_date": "2024-06-24",
+      "end_date": "2024-06-30",
+      "source_date": "2024-06-24",
+      "source_url": "https://files.mobilitydatabase.org/mdb-657/mdb-657-202406240001/mdb-657-202406240001.zip",
+      "file": "2024-06-24.json.gz"
+    }
+  ]
+}

@@ -4,6 +4,7 @@ import gzip
 import json
 import csv
 import io
+import pytest
 from zipfile import ZipFile
 
 from dashboard import transit
@@ -95,3 +96,43 @@ def test_preparation_keeps_valid_schedules_with_missing_shapes_as_gaps(tmp_path)
         assert reference["paths"][pattern["legs"][0]]["coordinates"] == []
     assert all(row[2] == 25 * 3600 for row in reference["days"]["2024-06-24"])
     assert reference["metadata"]["omitted_trips"] == {"tram": 0, "bus": 0}
+
+
+def test_period_index_loads_only_the_snapshot_for_the_selected_day(tmp_path, monkeypatch):
+    index = tmp_path / "index.json"
+    index.write_text(json.dumps({"metadata": {"start_date": "2024-05-27", "end_date": "2024-06-30"}, "chunks": [
+        {"start_date": "2024-05-27", "end_date": "2024-06-02", "file": "may.json.gz"},
+        {"start_date": "2024-06-24", "end_date": "2024-06-30", "file": "june.json.gz"}]}))
+    for filename, day in (("may.json.gz", "2024-05-27"), ("june.json.gz", "2024-06-30")):
+        with gzip.open(tmp_path / filename, "wt") as stream:
+            json.dump({"metadata": {}, "days": {day: []}, "stations": [], "patterns": {}, "paths": {}}, stream)
+    monkeypatch.setenv("SUNTRAIN_TRANSIT_REFERENCE", str(index))
+    opened = []
+    original_open = gzip.open
+    def tracked_open(path, *args, **kwargs):
+        opened.append(str(path))
+        return original_open(path, *args, **kwargs)
+    monkeypatch.setattr(gzip, "open", tracked_open)
+    assert transit.available_range() == ("2024-05-27", "2024-06-30")
+    reference = transit.read_reference(*transit.fingerprint("2024-05-27"))
+    assert "2024-05-27" in reference["days"]
+    assert opened == [str(tmp_path / "may.json.gz")]
+    assert transit.fingerprint("2024-06-30")[0] == str(tmp_path / "june.json.gz")
+    # Missing promised data fails visibly instead of silently dropping both modes.
+    (tmp_path / "june.json.gz").unlink()
+    with pytest.raises(FileNotFoundError):
+        transit.fingerprint("2024-06-30")
+
+
+def test_snapshot_ranges_use_melbourne_capture_dates_and_cover_five_full_weeks():
+    from scripts.prepare_transit_period import ARCHIVES, period_chunks, snapshot_date
+    chunks = period_chunks(ARCHIVES, date(2024, 5, 27), date(2024, 6, 30))
+    assert snapshot_date(ARCHIVES[2]) == date(2024, 6, 8)  # 15:11 UTC on 7 June.
+    days = []
+    for chunk in chunks:
+        first, last = date.fromisoformat(chunk["start_date"]), date.fromisoformat(chunk["end_date"])
+        assert chunk["source_date"] <= chunk["start_date"]
+        days.extend(date.fromordinal(n) for n in range(first.toordinal(), last.toordinal() + 1))
+    assert len(days) == len(set(days)) == 35
+    assert days[0] == date(2024, 5, 27) and days[-1] == date(2024, 6, 30)
+    assert days[0].weekday() == 0 and days[-1].weekday() == 6

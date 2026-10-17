@@ -2,12 +2,13 @@
 from __future__ import annotations
 
 import logging
+from datetime import date
 
 from dash import ClientsideFunction, Input, Output, State, dcc, html
 from dash.exceptions import PreventUpdate
 
 from dashboard.replay import get_replay_day
-from dashboard.transit import WEEK_START, WEEK_END, reference_file
+from dashboard.transit import available_range
 
 LOGGER = logging.getLogger(__name__)
 
@@ -17,16 +18,18 @@ def field(label, control):
 
 
 def build_replay_panel(metadata, default_date):
-    shared_week = reference_file().exists() and metadata["min_date"] <= WEEK_START and metadata["max_date"] >= WEEK_END
-    minimum, maximum = (WEEK_START, WEEK_END) if shared_week else (metadata["min_date"], metadata["max_date"])
-    default_date = WEEK_START if shared_week else default_date
+    coverage = available_range()
+    shared_period = coverage and metadata["min_date"] <= coverage[0] and metadata["max_date"] >= coverage[1]
+    minimum, maximum = coverage if shared_period else (metadata["min_date"], metadata["max_date"])
+    default_date = minimum if shared_period else default_date
+    badge = f"{date.fromisoformat(minimum):%d %b}–{date.fromisoformat(maximum):%d %b %Y}" if shared_period else "Historical · FY 2023–24"
     return html.Div(id="replay-panel", className="tab-panel replay-panel", style={"display": "block"}, tabIndex=-1, children=[
         dcc.Store(id="replay-day", storage_type="memory"),
         dcc.Store(id="replay-client-state", storage_type="memory"),
         html.Div(className="replay-heading", children=[
             html.Div([html.Div("THE NETWORK IN MOTION", className="replay-eyebrow"),
                       html.H2("Transport Replay"), html.P("Trains, trams and buses on one moving map. Passenger data is available for trains only.")]),
-            html.Span("24–30 Jun 2024" if shared_week else "Historical · FY 2023–24", className="replay-badge"),
+            html.Span(badge, className="replay-badge"),
         ]),
         html.Div(id="replay-filter-controls", className="replay-filters", children=[
             field("Business date", dcc.DatePickerSingle(id="replay-date", date=default_date,

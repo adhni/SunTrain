@@ -84,3 +84,15 @@ def test_native_distance_anchors_preserve_long_loop_instead_of_shortcut():
     assert cumulative_distances(legs[0])[-1] > 4000
     with pytest.raises(ValueError, match="backwards"):
         path_legs(raw, [4000, 0], [points[0], points[0]])
+
+
+def test_adelaide_historical_closure_shortens_trains_and_port_dock_is_not_open_yet():
+    with gzip.open(ROOT / "data/reference/adelaide/2024-05-27.json.gz", "rt") as stream:
+        reference = json.load(stream)
+    patterns = reference["patterns"]
+    assert "PTDOCK" not in {p["route_id"] for p in patterns.values()}
+    closure = [patterns[p] for p, _, _ in reference["days"]["2024-06-01"] if patterns[p]["route_id"] == "OUTHA"]
+    following_week = [patterns[p] for p, _, _ in reference["days"]["2024-06-08"] if patterns[p]["route_id"] == "OUTHA"]
+    assert any(p["destination"] == "Woodville" for p in closure)
+    assert not any("Outer Harbor" in (p["origin"], p["destination"]) for p in closure)
+    assert any(p["destination"] == "Outer Harbor" for p in following_week)

@@ -20,6 +20,20 @@ Native stop/shape distance anchors preserve ordered railway paths, including loo
 
 **Licence:** the official complete-timetable CKAN record labels this [Creative Commons Attribution](https://opendata.transport.nsw.gov.au/dataset/timetables-complete-gtfs). SunTrain acknowledges Transport for NSW, links the source/licence information and remains independent of the operators. No official map artwork or logos are copied.
 
+## Adelaide
+
+The [official GTFS service](https://gtfs.adelaidemetro.com.au/) documents `/v1/static/{version}/google_transit.zip` for historical versions. **Version 1430 actually downloaded successfully**, with `feed_info.txt` dates **24 May–27 September 2024**, and ZIP member timestamps on 24 May. This supports the requested **27 May–30 June 2024**, including the adjoining service dates needed for overnight carry-ins. A probe of version 1400 returned HTTP 403; this did not imply all historical versions were inaccessible. Version 1500 was also accessible but rejected for this task because it represents late December 2024 onward.
+
+The suburban rail scope is agency **2, Adelaide Metro (Keolis Downer)**, route type 2. The prepared period includes Belair, Flinders, Gawler/Gawler Central, Grange, Outer Harbor and Seaford, plus the Glanville, Noarlunga, Osborne and Salisbury short-turn route IDs active in the source calendars. **Port Dock is absent**: the [official opening was 25 August 2024](https://dit.sa.gov.au/news/archive?a=1398955). The version's release notes explicitly include the [1–2 June Outer Harbor closure](https://www.dit.sa.gov.au/news/archive?a=1368879); replay train stop sequences terminate at **Woodville** during the closure, rather than running through the bus-replaced section. On 8 June the corresponding trains reach Outer Harbor again.
+
+Prepared reference: **80,680 bytes**, **106 shared patterns**, 35 days, **no omitted trips or unresolved geometry**. A typical weekday has 605 services and a typical weekend date 394. Native distance anchors retain the original railway geometry. Timezone is **Australia/Adelaide**, including the half-hour UTC offset.
+
+**Later modes:** this same historical archive contains Torrens Connect tram routes `BTANIC`, `FESTVL` and `GLNELG`, with shapes/calendars, and Adelaide Metro buses. O-Bahn is a bus service, not a separate rail mode; a bus extension should use its actual bus shapes through the guided section. These modes were inspected but are not enabled in this rail-first addition.
+
+**Passenger data:** the [official Metrocard validations dataset](https://data.sa.gov.au/data/dataset/adelaide-metrocard-validations) and its 2024 Q2 CSV downloaded successfully. The attempted byte range was ignored by the server, so the local file contains the returned CSV rather than a guaranteed small sample. Fields include validation date, mode, route, direction, GTFS stop ID, media type and **boarding bands/floors**. The downloaded metadata defines bus=1, tram=4 and train=5. It explicitly warns of misallocated routes, under-reported train validations and free-zone tram travel, and provides no individual trip identifier or hourly timestamp. Daily stop/route demand bands may be useful after a careful station/gate/onboard join; band floors are not exact counts and cannot become individual train loads. Passenger controls remain unavailable.
+
+**Licence:** the official Data.SA catalogue labels [Adelaide Metro GTFS](https://data.sa.gov.au/data/dataset/https-gtfs-adelaidemetro-com-au) **CC BY 4.0**. The replay credits Adelaide Metro and the Department for Infrastructure and Transport, Government of South Australia. No official logos or map artwork are copied.
+
 ## Rebuild and extension checks
 
 ```bash

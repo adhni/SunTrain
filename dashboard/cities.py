@@ -57,6 +57,15 @@ CITIES = {
         "operators": [("Sydney Trains", "Sydney Trains"), ("Sydney Metro", "Sydney Metro")],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
+    "adelaide": {
+        "name": "Adelaide", "timezone": "Australia/Adelaide",
+        "bounds": [[138.43, -35.22], [138.85, -34.55]], "passenger_data": False,
+        "start_date": "2024-05-27", "end_date": "2024-06-30",
+        "description": "Five weeks of Adelaide suburban train schedules from May–June 2024. Passenger counts are unavailable for individual trains.",
+        "modes": [("Trains", "train")],
+        "operators": [("Adelaide Metro", "Adelaide Metro (Keolis Downer)")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

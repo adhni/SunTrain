@@ -27,6 +27,16 @@ from scripts.prepare_replay_geometry import anchored_shape, clip_path, point_at,
 from scripts.prepare_transit_replay import active_services, records, seconds
 
 SOURCES = {
+    "adelaide": {
+        "name": "Adelaide", "first": "2024-05-27", "last": "2024-06-30", "timezone": "Australia/Adelaide",
+        "captured": "2024-05-24", "url": "https://gtfs.adelaidemetro.com.au/v1/static/1430/google_transit.zip",
+        "sha256": "289277fd965f672fe252d685caafb78abc7611c7dfb6324a8df5eef61dc0330f",
+        "source": "Adelaide Metro official historical GTFS version 1430",
+        "source_url": "https://gtfs.adelaidemetro.com.au/",
+        "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0/",
+        "attribution": "Timetable and railway geometry: Adelaide Metro / Department for Infrastructure and Transport, Government of South Australia · historical GTFS version 1430",
+        "note": "Adelaide suburban rail only, using the May–June 2024 network and source calendar exceptions, including planned closures. Port Dock, which opened later, is absent. Trams and buses are not enabled. No individual train passenger loads.",
+    },
     "sydney": {
         "name": "Sydney", "first": "2026-10-05", "last": "2026-10-11", "timezone": "Australia/Sydney",
         "captured": "2026-10-04", "url": "https://files.mobilitydatabase.org/mdb-2449/mdb-2449-202610040107/mdb-2449-202610040107.zip",
@@ -52,6 +62,8 @@ def selected_route(city, route, agencies):
     agency = route.get("agency_id") or (next(iter(agencies)) if len(agencies) == 1 else "")
     if city == "sydney":
         return (agency == "x0001" and route["route_type"] == "2") or (agency == "SMNW" and route["route_type"] in {"1", "401"})
+    if city == "adelaide":
+        return agency == "2" and route["route_type"] == "2"
     raise ValueError(f"Unsupported city: {city}")
 
 

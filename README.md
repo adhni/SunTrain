@@ -203,7 +203,7 @@ curl --fail --location https://files.mobilitydatabase.org/mdb-657/mdb-657-202406
 ./.venv/bin/python scripts/prepare_transit_replay.py /tmp/suntrain-gtfs-2024-06-24.zip
 ```
 
-Preparation applies weekday calendars and date exceptions, preserves GTFS times beyond 24:00, and includes journeys crossing the 03:00 business-day boundary. Stop-distance anchors locate each journey leg on the supplied shape, including loops; missing anchors leave route gaps rather than drawing straight shortcuts. Invalid schedules are omitted. Relative stop schedules and geometry are shared between trips to reduce payload size; no passenger counts are synthesized. Set `SUNTRAIN_TRANSIT_REFERENCE` to override the reference. If it is missing, the original train-only historical replay remains available. Overview retains the full train passenger dataset.
+Preparation applies weekday calendars and date exceptions, preserves GTFS times beyond 24:00, and includes journeys crossing the 03:00 business-day boundary. Stop-distance anchors locate each journey leg on the supplied shape, including loops; missing anchors leave route gaps rather than drawing straight shortcuts. Invalid schedules are omitted. Relative stop schedules and geometry stay shared between trips in the browser; playback applies each trip's departure offset without expanding its stops into separate arrays. Absolute times are calculated only when needed, including for a selected journey's stop table. Map paths and stop markers are collected once per shared schedule. No passenger counts are synthesized. Set `SUNTRAIN_TRANSIT_REFERENCE` to override the reference. If it is missing, the original train-only historical replay remains available. Overview retains the full train passenger dataset.
 
 Validation:
 

@@ -52,6 +52,8 @@
     }
     function servicePosition(service, now, day) {
         const stops = service.stops;
+        // Transit patterns retain relative times; train stops already use epoch seconds.
+        now -= service.timeOffset || 0;
         if (!stops.length || now < stops[0][1] || now > stops[stops.length - 1][2]) return null;
         // Find the most recent arrival. Exact departure belongs to the next leg.
         let lo = 0, hi = stops.length;
@@ -63,7 +65,7 @@
         const i = Math.max(0, lo - 1), stop = stops[i];
         if (now < stop[2] || i === stops.length - 1) {
             const station = day.stations[stop[0]];
-            return {lon: station.lon, lat: station.lat, load: now < stop[2] ? stop[3] : stop[4],
+            return {lon: station.lon, lat: station.lat, load: (now < stop[2] ? stop[3] : stop[4]) ?? null,
                     index: i, state: service.mode && service.mode !== "train" ? "At stop" : "At station", station: station.name, next: stops[i + 1] ? day.stations[stops[i + 1][0]].name : null,
                     approximate: false};
         }
@@ -71,7 +73,7 @@
         if (duration <= 0) return null;
         const path = day.paths[service.legs[i]];
         const point = pointAlong(path, (now - stop[2]) / duration);
-        return {lon: point ? point[0] : null, lat: point ? point[1] : null, load: stop[4], index: i,
+        return {lon: point ? point[0] : null, lat: point ? point[1] : null, load: stop[4] ?? null, index: i,
                 state: point ? (service.mode && service.mode !== "train" ? "Between stops" : "Between stations") : "Position unavailable",
                 station: day.stations[stop[0]].name, next: day.stations[next[0]].name,
                 approximate: !point};
@@ -92,18 +94,29 @@
         });
     }
     function hydrate(day) {
-        // Shared relative schedules keep the day payload small; expand once in this browser.
+        // Attach shared references only: never duplicate stop arrays for individual trips.
         for (const service of day.services) {
             if (!service.pattern || service.stops) continue;
             const pattern = day.transit_patterns[service.pattern];
             for (const key of ["operator", "line", "direction", "origin", "destination"]) {
                 if (pattern[key] !== undefined) service[key] = pattern[key];
             }
-            service.stops = pattern.stops.map(([id, arrival, departure]) =>
-                [id, service.departure + arrival, service.departure + departure, null, null, null, null]);
+            service.stops = pattern.stops;
+            service.timeOffset = service.departure;
             service.legs = pattern.legs;
         }
         return day;
+    }
+    function stopTime(service, stop, column) {
+        return stop[column] + (service.timeOffset || 0);
+    }
+    function* uniqueSchedules(services) {
+        const seen = new Set();
+        for (const service of services) {
+            if (seen.has(service.stops)) continue;
+            seen.add(service.stops);
+            yield service;
+        }
     }
     function vehicleColor(service) {
         if (service.mode === "tram") {
@@ -127,7 +140,7 @@
             5, ["+", halo, ["*", 1.2, scale]], 9, ["+", halo, ["*", 2.5, scale]],
             12, ["+", halo, ["*", 4, scale]], 15, ["+", halo, ["*", 5, scale]]];
     }
-    const core = {pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, vehicleColor};
+    const core = {pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor};
     if (typeof module !== "undefined" && module.exports) module.exports = core;
     if (!root.document) return;
 
@@ -448,7 +461,8 @@
             setText("replay-matching-count", ` · ${this.filtered.length.toLocaleString()} services in this day`);
         }
         fit() {
-            const ids = new Set(this.filtered.flatMap(service => service.stops.map(stop => stop[0])));
+            const ids = new Set();
+            for (const service of uniqueSchedules(this.filtered)) for (const stop of service.stops) ids.add(stop[0]);
             if (!ids.size || !this.graph) return;
             this.setFollow(false);
             const stations = [...ids].map(i => this.day.stations[i]);
@@ -513,8 +527,8 @@
             const body = node("tbody");
             service.stops.forEach((stop, i) => {
                 const row = node("tr"); row.dataset.stopIndex = String(i);
-                row.append(node("td", this.day.stations[stop[0]].name), node("td", shortTime.format(new Date(stop[1] * 1000))),
-                    node("td", shortTime.format(new Date(stop[2] * 1000))), node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
+                row.append(node("td", this.day.stations[stop[0]].name), node("td", shortTime.format(new Date(stopTime(service, stop, 1) * 1000))),
+                    node("td", shortTime.format(new Date(stopTime(service, stop, 2) * 1000))), node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
                 row.title = `Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`;
                 body.append(row);
             });
@@ -526,7 +540,7 @@
             if (!this.selected) return;
             const host = $("replay-service-status"); if (!host) return;
             const text = position ? `${position.state}: ${position.station}${position.next ? ` → ${position.next}` : " · Terminus"}` :
-                (this.now < this.selected.stops[0][1] ? "This service has not started yet." : "This service has finished.");
+                (this.now < stopTime(this.selected, this.selected.stops[0], 1) ? "This service has not started yet." : "This service has finished.");
             const signature = `${text}|${position?.load}|${position?.approximate}`;
             if (host.dataset.signature !== signature) {
                 host.dataset.signature = signature; host.replaceChildren(node("strong", text));
@@ -541,11 +555,11 @@
             }
         }
         updateStaticLayers() {
-            const ids = [], stationIds = new Set();
-            for (const service of this.filtered) {
+            const ids = new Set(), stationIds = new Set();
+            for (const service of uniqueSchedules(this.filtered)) {
                 if (this.mapMode === "demand" && service.mode !== "train") continue;
                 for (const stop of service.stops) stationIds.add(stop[0]);
-                if (this.display.includes("routes")) ids.push(...service.legs);
+                if (this.display.includes("routes")) for (const id of service.legs) ids.add(id);
             }
             const routes = routeFeatures(this.day.paths, ids);
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
@@ -645,7 +659,7 @@
                 if (generation !== this.generation) { this.staticDirty = true; this.paintAgain = true; return; }
                 if (this.needsFit) this.metroView();
                 if (this.followSelected && selectedVisible) this.graph.setCenter([selectedPosition.lon, selectedPosition.lat]);
-                else if (this.followSelected && this.now > this.selected.stops[this.selected.stops.length - 1][2]) this.setFollow(false);
+                else if (this.followSelected && this.now > stopTime(this.selected, this.selected.stops[this.selected.stops.length - 1], 2)) this.setFollow(false);
                 if (force || performance.now() - this.lastUI >= 200 || !this.playing) {
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));

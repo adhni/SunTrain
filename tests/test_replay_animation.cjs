@@ -165,6 +165,7 @@ test('Silver Line stays silver, retains its route identities and filters separat
     assert.equal(vehicleColor(bus),'#7C878E');
     assert.equal(vehicleColor({...bus,color:undefined}),'#7C878E');
     assert.equal(vehicleColor({...bus,mode:'bus'}),'#FF8200');
+    assert.equal(vehicleColor({...bus,mode:'bus'},'london'),'#DC241F');
     assert.equal(bus.route_id,'741');
     assert.strictEqual(bus.stops,silver.transit_patterns.p.stops);
     assert.equal(servicePosition(bus,115,silver).lon,1.5);

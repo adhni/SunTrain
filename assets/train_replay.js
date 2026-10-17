@@ -130,8 +130,8 @@
             yield service;
         }
     }
-    function vehicleColor(service) {
-        if (service.mode === "bus") return BUS_COLOR;
+    function vehicleColor(service, city) {
+        if (service.mode === "bus") return city === "london" ? "#DC241F" : BUS_COLOR;
         if (/^#[0-9a-f]{6}$/i.test(service.color || "")) return service.color;
         if (service.mode === "silver_line") return "#7C878E";
         if (service.mode === "tram") {
@@ -477,7 +477,7 @@
             const dark = root.suntrainTheme.current === "dark";
             if (this.mapReady) {
                 root.suntrainTheme.styleMap(this.graph);
-                this.graph.setPaintProperty("replay-selected-route", "line-color", this.selected ? vehicleColor(this.selected) : dark ? "#8ae1ca" : "#115d51");
+                this.graph.setPaintProperty("replay-selected-route", "line-color", this.selected ? vehicleColor(this.selected, this.day?.city) : dark ? "#8ae1ca" : "#115d51");
                 this.graph.setPaintProperty("replay-demand-stations", "circle-stroke-color", dark ? "#e4eef0" : "#fff");
                 for (const layer of ["replay-stations", "replay-local-stops"]) {
                     this.graph.setPaintProperty(layer, "circle-color", dark ? "#a6bdb5" : "#6d8980");
@@ -489,7 +489,7 @@
             }
             this.updateLegend();
             const detail = document.querySelector(".replay-detail-line");
-            if (detail && this.selected) detail.style.borderLeftColor = vehicleColor(this.selected);
+            if (detail && this.selected) detail.style.borderLeftColor = vehicleColor(this.selected, this.day?.city);
             if (this.day && this.mapReady) this.paint(true);
         }
         updateLegend() {
@@ -498,7 +498,7 @@
             const entries = new Map();
             for (const service of this.filtered) {
                 const label = service.mode === "tram" ? `Tram ${tramRoute(service) || "other"}` : service.mode === "bus" ? "Buses" : service.line;
-                entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service)});
+                entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service, this.day?.city)});
             }
             for (const {label, color} of [...entries.values()].sort((a, b) => a.label.localeCompare(b.label, "en", {numeric: true}))) {
                 const item = node("span", undefined, "replay-legend-item");
@@ -588,12 +588,12 @@
             const service = this.filtered.find(s => s.id === id);
             if (!service) return;
             this.selected = service; this.staticDirty = true;
-            this.graph.setPaintProperty("replay-selected-route", "line-color", vehicleColor(service));
+            this.graph.setPaintProperty("replay-selected-route", "line-color", vehicleColor(service, this.day?.city));
             $("replay-panel").classList.add("replay-has-selection");
             $("replay-close-details").hidden = false;
             this.setFollow(this.followSelected);
             const host = $("replay-details"); host.replaceChildren();
-            const line = node("div", service.line, "replay-detail-line"); line.style.borderLeftColor = vehicleColor(service);
+            const line = node("div", service.line, "replay-detail-line"); line.style.borderLeftColor = vehicleColor(service, this.day?.city);
             host.append(line, node("h3", service.mode === "train" ? `Train ${service.number}` : service.line.split(" · ")[0]), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
                 node("p", `${service.operator === "VLine" ? "V/Line" : service.operator} · ${directionLabel(service)}`, "replay-muted"));
             if (service.mode !== "train") host.append(node("p", `Trip ${service.number}`, "replay-muted replay-small"));
@@ -724,7 +724,7 @@
                     activeCount++;
                     if (service.id === this.selected?.id) selectedPosition = position;
                     if (position.lon === null || position.lat === null) { missingCount++; continue; }
-                    const marker = pointFeature([position.lon, position.lat], {id: service.id, color: vehicleColor(service),
+                    const marker = pointFeature([position.lon, position.lat], {id: service.id, color: vehicleColor(service, this.day?.city),
                         sizeFactor: markerScale(position.load, this.display.includes("load")), load: position.load, approximate: position.approximate});
                     trains.push(marker);
                     if (service.id === this.selected?.id) selectedMarker = marker;

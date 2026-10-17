@@ -77,7 +77,7 @@ def test_bus_preparation_applies_calendars_deduplicates_and_does_not_invent_freq
     assert monday["metadata"]["omitted_trips"] == {"Non-exact frequency service": 1}
     assert monday["metadata"]["deduplicated_occurrences"]["2026-10-05"] == 1
     assert all("stops" not in p and len(p["times"]) == 2 * len(monday["stop_patterns"][p["stop_pattern"]]["stations"]) for p in monday["patterns"].values())
-    assert all(p["color"] == "#FF8200" and p["mode"] == "bus" for p in monday["patterns"].values())
+    assert all(p["color"] == "#DC241F" and p["mode"] == "bus" for p in monday["patterns"].values())
     assert all(path["quality"] == "shape" and len(path["coordinates"]) == 3 for path in monday["paths"].values())
 
 
@@ -121,7 +121,7 @@ def test_prepared_bus_days_keep_flat_times_road_paths_and_unique_occurrences(bus
     assert not {"246", "653"} & {p["route_id"] for p in patterns.values()}
     assert any(p["route_id"].startswith("N") for p in patterns.values())
     for pattern in patterns.values():
-        assert pattern["mode"] == "bus" and pattern["color"] == "#FF8200"
+        assert pattern["mode"] == "bus" and pattern["color"] == "#DC241F"
         assert "stops" not in pattern and "legs" not in pattern
         stops = topologies[pattern["stop_pattern"]]["stations"]
         assert len(stops) * 2 == len(pattern["times"])

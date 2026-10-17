@@ -233,7 +233,7 @@ def prepare(cache, reference, output):
                     ids.append(station_ids[key])
                 operator = agencies[route["agency_id"]]["agency_name"]
                 pattern = {"mode": "bus", "operator": operator, "line": f"Bus {line}", "route_id": line,
-                    "color": "#FF8200", "direction": "Direction " + {"0": "A", "1": "B"}.get(trip.get("direction_id"), "unknown"),
+                    "color": "#DC241F", "direction": "Direction " + {"0": "A", "1": "B"}.get(trip.get("direction_id"), "unknown"),
                     "origin": stops[sequence[0]["stop_id"]]["stop_name"],
                     "destination": trip.get("trip_headsign") or stops[sequence[-1]["stop_id"]]["stop_name"],
                     "stops": [[identifier, a - times[0][0], b - times[0][0]] for identifier, (a, b) in zip(ids, times)],

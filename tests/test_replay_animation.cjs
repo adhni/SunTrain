@@ -117,3 +117,19 @@ test('shared schedules preserve overnight times and complete-journey stop filter
     assert.equal(matches(trip,{operators:[],lines:[],directions:[],stations:['Bravo'],number:''},overnight),true);
     assert.equal(trip.stops.length,2);
 });
+
+test('Boston rail shares schedules, retains MBTA route colors and has no passenger loads', () => {
+    const {hydrate, vehicleColor} = require('../assets/train_replay.js');
+    const boston = {...day, transit_patterns: {p: {operator:'MBTA', line:'Blue Line', color:'#003DA5', route_id:'Blue',
+        direction:'North', origin:'Alpha', destination:'Bravo', stops:[[0,0,10],[1,20,30]], legs:['curve']}},
+        services:[{id:'boston', mode:'subway', pattern:'p', departure:100, number:'trip'}]};
+    const subway = hydrate(boston).services[0];
+    assert.equal(vehicleColor(subway),'#003DA5');
+    assert.equal(subway.route_id,'Blue');
+    assert.equal(subway.direction,'North');
+    assert.equal(servicePosition(subway,115,boston).lon,1.5);
+    assert.equal(servicePosition(subway,115,boston).load,null);
+    assert.strictEqual(subway.stops,boston.transit_patterns.p.stops);
+    assert.equal(matches(subway,{modes:['commuter_rail'],operators:[],lines:[],directions:[],stations:[],number:''},boston),false);
+    assert.equal(matches(subway,{modes:['subway'],operators:['MBTA'],lines:['Blue Line'],directions:['North'],stations:[],number:''},boston),true);
+});

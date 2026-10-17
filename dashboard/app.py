@@ -370,7 +370,7 @@ app.layout = html.Div(
                                     children=[
                                         html.H1("SunTrain"),
                                         html.P(
-                                            "Victorian passenger demand and service patterns",
+                                            "Historical transport replay and Melbourne passenger analysis",
                                             className="product-subtitle",
                                         ),
                                     ]
@@ -379,9 +379,9 @@ app.layout = html.Div(
                                     className="brand-tools",
                                     children=[
                                         html.Div(className="dataset-note", children=[
-                                            html.Strong("FY 2023-2024"),
+                                            html.Strong("Melbourne analysis · FY 2023-2024"),
                                             html.Span("Business day: 03:00-02:59"),
-                                            html.Span("Counts rounded to nearest 10"),
+                                            html.Span("Melbourne counts rounded to nearest 10"),
                                         ]),
                                         html.Button("Dark mode", id="theme-toggle", className="theme-toggle",
                                                     **{"data-theme-toggle": "true", "aria-pressed": False}),
@@ -590,7 +590,7 @@ app.layout = html.Div(
                     mobile_breakpoint=0,
                     children=[
                         dcc.Tab(label="Transport Replay", value="replay"),
-                        dcc.Tab(label="Overview", value="overview"),
+                        dcc.Tab(label="Overview · Melbourne", value="overview"),
                     ],
                 ),
                 html.Div(id="overview-navigation", style={"display": "none"}, children=[
@@ -1862,7 +1862,7 @@ def download_filtered_rows(_n_clicks, start_date, end_date, day_types, lines, gr
     return dcc.send_data_frame(df.to_csv, filename, index=False)
 
 
-load_replay_day = register_replay_callbacks(app)
+load_replay_day = register_replay_callbacks(app, META)
 
 
 if __name__ == "__main__":

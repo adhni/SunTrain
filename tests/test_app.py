@@ -265,14 +265,32 @@ def test_replay_only_loads_when_visible_and_date_changes(app_module, monkeypatch
     import dashboard.replay_view as replay_view
 
     calls = []
-    monkeypatch.setattr(replay_view, "get_replay_day", lambda day: calls.append(day) or {"business_date": day})
+    monkeypatch.setattr(replay_view, "get_replay_day", lambda day, city: calls.append((day, city)) or {"business_date": day})
     with pytest.raises(PreventUpdate):
-        app_module.load_replay_day("2023-07-10", "overview", None)
-    assert app_module.load_replay_day("2023-07-10", "replay", None) == ({"business_date": "2023-07-10"}, "")
+        app_module.load_replay_day("2023-07-10", "overview", "melbourne", None)
+    assert app_module.load_replay_day("2023-07-10", "replay", "melbourne", None) == ({"business_date": "2023-07-10"}, "")
     with pytest.raises(PreventUpdate):
-        app_module.load_replay_day("2023-07-10", "replay", {"business_date": "2023-07-10"})
-    app_module.load_replay_day("2023-07-11", "replay", {"business_date": "2023-07-10"})
-    assert calls == ["2023-07-10", "2023-07-11"]
+        app_module.load_replay_day("2023-07-10", "replay", "melbourne", {"business_date": "2023-07-10"})
+    app_module.load_replay_day("2023-07-11", "replay", "melbourne", {"business_date": "2023-07-10"})
+    assert calls == [("2023-07-10", "melbourne"), ("2023-07-11", "melbourne")]
+
+
+def test_replay_switches_city_on_same_date_and_ignores_transient_out_of_range_date(app_module, monkeypatch):
+    import dashboard.replay_view as replay_view
+    calls = []
+    monkeypatch.setattr(replay_view, "get_replay_day", lambda day, city: calls.append((day, city)) or {"city": city})
+    result, message = app_module.load_replay_day("2024-06-24", "replay", "boston",
+                                                {"business_date": "2024-06-24", "city": "melbourne"})
+    assert result == {"city": "boston"} and message == ""
+    assert calls == [("2024-06-24", "boston")]
+    result, _ = app_module.load_replay_day("2024-06-24", "replay", "melbourne",
+                                          {"business_date": "2024-06-24", "city": "boston"})
+    assert result == {"city": "melbourne"}
+    with pytest.raises(PreventUpdate):
+        app_module.load_replay_day("2024-06-24", "replay", "boston",
+                                   {"business_date": "2024-06-24", "city": "boston"})
+    with pytest.raises(PreventUpdate):
+        app_module.load_replay_day("2024-05-27", "replay", "boston", None)
 
 
 def test_replay_hides_shared_filters_and_restores_them_on_exit(app_module):

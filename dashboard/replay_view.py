@@ -151,7 +151,7 @@ def register_replay_callbacks(app, metadata):
         Input("replay-city", "value"), State("replay-date", "date"))
     def configure_city(city, current_date):
         settings = city_settings(city)
-        if city == "boston":
+        if city != "melbourne":
             minimum, maximum = settings["start_date"], settings["end_date"]
         else:
             coverage = available_range()
@@ -173,7 +173,7 @@ def register_replay_callbacks(app, metadata):
         if active_tab != "replay" or not business_date:
             raise PreventUpdate
         settings = city_settings(city)
-        if city == "boston" and not settings["start_date"] <= business_date <= settings["end_date"]:
+        if city != "melbourne" and not settings["start_date"] <= business_date <= settings["end_date"]:
             raise PreventUpdate  # The city callback will choose a supported date.
         if current and not current.get("error") and current.get("business_date") == business_date and current.get("city", "melbourne") == city:
             raise PreventUpdate

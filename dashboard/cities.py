@@ -21,6 +21,15 @@ CITIES = {
         "directions": [("North", "North"), ("South", "South"), ("East", "East"), ("West", "West"),
                        ("Inbound", "Inbound"), ("Outbound", "Outbound")],
     },
+    "chicago": {
+        "name": "Chicago", "timezone": "America/Chicago",
+        "bounds": [[-87.96, 41.65], [-87.50, 42.09]], "passenger_data": False,
+        "start_date": "2025-11-24", "end_date": "2025-12-28",
+        "description": "Five weeks of CTA trains in November–December 2025. Metra and passenger counts are unavailable.",
+        "modes": [("CTA ‘L’ trains", "subway")], "operators": [("CTA", "CTA")],
+        "directions": [("North", "North"), ("South", "South"), ("East", "East"), ("West", "West"),
+                       ("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

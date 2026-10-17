@@ -1,6 +1,24 @@
 # SunTrain
 
-Historical transport replay for Melbourne and Boston, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay for Melbourne, Boston and Chicago, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Chicago CTA rail
+
+Choose **Chicago** in **Replay city** for **24 November–28 December 2025**, five full weeks of CTA ‘L’ trains: Red, Blue, Brown, Green, Orange, Pink, Purple and Yellow. Chicago uses `America/Chicago` local time, historical feed colours and the existing route/direction/stop filters, playback controls, fullscreen and themes. Metra, buses and train passenger counts are unavailable in this first addition. Overview remains Melbourne passenger analysis.
+
+**Chicago's period differs from Melbourne and Boston.** The requested May–June 2024 Transitland snapshot is listed, but its ZIP download required archive authentication. A publicly downloadable 2024 ZIP was not obtained. The supported 2025 period uses two accessible [MobilityDatabase CTA archives](https://mobilitydatabase.org/feeds/gtfs/mdb-389), captured on 23 November and 19 December 2025 (UTC); each service date selects the latest of these snapshots captured by that date. Calendars and date exceptions determine actual trips, including holidays. Current CTA schedules are never substituted for the labelled historical dates.
+
+Rebuild the compact Chicago reference with:
+
+```bash
+./.venv/bin/python scripts/prepare_chicago_replay.py
+```
+
+The script downloads the pinned archives into `.cache/chicago-archives/` and writes `data/reference/chicago/2025-11-24.json.gz`. Only CTA rail is retained. Stop schedules and trip-specific shapes remain shared; the existing prepared-city loader sends one selected day to the browser without querying Melbourne's warehouse. Set `SUNTRAIN_CHICAGO_REFERENCE` to use another prepared reference.
+
+CTA supplies native stop/shape distance anchors, reused by the existing geometry matcher to preserve Loop stop occurrences and branch paths before simplification. Anchors must follow journey order and match stations within 150 m; unresolved paths remain gaps. Data is provided by Chicago Transit Authority under its [Developer License Agreement](https://www.transitchicago.com/downloads/sch_data/developers_license_agreement.htm). SunTrain is independent of CTA. Positions estimate scheduled movement, not GPS, delays or every historical disruption.
+
+See [Chicago data and expansion notes](CHICAGO_EXPANSION_NOTES.md) for the archive limitation, Metra findings, daily station ridership and future bus support.
 
 ## Boston replay pilot
 

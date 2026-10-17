@@ -291,6 +291,10 @@ def test_replay_switches_city_on_same_date_and_ignores_transient_out_of_range_da
                                    {"business_date": "2024-06-24", "city": "boston"})
     with pytest.raises(PreventUpdate):
         app_module.load_replay_day("2024-05-27", "replay", "boston", None)
+    with pytest.raises(PreventUpdate):
+        app_module.load_replay_day("2024-06-24", "replay", "chicago", None)
+    result, _ = app_module.load_replay_day("2025-11-24", "replay", "chicago", None)
+    assert result == {"city": "chicago"}
 
 
 def test_replay_hides_shared_filters_and_restores_them_on_exit(app_module):

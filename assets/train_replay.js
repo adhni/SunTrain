@@ -390,12 +390,14 @@
             const attribution = $("replay-attribution");
             attribution.replaceChildren();
             if (day.schedule) {
-                const link = node("a", "Data provided by MassDOT / MBTA · historical GTFS archive");
+                const chicago = day.city === "chicago";
+                const link = node("a", chicago ? "Data provided by Chicago Transit Authority · historical GTFS via MobilityDatabase" : "Data provided by MassDOT / MBTA · historical GTFS archive");
                 link.href = day.schedule.source_url; link.target = "_blank"; link.rel = "noopener noreferrer";
                 const license = node("a", day.schedule.license);
                 license.href = day.schedule.license_url; license.target = "_blank"; license.rel = "noopener noreferrer";
                 attribution.append(link, document.createTextNode(" · "), license,
-                    document.createTextNode(". Scheduled rail and Silver Line replay; positions are estimates. Passenger counts are unavailable. This application is independent of MBTA."));
+                    document.createTextNode(chicago ? ". Scheduled CTA rail replay for 2025; positions are estimates. Passenger counts are unavailable. This application is independent of CTA." :
+                        ". Scheduled rail and Silver Line replay; positions are estimates. Passenger counts are unavailable. This application is independent of MBTA."));
                 return;
             }
             if (day.geometry.source_url) {
@@ -471,6 +473,7 @@
             if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
             else if (total) pieces.push("All selected journey legs have route geometry.");
             if (this.day.city === "boston") pieces.push("Rail and Silver Line pilot. Other buses and replacement shuttles are excluded; timetable changes follow the historical archive.");
+            else if (this.day.city === "chicago") pieces.push("CTA rail only, using November–December 2025 schedules. Metra and buses are unavailable; direction A/B follows the feed where compass directions are not supplied.");
             else if (!this.day.transit?.available) pieces.push("Tram and bus timetables are unavailable for this date.");
             if (uncertain) pieces.push(`${uncertain} services contain ambiguous daylight-saving times; earliest consistent times are shown.`);
             if (this.day.excluded_services) pieces.push(`${this.day.excluded_services} services omitted because their source times or coordinates are invalid.`);
@@ -518,7 +521,7 @@
             const host = $("replay-details");
             if (host) host.replaceChildren(node("h3", "Follow a service"),
                 node("p", "Click a moving vehicle to see its journey and scheduled stops.", "replay-muted"),
-                node("div", this.day?.passenger_data === false ? "Positions follow scheduled times. Passenger counts are unavailable for Boston." :
+                node("div", this.day?.passenger_data === false ? `Positions follow scheduled times. Passenger counts are unavailable for ${this.day.city_name}.` :
                     "Positions follow scheduled times. Train passenger counts are available; tram and bus counts are unavailable.", "replay-detail-note"));
         }
         select(id) {

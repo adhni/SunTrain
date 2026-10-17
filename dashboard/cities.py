@@ -107,6 +107,15 @@ CITIES = {
         "modes": [("BART", "subway")], "operators": [("BART", "Bay Area Rapid Transit")],
         "directions": [("North", "North"), ("South", "South")],
     },
+    "london": {
+        "name": "London", "timezone": "Europe/London",
+        "bounds": [[-0.52, 51.31], [0.27, 51.70]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "One week of London Underground, DLR and Trams schedules on mapped railway paths. Individual train passenger loads are unavailable.",
+        "modes": [("Underground", "subway"), ("DLR / trams", "light_rail")],
+        "operators": [("London Underground", "London Underground"), ("DLR", "Docklands Light Railway"), ("London Trams", "London Trams")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

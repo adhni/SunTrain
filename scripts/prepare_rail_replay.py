@@ -32,7 +32,7 @@ def source_for(day, archives):
     return matches[0]
 
 
-def prepare(city, source, cache, output, selected_route, describe_route):
+def prepare(city, source, cache, output, selected_route, describe_route, geometry_resolver=None):
     if source.get("geometry_method", "native_or_projected") not in {"native_or_projected", "ordered_projection"}:
         raise ValueError("Unsupported railway geometry method")
     first, last = date.fromisoformat(source["first"]), date.fromisoformat(source["last"])
@@ -126,17 +126,32 @@ def prepare(city, source, cache, output, selected_route, describe_route):
                             result["stations"].append({"name": stop["stop_name"], "lon": coordinate[0], "lat": coordinate[1], "mode": "train"})
                         ids.append(station_ids[key])
                     raw = shapes.get(trip.get("shape_id", ""), [])
+                    route = routes[trip["route_id"]]
                     anchored = source.get("geometry_method") != "ordered_projection" and bool(raw) and all(
                         r.get("shape_dist_traveled", "") != "" for r in sequence) and all(a is not None for _, a, _ in raw)
                     anchors = [float(r["shape_dist_traveled"]) for r in sequence] if anchored else None
-                    geometry_key = (signatures.get(trip.get("shape_id", "")), tuple(anchors) if anchors is not None else None, tuple(map(tuple, coordinates)))
+                    geometry_key = (trip["route_id"] if geometry_resolver else None, signatures.get(trip.get("shape_id", "")),
+                                    tuple(anchors) if anchors is not None else None, tuple(map(tuple, coordinates)))
                     if geometry_key not in geometry_cache:
                         try:
-                            curves = path_legs(raw, anchors, coordinates)
+                            curves = geometry_resolver(route, trip, sequence, coordinates) if geometry_resolver else path_legs(raw, anchors, coordinates)
+                            if geometry_resolver and (len(curves) != len(coordinates) - 1 or any(
+                                    curve is not None and (len(curve) < 2 or not all(math.isfinite(value) for point in curve for value in point)
+                                    or cumulative_distances([coordinates[i], curve[0]])[-1] > 150
+                                    or cumulative_distances([coordinates[i + 1], curve[-1]])[-1] > 150)
+                                    for i, curve in enumerate(curves))):
+                                raise ValueError("External railway geometry does not match the ordered stops within 150 m")
                             legs = []
+                            if any(curve is None for curve in curves):
+                                gaps["One or more railway legs lack a connected path within 150 m"] += 1
                             for curve in curves:
+                                if curve is None:
+                                    key = city + "-unresolved"
+                                    result["paths"][key] = {"coordinates": [], "distances": [], "quality": "approximate"}
+                                    legs.append(key)
+                                    continue
                                 key = city + "-" + hashlib.sha256(json.dumps(curve).encode()).hexdigest()[:20]
-                                result["paths"][key] = {"coordinates": curve, "distances": cumulative_distances(curve), "quality": "shape"}
+                                result["paths"][key] = {"coordinates": curve, "distances": cumulative_distances(curve), "quality": source.get("geometry_quality", "shape")}
                                 legs.append(key)
                             native_count += anchored
                         except (ValueError, IndexError) as error:
@@ -148,7 +163,6 @@ def prepare(city, source, cache, output, selected_route, describe_route):
                     legs = geometry_cache[geometry_key]
                     if any(result["paths"][key]["quality"] == "approximate" for key in legs):
                         gap_trips[trip_id] = trip.get("shape_id", "")
-                    route = routes[trip["route_id"]]
                     agency = route.get("agency_id") or next(iter(agencies))
                     operator = agencies[agency]["agency_name"]
                     if agencies[agency]["agency_timezone"] != source["timezone"]:
@@ -181,6 +195,9 @@ def prepare(city, source, cache, output, selected_route, describe_route):
         "daily_services": counts, "omitted_trips": dict(omissions), "unresolved_geometry_patterns": dict(gaps),
         "unresolved_geometry_trips": gap_trips, "native_anchor_patterns": native_count,
         "note": "Scheduled estimates, not GPS or a reconstruction of every historical disruption. Only services active in source calendars appear. No individual train passenger loads."}
+    for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url", "geometry_source_date", "geometry_sha256"):
+        if key in source:
+            result["metadata"][key] = source[key]
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + ".tmp")
     with temporary.open("wb") as file, gzip.GzipFile(filename="", fileobj=file, mode="wb", mtime=0) as stream:

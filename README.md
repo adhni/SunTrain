@@ -2,6 +2,18 @@
 
 Historical transport replay across Australia, Canada, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## London Underground, DLR and Trams
+
+Choose **London** in **Replay city** for **5–11 October 2026**: all **11 Underground lines**, **DLR** and **London Trams**, with London local time, route colours and the existing replay controls. A validated public dated conversion supplies TfL schedules; connected OpenStreetMap railway paths supply movement geometry. Unresolved legs remain gaps (under 1% each day). This is a schedule replay, not live tracking or a reconstruction of every disruption.
+
+Overground and Elizabeth line are documented for later integration. London passenger sizing and heatmaps remain unavailable: the verified NUMBAT workbooks describe modelled typical autumn 2025 demand, rather than individual train loads in this 2026 week. Overview still analyses Melbourne passenger data. See [London expansion notes](LONDON_EXPANSION_NOTES.md) for sources, licensing, gaps, passenger findings and future expansion instructions.
+
+Powered by TfL Open Data. Contains OS data © Crown copyright and database rights 2016 and Geomni UK Map data © and database rights [2019]. Timetables converted by Planar Network; railway geometry © OpenStreetMap contributors, ODbL 1.0. [TfL licence](https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service), [OSM attribution](https://www.openstreetmap.org/copyright).
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_london_replay.py
+```
+
 ## Toronto rapid transit
 
 Choose **Toronto** in **Replay city** for **5–11 October 2026**: TTC subway Lines **1 Yonge-University**, **2 Bloor-Danforth** and **4 Sheppard**, plus light rail Lines **5 Eglinton** and **6 Finch West**. The existing controls, route colours, Toronto local clock, filters, themes and fullscreen work for all five lines. Streetcars, buses, GO Transit and UP Express are not included. Passenger sizing and heatmaps remain unavailable; the Overview still analyses Melbourne passenger data.

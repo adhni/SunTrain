@@ -400,8 +400,14 @@
                     const license = node("a", day.schedule.license);
                     license.href = day.schedule.license_url;
                     for (const link of [source, license]) {link.target = "_blank"; link.rel = "noopener noreferrer";}
-                    attribution.append(source, document.createTextNode(" · "), license,
-                        document.createTextNode(". Scheduled positions are estimates. SunTrain is independent of the data providers and operators."));
+                    attribution.append(source, document.createTextNode(" · "), license);
+                    for (const key of ["geometry_source", "geometry_license"]) {
+                        if (!day.schedule[key] || !day.schedule[key + "_url"]) continue;
+                        const link = node("a", day.schedule[key]); link.href = day.schedule[key + "_url"];
+                        link.target = "_blank"; link.rel = "noopener noreferrer";
+                        attribution.append(document.createTextNode(" · "), link);
+                    }
+                    attribution.append(document.createTextNode(". Scheduled positions are estimates. SunTrain is independent of the data providers and operators."));
                     return;
                 }
                 if (day.city === "singapore") {

@@ -11,7 +11,7 @@ from scripts.prepare_rail_replay import prepare
 from scripts.prepare_us_rail_replay import describe_route, selected_route
 
 
-def archive_fixture(path, normal_trip, service_dates):
+def archive_fixture(path, normal_trip, service_dates, extra_route=False):
     """Two snapshots have different trips; one old trip runs across 03:00."""
     tables = {
         "feed_info.txt": [{"feed_start_date": "20261004", "feed_end_date": "20261007", "feed_version": normal_trip}],
@@ -27,8 +27,13 @@ def archive_fixture(path, normal_trip, service_dates):
     }
     if normal_trip == "old":
         tables["trips.txt"].append({**tables["trips.txt"][0], "trip_id": "late"})
+    if extra_route:
+        tables["routes.txt"].append({**tables["routes.txt"][0], "route_id": "BLUE"})
+        tables["trips.txt"].append({**tables["trips.txt"][0], "route_id": "BLUE", "trip_id": "blue"})
+        tables["stops.txt"].append({"stop_id": "c", "stop_name": "Charlie", "stop_lon": "-76.98", "stop_lat": "38.90"})
     for trip in tables["trips.txt"]:
-        for index, (stop, clock) in enumerate(zip(("a", "b"), ("26:55:00", "27:10:00") if trip["trip_id"] == "late" else ("06:00:00", "06:10:00"))):
+        for index, (stop, clock) in enumerate(zip(("a", "b", "c") if extra_route else ("a", "b"),
+                ("26:55:00", "27:10:00") if trip["trip_id"] == "late" else ("06:00:00", "06:10:00", "06:20:00"))):
             tables["stop_times.txt"].append({"trip_id": trip["trip_id"], "stop_id": stop, "stop_sequence": str(index),
                                             "arrival_time": clock, "departure_time": clock, "shape_dist_traveled": str(index)})
     with ZipFile(path, "w") as archive:
@@ -74,3 +79,48 @@ def test_preparation_rejects_dates_outside_declared_feed_validity(tmp_path):
     with pytest.raises(ValueError, match="Feed validity"):
         prepare("dc", source, tmp_path, tmp_path / "invalid.json.gz", lambda route, agencies: True, lambda route, trip: {})
     assert not (tmp_path / "invalid.json.gz").exists()
+
+
+def external_source(tmp_path, extra_route=False):
+    digest = archive_fixture(tmp_path / "external.zip", "regular", ["20261005"], extra_route)
+    return {"first": "2026-10-05", "last": "2026-10-05", "timezone": "America/New_York",
+            "url": "https://example.test/external.zip", "sha256": digest, "captured": "2026-10-04", "published": "",
+            "source": "fixture", "source_url": "https://example.test", "license": "fixture",
+            "license_url": "https://example.test/license", "attribution": "fixture", "note": "fixture",
+            "geometry_quality": "track"}
+
+
+def test_external_geometry_keeps_resolved_legs_and_caches_each_route_separately(tmp_path):
+    source = external_source(tmp_path, extra_route=True)
+    calls = []
+
+    def resolve(route, trip, sequence, points):
+        calls.append(route["route_id"])
+        curve = [points[0], [-76.995, 38.901], points[1]]
+        return [curve, None] if route["route_id"] == "RED" else [None, [points[1], points[2]]]
+
+    output = tmp_path / "prepared.json.gz"
+    prepare("fixture", source, tmp_path, output, lambda route, agencies: True,
+            lambda route, trip: {"route_id": route["route_id"]}, geometry_resolver=resolve)
+    with gzip.open(output, "rt") as stream:
+        reference = json.load(stream)
+    assert sorted(calls) == ["BLUE", "RED"]
+    patterns = {p["route_id"]: p for p in reference["patterns"].values()}
+    red = [reference["paths"][key] for key in patterns["RED"]["legs"]]
+    blue = [reference["paths"][key] for key in patterns["BLUE"]["legs"]]
+    assert red[0]["quality"] == blue[1]["quality"] == "track"
+    assert red[0]["coordinates"][1] == [-76.995, 38.901]
+    assert red[1]["coordinates"] == blue[0]["coordinates"] == []
+    assert not reference["metadata"]["omitted_trips"]
+
+
+@pytest.mark.parametrize("invalid", [[], [[[-77.1, 38.9], [-76.99, 38.9]]], [[[float("nan"), 38.9], [-76.99, 38.9]]]])
+def test_invalid_external_geometry_stays_a_gap_without_using_the_gtfs_sketch(tmp_path, invalid):
+    source = external_source(tmp_path)
+    output = tmp_path / "prepared.json.gz"
+    prepare("fixture", source, tmp_path, output, lambda route, agencies: True,
+            lambda route, trip: {"route_id": route["route_id"]}, geometry_resolver=lambda *args: invalid)
+    with gzip.open(output, "rt") as stream:
+        reference = json.load(stream)
+    assert reference["days"]["2026-10-05"] and not reference["metadata"]["omitted_trips"]
+    assert all(p["coordinates"] == [] and p["quality"] == "approximate" for p in reference["paths"].values())

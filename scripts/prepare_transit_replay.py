@@ -1,4 +1,4 @@
-"""Prepare 24–30 June 2024 tram/bus replay from the archived PTV GTFS bundle."""
+"""Prepare a date range of tram/bus replay from an archived PTV GTFS bundle."""
 from __future__ import annotations
 
 import argparse
@@ -16,10 +16,10 @@ from zipfile import ZipFile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from dashboard.replay import cumulative_distances
-from dashboard.transit import REFERENCE, WEEK_START, WEEK_END
 from scripts.prepare_replay_geometry import anchored_shape
 
 SOURCE_URL = "https://files.mobilitydatabase.org/mdb-657/mdb-657-202406240001/mdb-657-202406240001.zip"
+DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "data/reference/transit/2024-06-24.json.gz"
 # Keep complete journeys serving the Melbourne map extent, including outer termini.
 MELBOURNE = (144.55, -38.15, 145.6, -37.48)
 
@@ -57,18 +57,23 @@ def business_occurrences(day, active_dates, start, end):
             yield shift
 
 
-def prepare(filename, output):
-    first, last = date.fromisoformat(WEEK_START), date.fromisoformat(WEEK_END)
+def prepare(filename, output, *, start_date="2024-06-24", end_date="2024-06-30", source_date="2024-06-24",
+            source_url=SOURCE_URL, geometry_cache=None, path_cache=None):
+    first, last = date.fromisoformat(start_date), date.fromisoformat(end_date)
+    if first > last:
+        raise ValueError("Start date must precede end date")
     days = [first + timedelta(days=i) for i in range((last - first).days + 1)]
     calendar_days = [first - timedelta(days=1), *days, last + timedelta(days=1)]
     result = {"stations": [], "patterns": {}, "paths": {}, "days": {d.isoformat(): [] for d in days}}
     omitted = defaultdict(int)
     invalid_reasons = defaultdict(int)
+    geometry_cache = {} if geometry_cache is None else geometry_cache
+    path_cache = {} if path_cache is None else path_cache
     with ZipFile(filename) as outer:
         for branch, mode, operator, route_type in (("3", "tram", "PTV tram", "0"), ("4", "bus", "PTV bus", "3")):
             with ZipFile(io.BytesIO(outer.read(f"{branch}/google_transit.zip"))) as archive:
-                active = {d: active_services(list(records(archive, "calendar.txt")),
-                                             list(records(archive, "calendar_dates.txt")), d) for d in calendar_days}
+                calendars, exceptions = list(records(archive, "calendar.txt")), list(records(archive, "calendar_dates.txt"))
+                active = {d: active_services(calendars, exceptions, d) for d in calendar_days}
                 relevant = set().union(*active.values())
                 routes = {r["route_id"]: r for r in records(archive, "routes.txt") if r["route_type"] == route_type}
                 trips = {r["trip_id"]: r for r in records(archive, "trips.txt")
@@ -90,7 +95,8 @@ def prepare(filename, output):
                     if r["shape_id"] in needed_shapes:
                         shapes[r["shape_id"]].append((int(r["shape_pt_sequence"]), float(r["shape_dist_traveled"]),
                             [round(float(r["shape_pt_lon"]), 6), round(float(r["shape_pt_lat"]), 6)]))
-                geometry_cache = {}
+                shape_signatures = {key: hashlib.sha256(json.dumps(raw, separators=(",", ":")).encode()).hexdigest()
+                                    for key, raw in shapes.items()}
                 for trip_id, trip in trips.items():
                     sequence = sorted(calls[trip_id], key=lambda r: int(r["stop_sequence"]))
                     try:
@@ -109,7 +115,7 @@ def prepare(filename, output):
                         if not occurrences:
                             continue
                         anchors = tuple(float(s["shape_dist_traveled"]) if s["shape_dist_traveled"].strip() else None for s in sequence)
-                        geometry_key = (trip["shape_id"], anchors)
+                        geometry_key = (shape_signatures.get(trip["shape_id"], "missing"), anchors)
                         if geometry_key not in geometry_cache:
                             legs = []
                             try:
@@ -123,13 +129,15 @@ def prepare(filename, output):
                                     if len(curve) == 1:
                                         curve = [curve[0], curve[0]]
                                     identifier = "gtfs-" + hashlib.sha256(json.dumps(curve).encode()).hexdigest()[:16]
-                                    result["paths"][identifier] = {"coordinates": curve, "distances": cumulative_distances(curve), "quality": "shape"}
+                                    path_cache[identifier] = {"coordinates": curve, "distances": cumulative_distances(curve), "quality": "shape"}
                                     legs.append(identifier)
                             except (ValueError, IndexError):
                                 identifier = "gtfs-unresolved"
-                                result["paths"][identifier] = {"coordinates": [], "distances": [], "quality": "approximate"}
+                                path_cache[identifier] = {"coordinates": [], "distances": [], "quality": "approximate"}
                                 legs = [identifier] * (len(sequence) - 1)
                             geometry_cache[geometry_key] = legs
+                        for identifier in geometry_cache[geometry_key]:
+                            result["paths"][identifier] = path_cache[identifier]
                         route = routes[trip["route_id"]]
                         pattern = {"mode": mode, "operator": operator,
                                    "line": f"{mode.title()} {route['route_short_name']} · {route['route_long_name']}",
@@ -147,9 +155,9 @@ def prepare(filename, output):
                 print(f"{mode}: {len(trips)} candidate trips; {len(geometry_cache)} route patterns; {omitted[mode]} invalid trips omitted", flush=True)
     for day, rows in result["days"].items():
         if {result["patterns"][row[0]]["mode"] for row in rows} != {"tram", "bus"}:
-            raise ValueError(f"No shared tram/bus coverage for {day}; use the pinned 24 June 2024 archive")
-    result["metadata"] = {"start_date": WEEK_START, "end_date": WEEK_END, "source": "PTV GTFS Schedule",
-        "source_date": "2024-06-24", "source_url": SOURCE_URL, "license": "CC BY 4.0",
+            raise ValueError(f"No shared tram/bus coverage for {day}; use an archive covering this date")
+    result["metadata"] = {"start_date": start_date, "end_date": end_date, "source": "PTV GTFS Schedule",
+        "source_date": source_date, "source_url": source_url, "license": "CC BY 4.0",
         "license_url": "https://creativecommons.org/licenses/by/4.0/", "bus_area": "Complete journeys serving the Melbourne map extent",
         "omitted_trips": dict(omitted), "invalid_reasons": dict(invalid_reasons)}
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -164,6 +172,11 @@ def prepare(filename, output):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("archive", type=Path)
-    parser.add_argument("--output", type=Path, default=REFERENCE)
+    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
+    parser.add_argument("--start-date", default="2024-06-24")
+    parser.add_argument("--end-date", default="2024-06-30")
+    parser.add_argument("--source-date", default="2024-06-24")
+    parser.add_argument("--source-url", default=SOURCE_URL)
     args = parser.parse_args()
-    prepare(args.archive, args.output)
+    prepare(args.archive, args.output, start_date=args.start_date, end_date=args.end_date,
+            source_date=args.source_date, source_url=args.source_url)

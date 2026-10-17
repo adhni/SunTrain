@@ -93,10 +93,11 @@ def get_replay_day(business_date: str) -> dict:
                         for name in sorted(glob.glob(source)))
     geometry = geometry_file()
     modified = geometry.stat().st_mtime_ns if geometry.exists() else 0
-    return _get_day(business_date, source, fingerprint, str(geometry), modified, transit.fingerprint())
+    return _get_day(business_date, source, fingerprint, str(geometry), modified, transit.fingerprint(business_date))
 
 
-@lru_cache(maxsize=4)
+# A day retains snapshot geometry; keep one payload as users switch between archives.
+@lru_cache(maxsize=1)
 def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path: str, modified: int, transit_fingerprint: tuple) -> dict:
     geometry = _read_geometry(geometry_path, modified)
     # Parameterize the source as well as the date; honor SUNTRAIN_PARQUET_GLOB.

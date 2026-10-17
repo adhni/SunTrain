@@ -39,6 +39,15 @@ CITIES = {
         "directions": [("Northbound", "Northbound"), ("Southbound", "Southbound"),
                        ("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
+    "singapore": {
+        "name": "Singapore", "timezone": "Asia/Singapore",
+        "bounds": [[103.62, 1.23], [104.02, 1.46]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "One week of MRT and LRT schedules, with estimated movement along mapped railway paths. Train passenger loads are unavailable.",
+        "modes": [("MRT", "subway"), ("LRT", "light_rail")],
+        "operators": [("SMRT", "SMRT"), ("SBS Transit", "SBS Transit")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

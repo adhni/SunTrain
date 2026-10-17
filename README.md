@@ -1,6 +1,6 @@
 # SunTrain
 
-Historical transport replay for Melbourne, Boston, Chicago and New York City, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay for Melbourne, Boston, Chicago, New York City and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
 ## NYC Subway
 
@@ -20,9 +20,19 @@ The script caches downloads under `.cache/nyc-archives/` and writes `data/refere
 
 Official hourly station-complex ridership and monthly/day-of-week/hour origin–destination estimates were verified as accessible for 2024. They are documented for optional station-level features, and are not mixed with these 2025–2026 schedules or presented as individual train loads. NYC passenger sizing and Melbourne's recorded-train-boarding heatmap stay unavailable. See [NYC data and expansion notes](NYC_EXPANSION_NOTES.md) for sources and the other networks' future integration issues.
 
-## Singapore investigation
+## Singapore MRT and LRT
 
-Singapore's official train GTFS and September 2026 station passenger data have downloaded successfully using a locally stored DataMall key. The timetable covers six MRT lines, the airport branch and all three LRT systems, but supplies **no railway shapes**, so Singapore is not enabled on the moving map yet. Run `./.venv/bin/python scripts/audit_singapore_gtfs.py` to audit the cached timetable, or add `--download` to fetch a fresh snapshot. See [Singapore expansion notes](SINGAPORE_EXPANSION_NOTES.md) for actual counts, calendar checks, licensing, passenger-data limits and the remaining geometry requirement.
+Choose **Singapore** for **5–11 October 2026**: North–South, East–West (including the Changi Airport branch), North East, Circle, Downtown and Thomson–East Coast MRT, plus Bukit Panjang, Sengkang and Punggol LRT. SMRT and SBS Transit schedules use the existing route/mode/operator filters, local Singapore clock, playback speeds, fullscreen and themes. Route colours come from the official feed. Passenger sizing and heatmaps remain unavailable.
+
+The official **LTA DataMall GTFS Schedule (Train)** downloaded on 17 October 2026 contains the schedules but no shapes. Its calendars are applied to this candidate historical week; this snapshot does not reconstruct every past disruption. Railway paths come from **OpenStreetMap contributors via BBBike's Singapore extract**, downloaded the same day. Matching preserves a complete ordered stop sequence on one connected railway run within 150 m, including LRT loops. Unresolved geometry stays empty; one anomalous Sunday North–South trip is retained without interpolated movement.
+
+Rebuild using the cached, pinned timetable and bundled geometry:
+
+```bash
+./.venv/bin/python scripts/prepare_singapore_replay.py
+```
+
+The compact reference is about 0.9 MB, with shared stop schedules and paths. The app requires no API key or network requests for schedule loading. `SUNTRAIN_SINGAPORE_REFERENCE` overrides the prepared reference. LTA schedule data is available under the [Singapore Open Data Licence v1.0](https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html); the OSM-derived geometry database is under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). See [Singapore expansion notes](SINGAPORE_EXPANSION_NOTES.md) for downloads, checks, attribution, passenger-data limits and future extensions.
 
 ## Chicago CTA rail
 

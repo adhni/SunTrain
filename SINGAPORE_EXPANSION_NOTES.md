@@ -4,7 +4,7 @@ Checked **17 October 2026**, after completing NYC Subway on `codex/nyc-singapore
 
 ## Current status
 
-The user supplied a DataMall key locally and the **actual official timetable downloaded successfully**. Singapore is **not implemented or advertised in the city selector** because this feed has no railway shapes. No approximate frequencies, station-to-station straight lines or unrelated schedules have been substituted.
+**Singapore is implemented for 5–11 October 2026**, using the actual LTA timetable and separately validated OpenStreetMap railway geometry. All six MRT lines, the airport branch and all three LRT systems are available. Existing controls, themes and local `Asia/Singapore` time are reused. No approximate frequencies, station-to-station straight lines or unrelated schedules have been substituted.
 
 The [official DataMall catalogue](https://datamall.lta.gov.sg/content/datamall/en/dynamic-data.html) lists **GTFS Schedule (Train)** separately from realtime alerts and trip updates. Realtime is outside this task. The [DataMall homepage](https://datamall.lta.gov.sg/content/datamall/en.html) states that API access requires an Account Key issued to registered subscribers.
 
@@ -26,7 +26,31 @@ The downloaded archive contains **114 route variants, 21,159 trips, 1,211 stops 
 
 **5–11 October 2026** was audited as a candidate full week: all ten line codes have active trips daily. Service-date totals are 7,160 on weekdays, 5,906 on Saturday and 6,084 on Sunday. These are calendar-based GTFS trips, not 03:00 replay-day occurrence counts. No missing trip/route/stop references, duplicate stop sequences, invalid stop coordinates, invalid times or backwards trip times were detected.
 
-However, **`shapes.txt` is absent and `trips.txt` has no `shape_id` column**: all 21,159 trips lack supplied alignments. This blocks moving-map integration. The [URA Master Plan 2019 rail layer](https://data.gov.sg/datasets/d_222bfc84eb86c7c11994d02f8939da8d/view) is explicitly indicative planning geometry from December 2019; it was not treated as verified 2026 operating tracks. LTA's station points and line-code list do not resolve this. Attempts to retrieve OSM route relations returned TLS/server/HTTP errors; no OSM alignment was obtained or validated. These request failures do not prove OSM data is unavailable.
+**`shapes.txt` is absent and `trips.txt` has no `shape_id` column**: all 21,159 trips lack supplied alignments. The [URA Master Plan 2019 rail layer](https://data.gov.sg/datasets/d_222bfc84eb86c7c11994d02f8939da8d/view) is explicitly indicative planning geometry from December 2019 and was not used. LTA's station points and line-code list are insufficient. Initial Overpass failures were bypassed by downloading the [BBBike Singapore OSM XML extract](https://download.bbbike.org/osm/bbbike/Singapore/); direct OSM relation download also worked.
+
+## Validated geometry and replay
+
+The OSM extract downloaded on **17 October 2026** contains directional MRT/LRT route relations for every supported line. `scripts/prepare_singapore_geometry.py` retains only operating railway ways in those relations and joins ways only at identical OSM node IDs. Missing ways and disconnected endpoints split the path; no connectors or shortest-path guesses are added. Future lines, Sentosa Express and airport Skytrain are not included as replay services.
+
+The derived geometry is bundled in `data/reference/singapore/osm-rail-2026-10-17.json.gz` with the source URL, date, archive hash, relation IDs and ODbL licence. `scripts/prepare_singapore_replay.py` reuses the Boston whole-journey ordered projection and the existing path simplification, compact reference format and prepared-city loader. Closed loops permit a second traversal of the same connected geometry so an OSM relation can begin midway around a terminal-to-terminal LRT loop. Only trip sequences present in LTA's schedule generate services.
+
+**176 of 177 unique stop sequences matched** within 150 m of the railway geometry. A single Sunday NS trip, `NSL_NB_PH_210_5334`, has a reversing/skipping stop sequence that did not match a complete directional run. Its source schedule is retained, with empty geometry rather than interpolated movement. There are no omitted timetable trips. The seven replay dates have 7,160 services each weekday, 5,906 Saturday and 6,084 Sunday; only Sunday has unresolved geometry (21 legs from that one trip).
+
+The replay bundle `data/reference/singapore/2026-10-05.json.gz` is **890,860 bytes**, with **3,053 shared patterns and 430 paths**. It never expands every trip's schedule in the browser. Passenger controls remain unavailable. OSM geography is a reference snapshot, not proof of historical running tracks; schedule positions do not reproduce GPS, delays or every past disruption.
+
+Rebuild using the original GTFS cached locally:
+
+```bash
+./.venv/bin/python scripts/prepare_singapore_replay.py
+```
+
+The script requires the recorded GTFS SHA-256 and fails on a changed download. Audit any new feed before deliberately updating the pin or period. To regenerate geography from the matching original extract:
+
+```bash
+./.venv/bin/python scripts/prepare_singapore_geometry.py .cache/singapore-audit/Singapore.osm.gz --source-date 2026-10-17
+```
+
+The source extract URL changes over time; confirm its hash against the bundled metadata before attempting an exact rebuild. Keep the cached original source files if this version is needed later.
 
 Repeat the audit offline:
 
@@ -34,9 +58,9 @@ Repeat the audit offline:
 ./.venv/bin/python scripts/audit_singapore_gtfs.py
 ```
 
-To fetch a fresh snapshot first, add `--download`. The ZIP and report stay ignored under `.cache/singapore-audit/`; a fresh download may differ from the recorded hash. The tool honours calendar exceptions, accepts GTFS hours beyond 24, reports invalid references/times and keeps `ready_for_replay` false pending geometry validation. It sends the key only to LTA and never stores the signed link. Preserve the cached ZIP if this exact version is needed later.
+To fetch a fresh snapshot first, add `--download`. The ZIP and report stay ignored under `.cache/singapore-audit/`; a fresh download may differ from the recorded hash. This raw-GTFS audit still reports missing supplied shapes; the separate replay preparation validates the OSM geometry. It honours calendar exceptions, accepts GTFS hours beyond 24 and reports invalid references/times. It sends the key only to LTA and never stores the signed link. Preserve the cached ZIP if this exact version is needed later.
 
-## Reuse the existing approach once geometry is confirmed
+## Checks for future extensions
 
 1. Fetch with the key in the `AccountKey` request header; keep credentials and temporary signed links out of logs, browser code and tracked metadata. Record a stable endpoint, retrieval date and ZIP SHA-256 instead.
 2. Inspect agency, routes, trips, stops, calendars, exceptions, shapes and any frequency-based services. Establish SMRT/SBS Transit and MRT/LRT coverage from actual rows. Report missing lines; do not fabricate services. Frequency-based schedules may need an explicit estimate label and should not silently become exact departures.
@@ -57,4 +81,4 @@ Keep passenger features optional. Verify station-code joins and align the passen
 
 The [API terms](https://datamall.lta.gov.sg/content/datamall/en/api-terms-of-service.html) explicitly put datasets under the [Singapore Open Data Licence v1.0](https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html), rather than relying on the website's generic copyright notice. The licence permits redistribution and adaptation, including commercial use, subject to its conditions. A product using the dataset must conspicuously acknowledge its source and link the licence; it must not imply LTA endorsement. Trademarks and third-party rights are excluded.
 
-For an eventual Singapore replay, show the dataset name, access date, LTA DataMall source and licence link. Confirm any dataset-specific conditions with the actual download. API terms also require confidential credentials and prohibit releasing data before any designated effective date. Keep the app independent of LTA and avoid copying official logos or map artwork.
+The replay shows the dataset name, access date, LTA DataMall source and licence link, plus OpenStreetMap contributor credit and an ODbL link. See `data/reference/singapore/README.md` for the derived data's licences and available geometry source. API terms also require confidential credentials and prohibit releasing data before any designated effective date. SunTrain is independent of LTA and the operators and uses no official logos or map artwork.

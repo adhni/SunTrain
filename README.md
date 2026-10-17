@@ -1,6 +1,38 @@
 # SunTrain
 
-Historical transport replay for Melbourne, Boston and Chicago, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay for Melbourne, Boston, Chicago, New York City and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## NYC Subway
+
+Choose **New York City** in **Replay city** for **15 December 2025–18 January 2026**, five full weeks of regular MTA subway schedules. All 28 subway route IDs represented in the archive are retained, including 6X, 7X, FX, weekday services, branches and the separate 42 St, Franklin Avenue and Rockaway Park shuttles. Only services active on the selected date appear. Staten Island Railway, LIRR, Metro-North and buses are excluded. The existing controls, route colours, local New York clock, filters, fullscreen and themes are reused.
+
+The requested May–June 2024 historical ZIP required archive credentials. The supplied MyTransit archive is publicly accessible but its GTFS folders stop at 2016. This permitted fallback uses the [historical MTA regular feed captured on 5 December 2025](https://files.mobilitydatabase.org/mdb-516/mdb-516-202512050000/mdb-516-202512050000.zip), valid from 8 December. The chosen period includes the adjoining service dates needed for overnight carry-ins. A November alternative was rejected because 2,274 subway trips had blank shape IDs. The bundled fallback has no omitted invalid trips or unresolved geometry patterns.
+
+Positions follow each trip's published shape and stop sequence. Express/local stopping patterns are preserved, but the feed does not prove which individual running track was used. [MTA distinguishes regular schedules from supplemented schedules](https://www.mta.info/developers); this replay does not reconstruct temporary service changes or actual GPS movements. Data is obtained from historical MTA feed copies, prepared and hosted by SunTrain under the [MTA data terms](https://www.mta.info/developers/terms-and-conditions). SunTrain is independent of MTA and uses no MTA logos, map artwork or route badges.
+
+Rebuild with:
+
+```bash
+./.venv/bin/python scripts/prepare_nyc_replay.py
+```
+
+The script caches downloads under `.cache/nyc-archives/` and writes `data/reference/nyc/2025-12-15.json.gz` (about 3.86 MB). `SUNTRAIN_NYC_REFERENCE` overrides the file. Schedules, geometry and relative stop times remain shared; only the selected day is sent to the browser. The date badge explicitly includes both years.
+
+Official hourly station-complex ridership and monthly/day-of-week/hour origin–destination estimates were verified as accessible for 2024. They are documented for optional station-level features, and are not mixed with these 2025–2026 schedules or presented as individual train loads. NYC passenger sizing and Melbourne's recorded-train-boarding heatmap stay unavailable. See [NYC data and expansion notes](NYC_EXPANSION_NOTES.md) for sources and the other networks' future integration issues.
+
+## Singapore MRT and LRT
+
+Choose **Singapore** for **5–11 October 2026**: North–South, East–West (including the Changi Airport branch), North East, Circle, Downtown and Thomson–East Coast MRT, plus Bukit Panjang, Sengkang and Punggol LRT. SMRT and SBS Transit schedules use the existing route/mode/operator filters, local Singapore clock, playback speeds, fullscreen and themes. Route colours come from the official feed. Passenger sizing and heatmaps remain unavailable.
+
+The official **LTA DataMall GTFS Schedule (Train)** downloaded on 17 October 2026 contains the schedules but no shapes. Its calendars are applied to this candidate historical week; this snapshot does not reconstruct every past disruption. Railway paths come from **OpenStreetMap contributors via BBBike's Singapore extract**, downloaded the same day. Matching preserves a complete ordered stop sequence on one connected railway run within 150 m, including LRT loops. Unresolved geometry stays empty; one anomalous Sunday North–South trip is retained without interpolated movement.
+
+Rebuild using the cached, pinned timetable and bundled geometry:
+
+```bash
+./.venv/bin/python scripts/prepare_singapore_replay.py
+```
+
+The compact reference is about 0.9 MB, with shared stop schedules and paths. The app requires no API key or network requests for schedule loading. `SUNTRAIN_SINGAPORE_REFERENCE` overrides the prepared reference. LTA schedule data is available under the [Singapore Open Data Licence v1.0](https://datamall.lta.gov.sg/content/datamall/en/SingaporeOpenDataLicence.html); the OSM-derived geometry database is under [ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/). See [Singapore expansion notes](SINGAPORE_EXPANSION_NOTES.md) for downloads, checks, attribution, passenger-data limits and future extensions.
 
 ## Chicago CTA rail
 

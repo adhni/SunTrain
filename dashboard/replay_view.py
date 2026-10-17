@@ -18,12 +18,18 @@ def field(label, control):
     return html.Div([html.Label(label, htmlFor=control.id, className="finder-label"), control], className="finder-field")
 
 
+def period_label(minimum, maximum):
+    first, last = date.fromisoformat(minimum), date.fromisoformat(maximum)
+    start = first.strftime("%d %b %Y" if first.year != last.year else "%d %b")
+    return f"{start}–{last:%d %b %Y}"
+
+
 def build_replay_panel(metadata, default_date):
     coverage = available_range()
     shared_period = coverage and metadata["min_date"] <= coverage[0] and metadata["max_date"] >= coverage[1]
     minimum, maximum = coverage if shared_period else (metadata["min_date"], metadata["max_date"])
     default_date = minimum if shared_period else default_date
-    badge = f"{date.fromisoformat(minimum):%d %b}–{date.fromisoformat(maximum):%d %b %Y}" if shared_period else "Historical · FY 2023–24"
+    badge = period_label(minimum, maximum) if shared_period else "Historical · FY 2023–24"
     return html.Div(id="replay-panel", className="tab-panel replay-panel", style={"display": "block"}, tabIndex=-1, children=[
         dcc.Store(id="replay-day", storage_type="memory"),
         dcc.Store(id="replay-client-state", storage_type="memory"),
@@ -159,7 +165,7 @@ def register_replay_callbacks(app, metadata):
             minimum, maximum = coverage if shared else (metadata["min_date"], metadata["max_date"])
         chosen = current_date if current_date and minimum <= current_date <= maximum else minimum
         options = lambda key: [{"label": label, "value": value} for label, value in settings[key]]
-        badge = f"{date.fromisoformat(minimum):%d %b}–{date.fromisoformat(maximum):%d %b %Y}"
+        badge = period_label(minimum, maximum)
         return (minimum, maximum, chosen, options("modes"), [], options("operators"), [], options("directions"), [], [], [], "",
                 settings["description"], badge, settings["name"], f"Return to metropolitan {settings['name']}",
                 {} if settings["passenger_data"] else {"display": "none"}, "trains",

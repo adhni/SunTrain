@@ -20,6 +20,8 @@ The script caches source downloads in `.cache/boston-archives/` and writes `data
 
 MBTA stop times lack distance anchors. Preparation projects the whole ordered stop sequence onto each trip's own shape, preserving branches and repeated stop occurrences. Stop projections must lie within 150 metres of that shape; invalid geometry stays as a gap, with markers hidden between those stops. Supplied shapes are simplified at approximately six metres. The bundled week has no omitted invalid trips or unresolved geometry patterns. These checks establish consistency with the published feed, not independent proof of every historical track movement.
 
+For future date extensions or bus support, see [Boston expansion notes](BOSTON_EXPANSION_NOTES.md), including the current fixed-date settings, archive selection, bus classification and checks to preserve.
+
 ## Structure
 
 - `data/raw/`: source CSV

@@ -12,7 +12,7 @@
     }
     function buildIndex(services, day) {
         const stations = new Map();
-        for (const service of services) for (const stop of service.stops) {
+        for (const service of services.filter(s => !s.mode || s.mode === "train")) for (const stop of service.stops) {
             const [id, , departure, , , boardings] = stop;
             if (!Number.isFinite(departure)) continue;
             if (!stations.has(id)) stations.set(id, {...day.stations[id], id, events: []});

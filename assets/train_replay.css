@@ -6,7 +6,7 @@
 .replay-heading h2 { margin: 5px 0; font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 500; }
 .replay-heading p { margin: 0; color: var(--muted); font-size: 0.9rem; }
 .replay-badge { flex-shrink: 0; padding: 7px 12px; border: 1px solid #c7ddd6; border-radius: 30px; background: #edf7f2; color: var(--accent-deep); font-size: 0.75rem; }
-.replay-filters { display: grid; grid-template-columns: 170px 1fr 1.5fr 1.1fr 1.4fr 130px; align-items: end; gap: 12px; padding: 16px; margin-bottom: 16px; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; }
+.replay-filters { display: grid; grid-template-columns: 170px repeat(2, minmax(130px, 1fr)) minmax(190px, 1.5fr); align-items: end; gap: 12px; padding: 16px; margin-bottom: 16px; border: 1px solid var(--line); background: var(--surface); border-radius: 8px; }
 .replay-filters .DateInput { width: 146px; }
 .replay-filters .DateInput_input { padding: 10px 9px; font-size: 0.85rem; }
 .replay-filters .SingleDatePickerInput { border: 1px solid #c7d1cd; border-radius: 6px; overflow: hidden; }
@@ -53,7 +53,7 @@
 .replay-detail-card h3 { margin: 10px 0; font-size: 1.35rem; font-weight: 600; }
 .replay-detail-card p { font-size: 0.82rem; line-height: 1.6; }
 .replay-detail-note { margin-top: 25px; padding: 14px; background: #f0f6f3; border-radius: 6px; color: var(--accent-deep); font-size: 0.8rem; line-height: 1.6; }
-.replay-detail-line { margin-top: 20px; font-size: 0.8rem; font-weight: 700; }
+.replay-detail-line { border-left: 4px solid transparent; padding-left: 8px; color: var(--ink); margin-top: 20px; font-size: 0.8rem; font-weight: 700; }
 .replay-detail-route { margin: 8px 0; font-size: 0.9rem !important; }
 .replay-service-status { padding: 12px; margin: 16px 0; border: 1px solid #d7e7e0; border-radius: 6px; background: #f4faf6; font-size: 0.75rem; line-height: 1.7; }
 .replay-service-status strong { display: block; margin-bottom: 4px; color: var(--accent-deep); }
@@ -67,7 +67,7 @@
 .replay-current-stop { background: #e6f3ed; color: #0b5e51; font-weight: 650; }
 .replay-small { font-size: 0.67rem !important; }
 .replay-approximate { color: #9a6420; }
-.replay-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 18px 2px 8px; }
+.replay-legend { max-height: 130px; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 18px 2px 8px; }
 .replay-legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; color: #4b5d55; }
 .replay-legend-swatch { width: 9px; height: 9px; border-radius: 50%; }
 .replay-quality { margin-top: 10px; color: #6c6654; font-size: 0.73rem; line-height: 1.6; }

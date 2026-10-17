@@ -1,18 +1,33 @@
 (function (root) {
     "use strict";
-    const LINE_NAMES = ["Alamein", "Belgrave", "Craigieburn", "Cranbourne", "Eastern", "Flemington Racecourse", "Frankston", "Glen Waverley", "Hurstbridge", "Lilydale", "Mernda", "North East", "Northern", "Pakenham", "Richmond and City Loop", "Sandringham", "South Western", "Stony Point", "Sunbury", "Upfield", "Werribee", "Western", "Williamstown"];
-    const PALETTE = ["#9b4a9a", "#326bb3", "#b05829", "#329a5b", "#a34978", "#847423", "#22767a", "#775cba", "#c34548", "#297a46", "#bb663c", "#7662a1", "#907c1a", "#237da1", "#796969", "#ca4f84", "#84704e", "#536c9a", "#5d8634", "#aa5264", "#087f75", "#8550ac", "#56733f"];
+    const TRAIN_COLORS = {
+        alamein: "#152C6B", belgrave: "#152C6B", glenwaverley: "#152C6B", lilydale: "#152C6B",
+        craigieburn: "#FFBE00", sunbury: "#FFBE00", upfield: "#FFBE00",
+        cranbourne: "#279FD5", pakenham: "#279FD5",
+        frankston: "#028430", werribee: "#028430", williamstown: "#028430", stonypoint: "#028430",
+        hurstbridge: "#BE1014", mernda: "#BE1014", sandringham: "#F178AF",
+        flemingtonracecourse: "#95979A", showgrounds: "#95979A",
+        eastern: "#8F1A95", northeast: "#8F1A95", northern: "#8F1A95", southwestern: "#8F1A95", western: "#8F1A95",
+    };
+    const TRAM_COLORS = {
+        "1": "#B5BD00", "3": "#8DC8E8", "3a": "#8DC8E8", "5": "#D50032", "6": "#01426A",
+        "11": "#6ECEB2", "12": "#007E92", "16": "#FBD872", "19": "#8A1B61", "30": "#534F96",
+        "35": "#6B3529", "48": "#333434", "57": "#00C1D5", "58": "#969696", "59": "#00653A",
+        "64": "#00AB8E", "67": "#956C58", "70": "#F59BBB", "72": "#9ABEAA", "75": "#00A9E0",
+        "78": "#A0A0D6", "82": "#D2D755", "86": "#FFB500", "96": "#C6007E", "109": "#E87722",
+    };
+    const BUS_COLOR = "#FF8200";
     function lineColor(line) {
-        const index = LINE_NAMES.indexOf(line);
-        const dark = root.suntrainTheme?.current === "dark";
-        if (index >= 0) {
-            const color = PALETTE[index];
-            if (!dark) return color;
-            return "#" + color.slice(1).match(/../g).map(part => Math.round(parseInt(part, 16) * 0.7 + 255 * 0.3).toString(16).padStart(2, "0")).join("");
+        const name = String(line || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+        if (TRAIN_COLORS[name]) return TRAIN_COLORS[name];
+        for (const [key, color] of Object.entries(TRAIN_COLORS)) {
+            if (name.includes(key)) return color;
         }
-        let hash = 0;
-        for (const c of line) hash = ((hash << 5) - hash + c.charCodeAt(0)) | 0;
-        return `hsl(${Math.abs(hash) % 360},55%,${dark ? 65 : 38}%)`;
+        return "#95979A";
+    }
+    function tramRoute(service) {
+        const name = String(service.route_short_name ?? service.route ?? service.line ?? "").trim();
+        return name.match(/^(?:tram(?:\s+route)?\s*|route\s*)?0*(\d+[a-z]?)\b/i)?.[1].toLowerCase() || "";
     }
     function upperBound(values, value) {
         let lo = 0, hi = values.length;
@@ -24,7 +39,7 @@
         return lo;
     }
     function pointAlong(path, fraction) {
-        if (!path || path.quality !== "track" || path.coordinates.length < 2) return null;
+        if (!path || !["track", "shape"].includes(path.quality) || path.coordinates.length < 2) return null;
         const points = path.coordinates, distances = path.distances;
         if (fraction <= 0 || !distances.length || !distances[distances.length - 1]) return points[0];
         if (fraction >= 1) return points[points.length - 1];
@@ -37,6 +52,8 @@
     }
     function servicePosition(service, now, day) {
         const stops = service.stops;
+        // Transit patterns retain relative times; train stops already use epoch seconds.
+        now -= service.timeOffset || 0;
         if (!stops.length || now < stops[0][1] || now > stops[stops.length - 1][2]) return null;
         // Find the most recent arrival. Exact departure belongs to the next leg.
         let lo = 0, hi = stops.length;
@@ -48,22 +65,22 @@
         const i = Math.max(0, lo - 1), stop = stops[i];
         if (now < stop[2] || i === stops.length - 1) {
             const station = day.stations[stop[0]];
-            return {lon: station.lon, lat: station.lat, load: now < stop[2] ? stop[3] : stop[4],
-                    index: i, state: "At station", station: station.name, next: stops[i + 1] ? day.stations[stops[i + 1][0]].name : null,
+            return {lon: station.lon, lat: station.lat, load: (now < stop[2] ? stop[3] : stop[4]) ?? null,
+                    index: i, state: service.mode && service.mode !== "train" ? "At stop" : "At station", station: station.name, next: stops[i + 1] ? day.stations[stops[i + 1][0]].name : null,
                     approximate: false};
         }
         const next = stops[i + 1], duration = next[1] - stop[2];
         if (duration <= 0) return null;
         const path = day.paths[service.legs[i]];
         const point = pointAlong(path, (now - stop[2]) / duration);
-        return {lon: point ? point[0] : null, lat: point ? point[1] : null, load: stop[4], index: i,
-                state: point ? "Between stations" : "Position unavailable",
+        return {lon: point ? point[0] : null, lat: point ? point[1] : null, load: stop[4] ?? null, index: i,
+                state: point ? (service.mode && service.mode !== "train" ? "Between stops" : "Between stations") : "Position unavailable",
                 station: day.stations[stop[0]].name, next: day.stations[next[0]].name,
                 approximate: !point};
     }
     function matches(service, filters, day) {
         const inScope = (values, value) => !values.length || values.includes(value);
-        return inScope(filters.operators, service.operator) && inScope(filters.lines, service.line) &&
+        return inScope(filters.modes || [], service.mode || "train") && inScope(filters.operators, service.operator) && inScope(filters.lines, service.line) &&
             inScope(filters.directions, service.direction) &&
             (!filters.number || service.number.toLowerCase().includes(filters.number.toLowerCase().trim())) &&
             (!filters.stations.length || service.stops.some(stop => filters.stations.includes(day.stations[stop[0]].name)));
@@ -71,12 +88,59 @@
     function routeFeatures(paths, ids) {
         return [...new Set(ids)].flatMap(id => {
             const path = paths[id];
-            if (!path || path.quality !== "track" || path.coordinates.length < 2) return [];
+            if (!path || !["track", "shape"].includes(path.quality) || path.coordinates.length < 2) return [];
             return [{type: "Feature", properties: {quality: path.quality},
                 geometry: {type: "LineString", coordinates: path.coordinates}}];
         });
     }
-    const core = {pointAlong, servicePosition, matches, lineColor, routeFeatures};
+    function hydrate(day) {
+        // Attach shared references only: never duplicate stop arrays for individual trips.
+        for (const service of day.services) {
+            if (!service.pattern || service.stops) continue;
+            const pattern = day.transit_patterns[service.pattern];
+            for (const key of ["operator", "line", "direction", "origin", "destination"]) {
+                if (pattern[key] !== undefined) service[key] = pattern[key];
+            }
+            service.stops = pattern.stops;
+            service.timeOffset = service.departure;
+            service.legs = pattern.legs;
+        }
+        return day;
+    }
+    function stopTime(service, stop, column) {
+        return stop[column] + (service.timeOffset || 0);
+    }
+    function* uniqueSchedules(services) {
+        const seen = new Set();
+        for (const service of services) {
+            if (seen.has(service.stops)) continue;
+            seen.add(service.stops);
+            yield service;
+        }
+    }
+    function vehicleColor(service) {
+        if (service.mode === "tram") {
+            const route = tramRoute(service);
+            return TRAM_COLORS[route] || TRAM_COLORS[route.replace(/[a-z]$/, "")] || "#95979A";
+        }
+        if (service.mode === "bus") return BUS_COLOR;
+        if (String(service.operator || "").toLowerCase().replace(/[^a-z]/g, "") === "vline") return "#8F1A95";
+        return lineColor(service.line);
+    }
+    function directionLabel(service) {
+        if (!service.mode || service.mode === "train") return service.direction === "U" ? "Toward city" : "Away from city";
+        return service.direction ? `Direction ${service.direction}` : "Scheduled service";
+    }
+    function markerScale(load, sizeByPassengers) {
+        return sizeByPassengers && Number.isFinite(load) ? 0.8 + 0.4 * Math.sqrt(Math.min(3000, Math.max(0, load)) / 3000) : 1;
+    }
+    function markerRadius(halo = 0) {
+        const scale = ["coalesce", ["get", "sizeFactor"], 1];
+        return ["interpolate", ["linear"], ["zoom"],
+            5, ["+", halo, ["*", 1.2, scale]], 9, ["+", halo, ["*", 2.5, scale]],
+            12, ["+", halo, ["*", 4, scale]], 15, ["+", halo, ["*", 5, scale]]];
+    }
+    const core = {pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor};
     if (typeof module !== "undefined" && module.exports) module.exports = core;
     if (!root.document) return;
 
@@ -156,16 +220,25 @@
                     this.graph.addLayer({id: "replay-selected-route", type: "line", source: "replay-selected-route",
                         paint: {"line-color": "#115d51", "line-width": 4, "line-opacity": 0.8}});
                     this.graph.addLayer({id: "replay-stations", type: "circle", source: "replay-stations",
-                        paint: {"circle-color": "#6d8980", "circle-radius": 2.5, "circle-stroke-width": 0.7, "circle-stroke-color": "white"}});
+                        filter: ["==", ["get", "mode"], "train"],
+                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 6, 1.2, 9, 1.6, 12, 2.3, 15, 3],
+                            "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 9, 0.3, 15, 0.7], "circle-stroke-color": "white"}});
+                    this.graph.addLayer({id: "replay-local-stops", type: "circle", source: "replay-stations", minzoom: 12,
+                        filter: ["in", ["get", "mode"], ["literal", ["tram", "bus"]]],
+                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 12, 1.3, 15, 2],
+                            "circle-stroke-width": 0.5, "circle-stroke-color": "white",
+                            "circle-opacity": ["interpolate", ["linear"], ["zoom"], 12, 0, 13, 0.75, 15, 1],
+                            "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 12, 0, 13, 0.75, 15, 1]}});
                     this.graph.addLayer({id: "replay-demand-stations", type: "circle", source: "replay-demand", layout: {visibility: "none", "circle-sort-key": ["get", "boardings"]},
                         paint: {"circle-color": ["interpolate", ["linear"], ["get", "boardings"], ...root.suntrainDemand.scale.flat()],
                             "circle-radius": ["interpolate", ["linear"], ["get", "boardings"], 0, 5, 500, 7, 2000, 10, 5000, 13],
                             "circle-stroke-color": "#fff", "circle-stroke-width": 1.5, "circle-opacity": 0.95}});
                     this.graph.addLayer({id: "replay-selected-train", type: "circle", source: "replay-selected-train",
-                        paint: {"circle-color": "#18232d", "circle-radius": 11, "circle-opacity": 0.85}});
+                        paint: {"circle-radius": markerRadius(3), "circle-opacity": 0,
+                            "circle-stroke-color": "#18232d", "circle-stroke-width": 1.5}});
                     this.graph.addLayer({id: "replay-trains", type: "circle", source: "replay-trains",
-                        paint: {"circle-color": ["get", "color"], "circle-radius": ["get", "radius"],
-                            "circle-stroke-color": "#fff", "circle-stroke-width": 1.1, "circle-opacity": 0.95}});
+                        paint: {"circle-color": ["get", "color"], "circle-radius": markerRadius(),
+                            "circle-stroke-color": "#fff", "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 6, 0.25, 9, 0.4, 12, 0.7, 15, 1], "circle-opacity": 0.95}});
                     this.popup = new root.maplibregl.Popup({closeButton: false, closeOnClick: false, offset: 10});
                     this.graph.on("click", "replay-trains", e => this.select(e.features[0].properties.id));
                     this.graph.on("mousemove", "replay-trains", e => {
@@ -176,7 +249,7 @@
                         const content = node("div", undefined, "replay-map-tooltip");
                         content.append(node("strong", `${service.line} · ${service.number}`),
                             node("div", `${service.origin} → ${service.destination}`),
-                            node("div", `${feature.properties.load ?? "Unknown"} passengers (rounded)`));
+                            node("div", service.mode === "train" ? `${feature.properties.load ?? "Unknown"} passengers (rounded)` : "Passenger counts unavailable"));
                         if (feature.properties.approximate) content.append(node("div", "Approximate route"));
                         this.popup.setLngLat(feature.geometry.coordinates).setDOMContent(content).addTo(this.graph);
                     });
@@ -189,7 +262,7 @@
                     this.graph.on("mouseleave", "replay-demand-stations", () => {
                         this.demandPopupId = null; this.graph.getCanvas().style.cursor = ""; this.popup.remove();
                     });
-                    this.graph.on("click", "replay-stations", e => {
+                    for (const layer of ["replay-stations", "replay-local-stops"]) this.graph.on("click", layer, e => {
                         if (this.mapMode !== "trains") {
                             if (!this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) this.showDemandPopup(Number(e.features[0].properties.id));
                             return;
@@ -292,7 +365,7 @@
         }
         setFollow(value) {
             this.followSelected = !!value && !!this.selected && this.mapMode !== "demand";
-            root.dash_clientside.set_props("replay-follow", {children: this.followSelected ? "Following train" : "Follow train", disabled: !this.selected || this.mapMode === "demand"});
+            root.dash_clientside.set_props("replay-follow", {children: this.followSelected ? "Following service" : "Follow service", disabled: !this.selected || this.mapMode === "demand"});
             $("replay-follow")?.setAttribute("aria-pressed", String(this.followSelected));
         }
         metroView() {
@@ -303,7 +376,7 @@
         }
         load(day) {
             this.pause(); this.generation++;
-            this.day = day; this.now = Math.min(day.end, Math.max(day.start, day.initial));
+            this.day = hydrate(day); this.now = Math.min(day.end, Math.max(day.start, day.initial));
             this.selected = null; this.staticDirty = true; this.setupTimeline(); this.emptyDetails();
             const options = [...new Set(day.stations.map(s => s.name))].sort();
             root.dash_clientside.set_props("replay-stations", {options});
@@ -319,32 +392,43 @@
             } else {
                 attribution.textContent = "Railway geometry is unavailable. Train positions are shown at stations only. Passenger counts are rounded to the nearest 10.";
             }
+            if (day.transit?.available) {
+                const link = node("a", `Tram & bus timetables: PTV archive ${day.transit.source_date} · CC BY 4.0`);
+                link.href = day.transit.source_url; link.target = "_blank"; link.rel = "noopener noreferrer";
+                attribution.append(document.createTextNode(" "), link, document.createTextNode(". Buses include complete journeys serving Melbourne and surrounds. Tram/bus passenger counts are unavailable."));
+            }
         }
         applyTheme() {
             const dark = root.suntrainTheme.current === "dark";
             if (this.mapReady) {
                 root.suntrainTheme.styleMap(this.graph);
-                this.graph.setPaintProperty("replay-selected-route", "line-color", dark ? "#8ae1ca" : "#115d51");
+                this.graph.setPaintProperty("replay-selected-route", "line-color", this.selected ? vehicleColor(this.selected) : dark ? "#8ae1ca" : "#115d51");
                 this.graph.setPaintProperty("replay-demand-stations", "circle-stroke-color", dark ? "#e4eef0" : "#fff");
-                this.graph.setPaintProperty("replay-stations", "circle-color", dark ? "#a6bdb5" : "#6d8980");
-                this.graph.setPaintProperty("replay-stations", "circle-stroke-color", dark ? "#17212b" : "#fff");
-                this.graph.setPaintProperty("replay-selected-train", "circle-color", dark ? "#f2f8fa" : "#18232d");
-                this.graph.setPaintProperty("replay-trains", "circle-stroke-color", dark ? "#101a23" : "#fff");
+                for (const layer of ["replay-stations", "replay-local-stops"]) {
+                    this.graph.setPaintProperty(layer, "circle-color", dark ? "#a6bdb5" : "#6d8980");
+                    this.graph.setPaintProperty(layer, "circle-stroke-color", dark ? "#17212b" : "#fff");
+                }
+                this.graph.setPaintProperty("replay-selected-train", "circle-stroke-color", dark ? "#f2f8fa" : "#18232d");
+                this.graph.setPaintProperty("replay-trains", "circle-stroke-color", dark ? "#d2dadd" : "#fff");
                 this.graph.setPaintProperty("replay-routes", "line-color", ["case", ["==", ["get", "quality"], "track"], dark ? "#88aea4" : "#75978f", dark ? "#edb36b" : "#bd873d"]);
             }
             this.updateLegend();
             const detail = document.querySelector(".replay-detail-line");
-            if (detail && this.selected) detail.style.color = lineColor(this.selected.line);
+            if (detail && this.selected) detail.style.borderLeftColor = vehicleColor(this.selected);
             if (this.day && this.mapReady) this.paint(true);
         }
         updateLegend() {
             if (!$("replay-legend")) return;
             const legend = $("replay-legend"); legend.replaceChildren();
-            const lines = [...new Set(this.filtered.map(s => s.line))].sort();
-            for (const line of lines) {
+            const entries = new Map();
+            for (const service of this.filtered) {
+                const label = service.mode === "tram" ? `Tram ${tramRoute(service) || "other"}` : service.mode === "bus" ? "Buses" : service.line;
+                entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service)});
+            }
+            for (const {label, color} of [...entries.values()].sort((a, b) => a.label.localeCompare(b.label, "en", {numeric: true}))) {
                 const item = node("span", undefined, "replay-legend-item");
-                const swatch = node("span", undefined, "replay-legend-swatch"); swatch.style.background = lineColor(line);
-                item.append(swatch, document.createTextNode(line)); legend.append(item);
+                const swatch = node("span", undefined, "replay-legend-swatch"); swatch.style.background = color;
+                item.append(swatch, document.createTextNode(label)); legend.append(item);
             }
         }
         applyFilters(filters, display) {
@@ -352,6 +436,8 @@
             const sizeHelp = $("replay-size-help");
             if (sizeHelp) sizeHelp.hidden = !display.includes("load");
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
+            const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));
+            root.dash_clientside.set_props("replay-lines", {options: [...new Set(routes.map(s => s.line))].sort()});
             this.demandIndex = root.suntrainDemand.buildIndex(this.filtered, this.day);
             this.demandMinute = null; this.demandPopupId = null; this.popup?.remove();
             if (this.selected && !this.filtered.some(s => s.id === this.selected.id)) {
@@ -361,20 +447,22 @@
             this.updateLegend();
             let approximate = 0, total = 0, uncertain = 0;
             for (const service of this.filtered) {
-                for (const id of service.legs) { total++; approximate += this.day.paths[id].quality !== "track"; }
+                for (const id of service.legs) { total++; approximate += !["track", "shape"].includes(this.day.paths[id].quality); }
                 uncertain += service.timing_uncertain ? 1 : 0;
             }
             const pieces = [];
             if (!this.filtered.length) pieces.push(this.day.services.length ? "No services match these filters. Clear a filter to explore this day." : "No recorded services for this business date.");
-            if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved railway paths. These are left as gaps; train positions are hidden between those stops.`);
-            else if (total) pieces.push("All selected journey legs have matched railway geometry.");
+            if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
+            else if (total) pieces.push("All selected journey legs have route geometry.");
+            if (!this.day.transit?.available) pieces.push("Trams and buses are available for 24–30 June 2024 after preparing the archived timetable.");
             if (uncertain) pieces.push(`${uncertain} services contain ambiguous daylight-saving times; earliest consistent times are shown.`);
             if (this.day.excluded_services) pieces.push(`${this.day.excluded_services} services omitted because their source times or coordinates are invalid.`);
             setText("replay-quality", pieces.join(" "));
             setText("replay-matching-count", ` · ${this.filtered.length.toLocaleString()} services in this day`);
         }
         fit() {
-            const ids = new Set(this.filtered.flatMap(service => service.stops.map(stop => stop[0])));
+            const ids = new Set();
+            for (const service of uniqueSchedules(this.filtered)) for (const stop of service.stops) ids.add(stop[0]);
             if (!ids.size || !this.graph) return;
             this.setFollow(false);
             const stations = [...ids].map(i => this.day.stations[i]);
@@ -411,51 +499,53 @@
             $("replay-panel")?.classList.remove("replay-has-selection");
             if ($("replay-close-details")) $("replay-close-details").hidden = true;
             const host = $("replay-details");
-            if (host) host.replaceChildren(node("h3", "Follow a train"),
-                node("p", "Click a moving train to see its journey, scheduled stops and passenger counts.", "replay-muted"),
-                node("div", "Every dot is a recorded service. Movement between its stops is estimated from the timetable.", "replay-detail-note"));
+            if (host) host.replaceChildren(node("h3", "Follow a service"),
+                node("p", "Click a moving vehicle to see its journey and scheduled stops.", "replay-muted"),
+                node("div", "Positions follow scheduled times. Train passenger counts are available; tram and bus counts are unavailable.", "replay-detail-note"));
         }
         select(id) {
             const service = this.filtered.find(s => s.id === id);
             if (!service) return;
             this.selected = service; this.staticDirty = true;
+            this.graph.setPaintProperty("replay-selected-route", "line-color", vehicleColor(service));
             $("replay-panel").classList.add("replay-has-selection");
             $("replay-close-details").hidden = false;
             this.setFollow(this.followSelected);
             const host = $("replay-details"); host.replaceChildren();
-            const line = node("div", service.line, "replay-detail-line"); line.style.color = lineColor(service.line);
-            host.append(line, node("h3", `Train ${service.number}`), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
-                node("p", `${service.operator === "VLine" ? "V/Line" : service.operator} · ${service.direction === "U" ? "Toward city" : "Away from city"}`, "replay-muted"));
-            const unresolved = service.legs.filter(id => this.day.paths[id]?.quality !== "track").length;
-            if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved railway geometry. The route has gaps and this train is hidden between those stops.`, "replay-approximate replay-small"));
+            const line = node("div", service.line, "replay-detail-line"); line.style.borderLeftColor = vehicleColor(service);
+            host.append(line, node("h3", service.mode === "train" ? `Train ${service.number}` : service.line.split(" · ")[0]), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
+                node("p", `${service.operator === "VLine" ? "V/Line" : service.operator} · ${directionLabel(service)}`, "replay-muted"));
+            if (service.mode !== "train") host.append(node("p", `Trip ${service.number}`, "replay-muted replay-small"));
+            const unresolved = service.legs.filter(id => !["track", "shape"].includes(this.day.paths[id]?.quality)).length;
+            if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved geometry. The route has gaps and this vehicle is hidden between those stops.`, "replay-approximate replay-small"));
             const live = node("div", undefined, "replay-service-status"); live.id = "replay-service-status"; host.append(live);
             host.append(node("h4", "Scheduled stops"));
             const scroll = node("div", undefined, "replay-stop-list"), table = node("table");
             const head = node("thead"), heading = node("tr");
-            ["Station", "Arr.", "Dep.", "Load"].forEach(label => heading.append(node("th", label)));
+            ["Stop / station", "Arr.", "Dep.", "Load"].forEach(label => heading.append(node("th", label)));
             head.append(heading); table.append(head);
             const body = node("tbody");
             service.stops.forEach((stop, i) => {
                 const row = node("tr"); row.dataset.stopIndex = String(i);
-                row.append(node("td", this.day.stations[stop[0]].name), node("td", shortTime.format(new Date(stop[1] * 1000))),
-                    node("td", shortTime.format(new Date(stop[2] * 1000))), node("td", stop[4] === null ? "—" : stop[4].toLocaleString()));
+                row.append(node("td", this.day.stations[stop[0]].name), node("td", shortTime.format(new Date(stopTime(service, stop, 1) * 1000))),
+                    node("td", shortTime.format(new Date(stopTime(service, stop, 2) * 1000))), node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
                 row.title = `Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`;
                 body.append(row);
             });
             table.append(body); scroll.append(table); host.append(scroll,
-                node("p", "Load = recorded departure passenger count, rounded to the nearest 10.", "replay-muted replay-small"));
+                node("p", service.mode === "train" ? "Load = recorded departure passenger count, rounded to the nearest 10." : "Passenger counts are unavailable for trams and buses.", "replay-muted replay-small"));
             this.paint(true);
         }
         detailStatus(position) {
             if (!this.selected) return;
             const host = $("replay-service-status"); if (!host) return;
             const text = position ? `${position.state}: ${position.station}${position.next ? ` → ${position.next}` : " · Terminus"}` :
-                (this.now < this.selected.stops[0][1] ? "This service has not started yet." : "This service has finished.");
+                (this.now < stopTime(this.selected, this.selected.stops[0], 1) ? "This service has not started yet." : "This service has finished.");
             const signature = `${text}|${position?.load}|${position?.approximate}`;
             if (host.dataset.signature !== signature) {
                 host.dataset.signature = signature; host.replaceChildren(node("strong", text));
                 if (position) {
-                    host.append(node("div", position.load === null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
+                    host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
                     if (position.approximate) host.append(node("div", "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
                 }
                 if (this.selected.timing_uncertain) host.append(node("div", "Daylight-saving times are ambiguous for this service.", "replay-approximate"));
@@ -465,16 +555,17 @@
             }
         }
         updateStaticLayers() {
-            const ids = [], stationIds = new Set();
-            for (const service of this.filtered) {
+            const ids = new Set(), stationIds = new Set();
+            for (const service of uniqueSchedules(this.filtered)) {
+                if (this.mapMode === "demand" && service.mode !== "train") continue;
                 for (const stop of service.stops) stationIds.add(stop[0]);
-                if (this.display.includes("routes")) ids.push(...service.legs);
+                if (this.display.includes("routes")) for (const id of service.legs) ids.add(id);
             }
             const routes = routeFeatures(this.day.paths, ids);
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
-            const stations = this.display.includes("stations") ? [...stationIds].map(i => this.day.stations[i]) : [];
+            const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})) : [];
             this.graph.getSource("replay-routes").setData(collection(routes));
-            this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: this.day.stations.indexOf(s)}))));
+            this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: s.id, mode: s.mode || "train"}))));
             this.graph.getSource("replay-selected-route").setData(collection(selected));
         }
         setMapMode(mode, minutes) {
@@ -491,6 +582,7 @@
             $("replay-demand-window-field").hidden = mode === "trains";
             $("replay-legend").hidden = mode === "demand";
             if (changed) {
+                this.staticDirty = true;
                 this.demandMinute = null; this.demandPopupId = null; this.popup?.remove();
                 this.setFollow(this.followSelected);
             }
@@ -528,6 +620,7 @@
             setText("replay-demand-total", !snapshot.knownCalls && snapshot.missingCalls ? "Boarding counts unavailable" :
                 `${snapshot.total.toLocaleString()} boardings · ${snapshot.stationCount} stations`);
             const notes = [];
+            notes.push("Train passenger data only. Tram/bus counts unavailable.");
             if (!snapshot.stationCount) notes.push("No recorded boardings in this window.");
             if (snapshot.missingCalls) notes.push(`${snapshot.missingCalls} departure counts unavailable.`);
             if (snapshot.start < this.day.start) notes.push("Selected day only; earlier boardings excluded.");
@@ -542,16 +635,17 @@
             const started = performance.now(), generation = this.generation;
             try {
                 const trains = [];
-                let selectedPosition = null, activeCount = 0, missingCount = 0;
+                let selectedPosition = null, selectedMarker = null, activeCount = 0, missingCount = 0;
                 for (const service of this.filtered) {
                     const position = servicePosition(service, this.now, this.day);
                     if (!position) continue;
                     activeCount++;
                     if (service.id === this.selected?.id) selectedPosition = position;
                     if (position.lon === null || position.lat === null) { missingCount++; continue; }
-                    const size = this.display.includes("load") ? 8 + Math.min(22, Math.sqrt(Math.max(0, position.load || 0)) * 0.6) : 11;
-                    trains.push(pointFeature([position.lon, position.lat], {id: service.id, color: lineColor(service.line), radius: size / 2,
-                        load: position.load, approximate: position.approximate}));
+                    const marker = pointFeature([position.lon, position.lat], {id: service.id, color: vehicleColor(service),
+                        sizeFactor: markerScale(position.load, this.display.includes("load")), load: position.load, approximate: position.approximate});
+                    trains.push(marker);
+                    if (service.id === this.selected?.id) selectedMarker = marker;
                 }
                 if (this.staticDirty) {
                     this.updateStaticLayers(); this.staticDirty = false;
@@ -561,17 +655,17 @@
                 this.missingPositions = missingCount;
                 const selectedVisible = selectedPosition && selectedPosition.lon !== null && selectedPosition.lat !== null;
                 this.graph.getSource("replay-trains").setData(collection(trains));
-                this.graph.getSource("replay-selected-train").setData(collection(selectedVisible ? [pointFeature([selectedPosition.lon, selectedPosition.lat])] : []));
+                this.graph.getSource("replay-selected-train").setData(collection(selectedMarker ? [selectedMarker] : []));
                 if (generation !== this.generation) { this.staticDirty = true; this.paintAgain = true; return; }
                 if (this.needsFit) this.metroView();
                 if (this.followSelected && selectedVisible) this.graph.setCenter([selectedPosition.lon, selectedPosition.lat]);
-                else if (this.followSelected && this.now > this.selected.stops[this.selected.stops.length - 1][2]) this.setFollow(false);
+                else if (this.followSelected && this.now > stopTime(this.selected, this.selected.stops[this.selected.stops.length - 1], 2)) this.setFollow(false);
                 if (force || performance.now() - this.lastUI >= 200 || !this.playing) {
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     setText("replay-clock-date", dateFormat.format(new Date(this.now * 1000)));
                     setText("replay-active-count", activeCount.toLocaleString());
-                    setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString()} train position${missingCount === 1 ? "" : "s"} unavailable` : "");
+                    setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString()} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");
                     if (slider) { slider.value = String(this.now); slider.setAttribute("aria-valuetext", `${clockFormat.format(new Date(this.now * 1000))} ${dateFormat.format(new Date(this.now * 1000))}`); }
                     this.detailStatus(selectedPosition);
@@ -585,7 +679,7 @@
                 if (this.paintAgain) { this.paintAgain = false; requestAnimationFrame(() => this.paint(true)); }
             }
         }
-        async sync(day, tab, date, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger) {
+        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger) {
             this.lastTrigger = trigger;
             this.active = tab === "replay";
             if (!this.active) { this.pause(); if (this.isFullscreen()) this.exitFullscreen(); return; }
@@ -608,7 +702,7 @@
             if (!this.active || this.day.business_date !== day.business_date) return;
             this.speed = Number(speed) || 60;
             this.setMapMode(mode, demandWindow);
-            const filters = {operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
+            const filters = {modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             const filterSignature = JSON.stringify([filters, display]);
             if (newDay || this.filterSignature !== filterSignature) {
                 this.filterSignature = filterSignature; this.applyFilters(filters, display || []);
@@ -631,14 +725,14 @@
     // Exposed diagnostics support browser verification without transmitting frames.
     root.suntrainReplay = replay;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainReplay: {
-        sync: function (day, tab, date, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit) {
+        sync: function (day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit) {
             const context = root.dash_clientside.callback_context;
             const trigger = context.triggered_id || context.triggered?.[0]?.prop_id?.split(".")[0];
-            replay.sync(day, tab, date, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger).catch(error => {
+            replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger).catch(error => {
                 console.error("Train replay failed", error); replay.pause();
                 setText("replay-load-message", "The replay could not start. Reload this page to try again.");
             });
-            return root.dash_clientside.no_update;
+            return day && day.business_date === date ? {business_date: day.business_date, error: !!day.error} : root.dash_clientside.no_update;
         }
     }});
 })(typeof window !== "undefined" ? window : globalThis);

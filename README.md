@@ -159,11 +159,15 @@ Notes:
 - A basic health endpoint is available at `/health`.
 - `render.yaml` is included for Render deployment.
 
-## Train Replay
+## Transport Replay
 
-The **Train Replay** tab animates recorded Metro and V/Line services for one business date at a time. Choose a date, press **Play**, or drag the timeline. Filter by operator, line, direction, station served or train number. Station filters keep each matching service's entire journey. Click a train to inspect its scheduled stops and passenger loads; **Size trains by passengers** makes higher loads more prominent.
+The **Transport Replay** tab combines Metro and V/Line train records with archived PTV tram and bus schedules for **24–30 June 2024**, opening on Monday 24 June at 08:00. Choose a day, press **Play**, or drag the timeline. Filter by transport mode, operator/feed, route, direction, stop served or service/trip number. Stop filters keep each matching service's entire journey. Trams and metropolitan trains use the supplied route and line colors in both themes; all buses are orange (#FF8200). Route colors also appear in the legend, service details and selected journey. Name variations are normalized; Stony Point uses Frankston green, V/Line uses purple, and unrecognized routes use neutral grey. Bus coverage includes complete branch-4 journeys with at least one stop inside the Melbourne map extent (144.55–145.6° E, 38.15–37.48° S), including journeys continuing beyond it. This is a timetable replay, not live tracking.
 
-The site has two main tabs: **Train Replay** and **Overview**. Overview contains **Summary**, **Lines & Services**, **Segment Speed**, and **Network** sub-tabs; it remembers your selected sub-tab when you return from replay.
+Click a vehicle to inspect its scheduled journey. **Size trains by passengers** affects trains with known loads; trams and buses keep their normal size and show passenger counts as unavailable. The **Passenger heatmap** uses train boardings only; selecting only trams or buses leaves the heatmap empty. Tram/bus directions A and B distinguish the two feed directions; they do not imply travel toward or away from the city. Operator/feed labels identify the PTV source, rather than the individual bus operating company.
+
+Vehicle circles and outlines shrink at wider zooms and grow gradually when zooming in. At zoom 9, ordinary vehicle circles have a 2.5 px radius; at street zoom they grow to 5 px. Passenger sizing adjusts that radius by at most 20% either way. Train stations remain visible at wider zooms, while tram and bus stops fade in between zooms 12 and 13. The selected vehicle has a separate halo at every zoom. **Stops & stations** controls both types of stop markers.
+
+The site has two main tabs: **Transport Replay** and **Overview**. Overview contains **Summary**, **Lines & Services**, **Segment Speed**, and **Network** sub-tabs; it remembers your selected sub-tab when you return from replay.
 
 Use **Dark mode** in the header or replay map toolbar to switch the site, charts, and map backgrounds together. The theme is saved in this browser. The map toolbar toggle also works in fullscreen, and changing themes preserves playback, filters, and the map view.
 
@@ -171,15 +175,15 @@ Choose **Passenger heatmap** or **Both** under the map to explore station boardi
 
 Counts use recorded boardings at scheduled departure times, in a right-closed rolling window, from the selected business date's services only. Zero counts stay zero; unavailable counts are excluded and reported separately. Seeking backwards recomputes the window. Unresolved train paths do not prevent station demand from being shown. Prefix sums run in the browser, and the heatmap refreshes at minute boundaries (at most five times per second during fast playback) without server queries. Fullscreen retains the view/window controls and scale.
 
-Train Replay is the opening view and first tab, with the map initially focused on metropolitan Melbourne. **Melbourne** restores that view, while **Fit selection** shows the full extent of the filtered services. **Follow train** keeps a selected train centered during playback; dragging the map or choosing a view stops following.
+Transport Replay is the opening view and first tab, with the map initially focused on metropolitan Melbourne. **Melbourne** restores that view, while **Fit selection** shows the full extent of the filtered services. **Follow service** keeps a selected vehicle centered during playback; dragging the map or choosing a view stops following.
 
 **Fullscreen** expands the map with playback controls, speeds up to **2,000×**, and a **Filters** button for the date, line and operator controls. Selected-train details appear over the map and can be closed. Use **Exit fullscreen** or **Escape** to return. Browsers without native fullscreen expand the map to fill the browser window instead.
 
-Positions are estimates interpolated between scheduled stops, with trains stationary during scheduled dwell times. They are not recorded GPS positions. Passenger counts are rounded to the nearest 10 and do not indicate capacity percentages. Each marker represents a recorded service, rather than a tracked physical vehicle across multiple journeys.
+Positions are estimates interpolated between scheduled stops, with trains stationary during scheduled dwell times. They are not recorded GPS positions. Passenger counts are rounded to the nearest 10 and do not indicate capacity percentages. Each marker represents a scheduled service, rather than a tracked physical vehicle across multiple journeys.
 
 Playback runs in the browser after loading the selected day. Midnight, the 03:00 business-day boundary and Melbourne daylight-saving changes are handled in stop order. The timeline extends when services assigned to a business date finish after the following 03:00. Ambiguous repeated-hour times are marked; invalid service timing is omitted with a visible count.
 
-The replay uses MapLibre GL JS 5.6.1, vendored with its [license](assets/maplibre-LICENSE.txt), and attributed OpenStreetMap background tiles. The background needs an internet connection; train playback and the prepared railway geometry do not make external data requests.
+The replay uses MapLibre GL JS 5.6.1, vendored with its [license](assets/maplibre-LICENSE.txt), and attributed OpenStreetMap background tiles. The background needs an internet connection; vehicle playback and the prepared route geometry do not make external data requests.
 
 Railway curves are prepared locally in `data/reference/rail_paths.json` from the official [Transport Victoria GTFS Schedule](https://opendata.transport.vic.gov.au/dataset/gtfs-schedule), under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The pinned geographic reference is dated **15 October 2026**, so it may differ from the FY 2023–24 network. It supplies geometry only. No external timetable replaces the historical services or passenger counts. Unmatched or ambiguous paths are left as gaps. Train markers are hidden between those stops and reappear at the next recorded station; active-service counts include services whose positions are unavailable. The map and selected-service details explain these gaps. Selected-route highlights contain resolved railway geometry only.
 
@@ -191,6 +195,15 @@ curl --fail --location https://data.ptv.vic.gov.au/downloads/gtfs.zip --output /
 ```
 
 Use the archive's actual publication date. Preparation excludes replacement-bus trips, normalizes known station aliases (including Jolimont-MCG), and anchors each stop occurrence to its GTFS shape distance before simplification. Ordered journey stops and geometric checks for out-of-order station crossings constrain route matching; a unique corridor can be composed from verified station-to-station rail segments when no single shape covers a journey leg. Ambiguous corridors remain unresolved. Preparation retains train shapes only and caches intermediate geometry under `.cache/`; the full archive is not required by the app. Set `SUNTRAIN_RAIL_GEOMETRY` to use another prepared reference. Without a reference, replay shows trains at recorded stations and hides their positions between stops. Train data continues to use `SUNTRAIN_PARQUET_GLOB`.
+
+The bundled tram/bus reference `data/reference/transit_week.json.gz` is prepared from the [24 June 2024 PTV archive](https://files.mobilitydatabase.org/mdb-657/mdb-657-202406240001/mdb-657-202406240001.zip), distributed by MobilityDatabase under CC BY 4.0. Rebuild it with:
+
+```bash
+curl --fail --location https://files.mobilitydatabase.org/mdb-657/mdb-657-202406240001/mdb-657-202406240001.zip --output /tmp/suntrain-gtfs-2024-06-24.zip
+./.venv/bin/python scripts/prepare_transit_replay.py /tmp/suntrain-gtfs-2024-06-24.zip
+```
+
+Preparation applies weekday calendars and date exceptions, preserves GTFS times beyond 24:00, and includes journeys crossing the 03:00 business-day boundary. Stop-distance anchors locate each journey leg on the supplied shape, including loops; missing anchors leave route gaps rather than drawing straight shortcuts. Invalid schedules are omitted. Relative stop schedules and geometry stay shared between trips in the browser; playback applies each trip's departure offset without expanding its stops into separate arrays. Absolute times are calculated only when needed, including for a selected journey's stop table. Map paths and stop markers are collected once per shared schedule. No passenger counts are synthesized. Set `SUNTRAIN_TRANSIT_REFERENCE` to override the reference. If it is missing, the original train-only historical replay remains available. Overview retains the full train passenger dataset.
 
 Validation:
 

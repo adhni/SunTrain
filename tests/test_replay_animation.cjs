@@ -64,3 +64,56 @@ test('old straight fallback paths cannot animate or enter selected-route highlig
     assert.deepEqual(features[0].geometry.coordinates, path.coordinates);
     assert.equal(features[0].properties.quality, 'track');
 });
+
+test('tram/bus trips retain shared relative stops and follow their shape at absolute times', () => {
+    const {hydrate, stopTime, routeFeatures, vehicleColor} = require('../assets/train_replay.js');
+    const transitDay = {...day, paths: {curve: {...path, quality: 'shape'}},
+        transit_patterns: {p: {stops: [[0, 0, 10], [1, 20, 30]], legs: ['curve']}},
+        services: [{id: 'bus', mode: 'bus', operator: 'PTV bus', line: 'Bus 1', direction: 'A', number: 'one', pattern: 'p', departure: 100}]};
+    const bus = hydrate(transitDay).services[0];
+    assert.strictEqual(bus.stops,transitDay.transit_patterns.p.stops);
+    assert.deepEqual(bus.stops[0], [0,0,10]);
+    assert.equal(stopTime(bus,bus.stops[0],1),100);
+    hydrate(transitDay);
+    assert.equal(stopTime(bus,bus.stops[0],1),100);
+    assert.equal(servicePosition(bus,115,transitDay).lon,1.5);
+    assert.equal(servicePosition(bus,115,transitDay).load,null);
+    assert.equal(routeFeatures(transitDay.paths,bus.legs).length,1);
+    const filters = {modes:['tram'],operators:[],lines:[],directions:[],stations:[],number:''};
+    assert.equal(matches(bus,filters,transitDay),false);
+    assert.equal(matches(bus,{...filters,modes:['bus']},transitDay),true);
+    assert.notEqual(vehicleColor(bus),vehicleColor({...bus,mode:'tram'}));
+});
+
+test('thousands of trips never copy a shared schedule or change one another’s timing', () => {
+    const {hydrate,stopTime}=require('../assets/train_replay.js');
+    const stops=Object.freeze([Object.freeze([0,0,10]),Object.freeze([1,20,30])]);
+    const relativeDay={...day,transit_patterns:{p:{stops,legs:['curve']}},services:
+        Array.from({length:25000},(_,i)=>({id:String(i),mode:'bus',pattern:'p',departure:100+i*60}))};
+    hydrate(relativeDay);
+    assert.equal(new Set(relativeDay.services.map(s=>s.stops)).size,1);
+    assert.strictEqual(relativeDay.services[24999].stops,stops);
+    const first=relativeDay.services[0],later=relativeDay.services[1];
+    assert.equal(servicePosition(first,115,relativeDay).lon,1.5);
+    assert.equal(servicePosition(later,115,relativeDay),null);
+    assert.equal(servicePosition(later,175,relativeDay).lon,1.5);
+    assert.equal(stopTime(later,stops[1],2),190);
+    assert.equal(servicePosition(first,131,relativeDay),null);
+    assert.equal(servicePosition(first,105,relativeDay).state,'At stop');
+    assert.equal(servicePosition(first,120,relativeDay).station,'Bravo');
+    assert.equal(servicePosition(first,105,relativeDay).load,null);
+    hydrate(relativeDay);
+    assert.equal(stopTime(later,stops[1],2),190);
+});
+
+test('shared schedules preserve overnight times and complete-journey stop filters', () => {
+    const {hydrate,stopTime}=require('../assets/train_replay.js');
+    const midnight=Date.parse('2024-06-24T00:00:00+10:00')/1000;
+    const overnight={...day,transit_patterns:{p:{stops:[[0,0,0],[1,1200,1200]],legs:['curve']}},
+        services:[{id:'late',mode:'tram',operator:'PTV tram',line:'Tram 1',direction:'A',number:'late',pattern:'p',departure:midnight+25*3600}]};
+    const trip=hydrate(overnight).services[0];
+    assert.equal(new Date(stopTime(trip,trip.stops[1],1)*1000).toISOString(),'2024-06-24T15:20:00.000Z');
+    assert.equal(servicePosition(trip,trip.departure+600,overnight).lon,1.5);
+    assert.equal(matches(trip,{operators:[],lines:[],directions:[],stations:['Bravo'],number:''},overnight),true);
+    assert.equal(trip.stops.length,2);
+});

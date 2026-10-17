@@ -53,7 +53,7 @@
 .replay-detail-card h3 { margin: 10px 0; font-size: 1.35rem; font-weight: 600; }
 .replay-detail-card p { font-size: 0.82rem; line-height: 1.6; }
 .replay-detail-note { margin-top: 25px; padding: 14px; background: #f0f6f3; border-radius: 6px; color: var(--accent-deep); font-size: 0.8rem; line-height: 1.6; }
-.replay-detail-line { margin-top: 20px; font-size: 0.8rem; font-weight: 700; }
+.replay-detail-line { border-left: 4px solid transparent; padding-left: 8px; color: var(--ink); margin-top: 20px; font-size: 0.8rem; font-weight: 700; }
 .replay-detail-route { margin: 8px 0; font-size: 0.9rem !important; }
 .replay-service-status { padding: 12px; margin: 16px 0; border: 1px solid #d7e7e0; border-radius: 6px; background: #f4faf6; font-size: 0.75rem; line-height: 1.7; }
 .replay-service-status strong { display: block; margin-bottom: 4px; color: var(--accent-deep); }

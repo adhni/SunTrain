@@ -1,18 +1,33 @@
 (function (root) {
     "use strict";
-    const LINE_NAMES = ["Alamein", "Belgrave", "Craigieburn", "Cranbourne", "Eastern", "Flemington Racecourse", "Frankston", "Glen Waverley", "Hurstbridge", "Lilydale", "Mernda", "North East", "Northern", "Pakenham", "Richmond and City Loop", "Sandringham", "South Western", "Stony Point", "Sunbury", "Upfield", "Werribee", "Western", "Williamstown"];
-    const PALETTE = ["#9b4a9a", "#326bb3", "#b05829", "#329a5b", "#a34978", "#847423", "#22767a", "#775cba", "#c34548", "#297a46", "#bb663c", "#7662a1", "#907c1a", "#237da1", "#796969", "#ca4f84", "#84704e", "#536c9a", "#5d8634", "#aa5264", "#087f75", "#8550ac", "#56733f"];
+    const TRAIN_COLORS = {
+        alamein: "#152C6B", belgrave: "#152C6B", glenwaverley: "#152C6B", lilydale: "#152C6B",
+        craigieburn: "#FFBE00", sunbury: "#FFBE00", upfield: "#FFBE00",
+        cranbourne: "#279FD5", pakenham: "#279FD5",
+        frankston: "#028430", werribee: "#028430", williamstown: "#028430", stonypoint: "#028430",
+        hurstbridge: "#BE1014", mernda: "#BE1014", sandringham: "#F178AF",
+        flemingtonracecourse: "#95979A", showgrounds: "#95979A",
+        eastern: "#8F1A95", northeast: "#8F1A95", northern: "#8F1A95", southwestern: "#8F1A95", western: "#8F1A95",
+    };
+    const TRAM_COLORS = {
+        "1": "#B5BD00", "3": "#8DC8E8", "3a": "#8DC8E8", "5": "#D50032", "6": "#01426A",
+        "11": "#6ECEB2", "12": "#007E92", "16": "#FBD872", "19": "#8A1B61", "30": "#534F96",
+        "35": "#6B3529", "48": "#333434", "57": "#00C1D5", "58": "#969696", "59": "#00653A",
+        "64": "#00AB8E", "67": "#956C58", "70": "#F59BBB", "72": "#9ABEAA", "75": "#00A9E0",
+        "78": "#A0A0D6", "82": "#D2D755", "86": "#FFB500", "96": "#C6007E", "109": "#E87722",
+    };
+    const BUS_COLOR = "#FF8200";
     function lineColor(line) {
-        const index = LINE_NAMES.indexOf(line);
-        const dark = root.suntrainTheme?.current === "dark";
-        if (index >= 0) {
-            const color = PALETTE[index];
-            if (!dark) return color;
-            return "#" + color.slice(1).match(/../g).map(part => Math.round(parseInt(part, 16) * 0.7 + 255 * 0.3).toString(16).padStart(2, "0")).join("");
+        const name = String(line || "").toLowerCase().replace(/[^a-z0-9]/g, "");
+        if (TRAIN_COLORS[name]) return TRAIN_COLORS[name];
+        for (const [key, color] of Object.entries(TRAIN_COLORS)) {
+            if (name.includes(key)) return color;
         }
-        let hash = 0;
-        for (const c of line) hash = ((hash << 5) - hash + c.charCodeAt(0)) | 0;
-        return `hsl(${Math.abs(hash) % 360},55%,${dark ? 65 : 38}%)`;
+        return "#95979A";
+    }
+    function tramRoute(service) {
+        const name = String(service.route_short_name ?? service.route ?? service.line ?? "").trim();
+        return name.match(/^(?:tram(?:\s+route)?\s*|route\s*)?0*(\d+[a-z]?)\b/i)?.[1].toLowerCase() || "";
     }
     function upperBound(values, value) {
         let lo = 0, hi = values.length;
@@ -91,8 +106,12 @@
         return day;
     }
     function vehicleColor(service) {
-        if (service.mode === "tram") return root.suntrainTheme?.current === "dark" ? "#ffb56b" : "#c45e00";
-        if (service.mode === "bus") return root.suntrainTheme?.current === "dark" ? "#70d4b0" : "#067b58";
+        if (service.mode === "tram") {
+            const route = tramRoute(service);
+            return TRAM_COLORS[route] || TRAM_COLORS[route.replace(/[a-z]$/, "")] || "#95979A";
+        }
+        if (service.mode === "bus") return BUS_COLOR;
+        if (String(service.operator || "").toLowerCase().replace(/[^a-z]/g, "") === "vline") return "#8F1A95";
         return lineColor(service.line);
     }
     function directionLabel(service) {
@@ -370,29 +389,33 @@
             const dark = root.suntrainTheme.current === "dark";
             if (this.mapReady) {
                 root.suntrainTheme.styleMap(this.graph);
-                this.graph.setPaintProperty("replay-selected-route", "line-color", dark ? "#8ae1ca" : "#115d51");
+                this.graph.setPaintProperty("replay-selected-route", "line-color", this.selected ? vehicleColor(this.selected) : dark ? "#8ae1ca" : "#115d51");
                 this.graph.setPaintProperty("replay-demand-stations", "circle-stroke-color", dark ? "#e4eef0" : "#fff");
                 for (const layer of ["replay-stations", "replay-local-stops"]) {
                     this.graph.setPaintProperty(layer, "circle-color", dark ? "#a6bdb5" : "#6d8980");
                     this.graph.setPaintProperty(layer, "circle-stroke-color", dark ? "#17212b" : "#fff");
                 }
                 this.graph.setPaintProperty("replay-selected-train", "circle-stroke-color", dark ? "#f2f8fa" : "#18232d");
-                this.graph.setPaintProperty("replay-trains", "circle-stroke-color", dark ? "#101a23" : "#fff");
+                this.graph.setPaintProperty("replay-trains", "circle-stroke-color", dark ? "#d2dadd" : "#fff");
                 this.graph.setPaintProperty("replay-routes", "line-color", ["case", ["==", ["get", "quality"], "track"], dark ? "#88aea4" : "#75978f", dark ? "#edb36b" : "#bd873d"]);
             }
             this.updateLegend();
             const detail = document.querySelector(".replay-detail-line");
-            if (detail && this.selected) detail.style.color = vehicleColor(this.selected);
+            if (detail && this.selected) detail.style.borderLeftColor = vehicleColor(this.selected);
             if (this.day && this.mapReady) this.paint(true);
         }
         updateLegend() {
             if (!$("replay-legend")) return;
             const legend = $("replay-legend"); legend.replaceChildren();
-            const lines = [...new Set(this.filtered.map(s => s.mode === "tram" ? "Trams" : s.mode === "bus" ? "Buses" : s.line))].sort();
-            for (const line of lines) {
+            const entries = new Map();
+            for (const service of this.filtered) {
+                const label = service.mode === "tram" ? `Tram ${tramRoute(service) || "other"}` : service.mode === "bus" ? "Buses" : service.line;
+                entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service)});
+            }
+            for (const {label, color} of [...entries.values()].sort((a, b) => a.label.localeCompare(b.label, "en", {numeric: true}))) {
                 const item = node("span", undefined, "replay-legend-item");
-                const swatch = node("span", undefined, "replay-legend-swatch"); swatch.style.background = line === "Trams" ? vehicleColor({mode: "tram"}) : line === "Buses" ? vehicleColor({mode: "bus"}) : lineColor(line);
-                item.append(swatch, document.createTextNode(line)); legend.append(item);
+                const swatch = node("span", undefined, "replay-legend-swatch"); swatch.style.background = color;
+                item.append(swatch, document.createTextNode(label)); legend.append(item);
             }
         }
         applyFilters(filters, display) {
@@ -470,11 +493,12 @@
             const service = this.filtered.find(s => s.id === id);
             if (!service) return;
             this.selected = service; this.staticDirty = true;
+            this.graph.setPaintProperty("replay-selected-route", "line-color", vehicleColor(service));
             $("replay-panel").classList.add("replay-has-selection");
             $("replay-close-details").hidden = false;
             this.setFollow(this.followSelected);
             const host = $("replay-details"); host.replaceChildren();
-            const line = node("div", service.line, "replay-detail-line"); line.style.color = vehicleColor(service);
+            const line = node("div", service.line, "replay-detail-line"); line.style.borderLeftColor = vehicleColor(service);
             host.append(line, node("h3", service.mode === "train" ? `Train ${service.number}` : service.line.split(" · ")[0]), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
                 node("p", `${service.operator === "VLine" ? "V/Line" : service.operator} · ${directionLabel(service)}`, "replay-muted"));
             if (service.mode !== "train") host.append(node("p", `Trip ${service.number}`, "replay-muted replay-small"));

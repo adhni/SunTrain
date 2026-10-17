@@ -18,6 +18,28 @@ The source ZIP is cached as `.cache/toronto-audit/completegtfs.zip`; its SHA-256
 
 Contains information licensed under the [Open Government Licence – Toronto](https://open.toronto.ca/open-data-licence/). Timetable and railway geometry: TTC / City of Toronto. SunTrain is independent of TTC and uses no official logos or map artwork.
 
+## Washington, DC and SF Bay Area
+
+Both additions reuse the existing replay controls, line/direction/station filters, local clocks, route colours, themes and fullscreen. Passenger sizing and heatmaps remain unavailable.
+
+| Replay city | Historical week | Railway coverage |
+| --- | --- | --- |
+| Washington, DC | 5–11 October 2026 | WMATA Red, Blue, Orange, Silver, Green and Yellow lines |
+| SF Bay Area | 17–23 August 2026 | BART Yellow, Orange, Green, Red and Blue lines, plus the Oakland Airport connector |
+
+DC uses two dated [MobilityDatabase copies of WMATA's rail feed](https://mobilitydatabase.org/feeds/gtfs/mdb-1847), each applied only to service dates inside its declared validity. BART uses its [official dated August schedule ZIP](https://www.bart.gov/sites/default/files/2026-08/google_transit_20260810-20270108_v02.zip). BART's calendars and feed metadata disagree about the overall validity; this August week is inside both. Later dates are not enabled just because they appear in its calendars. These are schedule estimates, not observed movements or every disruption. No rail replacement buses, Metrobus, MARC, VRE, Muni or Caltrain services are included.
+
+Rebuild with:
+
+```bash
+./.venv/bin/python scripts/prepare_us_rail_replay.py dc
+./.venv/bin/python scripts/prepare_us_rail_replay.py sf_bay
+```
+
+Sources are SHA-256 pinned and cached under `.cache/us-rail/`. Compact references are about **0.11 MB for DC** and **0.08 MB for BART**, with shared schedules and paths. One rare journey variant in each city has unresolved source geometry; affected vehicles appear at stations only. `SUNTRAIN_DC_REFERENCE` and `SUNTRAIN_SF_BAY_REFERENCE` support alternate prepared files.
+
+Source attribution and links to the [WMATA Transit Data Terms of Use](https://developer.wmata.com/license) and [BART Developer License Agreement](https://www.bart.gov/schedules/developers/developer-license-agreement) appear beside the map. SunTrain is independent of the operators and uses no official logos or map artwork. See [DC and Bay Area expansion notes](DC_BAY_AREA_EXPANSION_NOTES.md) for snapshots, geometry checks, known gaps and future extensions.
+
 ## Additional Australian cities
 
 Choose the city in **Replay city**. These railway additions reuse route/operator/direction/station filters, scheduled movement, route colours, local clocks, fullscreen, themes and all playback speeds.

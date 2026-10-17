@@ -12,7 +12,7 @@ The [older TTC catalogue](https://open.toronto.ca/dataset/ttc-routes-and-schedul
 
 ## Preparation and geometry
 
-`scripts/prepare_toronto_replay.py` reuses existing calendar, CSV, hash, geometry matching, simplification and compact-reference helpers. It selects agency **TTC**, subway type **1** with short names **1/2/4**, and light rail type **0** with short names **5/6**. Type 0 alone would incorrectly include the streetcar network; route numbers alone would incorrectly include replacement buses. Route labels, colours, destinations, direction IDs and stop sequences come from this feed.
+`scripts/prepare_toronto_replay.py` delegates to `scripts/prepare_rail_replay.py`, the shared pinned-snapshot preparation used by Toronto, DC and BART. It reuses existing calendar, CSV, hash, geometry matching, simplification and compact-reference helpers. Toronto's prepared data remains unchanged after this extraction. It selects agency **TTC**, subway type **1** with short names **1/2/4**, and light rail type **0** with short names **5/6**. Type 0 alone would incorrectly include the streetcar network; route numbers alone would incorrectly include replacement buses. Route labels, colours, destinations, direction IDs and stop sequences come from this feed.
 
 No `frequencies.txt` is present. Explicit trips and stop times are retained, with extended hours and 03:00–03:00 business windows. Vehicles crossing a boundary remain visible on either side; there are no duplicate occurrences within one replay day. Relative stop schedules and railway paths are shared between trip instances. No raw GTFS ZIP is sent to the browser and Toronto loading does not query Melbourne's passenger warehouse.
 

@@ -117,3 +117,37 @@ test('shared schedules preserve overnight times and complete-journey stop filter
     assert.equal(matches(trip,{operators:[],lines:[],directions:[],stations:['Bravo'],number:''},overnight),true);
     assert.equal(trip.stops.length,2);
 });
+
+test('Boston rail shares schedules, retains MBTA route colors and has no passenger loads', () => {
+    const {hydrate, vehicleColor} = require('../assets/train_replay.js');
+    const boston = {...day, transit_patterns: {p: {operator:'MBTA', line:'Blue Line', color:'#003DA5', route_id:'Blue',
+        direction:'North', origin:'Alpha', destination:'Bravo', stops:[[0,0,10],[1,20,30]], legs:['curve']}},
+        services:[{id:'boston', mode:'subway', pattern:'p', departure:100, number:'trip'}]};
+    const subway = hydrate(boston).services[0];
+    assert.equal(vehicleColor(subway),'#003DA5');
+    assert.equal(subway.route_id,'Blue');
+    assert.equal(subway.direction,'North');
+    assert.equal(servicePosition(subway,115,boston).lon,1.5);
+    assert.equal(servicePosition(subway,115,boston).load,null);
+    assert.strictEqual(subway.stops,boston.transit_patterns.p.stops);
+    assert.equal(matches(subway,{modes:['commuter_rail'],operators:[],lines:[],directions:[],stations:[],number:''},boston),false);
+    assert.equal(matches(subway,{modes:['subway'],operators:['MBTA'],lines:['Blue Line'],directions:['North'],stations:[],number:''},boston),true);
+});
+
+test('Silver Line stays silver, retains its route identities and filters separately from rail', () => {
+    const {hydrate,vehicleColor}=require('../assets/train_replay.js');
+    const silver={...day,transit_patterns:{p:{operator:'MBTA',line:'SL1 · Airport - South Station',route_id:'741',
+        color:'#7C878E',direction:'Inbound',stops:[[0,0,10],[1,20,30]],legs:['curve']}},
+        services:[{id:'silver',mode:'silver_line',pattern:'p',departure:100,number:'trip'}]};
+    const bus=hydrate(silver).services[0];
+    assert.equal(vehicleColor(bus),'#7C878E');
+    assert.equal(vehicleColor({...bus,color:undefined}),'#7C878E');
+    assert.equal(vehicleColor({...bus,mode:'bus'}),'#FF8200');
+    assert.equal(bus.route_id,'741');
+    assert.strictEqual(bus.stops,silver.transit_patterns.p.stops);
+    assert.equal(servicePosition(bus,115,silver).lon,1.5);
+    assert.equal(servicePosition(bus,115,silver).load,null);
+    const filters={modes:['silver_line'],operators:['MBTA'],lines:[bus.line],directions:['Inbound'],stations:[],number:''};
+    assert.equal(matches(bus,filters,silver),true);
+    assert.equal(matches(bus,{...filters,modes:['subway']},silver),false);
+});

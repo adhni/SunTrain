@@ -65,8 +65,9 @@ def add_transit(day, reference_fingerprint):
         for leg in pattern["legs"]:
             day["paths"][leg] = reference["paths"][leg]
     day["transit_patterns"] = patterns
-    midnight = int(datetime.combine(date.fromisoformat(day["business_date"]), time(),
-                                    ZoneInfo("Australia/Melbourne")).timestamp())
+    # GTFS service-day zero is noon minus 12 elapsed hours (also correct on DST days).
+    midnight = int(datetime.combine(date.fromisoformat(day["business_date"]), time(12),
+                                    ZoneInfo(day.get("timezone", "Australia/Melbourne"))).timestamp()) - 12 * 3600
     for identifier, trip, seconds in reference["days"][day["business_date"]]:
         pattern = reference["patterns"][identifier]
         departure = midnight + seconds

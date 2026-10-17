@@ -9,6 +9,7 @@ from dash.exceptions import PreventUpdate
 
 from dashboard.replay import get_replay_day
 from dashboard.transit import available_range
+from dashboard.cities import CITIES, city_settings
 
 LOGGER = logging.getLogger(__name__)
 
@@ -28,10 +29,12 @@ def build_replay_panel(metadata, default_date):
         dcc.Store(id="replay-client-state", storage_type="memory"),
         html.Div(className="replay-heading", children=[
             html.Div([html.Div("THE NETWORK IN MOTION", className="replay-eyebrow"),
-                      html.H2("Transport Replay"), html.P("Trains, trams and buses on one moving map. Passenger data is available for trains only.")]),
-            html.Span(badge, className="replay-badge"),
+                      html.H2("Transport Replay"), html.P(CITIES["melbourne"]["description"], id="replay-description")]),
+            html.Span(badge, id="replay-period", className="replay-badge"),
         ]),
         html.Div(id="replay-filter-controls", className="replay-filters", children=[
+            field("Replay city", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
+                  for key, value in CITIES.items()], value="melbourne", clearable=False, searchable=False)),
             field("Business date", dcc.DatePickerSingle(id="replay-date", date=default_date,
                   min_date_allowed=minimum, max_date_allowed=maximum,
                   display_format="DD MMM YYYY", first_day_of_week=1, clearable=False)),
@@ -82,7 +85,7 @@ def build_replay_panel(metadata, default_date):
                         html.Div("Marker colors use this fixed scale. Glow shows nearby concentration.", className="replay-muted"),
                     ]),
                 ]),
-                html.Div(className="replay-demand-controls", children=[
+                html.Div(id="replay-demand-controls", className="replay-demand-controls", children=[
                     html.Div(children=[html.Label("Map view", className="finder-label"),
                         dcc.RadioItems(id="replay-map-mode", options=[{"label": " Vehicles", "value": "trains"},
                             {"label": " Passenger heatmap", "value": "demand"}, {"label": " Both", "value": "both"}],
@@ -134,19 +137,51 @@ def build_replay_panel(metadata, default_date):
     ])
 
 
-def register_replay_callbacks(app):
+def register_replay_callbacks(app, metadata):
+    @app.callback(
+        Output("replay-date", "min_date_allowed"), Output("replay-date", "max_date_allowed"), Output("replay-date", "date"),
+        Output("replay-modes", "options"), Output("replay-modes", "value"),
+        Output("replay-operators", "options"), Output("replay-operators", "value"),
+        Output("replay-directions", "options"), Output("replay-directions", "value"),
+        Output("replay-lines", "value"), Output("replay-stations", "value"), Output("replay-number", "value"),
+        Output("replay-description", "children"), Output("replay-period", "children"),
+        Output("replay-melbourne", "children"), Output("replay-melbourne", "title"),
+        Output("replay-demand-controls", "style"), Output("replay-map-mode", "value"),
+        Output("replay-display", "options"), Output("replay-display", "value"),
+        Input("replay-city", "value"), State("replay-date", "date"))
+    def configure_city(city, current_date):
+        settings = city_settings(city)
+        if city != "melbourne":
+            minimum, maximum = settings["start_date"], settings["end_date"]
+        else:
+            coverage = available_range()
+            shared = coverage and metadata["min_date"] <= coverage[0] and metadata["max_date"] >= coverage[1]
+            minimum, maximum = coverage if shared else (metadata["min_date"], metadata["max_date"])
+        chosen = current_date if current_date and minimum <= current_date <= maximum else minimum
+        options = lambda key: [{"label": label, "value": value} for label, value in settings[key]]
+        badge = f"{date.fromisoformat(minimum):%d %b}–{date.fromisoformat(maximum):%d %b %Y}"
+        return (minimum, maximum, chosen, options("modes"), [], options("operators"), [], options("directions"), [], [], [], "",
+                settings["description"], badge, settings["name"], f"Return to metropolitan {settings['name']}",
+                {} if settings["passenger_data"] else {"display": "none"}, "trains",
+                [{"label": " Route paths", "value": "routes"}, {"label": " Stops & stations", "value": "stations"},
+                 {"label": " Size trains by passengers", "value": "load", "disabled": not settings["passenger_data"]}],
+                ["routes", "stations"])
+
     @app.callback(Output("replay-day", "data"), Output("replay-load-message", "children"),
-                  Input("replay-date", "date"), Input("view-tabs", "value"), State("replay-client-state", "data"))
-    def load_replay_day(business_date, active_tab, current):
+                  Input("replay-date", "date"), Input("view-tabs", "value"), Input("replay-city", "value"), State("replay-client-state", "data"))
+    def load_replay_day(business_date, active_tab, city, current):
         if active_tab != "replay" or not business_date:
             raise PreventUpdate
-        if current and not current.get("error") and current.get("business_date") == business_date:
+        settings = city_settings(city)
+        if city != "melbourne" and not settings["start_date"] <= business_date <= settings["end_date"]:
+            raise PreventUpdate  # The city callback will choose a supported date.
+        if current and not current.get("error") and current.get("business_date") == business_date and current.get("city", "melbourne") == city:
             raise PreventUpdate
         try:
-            return get_replay_day(business_date), ""
+            return get_replay_day(business_date, city), ""
         except Exception:
             LOGGER.exception("Could not load train replay for %s", business_date)
-            return {"business_date": business_date, "error": True}, "Could not load this day. Choose another date, or return to this tab to retry."
+            return {"business_date": business_date, "city": city, "error": True}, "Could not load this day. Choose another date, or return to this tab to retry."
 
     app.clientside_callback(
         ClientsideFunction(namespace="suntrainReplay", function_name="sync"),
@@ -157,5 +192,6 @@ def register_replay_callbacks(app):
         Input("replay-map-mode", "value"), Input("replay-demand-window", "value"),
         Input("replay-speed", "value"), Input("replay-play", "n_clicks"), Input("replay-restart", "n_clicks"),
         Input("replay-back", "n_clicks"), Input("replay-forward", "n_clicks"), Input("replay-fit", "n_clicks"),
+        Input("replay-city", "value"),
     )
     return load_replay_day

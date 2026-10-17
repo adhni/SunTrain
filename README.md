@@ -1,6 +1,44 @@
 # SunTrain
 
-Local analysis workspace for the Victorian train service passenger counts dataset.
+Historical transport replay for Melbourne, Boston and Chicago, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Chicago CTA rail
+
+Choose **Chicago** in **Replay city** for **24 November–28 December 2025**, five full weeks of CTA ‘L’ trains: Red, Blue, Brown, Green, Orange, Pink, Purple and Yellow. Chicago uses `America/Chicago` local time, historical feed colours and the existing route/direction/stop filters, playback controls, fullscreen and themes. Metra, buses and train passenger counts are unavailable in this first addition. Overview remains Melbourne passenger analysis.
+
+**Chicago's period differs from Melbourne and Boston.** The requested May–June 2024 Transitland snapshot is listed, but its ZIP download required archive authentication. A publicly downloadable 2024 ZIP was not obtained. The supported 2025 period uses two accessible [MobilityDatabase CTA archives](https://mobilitydatabase.org/feeds/gtfs/mdb-389), captured on 23 November and 19 December 2025 (UTC); each service date selects the latest of these snapshots captured by that date. Calendars and date exceptions determine actual trips, including holidays. Current CTA schedules are never substituted for the labelled historical dates.
+
+Rebuild the compact Chicago reference with:
+
+```bash
+./.venv/bin/python scripts/prepare_chicago_replay.py
+```
+
+The script downloads the pinned archives into `.cache/chicago-archives/` and writes `data/reference/chicago/2025-11-24.json.gz`. Only CTA rail is retained. Stop schedules and trip-specific shapes remain shared; the existing prepared-city loader sends one selected day to the browser without querying Melbourne's warehouse. Set `SUNTRAIN_CHICAGO_REFERENCE` to use another prepared reference.
+
+CTA supplies native stop/shape distance anchors, reused by the existing geometry matcher to preserve Loop stop occurrences and branch paths before simplification. Anchors must follow journey order and match stations within 150 m; unresolved paths remain gaps. Data is provided by Chicago Transit Authority under its [Developer License Agreement](https://www.transitchicago.com/downloads/sch_data/developers_license_agreement.htm). SunTrain is independent of CTA. Positions estimate scheduled movement, not GPS, delays or every historical disruption.
+
+See [Chicago data and expansion notes](CHICAGO_EXPANSION_NOTES.md) for the archive limitation, Metra findings, daily station ridership and future bus support.
+
+## Boston replay pilot
+
+Choose **Boston** in the replay's **Replay city** selector to explore **24–30 June 2024**. Subway (Red, Orange and Blue), light rail (Green B/C/D/E and Mattapan), scheduled MBTA commuter rail and **Silver Line SL1–SL5 plus SLW** use the existing playback controls, route/mode/direction filters, journey details, dark mode and fullscreen. Silver Line has its own transport filter and retains individual route labels, including the SLW short-turn service where scheduled. Boston uses `America/New_York` local time, historical rail colours and a metropolitan Boston starting view. **Silver Line uses silver (`#7C878E`); other buses use orange (`#FF8200`).** **Fit selection** also shows outlying commuter rail termini. The Overview tab continues to analyse Melbourne passenger data.
+
+This is a scheduled-service simulation. It does not reproduce GPS movements, delays or disruptions missing from the archived timetable. Boston has no passenger counts: passenger sizing and heatmap controls are unavailable. Replacement shuttles, regular bus routes, ferries and non-MBTA operators (including CapeFLYER) are excluded from this pilot. Only services active in the historical calendars appear; a listed line without active trips is not fabricated.
+
+Data is provided by **MassDOT / MBTA**, under its [Developer License Agreement](https://github.com/mbta/gtfs-documentation/blob/master/developers-license-agreement.pdf). SunTrain is independent of MassDOT and MBTA. The [official archive index](https://cdn.mbta.com/archive/archived_feeds.txt) selects four feeds for this week and the adjoining calendar dates needed for overnight services: `20240613.zip`, `20240625.zip`, `20240626.zip` and `20240627.zip`. The index's recommended validity windows determine selection, including retrospective corrections; ZIP filename dates are not assumed to be publication dates. Source URLs, versions, validity dates and SHA-256 hashes are retained in the prepared reference.
+
+Rebuild the pilot with:
+
+```bash
+./.venv/bin/python scripts/prepare_boston_replay.py
+```
+
+The script caches source downloads in `.cache/boston-archives/` and writes the compressed reference `data/reference/boston/2024-06-24.json.gz`. It applies service calendars and exceptions, trip-level vehicle-type overrides and extended-hour times. Silver Line membership comes from the feed's `line-SLWaterfront` and `line-SLWashington` groups; it remains a bus service with bus stops shown at closer zoom levels. Trips overlapping the 03:00 boundary remain visible on either side, with no duplicate occurrences within a replay day. Stop schedules and route geometry are shared by compact trip instances; only the selected day and its referenced paths are sent to the browser. Boston loading does not query Melbourne's passenger warehouse. `SUNTRAIN_BOSTON_REFERENCE` overrides the prepared reference path.
+
+MBTA stop times lack distance anchors. Preparation projects the whole ordered stop sequence onto each trip's own shape, preserving branches and repeated stop occurrences. Stop projections must lie within 150 metres of that shape; invalid geometry stays as a gap, with markers hidden between those stops. Supplied shapes are simplified at approximately six metres. The bundled week has no omitted invalid trips or unresolved geometry patterns. These checks establish consistency with the published feed, not independent proof of every historical track movement.
+
+For future date extensions or bus support, see [Boston expansion notes](BOSTON_EXPANSION_NOTES.md), including the current fixed-date settings, archive selection, bus classification and checks to preserve.
 
 ## Structure
 

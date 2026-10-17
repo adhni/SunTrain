@@ -14,10 +14,13 @@ from zoneinfo import ZoneInfo
 
 from dashboard import data
 from dashboard import transit
+from dashboard.cities import city_settings, replay_settings
 
 ROOT = Path(__file__).resolve().parents[1]
 MELBOURNE = ZoneInfo("Australia/Melbourne")
 GEOMETRY_PATH = ROOT / "data/reference/rail_paths.json"
+BOSTON_PATH = ROOT / "data/reference/boston/2024-06-24.json.gz"
+CHICAGO_PATH = ROOT / "data/reference/chicago/2025-11-24.json.gz"
 LOGGER = logging.getLogger(__name__)
 
 
@@ -86,14 +89,41 @@ def _read_geometry(path: str, modified: int) -> dict:
         return {"metadata": {"status": "unavailable"}, "patterns": {}, "paths": {}}
 
 
-def get_replay_day(business_date: str) -> dict:
+def get_replay_day(business_date: str, city: str = "melbourne") -> dict:
     date.fromisoformat(business_date)
+    settings = city_settings(city)
+    if city != "melbourne":
+        if not settings["start_date"] <= business_date <= settings["end_date"]:
+            raise ValueError(f"{settings['name']} replay covers {settings['start_date']} through {settings['end_date']}")
+        default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH}[city]
+        path = Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
+        return _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns)
     source = data._dataset_path()
     fingerprint = tuple((name, Path(name).stat().st_mtime_ns, Path(name).stat().st_size)
                         for name in sorted(glob.glob(source)))
     geometry = geometry_file()
     modified = geometry.stat().st_mtime_ns if geometry.exists() else 0
     return _get_day(business_date, source, fingerprint, str(geometry), modified, transit.fingerprint(business_date))
+
+
+@lru_cache(maxsize=1)
+def _get_prepared_day(city, business_date, path, modified):
+    settings = replay_settings(city)
+    zone = ZoneInfo(settings["timezone"])
+    day = date.fromisoformat(business_date)
+    payload = {**settings, "business_date": business_date,
+        "revision": hashlib.sha256(repr((city, path, modified)).encode()).hexdigest()[:16],
+        "start": int(datetime.combine(day, time(3), zone).timestamp()),
+        "end": int(datetime.combine(day + timedelta(days=1), time(3), zone).timestamp()),
+        "initial": int(datetime.combine(day, time(8), zone).timestamp()),
+        "services": [], "stations": [], "paths": {}, "geometry": {},
+        "approximate_legs": 0, "total_legs": 0, "excluded_services": 0}
+    reference = transit.read_reference(path, modified)
+    if not reference or business_date not in reference.get("days", {}):
+        raise ValueError(f"{settings['city_name']} reference does not contain this date")
+    transit.add_transit(payload, (path, modified))
+    payload["schedule"] = payload.pop("transit")
+    return payload
 
 
 # A day retains snapshot geometry; keep one payload as users switch between archives.
@@ -162,7 +192,7 @@ def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path:
     start = int(datetime.combine(day, time(3), MELBOURNE).timestamp())
     end = int(datetime.combine(day + timedelta(days=1), time(3), MELBOURNE).timestamp())
     end = max([end, *[s["stops"][-1][2] for s in services]])
-    payload = {"business_date": business_date, "revision": hashlib.sha256(repr((fingerprint, geometry_path, modified, transit_fingerprint)).encode()).hexdigest()[:16],
+    payload = {**replay_settings(), "business_date": business_date, "revision": hashlib.sha256(repr((fingerprint, geometry_path, modified, transit_fingerprint)).encode()).hexdigest()[:16],
             "start": start, "end": end,
             "initial": int(datetime.combine(day, time(8), MELBOURNE).timestamp()),
             "services": services, "stations": stations, "paths": paths,

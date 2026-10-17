@@ -98,7 +98,7 @@
         for (const service of day.services) {
             if (!service.pattern || service.stops) continue;
             const pattern = day.transit_patterns[service.pattern];
-            for (const key of ["operator", "line", "direction", "origin", "destination"]) {
+            for (const key of ["operator", "line", "direction", "origin", "destination", "color", "route_id"]) {
                 if (pattern[key] !== undefined) service[key] = pattern[key];
             }
             service.stops = pattern.stops;
@@ -119,15 +119,18 @@
         }
     }
     function vehicleColor(service) {
+        if (service.mode === "bus") return BUS_COLOR;
+        if (/^#[0-9a-f]{6}$/i.test(service.color || "")) return service.color;
+        if (service.mode === "silver_line") return "#7C878E";
         if (service.mode === "tram") {
             const route = tramRoute(service);
             return TRAM_COLORS[route] || TRAM_COLORS[route.replace(/[a-z]$/, "")] || "#95979A";
         }
-        if (service.mode === "bus") return BUS_COLOR;
         if (String(service.operator || "").toLowerCase().replace(/[^a-z]/g, "") === "vline") return "#8F1A95";
         return lineColor(service.line);
     }
     function directionLabel(service) {
+        if (["subway", "light_rail", "commuter_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
         if (!service.mode || service.mode === "train") return service.direction === "U" ? "Toward city" : "Away from city";
         return service.direction ? `Direction ${service.direction}` : "Scheduled service";
     }
@@ -144,9 +147,7 @@
     if (typeof module !== "undefined" && module.exports) module.exports = core;
     if (!root.document) return;
 
-    const clockFormat = new Intl.DateTimeFormat("en-AU", {timeZone: "Australia/Melbourne", hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"});
-    const dateFormat = new Intl.DateTimeFormat("en-AU", {timeZone: "Australia/Melbourne", day: "numeric", month: "short", year: "numeric", timeZoneName: "short"});
-    const shortTime = new Intl.DateTimeFormat("en-AU", {timeZone: "Australia/Melbourne", hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
+    let clockFormat, dateFormat, shortTime;
     const $ = id => document.getElementById(id);
     const setText = (id, text) => { const element = $(id); if (element && element.textContent !== String(text)) element.textContent = text; };
     function node(tag, text, className) {
@@ -185,7 +186,8 @@
             if (this.connecting) return this.connecting;
             this.connecting = new Promise((resolve, reject) => {
                 if (!root.maplibregl) { reject(new Error("MapLibre could not load")); return; }
-                this.graph = new root.maplibregl.Map({container: "replay-map", center: [145.02, -37.82], zoom: 9,
+                const bounds = this.day?.bounds || MELBOURNE_BOUNDS;
+                this.graph = new root.maplibregl.Map({container: "replay-map", bounds, fitBoundsOptions: {padding: 25},
                     dragRotate: false, pitchWithRotate: false, style: root.suntrainTheme.mapStyle()});
                 this.graph.addControl(new root.maplibregl.NavigationControl({showCompass: false}), "top-right");
                 this.graph.addControl(new root.maplibregl.ScaleControl({unit: "metric"}));
@@ -249,7 +251,7 @@
                         const content = node("div", undefined, "replay-map-tooltip");
                         content.append(node("strong", `${service.line} · ${service.number}`),
                             node("div", `${service.origin} → ${service.destination}`),
-                            node("div", service.mode === "train" ? `${feature.properties.load ?? "Unknown"} passengers (rounded)` : "Passenger counts unavailable"));
+                            node("div", service.mode === "train" && this.day.passenger_data !== false ? `${feature.properties.load ?? "Unknown"} passengers (rounded)` : "Passenger counts unavailable"));
                         if (feature.properties.approximate) content.append(node("div", "Approximate route"));
                         this.popup.setLngLat(feature.geometry.coordinates).setDOMContent(content).addTo(this.graph);
                     });
@@ -371,17 +373,33 @@
         metroView() {
             if (!this.mapReady) return;
             this.setFollow(false);
-            this.graph.fitBounds(MELBOURNE_BOUNDS, {padding: 25, duration: 0});
+            this.graph.fitBounds(this.day?.bounds || MELBOURNE_BOUNDS, {padding: 25, duration: 0});
             this.needsFit = false;
         }
         load(day) {
             this.pause(); this.generation++;
+            if (this.day?.city !== day.city) this.needsFit = true;
+            const timeZone = day.timezone || "Australia/Melbourne";
+            clockFormat = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"});
+            dateFormat = new Intl.DateTimeFormat("en-AU", {timeZone, day: "numeric", month: "short", year: "numeric", timeZoneName: "short"});
+            shortTime = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
             this.day = hydrate(day); this.now = Math.min(day.end, Math.max(day.start, day.initial));
             this.selected = null; this.staticDirty = true; this.setupTimeline(); this.emptyDetails();
             const options = [...new Set(day.stations.map(s => s.name))].sort();
             root.dash_clientside.set_props("replay-stations", {options});
             const attribution = $("replay-attribution");
             attribution.replaceChildren();
+            if (day.schedule) {
+                const chicago = day.city === "chicago";
+                const link = node("a", chicago ? "Data provided by Chicago Transit Authority · historical GTFS via MobilityDatabase" : "Data provided by MassDOT / MBTA · historical GTFS archive");
+                link.href = day.schedule.source_url; link.target = "_blank"; link.rel = "noopener noreferrer";
+                const license = node("a", day.schedule.license);
+                license.href = day.schedule.license_url; license.target = "_blank"; license.rel = "noopener noreferrer";
+                attribution.append(link, document.createTextNode(" · "), license,
+                    document.createTextNode(chicago ? ". Scheduled CTA rail replay for 2025; positions are estimates. Passenger counts are unavailable. This application is independent of CTA." :
+                        ". Scheduled rail and Silver Line replay; positions are estimates. Passenger counts are unavailable. This application is independent of MBTA."));
+                return;
+            }
             if (day.geometry.source_url) {
                 const link = node("a", `${day.geometry.source} · geographic reference ${day.geometry.source_date}`);
                 link.href = day.geometry.source_url; link.target = "_blank"; link.rel = "noopener noreferrer";
@@ -454,7 +472,9 @@
             if (!this.filtered.length) pieces.push(this.day.services.length ? "No services match these filters. Clear a filter to explore this day." : "No recorded services for this business date.");
             if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
             else if (total) pieces.push("All selected journey legs have route geometry.");
-            if (!this.day.transit?.available) pieces.push("Tram and bus timetables are unavailable for this date.");
+            if (this.day.city === "boston") pieces.push("Rail and Silver Line pilot. Other buses and replacement shuttles are excluded; timetable changes follow the historical archive.");
+            else if (this.day.city === "chicago") pieces.push("CTA rail only, using November–December 2025 schedules. Metra and buses are unavailable; direction A/B follows the feed where compass directions are not supplied.");
+            else if (!this.day.transit?.available) pieces.push("Tram and bus timetables are unavailable for this date.");
             if (uncertain) pieces.push(`${uncertain} services contain ambiguous daylight-saving times; earliest consistent times are shown.`);
             if (this.day.excluded_services) pieces.push(`${this.day.excluded_services} services omitted because their source times or coordinates are invalid.`);
             setText("replay-quality", pieces.join(" "));
@@ -501,7 +521,8 @@
             const host = $("replay-details");
             if (host) host.replaceChildren(node("h3", "Follow a service"),
                 node("p", "Click a moving vehicle to see its journey and scheduled stops.", "replay-muted"),
-                node("div", "Positions follow scheduled times. Train passenger counts are available; tram and bus counts are unavailable.", "replay-detail-note"));
+                node("div", this.day?.passenger_data === false ? `Positions follow scheduled times. Passenger counts are unavailable for ${this.day.city_name}.` :
+                    "Positions follow scheduled times. Train passenger counts are available; tram and bus counts are unavailable.", "replay-detail-note"));
         }
         select(id) {
             const service = this.filtered.find(s => s.id === id);
@@ -533,7 +554,7 @@
                 body.append(row);
             });
             table.append(body); scroll.append(table); host.append(scroll,
-                node("p", service.mode === "train" ? "Load = recorded departure passenger count, rounded to the nearest 10." : "Passenger counts are unavailable for trams and buses.", "replay-muted replay-small"));
+                node("p", service.mode === "train" ? "Load = recorded departure passenger count, rounded to the nearest 10." : "Passenger counts are unavailable for this service.", "replay-muted replay-small"));
             this.paint(true);
         }
         detailStatus(position) {
@@ -679,12 +700,12 @@
                 if (this.paintAgain) { this.paintAgain = false; requestAnimationFrame(() => this.paint(true)); }
             }
         }
-        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger) {
+        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne") {
             this.lastTrigger = trigger;
             this.active = tab === "replay";
             if (!this.active) { this.pause(); if (this.isFullscreen()) this.exitFullscreen(); return; }
             this.revealTab();
-            if (!day || day.business_date !== date || day.error) {
+            if (!day || day.business_date !== date || (day.city || "melbourne") !== city || day.error) {
                 this.pause(); this.loading = true;
                 this.demandMinute = null; this.demandSnapshot = null; this.demandPopupId = null; this.popup?.remove();
                 if ($("replay-demand-legend")) $("replay-demand-legend").hidden = true;
@@ -696,12 +717,12 @@
             }
             this.loading = false;
             $("replay-map")?.classList.remove("replay-is-loading");
-            const newDay = !this.day || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
+            const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);
             if (!this.mapReady && !await this.connect()) return;
-            if (!this.active || this.day.business_date !== day.business_date) return;
+            if (!this.active || this.day.city !== city || this.day.business_date !== day.business_date) return;
             this.speed = Number(speed) || 60;
-            this.setMapMode(mode, demandWindow);
+            this.setMapMode(this.day.passenger_data === false ? "trains" : mode, demandWindow);
             const filters = {modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             const filterSignature = JSON.stringify([filters, display]);
             if (newDay || this.filterSignature !== filterSignature) {
@@ -725,14 +746,15 @@
     // Exposed diagnostics support browser verification without transmitting frames.
     root.suntrainReplay = replay;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainReplay: {
-        sync: function (day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit) {
+        sync: function (day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city) {
             const context = root.dash_clientside.callback_context;
             const trigger = context.triggered_id || context.triggered?.[0]?.prop_id?.split(".")[0];
-            replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger).catch(error => {
+            replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city).catch(error => {
                 console.error("Train replay failed", error); replay.pause();
                 setText("replay-load-message", "The replay could not start. Reload this page to try again.");
             });
-            return day && day.business_date === date ? {business_date: day.business_date, error: !!day.error} : root.dash_clientside.no_update;
+            return day && day.business_date === date && (day.city || "melbourne") === city ?
+                {business_date: day.business_date, city, error: !!day.error} : root.dash_clientside.no_update;
         }
     }});
 })(typeof window !== "undefined" ? window : globalThis);

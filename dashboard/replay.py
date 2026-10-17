@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import glob
+import gzip
 import hashlib
 import json
 import logging
@@ -99,7 +100,7 @@ def _read_geometry(path: str, modified: int) -> dict:
         return {"metadata": {"status": "unavailable"}, "patterns": {}, "paths": {}}
 
 
-def get_replay_day(business_date: str, city: str = "melbourne") -> dict:
+def get_replay_day(business_date: str, city: str = "melbourne", include_buses: bool = False) -> dict:
     date.fromisoformat(business_date)
     settings = city_settings(city)
     if city != "melbourne":
@@ -109,13 +110,36 @@ def get_replay_day(business_date: str, city: str = "melbourne") -> dict:
                    "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                    "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH}[city]
         path = Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
-        return _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns)
+        base = _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns)
+        if city == "london" and include_buses:
+            buses = Path(os.getenv("SUNTRAIN_LONDON_BUS_REFERENCE", str(ROOT / "data/reference/london/bus"))) / (business_date + ".json.gz")
+            return _get_london_with_buses(business_date, str(path), path.stat().st_mtime_ns, str(buses), buses.stat().st_mtime_ns)
+        return base
     source = data._dataset_path()
     fingerprint = tuple((name, Path(name).stat().st_mtime_ns, Path(name).stat().st_size)
                         for name in sorted(glob.glob(source)))
     geometry = geometry_file()
     modified = geometry.stat().st_mtime_ns if geometry.exists() else 0
     return _get_day(business_date, source, fingerprint, str(geometry), modified, transit.fingerprint(business_date))
+
+
+@lru_cache(maxsize=1)
+def _get_london_with_buses(business_date, rail_path, rail_modified, bus_path, bus_modified):
+    base = _get_prepared_day("london", business_date, rail_path, rail_modified)
+    # Append to fresh containers so the cached rail-only payload remains small.
+    payload = {**base, "services": list(base["services"]), "stations": list(base["stations"]),
+               "paths": dict(base["paths"]), "transit_patterns": dict(base["transit_patterns"]),
+               "bus_data_loaded": True,
+               "revision": hashlib.sha256(repr((base["revision"], bus_path, bus_modified)).encode()).hexdigest()[:16]}
+    # The merged payload is cached once. Transfer fresh bus arrays directly;
+    # retaining a second parsed bus reference would double schedule memory.
+    with gzip.open(bus_path, "rt") as stream:
+        bus_reference = json.load(stream)
+    transit.append_reference(payload, bus_reference, consume=True)
+    payload["bus_schedule"] = payload.pop("transit")
+    payload["schedule"] = {**base["schedule"], "replay_note": base["schedule"]["replay_note"].replace(
+        "Buses, boats and cable car are excluded.", "Boats and cable car are excluded.") + " " + payload["bus_schedule"]["note"]}
+    return payload
 
 
 @lru_cache(maxsize=1)

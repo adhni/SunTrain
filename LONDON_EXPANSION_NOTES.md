@@ -54,7 +54,36 @@ TfL also documents daily station entry/exit footfall, in weekly files since 2023
 
 **Overground and Elizabeth line are now enabled:** their dated schedules come from the same verified archive, with connected OSM route geometry supplemented beyond the London extract. Preserve that full outer coverage when changing the geographic reference. The [Network Rail feeds](https://www.networkrail.co.uk/who-we-are/transparency-and-ethics/transparency/open-data-feeds/) offer registered CIF/JSON access, not an automatic historical archive; no new account or CIF pipeline was needed here. [Overground timetable downloads](https://tfl.gov.uk/modes/london-overground/london-overground-timetables) remain an additional reference rather than a newly validated historical feed.
 
-**Buses and river services:** not implemented. Audit dated TfL Journey Planner bus schedules separately, road/river geometry, conversion completeness and browser volume before enabling them. Do not reuse Underground sketch geometry or railway paths. Cable car is also excluded.
+**Buses:** implemented as an optional mode using the dated GTFS and official road geometry described below. Rail remains the default London view. River services and cable car remain excluded.
+
+### Bus integration
+
+Select **Buses** under Transport to load buses for the selected date; remove Buses to return to the smaller rail payload. Clearing Transport selects all available modes. Bus data is kept in one prepared file per day, so the server never parses a whole raw GTFS or seven-day bus file when opening the map. Bus timing profiles share stop/road sequences and keep arrival/departure offsets in flat numeric arrays. Browser hydration attaches those arrays by reference without creating per-stop or per-trip schedule arrays. Other cities retain their existing encoding. Adding/removing buses preserves the clock; line/station filters keep complete journeys. Bus stops fade in at closer zooms and the legend combines orange bus routes as one entry.
+
+The compact layout reduced Monday's prepared file from **53.48 MB to 11.28 MB** and reduced **2,286,641 repeated stop-row arrays** to **1,477 shared stop/road sequences** plus flat timing vectors. The uncached parsed bus reference is consumed into the one cached merged payload, avoiding a second retained copy of its schedules. Rail-only visits never open the bus files. Full-network Chrome checks loaded **105,876 bus occurrences across 667 active route codes** on Monday; about **6,193 vehicle positions** were visible at 09:00, with 16 unresolved positions. The cold bus load in the local software-rendered Chrome test took about **15 seconds** and reported roughly **340 MB JS heap**. This remains a substantial optional layer; a narrow mobile viewport was tested, not physical low-memory phone hardware.
+
+Monday–Sunday bus occurrence counts are **105,876 / 105,882 / 106,018 / 106,150 / 106,366 / 100,557 / 81,656**, across **667 / 668 / 668 / 668 / 671 / 603 / 582** active route codes respectively. Daily files are **8.83–11.37 MB compressed**. Calendar exceptions and source versions determine which services appear. No invalid or frequency-based trips were omitted from the selected bus scope; the regional feed's 81 frequency rows belonged outside it. Approximately **0.24–0.28% of scheduled road legs** lack a match and stay hidden between stops. Around **2,050–2,700 identical occurrences per day** were deduplicated. No effort was spent reconstructing routes 246 or 653.
+
+`scripts/prepare_london_buses.py` streams the grouped stop-times table one trip at a time. Scope uses the official TfL contract line/operator inventory, mapped to BODS National Operator Codes, so a regional bus with the same number is excluded. Coaches, replacement buses, sightseeing services, rail, boats and cable car from the mixed BODS archive are excluded. Non-exact frequency templates are omitted and counted. Identical line/ordered-stop/timing/departure occurrences from overlapping source records are deduplicated; carry-ins at 03:00 retain the project's existing policy. Invalid schedules are counted rather than repaired. The two unavailable route labels are left out without reconstruction.
+
+Movement uses the separate TfL route geometry, matched to ordered stop sequences within 150 m, including short workings and loop routes. A leg with no match remains a gap; no railway paths or station-to-station GTFS sketches are substituted. Roads describe a dated geographic reference, not observed bus trajectories or a record of every diversion. Bus passenger counts remain unavailable.
+
+Pinned GTFS SHA-256: `6e77de9cc3bfd96dc7f50fcbb9063c794eb323419222e48ce0845e35223aa630`. The compiled road/contract reference is `data/reference/london/bus-geometry-2026-10-09.json.gz`, SHA-256 `dab4ef00c7031c9e3bc4cdbd282b77f97d1e88fe25a98b9b14f2750ceebdb00e`. The official XML contract inventory is a **15 October snapshot used for scope only**; the bus timetable comes from the archived 4 October BODS build, downloaded on 5 October. These dates are kept distinct.
+
+Rebuild with the committed geometry/contract reference:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_london_buses.py
+```
+
+To rebuild that reference too, retain the audited official native ZIP and geometry ZIP in cache:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_london_buses.py \
+  --compile-geometry .cache/london-audit/tfl-native.zip
+```
+
+No new runtime dependency, API account or live feed is required. Future date extensions must recheck the applicable contract scope, GTFS calendars, road geometry, deduplication and load size. Do not reuse a later contract inventory as proof of the exact operator on every historical day.
 
 ### Bus availability audit — 18 October 2026
 

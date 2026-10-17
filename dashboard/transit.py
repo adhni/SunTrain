@@ -50,21 +50,44 @@ def available_range():
 
 def add_transit(day, reference_fingerprint):
     reference = read_reference(*reference_fingerprint)
+    append_reference(day, reference)
+
+
+def append_reference(day, reference, *, consume=False):
+    """Append shared schedules; consume only a freshly parsed, uncached reference."""
     day["transit"] = {"available": False, "start_date": PERIOD_START, "end_date": PERIOD_END}
     if not reference or day["business_date"] not in reference.get("days", {}):
         return
     day["transit"] = {**reference["metadata"], "available": True}
     selected_patterns = {row[0] for row in reference["days"][day["business_date"]]}
-    station_ids = sorted({s[0] for p in selected_patterns for s in reference["patterns"][p]["stops"]})
+    packed = reference.get("stop_patterns", {})
+    packed_ids = {reference["patterns"][p]["stop_pattern"] for p in selected_patterns if "stop_pattern" in reference["patterns"][p]}
+    station_ids = sorted({s for p in packed_ids for s in packed[p]["stations"]} |
+                         {s[0] for p in selected_patterns if "stops" in reference["patterns"][p] for s in reference["patterns"][p]["stops"]})
     station_map = {identifier: len(day["stations"]) + i for i, identifier in enumerate(station_ids)}
     day["stations"].extend(reference["stations"][identifier] for identifier in station_ids)
+    remapped = {}
+    for key in packed_ids:
+        topology = packed[key] if consume else dict(packed[key])
+        topology["stations"] = [station_map[s] for s in topology["stations"]]
+        remapped[key] = topology
+    if remapped:
+        day.setdefault("transit_stop_patterns", {}).update(remapped)
     patterns = {}
     for identifier in selected_patterns:
         pattern = reference["patterns"][identifier]
-        patterns[identifier] = {**pattern, "stops": [[station_map[s[0]], s[1], s[2]] for s in pattern["stops"]]}
-        for leg in pattern["legs"]:
+        if "stop_pattern" in pattern:
+            patterns[identifier] = pattern
+        elif consume:
+            for stop in pattern["stops"]:
+                stop[0] = station_map[stop[0]]
+            patterns[identifier] = pattern
+        else:
+            patterns[identifier] = {**pattern, "stops": [[station_map[s[0]], s[1], s[2]] for s in pattern["stops"]]}
+        legs = packed[pattern["stop_pattern"]]["legs"] if "stop_pattern" in pattern else pattern["legs"]
+        for leg in legs:
             day["paths"][leg] = reference["paths"][leg]
-    day["transit_patterns"] = patterns
+    day.setdefault("transit_patterns", {}).update(patterns)
     # GTFS service-day zero is noon minus 12 elapsed hours (also correct on DST days).
     midnight = int(datetime.combine(date.fromisoformat(day["business_date"]), time(12),
                                     ZoneInfo(day.get("timezone", "Australia/Melbourne"))).timestamp()) - 12 * 3600
@@ -74,5 +97,6 @@ def add_transit(day, reference_fingerprint):
         day["services"].append({"mode": pattern["mode"],
                                 "id": f"gtfs:{day['business_date']}:{trip}:{seconds}", "number": trip,
                                 "pattern": identifier, "departure": departure, "timing_uncertain": False})
-        day["total_legs"] += len(pattern["legs"])
-        day["approximate_legs"] += sum(reference["paths"][p]["quality"] == "approximate" for p in pattern["legs"])
+        legs = packed[pattern["stop_pattern"]]["legs"] if "stop_pattern" in pattern else pattern["legs"]
+        day["total_legs"] += len(legs)
+        day["approximate_legs"] += sum(reference["paths"][p]["quality"] == "approximate" for p in legs)

@@ -7,6 +7,28 @@ const day = {stations: [{name: 'Alpha', lon: 0, lat: 0}, {name: 'Bravo', lon: 2,
 const service = {id: 'one', operator: 'Metro', line: 'Werribee', direction: 'U', number: 'X100',
     stops: [[0, 0, 10, 5, 50], [1, 20, 30, 50, 0]], legs: ['curve']};
 
+test('packed buses share flat times and stop sequences without expanding schedules', () => {
+    const {hydrate} = require('../assets/train_replay.js');
+    const flat = [0, 10, 20, 30];
+    const ids = [0, 1];
+    const packed = {...day, transit_stop_patterns: {sequence: {stations: ids, legs: ['curve']}},
+        transit_patterns: {timing: {stop_pattern: 'sequence', times: flat, operator: 'London bus', line: 'Bus 1'}},
+        services: Array.from({length: 10000}, (_, i) => ({mode: 'bus', pattern: 'timing', departure: 1000 + 60 * i, number: String(i)}))};
+    hydrate(packed);
+    assert.ok(packed.services.every(s => !s.stops && s.stopIds === ids && s.times === flat));
+    const first = packed.services[0];
+    assert.equal(servicePosition(first, 1005, packed).state, 'At stop');
+    assert.equal(servicePosition(first, 1015, packed).lon, 1.5);
+    assert.equal(servicePosition(first, 1020, packed).station, 'Bravo');
+    assert.equal(servicePosition(first, 1031, packed), null);
+    assert.equal(servicePosition(first, 1015, {...packed, paths: {curve: {...path, quality: 'approximate'}}}).lon, null);
+    const filters = {modes: ['bus'], operators: [], lines: [], directions: [], stations: ['Bravo'], number: ''};
+    assert.equal(matches(first, filters, packed), true);
+    assert.equal(matches(first, {...filters, stations: ['Missing']}, packed), false);
+    servicePosition(packed.services[1], 1075, packed);
+    assert.deepEqual(flat, [0, 10, 20, 30]);
+});
+
 test('curve interpolation uses distance, with exact endpoints', () => {
     assert.deepEqual(pointAlong(path, 0), [0, 0]);
     assert.deepEqual(pointAlong(path, 1), [2, 1]);

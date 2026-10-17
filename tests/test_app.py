@@ -297,6 +297,24 @@ def test_replay_switches_city_on_same_date_and_ignores_transient_out_of_range_da
     assert result == {"city": "chicago"}
 
 
+def test_london_buses_load_only_when_selected_and_reload_when_removed(app_module, monkeypatch):
+    import dashboard.replay_view as view
+    calls = []
+    monkeypatch.setattr(view, "get_replay_day", lambda day, city, **kwargs: calls.append(kwargs) or {"city": city})
+    rail = {"business_date": "2026-10-05", "city": "london", "bus_data_loaded": False}
+    bus = {**rail, "bus_data_loaded": True}
+    app_module.load_replay_day("2026-10-05", "replay", "london", None)
+    assert calls == [{}]
+    app_module.load_replay_day("2026-10-05", "replay", "london", rail, ["bus"])
+    assert calls[-1] == {"include_buses": True}
+    with pytest.raises(PreventUpdate):
+        app_module.load_replay_day("2026-10-05", "replay", "london", bus, ["bus"])
+    app_module.load_replay_day("2026-10-05", "replay", "london", bus, ["subway"])
+    assert calls[-1] == {}
+    app_module.load_replay_day("2026-10-05", "replay", "london", rail, [])
+    assert calls[-1] == {"include_buses": True}
+
+
 def test_replay_hides_shared_filters_and_restores_them_on_exit(app_module):
     replay = app_module.update_tab_visibility("replay")
     overview = app_module.update_tab_visibility("overview")

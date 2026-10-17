@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 from datetime import date
 
-from dash import ClientsideFunction, Input, Output, State, dcc, html
+from dash import ClientsideFunction, Input, Output, State, ctx, dcc, html
 from dash.exceptions import PreventUpdate
 
 from dashboard.replay import get_replay_day
@@ -166,28 +166,35 @@ def register_replay_callbacks(app, metadata):
         chosen = current_date if current_date and minimum <= current_date <= maximum else minimum
         options = lambda key: [{"label": label, "value": value} for label, value in settings[key]]
         badge = period_label(minimum, maximum)
-        return (minimum, maximum, chosen, options("modes"), [], options("operators"), [], options("directions"), [], [], [], "",
+        return (minimum, maximum, chosen, options("modes"), settings.get("default_modes", []), options("operators"), [], options("directions"), [], [], [], "",
                 settings["description"], badge, settings["name"], f"Return to metropolitan {settings['name']}",
                 {} if settings["passenger_data"] else {"display": "none"}, "trains",
                 [{"label": " Route paths", "value": "routes"}, {"label": " Stops & stations", "value": "stations"},
                  {"label": " Size trains by passengers", "value": "load", "disabled": not settings["passenger_data"]}],
                 ["routes", "stations"])
 
-    @app.callback(Output("replay-day", "data"), Output("replay-load-message", "children"),
-                  Input("replay-date", "date"), Input("view-tabs", "value"), Input("replay-city", "value"), State("replay-client-state", "data"))
-    def load_replay_day(business_date, active_tab, city, current):
+    def load_replay_day(business_date, active_tab, city, current, modes=None):
         if active_tab != "replay" or not business_date:
             raise PreventUpdate
         settings = city_settings(city)
         if city != "melbourne" and not settings["start_date"] <= business_date <= settings["end_date"]:
             raise PreventUpdate  # The city callback will choose a supported date.
-        if current and not current.get("error") and current.get("business_date") == business_date and current.get("city", "melbourne") == city:
+        buses = city == "london" and modes is not None and (not modes or "bus" in modes)
+        if current and not current.get("error") and current.get("business_date") == business_date and current.get("city", "melbourne") == city and bool(current.get("bus_data_loaded")) == buses:
             raise PreventUpdate
         try:
-            return get_replay_day(business_date, city), ""
+            return (get_replay_day(business_date, city, include_buses=True) if buses else get_replay_day(business_date, city)), ""
         except Exception:
             LOGGER.exception("Could not load train replay for %s", business_date)
             return {"business_date": business_date, "city": city, "error": True}, "Could not load this day. Choose another date, or return to this tab to retry."
+
+    @app.callback(Output("replay-day", "data"), Output("replay-load-message", "children"),
+                  Input("replay-date", "date"), Input("view-tabs", "value"), Input("replay-city", "value"),
+                  Input("replay-modes", "value"), State("replay-client-state", "data"))
+    def load_selected_modes(business_date, active_tab, city, modes, current):
+        # A city change arrives before its new mode defaults. Open rail first.
+        chosen = None if ctx.triggered_id == "replay-city" else modes
+        return load_replay_day(business_date, active_tab, city, current, chosen)
 
     app.clientside_callback(
         ClientsideFunction(namespace="suntrainReplay", function_name="sync"),

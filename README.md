@@ -165,6 +165,8 @@ The **Transport Replay** tab combines Metro and V/Line train records with archiv
 
 Click a vehicle to inspect its scheduled journey. **Size trains by passengers** affects trains with known loads; trams and buses keep their normal size and show passenger counts as unavailable. The **Passenger heatmap** uses train boardings only; selecting only trams or buses leaves the heatmap empty. Tram/bus directions A and B distinguish the two feed directions; they do not imply travel toward or away from the city. Operator/feed labels identify the PTV source, rather than the individual bus operating company.
 
+Vehicle circles and outlines shrink at wider zooms and grow gradually when zooming in. At zoom 9, ordinary vehicle circles have a 2.5 px radius; at street zoom they grow to 5 px. Passenger sizing adjusts that radius by at most 20% either way. Train stations remain visible at wider zooms, while tram and bus stops fade in between zooms 12 and 13. The selected vehicle has a separate halo at every zoom. **Stops & stations** controls both types of stop markers.
+
 The site has two main tabs: **Transport Replay** and **Overview**. Overview contains **Summary**, **Lines & Services**, **Segment Speed**, and **Network** sub-tabs; it remembers your selected sub-tab when you return from replay.
 
 Use **Dark mode** in the header or replay map toolbar to switch the site, charts, and map backgrounds together. The theme is saved in this browser. The map toolbar toggle also works in fullscreen, and changing themes preserves playback, filters, and the map view.

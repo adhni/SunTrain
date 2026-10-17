@@ -99,6 +99,15 @@
         if (!service.mode || service.mode === "train") return service.direction === "U" ? "Toward city" : "Away from city";
         return service.direction ? `Direction ${service.direction}` : "Scheduled service";
     }
+    function markerScale(load, sizeByPassengers) {
+        return sizeByPassengers && Number.isFinite(load) ? 0.8 + 0.4 * Math.sqrt(Math.min(3000, Math.max(0, load)) / 3000) : 1;
+    }
+    function markerRadius(halo = 0) {
+        const scale = ["coalesce", ["get", "sizeFactor"], 1];
+        return ["interpolate", ["linear"], ["zoom"],
+            5, ["+", halo, ["*", 1.2, scale]], 9, ["+", halo, ["*", 2.5, scale]],
+            12, ["+", halo, ["*", 4, scale]], 15, ["+", halo, ["*", 5, scale]]];
+    }
     const core = {pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, vehicleColor};
     if (typeof module !== "undefined" && module.exports) module.exports = core;
     if (!root.document) return;
@@ -179,16 +188,25 @@
                     this.graph.addLayer({id: "replay-selected-route", type: "line", source: "replay-selected-route",
                         paint: {"line-color": "#115d51", "line-width": 4, "line-opacity": 0.8}});
                     this.graph.addLayer({id: "replay-stations", type: "circle", source: "replay-stations",
-                        paint: {"circle-color": "#6d8980", "circle-radius": 2.5, "circle-stroke-width": 0.7, "circle-stroke-color": "white"}});
+                        filter: ["==", ["get", "mode"], "train"],
+                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 6, 1.2, 9, 1.6, 12, 2.3, 15, 3],
+                            "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 9, 0.3, 15, 0.7], "circle-stroke-color": "white"}});
+                    this.graph.addLayer({id: "replay-local-stops", type: "circle", source: "replay-stations", minzoom: 12,
+                        filter: ["in", ["get", "mode"], ["literal", ["tram", "bus"]]],
+                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 12, 1.3, 15, 2],
+                            "circle-stroke-width": 0.5, "circle-stroke-color": "white",
+                            "circle-opacity": ["interpolate", ["linear"], ["zoom"], 12, 0, 13, 0.75, 15, 1],
+                            "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 12, 0, 13, 0.75, 15, 1]}});
                     this.graph.addLayer({id: "replay-demand-stations", type: "circle", source: "replay-demand", layout: {visibility: "none", "circle-sort-key": ["get", "boardings"]},
                         paint: {"circle-color": ["interpolate", ["linear"], ["get", "boardings"], ...root.suntrainDemand.scale.flat()],
                             "circle-radius": ["interpolate", ["linear"], ["get", "boardings"], 0, 5, 500, 7, 2000, 10, 5000, 13],
                             "circle-stroke-color": "#fff", "circle-stroke-width": 1.5, "circle-opacity": 0.95}});
                     this.graph.addLayer({id: "replay-selected-train", type: "circle", source: "replay-selected-train",
-                        paint: {"circle-color": "#18232d", "circle-radius": 11, "circle-opacity": 0.85}});
+                        paint: {"circle-radius": markerRadius(3), "circle-opacity": 0,
+                            "circle-stroke-color": "#18232d", "circle-stroke-width": 1.5}});
                     this.graph.addLayer({id: "replay-trains", type: "circle", source: "replay-trains",
-                        paint: {"circle-color": ["get", "color"], "circle-radius": ["get", "radius"],
-                            "circle-stroke-color": "#fff", "circle-stroke-width": 1.1, "circle-opacity": 0.95}});
+                        paint: {"circle-color": ["get", "color"], "circle-radius": markerRadius(),
+                            "circle-stroke-color": "#fff", "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 6, 0.25, 9, 0.4, 12, 0.7, 15, 1], "circle-opacity": 0.95}});
                     this.popup = new root.maplibregl.Popup({closeButton: false, closeOnClick: false, offset: 10});
                     this.graph.on("click", "replay-trains", e => this.select(e.features[0].properties.id));
                     this.graph.on("mousemove", "replay-trains", e => {
@@ -212,7 +230,7 @@
                     this.graph.on("mouseleave", "replay-demand-stations", () => {
                         this.demandPopupId = null; this.graph.getCanvas().style.cursor = ""; this.popup.remove();
                     });
-                    this.graph.on("click", "replay-stations", e => {
+                    for (const layer of ["replay-stations", "replay-local-stops"]) this.graph.on("click", layer, e => {
                         if (this.mapMode !== "trains") {
                             if (!this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) this.showDemandPopup(Number(e.features[0].properties.id));
                             return;
@@ -354,9 +372,11 @@
                 root.suntrainTheme.styleMap(this.graph);
                 this.graph.setPaintProperty("replay-selected-route", "line-color", dark ? "#8ae1ca" : "#115d51");
                 this.graph.setPaintProperty("replay-demand-stations", "circle-stroke-color", dark ? "#e4eef0" : "#fff");
-                this.graph.setPaintProperty("replay-stations", "circle-color", dark ? "#a6bdb5" : "#6d8980");
-                this.graph.setPaintProperty("replay-stations", "circle-stroke-color", dark ? "#17212b" : "#fff");
-                this.graph.setPaintProperty("replay-selected-train", "circle-color", dark ? "#f2f8fa" : "#18232d");
+                for (const layer of ["replay-stations", "replay-local-stops"]) {
+                    this.graph.setPaintProperty(layer, "circle-color", dark ? "#a6bdb5" : "#6d8980");
+                    this.graph.setPaintProperty(layer, "circle-stroke-color", dark ? "#17212b" : "#fff");
+                }
+                this.graph.setPaintProperty("replay-selected-train", "circle-stroke-color", dark ? "#f2f8fa" : "#18232d");
                 this.graph.setPaintProperty("replay-trains", "circle-stroke-color", dark ? "#101a23" : "#fff");
                 this.graph.setPaintProperty("replay-routes", "line-color", ["case", ["==", ["get", "quality"], "track"], dark ? "#88aea4" : "#75978f", dark ? "#edb36b" : "#bd873d"]);
             }
@@ -507,7 +527,7 @@
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
             const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})) : [];
             this.graph.getSource("replay-routes").setData(collection(routes));
-            this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: s.id}))));
+            this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: s.id, mode: s.mode || "train"}))));
             this.graph.getSource("replay-selected-route").setData(collection(selected));
         }
         setMapMode(mode, minutes) {
@@ -577,16 +597,17 @@
             const started = performance.now(), generation = this.generation;
             try {
                 const trains = [];
-                let selectedPosition = null, activeCount = 0, missingCount = 0;
+                let selectedPosition = null, selectedMarker = null, activeCount = 0, missingCount = 0;
                 for (const service of this.filtered) {
                     const position = servicePosition(service, this.now, this.day);
                     if (!position) continue;
                     activeCount++;
                     if (service.id === this.selected?.id) selectedPosition = position;
                     if (position.lon === null || position.lat === null) { missingCount++; continue; }
-                    const size = this.display.includes("load") && Number.isFinite(position.load) ? 8 + Math.min(22, Math.sqrt(Math.max(0, position.load)) * 0.6) : 11;
-                    trains.push(pointFeature([position.lon, position.lat], {id: service.id, color: vehicleColor(service), radius: size / 2,
-                        load: position.load, approximate: position.approximate}));
+                    const marker = pointFeature([position.lon, position.lat], {id: service.id, color: vehicleColor(service),
+                        sizeFactor: markerScale(position.load, this.display.includes("load")), load: position.load, approximate: position.approximate});
+                    trains.push(marker);
+                    if (service.id === this.selected?.id) selectedMarker = marker;
                 }
                 if (this.staticDirty) {
                     this.updateStaticLayers(); this.staticDirty = false;
@@ -596,7 +617,7 @@
                 this.missingPositions = missingCount;
                 const selectedVisible = selectedPosition && selectedPosition.lon !== null && selectedPosition.lat !== null;
                 this.graph.getSource("replay-trains").setData(collection(trains));
-                this.graph.getSource("replay-selected-train").setData(collection(selectedVisible ? [pointFeature([selectedPosition.lon, selectedPosition.lat])] : []));
+                this.graph.getSource("replay-selected-train").setData(collection(selectedMarker ? [selectedMarker] : []));
                 if (generation !== this.generation) { this.staticDirty = true; this.paintAgain = true; return; }
                 if (this.needsFit) this.metroView();
                 if (this.followSelected && selectedVisible) this.graph.setCenter([selectedPosition.lon, selectedPosition.lat]);

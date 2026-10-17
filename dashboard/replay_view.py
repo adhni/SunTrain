@@ -95,7 +95,7 @@ def build_replay_panel(metadata, default_date):
                                   {"label": " Stops & stations", "value": "stations"},
                                   {"label": " Size trains by passengers", "value": "load"}], value=["routes", "stations"], inline=True),
                     html.Span("Estimated positions from scheduled times", className="replay-estimate"),
-                    html.Span("Bigger train dots mean more passengers on board. Sizes are scaled for readability; click a train for its recorded count.",
+                    html.Span("Bigger train dots mean more passengers on board. All vehicles grow as you zoom in; passenger sizes stay within readable limits. Click a train for its recorded count.",
                               id="replay-size-help", className="replay-estimate", hidden=True),
                 ]),
                 html.Div(className="replay-transport", children=[

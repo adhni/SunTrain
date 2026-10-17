@@ -131,7 +131,11 @@
     }
     function directionLabel(service) {
         if (["subway", "light_rail", "commuter_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
-        if (!service.mode || service.mode === "train") return service.direction === "U" ? "Toward city" : "Away from city";
+        if (!service.mode || service.mode === "train") {
+            if (service.direction === "U") return "Toward city";
+            if (service.direction === "D") return "Away from city";
+            return service.direction || "Scheduled service";
+        }
         return service.direction ? `Direction ${service.direction}` : "Scheduled service";
     }
     function markerScale(load, sizeByPassengers) {
@@ -580,7 +584,7 @@
                 body.append(row);
             });
             table.append(body); scroll.append(table); host.append(scroll,
-                node("p", service.mode === "train" ? "Load = recorded departure passenger count, rounded to the nearest 10." : "Passenger counts are unavailable for this service.", "replay-muted replay-small"));
+                node("p", service.mode === "train" && this.day.passenger_data !== false ? "Load = recorded departure passenger count, rounded to the nearest 10." : "Passenger counts are unavailable for this service.", "replay-muted replay-small"));
             this.paint(true);
         }
         detailStatus(position) {

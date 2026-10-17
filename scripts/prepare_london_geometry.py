@@ -23,6 +23,8 @@ SOURCE_SHA256 = "51a9f096bcd6da2c6435cc2dc8ec663f142ea5649498fb6bf1ac65fd858a7b9
 LINE_NAMES = {"bakerloo": "BAK", "central": "CEN", "circle": "CIR", "district": "DIS",
               "hammersmithandcity": "HAM", "jubilee": "JUB", "metropolitan": "MET",
               "northern": "NTN", "piccadilly": "PIC", "victoria": "VIC", "waterlooandcity": "WAC"}
+OVERGROUND_NAMES = {"liberty": "LIB", "lioness": "LIO", "mildmay": "MIL", "suffragette": "SUF",
+                    "weaver": "WEA", "windrush": "WIN"}
 
 
 def line_code(tags):
@@ -34,6 +36,11 @@ def line_code(tags):
         return LINE_NAMES[ref]
     name = normalize(tags.get("name", ""))
     network = normalize(tags.get("network", ""))
+    if tags.get("route") == "train":
+        if ref in OVERGROUND_NAMES and ("londonoverground" in network or "transportforlondon" in normalize(tags.get("brand", ""))):
+            return OVERGROUND_NAMES[ref]
+        if ref == "elizabeth" and name.startswith("elizabethline"):
+            return "XR"
     if ref == "dlr" or "docklandslightrailway" in network or "docklandslightrailway" in name:
         return "DLR"
     if tags.get("route") == "tram" and any(s in network + name for s in ("tramlink", "londontrams")):

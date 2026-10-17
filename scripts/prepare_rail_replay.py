@@ -170,9 +170,10 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                     color = route.get("route_color", "").lstrip("#") or "6F818E"
                     if not re.fullmatch(r"[0-9a-fA-F]{6}", color):
                         raise ValueError("Invalid route colour")
-                    pattern = {**describe_route(route, trip), "operator": operator,
+                    description = describe_route(route, trip)
+                    pattern = {**description, "operator": operator,
                         "source_route_id": trip["route_id"], "color": "#" + color,
-                        "direction": directions.get((trip["route_id"], trip.get("direction_id"))) or route_directions.get(trip["route_id"]) or
+                        "direction": description.get("direction") or directions.get((trip["route_id"], trip.get("direction_id"))) or route_directions.get(trip["route_id"]) or
                             "Direction " + {"0": "A", "1": "B"}.get(trip.get("direction_id"), "unknown"),
                         "origin": stops[sequence[0]["stop_id"]]["stop_name"], "destination": trip.get("trip_headsign") or stops[sequence[-1]["stop_id"]]["stop_name"],
                         "stops": [[station, a - times[0][0], b - times[0][0]] for station, (a, b) in zip(ids, times)], "legs": legs}

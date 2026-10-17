@@ -1,14 +1,14 @@
 # SunTrain
 
-Historical transport replay across Australia, Canada, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Canada, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
-## London Underground, DLR and Trams
+## London rail
 
-Choose **London** in **Replay city** for **5–11 October 2026**: all **11 Underground lines**, **DLR** and **London Trams**, with London local time, route colours and the existing replay controls. A validated public dated conversion supplies TfL schedules; connected OpenStreetMap railway paths supply movement geometry. Unresolved legs remain gaps (under 1% each day). This is a schedule replay, not live tracking or a reconstruction of every disruption.
+Choose **London** in **Replay city** for **5–11 October 2026**: all **11 Underground lines**, **DLR**, **London Trams**, all **six Overground lines** (Liberty, Lioness, Mildmay, Suffragette, Weaver and Windrush), and the **Elizabeth line**, including Reading, Heathrow, Abbey Wood and Shenfield branches. London local time, route colours and the existing replay controls apply throughout. A validated public dated conversion supplies TfL and National Rail schedules; connected OpenStreetMap railway paths supply movement geometry. Unresolved legs remain gaps. This is a schedule replay, not live tracking or a reconstruction of every disruption.
 
-Overground and Elizabeth line are documented for later integration. London passenger sizing and heatmaps remain unavailable: the verified NUMBAT workbooks describe modelled typical autumn 2025 demand, rather than individual train loads in this 2026 week. Overview still analyses Melbourne passenger data. See [London expansion notes](LONDON_EXPANSION_NOTES.md) for sources, licensing, gaps, passenger findings and future expansion instructions.
+Use **Operator / feed** to select Overground or Elizabeth line, or **Lines** to select a named route. Their source does not specify journey directions, so these services use **Not specified**; origin and destination remain visible. London passenger sizing and heatmaps remain unavailable: the verified NUMBAT workbooks describe modelled typical autumn 2025 demand, rather than individual train loads in this 2026 week. Overview still analyses Melbourne passenger data. See [London expansion notes](LONDON_EXPANSION_NOTES.md) for sources, licensing, gaps, passenger findings and future expansion instructions.
 
-Powered by TfL Open Data. Contains OS data © Crown copyright and database rights 2016 and Geomni UK Map data © and database rights [2019]. Timetables converted by Planar Network; railway geometry © OpenStreetMap contributors, ODbL 1.0. [TfL licence](https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service), [OSM attribution](https://www.openstreetmap.org/copyright).
+Powered by TfL Open Data. Contains OS data © Crown copyright and database rights 2016 and Geomni UK Map data © and database rights [2019]. National Rail timetables: Rail Delivery Group / Rail Settlement Plan; station names and coordinates: DfT NaPTAN (OGL v3.0). Timetables converted by Planar Network; railway geometry © OpenStreetMap contributors, ODbL 1.0. [Source terms](https://planarnetwork.github.io/gb-transit/feeds/using-this-data/#sources-and-licences), [TfL licence](https://tfl.gov.uk/corporate/terms-and-conditions/transport-data-service), [OSM attribution](https://www.openstreetmap.org/copyright).
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_london_replay.py

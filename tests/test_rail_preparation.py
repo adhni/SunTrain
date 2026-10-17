@@ -101,11 +101,12 @@ def test_external_geometry_keeps_resolved_legs_and_caches_each_route_separately(
 
     output = tmp_path / "prepared.json.gz"
     prepare("fixture", source, tmp_path, output, lambda route, agencies: True,
-            lambda route, trip: {"route_id": route["route_id"]}, geometry_resolver=resolve)
+            lambda route, trip: {"route_id": route["route_id"], "direction": "Not specified"}, geometry_resolver=resolve)
     with gzip.open(output, "rt") as stream:
         reference = json.load(stream)
     assert sorted(calls) == ["BLUE", "RED"]
     patterns = {p["route_id"]: p for p in reference["patterns"].values()}
+    assert all(p["direction"] == "Not specified" for p in patterns.values())
     red = [reference["paths"][key] for key in patterns["RED"]["legs"]]
     blue = [reference["paths"][key] for key in patterns["BLUE"]["legs"]]
     assert red[0]["quality"] == blue[1]["quality"] == "track"

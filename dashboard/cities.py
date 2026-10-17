@@ -109,12 +109,13 @@ CITIES = {
     },
     "london": {
         "name": "London", "timezone": "Europe/London",
-        "bounds": [[-0.52, 51.31], [0.27, 51.70]], "passenger_data": False,
+        "bounds": [[-1.03, 51.31], [0.38, 51.73]], "passenger_data": False,
         "start_date": "2026-10-05", "end_date": "2026-10-11",
-        "description": "One week of London Underground, DLR and Trams schedules on mapped railway paths. Individual train passenger loads are unavailable.",
-        "modes": [("Underground", "subway"), ("DLR / trams", "light_rail")],
-        "operators": [("London Underground", "London Underground"), ("DLR", "Docklands Light Railway"), ("London Trams", "London Trams")],
-        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+        "description": "One week of Underground, DLR, Trams, Overground and Elizabeth line schedules on mapped railway paths. Individual train passenger loads are unavailable.",
+        "modes": [("Underground", "subway"), ("DLR / trams", "light_rail"), ("Overground / Elizabeth line", "commuter_rail")],
+        "operators": [("London Underground", "London Underground"), ("DLR", "Docklands Light Railway"), ("London Trams", "London Trams"),
+                      ("London Overground", "London Overground"), ("Elizabeth line", "Elizabeth line")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
 }
 

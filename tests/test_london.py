@@ -9,7 +9,7 @@ import pytest
 from dashboard.replay import LONDON_PATH, cumulative_distances, get_replay_day
 from scripts.london_rail_graph import RailGraph
 from scripts.prepare_london_geometry import line_code, SOURCE_SHA256
-from scripts.prepare_london_replay import GEOMETRY, GEOMETRY_SHA256, SOURCE, UNDERGROUND, selected_route
+from scripts.prepare_london_replay import GEOMETRY, GEOMETRY_SHA256, SOURCE, UNDERGROUND, OVERGROUND, describe_route, selected_route
 
 
 def test_london_scope_excludes_cif_tube_links_replacement_buses_and_other_modes():
@@ -17,10 +17,22 @@ def test_london_scope_excludes_cif_tube_links_replacement_buses_and_other_modes(
     assert selected_route(route, {})
     assert selected_route({"route_id": "tfl_DLR", "agency_id": "DLR", "route_type": "2"}, {})
     assert selected_route({"route_id": "tfl_TR", "agency_id": "TCL", "route_type": "0"}, {})
+    for code in OVERGROUND:
+        assert selected_route({"route_id": code, "agency_id": "=LO", "route_type": "2"}, {})
+    assert selected_route({"route_id": "XR", "agency_id": "=XR", "route_type": "2"}, {})
     for changed in ({"agency_id": "=LT"}, {"route_id": "BAK"}, {"route_type": "3"}, {"route_id": "tfl_CAB"}):
         assert not selected_route({**route, **changed}, {})
-    for agency, code in (("=LO", "WIN"), ("=XR", "XR"), ("CV", "tfl_RB1")):
+    for agency, code in (("=GW", "GW"), ("=LO", "WIN_RRB"), ("=LO", "WIN_BUS"), ("=XR", "XR_RRB"), ("CV", "tfl_RB1")):
         assert not selected_route({"route_id": code, "agency_id": agency, "route_type": "2"}, {})
+    assert not selected_route({"route_id": "WIN", "agency_id": "=LO", "route_type": "714"}, {})
+
+
+def test_national_rail_directions_are_not_invented_from_placeholder_zero():
+    for code in OVERGROUND | {"XR"}:
+        result = describe_route({"route_id": code, "route_short_name": "Weaver"}, {"direction_id": "0"})
+        assert result["direction"] == "Not specified"
+        assert result["mode"] == "commuter_rail"
+        assert result["line"] == ("Elizabeth line" if code == "XR" else "Weaver line")
 
 
 def test_london_osm_classification_requires_operating_route_modes():
@@ -30,6 +42,9 @@ def test_london_osm_classification_requires_operating_route_modes():
     assert line_code({**tags, "type": "route_master"}) is None
     assert line_code({"type": "route", "route": "light_rail", "network": "Docklands Light Railway"}) == "DLR"
     assert line_code({"type": "route", "route": "tram", "network": "London Trams"}) == "TR"
+    assert line_code({"type": "route", "route": "train", "ref": "Windrush", "brand": "Transport for London"}) == "WIN"
+    assert line_code({"type": "route", "route": "train", "ref": "Elizabeth", "name": "Elizabeth line: Reading → Abbey Wood"}) == "XR"
+    assert line_code({"type": "route", "route": "train", "ref": "Windrush", "network": "Unrelated railway"}) is None
 
 
 def test_rail_graph_joins_only_identical_osm_nodes_and_preserves_a_closed_route():
@@ -57,30 +72,34 @@ def test_london_geometry_reference_has_node_provenance_and_both_osm_sources():
     assert geometry["metadata"]["source_sha256"] == SOURCE_SHA256
     assert geometry["metadata"]["supplement"]["source_date"] == "2026-10-18"
     assert geometry["metadata"]["license"] == "ODbL 1.0"
-    assert set(geometry["lines"]) == UNDERGROUND | {"DLR", "TR"}
+    assert set(geometry["lines"]) == UNDERGROUND | OVERGROUND | {"DLR", "TR", "XR"}
     for variants in geometry["lines"].values():
         for variant in variants:
             assert len(variant["node_ids"]) == len(variant["coordinates"]) >= 2
 
 
-def test_london_bundle_has_all_eleven_lines_plus_dlr_and_trams_with_track_paths():
+def test_london_bundle_has_all_twenty_routes_with_track_paths():
     with gzip.open(LONDON_PATH, "rt") as stream:
         reference = json.load(stream)
     patterns, paths, metadata = reference["patterns"], reference["paths"], reference["metadata"]
     first = date(2026, 10, 5)
     assert set(reference["days"]) == {str(first + timedelta(days=i)) for i in range(7)}
-    assert {p["route_id"] for p in patterns.values()} == UNDERGROUND | {"DLR", "TR"}
+    assert {p["route_id"] for p in patterns.values()} == UNDERGROUND | OVERGROUND | {"DLR", "TR", "XR"}
     assert not metadata["omitted_trips"]
     assert metadata["sources"][0]["sha256"] == SOURCE["sha256"]
     assert metadata["geometry_sha256"] == GEOMETRY_SHA256
     assert metadata["geometry_license"] == "ODbL 1.0"
-    for day, rows in reference["days"].items():
+    original_counts = [11120, 11123, 11123, 11282, 11284, 8912, 7911]
+    for index, (day, rows) in enumerate(sorted(reference["days"].items())):
         assert rows and len({(trip, offset) for _, trip, offset in rows}) == len(rows)
         assert {"DLR", "TR"} <= {patterns[p]["route_id"] for p, _, _ in rows}
+        assert sum(patterns[p]["route_id"] not in OVERGROUND | {"XR"} for p, _, _ in rows) == original_counts[index]
         legs = [leg for p, _, _ in rows for leg in patterns[p]["legs"]]
         assert sum(paths[leg]["quality"] == "approximate" for leg in legs) / len(legs) < 0.01
     for pattern in patterns.values():
-        assert pattern["mode"] == ("subway" if pattern["route_id"] in UNDERGROUND else "light_rail")
+        assert pattern["mode"] == ("subway" if pattern["route_id"] in UNDERGROUND else "commuter_rail" if pattern["route_id"] in OVERGROUND | {"XR"} else "light_rail")
+        if pattern["mode"] == "commuter_rail":
+            assert pattern["direction"] == "Not specified"
         assert len(pattern["stops"]) == len(pattern["legs"]) + 1
         assert all(len(stop) == 3 for stop in pattern["stops"])
         times = [t for stop in pattern["stops"] for t in stop[1:]]
@@ -97,6 +116,26 @@ def test_london_bundle_has_all_eleven_lines_plus_dlr_and_trams_with_track_paths(
                 assert cumulative_distances([[stop["lon"], stop["lat"]], point])[-1] <= 151
     circles = [p for p in patterns.values() if p["route_id"] == "CIR" and len({s[0] for s in p["stops"]}) < len(p["stops"])]
     assert any(sum(paths[leg]["distances"][-1] for leg in p["legs"] if paths[leg]["distances"]) > 20000 for p in circles)
+
+
+def test_overground_and_elizabeth_cover_outer_branches_without_expanding_schedules():
+    with gzip.open(LONDON_PATH, "rt") as stream:
+        reference = json.load(stream)
+    patterns, paths = reference["patterns"], reference["paths"]
+    for rows in reference["days"].values():
+        for code in OVERGROUND | {"XR"}:
+            services = [patterns[p] for p, _, _ in rows if patterns[p]["route_id"] == code]
+            assert services
+            legs = [paths[leg] for p in services for leg in p["legs"]]
+            assert sum(not leg["coordinates"] for leg in legs) / len(legs) < 0.01
+    elizabeth = [p for p in patterns.values() if p["route_id"] == "XR"]
+    destinations = {p["destination"] for p in elizabeth}
+    assert {"Reading", "Shenfield", "Abbey Wood (London)", "Heathrow Terminal 4", "Heathrow Terminal 5"} <= destinations
+    through = [p for p in elizabeth if p["origin"].startswith("Reading") and p["destination"] == "Abbey Wood (London)"]
+    assert through and all(paths[leg]["quality"] == "track" for p in through for leg in p["legs"])
+    assert all(60000 < sum(paths[leg]["distances"][-1] for leg in p["legs"]) < 130000 for p in through)
+    assert "Rail Delivery Group / Rail Settlement Plan" in reference["metadata"]["attribution"]
+    assert "NaPTAN" in reference["metadata"]["attribution"]
 
 
 def test_all_london_days_use_british_summer_time_and_shared_stops_without_passenger_claims(monkeypatch, tmp_path):

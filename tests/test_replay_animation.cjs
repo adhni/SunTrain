@@ -7,6 +7,17 @@ const day = {stations: [{name: 'Alpha', lon: 0, lat: 0}, {name: 'Bravo', lon: 2,
 const service = {id: 'one', operator: 'Metro', line: 'Werribee', direction: 'U', number: 'X100',
     stops: [[0, 0, 10, 5, 50], [1, 20, 30, 50, 0]], legs: ['curve']};
 
+test('active-service index agrees with full scans at boundaries, large jumps and backwards seeks', () => {
+    const {ActiveServices} = require('../assets/train_replay.js');
+    const services = Array.from({length: 10000}, (_, i) => ({...service, id: String(i), timeOffset: i * 10}));
+    const index = new ActiveServices(services);
+    for (const now of [-1, 0, 10, 30, 30.001, 30000, 99999, 100030, 20, 15, 0]) {
+        const expected = services.filter(s => servicePosition(s, now, day));
+        assert.deepEqual([...index.at(now)].map(s => s.id).sort(), expected.map(s => s.id).sort());
+    }
+    assert.equal(index.at(0, true).size, 1);
+});
+
 test('packed buses share flat times and stop sequences without expanding schedules', () => {
     const {hydrate} = require('../assets/train_replay.js');
     const flat = [0, 10, 20, 30];

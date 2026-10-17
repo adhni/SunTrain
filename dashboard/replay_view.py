@@ -7,7 +7,7 @@ from datetime import date
 from dash import ClientsideFunction, Input, Output, State, ctx, dcc, html
 from dash.exceptions import PreventUpdate
 
-from dashboard.replay import get_replay_day
+from dashboard.replay_http import descriptor, selected_modes
 from dashboard.transit import available_range
 from dashboard.cities import CITIES, city_settings
 
@@ -45,7 +45,7 @@ def build_replay_panel(metadata, default_date):
                   min_date_allowed=minimum, max_date_allowed=maximum,
                   display_format="DD MMM YYYY", first_day_of_week=1, clearable=False)),
             field("Transport", dcc.Dropdown(id="replay-modes", options=[{"label": "Trains", "value": "train"},
-                  {"label": "Trams", "value": "tram"}, {"label": "Buses", "value": "bus"}], value=[], multi=True, placeholder="All modes")),
+                  {"label": "Trams", "value": "tram"}, {"label": "Buses", "value": "bus"}], value=["train"], multi=True, placeholder="All modes")),
             field("Operator / feed", dcc.Dropdown(id="replay-operators", options=[{"label": "Metro", "value": "Metro"},
                   {"label": "V/Line", "value": "VLine"}, {"label": "PTV tram", "value": "PTV tram"},
                   {"label": "PTV bus", "value": "PTV bus"}], value=[], multi=True, placeholder="All operators / feeds")),
@@ -179,11 +179,13 @@ def register_replay_callbacks(app, metadata):
         settings = city_settings(city)
         if city != "melbourne" and not settings["start_date"] <= business_date <= settings["end_date"]:
             raise PreventUpdate  # The city callback will choose a supported date.
-        buses = city == "london" and modes is not None and (not modes or "bus" in modes)
-        if current and not current.get("error") and current.get("business_date") == business_date and current.get("city", "melbourne") == city and bool(current.get("bus_data_loaded")) == buses:
+        if city == "melbourne" and not metadata["min_date"] <= business_date <= metadata["max_date"]:
+            raise PreventUpdate
+        chosen = selected_modes(city, modes)
+        if current and not current.get("error") and current.get("business_date") == business_date and current.get("city", "melbourne") == city and current.get("modes") == list(chosen):
             raise PreventUpdate
         try:
-            return (get_replay_day(business_date, city, include_buses=True) if buses else get_replay_day(business_date, city)), ""
+            return descriptor(business_date, city, chosen), ""
         except Exception:
             LOGGER.exception("Could not load train replay for %s", business_date)
             return {"business_date": business_date, "city": city, "error": True}, "Could not load this day. Choose another date, or return to this tab to retry."

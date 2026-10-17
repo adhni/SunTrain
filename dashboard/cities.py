@@ -3,6 +3,7 @@
 CITIES = {
     "melbourne": {
         "name": "Melbourne", "timezone": "Australia/Melbourne",
+        "default_modes": ["train"],
         "bounds": [[144.55, -38.15], [145.6, -37.48]], "passenger_data": True,
         "description": "Trains, trams and buses on one moving map. Passenger data is available for Melbourne trains only.",
         "modes": [("Trains", "train"), ("Trams", "tram"), ("Buses", "bus")],

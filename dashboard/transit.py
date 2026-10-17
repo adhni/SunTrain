@@ -53,13 +53,15 @@ def add_transit(day, reference_fingerprint):
     append_reference(day, reference)
 
 
-def append_reference(day, reference, *, consume=False):
+def append_reference(day, reference, *, consume=False, modes=None):
     """Append shared schedules; consume only a freshly parsed, uncached reference."""
     day["transit"] = {"available": False, "start_date": PERIOD_START, "end_date": PERIOD_END}
     if not reference or day["business_date"] not in reference.get("days", {}):
         return
     day["transit"] = {**reference["metadata"], "available": True}
-    selected_patterns = {row[0] for row in reference["days"][day["business_date"]]}
+    occurrences = [row for row in reference["days"][day["business_date"]]
+                   if modes is None or reference["patterns"][row[0]]["mode"] in modes]
+    selected_patterns = {row[0] for row in occurrences}
     packed = reference.get("stop_patterns", {})
     packed_ids = {reference["patterns"][p]["stop_pattern"] for p in selected_patterns if "stop_pattern" in reference["patterns"][p]}
     station_ids = sorted({s for p in packed_ids for s in packed[p]["stations"]} |
@@ -91,7 +93,7 @@ def append_reference(day, reference, *, consume=False):
     # GTFS service-day zero is noon minus 12 elapsed hours (also correct on DST days).
     midnight = int(datetime.combine(date.fromisoformat(day["business_date"]), time(12),
                                     ZoneInfo(day.get("timezone", "Australia/Melbourne"))).timestamp()) - 12 * 3600
-    for identifier, trip, seconds in reference["days"][day["business_date"]]:
+    for identifier, trip, seconds in occurrences:
         pattern = reference["patterns"][identifier]
         departure = midnight + seconds
         day["services"].append({"mode": pattern["mode"],

@@ -31,6 +31,7 @@ from dashboard.data import (
     get_station_options,
 )
 from dashboard.replay_view import build_replay_panel, register_replay_callbacks
+from dashboard.replay_http import register_replay_routes
 
 
 META = get_metadata()
@@ -102,8 +103,11 @@ app = Dash(
     __name__,
     title="SunTrain Dashboard",
     assets_folder=str(ROOT / "assets"),
+    suppress_callback_exceptions=True,
+    compress=True,
 )
 server = app.server
+register_replay_routes(server)
 
 
 @server.get("/health")
@@ -351,6 +355,7 @@ app.layout = html.Div(
     children=[
         html.A("Skip to dashboard", href="#main-content", className="skip-link"),
         dcc.Download(id="download-data"),
+        dcc.Store(id="analysis-network-ready", data=False),
         dcc.Store(
             id="filter-store",
             data=serialize_filters(DEFAULT_START, DEFAULT_END, [], [], [], [], [], []),
@@ -1015,6 +1020,56 @@ app.layout = html.Div(
         ),
     ],
 )
+# Keep the page shell mounted; expensive chart/table components mount on demand.
+ANALYSIS_PANELS = {}
+def defer_analysis_panels(component):
+    if isinstance(component, (list, tuple)):
+        for child in component:
+            defer_analysis_panels(child)
+        return
+    identifier = getattr(component, "id", None)
+    if identifier in {"overview-panel", "lines-panel", "segments-panel", "network-panel", "raw-data-section"}:
+        ANALYSIS_PANELS[identifier] = component.children
+        component.children = []
+    elif hasattr(component, "children"):
+        defer_analysis_panels(component.children)
+
+
+defer_analysis_panels(app.layout)
+
+
+@app.callback(
+    [Output(identifier, "children") for identifier in
+     ("overview-panel", "lines-panel", "segments-panel", "network-panel", "raw-data-section")] +
+    [Output("analysis-network-ready", "data")],
+    Input("view-tabs", "value"), Input("overview-tabs", "value"), Input("raw-data-toggle", "n_clicks"),
+    Input("analysis-network-ready", "data"),
+)
+def mount_selected_analysis(active_tab, subtab, raw_clicks, network_ready):
+    trigger = callback_context.triggered[0]["prop_id"].split(".")[0] if callback_context.triggered else None
+    return mount_analysis_panels(active_tab, subtab, raw_clicks, network_ready, trigger)
+
+
+def mount_analysis_panels(active_tab, subtab, raw_clicks, network_ready=False, trigger=None):
+    active = {"overview": "overview-panel", "lines": "lines-panel", "segments": "segments-panel", "network": "network-panel"}.get(subtab)
+    network_active = active_tab == "overview" and subtab == "network"
+    if trigger == "analysis-network-ready":
+        result = [no_update] * 5
+        if network_ready and not network_active:
+            result[3] = []
+        return result + [no_update]
+    result = [ANALYSIS_PANELS[key] if active_tab == "overview" and (key == active or
+            key == "raw-data-section" and bool(raw_clicks and raw_clicks % 2)) else []
+            for key in ("overview-panel", "lines-panel", "segments-panel", "network-panel", "raw-data-section")]
+    if trigger == "raw-data-toggle":
+        return [no_update] * 4 + [result[4], no_update]
+    # Plotly's asynchronous map initialization must finish before its graph is
+    # removed. It stays hidden briefly, then the browser signals safe cleanup.
+    if not network_active and not network_ready:
+        result[3] = no_update
+    return result + [False if network_active else no_update]
+
+
 @app.callback(
     Output("filter-store", "data"),
     Input("date-range", "start_date"),
@@ -1127,10 +1182,13 @@ def apply_presets(
     Input("direction-filter", "value"),
     Input("station-filter", "value"),
     Input("hour-filter", "value"),
-    Input("station-graph", "clickData"),
-    Input("station-map-graph", "clickData"),
+    Input("station-graph", "clickData", allow_optional=True),
+    Input("station-map-graph", "clickData", allow_optional=True),
+    Input("view-tabs", "value"),
 )
-def update_station_options(start_date, end_date, day_types, lines, groups, directions, selected_stations, hours, station_bar_click, station_map_click):
+def update_station_options(start_date, end_date, day_types, lines, groups, directions, selected_stations, hours, station_bar_click, station_map_click, active_tab="overview"):
+    if active_tab != "overview":
+        raise PreventUpdate
     filters = get_filter_state(start_date, end_date, day_types, lines, groups, directions, [], hours)
     stations = get_station_options(filters)
     selected = [station for station in (selected_stations or []) if station in stations]
@@ -1158,8 +1216,11 @@ def update_station_options(start_date, end_date, day_types, lines, groups, direc
     Output("export-status", "children"),
     Output("download-button", "disabled"),
     Input("filter-store", "data"),
+    Input("view-tabs", "value"),
 )
-def update_summary(data):
+def update_summary(data, active_tab="overview"):
+    if active_tab != "overview":
+        raise PreventUpdate
     try:
         payload, filters = deserialize_filters(data)
         kpis = get_kpis(filters)

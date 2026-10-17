@@ -38,6 +38,34 @@
         }
         return lo;
     }
+    // Maintain the running set rather than checking the full service day each frame.
+    class ActiveServices {
+        constructor(services) {
+            const rows = services.map(service => ({service,
+                start: stopValue(service, 0, 1) + (service.timeOffset || 0),
+                end: stopValue(service, stopCount(service) - 1, 2) + (service.timeOffset || 0)}));
+            this.starts = rows.slice().sort((a, b) => a.start - b.start);
+            this.ends = rows.sort((a, b) => a.end - b.end);
+            this.active = new Set(); this.time = null; this.startCursor = 0; this.endCursor = 0;
+        }
+        at(now, rebuild = false) {
+            if (rebuild || this.time === null || now < this.time) {
+                this.active.clear(); this.startCursor = 0; this.endCursor = 0;
+                while (this.startCursor < this.starts.length && this.starts[this.startCursor].start <= now) {
+                    const row = this.starts[this.startCursor++];
+                    if (row.end >= now) this.active.add(row.service);
+                }
+                while (this.endCursor < this.ends.length && this.ends[this.endCursor].end < now) this.endCursor++;
+            } else {
+                while (this.startCursor < this.starts.length && this.starts[this.startCursor].start <= now)
+                    this.active.add(this.starts[this.startCursor++].service);
+                while (this.endCursor < this.ends.length && this.ends[this.endCursor].end < now)
+                    this.active.delete(this.ends[this.endCursor++].service);
+            }
+            this.time = now;
+            return this.active;
+        }
+    }
     function pointAlong(path, fraction) {
         if (!path || !["track", "shape"].includes(path.quality) || path.coordinates.length < 2) return null;
         const points = path.coordinates, distances = path.distances;
@@ -159,7 +187,7 @@
             5, ["+", halo, ["*", 1.2, scale]], 9, ["+", halo, ["*", 2.5, scale]],
             12, ["+", halo, ["*", 4, scale]], 15, ["+", halo, ["*", 5, scale]]];
     }
-    const core = {pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor};
+    const core = {ActiveServices, pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor};
     if (typeof module !== "undefined" && module.exports) module.exports = core;
     if (!root.document) return;
 
@@ -179,12 +207,13 @@
         constructor() {
             this.day = null; this.filtered = []; this.selected = null;
             this.mapMode = "trains"; this.demandWindow = 30;
-            this.demandIndex = []; this.demandSnapshot = null; this.demandMinute = null;
+            this.demandIndex = null; this.demandSnapshot = null; this.demandMinute = null;
             this.active = false; this.playing = false; this.now = 0; this.speed = 60;
             this.display = ["routes", "stations"]; this.frame = null; this.busy = false;
             this.graph = null; this.staticDirty = true; this.lastUI = 0; this.lastPaint = 0;
             this.needsFit = true; this.generation = 0; this.loading = false;
             this.frameCount = 0; this.renderMilliseconds = 0;
+            this.activeIndex = null; this.qualityBySchedule = new Map(); this.requestGeneration = 0;
             document.addEventListener("visibilitychange", () => { if (document.hidden) this.pause(); });
             document.addEventListener("fullscreenchange", () => this.syncFullscreen());
             document.addEventListener("suntrain:themechange", () => this.applyTheme());
@@ -401,6 +430,11 @@
             clockFormat = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"});
             dateFormat = new Intl.DateTimeFormat("en-AU", {timeZone, day: "numeric", month: "short", year: "numeric", timeZoneName: "short"});
             shortTime = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
+            this.filtered = []; this.activeIndex = null; this.activePositions = [];
+            this.demandIndex = null; this.demandSnapshot = null; this.qualityBySchedule.clear();
+            this.popup?.remove(); this.demandPopupId = null;
+            if (this.mapReady) for (const id of ["replay-trains", "replay-selected-train", "replay-routes", "replay-stations", "replay-selected-route", "replay-demand"])
+                this.graph.getSource(id)?.setData(collection([]));
             this.day = hydrate(day); this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
             this.selected = null; this.staticDirty = true; this.setupTimeline(); this.emptyDetails();
             const options = [...new Set(day.stations.map(s => s.name))].sort();
@@ -513,7 +547,8 @@
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
             const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));
             root.dash_clientside.set_props("replay-lines", {options: [...new Set(routes.map(s => s.line))].sort()});
-            this.demandIndex = root.suntrainDemand.buildIndex(this.filtered, this.day);
+            this.demandIndex = null;
+            this.activeIndex = new ActiveServices(this.filtered);
             this.demandMinute = null; this.demandPopupId = null; this.popup?.remove();
             if (this.selected && !this.filtered.some(s => s.id === this.selected.id)) {
                 this.selected = null; this.emptyDetails();
@@ -522,7 +557,12 @@
             this.updateLegend();
             let approximate = 0, total = 0, uncertain = 0;
             for (const service of this.filtered) {
-                for (const id of service.legs) { total++; approximate += !["track", "shape"].includes(this.day.paths[id].quality); }
+                const key = service.stopIds || service.legs;
+                if (!this.qualityBySchedule.has(key)) this.qualityBySchedule.set(key, {
+                    total: service.legs.length,
+                    approximate: service.legs.reduce((sum, id) => sum + Number(!["track", "shape"].includes(this.day.paths[id].quality)), 0)});
+                const quality = this.qualityBySchedule.get(key);
+                total += quality.total; approximate += quality.approximate;
                 uncertain += service.timing_uncertain ? 1 : 0;
             }
             const pieces = [];
@@ -555,6 +595,7 @@
             if (!this.day || this.loading) return;
             this.now = Math.min(this.day.end, Math.max(this.day.start, value));
             this.previousTick = performance.now();
+            this.activeIndex?.at(this.now, true);
             if (this.now === this.day.end) this.pause();
             this.paint(true);
         }
@@ -684,6 +725,7 @@
         }
         paintDemand(force) {
             if (this.mapMode === "trains") return;
+            if (!this.demandIndex) this.demandIndex = root.suntrainDemand.buildIndex(this.filtered, this.day);
             const minute = Math.floor(this.now / 60), clock = performance.now();
             if (!force && (this.demandMinute === minute || clock - this.demandPaintTime < 200)) return;
             this.demandMinute = minute; this.demandPaintTime = clock;
@@ -711,14 +753,14 @@
             if (this.demandPopupId !== null && this.demandPopupId !== undefined) this.showDemandPopup(this.demandPopupId);
         }
         async paint(force = false) {
-            if (!this.active || !this.day || this.loading || !this.mapReady) return;
+            if (!this.active || !this.day || !this.activeIndex || this.loading || !this.mapReady) return;
             if (this.busy) { this.paintAgain = true; return; }
             this.busy = true;
             const started = performance.now(), generation = this.generation;
             try {
                 const trains = [];
                 let selectedPosition = null, selectedMarker = null, activeCount = 0, missingCount = 0;
-                for (const service of this.filtered) {
+                for (const service of this.activeIndex.at(this.now)) {
                     const position = servicePosition(service, this.now, this.day);
                     if (!position) continue;
                     activeCount++;
@@ -807,15 +849,46 @@
     // Exposed diagnostics support browser verification without transmitting frames.
     root.suntrainReplay = replay;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainReplay: {
-        sync: function (day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city) {
+        sync: async function (info, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city) {
             const context = root.dash_clientside.callback_context;
             const trigger = context.triggered_id || context.triggered?.[0]?.prop_id?.split(".")[0];
-            replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city).catch(error => {
-                console.error("Train replay failed", error); replay.pause();
-                setText("replay-load-message", "The replay could not start. Reload this page to try again.");
-            });
-            return day && day.business_date === date && (day.city || "melbourne") === city ?
-                {business_date: day.business_date, city, error: !!day.error, bus_data_loaded: !!day.bus_data_loaded} : root.dash_clientside.no_update;
+            const generation = ++replay.requestGeneration;
+            const run = day => replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city);
+            const valid = info && !info.error && info.business_date === date && info.city === city;
+            try {
+                if (tab !== "replay" || !valid) {
+                    replay.download?.controller.abort(); replay.download = null;
+                    await run(null);
+                    return root.dash_clientside.no_update;
+                }
+                let day = replay.day;
+                if (!day || day.revision !== info.revision || day.city !== city || day.business_date !== date) {
+                    await run(null);
+                    if (replay.download?.url !== info.url) {
+                        replay.download?.controller.abort();
+                        const controller = new AbortController();
+                        replay.download = {url: info.url, controller, promise: fetch(info.url, {signal: controller.signal}).then(response => {
+                            if (!response.ok) throw new Error(`Replay download failed (${response.status})`);
+                            return response.json();
+                        })};
+                    }
+                    const pending = replay.download;
+                    day = await pending.promise;
+                    if (generation !== replay.requestGeneration) return root.dash_clientside.no_update;
+                    if (replay.download === pending) replay.download = null;
+                }
+                if (generation !== replay.requestGeneration) return root.dash_clientside.no_update;
+                setText("replay-load-message", "");
+                await run(day);
+                if (generation !== replay.requestGeneration) return root.dash_clientside.no_update;
+                return {business_date: date, city, modes: info.modes, bus_data_loaded: !!info.bus_data_loaded};
+            } catch (error) {
+                if (error.name === "AbortError" || generation !== replay.requestGeneration) return root.dash_clientside.no_update;
+                replay.download = null; replay.pause();
+                console.error("Train replay failed", error);
+                setText("replay-load-message", "The replay could not load. Choose another date or return to this tab to retry.");
+                return {business_date: date, city, error: true};
+            }
         }
     }});
 })(typeof window !== "undefined" ? window : globalThis);

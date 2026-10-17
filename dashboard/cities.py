@@ -82,6 +82,15 @@ CITIES = {
         "modes": [("Trains", "train")], "operators": [("Queensland Rail", "Queensland Rail")],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
+    "toronto": {
+        "name": "Toronto", "timezone": "America/Toronto",
+        "bounds": [[-79.65, 43.62], [-79.23, 43.83]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "One week of TTC subway Lines 1, 2 and 4, and light rail Lines 5 and 6. Train passenger counts are unavailable.",
+        "modes": [("Subway", "subway"), ("Light rail", "light_rail")],
+        "operators": [("TTC", "TTC")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

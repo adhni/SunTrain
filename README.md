@@ -1,6 +1,22 @@
 # SunTrain
 
-Historical transport replay across Australia, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Canada, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Toronto rapid transit
+
+Choose **Toronto** in **Replay city** for **5–11 October 2026**: TTC subway Lines **1 Yonge-University**, **2 Bloor-Danforth** and **4 Sheppard**, plus light rail Lines **5 Eglinton** and **6 Finch West**. The existing controls, route colours, Toronto local clock, filters, themes and fullscreen work for all five lines. Streetcars, buses, GO Transit and UP Express are not included. Passenger sizing and heatmaps remain unavailable; the Overview still analyses Melbourne passenger data.
+
+The official [Merged GTFS – TTC Routes and Schedules](https://open.toronto.ca/dataset/merged-gtfs-ttc-routes-and-schedules/) downloaded successfully, with timetable validity **30 September–31 October 2026**. The selected week falls entirely within those calendars. These are regular schedule estimates, not observed GPS or a reconstruction of every closure. Shapes and stop sequences come from the same feed. Two Line 1 journey variants have inconsistent source geometry; those vehicles appear at stations, with gaps between stops rather than invented paths. See [Toronto expansion notes](TORONTO_EXPANSION_NOTES.md) for the exact source, known gaps and future extensions.
+
+Rebuild with:
+
+```bash
+./.venv/bin/python scripts/prepare_toronto_replay.py
+```
+
+The source ZIP is cached as `.cache/toronto-audit/completegtfs.zip`; its SHA-256 is checked before preparation. The official URL is updated in place, so retain that validated ZIP for future rebuilds. A changed download is rejected instead of silently replacing historical services. The compact prepared reference is about **0.16 MB**, with shared schedules, and needs no schedule API or credentials at replay time. `SUNTRAIN_TORONTO_REFERENCE` overrides the prepared file.
+
+Contains information licensed under the [Open Government Licence – Toronto](https://open.toronto.ca/open-data-licence/). Timetable and railway geometry: TTC / City of Toronto. SunTrain is independent of TTC and uses no official logos or map artwork.
 
 ## Additional Australian cities
 

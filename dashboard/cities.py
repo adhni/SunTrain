@@ -48,6 +48,15 @@ CITIES = {
         "operators": [("SMRT", "SMRT"), ("SBS Transit", "SBS Transit")],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
+    "sydney": {
+        "name": "Sydney", "timezone": "Australia/Sydney",
+        "bounds": [[150.65, -34.13], [151.35, -33.53]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "One week of Sydney Trains and Sydney Metro schedules on their published railway paths. Train passenger loads are unavailable.",
+        "modes": [("Sydney Trains", "train"), ("Sydney Metro", "subway")],
+        "operators": [("Sydney Trains", "Sydney Trains"), ("Sydney Metro", "Sydney Metro")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

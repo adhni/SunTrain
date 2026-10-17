@@ -23,6 +23,7 @@ BOSTON_PATH = ROOT / "data/reference/boston/2024-06-24.json.gz"
 CHICAGO_PATH = ROOT / "data/reference/chicago/2025-11-24.json.gz"
 NYC_PATH = ROOT / "data/reference/nyc/2025-12-15.json.gz"
 SINGAPORE_PATH = ROOT / "data/reference/singapore/2026-10-05.json.gz"
+SYDNEY_PATH = ROOT / "data/reference/sydney/2026-10-05.json.gz"
 LOGGER = logging.getLogger(__name__)
 
 
@@ -97,7 +98,8 @@ def get_replay_day(business_date: str, city: str = "melbourne") -> dict:
     if city != "melbourne":
         if not settings["start_date"] <= business_date <= settings["end_date"]:
             raise ValueError(f"{settings['name']} replay covers {settings['start_date']} through {settings['end_date']}")
-        default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH}[city]
+        default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH,
+                   "sydney": SYDNEY_PATH}[city]
         path = Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
         return _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns)
     source = data._dataset_path()

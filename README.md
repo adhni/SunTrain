@@ -20,6 +20,10 @@ The script caches downloads under `.cache/nyc-archives/` and writes `data/refere
 
 Official hourly station-complex ridership and monthly/day-of-week/hour origin–destination estimates were verified as accessible for 2024. They are documented for optional station-level features, and are not mixed with these 2025–2026 schedules or presented as individual train loads. NYC passenger sizing and Melbourne's recorded-train-boarding heatmap stay unavailable. See [NYC data and expansion notes](NYC_EXPANSION_NOTES.md) for sources and the other networks' future integration issues.
 
+## Singapore investigation
+
+Singapore MRT/LRT remains pending access to an actual official train GTFS ZIP. The public download is only an API response sample; the documented timetable endpoint requires DataMall registration and an Account Key, and the unauthenticated request did not provide data. No Singapore schedules or geometry have been substituted. See [Singapore expansion notes](SINGAPORE_EXPANSION_NOTES.md) for the verified access checks, licensing, passenger-data limits and practical integration steps once access is available.
+
 ## Chicago CTA rail
 
 Choose **Chicago** in **Replay city** for **24 November–28 December 2025**, five full weeks of CTA ‘L’ trains: Red, Blue, Brown, Green, Orange, Pink, Purple and Yellow. Chicago uses `America/Chicago` local time, historical feed colours and the existing route/direction/stop filters, playback controls, fullscreen and themes. Metra, buses and train passenger counts are unavailable in this first addition. Overview remains Melbourne passenger analysis.

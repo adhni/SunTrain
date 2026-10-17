@@ -22,7 +22,7 @@ Official hourly station-complex ridership and monthly/day-of-week/hour origin–
 
 ## Singapore investigation
 
-Singapore MRT/LRT remains pending access to an actual official train GTFS ZIP. The public download is only an API response sample; the documented timetable endpoint requires DataMall registration and an Account Key, and the unauthenticated request did not provide data. No Singapore schedules or geometry have been substituted. See [Singapore expansion notes](SINGAPORE_EXPANSION_NOTES.md) for the verified access checks, licensing, passenger-data limits and practical integration steps once access is available.
+Singapore's official train GTFS and September 2026 station passenger data have downloaded successfully using a locally stored DataMall key. The timetable covers six MRT lines, the airport branch and all three LRT systems, but supplies **no railway shapes**, so Singapore is not enabled on the moving map yet. Run `./.venv/bin/python scripts/audit_singapore_gtfs.py` to audit the cached timetable, or add `--download` to fetch a fresh snapshot. See [Singapore expansion notes](SINGAPORE_EXPANSION_NOTES.md) for actual counts, calendar checks, licensing, passenger-data limits and the remaining geometry requirement.
 
 ## Chicago CTA rail
 

@@ -2,10 +2,11 @@
 
 ## Current baseline
 
-- Boston covers **24–30 June 2024**: subway, Green Line B/C/D/E, Mattapan and scheduled MBTA commuter rail. The initial pilot commit is `83310ab`.
+- Boston covers **24–30 June 2024**: subway, Green Line B/C/D/E, Mattapan, scheduled MBTA commuter rail and **Silver Line SL1–SL5 plus SLW**. The initial rail-only pilot commit is `83310ab`; Silver Line is included in the same PR.
 - This is historical **scheduled** movement. Do not add live feeds or infer passenger counts. Boston passenger sizing and heatmaps remain unavailable; Overview still analyses Melbourne.
 - Four official archives supply the week and neighbouring calendar dates: `20240613.zip`, `20240625.zip`, `20240626.zip`, `20240627.zip`. Select using the [official index](https://cdn.mbta.com/archive/archived_feeds.txt)'s validity windows, not ZIP filenames or today's timetable. The index can include retrospective corrections.
-- Bundled reference: `data/reference/boston/2024-06-24.json.gz`, **262,347 bytes**. It retains source URLs, versions, validity dates, hashes and preparation diagnostics. All seven days have all three rail categories, no duplicate occurrences within a day, no omitted invalid trips and no unresolved geometry patterns in this baseline.
+- Bundled reference: `data/reference/boston/2024-06-24.json.gz`. It retains source URLs, versions, validity dates, hashes and preparation diagnostics. All seven days have all three rail categories and Silver Line, no duplicate occurrences within a day, no omitted invalid trips and no unresolved geometry patterns in this baseline.
+- Silver Line is mode **`silver_line`**, identified by official feed groups `line-SLWaterfront` / `line-SLWashington`. Route IDs in this week are `741` (SL1), `742` (SL2), `743` (SL3), `751` (SL4), `749` (SL5), `746` (SLW). Keep the short-turn SLW trips and distinct route labels; do not assume only SL1–SL5 exist. **The user explicitly requested Silver Line be silver (`#7C878E`), overriding the general orange bus preference for these routes.** Use that colour for vehicles, legends and selected journeys in both themes. Silver Line stops use the existing zoom-dependent bus-stop layer.
 - Preparation: `scripts/prepare_boston_replay.py`; local source cache: `.cache/boston-archives/`. The cache is ignored by git and may not exist on another machine.
 
 ## When extending the dates
@@ -19,15 +20,15 @@ The pilot dates are deliberately fixed in several places. There are **no start/e
 
 Start with complete additional weeks aligned to Melbourne's dates if that is what the user requests; do not automatically widen the scope to months or change Melbourne's dataset.
 
-## When adding buses
+## When adding the remaining buses
 
 - Keep the existing week for the first bus test unless the user requests a date expansion too. Audit bus routes and trip availability in the same archived MBTA feeds before changing the UI.
-- Preparation currently filters `routes.txt` to MBTA rail types **before** considering trips. Broaden route selection, then classify each trip by its non-empty **`trip_route_type` override**, falling back to `route_type`. A bus replacing a rail service must appear once as a bus, never as a train too.
-- Decide from the actual feed how to identify regular buses, Silver Line and replacement shuttles. Do not assume route names, current route lists or bus rapid transit being rail. Continue excluding non-MBTA agencies unless separately requested.
+- Preparation currently selects MBTA rail routes plus the two Silver Line groups. Broaden route selection for regular buses and, if requested, replacement shuttles, then extend `replay_mode()`. Preserve classification by non-empty **`trip_route_type` override**, falling back to `route_type`. A bus replacing a rail service must appear once as a bus, never as a train too.
+- Silver Line is already implemented and should remain a distinct filter. Decide from the actual feed how to distinguish regular buses and replacement shuttles. Do not assume route names, current route lists or bus rapid transit being rail. Continue excluding non-MBTA agencies unless separately requested.
 - Reuse trip-specific shapes and the ordered stop projection in `project_stops()`. MBTA stop times lack distance anchors. Repeated stops and loops must retain journey order; distant or invalid matches remain gaps. Do not relax the 150 m matching threshold just to make an audit pass.
-- Add bus mode/filter options in `dashboard/cities.py`, and derive any additional direction options from actual feed values. Boston stations are currently marked `mode: "train"` during preparation: assign bus stops their proper mode so the existing zoom-dependent local-stop layer applies.
-- **Keep buses orange (`#FF8200`)**, matching the user's existing preference. `vehicleColor()` currently prefers an explicit pattern `color` over its bus fallback, so omit the feed colour for bus patterns or make bus orange take precedence. Preserve the existing Melbourne tram/train palettes and MBTA rail colours.
-- Update the rail-only captions, quality message and attribution in `dashboard/cities.py` and `assets/train_replay.js`, plus README and mode-coverage tests. Audit any frequency-based schedules if the newly selected feeds contain them; do not silently ignore or invent departures.
+- Add regular bus mode/filter options in `dashboard/cities.py`, and derive any additional direction options from actual feed values. Preserve `train` / `bus` stop tags and mode-aware stop deduplication so bus stops stay in the existing zoom-dependent local-stop layer.
+- **Keep regular buses orange (`#FF8200`) and Silver Line silver (`#7C878E`)**. `vehicleColor()` forces `bus` to orange, honours the historical Silver Line colour, and supplies a silver fallback for that mode. Do not collapse Silver Line into the generic orange bus colour rule. Preserve the existing Melbourne tram/train palettes and MBTA rail colours.
+- Update the rail-and-Silver-Line captions, quality message and attribution in `dashboard/cities.py` and `assets/train_replay.js`, plus README and mode-coverage tests. The four current archives have no `frequencies.txt`; audit any frequency-based schedules if newly selected feeds contain them rather than silently ignoring or inventing departures.
 
 ## Behaviour to preserve and checks to run
 
@@ -43,6 +44,6 @@ PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python -m pytest -q
 node --test tests/test_replay_animation.cjs tests/test_passenger_demand.cjs
 ```
 
-The pilot passed **74 Python tests + 22 JavaScript tests**, plus desktop/mobile browser checks. Browser verification scripts and screenshots under `.cache/` are local artifacts, not tracked test dependencies.
+The rail-and-Silver-Line pilot passed **75 Python tests + 23 JavaScript tests**, plus desktop/mobile browser checks. Browser verification scripts and screenshots under `.cache/` are local artifacts, not tracked test dependencies.
 
 Keep **MassDOT / MBTA attribution**, the [Developer License Agreement](https://github.com/mbta/gtfs-documentation/blob/master/developers-license-agreement.pdf) link and the application's independent status visible. Do not introduce MBTA logos or claim exact historical vehicle movements.

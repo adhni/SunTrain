@@ -1,4 +1,4 @@
-"""Prepare the 24–30 June 2024 MBTA rail pilot from the official historical archive.
+"""Prepare the 24–30 June 2024 MBTA rail and Silver Line replay from the historical archive.
 
 Downloads are preparation only. The app serves a compact local reference, never GTFS ZIPs.
 """
@@ -32,6 +32,8 @@ LICENSE_URL = "https://github.com/mbta/gtfs-documentation/blob/master/developers
 FIRST, LAST = date(2024, 6, 24), date(2024, 6, 30)
 ZONE = ZoneInfo("America/New_York")
 MODES = {"0": "light_rail", "1": "subway", "2": "commuter_rail"}
+SILVER_LINE_GROUPS = {"line-SLWaterfront", "line-SLWashington"}
+SUPPORTED_MODES = set(MODES.values()) | {"silver_line"}
 
 
 def service_zero(day):
@@ -85,9 +87,17 @@ def project_stops(points, stops, tolerance=150):
     return list(reversed(positions))
 
 
-def rail_mode(trip, route):
+def is_silver_line(route):
+    # Official MBTA line groups include SL1–SL5 and the SLW short-turn service.
+    return route.get("line_id") in SILVER_LINE_GROUPS
+
+
+def replay_mode(trip, route):
     # MBTA replacement buses may use a rail route ID. The trip override wins.
-    return MODES.get(trip.get("trip_route_type", "").strip() or route["route_type"])
+    vehicle_type = trip.get("trip_route_type", "").strip() or route["route_type"]
+    if vehicle_type == "3" and is_silver_line(route):
+        return "silver_line"
+    return MODES.get(vehicle_type)
 
 
 def feed_for(day, index):
@@ -137,14 +147,14 @@ def prepare(cache, output):
             relevant = set().union(*active.values())
             agencies = {r["agency_id"] for r in records(archive, "agency.txt") if r["agency_name"] == "MBTA"}
             routes = {r["route_id"]: r for r in records(archive, "routes.txt")
-                      if r["agency_id"] in agencies and r["route_type"] in MODES}
+                      if r["agency_id"] in agencies and (r["route_type"] in MODES or is_silver_line(r))}
             canonical = {r["route_pattern_id"] for r in records(archive, "route_patterns.txt")
                          if r.get("route_pattern_typicality") == "5"}
             trips = {}
             for trip in records(archive, "trips.txt"):
                 if trip["route_id"] not in routes or trip["service_id"] not in relevant:
                     continue
-                if not rail_mode(trip, routes[trip["route_id"]]):
+                if not replay_mode(trip, routes[trip["route_id"]]):
                     exclusions["replacement_bus_trip_records"] += 1
                 elif trip.get("route_pattern_id") not in canonical:
                     trips[trip["trip_id"]] = trip
@@ -187,14 +197,15 @@ def prepare(cache, output):
                                 occurrences.append((str(day), departure - service_zero(day)))
                     if not occurrences:
                         continue
-                    mode = rail_mode(trip, routes[trip["route_id"]])
+                    mode = replay_mode(trip, routes[trip["route_id"]])
+                    stop_mode = "bus" if mode == "silver_line" else "train"
                     ids = []
                     for row, coordinate in zip(sequence, coordinates):
                         stop = stops[row["stop_id"]]
-                        key = (stop["stop_id"], stop["stop_name"], *coordinate)
+                        key = (stop_mode, stop["stop_id"], stop["stop_name"], *coordinate)
                         if key not in station_ids:
                             station_ids[key] = len(result["stations"])
-                            result["stations"].append({"name": stop["stop_name"], "lon": coordinate[0], "lat": coordinate[1], "mode": "train"})
+                            result["stations"].append({"name": stop["stop_name"], "lon": coordinate[0], "lat": coordinate[1], "mode": stop_mode})
                         ids.append(station_ids[key])
                     geometry_key = (signatures.get(trip["shape_id"]), tuple(map(tuple, coordinates)))
                     if geometry_key not in geometry_cache:
@@ -216,7 +227,8 @@ def prepare(cache, output):
                             legs = [identifier] * (len(sequence) - 1)
                         geometry_cache[geometry_key] = legs
                     route = routes[trip["route_id"]]
-                    pattern = {"mode": mode, "operator": "MBTA", "line": route["route_long_name"],
+                    line = f"{route['route_short_name']} · {route['route_long_name']}" if mode == "silver_line" else route["route_long_name"]
+                    pattern = {"mode": mode, "operator": "MBTA", "line": line,
                         "route_id": route["route_id"], "color": "#" + route["route_color"],
                         "direction": directions.get((trip["route_id"], trip["direction_id"]), ""),
                         "origin": stops[sequence[0]["stop_id"]]["stop_name"],
@@ -229,21 +241,21 @@ def prepare(cache, output):
                         result["days"][day].append([identifier, trip_id, offset])
                 except (ValueError, KeyError) as error:
                     omissions[str(error)] += 1
-        print(f"{archive_path.name}: {len(trips)} candidate rail trips; {len(result['patterns'])} shared patterns", flush=True)
+        print(f"{archive_path.name}: {len(trips)} candidate rail / Silver Line trips; {len(result['patterns'])} shared patterns", flush=True)
     counts = {}
     for day, rows in result["days"].items():
         identities = [(row[1], row[2]) for row in rows]
         if len(set(identities)) != len(identities):
             raise ValueError(f"Duplicate trip occurrences on {day}")
         counts[day] = dict(Counter(result["patterns"][row[0]]["mode"] for row in rows))
-        if set(counts[day]) != set(MODES.values()):
-            raise ValueError(f"Incomplete rail mode coverage on {day}")
+        if set(counts[day]) != SUPPORTED_MODES:
+            raise ValueError(f"Incomplete rail / Silver Line coverage on {day}")
         rows.sort(key=lambda row: (row[2], row[1]))
     result["metadata"] = {"start_date": str(FIRST), "end_date": str(LAST), "source": "MBTA historical GTFS Schedule",
         "source_url": INDEX_URL, "license": "MBTA MassDOT Developer License Agreement", "license_url": LICENSE_URL,
         "timezone": str(ZONE), "sources": sources, "daily_services": counts, "omitted_trips": dict(omissions),
         "excluded": dict(exclusions), "unresolved_geometry_patterns": dict(geometry_failures),
-        "note": "Scheduled rail services only; replacement buses and non-MBTA operators excluded. Positions are estimates, not recorded movements."}
+        "note": "Scheduled rail and Silver Line services; other buses, replacement shuttles and non-MBTA operators excluded. Positions are estimates, not recorded movements."}
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + ".tmp")
     with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:

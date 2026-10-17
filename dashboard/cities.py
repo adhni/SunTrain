@@ -107,6 +107,19 @@ CITIES = {
         "modes": [("BART", "subway")], "operators": [("BART", "Bay Area Rapid Transit")],
         "directions": [("North", "North"), ("South", "South")],
     },
+    "london": {
+        "name": "London", "timezone": "Europe/London",
+        "bounds": [[-1.03, 51.31], [0.38, 51.73]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "London rail and bus schedules for one week. Rail opens first; select Buses under Transport to include buses. Passenger loads are unavailable.",
+        "default_modes": ["subway", "light_rail", "commuter_rail"],
+        "modes": [("Underground", "subway"), ("DLR / trams", "light_rail"), ("Overground / Elizabeth line", "commuter_rail"), ("Buses", "bus")],
+        "operators": [("London Underground", "London Underground"), ("DLR", "Docklands Light Railway"), ("London Trams", "London Trams"),
+                      ("London Overground", "London Overground"), ("Elizabeth line", "Elizabeth line"),
+                      *[(name, name) for name in ("Go Ahead London", "Stagecoach London", "Metroline Travel", "Transport UK", "Arriva London North",
+                          "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
+    },
 }
 
 

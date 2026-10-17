@@ -131,7 +131,11 @@
     }
     function directionLabel(service) {
         if (["subway", "light_rail", "commuter_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
-        if (!service.mode || service.mode === "train") return service.direction === "U" ? "Toward city" : "Away from city";
+        if (!service.mode || service.mode === "train") {
+            if (service.direction === "U") return "Toward city";
+            if (service.direction === "D") return "Away from city";
+            return service.direction || "Scheduled service";
+        }
         return service.direction ? `Direction ${service.direction}` : "Scheduled service";
     }
     function markerScale(load, sizeByPassengers) {
@@ -390,6 +394,16 @@
             const attribution = $("replay-attribution");
             attribution.replaceChildren();
             if (day.schedule) {
+                if (day.schedule.attribution) {
+                    const source = node("a", day.schedule.attribution);
+                    source.href = day.schedule.source_url;
+                    const license = node("a", day.schedule.license);
+                    license.href = day.schedule.license_url;
+                    for (const link of [source, license]) {link.target = "_blank"; link.rel = "noopener noreferrer";}
+                    attribution.append(source, document.createTextNode(" · "), license,
+                        document.createTextNode(". Scheduled positions are estimates. SunTrain is independent of the data providers and operators."));
+                    return;
+                }
                 if (day.city === "singapore") {
                     const source = node("a", `LTA GTFS Schedule (Train), accessed ${day.schedule.source_date}`);
                     source.href = day.schedule.source_url;
@@ -485,7 +499,8 @@
             if (!this.filtered.length) pieces.push(this.day.services.length ? "No services match these filters. Clear a filter to explore this day." : "No recorded services for this business date.");
             if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
             else if (total) pieces.push("All selected journey legs have route geometry.");
-            if (this.day.city === "boston") pieces.push("Rail and Silver Line pilot. Other buses and replacement shuttles are excluded; timetable changes follow the historical archive.");
+            if (this.day.schedule?.replay_note) pieces.push(this.day.schedule.replay_note);
+            else if (this.day.city === "boston") pieces.push("Rail and Silver Line pilot. Other buses and replacement shuttles are excluded; timetable changes follow the historical archive.");
             else if (this.day.city === "chicago") pieces.push("CTA rail only, using November–December 2025 schedules. Metra and buses are unavailable; direction A/B follows the feed where compass directions are not supplied.");
             else if (this.day.city === "nyc") pieces.push("NYC Subway regular schedules for December 2025–January 2026. Express/local stop patterns and branches follow the feed; shapes do not establish individual running tracks. Other NYC networks are excluded.");
             else if (this.day.city === "singapore") pieces.push("Singapore MRT and LRT schedules on OpenStreetMap railway paths. The timetable snapshot does not reconstruct every past disruption. One anomalous Sunday NS trip has no interpolated movement.");
@@ -569,7 +584,7 @@
                 body.append(row);
             });
             table.append(body); scroll.append(table); host.append(scroll,
-                node("p", service.mode === "train" ? "Load = recorded departure passenger count, rounded to the nearest 10." : "Passenger counts are unavailable for this service.", "replay-muted replay-small"));
+                node("p", service.mode === "train" && this.day.passenger_data !== false ? "Load = recorded departure passenger count, rounded to the nearest 10." : "Passenger counts are unavailable for this service.", "replay-muted replay-small"));
             this.paint(true);
         }
         detailStatus(position) {

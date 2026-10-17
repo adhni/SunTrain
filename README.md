@@ -1,6 +1,32 @@
 # SunTrain
 
-Historical transport replay for Melbourne, Boston, Chicago, New York City and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Additional Australian cities
+
+Choose the city in **Replay city**. These railway additions reuse route/operator/direction/station filters, scheduled movement, route colours, local clocks, fullscreen, themes and all playback speeds.
+
+| City | Supported historical period | Railway coverage |
+| --- | --- | --- |
+| Sydney | 5–11 October 2026 | Sydney Trains T1–T9 and Metro M1 |
+| Adelaide | 27 May–30 June 2024 | Suburban rail and its scheduled short-turn services; Port Dock had not opened |
+| Perth | 5–11 October 2026 | Eight suburban lines and stadium specials when scheduled; Transwa excluded |
+| Brisbane | 5–11 October 2026 | Queensland Rail suburban/interurban services across SEQ |
+
+Adelaide uses official historical **version 1430**, covering the preferred five weeks. The other additions use publicly downloadable, pinned archives for a complete October 2026 week; a suitable 2024 ZIP was not obtained. Network changes are represented by each archive's actual calendars and stop sequences. This is a schedule replay, not observed GPS or a reconstruction of every disruption. Shapes come from the same archived timetable as the services. Passenger data was investigated, but no individual-train loads are supplied, so passenger sizing and heatmaps stay unavailable for these cities. Trams/light rail, buses and ferries remain future additions documented in the notes.
+
+Rebuild the compact references with:
+
+```bash
+./.venv/bin/python scripts/prepare_australian_replay.py sydney
+./.venv/bin/python scripts/prepare_australian_replay.py adelaide
+./.venv/bin/python scripts/prepare_australian_replay.py perth
+./.venv/bin/python scripts/prepare_australian_replay.py brisbane
+```
+
+Preparation downloads the pinned archives to `.cache/australian-cities/<city>/`, verifies their SHA-256, and writes compact references under `data/reference/<city>/`. Native distance anchors preserve branches and loops where supplied; ordered whole-journey projection is used when the feed omits distances. Station matches must be within 150 m; unresolved paths remain gaps. Services retain shared relative stop schedules and only the selected date is loaded. `SUNTRAIN_<CITY>_REFERENCE` overrides each prepared file.
+
+Source acknowledgements appear alongside each map. Sydney uses the [TfNSW Creative Commons Attribution data](https://opendata.transport.nsw.gov.au/dataset/timetables-complete-gtfs); Adelaide and Brisbane use CC BY 4.0 with government attribution. Perth uses the [PTA Spatial Data Licence](https://www.transperth.wa.gov.au/About/Spatial-Data-Access): **source data is available free of charge from www.transperth.wa.gov.au**. SunTrain is independent of the data providers and uses no official logos or map artwork. See [Australian expansion notes](AUSTRALIAN_EXPANSION_NOTES.md) for validated sources, network changes, licensing and future passenger/mode opportunities.
 
 ## NYC Subway
 

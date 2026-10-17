@@ -48,6 +48,40 @@ CITIES = {
         "operators": [("SMRT", "SMRT"), ("SBS Transit", "SBS Transit")],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
+    "sydney": {
+        "name": "Sydney", "timezone": "Australia/Sydney",
+        "bounds": [[150.65, -34.13], [151.35, -33.53]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "One week of Sydney Trains and Sydney Metro schedules on their published railway paths. Train passenger loads are unavailable.",
+        "modes": [("Sydney Trains", "train"), ("Sydney Metro", "subway")],
+        "operators": [("Sydney Trains", "Sydney Trains"), ("Sydney Metro", "Sydney Metro")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
+    "adelaide": {
+        "name": "Adelaide", "timezone": "Australia/Adelaide",
+        "bounds": [[138.43, -35.22], [138.85, -34.55]], "passenger_data": False,
+        "start_date": "2024-05-27", "end_date": "2024-06-30",
+        "description": "Five weeks of Adelaide suburban train schedules from May–June 2024. Passenger counts are unavailable for individual trains.",
+        "modes": [("Trains", "train")],
+        "operators": [("Adelaide Metro", "Adelaide Metro (Keolis Downer)")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
+    "perth": {
+        "name": "Perth", "timezone": "Australia/Perth",
+        "bounds": [[115.56, -32.57], [116.16, -31.48]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "One week of Perth suburban railway schedules on the October 2026 network. Individual train passenger counts are unavailable.",
+        "modes": [("Trains", "train")], "operators": [("Public Transport Authority (WA)", "Transperth")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
+    "brisbane": {
+        "name": "Brisbane", "timezone": "Australia/Brisbane",
+        "bounds": [[152.65, -27.75], [153.35, -27.10]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "One week of Queensland Rail schedules across South East Queensland. Individual train passenger counts are unavailable.",
+        "modes": [("Trains", "train")], "operators": [("Queensland Rail", "Queensland Rail")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

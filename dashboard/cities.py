@@ -30,6 +30,15 @@ CITIES = {
         "directions": [("North", "North"), ("South", "South"), ("East", "East"), ("West", "West"),
                        ("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
+    "nyc": {
+        "name": "New York City", "timezone": "America/New_York",
+        "bounds": [[-74.06, 40.56], [-73.70, 40.93]], "passenger_data": False,
+        "start_date": "2025-12-15", "end_date": "2026-01-18",
+        "description": "NYC Subway regular schedules for December 2025–January 2026, including express variants and shuttles. Temporary service changes and train passenger loads are unavailable.",
+        "modes": [("NYC Subway", "subway")], "operators": [("MTA New York City Transit", "MTA NYCT")],
+        "directions": [("Northbound", "Northbound"), ("Southbound", "Southbound"),
+                       ("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

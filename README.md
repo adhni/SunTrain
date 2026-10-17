@@ -1,6 +1,24 @@
 # SunTrain
 
-Historical transport replay for Melbourne, Boston and Chicago, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay for Melbourne, Boston, Chicago and New York City, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## NYC Subway
+
+Choose **New York City** in **Replay city** for **15 December 2025–18 January 2026**, five full weeks of regular MTA subway schedules. All 28 subway route IDs represented in the archive are retained, including 6X, 7X, FX, weekday services, branches and the separate 42 St, Franklin Avenue and Rockaway Park shuttles. Only services active on the selected date appear. Staten Island Railway, LIRR, Metro-North and buses are excluded. The existing controls, route colours, local New York clock, filters, fullscreen and themes are reused.
+
+The requested May–June 2024 historical ZIP required archive credentials. The supplied MyTransit archive is publicly accessible but its GTFS folders stop at 2016. This permitted fallback uses the [historical MTA regular feed captured on 5 December 2025](https://files.mobilitydatabase.org/mdb-516/mdb-516-202512050000/mdb-516-202512050000.zip), valid from 8 December. The chosen period includes the adjoining service dates needed for overnight carry-ins. A November alternative was rejected because 2,274 subway trips had blank shape IDs. The bundled fallback has no omitted invalid trips or unresolved geometry patterns.
+
+Positions follow each trip's published shape and stop sequence. Express/local stopping patterns are preserved, but the feed does not prove which individual running track was used. [MTA distinguishes regular schedules from supplemented schedules](https://www.mta.info/developers); this replay does not reconstruct temporary service changes or actual GPS movements. Data is obtained from historical MTA feed copies, prepared and hosted by SunTrain under the [MTA data terms](https://www.mta.info/developers/terms-and-conditions). SunTrain is independent of MTA and uses no MTA logos, map artwork or route badges.
+
+Rebuild with:
+
+```bash
+./.venv/bin/python scripts/prepare_nyc_replay.py
+```
+
+The script caches downloads under `.cache/nyc-archives/` and writes `data/reference/nyc/2025-12-15.json.gz` (about 3.86 MB). `SUNTRAIN_NYC_REFERENCE` overrides the file. Schedules, geometry and relative stop times remain shared; only the selected day is sent to the browser. The date badge explicitly includes both years.
+
+Official hourly station-complex ridership and monthly/day-of-week/hour origin–destination estimates were verified as accessible for 2024. They are documented for optional station-level features, and are not mixed with these 2025–2026 schedules or presented as individual train loads. NYC passenger sizing and Melbourne's recorded-train-boarding heatmap stay unavailable. See [NYC data and expansion notes](NYC_EXPANSION_NOTES.md) for sources and the other networks' future integration issues.
 
 ## Chicago CTA rail
 

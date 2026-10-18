@@ -33,15 +33,17 @@ DC_PATH = ROOT / "data/reference/dc/2026-10-05.json.gz"
 SF_BAY_PATH = ROOT / "data/reference/sf_bay/2026-08-17.json.gz"
 LONDON_PATH = ROOT / "data/reference/london/2026-10-05.json.gz"
 NETHERLANDS_PATH = ROOT / "data/reference/netherlands/2026-06-01.json.gz"
+GERMANY_PATH = ROOT / "data/reference/germany/2026-06-01.json.gz"
 BUS_REFERENCE_CITIES = {"boston", "london", "chicago", "perth"}
 LOGGER = logging.getLogger(__name__)
+GERMANY_REPLAY_NOTE = "Long-distance trains open first. Select Regional rail, S-Bahn or U-Bahn / Stadtbahn under Transport to add those networks. German/border portions and original source categories/times are retained. Unavailable railway paths stay gaps. No individual passenger loads."
 
 
 def prepared_path(city):
     default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH,
-               "netherlands": NETHERLANDS_PATH}[city]
+               "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH}[city]
     return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
 
 
@@ -50,9 +52,26 @@ def bus_reference_file(city, business_date):
     return directory / (business_date + ".json.gz")
 
 
+def germany_reference_files(business_date, modes=None):
+    settings = city_settings("germany")
+    allowed = {mode for _, mode in settings["modes"]}
+    selected = set(settings["default_modes"] if modes is None else modes or allowed)
+    if not selected <= allowed:
+        raise ValueError("Unsupported Germany transport mode")
+    files = []
+    for mode in sorted(selected):
+        if mode == "train":
+            path = prepared_path("germany")
+        else:
+            directory = Path(os.getenv(f"SUNTRAIN_GERMANY_{mode.upper()}_REFERENCE", str(ROOT / "data/reference/germany" / mode)))
+            path = directory / (business_date + ".json.gz")
+        files.append((mode, str(path), path.stat().st_mtime_ns))
+    return tuple(files)
+
+
 def clear_replay_cache():
     """Release parsed schedules once their compressed HTTP response is saved."""
-    for cached in (_get_day, _get_prepared_day, _get_with_buses, transit.read_reference, _read_geometry):
+    for cached in (_get_day, _get_prepared_day, _get_with_buses, _get_germany_day, transit.read_reference, _read_geometry):
         cached.cache_clear()
 
 
@@ -130,6 +149,9 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     if city != "melbourne":
         if not settings["start_date"] <= business_date <= settings["end_date"]:
             raise ValueError(f"{settings['name']} replay covers {settings['start_date']} through {settings['end_date']}")
+        if city == "germany":
+            files = germany_reference_files(business_date, modes)
+            return _get_germany_day(business_date, files)
         path = prepared_path(city)
         base = _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns, modes)
         if city in BUS_REFERENCE_CITIES and include_buses:
@@ -143,6 +165,45 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     modified = geometry.stat().st_mtime_ns if geometry.exists() else 0
     transit_key = transit.fingerprint(business_date) if modes is None or set(modes) & {"tram", "bus"} else ("", 0)
     return _get_day(business_date, source, fingerprint, str(geometry), modified, transit_key, modes)
+
+
+@lru_cache(maxsize=1)
+def _get_germany_day(business_date, files):
+    modes = tuple(mode for mode, _, _ in files)
+    base_path = prepared_path("germany")
+    modified = next((stamp for mode, _, stamp in files if mode == "train"), 0)
+    base = _get_prepared_day("germany", business_date, str(base_path), modified, modes)
+    if modes == ("train",):
+        return {**base, "schedule": {**base["schedule"], "replay_note": GERMANY_REPLAY_NOTE}}
+    payload = {**base, "services": list(base["services"]), "stations": list(base["stations"]),
+               "paths": dict(base["paths"]), "transit_patterns": dict(base.get("transit_patterns", {})),
+               "transit_stop_patterns": dict(base.get("transit_stop_patterns", {})),
+               "revision": hashlib.sha256(repr((business_date, files)).encode()).hexdigest()[:16]}
+    schedules = [base["schedule"]] if modified else []
+    transit.read_reference.cache_clear()
+    for mode, path, _ in files:
+        if mode == "train":
+            continue
+        with gzip.open(path, "rb") as stream:
+            reference = transit.load_reference(stream)
+        previous_count = len(payload["services"])
+        transit.append_reference(payload, reference, consume=True, modes=(mode,))
+        schedules.append(payload.pop("transit"))
+        for service in payload["services"][previous_count:]:
+            prefix = "de-nv" if mode == "subway" else "de-rv"
+            service["id"] = f"{prefix}:{mode}:" + service["id"]
+    geometry_sources = []
+    for schedule in schedules:
+        credit = {key: schedule[key] for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url") if key in schedule}
+        if credit and credit not in geometry_sources:
+            geometry_sources.append(credit)
+    payload["schedule"] = {**schedules[0],
+        "sources": [source for schedule in schedules for source in schedule.get("sources", [])],
+        "source": "DELFI e.V. / GTFS.de historical railway schedules",
+        "source_url": "https://gtfs.de/en/feeds/",
+        "additional_geometry_sources": geometry_sources[1:],
+        "replay_note": GERMANY_REPLAY_NOTE}
+    return payload
 
 
 @lru_cache(maxsize=1)
@@ -187,9 +248,10 @@ def _get_prepared_day(city, business_date, path, modified, modes=None):
         "initial": int(datetime.combine(day, time(8), zone).timestamp()),
         "services": [], "stations": [], "paths": {}, "geometry": {},
         "approximate_legs": 0, "total_legs": 0, "excluded_services": 0}
-    if city in BUS_REFERENCE_CITIES and modes is not None and set(modes) == {"bus"}:
-        # The optional bus bundle supplies its own provenance. Opening rail's
-        # entire timetable here would add memory without any selected services.
+    if ((city in BUS_REFERENCE_CITIES and modes is not None and set(modes) == {"bus"})
+            or (city == "germany" and modes is not None and "train" not in modes)):
+        # Optional daily bundles supply their own provenance. Do not open an
+        # unselected base timetable just to create the empty replay container.
         payload["schedule"] = {}
         return payload
     reference = transit.read_reference(path, modified)

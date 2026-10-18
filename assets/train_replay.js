@@ -175,7 +175,7 @@
         return lineColor(service.line);
     }
     function directionLabel(service) {
-        if (["subway", "light_rail", "commuter_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
+        if (["subway", "light_rail", "regional_rail", "commuter_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
         if (!service.mode || service.mode === "train") {
             if (service.direction === "U") return "Toward city";
             if (service.direction === "D") return "Away from city";
@@ -454,11 +454,13 @@
                     license.href = day.schedule.license_url;
                     for (const link of [source, license]) {link.target = "_blank"; link.rel = "noopener noreferrer";}
                     attribution.append(source, document.createTextNode(" · "), license);
-                    for (const key of ["geometry_source", "geometry_license"]) {
-                        if (!day.schedule[key] || !day.schedule[key + "_url"]) continue;
-                        const link = node("a", day.schedule[key]); link.href = day.schedule[key + "_url"];
-                        link.target = "_blank"; link.rel = "noopener noreferrer";
-                        attribution.append(document.createTextNode(" · "), link);
+                    for (const credit of [day.schedule, ...(day.schedule.additional_geometry_sources || [])]) {
+                        for (const key of ["geometry_source", "geometry_license"]) {
+                            if (!credit[key] || !credit[key + "_url"]) continue;
+                            const link = node("a", credit[key]); link.href = credit[key + "_url"];
+                            link.target = "_blank"; link.rel = "noopener noreferrer";
+                            attribution.append(document.createTextNode(" · "), link);
+                        }
                     }
                     if (day.bus_schedule) {
                         const buses = node("a", day.bus_schedule.attribution); buses.href = day.bus_schedule.source_url;

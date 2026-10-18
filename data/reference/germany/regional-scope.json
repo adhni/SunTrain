@@ -1,0 +1,4944 @@
+{
+  "source_gtfs_sha256": "cffefa8a878d5846514ff472123060ca44d1cb356f0a93e575cf90fd4305c913",
+  "note": "Audited regular regional rail and S/Regio-S-Bahn routes in the May 31 archive. Long-distance, sleeper, tourist/museum and tram-train-only operators are excluded. International journeys are clipped to audited German/border calls. Route IDs and agency names are specific to this snapshot.",
+  "routes": {
+    "769": {
+      "agency_id": "127",
+      "agency_name": "AKN Eisenbahn AG",
+      "route_short_name": "A1",
+      "mode": "regional_rail"
+    },
+    "953": {
+      "agency_id": "127",
+      "agency_name": "AKN Eisenbahn AG",
+      "route_short_name": "A2",
+      "mode": "regional_rail"
+    },
+    "439": {
+      "agency_id": "127",
+      "agency_name": "AKN Eisenbahn AG",
+      "route_short_name": "A3",
+      "mode": "regional_rail"
+    },
+    "606": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "EX",
+      "mode": "regional_rail"
+    },
+    "321": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "FEX",
+      "mode": "regional_rail"
+    },
+    "288": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "HBX",
+      "mode": "regional_rail"
+    },
+    "651": {
+      "agency_id": "129",
+      "agency_name": "trilex - Die Länderbahn GmbH DLB",
+      "route_short_name": "L2",
+      "mode": "regional_rail"
+    },
+    "167": {
+      "agency_id": "129",
+      "agency_name": "trilex - Die Länderbahn GmbH DLB",
+      "route_short_name": "L7",
+      "mode": "regional_rail"
+    },
+    "678": {
+      "agency_id": "5",
+      "agency_name": "EVB ELBE-WESER GmbH",
+      "route_short_name": "MEX",
+      "mode": "regional_rail"
+    },
+    "528": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "MEX12",
+      "mode": "regional_rail"
+    },
+    "430": {
+      "agency_id": "103",
+      "agency_name": "Arverio Baden-Württemberg GmbH",
+      "route_short_name": "MEX13",
+      "mode": "regional_rail"
+    },
+    "571": {
+      "agency_id": "103",
+      "agency_name": "Arverio Baden-Württemberg GmbH",
+      "route_short_name": "MEX16",
+      "mode": "regional_rail"
+    },
+    "359": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "MEX17",
+      "mode": "regional_rail"
+    },
+    "360": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "MEX17a",
+      "mode": "regional_rail"
+    },
+    "657": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "MEX17c",
+      "mode": "regional_rail"
+    },
+    "921": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "MEX18",
+      "mode": "regional_rail"
+    },
+    "158": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "MEX19",
+      "mode": "regional_rail"
+    },
+    "858": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "MEX71",
+      "mode": "regional_rail"
+    },
+    "730": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "MEX90",
+      "mode": "regional_rail"
+    },
+    "652": {
+      "agency_id": "75",
+      "agency_name": "THURBO",
+      "route_short_name": "N14",
+      "mode": "regional_rail"
+    },
+    "431": {
+      "agency_id": "75",
+      "agency_name": "THURBO",
+      "route_short_name": "N65",
+      "mode": "regional_rail"
+    },
+    "376": {
+      "agency_id": "75",
+      "agency_name": "THURBO",
+      "route_short_name": "N71",
+      "mode": "regional_rail"
+    },
+    "844": {
+      "agency_id": "134",
+      "agency_name": "Ceske Drahy",
+      "route_short_name": "Os",
+      "mode": "regional_rail"
+    },
+    "263": {
+      "agency_id": "26",
+      "agency_name": "SNCB",
+      "route_short_name": "R",
+      "mode": "regional_rail"
+    },
+    "173": {
+      "agency_id": "82",
+      "agency_name": "ÖBB",
+      "route_short_name": "R",
+      "mode": "regional_rail"
+    },
+    "233": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB",
+      "mode": "regional_rail"
+    },
+    "783": {
+      "agency_id": "31",
+      "agency_name": "vogtlandbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB",
+      "mode": "regional_rail"
+    },
+    "689": {
+      "agency_id": "82",
+      "agency_name": "ÖBB",
+      "route_short_name": "RB",
+      "mode": "regional_rail"
+    },
+    "954": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB",
+      "mode": "regional_rail"
+    },
+    "120": {
+      "agency_id": "31",
+      "agency_name": "vogtlandbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB1",
+      "mode": "regional_rail"
+    },
+    "436": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB10",
+      "mode": "regional_rail"
+    },
+    "15": {
+      "agency_id": "104",
+      "agency_name": "VIAS GmbH",
+      "route_short_name": "RB10",
+      "mode": "regional_rail"
+    },
+    "784": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RB10a",
+      "mode": "regional_rail"
+    },
+    "353": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB11",
+      "mode": "regional_rail"
+    },
+    "322": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB11",
+      "mode": "regional_rail"
+    },
+    "403": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "RB11",
+      "mode": "regional_rail"
+    },
+    "859": {
+      "agency_id": "11",
+      "agency_name": "Mitteldeutsche Regiobahn",
+      "route_short_name": "RB110",
+      "mode": "regional_rail"
+    },
+    "658": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RB113",
+      "mode": "regional_rail"
+    },
+    "944": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB12",
+      "mode": "regional_rail"
+    },
+    "681": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB12",
+      "mode": "regional_rail"
+    },
+    "73": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB12",
+      "mode": "regional_rail"
+    },
+    "869": {
+      "agency_id": "61",
+      "agency_name": "RV Start Deutschland GmbH Taunus",
+      "route_short_name": "RB12",
+      "mode": "regional_rail"
+    },
+    "277": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB13",
+      "mode": "regional_rail"
+    },
+    "95": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB13",
+      "mode": "regional_rail"
+    },
+    "144": {
+      "agency_id": "64",
+      "agency_name": "Bayerische Regiobahn",
+      "route_short_name": "RB13",
+      "mode": "regional_rail"
+    },
+    "498": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB14",
+      "mode": "regional_rail"
+    },
+    "623": {
+      "agency_id": "64",
+      "agency_name": "Bayerische Regiobahn",
+      "route_short_name": "RB14",
+      "mode": "regional_rail"
+    },
+    "870": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB14",
+      "mode": "regional_rail"
+    },
+    "282": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB15",
+      "mode": "regional_rail"
+    },
+    "194": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB15",
+      "mode": "regional_rail"
+    },
+    "383": {
+      "agency_id": "61",
+      "agency_name": "RV Start Deutschland GmbH Taunus",
+      "route_short_name": "RB15",
+      "mode": "regional_rail"
+    },
+    "236": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB16",
+      "mode": "regional_rail"
+    },
+    "519": {
+      "agency_id": "45",
+      "agency_name": "Hanseatische Eisenbahn GmbH",
+      "route_short_name": "RB16",
+      "mode": "regional_rail"
+    },
+    "252": {
+      "agency_id": "61",
+      "agency_name": "RV Start Deutschland GmbH Taunus",
+      "route_short_name": "RB16",
+      "mode": "regional_rail"
+    },
+    "27": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB17",
+      "mode": "regional_rail"
+    },
+    "74": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB17",
+      "mode": "regional_rail"
+    },
+    "354": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RB17",
+      "mode": "regional_rail"
+    },
+    "24": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB18",
+      "mode": "regional_rail"
+    },
+    "893": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB18",
+      "mode": "regional_rail"
+    },
+    "253": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RB18",
+      "mode": "regional_rail"
+    },
+    "863": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB19",
+      "mode": "regional_rail"
+    },
+    "534": {
+      "agency_id": "31",
+      "agency_name": "vogtlandbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB2",
+      "mode": "regional_rail"
+    },
+    "731": {
+      "agency_id": "43",
+      "agency_name": "ABELLIO Rail Mitteldeutschland GmbH",
+      "route_short_name": "RB20",
+      "mode": "regional_rail"
+    },
+    "612": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB20",
+      "mode": "regional_rail"
+    },
+    "763": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB20",
+      "mode": "regional_rail"
+    },
+    "309": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB21",
+      "mode": "regional_rail"
+    },
+    "817": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB21",
+      "mode": "regional_rail"
+    },
+    "941": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB21",
+      "mode": "regional_rail"
+    },
+    "638": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB21",
+      "mode": "regional_rail"
+    },
+    "468": {
+      "agency_id": "91",
+      "agency_name": "Rurtalbahn",
+      "route_short_name": "RB21",
+      "mode": "regional_rail"
+    },
+    "3": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB22",
+      "mode": "regional_rail"
+    },
+    "720": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB22",
+      "mode": "regional_rail"
+    },
+    "821": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB22",
+      "mode": "regional_rail"
+    },
+    "488": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB22",
+      "mode": "regional_rail"
+    },
+    "327": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB22",
+      "mode": "regional_rail"
+    },
+    "223": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB23",
+      "mode": "regional_rail"
+    },
+    "785": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB23",
+      "mode": "regional_rail"
+    },
+    "234": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB23",
+      "mode": "regional_rail"
+    },
+    "871": {
+      "agency_id": "58",
+      "agency_name": "oberpfalzbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB23",
+      "mode": "regional_rail"
+    },
+    "690": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB23",
+      "mode": "regional_rail"
+    },
+    "61": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB24",
+      "mode": "regional_rail"
+    },
+    "293": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB24",
+      "mode": "regional_rail"
+    },
+    "257": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB24",
+      "mode": "regional_rail"
+    },
+    "715": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB24",
+      "mode": "regional_rail"
+    },
+    "384": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB25",
+      "mode": "regional_rail"
+    },
+    "217": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB25",
+      "mode": "regional_rail"
+    },
+    "545": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB25",
+      "mode": "regional_rail"
+    },
+    "43": {
+      "agency_id": "43",
+      "agency_name": "ABELLIO Rail Mitteldeutschland GmbH",
+      "route_short_name": "RB25",
+      "mode": "regional_rail"
+    },
+    "438": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB25",
+      "mode": "regional_rail"
+    },
+    "736": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB26",
+      "mode": "regional_rail"
+    },
+    "237": {
+      "agency_id": "131",
+      "agency_name": "Pressnitztalbahn",
+      "route_short_name": "RB26",
+      "mode": "regional_rail"
+    },
+    "803": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB26",
+      "mode": "regional_rail"
+    },
+    "666": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB26",
+      "mode": "regional_rail"
+    },
+    "589": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB26",
+      "mode": "regional_rail"
+    },
+    "75": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RB26",
+      "mode": "regional_rail"
+    },
+    "648": {
+      "agency_id": "80",
+      "agency_name": "MittelrheinBahn (Trans Regio)",
+      "route_short_name": "RB26",
+      "mode": "regional_rail"
+    },
+    "238": {
+      "agency_id": "134",
+      "agency_name": "Ceske Drahy",
+      "route_short_name": "RB27",
+      "mode": "regional_rail"
+    },
+    "195": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB27",
+      "mode": "regional_rail"
+    },
+    "316": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB27",
+      "mode": "regional_rail"
+    },
+    "790": {
+      "agency_id": "31",
+      "agency_name": "vogtlandbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB27",
+      "mode": "regional_rail"
+    },
+    "649": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB27",
+      "mode": "regional_rail"
+    },
+    "229": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB27",
+      "mode": "regional_rail"
+    },
+    "706": {
+      "agency_id": "58",
+      "agency_name": "oberpfalzbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB27",
+      "mode": "regional_rail"
+    },
+    "160": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB28",
+      "mode": "regional_rail"
+    },
+    "261": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB28",
+      "mode": "regional_rail"
+    },
+    "271": {
+      "agency_id": "58",
+      "agency_name": "oberpfalzbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB28",
+      "mode": "regional_rail"
+    },
+    "159": {
+      "agency_id": "91",
+      "agency_name": "Rurtalbahn",
+      "route_short_name": "RB28",
+      "mode": "regional_rail"
+    },
+    "346": {
+      "agency_id": "58",
+      "agency_name": "oberpfalzbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB29",
+      "mode": "regional_rail"
+    },
+    "344": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB29",
+      "mode": "regional_rail"
+    },
+    "230": {
+      "agency_id": "11",
+      "agency_name": "Mitteldeutsche Regiobahn",
+      "route_short_name": "RB30",
+      "mode": "regional_rail"
+    },
+    "590": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB30",
+      "mode": "regional_rail"
+    },
+    "639": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB30",
+      "mode": "regional_rail"
+    },
+    "218": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB30",
+      "mode": "regional_rail"
+    },
+    "326": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB31",
+      "mode": "regional_rail"
+    },
+    "25": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB31",
+      "mode": "regional_rail"
+    },
+    "779": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB31",
+      "mode": "regional_rail"
+    },
+    "201": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB31",
+      "mode": "regional_rail"
+    },
+    "942": {
+      "agency_id": "4",
+      "agency_name": "metronom",
+      "route_short_name": "RB31",
+      "mode": "regional_rail"
+    },
+    "529": {
+      "agency_id": "83",
+      "agency_name": "RheinRuhrBahn",
+      "route_short_name": "RB31",
+      "mode": "regional_rail"
+    },
+    "864": {
+      "agency_id": "131",
+      "agency_name": "Pressnitztalbahn",
+      "route_short_name": "RB32",
+      "mode": "regional_rail"
+    },
+    "830": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB32",
+      "mode": "regional_rail"
+    },
+    "876": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB32",
+      "mode": "regional_rail"
+    },
+    "909": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB32",
+      "mode": "regional_rail"
+    },
+    "377": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB32",
+      "mode": "regional_rail"
+    },
+    "161": {
+      "agency_id": "80",
+      "agency_name": "MittelrheinBahn (Trans Regio)",
+      "route_short_name": "RB32",
+      "mode": "regional_rail"
+    },
+    "696": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB32",
+      "mode": "regional_rail"
+    },
+    "875": {
+      "agency_id": "94",
+      "agency_name": "erixx",
+      "route_short_name": "RB32",
+      "mode": "regional_rail"
+    },
+    "713": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB33",
+      "mode": "regional_rail"
+    },
+    "965": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB33",
+      "mode": "regional_rail"
+    },
+    "750": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RB33",
+      "mode": "regional_rail"
+    },
+    "822": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB33",
+      "mode": "regional_rail"
+    },
+    "732": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB33",
+      "mode": "regional_rail"
+    },
+    "643": {
+      "agency_id": "45",
+      "agency_name": "Hanseatische Eisenbahn GmbH",
+      "route_short_name": "RB33",
+      "mode": "regional_rail"
+    },
+    "624": {
+      "agency_id": "5",
+      "agency_name": "EVB ELBE-WESER GmbH",
+      "route_short_name": "RB33",
+      "mode": "regional_rail"
+    },
+    "419": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RB33",
+      "mode": "regional_rail"
+    },
+    "420": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB34",
+      "mode": "regional_rail"
+    },
+    "247": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB34",
+      "mode": "regional_rail"
+    },
+    "290": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB34",
+      "mode": "regional_rail"
+    },
+    "18": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB34",
+      "mode": "regional_rail"
+    },
+    "174": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB35",
+      "mode": "regional_rail"
+    },
+    "57": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB35",
+      "mode": "regional_rail"
+    },
+    "682": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB35",
+      "mode": "regional_rail"
+    },
+    "205": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB35",
+      "mode": "regional_rail"
+    },
+    "514": {
+      "agency_id": "95",
+      "agency_name": "waldbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB35",
+      "mode": "regional_rail"
+    },
+    "219": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB36",
+      "mode": "regional_rail"
+    },
+    "936": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RB36",
+      "mode": "regional_rail"
+    },
+    "508": {
+      "agency_id": "83",
+      "agency_name": "RheinRuhrBahn",
+      "route_short_name": "RB36",
+      "mode": "regional_rail"
+    },
+    "764": {
+      "agency_id": "95",
+      "agency_name": "waldbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB36",
+      "mode": "regional_rail"
+    },
+    "197": {
+      "agency_id": "100",
+      "agency_name": "RV Start Deutschland GmbH Niedersachsen-Mitte",
+      "route_short_name": "RB37",
+      "mode": "regional_rail"
+    },
+    "737": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB37",
+      "mode": "regional_rail"
+    },
+    "650": {
+      "agency_id": "126",
+      "agency_name": "TRI Train Rental GmbH",
+      "route_short_name": "RB37",
+      "mode": "regional_rail"
+    },
+    "323": {
+      "agency_id": "53",
+      "agency_name": "Rhenus Veniro",
+      "route_short_name": "RB37",
+      "mode": "regional_rail"
+    },
+    "480": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB37",
+      "mode": "regional_rail"
+    },
+    "394": {
+      "agency_id": "95",
+      "agency_name": "waldbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB37",
+      "mode": "regional_rail"
+    },
+    "44": {
+      "agency_id": "100",
+      "agency_name": "RV Start Deutschland GmbH Niedersachsen-Mitte",
+      "route_short_name": "RB38",
+      "mode": "regional_rail"
+    },
+    "933": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB38",
+      "mode": "regional_rail"
+    },
+    "755": {
+      "agency_id": "113",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Kurhessenbahn",
+      "route_short_name": "RB38",
+      "mode": "regional_rail"
+    },
+    "296": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB38",
+      "mode": "regional_rail"
+    },
+    "727": {
+      "agency_id": "95",
+      "agency_name": "waldbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB38",
+      "mode": "regional_rail"
+    },
+    "943": {
+      "agency_id": "113",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Kurhessenbahn",
+      "route_short_name": "RB39",
+      "mode": "regional_rail"
+    },
+    "250": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB39",
+      "mode": "regional_rail"
+    },
+    "128": {
+      "agency_id": "113",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Kurhessenbahn",
+      "route_short_name": "RB4",
+      "mode": "regional_rail"
+    },
+    "786": {
+      "agency_id": "31",
+      "agency_name": "vogtlandbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB4",
+      "mode": "regional_rail"
+    },
+    "305": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB40",
+      "mode": "regional_rail"
+    },
+    "823": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RB40",
+      "mode": "regional_rail"
+    },
+    "495": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB40",
+      "mode": "regional_rail"
+    },
+    "395": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB40",
+      "mode": "regional_rail"
+    },
+    "177": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB40",
+      "mode": "regional_rail"
+    },
+    "304": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB40",
+      "mode": "regional_rail"
+    },
+    "138": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB41",
+      "mode": "regional_rail"
+    },
+    "459": {
+      "agency_id": "4",
+      "agency_name": "metronom",
+      "route_short_name": "RB41",
+      "mode": "regional_rail"
+    },
+    "283": {
+      "agency_id": "40",
+      "agency_name": "Süd-Thüringen-Bahn",
+      "route_short_name": "RB41",
+      "mode": "regional_rail"
+    },
+    "746": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB41",
+      "mode": "regional_rail"
+    },
+    "363": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RB41",
+      "mode": "regional_rail"
+    },
+    "507": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB41",
+      "mode": "regional_rail"
+    },
+    "847": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB42",
+      "mode": "regional_rail"
+    },
+    "389": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB42",
+      "mode": "regional_rail"
+    },
+    "255": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB42",
+      "mode": "regional_rail"
+    },
+    "139": {
+      "agency_id": "94",
+      "agency_name": "erixx",
+      "route_short_name": "RB42",
+      "mode": "regional_rail"
+    },
+    "960": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB42a",
+      "mode": "regional_rail"
+    },
+    "355": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB43",
+      "mode": "regional_rail"
+    },
+    "121": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB43",
+      "mode": "regional_rail"
+    },
+    "613": {
+      "agency_id": "40",
+      "agency_name": "Süd-Thüringen-Bahn",
+      "route_short_name": "RB43",
+      "mode": "regional_rail"
+    },
+    "644": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB43",
+      "mode": "regional_rail"
+    },
+    "882": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RB43",
+      "mode": "regional_rail"
+    },
+    "625": {
+      "agency_id": "94",
+      "agency_name": "erixx",
+      "route_short_name": "RB43",
+      "mode": "regional_rail"
+    },
+    "539": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB43a",
+      "mode": "regional_rail"
+    },
+    "572": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB44",
+      "mode": "regional_rail"
+    },
+    "409": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB44",
+      "mode": "regional_rail"
+    },
+    "910": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB44",
+      "mode": "regional_rail"
+    },
+    "772": {
+      "agency_id": "40",
+      "agency_name": "Süd-Thüringen-Bahn",
+      "route_short_name": "RB44",
+      "mode": "regional_rail"
+    },
+    "831": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB44",
+      "mode": "regional_rail"
+    },
+    "509": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RB44",
+      "mode": "regional_rail"
+    },
+    "154": {
+      "agency_id": "11",
+      "agency_name": "Mitteldeutsche Regiobahn",
+      "route_short_name": "RB45",
+      "mode": "regional_rail"
+    },
+    "579": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB45",
+      "mode": "regional_rail"
+    },
+    "169": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB45",
+      "mode": "regional_rail"
+    },
+    "310": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB45",
+      "mode": "regional_rail"
+    },
+    "248": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB45",
+      "mode": "regional_rail"
+    },
+    "566": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB46",
+      "mode": "regional_rail"
+    },
+    "815": {
+      "agency_id": "105",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "route_short_name": "RB46",
+      "mode": "regional_rail"
+    },
+    "196": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB46",
+      "mode": "regional_rail"
+    },
+    "800": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB46",
+      "mode": "regional_rail"
+    },
+    "85": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB46",
+      "mode": "regional_rail"
+    },
+    "520": {
+      "agency_id": "40",
+      "agency_name": "Süd-Thüringen-Bahn",
+      "route_short_name": "RB46",
+      "mode": "regional_rail"
+    },
+    "117": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB46",
+      "mode": "regional_rail"
+    },
+    "934": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB46",
+      "mode": "regional_rail"
+    },
+    "118": {
+      "agency_id": "105",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "route_short_name": "RB47",
+      "mode": "regional_rail"
+    },
+    "26": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB47",
+      "mode": "regional_rail"
+    },
+    "747": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RB47",
+      "mode": "regional_rail"
+    },
+    "776": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB47",
+      "mode": "regional_rail"
+    },
+    "348": {
+      "agency_id": "94",
+      "agency_name": "erixx",
+      "route_short_name": "RB47",
+      "mode": "regional_rail"
+    },
+    "614": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB48",
+      "mode": "regional_rail"
+    },
+    "52": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB48",
+      "mode": "regional_rail"
+    },
+    "804": {
+      "agency_id": "40",
+      "agency_name": "Süd-Thüringen-Bahn",
+      "route_short_name": "RB48",
+      "mode": "regional_rail"
+    },
+    "601": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB48",
+      "mode": "regional_rail"
+    },
+    "686": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB48",
+      "mode": "regional_rail"
+    },
+    "567": {
+      "agency_id": "84",
+      "agency_name": "National Express",
+      "route_short_name": "RB48",
+      "mode": "regional_rail"
+    },
+    "416": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB49",
+      "mode": "regional_rail"
+    },
+    "7": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB49",
+      "mode": "regional_rail"
+    },
+    "748": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB49",
+      "mode": "regional_rail"
+    },
+    "123": {
+      "agency_id": "117",
+      "agency_name": "cantus Verkehrsgesellschaft",
+      "route_short_name": "RB5",
+      "mode": "regional_rail"
+    },
+    "469": {
+      "agency_id": "31",
+      "agency_name": "vogtlandbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB5",
+      "mode": "regional_rail"
+    },
+    "897": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB50",
+      "mode": "regional_rail"
+    },
+    "361": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB50",
+      "mode": "regional_rail"
+    },
+    "132": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RB50",
+      "mode": "regional_rail"
+    },
+    "279": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB51",
+      "mode": "regional_rail"
+    },
+    "32": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB51",
+      "mode": "regional_rail"
+    },
+    "845": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB51",
+      "mode": "regional_rail"
+    },
+    "640": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RB51",
+      "mode": "regional_rail"
+    },
+    "404": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB51",
+      "mode": "regional_rail"
+    },
+    "824": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RB51",
+      "mode": "regional_rail"
+    },
+    "451": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB52",
+      "mode": "regional_rail"
+    },
+    "839": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB52",
+      "mode": "regional_rail"
+    },
+    "168": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RB52",
+      "mode": "regional_rail"
+    },
+    "935": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB52",
+      "mode": "regional_rail"
+    },
+    "725": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB52",
+      "mode": "regional_rail"
+    },
+    "340": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB52",
+      "mode": "regional_rail"
+    },
+    "496": {
+      "agency_id": "9",
+      "agency_name": "DB Regio Mitte",
+      "route_short_name": "RB52",
+      "mode": "regional_rail"
+    },
+    "846": {
+      "agency_id": "10",
+      "agency_name": "Berchtesgadener Land Bahn",
+      "route_short_name": "RB53",
+      "mode": "regional_rail"
+    },
+    "816": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB53",
+      "mode": "regional_rail"
+    },
+    "443": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB53",
+      "mode": "regional_rail"
+    },
+    "37": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB53",
+      "mode": "regional_rail"
+    },
+    "21": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RB53",
+      "mode": "regional_rail"
+    },
+    "928": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB53",
+      "mode": "regional_rail"
+    },
+    "860": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB53",
+      "mode": "regional_rail"
+    },
+    "182": {
+      "agency_id": "9",
+      "agency_name": "DB Regio Mitte",
+      "route_short_name": "RB53",
+      "mode": "regional_rail"
+    },
+    "145": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB54",
+      "mode": "regional_rail"
+    },
+    "122": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB54",
+      "mode": "regional_rail"
+    },
+    "617": {
+      "agency_id": "36",
+      "agency_name": "Meridian",
+      "route_short_name": "RB54",
+      "mode": "regional_rail"
+    },
+    "400": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB54",
+      "mode": "regional_rail"
+    },
+    "701": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RB54",
+      "mode": "regional_rail"
+    },
+    "452": {
+      "agency_id": "8",
+      "agency_name": "Bodensee-Oberschwaben-Verkehrsverbund",
+      "route_short_name": "RB54",
+      "mode": "regional_rail"
+    },
+    "90": {
+      "agency_id": "9",
+      "agency_name": "DB Regio Mitte",
+      "route_short_name": "RB54",
+      "mode": "regional_rail"
+    },
+    "667": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RB55",
+      "mode": "regional_rail"
+    },
+    "294": {
+      "agency_id": "140",
+      "agency_name": "Bayerische Oberlandbahn",
+      "route_short_name": "RB55",
+      "mode": "regional_rail"
+    },
+    "866": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RB55",
+      "mode": "regional_rail"
+    },
+    "444": {
+      "agency_id": "9",
+      "agency_name": "DB Regio Mitte",
+      "route_short_name": "RB55",
+      "mode": "regional_rail"
+    },
+    "447": {
+      "agency_id": "1",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Westfrankenbahn",
+      "route_short_name": "RB56",
+      "mode": "regional_rail"
+    },
+    "133": {
+      "agency_id": "14",
+      "agency_name": "Bentheimer Eisenbahn",
+      "route_short_name": "RB56",
+      "mode": "regional_rail"
+    },
+    "401": {
+      "agency_id": "140",
+      "agency_name": "Bayerische Oberlandbahn",
+      "route_short_name": "RB56",
+      "mode": "regional_rail"
+    },
+    "373": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RB56",
+      "mode": "regional_rail"
+    },
+    "262": {
+      "agency_id": "140",
+      "agency_name": "Bayerische Oberlandbahn",
+      "route_short_name": "RB57",
+      "mode": "regional_rail"
+    },
+    "332": {
+      "agency_id": "43",
+      "agency_name": "ABELLIO Rail Mitteldeutschland GmbH",
+      "route_short_name": "RB57",
+      "mode": "regional_rail"
+    },
+    "922": {
+      "agency_id": "36",
+      "agency_name": "Meridian",
+      "route_short_name": "RB58",
+      "mode": "regional_rail"
+    },
+    "211": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RB58",
+      "mode": "regional_rail"
+    },
+    "697": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB58",
+      "mode": "regional_rail"
+    },
+    "668": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RB59",
+      "mode": "regional_rail"
+    },
+    "67": {
+      "agency_id": "43",
+      "agency_name": "ABELLIO Rail Mitteldeutschland GmbH",
+      "route_short_name": "RB59",
+      "mode": "regional_rail"
+    },
+    "278": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB59",
+      "mode": "regional_rail"
+    },
+    "341": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RB59",
+      "mode": "regional_rail"
+    },
+    "338": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB59a",
+      "mode": "regional_rail"
+    },
+    "178": {
+      "agency_id": "117",
+      "agency_name": "cantus Verkehrsgesellschaft",
+      "route_short_name": "RB6",
+      "mode": "regional_rail"
+    },
+    "339": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB6",
+      "mode": "regional_rail"
+    },
+    "311": {
+      "agency_id": "82",
+      "agency_name": "ÖBB",
+      "route_short_name": "RB6",
+      "mode": "regional_rail"
+    },
+    "12": {
+      "agency_id": "129",
+      "agency_name": "trilex - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB60",
+      "mode": "regional_rail"
+    },
+    "318": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB60",
+      "mode": "regional_rail"
+    },
+    "47": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB60",
+      "mode": "regional_rail"
+    },
+    "758": {
+      "agency_id": "73",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Oberweisbacher Berg+Schwa",
+      "route_short_name": "RB60",
+      "mode": "regional_rail"
+    },
+    "854": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB60",
+      "mode": "regional_rail"
+    },
+    "540": {
+      "agency_id": "105",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "966": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "787": {
+      "agency_id": "129",
+      "agency_name": "trilex - Die Länderbahn GmbH DLB",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "669": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "289": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "840": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "410": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "703": {
+      "agency_id": "73",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Oberweisbacher Berg+Schwa",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "602": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB61",
+      "mode": "regional_rail"
+    },
+    "88": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB62",
+      "mode": "regional_rail"
+    },
+    "364": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB62",
+      "mode": "regional_rail"
+    },
+    "58": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB62",
+      "mode": "regional_rail"
+    },
+    "437": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB63",
+      "mode": "regional_rail"
+    },
+    "68": {
+      "agency_id": "20",
+      "agency_name": "NEB Niederbarnimer Eisenbahn",
+      "route_short_name": "RB63",
+      "mode": "regional_rail"
+    },
+    "671": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB63",
+      "mode": "regional_rail"
+    },
+    "411": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB63",
+      "mode": "regional_rail"
+    },
+    "324": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB63",
+      "mode": "regional_rail"
+    },
+    "586": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB63",
+      "mode": "regional_rail"
+    },
+    "86": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB64",
+      "mode": "regional_rail"
+    },
+    "69": {
+      "agency_id": "105",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "route_short_name": "RB64",
+      "mode": "regional_rail"
+    },
+    "79": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RB64",
+      "mode": "regional_rail"
+    },
+    "568": {
+      "agency_id": "56",
+      "agency_name": "Bayerische Zugspitzbahn",
+      "route_short_name": "RB64",
+      "mode": "regional_rail"
+    },
+    "421": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB64",
+      "mode": "regional_rail"
+    },
+    "333": {
+      "agency_id": "9",
+      "agency_name": "DB Regio Mitte",
+      "route_short_name": "RB64",
+      "mode": "regional_rail"
+    },
+    "726": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RB65",
+      "mode": "regional_rail"
+    },
+    "587": {
+      "agency_id": "105",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "route_short_name": "RB65",
+      "mode": "regional_rail"
+    },
+    "497": {
+      "agency_id": "13",
+      "agency_name": "Norddeutsche Eisenbahn Gesellschaft",
+      "route_short_name": "RB65",
+      "mode": "regional_rail"
+    },
+    "738": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB65",
+      "mode": "regional_rail"
+    },
+    "224": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB65",
+      "mode": "regional_rail"
+    },
+    "456": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB65",
+      "mode": "regional_rail"
+    },
+    "499": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RB65",
+      "mode": "regional_rail"
+    },
+    "957": {
+      "agency_id": "13",
+      "agency_name": "Norddeutsche Eisenbahn Gesellschaft",
+      "route_short_name": "RB66",
+      "mode": "regional_rail"
+    },
+    "541": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB66",
+      "mode": "regional_rail"
+    },
+    "325": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB66",
+      "mode": "regional_rail"
+    },
+    "812": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB66",
+      "mode": "regional_rail"
+    },
+    "349": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB66",
+      "mode": "regional_rail"
+    },
+    "702": {
+      "agency_id": "9",
+      "agency_name": "DB Regio Mitte",
+      "route_short_name": "RB66",
+      "mode": "regional_rail"
+    },
+    "183": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB67",
+      "mode": "regional_rail"
+    },
+    "432": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB67",
+      "mode": "regional_rail"
+    },
+    "114": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB67",
+      "mode": "regional_rail"
+    },
+    "687": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB67",
+      "mode": "regional_rail"
+    },
+    "885": {
+      "agency_id": "64",
+      "agency_name": "Bayerische Regiobahn",
+      "route_short_name": "RB67",
+      "mode": "regional_rail"
+    },
+    "440": {
+      "agency_id": "9",
+      "agency_name": "DB Regio Mitte",
+      "route_short_name": "RB67",
+      "mode": "regional_rail"
+    },
+    "328": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RB68",
+      "mode": "regional_rail"
+    },
+    "672": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB68",
+      "mode": "regional_rail"
+    },
+    "477": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB68",
+      "mode": "regional_rail"
+    },
+    "865": {
+      "agency_id": "64",
+      "agency_name": "Bayerische Regiobahn",
+      "route_short_name": "RB68",
+      "mode": "regional_rail"
+    },
+    "620": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RB68",
+      "mode": "regional_rail"
+    },
+    "397": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB68a",
+      "mode": "regional_rail"
+    },
+    "301": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB69",
+      "mode": "regional_rail"
+    },
+    "733": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB69",
+      "mode": "regional_rail"
+    },
+    "295": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB69",
+      "mode": "regional_rail"
+    },
+    "258": {
+      "agency_id": "64",
+      "agency_name": "Bayerische Regiobahn",
+      "route_short_name": "RB69",
+      "mode": "regional_rail"
+    },
+    "151": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB70",
+      "mode": "regional_rail"
+    },
+    "739": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB71",
+      "mode": "regional_rail"
+    },
+    "550": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB71",
+      "mode": "regional_rail"
+    },
+    "948": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RB71",
+      "mode": "regional_rail"
+    },
+    "398": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB71",
+      "mode": "regional_rail"
+    },
+    "841": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB71",
+      "mode": "regional_rail"
+    },
+    "596": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB72",
+      "mode": "regional_rail"
+    },
+    "417": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB72",
+      "mode": "regional_rail"
+    },
+    "485": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RB72",
+      "mode": "regional_rail"
+    },
+    "894": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB72",
+      "mode": "regional_rail"
+    },
+    "938": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB73",
+      "mode": "regional_rail"
+    },
+    "609": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB73",
+      "mode": "regional_rail"
+    },
+    "175": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB73",
+      "mode": "regional_rail"
+    },
+    "670": {
+      "agency_id": "45",
+      "agency_name": "Hanseatische Eisenbahn GmbH",
+      "route_short_name": "RB73",
+      "mode": "regional_rail"
+    },
+    "559": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB73",
+      "mode": "regional_rail"
+    },
+    "805": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB73",
+      "mode": "regional_rail"
+    },
+    "312": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB74",
+      "mode": "regional_rail"
+    },
+    "221": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB74",
+      "mode": "regional_rail"
+    },
+    "546": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB74",
+      "mode": "regional_rail"
+    },
+    "424": {
+      "agency_id": "45",
+      "agency_name": "Hanseatische Eisenbahn GmbH",
+      "route_short_name": "RB74",
+      "mode": "regional_rail"
+    },
+    "115": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RB74",
+      "mode": "regional_rail"
+    },
+    "48": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB74",
+      "mode": "regional_rail"
+    },
+    "453": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RB75",
+      "mode": "regional_rail"
+    },
+    "463": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB75",
+      "mode": "regional_rail"
+    },
+    "661": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB75",
+      "mode": "regional_rail"
+    },
+    "390": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RB76",
+      "mode": "regional_rail"
+    },
+    "631": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RB76",
+      "mode": "regional_rail"
+    },
+    "231": {
+      "agency_id": "35",
+      "agency_name": "Erfurter Bahn",
+      "route_short_name": "RB76",
+      "mode": "regional_rail"
+    },
+    "958": {
+      "agency_id": "94",
+      "agency_name": "erixx",
+      "route_short_name": "RB76",
+      "mode": "regional_rail"
+    },
+    "307": {
+      "agency_id": "100",
+      "agency_name": "RV Start Deutschland GmbH Niedersachsen-Mitte",
+      "route_short_name": "RB77",
+      "mode": "regional_rail"
+    },
+    "4": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB77",
+      "mode": "regional_rail"
+    },
+    "633": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RB77",
+      "mode": "regional_rail"
+    },
+    "241": {
+      "agency_id": "64",
+      "agency_name": "Bayerische Regiobahn",
+      "route_short_name": "RB77",
+      "mode": "regional_rail"
+    },
+    "721": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB78",
+      "mode": "regional_rail"
+    },
+    "38": {
+      "agency_id": "100",
+      "agency_name": "RV Start Deutschland GmbH Niedersachsen-Mitte",
+      "route_short_name": "RB79",
+      "mode": "regional_rail"
+    },
+    "268": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB79",
+      "mode": "regional_rail"
+    },
+    "722": {
+      "agency_id": "9",
+      "agency_name": "DB Regio Mitte",
+      "route_short_name": "RB79",
+      "mode": "regional_rail"
+    },
+    "49": {
+      "agency_id": "25",
+      "agency_name": "Go-Ahead",
+      "route_short_name": "RB8",
+      "mode": "regional_rail"
+    },
+    "292": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB80",
+      "mode": "regional_rail"
+    },
+    "646": {
+      "agency_id": "32",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Erzgebirgsbahn",
+      "route_short_name": "RB80",
+      "mode": "regional_rail"
+    },
+    "502": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB80",
+      "mode": "regional_rail"
+    },
+    "460": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB81",
+      "mode": "regional_rail"
+    },
+    "334": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB81",
+      "mode": "regional_rail"
+    },
+    "478": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB81",
+      "mode": "regional_rail"
+    },
+    "766": {
+      "agency_id": "32",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Erzgebirgsbahn",
+      "route_short_name": "RB81",
+      "mode": "regional_rail"
+    },
+    "878": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB81",
+      "mode": "regional_rail"
+    },
+    "525": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB82",
+      "mode": "regional_rail"
+    },
+    "62": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB82",
+      "mode": "regional_rail"
+    },
+    "124": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB82",
+      "mode": "regional_rail"
+    },
+    "412": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB82",
+      "mode": "regional_rail"
+    },
+    "698": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RB82",
+      "mode": "regional_rail"
+    },
+    "820": {
+      "agency_id": "1",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Westfrankenbahn",
+      "route_short_name": "RB83",
+      "mode": "regional_rail"
+    },
+    "886": {
+      "agency_id": "107",
+      "agency_name": "CFL",
+      "route_short_name": "RB83",
+      "mode": "regional_rail"
+    },
+    "214": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB83",
+      "mode": "regional_rail"
+    },
+    "8": {
+      "agency_id": "117",
+      "agency_name": "cantus Verkehrsgesellschaft",
+      "route_short_name": "RB83",
+      "mode": "regional_rail"
+    },
+    "551": {
+      "agency_id": "47",
+      "agency_name": "Freiberger Eisenbahngesellschaft",
+      "route_short_name": "RB83",
+      "mode": "regional_rail"
+    },
+    "915": {
+      "agency_id": "51",
+      "agency_name": "SÜWEX",
+      "route_short_name": "RB83",
+      "mode": "regional_rail"
+    },
+    "486": {
+      "agency_id": "64",
+      "agency_name": "Bayerische Regiobahn",
+      "route_short_name": "RB83",
+      "mode": "regional_rail"
+    },
+    "850": {
+      "agency_id": "1",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Westfrankenbahn",
+      "route_short_name": "RB84",
+      "mode": "regional_rail"
+    },
+    "206": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RB84",
+      "mode": "regional_rail"
+    },
+    "662": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RB84",
+      "mode": "regional_rail"
+    },
+    "959": {
+      "agency_id": "94",
+      "agency_name": "erixx",
+      "route_short_name": "RB84",
+      "mode": "regional_rail"
+    },
+    "264": {
+      "agency_id": "1",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Westfrankenbahn",
+      "route_short_name": "RB85",
+      "mode": "regional_rail"
+    },
+    "898": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB85",
+      "mode": "regional_rail"
+    },
+    "607": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB85",
+      "mode": "regional_rail"
+    },
+    "704": {
+      "agency_id": "53",
+      "agency_name": "Rhenus Veniro",
+      "route_short_name": "RB85",
+      "mode": "regional_rail"
+    },
+    "634": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RB85",
+      "mode": "regional_rail"
+    },
+    "434": {
+      "agency_id": "102",
+      "agency_name": "GYRB Arverio Bayern GmbH",
+      "route_short_name": "RB86",
+      "mode": "regional_rail"
+    },
+    "87": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RB86",
+      "mode": "regional_rail"
+    },
+    "795": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB86",
+      "mode": "regional_rail"
+    },
+    "825": {
+      "agency_id": "102",
+      "agency_name": "GYRB Arverio Bayern GmbH",
+      "route_short_name": "RB87",
+      "mode": "regional_rail"
+    },
+    "391": {
+      "agency_id": "107",
+      "agency_name": "CFL",
+      "route_short_name": "RB87",
+      "mode": "regional_rail"
+    },
+    "560": {
+      "agency_id": "117",
+      "agency_name": "cantus Verkehrsgesellschaft",
+      "route_short_name": "RB87",
+      "mode": "regional_rail"
+    },
+    "163": {
+      "agency_id": "1",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Westfrankenbahn",
+      "route_short_name": "RB88",
+      "mode": "regional_rail"
+    },
+    "663": {
+      "agency_id": "102",
+      "agency_name": "GYRB Arverio Bayern GmbH",
+      "route_short_name": "RB89",
+      "mode": "regional_rail"
+    },
+    "319": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RB89",
+      "mode": "regional_rail"
+    },
+    "895": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB90",
+      "mode": "regional_rail"
+    },
+    "302": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB91",
+      "mode": "regional_rail"
+    },
+    "299": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RB91",
+      "mode": "regional_rail"
+    },
+    "962": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB91",
+      "mode": "regional_rail"
+    },
+    "608": {
+      "agency_id": "49",
+      "agency_name": "Bodensee-Oberschwaben-Bahn",
+      "route_short_name": "RB91",
+      "mode": "regional_rail"
+    },
+    "191": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB91",
+      "mode": "regional_rail"
+    },
+    "70": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB91",
+      "mode": "regional_rail"
+    },
+    "848": {
+      "agency_id": "102",
+      "agency_name": "GYRB Arverio Bayern GmbH",
+      "route_short_name": "RB92",
+      "mode": "regional_rail"
+    },
+    "717": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB92",
+      "mode": "regional_rail"
+    },
+    "692": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB92",
+      "mode": "regional_rail"
+    },
+    "297": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB92",
+      "mode": "regional_rail"
+    },
+    "385": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RB93",
+      "mode": "regional_rail"
+    },
+    "347": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB93",
+      "mode": "regional_rail"
+    },
+    "155": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RB93",
+      "mode": "regional_rail"
+    },
+    "493": {
+      "agency_id": "113",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Kurhessenbahn",
+      "route_short_name": "RB94",
+      "mode": "regional_rail"
+    },
+    "826": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RB94",
+      "mode": "regional_rail"
+    },
+    "911": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB95",
+      "mode": "regional_rail"
+    },
+    "225": {
+      "agency_id": "32",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Erzgebirgsbahn",
+      "route_short_name": "RB95",
+      "mode": "regional_rail"
+    },
+    "273": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB95",
+      "mode": "regional_rail"
+    },
+    "448": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB96",
+      "mode": "regional_rail"
+    },
+    "365": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RB96",
+      "mode": "regional_rail"
+    },
+    "350": {
+      "agency_id": "113",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Kurhessenbahn",
+      "route_short_name": "RB97",
+      "mode": "regional_rail"
+    },
+    "645": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB97",
+      "mode": "regional_rail"
+    },
+    "618": {
+      "agency_id": "30",
+      "agency_name": "Daadetalbahn",
+      "route_short_name": "RB97",
+      "mode": "regional_rail"
+    },
+    "110": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB98",
+      "mode": "regional_rail"
+    },
+    "171": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RB99",
+      "mode": "regional_rail"
+    },
+    "937": {
+      "agency_id": "22",
+      "agency_name": "Montafoner Bahn",
+      "route_short_name": "RE",
+      "mode": "regional_rail"
+    },
+    "791": {
+      "agency_id": "60",
+      "agency_name": "SBB",
+      "route_short_name": "RE",
+      "mode": "regional_rail"
+    },
+    "413": {
+      "agency_id": "75",
+      "agency_name": "THURBO",
+      "route_short_name": "RE",
+      "mode": "regional_rail"
+    },
+    "356": {
+      "agency_id": "82",
+      "agency_name": "ÖBB",
+      "route_short_name": "RE",
+      "mode": "regional_rail"
+    },
+    "449": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "256": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "751": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "71": {
+      "agency_id": "128",
+      "agency_name": "trilex-express - Die Länderbahn GmbH DLB",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "780": {
+      "agency_id": "25",
+      "agency_name": "Go-Ahead",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "907": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "626": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "80": {
+      "agency_id": "51",
+      "agency_name": "SÜWEX",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "641": {
+      "agency_id": "84",
+      "agency_name": "National Express",
+      "route_short_name": "RE1",
+      "mode": "regional_rail"
+    },
+    "563": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE10",
+      "mode": "regional_rail"
+    },
+    "888": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE10",
+      "mode": "regional_rail"
+    },
+    "510": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE10",
+      "mode": "regional_rail"
+    },
+    "833": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RE10",
+      "mode": "regional_rail"
+    },
+    "5": {
+      "agency_id": "83",
+      "agency_name": "RheinRuhrBahn",
+      "route_short_name": "RE10",
+      "mode": "regional_rail"
+    },
+    "716": {
+      "agency_id": "94",
+      "agency_name": "erixx",
+      "route_short_name": "RE10",
+      "mode": "regional_rail"
+    },
+    "358": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RE10a",
+      "mode": "regional_rail"
+    },
+    "184": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RE10b",
+      "mode": "regional_rail"
+    },
+    "425": {
+      "agency_id": "107",
+      "agency_name": "CFL",
+      "route_short_name": "RE11",
+      "mode": "regional_rail"
+    },
+    "81": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE11",
+      "mode": "regional_rail"
+    },
+    "642": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE11",
+      "mode": "regional_rail"
+    },
+    "659": {
+      "agency_id": "51",
+      "agency_name": "SÜWEX",
+      "route_short_name": "RE11",
+      "mode": "regional_rail"
+    },
+    "457": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RE11",
+      "mode": "regional_rail"
+    },
+    "635": {
+      "agency_id": "84",
+      "agency_name": "National Express",
+      "route_short_name": "RE11",
+      "mode": "regional_rail"
+    },
+    "45": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE12",
+      "mode": "regional_rail"
+    },
+    "491": {
+      "agency_id": "66",
+      "agency_name": "Erfurter Bahn Express",
+      "route_short_name": "RE12",
+      "mode": "regional_rail"
+    },
+    "470": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE13",
+      "mode": "regional_rail"
+    },
+    "542": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RE13",
+      "mode": "regional_rail"
+    },
+    "291": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE13",
+      "mode": "regional_rail"
+    },
+    "152": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RE13",
+      "mode": "regional_rail"
+    },
+    "683": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE14",
+      "mode": "regional_rail"
+    },
+    "134": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE14",
+      "mode": "regional_rail"
+    },
+    "472": {
+      "agency_id": "51",
+      "agency_name": "SÜWEX",
+      "route_short_name": "RE14",
+      "mode": "regional_rail"
+    },
+    "269": {
+      "agency_id": "83",
+      "agency_name": "RheinRuhrBahn",
+      "route_short_name": "RE14",
+      "mode": "regional_rail"
+    },
+    "660": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE14a",
+      "mode": "regional_rail"
+    },
+    "664": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE14b",
+      "mode": "regional_rail"
+    },
+    "818": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE15",
+      "mode": "regional_rail"
+    },
+    "916": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RE15",
+      "mode": "regional_rail"
+    },
+    "208": {
+      "agency_id": "43",
+      "agency_name": "ABELLIO Rail Mitteldeutschland GmbH",
+      "route_short_name": "RE15",
+      "mode": "regional_rail"
+    },
+    "756": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RE15",
+      "mode": "regional_rail"
+    },
+    "379": {
+      "agency_id": "96",
+      "agency_name": "WestfalenBahn",
+      "route_short_name": "RE15",
+      "mode": "regional_rail"
+    },
+    "867": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RE16",
+      "mode": "regional_rail"
+    },
+    "481": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RE16",
+      "mode": "regional_rail"
+    },
+    "108": {
+      "agency_id": "37",
+      "agency_name": "SNCF",
+      "route_short_name": "RE16",
+      "mode": "regional_rail"
+    },
+    "466": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE16",
+      "mode": "regional_rail"
+    },
+    "179": {
+      "agency_id": "43",
+      "agency_name": "ABELLIO Rail Mitteldeutschland GmbH",
+      "route_short_name": "RE16",
+      "mode": "regional_rail"
+    },
+    "232": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RE17",
+      "mode": "regional_rail"
+    },
+    "593": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RE17",
+      "mode": "regional_rail"
+    },
+    "76": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE17",
+      "mode": "regional_rail"
+    },
+    "877": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE17",
+      "mode": "regional_rail"
+    },
+    "471": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RE17",
+      "mode": "regional_rail"
+    },
+    "955": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RE18",
+      "mode": "regional_rail"
+    },
+    "767": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE18",
+      "mode": "regional_rail"
+    },
+    "889": {
+      "agency_id": "12",
+      "agency_name": "agilis",
+      "route_short_name": "RE18",
+      "mode": "regional_rail"
+    },
+    "426": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RE18",
+      "mode": "regional_rail"
+    },
+    "164": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE18",
+      "mode": "regional_rail"
+    },
+    "374": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RE18",
+      "mode": "regional_rail"
+    },
+    "473": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RE19",
+      "mode": "regional_rail"
+    },
+    "632": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE19",
+      "mode": "regional_rail"
+    },
+    "834": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RE19",
+      "mode": "regional_rail"
+    },
+    "526": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE19",
+      "mode": "regional_rail"
+    },
+    "63": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "185": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "619": {
+      "agency_id": "128",
+      "agency_name": "trilex-express - Die Länderbahn GmbH DLB",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "768": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "503": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "34": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "946": {
+      "agency_id": "4",
+      "agency_name": "metronom",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "441": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "351": {
+      "agency_id": "51",
+      "agency_name": "SÜWEX",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "274": {
+      "agency_id": "80",
+      "agency_name": "MittelrheinBahn (Trans Regio)",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "773": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RE2",
+      "mode": "regional_rail"
+    },
+    "331": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE20",
+      "mode": "regional_rail"
+    },
+    "329": {
+      "agency_id": "134",
+      "agency_name": "Ceske Drahy",
+      "route_short_name": "RE20",
+      "mode": "regional_rail"
+    },
+    "405": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE20",
+      "mode": "regional_rail"
+    },
+    "615": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE20",
+      "mode": "regional_rail"
+    },
+    "357": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RE20",
+      "mode": "regional_rail"
+    },
+    "450": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE200",
+      "mode": "regional_rail"
+    },
+    "580": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RE21",
+      "mode": "regional_rail"
+    },
+    "811": {
+      "agency_id": "66",
+      "agency_name": "Erfurter Bahn Express",
+      "route_short_name": "RE21",
+      "mode": "regional_rail"
+    },
+    "835": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RE21",
+      "mode": "regional_rail"
+    },
+    "306": {
+      "agency_id": "122",
+      "agency_name": "agilis-Schnellzug",
+      "route_short_name": "RE22",
+      "mode": "regional_rail"
+    },
+    "330": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE22",
+      "mode": "regional_rail"
+    },
+    "300": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE22",
+      "mode": "regional_rail"
+    },
+    "209": {
+      "agency_id": "115",
+      "agency_name": "alex - Die Länderbahn GmbH DLB",
+      "route_short_name": "RE23",
+      "mode": "regional_rail"
+    },
+    "39": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RE24",
+      "mode": "regional_rail"
+    },
+    "929": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RE24",
+      "mode": "regional_rail"
+    },
+    "64": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RE25",
+      "mode": "regional_rail"
+    },
+    "530": {
+      "agency_id": "115",
+      "agency_name": "alex - Die Länderbahn GmbH DLB",
+      "route_short_name": "RE25",
+      "mode": "regional_rail"
+    },
+    "899": {
+      "agency_id": "134",
+      "agency_name": "Ceske Drahy",
+      "route_short_name": "RE25",
+      "mode": "regional_rail"
+    },
+    "573": {
+      "agency_id": "31",
+      "agency_name": "vogtlandbahn - Die Länderbahn GmbH DLB",
+      "route_short_name": "RE25",
+      "mode": "regional_rail"
+    },
+    "140": {
+      "agency_id": "45",
+      "agency_name": "Hanseatische Eisenbahn GmbH",
+      "route_short_name": "RE27",
+      "mode": "regional_rail"
+    },
+    "35": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE28",
+      "mode": "regional_rail"
+    },
+    "474": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE29",
+      "mode": "regional_rail"
+    },
+    "890": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "392": {
+      "agency_id": "11",
+      "agency_name": "Mitteldeutsche Regiobahn",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "796": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "855": {
+      "agency_id": "126",
+      "agency_name": "TRI Train Rental GmbH",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "40": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "192": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "345": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "445": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "492": {
+      "agency_id": "4",
+      "agency_name": "metronom",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "930": {
+      "agency_id": "54",
+      "agency_name": "Nebenbahn Vaihingen-Enzweihingen",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "597": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "202": {
+      "agency_id": "59",
+      "agency_name": "Gesamtnetz der deutschen Bahn",
+      "route_short_name": "RE3",
+      "mode": "regional_rail"
+    },
+    "742": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE30",
+      "mode": "regional_rail"
+    },
+    "366": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE30",
+      "mode": "regional_rail"
+    },
+    "172": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE30",
+      "mode": "regional_rail"
+    },
+    "109": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE30",
+      "mode": "regional_rail"
+    },
+    "856": {
+      "agency_id": "7",
+      "agency_name": "enno",
+      "route_short_name": "RE30",
+      "mode": "regional_rail"
+    },
+    "923": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE31",
+      "mode": "regional_rail"
+    },
+    "673": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RE31",
+      "mode": "regional_rail"
+    },
+    "515": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE32",
+      "mode": "regional_rail"
+    },
+    "375": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE33",
+      "mode": "regional_rail"
+    },
+    "99": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RE34",
+      "mode": "regional_rail"
+    },
+    "581": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RE34",
+      "mode": "regional_rail"
+    },
+    "433": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE34",
+      "mode": "regional_rail"
+    },
+    "917": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RE34",
+      "mode": "regional_rail"
+    },
+    "908": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE35",
+      "mode": "regional_rail"
+    },
+    "591": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE38",
+      "mode": "regional_rail"
+    },
+    "303": {
+      "agency_id": "113",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Kurhessenbahn",
+      "route_short_name": "RE39",
+      "mode": "regional_rail"
+    },
+    "235": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "198": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "547": {
+      "agency_id": "2",
+      "agency_name": "vlexx",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "427": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "335": {
+      "agency_id": "4",
+      "agency_name": "metronom",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "475": {
+      "agency_id": "41",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Südostbayernbahn",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "187": {
+      "agency_id": "51",
+      "agency_name": "SÜWEX",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "728": {
+      "agency_id": "54",
+      "agency_name": "Nebenbahn Vaihingen-Enzweihingen",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "265": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "552": {
+      "agency_id": "84",
+      "agency_name": "National Express",
+      "route_short_name": "RE4",
+      "mode": "regional_rail"
+    },
+    "165": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE40",
+      "mode": "regional_rail"
+    },
+    "729": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE40",
+      "mode": "regional_rail"
+    },
+    "842": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE41",
+      "mode": "regional_rail"
+    },
+    "564": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE41",
+      "mode": "regional_rail"
+    },
+    "574": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RE42",
+      "mode": "regional_rail"
+    },
+    "961": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE42",
+      "mode": "regional_rail"
+    },
+    "939": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE43",
+      "mode": "regional_rail"
+    },
+    "752": {
+      "agency_id": "83",
+      "agency_name": "RheinRuhrBahn",
+      "route_short_name": "RE44",
+      "mode": "regional_rail"
+    },
+    "399": {
+      "agency_id": "84",
+      "agency_name": "National Express",
+      "route_short_name": "RE44",
+      "mode": "regional_rail"
+    },
+    "543": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RE45",
+      "mode": "regional_rail"
+    },
+    "129": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE45",
+      "mode": "regional_rail"
+    },
+    "743": {
+      "agency_id": "137",
+      "agency_name": "Süd-Thüringen-Bahn Express",
+      "route_short_name": "RE45",
+      "mode": "regional_rail"
+    },
+    "654": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE47",
+      "mode": "regional_rail"
+    },
+    "82": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE49",
+      "mode": "regional_rail"
+    },
+    "521": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE5",
+      "mode": "regional_rail"
+    },
+    "553": {
+      "agency_id": "117",
+      "agency_name": "cantus Verkehrsgesellschaft",
+      "route_short_name": "RE5",
+      "mode": "regional_rail"
+    },
+    "100": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE5",
+      "mode": "regional_rail"
+    },
+    "851": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE5",
+      "mode": "regional_rail"
+    },
+    "616": {
+      "agency_id": "36",
+      "agency_name": "Meridian",
+      "route_short_name": "RE5",
+      "mode": "regional_rail"
+    },
+    "352": {
+      "agency_id": "84",
+      "agency_name": "National Express",
+      "route_short_name": "RE5",
+      "mode": "regional_rail"
+    },
+    "203": {
+      "agency_id": "86",
+      "agency_name": "RV Start Deutschland GmbH Unterelbe",
+      "route_short_name": "RE5",
+      "mode": "regional_rail"
+    },
+    "891": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RE5",
+      "mode": "regional_rail"
+    },
+    "655": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RE50",
+      "mode": "regional_rail"
+    },
+    "536": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE50",
+      "mode": "regional_rail"
+    },
+    "741": {
+      "agency_id": "122",
+      "agency_name": "agilis-Schnellzug",
+      "route_short_name": "RE50",
+      "mode": "regional_rail"
+    },
+    "827": {
+      "agency_id": "137",
+      "agency_name": "Süd-Thüringen-Bahn Express",
+      "route_short_name": "RE50",
+      "mode": "regional_rail"
+    },
+    "674": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE50",
+      "mode": "regional_rail"
+    },
+    "588": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE50",
+      "mode": "regional_rail"
+    },
+    "535": {
+      "agency_id": "7",
+      "agency_name": "enno",
+      "route_short_name": "RE50",
+      "mode": "regional_rail"
+    },
+    "91": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE51",
+      "mode": "regional_rail"
+    },
+    "707": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE54",
+      "mode": "regional_rail"
+    },
+    "627": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE55",
+      "mode": "regional_rail"
+    },
+    "249": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE55",
+      "mode": "regional_rail"
+    },
+    "153": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE55",
+      "mode": "regional_rail"
+    },
+    "105": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE56",
+      "mode": "regional_rail"
+    },
+    "598": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE57",
+      "mode": "regional_rail"
+    },
+    "872": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RE59",
+      "mode": "regional_rail"
+    },
+    "548": {
+      "agency_id": "11",
+      "agency_name": "Mitteldeutsche Regiobahn",
+      "route_short_name": "RE6",
+      "mode": "regional_rail"
+    },
+    "483": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE6",
+      "mode": "regional_rail"
+    },
+    "270": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE6",
+      "mode": "regional_rail"
+    },
+    "46": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE6",
+      "mode": "regional_rail"
+    },
+    "693": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RE6",
+      "mode": "regional_rail"
+    },
+    "59": {
+      "agency_id": "62",
+      "agency_name": "RV Start Deutschland GmbH Mitteldeutschland",
+      "route_short_name": "RE6",
+      "mode": "regional_rail"
+    },
+    "554": {
+      "agency_id": "71",
+      "agency_name": "DB Regio AG Mitte",
+      "route_short_name": "RE6",
+      "mode": "regional_rail"
+    },
+    "414": {
+      "agency_id": "84",
+      "agency_name": "National Express",
+      "route_short_name": "RE6",
+      "mode": "regional_rail"
+    },
+    "272": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE60",
+      "mode": "regional_rail"
+    },
+    "65": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE60",
+      "mode": "regional_rail"
+    },
+    "210": {
+      "agency_id": "96",
+      "agency_name": "WestfalenBahn",
+      "route_short_name": "RE60",
+      "mode": "regional_rail"
+    },
+    "244": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE61",
+      "mode": "regional_rail"
+    },
+    "828": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE62",
+      "mode": "regional_rail"
+    },
+    "555": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE62",
+      "mode": "regional_rail"
+    },
+    "170": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RE66",
+      "mode": "regional_rail"
+    },
+    "207": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE6x",
+      "mode": "regional_rail"
+    },
+    "275": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RE7",
+      "mode": "regional_rail"
+    },
+    "963": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE7",
+      "mode": "regional_rail"
+    },
+    "342": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RE7",
+      "mode": "regional_rail"
+    },
+    "490": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "RE7",
+      "mode": "regional_rail"
+    },
+    "531": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE7",
+      "mode": "regional_rail"
+    },
+    "931": {
+      "agency_id": "84",
+      "agency_name": "National Express",
+      "route_short_name": "RE7",
+      "mode": "regional_rail"
+    },
+    "188": {
+      "agency_id": "89",
+      "agency_name": "800151 DB Regio AG Nordost",
+      "route_short_name": "RE7",
+      "mode": "regional_rail"
+    },
+    "879": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE70",
+      "mode": "regional_rail"
+    },
+    "594": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE70",
+      "mode": "regional_rail"
+    },
+    "19": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE70",
+      "mode": "regional_rail"
+    },
+    "119": {
+      "agency_id": "96",
+      "agency_name": "WestfalenBahn",
+      "route_short_name": "RE70",
+      "mode": "regional_rail"
+    },
+    "537": {
+      "agency_id": "28",
+      "agency_name": "DB Regio Stuttgart",
+      "route_short_name": "RE71",
+      "mode": "regional_rail"
+    },
+    "386": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE71",
+      "mode": "regional_rail"
+    },
+    "372": {
+      "agency_id": "23",
+      "agency_name": "GYRE Arverio Bayern GmbH",
+      "route_short_name": "RE72",
+      "mode": "regional_rail"
+    },
+    "176": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RE72",
+      "mode": "regional_rail"
+    },
+    "146": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "RE73",
+      "mode": "regional_rail"
+    },
+    "782": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE73",
+      "mode": "regional_rail"
+    },
+    "892": {
+      "agency_id": "77",
+      "agency_name": "Nordbahn Eisenbahngesellschaft",
+      "route_short_name": "RE74",
+      "mode": "regional_rail"
+    },
+    "22": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE75",
+      "mode": "regional_rail"
+    },
+    "801": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE76",
+      "mode": "regional_rail"
+    },
+    "603": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RE78",
+      "mode": "regional_rail"
+    },
+    "887": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RE79",
+      "mode": "regional_rail"
+    },
+    "380": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RE8",
+      "mode": "regional_rail"
+    },
+    "956": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE8",
+      "mode": "regional_rail"
+    },
+    "538": {
+      "agency_id": "25",
+      "agency_name": "Go-Ahead",
+      "route_short_name": "RE8",
+      "mode": "regional_rail"
+    },
+    "924": {
+      "agency_id": "43",
+      "agency_name": "ABELLIO Rail Mitteldeutschland GmbH",
+      "route_short_name": "RE8",
+      "mode": "regional_rail"
+    },
+    "857": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE8",
+      "mode": "regional_rail"
+    },
+    "843": {
+      "agency_id": "1",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Westfrankenbahn",
+      "route_short_name": "RE80",
+      "mode": "regional_rail"
+    },
+    "72": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE80",
+      "mode": "regional_rail"
+    },
+    "148": {
+      "agency_id": "23",
+      "agency_name": "GYRE Arverio Bayern GmbH",
+      "route_short_name": "RE80",
+      "mode": "regional_rail"
+    },
+    "777": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RE80",
+      "mode": "regional_rail"
+    },
+    "428": {
+      "agency_id": "55",
+      "agency_name": "eurobahn",
+      "route_short_name": "RE82",
+      "mode": "regional_rail"
+    },
+    "873": {
+      "agency_id": "94",
+      "agency_name": "erixx",
+      "route_short_name": "RE83",
+      "mode": "regional_rail"
+    },
+    "226": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RE85",
+      "mode": "regional_rail"
+    },
+    "896": {
+      "agency_id": "29",
+      "agency_name": "VIAS Rail GmbH",
+      "route_short_name": "RE85",
+      "mode": "regional_rail"
+    },
+    "36": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE86",
+      "mode": "regional_rail"
+    },
+    "1": {
+      "agency_id": "1",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Westfrankenbahn",
+      "route_short_name": "RE87",
+      "mode": "regional_rail"
+    },
+    "2": {
+      "agency_id": "23",
+      "agency_name": "GYRE Arverio Bayern GmbH",
+      "route_short_name": "RE89",
+      "mode": "regional_rail"
+    },
+    "628": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE8X",
+      "mode": "regional_rail"
+    },
+    "802": {
+      "agency_id": "101",
+      "agency_name": "Ostdeutsche Eisenbahn GmbH",
+      "route_short_name": "RE9",
+      "mode": "regional_rail"
+    },
+    "636": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "RE9",
+      "mode": "regional_rail"
+    },
+    "23": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "RE9",
+      "mode": "regional_rail"
+    },
+    "28": {
+      "agency_id": "121",
+      "agency_name": "DB Regio AG Nord",
+      "route_short_name": "RE9",
+      "mode": "regional_rail"
+    },
+    "16": {
+      "agency_id": "23",
+      "agency_name": "GYRE Arverio Bayern GmbH",
+      "route_short_name": "RE9",
+      "mode": "regional_rail"
+    },
+    "317": {
+      "agency_id": "43",
+      "agency_name": "ABELLIO Rail Mitteldeutschland GmbH",
+      "route_short_name": "RE9",
+      "mode": "regional_rail"
+    },
+    "33": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "RE9",
+      "mode": "regional_rail"
+    },
+    "147": {
+      "agency_id": "25",
+      "agency_name": "Go-Ahead",
+      "route_short_name": "RE90",
+      "mode": "regional_rail"
+    },
+    "806": {
+      "agency_id": "23",
+      "agency_name": "GYRE Arverio Bayern GmbH",
+      "route_short_name": "RE92",
+      "mode": "regional_rail"
+    },
+    "723": {
+      "agency_id": "23",
+      "agency_name": "GYRE Arverio Bayern GmbH",
+      "route_short_name": "RE96",
+      "mode": "regional_rail"
+    },
+    "757": {
+      "agency_id": "113",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Kurhessenbahn",
+      "route_short_name": "RE97",
+      "mode": "regional_rail"
+    },
+    "629": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RE98",
+      "mode": "regional_rail"
+    },
+    "102": {
+      "agency_id": "72",
+      "agency_name": "Hessische Landesbahn",
+      "route_short_name": "RE99",
+      "mode": "regional_rail"
+    },
+    "130": {
+      "agency_id": "82",
+      "agency_name": "ÖBB",
+      "route_short_name": "REX",
+      "mode": "regional_rail"
+    },
+    "111": {
+      "agency_id": "134",
+      "agency_name": "Ceske Drahy",
+      "route_short_name": "RR",
+      "mode": "regional_rail"
+    },
+    "556": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RS1",
+      "mode": "commuter_rail"
+    },
+    "308": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RS1",
+      "mode": "commuter_rail"
+    },
+    "950": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RS11",
+      "mode": "commuter_rail"
+    },
+    "29": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RS12",
+      "mode": "commuter_rail"
+    },
+    "215": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RS2",
+      "mode": "commuter_rail"
+    },
+    "781": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RS2",
+      "mode": "commuter_rail"
+    },
+    "799": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RS2",
+      "mode": "commuter_rail"
+    },
+    "464": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "RS21",
+      "mode": "commuter_rail"
+    },
+    "604": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RS3",
+      "mode": "commuter_rail"
+    },
+    "516": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RS3",
+      "mode": "commuter_rail"
+    },
+    "189": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RS30",
+      "mode": "commuter_rail"
+    },
+    "245": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RS4",
+      "mode": "commuter_rail"
+    },
+    "940": {
+      "agency_id": "37",
+      "agency_name": "SNCF",
+      "route_short_name": "RS4",
+      "mode": "commuter_rail"
+    },
+    "246": {
+      "agency_id": "63",
+      "agency_name": "NordWestBahn",
+      "route_short_name": "RS4",
+      "mode": "commuter_rail"
+    },
+    "131": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RS5",
+      "mode": "commuter_rail"
+    },
+    "504": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "RS51",
+      "mode": "commuter_rail"
+    },
+    "9": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RS7",
+      "mode": "commuter_rail"
+    },
+    "807": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "RS71",
+      "mode": "commuter_rail"
+    },
+    "621": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "180": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "489": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "89": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "41": {
+      "agency_id": "124",
+      "agency_name": "S-Bahn Hamburg",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "461": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "285": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "582": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "406": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "694": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "266": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "S1",
+      "mode": "commuter_rail"
+    },
+    "647": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S10",
+      "mode": "commuter_rail"
+    },
+    "549": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "S10",
+      "mode": "commuter_rail"
+    },
+    "193": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "S11",
+      "mode": "commuter_rail"
+    },
+    "239": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S11",
+      "mode": "commuter_rail"
+    },
+    "759": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S11",
+      "mode": "commuter_rail"
+    },
+    "575": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S12",
+      "mode": "commuter_rail"
+    },
+    "675": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S12",
+      "mode": "commuter_rail"
+    },
+    "216": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S19",
+      "mode": "commuter_rail"
+    },
+    "708": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "637": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "103": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "280": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "213": {
+      "agency_id": "124",
+      "agency_name": "S-Bahn Hamburg",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "925": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "243": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "788": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "778": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "679": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "656": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "S2",
+      "mode": "commuter_rail"
+    },
+    "522": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S20",
+      "mode": "commuter_rail"
+    },
+    "562": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S21",
+      "mode": "commuter_rail"
+    },
+    "200": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S23",
+      "mode": "commuter_rail"
+    },
+    "517": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S25",
+      "mode": "commuter_rail"
+    },
+    "576": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S26",
+      "mode": "commuter_rail"
+    },
+    "714": {
+      "agency_id": "3",
+      "agency_name": "REGIOBAHN",
+      "route_short_name": "S28",
+      "mode": "commuter_rail"
+    },
+    "595": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "918": {
+      "agency_id": "114",
+      "agency_name": "DB Regio AG Nordost",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "343": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "83": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "222": {
+      "agency_id": "124",
+      "agency_name": "S-Bahn Hamburg",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "313": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "761": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "523": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "259": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "945": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "149": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "S3",
+      "mode": "commuter_rail"
+    },
+    "583": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S30",
+      "mode": "commuter_rail"
+    },
+    "904": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S33",
+      "mode": "commuter_rail"
+    },
+    "98": {
+      "agency_id": "10",
+      "agency_name": "Berchtesgadener Land Bahn",
+      "route_short_name": "S4",
+      "mode": "commuter_rail"
+    },
+    "227": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S4",
+      "mode": "commuter_rail"
+    },
+    "336": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S4",
+      "mode": "commuter_rail"
+    },
+    "97": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S4",
+      "mode": "commuter_rail"
+    },
+    "150": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S4",
+      "mode": "commuter_rail"
+    },
+    "54": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S4",
+      "mode": "commuter_rail"
+    },
+    "744": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S4",
+      "mode": "commuter_rail"
+    },
+    "136": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "S4",
+      "mode": "commuter_rail"
+    },
+    "77": {
+      "agency_id": "26",
+      "agency_name": "SNCB",
+      "route_short_name": "S41",
+      "mode": "commuter_rail"
+    },
+    "267": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S41",
+      "mode": "commuter_rail"
+    },
+    "862": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S41",
+      "mode": "commuter_rail"
+    },
+    "454": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S42",
+      "mode": "commuter_rail"
+    },
+    "709": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S42",
+      "mode": "commuter_rail"
+    },
+    "774": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S44",
+      "mode": "commuter_rail"
+    },
+    "104": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S46",
+      "mode": "commuter_rail"
+    },
+    "665": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S47",
+      "mode": "commuter_rail"
+    },
+    "494": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "84": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "951": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "370": {
+      "agency_id": "124",
+      "agency_name": "S-Bahn Hamburg",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "592": {
+      "agency_id": "132",
+      "agency_name": "Südwestdeutsche Verkehrs-AG",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "705": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "883": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "371": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "884": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "500": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "792": {
+      "agency_id": "60",
+      "agency_name": "SBB",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "745": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "749": {
+      "agency_id": "87",
+      "agency_name": "Die Länderbahn GmbH",
+      "route_short_name": "S5",
+      "mode": "commuter_rail"
+    },
+    "710": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S51",
+      "mode": "commuter_rail"
+    },
+    "711": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S5X",
+      "mode": "commuter_rail"
+    },
+    "947": {
+      "agency_id": "87",
+      "agency_name": "Die Länderbahn GmbH",
+      "route_short_name": "S5X",
+      "mode": "commuter_rail"
+    },
+    "874": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "422": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "156": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "162": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "952": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "286": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "691": {
+      "agency_id": "60",
+      "agency_name": "SBB",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "789": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "557": {
+      "agency_id": "82",
+      "agency_name": "ÖBB",
+      "route_short_name": "S6",
+      "mode": "commuter_rail"
+    },
+    "141": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "S60",
+      "mode": "commuter_rail"
+    },
+    "932": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S61",
+      "mode": "commuter_rail"
+    },
+    "396": {
+      "agency_id": "21",
+      "agency_name": "DB Regio AG Baden-Württemberg",
+      "route_short_name": "S61",
+      "mode": "commuter_rail"
+    },
+    "584": {
+      "agency_id": "70",
+      "agency_name": "DB Regio AG S-Bahn Stuttgart",
+      "route_short_name": "S62",
+      "mode": "commuter_rail"
+    },
+    "13": {
+      "agency_id": "92",
+      "agency_name": "SBB GmbH",
+      "route_short_name": "S62",
+      "mode": "commuter_rail"
+    },
+    "754": {
+      "agency_id": "92",
+      "agency_name": "SBB GmbH",
+      "route_short_name": "S64",
+      "mode": "commuter_rail"
+    },
+    "905": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S7",
+      "mode": "commuter_rail"
+    },
+    "622": {
+      "agency_id": "116",
+      "agency_name": "S-Bahn Hannover",
+      "route_short_name": "S7",
+      "mode": "commuter_rail"
+    },
+    "577": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S7",
+      "mode": "commuter_rail"
+    },
+    "387": {
+      "agency_id": "124",
+      "agency_name": "S-Bahn Hamburg",
+      "route_short_name": "S7",
+      "mode": "commuter_rail"
+    },
+    "770": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S7",
+      "mode": "commuter_rail"
+    },
+    "849": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S7",
+      "mode": "commuter_rail"
+    },
+    "60": {
+      "agency_id": "83",
+      "agency_name": "RheinRuhrBahn",
+      "route_short_name": "S7",
+      "mode": "commuter_rail"
+    },
+    "760": {
+      "agency_id": "90",
+      "agency_name": "ABELLO Rail Mitteldeutschland GmbH",
+      "route_short_name": "S7",
+      "mode": "commuter_rail"
+    },
+    "718": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S75",
+      "mode": "commuter_rail"
+    },
+    "17": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S8",
+      "mode": "commuter_rail"
+    },
+    "199": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S8",
+      "mode": "commuter_rail"
+    },
+    "518": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S8",
+      "mode": "commuter_rail"
+    },
+    "487": {
+      "agency_id": "39",
+      "agency_name": "DB Regio AG Bayern",
+      "route_short_name": "S8",
+      "mode": "commuter_rail"
+    },
+    "688": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S8",
+      "mode": "commuter_rail"
+    },
+    "813": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S8",
+      "mode": "commuter_rail"
+    },
+    "442": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S85",
+      "mode": "commuter_rail"
+    },
+    "819": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S85",
+      "mode": "commuter_rail"
+    },
+    "699": {
+      "agency_id": "111",
+      "agency_name": "DB Regio AG Mitte Region Südwest",
+      "route_short_name": "S9",
+      "mode": "commuter_rail"
+    },
+    "695": {
+      "agency_id": "120",
+      "agency_name": "DB Regio AG Mitte Region Hessen",
+      "route_short_name": "S9",
+      "mode": "commuter_rail"
+    },
+    "284": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "S9",
+      "mode": "commuter_rail"
+    },
+    "78": {
+      "agency_id": "42",
+      "agency_name": "S Bahn Berlin GmbH",
+      "route_short_name": "S9",
+      "mode": "commuter_rail"
+    },
+    "684": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "S9",
+      "mode": "commuter_rail"
+    },
+    "900": {
+      "agency_id": "19",
+      "agency_name": "Länderbahn CZ",
+      "route_short_name": "T7",
+      "mode": "regional_rail"
+    },
+    "408": {
+      "agency_id": "129",
+      "agency_name": "trilex - Die Länderbahn GmbH DLB",
+      "route_short_name": "T9",
+      "mode": "regional_rail"
+    },
+    "838": {
+      "agency_id": "37",
+      "agency_name": "SNCF",
+      "route_short_name": "TER",
+      "mode": "regional_rail"
+    },
+    "55": {
+      "agency_id": "134",
+      "agency_name": "Ceske Drahy",
+      "route_short_name": "U28",
+      "mode": "regional_rail"
+    },
+    "544": {
+      "agency_id": "27",
+      "agency_name": "DB Regio AG Südost",
+      "route_short_name": "U28",
+      "mode": "regional_rail"
+    },
+    "611": {
+      "agency_id": "32",
+      "agency_name": "DB RegioNetz Verkehrs GmbH Erzgebirgsbahn",
+      "route_short_name": "NRB",
+      "mode": "regional_rail"
+    },
+    "382": {
+      "agency_id": "44",
+      "agency_name": "DB Regio AG NRW",
+      "route_short_name": "NRE",
+      "mode": "regional_rail"
+    },
+    "836": {
+      "agency_id": "22",
+      "agency_name": "Montafoner Bahn",
+      "route_short_name": "S",
+      "mode": "commuter_rail"
+    },
+    "242": {
+      "agency_id": "60",
+      "agency_name": "SBB",
+      "route_short_name": "S",
+      "mode": "commuter_rail"
+    },
+    "605": {
+      "agency_id": "75",
+      "agency_name": "THURBO",
+      "route_short_name": "S",
+      "mode": "commuter_rail"
+    },
+    "753": {
+      "agency_id": "82",
+      "agency_name": "ÖBB",
+      "route_short_name": "S",
+      "mode": "commuter_rail"
+    }
+  }
+}

@@ -32,7 +32,7 @@ def source_for(day, archives):
     return matches[0]
 
 
-def prepare(city, source, cache, output, selected_route, describe_route, geometry_resolver=None, *, daily=False):
+def prepare(city, source, cache, output, selected_route, describe_route, geometry_resolver=None, *, daily=False, select_sequence=None):
     if source.get("geometry_method", "native_or_projected") not in {"native_or_projected", "ordered_projection", "native_or_ordered_per_leg"}:
         raise ValueError("Unsupported railway geometry method")
     first, last = date.fromisoformat(source["first"]), date.fromisoformat(source["last"])
@@ -57,9 +57,10 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
             raise ValueError("Archive differs from the validated source; inspect it before changing the pin")
         with ZipFile(filename) as archive:
             feed = next(records(archive, "feed_info.txt")) if "feed_info.txt" in archive.namelist() else {}
-            if not feed and not source.get("calendar_validity"):
+            dated_feed = bool(feed.get("feed_start_date") and feed.get("feed_end_date"))
+            if not dated_feed and not source.get("calendar_validity"):
                 raise ValueError("Feed validity is missing")
-            if feed and not (feed["feed_start_date"] <= min(applicable).strftime("%Y%m%d")
+            if dated_feed and not (feed["feed_start_date"] <= min(applicable).strftime("%Y%m%d")
                     and max(applicable).strftime("%Y%m%d") <= feed["feed_end_date"]):
                 raise ValueError("Feed validity does not cover the selected service days")
             sources.append({"source_url": snapshot["url"], "source_date": snapshot["captured"], "published": snapshot["published"],
@@ -92,7 +93,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                     calls[row["trip_id"]].append(row)
             shapes = defaultdict(list)
             needed = {t.get("shape_id", "") for t in trips.values()}
-            for row in records(archive, "shapes.txt"):
+            for row in records(archive, "shapes.txt") if "shapes.txt" in archive.namelist() else ():
                 if row["shape_id"] in needed:
                     shapes[row["shape_id"]].append((int(row["shape_pt_sequence"]),
                         float(row["shape_dist_traveled"]) if row.get("shape_dist_traveled") else None,
@@ -101,6 +102,10 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
             print(f"{city}: {len(routes)} route variants, {len(trips)} candidate trips, {len(shapes)} supplied shapes", flush=True)
             for trip_id, trip in trips.items():
                 sequence = sorted(calls[trip_id], key=lambda r: int(r["stop_sequence"]))
+                if select_sequence is not None:
+                    sequence = select_sequence(sequence, stops)
+                    if not sequence:
+                        continue
                 try:
                     route = routes[trip["route_id"]]
                     description = describe_route(route, trip)

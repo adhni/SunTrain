@@ -1,0 +1,699 @@
+{
+  "source_gtfs_sha256": "bf1e06acc89fbe14cb584925e9a2338f21759e5d647752bfa310268570ddff3c",
+  "note": "Pinned U-Bahn and associated Stadtbahn routes. Nürnberg bus-like type-1 labels and Bonn ordinary tram lines 61/62/65 excluded. Includes Düsseldorf U71/U72/U73/U83 supplied as type 0. Other tram networks, buses and regional rail are excluded.",
+  "routes": {
+    "16808": {
+      "agency_id": "294",
+      "route_short_name": "1",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "16292": {
+      "agency_id": "339",
+      "route_short_name": "1",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "23607": {
+      "agency_id": "339",
+      "route_short_name": "10",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "5618": {
+      "agency_id": "339",
+      "route_short_name": "11",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "12911": {
+      "agency_id": "294",
+      "route_short_name": "12",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "17696": {
+      "agency_id": "339",
+      "route_short_name": "12",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "1849": {
+      "agency_id": "294",
+      "route_short_name": "13",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "4968": {
+      "agency_id": "339",
+      "route_short_name": "13",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "8936": {
+      "agency_id": "294",
+      "route_short_name": "15",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "7567": {
+      "agency_id": "294",
+      "route_short_name": "16",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "4761": {
+      "agency_id": "294",
+      "route_short_name": "17",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "5566": {
+      "agency_id": "339",
+      "route_short_name": "17",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "20458": {
+      "agency_id": "294",
+      "route_short_name": "18",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "20933": {
+      "agency_id": "339",
+      "route_short_name": "2",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "15518": {
+      "agency_id": "294",
+      "route_short_name": "3",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "15326": {
+      "agency_id": "339",
+      "route_short_name": "3",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "6477": {
+      "agency_id": "294",
+      "route_short_name": "4",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "7335": {
+      "agency_id": "339",
+      "route_short_name": "4",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "21774": {
+      "agency_id": "294",
+      "route_short_name": "5",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "19435": {
+      "agency_id": "339",
+      "route_short_name": "5",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "11894": {
+      "agency_id": "339",
+      "route_short_name": "6",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "8030": {
+      "agency_id": "294",
+      "route_short_name": "7",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "7253": {
+      "agency_id": "339",
+      "route_short_name": "7",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "15453": {
+      "agency_id": "339",
+      "route_short_name": "8",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "12095": {
+      "agency_id": "294",
+      "route_short_name": "9",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Rhein-Sieg",
+      "city": "Köln / Bonn"
+    },
+    "10396": {
+      "agency_id": "339",
+      "route_short_name": "9",
+      "route_type": "1",
+      "agency_name": "Großraumverkehr Hannover",
+      "city": "Hannover"
+    },
+    "4024": {
+      "agency_id": "271",
+      "route_short_name": "U1",
+      "route_type": "1",
+      "agency_name": "VerkehrsAG Nürnberg",
+      "city": "Nürnberg"
+    },
+    "19212": {
+      "agency_id": "273",
+      "route_short_name": "U1",
+      "route_type": "1",
+      "agency_name": "Hamburger Verkehrsverbund",
+      "city": "Hamburg"
+    },
+    "1102": {
+      "agency_id": "276",
+      "route_short_name": "U1",
+      "route_type": "1",
+      "agency_name": "Stadtwerke München",
+      "city": "München"
+    },
+    "15189": {
+      "agency_id": "348",
+      "route_short_name": "U1",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "3527": {
+      "agency_id": "44",
+      "route_short_name": "U1",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "20218": {
+      "agency_id": "49",
+      "route_short_name": "U1",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "3087": {
+      "agency_id": "49",
+      "route_short_name": "U11",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "340": {
+      "agency_id": "83",
+      "route_short_name": "U11",
+      "route_type": "1",
+      "agency_name": "Essener Verkehrs AG",
+      "city": "Essen"
+    },
+    "1728": {
+      "agency_id": "49",
+      "route_short_name": "U12",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "16627": {
+      "agency_id": "49",
+      "route_short_name": "U13",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "195": {
+      "agency_id": "49",
+      "route_short_name": "U14",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "23000": {
+      "agency_id": "49",
+      "route_short_name": "U15",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "20092": {
+      "agency_id": "49",
+      "route_short_name": "U16",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "20185": {
+      "agency_id": "83",
+      "route_short_name": "U17",
+      "route_type": "1",
+      "agency_name": "Essener Verkehrs AG",
+      "city": "Essen"
+    },
+    "18744": {
+      "agency_id": "76",
+      "route_short_name": "U18",
+      "route_type": "1",
+      "agency_name": "Mülheimer VerkehrsGesellschaft mbH",
+      "city": "Mülheim"
+    },
+    "8670": {
+      "agency_id": "83",
+      "route_short_name": "U18",
+      "route_type": "1",
+      "agency_name": "Essener Verkehrs AG",
+      "city": "Essen"
+    },
+    "23287": {
+      "agency_id": "49",
+      "route_short_name": "U19",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "16071": {
+      "agency_id": "271",
+      "route_short_name": "U2",
+      "route_type": "1",
+      "agency_name": "VerkehrsAG Nürnberg",
+      "city": "Nürnberg"
+    },
+    "20358": {
+      "agency_id": "273",
+      "route_short_name": "U2",
+      "route_type": "1",
+      "agency_name": "Hamburger Verkehrsverbund",
+      "city": "Hamburg"
+    },
+    "10579": {
+      "agency_id": "276",
+      "route_short_name": "U2",
+      "route_type": "1",
+      "agency_name": "Stadtwerke München",
+      "city": "München"
+    },
+    "13694": {
+      "agency_id": "348",
+      "route_short_name": "U2",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "7620": {
+      "agency_id": "44",
+      "route_short_name": "U2",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "12368": {
+      "agency_id": "49",
+      "route_short_name": "U2",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "22819": {
+      "agency_id": "271",
+      "route_short_name": "U3",
+      "route_type": "1",
+      "agency_name": "VerkehrsAG Nürnberg",
+      "city": "Nürnberg"
+    },
+    "7290": {
+      "agency_id": "273",
+      "route_short_name": "U3",
+      "route_type": "1",
+      "agency_name": "Hamburger Verkehrsverbund",
+      "city": "Hamburg"
+    },
+    "9022": {
+      "agency_id": "276",
+      "route_short_name": "U3",
+      "route_type": "1",
+      "agency_name": "Stadtwerke München",
+      "city": "München"
+    },
+    "7355": {
+      "agency_id": "348",
+      "route_short_name": "U3",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "17742": {
+      "agency_id": "44",
+      "route_short_name": "U3",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "5667": {
+      "agency_id": "49",
+      "route_short_name": "U3",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "3343": {
+      "agency_id": "316",
+      "route_short_name": "U35",
+      "route_type": "1",
+      "agency_name": "Bochum-Gelsenkirchener Straßenbahnen AG",
+      "city": "Bochum"
+    },
+    "11462": {
+      "agency_id": "273",
+      "route_short_name": "U4",
+      "route_type": "1",
+      "agency_name": "Hamburger Verkehrsverbund",
+      "city": "Hamburg"
+    },
+    "17046": {
+      "agency_id": "276",
+      "route_short_name": "U4",
+      "route_type": "1",
+      "agency_name": "Stadtwerke München",
+      "city": "München"
+    },
+    "7382": {
+      "agency_id": "348",
+      "route_short_name": "U4",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "2926": {
+      "agency_id": "44",
+      "route_short_name": "U4",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "19742": {
+      "agency_id": "49",
+      "route_short_name": "U4",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "1957": {
+      "agency_id": "139",
+      "route_short_name": "U41",
+      "route_type": "1",
+      "agency_name": "Dortmunder Stadtwerke DSW",
+      "city": "Dortmund"
+    },
+    "22352": {
+      "agency_id": "139",
+      "route_short_name": "U42",
+      "route_type": "1",
+      "agency_name": "Dortmunder Stadtwerke DSW",
+      "city": "Dortmund"
+    },
+    "15063": {
+      "agency_id": "139",
+      "route_short_name": "U43",
+      "route_type": "1",
+      "agency_name": "Dortmunder Stadtwerke DSW",
+      "city": "Dortmund"
+    },
+    "15533": {
+      "agency_id": "139",
+      "route_short_name": "U44",
+      "route_type": "1",
+      "agency_name": "Dortmunder Stadtwerke DSW",
+      "city": "Dortmund"
+    },
+    "19775": {
+      "agency_id": "139",
+      "route_short_name": "U45",
+      "route_type": "1",
+      "agency_name": "Dortmunder Stadtwerke DSW",
+      "city": "Dortmund"
+    },
+    "13278": {
+      "agency_id": "139",
+      "route_short_name": "U46",
+      "route_type": "1",
+      "agency_name": "Dortmunder Stadtwerke DSW",
+      "city": "Dortmund"
+    },
+    "13941": {
+      "agency_id": "139",
+      "route_short_name": "U47",
+      "route_type": "1",
+      "agency_name": "Dortmunder Stadtwerke DSW",
+      "city": "Dortmund"
+    },
+    "14721": {
+      "agency_id": "139",
+      "route_short_name": "U49",
+      "route_type": "1",
+      "agency_name": "Dortmunder Stadtwerke DSW",
+      "city": "Dortmund"
+    },
+    "11572": {
+      "agency_id": "276",
+      "route_short_name": "U5",
+      "route_type": "1",
+      "agency_name": "Stadtwerke München",
+      "city": "München"
+    },
+    "14578": {
+      "agency_id": "348",
+      "route_short_name": "U5",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "15971": {
+      "agency_id": "44",
+      "route_short_name": "U5",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "11278": {
+      "agency_id": "49",
+      "route_short_name": "U5",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "13284": {
+      "agency_id": "276",
+      "route_short_name": "U6",
+      "route_type": "1",
+      "agency_name": "Stadtwerke München",
+      "city": "München"
+    },
+    "13604": {
+      "agency_id": "348",
+      "route_short_name": "U6",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "10242": {
+      "agency_id": "44",
+      "route_short_name": "U6",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "7440": {
+      "agency_id": "49",
+      "route_short_name": "U6",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "9771": {
+      "agency_id": "276",
+      "route_short_name": "U7",
+      "route_type": "1",
+      "agency_name": "Stadtwerke München",
+      "city": "München"
+    },
+    "13839": {
+      "agency_id": "348",
+      "route_short_name": "U7",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "18134": {
+      "agency_id": "44",
+      "route_short_name": "U7",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "19794": {
+      "agency_id": "49",
+      "route_short_name": "U7",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "21587": {
+      "agency_id": "275",
+      "route_short_name": "U70",
+      "route_type": "1",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "15940": {
+      "agency_id": "275",
+      "route_short_name": "U71",
+      "route_type": "0",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "7868": {
+      "agency_id": "275",
+      "route_short_name": "U72",
+      "route_type": "0",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "13745": {
+      "agency_id": "275",
+      "route_short_name": "U73",
+      "route_type": "0",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "17855": {
+      "agency_id": "275",
+      "route_short_name": "U75",
+      "route_type": "1",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "19671": {
+      "agency_id": "275",
+      "route_short_name": "U76",
+      "route_type": "1",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "7265": {
+      "agency_id": "275",
+      "route_short_name": "U77",
+      "route_type": "1",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "8941": {
+      "agency_id": "275",
+      "route_short_name": "U78",
+      "route_type": "1",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "21645": {
+      "agency_id": "123",
+      "route_short_name": "U79",
+      "route_type": "1",
+      "agency_name": "Duisburger Verkehrsgesellschaft AG",
+      "city": "Duisburg"
+    },
+    "15144": {
+      "agency_id": "275",
+      "route_short_name": "U79",
+      "route_type": "1",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "19919": {
+      "agency_id": "276",
+      "route_short_name": "U8",
+      "route_type": "1",
+      "agency_name": "Stadtwerke München",
+      "city": "München"
+    },
+    "4400": {
+      "agency_id": "348",
+      "route_short_name": "U8",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "12248": {
+      "agency_id": "44",
+      "route_short_name": "U8",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "5047": {
+      "agency_id": "49",
+      "route_short_name": "U8",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    },
+    "15018": {
+      "agency_id": "275",
+      "route_short_name": "U83",
+      "route_type": "0",
+      "agency_name": "Rheinbahn AG",
+      "city": "Düsseldorf"
+    },
+    "2977": {
+      "agency_id": "348",
+      "route_short_name": "U9",
+      "route_type": "1",
+      "agency_name": "traffiQ",
+      "city": "Frankfurt"
+    },
+    "18571": {
+      "agency_id": "44",
+      "route_short_name": "U9",
+      "route_type": "1",
+      "agency_name": "Berliner Verkehrsbetriebe",
+      "city": "Berlin"
+    },
+    "18382": {
+      "agency_id": "49",
+      "route_short_name": "U9",
+      "route_type": "1",
+      "agency_name": "Verkehrsverbund Stuttgart",
+      "city": "Stuttgart"
+    }
+  }
+}

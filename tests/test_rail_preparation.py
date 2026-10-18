@@ -193,3 +193,32 @@ def test_invalid_external_geometry_stays_a_gap_without_using_the_gtfs_sketch(tmp
         reference = expanded_reference(json.load(stream))
     assert reference["days"]["2026-10-05"] and not reference["metadata"]["omitted_trips"]
     assert all(p["coordinates"] == [] and p["quality"] == "approximate" for p in reference["paths"].values())
+
+
+def test_undated_feed_info_without_shapes_uses_explicit_calendars_and_external_geometry(tmp_path):
+    source = external_source(tmp_path, extra_route=True)
+    path = tmp_path / "external.zip"
+    with ZipFile(path) as archive:
+        tables = {name: archive.read(name) for name in archive.namelist() if name not in {"shapes.txt", "feed_info.txt"}}
+    tables["calendar_dates.txt"] = b"service_id,date,exception_type\nregular,20261004,1\nregular,20261005,1\nregular,20261006,1\n"
+    with ZipFile(path, "w") as archive:
+        for name, contents in tables.items():
+            archive.writestr(name, contents)
+        archive.writestr("feed_info.txt", "feed_publisher_name,feed_version\nFixture,undated\n")
+    source["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+    output = tmp_path / "prepared.json.gz"
+    selected = lambda route, agencies: True
+    describe = lambda route, trip: {"mode": "train", "route_id": route["route_id"], "line": route["route_id"]}
+    with pytest.raises(ValueError, match="Feed validity is missing"):
+        prepare("fixture", source, tmp_path, output, selected, describe)
+    source["calendar_validity"] = True
+    prepare("fixture", source, tmp_path, output, selected, describe,
+            geometry_resolver=lambda route, trip, sequence, points: [[points[0], points[1]]],
+            select_sequence=lambda sequence, stops: sequence[1:])
+    with gzip.open(output, "rt") as stream:
+        reference = expanded_reference(json.load(stream))
+    assert len(reference["patterns"]) == 2
+    assert all(len(p["stops"]) == 2 for p in reference["patterns"].values())
+    assert all(p["origin"] == "Bravo" for p in reference["patterns"].values())
+    assert all(offset == 6 * 3600 + 10 * 60 for _, _, offset in reference["days"]["2026-10-05"])
+    assert not reference["metadata"]["omitted_trips"]

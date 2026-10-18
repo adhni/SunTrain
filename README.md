@@ -1,6 +1,18 @@
 # SunTrain
 
-Historical transport replay across Australia, Canada, the Netherlands, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Canada, Germany, the Netherlands, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Germany rail
+
+Choose **Germany** for **1–7 June 2026**, matching the Netherlands: nationwide **ICE, IC, EC and ECE**, including overnight services and German portions of international journeys. Long-distance trains open first; select **Regional rail**, **S-Bahn / Regio-S-Bahn** or **U-Bahn / Stadtbahn** under Transport to add those networks for the same week. Buses and other tram networks are excluded. The existing map, filters, playback, Overview, themes and fullscreen apply. Passenger counts are unavailable.
+
+The long-distance historical GTFS exactly matches the requested May–June Transitland snapshot, obtained publicly through Mobility Database. DB InfraGO's connected railway geometry supplies inferred alignments, with **95.17%** of long-distance legs matched. The separate dated regional archive adds **155,100 regional and 95,512 S-Bahn departures**, with **89.51%** and **95.98%** of legs matched respectively. Unresolved sections remain gaps; some private services can appear only at scheduled stops. Sleeper/Railjet coverage is not enabled. Timetables: DELFI e.V. / GTFS.de; railway alignments: DB InfraGO AG; CC BY 4.0, matched and simplified by SunTrain.
+
+Regional/S-Bahn use separate daily downloads and shared schedules; selecting them preserves the replay clock. Source colours are kept, with red regional and green S-Bahn display fallbacks. Rebuild the optional layers with `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/prepare_germany_regional.py`.
+
+U-Bahn/Stadtbahn also loads by selected day, using the historical urban archive and separately credited OpenStreetMap railway geometry. Includes Berlin, Hamburg, München, Nürnberg, Frankfurt, Stuttgart, Hannover, Köln/Bonn and the audited Rhine–Ruhr U-Bahn routes. Rebuild with `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/prepare_germany_ubahn.py`.
+
+The prepared long-distance week is **1.62 MB gzip**; visitors load one day (Monday approximately **1.30 MB gzip**). Rebuild with `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/prepare_germany_replay.py`. See [Germany expansion notes](GERMANY_EXPANSION_NOTES.md) for source pins, international/overnight handling, geometry limits and future expansion.
 
 ## Netherlands replay
 

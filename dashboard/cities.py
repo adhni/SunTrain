@@ -1,5 +1,13 @@
 """Replay settings; passenger analysis continues to use the Victorian dataset."""
 
+import json
+from pathlib import Path
+
+GERMANY_REGIONAL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
+    "data/reference/germany/regional-operators.json").read_text())
+GERMANY_UBAHN_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
+    "data/reference/germany/ubahn-operators.json").read_text())
+
 CITIES = {
     "melbourne": {
         "name": "Melbourne", "timezone": "Australia/Melbourne",
@@ -123,6 +131,16 @@ CITIES = {
                       *[(name, name) for name in ("Go Ahead London", "Stagecoach London", "Metroline Travel", "Transport UK", "Arriva London North",
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
+    },
+    "germany": {
+        "name": "Germany", "timezone": "Europe/Berlin",
+        "bounds": [[5.7, 47.2], [15.3, 55.1]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "default_modes": ["train"],
+        "description": "German trains for one week. Select Regional rail, S-Bahn or U-Bahn / Stadtbahn under Transport to add those networks. Passenger counts are unavailable.",
+        "modes": [("Long-distance trains", "train"), ("Regional rail", "regional_rail"), ("S-Bahn / Regio-S-Bahn", "commuter_rail"), ("U-Bahn / Stadtbahn", "subway")],
+        "operators": [(name, name) for name in sorted({"DB Fernverkehr AG", "SNCF", "Dänische Staatsbahnen", "SÜWEX", *GERMANY_REGIONAL_OPERATORS, *GERMANY_UBAHN_OPERATORS})],
+        "directions": [("Not specified", "Not specified")],
     },
     "netherlands": {
         "name": "Netherlands", "timezone": "Europe/Amsterdam",

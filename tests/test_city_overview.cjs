@@ -77,3 +77,14 @@ test('Melbourne lines without GTFS route IDs still get their own summary rows', 
     assert.equal(summarize(input, filters, core).routes.length, 2);
     assert.equal(JSON.stringify(input), original);
 });
+
+test('Germany distinguishes regional and S-Bahn without changing commuter labels elsewhere', () => {
+    const services = [service(start, {mode:'regional_rail',line:'RE1',route_id:'re',color:'#C83038'}),
+        service(start, {mode:'commuter_rail',line:'S1',route_id:'s',color:'#008D4F'})];
+    const german = summarize(day(services,{city:'germany'}),filters,core);
+    assert.deepEqual(german.routes.map(r=>r.mode),['Regional rail','S-Bahn']);
+    assert.equal(summarize(day([services[1]],{city:'london'}),filters,core).routes[0].mode,'Commuter rail');
+    const subway = service(start, {mode:'subway',line:'Berlin U1',route_id:'u'});
+    assert.equal(summarize(day([subway],{city:'germany'}),filters,core).routes[0].mode,'U-Bahn / Stadtbahn');
+    assert.equal(summarize(day([subway],{city:'nyc'}),filters,core).routes[0].mode,'Subway');
+});

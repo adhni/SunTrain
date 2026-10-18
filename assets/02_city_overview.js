@@ -1,7 +1,7 @@
 (function (root) {
     "use strict";
     const modeNames = {train: "Train", subway: "Subway", tram: "Tram", bus: "Bus",
-        light_rail: "Light rail", commuter_rail: "Commuter rail", silver_line: "Silver Line", ferry: "Ferry"};
+        light_rail: "Light rail", regional_rail: "Regional rail", commuter_rail: "Commuter rail", silver_line: "Silver Line", ferry: "Ferry"};
 
     function summarize(day, filters, core) {
         const hours = Array.from({length: 24}, (_, i) => ({hour: (i + 3) % 24, departures: 0}));
@@ -18,7 +18,8 @@
             hours[(minuteHours.get(minute) + 21) % 24].departures++;
             const mode = service.mode || "train";
             const key = JSON.stringify([mode, service.operator, service.route_id || service.line]);
-            if (!routes.has(key)) routes.set(key, {line: service.line, mode: modeNames[mode] || mode,
+            const germanMode = day.city === "germany" ? {commuter_rail: "S-Bahn", subway: "U-Bahn / Stadtbahn"}[mode] : null;
+            if (!routes.has(key)) routes.set(key, {line: service.line, mode: germanMode || modeNames[mode] || mode,
                 operator: service.operator, departures: 0, color: core.vehicleColor(service, day.city)});
             routes.get(key).departures++;
             const schedule = service.stopIds || service.stops;

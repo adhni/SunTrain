@@ -2,7 +2,7 @@
 
 ## Current baseline
 
-- Boston covers **24–30 June 2024**: subway, Green Line B/C/D/E, Mattapan, scheduled MBTA commuter rail and **Silver Line SL1–SL5 plus SLW**. The initial rail-only pilot commit is `83310ab`; Silver Line is included in the same PR.
+- Boston covers **24–30 June 2024**: subway, Green Line B/C/D/E, Mattapan, scheduled MBTA commuter rail and **Silver Line SL1–SL5 plus SLW**, with regular MBTA buses available as an optional layer. The initial rail-only pilot commit is `83310ab`; Silver Line is included in the same PR.
 - This is historical **scheduled** movement. Do not add live feeds or infer passenger counts. Boston passenger sizing and heatmaps remain unavailable; Overview still analyses Melbourne.
 - Four official archives supply the week and neighbouring calendar dates: `20240613.zip`, `20240625.zip`, `20240626.zip`, `20240627.zip`. Select using the [official index](https://cdn.mbta.com/archive/archived_feeds.txt)'s validity windows, not ZIP filenames or today's timetable. The index can include retrospective corrections.
 - Bundled reference: `data/reference/boston/2024-06-24.json.gz`. It retains source URLs, versions, validity dates, hashes and preparation diagnostics. All seven days have all three rail categories and Silver Line, no duplicate occurrences within a day, no omitted invalid trips and no unresolved geometry patterns in this baseline.
@@ -20,15 +20,16 @@ The pilot dates are deliberately fixed in several places. There are **no start/e
 
 Start with complete additional weeks aligned to Melbourne's dates if that is what the user requests; do not automatically widen the scope to months or change Melbourne's dataset.
 
-## When adding the remaining buses
+## Regular buses: implemented, optional
 
-- Keep the existing week for the first bus test unless the user requests a date expansion too. Audit bus routes and trip availability in the same archived MBTA feeds before changing the UI.
-- Preparation currently selects MBTA rail routes plus the two Silver Line groups. Broaden route selection for regular buses and, if requested, replacement shuttles, then extend `replay_mode()`. Preserve classification by non-empty **`trip_route_type` override**, falling back to `route_type`. A bus replacing a rail service must appear once as a bus, never as a train too.
-- Silver Line is already implemented and should remain a distinct filter. Decide from the actual feed how to distinguish regular buses and replacement shuttles. Do not assume route names, current route lists or bus rapid transit being rail. Continue excluding non-MBTA agencies unless separately requested.
-- Reuse trip-specific shapes and the ordered stop projection in `project_stops()`. MBTA stop times lack distance anchors. Repeated stops and loops must retain journey order; distant or invalid matches remain gaps. Do not relax the 150 m matching threshold just to make an audit pass.
-- Add regular bus mode/filter options in `dashboard/cities.py`, and derive any additional direction options from actual feed values. Preserve `train` / `bus` stop tags and mode-aware stop deduplication so bus stops stay in the existing zoom-dependent local-stop layer.
-- **Keep regular buses orange (`#FF8200`) and Silver Line silver (`#7C878E`)**. `vehicleColor()` forces `bus` to orange, honours the historical Silver Line colour, and supplies a silver fallback for that mode. Do not collapse Silver Line into the generic orange bus colour rule. Preserve the existing Melbourne tram/train palettes and MBTA rail colours.
-- Update the rail-and-Silver-Line captions, quality message and attribution in `dashboard/cities.py` and `assets/train_replay.js`, plus README and mode-coverage tests. The four current archives have no `frequencies.txt`; audit any frequency-based schedules if newly selected feeds contain them rather than silently ignoring or inventing departures.
+- Regular MBTA buses now use the same **24–30 June 2024** week and four validated rail/Silver Line source archives. `--buses` verifies their SHA-256 against the existing baseline before preparing them. Keep rail and Silver Line selected initially; regular buses download only when Buses is selected, or Transport is cleared for all modes.
+- Daily references live at `data/reference/boston/bus/<date>.json.gz` (about **0.58–1.10 MB** each). Weekdays have **10,950 services / 150 active routes**; Saturday has **7,517 / 121**, Sunday **5,026 / 99**. All seven dates have no omitted trips or unresolved geometry patterns. Route records that are inactive that day are not fabricated.
+- **Regular buses are MBTA yellow (`#FFC72C`), from the historical feed; Silver Line stays silver (`#7C878E`).** Melbourne orange is specific to Melbourne. Other cities use their own palette or valid source route colour, with a neutral fallback for an unknown city.
+- `is_regular_bus()` selects MBTA type-3 routes, excluding official Silver Line groups and `Rail Replacement Bus` routes. Non-empty `trip_route_type` still overrides route type, so a bus substitution on a rail route cannot become either a regular bus or an animated train. Non-MBTA operators and ferries remain excluded.
+- Each bus follows its own dated road shape, with ordered stop projection within 150 m. Repeated stops and loops retain journey order. Regular stops use the zoom-dependent bus-stop layer; Silver Line remains a separate mode/filter.
+- `scripts/compact_transit.py` shares stop topologies and flat relative times, then selects the paths/stations needed for each daily file. Do not expand stop arrays per trip. The common optional-bus loader is shared with London and keeps its one merged-day cache bounded.
+- Rebuild regular buses with `PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_boston_replay.py --buses`. This preserves the separate rail/Silver file. `--output` accepts a daily-bundle directory in bus mode; `SUNTRAIN_BOSTON_BUS_REFERENCE` overrides that directory at runtime. For a date expansion, regenerate these daily files as well as rail and update their coverage together.
+- The four selected archives contain no frequency templates. Preparation rejects selected frequency-based trips in a future source until explicit handling is implemented. Keep MBTA attribution/licensing alongside the optional bus layer; no TfL geometry credit belongs on Boston data.
 
 ## Behaviour to preserve and checks to run
 
@@ -47,3 +48,5 @@ node --test tests/test_replay_animation.cjs tests/test_passenger_demand.cjs
 The rail-and-Silver-Line pilot passed **75 Python tests + 23 JavaScript tests**, plus desktop/mobile browser checks. Browser verification scripts and screenshots under `.cache/` are local artifacts, not tracked test dependencies.
 
 Keep **MassDOT / MBTA attribution**, the [Developer License Agreement](https://github.com/mbta/gtfs-documentation/blob/master/developers-license-agreement.pdf) link and the application's independent status visible. Do not introduce MBTA logos or claim exact historical vehicle movements.
+
+Regular-bus expansion validated on 18 October 2026: the combined five-city suite passed 160 Python and 26 JavaScript tests. Chrome verified yellow regular buses, separate silver Silver Line, optional downloads, shared flat schedules, route filters/details, clock preservation and 2,000× playback without server POSTs. A local first bus-only load measured about 1.25 seconds; this is not a hosted/mobile performance guarantee.

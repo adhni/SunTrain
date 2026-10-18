@@ -1,4 +1,4 @@
-"""Prepare historical NYC Subway replay, excluding Staten Island Railway.
+"""Prepare historical NYC Subway and Staten Island Railway replay.
 
 2024 ZIP access was unavailable; the permitted fallback is 15 December 2025–
 18 January 2026. These are regular, not supplemented, schedules.
@@ -82,7 +82,7 @@ def prepare(cache, output):
         with ZipFile(path) as archive:
             agencies = {r["agency_id"] for r in records(archive, "agency.txt") if r["agency_timezone"] == str(ZONE)}
             routes = {r["route_id"]: r for r in records(archive, "routes.txt")
-                      if r["route_type"] == "1" and r["route_id"] != "SI" and r["agency_id"] in agencies}
+                      if (r["route_type"] == "1" or r["route_id"] == "SI" and r["route_type"] == "2") and r["agency_id"] in agencies}
             calendars, exceptions = list(records(archive, "calendar.txt")), list(records(archive, "calendar_dates.txt"))
             active = {d: active_services(calendars, exceptions, d) for d in applicable}
             relevant = set().union(*active.values())
@@ -147,7 +147,7 @@ def prepare(cache, output):
                     route = routes[trip["route_id"]]
                     suffixes = {r["stop_id"][-1:] for r in sequence}
                     direction = "Northbound" if suffixes == {"N"} else "Southbound" if suffixes == {"S"} else "Direction " + {"0": "A", "1": "B"}.get(trip["direction_id"], "unknown")
-                    pattern = {"mode": "subway", "operator": "MTA NYCT", "line": f"{route['route_short_name']} · {route['route_long_name']}",
+                    pattern = {"mode": "commuter_rail" if route["route_id"] == "SI" else "subway", "operator": "MTA NYCT", "line": f"{route['route_short_name']} · {route['route_long_name']}",
                         "route_id": route["route_id"], "color": "#" + route["route_color"], "direction": direction,
                         "origin": stops[sequence[0]["stop_id"]]["stop_name"], "destination": trip.get("trip_headsign") or stops[sequence[-1]["stop_id"]]["stop_name"],
                         "stops": [[station, a - times[0][0], b - times[0][0]] for station, (a, b) in zip(ids, times)],
@@ -171,7 +171,7 @@ def prepare(cache, output):
         "source_url": SOURCE_URL, "license": "MTA data feed terms and conditions", "license_url": LICENSE_URL,
         "timezone": str(ZONE), "sources": sources, "daily_services": counts, "omitted_trips": dict(omissions),
         "unresolved_geometry_patterns": dict(gaps), "preferred_period_unavailable": "2024-05-27 through 2024-06-30: archive ZIP required credentials; MyTransit schedules stop at 2016",
-        "note": "Regular historical subway schedules, not a reconstruction of temporary service changes or individual express/local tracks. Staten Island Railway and other networks excluded. No train passenger loads."}
+        "note": "Regular historical NYC Subway and Staten Island Railway schedules, not a reconstruction of temporary service changes or individual express/local tracks. LIRR, Metro-North, buses and ferries are excluded. No train passenger loads."}
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + ".tmp")
     with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:

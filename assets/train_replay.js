@@ -159,7 +159,12 @@
         }
     }
     function vehicleColor(service, city) {
-        if (service.mode === "bus") return city === "london" ? "#DC241F" : BUS_COLOR;
+        if (service.mode === "bus") {
+            if (!city || city === "melbourne") return BUS_COLOR;
+            if (city === "london") return "#DC241F";
+            if (/^#[0-9a-f]{6}$/i.test(service.color || "")) return service.color;
+            return {boston: "#FFC72C", london: "#DC241F"}[city] || "#6F818E";
+        }
         if (/^#[0-9a-f]{6}$/i.test(service.color || "")) return service.color;
         if (service.mode === "silver_line") return "#7C878E";
         if (service.mode === "tram") {
@@ -460,6 +465,7 @@
                         buses.target = "_blank"; buses.rel = "noopener noreferrer";
                         attribution.append(document.createTextNode(" · "), buses);
                         for (const [label, url] of [["Bus timetable licence", day.bus_schedule.license_url], ["TfL bus road geometry", day.bus_schedule.geometry_source_url]]) {
+                            if (!url) continue;
                             const link = node("a", label); link.href = url;
                             link.target = "_blank"; link.rel = "noopener noreferrer";
                             attribution.append(document.createTextNode(" · "), link);
@@ -487,7 +493,7 @@
                 const license = node("a", day.schedule.license);
                 license.href = day.schedule.license_url; license.target = "_blank"; license.rel = "noopener noreferrer";
                 attribution.append(link, document.createTextNode(" · "), license,
-                    document.createTextNode(nyc ? ". Regular December 2025–January 2026 subway schedules; estimated positions follow published shapes, without guaranteed track-level accuracy or temporary service changes. Train passenger loads are unavailable. SunTrain is independent of MTA." : chicago ? ". Scheduled CTA rail replay for 2025; positions are estimates. Passenger counts are unavailable. This application is independent of CTA." :
+                    document.createTextNode(nyc ? ". Regular December 2025–January 2026 NYC Subway and Staten Island Railway schedules; estimated positions follow published shapes, without guaranteed track-level accuracy or temporary service changes. Train passenger loads are unavailable. SunTrain is independent of MTA." : chicago ? ". Scheduled CTA rail replay for 2025; positions are estimates. Passenger counts are unavailable. This application is independent of CTA." :
                         ". Scheduled rail and Silver Line replay; positions are estimates. Passenger counts are unavailable. This application is independent of MBTA."));
                 return;
             }
@@ -570,9 +576,9 @@
             if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
             else if (total) pieces.push("All selected journey legs have route geometry.");
             if (this.day.schedule?.replay_note) pieces.push(this.day.schedule.replay_note);
-            else if (this.day.city === "boston") pieces.push("Rail and Silver Line pilot. Other buses and replacement shuttles are excluded; timetable changes follow the historical archive.");
+            else if (this.day.city === "boston") pieces.push("Rail and Silver Line open first. Select Buses under Transport for regular MBTA buses. Rail replacement shuttles are excluded; calendars follow the historical archive.");
             else if (this.day.city === "chicago") pieces.push("CTA rail only, using November–December 2025 schedules. Metra and buses are unavailable; direction A/B follows the feed where compass directions are not supplied.");
-            else if (this.day.city === "nyc") pieces.push("NYC Subway regular schedules for December 2025–January 2026. Express/local stop patterns and branches follow the feed; shapes do not establish individual running tracks. Other NYC networks are excluded.");
+            else if (this.day.city === "nyc") pieces.push("NYC Subway and Staten Island Railway regular schedules for December 2025–January 2026. Express/local patterns and branches follow the feed; shapes do not establish individual running tracks. LIRR, Metro-North and buses are excluded.");
             else if (this.day.city === "singapore") pieces.push("Singapore MRT and LRT schedules on OpenStreetMap railway paths. The timetable snapshot does not reconstruct every past disruption. One anomalous Sunday NS trip has no interpolated movement.");
             else if (!this.day.transit?.available) pieces.push("Tram and bus timetables are unavailable for this date.");
             if (uncertain) pieces.push(`${uncertain} services contain ambiguous daylight-saving times; earliest consistent times are shown.`);

@@ -17,7 +17,7 @@ from flask import abort, request, send_file
 from dashboard import data, replay, transit
 from dashboard.cities import city_settings
 
-FORMAT_VERSION = 1
+FORMAT_VERSION = 2
 CACHE_LIMIT = 256 * 1024 * 1024
 BUILD_LOCKS = [threading.Lock() for _ in range(16)]
 CACHE_LOCK = threading.Lock()
@@ -58,12 +58,11 @@ def descriptor(business_date, city, modes=None):
             stamps.append(transit.fingerprint(business_date))
     else:
         stamps = [_stamp(replay.prepared_path(city))]
-        if city == "london" and "bus" in modes:
-            directory = Path(os.getenv("SUNTRAIN_LONDON_BUS_REFERENCE", str(replay.ROOT / "data/reference/london/bus")))
-            stamps.append(_stamp(directory / (business_date + ".json.gz")))
+        if city in replay.BUS_REFERENCE_CITIES and "bus" in modes:
+            stamps.append(_stamp(replay.bus_reference_file(city, business_date)))
     revision = hashlib.sha256(repr((FORMAT_VERSION, city, business_date, modes, stamps)).encode()).hexdigest()[:24]
     return {"city": city, "business_date": business_date, "modes": list(modes), "revision": revision,
-            "bus_data_loaded": city == "london" and "bus" in modes,
+            "bus_data_loaded": city in replay.BUS_REFERENCE_CITIES and "bus" in modes,
             "url": f"/api/replay/{city}/{business_date}/{revision}.json?" + urlencode({"modes": ",".join(modes)})}
 
 

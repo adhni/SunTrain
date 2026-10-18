@@ -32,7 +32,7 @@ def test_nyc_bundled_subway_routes_shuttles_geometry_and_service_calendars():
     assert not reference["metadata"]["omitted_trips"]
     patterns = reference["patterns"]
     route_ids = {p["route_id"] for p in patterns.values()}
-    assert len(route_ids) == 28 and "SI" not in route_ids
+    assert len(route_ids) == 29 and "SI" in route_ids
     assert {"6X", "7X", "FX", "FS", "GS", "H"} <= route_ids
     shuttles = {p["line"] for p in patterns.values() if p["route_id"] in {"FS", "GS", "H"}}
     assert len(shuttles) == 3
@@ -45,7 +45,7 @@ def test_nyc_bundled_subway_routes_shuttles_geometry_and_service_calendars():
         assert len({(trip, offset) for _, trip, offset in rows}) == len(rows)
         assert {"FS", "GS", "H"} <= {patterns[p]["route_id"] for p, _, _ in rows}
     for pattern in patterns.values():
-        assert pattern["mode"] == "subway" and pattern["operator"] == "MTA NYCT"
+        assert pattern["mode"] == ("commuter_rail" if pattern["route_id"] == "SI" else "subway") and pattern["operator"] == "MTA NYCT"
         assert len(pattern["stops"]) == len(pattern["legs"]) + 1
         assert all(len(stop) == 3 for stop in pattern["stops"])
         assert pattern["direction"] in {"Northbound", "Southbound", "Direction A", "Direction B"}
@@ -73,7 +73,7 @@ def test_nyc_loading_uses_new_york_time_and_shared_patterns_without_other_networ
     assert datetime.fromtimestamp(day["initial"], ZoneInfo(day["timezone"])).isoformat() == "2025-12-15T08:00:00-05:00"
     assert all("stops" not in service for service in day["services"])
     assert "MTA NYC Subway" in day["schedule"]["source"]
-    assert all(p["route_id"] != "SI" for p in day["transit_patterns"].values())
+    assert any(p["route_id"] == "SI" and p["color"] == "#08179C" for p in day["transit_patterns"].values())
     assert get_replay_day("2025-12-15", "nyc") is day
     with pytest.raises(ValueError, match="covers"):
         get_replay_day("2024-06-24", "nyc")

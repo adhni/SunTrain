@@ -30,7 +30,7 @@ def test_bundled_rail_has_valid_calendars_references_geometry_and_shared_schedul
         assert rows and len({(trip, offset) for _, trip, offset in rows}) == len(rows)
         assert all(p in patterns for p, _, _ in rows)
     for pattern in patterns.values():
-        assert pattern["mode"] in {"train", "subway"}
+        assert pattern["mode"] in {"train", "subway", "light_rail", "commuter_rail"}
         assert len(pattern["stops"]) == len(pattern["legs"]) + 1
         assert all(len(stop) == 3 for stop in pattern["stops"])
         assert pattern["stops"][0][1] == 0
@@ -66,16 +66,18 @@ def test_city_loader_has_correct_local_clock_and_never_queries_melbourne_warehou
         get_replay_day("2000-01-01", city)
 
 
-def test_sydney_scope_excludes_trainlink_and_replacement_buses():
+def test_sydney_scope_includes_intercity_light_rail_and_excludes_replacements_and_newcastle():
     assert selected_route("sydney", {"agency_id": "x0001", "route_type": "2"}, {})
     assert selected_route("sydney", {"agency_id": "SMNW", "route_type": "401"}, {})
     assert not selected_route("sydney", {"agency_id": "x0001", "route_type": "700"}, {})
-    assert not selected_route("sydney", {"agency_id": "X0000", "route_type": "2"}, {})
+    assert selected_route("sydney", {"agency_id": "X0000", "route_type": "2"}, {})
+    assert selected_route("sydney", {"agency_id": "PLR", "route_type": "900"}, {})
+    assert not selected_route("sydney", {"agency_id": "NT", "route_type": "900"}, {})
     assert not selected_route("sydney", {"agency_id": "711", "route_type": "106"}, {})
     with gzip.open(ROOT / "data/reference/sydney/2026-10-05.json.gz", "rt") as stream:
         reference = json.load(stream)
-    assert {p["route_id"] for p in reference["patterns"].values()} == {"M1", *[f"T{i}" for i in range(1, 10)]}
-    assert {p["operator"] for p in reference["patterns"].values()} == {"Sydney Trains", "Sydney Metro"}
+    assert {p["route_id"] for p in reference["patterns"].values()} >= {"M1", "BMT", "CCN", "SCO", "L1", "L2", "L3", "L4", *[f"T{i}" for i in range(1, 10)]}
+    assert {p["operator"] for p in reference["patterns"].values()} == {"Sydney Trains", "Sydney Metro", "NSW Trains", "Sydney Light Rail", "Parramatta Light Rail"}
     assert not reference["metadata"]["unresolved_geometry_patterns"]
 
 
@@ -117,11 +119,12 @@ def test_spaced_official_csv_headers_are_normalized_without_changing_coordinates
         assert list(records(archive, "shapes.txt")) == [{"shape_id": "a", "shape_pt_lat": "-31.5", "shape_pt_lon": "115.8", "shape_pt_sequence": "1"}]
 
 
-def test_brisbane_scope_keeps_queensland_rail_and_excludes_other_modes():
+def test_brisbane_scope_keeps_rail_and_glink_and_excludes_buses():
     assert selected_route("brisbane", {"agency_id": "5", "route_type": "2"}, {})
     assert not selected_route("brisbane", {"agency_id": "5", "route_type": "3"}, {})
     assert not selected_route("brisbane", {"agency_id": "3", "route_type": "0"}, {})
+    assert selected_route("brisbane", {"agency_id": "32", "route_type": "0"}, {})
     with gzip.open(ROOT / "data/reference/brisbane/2026-10-05.json.gz", "rt") as stream:
         reference = json.load(stream)
-    assert {p["operator"] for p in reference["patterns"].values()} == {"Queensland Rail"}
+    assert {p["operator"] for p in reference["patterns"].values()} == {"Queensland Rail", "Keolis Downer"}
     assert not reference["metadata"]["unresolved_geometry_patterns"]

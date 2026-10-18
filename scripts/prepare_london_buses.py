@@ -29,6 +29,7 @@ from scripts.prepare_australian_replay import file_hash, records
 from scripts.prepare_boston_replay import fetch
 from scripts.prepare_singapore_replay import match_geometry
 from scripts.prepare_transit_replay import active_services, seconds
+from scripts.compact_transit import compact_reference
 
 FIRST, LAST = date(2026, 10, 5), date(2026, 10, 11)
 ZONE = ZoneInfo("Europe/London")
@@ -60,21 +61,7 @@ def compact(reference):
     Flat times avoid millions of tiny stop arrays in the browser. No schedule
     is expanded during hydration or copied into individual service records.
     """
-    if "stop_patterns" in reference:
-        return reference
-    stop_patterns, ordered = {}, {}
-    rows = sorted(reference["patterns"].items(), key=lambda item: (item[1]["route_id"], item[1]["operator"],
-                  tuple(s[0] for s in item[1]["stops"]), tuple(v for s in item[1]["stops"] for v in s[1:])))
-    for key, pattern in rows:
-        topology = {"stations": [s[0] for s in pattern["stops"]], "legs": pattern.pop("legs")}
-        identifier = "lbus-stops-" + hashlib.sha256(json.dumps(topology).encode()).hexdigest()[:20]
-        stop_patterns.setdefault(identifier, topology)
-        pattern["stop_pattern"] = identifier
-        pattern["times"] = [v for stop in pattern.pop("stops") for v in stop[1:]]
-        ordered[key] = pattern
-    reference["patterns"], reference["stop_patterns"] = ordered, stop_patterns
-    reference["metadata"]["schedule_encoding"] = "shared-stops-flat-times-v1"
-    return reference
+    return compact_reference(reference, prefix="lbus-stops-")
 
 
 def compile_geometry(archive, scope, output):

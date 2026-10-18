@@ -185,3 +185,15 @@ test('Silver Line stays silver, retains its route identities and filters separat
     assert.equal(matches(bus,filters,silver),true);
     assert.equal(matches(bus,{...filters,modes:['subway']},silver),false);
 });
+
+
+test('regular buses use their city colours while Melbourne and Silver Line retain their palettes', () => {
+    const {vehicleColor} = require('../assets/train_replay.js');
+    assert.equal(vehicleColor({mode:'bus',color:'#FFC72C'},'boston'),'#FFC72C');
+    assert.equal(vehicleColor({mode:'bus'},'boston'),'#FFC72C');
+    assert.equal(vehicleColor({mode:'silver_line',color:'#7C878E'},'boston'),'#7C878E');
+    assert.equal(vehicleColor({mode:'bus',color:'#FFC72C'},'melbourne'),'#FF8200');
+    assert.equal(vehicleColor({mode:'bus',color:'#FF8200'},'london'),'#DC241F');
+    assert.equal(vehicleColor({mode:'bus',color:'#006CB7'},'nyc'),'#006CB7');
+    assert.equal(vehicleColor({mode:'bus'},'sydney'),'#6F818E');
+});

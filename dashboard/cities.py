@@ -132,6 +132,17 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "france": {
+        "name": "France", "timezone": "Europe/Paris",
+        "bounds": [[-5.3, 41.3], [9.8, 51.2]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "default_modes": ["train"],
+        "description": "French passenger trains for one week. Select RER / Transilien under Transport to add suburban rail. Passenger counts are unavailable.",
+        "modes": [("National trains", "train"), ("RER / Transilien", "commuter_rail")],
+        "operators": [(name, name) for name in ("SNCF VOYAGEURS", "SNCF Voyageurs SA", "SNCF Voyageurs EA",
+                       "SNCF Voyageurs LO", "TMR SA", "OCEdefault", "RER", "Transilien")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
     "germany": {
         "name": "Germany", "timezone": "Europe/Berlin",
         "bounds": [[5.7, 47.2], [15.3, 55.1]], "passenger_data": False,

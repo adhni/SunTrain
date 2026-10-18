@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Canada, Germany, the Netherlands, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Canada, France, Germany, the Netherlands, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## France rail
+
+Choose **France** for **1–7 June 2026**, matching the Netherlands and Germany. National trains open first: **TGV INOUI, OUIGO, Intercités, night trains and TER**, plus ICE/Lyria services represented in the historical SNCF archive. International journeys retain French/border-coded station portions and original times. Select **RER / Transilien** under Transport for suburban schedules. Their geometry is partial, especially RER A/B and part of E; unmapped movement stays hidden between stops. Passenger counts are unavailable.
+
+The existing map, filters, playback, Overview, themes and fullscreen apply. Official SNCF Réseau track alignments provide inferred railway paths, with about **99.9%** of national scheduled legs matched. Timetables and derived geometry are **ODbL 1.0**, with SNCF/SNCF Réseau attribution. See [France expansion notes](FRANCE_EXPANSION_NOTES.md) for pinned sources, coverage, geometry limits and rebuild instructions.
 
 ## Germany rail
 

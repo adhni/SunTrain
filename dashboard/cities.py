@@ -124,6 +124,16 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "germany": {
+        "name": "Germany", "timezone": "Europe/Berlin",
+        "bounds": [[5.7, 47.2], [15.3, 55.1]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "default_modes": ["train"],
+        "description": "One week of German ICE, IC, EC and ECE trains, including overnight services and German portions of international journeys. Passenger counts are unavailable.",
+        "modes": [("Long-distance trains", "train")],
+        "operators": [(name, name) for name in ("DB Fernverkehr AG", "SNCF", "Dänische Staatsbahnen", "SÜWEX")],
+        "directions": [("Not specified", "Not specified")],
+    },
     "netherlands": {
         "name": "Netherlands", "timezone": "Europe/Amsterdam",
         "bounds": [[3.3, 50.7], [7.3, 53.6]], "passenger_data": False,

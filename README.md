@@ -4,7 +4,7 @@ Historical transport replay across Australia, Canada, the United Kingdom, the Un
 
 ## Loading and performance
 
-Every city uses compressed, versioned replay downloads for the selected date and transport modes. Melbourne opens with trains; select Trams or Buses under **Transport** to load them, or clear Transport for all modes. London opens with rail. Other cities retain their available-mode defaults. Mode changes preserve the replay clock and complete journeys.
+Every city uses compressed, versioned replay downloads for the selected date and transport modes. Melbourne opens with trains; select Trams or Buses under **Transport** to load them, or clear Transport for all modes. Boston opens with rail and Silver Line; regular buses are optional. London opens with rail. Other cities retain their available-mode defaults. Mode changes preserve the replay clock and complete journeys.
 
 Overview charts and tables mount only when their section opens. Plotly and the raw-data table are deferred until needed. Replay playback tracks active services rather than scanning the whole day each frame; passenger heatmap indexes are built on demand. Switching cities releases previous replay indexes and map features.
 
@@ -13,6 +13,8 @@ The browser's Dash store holds only a small download descriptor. `/api/replay/<c
 Local headless Chrome measurements on 18 October 2026: the opening Melbourne replay download fell from **39.90 MB to 0.73 MB**, with **zero hidden charts instead of 13**. A cold generated response reached a usable map in **3.54 seconds**, versus the earlier **8.56 seconds**; cached-response fresh-page checks were about **2.9–3.0 seconds**. The lighter default also reduced the initial JS heap from approximately **137 MB to 35–38 MB**. These are local software-rendered browser measurements, not hosted-site or physical-phone guarantees. Full London buses remain a substantial optional layer; its first uncached load measured about **10.8 seconds**, versus about **2.4 seconds** with the generated response cached.
 
 Browser checks cover all 13 cities, 2,000× playback, mode changes preserving time, full London buses, Melbourne heatmaps, Overview subtabs and both themes. With an uncached browser, a phone viewport, 4× CPU throttling and a 5 Mbit/s connection with 80 ms latency, the opening map reached usable state in **5.51 seconds** using the server's generated response cache. After loading London buses and repeatedly switching to Boston/Toronto, garbage-collected Toronto JS heap settled at **17–22 MB**; superseded bus downloads cancelled without overwriting the selected city.
+
+Melbourne’s full FY2023–24 train warehouse is only **43.2 MB** compressed (15.6 million stop rows). Keep the full year: the browser downloads one selected day. The current 126 Parquet row groups mix dates across the year, limiting date pruning; a future performance change should benchmark sorting by `Business_Date` or date/month partitioning rather than deleting history. [DuckDB documents Parquet filter pushdown and partition pruning](https://duckdb.org/docs/current/guides/performance/file_formats#hive-partitioning-for-filter-pushdown). No warehouse data is removed by the city expansion.
 
 ## London rail
 
@@ -73,12 +75,12 @@ Choose the city in **Replay city**. These railway additions reuse route/operator
 
 | City | Supported historical period | Railway coverage |
 | --- | --- | --- |
-| Sydney | 5–11 October 2026 | Sydney Trains T1–T9 and Metro M1 |
-| Adelaide | 27 May–30 June 2024 | Suburban rail and its scheduled short-turn services; Port Dock had not opened |
+| Sydney | 5–11 October 2026 | Sydney Trains T1–T9, Metro M1, TrainLink intercity BMT/CCN/SCO and light rail L1–L4 |
+| Adelaide | 27 May–30 June 2024 | Suburban rail and Torrens Connect trams; Port Dock had not opened |
 | Perth | 5–11 October 2026 | Eight suburban lines and stadium specials when scheduled; Transwa excluded |
-| Brisbane | 5–11 October 2026 | Queensland Rail suburban/interurban services across SEQ |
+| Brisbane | 5–11 October 2026 | Queensland Rail across SEQ and G:link Gold Coast light rail |
 
-Adelaide uses official historical **version 1430**, covering the preferred five weeks. The other additions use publicly downloadable, pinned archives for a complete October 2026 week; a suitable 2024 ZIP was not obtained. Network changes are represented by each archive's actual calendars and stop sequences. This is a schedule replay, not observed GPS or a reconstruction of every disruption. Shapes come from the same archived timetable as the services. Passenger data was investigated, but no individual-train loads are supplied, so passenger sizing and heatmaps stay unavailable for these cities. Trams/light rail, buses and ferries remain future additions documented in the notes.
+Adelaide uses official historical **version 1430**, covering the preferred five weeks. The other additions use publicly downloadable, pinned archives for a complete October 2026 week; a suitable 2024 ZIP was not obtained. Network changes are represented by each archive's actual calendars and stop sequences. This is a schedule replay, not observed GPS or a reconstruction of every disruption. Shapes come from the same archived timetable as the services. Passenger data was investigated, but no individual-train loads are supplied, so passenger sizing and heatmaps stay unavailable for these cities. Sydney/Adelaide/Gold Coast light rail is enabled with separate Transport filters and historical route colours. Sydney regional TrainLink, Newcastle light rail, Australian city buses outside Melbourne and ferries remain future additions documented in the notes.
 
 Rebuild the compact references with:
 
@@ -93,9 +95,9 @@ Preparation downloads the pinned archives to `.cache/australian-cities/<city>/`,
 
 Source acknowledgements appear alongside each map. Sydney uses the [TfNSW Creative Commons Attribution data](https://opendata.transport.nsw.gov.au/dataset/timetables-complete-gtfs); Adelaide and Brisbane use CC BY 4.0 with government attribution. Perth uses the [PTA Spatial Data Licence](https://www.transperth.wa.gov.au/About/Spatial-Data-Access): **source data is available free of charge from www.transperth.wa.gov.au**. SunTrain is independent of the data providers and uses no official logos or map artwork. See [Australian expansion notes](AUSTRALIAN_EXPANSION_NOTES.md) for validated sources, network changes, licensing and future passenger/mode opportunities.
 
-## NYC Subway
+## NYC Subway and Staten Island Railway
 
-Choose **New York City** in **Replay city** for **15 December 2025–18 January 2026**, five full weeks of regular MTA subway schedules. All 28 subway route IDs represented in the archive are retained, including 6X, 7X, FX, weekday services, branches and the separate 42 St, Franklin Avenue and Rockaway Park shuttles. Only services active on the selected date appear. Staten Island Railway, LIRR, Metro-North and buses are excluded. The existing controls, route colours, local New York clock, filters, fullscreen and themes are reused.
+Choose **New York City** in **Replay city** for **15 December 2025–18 January 2026**, five full weeks of regular MTA subway schedules. All 28 subway route IDs represented in the archive are retained, including 6X, 7X, FX, weekday services, branches and the separate 42 St, Franklin Avenue and Rockaway Park shuttles. Staten Island Railway (`SI`) is also included, with its own Transport filter, source blue (`#08179C`) and a view extending to Staten Island. Only services active on the selected date appear. LIRR, Metro-North and buses are excluded. The existing controls, route colours, local New York clock, filters, fullscreen and themes are reused.
 
 The requested May–June 2024 historical ZIP required archive credentials. The supplied MyTransit archive is publicly accessible but its GTFS folders stop at 2016. This permitted fallback uses the [historical MTA regular feed captured on 5 December 2025](https://files.mobilitydatabase.org/mdb-516/mdb-516-202512050000/mdb-516-202512050000.zip), valid from 8 December. The chosen period includes the adjoining service dates needed for overnight carry-ins. A November alternative was rejected because 2,274 subway trips had blank shape IDs. The bundled fallback has no omitted invalid trips or unresolved geometry patterns.
 
@@ -107,7 +109,7 @@ Rebuild with:
 ./.venv/bin/python scripts/prepare_nyc_replay.py
 ```
 
-The script caches downloads under `.cache/nyc-archives/` and writes `data/reference/nyc/2025-12-15.json.gz` (about 3.86 MB). `SUNTRAIN_NYC_REFERENCE` overrides the file. Schedules, geometry and relative stop times remain shared; only the selected day is sent to the browser. The date badge explicitly includes both years.
+The script caches downloads under `.cache/nyc-archives/` and writes `data/reference/nyc/2025-12-15.json.gz` (about 3.91 MB). `SUNTRAIN_NYC_REFERENCE` overrides the file. Schedules, geometry and relative stop times remain shared; only the selected day is sent to the browser. The date badge explicitly includes both years.
 
 Official hourly station-complex ridership and monthly/day-of-week/hour origin–destination estimates were verified as accessible for 2024. They are documented for optional station-level features, and are not mixed with these 2025–2026 schedules or presented as individual train loads. NYC passenger sizing and Melbourne's recorded-train-boarding heatmap stay unavailable. See [NYC data and expansion notes](NYC_EXPANSION_NOTES.md) for sources and the other networks' future integration issues.
 
@@ -145,9 +147,9 @@ See [Chicago data and expansion notes](CHICAGO_EXPANSION_NOTES.md) for the archi
 
 ## Boston replay pilot
 
-Choose **Boston** in the replay's **Replay city** selector to explore **24–30 June 2024**. Subway (Red, Orange and Blue), light rail (Green B/C/D/E and Mattapan), scheduled MBTA commuter rail and **Silver Line SL1–SL5 plus SLW** use the existing playback controls, route/mode/direction filters, journey details, dark mode and fullscreen. Silver Line has its own transport filter and retains individual route labels, including the SLW short-turn service where scheduled. Boston uses `America/New_York` local time, historical rail colours and a metropolitan Boston starting view. **Silver Line uses silver (`#7C878E`); other buses use orange (`#FF8200`).** **Fit selection** also shows outlying commuter rail termini. The Overview tab continues to analyse Melbourne passenger data.
+Choose **Boston** in the replay's **Replay city** selector to explore **24–30 June 2024**. Subway (Red, Orange and Blue), light rail (Green B/C/D/E and Mattapan), scheduled MBTA commuter rail and **Silver Line SL1–SL5 plus SLW** use the existing playback controls, route/mode/direction filters, journey details, dark mode and fullscreen. Silver Line has its own transport filter and retains individual route labels, including the SLW short-turn service where scheduled. Boston uses `America/New_York` local time, historical rail colours and a metropolitan Boston starting view. **Silver Line uses silver (`#7C878E`); regular MBTA buses use yellow (`#FFC72C`).** Select **Buses** under Transport to download regular buses, or clear Transport for all modes. Rail and Silver Line open initially. **Fit selection** also shows outlying commuter rail termini. The Overview tab continues to analyse Melbourne passenger data.
 
-This is a scheduled-service simulation. It does not reproduce GPS movements, delays or disruptions missing from the archived timetable. Boston has no passenger counts: passenger sizing and heatmap controls are unavailable. Replacement shuttles, regular bus routes, ferries and non-MBTA operators (including CapeFLYER) are excluded from this pilot. Only services active in the historical calendars appear; a listed line without active trips is not fabricated.
+This is a scheduled-service simulation. It does not reproduce GPS movements, delays or disruptions missing from the archived timetable. Boston has no passenger counts: passenger sizing and heatmap controls are unavailable. Replacement shuttles, ferries and non-MBTA operators (including CapeFLYER) remain excluded. Regular MBTA buses are an optional layer: weekdays have 150 active routes and 10,950 scheduled journeys. Only services active in the historical calendars appear; a listed line without active trips is not fabricated.
 
 Data is provided by **MassDOT / MBTA**, under its [Developer License Agreement](https://github.com/mbta/gtfs-documentation/blob/master/developers-license-agreement.pdf). SunTrain is independent of MassDOT and MBTA. The [official archive index](https://cdn.mbta.com/archive/archived_feeds.txt) selects four feeds for this week and the adjoining calendar dates needed for overnight services: `20240613.zip`, `20240625.zip`, `20240626.zip` and `20240627.zip`. The index's recommended validity windows determine selection, including retrospective corrections; ZIP filename dates are not assumed to be publication dates. Source URLs, versions, validity dates and SHA-256 hashes are retained in the prepared reference.
 
@@ -155,13 +157,14 @@ Rebuild the pilot with:
 
 ```bash
 ./.venv/bin/python scripts/prepare_boston_replay.py
+./.venv/bin/python scripts/prepare_boston_replay.py --buses
 ```
 
-The script caches source downloads in `.cache/boston-archives/` and writes the compressed reference `data/reference/boston/2024-06-24.json.gz`. It applies service calendars and exceptions, trip-level vehicle-type overrides and extended-hour times. Silver Line membership comes from the feed's `line-SLWaterfront` and `line-SLWashington` groups; it remains a bus service with bus stops shown at closer zoom levels. Trips overlapping the 03:00 boundary remain visible on either side, with no duplicate occurrences within a replay day. Stop schedules and route geometry are shared by compact trip instances; only the selected day and its referenced paths are sent to the browser. Boston loading does not query Melbourne's passenger warehouse. `SUNTRAIN_BOSTON_REFERENCE` overrides the prepared reference path.
+The script caches source downloads in `.cache/boston-archives/` and writes the compressed reference `data/reference/boston/2024-06-24.json.gz`. It applies service calendars and exceptions, trip-level vehicle-type overrides and extended-hour times. Silver Line membership comes from the feed's `line-SLWaterfront` and `line-SLWashington` groups; it remains a bus service with bus stops shown at closer zoom levels. Trips overlapping the 03:00 boundary remain visible on either side, with no duplicate occurrences within a replay day. Stop schedules and route geometry are shared by compact trip instances; only the selected day and its referenced paths are sent to the browser. Boston loading does not query Melbourne's passenger warehouse. `SUNTRAIN_BOSTON_REFERENCE` overrides the rail/Silver reference path. Regular buses have separate daily compact references in `data/reference/boston/bus/` (0.58–1.10 MB each); `SUNTRAIN_BOSTON_BUS_REFERENCE` overrides that directory. Stops and relative schedules stay shared.
 
 MBTA stop times lack distance anchors. Preparation projects the whole ordered stop sequence onto each trip's own shape, preserving branches and repeated stop occurrences. Stop projections must lie within 150 metres of that shape; invalid geometry stays as a gap, with markers hidden between those stops. Supplied shapes are simplified at approximately six metres. The bundled week has no omitted invalid trips or unresolved geometry patterns. These checks establish consistency with the published feed, not independent proof of every historical track movement.
 
-For future date extensions or bus support, see [Boston expansion notes](BOSTON_EXPANSION_NOTES.md), including the current fixed-date settings, archive selection, bus classification and checks to preserve.
+For future date extensions or additional bus coverage, see [Boston expansion notes](BOSTON_EXPANSION_NOTES.md), including the current fixed-date settings, archive selection, bus classification and checks to preserve.
 
 ## Structure
 
@@ -322,7 +325,7 @@ Notes:
 
 ## Transport Replay
 
-The **Transport Replay** tab combines Metro and V/Line train records with archived PTV tram and bus schedules for **27 May–30 June 2024** (five full Monday–Sunday weeks), opening on Monday 27 May at 08:00. Choose a day, press **Play**, or drag the timeline. Filter by transport mode, operator/feed, route, direction, stop served or service/trip number. Stop filters keep each matching service's entire journey. Trams and metropolitan trains use the supplied route and line colors in both themes; all buses are orange (#FF8200). Route colors also appear in the legend, service details and selected journey. Name variations are normalized; Stony Point uses Frankston green, V/Line uses purple, and unrecognized routes use neutral grey. Bus coverage includes complete branch-4 journeys with at least one stop inside the Melbourne map extent (144.55–145.6° E, 38.15–37.48° S), including journeys continuing beyond it. This is a timetable replay, not live tracking.
+The **Transport Replay** tab combines Metro and V/Line train records with archived PTV tram and bus schedules for **27 May–30 June 2024** (five full Monday–Sunday weeks), opening on Monday 27 May at 08:00. Choose a day, press **Play**, or drag the timeline. Filter by transport mode, operator/feed, route, direction, stop served or service/trip number. Stop filters keep each matching service's entire journey. Trams and metropolitan trains use the supplied route and line colors in both themes; Melbourne buses are orange (#FF8200). Other cities retain their own bus colours (Boston yellow, London red). Route colors also appear in the legend, service details and selected journey. Name variations are normalized; Stony Point uses Frankston green, V/Line uses purple, and unrecognized routes use neutral grey. Bus coverage includes complete branch-4 journeys with at least one stop inside the Melbourne map extent (144.55–145.6° E, 38.15–37.48° S), including journeys continuing beyond it. This is a timetable replay, not live tracking.
 
 Click a vehicle to inspect its scheduled journey. **Size trains by passengers** affects trains with known loads; trams and buses keep their normal size and show passenger counts as unavailable. The **Passenger heatmap** uses train boardings only; selecting only trams or buses leaves the heatmap empty. Tram/bus directions A and B distinguish the two feed directions; they do not imply travel toward or away from the city. Operator/feed labels identify the PTV source, rather than the individual bus operating company.
 

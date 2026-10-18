@@ -25,6 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from dashboard.replay import cumulative_distances
 from scripts.prepare_replay_geometry import clip_path, point_at, simplify
 from scripts.prepare_transit_replay import active_services, records, seconds
+from scripts.compact_transit import compact_reference, daily_reference
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX_URL = "https://cdn.mbta.com/archive/archived_feeds.txt"
@@ -34,6 +35,7 @@ ZONE = ZoneInfo("America/New_York")
 MODES = {"0": "light_rail", "1": "subway", "2": "commuter_rail"}
 SILVER_LINE_GROUPS = {"line-SLWaterfront", "line-SLWashington"}
 SUPPORTED_MODES = set(MODES.values()) | {"silver_line"}
+BASELINE_REFERENCE = ROOT / "data/reference/boston/2024-06-24.json.gz"
 
 
 def service_zero(day):
@@ -92,11 +94,17 @@ def is_silver_line(route):
     return route.get("line_id") in SILVER_LINE_GROUPS
 
 
-def replay_mode(trip, route):
+def is_regular_bus(route):
+    return route["route_type"] == "3" and not is_silver_line(route) and route.get("route_desc") != "Rail Replacement Bus"
+
+
+def replay_mode(trip, route, regular_buses=False):
     # MBTA replacement buses may use a rail route ID. The trip override wins.
     vehicle_type = trip.get("trip_route_type", "").strip() or route["route_type"]
     if vehicle_type == "3" and is_silver_line(route):
         return "silver_line"
+    if vehicle_type == "3" and regular_buses and is_regular_bus(route):
+        return "bus"
     return MODES.get(vehicle_type)
 
 
@@ -122,7 +130,7 @@ def fetch(url, path):
     return path
 
 
-def prepare(cache, output):
+def prepare(cache, output, *, buses=False):
     cache.mkdir(parents=True, exist_ok=True)
     index_path = fetch(INDEX_URL, cache / "index.csv")
     with index_path.open(encoding="utf-8-sig") as stream:
@@ -134,11 +142,16 @@ def prepare(cache, output):
     station_ids, geometry_cache = {}, {}
     omissions, exclusions, geometry_failures = Counter(), Counter(), Counter()
     sources = []
+    if buses:
+        with gzip.open(BASELINE_REFERENCE, "rt") as stream:
+            pins = {r["archive_url"]: r["sha256"] for r in json.load(stream)["metadata"]["sources"]}
     for url in sorted({row["archive_url"] for row in selected.values()}):
         source = next(row for row in selected.values() if row["archive_url"] == url)
         archive_path = fetch(url, cache / url.rsplit("/", 1)[1])
         sources.append({key: source[key] for key in ("feed_start_date", "feed_end_date", "feed_version", "archive_url")})
         sources[-1]["sha256"] = hashlib.sha256(archive_path.read_bytes()).hexdigest()
+        if buses and pins.get(url) != sources[-1]["sha256"]:
+            raise ValueError("Bus source differs from the validated Boston rail archive")
         applicable = [d for d in service_days if selected[d]["archive_url"] == url]
         with ZipFile(archive_path) as archive:
             calendars = list(records(archive, "calendar.txt")) if "calendar.txt" in archive.namelist() else []
@@ -147,17 +160,20 @@ def prepare(cache, output):
             relevant = set().union(*active.values())
             agencies = {r["agency_id"] for r in records(archive, "agency.txt") if r["agency_name"] == "MBTA"}
             routes = {r["route_id"]: r for r in records(archive, "routes.txt")
-                      if r["agency_id"] in agencies and (r["route_type"] in MODES or is_silver_line(r))}
+                      if r["agency_id"] in agencies and (is_regular_bus(r) if buses else r["route_type"] in MODES or is_silver_line(r))}
             canonical = {r["route_pattern_id"] for r in records(archive, "route_patterns.txt")
                          if r.get("route_pattern_typicality") == "5"}
             trips = {}
             for trip in records(archive, "trips.txt"):
                 if trip["route_id"] not in routes or trip["service_id"] not in relevant:
                     continue
-                if not replay_mode(trip, routes[trip["route_id"]]):
+                mode = replay_mode(trip, routes[trip["route_id"]], regular_buses=buses)
+                if not mode or buses and mode != "bus":
                     exclusions["replacement_bus_trip_records"] += 1
                 elif trip.get("route_pattern_id") not in canonical:
                     trips[trip["trip_id"]] = trip
+            if "frequencies.txt" in archive.namelist() and any(r["trip_id"] in trips for r in records(archive, "frequencies.txt")):
+                raise ValueError("Frequency-based MBTA service needs explicit handling")
             directions = {(r["route_id"], r["direction_id"]): r["direction"] for r in records(archive, "directions.txt")}
             stops = {r["stop_id"]: r for r in records(archive, "stops.txt")}
             calls = defaultdict(list)
@@ -197,8 +213,8 @@ def prepare(cache, output):
                                 occurrences.append((str(day), departure - service_zero(day)))
                     if not occurrences:
                         continue
-                    mode = replay_mode(trip, routes[trip["route_id"]])
-                    stop_mode = "bus" if mode == "silver_line" else "train"
+                    mode = replay_mode(trip, routes[trip["route_id"]], regular_buses=buses)
+                    stop_mode = "bus" if mode in {"silver_line", "bus"} else "train"
                     ids = []
                     for row, coordinate in zip(sequence, coordinates):
                         stop = stops[row["stop_id"]]
@@ -227,7 +243,7 @@ def prepare(cache, output):
                             legs = [identifier] * (len(sequence) - 1)
                         geometry_cache[geometry_key] = legs
                     route = routes[trip["route_id"]]
-                    line = f"{route['route_short_name']} · {route['route_long_name']}" if mode == "silver_line" else route["route_long_name"]
+                    line = f"{route['route_short_name']} · {route['route_long_name']}" if mode in {"silver_line", "bus"} else route["route_long_name"]
                     pattern = {"mode": mode, "operator": "MBTA", "line": line,
                         "route_id": route["route_id"], "color": "#" + route["route_color"],
                         "direction": directions.get((trip["route_id"], trip["direction_id"]), ""),
@@ -241,21 +257,35 @@ def prepare(cache, output):
                         result["days"][day].append([identifier, trip_id, offset])
                 except (ValueError, KeyError) as error:
                     omissions[str(error)] += 1
-        print(f"{archive_path.name}: {len(trips)} candidate rail / Silver Line trips; {len(result['patterns'])} shared patterns", flush=True)
+        scope = "regular bus" if buses else "rail / Silver Line"
+        print(f"{archive_path.name}: {len(trips)} candidate {scope} trips; {len(result['patterns'])} shared patterns", flush=True)
     counts = {}
     for day, rows in result["days"].items():
         identities = [(row[1], row[2]) for row in rows]
         if len(set(identities)) != len(identities):
             raise ValueError(f"Duplicate trip occurrences on {day}")
         counts[day] = dict(Counter(result["patterns"][row[0]]["mode"] for row in rows))
-        if set(counts[day]) != SUPPORTED_MODES:
-            raise ValueError(f"Incomplete rail / Silver Line coverage on {day}")
+        if set(counts[day]) != ({"bus"} if buses else SUPPORTED_MODES):
+            raise ValueError(f"Incomplete {'regular bus' if buses else 'rail / Silver Line'} coverage on {day}")
         rows.sort(key=lambda row: (row[2], row[1]))
     result["metadata"] = {"start_date": str(FIRST), "end_date": str(LAST), "source": "MBTA historical GTFS Schedule",
         "source_url": INDEX_URL, "license": "MBTA MassDOT Developer License Agreement", "license_url": LICENSE_URL,
         "timezone": str(ZONE), "sources": sources, "daily_services": counts, "omitted_trips": dict(omissions),
         "excluded": dict(exclusions), "unresolved_geometry_patterns": dict(geometry_failures),
         "note": "Scheduled rail and Silver Line services; other buses, replacement shuttles and non-MBTA operators excluded. Positions are estimates, not recorded movements."}
+    if buses:
+        result["metadata"].update({"attribution": "Regular bus timetables and road geometry: MassDOT / MBTA historical GTFS · 24–30 June 2024",
+            "note": "Regular MBTA buses follow dated road shapes. Rail replacement shuttles, Silver Line and non-MBTA operators are excluded from this bus layer. No passenger loads or observed GPS positions."})
+        compact_reference(result, prefix="mbta-bus-stops-")
+        output.mkdir(parents=True, exist_ok=True)
+        for day in result["days"]:
+            destination = output / (day + ".json.gz")
+            temporary = destination.with_suffix(destination.suffix + ".tmp")
+            with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:
+                stream.write(json.dumps(daily_reference(result, day), separators=(",", ":"), allow_nan=False).encode())
+            temporary.replace(destination)
+        print(json.dumps(result["metadata"], indent=2), flush=True)
+        return
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix(output.suffix + ".tmp")
     with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:
@@ -269,5 +299,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--cache", type=Path, default=ROOT / ".cache/boston-archives")
     parser.add_argument("--output", type=Path, default=ROOT / "data/reference/boston/2024-06-24.json.gz")
+    parser.add_argument("--buses", action="store_true", help="Prepare separate daily regular-bus bundles using the pinned rail archives")
     args = parser.parse_args()
-    prepare(args.cache, args.output)
+    prepare(args.cache, ROOT / "data/reference/boston/bus" if args.buses and args.output == BASELINE_REFERENCE else args.output, buses=args.buses)

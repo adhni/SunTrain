@@ -32,6 +32,7 @@ TORONTO_PATH = ROOT / "data/reference/toronto/2026-10-05.json.gz"
 DC_PATH = ROOT / "data/reference/dc/2026-10-05.json.gz"
 SF_BAY_PATH = ROOT / "data/reference/sf_bay/2026-08-17.json.gz"
 LONDON_PATH = ROOT / "data/reference/london/2026-10-05.json.gz"
+BUS_REFERENCE_CITIES = {"boston", "london"}
 LOGGER = logging.getLogger(__name__)
 
 
@@ -40,6 +41,11 @@ def prepared_path(city):
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH}[city]
     return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
+
+
+def bus_reference_file(city, business_date):
+    directory = Path(os.getenv(f"SUNTRAIN_{city.upper()}_BUS_REFERENCE", str(ROOT / "data/reference" / city / "bus")))
+    return directory / (business_date + ".json.gz")
 
 
 def pattern_key(operator: str, line: str, stations: list[str]) -> str:
@@ -112,15 +118,15 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     date.fromisoformat(business_date)
     settings = city_settings(city)
     modes = tuple(sorted(set(modes))) if modes is not None else None
-    include_buses = include_buses or city == "london" and modes is not None and "bus" in modes
+    include_buses = include_buses or city in BUS_REFERENCE_CITIES and modes is not None and "bus" in modes
     if city != "melbourne":
         if not settings["start_date"] <= business_date <= settings["end_date"]:
             raise ValueError(f"{settings['name']} replay covers {settings['start_date']} through {settings['end_date']}")
         path = prepared_path(city)
         base = _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns, modes)
-        if city == "london" and include_buses:
-            buses = Path(os.getenv("SUNTRAIN_LONDON_BUS_REFERENCE", str(ROOT / "data/reference/london/bus"))) / (business_date + ".json.gz")
-            return _get_london_with_buses(business_date, str(path), path.stat().st_mtime_ns, str(buses), buses.stat().st_mtime_ns, modes)
+        if city in BUS_REFERENCE_CITIES and include_buses:
+            buses = bus_reference_file(city, business_date)
+            return _get_with_buses(city, business_date, str(path), path.stat().st_mtime_ns, str(buses), buses.stat().st_mtime_ns, modes)
         return base
     source = data._dataset_path()
     fingerprint = tuple((name, Path(name).stat().st_mtime_ns, Path(name).stat().st_size)
@@ -132,8 +138,8 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
 
 
 @lru_cache(maxsize=1)
-def _get_london_with_buses(business_date, rail_path, rail_modified, bus_path, bus_modified, modes=None):
-    base = _get_prepared_day("london", business_date, rail_path, rail_modified, modes)
+def _get_with_buses(city, business_date, rail_path, rail_modified, bus_path, bus_modified, modes=None):
+    base = _get_prepared_day(city, business_date, rail_path, rail_modified, modes)
     # Append to fresh containers so the cached rail-only payload remains small.
     payload = {**base, "services": list(base["services"]), "stations": list(base["stations"]),
                "paths": dict(base["paths"]), "transit_patterns": dict(base["transit_patterns"]),
@@ -145,8 +151,13 @@ def _get_london_with_buses(business_date, rail_path, rail_modified, bus_path, bu
         bus_reference = json.load(stream)
     transit.append_reference(payload, bus_reference, consume=True, modes=modes)
     payload["bus_schedule"] = payload.pop("transit")
-    payload["schedule"] = {**base["schedule"], "replay_note": base["schedule"]["replay_note"].replace(
-        "Buses, boats and cable car are excluded.", "Boats and cable car are excluded.") + " " + payload["bus_schedule"]["note"]}
+    note = base["schedule"].get("replay_note", "").replace("Buses, boats and cable car are excluded.", "Boats and cable car are excluded.")
+    if city == "boston":
+        note = "MBTA rail and Silver Line services, with regular buses included when selected. Rail replacement shuttles and non-MBTA operators are excluded."
+        payload["schedule"] = {**base["schedule"], "attribution": "Historical schedules and route geometry: MassDOT / MBTA"}
+    else:
+        payload["schedule"] = dict(base["schedule"])
+    payload["schedule"]["replay_note"] = note + " " + payload["bus_schedule"]["note"]
     return payload
 
 

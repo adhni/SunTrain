@@ -62,7 +62,7 @@ def test_preparation_and_loading_preserve_calendars_overnight_shared_stops_and_c
             "route_long_name": f"Line {kind}", "route_color": "DA291C", "line_id": ""} for kind in ("0", "1", "2")]
         routes.extend([{**routes[0], "route_id": "741", "route_type": "3", "route_short_name": "SL1",
                         "route_long_name": "Airport - South Station", "route_color": "7C878E", "line_id": "line-SLWaterfront"},
-                       {**routes[0], "route_id": "regular", "route_type": "3", "route_long_name": "Silver Street"}])
+                       {**routes[0], "route_id": "regular", "route_type": "3", "route_long_name": "Silver Street", "route_color": "FFC72C"}])
         archive.writestr("routes.txt", table(routes))
         archive.writestr("calendar.txt", table([{"service_id": service, "start_date": "20240623", "end_date": "20240701",
             **dict.fromkeys(["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"], "1")}
@@ -117,6 +117,31 @@ def test_preparation_and_loading_preserve_calendars_overnight_shared_stops_and_c
         get_replay_day("2024-07-01", "boston")
     with pytest.raises(ValueError, match="Unknown"):
         get_replay_day("2024-06-24", "unknown")
+
+    # Reuse the validated archives to prepare regular buses separately. An
+    # unrelated route name containing "Silver" must not make it Silver Line.
+    from scripts import prepare_boston_replay as importer
+    monkeypatch.setattr(importer, "BASELINE_REFERENCE", output)
+    buses = tmp_path / "bus"
+    prepare(tmp_path, buses, buses=True)
+    assert len(list(buses.glob("*.json.gz"))) == 7
+    assert not list(buses.glob("*.tmp"))
+    with gzip.open(buses / "2024-06-24.json.gz", "rt") as stream:
+        bus_reference = json.load(stream)
+    assert len(bus_reference["days"]["2024-06-24"]) == 1
+    bus_pattern = next(iter(bus_reference["patterns"].values()))
+    assert bus_pattern["route_id"] == "regular" and bus_pattern["mode"] == "bus"
+    assert bus_pattern["color"] == "#FFC72C" and "stops" not in bus_pattern
+    monkeypatch.setenv("SUNTRAIN_BOSTON_BUS_REFERENCE", str(buses))
+    bus_day = get_replay_day("2024-06-24", "boston", modes=["bus"])
+    assert len(bus_day["services"]) == 1 and bus_day["bus_data_loaded"]
+    assert bus_day["services"][0]["number"] == "regular-bus"
+
+    # A changed source cannot silently replace the historical bus timetable.
+    with (tmp_path / "fixture.zip").open("ab") as stream:
+        stream.write(b"changed archive")
+    with pytest.raises(ValueError, match="differs from the validated"):
+        prepare(tmp_path, buses, buses=True)
 
 
 def test_bundled_boston_week_has_rail_and_silver_line_with_resolved_geometry():

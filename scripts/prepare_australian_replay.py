@@ -35,7 +35,7 @@ SOURCES = {
         "source_url": "https://www.data.qld.gov.au/dataset/general-transit-feed-specification-gtfs-translink",
         "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0/",
         "attribution": "Timetable and railway geometry: Translink, Department of Transport and Main Roads, Queensland Government · archive captured 3 October 2026",
-        "note": "Queensland Rail suburban and interurban SEQ services only, using October 2026 route patterns. G:link, Brisbane Metro buses, other buses and ferries are excluded. No individual train passenger loads.",
+        "note": "Queensland Rail and G:link light rail, using October 2026 route patterns. Brisbane Metro buses, other buses and ferries are excluded. No individual vehicle passenger loads.",
     },
     "perth": {
         "name": "Perth", "first": "2026-10-05", "last": "2026-10-11", "timezone": "Australia/Perth",
@@ -55,7 +55,7 @@ SOURCES = {
         "source_url": "https://gtfs.adelaidemetro.com.au/",
         "license": "CC BY 4.0", "license_url": "https://creativecommons.org/licenses/by/4.0/",
         "attribution": "Timetable and railway geometry: Adelaide Metro / Department for Infrastructure and Transport, Government of South Australia · historical GTFS version 1430",
-        "note": "Adelaide suburban rail only, using the May–June 2024 network and source calendar exceptions, including planned closures. Port Dock, which opened later, is absent. Trams and buses are not enabled. No individual train passenger loads.",
+        "note": "Adelaide suburban trains and Torrens Connect trams, using May–June 2024 calendars and planned closures. Port Dock, which opened later, is absent. Buses are excluded. No individual vehicle passenger loads.",
     },
     "sydney": {
         "name": "Sydney", "first": "2026-10-05", "last": "2026-10-11", "timezone": "Australia/Sydney",
@@ -65,7 +65,7 @@ SOURCES = {
         "source_url": "https://opendata.transport.nsw.gov.au/dataset/timetables-complete-gtfs",
         "license": "Creative Commons Attribution", "license_url": "https://opendata.transport.nsw.gov.au/dataset/timetables-complete-gtfs",
         "attribution": "Timetable and railway geometry: Transport for NSW · archive captured 4 October 2026",
-        "note": "Sydney Trains and Sydney Metro only, using the October 2026 network. NSW TrainLink, light rail, buses and ferries are excluded. Metro times are indicative in the source feed. No individual train passenger loads.",
+        "note": "Sydney Trains, Sydney Metro, NSW TrainLink intercity BMT/CCN/SCO and Sydney light rail L1–L4, including scheduled special-event variants, use October 2026 calendars. Regional trains/coaches, Newcastle light rail, buses and ferries are excluded. Metro and light-rail timings are indicative in the source. No individual vehicle passenger loads.",
     },
 }
 
@@ -87,13 +87,13 @@ def file_hash(path):
 def selected_route(city, route, agencies):
     agency = route.get("agency_id") or (next(iter(agencies)) if len(agencies) == 1 else "")
     if city == "sydney":
-        return (agency == "x0001" and route["route_type"] == "2") or (agency == "SMNW" and route["route_type"] in {"1", "401"})
+        return (agency in {"x0001", "X0000"} and route["route_type"] == "2") or (agency == "SMNW" and route["route_type"] in {"1", "401"}) or (agency in {"LR", "SLR", "PLR"} and route["route_type"] == "900")
     if city == "adelaide":
-        return agency == "2" and route["route_type"] == "2"
+        return (agency == "2" and route["route_type"] == "2") or (agency == "3" and route["route_type"] == "0")
     if city == "perth":
         return agency == "WES-RAI" and route["route_type"] == "2"
     if city == "brisbane":
-        return agency == "5" and route["route_type"] == "2"
+        return (agency == "5" and route["route_type"] == "2") or (agency == "32" and route["route_type"] == "0")
     raise ValueError(f"Unsupported city: {city}")
 
 
@@ -178,6 +178,8 @@ def prepare(city, cache, output):
                             instances.append((business_date, departure - midnight))
                 if not instances:
                     continue
+                route = routes[trip["route_id"]]
+                mode = "light_rail" if route["route_type"] in {"0", "900"} else "subway" if route["route_type"] in {"1", "401"} else "commuter_rail" if city == "sydney" and route.get("agency_id") == "X0000" else "train"
                 ids = []
                 for row, coordinate in zip(sequence, coordinates):
                     stop = stops[row["stop_id"]]
@@ -218,7 +220,7 @@ def prepare(city, cache, output):
                 color = route.get("route_color", "").lstrip("#") or "6F818E"
                 if not re.fullmatch(r"[0-9a-fA-F]{6}", color):
                     raise ValueError("Invalid route colour")
-                pattern = {"mode": "subway" if city == "sydney" and agency == "SMNW" else "train", "operator": operator,
+                pattern = {"mode": mode, "operator": operator,
                     "line": label, "route_id": short or trip["route_id"], "source_route_id": trip["route_id"], "color": "#" + color,
                     "direction": "Direction " + {"0": "A", "1": "B"}.get(trip.get("direction_id"), "unknown"),
                     "origin": stops[sequence[0]["stop_id"]]["stop_name"], "destination": trip.get("trip_headsign") or stops[sequence[-1]["stop_id"]]["stop_name"],

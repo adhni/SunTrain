@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import argparse
 import csv
-import gzip
 import hashlib
 import io
 import json
@@ -16,6 +15,7 @@ from zipfile import ZipFile
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from dashboard.replay import cumulative_distances
+from scripts.compact_transit import save_reference
 from scripts.prepare_replay_geometry import anchored_shape
 
 SOURCE_URL = "https://files.mobilitydatabase.org/mdb-657/mdb-657-202406240001/mdb-657-202406240001.zip"
@@ -160,12 +160,7 @@ def prepare(filename, output, *, start_date="2024-06-24", end_date="2024-06-30",
         "source_date": source_date, "source_url": source_url, "license": "CC BY 4.0",
         "license_url": "https://creativecommons.org/licenses/by/4.0/", "bus_area": "Complete journeys serving the Melbourne map extent",
         "omitted_trips": dict(omitted), "invalid_reasons": dict(invalid_reasons)}
-    output.parent.mkdir(parents=True, exist_ok=True)
-    # Reproducible compressed reference, independent of local file timestamps.
-    temporary = output.with_suffix(output.suffix + ".tmp")
-    with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:
-        stream.write(json.dumps(result, separators=(",", ":"), allow_nan=False).encode())
-    temporary.replace(output)
+    save_reference(result, output)
     print(f"Saved {output}: {output.stat().st_size / 1e6:.1f} MB; {len(result['patterns'])} patterns; {len(result['paths'])} paths", flush=True)
 
 

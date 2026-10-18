@@ -19,6 +19,7 @@ from zipfile import ZipFile
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from dashboard.replay import cumulative_distances
+from scripts.compact_transit import save_reference
 from scripts.prepare_boston_replay import project_stops
 from scripts.prepare_replay_geometry import clip_path, point_at, simplify
 from scripts.prepare_transit_replay import active_services, business_occurrences, records, seconds
@@ -157,11 +158,7 @@ def prepare(filename, geometry, output):
         "sha256": digest, "geometry": geographic["metadata"], "matched_osm_relations": sorted(matched_relations),
         "daily_services": counts, "omitted_trips": {}, "unresolved_geometry_trips": unresolved,
         "note": "LTA snapshot calendars applied to 5–11 October 2026, not a reconstruction of every past disruption. Estimated movement follows OSM geography from 17 October. No individual train loads. One anomalous Sunday NS stop sequence is retained without interpolated movement."}
-    output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_suffix(output.suffix + ".tmp")
-    with temporary.open("wb") as file, gzip.GzipFile(filename="", fileobj=file, mode="wb", mtime=0) as stream:
-        stream.write(json.dumps(result, separators=(",", ":"), allow_nan=False).encode())
-    temporary.replace(output)
+    save_reference(result, output)
     print(f"Saved {output}: {output.stat().st_size} bytes; {len(result['patterns'])} shared patterns; {len(unresolved)} unresolved trips", flush=True)
 
 

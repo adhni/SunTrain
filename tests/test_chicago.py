@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 import gzip
 import json
 from datetime import date, datetime, timedelta
@@ -29,7 +30,7 @@ def test_bad_native_anchors_and_distant_stations_are_rejected():
 
 def test_chicago_bundle_has_five_historical_weeks_all_eight_lines_and_no_bus_data():
     with gzip.open(CHICAGO_PATH, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     first = date(2025, 11, 24)
     assert set(reference["days"]) == {str(first + timedelta(days=i)) for i in range(35)}
     assert reference["metadata"]["timezone"] == "America/Chicago"

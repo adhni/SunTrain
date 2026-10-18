@@ -1,4 +1,5 @@
 import csv
+from schedule_helpers import expanded_reference
 import gzip
 import hashlib
 import io
@@ -58,7 +59,7 @@ def test_preparation_selects_snapshots_by_service_date_and_keeps_boundary_carry_
     prepare("dc", source, tmp_path, output,
             lambda route, agencies: selected_route("dc", route, agencies), lambda route, trip: describe_route("dc", route, trip))
     with gzip.open(output, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     assert {trip for _, trip, _ in reference["days"]["2026-10-05"]} == {"old", "late"}
     assert {trip for _, trip, _ in reference["days"]["2026-10-06"]} == {"new", "late"}
     assert sorted(offset for _, trip, offset in reference["days"]["2026-10-05"] if trip == "late") == [10500, 96900]
@@ -103,7 +104,7 @@ def test_external_geometry_keeps_resolved_legs_and_caches_each_route_separately(
     prepare("fixture", source, tmp_path, output, lambda route, agencies: True,
             lambda route, trip: {"route_id": route["route_id"], "direction": "Not specified"}, geometry_resolver=resolve)
     with gzip.open(output, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     assert sorted(calls) == ["BLUE", "RED"]
     patterns = {p["route_id"]: p for p in reference["patterns"].values()}
     assert all(p["direction"] == "Not specified" for p in patterns.values())
@@ -122,6 +123,6 @@ def test_invalid_external_geometry_stays_a_gap_without_using_the_gtfs_sketch(tmp
     prepare("fixture", source, tmp_path, output, lambda route, agencies: True,
             lambda route, trip: {"route_id": route["route_id"]}, geometry_resolver=lambda *args: invalid)
     with gzip.open(output, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     assert reference["days"]["2026-10-05"] and not reference["metadata"]["omitted_trips"]
     assert all(p["coordinates"] == [] and p["quality"] == "approximate" for p in reference["paths"].values())

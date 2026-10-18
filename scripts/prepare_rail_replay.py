@@ -5,7 +5,6 @@ geometry stays empty; no other route or straight connector is substituted.
 """
 from __future__ import annotations
 
-import gzip
 import hashlib
 import json
 import math
@@ -20,6 +19,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from dashboard.replay import cumulative_distances
+from scripts.compact_transit import save_reference
 from scripts.prepare_australian_replay import file_hash, path_legs, records
 from scripts.prepare_boston_replay import fetch
 from scripts.prepare_transit_replay import active_services, seconds
@@ -199,10 +199,6 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
     for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url", "geometry_source_date", "geometry_sha256"):
         if key in source:
             result["metadata"][key] = source[key]
-    output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_suffix(output.suffix + ".tmp")
-    with temporary.open("wb") as file, gzip.GzipFile(filename="", fileobj=file, mode="wb", mtime=0) as stream:
-        stream.write(json.dumps(result, separators=(",", ":"), allow_nan=False).encode())
-    temporary.replace(output)
+    save_reference(result, output)
     print(f"Saved {output}: {output.stat().st_size} bytes; {len(result['patterns'])} shared patterns; omissions {dict(omissions)}; gaps {dict(gaps)}", flush=True)
 

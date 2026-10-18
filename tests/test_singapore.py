@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 import gzip
 import json
 from datetime import datetime
@@ -41,7 +42,7 @@ def test_closed_loop_matches_a_full_journey_when_osm_starts_midway_round():
 
 def test_bundle_covers_mrt_lrt_loops_and_retains_one_unresolved_source_trip():
     with gzip.open(SINGAPORE_PATH, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     patterns, paths = reference["patterns"], reference["paths"]
     codes = {"NS", "EW", "CG", "NE", "CC", "DT", "TE", "BP", "SK", "PG"}
     assert len(reference["days"]) == 7

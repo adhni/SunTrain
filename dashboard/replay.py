@@ -48,6 +48,12 @@ def bus_reference_file(city, business_date):
     return directory / (business_date + ".json.gz")
 
 
+def clear_replay_cache():
+    """Release parsed schedules once their compressed HTTP response is saved."""
+    for cached in (_get_day, _get_prepared_day, _get_with_buses, transit.read_reference, _read_geometry):
+        cached.cache_clear()
+
+
 def pattern_key(operator: str, line: str, stations: list[str]) -> str:
     return hashlib.sha256(json.dumps([operator, line, stations], ensure_ascii=False).encode()).hexdigest()[:20]
 
@@ -142,21 +148,24 @@ def _get_with_buses(city, business_date, rail_path, rail_modified, bus_path, bus
     base = _get_prepared_day(city, business_date, rail_path, rail_modified, modes)
     # Append to fresh containers so the cached rail-only payload remains small.
     payload = {**base, "services": list(base["services"]), "stations": list(base["stations"]),
-               "paths": dict(base["paths"]), "transit_patterns": dict(base["transit_patterns"]),
+               "paths": dict(base["paths"]), "transit_patterns": dict(base.get("transit_patterns", {})),
+               "transit_stop_patterns": dict(base.get("transit_stop_patterns", {})),
                "bus_data_loaded": True,
                "revision": hashlib.sha256(repr((base["revision"], bus_path, bus_modified)).encode()).hexdigest()[:16]}
     # The merged payload is cached once. Transfer fresh bus arrays directly;
     # retaining a second parsed bus reference would double schedule memory.
-    with gzip.open(bus_path, "rt") as stream:
-        bus_reference = json.load(stream)
+    transit.read_reference.cache_clear()
+    with gzip.open(bus_path, "rb") as stream:
+        bus_reference = transit.load_reference(stream)
     transit.append_reference(payload, bus_reference, consume=True, modes=modes)
     payload["bus_schedule"] = payload.pop("transit")
-    note = base["schedule"].get("replay_note", "").replace("Buses, boats and cable car are excluded.", "Boats and cable car are excluded.")
+    schedule = base["schedule"] or payload["bus_schedule"]
+    note = schedule.get("replay_note", "").replace("Buses, boats and cable car are excluded.", "Boats and cable car are excluded.")
     if city == "boston":
         note = "MBTA rail and Silver Line services, with regular buses included when selected. Rail replacement shuttles and non-MBTA operators are excluded."
-        payload["schedule"] = {**base["schedule"], "attribution": "Historical schedules and route geometry: MassDOT / MBTA"}
+        payload["schedule"] = {**schedule, "attribution": "Historical schedules and route geometry: MassDOT / MBTA"}
     else:
-        payload["schedule"] = dict(base["schedule"])
+        payload["schedule"] = dict(schedule)
     payload["schedule"]["replay_note"] = note + " " + payload["bus_schedule"]["note"]
     return payload
 
@@ -173,6 +182,11 @@ def _get_prepared_day(city, business_date, path, modified, modes=None):
         "initial": int(datetime.combine(day, time(8), zone).timestamp()),
         "services": [], "stations": [], "paths": {}, "geometry": {},
         "approximate_legs": 0, "total_legs": 0, "excluded_services": 0}
+    if city in BUS_REFERENCE_CITIES and modes is not None and set(modes) == {"bus"}:
+        # The optional bus bundle supplies its own provenance. Opening rail's
+        # entire timetable here would add memory without any selected services.
+        payload["schedule"] = {}
+        return payload
     reference = transit.read_reference(path, modified)
     if not reference or business_date not in reference.get("days", {}):
         raise ValueError(f"{settings['city_name']} reference does not contain this date")

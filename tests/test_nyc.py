@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 import gzip
 import json
 from datetime import date, datetime, timedelta
@@ -26,7 +27,7 @@ def test_occurrences_preserve_gtfs_extended_hours_and_business_boundary_carry_in
 
 def test_nyc_bundled_subway_routes_shuttles_geometry_and_service_calendars():
     with gzip.open(NYC_PATH, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     first = date(2025, 12, 15)
     assert set(reference["days"]) == {str(first + timedelta(days=i)) for i in range(35)}
     assert not reference["metadata"]["omitted_trips"]

@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 import gzip
 import json
 from datetime import date, datetime, timedelta
@@ -26,7 +27,7 @@ def test_ttc_scope_keeps_rapid_transit_but_not_streetcars_or_replacement_buses()
 
 def test_toronto_bundle_covers_one_week_with_complete_compact_schedules_and_paths():
     with gzip.open(TORONTO_PATH, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     first = date.fromisoformat(SOURCE["first"])
     assert set(reference["days"]) == {str(first + timedelta(days=i)) for i in range(7)}
     metadata, patterns = reference["metadata"], reference["patterns"]

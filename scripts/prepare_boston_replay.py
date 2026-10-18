@@ -25,7 +25,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from dashboard.replay import cumulative_distances
 from scripts.prepare_replay_geometry import clip_path, point_at, simplify
 from scripts.prepare_transit_replay import active_services, records, seconds
-from scripts.compact_transit import compact_reference, daily_reference
+from scripts.compact_transit import compact_reference, daily_reference, save_reference
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX_URL = "https://cdn.mbta.com/archive/archived_feeds.txt"
@@ -286,11 +286,7 @@ def prepare(cache, output, *, buses=False):
             temporary.replace(destination)
         print(json.dumps(result["metadata"], indent=2), flush=True)
         return
-    output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_suffix(output.suffix + ".tmp")
-    with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:
-        stream.write(json.dumps(result, separators=(",", ":"), allow_nan=False).encode())
-    temporary.replace(output)
+    save_reference(result, output)
     print(json.dumps(result["metadata"], indent=2), flush=True)
     print(f"Saved {output}: {output.stat().st_size / 1e6:.2f} MB", flush=True)
 

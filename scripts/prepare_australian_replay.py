@@ -7,7 +7,6 @@ by the same historical timetable archive, with unresolved paths left empty.
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
 import json
 import math
@@ -22,6 +21,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from dashboard.replay import cumulative_distances
+from scripts.compact_transit import save_reference
 from scripts.prepare_boston_replay import fetch, project_stops
 from scripts.prepare_replay_geometry import anchored_shape, clip_path, point_at, simplify
 from scripts.prepare_transit_replay import active_services, records as raw_records, seconds
@@ -244,11 +244,7 @@ def prepare(city, cache, output):
         "daily_services": counts, "omitted_trips": dict(omissions), "unresolved_geometry_patterns": dict(gaps),
         "unresolved_geometry_trips": gap_trips, "native_anchor_patterns": native_count,
         "note": "Scheduled estimates, not GPS or a reconstruction of every historical disruption. Only services active in source calendars appear. No individual train passenger loads."}
-    output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_suffix(output.suffix + ".tmp")
-    with temporary.open("wb") as file, gzip.GzipFile(filename="", fileobj=file, mode="wb", mtime=0) as stream:
-        stream.write(json.dumps(result, separators=(",", ":"), allow_nan=False).encode())
-    temporary.replace(output)
+    save_reference(result, output)
     print(f"Saved {output}: {output.stat().st_size} bytes; {len(result['patterns'])} shared patterns; omissions {dict(omissions)}; gaps {dict(gaps)}", flush=True)
 
 

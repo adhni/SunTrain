@@ -83,6 +83,7 @@ def test_bus_preparation_applies_calendars_deduplicates_and_does_not_invent_freq
 
 def test_london_rail_only_never_reads_bus_bundle_and_append_does_not_mutate_it(tmp_path, monkeypatch):
     base = replay.get_replay_day("2026-10-05", "london")
+    rail_topologies = dict(base["transit_stop_patterns"])
     rail_services, rail_stations, rail_patterns = len(base["services"]), len(base["stations"]), len(base["transit_patterns"])
     archive, reference = fixture(tmp_path)
     monkeypatch.setattr(buses, "GTFS_SHA256", file_hash(archive))
@@ -97,6 +98,7 @@ def test_london_rail_only_never_reads_bus_bundle_and_append_does_not_mutate_it(t
     assert len(payload["transit_patterns"]) > rail_patterns
     assert len(base["services"]) == rail_services and len(base["stations"]) == rail_stations
     assert len(base["transit_patterns"]) == rail_patterns
+    assert base["transit_stop_patterns"] == rail_topologies
     assert not any(s["mode"] == "bus" for s in base["services"])
     assert all("stops" not in s for s in payload["services"])
     bus = next(s for s in payload["services"] if s["mode"] == "bus")

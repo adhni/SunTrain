@@ -124,6 +124,17 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "netherlands": {
+        "name": "Netherlands", "timezone": "Europe/Amsterdam",
+        "bounds": [[3.3, 50.7], [7.3, 53.6]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "default_modes": ["train"],
+        "description": "One week of domestic NS and regional passenger trains across the Netherlands. Passenger counts are unavailable.",
+        "modes": [("Trains", "train")],
+        "operators": [(name, name) for name in ("NS", "Arriva", "Blauwnet Arriva", "Blauwnet Keolis",
+                                               "R-net NS", "R-net Qbuzz", "RRReis Arriva", "RRReis Keolis")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

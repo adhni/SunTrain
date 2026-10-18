@@ -32,6 +32,7 @@ TORONTO_PATH = ROOT / "data/reference/toronto/2026-10-05.json.gz"
 DC_PATH = ROOT / "data/reference/dc/2026-10-05.json.gz"
 SF_BAY_PATH = ROOT / "data/reference/sf_bay/2026-08-17.json.gz"
 LONDON_PATH = ROOT / "data/reference/london/2026-10-05.json.gz"
+NETHERLANDS_PATH = ROOT / "data/reference/netherlands/2026-06-01.json.gz"
 BUS_REFERENCE_CITIES = {"boston", "london", "chicago", "perth"}
 LOGGER = logging.getLogger(__name__)
 
@@ -39,7 +40,8 @@ LOGGER = logging.getLogger(__name__)
 def prepared_path(city):
     default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
-               "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH}[city]
+               "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH,
+               "netherlands": NETHERLANDS_PATH}[city]
     return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
 
 

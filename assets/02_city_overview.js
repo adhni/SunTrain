@@ -1,7 +1,7 @@
 (function (root) {
     "use strict";
     const modeNames = {train: "Train", subway: "Subway", tram: "Tram", bus: "Bus",
-        light_rail: "Light rail", commuter_rail: "Commuter rail", silver_line: "Silver Line"};
+        light_rail: "Light rail", commuter_rail: "Commuter rail", silver_line: "Silver Line", ferry: "Ferry"};
 
     function summarize(day, filters, core) {
         const hours = Array.from({length: 24}, (_, i) => ({hour: (i + 3) % 24, departures: 0}));

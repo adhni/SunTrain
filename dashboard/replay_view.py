@@ -38,7 +38,7 @@ def build_replay_panel(metadata, default_date):
             html.Span(badge, id="replay-period", className="replay-badge"),
         ]),
         html.Div(id="replay-filter-controls", className="replay-filters", children=[
-            field("City", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
+            field("Location", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
                   for key, value in CITIES.items()], value="melbourne", clearable=False, searchable=False)),
             field("Date", dcc.DatePickerSingle(id="replay-date", date=default_date,
                   min_date_allowed=minimum, max_date_allowed=maximum,
@@ -172,7 +172,7 @@ def register_replay_callbacks(app, metadata):
         options = lambda key: [{"label": label, "value": value} for label, value in settings[key]]
         badge = period_label(minimum, maximum)
         return (minimum, maximum, chosen, options("modes"), settings.get("default_modes", []), options("operators"), [], options("directions"), [], [], [], "",
-                settings["description"], badge, settings["name"], f"Return to metropolitan {settings['name']}",
+                settings["description"], badge, settings["name"], f"Return to the {settings['name']} starting view",
                 {} if settings["passenger_data"] else {"display": "none"}, "trains",
                 [{"label": " Route paths", "value": "routes"}, {"label": " Stops & stations", "value": "stations"}] +
                 ([{"label": " Size trains by passengers", "value": "load"}] if settings["passenger_data"] else []),

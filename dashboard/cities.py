@@ -124,6 +124,17 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "netherlands": {
+        "name": "Netherlands", "timezone": "Europe/Amsterdam",
+        "bounds": [[3.3, 50.7], [7.3, 53.6]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "default_modes": ["train", "subway"],
+        "description": "Dutch trains and metros for one week. Select Trams / light rail or Ferries to add those networks. Passenger counts are unavailable.",
+        "modes": [("Trains", "train"), ("Metro", "subway"), ("Trams / light rail", "tram"), ("Ferries", "ferry")],
+        "operators": [(name, name) for name in ("NS", "Arriva", "Blauwnet Arriva", "Blauwnet Keolis",
+                                               "R-net NS", "R-net Qbuzz", "RRReis Arriva", "RRReis Keolis", "GVB", "RET", "HTM", "U-OV")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
 }
 
 

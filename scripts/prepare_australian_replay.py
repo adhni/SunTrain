@@ -97,22 +97,32 @@ def selected_route(city, route, agencies):
     raise ValueError(f"Unsupported city: {city}")
 
 
-def path_legs(raw, anchors, coordinates):
-    """Native distances preserve branches/loops; ordered projection is fallback
-    only for feeds that actually omit distance anchors, never invalid anchors.
+def path_legs(raw, anchors, coordinates, *, recover_native=False):
+    """Native distances preserve branches/loops. Default behaviour rejects bad
+    anchors; an audited opt-in can recover against the same ordered shape and
+    preserve verified native legs where a complete match is unavailable.
     """
     if anchors is not None:
         if any(not math.isfinite(a) for a in anchors) or any(b < a for a, b in zip(anchors, anchors[1:])):
             raise ValueError("Invalid or backwards native stop distances")
         points, indices = anchored_shape(raw, [(a, "") for a in anchors])
-        if any(cumulative_distances([stop, points[i]])[-1] > 150 for stop, i in zip(coordinates, indices)):
-            raise ValueError("Native stop anchor more than 150 m from station")
-        curves = [points[a:b + 1] for a, b in zip(indices, indices[1:])]
+        matched = [cumulative_distances([stop, points[i]])[-1] <= 150 for stop, i in zip(coordinates, indices)]
+        if not all(matched):
+            if not recover_native:
+                raise ValueError("Native stop anchor more than 150 m from station")
+            # An explicitly audited source may have inaccurate distance anchors.
+            # Recover only by matching the complete stop order to its own shape.
+            try:
+                return path_legs(raw, None, coordinates)
+            except ValueError:
+                pass
+        curves = [points[a:b + 1] if matched[j] and matched[j + 1] else None
+                  for j, (a, b) in enumerate(zip(indices, indices[1:]))]
     else:
         points = [p for _, _, p in sorted(raw)]
         positions = project_stops(points, coordinates)
         curves = [simplify(clip_path(points, a, b, point_at(points, a), point_at(points, b))) for a, b in zip(positions, positions[1:])]
-    return [curve if len(curve) >= 2 else [curve[0], curve[0]] for curve in curves]
+    return [None if curve is None else curve if len(curve) >= 2 else [curve[0], curve[0]] for curve in curves]
 
 
 def prepare(city, cache, output):

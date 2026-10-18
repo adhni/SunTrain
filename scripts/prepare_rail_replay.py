@@ -33,7 +33,7 @@ def source_for(day, archives):
 
 
 def prepare(city, source, cache, output, selected_route, describe_route, geometry_resolver=None, *, daily=False):
-    if source.get("geometry_method", "native_or_projected") not in {"native_or_projected", "ordered_projection"}:
+    if source.get("geometry_method", "native_or_projected") not in {"native_or_projected", "ordered_projection", "native_or_ordered_per_leg"}:
         raise ValueError("Unsupported railway geometry method")
     first, last = date.fromisoformat(source["first"]), date.fromisoformat(source["last"])
     zone = ZoneInfo(source["timezone"])
@@ -126,7 +126,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                     if not instances:
                         continue
                     ids = []
-                    station_mode = description.get("mode") if description.get("mode") in {"bus", "tram"} else "train"
+                    station_mode = description.get("mode") if description.get("mode") in {"bus", "tram", "ferry"} else "train"
                     for row, coordinate in zip(sequence, coordinates):
                         stop = stops[row["stop_id"]]
                         key = (stop["stop_id"], stop["stop_name"], *coordinate, station_mode)
@@ -143,8 +143,14 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                                     tuple(anchors) if anchors is not None else None, tuple(map(tuple, coordinates)))
                     if geometry_key not in geometry_cache:
                         try:
-                            curves = geometry_resolver(route, trip, sequence, coordinates) if geometry_resolver else path_legs(raw, anchors, coordinates)
-                            if geometry_resolver and (len(curves) != len(coordinates) - 1 or any(
+                            curves = geometry_resolver(route, trip, sequence, coordinates) if geometry_resolver else NotImplemented
+                            external = curves is not NotImplemented
+                            # Mixed sources can retain their own GTFS shapes and
+                            # use external geometry only for audited operators.
+                            if not external:
+                                curves = path_legs(raw, anchors, coordinates,
+                                    recover_native=source.get("geometry_method") == "native_or_ordered_per_leg")
+                            if external and (len(curves) != len(coordinates) - 1 or any(
                                     curve is not None and (len(curve) < 2 or not all(math.isfinite(value) for point in curve for value in point)
                                     or cumulative_distances([coordinates[i], curve[0]])[-1] > 150
                                     or cumulative_distances([coordinates[i + 1], curve[-1]])[-1] > 150)
@@ -176,7 +182,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                     operator = agencies[agency]["agency_name"]
                     if agencies[agency]["agency_timezone"] != source["timezone"]:
                         raise ValueError("Unexpected rail operator timezone")
-                    color = route.get("route_color", "").lstrip("#") or "6F818E"
+                    color = (description.get("color") or route.get("route_color", "")).lstrip("#") or "6F818E"
                     if not re.fullmatch(r"[0-9a-fA-F]{6}", color):
                         raise ValueError("Invalid route colour")
                     pattern = {**description, "operator": description.get("operator", operator),
@@ -204,7 +210,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
         "daily_services": counts, "omitted_trips": dict(omissions), "unresolved_geometry_patterns": dict(gaps),
         "unresolved_geometry_trips": gap_trips, "native_anchor_patterns": native_count,
         "note": "Scheduled estimates, not GPS or a reconstruction of every historical disruption. Only services active in source calendars appear. No individual vehicle passenger loads."}
-    for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url", "geometry_source_date", "geometry_sha256"):
+    for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url", "geometry_source_date", "geometry_sha256", "geometry_method", "geometry_references"):
         if key in source:
             result["metadata"][key] = source[key]
     if daily:

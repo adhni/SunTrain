@@ -10,6 +10,23 @@ import pytest
 
 from scripts.prepare_rail_replay import prepare
 from scripts.prepare_us_rail_replay import describe_route, selected_route
+from scripts.prepare_australian_replay import path_legs
+
+
+def test_audited_native_recovery_matches_only_the_original_shape_and_keeps_other_legs():
+    raw = [(i, i * 1000, [i * .01, 0]) for i in range(4)]
+    coordinates = [[i * .01, 0] for i in range(4)]
+    anchors = [0, 500, 2000, 3000]
+    with pytest.raises(ValueError, match="Native stop anchor"):
+        path_legs(raw, anchors, coordinates)
+    recovered = path_legs(raw, anchors, coordinates, recover_native=True)
+    assert all(curve[0] == a and curve[-1] == b for curve, a, b in zip(recovered, coordinates, coordinates[1:]))
+    # One station is genuinely off the shape. It gets two gaps, while the
+    # verified final leg remains available; no connector or new path is made.
+    coordinates[1] = [.01, .01]
+    partial = path_legs(raw, [0, 1000, 2000, 3000], coordinates, recover_native=True)
+    assert partial[:2] == [None, None]
+    assert partial[2] == [[.02, 0], [.03, 0]]
 
 
 def archive_fixture(path, normal_trip, service_dates, extra_route=False):
@@ -57,7 +74,9 @@ def test_preparation_selects_snapshots_by_service_date_and_keeps_boundary_carry_
                            {"start": "2026-10-06", "end": "2026-10-07", "url": "https://example.test/new.zip", "sha256": new_hash, "captured": "2026-10-06", "published": ""}]}
     output = tmp_path / "prepared.json.gz"
     prepare("dc", source, tmp_path, output,
-            lambda route, agencies: selected_route("dc", route, agencies), lambda route, trip: describe_route("dc", route, trip))
+            lambda route, agencies: selected_route("dc", route, agencies),
+            lambda route, trip: {**describe_route("dc", route, trip), "color": "#123456"},
+            geometry_resolver=lambda *_: NotImplemented)
     with gzip.open(output, "rt") as stream:
         reference = expanded_reference(json.load(stream))
     assert {trip for _, trip, _ in reference["days"]["2026-10-05"]} == {"old", "late"}
@@ -67,6 +86,7 @@ def test_preparation_selects_snapshots_by_service_date_and_keeps_boundary_carry_
     assert not reference["metadata"]["omitted_trips"]
     assert not reference["metadata"]["unresolved_geometry_patterns"]
     assert len(reference["patterns"]) == 2
+    assert {p["color"] for p in reference["patterns"].values()} == {"#123456"}
     # Reject a different ZIP rather than silently changing the historical timetable.
     source["archives"][0]["sha256"] = "0" * 64
     with pytest.raises(ValueError, match="validated source"):

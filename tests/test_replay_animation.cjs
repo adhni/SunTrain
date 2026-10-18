@@ -7,6 +7,22 @@ const day = {stations: [{name: 'Alpha', lon: 0, lat: 0}, {name: 'Bravo', lon: 2,
 const service = {id: 'one', operator: 'Metro', line: 'Werribee', direction: 'U', number: 'X100',
     stops: [[0, 0, 10, 5, 50], [1, 20, 30, 50, 0]], legs: ['curve']};
 
+test('ferries share schedules, follow water paths and use pier status without passenger loads', () => {
+    const {hydrate, vehicleColor} = require('../assets/train_replay.js');
+    const input = {...day, transit_patterns: {f: {operator:'GVB',line:'GVB Ferry F3',color:'#0077B6',
+        route_id:'130203',stops:[[0,0,10],[1,20,30]],legs:['curve']}},
+        services:[{id:'ferry',mode:'ferry',number:'crossing',pattern:'f',departure:100}]};
+    const ferry = hydrate(input).services[0];
+    assert.strictEqual(ferry.stops,input.transit_patterns.f.stops);
+    assert.equal(vehicleColor(ferry,'netherlands'),'#0077B6');
+    assert.equal(servicePosition(ferry,105,input).state,'At pier');
+    const moving = servicePosition(ferry,115,input);
+    assert.equal(moving.state,'Between piers');
+    assert.equal(moving.lon,1.5);
+    assert.equal(moving.load,null);
+    assert.equal(matches(ferry,{modes:['ferry'],operators:[],lines:[],directions:[],stations:[],number:''},input),true);
+});
+
 test('active-service index agrees with full scans at boundaries, large jumps and backwards seeks', () => {
     const {ActiveServices} = require('../assets/train_replay.js');
     const services = Array.from({length: 10000}, (_, i) => ({...service, id: String(i), timeOffset: i * 10}));

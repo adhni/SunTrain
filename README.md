@@ -2,6 +2,18 @@
 
 Historical transport replay across Australia, Canada, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Loading and performance
+
+Every city uses compressed, versioned replay downloads for the selected date and transport modes. Melbourne opens with trains; select Trams or Buses under **Transport** to load them, or clear Transport for all modes. London opens with rail. Other cities retain their available-mode defaults. Mode changes preserve the replay clock and complete journeys.
+
+Overview charts and tables mount only when their section opens. Plotly and the raw-data table are deferred until needed. Replay playback tracks active services rather than scanning the whole day each frame; passenger heatmap indexes are built on demand. Switching cities releases previous replay indexes and map features.
+
+The browser's Dash store holds only a small download descriptor. `/api/replay/<city>/<date>/<revision>.json?modes=...` serves gzip JSON with ETags and immutable versioned caching. The server keeps at most **256 MiB** of generated compressed responses under ignored `.cache/replay-http/`; override its directory with `SUNTRAIN_REPLAY_CACHE`. It is disposable and can be regenerated from the committed references and configured warehouse. Warm requests reuse the serialized response; no Redis or new hosted service is required. Changes to source file fingerprints or transport modes produce a new URL. Bump `FORMAT_VERSION` in `dashboard/replay_http.py` when changing the delivered format or preparation logic.
+
+Local headless Chrome measurements on 18 October 2026: the opening Melbourne replay download fell from **39.90 MB to 0.73 MB**, with **zero hidden charts instead of 13**. A cold generated response reached a usable map in **3.54 seconds**, versus the earlier **8.56 seconds**; cached-response fresh-page checks were about **2.9–3.0 seconds**. The lighter default also reduced the initial JS heap from approximately **137 MB to 35–38 MB**. These are local software-rendered browser measurements, not hosted-site or physical-phone guarantees. Full London buses remain a substantial optional layer; its first uncached load measured about **10.8 seconds**, versus about **2.4 seconds** with the generated response cached.
+
+Browser checks cover all 13 cities, 2,000× playback, mode changes preserving time, full London buses, Melbourne heatmaps, Overview subtabs and both themes. With an uncached browser, a phone viewport, 4× CPU throttling and a 5 Mbit/s connection with 80 ms latency, the opening map reached usable state in **5.51 seconds** using the server's generated response cache. After loading London buses and repeatedly switching to Boston/Toronto, garbage-collected Toronto JS heap settled at **17–22 MB**; superseded bus downloads cancelled without overwriting the selected city.
+
 ## London rail
 
 Choose **London** in **Replay city** for **5–11 October 2026**: all **11 Underground lines**, **DLR**, **London Trams**, all **six Overground lines** (Liberty, Lioness, Mildmay, Suffragette, Weaver and Windrush), and the **Elizabeth line**, including Reading, Heathrow, Abbey Wood and Shenfield branches. London local time, route colours and the existing replay controls apply throughout. A validated public dated conversion supplies TfL and National Rail schedules; connected OpenStreetMap railway paths supply movement geometry. Unresolved legs remain gaps. This is a schedule replay, not live tracking or a reconstruction of every disruption.

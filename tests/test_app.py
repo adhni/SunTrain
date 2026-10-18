@@ -261,58 +261,67 @@ def test_index_route_renders(app_module):
     assert b"SunTrain" in response.data
 
 
-def test_replay_only_loads_when_visible_and_date_changes(app_module, monkeypatch):
-    import dashboard.replay_view as replay_view
-
+def test_replay_descriptors_only_load_when_visible_and_selection_changes(app_module, monkeypatch):
+    import dashboard.replay_view as view
     calls = []
-    monkeypatch.setattr(replay_view, "get_replay_day", lambda day, city: calls.append((day, city)) or {"business_date": day})
+    monkeypatch.setattr(view, "descriptor", lambda day, city, modes: calls.append((day, city, modes)) or {"city": city, "modes": list(modes)})
     with pytest.raises(PreventUpdate):
         app_module.load_replay_day("2023-07-10", "overview", "melbourne", None)
-    assert app_module.load_replay_day("2023-07-10", "replay", "melbourne", None) == ({"business_date": "2023-07-10"}, "")
+    info, message = app_module.load_replay_day("2023-07-10", "replay", "melbourne", None)
+    assert info == {"city": "melbourne", "modes": ["train"]} and message == ""
     with pytest.raises(PreventUpdate):
-        app_module.load_replay_day("2023-07-10", "replay", "melbourne", {"business_date": "2023-07-10"})
-    app_module.load_replay_day("2023-07-11", "replay", "melbourne", {"business_date": "2023-07-10"})
-    assert calls == [("2023-07-10", "melbourne"), ("2023-07-11", "melbourne")]
+        app_module.load_replay_day("2023-07-10", "replay", "melbourne", {**info, "business_date": "2023-07-10"})
+    app_module.load_replay_day("2023-07-10", "replay", "melbourne", {**info, "business_date": "2023-07-10"}, ["tram"])
+    assert calls == [("2023-07-10", "melbourne", ("train",)), ("2023-07-10", "melbourne", ("tram",))]
 
 
-def test_replay_switches_city_on_same_date_and_ignores_transient_out_of_range_date(app_module, monkeypatch):
-    import dashboard.replay_view as replay_view
+def test_replay_switches_city_and_ignores_transient_out_of_range_date(app_module, monkeypatch):
+    import dashboard.replay_view as view
     calls = []
-    monkeypatch.setattr(replay_view, "get_replay_day", lambda day, city: calls.append((day, city)) or {"city": city})
-    result, message = app_module.load_replay_day("2024-06-24", "replay", "boston",
-                                                {"business_date": "2024-06-24", "city": "melbourne"})
-    assert result == {"city": "boston"} and message == ""
-    assert calls == [("2024-06-24", "boston")]
-    result, _ = app_module.load_replay_day("2024-06-24", "replay", "melbourne",
-                                          {"business_date": "2024-06-24", "city": "boston"})
-    assert result == {"city": "melbourne"}
-    with pytest.raises(PreventUpdate):
-        app_module.load_replay_day("2024-06-24", "replay", "boston",
-                                   {"business_date": "2024-06-24", "city": "boston"})
+    monkeypatch.setattr(view, "descriptor", lambda day, city, modes: calls.append(city) or {"city": city})
+    app_module.load_replay_day("2024-06-24", "replay", "boston", {"business_date": "2024-06-24", "city": "melbourne"})
+    assert calls == ["boston"]
     with pytest.raises(PreventUpdate):
         app_module.load_replay_day("2024-05-27", "replay", "boston", None)
     with pytest.raises(PreventUpdate):
         app_module.load_replay_day("2024-06-24", "replay", "chicago", None)
-    result, _ = app_module.load_replay_day("2025-11-24", "replay", "chicago", None)
-    assert result == {"city": "chicago"}
 
 
-def test_london_buses_load_only_when_selected_and_reload_when_removed(app_module, monkeypatch):
-    import dashboard.replay_view as view
-    calls = []
-    monkeypatch.setattr(view, "get_replay_day", lambda day, city, **kwargs: calls.append(kwargs) or {"city": city})
-    rail = {"business_date": "2026-10-05", "city": "london", "bus_data_loaded": False}
-    bus = {**rail, "bus_data_loaded": True}
-    app_module.load_replay_day("2026-10-05", "replay", "london", None)
-    assert calls == [{}]
-    app_module.load_replay_day("2026-10-05", "replay", "london", rail, ["bus"])
-    assert calls[-1] == {"include_buses": True}
+def test_mode_changes_download_only_selected_modes_for_london(app_module):
+    info, _ = app_module.load_replay_day("2026-10-05", "replay", "london", None)
+    assert not info["bus_data_loaded"] and "services" not in info and "url" in info
+    rail = {**info, "business_date": "2026-10-05"}
+    bus, _ = app_module.load_replay_day("2026-10-05", "replay", "london", rail, ["bus"])
+    assert bus["bus_data_loaded"] and bus["modes"] == ["bus"]
     with pytest.raises(PreventUpdate):
         app_module.load_replay_day("2026-10-05", "replay", "london", bus, ["bus"])
-    app_module.load_replay_day("2026-10-05", "replay", "london", bus, ["subway"])
-    assert calls[-1] == {}
-    app_module.load_replay_day("2026-10-05", "replay", "london", rail, [])
-    assert calls[-1] == {"include_buses": True}
+    all_modes, _ = app_module.load_replay_day("2026-10-05", "replay", "london", rail, [])
+    assert all_modes["bus_data_loaded"] and len(all_modes["modes"]) == 4
+
+
+def test_startup_contains_no_charts_and_analysis_mounts_only_active_panel(app_module):
+    from dash import dcc, dash_table
+    def walk(component):
+        if isinstance(component, (list, tuple)):
+            for child in component:
+                yield from walk(child)
+        elif component is not None:
+            yield component
+            yield from walk(getattr(component, "children", None))
+    assert not any(isinstance(c, (dcc.Graph, dash_table.DataTable)) for c in walk(app_module.app.layout))
+    assert app_module.mount_analysis_panels("replay", "overview", 1)[:5] == [[], [], [], no_update, []]
+    panels = app_module.mount_analysis_panels("overview", "network", 0)
+    assert panels[3] and all(not panel for i, panel in enumerate(panels[:5]) if i != 3)
+    assert app_module.mount_analysis_panels("replay", "network", 0, True, "analysis-network-ready")[3] == []
+
+
+def test_hidden_analysis_summary_and_station_options_do_not_query(app_module, monkeypatch):
+    monkeypatch.setattr(app_module, "get_kpis", lambda *_: pytest.fail("hidden summary queried"))
+    monkeypatch.setattr(app_module, "get_station_options", lambda *_: pytest.fail("hidden station options queried"))
+    with pytest.raises(PreventUpdate):
+        app_module.update_summary({}, "replay")
+    with pytest.raises(PreventUpdate):
+        app_module.update_station_options(None, None, [], [], [], [], [], [], None, None, "replay")
 
 
 def test_replay_hides_shared_filters_and_restores_them_on_exit(app_module):

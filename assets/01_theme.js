@@ -38,7 +38,7 @@
         }
     }
 
-    const observed = new WeakSet(), busy = new WeakSet(), pending = new Set();
+    const observed = new WeakSet(), busy = new WeakSet(), pending = new Set(), plotted = new WeakSet(), announced = new WeakSet();
     const chartColors = {"#0d6f67": "#50c4b2", "#b13b5c": "#e981a0", "#b76a16": "#edb36b", "#657142": "#b0c489"};
     function chartColor(value) {
         if (typeof value !== "string") return value;
@@ -56,7 +56,7 @@
         });
     }
     async function applyPlot(graph) {
-        if (!graph.isConnected || !root.Plotly || !graph._fullLayout) return;
+        if (!graph.isConnected || !root.Plotly || !graph._fullLayout || !plotted.has(graph)) return;
         if (busy.has(graph)) { pending.add(graph); return; }
         busy.add(graph);
         try {
@@ -73,10 +73,17 @@
                     put(`${key}.gridcolor`, layout[key]?.gridcolor, colors.grid);
                     put(`${key}.zerolinecolor`, layout[key]?.zerolinecolor, colors.grid);
                 }
-                if (/^map(box)?\d*$/.test(key) && layout[key]?.style?.metadata?.["suntrain-theme"] !== theme) update[`${key}.style`] = mapStyle();
+                if (/^map(box)?\d*$/.test(key)) {
+                    // Repaint the basemap without replacing its style while Plotly
+                    // is adding sources or a lazily mounted graph is being removed.
+                    const map = graph._fullLayout[key]?._subplot?.map;
+                    if (map?.isStyleLoaded()) styleMap(map);
+                    else if (map?.once) map.once("load", () => { if (graph.isConnected) styleMap(map); });
+                }
             }
             (layout.annotations || []).forEach((annotation, index) => put(`annotations[${index}].font.color`, annotation.font?.color, colors.ink));
             if (Object.keys(update).length) await root.Plotly.relayout(graph, update);
+            if (!graph.isConnected || !graph.data) return;
             for (const key of ["marker.color", "line.color"]) {
                 const indices = [], values = [], [object, property] = key.split(".");
                 graph.data.forEach((trace, index) => {
@@ -89,6 +96,11 @@
             console.warn("Could not update chart theme", error);
         } finally {
             busy.delete(graph);
+            const map = graph._fullLayout?.mapbox?._subplot?.map;
+            if (graph.isConnected && graph.closest("#station-map-graph") && plotted.has(graph) && map?.isStyleLoaded() && !announced.has(graph)) {
+                announced.add(graph);
+                root.dash_clientside?.set_props("analysis-network-ready", {data: true});
+            }
             if (pending.has(graph)) schedulePlot(graph);
         }
     }
@@ -99,7 +111,14 @@
             if (typeof graph.on !== "function") { notReady = true; continue; }
             if (!observed.has(graph)) {
                 observed.add(graph);
-                graph.on("plotly_afterplot", () => schedulePlot(graph));
+                graph.on("plotly_beforeplot", () => {
+                    plotted.delete(graph);
+                    if (announced.has(graph)) {
+                        announced.delete(graph);
+                        root.dash_clientside?.set_props("analysis-network-ready", {data: false});
+                    }
+                });
+                graph.on("plotly_afterplot", () => { plotted.add(graph); schedulePlot(graph); });
             }
             schedulePlot(graph);
         }

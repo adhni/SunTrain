@@ -1,7 +1,8 @@
-dash==4.1.0
+dash[compress]==4.1.0
 duckdb==1.4.4
 gunicorn==23.0.0
 pandas==2.3.3
 plotly==6.6.0
 pyarrow==21.0.0
 pytest==8.4.2
+orjson==3.11.3

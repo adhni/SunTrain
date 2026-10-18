@@ -35,6 +35,13 @@ LONDON_PATH = ROOT / "data/reference/london/2026-10-05.json.gz"
 LOGGER = logging.getLogger(__name__)
 
 
+def prepared_path(city):
+    default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH,
+               "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
+               "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH}[city]
+    return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
+
+
 def pattern_key(operator: str, line: str, stations: list[str]) -> str:
     return hashlib.sha256(json.dumps([operator, line, stations], ensure_ascii=False).encode()).hexdigest()[:20]
 
@@ -50,6 +57,7 @@ def cumulative_distances(points: list[list[float]]) -> list[float]:
     return distances
 
 
+@lru_cache(maxsize=32768)
 def _instants(local: datetime) -> list[int]:
     """Return valid UTC instants, including both occurrences of a repeated hour."""
     result = set()
@@ -100,32 +108,32 @@ def _read_geometry(path: str, modified: int) -> dict:
         return {"metadata": {"status": "unavailable"}, "patterns": {}, "paths": {}}
 
 
-def get_replay_day(business_date: str, city: str = "melbourne", include_buses: bool = False) -> dict:
+def get_replay_day(business_date: str, city: str = "melbourne", include_buses: bool = False, *, modes=None) -> dict:
     date.fromisoformat(business_date)
     settings = city_settings(city)
+    modes = tuple(sorted(set(modes))) if modes is not None else None
+    include_buses = include_buses or city == "london" and modes is not None and "bus" in modes
     if city != "melbourne":
         if not settings["start_date"] <= business_date <= settings["end_date"]:
             raise ValueError(f"{settings['name']} replay covers {settings['start_date']} through {settings['end_date']}")
-        default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH,
-                   "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
-                   "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH}[city]
-        path = Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
-        base = _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns)
+        path = prepared_path(city)
+        base = _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns, modes)
         if city == "london" and include_buses:
             buses = Path(os.getenv("SUNTRAIN_LONDON_BUS_REFERENCE", str(ROOT / "data/reference/london/bus"))) / (business_date + ".json.gz")
-            return _get_london_with_buses(business_date, str(path), path.stat().st_mtime_ns, str(buses), buses.stat().st_mtime_ns)
+            return _get_london_with_buses(business_date, str(path), path.stat().st_mtime_ns, str(buses), buses.stat().st_mtime_ns, modes)
         return base
     source = data._dataset_path()
     fingerprint = tuple((name, Path(name).stat().st_mtime_ns, Path(name).stat().st_size)
                         for name in sorted(glob.glob(source)))
     geometry = geometry_file()
     modified = geometry.stat().st_mtime_ns if geometry.exists() else 0
-    return _get_day(business_date, source, fingerprint, str(geometry), modified, transit.fingerprint(business_date))
+    transit_key = transit.fingerprint(business_date) if modes is None or set(modes) & {"tram", "bus"} else ("", 0)
+    return _get_day(business_date, source, fingerprint, str(geometry), modified, transit_key, modes)
 
 
 @lru_cache(maxsize=1)
-def _get_london_with_buses(business_date, rail_path, rail_modified, bus_path, bus_modified):
-    base = _get_prepared_day("london", business_date, rail_path, rail_modified)
+def _get_london_with_buses(business_date, rail_path, rail_modified, bus_path, bus_modified, modes=None):
+    base = _get_prepared_day("london", business_date, rail_path, rail_modified, modes)
     # Append to fresh containers so the cached rail-only payload remains small.
     payload = {**base, "services": list(base["services"]), "stations": list(base["stations"]),
                "paths": dict(base["paths"]), "transit_patterns": dict(base["transit_patterns"]),
@@ -135,7 +143,7 @@ def _get_london_with_buses(business_date, rail_path, rail_modified, bus_path, bu
     # retaining a second parsed bus reference would double schedule memory.
     with gzip.open(bus_path, "rt") as stream:
         bus_reference = json.load(stream)
-    transit.append_reference(payload, bus_reference, consume=True)
+    transit.append_reference(payload, bus_reference, consume=True, modes=modes)
     payload["bus_schedule"] = payload.pop("transit")
     payload["schedule"] = {**base["schedule"], "replay_note": base["schedule"]["replay_note"].replace(
         "Buses, boats and cable car are excluded.", "Boats and cable car are excluded.") + " " + payload["bus_schedule"]["note"]}
@@ -143,12 +151,12 @@ def _get_london_with_buses(business_date, rail_path, rail_modified, bus_path, bu
 
 
 @lru_cache(maxsize=1)
-def _get_prepared_day(city, business_date, path, modified):
+def _get_prepared_day(city, business_date, path, modified, modes=None):
     settings = replay_settings(city)
     zone = ZoneInfo(settings["timezone"])
     day = date.fromisoformat(business_date)
     payload = {**settings, "business_date": business_date,
-        "revision": hashlib.sha256(repr((city, path, modified)).encode()).hexdigest()[:16],
+        "revision": hashlib.sha256(repr((city, path, modified, modes)).encode()).hexdigest()[:16],
         "start": int(datetime.combine(day, time(3), zone).timestamp()),
         "end": int(datetime.combine(day + timedelta(days=1), time(3), zone).timestamp()),
         "initial": int(datetime.combine(day, time(8), zone).timestamp()),
@@ -157,28 +165,30 @@ def _get_prepared_day(city, business_date, path, modified):
     reference = transit.read_reference(path, modified)
     if not reference or business_date not in reference.get("days", {}):
         raise ValueError(f"{settings['city_name']} reference does not contain this date")
-    transit.add_transit(payload, (path, modified))
+    transit.append_reference(payload, reference, modes=modes)
     payload["schedule"] = payload.pop("transit")
     return payload
 
 
 # A day retains snapshot geometry; keep one payload as users switch between archives.
 @lru_cache(maxsize=1)
-def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path: str, modified: int, transit_fingerprint: tuple) -> dict:
+def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path: str, modified: int, transit_fingerprint: tuple, modes=None) -> dict:
     geometry = _read_geometry(geometry_path, modified)
     # Parameterize the source as well as the date; honor SUNTRAIN_PARQUET_GLOB.
-    con = data._connect()
-    try:
-        rows = con.execute("""
-            SELECT Mode, Line_Name, Direction, Train_Number, Origin_Station, Destination_Station,
-                   Station_Name, Station_Latitude, Station_Longitude,
-                   CAST(Arrival_Time_Scheduled AS TIME), CAST(Departure_Time_Scheduled AS TIME),
-                   Passenger_Arrival_Load, Passenger_Departure_Load, Passenger_Boardings, Passenger_Alightings
-            FROM read_parquet(?) WHERE Business_Date = CAST(? AS DATE)
-            ORDER BY Mode, Line_Name, Direction, Train_Number, Stop_Sequence_Number
-        """, [source, business_date]).fetchall()
-    finally:
-        con.close()
+    rows = []
+    if modes is None or "train" in modes:
+        con = data._connect()
+        try:
+            rows = con.execute("""
+                SELECT Mode, Line_Name, Direction, Train_Number, Origin_Station, Destination_Station,
+                       Station_Name, Station_Latitude, Station_Longitude,
+                       CAST(Arrival_Time_Scheduled AS TIME), CAST(Departure_Time_Scheduled AS TIME),
+                       Passenger_Arrival_Load, Passenger_Departure_Load, Passenger_Boardings, Passenger_Alightings
+                FROM read_parquet(?) WHERE Business_Date = CAST(? AS DATE)
+                ORDER BY Mode, Line_Name, Direction, Train_Number, Stop_Sequence_Number
+            """, [source, business_date]).fetchall()
+        finally:
+            con.close()
 
     grouped = {}
     stations, station_ids, paths, services = [], {}, {}, []
@@ -228,11 +238,14 @@ def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path:
     start = int(datetime.combine(day, time(3), MELBOURNE).timestamp())
     end = int(datetime.combine(day + timedelta(days=1), time(3), MELBOURNE).timestamp())
     end = max([end, *[s["stops"][-1][2] for s in services]])
-    payload = {**replay_settings(), "business_date": business_date, "revision": hashlib.sha256(repr((fingerprint, geometry_path, modified, transit_fingerprint)).encode()).hexdigest()[:16],
+    payload = {**replay_settings(), "business_date": business_date, "revision": hashlib.sha256(repr((fingerprint, geometry_path, modified, transit_fingerprint, modes)).encode()).hexdigest()[:16],
             "start": start, "end": end,
             "initial": int(datetime.combine(day, time(8), MELBOURNE).timestamp()),
             "services": services, "stations": stations, "paths": paths,
             "geometry": geometry.get("metadata", {}), "approximate_legs": approximate_legs,
             "total_legs": total_legs, "excluded_services": excluded}
-    transit.add_transit(payload, transit_fingerprint)
+    if transit_fingerprint[1]:
+        transit.append_reference(payload, transit.read_reference(*transit_fingerprint), modes=modes)
+    else:
+        payload["transit"] = {"available": False}
     return payload

@@ -493,7 +493,7 @@
                 const license = node("a", day.schedule.license);
                 license.href = day.schedule.license_url; license.target = "_blank"; license.rel = "noopener noreferrer";
                 attribution.append(link, document.createTextNode(" · "), license,
-                    document.createTextNode(nyc ? ". Regular December 2025–January 2026 NYC Subway and Staten Island Railway schedules; estimated positions follow published shapes, without guaranteed track-level accuracy or temporary service changes. Train passenger loads are unavailable. SunTrain is independent of MTA." : chicago ? ". Scheduled CTA rail replay for 2025; positions are estimates. Passenger counts are unavailable. This application is independent of CTA." :
+                    document.createTextNode(nyc ? ". Regular December 2025–January 2026 NYC Subway and Staten Island Railway schedules; estimated positions follow published shapes, without guaranteed track-level accuracy or temporary service changes. Train passenger loads are unavailable. SunTrain is independent of MTA." : chicago ? ". Scheduled CTA transit replay for 2025; positions are estimates. Passenger counts are unavailable. This application is independent of CTA." :
                         ". Scheduled rail and Silver Line replay; positions are estimates. Passenger counts are unavailable. This application is independent of MBTA."));
                 return;
             }
@@ -537,7 +537,8 @@
             const legend = $("replay-legend"); legend.replaceChildren();
             const entries = new Map();
             for (const service of this.filtered) {
-                const label = service.mode === "tram" ? `Tram ${tramRoute(service) || "other"}` : service.mode === "bus" ? "Buses" : service.line;
+                const label = service.mode === "tram" ? (this.day.city === "toronto" ? `Streetcar ${service.line}` : `Tram ${tramRoute(service) || "other"}`) :
+                    service.mode === "bus" && !["chicago", "perth"].includes(this.day.city) ? "Buses" : service.line;
                 entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service, this.day?.city)});
             }
             for (const {label, color} of [...entries.values()].sort((a, b) => a.label.localeCompare(b.label, "en", {numeric: true}))) {
@@ -577,7 +578,7 @@
             else if (total) pieces.push("All selected journey legs have route geometry.");
             if (this.day.schedule?.replay_note) pieces.push(this.day.schedule.replay_note);
             else if (this.day.city === "boston") pieces.push("Rail and Silver Line open first. Select Buses under Transport for regular MBTA buses. Rail replacement shuttles are excluded; calendars follow the historical archive.");
-            else if (this.day.city === "chicago") pieces.push("CTA rail only, using November–December 2025 schedules. Metra and buses are unavailable; direction A/B follows the feed where compass directions are not supplied.");
+            else if (this.day.city === "chicago") pieces.push("CTA trains use November–December 2025 schedules. Select Buses under Transport to include CTA buses. Metra is excluded; direction A/B follows the feed where compass directions are not supplied.");
             else if (this.day.city === "nyc") pieces.push("NYC Subway and Staten Island Railway regular schedules for December 2025–January 2026. Express/local patterns and branches follow the feed; shapes do not establish individual running tracks. LIRR, Metro-North and buses are excluded.");
             else if (this.day.city === "singapore") pieces.push("Singapore MRT and LRT schedules on OpenStreetMap railway paths. The timetable snapshot does not reconstruct every past disruption. One anomalous Sunday NS trip has no interpolated movement.");
             else if (!this.day.transit?.available) pieces.push("Tram and bus timetables are unavailable for this date.");

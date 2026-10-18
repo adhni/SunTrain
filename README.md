@@ -4,7 +4,7 @@ Historical transport replay across Australia, Canada, the United Kingdom, the Un
 
 ## Loading and performance
 
-Every city uses compressed, versioned replay downloads for the selected date and transport modes. Melbourne opens with trains; select Trams or Buses under **Transport** to load them, or clear Transport for all modes. Boston opens with rail and Silver Line; regular buses are optional. London opens with rail. Other cities retain their available-mode defaults. Mode changes preserve the replay clock and complete journeys.
+Every city uses compressed, versioned replay downloads for the selected date and transport modes. Melbourne opens with trains; select Trams or Buses under **Transport** to load them, or clear Transport for all modes. Boston opens with rail and Silver Line; regular buses are optional. London, Chicago and Perth open with rail; buses are optional. Other cities retain their available-mode defaults. Mode changes preserve the replay clock and complete journeys.
 
 Overview charts and tables mount only when their section opens. Plotly and the raw-data table are deferred until needed. Replay playback tracks active services rather than scanning the whole day each frame; passenger heatmap indexes are built on demand. Switching cities releases previous replay indexes and map features.
 
@@ -37,9 +37,9 @@ PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_london_replay.py
 PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_london_buses.py
 ```
 
-## Toronto rapid transit
+## Toronto rapid transit and streetcars
 
-Choose **Toronto** in **Replay city** for **5–11 October 2026**: TTC subway Lines **1 Yonge-University**, **2 Bloor-Danforth** and **4 Sheppard**, plus light rail Lines **5 Eglinton** and **6 Finch West**. The existing controls, route colours, Toronto local clock, filters, themes and fullscreen work for all five lines. Streetcars, buses, GO Transit and UP Express are not included. Passenger sizing and heatmaps remain unavailable; the Overview still analyses Melbourne passenger data.
+Choose **Toronto** in **Replay city** for **5–11 October 2026**: TTC subway Lines **1 Yonge-University**, **2 Bloor-Danforth** and **4 Sheppard**, plus light rail Lines **5 Eglinton** and **6 Finch West**. The existing controls, route colours, Toronto local clock, filters, themes and fullscreen work for all five lines. Daytime streetcars and all six scheduled night routes (301, 304, 305, 306, 310 and 312) are also included under **Streetcars / night routes**. Day routes use feed red and night routes blue. Buses, GO Transit and UP Express are not included. Passenger sizing and heatmaps remain unavailable; the Overview still analyses Melbourne passenger data.
 
 The official [Merged GTFS – TTC Routes and Schedules](https://open.toronto.ca/dataset/merged-gtfs-ttc-routes-and-schedules/) downloaded successfully, with timetable validity **30 September–31 October 2026**. The selected week falls entirely within those calendars. These are regular schedule estimates, not observed GPS or a reconstruction of every closure. Shapes and stop sequences come from the same feed. Two Line 1 journey variants have inconsistent source geometry; those vehicles appear at stations, with gaps between stops rather than invented paths. See [Toronto expansion notes](TORONTO_EXPANSION_NOTES.md) for the exact source, known gaps and future extensions.
 
@@ -49,7 +49,7 @@ Rebuild with:
 ./.venv/bin/python scripts/prepare_toronto_replay.py
 ```
 
-The source ZIP is cached as `.cache/toronto-audit/completegtfs.zip`; its SHA-256 is checked before preparation. The official URL is updated in place, so retain that validated ZIP for future rebuilds. A changed download is rejected instead of silently replacing historical services. The compact prepared reference is about **0.16 MB**, with shared schedules, and needs no schedule API or credentials at replay time. `SUNTRAIN_TORONTO_REFERENCE` overrides the prepared file.
+The source ZIP is cached as `.cache/toronto-audit/completegtfs.zip`; its SHA-256 is checked before preparation. The official URL is updated in place, so retain that validated ZIP for future rebuilds. A changed download is rejected instead of silently replacing historical services. The compact prepared reference is about **0.58 MB**, with shared schedules, and needs no schedule API or credentials at replay time. `SUNTRAIN_TORONTO_REFERENCE` overrides the prepared file.
 
 Contains information licensed under the [Open Government Licence – Toronto](https://open.toronto.ca/open-data-licence/). Timetable and railway geometry: TTC / City of Toronto. SunTrain is independent of TTC and uses no official logos or map artwork.
 
@@ -83,10 +83,10 @@ Choose the city in **Replay city**. These railway additions reuse route/operator
 | --- | --- | --- |
 | Sydney | 5–11 October 2026 | Sydney Trains T1–T9, Metro M1, TrainLink intercity BMT/CCN/SCO and light rail L1–L4 |
 | Adelaide | 27 May–30 June 2024 | Suburban rail and Torrens Connect trams; Port Dock had not opened |
-| Perth | 5–11 October 2026 | Eight suburban lines and stadium specials when scheduled; Transwa excluded |
+| Perth | 5–11 October 2026 | Eight suburban lines and stadium specials when scheduled, plus optional Transperth buses and CAT; Transwa/regional operators excluded |
 | Brisbane | 5–11 October 2026 | Queensland Rail across SEQ and G:link Gold Coast light rail |
 
-Adelaide uses official historical **version 1430**, covering the preferred five weeks. The other additions use publicly downloadable, pinned archives for a complete October 2026 week; a suitable 2024 ZIP was not obtained. Network changes are represented by each archive's actual calendars and stop sequences. This is a schedule replay, not observed GPS or a reconstruction of every disruption. Shapes come from the same archived timetable as the services. Passenger data was investigated, but no individual-train loads are supplied, so passenger sizing and heatmaps stay unavailable for these cities. Sydney/Adelaide/Gold Coast light rail is enabled with separate Transport filters and historical route colours. Sydney regional TrainLink, Newcastle light rail, Australian city buses outside Melbourne and ferries remain future additions documented in the notes.
+Adelaide uses official historical **version 1430**, covering the preferred five weeks. The other additions use publicly downloadable, pinned archives for a complete October 2026 week; a suitable 2024 ZIP was not obtained. Network changes are represented by each archive's actual calendars and stop sequences. This is a schedule replay, not observed GPS or a reconstruction of every disruption. Shapes come from the same archived timetable as the services. Passenger data was investigated, but no individual-train loads are supplied, so passenger sizing and heatmaps stay unavailable for these cities. Sydney/Adelaide/Gold Coast light rail is enabled with separate Transport filters and historical route colours. Sydney regional TrainLink, Newcastle light rail, Australian city buses outside Melbourne/Perth and ferries remain future additions documented in the notes.
 
 Rebuild the compact references with:
 
@@ -135,7 +135,7 @@ The compact reference is about 0.9 MB, with shared stop schedules and paths. The
 
 ## Chicago CTA rail
 
-Choose **Chicago** in **Replay city** for **24 November–28 December 2025**, five full weeks of CTA ‘L’ trains: Red, Blue, Brown, Green, Orange, Pink, Purple and Yellow. Chicago uses `America/Chicago` local time, historical feed colours and the existing route/direction/stop filters, playback controls, fullscreen and themes. Metra, buses and train passenger counts are unavailable in this first addition. Overview remains Melbourne passenger analysis.
+Choose **Chicago** in **Replay city** for **24 November–28 December 2025**, five full weeks of CTA ‘L’ trains: Red, Blue, Brown, Green, Orange, Pink, Purple and Yellow. Chicago uses `America/Chicago` local time, historical feed colours and the existing route/direction/stop filters, playback controls, fullscreen and themes. CTA buses are available as an optional layer under **Buses**. Rail opens first. Bus route colours come from the same historical feed (grey, dark grey, red and blue), rather than Melbourne orange. Metra and individual vehicle passenger counts are unavailable. Overview remains Melbourne passenger analysis.
 
 **Chicago's period differs from Melbourne and Boston.** The requested May–June 2024 Transitland snapshot is listed, but its ZIP download required archive authentication. A publicly downloadable 2024 ZIP was not obtained. The supported 2025 period uses two accessible [MobilityDatabase CTA archives](https://mobilitydatabase.org/feeds/gtfs/mdb-389), captured on 23 November and 19 December 2025 (UTC); each service date selects the latest of these snapshots captured by that date. Calendars and date exceptions determine actual trips, including holidays. Current CTA schedules are never substituted for the labelled historical dates.
 
@@ -145,7 +145,7 @@ Rebuild the compact Chicago reference with:
 ./.venv/bin/python scripts/prepare_chicago_replay.py
 ```
 
-The script downloads the pinned archives into `.cache/chicago-archives/` and writes `data/reference/chicago/2025-11-24.json.gz`. Only CTA rail is retained. Stop schedules and trip-specific shapes remain shared; the existing prepared-city loader sends one selected day to the browser without querying Melbourne's warehouse. Set `SUNTRAIN_CHICAGO_REFERENCE` to use another prepared reference.
+The script downloads the pinned archives into `.cache/chicago-archives/` and writes `data/reference/chicago/2025-11-24.json.gz`. The base reference retains CTA rail; optional daily bus bundles use the same two dated archives. Stop schedules and trip-specific shapes remain shared; the existing prepared-city loader sends one selected day to the browser without querying Melbourne's warehouse. Set `SUNTRAIN_CHICAGO_REFERENCE` to use another prepared reference.
 
 CTA supplies native stop/shape distance anchors, reused by the existing geometry matcher to preserve Loop stop occurrences and branch paths before simplification. Anchors must follow journey order and match stations within 150 m; unresolved paths remain gaps. Data is provided by Chicago Transit Authority under its [Developer License Agreement](https://www.transitchicago.com/downloads/sch_data/developers_license_agreement.htm). SunTrain is independent of CTA. Positions estimate scheduled movement, not GPS, delays or every historical disruption.
 
@@ -415,3 +415,16 @@ Set this environment variable:
 - The current tracked Parquet warehouse file is included in the repo, so the first deploy can run without an external database.
 - If you later add much larger Parquet files, consider moving the warehouse onto a Render disk or object storage instead of keeping all data in git.
 - The repo pins Python with [.python-version](/Users/adhni/Desktop/SunTrain/.python-version) so Render does not fall back to its current default `3.14.x`, which can break `pyarrow` wheel installs.
+
+## Optional Chicago and Perth buses
+
+Chicago buses cover **24 November–28 December 2025**; Perth buses cover **5–11 October 2026**, matching their existing rail periods. Select **Buses** (Chicago) or **Buses / CAT** (Perth) under Transport; clearing Transport includes all available modes. Rail opens first and changing modes preserves the replay clock. Perth includes only bus agencies named **Transperth**, including Perth, Fremantle and Joondalup CAT where scheduled; regional operators, Transwa and ferries stay excluded. Ordinary Perth buses retain feed green, while CAT retains its supplied route colours. Route legends, filters and selected journeys use the same colours.
+
+Rebuild from the existing pinned source ZIPs:
+
+```bash
+./.venv/bin/python scripts/prepare_city_buses.py chicago
+./.venv/bin/python scripts/prepare_city_buses.py perth
+```
+
+Prepared daily references live under `data/reference/<city>/bus/`. `SUNTRAIN_CHICAGO_BUS_REFERENCE` and `SUNTRAIN_PERTH_BUS_REFERENCE` can override those directories. Only the selected day is opened at runtime; stops, timings and geometry remain shared. Source ZIPs are preparation-only. Bus occurrences are assigned once by their start time within a 03:00–03:00 business window and may finish afterward. No frequency templates were present in these pinned bus feeds; future frequency feeds are rejected until explicitly supported. Passenger loads are unavailable. See the city expansion notes for source gaps, calendars and attribution.

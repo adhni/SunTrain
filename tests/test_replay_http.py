@@ -157,7 +157,8 @@ def test_failed_generation_releases_schedules_and_can_retry(tmp_path, monkeypatc
         assert gzip.decompress(stream.read()) == b'{}'
 
 
-@pytest.mark.parametrize("city,day", [("boston", "2024-06-24"), ("london", "2026-10-05")])
+@pytest.mark.parametrize("city,day", [("boston", "2024-06-24"), ("london", "2026-10-05"),
+                                    ("chicago", "2025-11-24"), ("perth", "2026-10-05")])
 def test_bus_only_download_does_not_open_unselected_rail_reference(city, day, monkeypatch):
     replay.clear_replay_cache()
     original_open = gzip.open

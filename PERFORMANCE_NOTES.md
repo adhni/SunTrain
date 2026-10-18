@@ -55,3 +55,9 @@ node --test tests/test_replay_animation.cjs tests/test_passenger_demand.cjs
 ```
 
 Browser validation covers every city, optional buses, filters/details, clock preservation, 2,000× playback, Melbourne heatmaps, Overview, mobile layout, themes and fullscreen. Performance artifacts and the source-conversion audit are local ignored files under `.cache/`.
+
+## Toronto streetcars and optional Chicago/Perth buses (18 October 2026)
+
+Toronto's existing seven-day reference now includes streetcars, with the same shared timing/topology representation. Chicago and Perth buses reuse the existing optional daily-bundle loader, so their initial rail requests do not open bus data and bus-only requests do not open rail. The bus bundles add about 116 MB to the repository; that collection is not transferred to a visiting browser. A request opens one selected city/day and sends only its selected modes. Rail sources and coverage remain unchanged.
+
+An isolated local Python 3.9 HTTP-generation sequence measured Chicago buses (24 November 2025) at **1.520 s / 4.061 MB gzip**, then Perth buses (5 October 2026) at **1.399 s / 3.126 MB gzip**. Process peak RSS was about **180.5 MiB**, then **195.5 MiB**, respectively. These measurements exclude the separate web-server master and are local cold-build measurements, not Render or phone guarantees. Existing cache limits, build serialization and schedule release still apply.

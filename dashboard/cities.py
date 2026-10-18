@@ -1,5 +1,11 @@
 """Replay settings; passenger analysis continues to use the Victorian dataset."""
 
+import json
+from pathlib import Path
+
+GERMANY_REGIONAL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
+    "data/reference/germany/regional-operators.json").read_text())
+
 CITIES = {
     "melbourne": {
         "name": "Melbourne", "timezone": "Australia/Melbourne",
@@ -129,9 +135,9 @@ CITIES = {
         "bounds": [[5.7, 47.2], [15.3, 55.1]], "passenger_data": False,
         "start_date": "2026-06-01", "end_date": "2026-06-07",
         "default_modes": ["train"],
-        "description": "One week of German ICE, IC, EC and ECE trains, including overnight services and German portions of international journeys. Passenger counts are unavailable.",
-        "modes": [("Long-distance trains", "train")],
-        "operators": [(name, name) for name in ("DB Fernverkehr AG", "SNCF", "Dänische Staatsbahnen", "SÜWEX")],
+        "description": "German trains for one week. Long-distance trains open first; select Regional rail or S-Bahn under Transport to add those networks. Passenger counts are unavailable.",
+        "modes": [("Long-distance trains", "train"), ("Regional rail", "regional_rail"), ("S-Bahn / Regio-S-Bahn", "commuter_rail")],
+        "operators": [(name, name) for name in sorted({"DB Fernverkehr AG", "SNCF", "Dänische Staatsbahnen", "SÜWEX", *GERMANY_REGIONAL_OPERATORS})],
         "directions": [("Not specified", "Not specified")],
     },
     "netherlands": {

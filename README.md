@@ -4,11 +4,13 @@ Historical transport replay across Australia, Canada, Germany, the Netherlands, 
 
 ## Germany long-distance rail
 
-Choose **Germany** for **1–7 June 2026**, matching the Netherlands: nationwide **ICE, IC, EC and ECE**, including overnight services and German portions of international journeys. Regional/urban transport and buses are excluded. The existing map, filters, playback, Overview, themes and fullscreen apply. Passenger counts are unavailable.
+Choose **Germany** for **1–7 June 2026**, matching the Netherlands: nationwide **ICE, IC, EC and ECE**, including overnight services and German portions of international journeys. Long-distance trains open first; select **Regional rail** or **S-Bahn / Regio-S-Bahn** under Transport to add those networks for the same week. Other urban modes and buses are excluded. The existing map, filters, playback, Overview, themes and fullscreen apply. Passenger counts are unavailable.
 
-The downloaded historical GTFS exactly matches the requested May–June Transitland snapshot, obtained publicly through Mobility Database. DB InfraGO's connected railway geometry supplies inferred alignments, with **95.17%** of scheduled legs matched; unresolved sections remain gaps. This archive supplies no active German Railjet/EuroNight portion in the selected week, so sleeper/Railjet coverage is not claimed. Timetables: DELFI e.V. / GTFS.de; railway alignments: DB InfraGO AG; CC BY 4.0, matched and simplified by SunTrain.
+The long-distance historical GTFS exactly matches the requested May–June Transitland snapshot, obtained publicly through Mobility Database. DB InfraGO's connected railway geometry supplies inferred alignments, with **95.17%** of long-distance legs matched. The separate dated regional archive adds **155,100 regional and 95,512 S-Bahn departures**, with **89.51%** and **95.98%** of legs matched respectively. Unresolved sections remain gaps; some private services can appear only at scheduled stops. Sleeper/Railjet coverage is not enabled. Timetables: DELFI e.V. / GTFS.de; railway alignments: DB InfraGO AG; CC BY 4.0, matched and simplified by SunTrain.
 
-The prepared week is **1.62 MB gzip**; visitors load one day (Monday approximately **1.30 MB gzip**). Rebuild with `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/prepare_germany_replay.py`. See [Germany expansion notes](GERMANY_EXPANSION_NOTES.md) for source pins, international/overnight handling, geometry limits and future expansion.
+Regional/S-Bahn use separate daily downloads and shared schedules; selecting them preserves the replay clock. Source colours are kept, with red regional and green S-Bahn display fallbacks. Rebuild the optional layers with `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/prepare_germany_regional.py`.
+
+The prepared long-distance week is **1.62 MB gzip**; visitors load one day (Monday approximately **1.30 MB gzip**). Rebuild with `PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/prepare_germany_replay.py`. See [Germany expansion notes](GERMANY_EXPANSION_NOTES.md) for source pins, international/overnight handling, geometry limits and future expansion.
 
 ## Netherlands replay
 

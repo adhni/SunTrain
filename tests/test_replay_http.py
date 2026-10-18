@@ -177,3 +177,31 @@ def test_chunked_json_preserves_nested_data_and_unicode():
              "stations": [{"lon": -71.1234567890123, "name": "King’s Cross"}, {}],
              "patterns": {"a": {"times": [0, 10, 20, 30], "legs": []}}, "empty": [], "empty_map": {}}
     assert json.loads(b''.join(http.json_fragments(value))) == value
+
+
+def test_germany_sbahn_http_releases_the_optional_schedule_cache(replay_client):
+    info = http.descriptor("2026-06-01", "germany", ["commuter_rail"])
+    response = replay_client.get(info["url"], headers={"Accept-Encoding": "gzip"})
+    assert response.status_code == 200
+    payload = json.loads(gzip.decompress(response.data))
+    assert len(payload["services"]) == 14268
+    assert payload["loaded_modes"] == ["commuter_rail"]
+    assert all(service["mode"] == "commuter_rail" for service in payload["services"])
+    assert replay._get_germany_day.cache_info().currsize == 0
+    assert replay._get_prepared_day.cache_info().currsize == 0
+    assert http.transit.read_reference.cache_info().currsize == 0
+    cached = replay_client.get(info["url"], headers={"Accept-Encoding": "gzip", "If-None-Match": response.headers["ETag"]})
+    assert cached.status_code == 304
+
+
+def test_germany_default_revision_ignores_unselected_rail_files(monkeypatch, tmp_path):
+    directory = tmp_path / "s-bahn"
+    directory.mkdir()
+    filename = directory / "2026-06-01.json.gz"
+    filename.write_bytes(b"first")
+    monkeypatch.setenv("SUNTRAIN_GERMANY_COMMUTER_RAIL_REFERENCE", str(directory))
+    before = http.descriptor("2026-06-01", "germany")
+    selected = http.descriptor("2026-06-01", "germany", ["commuter_rail"])
+    filename.write_bytes(b"updated-source")
+    assert http.descriptor("2026-06-01", "germany") == before
+    assert http.descriptor("2026-06-01", "germany", ["commuter_rail"])["revision"] != selected["revision"]

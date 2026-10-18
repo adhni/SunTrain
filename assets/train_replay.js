@@ -624,7 +624,7 @@
         }
         emptyDetails() {
             this.setFollow(false);
-            $("replay-panel")?.classList.remove("replay-has-selection");
+            this.showDetails(false);
             if ($("replay-close-details")) $("replay-close-details").hidden = true;
             const host = $("replay-details");
             if (host) host.replaceChildren(node("h3", "Follow a service"),
@@ -632,12 +632,18 @@
                 node("div", this.day?.passenger_data === false ? `Positions follow scheduled times. Passenger counts are unavailable for ${this.day.city_name}.` :
                     "Positions follow scheduled times. Train passenger counts are available; tram and bus counts are unavailable.", "replay-detail-note"));
         }
+        showDetails(visible) {
+            const panel = $("replay-panel");
+            if (!panel || panel.classList.contains("replay-has-selection") === visible) return;
+            panel.classList.toggle("replay-has-selection", visible);
+            if (this.graph) requestAnimationFrame(() => this.graph.resize());
+        }
         select(id) {
             const service = this.filtered.find(s => s.id === id);
             if (!service) return;
             this.selected = service; this.staticDirty = true;
             this.graph.setPaintProperty("replay-selected-route", "line-color", vehicleColor(service, this.day?.city));
-            $("replay-panel").classList.add("replay-has-selection");
+            this.showDetails(true);
             $("replay-close-details").hidden = false;
             this.setFollow(this.followSelected);
             const host = $("replay-details"); host.replaceChildren();

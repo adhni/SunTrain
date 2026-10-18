@@ -34,28 +34,32 @@ def build_replay_panel(metadata, default_date):
         dcc.Store(id="replay-day", storage_type="memory"),
         dcc.Store(id="replay-client-state", storage_type="memory"),
         html.Div(className="replay-heading", children=[
-            html.Div([html.Div("THE NETWORK IN MOTION", className="replay-eyebrow"),
-                      html.H2("Transport Replay"), html.P(CITIES["melbourne"]["description"], id="replay-description")]),
+            html.P(CITIES["melbourne"]["description"], id="replay-description"),
             html.Span(badge, id="replay-period", className="replay-badge"),
         ]),
         html.Div(id="replay-filter-controls", className="replay-filters", children=[
-            field("Replay city", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
+            field("City", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
                   for key, value in CITIES.items()], value="melbourne", clearable=False, searchable=False)),
-            field("Business date", dcc.DatePickerSingle(id="replay-date", date=default_date,
+            field("Date", dcc.DatePickerSingle(id="replay-date", date=default_date,
                   min_date_allowed=minimum, max_date_allowed=maximum,
                   display_format="DD MMM YYYY", first_day_of_week=1, clearable=False)),
             field("Transport", dcc.Dropdown(id="replay-modes", options=[{"label": "Trains", "value": "train"},
                   {"label": "Trams", "value": "tram"}, {"label": "Buses", "value": "bus"}], value=["train"], multi=True, placeholder="All modes")),
-            field("Operator / feed", dcc.Dropdown(id="replay-operators", options=[{"label": "Metro", "value": "Metro"},
-                  {"label": "V/Line", "value": "VLine"}, {"label": "PTV tram", "value": "PTV tram"},
-                  {"label": "PTV bus", "value": "PTV bus"}], value=[], multi=True, placeholder="All operators / feeds")),
-            field("Lines", dcc.Dropdown(id="replay-lines", options=metadata["lines"], value=[], multi=True, placeholder="All lines")),
-            field("Direction", dcc.Dropdown(id="replay-directions", options=[{"label": "Train · toward city", "value": "U"},
-                  {"label": "Train · away from city", "value": "D"}, {"label": "Tram/bus · direction A", "value": "A"},
-                  {"label": "Tram/bus · direction B", "value": "B"}], value=[], multi=True, placeholder="All directions")),
-            field("Services calling at", dcc.Dropdown(id="replay-stations", options=[], value=[], multi=True, placeholder="Any stop or station")),
-            field("Service number / trip", dcc.Input(id="replay-number", type="search", placeholder="e.g. 6200", value="", debounce=0.3,
-                  className="replay-search")),
+            field("Route / line", dcc.Dropdown(id="replay-lines", options=metadata["lines"], value=[], multi=True, placeholder="All routes / lines")),
+            html.Details(id="replay-more-filters", className="replay-more-filters", children=[
+                html.Summary("More filters", id="replay-more-filters-label"),
+                html.Div(className="replay-advanced-filters", children=[
+                    field("Operator / feed", dcc.Dropdown(id="replay-operators", options=[{"label": "Metro", "value": "Metro"},
+                          {"label": "V/Line", "value": "VLine"}, {"label": "PTV tram", "value": "PTV tram"},
+                          {"label": "PTV bus", "value": "PTV bus"}], value=[], multi=True, placeholder="All operators / feeds")),
+                    field("Direction", dcc.Dropdown(id="replay-directions", options=[{"label": "Train · toward city", "value": "U"},
+                          {"label": "Train · away from city", "value": "D"}, {"label": "Tram/bus · direction A", "value": "A"},
+                          {"label": "Tram/bus · direction B", "value": "B"}], value=[], multi=True, placeholder="All directions")),
+                    field("Services calling at", dcc.Dropdown(id="replay-stations", options=[], value=[], multi=True, placeholder="Any stop or station")),
+                    field("Service number / trip", dcc.Input(id="replay-number", type="search", placeholder="e.g. 6200", value="", debounce=0.3,
+                          className="replay-search")),
+                ]),
+            ]),
         ]),
         html.Div(id="replay-load-message", role="status", className="replay-load-message"),
         html.Div(className="replay-workspace", children=[
@@ -91,6 +95,21 @@ def build_replay_panel(metadata, default_date):
                         html.Div("Marker colors use this fixed scale. Glow shows nearby concentration.", className="replay-muted"),
                     ]),
                 ]),
+                html.Div(className="replay-transport", children=[
+                    html.Div(className="replay-transport-top", children=[
+                        html.Div(className="replay-buttons", children=[
+                            html.Button("↺", id="replay-restart", className="replay-icon-button", title="Restart at 03:00", **{"aria-label": "Restart at 03:00"}),
+                            html.Button("−1 min", id="replay-back", className="replay-step-button"),
+                            html.Button("Play", id="replay-play", className="replay-play-button", disabled=True),
+                            html.Button("+1 min", id="replay-forward", className="replay-step-button"),
+                        ]),
+                        html.Div([html.Time("08:00:00", id="replay-clock"), html.Div("", id="replay-clock-date")], className="replay-clock-wrap"),
+                        field("Playback speed", dcc.Dropdown(id="replay-speed", options=[{"label": f"{n:,}×", "value": n} for n in [1, 10, 60, 300, 1000, 2000]],
+                              value=60, clearable=False, searchable=False)),
+                    ]),
+                    html.Div(id="replay-timeline", className="replay-timeline"),
+                    html.Div([html.Span("03:00", id="replay-range-start"), html.Span("03:00 next day", id="replay-range-end")], className="replay-timeline-labels"),
+                ]),
                 html.Div(id="replay-demand-controls", className="replay-demand-controls", children=[
                     html.Div(children=[html.Label("Map view", className="finder-label"),
                         dcc.RadioItems(id="replay-map-mode", options=[{"label": " Vehicles", "value": "trains"},
@@ -107,23 +126,9 @@ def build_replay_panel(metadata, default_date):
                                   {"label": " Stops & stations", "value": "stations"},
                                   {"label": " Size trains by passengers", "value": "load"}], value=["routes", "stations"], inline=True),
                     html.Span("Estimated positions from scheduled times", className="replay-estimate"),
+                    html.Span("Select a vehicle for details", className="replay-selection-hint replay-muted"),
                     html.Span("Bigger train dots mean more passengers on board. All vehicles grow as you zoom in; passenger sizes stay within readable limits. Click a train for its recorded count.",
                               id="replay-size-help", className="replay-estimate", hidden=True),
-                ]),
-                html.Div(className="replay-transport", children=[
-                    html.Div(className="replay-transport-top", children=[
-                        html.Div(className="replay-buttons", children=[
-                            html.Button("↺", id="replay-restart", className="replay-icon-button", title="Restart at 03:00", **{"aria-label": "Restart at 03:00"}),
-                            html.Button("−1 min", id="replay-back", className="replay-step-button"),
-                            html.Button("Play", id="replay-play", className="replay-play-button", disabled=True),
-                            html.Button("+1 min", id="replay-forward", className="replay-step-button"),
-                        ]),
-                        html.Div([html.Time("08:00:00", id="replay-clock"), html.Div("", id="replay-clock-date")], className="replay-clock-wrap"),
-                        field("Playback speed", dcc.Dropdown(id="replay-speed", options=[{"label": f"{n:,}×", "value": n} for n in [1, 10, 60, 300, 1000, 2000]],
-                              value=60, clearable=False, searchable=False)),
-                    ]),
-                    html.Div(id="replay-timeline", className="replay-timeline"),
-                    html.Div([html.Span("03:00", id="replay-range-start"), html.Span("03:00 next day", id="replay-range-end")], className="replay-timeline-labels"),
                 ]),
             ]),
             html.Aside(className="replay-detail-card", children=[
@@ -169,9 +174,20 @@ def register_replay_callbacks(app, metadata):
         return (minimum, maximum, chosen, options("modes"), settings.get("default_modes", []), options("operators"), [], options("directions"), [], [], [], "",
                 settings["description"], badge, settings["name"], f"Return to metropolitan {settings['name']}",
                 {} if settings["passenger_data"] else {"display": "none"}, "trains",
-                [{"label": " Route paths", "value": "routes"}, {"label": " Stops & stations", "value": "stations"},
-                 {"label": " Size trains by passengers", "value": "load", "disabled": not settings["passenger_data"]}],
+                [{"label": " Route paths", "value": "routes"}, {"label": " Stops & stations", "value": "stations"}] +
+                ([{"label": " Size trains by passengers", "value": "load"}] if settings["passenger_data"] else []),
                 ["routes", "stations"])
+
+    app.clientside_callback(
+        """function(operators, directions, stations, number) {
+            const count = [operators, directions, stations].filter(values => values && values.length).length
+                + Number(Boolean(number && number.trim()));
+            return count ? `More filters (${count})` : 'More filters';
+        }""",
+        Output("replay-more-filters-label", "children"),
+        Input("replay-operators", "value"), Input("replay-directions", "value"),
+        Input("replay-stations", "value"), Input("replay-number", "value"),
+    )
 
     def load_replay_day(business_date, active_tab, city, current, modes=None):
         if active_tab != "replay" or not business_date:

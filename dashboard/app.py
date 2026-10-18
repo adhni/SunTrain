@@ -32,6 +32,7 @@ from dashboard.data import (
 )
 from dashboard.replay_view import build_replay_panel, register_replay_callbacks
 from dashboard.replay_http import register_replay_routes
+from dashboard.overview_view import group_passenger_reports
 
 
 META = get_metadata()
@@ -356,13 +357,16 @@ app.layout = html.Div(
         html.A("Skip to dashboard", href="#main-content", className="skip-link"),
         dcc.Download(id="download-data"),
         dcc.Store(id="analysis-network-ready", data=False),
+        dcc.Store(id="analysis-view", data="inactive"),
+        dcc.Store(id="melbourne-analysis-open", data=False),
+        dcc.Store(id="analysis-initialized", data=False),
         dcc.Store(
             id="filter-store",
             data=serialize_filters(DEFAULT_START, DEFAULT_END, [], [], [], [], [], []),
         ),
         html.Main(
             id="main-content",
-            className="app replay-active",
+            className="app transport-active replay-active",
             tabIndex=-1,
             children=[
                 html.Section(
@@ -383,7 +387,7 @@ app.layout = html.Div(
                                 html.Div(
                                     className="brand-tools",
                                     children=[
-                                        html.Div(className="dataset-note", children=[
+                                        html.Div(id="analysis-dataset-note", className="dataset-note", children=[
                                             html.Strong("Melbourne analysis · FY 2023-2024"),
                                             html.Span("Business day: 03:00-02:59"),
                                             html.Span("Melbourne counts rounded to nearest 10"),
@@ -595,7 +599,7 @@ app.layout = html.Div(
                     mobile_breakpoint=0,
                     children=[
                         dcc.Tab(label="Transport Replay", value="replay"),
-                        dcc.Tab(label="Overview · Melbourne", value="overview"),
+                        dcc.Tab(label="Overview", value="overview"),
                     ],
                 ),
                 html.Div(id="overview-navigation", style={"display": "none"}, children=[
@@ -1020,6 +1024,7 @@ app.layout = html.Div(
         ),
     ],
 )
+group_passenger_reports(app.layout)
 # Keep the page shell mounted; expensive chart/table components mount on demand.
 ANALYSIS_PANELS = {}
 def defer_analysis_panels(component):
@@ -1039,10 +1044,42 @@ defer_analysis_panels(app.layout)
 
 
 @app.callback(
+    Output("melbourne-analysis-open", "data"),
+    Input("melbourne-analysis-toggle", "n_clicks"), Input("replay-city", "value"), Input("view-tabs", "value"),
+    State("melbourne-analysis-open", "data"),
+)
+def toggle_passenger_analysis(_clicks, city, active_tab, opened):
+    if city != "melbourne" or active_tab != "overview":
+        return False
+    return not opened if callback_context.triggered_id == "melbourne-analysis-toggle" else bool(opened)
+
+
+@app.callback(
+    Output("analysis-view", "data"),
+    Input("view-tabs", "value"), Input("replay-city", "value"), Input("melbourne-analysis-open", "data"),
+)
+def passenger_analysis_view(active_tab, city, opened):
+    return "overview" if active_tab == "overview" and city == "melbourne" and opened else "inactive"
+
+
+@app.callback(
+    Output("date-range", "start_date", allow_duplicate=True), Output("date-range", "end_date", allow_duplicate=True),
+    Output("line-filter", "value", allow_duplicate=True), Output("analysis-initialized", "data"),
+    Input("melbourne-analysis-open", "data"), State("analysis-initialized", "data"),
+    State("replay-date", "date"), State("replay-lines", "value"), prevent_initial_call=True,
+)
+def initialize_passenger_analysis(opened, initialized, selected_date, lines):
+    if not opened or initialized:
+        raise PreventUpdate
+    selected_date = selected_date if selected_date and META["min_date"] <= selected_date <= META["max_date"] else DEFAULT_START
+    return selected_date, selected_date, [line for line in lines or [] if line in META["lines"]], True
+
+
+@app.callback(
     [Output(identifier, "children") for identifier in
      ("overview-panel", "lines-panel", "segments-panel", "network-panel", "raw-data-section")] +
     [Output("analysis-network-ready", "data")],
-    Input("view-tabs", "value"), Input("overview-tabs", "value"), Input("raw-data-toggle", "n_clicks"),
+    Input("analysis-view", "data"), Input("overview-tabs", "value"), Input("raw-data-toggle", "n_clicks"),
     Input("analysis-network-ready", "data"),
 )
 def mount_selected_analysis(active_tab, subtab, raw_clicks, network_ready):
@@ -1184,7 +1221,7 @@ def apply_presets(
     Input("hour-filter", "value"),
     Input("station-graph", "clickData", allow_optional=True),
     Input("station-map-graph", "clickData", allow_optional=True),
-    Input("view-tabs", "value"),
+    Input("analysis-view", "data"),
 )
 def update_station_options(start_date, end_date, day_types, lines, groups, directions, selected_stations, hours, station_bar_click, station_map_click, active_tab="overview"):
     if active_tab != "overview":
@@ -1216,7 +1253,7 @@ def update_station_options(start_date, end_date, day_types, lines, groups, direc
     Output("export-status", "children"),
     Output("download-button", "disabled"),
     Input("filter-store", "data"),
-    Input("view-tabs", "value"),
+    Input("analysis-view", "data"),
 )
 def update_summary(data, active_tab="overview"):
     if active_tab != "overview":
@@ -1251,7 +1288,7 @@ def update_summary(data, active_tab="overview"):
     Output("direction-graph", "figure"),
     Output("pattern-graph", "figure"),
     Input("filter-store", "data"),
-    Input("view-tabs", "value"),
+    Input("analysis-view", "data"),
     Input("overview-tabs", "value"),
 )
 def update_overview_panel(data, active_tab, overview_tab="overview"):
@@ -1347,7 +1384,7 @@ def update_overview_panel(data, active_tab, overview_tab="overview"):
     Output("line-summary-table", "data"),
     Output("line-summary-table", "columns"),
     Input("filter-store", "data"),
-    Input("view-tabs", "value"),
+    Input("analysis-view", "data"),
     Input("overview-tabs", "value"),
 )
 def update_lines_panel(data, active_tab, overview_tab="overview"):
@@ -1494,7 +1531,7 @@ def update_lines_panel(data, active_tab, overview_tab="overview"):
     Output("map-station-table", "data"),
     Output("map-station-table", "columns"),
     Input("filter-store", "data"),
-    Input("view-tabs", "value"),
+    Input("analysis-view", "data"),
     Input("overview-tabs", "value"),
 )
 def update_station_panel(data, active_tab, overview_tab="overview"):
@@ -1618,7 +1655,7 @@ def update_station_panel(data, active_tab, overview_tab="overview"):
     Output("service-table", "data"),
     Output("service-table", "columns"),
     Input("filter-store", "data"),
-    Input("view-tabs", "value"),
+    Input("analysis-view", "data"),
     Input("overview-tabs", "value"),
 )
 def update_service_panel(data, active_tab, overview_tab="overview"):
@@ -1665,7 +1702,7 @@ def update_service_panel(data, active_tab, overview_tab="overview"):
     Output("segment-table", "data"),
     Output("segment-table", "columns"),
     Input("filter-store", "data"),
-    Input("view-tabs", "value"),
+    Input("analysis-view", "data"),
     Input("overview-tabs", "value"),
 )
 def update_segment_panel(data, active_tab, overview_tab="overview"):
@@ -1842,9 +1879,10 @@ def update_segment_panel(data, active_tab, overview_tab="overview"):
     Input("filter-store", "data"),
     Input("preview-row-count", "value"),
     Input("raw-data-toggle", "n_clicks"),
+    Input("analysis-view", "data"),
 )
-def update_rows_panel(data, preview_row_count, raw_data_clicks):
-    if not raw_data_clicks or raw_data_clicks % 2 == 0:
+def update_rows_panel(data, preview_row_count, raw_data_clicks, active_tab="overview"):
+    if active_tab != "overview" or not raw_data_clicks or raw_data_clicks % 2 == 0:
         raise PreventUpdate
     try:
         _, filters = deserialize_filters(data)
@@ -1866,22 +1904,29 @@ def update_rows_panel(data, preview_row_count, raw_data_clicks):
     Output("analysis-data-actions", "style"),
     Output("overview-navigation", "style"),
     Output("main-content", "className"),
+    Output("city-overview", "style"), Output("melbourne-analysis", "style"),
+    Output("melbourne-analysis-body", "style"), Output("melbourne-analysis-toggle", "aria-expanded"),
     Input("view-tabs", "value"),
     Input("overview-tabs", "value"),
+    Input("analysis-view", "data"), Input("replay-city", "value"), Input("melbourne-analysis-open", "data"),
 )
-def update_tab_visibility(active_tab, overview_tab="overview"):
-    analysis_view = overview_tab if active_tab == "overview" else None
+def update_tab_visibility(active_tab, overview_tab="overview", analysis_active="inactive", city="melbourne", opened=False):
+    show_analysis = passenger_analysis_view(active_tab, city, opened) == "overview" and analysis_active == "overview"
+    analysis_view = overview_tab if show_analysis else None
+    melbourne_overview = active_tab == "overview" and city == "melbourne"
     return (
         tab_style(analysis_view == "overview"),
         tab_style(analysis_view == "lines"),
         tab_style(analysis_view == "segments"),
         tab_style(analysis_view == "network"),
-        tab_style(active_tab == "replay"),
-        {"display": "none"} if active_tab == "replay" else {},
-        {"display": "none"} if active_tab == "replay" else {},
-        {"display": "none"} if active_tab == "replay" else {},
-        tab_style(active_tab == "overview"),
-        "app replay-active" if active_tab == "replay" else "app",
+        tab_style(True),
+        {} if show_analysis else {"display": "none"},
+        {} if show_analysis else {"display": "none"},
+        {} if show_analysis else {"display": "none"},
+        tab_style(show_analysis),
+        "app transport-active " + ("replay-active" if active_tab == "replay" else "overview-active"),
+        tab_style(active_tab == "overview"), tab_style(melbourne_overview),
+        tab_style(melbourne_overview and opened), bool(melbourne_overview and opened),
     )
 
 

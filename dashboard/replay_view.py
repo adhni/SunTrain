@@ -190,7 +190,7 @@ def register_replay_callbacks(app, metadata):
     )
 
     def load_replay_day(business_date, active_tab, city, current, modes=None):
-        if active_tab != "replay" or not business_date:
+        if active_tab not in ("replay", "overview") or not business_date:
             raise PreventUpdate
         settings = city_settings(city)
         if city != "melbourne" and not settings["start_date"] <= business_date <= settings["end_date"]:

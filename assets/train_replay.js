@@ -435,7 +435,7 @@
             clockFormat = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"});
             dateFormat = new Intl.DateTimeFormat("en-AU", {timeZone, day: "numeric", month: "short", year: "numeric", timeZoneName: "short"});
             shortTime = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
-            this.filtered = []; this.activeIndex = null; this.activePositions = [];
+            this.filtered = []; this.filterSignature = null; this.activeIndex = null; this.activePositions = [];
             this.demandIndex = null; this.demandSnapshot = null; this.qualityBySchedule.clear();
             this.popup?.remove(); this.demandPopupId = null;
             if (this.mapReady) for (const id of ["replay-trains", "replay-selected-train", "replay-routes", "replay-stations", "replay-selected-route", "replay-demand"])
@@ -819,9 +819,10 @@
         async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne") {
             this.lastTrigger = trigger;
             this.active = tab === "replay";
-            if (!this.active) { this.pause(); if (this.isFullscreen()) this.exitFullscreen(); return; }
+            if (!this.active) { this.pause(); if (this.isFullscreen()) this.exitFullscreen(); }
             this.revealTab();
             if (!day || day.business_date !== date || (day.city || "melbourne") !== city || day.error) {
+                root.suntrainOverview.pending(city, date, !!day?.error);
                 this.pause(); this.loading = true;
                 this.demandMinute = null; this.demandSnapshot = null; this.demandPopupId = null; this.popup?.remove();
                 if ($("replay-demand-legend")) $("replay-demand-legend").hidden = true;
@@ -835,11 +836,17 @@
             $("replay-map")?.classList.remove("replay-is-loading");
             const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);
+            const filters = {modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
+            if (tab === "overview") {
+                const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));
+                root.dash_clientside.set_props("replay-lines", {options: [...new Set(routes.map(s => s.line))].sort()});
+                root.suntrainOverview.render(this.day, filters, core);
+                return;
+            }
             if (!this.mapReady && !await this.connect()) return;
             if (!this.active || this.day.city !== city || this.day.business_date !== day.business_date) return;
             this.speed = Number(speed) || 60;
             this.setMapMode(this.day.passenger_data === false ? "trains" : mode, demandWindow);
-            const filters = {modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             const filterSignature = JSON.stringify([filters, display]);
             if (newDay || this.filterSignature !== filterSignature) {
                 this.filterSignature = filterSignature; this.applyFilters(filters, display || []);
@@ -869,7 +876,7 @@
             const run = day => replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city);
             const valid = info && !info.error && info.business_date === date && info.city === city;
             try {
-                if (tab !== "replay" || !valid) {
+                if (!["replay", "overview"].includes(tab) || !valid) {
                     replay.download?.controller.abort(); replay.download = null;
                     await run(null);
                     return root.dash_clientside.no_update;
@@ -898,6 +905,7 @@
             } catch (error) {
                 if (error.name === "AbortError" || generation !== replay.requestGeneration) return root.dash_clientside.no_update;
                 replay.download = null; replay.pause();
+                root.suntrainOverview.pending(city, date, true);
                 console.error("Train replay failed", error);
                 setText("replay-load-message", "The replay could not load. Choose another date or return to this tab to retry.");
                 return {business_date: date, city, error: true};

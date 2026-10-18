@@ -11,7 +11,8 @@ from dashboard.cities import city_settings
 from dashboard.replay_http import descriptor
 from scripts.prepare_netherlands_replay import (
     DISPLAY_COLORS, GEOMETRY, GEOMETRY_SHA256, INTERNATIONAL_ROUTES, METRO_LINES, METRO_OPERATORS,
-    OPERATORS, SOURCE, describe_route, metro_geometry_resolver, selected_route,
+    OPERATORS, SOURCE, TRAM_COLORS, TRAM_GEOMETRY, TRAM_GEOMETRY_SHA256, TRAM_LINES, TRAM_OPERATORS,
+    describe_route, metro_geometry_resolver, selected_route,
 )
 from scripts.prepare_netherlands_geometry import selected_relation
 from scripts.prepare_australian_replay import file_hash
@@ -61,6 +62,24 @@ def test_route_identity_and_display_palette_preserve_source_colours_when_present
         assert metro["line"] == f"{city} Metro {code}" and metro["color"] == color
 
 
+def test_trams_are_scoped_by_operator_mode_and_line_with_city_labels_and_source_colours():
+    agencies = {key: {"agency_name": name} for key, name in {**OPERATORS, **TRAM_OPERATORS}.items()}
+    for agency, codes in TRAM_LINES.items():
+        for code in codes:
+            route = {"agency_id": agency, "route_id": "test-route", "route_type": "0", "route_short_name": code}
+            assert selected_route(route, agencies)
+            described = describe_route(route, {})
+            assert described["mode"] == "tram" and described["route_short_name"] == code
+            assert described["color"] == TRAM_COLORS[agency]
+            assert describe_route({**route, "route_color": "ABCDEF"}, {})["color"] == "ABCDEF"
+            for mode in ("3", "4"):
+                assert not selected_route({**route, "route_type": mode}, agencies)
+        assert not selected_route({**route, "route_short_name": "999"}, agencies)
+    for agency in OPERATORS:
+        assert not selected_route({**route, "agency_id": agency}, agencies)
+    assert describe_route({**route, "agency_id": "UOV", "route_short_name": "22"}, {})["line"] == "Utrecht Tram 22"
+
+
 def test_ret_geometry_is_pinned_and_only_overrides_the_audited_operator():
     assert file_hash(GEOMETRY) == GEOMETRY_SHA256
     with gzip.open(GEOMETRY, "rt") as stream:
@@ -76,6 +95,13 @@ def test_ret_geometry_is_pinned_and_only_overrides_the_audited_operator():
     resolve = metro_geometry_resolver(geographic)
     for agency in [*OPERATORS, "GVB"]:
         assert resolve({"agency_id": agency}, {}, [], []) is NotImplemented
+    assert file_hash(TRAM_GEOMETRY) == TRAM_GEOMETRY_SHA256
+    with gzip.open(TRAM_GEOMETRY, "rt") as stream:
+        trams = json.load(stream)
+    assert set(trams["lines"]) <= TRAM_LINES["RET"]
+    assert not set(trams["lines"]) & METRO_LINES["RET"]
+    assert selected_relation({**relation, "route": "tram", "ref": "1"}, "tram")
+    assert not selected_relation({**relation, "route": "tram", "ref": "1"})
 
 
 def test_pinned_week_preserves_shared_schedules_native_geometry_and_unique_occurrences():
@@ -90,12 +116,20 @@ def test_pinned_week_preserves_shared_schedules_native_geometry_and_unique_occur
     assert metadata["geometry_method"] == "native_or_ordered_per_leg"
     assert metadata["geometry_sha256"] == GEOMETRY_SHA256
     assert metadata["geometry_license"] == "ODbL 1.0"
+    assert metadata["geometry_references"][1]["sha256"] == TRAM_GEOMETRY_SHA256
     assert not metadata["omitted_trips"]
     assert metadata["native_anchor_patterns"] > 100
     patterns = reference["patterns"]
-    assert {p["operator"] for p in patterns.values()} == set(OPERATORS.values()) | set(METRO_OPERATORS.values())
+    assert {p["operator"] for p in patterns.values()} == set(OPERATORS.values()) | set(TRAM_OPERATORS.values())
     trains = [p for p in patterns.values() if p["mode"] == "train"]
     metros = [p for p in patterns.values() if p["mode"] == "subway"]
+    trams = [p for p in patterns.values() if p["mode"] == "tram"]
+    assert {p["operator"] for p in trams} == set(TRAM_OPERATORS.values())
+    for p in trams:
+        if p["operator"] in {"GVB", "RET"}:
+            assert p["color"] == "#" + TRAM_COLORS[p["operator"]]
+        elif p["operator"] == "U-OV":
+            assert p["color"].lower() == "#ff0010"
     assert {p["color"] for p in trains} == {"#" + color for color in DISPLAY_COLORS.values()}
     metro_colors = {"GVB": dict(zip(["50", "51", "52", "53", "54"],
                                   ["#187a36", "#FF6600", "#00adef", "#d81118", "#fff200"])),
@@ -103,7 +137,7 @@ def test_pinned_week_preserves_shared_schedules_native_geometry_and_unique_occur
                                   ["#00b43f", "#ffdd00", "#e32119", "#34b4e4", "#003a8c"]))}
     assert {p["operator"] for p in metros} == {"GVB", "RET"}
     assert all(p["color"] == metro_colors[p["operator"]][p["route_short_name"]] for p in metros)
-    assert all(p["mode"] in {"train", "subway"} and "stops" not in p for p in patterns.values())
+    assert all(p["mode"] in {"train", "subway", "tram"} and "stops" not in p for p in patterns.values())
     for pattern in patterns.values():
         expanded = expanded_pattern(reference, pattern)
         assert len(expanded["stops"]) == len(expanded["legs"]) + 1
@@ -127,10 +161,16 @@ def test_pinned_week_preserves_shared_schedules_native_geometry_and_unique_occur
     occurrences = set()
     train_counts = [5960, 5977, 5985, 5973, 5737, 5249, 4652]
     for index, (day, rows) in enumerate(sorted(reference["days"].items())):
-        assert 3000 < len(rows) < 15000
+        assert 3000 < len(rows) < 25000
         assert sum(patterns[p]["mode"] == "train" for p, _, _ in rows) == train_counts[index]
         for agency, lines in METRO_LINES.items():
-            assert {patterns[p]["route_short_name"] for p, _, _ in rows if patterns[p]["operator"] == agency} == lines
+            assert {patterns[p]["route_short_name"] for p, _, _ in rows if patterns[p]["operator"] == agency and patterns[p]["mode"] == "subway"} == lines
+        for operator in TRAM_OPERATORS.values():
+            assert any(patterns[key]["operator"] == operator and patterns[key]["mode"] == "tram" for key, _, _ in rows)
+            legs = Counter(reference["paths"][leg]["quality"]
+                           for key, _, _ in rows if patterns[key]["operator"] == operator and patterns[key]["mode"] == "tram"
+                           for leg in reference["stop_patterns"][patterns[key]["stop_pattern"]]["legs"])
+            assert legs["shape"] / sum(legs.values()) > .95, (day, operator, legs)
         for line in {p["line"] for p in metros}:
             legs = Counter(reference["paths"][leg]["quality"]
                            for key, _, _ in rows if patterns[key]["line"] == line
@@ -164,7 +204,11 @@ def test_every_day_loads_without_passenger_warehouse_and_uses_amsterdam_local_ti
         assert payload["schedule"]["license_url"] == "https://gtfs.ovapi.nl/README"
         metro = replay.get_replay_day(day, "netherlands", modes=["subway"])
         rail = replay.get_replay_day(day, "netherlands", modes=["train"])
-        assert len(metro["services"]) + len(rail["services"]) == len(payload["services"])
+        tram = replay.get_replay_day(day, "netherlands", modes=["tram"])
+        assert len(metro["services"]) + len(rail["services"]) + len(tram["services"]) == len(payload["services"])
+        assert all(s["mode"] == "tram" for s in tram["services"])
+        assert {p["operator"] for p in tram["transit_patterns"].values()} == set(TRAM_OPERATORS.values())
+        assert all(s["mode"] == "tram" for s in tram["stations"])
         assert all(s["mode"] == "subway" for s in metro["services"])
         assert all(p["mode"] == "subway" for p in metro["transit_patterns"].values())
         assert {p["operator"] for p in metro["transit_patterns"].values()} == {"GVB", "RET"}
@@ -173,3 +217,6 @@ def test_every_day_loads_without_passenger_warehouse_and_uses_amsterdam_local_ti
         replay.get_replay_day("2026-06-08", "netherlands")
     with pytest.raises(ValueError, match="Unsupported transport mode"):
         descriptor(SOURCE["first"], "netherlands", ["bus"])
+    with pytest.raises(ValueError, match="Unsupported transport mode"):
+        descriptor(SOURCE["first"], "netherlands", ["ferry"])
+    assert descriptor(SOURCE["first"], "netherlands")["modes"] == ["subway", "train"]

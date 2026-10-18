@@ -129,10 +129,10 @@ CITIES = {
         "bounds": [[3.3, 50.7], [7.3, 53.6]], "passenger_data": False,
         "start_date": "2026-06-01", "end_date": "2026-06-07",
         "default_modes": ["train", "subway"],
-        "description": "One week of domestic NS and regional trains, Amsterdam Metro and Rotterdam Metro. Passenger counts are unavailable.",
-        "modes": [("Trains", "train"), ("Metro", "subway")],
+        "description": "Dutch trains and metros for one week. Select Trams / light rail to include Amsterdam, Rotterdam, The Hague and Utrecht trams. Passenger counts are unavailable.",
+        "modes": [("Trains", "train"), ("Metro", "subway"), ("Trams / light rail", "tram")],
         "operators": [(name, name) for name in ("NS", "Arriva", "Blauwnet Arriva", "Blauwnet Keolis",
-                                               "R-net NS", "R-net Qbuzz", "RRReis Arriva", "RRReis Keolis", "GVB", "RET")],
+                                               "R-net NS", "R-net Qbuzz", "RRReis Arriva", "RRReis Keolis", "GVB", "RET", "HTM", "U-OV")],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
 }

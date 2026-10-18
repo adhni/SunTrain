@@ -537,7 +537,8 @@
             const legend = $("replay-legend"); legend.replaceChildren();
             const entries = new Map();
             for (const service of this.filtered) {
-                const label = service.mode === "tram" ? (this.day.city === "toronto" ? `Streetcar ${service.line}` : `Tram ${tramRoute(service) || "other"}`) :
+                const label = service.mode === "tram" ? (this.day.city === "netherlands" ? service.line :
+                    this.day.city === "toronto" ? `Streetcar ${service.line}` : `Tram ${tramRoute(service) || "other"}`) :
                     service.mode === "bus" && !["chicago", "perth"].includes(this.day.city) ? "Buses" : service.line;
                 entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service, this.day?.city)});
             }

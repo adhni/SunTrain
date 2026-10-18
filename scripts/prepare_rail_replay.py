@@ -210,7 +210,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
         "daily_services": counts, "omitted_trips": dict(omissions), "unresolved_geometry_patterns": dict(gaps),
         "unresolved_geometry_trips": gap_trips, "native_anchor_patterns": native_count,
         "note": "Scheduled estimates, not GPS or a reconstruction of every historical disruption. Only services active in source calendars appear. No individual vehicle passenger loads."}
-    for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url", "geometry_source_date", "geometry_sha256", "geometry_method"):
+    for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url", "geometry_source_date", "geometry_sha256", "geometry_method", "geometry_references"):
         if key in source:
             result["metadata"][key] = source[key]
     if daily:

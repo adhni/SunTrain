@@ -18,17 +18,19 @@ SOURCE_SHA256 = "964daa57328d7abfd43791da46073759a849915a24b8664597f9cb4a4171cba
 OUTPUT = ROOT / "data/reference/netherlands/ret-osm-2026-10-17.json.gz"
 
 
-def selected_relation(tags):
-    return (tags.get("type") == "route" and tags.get("route") == "subway"
-            and tags.get("operator") == "RET" and tags.get("ref") in {"A", "B", "C", "D", "E"})
+def selected_relation(tags, mode="subway"):
+    refs = {"A", "B", "C", "D", "E"} if mode == "subway" else {"1", "2", "3", "4", "5", "6", "7", "8", "11", "12", "24"}
+    return (tags.get("type") == "route" and tags.get("route") == mode
+            and tags.get("operator") == "RET" and tags.get("ref") in refs)
 
 
-def prepare(filename, output, supplements=()):
+def prepare(filename, output, supplements=(), mode="subway"):
     import osmium  # Offline preparation only, as for London's railway extract.
 
     digest = file_hash(filename)
     if digest != SOURCE_SHA256:
         raise ValueError("Rotterdam OSM extract differs from the validated snapshot")
+    railways = {"tram"} if mode == "tram" else {"subway", "light_rail", "rail"}
 
     class Inventory(osmium.SimpleHandler):
         def __init__(self):
@@ -36,12 +38,12 @@ def prepare(filename, output, supplements=()):
             self.ways, self.relations = {}, []
 
         def way(self, way):
-            if way.tags.get("railway") in {"subway", "light_rail", "rail"} and way.tags.get("service") not in {"yard", "siding", "spur"}:
+            if way.tags.get("railway") in railways and way.tags.get("service") not in {"yard", "siding", "spur"}:
                 self.ways[str(way.id)] = {"nodes": [str(n.ref) for n in way.nodes]}
 
         def relation(self, relation):
             tags = dict(relation.tags)
-            if selected_relation(tags):
+            if selected_relation(tags, mode):
                 self.relations.append({"id": str(relation.id), "tags": tags,
                     "ways": [str(m.ref) for m in relation.members if m.type == "w" and m.role in {"", "forward", "backward"}]})
 
@@ -52,11 +54,11 @@ def prepare(filename, output, supplements=()):
         elements = json.loads(supplement.read_text())["elements"]
         for element in elements:
             key = str(element["id"])
-            if element["type"] == "way" and element.get("tags", {}).get("railway") in {"subway", "light_rail", "rail"} and element.get("tags", {}).get("service") not in {"yard", "siding", "spur"}:
+            if element["type"] == "way" and element.get("tags", {}).get("railway") in railways and element.get("tags", {}).get("service") not in {"yard", "siding", "spur"}:
                 raw.ways[key] = {"nodes": [str(node) for node in element["nodes"]]}
             elif element["type"] == "node":
                 extra_nodes[key] = [element["lon"], element["lat"]]
-            elif element["type"] == "relation" and selected_relation(element.get("tags", {})):
+            elif element["type"] == "relation" and selected_relation(element.get("tags", {}), mode):
                 raw.relations = [r for r in raw.relations if r["id"] != key]
                 raw.relations.append({"id": key, "tags": element["tags"],
                     "ways": [str(m["ref"]) for m in element["members"] if m["type"] == "way" and m.get("role", "") in {"", "forward", "backward"}]})
@@ -86,13 +88,13 @@ def prepare(filename, output, supplements=()):
                 lines.setdefault(relation["tags"]["ref"], []).append({"relation": relation["id"],
                     "name": relation["tags"].get("name", ""), "node_ids": run,
                     "coordinates": [locations.nodes[node] for node in run]})
-    if set(lines) != {"A", "B", "C", "D", "E"}:
+    if not lines or (mode == "subway" and set(lines) != {"A", "B", "C", "D", "E"}):
         raise ValueError("Rotterdam extract lacks one or more metro lines")
     result = {"metadata": {"source": "OpenStreetMap contributors via BBBike Rotterdam extract",
         "source_url": SOURCE_URL, "source_date": SOURCE_DATE, "source_sha256": digest,
         "license": "ODbL 1.0", "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
         "supplements": provenance,
-        "note": "October 2026 geographic reference for June schedules; not proof of historical running-track use. Only connected RET route ways are retained."}, "lines": lines}
+        "note": "October 2026 geographic reference for June schedules; not proof of historical running-track use. Only connected RET route ways are retained." if mode == "subway" else "October 2026 geographic reference for June schedules. Only connected RET tram route ways are retained; subway and road paths are excluded."}, "lines": lines}
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("wb") as file, gzip.GzipFile(filename="", fileobj=file, mode="wb", mtime=0) as stream:
         stream.write(json.dumps(result, separators=(",", ":"), allow_nan=False).encode())
@@ -102,7 +104,9 @@ def prepare(filename, output, supplements=()):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("extract", type=Path)
-    parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--output", type=Path)
+    parser.add_argument("--mode", choices=["subway", "tram"], default="subway")
     parser.add_argument("--supplement", type=Path, nargs="*", default=[])
     args = parser.parse_args()
-    prepare(args.extract, args.output, args.supplement)
+    output = args.output or (OUTPUT if args.mode == "subway" else OUTPUT.with_name("ret-tram-osm-2026-10-17.json.gz"))
+    prepare(args.extract, output, args.supplement, args.mode)

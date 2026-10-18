@@ -6,7 +6,6 @@ These pinned snapshots are an explicitly labelled fallback, never 2024 schedules
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
 import json
 import math
@@ -20,6 +19,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from dashboard.replay import cumulative_distances
+from scripts.compact_transit import save_reference
 from scripts.prepare_boston_replay import fetch
 from scripts.prepare_replay_geometry import anchored_shape
 from scripts.prepare_transit_replay import active_services, records, seconds
@@ -172,11 +172,7 @@ def prepare(cache, output):
         "timezone": str(ZONE), "sources": sources, "daily_services": counts, "omitted_trips": dict(omissions),
         "unresolved_geometry_patterns": dict(gaps), "preferred_period_unavailable": "2024-05-27 through 2024-06-30: no downloadable historical ZIP obtained without archive credentials",
         "note": "Historical CTA rail only. Metra, buses and passenger counts are unavailable. These are 2025 schedules, not 2024."}
-    output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_suffix(output.suffix + ".tmp")
-    with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:
-        stream.write(json.dumps(result, separators=(",", ":"), allow_nan=False).encode())
-    temporary.replace(output)
+    save_reference(result, output)
     print(f"Saved {output}: {output.stat().st_size} bytes; omissions {dict(omissions)}; geometry gaps {dict(gaps)}", flush=True)
 
 

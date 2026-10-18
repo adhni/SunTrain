@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 import csv
 import gzip
 import io
@@ -102,7 +103,7 @@ def test_preparation_and_loading_preserve_calendars_overnight_shared_stops_and_c
     for service in day["services"]:
         assert service["number"] not in ("replacement", "canonical", "cancelled", "regular-bus")
         assert "stops" not in service
-        pattern = day["transit_patterns"][service["pattern"]]
+        pattern = expanded_pattern(day, day["transit_patterns"][service["pattern"]])
         assert pattern["color"] == ("#7C878E" if service["mode"] == "silver_line" else "#DA291C")
         assert pattern["direction"] == "North"
         assert {day["stations"][s[0]]["mode"] for s in pattern["stops"]} == ({"bus"} if service["mode"] == "silver_line" else {"train"})
@@ -147,7 +148,7 @@ def test_preparation_and_loading_preserve_calendars_overnight_shared_stops_and_c
 def test_bundled_boston_week_has_rail_and_silver_line_with_resolved_geometry():
     from dashboard.replay import BOSTON_PATH
     with gzip.open(BOSTON_PATH, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     assert len(reference["days"]) == 7
     assert not reference["metadata"]["omitted_trips"]
     assert not reference["metadata"]["unresolved_geometry_patterns"]

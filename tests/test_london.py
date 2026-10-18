@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 import gzip
 import hashlib
 import json
@@ -80,7 +81,7 @@ def test_london_geometry_reference_has_node_provenance_and_both_osm_sources():
 
 def test_london_bundle_has_all_twenty_routes_with_track_paths():
     with gzip.open(LONDON_PATH, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     patterns, paths, metadata = reference["patterns"], reference["paths"], reference["metadata"]
     first = date(2026, 10, 5)
     assert set(reference["days"]) == {str(first + timedelta(days=i)) for i in range(7)}
@@ -120,7 +121,7 @@ def test_london_bundle_has_all_twenty_routes_with_track_paths():
 
 def test_overground_and_elizabeth_cover_outer_branches_without_expanding_schedules():
     with gzip.open(LONDON_PATH, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     patterns, paths = reference["patterns"], reference["paths"]
     for rows in reference["days"].values():
         for code in OVERGROUND | {"XR"}:

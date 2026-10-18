@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 from datetime import date, datetime
 from zoneinfo import ZoneInfo
 import gzip
@@ -16,6 +17,20 @@ def test_gtfs_service_exceptions_override_weekday_calendar():
     exceptions = [{"service_id": "weekday", "date": "20240624", "exception_type": "2"},
                   {"service_id": "special", "date": "20240624", "exception_type": "1"}]
     assert active_services([calendar], exceptions, date(2024, 6, 24)) == {"special"}
+
+
+def test_reference_parser_packs_shared_clocks_without_changing_values():
+    value = {"stations": [{"lon": 144.1234567890123, "name": "King’s Cross"}],
+             "times": [0, 90000, 91000], "epoch": 1790000000, "missing": None}
+    with io.BytesIO(json.dumps(value).encode()) as stream:
+        assert transit.load_reference(stream) == value
+    shared = {"stop_pattern": "one", "times": [0, 1, 90000, 91000]}
+    loaded = transit.load_reference(io.BytesIO(json.dumps(shared).encode()))
+    assert loaded["times"].tolist() == shared["times"]
+    assert loaded["times"].nbytes == len(shared["times"]) * 8
+    assert not loaded["times"].flags.writeable
+    with pytest.raises(ValueError):
+        transit.load_reference(io.BytesIO(b'{"broken":['))
 
 
 def test_gtfs_extended_hours_and_business_boundary_do_not_shift_midnight_twice():
@@ -88,7 +103,7 @@ def test_preparation_keeps_valid_schedules_with_missing_shapes_as_gaps(tmp_path)
     output = tmp_path / "reference.json.gz"
     prepare(archive_path, output)
     with gzip.open(output, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     assert len(reference["days"]["2024-06-24"]) == 2
     for pattern in reference["patterns"].values():
         assert pattern["legs"] == ["gtfs-unresolved"]

@@ -6,7 +6,6 @@
 from __future__ import annotations
 
 import argparse
-import gzip
 import hashlib
 import json
 import math
@@ -21,6 +20,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from dashboard.replay import cumulative_distances
+from scripts.compact_transit import save_reference
 from scripts.prepare_boston_replay import fetch, project_stops
 from scripts.prepare_replay_geometry import clip_path, point_at, simplify
 from scripts.prepare_transit_replay import active_services, records, seconds
@@ -172,11 +172,7 @@ def prepare(cache, output):
         "timezone": str(ZONE), "sources": sources, "daily_services": counts, "omitted_trips": dict(omissions),
         "unresolved_geometry_patterns": dict(gaps), "preferred_period_unavailable": "2024-05-27 through 2024-06-30: archive ZIP required credentials; MyTransit schedules stop at 2016",
         "note": "Regular historical NYC Subway and Staten Island Railway schedules, not a reconstruction of temporary service changes or individual express/local tracks. LIRR, Metro-North, buses and ferries are excluded. No train passenger loads."}
-    output.parent.mkdir(parents=True, exist_ok=True)
-    temporary = output.with_suffix(output.suffix + ".tmp")
-    with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:
-        stream.write(json.dumps(result, separators=(",", ":"), allow_nan=False).encode())
-    temporary.replace(output)
+    save_reference(result, output)
     print(f"Saved {output}: {output.stat().st_size} bytes; omissions {dict(omissions)}; geometry gaps {dict(gaps)}", flush=True)
 
 

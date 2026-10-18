@@ -5,7 +5,7 @@
 - City `nyc`, display name New York City, timezone `America/New_York`; **15 December 2025–18 January 2026**, five full weeks. Uses the existing city selector, prepared-city loader, browser animation, filters, details, colours, fullscreen and themes. Overview remains Melbourne analysis.
 - The archive contains 28 subway route IDs: regular numbered/lettered services plus 6X, 7X, FX and three distinct shuttle IDs `GS`, `FS`, `H`. Do not merge all three shuttles under their common short name `S`; their full route labels remain distinct. Weekday-only services must not be fabricated on weekends or holidays.
 - Also includes `SI` / route type 2 (Staten Island Railway) as its own Transport option, using the historical feed colour `#08179C`. The initial view includes Staten Island. Other rail operators and buses remain excluded. Train passenger counts and passenger controls remain unavailable.
-- `scripts/prepare_nyc_replay.py` builds `data/reference/nyc/2025-12-15.json.gz` (**3,910,381 bytes**). `SUNTRAIN_NYC_REFERENCE` overrides the loader path. Downloads and audit samples in `.cache/nyc-archives/` are ignored local files.
+- `scripts/prepare_nyc_replay.py` builds `data/reference/nyc/2025-12-15.json.gz` (**3,673,177 bytes**). `SUNTRAIN_NYC_REFERENCE` overrides the loader path. Downloads and audit samples in `.cache/nyc-archives/` are ignored local files.
 
 ## Schedule availability checked on 17 October 2026
 

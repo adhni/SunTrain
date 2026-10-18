@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 import gzip
 import io
 import json
@@ -20,7 +21,7 @@ def test_bundled_rail_has_valid_calendars_references_geometry_and_shared_schedul
     source = SOURCES[city]
     filename = ROOT / "data/reference" / city / (source["first"] + ".json.gz")
     with gzip.open(filename, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     patterns, paths = reference["patterns"], reference["paths"]
     first, last = date.fromisoformat(source["first"]), date.fromisoformat(source["last"])
     assert set(reference["days"]) == {str(first + timedelta(days=i)) for i in range((last - first).days + 1)}
@@ -75,7 +76,7 @@ def test_sydney_scope_includes_intercity_light_rail_and_excludes_replacements_an
     assert not selected_route("sydney", {"agency_id": "NT", "route_type": "900"}, {})
     assert not selected_route("sydney", {"agency_id": "711", "route_type": "106"}, {})
     with gzip.open(ROOT / "data/reference/sydney/2026-10-05.json.gz", "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     assert {p["route_id"] for p in reference["patterns"].values()} >= {"M1", "BMT", "CCN", "SCO", "L1", "L2", "L3", "L4", *[f"T{i}" for i in range(1, 10)]}
     assert {p["operator"] for p in reference["patterns"].values()} == {"Sydney Trains", "Sydney Metro", "NSW Trains", "Sydney Light Rail", "Parramatta Light Rail"}
     assert not reference["metadata"]["unresolved_geometry_patterns"]
@@ -93,7 +94,7 @@ def test_native_distance_anchors_preserve_long_loop_instead_of_shortcut():
 
 def test_adelaide_historical_closure_shortens_trains_and_port_dock_is_not_open_yet():
     with gzip.open(ROOT / "data/reference/adelaide/2024-05-27.json.gz", "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     patterns = reference["patterns"]
     assert "PTDOCK" not in {p["route_id"] for p in patterns.values()}
     closure = [patterns[p] for p, _, _ in reference["days"]["2024-06-01"] if patterns[p]["route_id"] == "OUTHA"]
@@ -125,6 +126,6 @@ def test_brisbane_scope_keeps_rail_and_glink_and_excludes_buses():
     assert not selected_route("brisbane", {"agency_id": "3", "route_type": "0"}, {})
     assert selected_route("brisbane", {"agency_id": "32", "route_type": "0"}, {})
     with gzip.open(ROOT / "data/reference/brisbane/2026-10-05.json.gz", "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     assert {p["operator"] for p in reference["patterns"].values()} == {"Queensland Rail", "Keolis Downer"}
     assert not reference["metadata"]["unresolved_geometry_patterns"]

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import glob
+import gc
 import gzip
 import hashlib
 import os
@@ -17,9 +18,10 @@ from flask import abort, request, send_file
 from dashboard import data, replay, transit
 from dashboard.cities import city_settings
 
-FORMAT_VERSION = 2
+FORMAT_VERSION = 3
 CACHE_LIMIT = 256 * 1024 * 1024
-BUILD_LOCKS = [threading.Lock() for _ in range(16)]
+# Different dates/modes share a memory budget inside one Gunicorn worker.
+BUILD_LOCK = threading.Lock()
 CACHE_LOCK = threading.Lock()
 
 
@@ -87,35 +89,92 @@ def trim_cache(directory, keep):
             total -= size
 
 
+def cached_stream(path):
+    """An open descriptor survives cache eviction while a response streams."""
+    with CACHE_LOCK:
+        try:
+            stream = path.open("rb")
+        except FileNotFoundError:
+            return None
+        try:
+            os.utime(path, None)
+        except FileNotFoundError:
+            pass
+        return stream
+
+
+def json_fragments(payload):
+    """Serialize individual services/patterns instead of a whole day at once."""
+    yield b"{"
+    for index, (name, value) in enumerate(payload.items()):
+        if index:
+            yield b","
+        yield orjson.dumps(name) + b":"
+        if isinstance(value, (dict, list)):
+            mapping = isinstance(value, dict)
+            yield b"{" if mapping else b"["
+            entries = value.items() if mapping else enumerate(value)
+            for position, (key, item) in enumerate(entries):
+                if position:
+                    yield b","
+                if mapping:
+                    yield orjson.dumps(key) + b":"
+                yield orjson.dumps(item, option=orjson.OPT_SERIALIZE_NUMPY)
+            yield b"}" if mapping else b"]"
+        else:
+            yield orjson.dumps(value, option=orjson.OPT_SERIALIZE_NUMPY)
+    yield b"}"
+
+
+def write_day(info, stream):
+    payload = replay.get_replay_day(info["business_date"], info["city"],
+        include_buses=info["bus_data_loaded"], modes=info["modes"])
+    payload = {**payload, "revision": info["revision"], "loaded_modes": info["modes"]}
+    buffer = bytearray()
+    for part in json_fragments(payload):
+        buffer.extend(part)
+        if len(buffer) >= 64 * 1024:
+            stream.write(buffer)
+            buffer.clear()
+    if buffer:
+        stream.write(buffer)
+
+
+def release_schedules():
+    replay.clear_replay_cache()
+    gc.collect()
+
+
 def compressed_day(info):
     directory = cache_directory()
     directory.mkdir(parents=True, exist_ok=True)
     path = directory / (info["revision"] + ".json.gz")
-    with BUILD_LOCKS[int(info["revision"][:2], 16) % len(BUILD_LOCKS)]:
-        with CACHE_LOCK:
+    stream = cached_stream(path)
+    if stream:
+        return stream
+    with BUILD_LOCK:
+        # Another request may have prepared this version while we waited.
+        stream = cached_stream(path)
+        if stream:
+            return stream
+        release_schedules()
+        temporary = None
+        try:
             try:
-                stream = path.open("rb")
-            except FileNotFoundError:
-                stream = None
-            if stream:
-                try:
-                    os.utime(path, None)
-                except FileNotFoundError:
-                    pass  # Another process evicted it; the open descriptor stays valid.
-                return stream
-        if stream is None:
-            payload = replay.get_replay_day(info["business_date"], info["city"],
-                include_buses=info["bus_data_loaded"], modes=info["modes"])
-            payload = {**payload, "revision": info["revision"], "loaded_modes": info["modes"]}
-            # Fast serialization runs once per version, outside the Dash callback.
-            encoded = gzip.compress(orjson.dumps(payload), compresslevel=3, mtime=0)
-            with tempfile.NamedTemporaryFile(dir=directory, suffix=".tmp", delete=False) as stream:
-                temporary = Path(stream.name)
-                stream.write(encoded)
+                with tempfile.NamedTemporaryFile(dir=directory, suffix=".tmp", delete=False) as stream:
+                    temporary = Path(stream.name)
+                    with gzip.GzipFile(filename="", fileobj=stream, mode="wb", compresslevel=3, mtime=0) as compressed:
+                        write_day(info, compressed)
+            finally:
+                # write_day's local payload is gone before cached bytes are served.
+                release_schedules()
             with CACHE_LOCK:
                 temporary.replace(path)
                 stream = path.open("rb")
                 trim_cache(directory, path)
+        finally:
+            if temporary is not None:
+                temporary.unlink(missing_ok=True)
     return stream
 
 

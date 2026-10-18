@@ -1,3 +1,4 @@
+from schedule_helpers import expanded_reference, expanded_pattern
 import gzip
 import json
 from datetime import date, datetime, timedelta
@@ -37,7 +38,7 @@ def test_dc_uses_each_snapshot_only_for_its_selected_service_dates():
 @pytest.mark.parametrize("city,path", [("dc", DC_PATH), ("sf_bay", SF_BAY_PATH)])
 def test_bundled_weeks_have_complete_shared_schedules_and_verified_geometry(city, path):
     with gzip.open(path, "rt") as stream:
-        reference = json.load(stream)
+        reference = expanded_reference(json.load(stream))
     source = SOURCES[city]
     first = date.fromisoformat(source["first"])
     assert set(reference["days"]) == {str(first + timedelta(days=i)) for i in range(7)}
@@ -98,7 +99,7 @@ def test_all_us_rail_days_load_with_local_time_and_without_passenger_warehouse(c
         assert all("stops" not in service for service in payload["services"])
         assert len(payload["transit_patterns"]) < len(payload["services"])
         unresolved = sum(any(payload["paths"][leg]["quality"] == "approximate" for leg in
-                             payload["transit_patterns"][service["pattern"]]["legs"]) for service in payload["services"])
+                             expanded_pattern(payload, payload["transit_patterns"][service["pattern"]])["legs"]) for service in payload["services"])
         assert unresolved == (4 if city == "sf_bay" else 2 if day == source["last"] else 3)
         assert "variant has unresolved source geometry" in payload["schedule"]["replay_note"]
         assert payload["schedule"]["license_url"] == source["license_url"]

@@ -1,13 +1,16 @@
-"""Prepared historical tram/bus schedules; no external requests at replay time."""
+"""Shared historical schedules; no external requests at replay time."""
 from __future__ import annotations
 
 import gzip
+import io
 import json
 import os
 from datetime import date, datetime, time
 from functools import lru_cache
 from pathlib import Path
 from zoneinfo import ZoneInfo
+
+import numpy as np
 
 REFERENCE = Path(__file__).resolve().parents[1] / "data/reference/transit/index.json"
 PERIOD_START = "2024-05-27"
@@ -36,8 +39,20 @@ def read_reference(path, modified):
     if not modified:
         return None
     opener = gzip.open if Path(path).suffix == ".gz" else open
-    with opener(path, "rt") as stream:
-        return json.load(stream)
+    with opener(path, "rb") as stream:
+        return load_reference(stream)
+
+
+def load_reference(stream):
+    """Keep shared timing vectors in compact numeric buffers on the server."""
+    return json.load(io.TextIOWrapper(stream, encoding="utf-8"), object_hook=packed_pattern)
+
+
+def packed_pattern(value):
+    if "stop_pattern" in value and isinstance(value.get("times"), list):
+        value["times"] = np.asarray(value["times"])
+        value["times"].setflags(write=False)
+    return value
 
 
 def available_range():
@@ -69,15 +84,20 @@ def append_reference(day, reference, *, consume=False, modes=None):
     station_map = {identifier: len(day["stations"]) + i for i, identifier in enumerate(station_ids)}
     day["stations"].extend(reference["stations"][identifier] for identifier in station_ids)
     remapped = {}
-    for key in packed_ids:
-        topology = packed[key] if consume else dict(packed[key])
+    for key, source in packed.items():
+        if key not in packed_ids:
+            continue
+        topology = source if consume else dict(source)
         topology["stations"] = [station_map[s] for s in topology["stations"]]
         remapped[key] = topology
     if remapped:
         day.setdefault("transit_stop_patterns", {}).update(remapped)
-    patterns = {}
-    for identifier in selected_patterns:
-        pattern = reference["patterns"][identifier]
+    patterns, quality = {}, {}
+    # Keep preparation's route/timing order so similar schedules compress
+    # together, instead of randomizing them through a set on every process.
+    for identifier, pattern in reference["patterns"].items():
+        if identifier not in selected_patterns:
+            continue
         if "stop_pattern" in pattern:
             patterns[identifier] = pattern
         elif consume:
@@ -87,6 +107,7 @@ def append_reference(day, reference, *, consume=False, modes=None):
         else:
             patterns[identifier] = {**pattern, "stops": [[station_map[s[0]], s[1], s[2]] for s in pattern["stops"]]}
         legs = packed[pattern["stop_pattern"]]["legs"] if "stop_pattern" in pattern else pattern["legs"]
+        quality[identifier] = (len(legs), sum(reference["paths"][leg]["quality"] == "approximate" for leg in legs))
         for leg in legs:
             day["paths"][leg] = reference["paths"][leg]
     day.setdefault("transit_patterns", {}).update(patterns)
@@ -99,6 +120,6 @@ def append_reference(day, reference, *, consume=False, modes=None):
         day["services"].append({"mode": pattern["mode"],
                                 "id": f"gtfs:{day['business_date']}:{trip}:{seconds}", "number": trip,
                                 "pattern": identifier, "departure": departure, "timing_uncertain": False})
-        legs = packed[pattern["stop_pattern"]]["legs"] if "stop_pattern" in pattern else pattern["legs"]
-        day["total_legs"] += len(legs)
-        day["approximate_legs"] += sum(reference["paths"][p]["quality"] == "approximate" for p in legs)
+        total, approximate = quality[identifier]
+        day["total_legs"] += total
+        day["approximate_legs"] += approximate

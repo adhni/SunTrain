@@ -1,13 +1,15 @@
 """Compact shared timetable topologies and select independent daily bundles."""
+import gzip
 import hashlib
 import json
+from pathlib import Path
 
 
 def compact_reference(reference, prefix="stops-"):
     if "stop_patterns" in reference:
         return reference
     topologies, ordered = {}, {}
-    rows = sorted(reference["patterns"].items(), key=lambda item: (item[1]["route_id"], item[1]["operator"],
+    rows = sorted(reference["patterns"].items(), key=lambda item: (item[1].get("route_id") or item[1].get("line", ""), item[1]["operator"],
                   tuple(s[0] for s in item[1]["stops"]), tuple(v for s in item[1]["stops"] for v in s[1:])))
     for key, pattern in rows:
         topology = {"stations": [s[0] for s in pattern["stops"]], "legs": pattern.pop("legs")}
@@ -19,6 +21,20 @@ def compact_reference(reference, prefix="stops-"):
     reference["patterns"], reference["stop_patterns"] = ordered, topologies
     reference["metadata"]["schedule_encoding"] = "shared-stops-flat-times-v1"
     return reference
+
+
+def save_reference(reference, output):
+    """Write the shared representation atomically, preserving schedule IDs."""
+    compact_reference(reference)
+    output = Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    temporary = output.with_suffix(output.suffix + ".tmp")
+    try:
+        with temporary.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:
+            stream.write(json.dumps(reference, separators=(",", ":"), allow_nan=False).encode())
+        temporary.replace(output)
+    finally:
+        temporary.unlink(missing_ok=True)
 
 
 def daily_reference(reference, day):

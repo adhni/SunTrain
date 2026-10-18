@@ -36,7 +36,7 @@ NETHERLANDS_PATH = ROOT / "data/reference/netherlands/2026-06-01.json.gz"
 GERMANY_PATH = ROOT / "data/reference/germany/2026-06-01.json.gz"
 BUS_REFERENCE_CITIES = {"boston", "london", "chicago", "perth"}
 LOGGER = logging.getLogger(__name__)
-GERMANY_REPLAY_NOTE = "Long-distance trains open first. Select Regional rail or S-Bahn under Transport to add those networks. German/border portions and original source categories/times are retained. Some private/urban railway paths are unavailable and stay gaps. No individual passenger loads."
+GERMANY_REPLAY_NOTE = "Long-distance trains open first. Select Regional rail, S-Bahn or U-Bahn / Stadtbahn under Transport to add those networks. German/border portions and original source categories/times are retained. Unavailable railway paths stay gaps. No individual passenger loads."
 
 
 def prepared_path(city):
@@ -190,11 +190,18 @@ def _get_germany_day(business_date, files):
         transit.append_reference(payload, reference, consume=True, modes=(mode,))
         schedules.append(payload.pop("transit"))
         for service in payload["services"][previous_count:]:
-            service["id"] = f"de-rv:{mode}:" + service["id"]
+            prefix = "de-nv" if mode == "subway" else "de-rv"
+            service["id"] = f"{prefix}:{mode}:" + service["id"]
+    geometry_sources = []
+    for schedule in schedules:
+        credit = {key: schedule[key] for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url") if key in schedule}
+        if credit and credit not in geometry_sources:
+            geometry_sources.append(credit)
     payload["schedule"] = {**schedules[0],
         "sources": [source for schedule in schedules for source in schedule.get("sources", [])],
         "source": "DELFI e.V. / GTFS.de historical railway schedules",
         "source_url": "https://gtfs.de/en/feeds/",
+        "additional_geometry_sources": geometry_sources[1:],
         "replay_note": GERMANY_REPLAY_NOTE}
     return payload
 

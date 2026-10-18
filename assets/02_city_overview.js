@@ -18,7 +18,8 @@
             hours[(minuteHours.get(minute) + 21) % 24].departures++;
             const mode = service.mode || "train";
             const key = JSON.stringify([mode, service.operator, service.route_id || service.line]);
-            if (!routes.has(key)) routes.set(key, {line: service.line, mode: day.city === "germany" && mode === "commuter_rail" ? "S-Bahn" : modeNames[mode] || mode,
+            const germanMode = day.city === "germany" ? {commuter_rail: "S-Bahn", subway: "U-Bahn / Stadtbahn"}[mode] : null;
+            if (!routes.has(key)) routes.set(key, {line: service.line, mode: germanMode || modeNames[mode] || mode,
                 operator: service.operator, departures: 0, color: core.vehicleColor(service, day.city)});
             routes.get(key).departures++;
             const schedule = service.stopIds || service.stops;

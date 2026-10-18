@@ -2,7 +2,7 @@
 
 ## Implemented
 
-Location **Germany**, **1–7 June 2026**, matching the Netherlands week, in **Europe/Berlin**. Reuses the existing compact schedule loader, replay, route/operator filters, city Overview, themes and fullscreen. Long-distance trains open first. **Regional rail** and **S-Bahn / Regio-S-Bahn** are optional Transport selections. U-Bahn, trams and buses are excluded. No live tracking or passenger loads.
+Location **Germany**, **1–7 June 2026**, matching the Netherlands week, in **Europe/Berlin**. Reuses the existing compact schedule loader, replay, route/operator filters, city Overview, themes and fullscreen. Long-distance trains open first. **Regional rail**, **S-Bahn / Regio-S-Bahn** and **U-Bahn / Stadtbahn** are optional Transport selections. Buses and other tram networks are excluded. No live tracking or passenger loads.
 
 The long-distance layer contains **5,554 scheduled German journey portions**: **803 / 805 / 806 / 790 / 814 / 768 / 768** from Monday through Sunday. Source categories are **ICE, IC, EC and ECE**. Active operators are **DB Fernverkehr AG, SNCF, Dänische Staatsbahnen and SÜWEX**. Agency names and categories are retained as supplied, rather than inferred from rolling stock or marketing names. SÜWEX's source-labelled IC services are included; its regional services are not.
 
@@ -69,7 +69,7 @@ For a longer timeframe, obtain dated archives whose **actual calendars** cover a
 
 ## Regional rail and S-Bahn addition
 
-The **same 1–7 June 2026 week** is available through the existing Transport control: **Regional rail** (`regional_rail`) and **S-Bahn / Regio-S-Bahn** (`commuter_rail`). The opening selection remains long-distance only. Route/operator filters, city Overview, details/follow, themes, fullscreen and speed controls are reused; changing modes preserves the clock. Clearing Transport selects all three rail layers.
+The **same 1–7 June 2026 week** is available through the existing Transport control: **Regional rail** (`regional_rail`) and **S-Bahn / Regio-S-Bahn** (`commuter_rail`). The opening selection remains long-distance only. Route/operator filters, city Overview, details/follow, themes, fullscreen and speed controls are reused; changing modes preserves the clock. Clearing Transport selects all available German rail layers, including the optional U-Bahn addition below.
 
 Verified historical ZIP: `https://files.mobilitydatabase.org/mdb-1089/mdb-1089-202605310104/mdb-1089-202605310104.zip`, from the [regional archive history](https://mobilitydatabase.org/feeds/gtfs/mdb-1089). Captured **31 May 2026**, **11,655,597 bytes**, SHA-256 `cffefa8a878d5846514ff472123060ca44d1cb356f0a93e575cf90fd4305c913`. This is a genuine historical copy of [GTFS.de's regional feed](https://gtfs.de/en/feeds/de_rv/); the rolling `latest.zip` is not used to simulate June. Calendars and exceptions determine each selected date, including the reduced 4 June holiday service. There are no shapes or frequency templates; actual calendars are checked because feed validity dates are omitted.
 
@@ -110,3 +110,50 @@ The command verifies the archive and geometry hashes, writes optional per-day/mo
 - Optional prepared files total approximately **49 MB gzip across seven days and two modes**. A selected Monday regional file is **5.93 MB gzip**, S-Bahn **1.42 MB**. The browser never fetches all fourteen files for one replay.
 
 Validation covers all fourteen day/mode bundles, calendar counts and unique start-day ownership, source scopes/colours, exact indexed-versus-original track projections, immutable source trip IDs, mixed-mode service IDs/topology resolution and skipped unselected reference files. HTTP checks verify optional caches are released after compression and default revisions ignore changed unselected files. Existing app/HTTP/compact-schedule/Netherlands/London regressions and all 36 JavaScript tests pass. Chrome checks cover optional modes, unchanged clocks, Berlin Ringbahn details/follow, combined Overview without refetch, 2,000× playback, themes, fullscreen, Sunday, returning to long-distance only and a mobile-width smoke check. Final first-request mode switches were approximately **1.13 seconds for S-Bahn, 3.60 for regional rail and 4.10 for all rail** locally. Earlier cached-response switches were around 0.6–1.2 seconds. These are not Render benchmarks.
+
+## U-Bahn / Stadtbahn addition
+
+The **same 1–7 June 2026 week** is available under Transport as **U-Bahn / Stadtbahn** (`subway`). The opening selection stays long-distance only. Covers the audited source networks in Berlin, Hamburg, München, Nürnberg, Frankfurt, Stuttgart, Hannover, Köln/Bonn, Essen, Mülheim, Bochum, Dortmund, Düsseldorf and Duisburg. Labels include the city so identically numbered lines remain distinguishable. Route/operator filters, details/follow, playback, themes, fullscreen and Overview reuse the existing implementation. Mode changes preserve the replay clock.
+
+### Historical timetable and scope
+
+Public historical ZIP: `https://files.mobilitydatabase.org/mdb-1090/mdb-1090-202605310128/mdb-1090-202605310128.zip`, from [Mobility Database urban-feed history](https://mobilitydatabase.org/feeds/gtfs/mdb-1090). Captured **31 May 2026**; actual calendars cover the June week and its adjoining service dates. SHA-256 **`bf1e06acc89fbe14cb584925e9a2338f21759e5d647752bfa310268570ddff3c`**. This is a historical copy of [GTFS.de's local-transit feed](https://gtfs.de/en/feeds/de_nv/), not the rolling current ZIP. The source has no `shapes.txt`, frequency templates or explicit direction bits; calendars and exceptions are applied rather than relying on its undated feed-info row.
+
+`ubahn-scope.json` pins **99 source route definitions** by original route ID, exact agency ID/name, route label and route type. It covers 14 source operator groups. Metro-type entries include associated Stadtbahn networks with numeric labels, especially Hannover and Köln/Bonn. Düsseldorf U71/U72/U73/U83 are explicitly included despite their source tram type. Nürnberg's incorrectly metro-labelled bus lines and Bonn's ordinary tram lines 61/62/65 are excluded. Other tram networks, buses, cable cars, regional rail and S-Bahn are not folded into this layer. This is not a claim to include every German Stadtbahn or tram-train system.
+
+Original GTFS trip/route IDs and times are retained; each occurrence belongs once to the **03:00–03:00 start-day window**. Preparation uses the existing rail conversion engine. Daily bundles keep shared flat timing vectors and stop/geometry patterns, with a `de-nv-subway-` namespace; combined runtime service IDs use `de-nv:subway:`. Regional/long-distance timetable and geometry pins are unchanged by this addition.
+
+### Track geometry, colours and redistribution
+
+`ubahn-osm.json.gz` is a separate derived OpenStreetMap railway database under **ODbL 1.0**. Only ways belonging to the selected line's subway/light-rail/tram route relations are retained, excluding platform members, sidings and depots. Native OSM node IDs determine connectivity; separate tracks never join merely because their coordinates coincide. Missing sections remain empty geometry gaps. Roads and distant station-to-station connectors are never substituted.
+
+The geometry metadata records each source URL, raw-file SHA-256 and actual OSM timestamp. Sources are small regional Overpass responses and BBBike city PBF extracts. They span different reference dates and provide railway geography for June schedules, not proof of historical individual running tracks or engineering diversions. The graph stays within each line's own route ways. Station projections use the **station's actual latitude** for the 150 m cutoff; the fixed London-latitude projection is not used for this new matcher. Implausible detours above three times the direct distance (minimum allowance 3 km) are rejected.
+
+GTFS route colours take priority, followed by a consistent colour supplied in the selected OSM route relations. Where those are absent or contradictory, **`#1565A8`** is a SunTrain display fallback. These inferred palettes are not a claim of an audited official historical colour chart.
+
+Timetable credit remains **DELFI e.V. / GTFS.de · CC BY 4.0**. Geometry is separately credited **© OpenStreetMap contributors · ODbL 1.0**, with source and licence links in the existing footer, including when mixed with DB InfraGO layers. The derived geometry database is committed alongside its provenance. No OpenRailwayMap tiles, logos, credentials or live APIs are needed at runtime.
+
+### Loading and rebuilding
+
+Seven independent daily files live in `data/reference/germany/subway/`. They load only when selected; default long-distance requests do not open or fingerprint them. Subway-only requests skip long-distance, regional and S-Bahn data. The existing compressed HTTP cache and schedule-release behaviour apply. `SUNTRAIN_GERMANY_SUBWAY_REFERENCE` can override the daily directory. Raw national GTFS and city PBF downloads remain in ignored `.cache/` and are not sent to visitors.
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 .venv/bin/python scripts/prepare_germany_ubahn.py
+```
+
+The builder verifies the historical ZIP and bundled geometry hashes, writes daily references and regenerates `ubahn-operators.json`. To rebuild the geometry, retrieve the exact raw files listed in its embedded metadata, retain the named Overpass responses in the cache, and run `scripts/prepare_germany_ubahn_geometry.py --cache .cache/germany` with Pyosmium available in an offline tools environment. Pyosmium is not a runtime dependency. Current downloads can differ; inspect replacements before changing pins. Source queries and timestamps are embedded in the resulting database.
+
+For future dates or additional modes, re-audit the actual calendars, operator/route identifiers, shapes and source terms. Do not enable every urban-feed route by type: the Nürnberg bus classification demonstrates why explicit scope matters. Passenger counts remain unavailable.
+
+The independent source-calendar audit counts **163,590 departures** across the week: **25,765 / 25,765 / 26,143 / 20,268 / 25,542 / 22,539 / 17,568**, Monday through Sunday. It reads calendar exceptions and first stop times directly from the pinned archive, separately from the replay converter. The 4 June reductions in relevant states are retained. All **99 scoped line/operator combinations** have OSM route-way references; this is not a claim that every individual scheduled leg matches.
+
+Bundled geometry: **1,325,767 bytes gzip**, SHA-256 **`ef1505da21f80b4d56ab4e1638342be859b0e3f2ad71f32392bb468f71704c0e`**. Rebuilding from the retained source files reproduced that exact hash. Actual OSM reference timestamps are 31 May/1 June (Düsseldorf/Rhine–Ruhr and Berlin), 15 July (Hamburg/München), 28 July (Nürnberg), and 16 October 2026 (the six BBBike city extracts). They must remain distinct from the timetable's May capture date.
+
+### Measured coverage, size and validation
+
+- All **163,590** source-calendar departures are present, with no parsing omissions and no exact duplicate ordered station/time occurrences found across operators.
+- **3,263,584 / 3,273,261 scheduled sections match track paths (99.70%)**. The other **9,677 sections** remain gaps. **69 departures** have only station positions: 46 in Dortmund and 23 in Frankfurt. Every source network has moving services on every replay day. A route-way reference alone does not establish complete movement coverage.
+- Seven daily files total **5,832,992 bytes gzip**; Monday's file is **877,587 bytes**. Including the offline geometry, the addition is approximately **7.2 MB of bundled storage**, plus small scope/operator text files. Visitors receive one selected-day replay response: Monday U-Bahn-only is **1,393,463 bytes gzip**, not the raw national ZIP or the seven daily files together.
+- Monday with **all four German rail modes** has **64,632 services** and a **10,756,487-byte gzip** response. A local combined-mode HTTP build took **3.34 seconds** with roughly **314 MiB peak process memory** in the test harness. Default long-distance loading remains independent of all optional files. These measurements are local, not Render or physical-phone guarantees.
+- **58 focused Python tests and 36 JavaScript tests passed**, including existing Germany/rail-preparation/HTTP regressions. New checks cover explicit route scope, local-latitude distance cutoffs, native node identity, source/geometry pins, independent calendar counts, shared schedules, unique business-day ownership, every network's moving coverage and mixed-layer credits/identifiers. Geometry regeneration reproduced its pinned hash.
+- Chrome checks passed for all 14 network groups, Berlin U7 details/follow, route filtering, clock preservation, mixed long-distance/U-Bahn playback, 2,000× speed, Overview without another replay download, light/dark themes, fullscreen, Sunday and a mobile-width smoke check. No page errors. The first U-Bahn selection reached a usable local replay in **1.32 seconds**.

@@ -93,12 +93,12 @@ def geometry_resolver(geographic):
     return resolve
 
 
-def mode_day(reference, day, mode):
+def mode_day(reference, day, mode, *, prefix=None):
     rows = [row for row in reference["days"][day] if reference["patterns"][row[0]]["mode"] == mode]
     result = daily_reference({**reference, "days": {day: rows}}, day)
     # Independent bundles must not overwrite shared schedule/topology keys in a
     # combined replay. Original trip IDs remain untouched in the occurrence rows.
-    prefix = "de-rv-" + mode + "-"
+    prefix = prefix or "de-rv-" + mode + "-"
     result["stop_patterns"] = {prefix + key: value for key, value in result["stop_patterns"].items()}
     result["patterns"] = {prefix + key: {**value, "stop_pattern": prefix + value["stop_pattern"]}
                           for key, value in result["patterns"].items()}

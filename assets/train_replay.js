@@ -102,7 +102,7 @@
         if (now < departure || i === length - 1) {
             const station = day.stations[stationId];
             return {lon: station.lon, lat: station.lat, load: stopValue(service, i, now < departure ? 3 : 4) ?? null,
-                    index: i, state: service.mode && service.mode !== "train" ? "At stop" : "At station", station: station.name, next: i + 1 < length ? day.stations[stopValue(service, i + 1, 0)].name : null,
+                    index: i, state: service.mode === "ferry" ? "At pier" : service.mode && service.mode !== "train" ? "At stop" : "At station", station: station.name, next: i + 1 < length ? day.stations[stopValue(service, i + 1, 0)].name : null,
                     approximate: false};
         }
         const duration = stopValue(service, i + 1, 1) - departure;
@@ -110,7 +110,7 @@
         const path = day.paths[service.legs[i]];
         const point = pointAlong(path, (now - departure) / duration);
         return {lon: point ? point[0] : null, lat: point ? point[1] : null, load: stopValue(service, i, 4) ?? null, index: i,
-                state: point ? (service.mode && service.mode !== "train" ? "Between stops" : "Between stations") : "Position unavailable",
+                state: point ? (service.mode === "ferry" ? "Between piers" : service.mode && service.mode !== "train" ? "Between stops" : "Between stations") : "Position unavailable",
                 station: day.stations[stationId].name, next: day.stations[stopValue(service, i + 1, 0)].name,
                 approximate: !point};
     }
@@ -272,7 +272,7 @@
                     this.graph.addLayer({id: "replay-selected-route", type: "line", source: "replay-selected-route",
                         paint: {"line-color": "#115d51", "line-width": 4, "line-opacity": 0.8}});
                     this.graph.addLayer({id: "replay-stations", type: "circle", source: "replay-stations",
-                        filter: ["==", ["get", "mode"], "train"],
+                        filter: ["in", ["get", "mode"], ["literal", ["train", "ferry"]]],
                         paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 6, 1.2, 9, 1.6, 12, 2.3, 15, 3],
                             "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 9, 0.3, 15, 0.7], "circle-stroke-color": "white"}});
                     this.graph.addLayer({id: "replay-local-stops", type: "circle", source: "replay-stations", minzoom: 12,
@@ -655,10 +655,10 @@
             const unresolved = service.legs.filter(id => !["track", "shape"].includes(this.day.paths[id]?.quality)).length;
             if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved geometry. The route has gaps and this vehicle is hidden between those stops.`, "replay-approximate replay-small"));
             const live = node("div", undefined, "replay-service-status"); live.id = "replay-service-status"; host.append(live);
-            host.append(node("h4", "Scheduled stops"));
+            host.append(node("h4", service.mode === "ferry" ? "Scheduled piers" : "Scheduled stops"));
             const scroll = node("div", undefined, "replay-stop-list"), table = node("table");
             const head = node("thead"), heading = node("tr");
-            ["Stop / station", "Arr.", "Dep.", "Load"].forEach(label => heading.append(node("th", label)));
+            [service.mode === "ferry" ? "Pier" : "Stop / station", "Arr.", "Dep.", "Load"].forEach(label => heading.append(node("th", label)));
             head.append(heading); table.append(head);
             const body = node("tbody");
             for (let i = 0; i < stopCount(service); i++) {
@@ -683,7 +683,7 @@
                 host.dataset.signature = signature; host.replaceChildren(node("strong", text));
                 if (position) {
                     host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
-                    if (position.approximate) host.append(node("div", this.selected.mode === "bus" ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
+                    if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : this.selected.mode === "bus" ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
                 }
                 if (this.selected.timing_uncertain) host.append(node("div", "Daylight-saving times are ambiguous for this service.", "replay-approximate"));
                 $("replay-details").querySelectorAll("tr[data-stop-index]").forEach(row => {

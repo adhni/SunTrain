@@ -39,6 +39,8 @@ TRAM_LINES = {
 # GVB/RET tram colours are blank in this snapshot. These are SunTrain display
 # colours, not official individual line colours or Melbourne's tram palette.
 TRAM_COLORS = {"GVB": "008ACD", "RET": "008C5A", "HTM": "6F818E", "UOV": "FF0010"}
+FERRY_LINES = {"F1", "F2", "F3", "F4", "F6", "F7", "F9", "F20", "F21", "F22"}
+FERRY_COLOR = "0077B6"  # SunTrain display colour; the source leaves ferry colours blank.
 # The Arriva RE18 routes extend to Belgium/Germany. International services are
 # outside this pilot; do not truncate their journeys or infer domestic variants.
 INTERNATIONAL_ROUTES = {"124366", "124367"}
@@ -59,18 +61,21 @@ SOURCE = {
     "source_url": "https://gtfs.ovapi.nl/nl/archive/",
     "license": "OVapi open-data usage conditions", "license_url": "https://gtfs.ovapi.nl/README",
     "attribution": "Historical timetables and railway geometry: Dutch transit operators via NDOV / OVapi · OVapi archive 29 May 2026",
-    "assign_by_start": ["train", "subway", "tram"],
+    "assign_by_start": ["train", "subway", "tram", "ferry"],
     "geometry_method": "native_or_ordered_per_leg",
     "geometry_source": "Rotterdam metro/tram railway geometry © OpenStreetMap contributors",
     "geometry_source_url": "https://www.openstreetmap.org/copyright",
     "geometry_license": "ODbL 1.0", "geometry_license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
     "geometry_source_date": "2026-10-17 (outer-route supplements accessed 18 October)",
-    "note": "Domestic trains, Amsterdam/Rotterdam metros and optional trams/light rail in Amsterdam, Rotterdam, The Hague and Utrecht. Schedules follow the 29 May 2026 archive calendars. Feed shapes supply native paths; Rotterdam metros/trams use October 2026 OSM railway geography. Unresolved paths stay as gaps. Buses, ferries and international services are excluded. Vehicle passenger counts are unavailable.",
+    "note": "Domestic trains, Amsterdam/Rotterdam metros, optional trams/light rail in four cities and GVB ferries across the IJ/North Sea Canal. Schedules follow the 29 May 2026 archive calendars. Feed shapes supply native rail/water paths; Rotterdam metros/trams use October 2026 OSM railway geography. Unresolved paths stay as gaps. Buses and international services are excluded. Vehicle passenger counts are unavailable.",
 }
 
 
 def selected_route(route, agencies):
     agency = route.get("agency_id", "")
+    if route.get("route_type") == "4":
+        return (agency == "GVB" and agencies.get(agency, {}).get("agency_name") == "GVB"
+                and route.get("route_short_name") in FERRY_LINES)
     if route.get("route_type") == "0":
         return (agency in TRAM_OPERATORS
                 and agencies.get(agency, {}).get("agency_name") == TRAM_OPERATORS[agency]
@@ -85,6 +90,9 @@ def selected_route(route, agencies):
 
 
 def describe_route(route, trip):
+    if route.get("route_type") == "4":
+        return {"mode": "ferry", "route_id": route["route_id"], "route_short_name": route["route_short_name"],
+                "line": f"GVB Ferry {route['route_short_name']}", "color": route.get("route_color") or FERRY_COLOR}
     if route.get("route_type") == "0":
         agency = route["agency_id"]
         city = {"GVB": "Amsterdam", "RET": "Rotterdam", "HTM": "The Hague", "UOV": "Utrecht"}[agency]

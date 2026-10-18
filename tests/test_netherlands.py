@@ -10,7 +10,7 @@ from dashboard import data, replay
 from dashboard.cities import city_settings
 from dashboard.replay_http import descriptor
 from scripts.prepare_netherlands_replay import (
-    DISPLAY_COLORS, GEOMETRY, GEOMETRY_SHA256, INTERNATIONAL_ROUTES, METRO_LINES, METRO_OPERATORS,
+    DISPLAY_COLORS, FERRY_COLOR, FERRY_LINES, GEOMETRY, GEOMETRY_SHA256, INTERNATIONAL_ROUTES, METRO_LINES, METRO_OPERATORS,
     OPERATORS, SOURCE, TRAM_COLORS, TRAM_GEOMETRY, TRAM_GEOMETRY_SHA256, TRAM_LINES, TRAM_OPERATORS,
     describe_route, metro_geometry_resolver, selected_route,
 )
@@ -80,6 +80,22 @@ def test_trams_are_scoped_by_operator_mode_and_line_with_city_labels_and_source_
     assert describe_route({**route, "agency_id": "UOV", "route_short_name": "22"}, {})["line"] == "Utrecht Tram 22"
 
 
+def test_ferries_use_only_the_ten_gvb_routes_and_a_documented_display_colour():
+    agencies = {"GVB": {"agency_name": "GVB"}, "RET": {"agency_name": "RET"}}
+    route = {"agency_id": "GVB", "route_type": "4", "route_id": "130203", "route_short_name": "F3"}
+    for code in FERRY_LINES:
+        assert selected_route({**route, "route_short_name": code}, agencies)
+    assert not selected_route({**route, "agency_id": "RET"}, agencies)
+    assert not selected_route({**route, "route_short_name": "F99"}, agencies)
+    for mode in ("0", "1", "2", "3"):
+        assert not selected_route({**route, "route_type": mode}, agencies)
+    assert not selected_route(route, {"GVB": {"agency_name": "Unrelated operator"}})
+    described = describe_route(route, {})
+    assert described["mode"] == "ferry" and described["line"] == "GVB Ferry F3"
+    assert described["color"] == FERRY_COLOR
+    assert describe_route({**route, "route_color": "ABCDEF"}, {})["color"] == "ABCDEF"
+
+
 def test_ret_geometry_is_pinned_and_only_overrides_the_audited_operator():
     assert file_hash(GEOMETRY) == GEOMETRY_SHA256
     with gzip.open(GEOMETRY, "rt") as stream:
@@ -137,7 +153,15 @@ def test_pinned_week_preserves_shared_schedules_native_geometry_and_unique_occur
                                   ["#00b43f", "#ffdd00", "#e32119", "#34b4e4", "#003a8c"]))}
     assert {p["operator"] for p in metros} == {"GVB", "RET"}
     assert all(p["color"] == metro_colors[p["operator"]][p["route_short_name"]] for p in metros)
-    assert all(p["mode"] in {"train", "subway", "tram"} and "stops" not in p for p in patterns.values())
+    ferries = [p for p in patterns.values() if p["mode"] == "ferry"]
+    assert {p["route_short_name"] for p in ferries} == FERRY_LINES
+    assert all(p["operator"] == "GVB" and p["color"] == "#" + FERRY_COLOR for p in ferries)
+    for p in ferries:
+        topology = reference["stop_patterns"][p["stop_pattern"]]
+        assert len(topology["stations"]) == 2
+        assert all(reference["stations"][i]["mode"] == "ferry" for i in topology["stations"])
+        assert all(reference["paths"][leg]["quality"] == "shape" for leg in topology["legs"])
+    assert all(p["mode"] in {"train", "subway", "tram", "ferry"} and "stops" not in p for p in patterns.values())
     for pattern in patterns.values():
         expanded = expanded_pattern(reference, pattern)
         assert len(expanded["stops"]) == len(expanded["legs"]) + 1
@@ -205,7 +229,12 @@ def test_every_day_loads_without_passenger_warehouse_and_uses_amsterdam_local_ti
         metro = replay.get_replay_day(day, "netherlands", modes=["subway"])
         rail = replay.get_replay_day(day, "netherlands", modes=["train"])
         tram = replay.get_replay_day(day, "netherlands", modes=["tram"])
-        assert len(metro["services"]) + len(rail["services"]) + len(tram["services"]) == len(payload["services"])
+        ferry = replay.get_replay_day(day, "netherlands", modes=["ferry"])
+        assert len(metro["services"]) + len(rail["services"]) + len(tram["services"]) + len(ferry["services"]) == len(payload["services"])
+        assert all(s["mode"] == "ferry" for s in ferry["services"])
+        assert all(s["mode"] == "ferry" for s in ferry["stations"])
+        expected_ferries = FERRY_LINES - ({"F9"} if i >= 5 else set())
+        assert {p["route_short_name"] for p in ferry["transit_patterns"].values()} == expected_ferries
         assert all(s["mode"] == "tram" for s in tram["services"])
         assert {p["operator"] for p in tram["transit_patterns"].values()} == set(TRAM_OPERATORS.values())
         assert all(s["mode"] == "tram" for s in tram["stations"])
@@ -217,6 +246,5 @@ def test_every_day_loads_without_passenger_warehouse_and_uses_amsterdam_local_ti
         replay.get_replay_day("2026-06-08", "netherlands")
     with pytest.raises(ValueError, match="Unsupported transport mode"):
         descriptor(SOURCE["first"], "netherlands", ["bus"])
-    with pytest.raises(ValueError, match="Unsupported transport mode"):
-        descriptor(SOURCE["first"], "netherlands", ["ferry"])
+    assert descriptor(SOURCE["first"], "netherlands", ["ferry"])["modes"] == ["ferry"]
     assert descriptor(SOURCE["first"], "netherlands")["modes"] == ["subway", "train"]

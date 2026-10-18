@@ -126,7 +126,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                     if not instances:
                         continue
                     ids = []
-                    station_mode = description.get("mode") if description.get("mode") in {"bus", "tram"} else "train"
+                    station_mode = description.get("mode") if description.get("mode") in {"bus", "tram", "ferry"} else "train"
                     for row, coordinate in zip(sequence, coordinates):
                         stop = stops[row["stop_id"]]
                         key = (stop["stop_id"], stop["stop_name"], *coordinate, station_mode)

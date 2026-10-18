@@ -2,9 +2,9 @@
 
 ## Implemented scope
 
-One nationwide location, `netherlands`, covering **1–7 June 2026** in `Europe/Amsterdam`. Domestic NS Intercity/Sprinter, regional passenger trains, **Amsterdam Metro 50–54**, **Rotterdam Metro A–E**, and trams/light rail in **Amsterdam, Rotterdam, The Hague and Utrecht** reuse the existing prepared-city loader, compact shared schedules, map, filters, themes, fullscreen and city-aware Overview. Trains and metros open together; **Trams / light rail** is selected through Transport. Operator and route controls isolate each network. Passenger sizing and heatmaps are unavailable.
+One nationwide location, `netherlands`, covering **1–7 June 2026** in `Europe/Amsterdam`. Domestic NS Intercity/Sprinter, regional passenger trains, **Amsterdam Metro 50–54**, **Rotterdam Metro A–E**, trams/light rail in **Amsterdam, Rotterdam, The Hague and Utrecht**, and **GVB ferries** reuse the existing prepared-city loader, compact shared schedules, map, filters, themes, fullscreen and city-aware Overview. Trains and metros open together; **Trams / light rail** and **Ferries** are optional Transport selections. Operator and route controls isolate each network. Passenger sizing and heatmaps are unavailable.
 
-The pinned feed's eight domestic rail agencies are NS, Arriva, Blauwnet Arriva, Blauwnet Keolis, R-net NS, R-net Qbuzz, RRReis Arriva and RRReis Keolis. Route type **2** is required for these agencies. Metros require route type **1**, exact agency/name **GVB** or **RET**, and one of their five audited route codes. Trams require route type **0**, exact agency/name GVB, RET, HTM or `UOV` / **U-OV**, and an audited tram route code. The four NS type-1 entries are excluded. Replacement buses, other buses, ferries and international operators are excluded. Arriva's two RE18 routes (`124366`, `124367`) extend into Belgium/Germany and are excluded as complete routes; their journeys are never truncated or relabelled domestic.
+The pinned feed's eight domestic rail agencies are NS, Arriva, Blauwnet Arriva, Blauwnet Keolis, R-net NS, R-net Qbuzz, RRReis Arriva and RRReis Keolis. Route type **2** is required for these agencies. Metros require route type **1**, exact agency/name **GVB** or **RET**, and one of their five audited route codes. Trams require route type **0**, exact agency/name GVB, RET, HTM or `UOV` / **U-OV**, and an audited tram route code. Ferries require type **4**, exact agency/name **GVB**, and one of the ten audited F-codes below. The four NS type-1 entries are excluded. Replacement buses, other buses and international operators are excluded. Arriva's two RE18 routes (`124366`, `124367`) extend into Belgium/Germany and are excluded as complete routes; their journeys are never truncated or relabelled domestic.
 
 ## Verified source
 
@@ -20,9 +20,9 @@ The raw national ZIP is preparation-only. It includes other modes and foreign se
 
 Daily train departures are **5,960 / 5,977 / 5,985 / 5,973 / 5,737 / 5,249 / 4,652**, plus **2,347 / 2,347 / 2,347 / 2,347 / 2,372 / 2,020 / 1,782 metros**, from Monday through Sunday. All ten metro lines operate on every selected date. No selected timetable trips are omitted, and every occurrence belongs to one 03:00–03:00 start-day window. Trains retain their original occurrences, stop orders, scheduled times, colours and geometry.
 
-The replay week including all three modes is **2,123,361 bytes gzip**, with **9,243 shared timetable patterns**. The separate offline RET metro geometry database is **147,113 bytes gzip**. All **257,698 scheduled metro legs** across the week have matched geometry, including the outer branches toward The Hague and Hoek van Holland. This is geographic matching, not an assertion of actual historical train movements.
+The replay week including all four modes is **2,206,821 bytes gzip**, with **9,263 shared timetable patterns**. The separate offline RET metro geometry database is **147,113 bytes gzip**. All **257,698 scheduled metro legs** across the week have matched geometry, including the outer branches toward The Hague and Hoek van Holland. This is geographic matching, not an assertion of actual historical train movements.
 
-Measured Monday HTTP downloads: **681,471 bytes gzip** for the opening selection of 8,307 trains and metros; **470,017 bytes** for 8,041 trams alone; **1,184,710 bytes** for all 16,348 services together. No mode expands stop arrays per service. Payload measurements are local, not hosted latency benchmarks.
+Measured Monday HTTP downloads: **681,553 bytes gzip** for the opening selection of 8,307 trains and metros; **41,519 bytes** for 1,886 ferries alone, using just **20 shared timetable patterns**. The tram-only download remains about **470 KB**. No mode expands stop arrays per service. Payload measurements are local, not hosted latency benchmarks.
 
 ## Geometry and display colours
 
@@ -50,9 +50,11 @@ The separate RET geometry database and its derived railway paths use [OpenStreet
 
 ## Validation
 
-Validation completed **19 October 2026**: **140 focused Python tests** (44 app/rail-preparation/London regression checks and 96 Netherlands/HTTP/shared-schedule checks) and **34 JavaScript tests** passed. Netherlands checks cover all three mode scopes, colour handling, all seven calendars, metro/tram geometry and source pins, unique start-day assignment, shared schedules, local time, mode-specific downloads, ferry exclusion and independence from the Melbourne passenger warehouse. Original train and metro occurrences, schedules, colours and paths were compared against the previous reference and are unchanged.
+Validation completed **19 October 2026**: **141 focused Python tests** (44 app/rail-preparation/London regression checks and 97 Netherlands/HTTP/shared-schedule checks) and **35 JavaScript tests** passed. Netherlands checks cover all four mode scopes, colour handling, all seven calendars, geometry and source pins, unique start-day assignment, shared schedules, pier tagging, local time, mode-specific downloads and independence from the Melbourne passenger warehouse. Original train, metro and tram occurrences, schedules, colours and paths were compared against the previous reference and are unchanged.
 
 Local Chrome checks covered the lighter opening selection, optional tram downloads preserving the clock, all four tram operators, city-specific route legends, source/display colours, route details/follow, 2,000× playback, filtered Overview without another download, event-date and Sunday calendars, fullscreen, theme switching, a 390 px viewport and returning to the original modes. Maps were visually inspected. No hosted performance benchmark was run for this addition.
+
+Ferry browser checks passed for optional loading, ten routes, pier labels/status, colour, F3/F4/F22 movement and follow, 2,000× playback, Ferry-labelled Overview without another download, Sunday F9 exclusion, fullscreen, theme switching, a 390 px viewport and returning to the original modes, with no page errors. Representative IJ water paths were visually inspected; no fine-grained historical vessel tracking is implied.
 
 ## Rebuild and future expansion
 
@@ -77,7 +79,7 @@ Retrieve the dated PBF and API supplements using the embedded metadata URLs/hash
 
 For a longer period, first audit dated archives, per-trip calendars and the selected operators across every proposed day. Preserve source capture/validity/hash metadata, check whether additional snapshots are required and retain one 03:00–03:00 start-day assignment per occurrence. Re-audit explicit route/operator scope whenever changing the source pin, particularly international and replacement services. Do not merely extend the date picker or use a current feed for past dates.
 
-Amsterdam GVB and Rotterdam RET metros and the four tram networks are implemented. GVB ferries are the next candidate, assessed below but not enabled. Keep nationwide buses optional and measure browser volume before expansion. Restrict every mode by audited agency and route scope, rather than enabling all type-1 or type-0 entries indiscriminately.
+Amsterdam GVB and Rotterdam RET metros, the four tram networks and GVB ferries are implemented. Buses are a future addition; keep them optional and measure browser volume before expansion. Restrict every mode by audited agency and route scope, rather than enabling all route types indiscriminately.
 
 ## Trams and light rail
 
@@ -91,12 +93,14 @@ Rebuild that geometry with the existing geometry command plus `--mode tram`; the
 
 HTM and U-OV retain supplied route colours. Where tram colours are blank, SunTrain uses explicit display colours: GVB **#008ACD**, RET **#008C5A**, and HTM's uncoloured route 10 **#6F818E**. These fallback colours are not claimed as official individual line colours. They do not use Melbourne's tram palette. Trams remain optional so the opening selection still downloads trains and metros only.
 
-## Amsterdam ferries — assessment only
+## GVB ferries
 
-**Difficulty: low to moderate; smaller than the four-city tram addition.** The same pinned archive contains GVB ferry routes **F1, F2, F3, F4, F6, F7, F9, F20, F21 and F22**, covering IJ and North Sea Canal crossings. All ten operate somewhere in the selected week; F9 has weekday service only. The source has about **1,636–1,970 scheduled crossings per calendar day**, with no frequency templates requiring expansion.
+Implemented as optional mode **Ferries**, using GVB routes **F1, F2, F3, F4, F6, F7, F9, F20, F21 and F22** across the IJ and North Sea Canal. All ten operate somewhere in the selected week; F9 has weekday service only. Schedules come from the same pinned archive, without frequency templates or a new API account.
 
-Their native shapes have **4–22 points**, match their ordered pier endpoints within the existing 150 m check, and have scheduled crossing durations of roughly **5–14 minutes**. This is promising source data, but the actual water paths and pier approaches still need visual inspection; endpoint checks alone do not prove a route stays on water. Source colours are blank, so choose a documented ferry display colour.
+Daily departures in the 03:00–03:00 business windows are **1,886 / 1,886 / 1,886 / 1,936 / 1,967 / 1,694 / 1,639**, Monday through Sunday. All **12,894 ferry occurrences** have native water geometry, with no omitted ferry trips or unresolved legs. Overnight start-day assignment explains small differences from midnight-to-midnight calendar totals.
 
-The work would mostly reuse the current replay: add a ferry mode and labels, distinguish piers from railway stops, retain per-date calendars and one 03:00–03:00 start-day assignment, then test colours, filtering and playback. These are scheduled crossings, not identified physical vessels. No new account or schedule source is needed for this week. Keep the existing OVapi source conditions and attribution. Do not substitute the later September 2026 timetable expansion for these June dates. **No ferry service or filter is implemented in this change.**
+Native water shapes have **4–22 points**, match the ordered pier endpoints within the existing 150 m check, and have scheduled crossing durations of roughly **5–14 minutes**. Ferry piers are tagged separately from railway stations and remain visible through the existing station/stop display control. Details use pier labels and movement reports “At pier” / “Between piers”. Source ferry colours are blank, so **#0077B6** is an explicit SunTrain display choice rather than an official route colour.
+
+Crossings reuse shared schedules, route filters, playback and Overview; they belong to one 03:00–03:00 start-day window, with no duplicate overnight occurrence. These are scheduled crossings, not identified physical vessels or precise recorded sailing trajectories. Keep the existing OVapi source conditions and attribution. For extensions, recheck calendars and water paths; do not substitute the later September 2026 timetable expansion for these June dates.
 
 The linked [NS occupancy listing](https://data.ndovloket.nl/bezetting/ns/) exposes recent October files; availability and journey-ID matching for June 2026 have not been established. Predicted occupancy categories must remain labelled forecasts and must not become fabricated passenger counts. [NS station ridership](https://nieuws.ns.nl/flink-meer-reizigers-op-stations-door-nieuwe-dienstregeling-en-woningbouw-in-de-buurt/) describes average station use for 2025, not these trains' individual loads or a June 2026 daily passenger heatmap. Passenger features remain optional future work.

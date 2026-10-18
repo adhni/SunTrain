@@ -143,9 +143,14 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                                     tuple(anchors) if anchors is not None else None, tuple(map(tuple, coordinates)))
                     if geometry_key not in geometry_cache:
                         try:
-                            curves = geometry_resolver(route, trip, sequence, coordinates) if geometry_resolver else path_legs(
-                                raw, anchors, coordinates, recover_native=source.get("geometry_method") == "native_or_ordered_per_leg")
-                            if geometry_resolver and (len(curves) != len(coordinates) - 1 or any(
+                            curves = geometry_resolver(route, trip, sequence, coordinates) if geometry_resolver else NotImplemented
+                            external = curves is not NotImplemented
+                            # Mixed sources can retain their own GTFS shapes and
+                            # use external geometry only for audited operators.
+                            if not external:
+                                curves = path_legs(raw, anchors, coordinates,
+                                    recover_native=source.get("geometry_method") == "native_or_ordered_per_leg")
+                            if external and (len(curves) != len(coordinates) - 1 or any(
                                     curve is not None and (len(curve) < 2 or not all(math.isfinite(value) for point in curve for value in point)
                                     or cumulative_distances([coordinates[i], curve[0]])[-1] > 150
                                     or cumulative_distances([coordinates[i + 1], curve[-1]])[-1] > 150)

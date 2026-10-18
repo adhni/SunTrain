@@ -75,7 +75,8 @@ def test_preparation_selects_snapshots_by_service_date_and_keeps_boundary_carry_
     output = tmp_path / "prepared.json.gz"
     prepare("dc", source, tmp_path, output,
             lambda route, agencies: selected_route("dc", route, agencies),
-            lambda route, trip: {**describe_route("dc", route, trip), "color": "#123456"})
+            lambda route, trip: {**describe_route("dc", route, trip), "color": "#123456"},
+            geometry_resolver=lambda *_: NotImplemented)
     with gzip.open(output, "rt") as stream:
         reference = expanded_reference(json.load(stream))
     assert {trip for _, trip, _ in reference["days"]["2026-10-05"]} == {"old", "late"}

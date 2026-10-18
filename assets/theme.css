@@ -14,6 +14,10 @@
   --berry: #e981a0; --amber: #edb36b; --shadow: 0 1px 3px #0003;
 }
 .brand-tools { display: flex; align-items: center; justify-content: flex-end; gap: 20px; }
+.transport-active .brand-bar { min-height: 56px; padding: 10px 16px; flex-direction: row; align-items: center; }
+.transport-active .brand-bar h1 { font-size: 1.6rem; }
+.transport-active .product-subtitle { display: none; }
+.transport-active .brand-tools { width: auto; flex-direction: row; align-items: center; }
 .theme-toggle { cursor: pointer; font: inherit; font-weight: 700; }
 .brand-tools .theme-toggle { flex-shrink: 0; padding: 9px 12px; border: 1px solid #ffffff70; border-radius: 6px; background: #ffffff12; color: white; font-size: 0.78rem; }
 .brand-tools .theme-toggle:hover { background: #ffffff25; }

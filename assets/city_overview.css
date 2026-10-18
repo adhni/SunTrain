@@ -1,0 +1,39 @@
+.overview-active :is(.replay-workspace, .replay-legend, .replay-quality) { display: none; }
+.overview-active .replay-attribution { margin-bottom: 16px; }
+.city-overview { margin-top: 18px; }
+.city-overview .section-title { margin-bottom: 6px; }
+.city-overview .city-overview-metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 18px 0; }
+.city-hour-chart { margin: 0 0 18px; }
+.city-hour-bars { display: grid; grid-template-columns: repeat(24, minmax(0, 1fr)); gap: 5px; padding-top: 12px; }
+.city-hour-column { min-width: 0; }
+.city-hour-track { display: flex; align-items: flex-end; height: 160px; border-bottom: 1px solid var(--line); }
+.city-hour-bar { width: 100%; background: var(--accent); border-radius: 3px 3px 0 0; }
+.city-hour-label { display: block; height: 18px; padding-top: 4px; font-size: 0.65rem; color: var(--muted); white-space: nowrap; }
+.city-chart-note { font-size: 0.78rem; margin-bottom: 0; }
+.city-table-scroll { overflow-x: auto; }
+.city-routes table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+.city-routes th, .city-routes td { padding: 12px 8px; border-bottom: 1px solid var(--line); text-align: left; }
+.city-routes th button { border: 0; background: transparent; color: var(--ink); font: inherit; font-weight: 650; cursor: pointer; padding: 0; text-align: left; }
+.city-routes th button:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.city-routes th:last-child, .city-routes td:last-child { text-align: right; font-variant-numeric: tabular-nums; }
+.city-route-swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 7px; box-shadow: 0 0 0 1px var(--muted); }
+.city-table-pagination { display: flex; align-items: center; justify-content: flex-end; gap: 12px; padding-top: 14px; font-size: 0.75rem; }
+.city-table-pagination button { width: auto; }
+.city-table-pagination button:disabled { opacity: 0.45; cursor: default; }
+.city-empty { padding: 20px 0; }
+.melbourne-analysis { margin-top: 24px; border-top: 1px solid var(--line); padding-top: 18px; }
+.melbourne-analysis > button { width: auto; }
+#melbourne-analysis-body { margin-top: 18px; }
+#analysis-dataset-note { color: var(--muted); text-align: left; justify-content: flex-start; max-width: none; margin-bottom: 12px; }
+#analysis-dataset-note strong { color: var(--ink); }
+@media (max-width: 520px) {
+    .city-overview-metrics { gap: 8px; }
+    .city-overview-metrics .metric-card { padding: 12px 9px; }
+    .city-overview-metrics .metric-label { font-size: 0.67rem; }
+    .city-overview-metrics .metric-value { font-size: 1.5rem; }
+    .city-overview-metrics .metric-subtitle { font-size: 0.64rem; }
+    .city-hour-bars { gap: 3px; }
+    .city-hour-label { font-size: 0.58rem; }
+    .city-routes table { min-width: 540px; }
+    .city-table-pagination { justify-content: space-between; gap: 6px; }
+}

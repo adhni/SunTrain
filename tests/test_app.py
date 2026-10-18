@@ -187,7 +187,7 @@ def test_heavy_callbacks_include_active_tab_input(app_module):
             for key, value in app_module.app.callback_map.items()
             if f"{graph_id}.figure" in key
         )
-        assert {"id": "view-tabs", "property": "value"} in callback["inputs"]
+        assert {"id": "analysis-view", "property": "data"} in callback["inputs"]
         assert {"id": "overview-tabs", "property": "value"} in callback["inputs"]
 
 
@@ -266,11 +266,11 @@ def test_replay_descriptors_only_load_when_visible_and_selection_changes(app_mod
     calls = []
     monkeypatch.setattr(view, "descriptor", lambda day, city, modes: calls.append((day, city, modes)) or {"city": city, "modes": list(modes)})
     with pytest.raises(PreventUpdate):
-        app_module.load_replay_day("2023-07-10", "overview", "melbourne", None)
+        app_module.load_replay_day("2023-07-10", "inactive", "melbourne", None)
     info, message = app_module.load_replay_day("2023-07-10", "replay", "melbourne", None)
     assert info == {"city": "melbourne", "modes": ["train"]} and message == ""
     with pytest.raises(PreventUpdate):
-        app_module.load_replay_day("2023-07-10", "replay", "melbourne", {**info, "business_date": "2023-07-10"})
+        app_module.load_replay_day("2023-07-10", "overview", "melbourne", {**info, "business_date": "2023-07-10"})
     app_module.load_replay_day("2023-07-10", "replay", "melbourne", {**info, "business_date": "2023-07-10"}, ["tram"])
     assert calls == [("2023-07-10", "melbourne", ("train",)), ("2023-07-10", "melbourne", ("tram",))]
 
@@ -324,22 +324,54 @@ def test_hidden_analysis_summary_and_station_options_do_not_query(app_module, mo
         app_module.update_station_options(None, None, [], [], [], [], [], [], None, None, "replay")
 
 
-def test_replay_hides_shared_filters_and_restores_them_on_exit(app_module):
+def test_shared_filters_remain_available_and_passenger_reports_start_collapsed(app_module):
     replay = app_module.update_tab_visibility("replay")
     overview = app_module.update_tab_visibility("overview")
     assert replay[4] == {"display": "block"}
     assert replay[5:8] == ({"display": "none"},) * 3
-    assert replay[-1] == "app replay-active"
-    assert overview[4] == {"display": "none"}
-    assert overview[5:8] == ({}, {}, {})
+    assert replay[9] == "app transport-active replay-active"
+    assert overview[4] == {"display": "block"}
+    assert overview[:4] == ({"display": "none"},) * 4
+    assert overview[5:8] == ({"display": "none"},) * 3
+    assert overview[10:13] == ({"display": "block"}, {"display": "block"}, {"display": "none"})
 
 
 @pytest.mark.parametrize("subtab,index", [("overview", 0), ("lines", 1), ("segments", 2), ("network", 3)])
 def test_overview_only_shows_selected_subtab(app_module, subtab, index):
-    styles = app_module.update_tab_visibility("overview", subtab)
+    styles = app_module.update_tab_visibility("overview", subtab, "overview", "melbourne", True)
     for position in range(4):
         assert styles[position] == {"display": "block" if position == index else "none"}
     assert styles[8] == {"display": "block"}
     hidden = app_module.update_tab_visibility("replay", subtab)
     assert hidden[:4] == ({"display": "none"},) * 4
     assert hidden[8] == {"display": "none"}
+
+
+def test_each_city_gets_an_overview_and_only_melbourne_can_open_passenger_reports(app_module):
+    from dashboard.cities import CITIES
+    for city in CITIES:
+        state = app_module.passenger_analysis_view("overview", city, True)
+        assert (state == "overview") == (city == "melbourne")
+        styles = app_module.update_tab_visibility("overview", "overview", state, city, True)
+        assert styles[10] == {"display": "block"}
+        assert styles[11] == {"display": "block" if city == "melbourne" else "none"}
+        assert app_module.passenger_analysis_view("overview", city, False) == "inactive"
+        assert app_module.passenger_analysis_view("replay", city, True) == "inactive"
+
+
+def test_collapsed_passenger_reports_do_not_query_even_when_raw_data_was_open(app_module, monkeypatch):
+    monkeypatch.setattr(app_module, "deserialize_filters", lambda *_: pytest.fail("hidden report queried data"))
+    with pytest.raises(PreventUpdate):
+        app_module.update_rows_panel({}, 20, 1, "inactive")
+    for name, subtab in [("update_overview_panel", "overview"), ("update_lines_panel", "lines"),
+                         ("update_service_panel", "lines"), ("update_station_panel", "network"),
+                         ("update_segment_panel", "segments")]:
+        with pytest.raises(PreventUpdate):
+            getattr(app_module, name)({}, "inactive", subtab)
+
+
+def test_passenger_reports_seed_supported_filters_only_once(app_module):
+    assert app_module.initialize_passenger_analysis(True, False, "2023-07-11", ["Werribee", "Bus 1"]) == (
+        "2023-07-11", "2023-07-11", ["Werribee"], True)
+    with pytest.raises(PreventUpdate):
+        app_module.initialize_passenger_analysis(True, True, "2023-07-10", [])

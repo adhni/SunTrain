@@ -82,6 +82,53 @@ def test_preparation_rejects_dates_outside_declared_feed_validity(tmp_path):
     assert not (tmp_path / "invalid.json.gz").exists()
 
 
+def test_optional_bus_preparation_uses_one_start_day_and_writes_self_contained_days(tmp_path):
+    digest = archive_fixture(tmp_path / "old.zip", "old", ["20261004", "20261005", "20261006", "20261007"])
+    source = {"first": "2026-10-05", "last": "2026-10-06", "timezone": "America/New_York",
+              "url": "https://example.test/old.zip", "sha256": digest, "captured": "2026-10-03", "published": "",
+              "source": "fixture", "source_url": "https://example.test", "license": "fixture",
+              "license_url": "https://example.test/license", "attribution": "fixture", "note": "fixture",
+              "assign_by_start": ["bus"]}
+    output = tmp_path / "bus"
+    prepare("dc", source, tmp_path, output, lambda route, agencies: True,
+            lambda route, trip: {"mode": "bus", "route_id": "R", "line": "Bus R"}, daily=True)
+    days = []
+    for day in ("2026-10-05", "2026-10-06"):
+        with gzip.open(output / (day + ".json.gz"), "rt") as stream:
+            reference = json.load(stream)
+        assert set(reference["days"]) == {day}
+        late = [offset for _, trip, offset in reference["days"][day] if trip == "late"]
+        assert late == [96900]  # 02:55 starts this business day; 03:10 finish does not assign it twice.
+        assert all(stop["mode"] == "bus" for stop in reference["stations"])
+        assert reference["metadata"]["schedule_encoding"] == "shared-stops-flat-times-v1"
+        days.append(reference)
+    assert len(days) == 2
+
+
+def test_missing_feed_info_requires_explicit_calendar_validation(tmp_path):
+    path = tmp_path / "old.zip"
+    archive_fixture(path, "regular", ["20261004", "20261005", "20261006"])
+    with ZipFile(path) as archive:
+        tables = {name: archive.read(name) for name in archive.namelist() if name != "feed_info.txt"}
+    with ZipFile(path, "w") as archive:
+        for name, contents in tables.items():
+            archive.writestr(name, contents)
+    source = {"first": "2026-10-05", "last": "2026-10-05", "timezone": "America/New_York",
+              "url": "https://example.test/old.zip", "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+              "captured": "2026-10-03", "published": "", "source": "fixture", "source_url": "https://example.test",
+              "license": "fixture", "license_url": "https://example.test/license", "attribution": "fixture", "note": "fixture"}
+    selected = lambda route, agencies: True
+    describe = lambda route, trip: {"mode": "bus", "route_id": "R", "line": "Bus R"}
+    output = tmp_path / "prepared.json.gz"
+    with pytest.raises(ValueError, match="Feed validity is missing"):
+        prepare("dc", source, tmp_path, output, selected, describe)
+    source["calendar_validity"] = True
+    prepare("dc", source, tmp_path, output, selected, describe)
+    source["last"] = "2026-10-07"
+    with pytest.raises(ValueError, match="calendars do not cover"):
+        prepare("dc", source, tmp_path, output, selected, describe)
+
+
 def external_source(tmp_path, extra_route=False):
     digest = archive_fixture(tmp_path / "external.zip", "regular", ["20261005"], extra_route)
     return {"first": "2026-10-05", "last": "2026-10-05", "timezone": "America/New_York",

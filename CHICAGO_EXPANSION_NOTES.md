@@ -2,8 +2,8 @@
 
 ## Implemented scope
 
-- Same feature branch / PR as Boston. Chicago uses the existing replay UI and compact shared-pattern format, via the prepared-city loader in `dashboard/replay.py`.
-- **24 November–28 December 2025**, CTA rail only: Red, Blue, Brown, Green, Orange, Pink, Purple and Yellow. This is a clearly labelled fallback, not the preferred 27 May–30 June 2024 period. Boston remains 24–30 June 2024 and Melbourne retains its existing dates.
+- Chicago uses the existing replay UI and compact shared-pattern format, via the prepared-city loader in `dashboard/replay.py`.
+- **24 November–28 December 2025**, CTA rail with optional CTA buses. Rail includes: Red, Blue, Brown, Green, Orange, Pink, Purple and Yellow. This is a clearly labelled fallback, not the preferred 27 May–30 June 2024 period. Boston remains 24–30 June 2024 and Melbourne retains its existing dates.
 - `dashboard/cities.py` supplies Chicago's coverage, `America/Chicago` timezone, bounds, CTA operator and direction filters. Cardinal directions are taken from the feed when present; direction A/B represents GTFS direction IDs where no usable compass label is supplied.
 - `scripts/prepare_chicago_replay.py` writes `data/reference/chicago/2025-11-24.json.gz`; `SUNTRAIN_CHICAGO_REFERENCE` overrides the loaded file. The source downloads in `.cache/chicago-archives/` are local and ignored by git.
 
@@ -26,9 +26,9 @@ The user explicitly allowed another historical period if usable historical data 
 
 Source URLs, capture dates and SHA-256 hashes are retained in the generated reference. GTFS service dates include the preceding and following calendar days for overnight carry-ins. Trips overlapping 03:00 intentionally remain visible on adjacent replays; there must be no duplicate occurrences within one day. GTFS service zero uses local noon minus 12 elapsed hours.
 
-The prepared baseline is **392,174 bytes**, with 77 shared schedule patterns and all eight lines on every date. All 35 day payloads passed reference/uniqueness checks, with no invalid-trip omissions or unresolved geometry patterns. Thanksgiving and Christmas each contain 1,520 services, compared with 1,913 on ordinary Monday–Thursday dates. The suite passed **79 Python + 23 JavaScript tests**; Chrome checks covered the actual Brown Line Loop, holidays, feed changes, playback, themes, fullscreen, mobile and Chicago → Boston → Melbourne switching without page errors.
+The prepared baseline is **389,957 bytes**, with 77 shared schedule patterns and all eight lines on every date. All 35 day payloads passed reference/uniqueness checks, with no invalid-trip omissions or unresolved geometry patterns. Thanksgiving and Christmas each contain 1,520 services, compared with 1,913 on ordinary Monday–Thursday dates. The suite passed **79 Python + 23 JavaScript tests**; Chrome checks covered the actual Brown Line Loop, holidays, feed changes, playback, themes, fullscreen, mobile and Chicago → Boston → Melbourne switching without page errors.
 
-Both CTA source ZIPs must be parsed locally; the browser never downloads them. Routes omit `agency_id` in this single-agency feed, which is valid GTFS: the importer checks the sole CTA agency and timezone. Buses are filtered out before retaining stop times and geometry. Frequency-based rail schedules cause an explicit preparation error rather than fabricated exact departures.
+Both CTA source ZIPs must be parsed locally; the browser never downloads them. Routes omit `agency_id` in this single-agency feed, which is valid GTFS: the importer checks the sole CTA agency and timezone. The rail preparer filters buses before retaining stop times and geometry; optional buses use separate daily bundles. Frequency-based rail schedules cause an explicit preparation error rather than fabricated exact departures.
 
 ## Geometry and passenger constraints
 
@@ -37,10 +37,10 @@ Both CTA source ZIPs must be parsed locally; the browser never downloads them. R
 - Train colours come from the archived CTA routes. Keep Silver Line's explicit silver exception in Boston and the existing Melbourne palettes intact.
 - Passenger controls remain disabled for Chicago. Do not split daily station totals across hours or allocate them to trains without independent data. A future daily ridership map needs its own daily scale and explanation; it must not reuse Melbourne's intraday heatmap semantics.
 
-## Future dates, buses and Metra
+## Future dates and Metra
 
 - For 2024, first obtain an actual dated ZIP, inspect calendars/exceptions and check whether newer snapshots change the requested days. Update archive selection, preparation dates/default output, city coverage, loader path and tests together. Never relabel 2025 data.
-- For CTA buses, the existing archives already contain bus routes and shapes. Add them in a separate requested step, keeping the same validated period first. Review shape quality, frequency rows, holidays, memory and marker density. Regular bus markers stay orange; separate line filters retain route numbers.
+- CTA buses are now implemented from these same two archives; see below. Preserve feed bus colours, holiday calendars and separate optional daily files when extending dates.
 - For Metra, find and validate a historical snapshot before integration. The current ZIP's calendar headers and values include leading spaces, so normalize them before calendar parsing. Keep Metra separate from CTA in mode/operator filters and validate all branches, weekday-only lines and source geometry. It should not delay CTA.
 - For longer periods, consider the Melbourne-style date index and snapshot chunks instead of growing one multi-month in-memory reference. Continue sending one selected day and retaining shared stop arrays in the browser.
 
@@ -50,3 +50,19 @@ Run Python and JavaScript tests, audit every date for all eight lines / unique o
 PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python -m pytest -q
 node --test tests/test_replay_animation.cjs tests/test_passenger_demand.cjs
 ```
+
+## Optional CTA buses added 18 October 2026
+
+`scripts/prepare_city_buses.py chicago` reuses the shared calendar/geometry preparer and writes 35 compact daily bundles under `data/reference/chicago/bus/`. The base rail file stays unchanged. Override the directory with `SUNTRAIN_CHICAGO_BUS_REFERENCE`. Chicago opens with rail; **Buses** requests only the selected bus day, and bus-only requests skip rail parsing. Source URLs and SHA-256 pins match the two rail archives exactly. Service dates up to 18 December use the November snapshot; 19 December onward uses the December snapshot. Neither ZIP supplies `feed_info.txt`; their actual calendars and exceptions supply validity, and every selected/adjacent service day must have active calendar entries.
+
+CTA buses are route type 3 from the sole Chicago Transit Authority agency. Preserve the archived route colours (`#99999C`, `#414145`, `#b71234`, `#0065bd`) in vehicles, route legends and details; Melbourne orange does not apply. Street geometry comes only from each trip's own GTFS shape, with native distance anchors and the existing 150 m checks. Frequency tables in these two snapshots are empty; a future nonempty selected frequency template is rejected rather than invented. Bus starts belong to one 03:00–03:00 business day, including complete journeys that finish after the following 03:00. Do not duplicate them on adjacent dates.
+
+Retain the CTA Developer License Agreement link and CTA timetable/road-geometry credit. No passenger loads are inferred. Metra and Pace remain future additions. The 35 bus bundles contain **11,621–19,114 services** and **87–123 active route IDs** per day, with no omitted trips. Their gzip sizes range from **1.85–3.53 MB**; the complete optional collection is about **100.9 MB on disk**, and only one day is opened per request. The native-anchor checks flag **65 distinct geometry cases across 63 shapes**. On the first weekday, **780 of 19,111 services** have unresolved paths: they remain in schedules and appear at stops, with movement hidden between stops. Do not silently widen the matching threshold, draw connectors or substitute another route. The embedded geometry audit retains affected source trip/shape IDs.
+
+For a future date extension, update the rail preparer's `FIRST`/`LAST` and archive selection, the Chicago dates/windows/hash pins in `scripts/prepare_city_buses.py`, city settings and both rail/bus bundles together. Retain source-date selection for overnight trips from the preceding service date. Do not expose dates for which the optional bus day is missing.
+
+## Three-city expansion validation (18 October 2026)
+
+The combined Toronto streetcar, Chicago bus and Perth bus addition passed **249 Python tests and 27 JavaScript tests**. Bundled checks cover every supported date, shared stop/timing references, source pins, route colours/operator scope, geometry endpoints, unique start-assigned bus occurrences and optional loading without opening unselected rail. Toronto's existing rail schedules, stations and geometry were compared semantically on all seven days; Chicago and Perth base rail files remain byte-identical.
+
+Chrome passed all three cities, Toronto overnight streetcars, Perth Purple CAT, CTA route 22, route filters, journey details, 2,000× playback, mode changes preserving time, combined rail/buses, Thanksgiving, the December archive switch, Christmas and the final Chicago date. Mobile layout, dark mode, fullscreen and returning to Melbourne passed without page errors. Known source geometry gaps remain visible in quality notes and are documented above; passenger loads are not inferred.

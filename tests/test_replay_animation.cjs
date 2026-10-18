@@ -195,5 +195,10 @@ test('regular buses use their city colours while Melbourne and Silver Line retai
     assert.equal(vehicleColor({mode:'bus',color:'#FFC72C'},'melbourne'),'#FF8200');
     assert.equal(vehicleColor({mode:'bus',color:'#FF8200'},'london'),'#DC241F');
     assert.equal(vehicleColor({mode:'bus',color:'#006CB7'},'nyc'),'#006CB7');
+    assert.equal(vehicleColor({mode:'bus',color:'#99999C'},'chicago'),'#99999C');
+    assert.equal(vehicleColor({mode:'bus',color:'#b71234'},'chicago'),'#b71234');
+    assert.equal(vehicleColor({mode:'bus',color:'#009645'},'perth'),'#009645');
+    assert.equal(vehicleColor({mode:'bus',color:'#65428A'},'perth'),'#65428A');
+    assert.equal(vehicleColor({mode:'tram',color:'#0054A6',route_id:'301'},'toronto'),'#0054A6');
     assert.equal(vehicleColor({mode:'bus'},'sydney'),'#6F818E');
 });

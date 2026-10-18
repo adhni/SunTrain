@@ -11,7 +11,7 @@ from dashboard.replay import TORONTO_PATH, cumulative_distances, get_replay_day
 from scripts.prepare_toronto_replay import SOURCE, selected_route
 
 
-def test_ttc_scope_keeps_rapid_transit_but_not_streetcars_or_replacement_buses():
+def test_ttc_scope_keeps_rapid_transit_and_streetcars_but_not_replacement_buses():
     agencies = {"1": {"agency_name": "TTC"}, "2": {"agency_name": "Another operator"}}
     route = lambda line, kind, agency="1": {"agency_id": agency, "route_short_name": line, "route_type": kind}
     for line in ("1", "2", "4"):
@@ -20,7 +20,8 @@ def test_ttc_scope_keeps_rapid_transit_but_not_streetcars_or_replacement_buses()
         assert selected_route(route(line, "0"), agencies)
         assert not selected_route(route(line, "3"), agencies)
     for line in ("501", "504", "510", "301"):
-        assert not selected_route(route(line, "0"), agencies)
+        assert selected_route(route(line, "0"), agencies)
+        assert not selected_route(route(line, "3"), agencies)
     assert not selected_route(route("3", "1"), agencies)
     assert not selected_route(route("1", "1", "2"), agencies)
 
@@ -39,12 +40,15 @@ def test_toronto_bundle_covers_one_week_with_complete_compact_schedules_and_path
     assert len(metadata["unresolved_geometry_trips"]) == 30
     assert metadata["sources"][0]["sha256"] == SOURCE["sha256"]
     assert "Contains information licensed under the Open Government Licence" in metadata["attribution"]
-    assert {p["route_id"] for p in patterns.values()} == {"1", "2", "4", "5", "6"}
+    streetcars = {"301", "304", "305", "306", "310", "312", "501", "503", "504", "505", "506", "507", "508", "509", "510", "511", "512"}
+    assert {p["route_id"] for p in patterns.values()} == {"1", "2", "4", "5", "6"} | streetcars
     colors = {"1": "#D5C82B", "2": "#008000", "4": "#B300B3", "5": "#FF8000", "6": "#808080"}
     for pattern in patterns.values():
         assert pattern["operator"] == "TTC"
-        assert pattern["mode"] == ("light_rail" if pattern["route_id"] in {"5", "6"} else "subway")
-        assert pattern["color"] == colors[pattern["route_id"]]
+        route = pattern["route_id"]
+        assert pattern["mode"] == ("tram" if route in streetcars else "light_rail" if route in {"5", "6"} else "subway")
+        expected_color = ("#0054A6" if route.startswith("3") else "#ED1C24") if route in streetcars else colors[route]
+        assert pattern["color"] == expected_color
         assert pattern["direction"] in {"Direction A", "Direction B"}
         assert all(len(stop) == 3 for stop in pattern["stops"])
         assert pattern["stops"][0][1] == 0
@@ -67,7 +71,9 @@ def test_toronto_bundle_covers_one_week_with_complete_compact_schedules_and_path
                 assert cumulative_distances([[station["lon"], station["lat"]], point])[-1] <= 151
     for day, rows in reference["days"].items():
         assert rows and len({(trip, offset) for _, trip, offset in rows}) == len(rows)
-        assert {patterns[p]["route_id"] for p, _, _ in rows} == set(colors)
+        active_routes = {patterns[p]["route_id"] for p, _, _ in rows}
+        assert active_routes >= set(colors) | {"301", "304", "305", "306", "310", "312"}
+        assert all(10800 <= offset < 97200 for p, _, offset in rows if patterns[p]["mode"] == "tram")
         assert sum(trip in metadata["unresolved_geometry_trips"] for _, trip, _ in rows) == (
             4 if day == "2026-10-10" else 10 if day == "2026-10-11" else 16)
     # The U-shaped Line 1 must travel around downtown, rather than cut between its northern arms.

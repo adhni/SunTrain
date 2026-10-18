@@ -32,7 +32,7 @@ TORONTO_PATH = ROOT / "data/reference/toronto/2026-10-05.json.gz"
 DC_PATH = ROOT / "data/reference/dc/2026-10-05.json.gz"
 SF_BAY_PATH = ROOT / "data/reference/sf_bay/2026-08-17.json.gz"
 LONDON_PATH = ROOT / "data/reference/london/2026-10-05.json.gz"
-BUS_REFERENCE_CITIES = {"boston", "london"}
+BUS_REFERENCE_CITIES = {"boston", "london", "chicago", "perth"}
 LOGGER = logging.getLogger(__name__)
 
 
@@ -166,6 +166,9 @@ def _get_with_buses(city, business_date, rail_path, rail_modified, bus_path, bus
         payload["schedule"] = {**schedule, "attribution": "Historical schedules and route geometry: MassDOT / MBTA"}
     else:
         payload["schedule"] = dict(schedule)
+    if city in {"chicago", "perth"}:
+        note = ("CTA rail and optional buses. Metra is excluded." if city == "chicago" else
+                "Transperth trains and optional metropolitan buses, including CAT. Regional operators and ferries are excluded.")
     payload["schedule"]["replay_note"] = note + " " + payload["bus_schedule"]["note"]
     return payload
 

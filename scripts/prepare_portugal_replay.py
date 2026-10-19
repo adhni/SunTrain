@@ -1,17 +1,19 @@
-"""Prepare Portuguese passenger trains and Lisbon Metro for 1–7 June 2026 from pinned GTFS."""
+"""Prepare Portuguese passenger trains and Lisbon/Porto metros for 1–7 June 2026 from pinned GTFS."""
 from __future__ import annotations
 import argparse
 import gzip
 import json
 from pathlib import Path
+from zipfile import ZipFile
 import sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT))
 from dashboard.replay import cumulative_distances
 from scripts.compact_transit import merge_references,save_reference
-from scripts.prepare_australian_replay import file_hash
+from scripts.prepare_australian_replay import file_hash, path_legs, records
 from scripts.prepare_france_replay import FranceRailGraph
 from scripts.prepare_rail_replay import prepare as prepare_rail
+from scripts.prepare_boston_replay import fetch
 GEOMETRY=ROOT/'data/reference/portugal/ip-rail-2026-04-15.json.gz'
 GEOMETRY_SHA256='b988a3d1ea461986ff95dc58deee1eaac36183652b168b3be958a21f616a6183'
 CREDIT='Infraestruturas de Portugal, Rede Ferroviária Nacional, 15 April 2026, CC BY 4.0. Reprojected, matched and simplified by SunTrain.'
@@ -21,7 +23,7 @@ BASE={'first':'2026-06-01','last':'2026-06-07','timezone':'Europe/Lisbon','calen
     'geometry_source_url':'https://dados.gov.pt/en/datasets/rede-ferroviaria-nacional',
     'geometry_license':'CC BY 4.0','geometry_license_url':'https://creativecommons.org/licenses/by/4.0/',
     'geometry_source_date':'2026-04-15','geometry_sha256':GEOMETRY_SHA256,'geometry_quality':'track',
-    'note':'Historical CP, Fertagus and Lisbon Metro schedules, 1–7 June 2026. CP journeys retain Portuguese station portions and original times. Inferred rail alignments and supplied Fertagus/Lisbon Metro shapes; unresolved movement stays hidden between stops. No individual passenger loads.'}
+    'note':'Historical CP, Fertagus and Lisbon and Porto Metro schedules, 1–7 June 2026. CP journeys retain Portuguese station portions and original times. Inferred rail alignments and supplied Fertagus/Lisbon/Porto Metro shapes; unresolved movement stays hidden between stops. No individual passenger loads.'}
 SOURCES={
  'cp':{**BASE,'captured':'2026-05-31',
     'url':'https://files.mobilitydatabase.org/mdb-2057/mdb-2057-202605310107/mdb-2057-202605310107.zip',
@@ -62,10 +64,26 @@ SOURCES['lisbon']={**BASE,'captured':'2026-05-01','published':'',
     'attribution':'Metropolitano de Lisboa schedules and supplied shapes, archived 1 May 2026 by MobilityDatabase. Selected and simplified by SunTrain.'}
 
 
+PORTO_LINES={'A','B','Bexp','C','D','E','F'}
+PORTO_URL='https://dadosabertos.cm-porto.pt/dataset/713a680c-9e19-11f1-84ed-6abdb6d5cf34/resource/28a13723-2af1-4bbb-a2b1-f8b08df8c7e4/download/___'
+PORTO_LICENSE_URL='https://opendata.porto.digital/ne/dataset/horarios-paragens-e-rotas-em-formato-gtfs/resource/ef7d2140-5d2d-430f-9593-a51288a40957'
+SOURCES['porto']={**BASE,'captured':'2026-10-19','published':'2026-04-07',
+    'url':PORTO_URL,'sha256':'c0ff2e53e6fe6bb1e8c78a44e4342faba974a8202acdfd7fbc49a9115d53be06',
+    'source':'Metro do Porto dated 7 April 2026 timetable from Porto municipal open data',
+    'source_url':'https://dadosabertos.cm-porto.pt/en/dataset/horarios-paragens-e-rotas-metro-porto',
+    'license':'CC0 1.0','license_url':PORTO_LICENSE_URL,
+    'geometry_quality':'shape','geometry_source':'Metro do Porto official dated GTFS shapes, selected and simplified by SunTrain',
+    'geometry_source_url':PORTO_URL,'geometry_source_date':'Timetable dated 2026-04-07; retrieved 2026-10-19',
+    'geometry_sha256':'c0ff2e53e6fe6bb1e8c78a44e4342faba974a8202acdfd7fbc49a9115d53be06',
+    'geometry_license':'CC0 1.0','geometry_license_url':PORTO_LICENSE_URL,
+    'attribution':'Fonte: Metro do Porto, SA. Dated 7 April 2026 timetable downloaded from Porto municipal open data on 19 October 2026. Original municipal catalogue: CC0. Selected and simplified by SunTrain.'}
+
+
 def selected_route(feed,route,agencies):
     agency=route.get('agency_id') or (next(iter(agencies)) if len(agencies)==1 else None)
-    expected={'cp':('1094_CP','CP - Comboios de Portugal'),'fertagus':('15','Fertagus'),'lisbon':('ML','Metropolitano de Lisboa, E.P.E.')}[feed]
+    expected={'cp':('1094_CP','CP - Comboios de Portugal'),'fertagus':('15','Fertagus'),'lisbon':('ML','Metropolitano de Lisboa, E.P.E.'),'porto':('','Metro do Porto')}[feed]
     if (agency,agencies.get(agency,{}).get('agency_name'))!=expected:return False
+    if feed=='porto':return route.get('route_type')=='1' and route.get('route_id') in PORTO_LINES
     if feed=='lisbon':return route.get('route_type')=='1' and LISBON_LINES.get(route.get('route_id'))==route.get('route_long_name')
     if feed=='fertagus':return route.get('route_type')=='2'
     return (route.get('route_type')=='2' and route.get('route_short_name') in {'AP','IC','IR','R'} or
@@ -90,10 +108,27 @@ def geometry_resolver(geographic):
     return resolve
 
 
+def porto_geometry(cache):
+    # In the pinned source CR starts at Fórum Maia although its trips start at
+    # ISMAI. Keep the missing northern legs empty and project the complete
+    # supported suffix onto that same shape; do not drop the entire journey.
+    source=SOURCES['porto'];filename=fetch(source['url'],cache/'___')
+    if file_hash(filename)!=source['sha256']:raise ValueError('Porto archive differs from the validated source')
+    with ZipFile(filename) as archive:
+        raw=[(int(r['shape_pt_sequence']),None,[float(r['shape_pt_lon']),float(r['shape_pt_lat'])])
+            for r in records(archive,'shapes.txt') if r['shape_id']=='CR']
+    def resolve(route,trip,sequence,coordinates):
+        if trip.get('shape_id')!='CR':return NotImplemented
+        if [r['stop_id'] for r in sequence[:5]]!=['5761','5756','5762','5765','5760']:
+            return NotImplemented
+        return [None]*4+path_legs(raw,None,coordinates[4:])
+    return resolve
+
+
 def prepare(cache,output):
     if file_hash(GEOMETRY)!=GEOMETRY_SHA256:raise ValueError('Portuguese railway geometry differs from the validated reference')
     with gzip.open(GEOMETRY,'rt') as stream:resolver=geometry_resolver(json.load(stream))
-    references=[]
+    references=[];porto_resolver=porto_geometry(cache)
     for feed,source in SOURCES.items():
         numbers,destinations={},{}
         def select(sequence,stops):
@@ -103,6 +138,12 @@ def prepare(cache,output):
         def describe(route,trip):
             short=route['route_short_name'];category=PRODUCTS.get(short,short)
             numbers[trip['trip_id']]=trip.get('trip_short_name') or trip['trip_id']
+            if feed=='porto':
+                label='B express' if route['route_id']=='Bexp' else short
+                return {'mode':'subway','operator':'Porto Metro','route_id':route['route_id'],
+                    'route_short_name':short,'category':label,'line':'Porto '+label,'color':route['route_color'],
+                    'direction':'Direction '+{'0':'A','1':'B'}.get(trip.get('direction_id'),'unknown'),
+                    'destination':destinations[trip['trip_id']]}
             if feed=='lisbon':
                 return {'mode':'subway','operator':'Lisbon Metro','route_id':route['route_id'],
                     'route_short_name':short,'category':route['route_long_name'],'line':'Lisbon '+route['route_long_name'],
@@ -115,10 +156,10 @@ def prepare(cache,output):
                 'color':color,'direction':'Not specified','destination':destinations[trip['trip_id']]}
         target=cache/(feed+'-week.json.gz')
         prepare_rail('pt-'+feed,source,cache,target,lambda r,a:selected_route(feed,r,a),describe,
-            geometry_resolver=resolver if feed=='cp' else None,select_sequence=select)
+            geometry_resolver=resolver if feed=='cp' else porto_resolver if feed=='porto' else None,select_sequence=select)
         with gzip.open(target,'rt') as stream:reference=json.load(stream)
         reference['train_numbers']=numbers;references.append(('pt-'+feed,reference))
-    result=merge_references(references,source_name='CP, Fertagus and Lisbon Metro historical Portuguese rail schedules',replay_note=BASE['note'])
+    result=merge_references(references,source_name='CP, Fertagus and Lisbon/Porto metros historical Portuguese rail schedules',replay_note=BASE['note'])
     result['metadata']['schedule_licenses']=[{k:source[k] for k in ('source','license','license_url','sha256')} for source in SOURCES.values()]
     save_reference(result,output)
     print('days',{d:len(rows) for d,rows in result['days'].items()},'bytes',output.stat().st_size,flush=True)

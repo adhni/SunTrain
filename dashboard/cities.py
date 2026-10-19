@@ -138,9 +138,9 @@ CITIES = {
         "name": "Portugal", "timezone": "Europe/Lisbon",
         "bounds": [[-9.65, 36.8], [-6.0, 42.25]], "passenger_data": False,
         "start_date": "2026-06-01", "end_date": "2026-06-07",
-        "description": "CP long-distance, regional and suburban trains, Fertagus and Lisbon Metro from June 2026 historical schedules. Passenger counts are unavailable.",
-        "modes": [("Trains", "train"), ("Lisbon Metro", "subway")],
-        "operators": [(name, name) for name in ("CP", "Fertagus", "Lisbon Metro")],
+        "description": "CP long-distance, regional and suburban trains, Fertagus and Lisbon/Porto metros from June 2026 historical schedules. Passenger counts are unavailable.",
+        "modes": [("Trains", "train"), ("Lisbon / Porto metros", "subway")],
+        "operators": [(name, name) for name in ("CP", "Fertagus", "Lisbon Metro", "Porto Metro")],
         "directions": [("Not specified", "Not specified"), ("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
     "spain": {

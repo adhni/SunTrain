@@ -45,7 +45,7 @@ def test_sources_licences_and_nationwide_train_coverage(reference):
     assert 'Fertagus' in meta['attribution'] and not meta['omitted_trips']
     patterns=list(reference['patterns'].values())
     assert all(p['mode'] in {'train','subway'} and 'stops' not in p for p in patterns)
-    assert {p['operator'] for p in patterns}=={'CP','Fertagus','Lisbon Metro'}
+    assert {p['operator'] for p in patterns}=={'CP','Fertagus','Lisbon Metro','Porto Metro'}
     assert {'Alfa Pendular','Intercidades','InterRegional','Regional','Linha de Sintra','Linha de Cascais','Linha de Braga','Fertagus'} <= {p['category'] for p in patterns}
     names={s['name'].lower() for s in reference['stations']}
     for fragment in ['lisboa','porto','faro','coimbra','braga','guimara','evora','beja','guarda','setúbal']:

@@ -27,7 +27,7 @@ def test_historical_metro_source_and_native_geometry(reference):
     assert archive['source_date']=='2026-05-01'
     assert archive['valid_from']=='20260101' and archive['valid_through']=='20261231'
     assert any(s['sha256']==source['sha256'] and 'NAP declaration' in s['license'] for s in meta['schedule_licenses'])
-    patterns=[p for p in reference['patterns'].values() if p['mode']=='subway']
+    patterns=[p for p in reference['patterns'].values() if p['operator']=='Lisbon Metro']
     assert {p['operator'] for p in patterns}=={'Lisbon Metro'}
     assert {(p['line'],p['color'].lower()) for p in patterns}=={
         ('Lisbon Azul','#6699cc'),('Lisbon Amarela','#ffcc00'),('Lisbon Verde','#00cc99'),('Lisbon Vermelha','#ff3366')}
@@ -47,7 +47,7 @@ def test_historical_metro_source_and_native_geometry(reference):
 def test_calendar_exceptions_overnight_calls_and_single_business_day(reference):
     counts=[];occurrences=[];late=False
     for day,rows in reference['days'].items():
-        rows=[(k,t,o) for k,t,o in rows if reference['patterns'][k]['mode']=='subway']
+        rows=[(k,t,o) for k,t,o in rows if reference['patterns'][k]['operator']=='Lisbon Metro']
         counts.append(len(rows))
         midnight=datetime.fromisoformat(day).replace(tzinfo=ZoneInfo('Europe/Lisbon')).timestamp()
         for k,t,o in rows:
@@ -63,8 +63,8 @@ def test_metro_only_load_and_combined_default_preserve_existing_trains():
     metro=replay.get_replay_day('2026-06-01','portugal',modes=['subway'])
     trains=replay.get_replay_day('2026-06-01','portugal',modes=['train'])
     combined=replay.get_replay_day('2026-06-01','portugal')
-    assert len(metro['services'])==1532 and len(trains['services'])==1517
-    assert len(combined['services'])==3049
-    assert all(s['mode']=='subway' and s['source_trip_id'].startswith('pt-lisbon:') for s in metro['services'])
+    assert len(metro['services'])==2685 and len(trains['services'])==1517
+    assert len(combined['services'])==4202
+    assert all(s['mode']=='subway' and s['source_trip_id'].startswith(('pt-lisbon:','pt-porto:')) for s in metro['services'])
     assert {s['source_trip_id'] for s in combined['services'] if s['mode']=='train'}=={s['source_trip_id'] for s in trains['services']}
     assert descriptor('2026-06-01','portugal',['subway'])['modes']==['subway']

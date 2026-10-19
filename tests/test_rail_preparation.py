@@ -222,3 +222,50 @@ def test_undated_feed_info_without_shapes_uses_explicit_calendars_and_external_g
     assert all(p["origin"] == "Bravo" for p in reference["patterns"].values())
     assert all(offset == 6 * 3600 + 10 * 60 for _, _, offset in reference["days"]["2026-10-05"])
     assert not reference["metadata"]["omitted_trips"]
+
+
+def test_official_feed_in_enclosing_directory_is_read_without_repacking(tmp_path):
+    from scripts.prepare_rail_replay import TimetableArchive
+    original = tmp_path / 'original.zip'
+    archive_fixture(original, 'new', ['20261005', '20261006'])
+    nested = tmp_path / 'annual.zip'
+    with ZipFile(original) as source, ZipFile(nested, 'w') as target:
+        for name in source.namelist():
+            target.writestr('GTFS_Fahrplan_2026/' + name, source.read(name))
+    with TimetableArchive(nested) as archive, ZipFile(original) as source:
+        assert 'calendar_dates.txt' in archive.namelist()
+        assert archive.read('agency.txt') == source.read('agency.txt')
+        assert archive.read('trips.txt') == source.read('trips.txt')
+    ambiguous = tmp_path / 'ambiguous.zip'
+    with ZipFile(ambiguous, 'w') as archive:
+        archive.writestr('first/agency.txt', '')
+        archive.writestr('second/agency.txt', '')
+    with pytest.raises(ValueError, match='exactly one GTFS'):
+        TimetableArchive(ambiguous)
+
+
+def test_start_day_uses_departure_when_origin_dwell_crosses_three_am(tmp_path):
+    path = tmp_path / 'dwell.zip'
+    archive_fixture(path, 'regular', ['20261005', '20261006'])
+    with ZipFile(path) as archive:
+        tables = {name: archive.read(name) for name in archive.namelist()}
+    tables['stop_times.txt'] = tables['stop_times.txt'].replace(
+        b'06:00:00,06:00:00', b'02:59:00,03:01:00').replace(
+        b'06:10:00,06:10:00', b'03:10:00,03:10:00')
+    with ZipFile(path, 'w') as archive:
+        for name, contents in tables.items(): archive.writestr(name, contents)
+    source = {'first': '2026-10-05', 'last': '2026-10-06', 'timezone': 'America/New_York',
+              'url': 'https://example.test/dwell.zip', 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
+              'captured': '2026-10-03', 'published': '', 'source': 'fixture', 'source_url': 'https://example.test',
+              'license': 'fixture', 'license_url': 'https://example.test/license',
+              'attribution': 'fixture', 'note': 'fixture', 'assign_by_start': ['train']}
+    output = tmp_path / 'reference.json.gz'
+    prepare('dc', source, tmp_path, output, lambda route, agencies: True,
+            lambda route, trip: {'mode': 'train', 'route_id': 'R', 'line': 'Train R'})
+    with gzip.open(output, 'rt') as stream: reference = json.load(stream)
+    for rows in reference['days'].values():
+        assert len(rows) == 1
+        key, trip, arrival_offset = rows[0]
+        assert trip == 'regular' and arrival_offset == 10740
+        # Keep the source arrival/dwell; assignment follows the 03:01 departure.
+        assert reference['patterns'][key]['times'][1] == 120

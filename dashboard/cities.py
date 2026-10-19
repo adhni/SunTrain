@@ -134,6 +134,15 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "austria": {
+        "name": "Austria", "timezone": "Europe/Vienna",
+        "bounds": [[9.4, 46.35], [17.2, 49.05]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "description": "Austrian long-distance, regional and S-Bahn trains from ÖBB's published 2026 annual timetable, plus Montafonerbahn and CAT. Passenger counts are unavailable.",
+        "modes": [("Trains", "train")],
+        "operators": [(name, name) for name in ("OEBB Personenverkehr AG Kundenservice", "Montafonerbahn AG", "City Air Terminal Betriebsgesellschaft m.b.H.")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
     "belgium": {
         "name": "Belgium", "timezone": "Europe/Brussels",
         "bounds": [[2.5, 49.45], [6.5, 51.6]], "passenger_data": False,

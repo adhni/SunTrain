@@ -44,8 +44,8 @@ def test_sources_licences_and_nationwide_train_coverage(reference):
     assert meta['geometry_license']=='CC BY 4.0' and 'Infraestruturas' in meta['attribution']
     assert 'Fertagus' in meta['attribution'] and not meta['omitted_trips']
     patterns=list(reference['patterns'].values())
-    assert all(p['mode']=='train' and 'stops' not in p for p in patterns)
-    assert {p['operator'] for p in patterns}=={'CP','Fertagus'}
+    assert all(p['mode'] in {'train','subway'} and 'stops' not in p for p in patterns)
+    assert {p['operator'] for p in patterns}=={'CP','Fertagus','Lisbon Metro','Porto Metro'}
     assert {'Alfa Pendular','Intercidades','InterRegional','Regional','Linha de Sintra','Linha de Cascais','Linha de Braga','Fertagus'} <= {p['category'] for p in patterns}
     names={s['name'].lower() for s in reference['stations']}
     for fragment in ['lisboa','porto','faro','coimbra','braga','guimara','evora','beja','guarda','setúbal']:
@@ -79,12 +79,12 @@ def test_unique_business_days_overnight_trains_and_real_geometry(reference):
 
 def test_city_loader_filters_and_date_validation(monkeypatch):
     monkeypatch.setattr(replay.data,'get_metadata',lambda:pytest.fail('Portugal queried Melbourne warehouse'))
-    day=replay.get_replay_day('2026-06-01','portugal')
+    day=replay.get_replay_day('2026-06-01','portugal',modes=['train'])
     assert len(day['services'])==1517 and day['timezone']=='Europe/Lisbon'
     assert {day['transit_patterns'][s['pattern']]['operator'] for s in day['services']}=={'CP','Fertagus'}
     assert all(s['mode']=='train' and s['source_trip_id'] for s in day['services'])
     assert not city_settings('portugal')['passenger_data']
     assert city_settings('portugal')['start_date']==city_settings('netherlands')['start_date']
-    assert descriptor('2026-06-01','portugal')['modes']==['train']
+    assert descriptor('2026-06-01','portugal')['modes']==['subway','train']
     with pytest.raises(ValueError):descriptor('2026-06-01','portugal',['bus'])
     with pytest.raises(ValueError):replay.get_replay_day('2026-06-08','portugal')

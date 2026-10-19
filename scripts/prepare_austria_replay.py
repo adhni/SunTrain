@@ -77,5 +77,5 @@ def prepare(cache, output):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cache', type=Path, default=ROOT / '.cache/austria')
-    parser.add_argument('--output', type=Path, default=ROOT / 'data/reference/austria/2026-06-01.json.gz')
+    parser.add_argument('--output', type=Path, default=ROOT / '.cache/austria/at-oebb-week.json.gz')
     args = parser.parse_args(); prepare(args.cache, args.output)

@@ -43,8 +43,9 @@ def test_pinned_annual_source_compact_schedules_and_nationwide_scope(reference):
     assert meta['license'] == 'CC BY 4.0'
     assert 'annual' in meta['replay_note'] and 'amendments' in meta['replay_note']
     assert not meta['omitted_trips']
-    patterns = list(reference['patterns'].values())
-    assert all('stops' not in p and p['mode'] == 'train' for p in patterns)
+    assert {p['mode'] for p in reference['patterns'].values()} == {'train', 'subway'}
+    assert all('stops' not in p for p in reference['patterns'].values())
+    patterns = [p for p in reference['patterns'].values() if p['mode'] == 'train']
     assert {p['operator'] for p in patterns} == set(OPERATORS.values())
     assert {'RJ', 'RJX', 'IC', 'EC', 'ICE', 'NJ', 'EN', 'REX', 'R', 'S', 'CAT'} <= {p['category'] for p in patterns}
     names = {s['name'] for s in reference['stations']}
@@ -88,12 +89,12 @@ def test_source_shapes_cover_long_distance_suburban_and_alpine_services(referenc
 
 def test_loader_reuses_city_replay_and_preserves_commercial_numbers(monkeypatch):
     monkeypatch.setattr(replay.data, 'get_metadata', lambda: pytest.fail('Austria queried Melbourne'))
-    day = replay.get_replay_day('2026-06-01', 'austria')
+    day = replay.get_replay_day('2026-06-01', 'austria', modes=('train',))
     assert day['services'] and day['timezone'] == 'Europe/Vienna'
     assert all(s['mode'] == 'train' and s['source_trip_id'] for s in day['services'])
     assert any(s['number'].startswith('RJX ') for s in day['services'])
     assert city_settings('austria')['start_date'] == city_settings('switzerland')['start_date']
     assert not city_settings('austria')['passenger_data']
-    assert descriptor('2026-06-01', 'austria')['modes'] == ['train']
+    assert descriptor('2026-06-01', 'austria')['modes'] == ['subway', 'train']
     with pytest.raises(ValueError): descriptor('2026-06-01', 'austria', ['bus'])
     with pytest.raises(ValueError): replay.get_replay_day('2026-06-08', 'austria')

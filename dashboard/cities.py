@@ -138,9 +138,10 @@ CITIES = {
         "name": "Austria", "timezone": "Europe/Vienna",
         "bounds": [[9.4, 46.35], [17.2, 49.05]], "passenger_data": False,
         "start_date": "2026-06-01", "end_date": "2026-06-07",
-        "description": "Austrian long-distance, regional and S-Bahn trains from ÖBB's published 2026 annual timetable, plus Montafonerbahn and CAT. Passenger counts are unavailable.",
-        "modes": [("Trains", "train")],
-        "operators": [(name, name) for name in ("OEBB Personenverkehr AG Kundenservice", "Montafonerbahn AG", "City Air Terminal Betriebsgesellschaft m.b.H.")],
+        "description": "Austrian long-distance, regional and S-Bahn trains, plus Montafonerbahn, CAT and Vienna U-Bahn. Passenger counts are unavailable.",
+        "default_modes": ["train", "subway"],
+        "modes": [("Trains", "train"), ("Vienna U-Bahn", "subway")],
+        "operators": [(name, name) for name in ("OEBB Personenverkehr AG Kundenservice", "Montafonerbahn AG", "City Air Terminal Betriebsgesellschaft m.b.H.", "Wiener Linien")],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
     "belgium": {

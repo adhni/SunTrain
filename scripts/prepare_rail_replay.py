@@ -71,7 +71,10 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
             if not routes:
                 raise ValueError("No selected rail routes")
             calendars = list(records(archive, "calendar.txt")) if "calendar.txt" in archive.namelist() else []
-            exceptions = list(records(archive, "calendar_dates.txt")) if "calendar_dates.txt" in archive.namelist() else []
+            stamps = {day.strftime("%Y%m%d") for day in applicable}
+            # National feeds can contain millions of full-year exceptions.
+            # Retain only dates used by this preparation, including carry days.
+            exceptions = [r for r in records(archive, "calendar_dates.txt") if r["date"] in stamps] if "calendar_dates.txt" in archive.namelist() else []
             active = {d: active_services(calendars, exceptions, d) for d in applicable}
             if source.get("calendar_validity") and any(not services for services in active.values()):
                 raise ValueError("Source calendars do not cover every selected service day")
@@ -194,7 +197,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                         "source_route_id": trip["route_id"], "color": "#" + color,
                         "direction": description.get("direction") or directions.get((trip["route_id"], trip.get("direction_id"))) or route_directions.get(trip["route_id"]) or
                             "Direction " + {"0": "A", "1": "B"}.get(trip.get("direction_id"), "unknown"),
-                        "origin": stops[sequence[0]["stop_id"]]["stop_name"], "destination": trip.get("trip_headsign") or stops[sequence[-1]["stop_id"]]["stop_name"],
+                        "origin": stops[sequence[0]["stop_id"]]["stop_name"], "destination": description.get("destination") or trip.get("trip_headsign") or stops[sequence[-1]["stop_id"]]["stop_name"],
                         "stops": [[station, a - times[0][0], b - times[0][0]] for station, (a, b) in zip(ids, times)], "legs": legs}
                     key = hashlib.sha256(json.dumps(pattern, sort_keys=True).encode()).hexdigest()[:20]
                     result["patterns"][key] = pattern

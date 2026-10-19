@@ -34,6 +34,8 @@ SF_BAY_PATH = ROOT / "data/reference/sf_bay/2026-08-17.json.gz"
 LONDON_PATH = ROOT / "data/reference/london/2026-10-05.json.gz"
 NETHERLANDS_PATH = ROOT / "data/reference/netherlands/2026-06-01.json.gz"
 GERMANY_PATH = ROOT / "data/reference/germany/2026-06-01.json.gz"
+FRANCE_PATH = ROOT / "data/reference/france/2026-06-01.json.gz"
+SWITZERLAND_PATH = ROOT / "data/reference/switzerland/2026-06-01.json.gz"
 BUS_REFERENCE_CITIES = {"boston", "london", "chicago", "perth"}
 LOGGER = logging.getLogger(__name__)
 GERMANY_REPLAY_NOTE = "Long-distance trains open first. Select Regional rail, S-Bahn or U-Bahn / Stadtbahn under Transport to add those networks. German/border portions and original source categories/times are retained. Unavailable railway paths stay gaps. No individual passenger loads."
@@ -43,7 +45,8 @@ def prepared_path(city):
     default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH,
-               "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH}[city]
+               "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH, "france": FRANCE_PATH,
+               "switzerland": SWITZERLAND_PATH}[city]
     return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
 
 
@@ -145,6 +148,8 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     date.fromisoformat(business_date)
     settings = city_settings(city)
     modes = tuple(sorted(set(modes))) if modes is not None else None
+    if city == "france" and modes is None:
+        modes = tuple(settings["default_modes"])
     include_buses = include_buses or city in BUS_REFERENCE_CITIES and modes is not None and "bus" in modes
     if city != "melbourne":
         if not settings["start_date"] <= business_date <= settings["end_date"]:
@@ -258,6 +263,12 @@ def _get_prepared_day(city, business_date, path, modified, modes=None):
     if not reference or business_date not in reference.get("days", {}):
         raise ValueError(f"{settings['city_name']} reference does not contain this date")
     transit.append_reference(payload, reference, modes=modes)
+    if reference.get("train_numbers"):
+        numbers = reference.get("train_numbers", {})
+        for service in payload["services"]:
+            trip = service["number"]
+            service["source_trip_id"] = trip
+            service["number"] = numbers.get(trip, trip)
     payload["schedule"] = payload.pop("transit")
     return payload
 

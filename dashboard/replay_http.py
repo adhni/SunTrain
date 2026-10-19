@@ -18,7 +18,7 @@ from flask import abort, request, send_file
 from dashboard import data, replay, transit
 from dashboard.cities import city_settings
 
-FORMAT_VERSION = 3
+FORMAT_VERSION = 4
 CACHE_LIMIT = 256 * 1024 * 1024
 # Different dates/modes share a memory budget inside one Gunicorn worker.
 BUILD_LOCK = threading.Lock()
@@ -58,8 +58,8 @@ def descriptor(business_date, city, modes=None):
             stamps.append(_stamp(geometry))
         if set(modes) & {"tram", "bus"}:
             stamps.append(transit.fingerprint(business_date))
-    elif city == "germany":
-        stamps = [(mode, *_stamp(path)) for mode, path, _ in replay.germany_reference_files(business_date, modes)]
+    elif city in {"germany", "great_britain"}:
+        stamps = [(mode, *_stamp(path)) for mode, path, _ in replay.rail_reference_files(city, business_date, modes)]
     else:
         stamps = [_stamp(replay.prepared_path(city))]
         if city in replay.BUS_REFERENCE_CITIES and "bus" in modes:

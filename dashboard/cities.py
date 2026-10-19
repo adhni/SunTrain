@@ -134,6 +134,16 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "great_britain": {
+        "name": "Great Britain", "timezone": "Europe/London",
+        "bounds": [[-6.4, 49.9], [2.0, 58.8]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "British intercity trains open first. Select Regional / commuter rail under Transport to add those networks. London rail is available here using the existing London schedules. Passenger counts are unavailable.",
+        "default_modes": ["train"],
+        "modes": [("Long-distance / intercity trains", "train"), ("Regional / commuter rail", "regional_rail"), ("London Underground", "subway"), ("London DLR / trams", "light_rail"), ("London Overground / Elizabeth line", "commuter_rail")],
+        "operators": [(name, name) for name in ("LNER", "Avanti West Coast", "GWR", "CrossCountry", "EMR", "TransPennine Express", "Lumo (East Coast)", "Lumo (West Coast)", "Hull Trains", "Grand Central", "Northern Rail", "ScotRail", "Transport for Wales", "Greater Anglia", "West Midlands Trains", "South Western Railway", "Southeastern", "Southern", "Thameslink", "Great Northern", "c2c", "Chiltern Railways", "Merseyrail", "London Underground", "Docklands Light Railway", "London Trams", "London Overground", "Elizabeth line")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
+    },
     "italy": {
         "name": "Italy", "timezone": "Europe/Rome",
         "bounds": [[6.5, 35.4], [18.8, 47.2]], "passenger_data": False,

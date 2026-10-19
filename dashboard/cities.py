@@ -134,6 +134,14 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "italy": {
+        "name": "Italy", "timezone": "Europe/Rome",
+        "bounds": [[6.5, 35.4], [18.8, 47.2]], "passenger_data": False,
+        "start_date": "2026-10-05", "end_date": "2026-10-11",
+        "description": "Trenitalia high-speed, long-distance, regional and suburban trains, plus Trenord and Italo, from October 2026 historical schedules. Passenger counts are unavailable.",
+        "modes": [("Trains", "train")], "operators": [("Trenitalia", "Trenitalia"), ("Trenord", "Trenord"), ("Italo", "Italo")],
+        "directions": [("Not specified", "Not specified")],
+    },
     "luxembourg": {
         "name": "Luxembourg", "timezone": "Europe/Luxembourg",
         "bounds": [[5.70, 49.40], [6.55, 50.20]], "passenger_data": False,

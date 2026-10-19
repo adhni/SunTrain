@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Luxembourg, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Italy, Luxembourg, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Italy rail
+
+Choose **Italy** for **5–11 October 2026**, the supported historical week. Includes **Trenitalia** high-speed, long-distance/night, regional and suburban trains, **Trenord** and direct **Italo** high-speed services, with nationwide coverage including Sicily and Sardinia. Other regional operators and urban transport are left for later.
+
+The compact week has **61,322 departures** in **5.58 MB gzip**, plus **2.93 MB** preparation-only railway geometry. **98.14%** of scheduled legs have usable connected track paths; unresolved sections remain gaps. Monday downloads approximately **3.90 MB gzip** through the existing per-day endpoint. See [Italy expansion notes](ITALY_EXPANSION_NOTES.md) for source pins, the October choice, Italo itinerary exclusions, duplicate handling, attribution and future additions.
 
 ## Luxembourg rail
 

@@ -134,6 +134,16 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "belgium": {
+        "name": "Belgium", "timezone": "Europe/Brussels",
+        "bounds": [[2.5, 49.45], [6.5, 51.6]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "description": "Belgian trains and metro/light rail open first. Select Trams under Transport for Brussels, Antwerp, Ghent, the coast and Liège. Passenger counts are unavailable.",
+        "default_modes": ["train", "subway"],
+        "modes": [("Trains", "train"), ("Metro / light rail", "subway"), ("Trams", "tram")],
+        "operators": [(name, name) for name in ("NMBS/SNCB", "STIB-MIVB", "De Lijn", "TEC Charleroi", "TEC Liège - Verviers")],
+        "directions": [("Not specified", "Not specified"), ("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
     "switzerland": {
         "name": "Switzerland", "timezone": "Europe/Zurich",
         "bounds": [[5.95, 45.7], [10.6, 47.9]], "passenger_data": False,

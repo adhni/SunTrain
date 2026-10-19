@@ -36,6 +36,7 @@ NETHERLANDS_PATH = ROOT / "data/reference/netherlands/2026-06-01.json.gz"
 GERMANY_PATH = ROOT / "data/reference/germany/2026-06-01.json.gz"
 FRANCE_PATH = ROOT / "data/reference/france/2026-06-01.json.gz"
 SWITZERLAND_PATH = ROOT / "data/reference/switzerland/2026-06-01.json.gz"
+BELGIUM_PATH = ROOT / "data/reference/belgium/2026-06-01.json.gz"
 BUS_REFERENCE_CITIES = {"boston", "london", "chicago", "perth"}
 LOGGER = logging.getLogger(__name__)
 GERMANY_REPLAY_NOTE = "Long-distance trains open first. Select Regional rail, S-Bahn or U-Bahn / Stadtbahn under Transport to add those networks. German/border portions and original source categories/times are retained. Unavailable railway paths stay gaps. No individual passenger loads."
@@ -46,7 +47,7 @@ def prepared_path(city):
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH,
                "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH, "france": FRANCE_PATH,
-               "switzerland": SWITZERLAND_PATH}[city]
+               "switzerland": SWITZERLAND_PATH, "belgium": BELGIUM_PATH}[city]
     return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
 
 
@@ -148,7 +149,7 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     date.fromisoformat(business_date)
     settings = city_settings(city)
     modes = tuple(sorted(set(modes))) if modes is not None else None
-    if city == "france" and modes is None:
+    if city in {"france", "belgium"} and modes is None:
         modes = tuple(settings["default_modes"])
     include_buses = include_buses or city in BUS_REFERENCE_CITIES and modes is not None and "bus" in modes
     if city != "melbourne":

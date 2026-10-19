@@ -38,6 +38,7 @@ FRANCE_PATH = ROOT / "data/reference/france/2026-06-01.json.gz"
 SWITZERLAND_PATH = ROOT / "data/reference/switzerland/2026-06-01.json.gz"
 BELGIUM_PATH = ROOT / "data/reference/belgium/2026-06-01.json.gz"
 AUSTRIA_PATH = ROOT / "data/reference/austria/2026-06-01.json.gz"
+ITALY_PATH = ROOT / "data/reference/italy/2026-10-05.json.gz"
 LUXEMBOURG_PATH = ROOT / "data/reference/luxembourg/2026-06-01.json.gz"
 PORTUGAL_PATH = ROOT / "data/reference/portugal/2026-06-01.json.gz"
 SPAIN_PATH = ROOT / "data/reference/spain/2024-06-24.json.gz"
@@ -52,7 +53,7 @@ def prepared_path(city):
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH,
                "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH, "france": FRANCE_PATH,
                "switzerland": SWITZERLAND_PATH, "belgium": BELGIUM_PATH, "austria": AUSTRIA_PATH,
-               "spain": SPAIN_PATH, "portugal": PORTUGAL_PATH, "luxembourg": LUXEMBOURG_PATH}[city]
+               "spain": SPAIN_PATH, "portugal": PORTUGAL_PATH, "luxembourg": LUXEMBOURG_PATH, "italy": ITALY_PATH}[city]
     return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
 
 

@@ -1,4 +1,5 @@
 """Compact shared timetable topologies and select independent daily bundles."""
+from collections import Counter
 import gzip
 import hashlib
 import json
@@ -49,3 +50,40 @@ def daily_reference(reference, day):
     return {"metadata": {**reference["metadata"], "bundle_date": day},
         "stations": [reference["stations"][s] for s in station_ids], "patterns": patterns,
         "stop_patterns": topologies, "paths": {key: reference["paths"][key] for key in sorted(paths)}, "days": {day: rows}}
+
+
+def merge_references(references, *, source_name, replay_note):
+    """Combine compact feeds with namespaced IDs and remapped station indices."""
+    result={'metadata':dict(references[0][1]['metadata']),'stations':[],'patterns':{},
+            'stop_patterns':{},'paths':{},'days':{d:[] for d in references[0][1]['days']},'train_numbers':{}}
+    for namespace,r in references:
+        if set(r['days'])!=set(result['days']):raise ValueError('Feed dates differ')
+        offset=len(result['stations']);result['stations'].extend(r['stations']);prefix=namespace+':'
+        result['patterns'].update({prefix+k:{**p,'route_id':prefix+p['route_id'],
+            'stop_pattern':prefix+p['stop_pattern']} for k,p in r['patterns'].items()})
+        result['stop_patterns'].update({prefix+k:{'stations':[s+offset for s in p['stations']],
+            'legs':[prefix+leg for leg in p['legs']]} for k,p in r['stop_patterns'].items()})
+        result['paths'].update({prefix+k:p for k,p in r['paths'].items()})
+        for day,rows in r['days'].items():
+            result['days'][day].extend([[prefix+k,prefix+t,o] for k,t,o in rows])
+        for rows in r['days'].values():
+            for _,t,_ in rows:result['train_numbers'][prefix+t]=r.get('train_numbers',{}).get(t,t)
+    schedules=[r['metadata'] for _,r in references]
+    geometry_sources=[]
+    for m in schedules[1:]:
+        credit={k:m[k] for k in ['geometry_source','geometry_source_url','geometry_license','geometry_license_url']}
+        if credit not in geometry_sources:geometry_sources.append(credit)
+    result['metadata'].update(
+        source=source_name,
+        sources=[s for m in schedules for s in m['sources']],
+        attribution=' '.join(m['attribution'] for m in schedules),
+        additional_geometry_sources=geometry_sources,
+        omitted_trips={namespace:r['metadata']['omitted_trips'] for namespace,r in references if r['metadata']['omitted_trips']},
+        unresolved_geometry_patterns=dict(sum((Counter(m['unresolved_geometry_patterns']) for m in schedules),Counter())),
+        unresolved_geometry_trips={namespace+':'+t:v for namespace,r in references for t,v in r['metadata']['unresolved_geometry_trips'].items()},
+        replay_note=replay_note)
+    for day,rows in result['days'].items():
+        if len({(t,o) for _,t,o in rows})!=len(rows):raise ValueError('Duplicate occurrence IDs')
+        rows.sort(key=lambda row:(row[2],row[1]))
+    result['metadata']['daily_services']={d:dict(Counter(result['patterns'][k]['mode'] for k,_,_ in rows)) for d,rows in result['days'].items()}
+    return result

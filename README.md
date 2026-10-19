@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Belgium, Canada, France, Germany, the Netherlands, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, the Netherlands, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Austria rail
+
+Choose **Austria** for **1–7 June 2026**. Includes ÖBB **Railjet/Railjet Xpress, IC/EC/ICE, Nightjet/EuroNight, regional trains and S-Bahn**, plus **Montafonerbahn, CAT** and **Vienna U-Bahn U1/U2/U3/U4/U6**, using supplied route shapes and line colours. Trains and U-Bahn open together; select either under Transport. Existing playback, filters, details and Overview apply. National trains use the published 2026 annual timetable; later amendments are not reconstructed. Vienna uses dated May/June archives. WESTbahn and other missing train operators are deferred until data access is available. Trams, buses and passenger counts are excluded.
+
+The prepared week has **56,468 departures**, including **18,457 U-Bahn departures**, with matched supplied paths for every selected leg: **3.16 MB gzip** stored, **2.50 MB gzip** for Monday's default download, or **94 KB gzip** for metro alone. See [Austria expansion notes](AUSTRIA_EXPANSION_NOTES.md) for source pins, deferred train operators, coverage, attribution and rebuilding.
 
 ## Belgium rail
 

@@ -25,6 +25,24 @@ from scripts.prepare_boston_replay import fetch
 from scripts.prepare_transit_replay import active_services, seconds
 
 
+class TimetableArchive(ZipFile):
+    """Read root-level GTFS or a feed packaged in one enclosing directory."""
+    def __init__(self, filename):
+        super().__init__(filename)
+        roots = [name[:-len('agency.txt')] for name in super().namelist()
+                 if name == 'agency.txt' or name.endswith('/agency.txt')]
+        if len(roots) != 1:
+            self.close()
+            raise ValueError('Expected exactly one GTFS timetable in archive')
+        self.root = roots[0]
+
+    def namelist(self):
+        return [name[len(self.root):] for name in super().namelist() if name.startswith(self.root)]
+
+    def open(self, name, *args, **kwargs):
+        return super().open(self.root + name if isinstance(name, str) else name, *args, **kwargs)
+
+
 def source_for(day, archives):
     matches = [source for source in archives if source["start"] <= str(day) <= source["end"]]
     if len(matches) != 1:
@@ -55,7 +73,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
         filename = fetch(snapshot["url"], cache / snapshot["url"].rsplit("/", 1)[1])
         if file_hash(filename) != snapshot["sha256"]:
             raise ValueError("Archive differs from the validated source; inspect it before changing the pin")
-        with ZipFile(filename) as archive:
+        with TimetableArchive(filename) as archive:
             feed = next(records(archive, "feed_info.txt")) if "feed_info.txt" in archive.namelist() else {}
             dated_feed = bool(feed.get("feed_start_date") and feed.get("feed_end_date"))
             if not dated_feed and not source.get("calendar_validity"):
@@ -127,8 +145,9 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                         if trip["service_id"] not in active[day]:
                             continue
                         departure, finish = zero(day) + times[0][0], zero(day) + times[-1][1]
+                        origin_departure = zero(day) + times[0][1]
                         for business_date, start, end, midnight in windows:
-                            matches_window = start <= departure < end if assign_to_start else departure < end and finish >= start
+                            matches_window = start <= origin_departure < end if assign_to_start else departure < end and finish >= start
                             if matches_window:
                                 instances.append((business_date, departure - midnight))
                     if not instances:

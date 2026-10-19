@@ -1,6 +1,6 @@
 # Belgium rail
 
-Belgium uses the established SunTrain replay for **1–7 June 2026**, matching France, Switzerland, Germany and the Netherlands. It includes SNCB/NMBS IC, L, S and P trains and other rail categories actually active in the archive. Existing playback, filters, train details, Overview, themes and fullscreen are reused. No passenger feature or additional transport modes are added.
+Belgium uses the established SunTrain replay for **1–7 June 2026**, matching France, Switzerland, Germany and the Netherlands. It includes SNCB/NMBS trains, Brussels metro/trams, Antwerp/Ghent/coastal trams, Charleroi light rail and Liège tram T1. Trains and metro/light rail open first; trams are selectable under Transport. Existing playback, filters, details, Overview, themes and fullscreen are reused. Buses and passenger features are excluded.
 
 ## Sources and dates
 
@@ -19,7 +19,7 @@ The implementation uses a public archived file. The FlatTurtle catalogue also li
 - `stop_time_overrides.txt` contains service-dependent **platform stop IDs**, not changed arrival/departure fields. The replay uses the base station-level stops and timetable times; it does not claim exact platforms or running tracks.
 - The source leaves colours blank. SunTrain supplies category display colours; these are not advertised as official line colours.
 
-The week contains **24,165 departures**: Monday–Sunday **3,786 / 3,794 / 3,801 / 3,795 / 3,794 / 2,653 / 2,542**. All selected candidates were prepared without schedule-parsing omissions.
+The national train component contains **24,165 departures**: Monday–Sunday **3,786 / 3,794 / 3,801 / 3,795 / 3,794 / 2,653 / 2,542**. All selected candidates were prepared without schedule-parsing omissions.
 
 ## Geometry and storage
 
@@ -29,11 +29,27 @@ The existing France compiler joins original coincident segment endpoints/vertice
 
 **99.47% of scheduled legs** have mapped geometry. Remaining gaps include some southern corridors around Libramont/Marbehan and border sections. Preserve those until an actual connected alignment is validated.
 
-The prepared week is **827 KB gzip**, plus **1.03 MB gzip** of preparation-only derived track geometry (about **1.86 MB** added storage). Monday's browser response is **641 KB gzip**. Local uncached response preparation measured about **0.3 seconds**; hosted timings can differ. Raw source files are not sent to browsers. Schedules retain shared stop patterns and flat timing vectors.
+The combined prepared week is **4.08 MB gzip**, plus **1.03 MB gzip** of preparation-only Infrabel geometry (about **5.11 MB** total Belgium storage). Monday's opening train/metro response is **753 KB gzip**, trams alone **774 KB**, urban rail together **911 KB**, or all modes **1.61 MB**. Raw source files are not sent to browsers. Schedules retain shared stop patterns and flat timing vectors.
+
+## Urban rail sources and coverage
+
+All three original archives were actually downloaded and validated. Their published route shapes are used directly, with ordered stop projection and per-leg recovery from the existing preparation engine. All selected urban legs have usable supplied geometry, including the Brussels metro ring and Coastal Tram. **Infrabel main-line tracks are not used for urban rail.**
+
+| Archive | Feed validity / version | SHA-256 |
+| --- | --- | --- |
+| [STIB-MIVB, 31 May](https://gtfs.flatturtle.cloud/stib-mivb/stib-mivb-gtfs_2026-05-31.zip) | 25 May–21 June 2026; `2_13_20260525_010638` | `abb7e03497c3f61a1e7f92651a59b181a3e21ae606145fdd7f056e83d0941fb4` |
+| [De Lijn, 31 May](https://gtfs.flatturtle.cloud/delijn/delijn-gtfs_2026-05-31.zip) | 30 May–30 September 2026; `20260530_20260930_003000` | `51f2a28e44d8f9a3d5bd9b36b7ac66992d638bec8b46d873015acae1f2cb3baa` |
+| [LETEC, 30 May](https://gtfs.flatturtle.cloud/tec/tec-gtfs_2026-05-30.zip) | Feed end/version unspecified; calendars explicitly validated for the week and adjoining service days | `b887f24fc1164a05be272fc7fdfb0957ebe988aab1fef6f5578e3a8eef95007f` |
+
+Select only STIB rail types 0/1, De Lijn type 0, TEC Charleroi type 1 M2/M3/M4 and TEC Liège type 0 T1, with audited agency IDs/names. Charleroi M1 is not present as rail in this snapshot. Seasonal services appear only when their actual calendars run; no July-only Ghent festival services are assigned to June. Preserve published STIB/De Lijn line colours; TEC's colourless lines use SunTrain teal/purple display colours. Original trips/patterns/stations/paths are namespaced by feed before merging so overlapping local IDs cannot collide. Train numbers and all national train departures remain intact.
+
+Urban timetables and shapes are **CC BY 4.0**, with source/archive dates and SunTrain processing credit. TEC's missing publisher revision is explicitly labelled as unspecified; its archive date is not presented as a publisher update. All source hashes, calendars and credit remain in the bundled metadata.
+
+The combined week contains **104,783 departures**: national trains **24,165**, STIB-MIVB **49,564**, De Lijn trams **25,755**, Charleroi light rail **3,224**, Liège tram **2,075**. No selected schedule-parsing omissions or bus services are included.
 
 ## Future additions only
 
-[Belgian Mobility](https://data.belgianmobility.io/en/data.html) lists STIB-MIVB (Brussels metro/trams/buses), De Lijn (Flemish trams/buses) and LETEC (Wallonia). Separate public archive directories exist for [STIB-MIVB](https://gtfs.flatturtle.cloud/stib-mivb/), [De Lijn](https://gtfs.flatturtle.cloud/delijn/) and [TEC](https://gtfs.flatturtle.cloud/tec/). Their historical ZIPs, calendars, route geometry, mode scope and browser volume need validation before enabling them; Belgium rail's Infrabel paths must not be reused for buses or urban tracks.
+[Belgian Mobility](https://data.belgianmobility.io/en/data.html) and the same FlatTurtle archive directories provide bus feeds for future expansion. Validate bus calendars, road shapes and browser volume separately before enabling them. Do not reuse Infrabel or metro/tram paths for buses.
 
 Station boarding reports could support typical-day station demand later. No such report was imported or used to estimate train loads; the brief's 2024 totals would need validation before applying them to any heatmap or to a different year.
 
@@ -41,8 +57,8 @@ Station boarding reports could support typical-day station demand later. No such
 
 ```bash
 .venv/bin/python scripts/prepare_belgium_geometry.py --cache .cache/belgium
-.venv/bin/python scripts/prepare_belgium_replay.py --cache .cache/belgium
-.venv/bin/python -m pytest tests/test_belgium.py tests/test_rail_preparation.py tests/test_replay_http.py -q
+.venv/bin/python scripts/prepare_belgium_urban.py --cache .cache/belgium
+.venv/bin/python -m pytest tests/test_belgium.py tests/test_belgium_urban.py tests/test_rail_preparation.py tests/test_replay_http.py -q
 ```
 
-The geometry compiler expects `infrabel-segments.geojson` from its recorded export URL and `segments-catalog.json` from the matching catalogue API. It checks export completeness and unique segment IDs. The replay builder downloads the pinned timetable if absent, verifies both input hashes and uses the existing selected-day compressed HTTP cache. When extending dates, validate a suitable archived timetable and source classifications first. Do not add other modes or passenger estimates implicitly.
+The geometry compiler expects `infrabel-segments.geojson` from its recorded export URL and `segments-catalog.json` from the matching catalogue API. It checks completeness and unique IDs. The urban builder creates or validates the cached national component, downloads any missing pinned feeds, prepares only selected rail trips and merges the compact references atomically. `prepare_belgium_replay.py` alone now writes the national component to `.cache/belgium/be-nmbs-week.json.gz`; it does not overwrite the combined site reference. Extending dates requires updating and validating all participating archives/calendars before merging. Do not add buses or passenger estimates implicitly.

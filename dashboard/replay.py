@@ -149,7 +149,7 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     date.fromisoformat(business_date)
     settings = city_settings(city)
     modes = tuple(sorted(set(modes))) if modes is not None else None
-    if city == "france" and modes is None:
+    if city in {"france", "belgium"} and modes is None:
         modes = tuple(settings["default_modes"])
     include_buses = include_buses or city in BUS_REFERENCE_CITIES and modes is not None and "bus" in modes
     if city != "melbourne":

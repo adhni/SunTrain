@@ -50,9 +50,9 @@ def test_pinned_sources_nationwide_scope_and_compact_schedules(reference):
     assert not metadata['omitted_trips']
     patterns=reference['patterns'].values()
     assert all('stops' not in p for p in patterns)
-    assert {p['mode'] for p in patterns}=={'train'}
-    assert {p['operator'] for p in patterns}=={'NMBS/SNCB'}
-    assert {'IC','L','P','S1','S8','S32','S41','S51','S61'} <= {p['category'] for p in patterns}
+    assert {'train','subway','tram'}=={p['mode'] for p in patterns}
+    assert {p['operator'] for p in patterns if p['mode']=='train'}=={'NMBS/SNCB'}
+    assert {'IC','L','P','S1','S8','S32','S41','S51','S61'} <= {p.get('category') for p in patterns}
     names={s['name'] for s in reference['stations']}
     for fragment in ['Bruxelles','Antwerpen','Gent','Brugge','Liège','Namur','Charleroi','Arlon','Oostende','Hasselt']:
         # The source uses French station names where available.
@@ -74,23 +74,23 @@ def test_week_has_one_start_window_per_occurrence_and_keeps_empty_geometry_gaps(
     assert len(seen)==len(set(seen)) and overnight
     for path in reference['paths'].values():
         if path['quality']=='approximate':assert path['coordinates']==path['distances']==[]
-        else:assert path['quality']=='track' and len(path['coordinates'])>=2
+        else:assert path['quality'] in {'track','shape'} and len(path['coordinates'])>=2
 
 
 def test_core_intercity_and_suburban_services_have_detailed_rail_paths(reference):
     for category in ['IC','L','P','S1','S41','S51','S61']:
-        paths=[reference['paths'][key] for raw in reference['patterns'].values() if raw['category']==category
+        paths=[reference['paths'][key] for raw in reference['patterns'].values() if raw.get('category')==category
                for key in reference['stop_patterns'][raw['stop_pattern']]['legs']]
         assert paths and any(len(p['coordinates'])>10 for p in paths),category
 
 
 def test_existing_loader_serves_matching_week_with_commercial_numbers(monkeypatch):
     monkeypatch.setattr(replay.data,'get_metadata',lambda:pytest.fail('Belgium queried Melbourne warehouse'))
-    day=replay.get_replay_day('2026-06-01','belgium')
+    day=replay.get_replay_day('2026-06-01','belgium',modes=('train',))
     assert day['timezone']=='Europe/Brussels' and day['services']
     assert all(s['mode']=='train' and s['source_trip_id'] for s in day['services'])
     assert any(s['number'].isdigit() for s in day['services'])
     assert city_settings('belgium')['start_date']==city_settings('switzerland')['start_date']
-    assert descriptor('2026-06-01','belgium')['modes']==['train']
+    assert descriptor('2026-06-01','belgium')['modes']==['subway','train']
     with pytest.raises(ValueError):descriptor('2026-06-01','belgium',['bus'])
     with pytest.raises(ValueError):replay.get_replay_day('2026-06-08','belgium')

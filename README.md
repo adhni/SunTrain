@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Canada, France, Germany, the Netherlands, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Belgium, Canada, France, Germany, the Netherlands, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Belgium rail
+
+Choose **Belgium** for **1–7 June 2026**, matching the other European country replays. Includes SNCB/NMBS **IC, L, S and P trains** and other scheduled rail categories represented in the historical archive, using the existing playback, filters, details and Overview. Buses and urban transport are excluded; passenger counts are unavailable.
+
+Official **Infrabel** track segments provide mapped paths for **99.47%** of scheduled legs; unresolved movement stays hidden between stops. The prepared week is **827 KB gzip** and Monday's download is **641 KB gzip**. See [Belgium expansion notes](BELGIUM_EXPANSION_NOTES.md) for source pins, licensing, coverage and rebuilding.
 
 ## France rail
 

@@ -134,6 +134,14 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "belgium": {
+        "name": "Belgium", "timezone": "Europe/Brussels",
+        "bounds": [[2.5, 49.45], [6.5, 51.6]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "description": "One week of SNCB/NMBS intercity, local, suburban and peak-hour trains across Belgium. Passenger counts are unavailable.",
+        "modes": [("Trains", "train")], "operators": [("SNCB / NMBS", "NMBS/SNCB")],
+        "directions": [("Not specified", "Not specified")],
+    },
     "switzerland": {
         "name": "Switzerland", "timezone": "Europe/Zurich",
         "bounds": [[5.95, 45.7], [10.6, 47.9]], "passenger_data": False,

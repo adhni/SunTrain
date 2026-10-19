@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, the Netherlands, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Portugal rail
+
+Choose **Portugal** for **1–7 June 2026**. Includes CP **Alfa Pendular, Intercidades, regional and suburban trains**, plus **Fertagus** between Lisbon and Setúbal. Reuses existing playback, filters, service details and Portugal Overview.
+
+The week has **9,033 departures** and is about **0.535 MB gzip**, plus **0.103 MB** preparation-only geometry. Official IP railway alignments cover **97.73%** of CP scheduled legs; Fertagus uses supplied shapes with **100%** coverage. Unresolved movement stays hidden between stops. See [Portugal expansion notes](PORTUGAL_EXPANSION_NOTES.md) for source pins, the exact CP/Fertagus reuse declarations, geometry limits and future metro/tram additions.
 
 ## Spain rail
 

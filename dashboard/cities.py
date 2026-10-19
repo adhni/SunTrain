@@ -134,6 +134,15 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "portugal": {
+        "name": "Portugal", "timezone": "Europe/Lisbon",
+        "bounds": [[-9.65, 36.8], [-6.0, 42.25]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "description": "CP long-distance, regional and suburban trains, plus Fertagus, from June 2026 historical schedules. Passenger counts are unavailable.",
+        "modes": [("Trains", "train")],
+        "operators": [(name, name) for name in ("CP", "Fertagus")],
+        "directions": [("Not specified", "Not specified")],
+    },
     "spain": {
         "name": "Spain", "timezone": "Europe/Madrid",
         "bounds": [[-9.6, 35.8], [3.4, 43.85]], "passenger_data": False,

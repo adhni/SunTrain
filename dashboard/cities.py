@@ -134,6 +134,14 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "luxembourg": {
+        "name": "Luxembourg", "timezone": "Europe/Luxembourg",
+        "bounds": [[5.70, 49.40], [6.55, 50.20]], "passenger_data": False,
+        "start_date": "2026-06-01", "end_date": "2026-06-07",
+        "description": "Luxembourg passenger trains and Luxtram T1 from June 2026 historical schedules, including domestic and border rail portions. Passenger counts are unavailable.",
+        "modes": [("Trains", "train"), ("Tram", "tram")], "operators": [("CFL", "CFL"), ("Luxtram", "Luxtram")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
     "portugal": {
         "name": "Portugal", "timezone": "Europe/Lisbon",
         "bounds": [[-9.65, 36.8], [-6.0, 42.25]], "passenger_data": False,

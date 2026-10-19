@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, the Netherlands, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, the Netherlands, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Spain rail
+
+Choose **Spain** for **24–30 June 2024**, the matching historical week available from the public archives. Includes Renfe **AVE/Avlo, Alvia, Euromed, Intercity, medium-distance and regional trains**, **Cercanías/Rodalies** and **FGC regional/suburban trains**. Reuses existing playback, filters, service details and Spain Overview. Other operators and metro/tram/bus networks remain future additions; passenger counts are unavailable.
+
+The week has **39,422 departures**, with usable paths for **97.79%** of scheduled legs. Renfe paths use official IGN railway alignments; FGC uses supplied archived shapes. Unresolved movement remains hidden between stops. The reference is **2.91 MB gzip** plus **2.74 MB** preparation-only geometry; Monday downloads **2.52 MB gzip**. See [Spain expansion notes](SPAIN_EXPANSION_NOTES.md) for the 2024 fallback, source pins, attribution, geometry limits and future additions.
 
 ## Austria rail
 

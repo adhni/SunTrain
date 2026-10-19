@@ -84,7 +84,11 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
             sources.append({"source_url": snapshot["url"], "source_date": snapshot["captured"], "published": snapshot["published"],
                             "feed_version": feed.get("feed_version", ""), "valid_from": feed.get("feed_start_date", ""),
                             "valid_through": feed.get("feed_end_date", ""), "sha256": snapshot["sha256"]})
-            agencies = {r["agency_id"]: r for r in records(archive, "agency.txt")}
+            # GTFS permits agency_id to be absent for a single-agency feed.
+            agency_rows = list(records(archive, "agency.txt"))
+            if len(agency_rows) > 1 and any(not r.get("agency_id") for r in agency_rows):
+                raise ValueError("Multiple agencies require explicit agency_id values")
+            agencies = {r.get("agency_id", ""): r for r in agency_rows}
             routes = {r["route_id"]: r for r in records(archive, "routes.txt") if selected_route(r, agencies)}
             if not routes:
                 raise ValueError("No selected rail routes")

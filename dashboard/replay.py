@@ -38,6 +38,7 @@ FRANCE_PATH = ROOT / "data/reference/france/2026-06-01.json.gz"
 SWITZERLAND_PATH = ROOT / "data/reference/switzerland/2026-06-01.json.gz"
 BELGIUM_PATH = ROOT / "data/reference/belgium/2026-06-01.json.gz"
 AUSTRIA_PATH = ROOT / "data/reference/austria/2026-06-01.json.gz"
+SPAIN_PATH = ROOT / "data/reference/spain/2024-06-24.json.gz"
 BUS_REFERENCE_CITIES = {"boston", "london", "chicago", "perth"}
 LOGGER = logging.getLogger(__name__)
 GERMANY_REPLAY_NOTE = "Long-distance trains open first. Select Regional rail, S-Bahn or U-Bahn / Stadtbahn under Transport to add those networks. German/border portions and original source categories/times are retained. Unavailable railway paths stay gaps. No individual passenger loads."
@@ -48,7 +49,8 @@ def prepared_path(city):
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH,
                "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH, "france": FRANCE_PATH,
-               "switzerland": SWITZERLAND_PATH, "belgium": BELGIUM_PATH, "austria": AUSTRIA_PATH}[city]
+               "switzerland": SWITZERLAND_PATH, "belgium": BELGIUM_PATH, "austria": AUSTRIA_PATH,
+               "spain": SPAIN_PATH}[city]
     return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
 
 

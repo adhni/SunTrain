@@ -138,8 +138,8 @@ CITIES = {
         "name": "Luxembourg", "timezone": "Europe/Luxembourg",
         "bounds": [[5.70, 49.40], [6.55, 50.20]], "passenger_data": False,
         "start_date": "2026-06-01", "end_date": "2026-06-07",
-        "description": "Luxembourg passenger trains from June 2026 historical schedules, including domestic and border portions. Passenger counts are unavailable.",
-        "modes": [("Trains", "train")], "operators": [("CFL", "CFL")],
+        "description": "Luxembourg passenger trains and Luxtram T1 from June 2026 historical schedules, including domestic and border rail portions. Passenger counts are unavailable.",
+        "modes": [("Trains", "train"), ("Tram", "tram")], "operators": [("CFL", "CFL"), ("Luxtram", "Luxtram")],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
     "portugal": {

@@ -4,9 +4,9 @@ Historical transport replay across Australia, Austria, Belgium, Canada, France, 
 
 ## Luxembourg rail
 
-Choose **Luxembourg** for **1–7 June 2026**. Includes national **RB, RE, TER, IC and TGV** timetable services, retaining domestic/border portions and original times. Trams and buses are left for later.
+Choose **Luxembourg** for **1–7 June 2026**. Includes national **RB, RE, TER, IC and TGV** timetable services, retaining domestic/border portions and original times. **Luxtram T1** is also included; buses are left for later.
 
-The week has **6,216 departures** in **94 KB gzip**, plus **154 KB** preparation-only official railway geometry. **98.17%** of scheduled legs have usable railway paths; missing French branch sections remain gaps. See [Luxembourg expansion notes](LUXEMBOURG_EXPANSION_NOTES.md) for sources, cross-border scope, attribution and the next tram/bus additions.
+The week has **9,363 departures** (6,216 trains + 3,147 trams) in **130 KB gzip**, plus **154 KB** official railway geometry and **12 KB** OSM tram geometry used during preparation. **98.17%** of train legs and **100%** of tram legs have usable paths; missing French branch sections remain gaps. See [Luxembourg expansion notes](LUXEMBOURG_EXPANSION_NOTES.md) for sources, cross-border scope, attribution and future bus additions.
 
 ## Portugal rail
 

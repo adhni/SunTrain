@@ -36,7 +36,10 @@ def test_source_timezone_alias_is_verified_for_the_entire_window(monkeypatch):
 
 @pytest.fixture(scope='module')
 def reference():
-    with gzip.open(replay.LUXEMBOURG_PATH,'rt') as f:return json.load(f)
+    with gzip.open(replay.LUXEMBOURG_PATH,'rt') as f:r=json.load(f)
+    r['patterns']={k:p for k,p in r['patterns'].items() if p['mode']=='train'}
+    r['days']={d:[row for row in rows if row[0] in r['patterns']] for d,rows in r['days'].items()}
+    return r
 
 
 def test_dated_sources_compact_schedules_and_nationwide_coverage(reference):
@@ -84,10 +87,10 @@ def test_overnight_occurrences_are_unique_and_geometry_never_uses_gtfs_sketches(
 
 def test_loader_filters_and_independence_from_melbourne(monkeypatch):
     monkeypatch.setattr(replay.data,'get_metadata',lambda:pytest.fail('Luxembourg queried Melbourne'))
-    day=replay.get_replay_day('2026-06-01','luxembourg')
+    day=replay.get_replay_day('2026-06-01','luxembourg',modes=['train'])
     assert len(day['services'])==990 and day['timezone']=='Europe/Luxembourg'
     assert all(s['mode']=='train' and s['source_trip_id'] for s in day['services'])
     assert not city_settings('luxembourg')['passenger_data']
-    assert descriptor('2026-06-01','luxembourg')['modes']==['train']
+    assert descriptor('2026-06-01','luxembourg')['modes']==['train','tram']
     with pytest.raises(ValueError):descriptor('2026-06-01','luxembourg',['bus'])
     with pytest.raises(ValueError):replay.get_replay_day('2026-06-08','luxembourg')

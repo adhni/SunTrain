@@ -69,7 +69,7 @@ class FranceRailGraph(GermanRailGraph):
         if key not in self.anchor_cache:
             projected = np.array(point)*self.scale
             cell = tuple(np.floor(projected/2000).astype(int))
-            indices = np.asarray(self.grid.get(cell, []) if 40 <= point[1] <= 56 else range(len(self.edges)),dtype=int)
+            indices = np.asarray(self.grid.get(cell, []),dtype=int)
             scale = np.array([math.cos(math.radians(point[1])),1.0])*111195
             vectors = self.geographic_vectors[indices]*scale
             offset = (np.array(point)-self.geographic_starts[indices])*scale

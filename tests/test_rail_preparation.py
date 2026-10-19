@@ -269,3 +269,35 @@ def test_start_day_uses_departure_when_origin_dwell_crosses_three_am(tmp_path):
         assert trip == 'regular' and arrival_offset == 10740
         # Keep the source arrival/dwell; assignment follows the 03:01 departure.
         assert reference['patterns'][key]['times'][1] == 120
+
+
+def test_single_agency_gtfs_may_omit_agency_ids(tmp_path):
+    path=tmp_path/'single.zip'
+    archive_fixture(path,'regular',['20261005'])
+    with ZipFile(path) as archive:tables={n:archive.read(n) for n in archive.namelist()}
+    for name in ['agency.txt','routes.txt']:
+        rows=list(csv.DictReader(io.StringIO(tables[name].decode())))
+        for row in rows:row.pop('agency_id')
+        text=io.StringIO();writer=csv.DictWriter(text,fieldnames=list(rows[0]))
+        writer.writeheader();writer.writerows(rows);tables[name]=text.getvalue().encode()
+    with ZipFile(path,'w') as archive:
+        for name,contents in tables.items():archive.writestr(name,contents)
+    source={'first':'2026-10-05','last':'2026-10-05','timezone':'America/New_York',
+            'url':'https://example.test/single.zip','sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
+            'captured':'2026-10-03','published':'','source':'fixture','source_url':'https://example.test',
+            'license':'fixture','license_url':'https://example.test/license','attribution':'fixture','note':'fixture'}
+    output=tmp_path/'reference.json.gz'
+    prepare('dc',source,tmp_path,output,lambda route,agencies:True,
+            lambda route,trip:{'mode':'train','route_id':'R','line':'Train R'})
+    with gzip.open(output,'rt') as stream:reference=json.load(stream)
+    assert len(reference['days']['2026-10-05'])==1
+    assert {p['operator'] for p in reference['patterns'].values()}=={'WMATA'}
+    # An omitted ID must not silently collapse a multi-agency feed.
+    rows=list(csv.DictReader(io.StringIO(tables['agency.txt'].decode())))
+    text=io.StringIO();writer=csv.DictWriter(text,fieldnames=list(rows[0]))
+    writer.writeheader();writer.writerows(rows+rows);tables['agency.txt']=text.getvalue().encode()
+    with ZipFile(path,'w') as archive:
+        for name,contents in tables.items():archive.writestr(name,contents)
+    source['sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
+    with pytest.raises(ValueError,match='Multiple agencies'):
+        prepare('dc',source,tmp_path,output,lambda route,agencies:True,lambda route,trip:{})

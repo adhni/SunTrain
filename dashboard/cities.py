@@ -134,6 +134,15 @@ CITIES = {
                           "Arriva London South", "Arriva London", "London United", "Metrobus", "London Sovereign", "London Transit", "Uno", "Docklands Buses", "FALCON COACHES", "Falcon Buses")]],
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"), ("Not specified", "Not specified")],
     },
+    "spain": {
+        "name": "Spain", "timezone": "Europe/Madrid",
+        "bounds": [[-9.6, 35.8], [3.4, 43.85]], "passenger_data": False,
+        "start_date": "2024-06-24", "end_date": "2024-06-30",
+        "description": "Renfe high-speed, long-distance and regional trains, Cercanías/Rodalies and FGC trains from June 2024 archives. Passenger counts are unavailable.",
+        "modes": [("Trains", "train")],
+        "operators": [(name, name) for name in ("Renfe", "Renfe Cercanías / Rodalies", "FGC")],
+        "directions": [("Not specified", "Not specified")],
+    },
     "austria": {
         "name": "Austria", "timezone": "Europe/Vienna",
         "bounds": [[9.4, 46.35], [17.2, 49.05]], "passenger_data": False,

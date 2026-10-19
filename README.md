@@ -2,6 +2,12 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Italy, Luxembourg, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Great Britain intercity rail
+
+Choose **Great Britain** for **5–11 October 2026**. Includes LNER, Avanti West Coast, CrossCountry, TransPennine Express, Hull Trains, Grand Central, both Lumo records and selected GWR/EMR intercity corridors. London rail can also be selected in the Britain view using the existing London files; the separate **London** view remains available. Select **Regional / commuter rail** under Transport to add Northern, ScotRail, TfW, Greater Anglia, West Midlands/London Northwestern, SWR, Southeastern, Southern, Thameslink, Great Northern, c2c, Chiltern and Merseyrail. Caledonian Sleeper and remaining GWR/EMR local services are left for later.
+
+The compact week contains **11,003 departures in 1.98 MB gzip**, with connected paths for **99.80% of scheduled legs**. Services follow connected railway paths, guided by the timetable's station/passing-point sequence; unsupported sections stay gaps. GWR/EMR corridor selection is explicit because the converted source has no per-train category. Regional rail adds **105,035 departures**, with **99.71%** track coverage, in separate selected-day files (**2.57–4.55 MB gzip per day**). It is loaded only when selected. The London rail options reuse its existing schedules and geometry without creating duplicate data files. Dates already match this week. See [Great Britain expansion notes](GREAT_BRITAIN_EXPANSION_NOTES.md) for exact scope, source pins, attribution and next additions.
+
 ## Italy rail
 
 Choose **Italy** for **5–11 October 2026**, the supported historical week. Includes **Trenitalia** high-speed, long-distance/night, regional and suburban trains, **Trenord** and direct **Italo** high-speed services, with nationwide coverage including Sicily and Sardinia. Other regional operators and urban transport are left for later.

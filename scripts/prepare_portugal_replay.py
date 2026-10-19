@@ -1,4 +1,4 @@
-"""Prepare Portuguese passenger trains for 1–7 June 2026 from pinned GTFS."""
+"""Prepare Portuguese passenger trains and Lisbon Metro for 1–7 June 2026 from pinned GTFS."""
 from __future__ import annotations
 import argparse
 import gzip
@@ -17,11 +17,11 @@ GEOMETRY_SHA256='b988a3d1ea461986ff95dc58deee1eaac36183652b168b3be958a21f616a618
 CREDIT='Infraestruturas de Portugal, Rede Ferroviária Nacional, 15 April 2026, CC BY 4.0. Reprojected, matched and simplified by SunTrain.'
 PRODUCTS={'AP':'Alfa Pendular','IC':'Intercidades','IR':'InterRegional','R':'Regional','U':'Urbanos'}
 BASE={'first':'2026-06-01','last':'2026-06-07','timezone':'Europe/Lisbon','calendar_validity':True,
-    'assign_by_start':['train'],'published':'','geometry_source':CREDIT,
+    'assign_by_start':['train','subway'],'published':'','geometry_source':CREDIT,
     'geometry_source_url':'https://dados.gov.pt/en/datasets/rede-ferroviaria-nacional',
     'geometry_license':'CC BY 4.0','geometry_license_url':'https://creativecommons.org/licenses/by/4.0/',
     'geometry_source_date':'2026-04-15','geometry_sha256':GEOMETRY_SHA256,'geometry_quality':'track',
-    'note':'Historical CP and Fertagus passenger train schedules, 1–7 June 2026. CP journeys retain Portuguese station portions and original times. Inferred rail alignments and supplied Fertagus shapes; unresolved movement stays hidden between stops. No individual passenger loads.'}
+    'note':'Historical CP, Fertagus and Lisbon Metro schedules, 1–7 June 2026. CP journeys retain Portuguese station portions and original times. Inferred rail alignments and supplied Fertagus/Lisbon Metro shapes; unresolved movement stays hidden between stops. No individual passenger loads.'}
 SOURCES={
  'cp':{**BASE,'captured':'2026-05-31',
     'url':'https://files.mobilitydatabase.org/mdb-2057/mdb-2057-202605310107/mdb-2057-202605310107.zip',
@@ -45,10 +45,28 @@ SOURCES={
     'attribution':'Fertagus schedules and supplied shapes, archived 14 April 2026 by MobilityDatabase, CC BY 4.0. Selected and simplified by SunTrain.'}}
 
 
+LISBON_LINES={'A':'Azul','B':'Amarela','C':'Verde','D':'Vermelha'}
+SOURCES['lisbon']={**BASE,'captured':'2026-05-01','published':'',
+    'url':'https://files.mobilitydatabase.org/tld-716/tld-716-202605010025/tld-716-202605010025.zip',
+    'sha256':'79480fbe7cedb1c72bba2e2d62245107d7d979d6b1b50d6a7c0c5e8e94815956',
+    'source':'Metropolitano de Lisboa historical GTFS via MobilityDatabase',
+    'source_url':'https://www.metrolisboa.pt/google_transit/googleTransit.zip',
+    'license':'No licence / no contract (Lisbon Metro NAP declaration)',
+    'license_url':'https://nap-portugal.imt-ip.pt/nap/multimodalsupplydetail/186',
+    'geometry_quality':'shape','geometry_source':'Metropolitano de Lisboa official historical GTFS shapes, selected and simplified by SunTrain',
+    'geometry_source_url':'https://www.metrolisboa.pt/google_transit/googleTransit.zip',
+    'geometry_source_date':'Archived 2026-05-01',
+    'geometry_sha256':'79480fbe7cedb1c72bba2e2d62245107d7d979d6b1b50d6a7c0c5e8e94815956',
+    'geometry_license':'No licence / no contract (Lisbon Metro NAP declaration)',
+    'geometry_license_url':'https://nap-portugal.imt-ip.pt/nap/multimodalsupplydetail/186',
+    'attribution':'Metropolitano de Lisboa schedules and supplied shapes, archived 1 May 2026 by MobilityDatabase. Selected and simplified by SunTrain.'}
+
+
 def selected_route(feed,route,agencies):
     agency=route.get('agency_id') or (next(iter(agencies)) if len(agencies)==1 else None)
-    expected={'cp':('1094_CP','CP - Comboios de Portugal'),'fertagus':('15','Fertagus')}[feed]
+    expected={'cp':('1094_CP','CP - Comboios de Portugal'),'fertagus':('15','Fertagus'),'lisbon':('ML','Metropolitano de Lisboa, E.P.E.')}[feed]
     if (agency,agencies.get(agency,{}).get('agency_name'))!=expected:return False
+    if feed=='lisbon':return route.get('route_type')=='1' and LISBON_LINES.get(route.get('route_id'))==route.get('route_long_name')
     if feed=='fertagus':return route.get('route_type')=='2'
     return (route.get('route_type')=='2' and route.get('route_short_name') in {'AP','IC','IR','R'} or
             route.get('route_type')=='109' and (route.get('route_short_name','').startswith('Linha ') or route.get('route_short_name')=='U'))
@@ -85,6 +103,11 @@ def prepare(cache,output):
         def describe(route,trip):
             short=route['route_short_name'];category=PRODUCTS.get(short,short)
             numbers[trip['trip_id']]=trip.get('trip_short_name') or trip['trip_id']
+            if feed=='lisbon':
+                return {'mode':'subway','operator':'Lisbon Metro','route_id':route['route_id'],
+                    'route_short_name':short,'category':route['route_long_name'],'line':'Lisbon '+route['route_long_name'],
+                    'color':route['route_color'],'direction':'Direction '+{'0':'A','1':'B'}.get(trip.get('direction_id'),'unknown'),
+                    'destination':destinations[trip['trip_id']]}
             color=({'AP':'C02638','IC':'28734F','IR':'70509B','R':'2683A6'}.get(short,'229A74')
                 if feed=='cp' else route.get('route_color') or 'C74F4F')
             return {'mode':'train','operator':'CP' if feed=='cp' else 'Fertagus','route_id':route['route_id'],
@@ -95,7 +118,7 @@ def prepare(cache,output):
             geometry_resolver=resolver if feed=='cp' else None,select_sequence=select)
         with gzip.open(target,'rt') as stream:reference=json.load(stream)
         reference['train_numbers']=numbers;references.append(('pt-'+feed,reference))
-    result=merge_references(references,source_name='CP and Fertagus historical Portuguese passenger trains',replay_note=BASE['note'])
+    result=merge_references(references,source_name='CP, Fertagus and Lisbon Metro historical Portuguese rail schedules',replay_note=BASE['note'])
     result['metadata']['schedule_licenses']=[{k:source[k] for k in ('source','license','license_url','sha256')} for source in SOURCES.values()]
     save_reference(result,output)
     print('days',{d:len(rows) for d,rows in result['days'].items()},'bytes',output.stat().st_size,flush=True)

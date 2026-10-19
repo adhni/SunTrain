@@ -4,9 +4,9 @@ Historical transport replay across Australia, Austria, Belgium, Canada, France, 
 
 ## Portugal rail
 
-Choose **Portugal** for **1–7 June 2026**. Includes CP **Alfa Pendular, Intercidades, regional and suburban trains**, plus **Fertagus** between Lisbon and Setúbal. Reuses existing playback, filters, service details and Portugal Overview.
+Choose **Portugal** for **1–7 June 2026**. Includes CP **Alfa Pendular, Intercidades, regional and suburban trains**, plus **Fertagus** between Lisbon and Setúbal and **Lisbon Metro’s four lines**. Select Trains or Lisbon Metro under Transport to focus the replay. Reuses existing playback, filters, service details and Portugal Overview.
 
-The week has **9,033 departures** and is about **0.535 MB gzip**, plus **0.103 MB** preparation-only geometry. Official IP railway alignments cover **97.73%** of CP scheduled legs; Fertagus uses supplied shapes with **100%** coverage. Unresolved movement stays hidden between stops. See [Portugal expansion notes](PORTUGAL_EXPANSION_NOTES.md) for source pins, the exact CP/Fertagus reuse declarations, geometry limits and future metro/tram additions.
+The week has **18,587 departures** and is about **0.644 MB gzip**, plus **0.103 MB** preparation-only geometry. Official IP railway alignments cover **97.73%** of CP scheduled legs; Fertagus and Lisbon Metro use supplied shapes with **100%** coverage. Unresolved movement stays hidden between stops. See [Portugal expansion notes](PORTUGAL_EXPANSION_NOTES.md) for source pins, the exact operator reuse declarations, geometry limits and future Porto Metro/tram additions.
 
 ## Spain rail
 

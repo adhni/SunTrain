@@ -135,7 +135,7 @@
         for (const service of day.services) {
             if (!service.pattern || service.stops || service.stopIds) continue;
             const pattern = day.transit_patterns[service.pattern];
-            for (const key of ["operator", "line", "direction", "origin", "destination", "color", "route_id"]) {
+            for (const key of ["operator", "line", "direction", "origin", "destination", "color", "route_id", "frequency_based", "terminal_arrival_missing"]) {
                 if (pattern[key] !== undefined) service[key] = pattern[key];
             }
             if (pattern.stop_pattern) {
@@ -462,11 +462,11 @@
                             attribution.append(document.createTextNode(" · "), link);
                         }
                     }
-                    if (day.bus_schedule) {
+                    if (day.bus_schedule && day.bus_schedule.source_url !== day.schedule.source_url) {
                         const buses = node("a", day.bus_schedule.attribution); buses.href = day.bus_schedule.source_url;
                         buses.target = "_blank"; buses.rel = "noopener noreferrer";
                         attribution.append(document.createTextNode(" · "), buses);
-                        for (const [label, url] of [["Bus timetable licence", day.bus_schedule.license_url], ["TfL bus road geometry", day.bus_schedule.geometry_source_url]]) {
+                        for (const [label, url] of [["Bus timetable licence", day.bus_schedule.license_url], [day.bus_schedule.geometry_source || "Bus road geometry", day.bus_schedule.geometry_source_url]]) {
                             if (!url) continue;
                             const link = node("a", label); link.href = url;
                             link.target = "_blank"; link.rel = "noopener noreferrer";
@@ -688,6 +688,8 @@
                     if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : this.selected.mode === "bus" ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
                 }
                 if (this.selected.timing_uncertain) host.append(node("div", "Daylight-saving times are ambiguous for this service.", "replay-approximate"));
+                if (this.selected.frequency_based) host.append(node("div", "Frequency-based estimate · not an exact departure.", "replay-muted replay-small"));
+                if (this.selected.terminal_arrival_missing) host.append(node("div", "Terminal arrival time unavailable; animation ends at the last published stop.", "replay-muted replay-small"));
                 $("replay-details").querySelectorAll("tr[data-stop-index]").forEach(row => {
                     row.classList.toggle("replay-current-stop", !!position && Number(row.dataset.stopIndex) === position.index);
                 });

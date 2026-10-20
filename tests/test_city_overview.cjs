@@ -40,6 +40,16 @@ test('every shared filter applies, including calling-at whole-journey matching',
     assert.deepEqual(empty.routes, []);
 });
 
+test('Mikrotrans overview distinguishes estimated departures and its transport label', () => {
+    const input = day([service(start, {mode:'mikrotrans', route_id:'JAK.01', line:'JAK.01',
+        color:'#00609C', frequency_based:true}), service(start + 60, {mode:'mikrotrans',
+        route_id:'JAK.20', line:'JAK.20', color:'#00609C', frequency_based:false})], {city:'jakarta'});
+    const result = summarize(input, filters, core);
+    assert.equal(result.departures, 2);
+    assert.equal(result.estimatedDepartures, 1);
+    assert.ok(result.routes.every(r => r.mode === 'Mikrotrans' && r.color === '#00609C'));
+});
+
 test('compact schedules stay shared and stop lists are scanned once per topology', () => {
     let scans = 0;
     const ids = new Proxy(Object.freeze([0, 1, 2]), {get(target, key) {

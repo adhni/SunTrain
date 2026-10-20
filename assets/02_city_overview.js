@@ -1,18 +1,19 @@
 (function (root) {
     "use strict";
-    const modeNames = {train: "Train", subway: "Subway", tram: "Tram", bus: "Bus",
+    const modeNames = {train: "Train", subway: "Subway", tram: "Tram", bus: "Bus", mikrotrans: "Mikrotrans",
         light_rail: "Light rail", regional_rail: "Regional rail", commuter_rail: "Commuter rail", silver_line: "Silver Line", ferry: "Ferry"};
 
     function summarize(day, filters, core) {
         const hours = Array.from({length: 24}, (_, i) => ({hour: (i + 3) % 24, departures: 0}));
         const routes = new Map(), stops = new Set(), seenSchedules = new Set(), minuteHours = new Map();
         const formatter = new Intl.DateTimeFormat("en-GB", {timeZone: day.timezone, hour: "2-digit", hourCycle: "h23"});
-        let departures = 0;
+        let departures = 0, estimatedDepartures = 0;
         for (const service of day.services) {
             if (!core.matches(service, filters, day)) continue;
             const departure = (service.stopIds ? service.times[1] : service.stops[0][2]) + (service.timeOffset || 0);
             if (departure < day.start || departure >= day.end) continue;
             departures++;
+            if (service.frequency_based) estimatedDepartures++;
             const minute = Math.floor(departure / 60);
             if (!minuteHours.has(minute)) minuteHours.set(minute, Number(formatter.format(new Date(departure * 1000))));
             hours[(minuteHours.get(minute) + 21) % 24].departures++;
@@ -30,7 +31,7 @@
                 stops.add(JSON.stringify([station.name, station.lon, station.lat]));
             }
         }
-        return {departures, stops: stops.size, routes: [...routes.values()], hours};
+        return {departures, estimatedDepartures, stops: stops.size, routes: [...routes.values()], hours};
     }
     if (typeof module !== "undefined" && module.exports) module.exports = {summarize};
     if (!root.document) return;
@@ -115,7 +116,8 @@
             .format(new Date(day.start * 1000));
         $("city-overview-context").textContent = `${date} · 03:00–03:00 next day · ${day.timezone} · Current filters`;
         const cards = element("div", undefined, "status-grid city-overview-metrics");
-        for (const [label, value, subtitle] of [["Scheduled departures", summary.departures, "Starting in this business day"],
+        for (const [label, value, subtitle] of [[summary.estimatedDepartures ? "Replay departures" : "Scheduled departures", summary.departures,
+            summary.estimatedDepartures ? "Includes frequency-based estimates" : "Starting in this business day"],
             ["Routes / lines", summary.routes.length, "Represented in the selection"], ["Stops served", summary.stops, "Distinct mapped stops / platforms"]]) {
             const card = element("div", undefined, "metric-card");
             card.append(element("div", label, "metric-label"), element("div", count(value), "metric-value"), element("div", subtitle, "metric-subtitle"));

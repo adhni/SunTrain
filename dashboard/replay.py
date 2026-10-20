@@ -64,9 +64,23 @@ def prepared_path(city):
     return Path(os.getenv(f"SUNTRAIN_{city.upper()}_REFERENCE", str(default)))
 
 
-def bus_reference_file(city, business_date):
-    directory = Path(os.getenv(f"SUNTRAIN_{city.upper()}_BUS_REFERENCE", str(ROOT / "data/reference" / city / "bus")))
+def bus_reference_file(city, business_date, mode="bus"):
+    directory = Path(os.getenv(f"SUNTRAIN_{city.upper()}_{mode.upper()}_REFERENCE", str(ROOT / "data/reference" / city / mode)))
     return directory / (business_date + ".json.gz")
+
+
+def bus_modes(city):
+    if city == "jakarta":
+        return {"bus", "mikrotrans"}
+    return {"bus"} if city in BUS_REFERENCE_CITIES else set()
+
+
+def bus_reference_files(city, business_date, modes):
+    files = []
+    for mode in sorted(set(modes) & bus_modes(city)):
+        path = bus_reference_file(city, business_date, mode)
+        files.append((mode, str(path), path.stat().st_mtime_ns))
+    return tuple(files)
 
 
 def germany_reference_files(business_date, modes=None):
@@ -177,7 +191,7 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     modes = tuple(sorted(set(modes))) if modes is not None else None
     if city in {"france", "belgium"} and modes is None:
         modes = tuple(settings["default_modes"])
-    include_buses = include_buses or city in BUS_REFERENCE_CITIES and modes is not None and "bus" in modes
+    include_buses = include_buses or modes is not None and bool(set(modes) & bus_modes(city))
     if city != "melbourne":
         if not settings["start_date"] <= business_date <= settings["end_date"]:
             raise ValueError(f"{settings['name']} replay covers {settings['start_date']} through {settings['end_date']}")
@@ -185,10 +199,12 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
             files = rail_reference_files(city, business_date, modes)
             return _get_germany_day(business_date, files, city=city)
         path = prepared_path(city)
-        base = _get_prepared_day(city, business_date, str(path), path.stat().st_mtime_ns, modes)
+        modified = 0 if modes and set(modes) <= bus_modes(city) else path.stat().st_mtime_ns
+        base = _get_prepared_day(city, business_date, str(path), modified, modes)
         if city in BUS_REFERENCE_CITIES and include_buses:
-            buses = bus_reference_file(city, business_date)
-            return _get_with_buses(city, business_date, str(path), path.stat().st_mtime_ns, str(buses), buses.stat().st_mtime_ns, modes)
+            files = bus_reference_files(city, business_date, modes if modes is not None else ("bus",))
+            if files:
+                return _get_with_buses(city, business_date, str(path), modified, files, modes)
         return base
     source = data._dataset_path()
     fingerprint = tuple((name, Path(name).stat().st_mtime_ns, Path(name).stat().st_size)
@@ -274,21 +290,30 @@ def _get_germany_day(business_date, files, city="germany"):
 
 
 @lru_cache(maxsize=1)
-def _get_with_buses(city, business_date, rail_path, rail_modified, bus_path, bus_modified, modes=None):
+def _get_with_buses(city, business_date, rail_path, rail_modified, files, modes=None):
     base = _get_prepared_day(city, business_date, rail_path, rail_modified, modes)
     # Append to fresh containers so the cached rail-only payload remains small.
     payload = {**base, "services": list(base["services"]), "stations": list(base["stations"]),
                "paths": dict(base["paths"]), "transit_patterns": dict(base.get("transit_patterns", {})),
                "transit_stop_patterns": dict(base.get("transit_stop_patterns", {})),
                "bus_data_loaded": True,
-               "revision": hashlib.sha256(repr((base["revision"], bus_path, bus_modified)).encode()).hexdigest()[:16]}
+               "revision": hashlib.sha256(repr((base["revision"], files)).encode()).hexdigest()[:16]}
     # The merged payload is cached once. Transfer fresh bus arrays directly;
     # retaining a second parsed bus reference would double schedule memory.
     transit.read_reference.cache_clear()
-    with gzip.open(bus_path, "rb") as stream:
-        bus_reference = transit.load_reference(stream)
-    transit.append_reference(payload, bus_reference, consume=True, modes=modes)
-    payload["bus_schedule"] = payload.pop("transit")
+    schedules = []
+    for _, bus_path, _ in files:
+        with gzip.open(bus_path, "rb") as stream:
+            bus_reference = transit.load_reference(stream)
+        transit.append_reference(payload, bus_reference, consume=True, modes=modes)
+        schedules.append(payload.pop("transit"))
+        del bus_reference
+    payload["bus_schedule"] = dict(schedules[0])
+    if len(schedules) > 1:
+        # Jakarta's optional road layers share publisher, archive and licence.
+        payload["bus_schedule"].update(
+            attribution=" ".join(dict.fromkeys(s["attribution"] for s in schedules)),
+            note=" ".join(s["note"] for s in schedules))
     schedule = base["schedule"] or payload["bus_schedule"]
     note = schedule.get("replay_note", "").replace("Buses, boats and cable car are excluded.", "Boats and cable car are excluded.")
     if city == "boston":
@@ -316,7 +341,7 @@ def _get_prepared_day(city, business_date, path, modified, modes=None):
         "initial": int(datetime.combine(day, time(8), zone).timestamp()),
         "services": [], "stations": [], "paths": {}, "geometry": {},
         "approximate_legs": 0, "total_legs": 0, "excluded_services": 0}
-    if ((city in BUS_REFERENCE_CITIES and modes is not None and set(modes) == {"bus"})
+    if ((modes and set(modes) <= bus_modes(city))
             or (city in {"germany", "great_britain", "java"} and modes is not None and "train" not in modes)):
         # Optional daily bundles supply their own provenance. Do not open an
         # unselected base timetable just to create the empty replay container.

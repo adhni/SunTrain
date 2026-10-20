@@ -1,10 +1,10 @@
-# Jakarta rail and TransJakarta busway
+# Jakarta rail, TransJakarta busway and Mikrotrans
 
 ## Scope and dates
 
 Select **Jakarta** for **15–21 December 2025**, in **Asia/Jakarta** (UTC+7, no daylight-saving change). KRL coverage includes: Bogor, its Nambo branch, Cikarang/Bekasi via both Manggarai and Pasar Senen, Rangkasbitung, Tangerang and Tanjung Priok. Short workings and published continuation segments retain their actual station calls and train numbers. The six route labels use SunTrain colours matching the familiar line families; Nambo shares Bogor red.
 
-Airport rail and Whoosh are included. Regional diesel services, the Whoosh Bandung feeder and non-BRT buses are not enabled. Both LRT systems are included separately. LRT Jabodebek is included, as described below. TransJakarta busway is optional under Transport. Passenger sizing/heatmaps are unavailable. Existing city playback, filters, service details, Overview, themes and fullscreen are reused.
+Airport rail and Whoosh are included. Regional diesel services and the Whoosh Bandung feeder are available in the separate Java view. Both LRT systems are included separately. TransJakarta busway and Mikrotrans are independent optional selections under Transport; other non-BRT bus categories are excluded. Passenger sizing/heatmaps are unavailable. Existing city playback, filters, service details, Overview, themes and fullscreen are reused.
 
 ## MRT North–South overlay
 
@@ -111,7 +111,7 @@ Raw PDFs/OSM responses remain in the ignored preparation cache. No upstream requ
 
 ## Optional TransJakarta busway
 
-Select **TransJakarta busway** under Transport. Scope is the feed’s **BRT** category: **32 routes**, including corridors 1–14 and connecting/express BRT services. Ordinary feeder buses, Mikrotrans, Royaltrans, tourist, housing-estate and Transjabodetabek services are excluded. Route colours come directly from this city’s feed; Melbourne bus orange is not used as a fallback.
+Select **TransJakarta busway** under Transport. Scope is the feed’s **BRT** category: **32 routes**, including corridors 1–14 and connecting/express BRT services. Mikrotrans is available separately (below). Ordinary feeder buses, Royaltrans, tourist, housing-estate and Transjabodetabek services are excluded. Route colours come directly from this city’s feed; Melbourne bus orange is not used as a fallback.
 
 Source: [official TransJakarta GTFS](https://gtfs.transjakarta.co.id/files/file_gtfs.zip), retained in [MobilityDatabase’s 7 May 2026 archive](https://files.mobilitydatabase.org/mdb-1909/mdb-1909-202605070137/mdb-1909-202605070137.zip). Download verified: **5,328,559 bytes**, SHA-256 `d6b6db4823b8bfdc11e98f44229bf7afdb797ea85fc96a0a269cb856bc439023`. The archive is pinned and reproducible; the raw ZIP is preparation-only and not committed. Its very broad calendar is not historical validity evidence. As with MRT, its weekday templates are explicitly displayed on the KRL week; this is **not December 2025 bus history**.
 
@@ -132,6 +132,28 @@ PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_jakarta_busway.py
 ```
 
 The importer verifies the archived ZIP hash, reuses the shared road-shape/timing preparation, then constructs explicitly labelled frequency estimates and writes daily bundles. It rejects missing/overlapping frequency windows or unexpectedly exact services rather than silently changing their meaning. Tests cover scope, colours, half-open frequency windows, overnight ownership, source pins, optional loading and shared schedules. Browser checks cover selection, frequency labels, road paths and playback.
+
+## Optional Mikrotrans / JakLingko
+
+Select **Mikrotrans / JakLingko** under Transport, independently of busway or rail. This uses the **same pinned 7 May 2026 TransJakarta archive**, publisher, source road geometry and **CC BY 4.0** attribution described above. Only `route_type=3`, `route_desc=Mikrotrans`, JAK-numbered routes are selected: **99 routes and 248 direction/service templates**. Route labels retain source punctuation (`JAK.01`, `JAK.03`, `JAK.44`); source blue `#00609C` is retained. Other bus categories are excluded.
+
+The displayed dates remain **15–21 December 2025**, with the May 2026 service calendars matched by weekday/weekend. This is a dated service illustration, **not December 2025 Mikrotrans history**. Of the source frequency templates, **247 have `exact_times=0`**, so their departures are representative estimates. **One JAK.20 template (`JAK.20-R02`) has `exact_times=1`** and retains its scheduled status. Exactness participates in the shared pattern signature; estimates use `:estimate-` occurrence IDs and the exact pattern uses `:scheduled-`. Neither represents a vehicle fleet identifier. Frequency estimates retain the existing selected-vehicle label, and Overview calls totals “Replay departures” when estimates are included. Passenger loads are unavailable.
+
+Frequency windows are **05:00–22:00 WIB** for 245 templates, **22:00–23:59:59** for `JAK.52-R13` and `JAK.52-R10`, and **06:00–10:00** for `JAK.43B-L02`. JAK.52 also has daytime patterns (`R11`, `R06`), and other JAK.43B templates use the standard daytime window. Headways are **360 or 1,200 seconds**, taken from each source row. Departures stop before each window's end, while journeys can finish afterward. Occurrences belong to one business day by their origin departure. No 24-hour service or extra holiday timetable is invented.
+
+The [official current Mikrotrans catalogue](https://transjakarta.co.id/layanan/mikrotrans), checked **21 October 2026**, lists 99 route codes. After normalizing punctuation, 98 match the May archive. **JAK110B** is catalogue-only; **JAK42A** is archive-only. These are different dated sources: retain the archive service and do not invent a JAK110B timetable. Route names and present-day diversions are not substituted into the older feed.
+
+All 248 templates reference supplied shapes. **243 match their complete stop order within 150 m**. Five fail that check: `JAK.89-R02`, `JAK.89-L01`, `JAK.27-R01`, `JAK.27-L01`, `JAK.30-R01`. Their schedules and stops remain available, but their between-stop paths are empty, so the map hides those positions instead of drawing straight shortcuts. The preparation metadata records these gaps. JAK01, JAK03 and JAK44 have mapped road paths in both directions. Source geometry is retained, without claiming lane-level accuracy or validating every current one-way restriction.
+
+Daily occurrences: **37,197 / 37,197 / 37,197 / 37,197 / 37,197 / 37,146 / 37,248** (**260,379** over the week). These are replay occurrences, mostly illustrative estimates, not physical fleet counts. Seven daily bundles total **7,477,880 bytes gzip**; a selected day is about **1.07 MB**. Only selected transport layers are loaded. Rail remains the default, busway does not load Mikrotrans, and Mikrotrans-only does not open rail or busway timetables. Stops, timing vectors and geometry stay shared across departures. The raw archive remains preparation-only and is not stored a second time.
+
+Rebuild using the existing importer and cached archive:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 ./.venv/bin/python scripts/prepare_jakarta_busway.py --mikrotrans
+```
+
+Future updates: pin and inspect a newer archive before changing the dates; recheck JAK110B/JAK42A, the five geometry gaps, frequency windows and the exact JAK.20 flag. Keep ordinary non-BRT buses separate unless explicitly requested. No new runtime API or infrastructure is required.
 
 ## Actual KRL timetable source
 
@@ -203,7 +225,7 @@ These are starting points from the brief, not validated historical imports:
 5. **Whoosh updates / Bandung feeder:** validate revised operator schedules and maintenance rules separately; do not enable conditional `F` runs without an operating calendar. The Bandung feeder and other regional trains need their own operator/source scope.
 6. **Passenger data:** operator/provincial statistics could provide station/day or network totals after validation. No individual train boarding, alighting or onboard-load dataset was validated; passenger features remain disabled.
 
-Keep future operators' actual source dates explicit. Their historical periods may differ from this KRL week; do not relabel current schedules as December 2025. Non-BRT buses remain out of scope.
+Keep future operators' actual source dates explicit. Their historical periods may differ from this KRL week; do not relabel current schedules as December 2025. Non-BRT bus categories other than the enabled Mikrotrans layer remain out of scope.
 
 ## Java-wide view
 

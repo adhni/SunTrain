@@ -1,4 +1,4 @@
-"""Prepare optional TransJakarta BRT, regular feeders or Mikrotrans from a dated archive.
+"""Prepare optional TransJakarta bus categories from a dated archive.
 
 Non-exact frequencies produce illustrative departures at published headways.
 Mikrotrans also retains exact departures where explicitly marked in the source.
@@ -35,6 +35,16 @@ MIKROTRANS_NOTE = ('Mikrotrans: May 2026 snapshot matched by weekday/weekend, no
 FEEDER_NOTE = ('TransJakarta feeders: May 2026 snapshot matched by weekday/weekend, not December 2025 history. '
                'Departures are illustrative frequency-based estimates, not exact departures or live positions. '
                'Each service retains its own operating window and headway. No individual passenger loads.')
+ROAD_LAYERS = {
+    'bus': ('BRT', 'busway', 'TransJakarta busway'),
+    'feeder_bus': ('Angkutan Umum Integrasi', 'feeders', 'TransJakarta feeders'),
+    'mikrotrans': ('Mikrotrans', 'mikrotrans', 'Mikrotrans / JakLingko'),
+    'transjabodetabek': ('Transjabodetabek', 'transjabodetabek', 'Transjabodetabek'),
+    'rusun_bus': ('Rusun', 'rusun', 'Rusun feeders'),
+    'royaltrans': ('Royaltrans', 'royaltrans', 'Royaltrans'),
+    'shuttle_bus': ('Shuttle', 'shuttles', 'Shuttles'),
+    'tourist_bus': ('Bus Wisata', 'tourist', 'Tourist buses'),
+}
 
 
 def selected_route(route, agencies):
@@ -50,12 +60,21 @@ def selected_feeder(route, agencies):
     return route['route_type'] == '3' and route.get('route_desc') == 'Angkutan Umum Integrasi'
 
 
-def frequency_departures(rows, *, allow_exact=False):
+def selected_layer(mode, route, agencies):
+    if mode == 'mikrotrans':
+        return selected_mikrotrans(route, agencies)
+    return route['route_type'] == '3' and route.get('route_desc') == ROAD_LAYERS[mode][0]
+
+
+def frequency_departures(rows, *, allow_exact=False, midnight_end=False):
     """Half-open headway windows; reject overlapping/double-counted templates."""
     departures = set()
     previous_end = -1
     for row in sorted(rows, key=lambda r: seconds(r['start_time'])):
         start, end, headway = seconds(row['start_time']), seconds(row['end_time']), int(row['headway_secs'])
+        # SOE-L01's adjacent 00–07, 07–19 and 19–00 windows establish midnight.
+        if midnight_end and end == 0 and 0 < start < 86400:
+            end = 86400
         if row.get('exact_times', '0') not in ({'0', '1'} if allow_exact else {'0'}) or headway <= 0 or end <= start or start < previous_end:
             raise ValueError('Invalid, overlapping or unexpectedly exact frequency window')
         departures.update(range(start, end, headway))
@@ -63,14 +82,20 @@ def frequency_departures(rows, *, allow_exact=False):
     return sorted(departures)
 
 
-def prepare(cache, output, *, mikrotrans=False, feeders=False):
-    if mikrotrans and feeders:
+def prepare(cache, output, *, mikrotrans=False, feeders=False, layer=None):
+    if sum([mikrotrans, feeders, layer is not None]) > 1:
         raise ValueError('Prepare one transport layer at a time')
-    select = selected_feeder if feeders else selected_mikrotrans if mikrotrans else selected_route
-    category = 'Angkutan Umum Integrasi' if feeders else 'Mikrotrans' if mikrotrans else 'BRT'
-    mode = 'feeder_bus' if feeders else 'mikrotrans' if mikrotrans else 'bus'
-    slug = 'feeders' if feeders else 'mikrotrans' if mikrotrans else 'busway'
-    note = FEEDER_NOTE if feeders else MIKROTRANS_NOTE if mikrotrans else NOTE
+    mode = layer or ('feeder_bus' if feeders else 'mikrotrans' if mikrotrans else 'bus')
+    category, slug, label = ROAD_LAYERS[mode]
+    mikrotrans = mode == 'mikrotrans'
+    select = lambda route, agencies: selected_layer(mode, route, agencies)
+    note = {'bus': NOTE, 'feeder_bus': FEEDER_NOTE, 'mikrotrans': MIKROTRANS_NOTE}.get(mode)
+    if note is None:
+        note = (f'{label}: May 2026 snapshot matched by weekday/weekend, not December 2025 history. '
+                'Departures are illustrative frequency-based estimates, not exact departures or live positions. '
+                'Source operating windows and calendars are retained. No individual passenger loads.')
+        if mode == 'royaltrans':
+            note += ' Royaltrans runs on weekdays only in this snapshot.'
     template_prefix = '' if mode == 'bus' else slug + '-'
     cache.mkdir(parents=True, exist_ok=True)
     original = fetch(URL, cache / 'may-2026.zip')
@@ -98,7 +123,7 @@ def prepare(cache, output, *, mikrotrans=False, feeders=False):
             values = {row.get('exact_times', '0') for row in rows}
             if len(values) != 1:
                 raise ValueError('A template mixes exact and estimated frequency windows')
-            frequency_departures(rows, allow_exact=mikrotrans)
+            frequency_departures(rows, allow_exact=mikrotrans, midnight_end=trip == 'SOE-L01')
             exact[trip] = values == {'1'}
         # Extract geometry and timing templates only. We expand frequencies below,
         # keeping shared preparation's rejection of frequencies unchanged.
@@ -113,6 +138,7 @@ def prepare(cache, output, *, mikrotrans=False, feeders=False):
         'first': str(FIRST), 'last': str(LAST), 'timezone': 'Asia/Jakarta',
         'url': templates.resolve().as_uri(), 'sha256': hashlib.sha256(templates.read_bytes()).hexdigest(),
         'captured': '2026-05-07', 'published': '', 'calendar_validity': True, 'assign_by_start': ['bus'],
+        'allow_empty_days': mode == 'royaltrans',
         'source': f'TransJakarta {category} GTFS, archived 7 May 2026; frequency-based illustration',
         'source_url': URL, 'license': 'CC BY 4.0', 'license_url': 'https://creativecommons.org/licenses/by/4.0/',
         'attribution': f'GTFS Static Transjakarta © 2026 PT Transportasi Jakarta, CC BY 4.0. Changes by SunTrain: {category} selection, shared timing/path conversion and illustrative headway-based departures. Archive: MobilityDatabase, 7 May 2026.',
@@ -144,7 +170,7 @@ def prepare(cache, output, *, mikrotrans=False, feeders=False):
         for trip, data in trips.items():
             if data['service_id'] not in active:
                 continue
-            for departure in frequency_departures(frequencies[trip], allow_exact=mikrotrans):
+            for departure in frequency_departures(frequencies[trip], allow_exact=mikrotrans, midnight_end=trip == 'SOE-L01'):
                 owner = service_day + timedelta(days=(departure - 10800) // 86400)
                 if str(owner) not in result['days']:
                     continue
@@ -159,6 +185,9 @@ def prepare(cache, output, *, mikrotrans=False, feeders=False):
         license_statement_url='https://ppid.transjakarta.co.id/informasi/berkala',
         date_mapping='May 2026 weekday templates displayed on the KRL week; not December 2025 bus history',
         daily_services={d: dict(Counter(result['patterns'][p]['route_id'] for p,t,o in rows)) for d,rows in result['days'].items()})
+    if mode == 'shuttle_bus':
+        result['metadata']['source_corrections'] = [
+            'SOE-L01 frequency end_time 00:00:00 interpreted as 24:00:00 for the 19:00 window; adjacent source windows cover the remaining hours.']
     for day in result['days']:
         save_reference(daily_reference(result, day), output / (day + '.json.gz'))
     print(category, 'routes', len(routes), 'templates', len(trips), 'daily occurrences', {d: len(v) for d,v in result['days'].items()}, flush=True)
@@ -171,6 +200,7 @@ if __name__ == '__main__':
     layers = parser.add_mutually_exclusive_group()
     layers.add_argument('--mikrotrans', action='store_true', help='Prepare the separate optional Mikrotrans layer instead of BRT')
     layers.add_argument('--feeders', action='store_true', help='Prepare regular non-BRT feeders instead of BRT')
+    layers.add_argument('--layer', choices=ROAD_LAYERS, help='Prepare one optional bus category')
     args = parser.parse_args()
-    mode = 'feeder_bus' if args.feeders else 'mikrotrans' if args.mikrotrans else 'bus'
-    prepare(args.cache, args.output or ROOT / 'data/reference/jakarta' / mode, mikrotrans=args.mikrotrans, feeders=args.feeders)
+    mode = args.layer or ('feeder_bus' if args.feeders else 'mikrotrans' if args.mikrotrans else 'bus')
+    prepare(args.cache, args.output or ROOT / 'data/reference/jakarta' / mode, layer=mode)

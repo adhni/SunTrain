@@ -114,6 +114,24 @@ test('Jakarta feeders retain route colours and filter separately from busway and
     assert.equal(matches(feeder,filters,input),true);
     assert.equal(matches(feeder,{...filters,modes:['bus','mikrotrans']},input),false);
 });
+
+test('remaining Jakarta bus categories use source colours and independent filters', () => {
+    const {hydrate, vehicleColor} = require('../assets/train_replay.js');
+    for (const [mode,color] of [['transjabodetabek','#FFFF6D'],['rusun_bus','#717092'],
+        ['royaltrans','#9C4782'],['shuttle_bus','#0754D2'],['tourist_bus','#FFB6DB']]) {
+        const input = {...day, transit_stop_patterns:{s:{stations:[0,1],legs:['curve']}},
+            transit_patterns:{p:{stop_pattern:'s',times:[0,10,20,30],operator:'TransJakarta',line:mode,color,frequency_based:true}},
+            services:[{id:mode,mode,pattern:'p',departure:100,number:'estimate'}]};
+        const trip=hydrate(input).services[0];
+        assert.equal(vehicleColor(trip,'jakarta'),color);
+        assert.equal(trip.frequency_based,true);
+        assert.equal(servicePosition(trip,115,input).state,'Between stops');
+        assert.strictEqual(trip.times,input.transit_patterns.p.times);
+        const filters={modes:[mode],operators:[],lines:[],directions:[],stations:[],number:''};
+        assert.equal(matches(trip,filters,input),true);
+        assert.equal(matches(trip,{...filters,modes:['bus']},input),false);
+    }
+});
 test('station dwell, departure and arrival select the recorded load', () => {
     assert.deepEqual(servicePosition(service, 5, day), {lon: 0, lat: 0, load: 5, index: 0, state: 'At station', station: 'Alpha', next: 'Bravo', approximate: false});
     assert.equal(servicePosition(service, 10, day).load, 50);

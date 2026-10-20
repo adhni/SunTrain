@@ -229,8 +229,10 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                 except (ValueError, KeyError) as error:
                     omissions[str(error)] += 1
     counts = {}
+    if not any(result["days"].values()):
+        raise ValueError("No active services in the selected period")
     for day, rows in result["days"].items():
-        if not rows or len({(trip, departure) for _, trip, departure in rows}) != len(rows):
+        if (not rows and not source.get("allow_empty_days")) or len({(trip, departure) for _, trip, departure in rows}) != len(rows):
             raise ValueError(f"Empty day or duplicate occurrences on {day}")
         rows.sort(key=lambda row: (row[2], row[1]))
         counts[day] = dict(Counter(result["patterns"][p]["route_id"] for p, _, _ in rows))

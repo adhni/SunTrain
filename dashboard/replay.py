@@ -71,7 +71,7 @@ def bus_reference_file(city, business_date, mode="bus"):
 
 def bus_modes(city):
     if city == "jakarta":
-        return {"bus", "mikrotrans", "feeder_bus"}
+        return {"bus", "mikrotrans", "feeder_bus", "transjabodetabek", "rusun_bus", "royaltrans", "shuttle_bus", "tourist_bus"}
     return {"bus"} if city in BUS_REFERENCE_CITIES else set()
 
 
@@ -311,9 +311,21 @@ def _get_with_buses(city, business_date, rail_path, rail_modified, files, modes=
     payload["bus_schedule"] = dict(schedules[0])
     if len(schedules) > 1:
         # Jakarta's optional road layers share publisher, archive and licence.
+        selected = {mode for mode, _, _ in files}
+        labels = [label for label, mode in city_settings(city)["modes"] if mode in selected]
+        categories = [s["source"].removeprefix("TransJakarta ").split(" GTFS,", 1)[0] for s in schedules]
+        bus_note = ("TransJakarta buses: May 2026 snapshot matched by weekday/weekend, not December 2025 history. "
+                    + "Selected: " + ", ".join(labels) + ". Departures are illustrative frequency-based estimates, not live positions. ")
+        if "mikrotrans" in selected:
+            bus_note += "One Mikrotrans pattern is exact in the source. "
+        if "royaltrans" in selected:
+            bus_note += "Royaltrans runs on weekdays only. "
+        bus_note += "Source operating windows are retained; individual passenger loads are unavailable."
+        attribution = ("GTFS Static Transjakarta © 2026 PT Transportasi Jakarta, CC BY 4.0. Changes by SunTrain: "
+                       + "; ".join(category + " selection" for category in categories)
+                       + "; shared timing/path conversion and illustrative headway-based departures. Archive: MobilityDatabase, 7 May 2026.")
         payload["bus_schedule"].update(
-            attribution=" ".join(dict.fromkeys(s["attribution"] for s in schedules)),
-            note=" ".join(s["note"] for s in schedules))
+            attribution=attribution, note=bus_note, replay_note=bus_note)
     schedule = base["schedule"] or payload["bus_schedule"]
     note = schedule.get("replay_note", "").replace("Buses, boats and cable car are excluded.", "Boats and cable car are excluded.")
     if city == "boston":

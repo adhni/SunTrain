@@ -59,6 +59,15 @@ test('Jakarta feeders show their own transport label and estimated departures', 
     assert.equal(result.routes[0].color,'#D65E62');
 });
 
+test('additional Jakarta bus categories retain their own Overview labels', () => {
+    for (const [mode,label] of [['transjabodetabek','Transjabodetabek'],['rusun_bus','Rusun feeder'],
+        ['royaltrans','Royaltrans'],['shuttle_bus','Shuttle'],['tourist_bus','Tourist bus']]) {
+        const result=summarize(day([service(start,{mode,frequency_based:true,color:'#123456'})],{city:'jakarta'}),filters,core);
+        assert.equal(result.estimatedDepartures,1);
+        assert.equal(result.routes[0].mode,label);
+    }
+});
+
 test('compact schedules stay shared and stop lists are scanned once per topology', () => {
     let scans = 0;
     const ids = new Proxy(Object.freeze([0, 1, 2]), {get(target, key) {

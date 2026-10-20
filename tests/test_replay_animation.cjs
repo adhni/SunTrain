@@ -7,6 +7,18 @@ const day = {stations: [{name: 'Alpha', lon: 0, lat: 0}, {name: 'Bravo', lon: 2,
 const service = {id: 'one', operator: 'Metro', line: 'Werribee', direction: 'U', number: 'X100',
     stops: [[0, 0, 10, 5, 50], [1, 20, 30, 50, 0]], legs: ['curve']};
 
+test('LRT journeys retain the missing-terminal note and stop at their last source event', () => {
+    const {hydrate, vehicleColor} = require('../assets/train_replay.js');
+    const input = {...day, transit_patterns: {lrt: {operator:'LRT Jabodebek',line:'LRT Bekasi',
+        color:'#006838',terminal_arrival_missing:true,stops:[[0,0,0],[1,120,120]],legs:['curve']}},
+        services:[{id:'lrt',mode:'light_rail',pattern:'lrt',departure:1000}]};
+    const trip = hydrate(input).services[0];
+    assert.equal(trip.terminal_arrival_missing, true);
+    assert.equal(vehicleColor(trip,'jakarta'),'#006838');
+    assert.equal(servicePosition(trip,1060,input).state,'Between stops');
+    assert.equal(servicePosition(trip,1121,input),null);
+});
+
 test('ferries share schedules, follow water paths and use pier status without passenger loads', () => {
     const {hydrate, vehicleColor} = require('../assets/train_replay.js');
     const input = {...day, transit_patterns: {f: {operator:'GVB',line:'GVB Ferry F3',color:'#0077B6',
@@ -39,11 +51,12 @@ test('packed buses share flat times and stop sequences without expanding schedul
     const flat = [0, 10, 20, 30];
     const ids = [0, 1];
     const packed = {...day, transit_stop_patterns: {sequence: {stations: ids, legs: ['curve']}},
-        transit_patterns: {timing: {stop_pattern: 'sequence', times: flat, operator: 'London bus', line: 'Bus 1'}},
+        transit_patterns: {timing: {stop_pattern: 'sequence', times: flat, operator: 'TransJakarta', line: 'Bus 1', frequency_based: true}},
         services: Array.from({length: 10000}, (_, i) => ({mode: 'bus', pattern: 'timing', departure: 1000 + 60 * i, number: String(i)}))};
     hydrate(packed);
     assert.ok(packed.services.every(s => !s.stops && s.stopIds === ids && s.times === flat));
     const first = packed.services[0];
+    assert.equal(first.frequency_based, true);
     assert.equal(servicePosition(first, 1005, packed).state, 'At stop');
     assert.equal(servicePosition(first, 1015, packed).lon, 1.5);
     assert.equal(servicePosition(first, 1020, packed).station, 'Bravo');

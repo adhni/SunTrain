@@ -58,7 +58,7 @@ def descriptor(business_date, city, modes=None):
             stamps.append(_stamp(geometry))
         if set(modes) & {"tram", "bus"}:
             stamps.append(transit.fingerprint(business_date))
-    elif city in {"germany", "great_britain"}:
+    elif city in {"germany", "great_britain", "java"}:
         stamps = [(mode, *_stamp(path)) for mode, path, _ in replay.rail_reference_files(city, business_date, modes)]
     else:
         stamps = [_stamp(replay.prepared_path(city))]

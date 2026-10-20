@@ -61,12 +61,11 @@ def descriptor(business_date, city, modes=None):
     elif city in {"germany", "great_britain", "java"}:
         stamps = [(mode, *_stamp(path)) for mode, path, _ in replay.rail_reference_files(city, business_date, modes)]
     else:
-        stamps = [_stamp(replay.prepared_path(city))]
-        if city in replay.BUS_REFERENCE_CITIES and "bus" in modes:
-            stamps.append(_stamp(replay.bus_reference_file(city, business_date)))
+        stamps = [] if set(modes) <= replay.bus_modes(city) else [_stamp(replay.prepared_path(city))]
+        stamps.extend((mode, *_stamp(path)) for mode, path, _ in replay.bus_reference_files(city, business_date, modes))
     revision = hashlib.sha256(repr((FORMAT_VERSION, city, business_date, modes, stamps)).encode()).hexdigest()[:24]
     return {"city": city, "business_date": business_date, "modes": list(modes), "revision": revision,
-            "bus_data_loaded": city in replay.BUS_REFERENCE_CITIES and "bus" in modes,
+            "bus_data_loaded": bool(set(modes) & replay.bus_modes(city)),
             "url": f"/api/replay/{city}/{business_date}/{revision}.json?" + urlencode({"modes": ",".join(modes)})}
 
 

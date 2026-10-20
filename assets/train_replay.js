@@ -17,6 +17,7 @@
         "78": "#A0A0D6", "82": "#D2D755", "86": "#FFB500", "96": "#C6007E", "109": "#E87722",
     };
     const BUS_COLOR = "#FF8200";
+    const ROAD_MODES = new Set(["bus", "mikrotrans", "feeder_bus", "transjabodetabek", "rusun_bus", "royaltrans", "shuttle_bus", "tourist_bus"]);
     function lineColor(line) {
         const name = String(line || "").toLowerCase().replace(/[^a-z0-9]/g, "");
         if (TRAIN_COLORS[name]) return TRAIN_COLORS[name];
@@ -159,7 +160,7 @@
         }
     }
     function vehicleColor(service, city) {
-        if (service.mode === "bus") {
+        if (ROAD_MODES.has(service.mode)) {
             if (!city || city === "melbourne") return BUS_COLOR;
             if (city === "london") return "#DC241F";
             if (/^#[0-9a-f]{6}$/i.test(service.color || "")) return service.color;
@@ -541,6 +542,7 @@
             for (const service of this.filtered) {
                 const label = service.mode === "tram" ? (this.day.city === "netherlands" ? service.line :
                     this.day.city === "toronto" ? `Streetcar ${service.line}` : `Tram ${tramRoute(service) || "other"}`) :
+                    service.mode === "mikrotrans" ? "Mikrotrans" :
                     service.mode === "bus" && !["chicago", "perth"].includes(this.day.city) ? "Buses" : service.line;
                 entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service, this.day?.city)});
             }
@@ -685,7 +687,7 @@
                 host.dataset.signature = signature; host.replaceChildren(node("strong", text));
                 if (position) {
                     host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
-                    if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : this.selected.mode === "bus" ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
+                    if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : ROAD_MODES.has(this.selected.mode) ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
                 }
                 if (this.selected.timing_uncertain) host.append(node("div", "Daylight-saving times are ambiguous for this service.", "replay-approximate"));
                 if (this.selected.frequency_based) host.append(node("div", "Frequency-based estimate · not an exact departure.", "replay-muted replay-small"));

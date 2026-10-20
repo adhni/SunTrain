@@ -102,6 +102,28 @@ def test_preparation_rejects_dates_outside_declared_feed_validity(tmp_path):
     assert not (tmp_path / "invalid.json.gz").exists()
 
 
+def test_explicit_weekday_only_feed_can_keep_empty_weekend_days(tmp_path):
+    digest = archive_fixture(tmp_path / "weekday.zip", "regular", ["20261005"])
+    source = {"first": "2026-10-05", "last": "2026-10-06", "timezone": "America/New_York",
+              "url": "https://example.test/weekday.zip", "sha256": digest,
+              "captured": "2026-10-04", "published": "", "source": "fixture", "source_url": "https://example.test",
+              "license": "fixture", "license_url": "https://example.test/license", "attribution": "fixture", "note": "fixture"}
+    output = tmp_path / "weekdays.json.gz"
+    select = lambda route, agencies: True
+    describe = lambda route, trip: {"mode": "bus", "route_id": "R", "line": "Bus R"}
+    with pytest.raises(ValueError, match="Empty day"):
+        prepare("fixture", source, tmp_path, output, select, describe)
+    source["allow_empty_days"] = True
+    prepare("fixture", source, tmp_path, output, select, describe)
+    with gzip.open(output, "rt") as stream:
+        reference = json.load(stream)
+    assert reference["days"]["2026-10-05"]
+    assert reference["days"]["2026-10-06"] == []
+    source["first"] = source["last"] = "2026-10-06"
+    with pytest.raises(ValueError, match="No active services"):
+        prepare("fixture", source, tmp_path, output, select, describe)
+
+
 def test_optional_bus_preparation_uses_one_start_day_and_writes_self_contained_days(tmp_path):
     digest = archive_fixture(tmp_path / "old.zip", "old", ["20261004", "20261005", "20261006", "20261007"])
     source = {"first": "2026-10-05", "last": "2026-10-06", "timezone": "America/New_York",

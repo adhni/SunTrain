@@ -75,6 +75,63 @@ test('curve interpolation uses distance, with exact endpoints', () => {
     assert.deepEqual(pointAlong(path, 0.5), [1.5, 0]);
     assert.deepEqual(pointAlong(path, 5 / 6), [2, 0.5]);
 });
+
+test('Mikrotrans keeps source colour, shared schedules and exactness distinct from busway', () => {
+    const {hydrate, vehicleColor} = require('../assets/train_replay.js');
+    const input = {...day, transit_stop_patterns: {s: {stations: [0, 1], legs: ['curve']}},
+        transit_patterns: {
+            estimated: {stop_pattern: 's', times: [0, 10, 20, 30], operator: 'TransJakarta',
+                line: 'JAK.01', color: '#00609C', frequency_based: true},
+            exact: {stop_pattern: 's', times: [0, 10, 20, 30], operator: 'TransJakarta',
+                line: 'JAK.20', color: '#00609C', frequency_based: false}},
+        services: [{id:'a', mode:'mikrotrans', pattern:'estimated', departure:100, number:'estimate'},
+            {id:'b', mode:'mikrotrans', pattern:'exact', departure:100, number:'scheduled'}]};
+    hydrate(input);
+    const [a, b] = input.services;
+    assert.equal(a.frequency_based, true);
+    assert.equal(b.frequency_based, false);
+    assert.strictEqual(a.stopIds, b.stopIds);
+    assert.ok(!a.stops && !b.stops);
+    assert.equal(vehicleColor(a, 'jakarta'), '#00609C');
+    assert.equal(servicePosition(a, 115, input).state, 'Between stops');
+    const filters = {modes:['mikrotrans'], operators:[], lines:[], directions:[], stations:[], number:''};
+    assert.equal(matches(a, filters, input), true);
+    assert.equal(matches(a, {...filters, modes:['bus']}, input), false);
+});
+
+test('Jakarta feeders retain route colours and filter separately from busway and Mikrotrans', () => {
+    const {hydrate, vehicleColor} = require('../assets/train_replay.js');
+    const input = {...day, transit_stop_patterns: {s: {stations: [0, 1], legs: ['curve']}},
+        transit_patterns: {f: {stop_pattern:'s', times:[0,10,20,30], operator:'TransJakarta',
+            line:'1W · Blok M - Ancol', color:'#D65E62', frequency_based:true}},
+        services:[{id:'f', mode:'feeder_bus', pattern:'f', departure:100, number:'estimate'}]};
+    const feeder = hydrate(input).services[0];
+    assert.equal(vehicleColor(feeder,'jakarta'),'#D65E62');
+    assert.equal(feeder.frequency_based,true);
+    assert.strictEqual(feeder.times,input.transit_patterns.f.times);
+    assert.equal(servicePosition(feeder,115,input).state,'Between stops');
+    const filters = {modes:['feeder_bus'], operators:[], lines:[], directions:[], stations:[], number:''};
+    assert.equal(matches(feeder,filters,input),true);
+    assert.equal(matches(feeder,{...filters,modes:['bus','mikrotrans']},input),false);
+});
+
+test('remaining Jakarta bus categories use source colours and independent filters', () => {
+    const {hydrate, vehicleColor} = require('../assets/train_replay.js');
+    for (const [mode,color] of [['transjabodetabek','#FFFF6D'],['rusun_bus','#717092'],
+        ['royaltrans','#9C4782'],['shuttle_bus','#0754D2'],['tourist_bus','#FFB6DB']]) {
+        const input = {...day, transit_stop_patterns:{s:{stations:[0,1],legs:['curve']}},
+            transit_patterns:{p:{stop_pattern:'s',times:[0,10,20,30],operator:'TransJakarta',line:mode,color,frequency_based:true}},
+            services:[{id:mode,mode,pattern:'p',departure:100,number:'estimate'}]};
+        const trip=hydrate(input).services[0];
+        assert.equal(vehicleColor(trip,'jakarta'),color);
+        assert.equal(trip.frequency_based,true);
+        assert.equal(servicePosition(trip,115,input).state,'Between stops');
+        assert.strictEqual(trip.times,input.transit_patterns.p.times);
+        const filters={modes:[mode],operators:[],lines:[],directions:[],stations:[],number:''};
+        assert.equal(matches(trip,filters,input),true);
+        assert.equal(matches(trip,{...filters,modes:['bus']},input),false);
+    }
+});
 test('station dwell, departure and arrival select the recorded load', () => {
     assert.deepEqual(servicePosition(service, 5, day), {lon: 0, lat: 0, load: 5, index: 0, state: 'At station', station: 'Alpha', next: 'Bravo', approximate: false});
     assert.equal(servicePosition(service, 10, day).load, 50);

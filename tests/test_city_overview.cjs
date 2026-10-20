@@ -40,6 +40,34 @@ test('every shared filter applies, including calling-at whole-journey matching',
     assert.deepEqual(empty.routes, []);
 });
 
+test('Mikrotrans overview distinguishes estimated departures and its transport label', () => {
+    const input = day([service(start, {mode:'mikrotrans', route_id:'JAK.01', line:'JAK.01',
+        color:'#00609C', frequency_based:true}), service(start + 60, {mode:'mikrotrans',
+        route_id:'JAK.20', line:'JAK.20', color:'#00609C', frequency_based:false})], {city:'jakarta'});
+    const result = summarize(input, filters, core);
+    assert.equal(result.departures, 2);
+    assert.equal(result.estimatedDepartures, 1);
+    assert.ok(result.routes.every(r => r.mode === 'Mikrotrans' && r.color === '#00609C'));
+});
+
+test('Jakarta feeders show their own transport label and estimated departures', () => {
+    const input = day([service(start,{mode:'feeder_bus',route_id:'1W',line:'1W',
+        color:'#D65E62',frequency_based:true})],{city:'jakarta'});
+    const result = summarize(input,filters,core);
+    assert.equal(result.estimatedDepartures,1);
+    assert.equal(result.routes[0].mode,'Feeder bus');
+    assert.equal(result.routes[0].color,'#D65E62');
+});
+
+test('additional Jakarta bus categories retain their own Overview labels', () => {
+    for (const [mode,label] of [['transjabodetabek','Transjabodetabek'],['rusun_bus','Rusun feeder'],
+        ['royaltrans','Royaltrans'],['shuttle_bus','Shuttle'],['tourist_bus','Tourist bus']]) {
+        const result=summarize(day([service(start,{mode,frequency_based:true,color:'#123456'})],{city:'jakarta'}),filters,core);
+        assert.equal(result.estimatedDepartures,1);
+        assert.equal(result.routes[0].mode,label);
+    }
+});
+
 test('compact schedules stay shared and stop lists are scanned once per topology', () => {
     let scans = 0;
     const ids = new Proxy(Object.freeze([0, 1, 2]), {get(target, key) {

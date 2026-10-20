@@ -1,5 +1,7 @@
 # Washington, DC and SF Bay Area expansion notes
 
+**Commuter follow-up:** MARC, VRE, Caltrain, ACE and SMART are now available in **United States → Regional / commuter rail**, **12–18 October 2026**. Existing DC/BART views keep their original periods and files; those services are not stored twice. See [US commuter notes](US_COMMUTER_EXPANSION_NOTES.md).
+
 ## Implemented scope
 
 **Washington, DC:** all six WMATA Metrorail lines, **5–11 October 2026**, in `America/New_York`. Red, Blue, Orange, Silver, Green and Yellow retain their published stop sequences, short turns and branches. The rail feed also contains a `SHUTTLE` bus route; it is explicitly excluded. Metrobus, DC Streetcar, MARC and VRE are not included.

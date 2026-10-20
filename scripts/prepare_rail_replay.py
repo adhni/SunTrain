@@ -55,10 +55,13 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
         raise ValueError("Unsupported railway geometry method")
     first, last = date.fromisoformat(source["first"]), date.fromisoformat(source["last"])
     zone = ZoneInfo(source["timezone"])
+    replay_zone = ZoneInfo(source.get("replay_timezone", source["timezone"]))
     days = [first + timedelta(days=i) for i in range((last - first).days + 1)]
     service_days = [first - timedelta(days=1), *days, last + timedelta(days=1)]
     zero = lambda day: int(datetime.combine(day, time(12), zone).timestamp()) - 43200
-    windows = [(str(d), int(datetime.combine(d, time(3), zone).timestamp()), int(datetime.combine(d + timedelta(days=1), time(3), zone).timestamp()), zero(d)) for d in days]
+    windows = [(str(d), int(datetime.combine(d, time(3), replay_zone).timestamp()),
+                int(datetime.combine(d + timedelta(days=1), time(3), replay_zone).timestamp()),
+                int(datetime.combine(d, time(12), replay_zone).timestamp()) - 43200) for d in days]
     cache.mkdir(parents=True, exist_ok=True)
     archives = source.get("archives", [{**source, "start": str(service_days[0]), "end": str(service_days[-1])}])
     selected = {day: source_for(day, archives) for day in service_days}
@@ -98,7 +101,11 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
             # Retain only dates used by this preparation, including carry days.
             exceptions = [r for r in records(archive, "calendar_dates.txt") if r["date"] in stamps] if "calendar_dates.txt" in archive.namelist() else []
             active = {d: active_services(calendars, exceptions, d) for d in applicable}
-            if source.get("calendar_validity") and any(not services for services in active.values()):
+            # A weekday-only calendar still defines a valid, empty weekend.
+            # Check date coverage rather than requiring departures every day.
+            covered = lambda day: any(r["start_date"] <= day.strftime("%Y%m%d") <= r["end_date"] for r in calendars) or any(
+                r["date"] == day.strftime("%Y%m%d") for r in exceptions)
+            if source.get("calendar_validity") and any(not covered(day) for day in applicable):
                 raise ValueError("Source calendars do not cover every selected service day")
             relevant = set().union(*active.values())
             trips = {r["trip_id"]: r for r in records(archive, "trips.txt") if r["route_id"] in routes and r["service_id"] in relevant}
@@ -117,7 +124,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                 if row["trip_id"] in trips:
                     calls[row["trip_id"]].append(row)
             shapes = defaultdict(list)
-            needed = {t.get("shape_id", "") for t in trips.values()}
+            needed = {t.get("shape_id", "") for t in trips.values()} | set(source.get("additional_shape_ids", []))
             for row in records(archive, "shapes.txt") if "shapes.txt" in archive.namelist() else ():
                 if row["shape_id"] in needed:
                     shapes[row["shape_id"]].append((int(row["shape_pt_sequence"]),
@@ -238,7 +245,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
             raise ValueError(f"Empty day or duplicate occurrences on {day}")
         rows.sort(key=lambda row: (row[2], row[1]))
         counts[day] = dict(Counter(result["patterns"][p]["route_id"] for p, _, _ in rows))
-    result["metadata"] = {"start_date": source["first"], "end_date": source["last"], "timezone": source["timezone"],
+    result["metadata"] = {"start_date": source["first"], "end_date": source["last"], "timezone": str(replay_zone),
         "source": source["source"], "source_url": source["source_url"], "license": source["license"], "license_url": source["license_url"],
         "attribution": source["attribution"], "replay_note": source["note"],
         "sources": sources,
@@ -248,6 +255,8 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
     for key in ("geometry_source", "geometry_source_url", "geometry_license", "geometry_license_url", "geometry_source_date", "geometry_sha256", "geometry_method", "geometry_references"):
         if key in source:
             result["metadata"][key] = source[key]
+    if str(replay_zone) != source["timezone"]:
+        result["metadata"]["schedule_timezone"] = source["timezone"]
     if daily:
         compact_reference(result)
         for day in result["days"]:

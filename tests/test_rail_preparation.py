@@ -348,3 +348,88 @@ def test_single_agency_gtfs_may_omit_agency_ids(tmp_path):
     source['sha256']=hashlib.sha256(path.read_bytes()).hexdigest()
     with pytest.raises(ValueError,match='Multiple agencies'):
         prepare('dc',source,tmp_path,output,lambda route,agencies:True,lambda route,trip:{})
+
+
+@pytest.mark.parametrize('zone,first,last', [
+    ('America/Chicago', '2026-10-05', '2026-10-06'),
+    ('America/Los_Angeles', '2026-10-05', '2026-10-06'),
+    ('America/Los_Angeles', '2026-10-31', '2026-11-02')])
+def test_replay_timezone_converts_instants_and_assigns_overnight_departures_once(tmp_path, zone, first, last):
+    from datetime import date, datetime, time, timedelta
+    from zoneinfo import ZoneInfo
+
+    start, finish = date.fromisoformat(first), date.fromisoformat(last)
+    dates = [start + timedelta(days=i) for i in range(-1, (finish - start).days + 2)]
+    path = tmp_path / 'zone.zip'
+    archive_fixture(path, 'regular', [d.strftime('%Y%m%d') for d in dates])
+    with ZipFile(path) as archive:
+        tables = {n: archive.read(n) for n in archive.namelist() if n != 'feed_info.txt'}
+    tables['agency.txt'] = tables['agency.txt'].replace(b'America/New_York', zone.encode())
+    tables['stop_times.txt'] = tables['stop_times.txt'].replace(b'06:00:00', b'23:30:00').replace(b'06:10:00', b'24:30:00')
+    with ZipFile(path, 'w') as archive:
+        for name, contents in tables.items(): archive.writestr(name, contents)
+    source = external_source(tmp_path)
+    source.update(first=first, last=last, url='https://example.test/zone.zip', timezone=zone,
+                  replay_timezone='America/New_York', sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
+                  calendar_validity=True, assign_by_start=['commuter_rail'])
+    output = tmp_path / 'zone.json.gz'
+    prepare('fixture', source, tmp_path, output, lambda *args: True,
+            lambda route, trip: {'route_id': 'R', 'mode': 'commuter_rail'})
+    with gzip.open(output, 'rt') as stream: reference = json.load(stream)
+    assert reference['metadata']['timezone'] == 'America/New_York'
+    assert reference['metadata']['schedule_timezone'] == zone
+    expected = {int(datetime.combine(d, time(12), ZoneInfo(zone)).timestamp()) - 43200 + 84600 for d in dates}
+    observed = []
+    for day, rows in reference['days'].items():
+        d = date.fromisoformat(day)
+        midnight = int(datetime.combine(d, time(12), ZoneInfo('America/New_York')).timestamp()) - 43200
+        left = int(datetime.combine(d, time(3), ZoneInfo('America/New_York')).timestamp())
+        right = int(datetime.combine(d + timedelta(days=1), time(3), ZoneInfo('America/New_York')).timestamp())
+        for _, trip, offset in rows:
+            instant = midnight + offset
+            assert trip == 'regular' and instant in expected and left <= instant < right
+            observed.append(instant)
+    assert len(observed) == len(set(observed))
+    assert set(observed) == {instant for instant in expected if
+        int(datetime.combine(start, time(3), ZoneInfo('America/New_York')).timestamp()) <= instant <
+        int(datetime.combine(finish + timedelta(days=1), time(3), ZoneInfo('America/New_York')).timestamp())}
+
+
+def test_undated_weekday_calendar_defines_valid_empty_weekends(tmp_path):
+    source = external_source(tmp_path)
+    path = tmp_path / 'external.zip'
+    with ZipFile(path) as archive:
+        tables = {n: archive.read(n) for n in archive.namelist() if n not in {'feed_info.txt', 'calendar_dates.txt'}}
+    tables['calendar.txt'] = (b'service_id,monday,tuesday,wednesday,thursday,friday,saturday,sunday,start_date,end_date\n'
+                              b'regular,1,1,1,1,1,0,0,20261001,20261031\n')
+    with ZipFile(path, 'w') as archive:
+        for name, contents in tables.items(): archive.writestr(name, contents)
+    source.update(first='2026-10-09', last='2026-10-11', calendar_validity=True,
+                  allow_empty_days=True, sha256=hashlib.sha256(path.read_bytes()).hexdigest())
+    output = tmp_path / 'weekend.json.gz'
+    prepare('fixture', source, tmp_path, output, lambda *args: True, lambda route, trip: {'route_id': 'R'})
+    with gzip.open(output, 'rt') as stream: reference = json.load(stream)
+    assert len(reference['days']['2026-10-09']) == 1
+    assert reference['days']['2026-10-10'] == reference['days']['2026-10-11'] == []
+
+
+def test_audited_additional_shapes_are_available_when_trip_shape_ids_are_missing(tmp_path):
+    source = external_source(tmp_path)
+    path = tmp_path / 'external.zip'
+    with ZipFile(path) as archive:
+        tables = {n: archive.read(n) for n in archive.namelist()}
+    tables['trips.txt'] = tables['trips.txt'].replace(b'curve', b'')
+    with ZipFile(path, 'w') as archive:
+        for name, contents in tables.items(): archive.writestr(name, contents)
+    source.update(sha256=hashlib.sha256(path.read_bytes()).hexdigest(), additional_shape_ids=['curve'])
+    observed = []
+    def factory(routes, trips, shapes):
+        observed.append(set(shapes))
+        assert all(not t['shape_id'] for t in trips.values())
+        return lambda route, trip, sequence, points: [[p for _, _, p in shapes['curve']]]
+    output = tmp_path / 'shapes.json.gz'
+    prepare('fixture', source, tmp_path, output, lambda *args: True,
+            lambda route, trip: {'route_id': 'R'}, geometry_resolver_factory=factory)
+    assert observed == [{'curve'}]
+    with gzip.open(output, 'rt') as stream: reference = json.load(stream)
+    assert all(p['quality'] == 'track' and p['coordinates'] for p in reference['paths'].values())

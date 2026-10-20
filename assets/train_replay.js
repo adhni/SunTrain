@@ -653,9 +653,9 @@
             this.setFollow(this.followSelected);
             const host = $("replay-details"); host.replaceChildren();
             const line = node("div", service.line, "replay-detail-line"); line.style.borderLeftColor = vehicleColor(service, this.day?.city);
-            host.append(line, node("h3", service.mode === "train" ? `Train ${service.number}` : service.line.split(" · ")[0]), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
+            host.append(line, node("h3", service.mode === "train" || this.day.city === "us_rail" ? `Train ${service.number}` : service.line.split(" · ")[0]), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
                 node("p", `${service.operator === "VLine" ? "V/Line" : service.operator} · ${directionLabel(service)}`, "replay-muted"));
-            if (service.mode !== "train") host.append(node("p", `Trip ${service.number}`, "replay-muted replay-small"));
+            if (service.mode !== "train" && this.day.city !== "us_rail") host.append(node("p", `Trip ${service.number}`, "replay-muted replay-small"));
             const unresolved = service.legs.filter(id => !["track", "shape"].includes(this.day.paths[id]?.quality)).length;
             if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved geometry. The route has gaps and this vehicle is hidden between those stops.`, "replay-approximate replay-small"));
             const live = node("div", undefined, "replay-service-status"); live.id = "replay-service-status"; host.append(live);

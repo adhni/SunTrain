@@ -163,7 +163,9 @@ Source attribution and links to the [WMATA Transit Data Terms of Use](https://de
 
 ## United States intercity trains
 
-Select **United States** for Amtrak nationwide and Brightline Florida, **12–18 October 2026**. The compact week contains 2,309 scheduled departures in about 2.48 MB. Connecting buses and unrelated commuter operators are excluded. All times use **Eastern time**, including western stations; playback continues through multi-day arrivals and stop details include dates. Unsupported source geometry remains gaps. Alaska Railroad was investigated but is not enabled because its original GTFS download could not be retrieved and validated.
+Select **United States** for Amtrak nationwide and Brightline Florida, **12–18 October 2026**. The intercity week contains 2,309 scheduled departures in about 2.48 MB. Connecting buses and incidental commuter services in the Amtrak feed are excluded. All times use **Eastern time**, including western stations; playback continues through multi-day arrivals and stop details include dates. Unsupported source geometry remains gaps. Alaska Railroad has a validated older timetable but awaits verified railway geometry.
+
+Select **Regional / commuter rail** under Transport to add LIRR, Metro-North, NJ Transit, SEPTA, MARC, VRE, Metra, South Shore Line, Caltrain, Metrolink, ACE, COASTER, Sounder, SMART, Tri-Rail, SunRail, DART's TRE/Silver Line, Rail Runner, FrontRunner and TEXRail. These use the same October week, with native time zones converted to Eastern time. **MBTA stays in Boston and is not duplicated.** The optional bundle adds about **1.18 MB** on disk and is opened only when selected. Rebuild it with `./.venv/bin/python scripts/prepare_us_commuter_replay.py`; see [commuter expansion notes](US_COMMUTER_EXPANSION_NOTES.md).
 
 Rebuild with `./.venv/bin/python scripts/prepare_american_replay.py`. See [US railway expansion notes](US_RAIL_EXPANSION_NOTES.md) for pinned downloads, time-zone handling, geometry gaps, source rights and Alaska follow-up.
 

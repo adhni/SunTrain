@@ -1,5 +1,7 @@
 # Chicago: verified data and next steps
 
+**Commuter follow-up:** Metra and South Shore Line are now implemented in **United States → Regional / commuter rail**, **12–18 October 2026**. They are not duplicated into Chicago's older CTA reference. See [US commuter notes](US_COMMUTER_EXPANSION_NOTES.md). Earlier Metra deferral entries below record the original 2024 investigation, not the current nationwide coverage.
+
 ## Implemented scope
 
 - Chicago uses the existing replay UI and compact shared-pattern format, via the prepared-city loader in `dashboard/replay.py`.

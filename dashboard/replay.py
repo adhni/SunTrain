@@ -31,6 +31,7 @@ BRISBANE_PATH = ROOT / "data/reference/brisbane/2026-10-05.json.gz"
 TORONTO_PATH = ROOT / "data/reference/toronto/2026-10-05.json.gz"
 DC_PATH = ROOT / "data/reference/dc/2026-10-05.json.gz"
 SF_BAY_PATH = ROOT / "data/reference/sf_bay/2026-08-17.json.gz"
+US_RAIL_PATH = ROOT / "data/reference/us_rail/2026-10-12.json.gz"
 LONDON_PATH = ROOT / "data/reference/london/2026-10-05.json.gz"
 NETHERLANDS_PATH = ROOT / "data/reference/netherlands/2026-06-01.json.gz"
 GERMANY_PATH = ROOT / "data/reference/germany/2026-06-01.json.gz"
@@ -57,7 +58,7 @@ JAVA_REPLAY_NOTE = "Java intercity and regional trains, Bandung–Padalarang fee
 def prepared_path(city):
     default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
-               "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "london": LONDON_PATH,
+               "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "us_rail": US_RAIL_PATH, "london": LONDON_PATH,
                "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH, "france": FRANCE_PATH,
                "switzerland": SWITZERLAND_PATH, "belgium": BELGIUM_PATH, "austria": AUSTRIA_PATH,
                "spain": SPAIN_PATH, "portugal": PORTUGAL_PATH, "luxembourg": LUXEMBOURG_PATH, "italy": ITALY_PATH, "great_britain": GREAT_BRITAIN_PATH, "jakarta": JAKARTA_PATH, "java": JAVA_PATH}[city]
@@ -370,6 +371,10 @@ def _get_prepared_day(city, business_date, path, modified, modes=None):
             service["source_trip_id"] = trip
             service["number"] = numbers.get(trip, trip)
     payload["schedule"] = payload.pop("transit")
+    if city == "us_rail":
+        payload["end"] = max([payload["end"], *[
+            service["departure"] + int(payload["transit_patterns"][service["pattern"]]["times"][-1])
+            for service in payload["services"]]])
     return payload
 
 

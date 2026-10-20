@@ -121,6 +121,15 @@ CITIES = {
         "modes": [("BART", "subway")], "operators": [("BART", "Bay Area Rapid Transit")],
         "directions": [("North", "North"), ("South", "South")],
     },
+    "us_rail": {
+        "name": "United States", "timezone": "America/New_York",
+        "bounds": [[-126.0, 24.0], [-66.0, 51.0]], "passenger_data": False,
+        "start_date": "2026-10-12", "end_date": "2026-10-18",
+        "description": "Amtrak intercity trains and Brightline for one week. All times use Eastern time, including stops in other time zones. Playback continues through multi-day arrivals. Connecting buses and passenger loads are excluded.",
+        "default_modes": ["train"], "modes": [("Intercity trains", "train")],
+        "operators": [("Amtrak", "Amtrak"), ("Brightline", "Brightline"), ("VIA Rail · Maple Leaf", "VIA Rail (Maple Leaf)")],
+        "directions": [("Not specified", "Not specified")],
+    },
     "london": {
         "name": "London", "timezone": "Europe/London",
         "bounds": [[-1.03, 51.31], [0.38, 51.73]], "passenger_data": False,

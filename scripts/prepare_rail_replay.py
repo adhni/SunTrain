@@ -50,7 +50,7 @@ def source_for(day, archives):
     return matches[0]
 
 
-def prepare(city, source, cache, output, selected_route, describe_route, geometry_resolver=None, *, daily=False, select_sequence=None):
+def prepare(city, source, cache, output, selected_route, describe_route, geometry_resolver=None, *, daily=False, select_sequence=None, geometry_resolver_factory=None):
     if source.get("geometry_method", "native_or_projected") not in {"native_or_projected", "ordered_projection", "native_or_ordered_per_leg"}:
         raise ValueError("Unsupported railway geometry method")
     first, last = date.fromisoformat(source["first"]), date.fromisoformat(source["last"])
@@ -124,6 +124,7 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                         float(row["shape_dist_traveled"]) if row.get("shape_dist_traveled") else None,
                         [round(float(row["shape_pt_lon"]), 6), round(float(row["shape_pt_lat"]), 6)]))
             signatures = {key: hashlib.sha256(json.dumps(raw).encode()).hexdigest() for key, raw in shapes.items()}
+            resolver = geometry_resolver_factory(routes, trips, shapes) if geometry_resolver_factory else geometry_resolver
             print(f"{city}: {len(routes)} route variants, {len(trips)} candidate trips, {len(shapes)} supplied shapes", flush=True)
             for trip_id, trip in trips.items():
                 sequence = sorted(calls[trip_id], key=lambda r: int(r["stop_sequence"]))
@@ -170,11 +171,12 @@ def prepare(city, source, cache, output, selected_route, describe_route, geometr
                     anchored = source.get("geometry_method") != "ordered_projection" and bool(raw) and all(
                         r.get("shape_dist_traveled", "") != "" for r in sequence) and all(a is not None for _, a, _ in raw)
                     anchors = [float(r["shape_dist_traveled"]) for r in sequence] if anchored else None
-                    geometry_key = (trip["route_id"] if geometry_resolver else None, signatures.get(trip.get("shape_id", "")),
+                    geometry_key = (trip["route_id"] if resolver else None, snapshot["sha256"] if geometry_resolver_factory else None,
+                                    signatures.get(trip.get("shape_id", "")),
                                     tuple(anchors) if anchors is not None else None, tuple(map(tuple, coordinates)))
                     if geometry_key not in geometry_cache:
                         try:
-                            curves = geometry_resolver(route, trip, sequence, coordinates) if geometry_resolver else NotImplemented
+                            curves = resolver(route, trip, sequence, coordinates) if resolver else NotImplemented
                             external = curves is not NotImplemented
                             # Mixed sources can retain their own GTFS shapes and
                             # use external geometry only for audited operators.

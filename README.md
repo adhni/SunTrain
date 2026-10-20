@@ -161,6 +161,12 @@ Sources are SHA-256 pinned and cached under `.cache/us-rail/`. Compact reference
 
 Source attribution and links to the [WMATA Transit Data Terms of Use](https://developer.wmata.com/license) and [BART Developer License Agreement](https://www.bart.gov/schedules/developers/developer-license-agreement) appear beside the map. SunTrain is independent of the operators and uses no official logos or map artwork. See [DC and Bay Area expansion notes](DC_BAY_AREA_EXPANSION_NOTES.md) for snapshots, geometry checks, known gaps and future extensions.
 
+## United States intercity trains
+
+Select **United States** for Amtrak nationwide and Brightline Florida, **12–18 October 2026**. The compact week contains 2,309 scheduled departures in about 2.48 MB. Connecting buses and unrelated commuter operators are excluded. All times use **Eastern time**, including western stations; playback continues through multi-day arrivals and stop details include dates. Unsupported source geometry remains gaps. Alaska Railroad was investigated but is not enabled because its original GTFS download could not be retrieved and validated.
+
+Rebuild with `./.venv/bin/python scripts/prepare_american_replay.py`. See [US railway expansion notes](US_RAIL_EXPANSION_NOTES.md) for pinned downloads, time-zone handling, geometry gaps, source rights and Alaska follow-up.
+
 ## Additional Australian cities
 
 Choose the city in **Location**. These railway additions reuse route/operator/direction/station filters, scheduled movement, route colours, local clocks, fullscreen, themes and all playback speeds.

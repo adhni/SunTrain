@@ -205,6 +205,31 @@ def test_external_geometry_keeps_resolved_legs_and_caches_each_route_separately(
     assert not reference["metadata"]["omitted_trips"]
 
 
+def test_geometry_factory_is_scoped_to_each_snapshot_even_when_shape_and_stops_match(tmp_path):
+    old_hash = archive_fixture(tmp_path / 'old.zip', 'old', ['20261004', '20261005'])
+    new_hash = archive_fixture(tmp_path / 'new.zip', 'new', ['20261006', '20261007'])
+    source = external_source(tmp_path)
+    source.update(first='2026-10-05', last='2026-10-06', archives=[
+        {'start': '2026-10-04', 'end': '2026-10-05', 'url': 'https://example.test/old.zip',
+         'sha256': old_hash, 'captured': '2026-10-03', 'published': ''},
+        {'start': '2026-10-06', 'end': '2026-10-07', 'url': 'https://example.test/new.zip',
+         'sha256': new_hash, 'captured': '2026-10-06', 'published': ''}])
+    snapshots = []
+
+    def factory(routes, trips, shapes):
+        snapshots.append(set(trips))
+        bend = 38.9001 if 'old' in trips else 38.9002
+        return lambda route, trip, sequence, points: [[points[0], [-76.995, bend], points[1]]]
+
+    output = tmp_path / 'factory.json.gz'
+    prepare('fixture', source, tmp_path, output, lambda route, agencies: True,
+            lambda route, trip: {'route_id': route['route_id']}, geometry_resolver_factory=factory)
+    with gzip.open(output, 'rt') as stream:
+        reference = expanded_reference(json.load(stream))
+    assert snapshots == [{'old', 'late'}, {'new'}]
+    assert {p['coordinates'][1][1] for p in reference['paths'].values()} == {38.9001, 38.9002}
+
+
 @pytest.mark.parametrize("invalid", [[], [[[-77.1, 38.9], [-76.99, 38.9]]], [[[float("nan"), 38.9], [-76.99, 38.9]]]])
 def test_invalid_external_geometry_stays_a_gap_without_using_the_gtfs_sketch(tmp_path, invalid):
     source = external_source(tmp_path)

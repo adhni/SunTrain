@@ -665,11 +665,17 @@
             [service.mode === "ferry" ? "Pier" : "Stop / station", "Arr.", "Dep.", "Load"].forEach(label => heading.append(node("th", label)));
             head.append(heading); table.append(head);
             const body = node("tbody");
+            const stopDate = this.day.city === "us_rail" ? new Intl.DateTimeFormat("en-AU", {
+                timeZone: this.day.timezone, day: "numeric", month: "short"}) : null;
+            const scheduledTime = timestamp => {
+                const date = new Date(timestamp * 1000);
+                return shortTime.format(date) + (stopDate ? ` · ${stopDate.format(date)}` : "");
+            };
             for (let i = 0; i < stopCount(service); i++) {
                 const stop = service.stopIds ? [stopValue(service, i, 0), stopValue(service, i, 1), stopValue(service, i, 2)] : service.stops[i];
                 const row = node("tr"); row.dataset.stopIndex = String(i);
-                row.append(node("td", this.day.stations[stop[0]].name), node("td", shortTime.format(new Date(stopTime(service, stop, 1) * 1000))),
-                    node("td", shortTime.format(new Date(stopTime(service, stop, 2) * 1000))), node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
+                row.append(node("td", this.day.stations[stop[0]].name), node("td", scheduledTime(stopTime(service, stop, 1))),
+                    node("td", scheduledTime(stopTime(service, stop, 2))), node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
                 row.title = `Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`;
                 body.append(row);
             }

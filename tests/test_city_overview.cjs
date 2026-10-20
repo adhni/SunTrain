@@ -50,6 +50,15 @@ test('Mikrotrans overview distinguishes estimated departures and its transport l
     assert.ok(result.routes.every(r => r.mode === 'Mikrotrans' && r.color === '#00609C'));
 });
 
+test('Jakarta feeders show their own transport label and estimated departures', () => {
+    const input = day([service(start,{mode:'feeder_bus',route_id:'1W',line:'1W',
+        color:'#D65E62',frequency_based:true})],{city:'jakarta'});
+    const result = summarize(input,filters,core);
+    assert.equal(result.estimatedDepartures,1);
+    assert.equal(result.routes[0].mode,'Feeder bus');
+    assert.equal(result.routes[0].color,'#D65E62');
+});
+
 test('compact schedules stay shared and stop lists are scanned once per topology', () => {
     let scans = 0;
     const ids = new Proxy(Object.freeze([0, 1, 2]), {get(target, key) {

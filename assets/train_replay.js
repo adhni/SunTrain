@@ -159,7 +159,7 @@
         }
     }
     function vehicleColor(service, city) {
-        if (["bus", "mikrotrans"].includes(service.mode)) {
+        if (["bus", "mikrotrans", "feeder_bus"].includes(service.mode)) {
             if (!city || city === "melbourne") return BUS_COLOR;
             if (city === "london") return "#DC241F";
             if (/^#[0-9a-f]{6}$/i.test(service.color || "")) return service.color;
@@ -686,7 +686,7 @@
                 host.dataset.signature = signature; host.replaceChildren(node("strong", text));
                 if (position) {
                     host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
-                    if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : ["bus", "mikrotrans"].includes(this.selected.mode) ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
+                    if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : ["bus", "mikrotrans", "feeder_bus"].includes(this.selected.mode) ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
                 }
                 if (this.selected.timing_uncertain) host.append(node("div", "Daylight-saving times are ambiguous for this service.", "replay-approximate"));
                 if (this.selected.frequency_based) host.append(node("div", "Frequency-based estimate · not an exact departure.", "replay-muted replay-small"));

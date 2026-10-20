@@ -1,6 +1,6 @@
 (function (root) {
     "use strict";
-    const modeNames = {train: "Train", subway: "Subway", tram: "Tram", bus: "Bus", mikrotrans: "Mikrotrans",
+    const modeNames = {train: "Train", subway: "Subway", tram: "Tram", bus: "Bus", mikrotrans: "Mikrotrans", feeder_bus: "Feeder bus",
         light_rail: "Light rail", regional_rail: "Regional rail", commuter_rail: "Commuter rail", silver_line: "Silver Line", ferry: "Ferry"};
 
     function summarize(day, filters, core) {

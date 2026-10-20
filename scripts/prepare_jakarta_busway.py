@@ -1,4 +1,4 @@
-"""Prepare optional TransJakarta BRT or Mikrotrans from a dated archive.
+"""Prepare optional TransJakarta BRT, regular feeders or Mikrotrans from a dated archive.
 
 Non-exact frequencies produce illustrative departures at published headways.
 Mikrotrans also retains exact departures where explicitly marked in the source.
@@ -32,6 +32,9 @@ MIKROTRANS_NOTE = ('Mikrotrans: May 2026 snapshot matched by weekday/weekend, no
                   'Most departures are illustrative frequency-based estimates; one JAK.20 pattern is exact in the feed. '
                   'Most departure windows are 05:00–22:00 WIB; JAK.52 also has late services until midnight and one JAK.43B pattern runs 06:00–10:00. '
                   'No live positions or individual passenger loads.')
+FEEDER_NOTE = ('TransJakarta feeders: May 2026 snapshot matched by weekday/weekend, not December 2025 history. '
+               'Departures are illustrative frequency-based estimates, not exact departures or live positions. '
+               'Each service retains its own operating window and headway. No individual passenger loads.')
 
 
 def selected_route(route, agencies):
@@ -41,6 +44,10 @@ def selected_route(route, agencies):
 def selected_mikrotrans(route, agencies):
     return (route['route_type'] == '3' and route.get('route_desc') == 'Mikrotrans'
             and route.get('route_short_name', '').upper().startswith('JAK'))
+
+
+def selected_feeder(route, agencies):
+    return route['route_type'] == '3' and route.get('route_desc') == 'Angkutan Umum Integrasi'
 
 
 def frequency_departures(rows, *, allow_exact=False):
@@ -56,11 +63,15 @@ def frequency_departures(rows, *, allow_exact=False):
     return sorted(departures)
 
 
-def prepare(cache, output, *, mikrotrans=False):
-    select = selected_mikrotrans if mikrotrans else selected_route
-    category = 'Mikrotrans' if mikrotrans else 'BRT'
-    slug = 'mikrotrans' if mikrotrans else 'busway'
-    note = MIKROTRANS_NOTE if mikrotrans else NOTE
+def prepare(cache, output, *, mikrotrans=False, feeders=False):
+    if mikrotrans and feeders:
+        raise ValueError('Prepare one transport layer at a time')
+    select = selected_feeder if feeders else selected_mikrotrans if mikrotrans else selected_route
+    category = 'Angkutan Umum Integrasi' if feeders else 'Mikrotrans' if mikrotrans else 'BRT'
+    mode = 'feeder_bus' if feeders else 'mikrotrans' if mikrotrans else 'bus'
+    slug = 'feeders' if feeders else 'mikrotrans' if mikrotrans else 'busway'
+    note = FEEDER_NOTE if feeders else MIKROTRANS_NOTE if mikrotrans else NOTE
+    template_prefix = '' if mode == 'bus' else slug + '-'
     cache.mkdir(parents=True, exist_ok=True)
     original = fetch(URL, cache / 'may-2026.zip')
     if hashlib.sha256(original.read_bytes()).hexdigest() != SHA256:
@@ -91,7 +102,7 @@ def prepare(cache, output, *, mikrotrans=False):
             exact[trip] = values == {'1'}
         # Extract geometry and timing templates only. We expand frequencies below,
         # keeping shared preparation's rejection of frequencies unchanged.
-        templates = cache / ('mikrotrans-templates.zip' if mikrotrans else 'templates.zip')
+        templates = cache / (template_prefix + 'templates.zip')
         with ZipFile(templates, 'w', ZIP_DEFLATED) as target:
             for name in sorted(archive.namelist()):
                 if name == 'frequencies.txt':
@@ -112,8 +123,8 @@ def prepare(cache, output, *, mikrotrans=False):
         # routes. Project each ordered stop sequence onto its own supplied shape.
         'geometry_method': 'ordered_projection', 'note': note,
     }
-    packed = cache / ('mikrotrans-templates.json.gz' if mikrotrans else 'templates.json.gz')
-    prepare_templates('jakarta-' + slug, source, cache / ('build-mikrotrans' if mikrotrans else 'build'), packed, select,
+    packed = cache / (template_prefix + 'templates.json.gz')
+    prepare_templates('jakarta-' + slug, source, cache / ('build' if mode == 'bus' else 'build-' + slug), packed, select,
         lambda route, trip: {'mode': 'bus', 'operator': 'TransJakarta', 'route_id': route['route_id'],
             'line': route['route_short_name'] + ' · ' + route['route_long_name'],
             **({'frequency_based': not exact[trip['trip_id']]} if mikrotrans else {})})
@@ -124,9 +135,8 @@ def prepare(cache, output, *, mikrotrans=False):
         raise ValueError('Some templates were omitted; inspect the preparation report')
     result['days'] = {str(FIRST + timedelta(days=i)): [] for i in range((LAST-FIRST).days + 1)}
     for pattern in result['patterns'].values():
-        if mikrotrans:
-            pattern['mode'] = 'mikrotrans'
-        else:
+        pattern['mode'] = mode
+        if not mikrotrans:  # Mikrotrans exactness is already part of each pattern.
             pattern['frequency_based'] = True
     for offset in range(-1, (LAST-FIRST).days + 2):
         service_day = FIRST + timedelta(days=offset)
@@ -158,6 +168,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cache', type=Path, default=ROOT / '.cache/jakarta/busway')
     parser.add_argument('--output', type=Path)
-    parser.add_argument('--mikrotrans', action='store_true', help='Prepare the separate optional Mikrotrans layer instead of BRT')
+    layers = parser.add_mutually_exclusive_group()
+    layers.add_argument('--mikrotrans', action='store_true', help='Prepare the separate optional Mikrotrans layer instead of BRT')
+    layers.add_argument('--feeders', action='store_true', help='Prepare regular non-BRT feeders instead of BRT')
     args = parser.parse_args()
-    prepare(args.cache, args.output or ROOT / 'data/reference/jakarta' / ('mikrotrans' if args.mikrotrans else 'bus'), mikrotrans=args.mikrotrans)
+    mode = 'feeder_bus' if args.feeders else 'mikrotrans' if args.mikrotrans else 'bus'
+    prepare(args.cache, args.output or ROOT / 'data/reference/jakarta' / mode, mikrotrans=args.mikrotrans, feeders=args.feeders)

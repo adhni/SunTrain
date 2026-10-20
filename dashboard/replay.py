@@ -71,7 +71,7 @@ def bus_reference_file(city, business_date, mode="bus"):
 
 def bus_modes(city):
     if city == "jakarta":
-        return {"bus", "mikrotrans"}
+        return {"bus", "mikrotrans", "feeder_bus"}
     return {"bus"} if city in BUS_REFERENCE_CITIES else set()
 
 

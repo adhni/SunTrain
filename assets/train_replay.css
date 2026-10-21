@@ -55,7 +55,11 @@
 #replay-clock-date { margin-top: 3px; color: var(--muted); font-size: 0.7rem; }
 .replay-timeline { min-height: 20px; }
 .replay-timeline input { width: 100%; margin: 0; accent-color: var(--accent); cursor: pointer; }
-.replay-timeline-labels { display: flex; justify-content: space-between; gap: 12px; margin-top: 3px; color: var(--muted); font-size: 0.66rem; }
+.replay-timeline-labels { position: relative; height: 14px; margin-top: 3px; color: var(--muted); font-size: 0.66rem; font-variant-numeric: tabular-nums; }
+.replay-timeline-labels > span { position: absolute; white-space: nowrap; }
+#replay-range-start { left: 0; }
+#replay-range-end { right: 0; }
+.replay-time-tick { transform: translateX(-50%); }
 .replay-detail-card { padding: 20px 16px; min-height: 265px; }
 .replay-detail-heading { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 .replay-detail-heading .finder-chip { width: auto; padding: 4px 8px; font-size: 0.68rem; }
@@ -76,8 +80,11 @@
 .replay-current-stop { background: #e6f3ed; color: #0b5e51; font-weight: 650; }
 .replay-small { font-size: 0.67rem !important; }
 .replay-approximate { color: #9a6420; }
-.replay-legend { max-height: 130px; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 8px 20px; padding: 18px 2px 8px; }
-.replay-legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 0.68rem; color: #4b5d55; }
+.replay-legend { padding: 12px 2px 6px; }
+.replay-legend > summary { width: fit-content; cursor: pointer; color: var(--muted); font-size: 0.75rem; font-weight: 600; }
+.replay-legend > summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.replay-legend-items { max-height: 130px; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 8px 20px; padding-top: 12px; }
+.replay-legend-item { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; color: #4b5d55; }
 .replay-legend-swatch { width: 9px; height: 9px; border-radius: 50%; }
 .replay-quality { margin-top: 10px; color: #6c6654; font-size: 0.73rem; line-height: 1.6; }
 .replay-attribution { margin: 8px 0 0; color: var(--muted); font-size: 0.65rem; line-height: 1.6; }

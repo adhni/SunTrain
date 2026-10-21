@@ -132,15 +132,22 @@
             figure.append(element("figcaption", "Departures through the day · local time", "viz-title"));
             const bars = element("div", undefined, "city-hour-bars");
             const peak = Math.max(...summary.hours.map(hour => hour.departures), 1);
+            const magnitude = 10 ** Math.floor(Math.log10(peak));
+            const maximum = Math.ceil(peak / magnitude) * magnitude;
+            const plot = element("div", undefined, "city-hour-plot"), axis = element("div", undefined, "city-hour-axis");
+            axis.setAttribute("aria-hidden", "true");
+            axis.append(element("span", count(maximum)), element("span", "0"));
             for (const [i, hour] of summary.hours.entries()) {
                 const column = element("div", undefined, "city-hour-column"), track = element("div", undefined, "city-hour-track");
                 const bar = element("div", undefined, "city-hour-bar"), text = `${String(hour.hour).padStart(2, "0")}:00`;
                 column.title = `${text} · ${count(hour.departures)} departures`;
                 column.setAttribute("role", "img"); column.setAttribute("aria-label", column.title);
-                bar.style.height = `${100 * hour.departures / peak}%`;
+                bar.style.height = `${100 * hour.departures / maximum}%`;
+                if (hour.departures === peak) bar.classList.add("city-hour-peak");
                 track.append(bar); column.append(track, element("span", i % 3 === 0 ? text : "", "city-hour-label")); bars.append(column);
             }
-            figure.append(bars, element("p", `Busiest hour: ${String(summary.hours.find(h => h.departures === peak).hour).padStart(2, "0")}:00 · ${count(peak)} departures`, "replay-muted city-chart-note"));
+            plot.append(axis, bars);
+            figure.append(plot, element("p", `Busiest hour: ${String(summary.hours.find(h => h.departures === peak).hour).padStart(2, "0")}:00 · ${count(peak)} departures`, "replay-muted city-chart-note"));
             host.append(figure, routeTable(summary.routes));
         }
         renderedKey = key;

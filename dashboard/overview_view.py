@@ -35,7 +35,7 @@ def group_passenger_reports(layout):
             kept = []
             for child in children:
                 identifier = getattr(child, "id", None)
-                if identifier in order:
+                if identifier in order or identifier == "replay-attribution":
                     reports[identifier] = child
                 else:
                     extract(child)
@@ -52,6 +52,7 @@ def group_passenger_reports(layout):
                     html.Div(id="melbourne-analysis-body", style={"display": "none"},
                              children=[reports[key] for key in order]),
                 ]),
+                reports["replay-attribution"],
             ])
 
     extract(layout)

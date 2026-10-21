@@ -305,8 +305,9 @@
                         if (!service) return;
                         const content = node("div", undefined, "replay-map-tooltip");
                         content.append(node("strong", `${service.line} · ${service.number}`),
-                            node("div", `${service.origin} → ${service.destination}`),
-                            node("div", service.mode === "train" && this.day.passenger_data !== false ? `${feature.properties.load ?? "Unknown"} passengers (rounded)` : "Passenger counts unavailable"));
+                            node("div", `${service.origin} → ${service.destination}`));
+                        if (feature.properties.load != null)
+                            content.append(node("div", `${feature.properties.load} passengers (rounded)`));
                         if (feature.properties.approximate) content.append(node("div", "Approximate route"));
                         this.popup.setLngLat(feature.geometry.coordinates).setDOMContent(content).addTo(this.graph);
                     });
@@ -356,8 +357,21 @@
                 host.append(slider);
             }
             slider.min = String(this.day.start); slider.max = String(this.day.end); slider.value = String(this.now);
-            setText("replay-range-start", `${shortTime.format(new Date(this.day.start * 1000))} · ${dateFormat.format(new Date(this.day.start * 1000))}`);
-            setText("replay-range-end", `${shortTime.format(new Date(this.day.end * 1000))} · ${dateFormat.format(new Date(this.day.end * 1000))}`);
+            setText("replay-range-start", shortTime.format(new Date(this.day.start * 1000)));
+            setText("replay-range-end", shortTime.format(new Date(this.day.end * 1000)));
+            $("replay-range-end").title = "Next day";
+            $("replay-range-end").setAttribute("aria-label", `${shortTime.format(new Date(this.day.end * 1000))} next day`);
+            const labels = $("replay-timeline-labels");
+            labels.querySelectorAll(".replay-time-tick").forEach(tick => tick.remove());
+            // Position local-hour ticks by elapsed time, including daylight-saving days.
+            for (let time = this.day.start + 900; time < this.day.end; time += 900) {
+                const text = shortTime.format(new Date(time * 1000));
+                if (!["06:00", "12:00", "18:00", "00:00"].includes(text)) continue;
+                const tick = node("span", text, "replay-time-tick");
+                tick.style.left = `${100 * (time - this.day.start) / (this.day.end - this.day.start)}%`;
+                labels.append(tick);
+            }
+            labels.append($("replay-range-end"));
         }
         revealTab() {
             if (!this.active) return;
@@ -541,7 +555,7 @@
         }
         updateLegend() {
             if (!$("replay-legend")) return;
-            const legend = $("replay-legend"); legend.replaceChildren();
+            const legend = $("replay-legend"), items = $("replay-legend-items"); items.replaceChildren();
             const entries = new Map();
             for (const service of this.filtered) {
                 const label = service.mode === "tram" ? (this.day.city === "netherlands" ? service.line :
@@ -550,10 +564,17 @@
                     service.mode === "bus" && !["chicago", "perth"].includes(this.day.city) ? "Buses" : service.line;
                 entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service, this.day?.city)});
             }
+            setText("replay-legend-label", `Line colours · ${entries.size}`);
+            const disclosure = `${this.day?.city || ""}:${entries.size <= 8}`;
+            if (disclosure !== this.legendDisclosure) {
+                legend.open = entries.size <= 8;
+                this.legendDisclosure = disclosure;
+            }
+            legend.hidden = !entries.size || this.mapMode === "demand";
             for (const {label, color} of [...entries.values()].sort((a, b) => a.label.localeCompare(b.label, "en", {numeric: true}))) {
                 const item = node("span", undefined, "replay-legend-item");
                 const swatch = node("span", undefined, "replay-legend-swatch"); swatch.style.background = color;
-                item.append(swatch, document.createTextNode(label)); legend.append(item);
+                item.append(swatch, document.createTextNode(label)); items.append(item);
             }
         }
         applyFilters(filters, display) {
@@ -667,7 +688,10 @@
             host.append(node("h4", service.mode === "ferry" ? "Scheduled piers" : "Scheduled stops"));
             const scroll = node("div", undefined, "replay-stop-list"), table = node("table");
             const head = node("thead"), heading = node("tr");
-            [service.mode === "ferry" ? "Pier" : "Stop / station", "Arr.", "Dep.", "Load"].forEach(label => heading.append(node("th", label)));
+            this.selectedHasLoads = this.day.passenger_data !== false && !service.stopIds && service.stops.some(stop => stop[4] != null);
+            const columns = [service.mode === "ferry" ? "Pier" : "Stop / station", "Arr.", "Dep."];
+            if (this.selectedHasLoads) columns.push("Load");
+            columns.forEach(label => heading.append(node("th", label)));
             head.append(heading); table.append(head);
             const body = node("tbody");
             const stopDate = this.day.city === "us_rail" ? new Intl.DateTimeFormat("en-AU", {
@@ -680,12 +704,15 @@
                 const stop = service.stopIds ? [stopValue(service, i, 0), stopValue(service, i, 1), stopValue(service, i, 2)] : service.stops[i];
                 const row = node("tr"); row.dataset.stopIndex = String(i);
                 row.append(node("td", this.day.stations[stop[0]].name), node("td", scheduledTime(stopTime(service, stop, 1))),
-                    node("td", scheduledTime(stopTime(service, stop, 2))), node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
-                row.title = `Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`;
+                    node("td", scheduledTime(stopTime(service, stop, 2))));
+                if (this.selectedHasLoads) {
+                    row.append(node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
+                    row.title = `Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`;
+                }
                 body.append(row);
             }
-            table.append(body); scroll.append(table); host.append(scroll,
-                node("p", service.mode === "train" && this.day.passenger_data !== false ? "Load = recorded departure passenger count, rounded to the nearest 10." : "Passenger counts are unavailable for this service.", "replay-muted replay-small"));
+            table.append(body); scroll.append(table); host.append(scroll);
+            if (this.selectedHasLoads) host.append(node("p", "Load = recorded departure passenger count, rounded to the nearest 10.", "replay-muted replay-small"));
             this.paint(true);
         }
         detailStatus(position) {
@@ -697,7 +724,7 @@
             if (host.dataset.signature !== signature) {
                 host.dataset.signature = signature; host.replaceChildren(node("strong", text));
                 if (position) {
-                    host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
+                    if (this.selectedHasLoads) host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
                     if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : ROAD_MODES.has(this.selected.mode) ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
                 }
                 if (this.selected.timing_uncertain) host.append(node("div", "Daylight-saving times are ambiguous for this service.", "replay-approximate"));

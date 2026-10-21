@@ -1,4 +1,4 @@
-"""Prepare JR East, Tokyo Metro and Toei Subway from pinned community GTFS."""
+"""Prepare Tokyo's selected railway operators from pinned community GTFS."""
 from __future__ import annotations
 
 import argparse
@@ -23,7 +23,12 @@ METRO_ROUTES = {
     "TokyoMetro.Hibiya", "TokyoMetro.Marunouchi", "TokyoMetro.MarunouchiBranch", "TokyoMetro.Namboku",
     "TokyoMetro.Tozai", "TokyoMetro.Yurakucho", "Toei.Asakusa", "Toei.Mita", "Toei.Oedo", "Toei.Shinjuku",
 }
-OPERATORS = {"JR-East": "JR East", "TokyoMetro": "Tokyo Metro", "Toei": "Toei Subway"}
+PRIVATE_OPERATORS = {
+    "Tokyu": "Tokyu", "Keio": "Keio", "Keikyu": "Keikyu", "Odakyu": "Odakyu",
+    "Seibu": "Seibu", "Tobu": "Tobu", "Keisei": "Keisei", "Sotetsu": "Sotetsu",
+}
+TRAIN_OPERATORS = {"JR-East": "JR East", **PRIVATE_OPERATORS}
+OPERATORS = {**TRAIN_OPERATORS, "TokyoMetro": "Tokyo Metro", "Toei": "Toei Subway"}
 
 SOURCE = {
     "first": "2026-10-20", "last": "2026-10-20", "timezone": "Asia/Tokyo",
@@ -37,7 +42,7 @@ SOURCE = {
     "license_url": "https://github.com/MKuranowski/TokyoGTFS#license",
     "attribution": "Schedules: Copyright (c) 2019-2025 Akihiko Kusanagi, MIT. "
                    "GTFS conversion: Mikołaj Kuranowski / TokyoGTFS. "
-                   "JR East, Tokyo Metro and Toei Subway selection and geometry filtering by SunTrain. Independent community timetable replay.",
+                   "Tokyo railway selection and geometry filtering by SunTrain. Independent community timetable replay.",
     "geometry_source": "TokyoGTFS supplied railway shapes, generated from its CC0 railway graph",
     "geometry_source_url": "https://github.com/MKuranowski/TokyoGTFS/tree/main/data",
     "geometry_license": "CC0 1.0 (source graph); MIT (published railway feed)",
@@ -45,10 +50,11 @@ SOURCE = {
     "geometry_source_date": "Retrieved 2026-10-21",
     "geometry_sha256": GRAPH_SHA256,
     "geometry_method": "native_or_projected", "geometry_quality": "shape",
-    "note": "JR East conventional trains, all nine Tokyo Metro lines and all four Toei Subway lines, "
-            "including the Marunouchi branch, 20 October 2026, from a community timetable snapshot. "
+    "note": "JR East, Tokyu, Keio, Keikyu, Odakyu, Seibu, Tobu, Keisei and Sotetsu trains, "
+            "plus all nine Tokyo Metro and four Toei Subway lines, including the Marunouchi branch. "
+            "20 October 2026 community timetable snapshot. "
             "Its generated calendar is not an official historical archive or a record of disruptions. "
-            "Other operators, Toei tram/Nippori-Toneri and Shinkansen are excluded. Through-running sections remain separate scheduled journeys. "
+            "Other operators, trams, Toei Nippori-Toneri and Shinkansen are excluded. Through-running sections remain separate scheduled journeys. "
             "Tokyo local time; journeys belong to their 03:00–03:00 departure day. "
             "Unsupported railway sections stay gaps. No live tracking or passenger loads.",
 }
@@ -58,20 +64,23 @@ def selected_route(route, agencies):
     agency, route_id = route.get("agency_id"), route.get("route_id", "")
     if agency not in agencies or not route_id.startswith(str(agency) + "."):
         return False
-    return ((agency == "JR-East" and route.get("route_type") == "2") or
+    return ((agency in TRAIN_OPERATORS and route.get("route_type") == "2") or
             (agency in {"TokyoMetro", "Toei"} and route.get("route_type") == "1" and route_id in METRO_ROUTES))
 
 
 def describe_route(route, trip):
     name = route["route_long_name"]
     agency = route["agency_id"]
-    marker = {"JR-East": " JR ", "TokyoMetro": " Tokyo Metro ", "Toei": " Toei "}[agency]
-    if marker in name:
+    marker = {"JR-East": " JR ", "TokyoMetro": " Tokyo Metro ", "Toei": " Toei "}.get(agency)
+    if marker and marker in name:
         name = marker.strip() + " " + name.split(marker, 1)[1]
+    elif agency in PRIVATE_OPERATORS:
+        # This feed prefixes the English line label with its Japanese name.
+        name = name.split(" ", 1)[-1]
     direction = None
     if route["route_id"] == "JR-East.Yamanote":
         direction = {"0": "Outer loop", "1": "Inner loop"}.get(trip.get("direction_id"))
-    return {"mode": "train" if agency == "JR-East" else "subway", "operator": OPERATORS[agency], "route_id": route["route_id"],
+    return {"mode": "train" if agency in TRAIN_OPERATORS else "subway", "operator": OPERATORS[agency], "route_id": route["route_id"],
             "route_short_name": route.get("route_short_name", ""), "line": name,
             "category": OPERATORS[agency], "direction": direction}
 

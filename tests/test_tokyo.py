@@ -6,11 +6,16 @@ from zoneinfo import ZoneInfo
 import pytest
 
 from dashboard import replay
+from dashboard.cities import CITIES
 from dashboard.replay_http import descriptor
 from scripts.prepare_tokyo_replay import railway_geometry, selected_route
 
+PRIVATE_OPERATORS = {"Tokyu", "Keio", "Keikyu", "Odakyu", "Seibu", "Tobu", "Keisei", "Sotetsu"}
+OPERATOR_AGENCIES = {"JR East": "JR-East", "Tokyo Metro": "TokyoMetro", "Toei Subway": "Toei",
+                     **{name: name for name in PRIVATE_OPERATORS}}
 
-def test_jr_east_scope_excludes_other_operators_and_modes():
+
+def test_rail_scope_keeps_selected_operators_and_excludes_unselected_modes():
     route = {"route_id": "JR-East.Yamanote", "agency_id": "JR-East", "route_type": "2"}
     agencies = {"JR-East": {}, "TokyoMetro": {}, "Toei": {}}
     assert selected_route(route, agencies)
@@ -22,6 +27,15 @@ def test_jr_east_scope_excludes_other_operators_and_modes():
         assert selected_route({"agency_id": agency, "route_id": route_id, "route_type": "1"}, agencies)
     for route_id, kind in [("Toei.Arakawa", "0"), ("Toei.NipporiToneri", "1"), ("Toei.Bus", "3")]:
         assert not selected_route({"agency_id": "Toei", "route_id": route_id, "route_type": kind}, agencies)
+    for agency in PRIVATE_OPERATORS:
+        route = {"agency_id": agency, "route_id": agency + ".Main", "route_type": "2"}
+        available = {**agencies, agency: {}}
+        assert selected_route(route, available)
+        for kind in ["0", "1", "3"]:
+            assert not selected_route({**route, "route_type": kind}, available)
+        assert not selected_route({**route, "route_id": "JR-East.Yamanote"}, available)
+    assert not selected_route({"agency_id": "OdakyuHakone", "route_id": "OdakyuHakone.HakoneTozan", "route_type": "2"},
+                              {"OdakyuHakone": {}})
 
 
 def test_native_track_edges_keep_straight_rail_and_reject_inserted_shortcuts():
@@ -43,16 +57,16 @@ def reference():
 
 def test_snapshot_has_scoped_rail_networks_with_compact_schedules_and_local_departure_days(reference):
     assert set(reference["days"]) == {"2026-10-20"}
-    assert len(reference["days"]["2026-10-20"]) == 17472
-    assert len({p["source_route_id"] for p in reference["patterns"].values()}) == 61
+    assert len(reference["days"]["2026-10-20"]) == 39346
+    assert len({p["source_route_id"] for p in reference["patterns"].values()}) == 122
     assert not reference["metadata"]["omitted_trips"]
     assert "not official historical validity" in reference["metadata"]["calendar_basis"]
     seen = set()
     late = False
     for key, trip, offset in reference["days"]["2026-10-20"]:
         p = reference["patterns"][key]
-        agency, mode = {"JR East": ("JR-East", "train"), "Tokyo Metro": ("TokyoMetro", "subway"),
-                        "Toei Subway": ("Toei", "subway")}[p["operator"]]
+        agency = OPERATOR_AGENCIES[p["operator"]]
+        mode = "subway" if agency in {"TokyoMetro", "Toei"} else "train"
         assert p["mode"] == mode and p["source_route_id"].startswith(agency + ".")
         assert "stops" not in p
         topology = reference["stop_patterns"][p["stop_pattern"]]
@@ -64,7 +78,7 @@ def test_snapshot_has_scoped_rail_networks_with_compact_schedules_and_local_depa
         assert reference["train_numbers"][trip]
         late |= offset + p["times"][-1] > 86400
     assert late
-    assert replay.TOKYO_PATH.stat().st_size < 2_000_000
+    assert replay.TOKYO_PATH.stat().st_size < 3_000_000
 
 
 def test_yamanote_repeated_terminal_uses_the_full_loop_and_correct_direction(reference):
@@ -85,7 +99,7 @@ def test_runtime_descriptor_uses_tokyo_clock_and_keeps_shared_schedules():
     with pytest.raises(ValueError, match="Date outside"):
         descriptor("2024-06-24", "tokyo")
     day = replay.get_replay_day("2026-10-20", "tokyo")
-    assert len(day["services"]) == 17472
+    assert len(day["services"]) == 39346
     assert datetime.fromtimestamp(day["initial"], ZoneInfo("Asia/Tokyo")).strftime("%Y-%m-%d %H:%M") == "2026-10-20 08:00"
     assert all("stops" not in s and "pattern" in s for s in day["services"])
     train = next(s for s in day["services"] if s["source_trip_id"] == "JR-East.Yamanote.400G.Weekday")
@@ -124,11 +138,38 @@ def test_all_thirteen_subway_lines_and_marunouchi_branch_keep_their_colours_and_
     assert loops and min(loops) > 20_000
 
 
-def test_metro_only_and_jr_only_filters_preserve_shared_services():
+def test_metro_and_train_filters_preserve_shared_services():
     metro = replay.get_replay_day("2026-10-20", "tokyo", modes=["subway"])
-    jr = replay.get_replay_day("2026-10-20", "tokyo", modes=["train"])
+    trains = replay.get_replay_day("2026-10-20", "tokyo", modes=["train"])
     combined = replay.get_replay_day("2026-10-20", "tokyo")
-    assert len(metro["services"]) == 7474 and len(jr["services"]) == 9998
+    assert len(metro["services"]) == 7474 and len(trains["services"]) == 31872
     assert all(metro["transit_patterns"][s["pattern"]]["operator"] in {"Tokyo Metro", "Toei Subway"}
                for s in metro["services"])
-    assert {s["id"] for s in combined["services"]} == {s["id"] for s in metro["services"] + jr["services"]}
+    assert {s["id"] for s in combined["services"]} == {s["id"] for s in metro["services"] + trains["services"]}
+
+
+def test_eight_private_operators_have_selectable_schedules_colours_and_connected_paths(reference):
+    expected = {"Tokyu": 3768, "Keio": 2767, "Keikyu": 2327, "Odakyu": 1882,
+                "Seibu": 3361, "Tobu": 4195, "Keisei": 2251, "Sotetsu": 1323}
+    actual = dict.fromkeys(expected, 0)
+    colours = {"Tokyu.DenEnToshi": "#20A288", "Keio.Inokashira": "#103675",
+               "Keikyu.Airport": "#00BFFF", "Odakyu.Odawara": "#0483C8",
+               "Seibu.Ikebukuro": "#F07B00", "Tobu.Isesaki": "#E71212",
+               "Keisei.Chiba": "#005AAA", "Sotetsu.Main": "#0072C2"}
+    for key, _, _ in reference["days"]["2026-10-20"]:
+        p = reference["patterns"][key]
+        if p["operator"] in actual:
+            actual[p["operator"]] += 1
+    assert actual == expected
+    assert {value for _, value in CITIES["tokyo"]["operators"]} == set(OPERATOR_AGENCIES)
+    found = set()
+    for p in reference["patterns"].values():
+        if p["operator"] not in PRIVATE_OPERATORS:
+            continue
+        assert p["mode"] == "train"
+        topology = reference["stop_patterns"][p["stop_pattern"]]
+        assert all(reference["paths"][leg]["coordinates"] for leg in topology["legs"])
+        if p["source_route_id"] in colours:
+            assert p["color"] == colours[p["source_route_id"]]
+            found.add(p["source_route_id"])
+    assert found == set(colours)

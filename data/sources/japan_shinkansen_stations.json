@@ -1,0 +1,1050 @@
+{
+  "tokaido": [
+    {
+      "id": "東京",
+      "name": "Tokyo",
+      "coordinate": [
+        139.7679859,
+        35.6809626
+      ]
+    },
+    {
+      "id": "品川",
+      "name": "Shinagawa",
+      "coordinate": [
+        139.7400659,
+        35.6286457
+      ]
+    },
+    {
+      "id": "新横浜",
+      "name": "Shin-Yokohama",
+      "coordinate": [
+        139.6174221,
+        35.5072282
+      ]
+    },
+    {
+      "id": "小田原",
+      "name": "Odawara",
+      "coordinate": [
+        139.1545547,
+        35.2561225
+      ]
+    },
+    {
+      "id": "熱海",
+      "name": "Atami",
+      "coordinate": [
+        139.0777771,
+        35.10409
+      ]
+    },
+    {
+      "id": "三島",
+      "name": "Mishima",
+      "coordinate": [
+        138.9101672,
+        35.1268739
+      ]
+    },
+    {
+      "id": "新富士",
+      "name": "Shin-Fuji",
+      "coordinate": [
+        138.6634609,
+        35.1421319
+      ]
+    },
+    {
+      "id": "静岡",
+      "name": "Shizuoka",
+      "coordinate": [
+        138.3883294,
+        34.9715372
+      ]
+    },
+    {
+      "id": "掛川",
+      "name": "Kakegawa",
+      "coordinate": [
+        138.0146156,
+        34.7693974
+      ]
+    },
+    {
+      "id": "浜松",
+      "name": "Hamamatsu",
+      "coordinate": [
+        137.7348139,
+        34.7040059
+      ]
+    },
+    {
+      "id": "豊橋",
+      "name": "Toyohashi",
+      "coordinate": [
+        137.3812062,
+        34.7626409
+      ]
+    },
+    {
+      "id": "三河安城",
+      "name": "Mikawa-Anjo",
+      "coordinate": [
+        137.0607492,
+        34.9686683
+      ],
+      "coordinate_source": "https://www.openstreetmap.org/node/6620847242",
+      "coordinate_license": "ODbL 1.0"
+    },
+    {
+      "id": "名古屋",
+      "name": "Nagoya",
+      "coordinate": [
+        136.8809822,
+        35.170581
+      ]
+    },
+    {
+      "id": "岐阜羽島",
+      "name": "Gifu-Hashima",
+      "coordinate": [
+        136.6860366,
+        35.3155126
+      ]
+    },
+    {
+      "id": "米原",
+      "name": "Maibara",
+      "coordinate": [
+        136.2895833,
+        35.3150245
+      ]
+    },
+    {
+      "id": "京都",
+      "name": "Kyoto",
+      "coordinate": [
+        135.7584303,
+        34.9846076
+      ]
+    },
+    {
+      "id": "新大阪",
+      "name": "Shin-Osaka",
+      "coordinate": [
+        135.5001888,
+        34.7335385
+      ]
+    }
+  ],
+  "sanyo": [
+    {
+      "id": "新大阪",
+      "name": "Shin-Osaka",
+      "coordinate": [
+        135.5001888,
+        34.7335385
+      ]
+    },
+    {
+      "id": "新神戸",
+      "name": "Shin-Kobe",
+      "coordinate": [
+        135.1956157,
+        34.7064884
+      ]
+    },
+    {
+      "id": "西明石",
+      "name": "Nishi-Akashi",
+      "coordinate": [
+        134.9604166,
+        34.6669049
+      ]
+    },
+    {
+      "id": "姫路",
+      "name": "Himeji",
+      "coordinate": [
+        134.6902424,
+        34.8269005
+      ]
+    },
+    {
+      "id": "相生",
+      "name": "Aioi",
+      "coordinate": [
+        134.4739008,
+        34.818017
+      ]
+    },
+    {
+      "id": "岡山",
+      "name": "Okayama",
+      "coordinate": [
+        133.917825,
+        34.6654089
+      ]
+    },
+    {
+      "id": "新倉敷",
+      "name": "Shin-Kurashiki",
+      "coordinate": [
+        133.6784605,
+        34.5652579
+      ]
+    },
+    {
+      "id": "福山",
+      "name": "Fukuyama",
+      "coordinate": [
+        133.3624823,
+        34.4894286
+      ]
+    },
+    {
+      "id": "新尾道",
+      "name": "Shin-Onomichi",
+      "coordinate": [
+        133.1903283,
+        34.4300627
+      ]
+    },
+    {
+      "id": "三原",
+      "name": "Mihara",
+      "coordinate": [
+        133.083283,
+        34.4007946
+      ]
+    },
+    {
+      "id": "東広島",
+      "name": "Higashi-Hiroshima",
+      "coordinate": [
+        132.7588789,
+        34.3888993
+      ]
+    },
+    {
+      "id": "広島",
+      "name": "Hiroshima",
+      "coordinate": [
+        132.4758369,
+        34.3973947
+      ]
+    },
+    {
+      "id": "新岩国",
+      "name": "Shin-Iwakuni",
+      "coordinate": [
+        132.1495132,
+        34.1645738
+      ]
+    },
+    {
+      "id": "徳山",
+      "name": "Tokuyama",
+      "coordinate": [
+        131.8027197,
+        34.0512305
+      ]
+    },
+    {
+      "id": "新山口",
+      "name": "Shin-Yamaguchi",
+      "coordinate": [
+        131.396365,
+        34.0937693
+      ]
+    },
+    {
+      "id": "厚狭",
+      "name": "Asa",
+      "coordinate": [
+        131.1599628,
+        34.0537909
+      ]
+    },
+    {
+      "id": "新下関",
+      "name": "Shin-Shimonoseki",
+      "coordinate": [
+        130.9492803,
+        34.0082223
+      ]
+    },
+    {
+      "id": "小倉",
+      "name": "Kokura",
+      "coordinate": [
+        130.8832221,
+        33.8872865
+      ]
+    },
+    {
+      "id": "博多",
+      "name": "Hakata",
+      "coordinate": [
+        130.4211594,
+        33.5899887
+      ]
+    }
+  ],
+  "kyushu": [
+    {
+      "id": "博多",
+      "name": "Hakata",
+      "coordinate": [
+        130.4211594,
+        33.5899887
+      ]
+    },
+    {
+      "id": "新鳥栖",
+      "name": "Shin-Tosu",
+      "coordinate": [
+        130.4908123,
+        33.3696637
+      ]
+    },
+    {
+      "id": "久留米",
+      "name": "Kurume",
+      "coordinate": [
+        130.5014036,
+        33.3206417
+      ]
+    },
+    {
+      "id": "筑後船小屋",
+      "name": "Chikugo-Funagoya",
+      "coordinate": [
+        130.4924364,
+        33.1781547
+      ]
+    },
+    {
+      "id": "新大牟田",
+      "name": "Shin-Omuta",
+      "coordinate": [
+        130.4887598,
+        33.0711991
+      ]
+    },
+    {
+      "id": "新玉名",
+      "name": "Shin-Tamana",
+      "coordinate": [
+        130.5737758,
+        32.9423867
+      ]
+    },
+    {
+      "id": "熊本",
+      "name": "Kumamoto",
+      "coordinate": [
+        130.6889738,
+        32.7903174
+      ]
+    },
+    {
+      "id": "新八代",
+      "name": "Shin-Yatsushiro",
+      "coordinate": [
+        130.6348392,
+        32.5180397
+      ]
+    },
+    {
+      "id": "新水俣",
+      "name": "Shin-Minamata",
+      "coordinate": [
+        130.4286671,
+        32.2105785
+      ]
+    },
+    {
+      "id": "出水",
+      "name": "Izumi",
+      "coordinate": [
+        130.3577842,
+        32.089725
+      ]
+    },
+    {
+      "id": "川内",
+      "name": "Sendai",
+      "coordinate": [
+        130.3122563,
+        31.8137835
+      ]
+    },
+    {
+      "id": "鹿児島中央",
+      "name": "Kagoshima-Chuo",
+      "coordinate": [
+        130.5417909,
+        31.5837134
+      ]
+    }
+  ],
+  "nishi-kyushu": [
+    {
+      "id": "武雄温泉",
+      "name": "Takeo-Onsen",
+      "coordinate": [
+        130.0230661,
+        33.1964792
+      ]
+    },
+    {
+      "id": "嬉野温泉",
+      "name": "Ureshino-Onsen",
+      "coordinate": [
+        129.9989438,
+        33.1066719
+      ]
+    },
+    {
+      "id": "新大村",
+      "name": "Shin-Omura",
+      "coordinate": [
+        129.9570496,
+        32.9329805
+      ]
+    },
+    {
+      "id": "諫早",
+      "name": "Isahaya",
+      "coordinate": [
+        130.041437,
+        32.8515808
+      ]
+    },
+    {
+      "id": "長崎",
+      "name": "Nagasaki",
+      "coordinate": [
+        129.8688815,
+        32.7521727
+      ]
+    }
+  ],
+  "tohoku": [
+    {
+      "id": "東京",
+      "name": "Tokyo",
+      "coordinate": [
+        139.7679859,
+        35.6809626
+      ]
+    },
+    {
+      "id": "上野",
+      "name": "Ueno",
+      "coordinate": [
+        139.7765418,
+        35.7134128
+      ]
+    },
+    {
+      "id": "大宮",
+      "name": "Omiya",
+      "coordinate": [
+        139.6243304,
+        35.9063869
+      ]
+    },
+    {
+      "id": "小山",
+      "name": "Oyama",
+      "coordinate": [
+        139.8065054,
+        36.3129364
+      ]
+    },
+    {
+      "id": "宇都宮",
+      "name": "Utsunomiya",
+      "coordinate": [
+        139.8981571,
+        36.5592983
+      ]
+    },
+    {
+      "id": "那須塩原",
+      "name": "Nasu-Shiobara",
+      "coordinate": [
+        140.0210685,
+        36.9315325
+      ]
+    },
+    {
+      "id": "新白河",
+      "name": "Shin-Shirakawa",
+      "coordinate": [
+        140.1884461,
+        37.1230906
+      ]
+    },
+    {
+      "id": "郡山",
+      "name": "Koriyama",
+      "coordinate": [
+        140.388798,
+        37.398488
+      ]
+    },
+    {
+      "id": "福島",
+      "name": "Fukushima",
+      "coordinate": [
+        140.4592144,
+        37.75454
+      ]
+    },
+    {
+      "id": "白石蔵王",
+      "name": "Shiroishi-Zao",
+      "coordinate": [
+        140.6331751,
+        37.9954269
+      ]
+    },
+    {
+      "id": "仙台",
+      "name": "Sendai",
+      "coordinate": [
+        140.8823921,
+        38.2603516
+      ]
+    },
+    {
+      "id": "古川",
+      "name": "Furukawa",
+      "coordinate": [
+        140.9679338,
+        38.5705529
+      ]
+    },
+    {
+      "id": "くりこま高原",
+      "name": "Kurikoma-Kogen",
+      "coordinate": [
+        141.0716092,
+        38.7487399
+      ]
+    },
+    {
+      "id": "一ノ関",
+      "name": "Ichinoseki",
+      "coordinate": [
+        141.1389019,
+        38.9268807
+      ]
+    },
+    {
+      "id": "水沢江刺",
+      "name": "Mizusawa-Esashi",
+      "coordinate": [
+        141.1887494,
+        39.1451474
+      ]
+    },
+    {
+      "id": "北上",
+      "name": "Kitakami",
+      "coordinate": [
+        141.1217172,
+        39.2818212
+      ]
+    },
+    {
+      "id": "新花巻",
+      "name": "Shin-Hanamaki",
+      "coordinate": [
+        141.1735809,
+        39.4058826
+      ]
+    },
+    {
+      "id": "盛岡",
+      "name": "Morioka",
+      "coordinate": [
+        141.136689,
+        39.7005875
+      ]
+    },
+    {
+      "id": "いわて沼宮内",
+      "name": "Iwate-Numakunai",
+      "coordinate": [
+        141.2172841,
+        39.960584
+      ]
+    },
+    {
+      "id": "二戸",
+      "name": "Ninohe",
+      "coordinate": [
+        141.286006,
+        40.260138
+      ]
+    },
+    {
+      "id": "八戸",
+      "name": "Hachinohe",
+      "coordinate": [
+        141.4311833,
+        40.5093889
+      ]
+    },
+    {
+      "id": "七戸十和田",
+      "name": "Shichinohe-Towada",
+      "coordinate": [
+        141.1534608,
+        40.7199949
+      ]
+    },
+    {
+      "id": "新青森",
+      "name": "Shin-Aomori",
+      "coordinate": [
+        140.6934733,
+        40.8282447
+      ]
+    }
+  ],
+  "hokuriku": [
+    {
+      "id": "高崎",
+      "name": "Takasaki",
+      "coordinate": [
+        139.0127191,
+        36.3223804
+      ]
+    },
+    {
+      "id": "安中榛名",
+      "name": "Annaka-Haruna",
+      "coordinate": [
+        138.8493964,
+        36.3625792
+      ]
+    },
+    {
+      "id": "軽井沢",
+      "name": "Karuizawa",
+      "coordinate": [
+        138.6351092,
+        36.3425512
+      ]
+    },
+    {
+      "id": "佐久平",
+      "name": "Sakudaira",
+      "coordinate": [
+        138.4643868,
+        36.2781104
+      ]
+    },
+    {
+      "id": "上田",
+      "name": "Ueda",
+      "coordinate": [
+        138.2495851,
+        36.3965984
+      ]
+    },
+    {
+      "id": "長野",
+      "name": "Nagano",
+      "coordinate": [
+        138.1885153,
+        36.6431239
+      ]
+    },
+    {
+      "id": "飯山",
+      "name": "Iiyama",
+      "coordinate": [
+        138.3587871,
+        36.8462882
+      ]
+    },
+    {
+      "id": "上越妙高",
+      "name": "Joetsumyoko",
+      "coordinate": [
+        138.2486852,
+        37.0812219
+      ]
+    },
+    {
+      "id": "糸魚川",
+      "name": "Itoigawa",
+      "coordinate": [
+        137.8617531,
+        37.0433062
+      ]
+    },
+    {
+      "id": "黒部宇奈月温泉",
+      "name": "Kurobe-Unazukionsen",
+      "coordinate": [
+        137.481437,
+        36.8743189
+      ]
+    },
+    {
+      "id": "富山",
+      "name": "Toyama",
+      "coordinate": [
+        137.2127904,
+        36.7016421
+      ]
+    },
+    {
+      "id": "新高岡",
+      "name": "Shin-Takaoka",
+      "coordinate": [
+        137.01199,
+        36.726967
+      ]
+    },
+    {
+      "id": "金沢",
+      "name": "Kanazawa",
+      "coordinate": [
+        136.6480247,
+        36.5780499
+      ]
+    },
+    {
+      "id": "小松",
+      "name": "Komatsu",
+      "coordinate": [
+        136.4528145,
+        36.4018391
+      ]
+    },
+    {
+      "id": "加賀温泉",
+      "name": "Kagaonsen",
+      "coordinate": [
+        136.3504996,
+        36.3203882
+      ]
+    },
+    {
+      "id": "芦原温泉",
+      "name": "Awaraonsen",
+      "coordinate": [
+        136.2350566,
+        36.2146024
+      ]
+    },
+    {
+      "id": "福井",
+      "name": "Fukui",
+      "coordinate": [
+        136.2231202,
+        36.0618051
+      ]
+    },
+    {
+      "id": "越前たけふ",
+      "name": "Echizen-Takefu",
+      "coordinate": [
+        136.1989052,
+        35.8955139
+      ]
+    },
+    {
+      "id": "敦賀",
+      "name": "Tsuruga",
+      "coordinate": [
+        136.0763837,
+        35.644899
+      ]
+    }
+  ],
+  "joetsu": [
+    {
+      "id": "大宮",
+      "name": "Omiya",
+      "coordinate": [
+        139.6243304,
+        35.9063869
+      ]
+    },
+    {
+      "id": "熊谷",
+      "name": "Kumagaya",
+      "coordinate": [
+        139.390035,
+        36.1390715
+      ]
+    },
+    {
+      "id": "本庄早稲田",
+      "name": "Honjo-Waseda",
+      "coordinate": [
+        139.1794855,
+        36.2188607
+      ]
+    },
+    {
+      "id": "高崎",
+      "name": "Takasaki",
+      "coordinate": [
+        139.0127191,
+        36.3223804
+      ]
+    },
+    {
+      "id": "上毛高原",
+      "name": "Jomo-Kogen",
+      "coordinate": [
+        138.9775973,
+        36.6931647
+      ]
+    },
+    {
+      "id": "越後湯沢",
+      "name": "Echigo-Yuzawa",
+      "coordinate": [
+        138.8090456,
+        36.9359414
+      ]
+    },
+    {
+      "id": "浦佐",
+      "name": "Urasa",
+      "coordinate": [
+        138.9228409,
+        37.1672238
+      ]
+    },
+    {
+      "id": "長岡",
+      "name": "Nagaoka",
+      "coordinate": [
+        138.8541667,
+        37.4478778
+      ]
+    },
+    {
+      "id": "燕三条",
+      "name": "Tsubame-Sanjo",
+      "coordinate": [
+        138.9390886,
+        37.6483698
+      ]
+    },
+    {
+      "id": "新潟",
+      "name": "Niigata",
+      "coordinate": [
+        139.0613294,
+        37.9122444
+      ]
+    }
+  ],
+  "gala-yuzawa": [
+    {
+      "id": "越後湯沢",
+      "name": "Echigo-Yuzawa",
+      "coordinate": [
+        138.8090456,
+        36.9359414
+      ]
+    },
+    {
+      "id": "ガーラ湯沢",
+      "name": "Gala-Yuzawa",
+      "coordinate": [
+        138.798846,
+        36.9521441
+      ]
+    }
+  ],
+  "hokkaido": [
+    {
+      "id": "新青森",
+      "name": "Shin-Aomori",
+      "coordinate": [
+        140.6934733,
+        40.8282447
+      ]
+    },
+    {
+      "id": "奥津軽いまべつ",
+      "name": "Okutsugaru-Imabetsu",
+      "coordinate": [
+        140.5157284,
+        41.1449446
+      ]
+    },
+    {
+      "id": "木古内",
+      "name": "Kikonai",
+      "coordinate": [
+        140.4342846,
+        41.678018
+      ]
+    },
+    {
+      "id": "新函館北斗",
+      "name": "Shin-Hakodate-Hokuto",
+      "coordinate": [
+        140.6485358,
+        41.9046814
+      ]
+    }
+  ],
+  "akita": [
+    {
+      "id": "盛岡",
+      "name": "Morioka",
+      "coordinate": [
+        141.136689,
+        39.7005875
+      ]
+    },
+    {
+      "id": "雫石",
+      "name": "Shizukuishi",
+      "coordinate": [
+        140.9744464,
+        39.6892709
+      ]
+    },
+    {
+      "id": "田沢湖",
+      "name": "Tazawako",
+      "coordinate": [
+        140.7223789,
+        39.7002861
+      ]
+    },
+    {
+      "id": "角館",
+      "name": "Kakunodate",
+      "coordinate": [
+        140.5711801,
+        39.5917435
+      ]
+    },
+    {
+      "id": "大曲",
+      "name": "Omagari",
+      "coordinate": [
+        140.479891,
+        39.4656823
+      ]
+    },
+    {
+      "id": "秋田",
+      "name": "Akita",
+      "coordinate": [
+        140.1296657,
+        39.7168833
+      ]
+    }
+  ],
+  "yamagata": [
+    {
+      "id": "福島",
+      "name": "Fukushima",
+      "coordinate": [
+        140.4592144,
+        37.75454
+      ]
+    },
+    {
+      "id": "米沢",
+      "name": "Yonezawa",
+      "coordinate": [
+        140.1283425,
+        37.9094986
+      ]
+    },
+    {
+      "id": "高畠",
+      "name": "Takahata",
+      "coordinate": [
+        140.1531311,
+        37.992415
+      ]
+    },
+    {
+      "id": "赤湯",
+      "name": "Akayu",
+      "coordinate": [
+        140.1489763,
+        38.0473771
+      ]
+    },
+    {
+      "id": "かみのやま温泉",
+      "name": "Kaminoyama-Onsen",
+      "coordinate": [
+        140.2785301,
+        38.1520989
+      ]
+    },
+    {
+      "id": "山形",
+      "name": "Yamagata",
+      "coordinate": [
+        140.3278031,
+        38.2484701
+      ]
+    },
+    {
+      "id": "天童",
+      "name": "Tendo",
+      "coordinate": [
+        140.3695642,
+        38.3599623
+      ]
+    },
+    {
+      "id": "さくらんぼ東根",
+      "name": "Sakurambo-Higashine",
+      "coordinate": [
+        140.3810129,
+        38.4285068
+      ]
+    },
+    {
+      "id": "村山",
+      "name": "Murayama",
+      "coordinate": [
+        140.3864953,
+        38.4770786
+      ]
+    },
+    {
+      "id": "大石田",
+      "name": "Oishida",
+      "coordinate": [
+        140.3753132,
+        38.5956294
+      ]
+    },
+    {
+      "id": "新庄",
+      "name": "Shinjo",
+      "coordinate": [
+        140.30602,
+        38.7626088
+      ]
+    }
+  ]
+}

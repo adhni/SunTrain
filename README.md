@@ -2,6 +2,12 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Japan intercity pilot
+
+Choose **Japan** for **10 March 2026**: **927 regular Shinkansen services** across the ten operating corridors, including Akita, Yamagata, Hokkaidō and Nishi-Kyūshū. Undated extra trains are excluded. The **Limited express · JR East only** option reuses **527 journey sections** from Tokyo's October snapshot by weekday, without storing them again. **Nationwide conventional intercity and overnight coverage is incomplete.** Tokyo retains its separate full rail/subway view.
+
+The new timetable is **333 KB gzip**, plus **790 KB** of preparation-only connected OSM railway geometry. **98.3%** of Shinkansen scheduled journey legs have mapped paths; unsupported sections stay gaps. These are community timetable snapshots, not observed train locations. See [Japan expansion notes](JAPAN_EXPANSION_NOTES.md) for source dates, scope and remaining data gaps.
+
 ## Tokyo rail and subway pilot
 
 Choose **Tokyo** for **20 October 2026**: **17,472 scheduled journeys**, comprising **9,998 JR East journeys across 47 conventional route variants** and **7,474 subway journeys across all nine Tokyo Metro and four Toei Subway lines**, including the Marunouchi branch. JR East and subway open together; Transport and Operator filters focus either network. This first test uses a **community timetable snapshot**, not an official historical archive. Other operators, Toei tram/Nippori-Toneri and Shinkansen are excluded. Existing playback, line colours, filters, service details and Overview apply, using Tokyo local time.

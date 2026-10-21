@@ -1,0 +1,62 @@
+[
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/5263977/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "d4ed64cd160f49af17fffaed166df44fbd8b607add8bab4b9d0f1253b3a9d2ab",
+    "line": "tokaido"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/1837932/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "6c41d00a8b2974e423a9197fafc8b240afc421b3f5ef32ba8f53edd4d7506105",
+    "line": "sanyo"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/1860622/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "ae48bf07f2e8538f93a97557d8f7a7bff3beba8143efad826810ec50f26d77f3",
+    "line": "tohoku"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/1860557/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "05c461eaa3cd9d027650b7e89688b5d2450a2101ec45bb0b0f9247a142781fc5",
+    "line": "joetsu"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/1926393/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "f10e5fae2610556a6f54d86883f9b598290813f82bbc64424fac384fadc3a2e9",
+    "line": "hokuriku"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/1565609/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "49c214b863a044b01a1960dd2202620b3e3bae4793ed0416dc463a0ebc54346d",
+    "line": "kyushu"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/7356208/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "9fd14169715937be9112bc67b430fb8f0d2f31e9babcdff77e45185fc5b96da7",
+    "line": "nishi-kyushu"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/5361845/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "6419944bc38404b31f4546e2f20e52d881d5288ebfe428f92ca49b3468f54833",
+    "line": "yamagata"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/5361971/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "d0d271a585e22464b24983c2fed1543734b63784298843933e8b5d921374b7f9",
+    "line": "akita"
+  },
+  {
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/5947648/full.json",
+    "source_date": "2026-10-21",
+    "sha256": "1fd76ca6b7413dce5eb93175d5da2fb5df77ae7d19299714865d2676fb8091b5",
+    "line": "hokkaido"
+  }
+]

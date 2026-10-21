@@ -8,6 +8,8 @@ The same dated source now adds **7,474 subway journey sections**: Tokyo Metro's 
 
 Combined: **17,472 journeys, 61 route variants and 1,146 station records** in **1,085,621 bytes gzip**. All original JR East journey rows, timing patterns, station indices and paths are unchanged. The reference replaces the earlier JR-only file rather than storing JR East twice.
 
+The [Japan intercity view](JAPAN_EXPANSION_NOTES.md) now reuses only the **527 explicitly labelled JR East limited-express sections** from this same file. It maps the October Tuesday snapshot onto its March Tuesday and labels that date difference. Tokyo's full replay, dates and stored data remain unchanged; no duplicate Tokyo schedule file is created.
+
 The map opens over metropolitan Tokyo; **Fit selection** shows outer routes. Replay, filters, service details, themes, fullscreen and Tokyo Overview reuse the existing application. The clock is **Asia/Tokyo**. Each journey belongs to the single 03:00–03:00 window containing its origin departure, retaining calls after midnight.
 
 Other railway operators, Shinkansen, buses and passenger loads are not included. Through-running sections retain the source's separate scheduled trips; they are not merged into claims about individual physical trainsets. Metro trip calls in the selected day remain within their respective operator's station records. Passenger totals, if obtained later, must not become invented onboard loads.

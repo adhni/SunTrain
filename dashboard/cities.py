@@ -52,6 +52,16 @@ CITIES = {
         "directions": [("Northbound", "Northbound"), ("Southbound", "Southbound"),
                        ("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
+    "tokyo": {
+        "name": "Tokyo", "timezone": "Asia/Tokyo",
+        "bounds": [[139.38, 35.45], [140.02, 35.95]], "passenger_data": False,
+        "start_date": "2026-10-20", "end_date": "2026-10-20",
+        "description": "JR East conventional trains from a community timetable snapshot for 20 October 2026. Use Fit selection for outer routes. Other operators and Shinkansen are excluded; passenger loads are unavailable.",
+        "default_modes": ["train"], "modes": [("JR East trains", "train")],
+        "operators": [("JR East", "JR East")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"),
+                       ("Inner loop", "Inner loop"), ("Outer loop", "Outer loop")],
+    },
     "singapore": {
         "name": "Singapore", "timezone": "Asia/Singapore",
         "bounds": [[103.62, 1.23], [104.02, 1.46]], "passenger_data": False,

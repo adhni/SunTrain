@@ -24,6 +24,7 @@ BOSTON_PATH = ROOT / "data/reference/boston/2024-06-24.json.gz"
 CHICAGO_PATH = ROOT / "data/reference/chicago/2025-11-24.json.gz"
 NYC_PATH = ROOT / "data/reference/nyc/2025-12-15.json.gz"
 SINGAPORE_PATH = ROOT / "data/reference/singapore/2026-10-05.json.gz"
+TOKYO_PATH = ROOT / "data/reference/tokyo/2026-10-20.json.gz"
 SYDNEY_PATH = ROOT / "data/reference/sydney/2026-10-05.json.gz"
 ADELAIDE_PATH = ROOT / "data/reference/adelaide/2024-05-27.json.gz"
 PERTH_PATH = ROOT / "data/reference/perth/2026-10-05.json.gz"
@@ -59,7 +60,7 @@ US_RAIL_REPLAY_NOTE = "Amtrak and Brightline open first. Regional / commuter rai
 
 
 def prepared_path(city):
-    default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH,
+    default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH, "tokyo": TOKYO_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "us_rail": US_RAIL_PATH, "london": LONDON_PATH,
                "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH, "france": FRANCE_PATH,

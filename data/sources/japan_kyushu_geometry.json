@@ -1,0 +1,86 @@
+[
+  {
+    "file": "conventional-airport-6106353-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/6106353/full.json",
+    "sha256": "a8df7aad1a546082ed91c004a13545f0145f66c170340e9716601ecc42459696",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-chosa-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/node/265849148.json",
+    "sha256": "195c295aee0960744d86ac2e84d52e5058b459494af91ff6e801f238a8d167b9",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-fukuhoku-9268256-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/9268256/full.json",
+    "sha256": "c0b9ec4c2b421617c5fb289f119c37c98f67435bd1b4907924bdc31bc245c36c",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-hohi-10105833-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/10105833/full.json",
+    "sha256": "d2b3d07091e7b6ba35d50962143701fbf0dfc1e31abcd32f5f1aab69157133ac",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-kagoshima-359426-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/359426/full.json",
+    "sha256": "894beb215fa231eed09218cd8a0bec3fddb2526358a003087c63515ec6add7ae",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-kyudai-1867619-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/1867619/full.json",
+    "sha256": "6ae2c2e2b9c889e4948b4456a8291217a7297ab76d4459db7016a20f93861a4c",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-miyazaki-airport-link-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/map.json?bbox=131.408,31.875,131.446,31.910",
+    "sha256": "d0400b459ad6909318beac5c10b9b65f6d2009b0fb69fecd6b2137918784468a",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-nagasaki-1871198-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/1871198/full.json",
+    "sha256": "94f78fed813a751222f61ba9cdf2a6a2073db37dc773549313cdfa15828a9fae",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-nippo-1867554-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/1867554/full.json",
+    "sha256": "928406690c2cf0c43f7654cd9c39c8d45186db47ffa54c7935c66386885802e5",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-omura-20251840-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/20251840/full.json",
+    "sha256": "8f42fd259f2987128a784e3bfaa515db70a7e9093385a88d7fa62b857066ba67",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-omura-line-12106458-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/12106458/full.json",
+    "sha256": "eaafbe304db42a0fae593c03bef7af665ba4404943572c18c621511c428ab23e",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-sasebo-12106423-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/12106423/full.json",
+    "sha256": "af2264d747de97b941da2612300b1a007f5ab479884f451f9ac6426b68c6ff9d",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-sasebo-down-12104402-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/12104402/full.json",
+    "sha256": "9621c16d12e2c7afb69645442c5dd69b6db5361928935dc27329ba194edd34c8",
+    "source_date": "2026-10-22"
+  },
+  {
+    "file": "conventional-sasebo-up-12106421-osm.json",
+    "source_url": "https://api.openstreetmap.org/api/0.6/relation/12106421/full.json",
+    "sha256": "0f20064fef3f21b01581df6cbd29581c187fc0dd22309fa76921e18ed5aa52ab",
+    "source_date": "2026-10-22"
+  }
+]

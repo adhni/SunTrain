@@ -1,0 +1,730 @@
+{
+  "うきは": {
+    "coordinate": [
+      130.7887277,
+      33.3350365
+    ],
+    "name": "Ukiha",
+    "osm_node_id": 265883518
+  },
+  "ハウステンボス": {
+    "coordinate": [
+      129.796135,
+      33.09231
+    ],
+    "name": "Huis Ten Bosch",
+    "osm_node_id": 6871807889
+  },
+  "三股": {
+    "coordinate": [
+      131.1199481,
+      31.7338903
+    ],
+    "name": "Mimata",
+    "osm_node_id": 265849275
+  },
+  "三重町": {
+    "coordinate": [
+      131.5842792,
+      32.9837302
+    ],
+    "name": "Miemachi",
+    "osm_node_id": 8141291224
+  },
+  "下曽根": {
+    "coordinate": [
+      130.9347186,
+      33.8323559
+    ],
+    "name": "Shimosone",
+    "osm_node_id": 6845406599
+  },
+  "中津": {
+    "coordinate": [
+      131.1908891,
+      33.5991951
+    ],
+    "name": "Nakatsu",
+    "osm_node_id": 265839715
+  },
+  "久留米": {
+    "coordinate": [
+      130.5014036,
+      33.3206417
+    ],
+    "name": "Kurume",
+    "osm_node_id": 265889297
+  },
+  "久留米大学前": {
+    "coordinate": [
+      130.5486257,
+      33.31101
+    ],
+    "name": "Kurume-Daigakumae",
+    "osm_node_id": 5394847329
+  },
+  "亀川": {
+    "coordinate": [
+      131.4929514,
+      33.3313434
+    ],
+    "name": "Kamegawa",
+    "osm_node_id": 13471367679
+  },
+  "二日市": {
+    "coordinate": [
+      130.5187554,
+      33.4944306
+    ],
+    "name": "Futsukaichi",
+    "osm_node_id": 473592443
+  },
+  "佐世保": {
+    "coordinate": [
+      129.7264349,
+      33.1634969
+    ],
+    "name": "Sasebo",
+    "osm_node_id": 12246148943
+  },
+  "佐伯": {
+    "coordinate": [
+      131.9019208,
+      32.9724401
+    ],
+    "name": "Saiki",
+    "osm_node_id": 9046883616
+  },
+  "佐土原": {
+    "coordinate": [
+      131.4772573,
+      32.0223792
+    ],
+    "name": "Sadowara",
+    "osm_node_id": 265848384
+  },
+  "佐賀": {
+    "coordinate": [
+      130.2973808,
+      33.2641642
+    ],
+    "name": "Saga",
+    "osm_node_id": 5694789833
+  },
+  "八幡": {
+    "coordinate": [
+      130.7954844,
+      33.8692808
+    ],
+    "name": "Yahata",
+    "osm_node_id": 6241750189
+  },
+  "別府": {
+    "coordinate": [
+      131.5004873,
+      33.2795661
+    ],
+    "name": "Beppu",
+    "osm_node_id": 265839545
+  },
+  "加治木": {
+    "coordinate": [
+      130.6704892,
+      31.7392467
+    ],
+    "name": "Kajiki",
+    "osm_node_id": 265848029
+  },
+  "南宮崎": {
+    "coordinate": [
+      131.4226735,
+      31.8951321
+    ],
+    "name": "Minami-Miyazaki",
+    "osm_node_id": 4008342859
+  },
+  "南延岡": {
+    "coordinate": [
+      131.6768649,
+      32.5595357
+    ],
+    "name": "Minami-Nobeoka",
+    "osm_node_id": 5694796635
+  },
+  "博多": {
+    "coordinate": [
+      130.4203556,
+      33.5900436
+    ],
+    "name": "Hakata",
+    "osm_node_id": 3637038754
+  },
+  "吉塚": {
+    "coordinate": [
+      130.4238337,
+      33.6070252
+    ],
+    "name": "Yoshizuka",
+    "osm_node_id": 5724179463
+  },
+  "向之原": {
+    "coordinate": [
+      131.5140544,
+      33.1966896
+    ],
+    "name": "Mukainoharu",
+    "osm_node_id": 265879865
+  },
+  "国分": {
+    "coordinate": [
+      130.7634412,
+      31.7436752
+    ],
+    "name": "Kokubu",
+    "osm_node_id": 265851737
+  },
+  "大分": {
+    "coordinate": [
+      131.6061251,
+      33.2327953
+    ],
+    "name": "Ōita",
+    "osm_node_id": 265839552
+  },
+  "大在": {
+    "coordinate": [
+      131.7203075,
+      33.2439896
+    ],
+    "name": "Ōzai",
+    "osm_node_id": 7678419561
+  },
+  "天ケ瀬": {
+    "coordinate": [
+      131.0238456,
+      33.2549423
+    ],
+    "name": "Amagase",
+    "osm_node_id": 265887997
+  },
+  "姶良": {
+    "coordinate": [
+      130.6232967,
+      31.7152622
+    ],
+    "name": "Aira",
+    "osm_node_id": 265850459
+  },
+  "宇佐": {
+    "coordinate": [
+      131.4120019,
+      33.5321878
+    ],
+    "name": "Usa",
+    "osm_node_id": 265841523
+  },
+  "宇島": {
+    "coordinate": [
+      131.1265739,
+      33.6213157
+    ],
+    "name": "Unoshima",
+    "osm_node_id": 265844064
+  },
+  "宮地": {
+    "coordinate": [
+      131.1177775,
+      32.9370943
+    ],
+    "name": "Miyaji",
+    "osm_node_id": 265857288
+  },
+  "宮崎": {
+    "coordinate": [
+      131.4319526,
+      31.9157538
+    ],
+    "name": "Miyazaki",
+    "osm_node_id": 5726627473
+  },
+  "宮崎神宮": {
+    "coordinate": [
+      131.4304905,
+      31.938439
+    ],
+    "name": "Miyazaki-Jingu",
+    "osm_node_id": 265849010
+  },
+  "宮崎空港": {
+    "coordinate": [
+      131.4401622,
+      31.8724607
+    ],
+    "name": "Miyazaki Airport",
+    "osm_node_id": 265889650
+  },
+  "小倉": {
+    "coordinate": [
+      130.882509,
+      33.8868464
+    ],
+    "name": "Kokura",
+    "osm_node_id": 6241679585
+  },
+  "山之口": {
+    "coordinate": [
+      131.1529018,
+      31.7827077
+    ],
+    "name": "Yamanokuchi",
+    "osm_node_id": 265849385
+  },
+  "帖佐": {
+    "coordinate": [
+      130.6327246,
+      31.7269507
+    ],
+    "name": "Chosa",
+    "osm_node_id": 265849148
+  },
+  "幸崎": {
+    "coordinate": [
+      131.7953597,
+      33.2333453
+    ],
+    "name": "Kōzaki",
+    "osm_node_id": 13454287623
+  },
+  "延岡": {
+    "coordinate": [
+      131.6724206,
+      32.5900481
+    ],
+    "name": "Nobeoka",
+    "osm_node_id": 270047503
+  },
+  "戸畑": {
+    "coordinate": [
+      130.8206112,
+      33.8972177
+    ],
+    "name": "Tobata",
+    "osm_node_id": 2747413641
+  },
+  "折尾": {
+    "coordinate": [
+      130.7122632,
+      33.8642177
+    ],
+    "name": "Orio",
+    "osm_node_id": 6242093369
+  },
+  "新水前寺": {
+    "coordinate": [
+      130.7260595,
+      32.7936642
+    ],
+    "name": "Shin-Suizenji",
+    "osm_node_id": 265864607
+  },
+  "新飯塚": {
+    "coordinate": [
+      130.6942077,
+      33.6441682
+    ],
+    "name": "Shin-Iizuka",
+    "osm_node_id": 6050892787
+  },
+  "新鳥栖": {
+    "coordinate": [
+      130.4908164,
+      33.3696511
+    ],
+    "name": "Shin-Tosu",
+    "osm_node_id": 265845717
+  },
+  "日向市": {
+    "coordinate": [
+      131.6280484,
+      32.4257579
+    ],
+    "name": "Hyugashi",
+    "osm_node_id": 265846285
+  },
+  "日田": {
+    "coordinate": [
+      130.9386819,
+      33.3172406
+    ],
+    "name": "Hita",
+    "osm_node_id": 265883552
+  },
+  "早岐": {
+    "coordinate": [
+      129.799249,
+      33.1337038
+    ],
+    "name": "Haiki",
+    "osm_node_id": 265853005
+  },
+  "有田": {
+    "coordinate": [
+      129.8821124,
+      33.1834909
+    ],
+    "name": "Arita",
+    "osm_node_id": 8656149591
+  },
+  "東郷": {
+    "coordinate": [
+      130.5288515,
+      33.7945091
+    ],
+    "name": "Togo",
+    "osm_node_id": 2119540519
+  },
+  "杵築": {
+    "coordinate": [
+      131.575572,
+      33.4111264
+    ],
+    "name": "Kitsuki",
+    "osm_node_id": 265840383
+  },
+  "柳ケ浦": {
+    "coordinate": [
+      131.3625999,
+      33.5650359
+    ],
+    "name": "Yanagigaura",
+    "osm_node_id": 265841260
+  },
+  "桂川": {
+    "coordinate": [
+      130.6622792,
+      33.5846559
+    ],
+    "name": "Keisen",
+    "osm_node_id": 6235459331
+  },
+  "武雄温泉": {
+    "coordinate": [
+      130.0230043,
+      33.1964703
+    ],
+    "name": "Takeo Onsen",
+    "osm_node_id": 8268638338
+  },
+  "江北": {
+    "coordinate": [
+      130.1610126,
+      33.2193822
+    ],
+    "name": "Kohoku",
+    "osm_node_id": 4054863328
+  },
+  "津久見": {
+    "coordinate": [
+      131.8634127,
+      33.0728567
+    ],
+    "name": "Tsukumi",
+    "osm_node_id": 6851303346
+  },
+  "清武": {
+    "coordinate": [
+      131.3892315,
+      31.8593828
+    ],
+    "name": "Kiyotake",
+    "osm_node_id": 265848402
+  },
+  "湯平": {
+    "coordinate": [
+      131.3539481,
+      33.1974758
+    ],
+    "name": "Yunohira",
+    "osm_node_id": 265882060
+  },
+  "熊本": {
+    "coordinate": [
+      130.6889738,
+      32.7903174
+    ],
+    "name": "Kumamoto",
+    "osm_node_id": 3667500999
+  },
+  "田主丸": {
+    "coordinate": [
+      130.6921548,
+      33.3387098
+    ],
+    "name": "Tanushimaru",
+    "osm_node_id": 8635352221
+  },
+  "田野": {
+    "coordinate": [
+      131.3049544,
+      31.8378604
+    ],
+    "name": "Tano",
+    "osm_node_id": 265848751
+  },
+  "由布院": {
+    "coordinate": [
+      131.354928,
+      33.2624864
+    ],
+    "name": "Yufuin",
+    "osm_node_id": 10895821662
+  },
+  "直方": {
+    "coordinate": [
+      130.7242286,
+      33.748639
+    ],
+    "name": "Nōgata",
+    "osm_node_id": 5729556005
+  },
+  "福間": {
+    "coordinate": [
+      130.4869379,
+      33.7634675
+    ],
+    "name": "Fukuma",
+    "osm_node_id": 7796943975
+  },
+  "立野": {
+    "coordinate": [
+      130.9655332,
+      32.877493
+    ],
+    "name": "Tateno",
+    "osm_node_id": 265863392
+  },
+  "筑後吉井": {
+    "coordinate": [
+      130.7525715,
+      33.3409036
+    ],
+    "name": "Chikugo-Yoshii",
+    "osm_node_id": 8632186945
+  },
+  "緒方": {
+    "coordinate": [
+      131.4768219,
+      32.9710455
+    ],
+    "name": "Ogata",
+    "osm_node_id": 13464548980
+  },
+  "肥後大津": {
+    "coordinate": [
+      130.8662203,
+      32.8775132
+    ],
+    "name": "Higo-Ōzu",
+    "osm_node_id": 265859272
+  },
+  "臼杵": {
+    "coordinate": [
+      131.807899,
+      33.1186021
+    ],
+    "name": "Usuki",
+    "osm_node_id": 7005135171
+  },
+  "行橋": {
+    "coordinate": [
+      130.9701293,
+      33.7287056
+    ],
+    "name": "Yukuhashi",
+    "osm_node_id": 265844537
+  },
+  "西都城": {
+    "coordinate": [
+      131.0569811,
+      31.723521
+    ],
+    "name": "Nishi-Miyakonojō",
+    "osm_node_id": 265848070
+  },
+  "豊後中村": {
+    "coordinate": [
+      131.2072943,
+      33.2259262
+    ],
+    "name": "Bungo-Nakamura",
+    "osm_node_id": 8671831862
+  },
+  "豊後森": {
+    "coordinate": [
+      131.1557606,
+      33.2826135
+    ],
+    "name": "Bungo-Mori",
+    "osm_node_id": 265880299
+  },
+  "豊後竹田": {
+    "coordinate": [
+      131.3899854,
+      32.9709138
+    ],
+    "name": "Bungo-Taketa",
+    "osm_node_id": 13464548978
+  },
+  "豊後荻": {
+    "coordinate": [
+      131.2978569,
+      32.9267212
+    ],
+    "name": "Bungo-Ogi",
+    "osm_node_id": 13464548967
+  },
+  "赤間": {
+    "coordinate": [
+      130.5695947,
+      33.8082939
+    ],
+    "name": "Akama",
+    "osm_node_id": 2121373004
+  },
+  "都城": {
+    "coordinate": [
+      131.0744458,
+      31.7365393
+    ],
+    "name": "Miyakonojō",
+    "osm_node_id": 265854233
+  },
+  "都農": {
+    "coordinate": [
+      131.5683111,
+      32.2509798
+    ],
+    "name": "Tsuno",
+    "osm_node_id": 265846628
+  },
+  "重富": {
+    "coordinate": [
+      130.6144165,
+      31.703164
+    ],
+    "name": "Shigetomi",
+    "osm_node_id": 265849773
+  },
+  "門司": {
+    "coordinate": [
+      130.9329208,
+      33.9045155
+    ],
+    "name": "Moji",
+    "osm_node_id": 6060489260
+  },
+  "門司港": {
+    "coordinate": [
+      130.9612571,
+      33.9448819
+    ],
+    "name": "Mojikō",
+    "osm_node_id": 5943229344
+  },
+  "門川": {
+    "coordinate": [
+      131.6539771,
+      32.477329
+    ],
+    "name": "Kadogawa",
+    "osm_node_id": 265846620
+  },
+  "阿蘇": {
+    "coordinate": [
+      131.0800572,
+      32.9374013
+    ],
+    "name": "Aso",
+    "osm_node_id": 265861915
+  },
+  "隼人": {
+    "coordinate": [
+      130.7402683,
+      31.743887
+    ],
+    "name": "Hayato",
+    "osm_node_id": 265848530
+  },
+  "霧島神宮": {
+    "coordinate": [
+      130.8365808,
+      31.8186831
+    ],
+    "name": "Kirishima-Jingu",
+    "osm_node_id": 265848020
+  },
+  "飯塚": {
+    "coordinate": [
+      130.6895265,
+      33.6286803
+    ],
+    "name": "Iizuka",
+    "osm_node_id": 6050890025
+  },
+  "香椎": {
+    "coordinate": [
+      130.4440389,
+      33.6596175
+    ],
+    "name": "Kashii",
+    "osm_node_id": 7736891454
+  },
+  "高鍋": {
+    "coordinate": [
+      131.5336421,
+      32.1221502
+    ],
+    "name": "Takanabe",
+    "osm_node_id": 265845325
+  },
+  "鳥栖": {
+    "coordinate": [
+      130.5198828,
+      33.3739136
+    ],
+    "name": "Tosu",
+    "osm_node_id": 7839126316
+  },
+  "鶴崎": {
+    "coordinate": [
+      131.6869622,
+      33.2427592
+    ],
+    "name": "Tsurusaki",
+    "osm_node_id": 7096755047
+  },
+  "鹿児島": {
+    "coordinate": [
+      130.5640944,
+      31.6021426
+    ],
+    "name": "Kagoshima",
+    "osm_node_id": 6050995341
+  },
+  "鹿児島中央": {
+    "coordinate": [
+      130.5417909,
+      31.5837134
+    ],
+    "name": "Kagoshima-Chūō",
+    "osm_node_id": 5603040079
+  },
+  "黒崎": {
+    "coordinate": [
+      130.7662431,
+      33.8670036
+    ],
+    "name": "Kurosaki",
+    "osm_node_id": 5001727892
+  }
+}

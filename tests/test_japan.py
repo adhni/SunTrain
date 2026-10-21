@@ -98,26 +98,42 @@ def test_nozomi_through_journey_retains_printed_times_and_distinct_sendai_statio
     assert 38 < stations["仙台 Sendai"]["lat"] < 39
 
 
-def test_japan_reuses_only_limited_express_from_tokyo_without_mutating_tokyo():
+def test_japan_combines_kyushu_and_reused_tokyo_limited_express_without_mutating_tokyo():
     tokyo = replay.get_replay_day("2026-10-20", "tokyo")
     original = {s["id"] for s in tokyo["services"]}
     shinkansen = replay.get_replay_day(DAY, "japan", modes=["train"])
     limited = replay.get_replay_day(DAY, "japan", modes=["limited_express"])
     combined = replay.get_replay_day(DAY, "japan")
     assert len(shinkansen["services"]) == 927
-    assert len(limited["services"]) == 527
-    assert len(combined["services"]) == 1454
-    assert all(s["mode"] == "limited_express" and "Toll Limited Express" in
-               limited["transit_patterns"][s["pattern"]]["destination"] for s in limited["services"])
+    assert len(limited["services"]) == 752
+    assert len(combined["services"]) == 1679
+    for service in limited["services"]:
+        pattern = limited["transit_patterns"][service["pattern"]]
+        assert service["mode"] == "limited_express"
+        assert pattern["operator"] in {"JR East", "JR Kyushu"}
+        if pattern["operator"] == "JR East":
+            assert "Toll Limited Express" in pattern["destination"]
+            assert service["id"].startswith("jp-tokyo:")
+        else:
+            assert service["id"].startswith("jp-kyushu:")
     assert combined["schedule"]["display_date_mapping"] == {DAY: "2026-10-20"}
+    assert {m["source_date"] for m in combined["schedule"]["source_date_mappings"]} == {"2026-03-17", "2026-10-20"}
+    assert all(m["display_date"] == DAY for m in combined["schedule"]["source_date_mappings"])
+    assert len({s["id"] for s in combined["services"]}) == 1679
     assert datetime.fromtimestamp(combined["initial"], ZoneInfo("Asia/Tokyo")).strftime("%Y-%m-%d %H:%M") == DAY + " 08:00"
     assert original == {s["id"] for s in replay.get_replay_day("2026-10-20", "tokyo")["services"]}
 
 
-def test_limited_express_only_uses_existing_tokyo_file_when_shinkansen_is_unavailable(monkeypatch, tmp_path):
+def test_limited_express_only_loads_tokyo_and_kyushu_when_shinkansen_is_unavailable(monkeypatch, tmp_path):
     monkeypatch.setenv("SUNTRAIN_JAPAN_REFERENCE", str(tmp_path / "missing.gz"))
     info = descriptor(DAY, "japan", ["limited_express"])
     assert info["modes"] == ["limited_express"]
     files = replay.rail_reference_files("japan", DAY, ["limited_express"])
     assert files[0][1] == str(replay.TOKYO_PATH)
-    assert len(replay.get_replay_day(DAY, "japan", modes=["limited_express"])["services"]) == 527
+    assert files[1][1] == str(replay.JAPAN_LIMITED_PATH)
+    assert len(replay.get_replay_day(DAY, "japan", modes=["limited_express"])["services"]) == 752
+
+
+def test_shinkansen_only_does_not_open_the_unselected_kyushu_reference(monkeypatch, tmp_path):
+    monkeypatch.setenv("SUNTRAIN_JAPAN_LIMITED_EXPRESS_REFERENCE", str(tmp_path / "missing.gz"))
+    assert len(replay.get_replay_day(DAY, "japan", modes=["train"])["services"]) == 927

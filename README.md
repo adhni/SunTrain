@@ -4,7 +4,7 @@ Historical transport replay across Australia, Austria, Belgium, Canada, France, 
 
 ## Japan intercity pilot
 
-Choose **Japan** for **10 March 2026**: **927 regular Shinkansen services** across the ten operating corridors, including Akita, Yamagata, Hokkaidō and Nishi-Kyūshū. Undated extra trains are excluded. The **Limited express · JR East only** option reuses **527 journey sections** from Tokyo's October snapshot by weekday, without storing them again. **Nationwide conventional intercity and overnight coverage is incomplete.** Tokyo retains its separate full rail/subway view.
+Choose **Japan** for **10 March 2026**: **927 regular Shinkansen services** across the ten operating corridors, including Akita, Yamagata, Hokkaidō and Nishi-Kyūshū. Undated extra trains are excluded. **Limited express · JR East + Kyushu** adds **225 JR Kyushu regular services** from **17 March 2026** and reuses **527 JR East journey sections** from Tokyo's **20 October 2026** snapshot by weekday, without storing Tokyo again. The combined view contains **1,679 services/sections** with each layer's source date retained. **Nationwide conventional intercity and overnight coverage is incomplete; JR West and JR Central's conventional networks are not enabled.** Tokyo retains its separate full rail/subway view.
 
 The new timetable is **333 KB gzip**, plus **790 KB** of preparation-only connected OSM railway geometry. **98.3%** of Shinkansen scheduled journey legs have mapped paths; unsupported sections stay gaps. These are community timetable snapshots, not observed train locations. See [Japan expansion notes](JAPAN_EXPANSION_NOTES.md) for source dates, scope and remaining data gaps.
 

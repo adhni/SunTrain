@@ -26,6 +26,7 @@ NYC_PATH = ROOT / "data/reference/nyc/2025-12-15.json.gz"
 SINGAPORE_PATH = ROOT / "data/reference/singapore/2026-10-05.json.gz"
 TOKYO_PATH = ROOT / "data/reference/tokyo/2026-10-20.json.gz"
 JAPAN_PATH = ROOT / "data/reference/japan/2026-03-10.json.gz"
+JAPAN_LIMITED_PATH = ROOT / "data/reference/japan/limited-express-2026-03-17.json.gz"
 SYDNEY_PATH = ROOT / "data/reference/sydney/2026-10-05.json.gz"
 ADELAIDE_PATH = ROOT / "data/reference/adelaide/2024-05-27.json.gz"
 PERTH_PATH = ROOT / "data/reference/perth/2026-10-05.json.gz"
@@ -58,7 +59,7 @@ GERMANY_REPLAY_NOTE = "Long-distance trains open first. Select Regional rail, S-
 GREAT_BRITAIN_REPLAY_NOTE = "Long-distance trains open first. Select Regional / commuter rail under Transport to add those operators. Select the London rail options to use the existing London schedules in this map. Remaining GWR/EMR local services and Caledonian Sleeper are excluded. Unsupported track sections stay gaps. No individual passenger counts."
 JAVA_REPLAY_NOTE = "Java intercity and regional trains, Bandung–Padalarang feeder and YIA/Adi Soemarmo airport trains use official timetables effective 1 February 2025. Optional F trains are excluded. Whoosh, Soekarno–Hatta airport rail and optional Jakarta networks reuse the existing Jakarta sources, matched by weekday from December 2025 (with labelled 2025/2026 operator overlays). The timeline continues through overnight arrivals. No live tracking or passenger loads."
 US_RAIL_REPLAY_NOTE = "Amtrak and Brightline open first. Regional / commuter rail and Light rail (TRAX/S-Line, DART and SPRINTER) are optional under Transport. All clocks and stop times use Eastern time, including western stations. Journeys belong to their 03:00–03:00 Eastern departure day; playback continues through multi-day arrivals. MBTA remains in Boston. Other urban networks, connecting buses and passenger loads are excluded. Unsupported railway sections remain gaps. Scheduled estimates, not live tracking."
-JAPAN_REPLAY_NOTE = "Shinkansen uses the community timetable dated 10 March 2026; undated extra trains are excluded. Limited express reuses JR East sections from Tokyo's 20 October 2026 snapshot, matched by weekday. Conventional intercity and overnight coverage outside that source is incomplete. Tokyo's full replay remains separate. Japan local time; schedule estimates, no live positions or passenger loads. Unsupported railway sections stay gaps."
+JAPAN_REPLAY_NOTE = "Shinkansen: 10 March 2026 community timetable. Limited express combines JR Kyushu's 17 March 2026 regular-service snapshot and JR East sections from Tokyo's 20 October 2026 snapshot, matched by weekday. These layers retain their own source dates. Kyushu sightseeing calendars and footnote-extended services are excluded. JR West / JR Central conventional intercity and overnight coverage remains incomplete. Japan local time; schedule estimates, no live positions or passenger loads. Unsupported railway sections stay gaps."
 
 
 def prepared_path(city):
@@ -123,6 +124,9 @@ def rail_reference_files(city, business_date, modes=None):
     if city == "java" and "train" in selected:
         path = prepared_path("jakarta")
         files.append(("jakarta_train", str(path), path.stat().st_mtime_ns))
+    if city == "japan" and "limited_express" in selected:
+        path = Path(os.getenv("SUNTRAIN_JAPAN_LIMITED_EXPRESS_REFERENCE", str(JAPAN_LIMITED_PATH)))
+        files.append(("japan_limited_express", str(path), path.stat().st_mtime_ns))
     return tuple(files)
 
 
@@ -250,12 +254,15 @@ def _get_germany_day(business_date, files, city="germany"):
     grouped = {}
     for mode, path, _ in files:
         if mode != "train":
-            grouped.setdefault(path, []).append("train" if mode == "jakarta_train" else mode)
+            grouped.setdefault(path, []).append(
+                "train" if mode == "jakarta_train" else "limited_express" if mode == "japan_limited_express" else mode)
     display_date_mapping = {}
+    source_date_mappings = []
     for path, selected in grouped.items():
         with gzip.open(path, "rb") as stream:
             reference = transit.load_reference(stream)
-        if city == "japan":
+        tokyo_overlay = city == "japan" and path == str(prepared_path("tokyo"))
+        if tokyo_overlay:
             # Reuse the existing source's explicitly labelled limited-express
             # sections only. A rapid/local train is not an intercity service.
             patterns = {key: {**p, "mode": "limited_express", "category": "Limited express"}
@@ -270,7 +277,10 @@ def _get_germany_day(business_date, files, city="germany"):
             source_day = next(day for day in sorted(reference["days"]) if date.fromisoformat(day).weekday() == target.weekday())
             reference["days"] = {business_date: reference["days"][source_day]}
             reference["metadata"] = {**reference["metadata"], "display_date_mapping": {business_date: source_day}}
-            display_date_mapping[business_date] = source_day
+            display_date_mapping.setdefault(business_date, source_day)
+            if city == "japan":
+                source_date_mappings.append({"source_url": reference["metadata"]["source_url"],
+                    "display_date": business_date, "source_date": source_day})
         previous_count = len(payload["services"])
         transit.append_reference(payload, reference, consume=True, modes=tuple(selected))
         schedules.append(payload.pop("transit"))
@@ -283,7 +293,7 @@ def _get_germany_day(business_date, files, city="germany"):
             elif city == "us_rail":
                 prefix = "us-light-rail" if mode == "light_rail" else "us-commuter"
             elif city == "japan":
-                prefix = "jp-tokyo"
+                prefix = "jp-tokyo" if tokyo_overlay else "jp-kyushu"
             else:
                 prefix = "gb-london" if mode in {"subway", "light_rail", "commuter_rail"} else "gb-rv"
             service["id"] = f"{prefix}:{mode}:" + service["id"]
@@ -305,6 +315,8 @@ def _get_germany_day(business_date, files, city="germany"):
         "source_url": "https://gtfs.de/en/feeds/" if city == "germany" else schedules[0]["source_url"],
         "additional_geometry_sources": geometry_sources[1:],
         "replay_note": note}
+    if source_date_mappings:
+        payload["schedule"]["source_date_mappings"] = source_date_mappings
     if city in {"java", "us_rail", "japan"}:
         if display_date_mapping:
             payload["schedule"]["display_date_mapping"] = display_date_mapping

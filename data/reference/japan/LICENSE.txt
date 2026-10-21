@@ -43,3 +43,25 @@ SunTrain selects printed regular services, deduplicates overlapping timetable
 sections and matches stops to connected railway ways. It uses no official
 logos, reservation data, proprietary map tiles or live-status endpoints.
 The existing Tokyo reference has its own notice and is reused without copying.
+
+JR KYUSHU LIMITED EXPRESS ADDITION
+
+limited-express-2026-03-17.json.gz derives selected factual stop clocks from
+Kyushu Railway Company / JR Kyushu's published operator timetable, valid
+14 March 2026 to 28 February 2027. Original source rights are retained;
+the Shinkansen community MIT licence above does not apply to this publication.
+Source: https://www.jrkyushu.co.jp/english/pdf/timetable_20260314_20270228.pdf
+Archive: https://web.archive.org/web/20260307062937id_/https://www.jrkyushu.co.jp/english/pdf/timetable_20260314_20270228.pdf
+SunTrain selected regular services, excluded unverified sightseeing calendars
+and footnote-extended journeys, merged overlapping sections, normalized names,
+mapped railway paths and compacted schedules. No open operator licence is
+asserted. The date mapping into the national view retains this source date.
+
+Kyushu railway paths, station catalogue and preparation graph:
+Copyright OpenStreetMap contributors, Open Database Licence (ODbL) 1.0.
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+Dated source: https://download.geofabrik.de/asia/japan/kyushu-261020.osm.pbf
+The derived database is kyushu-tracks-2026-10-22.json.gz, prepared October 22
+from the October 20 extract. Station seed API sources and their hashes are
+preserved in data/sources/japan_kyushu_geometry.json.

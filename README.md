@@ -1,6 +1,18 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Luxembourg, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Japan intercity pilot
+
+Choose **Japan** for **10 March 2026**: **927 regular Shinkansen services** across the ten operating corridors, including Akita, Yamagata, Hokkaidō and Nishi-Kyūshū. Undated extra trains are excluded. **Limited express · JR East + Kyushu** adds **225 JR Kyushu regular services** from **17 March 2026** and reuses **527 JR East journey sections** from Tokyo's **20 October 2026** snapshot by weekday, without storing Tokyo again. The combined view contains **1,679 services/sections** with each layer's source date retained. **Nationwide conventional intercity and overnight coverage is incomplete; JR West and JR Central's conventional networks are not enabled.** Tokyo retains its separate full rail/subway view.
+
+The new timetable is **333 KB gzip**, plus **790 KB** of preparation-only connected OSM railway geometry. **98.3%** of Shinkansen scheduled journey legs have mapped paths; unsupported sections stay gaps. These are community timetable snapshots, not observed train locations. See [Japan expansion notes](JAPAN_EXPANSION_NOTES.md) for source dates, scope and remaining data gaps.
+
+## Tokyo rail and subway pilot
+
+Choose **Tokyo** for **20 October 2026**: **39,346 scheduled journey sections**, comprising **9,998 JR East**, **21,874 private railway** and **7,474 subway sections**. Private railways include **Tokyu, Keio, Keikyu, Odakyu, Seibu, Tobu, Keisei and Sotetsu**; subways include all nine Tokyo Metro and four Toei Subway lines, including the Marunouchi branch. Trains and subway open together; Transport and Operator filters focus a network. This uses a **community timetable snapshot**, not an official historical archive. Other operators, trams, Toei Nippori-Toneri and Shinkansen are excluded. Existing playback, line colours, filters, service details and Overview apply, using Tokyo local time.
+
+The compact reference is **2.20 MB gzip** across **122 route variants**. Railway shapes retain their native stop distances, including repeated Yamanote and Ōedo loop stops, and their original edges are checked against the converter's railway graph. No new API key is needed for this community source. See [Tokyo expansion notes](TOKYO_EXPANSION_NOTES.md) for dates, provenance, licensing and the separate restrictions on official ODPT data.
 
 ## Jakarta rail and busway
 

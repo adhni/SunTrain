@@ -161,6 +161,16 @@ Sources are SHA-256 pinned and cached under `.cache/us-rail/`. Compact reference
 
 Source attribution and links to the [WMATA Transit Data Terms of Use](https://developer.wmata.com/license) and [BART Developer License Agreement](https://www.bart.gov/schedules/developers/developer-license-agreement) appear beside the map. SunTrain is independent of the operators and uses no official logos or map artwork. See [DC and Bay Area expansion notes](DC_BAY_AREA_EXPANSION_NOTES.md) for snapshots, geometry checks, known gaps and future extensions.
 
+## United States intercity trains
+
+Select **United States** for Amtrak nationwide and Brightline Florida, **12–18 October 2026**. The intercity week contains 2,309 scheduled departures in about 2.48 MB. Connecting buses and incidental commuter services in the Amtrak feed are excluded. All times use **Eastern time**, including western stations; playback continues through multi-day arrivals and stop details include dates. Unsupported source geometry remains gaps. Alaska Railroad has a validated older timetable but awaits verified railway geometry.
+
+Select **Regional / commuter rail** under Transport to add LIRR, Metro-North, NJ Transit, SEPTA, MARC, VRE, Metra, South Shore Line, Caltrain, Metrolink, ACE, COASTER, Sounder, SMART, Tri-Rail, SunRail, DART's TRE/Silver Line, Rail Runner, FrontRunner and TEXRail. These use the same October week, with native time zones converted to Eastern time. **MBTA stays in Boston and is not duplicated.** The optional bundle adds about **1.18 MB** on disk and is opened only when selected. Rebuild it with `./.venv/bin/python scripts/prepare_us_commuter_replay.py`; see [commuter expansion notes](US_COMMUTER_EXPANSION_NOTES.md).
+
+**Light rail: TRAX / DART / SPRINTER** adds Utah's TRAX Blue/Red/Green and S-Line, DART's four light rail lines, and North County San Diego's SPRINTER for the same week. This separate optional bundle is about **111 KB**, with source colours and **852–1,195 departures per day**. Rebuild with `./.venv/bin/python scripts/prepare_us_light_rail.py`. The nine routes reuse the existing pinned UTA/DART/NCTD feeds; see the [light rail notes](US_COMMUTER_EXPANSION_NOTES.md#trax-dart-light-rail-and-sprinter-follow-up).
+
+Rebuild with `./.venv/bin/python scripts/prepare_american_replay.py`. See [US railway expansion notes](US_RAIL_EXPANSION_NOTES.md) for pinned downloads, time-zone handling, geometry gaps, source rights and Alaska follow-up.
+
 ## Additional Australian cities
 
 Choose the city in **Location**. These railway additions reuse route/operator/direction/station filters, scheduled movement, route colours, local clocks, fullscreen, themes and all playback speeds.

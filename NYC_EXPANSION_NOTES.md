@@ -36,6 +36,8 @@ These supplied datasets cover 2024 and do not match this replay's 2025–2026 pe
 
 ## Other NYC networks
 
+**Commuter follow-up:** LIRR, Metro-North and NJ Transit rail are now available in **United States → Regional / commuter rail**, for **12–18 October 2026**. They use their own feeds and are not duplicated into this older NYC Subway/SIR bundle. See [US commuter notes](US_COMMUTER_EXPANSION_NOTES.md). The original source-audit table below records the earlier investigation; MTA buses remain future scope.
+
 | Network | Starting source | Follow-up issues |
 | --- | --- | --- |
 | Staten Island Railway | **Implemented** from `SI` / route type 2 in the same pinned MTA ZIP. | All 35 days have scheduled services, no omissions or geometry gaps. Subway occurrences remain unchanged. Separate Transport filter; St George–Tottenville paths retained. |
@@ -43,7 +45,7 @@ These supplied datasets cover 2024 and do not match this replay's 2025–2026 pe
 | Metro-North | [Official current GTFS](https://rrgtfsfeeds.s3.amazonaws.com/gtfsmnr.zip), linked by MTA. | Historical archives and geometry must be checked. MTA states Port Jervis and Pascack Valley schedules are in NJ TRANSIT GTFS, so the MTA ZIP alone does not imply complete coverage. |
 | MTA buses | [MTA developer page](https://www.mta.info/developers) lists Bronx (`gtfs_bx.zip`), Brooklyn, Manhattan, Queens, Staten Island and MTA Bus Company (`gtfs_busco.zip`) packages on `rrgtfsfeeds.s3.amazonaws.com`. | Archive all needed packages for one period; borough/operator coverage overlaps. Preserve feed namespaces, prevent duplicate trips and audit calendar boundaries and route changes. Quarterly regular schedules omit most temporary detours. Choose MTA/NYC bus colours rather than Melbourne orange. |
 
-LIRR, Metro-North and MTA buses remain future additions. Staten Island Railway is implemented.
+LIRR and Metro-North are implemented in the separate United States commuter layer. MTA buses remain a future addition. Staten Island Railway is implemented in NYC.
 
 ## Data terms and validation
 

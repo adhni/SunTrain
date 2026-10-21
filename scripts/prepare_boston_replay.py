@@ -42,7 +42,7 @@ def service_zero(day):
     return int(datetime.combine(day, time(12), ZONE).timestamp()) - 12 * 3600
 
 
-def project_stops(points, stops, tolerance=150):
+def project_stops(points, stops, tolerance=150, *, minimum_position=0):
     """Match the complete ordered stop sequence to one trip-specific shape.
 
     MBTA stop_times has no shape distance anchors. Keep all nearby local minima,
@@ -65,6 +65,8 @@ def project_stops(points, stops, tolerance=150):
         candidates = []
         for index in indices:
             position = float(index + fractions[index])
+            if position < minimum_position:
+                continue
             if candidates and abs(position - candidates[-1][0]) < 1e-7:
                 continue
             if stop_index == 0:

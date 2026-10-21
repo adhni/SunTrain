@@ -1,0 +1,393 @@
+{
+  "lirr": {
+    "name": "LIRR",
+    "timezone": "America/New_York",
+    "agency_ids": [
+      "LI"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-507/mdb-507-202610100010/mdb-507-202610100010.zip",
+    "sha256": "06aaaccc4b7fa936380dee72c16240d765f7e3ed226b611c2bb14e1d88c7ba96",
+    "captured": "2026-10-10",
+    "published": "",
+    "source_url": "http://web.mta.info/developers/data/lirr/google_transit.zip",
+    "license": "MTA data feed terms",
+    "license_url": "https://www.mta.info/developers/terms-and-conditions"
+  },
+  "metro_north": {
+    "name": "Metro-North",
+    "timezone": "America/New_York",
+    "agency_ids": [
+      "1"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-524/mdb-524-202610100153/mdb-524-202610100153.zip",
+    "sha256": "00688a9a40a26ca9fea165273db3abae9855c6706c72afa8dc279c0466bbcf0e",
+    "captured": "2026-10-10",
+    "published": "",
+    "source_url": "http://web.mta.info/developers/data/mnr/google_transit.zip",
+    "license": "MTA data feed terms",
+    "license_url": "https://www.mta.info/developers/terms-and-conditions"
+  },
+  "nj_transit": {
+    "name": "NJ Transit",
+    "timezone": "America/New_York",
+    "agency_ids": [
+      "NJT"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-509/mdb-509-202609180002/mdb-509-202609180002.zip",
+    "sha256": "0b0c31986a080e183955b3fe96bc537cf3beafceaf5587605aa47fe1938f975d",
+    "captured": "2026-09-18",
+    "published": "",
+    "source_url": "https://www.njtransit.com/rail_data.zip",
+    "license": "NJ Transit published-data terms; operator rights retained",
+    "license_url": "https://www.njtransit.com/developer-tools"
+  },
+  "septa": {
+    "name": "SEPTA Regional Rail",
+    "timezone": "America/New_York",
+    "agency_ids": [
+      "SEPTA"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-503/mdb-503-202610070132/mdb-503-202610070132.zip",
+    "sha256": "c908d0f0e8098bc625cbfa095d631f645cca549a76a6453af9a3b528c7b31961",
+    "captured": "2026-10-07",
+    "published": "",
+    "source_url": "https://www3.septa.org/developer/google_rail.zip",
+    "license": "SEPTA Regional Rail published-data terms; operator rights retained",
+    "license_url": "https://www3.septa.org/developer/"
+  },
+  "marc": {
+    "name": "MARC",
+    "timezone": "America/New_York",
+    "agency_ids": [
+      "30034"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-468/mdb-468-202609280002/mdb-468-202609280002.zip",
+    "sha256": "e0d7d70270938ebfe2adcbe2fe779fbaf17c41a7c1a27a00fc72ba898e288ebc",
+    "captured": "2026-09-28",
+    "published": "",
+    "source_url": "https://mdotmta-gtfs.s3.amazonaws.com/mdotmta_gtfs_marc.zip",
+    "license": "MARC published-data terms; operator rights retained",
+    "license_url": "https://www.mta.maryland.gov/developer-resources"
+  },
+  "vre": {
+    "name": "VRE",
+    "timezone": "America/New_York",
+    "agency_ids": [
+      "30073"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/tld-61/tld-61-202610110000/tld-61-202610110000.zip",
+    "sha256": "dedaf85f0339017c64969ee1068469f0c0cbe6a73ef0f3dfe6c529daef93dfac",
+    "captured": "2026-10-11",
+    "published": "",
+    "source_url": "https://gtfs.vre.org/containercdngtfsupload/google_transit.zip",
+    "license": "VRE published-data terms; operator rights retained",
+    "license_url": "https://www.vre.org/"
+  },
+  "metra": {
+    "name": "Metra",
+    "timezone": "America/Chicago",
+    "agency_ids": [
+      "METRA"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-2854/mdb-2854-202610040138/mdb-2854-202610040138.zip",
+    "sha256": "06b6f940e9f9c38805a7acaf8582a20d42491073a200078e4a6227ff2f12926d",
+    "captured": "2026-10-04",
+    "published": "",
+    "source_url": "https://schedules.metrarail.com/gtfs/schedule.zip",
+    "license": "Metra published-data terms; operator rights retained",
+    "license_url": "https://metra.com/sites/default/files/assets/developers/gtfs_license_agreement.pdf"
+  },
+  "south_shore": {
+    "name": "South Shore Line",
+    "timezone": "America/Chicago",
+    "agency_ids": [
+      "NICTD"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-585/mdb-585-202604240015/mdb-585-202604240015.zip",
+    "sha256": "a96c8634ce69393626751f027dd444a120b9052d221a27fa2e982a4b81fda120",
+    "captured": "2026-04-24",
+    "published": "",
+    "source_url": "http://www.mysouthshoreline.com/google/google_transit.zip",
+    "license": "South Shore Line published-data terms; operator rights retained",
+    "license_url": "https://mysouthshoreline.com/"
+  },
+  "caltrain": {
+    "name": "Caltrain",
+    "timezone": "America/Los_Angeles",
+    "agency_ids": [
+      "1000"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-54/mdb-54-202608290127/mdb-54-202608290127.zip",
+    "sha256": "71c80e46edd526e9ebe123be968145b4ccd505f4e9fa012a521e31c7ef311578",
+    "captured": "2026-08-29",
+    "published": "",
+    "source_url": "http://data.trilliumtransit.com/gtfs/caltrain-ca-us/caltrain-ca-us.zip",
+    "license": "Caltrain published-data terms; operator rights retained",
+    "license_url": "https://www.caltrain.com/developer-resources"
+  },
+  "metrolink": {
+    "name": "Metrolink",
+    "timezone": "America/Los_Angeles",
+    "agency_ids": [
+      "Metrolink"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-96/mdb-96-202605230122/mdb-96-202605230122.zip",
+    "sha256": "d793a08b962f168f33c0e108bc41bf61b9b619b6e4ef72289a9828a28d97932b",
+    "captured": "2026-05-23",
+    "published": "",
+    "source_url": "https://metrolinktrains.com/globalassets/about/gtfs/gtfs.zip",
+    "license": "Metrolink published-data terms; operator rights retained",
+    "license_url": "https://metrolinktrains.com/about/gtfs/",
+    "route_shapes": {
+      "91 Line": [
+        "91in",
+        "91out"
+      ],
+      "Antelope Valley Line": [
+        "AVin",
+        "AVout"
+      ],
+      "Inland Emp.-Orange Co. Line": [
+        "IEOCin",
+        "IEOCout"
+      ],
+      "Orange County Line": [
+        "OCin",
+        "OCout"
+      ],
+      "Riverside Line": [
+        "RIVERin",
+        "RIVERout"
+      ],
+      "San Bernardino Line": [
+        "SBin",
+        "SBout"
+      ],
+      "Ventura County Line": [
+        "VTin",
+        "VTout"
+      ]
+    }
+  },
+  "ace": {
+    "name": "ACE",
+    "timezone": "America/Los_Angeles",
+    "agency_ids": [
+      "CE"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-2684/mdb-2684-202610100007/mdb-2684-202610100007.zip",
+    "sha256": "d2041261dca7e9f54771636eae5931ff709db898fe30d569afd616f86da80fd0",
+    "captured": "2026-10-10",
+    "published": "",
+    "source_url": "http://api.511.org/transit/datafeeds?operator_id=CE",
+    "license": "511 Transit Data Licence",
+    "license_url": "https://511.org/sites/default/files/pdfs/511_Data_Agreement_Final.pdf"
+  },
+  "coaster": {
+    "name": "COASTER",
+    "timezone": "America/Los_Angeles",
+    "agency_ids": [
+      "NCTD"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://lfportal.nctd.org/staticGTFS/google_transit.zip",
+    "sha256": "462de20a0e81ace3da864bdb9702117bd8434dd53553915653289ba5eec53173",
+    "captured": "2026-10-21",
+    "published": "",
+    "source_url": "https://lfportal.nctd.org/staticGTFS/google_transit.zip",
+    "license": "COASTER published-data terms; operator rights retained",
+    "license_url": "https://gonctd.com/"
+  },
+  "sounder": {
+    "name": "Sounder",
+    "timezone": "America/Los_Angeles",
+    "agency_ids": [
+      "40"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-268/mdb-268-202610060015/mdb-268-202610060015.zip",
+    "sha256": "11d7d0460ddcf21513a9442c1f12145d50df0b051dbd6a7e4c1e120738ad44e4",
+    "captured": "2026-10-06",
+    "published": "",
+    "source_url": "https://gtfs.sound.obaweb.org/prod/40_gtfs.zip",
+    "license": "Sounder published-data terms; operator rights retained",
+    "license_url": "https://www.soundtransit.org/help-contacts/business-information/open-transit-data-otd/transit-data-terms-use"
+  },
+  "smart": {
+    "name": "SMART",
+    "timezone": "America/Los_Angeles",
+    "agency_ids": [
+      "SA"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-3222/mdb-3222-202610060113/mdb-3222-202610060113.zip",
+    "sha256": "f296aec1e5c032df7252171250771f625e00bea1c1adae11b43f5b0cefef3005",
+    "captured": "2026-10-06",
+    "published": "",
+    "source_url": "http://api.511.org/transit/datafeeds?operator_id=SA",
+    "license": "511 Transit Data Licence",
+    "license_url": "https://511.org/sites/default/files/pdfs/511_Data_Agreement_Final.pdf"
+  },
+  "tri_rail": {
+    "name": "Tri-Rail",
+    "timezone": "America/New_York",
+    "agency_ids": [
+      "SFRTA"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://gtfs.tri-rail.com/gtfs.zip",
+    "sha256": "e27b9018c46fcea487a1e375164eac5cbd73187c05a74fe292e1b416cbd6eb9c",
+    "captured": "2026-10-21",
+    "published": "",
+    "source_url": "https://gtfs.tri-rail.com/gtfs.zip",
+    "license": "Tri-Rail published-data terms; operator rights retained",
+    "license_url": "https://www.tri-rail.com/"
+  },
+  "sunrail": {
+    "name": "SunRail",
+    "timezone": "America/New_York",
+    "agency_ids": [
+      "FDOT"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-626/mdb-626-202609290129/mdb-626-202609290129.zip",
+    "sha256": "7f8b62c9d356c0092399e7404f22db17ccc2406571d7788628f43e8c00202fd9",
+    "captured": "2026-09-29",
+    "published": "",
+    "source_url": "https://corporate.sunrail.com/gtfs/google_transit.zip",
+    "license": "SunRail published-data terms; operator rights retained",
+    "license_url": "https://corporate.sunrail.com/about-sunrail/gtfs-data-download/"
+  },
+  "dart": {
+    "name": "DART commuter rail",
+    "timezone": "America/Chicago",
+    "agency_ids": [
+      "60056"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-152/mdb-152-202610110012/mdb-152-202610110012.zip",
+    "sha256": "cc955a6a05ee32c1fdb908672c2f01e93bebae8aa75d400549292d749ddaeaf7",
+    "captured": "2026-10-11",
+    "published": "",
+    "source_url": "http://www.dart.org/transitdata/latest/google_transit.zip",
+    "license": "DART commuter rail published-data terms; operator rights retained",
+    "license_url": "https://www.dart.org/transitdata/legalnotices.asp",
+    "archives": [
+      {
+        "url": "https://files.mobilitydatabase.org/mdb-152/mdb-152-202610110012/mdb-152-202610110012.zip",
+        "sha256": "cc955a6a05ee32c1fdb908672c2f01e93bebae8aa75d400549292d749ddaeaf7",
+        "captured": "2026-10-11",
+        "published": "",
+        "start": "2026-10-11",
+        "end": "2026-10-18"
+      },
+      {
+        "url": "https://files.mobilitydatabase.org/mdb-152/mdb-152-202610150052/mdb-152-202610150052.zip",
+        "sha256": "355663359fb7fe8b831c6aaacbeb62d567e01c94c5526755de3cac97b14515ef",
+        "start": "2026-10-19",
+        "end": "2026-10-19",
+        "captured": "2026-10-15",
+        "published": ""
+      }
+    ]
+  },
+  "rail_runner": {
+    "name": "Rail Runner",
+    "timezone": "America/Denver",
+    "agency_ids": [
+      "nmrr"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://mjcaction.com/MJC_GTFS_Public/nmrailrunner_google_transit.zip",
+    "sha256": "214e7406440083c2a82c56f3a93eca16fb557ea36503e52d11f8aad4c5ce7e77",
+    "captured": "2026-10-21",
+    "published": "",
+    "source_url": "https://mjcaction.com/MJC_GTFS_Public/nmrailrunner_google_transit.zip",
+    "license": "Rail Runner published-data terms; operator rights retained",
+    "license_url": "https://www.riometro.org/261/GTFS-Data"
+  },
+  "frontrunner": {
+    "name": "FrontRunner",
+    "timezone": "America/Denver",
+    "agency_ids": [
+      "80001"
+    ],
+    "route_types": [
+      "2"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-170/mdb-170-202610020142/mdb-170-202610020142.zip",
+    "sha256": "1a1d384ac3f9b539ed3b421a63f36cbe939d6507252a140e807eadd6785d0972",
+    "captured": "2026-10-02",
+    "published": "",
+    "source_url": "https://gtfsfeed.rideuta.com/GTFS.zip",
+    "license": "FrontRunner published-data terms; operator rights retained",
+    "license_url": "https://developer.rideuta.com/TermsOfUse.aspx"
+  },
+  "texrail": {
+    "name": "TEXRail",
+    "timezone": "America/Chicago",
+    "agency_ids": [
+      "Trinity Metro"
+    ],
+    "route_types": [
+      "0"
+    ],
+    "url": "https://files.mobilitydatabase.org/mdb-2890/mdb-2890-202609250003/mdb-2890-202609250003.zip",
+    "sha256": "bff258fa71da20272985fda12621d1ef648bf45bf45a7b6c322682ab48b5d3c0",
+    "captured": "2026-09-25",
+    "published": "",
+    "source_url": "https://gtfsdata.ridetm.org/gtfs/fwtatransitdata.zip",
+    "license": "TEXRail published-data terms; operator rights retained",
+    "license_url": "https://ridetrinitymetro.org/gtfs-data/",
+    "route_ids": [
+      "8398"
+    ]
+  }
+}

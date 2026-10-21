@@ -653,9 +653,10 @@
             this.setFollow(this.followSelected);
             const host = $("replay-details"); host.replaceChildren();
             const line = node("div", service.line, "replay-detail-line"); line.style.borderLeftColor = vehicleColor(service, this.day?.city);
-            host.append(line, node("h3", service.mode === "train" ? `Train ${service.number}` : service.line.split(" · ")[0]), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
+            const trainNumber = service.mode === "train" || this.day.city === "us_rail" && service.mode === "commuter_rail";
+            host.append(line, node("h3", trainNumber ? `Train ${service.number}` : service.line.split(" · ")[0]), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
                 node("p", `${service.operator === "VLine" ? "V/Line" : service.operator} · ${directionLabel(service)}`, "replay-muted"));
-            if (service.mode !== "train") host.append(node("p", `Trip ${service.number}`, "replay-muted replay-small"));
+            if (!trainNumber) host.append(node("p", `Trip ${this.day.city === "us_rail" ? service.source_trip_id || service.number : service.number}`, "replay-muted replay-small"));
             const unresolved = service.legs.filter(id => !["track", "shape"].includes(this.day.paths[id]?.quality)).length;
             if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved geometry. The route has gaps and this vehicle is hidden between those stops.`, "replay-approximate replay-small"));
             const live = node("div", undefined, "replay-service-status"); live.id = "replay-service-status"; host.append(live);
@@ -665,11 +666,17 @@
             [service.mode === "ferry" ? "Pier" : "Stop / station", "Arr.", "Dep.", "Load"].forEach(label => heading.append(node("th", label)));
             head.append(heading); table.append(head);
             const body = node("tbody");
+            const stopDate = this.day.city === "us_rail" ? new Intl.DateTimeFormat("en-AU", {
+                timeZone: this.day.timezone, day: "numeric", month: "short"}) : null;
+            const scheduledTime = timestamp => {
+                const date = new Date(timestamp * 1000);
+                return shortTime.format(date) + (stopDate ? ` · ${stopDate.format(date)}` : "");
+            };
             for (let i = 0; i < stopCount(service); i++) {
                 const stop = service.stopIds ? [stopValue(service, i, 0), stopValue(service, i, 1), stopValue(service, i, 2)] : service.stops[i];
                 const row = node("tr"); row.dataset.stopIndex = String(i);
-                row.append(node("td", this.day.stations[stop[0]].name), node("td", shortTime.format(new Date(stopTime(service, stop, 1) * 1000))),
-                    node("td", shortTime.format(new Date(stopTime(service, stop, 2) * 1000))), node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
+                row.append(node("td", this.day.stations[stop[0]].name), node("td", scheduledTime(stopTime(service, stop, 1))),
+                    node("td", scheduledTime(stopTime(service, stop, 2))), node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
                 row.title = `Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`;
                 body.append(row);
             }

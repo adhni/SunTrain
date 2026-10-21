@@ -39,7 +39,8 @@ def build_replay_panel(metadata, default_date):
         ]),
         html.Div(id="replay-filter-controls", className="replay-filters", children=[
             field("Location", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
-                  for key, value in CITIES.items()], value="melbourne", clearable=False, searchable=False)),
+                  for key, value in sorted(CITIES.items(), key=lambda item: item[1]["name"].casefold())],
+                  value="melbourne", clearable=False, searchable=True)),
             field("Date", dcc.DatePickerSingle(id="replay-date", date=default_date,
                   min_date_allowed=minimum, max_date_allowed=maximum,
                   display_format="DD MMM YYYY", first_day_of_week=1, clearable=False)),

@@ -11,8 +11,8 @@
 
     function rasterPaint() {
         return theme === "dark" ? {"raster-saturation": -1, "raster-contrast": 0.05,
-            "raster-brightness-min": 0.82, "raster-brightness-max": 0.10} :
-            {"raster-saturation": -0.85, "raster-contrast": -0.05, "raster-brightness-min": 0, "raster-brightness-max": 1};
+            "raster-brightness-min": 0.82, "raster-brightness-max": 0.10, "raster-opacity": 0.7} :
+            {"raster-saturation": -0.85, "raster-contrast": -0.05, "raster-brightness-min": 0, "raster-brightness-max": 1, "raster-opacity": 0.75};
     }
     function mapStyle() {
         return {version: 8, metadata: {"suntrain-theme": theme}, sources: {basemap: {

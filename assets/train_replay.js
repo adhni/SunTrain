@@ -263,7 +263,9 @@
                         this.graph.addSource(`replay-${id}`, {type: "geojson", data: collection([])});
                     }
                     this.graph.addLayer({id: "replay-routes", type: "line", source: "replay-routes",
-                        paint: {"line-color": ["case", ["==", ["get", "quality"], "track"], "#75978f", "#bd873d"], "line-width": 2, "line-opacity": 0.55}});
+                        paint: {"line-color": "#78908a",
+                            "line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.8, 12, 1.2, 15, 1.6],
+                            "line-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.28, 12, 0.4, 15, 0.5]}});
                     this.graph.addLayer({id: "replay-demand-glow", type: "heatmap", source: "replay-demand", layout: {visibility: "none"},
                         paint: {"heatmap-weight": ["interpolate", ["linear"], ["get", "boardings"], 0, 0, 1000, 1],
                             "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 6, 22, 10, 38, 14, 60],
@@ -275,7 +277,9 @@
                     this.graph.addLayer({id: "replay-stations", type: "circle", source: "replay-stations",
                         filter: ["in", ["get", "mode"], ["literal", ["train", "ferry"]]],
                         paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 6, 1.2, 9, 1.6, 12, 2.3, 15, 3],
-                            "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 9, 0.3, 15, 0.7], "circle-stroke-color": "white"}});
+                            "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 9, 0.3, 15, 0.7], "circle-stroke-color": "white",
+                            "circle-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.18, 9, 0.35, 12, 0.75, 15, 1],
+                            "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.18, 9, 0.35, 12, 0.75, 15, 1]}});
                     this.graph.addLayer({id: "replay-local-stops", type: "circle", source: "replay-stations", minzoom: 12,
                         filter: ["in", ["get", "mode"], ["literal", ["tram", "bus"]]],
                         paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 12, 1.3, 15, 2],
@@ -528,7 +532,7 @@
                 }
                 this.graph.setPaintProperty("replay-selected-train", "circle-stroke-color", dark ? "#f2f8fa" : "#18232d");
                 this.graph.setPaintProperty("replay-trains", "circle-stroke-color", dark ? "#d2dadd" : "#fff");
-                this.graph.setPaintProperty("replay-routes", "line-color", ["case", ["==", ["get", "quality"], "track"], dark ? "#88aea4" : "#75978f", dark ? "#edb36b" : "#bd873d"]);
+                this.graph.setPaintProperty("replay-routes", "line-color", dark ? "#789b92" : "#78908a");
             }
             this.updateLegend();
             const detail = document.querySelector(".replay-detail-line");

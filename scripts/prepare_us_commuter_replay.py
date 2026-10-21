@@ -23,8 +23,8 @@ NOTE = ('Optional US commuter and regional trains, 12–18 October 2026. All map
         'and is not duplicated. No connecting buses, subway/light rail networks, live positions or passenger loads.')
 
 
-def selected_route(key, route, agencies):
-    source = SOURCES[key]
+def selected_route(key, route, agencies, *, sources=None):
+    source = (SOURCES if sources is None else sources)[key]
     agency = route.get('agency_id') or (next(iter(agencies)) if len(agencies) == 1 else None)
     return (agency in source['agency_ids']
             and agency in agencies
@@ -32,12 +32,12 @@ def selected_route(key, route, agencies):
             and ('route_ids' not in source or route['route_id'] in source['route_ids']))
 
 
-def describe_route(key, route, trip):
-    name = SOURCES[key]['name']
+def describe_route(key, route, trip, *, sources=None, mode='commuter_rail'):
+    name = (SOURCES if sources is None else sources)[key]['name']
     label = route.get('route_long_name') or route.get('route_short_name') or route['route_id']
     if label.lower().startswith(name.lower() + ' '):
         label = label[len(name) + 1:]
-    return {'mode': 'commuter_rail', 'route_id': route['route_id'], 'operator': name,
+    return {'mode': mode, 'route_id': route['route_id'], 'operator': name,
             'line': name if label.lower() == name.lower() else name + ' · ' + label}
 
 
@@ -53,17 +53,19 @@ def geometry_factory(config):
     return factory
 
 
-def prepare(cache, output):
+def prepare(cache, output, *, sources=None, mode='commuter_rail', note=NOTE,
+            source_name='US commuter and regional historical schedules', attribution=None):
+    sources = SOURCES if sources is None else sources
     references = []
-    for key, config in SOURCES.items():
+    for key, config in sources.items():
         network_cache = cache / key
-        packed = network_cache / 'prepared.json.gz'
+        packed = network_cache / (mode + '-prepared.json.gz')
         source = {'first': FIRST, 'last': LAST, 'replay_timezone': 'America/New_York',
                   'calendar_validity': True, 'allow_empty_days': True, 'geometry_method': 'ordered_projection',
-                  'assign_by_start': ['commuter_rail'], 'source': config['name'] + ' official published GTFS',
+                  'assign_by_start': [mode], 'source': config['name'] + ' official published GTFS',
                   'geometry_source': config['name'] + ' supplied GTFS railway shapes',
                   'geometry_source_url': config['source_url'], 'geometry_license': config['license'],
-                  'geometry_license_url': config['license_url'], 'note': NOTE,
+                  'geometry_license_url': config['license_url'], 'note': note,
                   'attribution': 'Timetable and supplied railway shapes: ' + config['name']
                       + '. SunTrain selects passenger rail, compacts schedules and converts clocks to Eastern time. '
                       + ('Dated archive: MobilityDatabase. ' if 'files.mobilitydatabase.org' in config['url'] else
@@ -71,8 +73,8 @@ def prepare(cache, output):
                       + 'Operator rights and published terms apply; no endorsement.', **config}
         source['additional_shape_ids'] = [shape for identifiers in config.get('route_shapes', {}).values() for shape in identifiers]
         prepare_rail('us-' + key, source, network_cache, packed,
-                     lambda route, agencies: selected_route(key, route, agencies),
-                     lambda route, trip: describe_route(key, route, trip),
+                     lambda route, agencies: selected_route(key, route, agencies, sources=sources),
+                     lambda route, trip: describe_route(key, route, trip, sources=sources, mode=mode),
                      geometry_resolver_factory=geometry_factory(config))
         with gzip.open(packed, 'rt') as stream:
             reference = json.load(stream)
@@ -86,17 +88,17 @@ def prepare(cache, output):
                     numbers[trip['trip_id']] = value
         reference['train_numbers'] = numbers
         references.append((key, reference))
-    result = merge_references(references, source_name='US commuter and regional historical schedules', replay_note=NOTE)
-    result['metadata']['attribution'] = ('Timetable and supplied railway shapes: '
-        + ', '.join(config['name'] for config in SOURCES.values())
+    result = merge_references(references, source_name=source_name, replay_note=note)
+    result['metadata']['attribution'] = attribution or ('Timetable and supplied railway shapes: '
+        + ', '.join(config['name'] for config in sources.values())
         + '. Historical archives: MobilityDatabase; COASTER, Tri-Rail and Rail Runner: operator-published feeds. '
         'SunTrain selects rail services, shares schedules and converts clocks to Eastern time. '
         'Source-specific terms apply; SunTrain is independent of the operators.')
     result['metadata']['operator_sources'] = {
         config['name']: {k: config[k] for k in ['timezone', 'captured', 'source_url', 'license', 'license_url']}
-        for config in SOURCES.values()}
+        for config in sources.values()}
     save_reference(result, output)
-    print('US commuter daily services:', {d: len(rows) for d, rows in result['days'].items()}, flush=True)
+    print(mode, 'daily services:', {d: len(rows) for d, rows in result['days'].items()}, flush=True)
     print('Saved', output, output.stat().st_size, 'bytes', flush=True)
 
 

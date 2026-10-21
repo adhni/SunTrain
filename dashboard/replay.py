@@ -33,6 +33,7 @@ DC_PATH = ROOT / "data/reference/dc/2026-10-05.json.gz"
 SF_BAY_PATH = ROOT / "data/reference/sf_bay/2026-08-17.json.gz"
 US_RAIL_PATH = ROOT / "data/reference/us_rail/2026-10-12.json.gz"
 US_COMMUTER_PATH = ROOT / "data/reference/us_rail/commuter-2026-10-12.json.gz"
+US_LIGHT_RAIL_PATH = ROOT / "data/reference/us_rail/light-rail-2026-10-12.json.gz"
 LONDON_PATH = ROOT / "data/reference/london/2026-10-05.json.gz"
 NETHERLANDS_PATH = ROOT / "data/reference/netherlands/2026-06-01.json.gz"
 GERMANY_PATH = ROOT / "data/reference/germany/2026-06-01.json.gz"
@@ -54,7 +55,7 @@ GERMANY_REPLAY_NOTE = "Long-distance trains open first. Select Regional rail, S-
 
 GREAT_BRITAIN_REPLAY_NOTE = "Long-distance trains open first. Select Regional / commuter rail under Transport to add those operators. Select the London rail options to use the existing London schedules in this map. Remaining GWR/EMR local services and Caledonian Sleeper are excluded. Unsupported track sections stay gaps. No individual passenger counts."
 JAVA_REPLAY_NOTE = "Java intercity and regional trains, Bandung–Padalarang feeder and YIA/Adi Soemarmo airport trains use official timetables effective 1 February 2025. Optional F trains are excluded. Whoosh, Soekarno–Hatta airport rail and optional Jakarta networks reuse the existing Jakarta sources, matched by weekday from December 2025 (with labelled 2025/2026 operator overlays). The timeline continues through overnight arrivals. No live tracking or passenger loads."
-US_RAIL_REPLAY_NOTE = "Amtrak and Brightline open first; Regional / commuter rail is optional under Transport. All clocks and stop times use Eastern time, including western stations. Journeys belong to their 03:00–03:00 Eastern departure day; playback continues through multi-day arrivals. MBTA remains in Boston and is not duplicated. Connecting buses, subway/light rail networks and individual passenger loads are excluded. Unsupported railway sections remain gaps. Scheduled estimates, not live tracking."
+US_RAIL_REPLAY_NOTE = "Amtrak and Brightline open first. Regional / commuter rail and Light rail (TRAX/S-Line, DART and SPRINTER) are optional under Transport. All clocks and stop times use Eastern time, including western stations. Journeys belong to their 03:00–03:00 Eastern departure day; playback continues through multi-day arrivals. MBTA remains in Boston. Other urban networks, connecting buses and passenger loads are excluded. Unsupported railway sections remain gaps. Scheduled estimates, not live tracking."
 
 
 def prepared_path(city):
@@ -106,6 +107,8 @@ def rail_reference_files(city, business_date, modes=None):
             path = Path(os.getenv("SUNTRAIN_JAVA_REGIONAL_RAIL_REFERENCE", str(JAVA_REGIONAL_PATH)))
         elif city == "us_rail" and mode == "commuter_rail":
             path = Path(os.getenv("SUNTRAIN_US_RAIL_COMMUTER_RAIL_REFERENCE", str(US_COMMUTER_PATH)))
+        elif city == "us_rail" and mode == "light_rail":
+            path = Path(os.getenv("SUNTRAIN_US_RAIL_LIGHT_RAIL_REFERENCE", str(US_LIGHT_RAIL_PATH)))
         elif city == "java":
             path = prepared_path("jakarta")
         else:
@@ -265,7 +268,7 @@ def _get_germany_day(business_date, files, city="germany"):
             elif city == "germany":
                 prefix = "de-nv" if mode == "subway" else "de-rv"
             elif city == "us_rail":
-                prefix = "us-commuter"
+                prefix = "us-light-rail" if mode == "light_rail" else "us-commuter"
             else:
                 prefix = "gb-london" if mode in {"subway", "light_rail", "commuter_rail"} else "gb-rv"
             service["id"] = f"{prefix}:{mode}:" + service["id"]

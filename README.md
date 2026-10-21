@@ -167,6 +167,8 @@ Select **United States** for Amtrak nationwide and Brightline Florida, **12–18
 
 Select **Regional / commuter rail** under Transport to add LIRR, Metro-North, NJ Transit, SEPTA, MARC, VRE, Metra, South Shore Line, Caltrain, Metrolink, ACE, COASTER, Sounder, SMART, Tri-Rail, SunRail, DART's TRE/Silver Line, Rail Runner, FrontRunner and TEXRail. These use the same October week, with native time zones converted to Eastern time. **MBTA stays in Boston and is not duplicated.** The optional bundle adds about **1.18 MB** on disk and is opened only when selected. Rebuild it with `./.venv/bin/python scripts/prepare_us_commuter_replay.py`; see [commuter expansion notes](US_COMMUTER_EXPANSION_NOTES.md).
 
+**Light rail: TRAX / DART / SPRINTER** adds Utah's TRAX Blue/Red/Green and S-Line, DART's four light rail lines, and North County San Diego's SPRINTER for the same week. This separate optional bundle is about **111 KB**, with source colours and **852–1,195 departures per day**. Rebuild with `./.venv/bin/python scripts/prepare_us_light_rail.py`. The nine routes reuse the existing pinned UTA/DART/NCTD feeds; see the [light rail notes](US_COMMUTER_EXPANSION_NOTES.md#trax-dart-light-rail-and-sprinter-follow-up).
+
 Rebuild with `./.venv/bin/python scripts/prepare_american_replay.py`. See [US railway expansion notes](US_RAIL_EXPANSION_NOTES.md) for pinned downloads, time-zone handling, geometry gaps, source rights and Alaska follow-up.
 
 ## Additional Australian cities

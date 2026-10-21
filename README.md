@@ -2,11 +2,11 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
-## Tokyo JR East pilot
+## Tokyo rail and subway pilot
 
-Choose **Tokyo** for **20 October 2026**: **9,998 scheduled JR East journeys across 47 conventional route variants**, including Yamanote, Chūō, Keihin-Tōhoku, Saikyō and Narita Express. This first test uses a **community timetable snapshot**, not an official historical archive. Other operators and Shinkansen are excluded. Existing playback, line colours, filters, service details and Overview apply, using Tokyo local time.
+Choose **Tokyo** for **20 October 2026**: **17,472 scheduled journeys**, comprising **9,998 JR East journeys across 47 conventional route variants** and **7,474 subway journeys across all nine Tokyo Metro and four Toei Subway lines**, including the Marunouchi branch. JR East and subway open together; Transport and Operator filters focus either network. This first test uses a **community timetable snapshot**, not an official historical archive. Other operators, Toei tram/Nippori-Toneri and Shinkansen are excluded. Existing playback, line colours, filters, service details and Overview apply, using Tokyo local time.
 
-The compact reference is under **1 MB gzip**. Railway shapes retain their native stop distances, including repeated Yamanote loop stops, and their original edges are checked against the converter's railway graph. No new API key is needed for this community source. See [Tokyo expansion notes](TOKYO_EXPANSION_NOTES.md) for dates, provenance, licensing and the separate restrictions on official ODPT data.
+The compact reference is **1.09 MB gzip**. Railway shapes retain their native stop distances, including repeated Yamanote and Ōedo loop stops, and their original edges are checked against the converter's railway graph. No new API key is needed for this community source. See [Tokyo expansion notes](TOKYO_EXPANSION_NOTES.md) for dates, provenance, licensing and the separate restrictions on official ODPT data.
 
 ## Jakarta rail and busway
 

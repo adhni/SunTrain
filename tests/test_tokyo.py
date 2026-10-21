@@ -12,11 +12,16 @@ from scripts.prepare_tokyo_replay import railway_geometry, selected_route
 
 def test_jr_east_scope_excludes_other_operators_and_modes():
     route = {"route_id": "JR-East.Yamanote", "agency_id": "JR-East", "route_type": "2"}
-    agencies = {"JR-East": {}, "TokyoMetro": {}}
+    agencies = {"JR-East": {}, "TokyoMetro": {}, "Toei": {}}
     assert selected_route(route, agencies)
     for change in [{"agency_id": "TokyoMetro"}, {"route_type": "3"}, {"route_type": "1"},
                    {"route_id": "JR-Central.TokaidoShinkansen"}]:
         assert not selected_route({**route, **change}, agencies)
+    for agency, route_id in [("TokyoMetro", "TokyoMetro.Ginza"), ("TokyoMetro", "TokyoMetro.MarunouchiBranch"),
+                             ("Toei", "Toei.Oedo")]:
+        assert selected_route({"agency_id": agency, "route_id": route_id, "route_type": "1"}, agencies)
+    for route_id, kind in [("Toei.Arakawa", "0"), ("Toei.NipporiToneri", "1"), ("Toei.Bus", "3")]:
+        assert not selected_route({"agency_id": "Toei", "route_id": route_id, "route_type": kind}, agencies)
 
 
 def test_native_track_edges_keep_straight_rail_and_reject_inserted_shortcuts():
@@ -36,18 +41,19 @@ def reference():
         return json.load(stream)
 
 
-def test_snapshot_has_only_jr_east_with_compact_schedules_and_local_departure_days(reference):
+def test_snapshot_has_scoped_rail_networks_with_compact_schedules_and_local_departure_days(reference):
     assert set(reference["days"]) == {"2026-10-20"}
-    assert len(reference["days"]["2026-10-20"]) == 9998
-    assert len({p["source_route_id"] for p in reference["patterns"].values()}) == 47
+    assert len(reference["days"]["2026-10-20"]) == 17472
+    assert len({p["source_route_id"] for p in reference["patterns"].values()}) == 61
     assert not reference["metadata"]["omitted_trips"]
     assert "not official historical validity" in reference["metadata"]["calendar_basis"]
     seen = set()
     late = False
     for key, trip, offset in reference["days"]["2026-10-20"]:
         p = reference["patterns"][key]
-        assert p["operator"] == "JR East" and p["mode"] == "train"
-        assert p["source_route_id"].startswith("JR-East.")
+        agency, mode = {"JR East": ("JR-East", "train"), "Tokyo Metro": ("TokyoMetro", "subway"),
+                        "Toei Subway": ("Toei", "subway")}[p["operator"]]
+        assert p["mode"] == mode and p["source_route_id"].startswith(agency + ".")
         assert "stops" not in p
         topology = reference["stop_patterns"][p["stop_pattern"]]
         assert len(p["times"]) == 2 * len(topology["stations"])
@@ -75,13 +81,54 @@ def test_yamanote_repeated_terminal_uses_the_full_loop_and_correct_direction(ref
 
 def test_runtime_descriptor_uses_tokyo_clock_and_keeps_shared_schedules():
     info = descriptor("2026-10-20", "tokyo")
-    assert info["modes"] == ["train"]
+    assert info["modes"] == ["subway", "train"]
     with pytest.raises(ValueError, match="Date outside"):
         descriptor("2024-06-24", "tokyo")
     day = replay.get_replay_day("2026-10-20", "tokyo")
-    assert len(day["services"]) == 9998
+    assert len(day["services"]) == 17472
     assert datetime.fromtimestamp(day["initial"], ZoneInfo("Asia/Tokyo")).strftime("%Y-%m-%d %H:%M") == "2026-10-20 08:00"
     assert all("stops" not in s and "pattern" in s for s in day["services"])
     train = next(s for s in day["services"] if s["source_trip_id"] == "JR-East.Yamanote.400G.Weekday")
     assert train["number"] == "400G"
     assert day["transit_patterns"][train["pattern"]]["direction"] == "Inner loop"
+
+
+def test_all_thirteen_subway_lines_and_marunouchi_branch_keep_their_colours_and_geometry(reference):
+    colours = {
+        "TokyoMetro.Ginza": "#FF9500", "TokyoMetro.Marunouchi": "#F62E36",
+        "TokyoMetro.MarunouchiBranch": "#F62E36", "TokyoMetro.Hibiya": "#B5B5AC",
+        "TokyoMetro.Tozai": "#009BBF", "TokyoMetro.Chiyoda": "#00BB85",
+        "TokyoMetro.Yurakucho": "#C1A470", "TokyoMetro.Hanzomon": "#8F76D6",
+        "TokyoMetro.Namboku": "#00AC9B", "TokyoMetro.Fukutoshin": "#9C5E31",
+        "Toei.Asakusa": "#EC6E65", "Toei.Mita": "#006AB8",
+        "Toei.Shinjuku": "#B0BF1E", "Toei.Oedo": "#CE045B",
+    }
+    patterns = [p for p in reference["patterns"].values() if p["mode"] == "subway"]
+    assert {p["source_route_id"] for p in patterns} == set(colours)
+    for p in patterns:
+        assert p["color"] == colours[p["source_route_id"]]
+        topology = reference["stop_patterns"][p["stop_pattern"]]
+        assert all(reference["paths"][leg]["coordinates"] for leg in topology["legs"])
+    # Ōedo's lollipop has repeated Tochōmae calls: retain the long loop between
+    # them rather than snapping the second call back to the first occurrence.
+    loops = []
+    for p in patterns:
+        if p["source_route_id"] != "Toei.Oedo":
+            continue
+        topology = reference["stop_patterns"][p["stop_pattern"]]
+        stations = [reference["stations"][s]["name"] for s in topology["stations"]]
+        for i, station in enumerate(stations):
+            if station in stations[:i]:
+                start = stations.index(station)
+                loops.append(sum(reference["paths"][leg]["distances"][-1] for leg in topology["legs"][start:i]))
+    assert loops and min(loops) > 20_000
+
+
+def test_metro_only_and_jr_only_filters_preserve_shared_services():
+    metro = replay.get_replay_day("2026-10-20", "tokyo", modes=["subway"])
+    jr = replay.get_replay_day("2026-10-20", "tokyo", modes=["train"])
+    combined = replay.get_replay_day("2026-10-20", "tokyo")
+    assert len(metro["services"]) == 7474 and len(jr["services"]) == 9998
+    assert all(metro["transit_patterns"][s["pattern"]]["operator"] in {"Tokyo Metro", "Toei Subway"}
+               for s in metro["services"])
+    assert {s["id"] for s in combined["services"]} == {s["id"] for s in metro["services"] + jr["services"]}

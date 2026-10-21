@@ -1,4 +1,4 @@
-"""Prepare the JR East portion of a pinned community Tokyo GTFS snapshot."""
+"""Prepare JR East, Tokyo Metro and Toei Subway from pinned community GTFS."""
 from __future__ import annotations
 
 import argparse
@@ -18,20 +18,26 @@ from scripts.prepare_rail_replay import prepare as prepare_rail
 
 GRAPH_URL = "https://raw.githubusercontent.com/MKuranowski/TokyoGTFS/main/data/rail_geo.osm"
 GRAPH_SHA256 = "8809cab8a2e5eb499411c98d5285c1913ae1afebdd85ba0f02fbf89b95918bd8"
+METRO_ROUTES = {
+    "TokyoMetro.Chiyoda", "TokyoMetro.Fukutoshin", "TokyoMetro.Ginza", "TokyoMetro.Hanzomon",
+    "TokyoMetro.Hibiya", "TokyoMetro.Marunouchi", "TokyoMetro.MarunouchiBranch", "TokyoMetro.Namboku",
+    "TokyoMetro.Tozai", "TokyoMetro.Yurakucho", "Toei.Asakusa", "Toei.Mita", "Toei.Oedo", "Toei.Shinjuku",
+}
+OPERATORS = {"JR-East": "JR East", "TokyoMetro": "Tokyo Metro", "Toei": "Toei Subway"}
 
 SOURCE = {
     "first": "2026-10-20", "last": "2026-10-20", "timezone": "Asia/Tokyo",
     "url": "https://mkuran.pl/gtfs/tokyo/rail.zip",
     "sha256": "e08cae7c18915b4aede6da51bb24b01e0c308c8f4bde7dc101ca1de922bf14b2",
     "captured": "2026-10-21", "published": "", "calendar_validity": True,
-    "assign_by_start": ["train"],
+    "assign_by_start": ["train", "subway"],
     "source": "TokyoGTFS community railway conversion of Mini Tokyo 3D timetables",
     "source_url": "https://mkuran.pl/gtfs/",
     "license": "MIT (railway data, as declared by TokyoGTFS)",
     "license_url": "https://github.com/MKuranowski/TokyoGTFS#license",
     "attribution": "Schedules: Copyright (c) 2019-2025 Akihiko Kusanagi, MIT. "
                    "GTFS conversion: Mikołaj Kuranowski / TokyoGTFS. "
-                   "JR East selection and geometry filtering by SunTrain. Independent community timetable replay.",
+                   "JR East, Tokyo Metro and Toei Subway selection and geometry filtering by SunTrain. Independent community timetable replay.",
     "geometry_source": "TokyoGTFS supplied railway shapes, generated from its CC0 railway graph",
     "geometry_source_url": "https://github.com/MKuranowski/TokyoGTFS/tree/main/data",
     "geometry_license": "CC0 1.0 (source graph); MIT (published railway feed)",
@@ -39,29 +45,35 @@ SOURCE = {
     "geometry_source_date": "Retrieved 2026-10-21",
     "geometry_sha256": GRAPH_SHA256,
     "geometry_method": "native_or_projected", "geometry_quality": "shape",
-    "note": "JR East conventional trains only, 20 October 2026, from a community timetable snapshot. "
+    "note": "JR East conventional trains, all nine Tokyo Metro lines and all four Toei Subway lines, "
+            "including the Marunouchi branch, 20 October 2026, from a community timetable snapshot. "
             "Its generated calendar is not an official historical archive or a record of disruptions. "
-            "Other operators and Shinkansen are excluded. Through-running sections remain separate scheduled journeys. "
+            "Other operators, Toei tram/Nippori-Toneri and Shinkansen are excluded. Through-running sections remain separate scheduled journeys. "
             "Tokyo local time; journeys belong to their 03:00–03:00 departure day. "
             "Unsupported railway sections stay gaps. No live tracking or passenger loads.",
 }
 
 
 def selected_route(route, agencies):
-    return (route.get("agency_id") == "JR-East" and "JR-East" in agencies
-            and route.get("route_type") == "2" and route.get("route_id", "").startswith("JR-East."))
+    agency, route_id = route.get("agency_id"), route.get("route_id", "")
+    if agency not in agencies or not route_id.startswith(str(agency) + "."):
+        return False
+    return ((agency == "JR-East" and route.get("route_type") == "2") or
+            (agency in {"TokyoMetro", "Toei"} and route.get("route_type") == "1" and route_id in METRO_ROUTES))
 
 
 def describe_route(route, trip):
     name = route["route_long_name"]
-    if " JR " in name:
-        name = "JR " + name.split(" JR ", 1)[1]
+    agency = route["agency_id"]
+    marker = {"JR-East": " JR ", "TokyoMetro": " Tokyo Metro ", "Toei": " Toei "}[agency]
+    if marker in name:
+        name = marker.strip() + " " + name.split(marker, 1)[1]
     direction = None
     if route["route_id"] == "JR-East.Yamanote":
         direction = {"0": "Outer loop", "1": "Inner loop"}.get(trip.get("direction_id"))
-    return {"mode": "train", "operator": "JR East", "route_id": route["route_id"],
+    return {"mode": "train" if agency == "JR-East" else "subway", "operator": OPERATORS[agency], "route_id": route["route_id"],
             "route_short_name": route.get("route_short_name", ""), "line": name,
-            "category": "JR East", "direction": direction}
+            "category": OPERATORS[agency], "direction": direction}
 
 
 def railway_edges(filename):

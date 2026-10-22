@@ -8,9 +8,13 @@ Choose **Japan** for **10 March 2026**: **927 regular Shinkansen services** acro
 
 The new timetable is **333 KB gzip**, plus **790 KB** of preparation-only connected OSM railway geometry. **98.3%** of Shinkansen scheduled journey legs have mapped paths; unsupported sections stay gaps. These are community timetable snapshots, not observed train locations. See [Japan expansion notes](JAPAN_EXPANSION_NOTES.md) for source dates, scope and remaining data gaps.
 
+## Malaysia KTM rail
+
+Choose **Malaysia** for **12–18 October 2026**: KTM ETS, Intercity including overnight Ekspres Rakyat Timuran, northern Komuter, Shuttle Selatan and Shuttle Tebrau. The national addition has **210 scheduled journeys per day** in a **231 KB gzip** week. It reuses KL Komuter by default (300 weekday / 284 weekend departures combined); optional KL MRT/LRT/Monorail reuses the existing KL timetable too. Original overnight times are retained, with playback continuing to the last arrival. Coverage is Peninsular KTM as represented in the source; a few East Coast and Hat Yai geometry gaps remain documented. See [Malaysia expansion notes](MALAYSIA_EXPANSION_NOTES.md).
+
 ## Kuala Lumpur rail
 
-Choose **Kuala Lumpur** for **12–18 October 2026**: KTM Komuter's Seremban and Port Klang lines, MRT Kajang/Putrajaya, LRT Ampang/Sri Petaling/Kelana Jaya/Shah Alam and KL Monorail. KTM keeps published individual schedules; Rapid KL uses clearly labelled frequency-based estimates from the official government GTFS. The compact week has **16,455 occurrences in about 184 KB gzip**, with mapped geometry for every included leg. Existing filters, themes, details and Overview are reused. Buses, airport rail and nationwide KTM services remain for later. See [Malaysia expansion notes](MALAYSIA_EXPANSION_NOTES.md) for source dates, licences, rebuild instructions and next additions.
+Choose **Kuala Lumpur** for **12–18 October 2026**: KTM Komuter's Seremban and Port Klang lines, MRT Kajang/Putrajaya, LRT Ampang/Sri Petaling/Kelana Jaya/Shah Alam and KL Monorail. KTM keeps published individual schedules; Rapid KL uses clearly labelled frequency-based estimates from the official government GTFS. The compact week has **16,455 occurrences in about 184 KB gzip**, with mapped geometry for every included leg. Existing filters, themes, details and Overview are reused. Nationwide KTM is available separately under **Malaysia**; buses and airport rail remain for later. See [Malaysia expansion notes](MALAYSIA_EXPANSION_NOTES.md) for source dates, licences, rebuild instructions and next additions.
 
 ## Tokyo rail and subway pilot
 

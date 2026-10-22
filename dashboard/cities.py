@@ -75,6 +75,18 @@ CITIES = {
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"),
                        ("Inner loop", "Inner loop"), ("Outer loop", "Outer loop")],
     },
+    "malaysia": {
+        "name": "Malaysia", "timezone": "Asia/Kuala_Lumpur",
+        "bounds": [[99.8, 1.3], [103.9, 6.8]], "passenger_data": False,
+        "start_date": "2026-10-12", "end_date": "2026-10-18",
+        "description": "Peninsular KTM rail: ETS, Intercity, northern Komuter and shuttles, plus KL Komuter. Optional KL MRT/LRT/Monorail reuses the existing frequency estimates. October 2026 source snapshot.",
+        "default_modes": ["train", "commuter_rail"],
+        "modes": [("KTM national rail", "train"), ("KL Komuter", "commuter_rail"),
+                  ("KL MRT", "subway"), ("KL LRT / Monorail", "light_rail")],
+        "operators": [(name, name) for name in ["KTM ETS", "KTM Intercity", "KTM Komuter Utara",
+                      "Shuttle Selatan", "Shuttle Tebrau", "KTM Komuter", "Rapid KL"]],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
     "kuala_lumpur": {
         "name": "Kuala Lumpur", "timezone": "Asia/Kuala_Lumpur",
         "bounds": [[101.35, 2.82], [101.86, 3.36]], "passenger_data": False,

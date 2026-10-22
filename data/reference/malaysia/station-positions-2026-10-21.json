@@ -1,0 +1,194 @@
+{
+  "metadata": {
+    "source": "OpenStreetMap contributors / OSM France Malaysia extract",
+    "source_sha256": "1abfb77758d28dea24ffa4d8ce38527ab7bcdaa0ebacfe074b387cac49bde03a",
+    "source_date": "2026-10-21T01:16:18Z",
+    "license": "ODbL 1.0",
+    "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
+    "rule": "Only unmatched GTFS positions; exact normalized station names, documented Sungai/SG and Kampung/KG abbreviations, one candidate station cluster within 100 m, source node on the connected railway within 150 m. Source timetable names and times unchanged."
+  },
+  "stations": {
+    "69600": {
+      "name": "MELA",
+      "original": [
+        102.3154,
+        4.10555
+      ],
+      "coordinates": [
+        102.2715784,
+        4.0753179
+      ],
+      "osm_node_id": "2630937598",
+      "osm_name": "Mela",
+      "offset_m": 5910
+    },
+    "72700": {
+      "name": "AUR GADING",
+      "original": [
+        101.95489,
+        4.44072
+      ],
+      "coordinates": [
+        101.9215688,
+        4.3583831
+      ],
+      "osm_node_id": "12756959534",
+      "osm_name": "Aur Gading",
+      "offset_m": 9873
+    },
+    "78400": {
+      "name": "SRI BINTANG",
+      "original": [
+        102.08597,
+        5.160115
+      ],
+      "coordinates": [
+        102.0102734,
+        5.2306795
+      ],
+      "osm_node_id": "11416821606",
+      "osm_name": "Sri Bintang",
+      "offset_m": 11482
+    },
+    "78500": {
+      "name": "SRI MAHLIGAI",
+      "original": [
+        101.77286,
+        5.31332
+      ],
+      "coordinates": [
+        102.0096379,
+        5.2483381
+      ],
+      "osm_node_id": "2630752130",
+      "osm_name": "Sri Mahligai",
+      "offset_m": 27194
+    },
+    "78700": {
+      "name": "SRI JAYA",
+      "original": [
+        102.00906,
+        5.30785
+      ],
+      "coordinates": [
+        102.0095209,
+        5.2682411
+      ],
+      "osm_node_id": "10971399485",
+      "osm_name": "Sri Jaya",
+      "offset_m": 4405
+    },
+    "79800": {
+      "name": "KUALA GRIS",
+      "original": [
+        102.08047,
+        5.49379
+      ],
+      "coordinates": [
+        102.0642757,
+        5.3903256
+      ],
+      "osm_node_id": "6997825867",
+      "osm_name": "Kuala Gris",
+      "offset_m": 11644
+    },
+    "81700": {
+      "name": "PAHI",
+      "original": [
+        102.23977,
+        5.54847
+      ],
+      "coordinates": [
+        102.2226742,
+        5.4714624
+      ],
+      "osm_node_id": "2630745473",
+      "osm_name": "Pahi",
+      "offset_m": 8769
+    },
+    "64900": {
+      "name": "MENGKARAK",
+      "original": [
+        102.418784,
+        3.33114
+      ],
+      "coordinates": [
+        102.4202692,
+        3.3310593
+      ],
+      "osm_node_id": "13711708387",
+      "osm_name": "Mengkarak",
+      "offset_m": 165
+    },
+    "72200": {
+      "name": "BUKIT BETONG",
+      "original": [
+        101.92368,
+        4.39984
+      ],
+      "coordinates": [
+        101.9252709,
+        4.257805
+      ],
+      "osm_node_id": "12753679164",
+      "osm_name": "Bukit Betong",
+      "offset_m": 15795
+    },
+    "72400": {
+      "name": "KG BERKAM",
+      "original": [
+        102.05187,
+        4.20116
+      ],
+      "coordinates": [
+        101.9221243,
+        4.2934499
+      ],
+      "osm_node_id": "12753679162",
+      "osm_name": "Kampung Berkam",
+      "offset_m": 17672
+    },
+    "73500": {
+      "name": "SUNGAI TEMAU",
+      "original": [
+        101.9474,
+        4.49778
+      ],
+      "coordinates": [
+        101.9447127,
+        4.4898674
+      ],
+      "osm_node_id": "2630769267",
+      "osm_name": "Sungai Temau",
+      "offset_m": 929
+    },
+    "77900": {
+      "name": "BERTAM",
+      "original": [
+        102.05066,
+        5.148
+      ],
+      "coordinates": [
+        102.0438523,
+        5.1516284
+      ],
+      "osm_node_id": "2630769252",
+      "osm_name": "Bertam",
+      "offset_m": 855
+    },
+    "84600": {
+      "name": "TO UBAN",
+      "original": [
+        102.11687,
+        5.98236
+      ],
+      "coordinates": [
+        102.1439481,
+        5.9658046
+      ],
+      "osm_node_id": "2630733974",
+      "osm_name": "To' Uban",
+      "offset_m": 3515
+    }
+  }
+}

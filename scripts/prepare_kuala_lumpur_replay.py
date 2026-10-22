@@ -59,7 +59,7 @@ def describe_route(feed, route, trip):
             **({"frequency_based": True} if feed != "ktmb" else {})}
 
 
-def compile_geometry(cache):
+def compile_geometry(cache, *, output=GEOMETRY, bounds=(100.8, 2.3, 102.4, 3.9), region="KL"):
     import osmium
 
     filename = fetch(GEOMETRY_URL, cache / "malaysia.osm.pbf")
@@ -91,19 +91,22 @@ def compile_geometry(cache):
     locations = Locations()
     locations.apply_file(str(filename), filters=[osmium.filter.IdFilter(int(n) for n in needed)])
     nodes = locations.nodes
+    west, south, east, north = bounds
     ways = {key: way for key, way in inventory.ways.items() if any(
-        n in nodes and 100.8 <= nodes[n][0] <= 102.4 and 2.3 <= nodes[n][1] <= 3.9 for n in way["nodes"])}
+        n in nodes and west <= nodes[n][0] <= east and south <= nodes[n][1] <= north for n in way["nodes"])}
+    incomplete = sum(any(n not in nodes for n in way["nodes"]) for way in ways.values())
+    ways = {key: way for key, way in ways.items() if all(n in nodes for n in way["nodes"])}
     needed = {n for w in ways.values() for n in w["nodes"]}
     if not ways or not needed <= nodes.keys():
         raise ValueError("Railway extract is empty or missing native track nodes")
-    result = {"metadata": {"source": "© OpenStreetMap contributors · KL conventional metre-gauge railway alignments",
+    result = {"metadata": {"source": f"© OpenStreetMap contributors · {region} conventional metre-gauge railway alignments",
         "source_url": GEOMETRY_URL, "source_date": "2026-10-21T01:16:18Z; retrieved 2026-10-22",
-        "source_sha256": TRACK_PIN, "bounds": [100.8, 2.3, 102.4, 3.9], "license": "ODbL 1.0",
+        "source_sha256": TRACK_PIN, "bounds": list(bounds), "omitted_incomplete_ways": incomplete, "license": "ODbL 1.0",
         "license_url": "https://opendatacommons.org/licenses/odbl/1-0/",
         "note": "Only original shared node IDs join tracks. Geographic alignments, not actual running-track records."},
         "ways": compact_ways(ways, nodes)}
-    GEOMETRY.parent.mkdir(parents=True, exist_ok=True)
-    with GEOMETRY.open("wb") as output, gzip.GzipFile(filename="", fileobj=output, mode="wb", mtime=0) as stream:
+    output.parent.mkdir(parents=True, exist_ok=True)
+    with output.open("wb") as raw, gzip.GzipFile(filename="", fileobj=raw, mode="wb", mtime=0) as stream:
         stream.write(json.dumps(result, separators=(",", ":")).encode())
     return result
 

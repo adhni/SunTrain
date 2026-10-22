@@ -1,8 +1,30 @@
-# Thailand — Bangkok rail pilot
+# Thailand — SRT working timetable and Bangkok rail
 
-Implemented on `codex/thailand-rail`. Select **Bangkok** for **12–18 October 2026**, the same display week as Malaysia. This is Bangkok coverage, not a nationwide Thailand train replay. Existing playback, filters, source line colours, details, themes and city Overview are reused.
+Implemented on `codex/thailand-rail`. Select **Thailand** for national SRT working-timetable services using **illustrative 3–9 April 2023 dates**; the effective timetable period is unconfirmed. Select **Bangkok** for **12–18 October 2026**, the same display week as Malaysia. Existing playback, filters, line colours, details, themes and city Overview are reused. The two views have separate, clearly labelled source periods.
 
-## Included
+## National SRT working-timetable replay
+
+**Date assumption:** approximate period **April 2023**, using the week containing the spreadsheet's 5 April 2023 publication date as a display anchor. The user explicitly accepted approximate dates with a visible note. Publication does not establish the actual effective period, and the source may describe older workings. The description above the map and replay source note say the dates are **illustrative**. Do not relabel this an authenticated April 2023 or October 2026 operating calendar.
+
+The working Ministry of Transport datastore described below supplies **178 numeric passenger-service candidates (1–499)**: special/express/rapid, ordinary, suburban, local and mixed passenger workings. Cargo/depot/empty-stock model identifiers are excluded. This covers the source's northern (39), northeastern (53), southern (48), eastern (26), western (8) and Bangkok suburban (4) corridors. These are source working-timetable services, not a claim of complete present-day SRT coverage.
+
+All **5,787 scheduled calls/endpoints** and original clocks are retained, including operational stops. Non-stopping technical timing points between calls are omitted. Each selected origin says `Daily`, used as the illustrative working calendar; after-midnight `Not defined` row values do not discard the remainder of an overnight journey. Explicit day prefixes such as `1  7:15:00` remain next-day events. Departures belong once to a 03:00–03:00 business date, and playback continues through the last arrival, **14:45:01 the following day**. No source timings are adjusted to fit the date assumption or map.
+
+The week is **458,705 bytes gzip**, with 178 shared timing patterns and 173 shared stop patterns. There are **604 named source calls/stations**, of which **542** have matched coordinates. The other **62** retain their names, clocks and details rows with null map positions. Native-node railway paths cover **83.3% of service-weighted legs** (4,674 of 5,609); **935 legs/day** remain gaps. Vehicles are hidden at unlocated calls and across missing paths. Fit selection and station layers ignore missing coordinates, so they do not appear at longitude/latitude zero. No source calls are silently removed or replaced with a nearby station.
+
+Rail geography is the [Geofabrik Thailand extract](https://download.geofabrik.de/asia/thailand.html), through **20 October 2026 20:23:47 UTC**, downloaded 22 October. PBF SHA-256: `68a665cc5f618f63c6afe5cde011d783c3838ea27b1ebaceb857946626ded939`. It is a current geographic reference, not proof of historical running-track assignments. Only operating metre-gauge conventional railway ways are retained; original shared OSM node IDs define connections. Matching uses normalized English station names or a unique spelling variant with similarity at least 0.94 and a 0.05 margin over a different location; distant same-name candidates remain unresolved. Coordinates must anchor within 150 m of the railway. Per-station names, node IDs, coordinates and match method are retained in metadata. The separate ODbL graph is **285,495 bytes gzip**; the large PBF stays in ignored cache.
+
+The source clocks can be checked directly: train 7 **09:05–19:30:01**, train 9 **18:40–next day 07:15:01**, train 21 **06:10–14:00:01**. Extra terminal seconds are source values, not smoothing. The SRT maroon display colour follows OTP's separately licensed palette. The spreadsheet's licence wording/version remains as documented below; do not automatically apply OTP's CC BY 4.0 licence to these source facts. No passenger loads or observed train positions are supplied.
+
+Ordinary runtime reads only the compact reference. Rebuild from pinned cached datastore pages and the committed graph:
+
+```bash
+./.venv/bin/python scripts/prepare_thailand_srt.py
+```
+
+To regenerate the ODbL graph, retain the pinned full PBF in `.cache/thailand/srt/thailand-latest.osm.pbf`, then use `PYTHONPATH=.cache/osm-tools ./.venv/bin/python scripts/prepare_thailand_srt.py --prepare-geometry .cache/thailand/srt/thailand-latest.osm.pbf`. Pyosmium is preparation-only. `SUNTRAIN_THAILAND_REFERENCE` overrides the national bundle. Bangkok's existing data is neither changed nor duplicated.
+
+## Bangkok pilot: included
 
 | Network | Lines | Transport filter |
 | --- | --- | --- |
@@ -42,7 +64,7 @@ The Red Line source shapes do not match their **Krung Thep Aphiwat approach** wi
 
 ## Not implemented and next steps
 
-1. **National SRT trains:** the same feed is not a usable national timetable. Many records contain only Bangkok-area portions of advertised intercity journeys; newer full-length entries have placeholder minute-by-minute clocks. For example, trip `7932` advertises Bangkok–Chiang Mai with `00:01` to `00:07` times. The source also contains duplicate train numbers. Do not enable all route-type-2 records or reinterpret these placeholders as departures. The [official SRT timetable](https://www.railway.co.th/SRTTimetable/StationList) and [SRT timetable matrix](https://ttsview.railway.co.th/timetable_modern.php?line=1&ln=en) are follow-up sources; the matrix data requires its Turnstile/JWT access flow. The original [government timetable catalogue](https://data.go.th/en/dataset/after32) API returned 403, but a **working Ministry of Transport datastore mirror was found in the second investigation below**. No validated historical national timetable or connected nationwide geometry was obtained in this pilot.
+1. **National SRT follow-up:** working-timetable replay is now implemented above with explicitly illustrative dates. Improve date/calendar certainty and unmatched station geography when better data becomes available. Namtang's national schedules remain excluded: many represent only Bangkok-area portions, and newer full-length entries have placeholder minute-by-minute clocks (trip `7932` advertises Bangkok–Chiang Mai with `00:01`–`00:07`). Do not enable these placeholders. The [official public timetable](https://www.railway.co.th/SRTTimetable/StationList), [SRT timetable matrix](https://ttsview.railway.co.th/timetable_modern.php?line=1&ln=en) and working ministry datastore below remain useful sources.
 2. **MRT Pink / Muang Thong branch:** source templates have zero running time between distinct stations and cannot support plausible animation. Obtain corrected timing templates; retain the published branch/service calendar only once verified.
 3. **Airport Rail Link:** one direction has implausibly short running times, including a segment above 220 km/h in the template. Excluded as a whole rather than adding one direction or mirroring the other direction's times. Obtain corrected operator station timings for both directions.
 4. **Red Line approach geometry:** verify the source station/shape mismatch at Krung Thep Aphiwat using an independent station/railway reference. Existing clocks and all remaining path segments are unchanged.
@@ -51,7 +73,7 @@ The Red Line source shapes do not match their **Krung Thep Aphiwat approach** wi
 
 ## Second national SRT investigation — 22 October 2026
 
-**Outcome:** found and downloaded an independent official spreadsheet mirror; national replay remains disabled because its operating period and public passenger timetable interpretation could not be validated. The Bangkok replay and its data are unchanged.
+**Outcome:** found and downloaded an independent official spreadsheet mirror. Its effective dates remain unconfirmed; it is now used by the national working-timetable replay above with explicitly illustrative April 2023 dates. Bangkok's data remains unchanged.
 
 - **Working catalogue:** https://datagov.mot.go.th/en/dataset/after32
 - **Working metadata API:** https://datagov.mot.go.th/api/3/action/package_show?id=after32
@@ -66,7 +88,7 @@ The export includes internal train templates, non-stopping timing points and sim
 
 The [transport ministry's national timetable announcement](https://mot.go.th/PRNews/160) links the official [5 April 2023 PDF](https://www.railway.co.th/Download/Timetable/2566/SRT-Timetable-2023-04-05.pdf) and an [ebook copy](https://online.fliphtml5.com/ctvfc/teeb/). Both operator hostnames (`www.railway.co.th` and `railway.co.th`) timed out for the PDF. The ebook redirects to a verification challenge; no timetable content was obtained. The current SRT matrix also requires verification. These access checks were not bypassed.
 
-**Practical resume point:** obtain the dated public SRT timetable publication or another dated operator export; establish a genuine service period; validate representative daytime/overnight calls and passenger-only scope against this working datastore; then prepare connected railway geometry. Different dates from Bangkok are acceptable if explicitly labelled. Until that evidence is available, keep the existing eight Bangkok lines and move other country work forward rather than re-querying the faulty Namtang national records.
+**Practical follow-up:** obtain a dated public SRT timetable or dated operator export to confirm the working timetable's effective period and public passenger calling patterns. Improve the unresolved station positions/track gaps in batches, keeping all clocks and calls intact. Retain the approximate-date note until operating dates are actually confirmed. Do not re-query the faulty Namtang national clocks or replace them with the placeholder schedules.
 
 ## Rebuild and checks
 

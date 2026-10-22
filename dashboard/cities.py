@@ -75,6 +75,15 @@ CITIES = {
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"),
                        ("Inner loop", "Inner loop"), ("Outer loop", "Outer loop")],
     },
+    "thailand": {
+        "name": "Thailand", "timezone": "Asia/Bangkok",
+        "bounds": [[98.0, 5.7], [105.7, 19.4]], "passenger_data": False,
+        "start_date": "2023-04-03", "end_date": "2023-04-09",
+        "description": "SRT working-timetable replay. Approximate period: April 2023; replay dates are illustrative, effective dates unconfirmed. Source clocks are retained. Bangkok urban rail has its own view.",
+        "default_modes": ["train"], "modes": [("SRT passenger trains", "train")],
+        "operators": [("State Railway of Thailand", "State Railway of Thailand")],
+        "directions": [("Not specified", "Not specified")],
+    },
     "bangkok": {
         "name": "Bangkok", "timezone": "Asia/Bangkok",
         "bounds": [[100.37, 13.53], [100.84, 14.02]], "passenger_data": False,

@@ -7,6 +7,19 @@ const day = {stations: [{name: 'Alpha', lon: 0, lat: 0}, {name: 'Bravo', lon: 2,
 const service = {id: 'one', operator: 'Metro', line: 'Werribee', direction: 'U', number: 'X100',
     stops: [[0, 0, 10, 5, 50], [1, 20, 30, 50, 0]], legs: ['curve']};
 
+test('unlocated working-timetable calls retain times and status without a map position', () => {
+    const input = {...day, stations: [...day.stations, {name:'Unlocated call',lon:null,lat:null}],
+        paths:{gap:{coordinates:[],distances:[],quality:'approximate'}}};
+    const trip = {...service, stops:[[0,0,10],[2,20,30],[1,40,50]],legs:['gap','gap']};
+    for (const at of [15,25,35]) {
+        const position=servicePosition(trip,at,input);
+        assert.equal(position.lon,null);assert.equal(position.lat,null);
+        assert.equal(position.state,'Position unavailable');assert.equal(position.approximate,true);
+    }
+    assert.equal(servicePosition(trip,25,input).station,'Unlocated call');
+    assert.equal(servicePosition(trip,45,input).lon,2);
+});
+
 test('LRT journeys retain the missing-terminal note and stop at their last source event', () => {
     const {hydrate, vehicleColor} = require('../assets/train_replay.js');
     const input = {...day, transit_patterns: {lrt: {operator:'LRT Jabodebek',line:'LRT Bekasi',

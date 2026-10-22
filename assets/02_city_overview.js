@@ -29,7 +29,7 @@
             seenSchedules.add(schedule);
             for (const stop of schedule) {
                 const station = day.stations[service.stopIds ? stop : stop[0]];
-                stops.add(JSON.stringify([station.name, station.lon, station.lat]));
+                if (Number.isFinite(station.lon) && Number.isFinite(station.lat)) stops.add(JSON.stringify([station.name, station.lon, station.lat]));
             }
         }
         return {departures, estimatedDepartures, stops: stops.size, routes: [...routes.values()], hours};

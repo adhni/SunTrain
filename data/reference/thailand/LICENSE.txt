@@ -1,0 +1,31 @@
+Timetable facts:
+State Railway of Thailand, via Ministry of Transport, Thailand.
+https://datagov.mot.go.th/en/dataset/after32
+Resource da06de08-1c8d-4ecd-88f1-67652f65cb95, after32.xlsx datastore copy.
+Resource published 5 April 2023; retrieved 22 October 2026.
+The catalogue states "Open Data Common, Creative Commons Attributions" under
+Other, without a specific version or licence URL. Source rights are retained;
+SunTrain does not assert CC BY 4.0 for this spreadsheet or redistribute its XLSX.
+
+Source dates of operation are unconfirmed. Replay dates in April 2023 are
+illustrative. Original clocks, scheduled calls and overnight offsets are retained.
+SunTrain selects conventional passenger numbers 1–499 and uses the source origin's
+Daily value as a working calendar; this is not a verified historical service calendar.
+Operational stops can appear in this working timetable; passenger loads are absent.
+
+Railway database and station positions:
+Copyright OpenStreetMap contributors, via Geofabrik Thailand extract.
+https://download.geofabrik.de/asia/thailand-latest.osm.pbf
+Data through 20 October 2026; retrieved 22 October 2026.
+Open Database Licence (ODbL) 1.0:
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+Changes: connected metre-gauge railway selection, simplification between native
+junctions, named-station matching (including unique spelling variants), routing
+and shared path conversion. Unlocated calls stay in the timetable with no map
+position. Missing paths remain empty; no straight fallback connectors are inserted.
+
+SRT display colour follows OTP / Namtang's SRT palette, CC BY 4.0:
+Office of Transport and Traffic Policy and Planning, Thailand.
+https://namtang-api.otp.go.th/opendata
+https://creativecommons.org/licenses/by/4.0/

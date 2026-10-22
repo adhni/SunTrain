@@ -533,7 +533,7 @@
             if (day.transit?.available) {
                 const link = node("a", `Tram & bus timetables: PTV archive ${day.transit.source_date} · CC BY 4.0`);
                 link.href = day.transit.source_url; link.target = "_blank"; link.rel = "noopener noreferrer";
-                attribution.append(document.createTextNode(" "), link, document.createTextNode(". Buses include complete journeys serving Melbourne and surrounds. Tram/bus passenger counts are unavailable."));
+                attribution.append(document.createTextNode(" "), link, document.createTextNode(". Buses cover Victoria, including regional coaches and SkyBus where scheduled. Tram/bus passenger counts are unavailable."));
             }
         }
         applyTheme() {

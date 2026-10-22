@@ -504,6 +504,12 @@ def _get_day(business_date: str, source: str, fingerprint: tuple, geometry_path:
             "total_legs": total_legs, "excluded_services": excluded}
     if transit_fingerprint[1]:
         transit.append_reference(payload, transit.read_reference(*transit_fingerprint), modes=modes)
+        # Regional coaches may continue past the next 03:00 boundary.
+        for service in payload["services"]:
+            if "pattern" in service:
+                pattern = payload["transit_patterns"][service["pattern"]]
+                finish = pattern["times"][-1] if "times" in pattern else pattern["stops"][-1][2]
+                payload["end"] = max(payload["end"], service["departure"] + int(finish))
     else:
         payload["transit"] = {"available": False}
     return payload

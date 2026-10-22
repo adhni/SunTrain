@@ -40,8 +40,9 @@ KTM_ROUTES = {"KC05_KB18", "KA15_KD19"}
 RAPID_ROUTES = {"AG", "PH", "KJ", "SA", "KGL", "PYL", "MR"}
 NOTE = ("KTM Komuter Seremban and Port Klang lines, four Rapid KL LRT lines, both MRT lines and KL Monorail. "
         "KTM uses scheduled departures; Rapid KL movements are frequency-based estimates, not exact departures. "
+        "KLIA Ekspres and Transit use ERL's dated departure tables; combined night trains appear once under Transit. "
         "Official feeds retrieved 22 October 2026, selected using their calendars for 12–18 October; not a record of disruptions. "
-        "No buses, airport rail, nationwide KTM services or individual passenger loads. Unresolved railway paths stay gaps.")
+        "No buses, nationwide KTM services or individual passenger loads. Unresolved railway paths stay gaps.")
 
 
 def selected_route(feed, route, agencies):
@@ -198,10 +199,12 @@ def prepare(cache, output):
         frequency_based=True, daily_services={d: dict(Counter(rapid["patterns"][p]["route_id"] for p, _, _ in rows)) for d, rows in rapid["days"].items()})
     with gzip.open(ktm_file, "rt") as stream:
         ktm = json.load(stream)
-    result = merge_references([("ktm", ktm), ("rapid", rapid)],
-        source_name="KTM Berhad and Prasarana / Rapid KL via data.gov.my", replay_note=NOTE)
+    from scripts.prepare_malaysia_airport import build as build_airport
+    result = merge_references([("ktm", ktm), ("rapid", rapid), ("erl", build_airport())],
+        source_name="KTM Berhad, Prasarana / Rapid KL via data.gov.my, and Express Rail Link", replay_note=NOTE)
     result["metadata"].update(snapshot_date="2026-10-22", license_statement_url="https://developer.data.gov.my/faq.en",
-        frequency_based=True, calendar_basis="Published source calendars applied to the selected week; not an archive of historical revisions")
+        license="KTM / Rapid KL: CC BY 4.0; ERL: published timetable facts, operator rights retained; OSM geography / ERL colours: ODbL 1.0",
+        frequency_based=True, calendar_basis="Published source calendars and ERL weekday/weekend tables applied to the selected week; not an archive of historical revisions")
     save_reference(result, output)
     print("KL daily services", {d: len(rows) for d, rows in result["days"].items()}, "bytes", output.stat().st_size, flush=True)
 

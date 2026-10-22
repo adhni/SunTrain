@@ -66,9 +66,9 @@ def test_national_view_reuses_kl_files_and_keeps_the_original_kl_view_unchanged(
     default = replay.get_replay_day("2026-10-12", "malaysia")
     assert Counter(s["mode"] for s in default["services"]) == {"train": 210, "commuter_rail": 90}
     full = replay.get_replay_day("2026-10-12", "malaysia", modes=[])
-    assert len(full["services"]) == 2695 and len({s["id"] for s in full["services"]}) == 2695
+    assert len(full["services"]) == 2907 and len({s["id"] for s in full["services"]}) == 2907
     assert sum(bool(full["transit_patterns"][s["pattern"]].get("frequency_based")) for s in full["services"]) == 2395
-    files = replay.rail_reference_files("malaysia", "2026-10-12", ["subway", "light_rail", "commuter_rail"])
+    files = replay.rail_reference_files("malaysia", "2026-10-12", ["subway", "light_rail", "commuter_rail", "airport_rail"])
     assert {Path(path) for _, path, _ in files} == {replay.prepared_path("kuala_lumpur")}
     again = replay.get_replay_day("2026-10-12", "kuala_lumpur")
     assert {s["id"] for s in again["services"]} == original_ids

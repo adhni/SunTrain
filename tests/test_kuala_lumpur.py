@@ -28,12 +28,12 @@ def test_scope_keeps_kl_rail_and_excludes_national_trains_and_brt():
 
 
 def test_week_has_source_weekday_and_weekend_services_without_duplicate_departures(reference):
-    expected = {f"2026-10-{day}": 2485 for day in range(12, 17)}
-    expected.update({"2026-10-17": 2018, "2026-10-18": 2012})
+    expected = {f"2026-10-{day}": 2697 for day in range(12, 17)}
+    expected.update({"2026-10-17": 2209, "2026-10-18": 2203})
     assert {day: len(rows) for day, rows in reference["days"].items()} == expected
     assert not reference["metadata"]["omitted_trips"]
     assert not reference["metadata"]["unresolved_geometry_patterns"]
-    assert len(reference["patterns"]) == 72 and len(reference["stop_patterns"]) == 39
+    assert len(reference["patterns"]) == 86 and len(reference["stop_patterns"]) == 44
     for day, rows in reference["days"].items():
         assert len({(trip, offset) for _, trip, offset in rows}) == len(rows)
         exact = 0
@@ -43,8 +43,10 @@ def test_week_has_source_weekday_and_weekend_services_without_duplicate_departur
             if pattern["operator"] == "KTM Komuter":
                 exact += 1
                 assert not pattern.get("frequency_based")
-            else:
+            elif pattern["operator"] == "Rapid KL":
                 assert pattern["frequency_based"] and ":estimate-" in trip
+            else:
+                assert pattern["operator"] == "Express Rail Link" and not pattern.get("frequency_based")
         assert exact == (90 if day < "2026-10-17" else 74)
 
 
@@ -60,9 +62,11 @@ def test_all_nine_lines_keep_source_colours_and_connected_paths(reference):
     colours = {"KC05_KB18": "#3C5A9F", "KA15_KD19": "#DC2420", "AG": "#e57200",
                "KJ": "#D50032", "PH": "#76232f", "KGL": "#047940", "PYL": "#FFCD00",
                "MR": "#84bd00", "SA": "#FF00FF"}
-    assert {p["source_route_id"] for p in reference["patterns"].values()} == set(colours)
+    original = [p for p in reference["patterns"].values() if p["mode"] != "airport_rail"]
+    assert {p["source_route_id"] for p in original} == set(colours)
     for pattern in reference["patterns"].values():
-        assert pattern["color"] == colours[pattern["source_route_id"]]
+        if pattern["mode"] != "airport_rail":
+            assert pattern["color"] == colours[pattern["source_route_id"]]
         assert "stops" not in pattern
         assert all(a <= b for a, b in zip(pattern["times"], pattern["times"][1:]))
         topology = reference["stop_patterns"][pattern["stop_pattern"]]
@@ -74,16 +78,16 @@ def test_all_nine_lines_keep_source_colours_and_connected_paths(reference):
 
 def test_existing_runtime_filters_clock_and_http_descriptor_work_for_kl():
     info = descriptor("2026-10-12", "kuala_lumpur")
-    assert info["modes"] == ["light_rail", "subway", "train"]
+    assert info["modes"] == ["airport_rail", "light_rail", "subway", "train"]
     with pytest.raises(ValueError, match="Date outside"):
         descriptor("2024-06-24", "kuala_lumpur")
     all_modes = replay.get_replay_day("2026-10-12", "kuala_lumpur")
-    assert len(all_modes["services"]) == 2485
+    assert len(all_modes["services"]) == 2697
     assert all_modes["approximate_legs"] == 0
     assert datetime.fromtimestamp(all_modes["initial"], ZoneInfo("Asia/Kuala_Lumpur")).strftime("%Y-%m-%d %H:%M") == "2026-10-12 08:00"
     assert all("stops" not in service and "pattern" in service for service in all_modes["services"])
     assert not CITIES["kuala_lumpur"]["passenger_data"]
-    expected = {"train": 90, "subway": 567, "light_rail": 1828}
+    expected = {"train": 90, "subway": 567, "light_rail": 1828, "airport_rail": 212}
     ids = set()
     for mode, count in expected.items():
         day = replay.get_replay_day("2026-10-12", "kuala_lumpur", modes=[mode])

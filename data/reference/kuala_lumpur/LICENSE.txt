@@ -4,7 +4,16 @@ Creative Commons Attribution 4.0 International (CC BY 4.0).
 Licence statement: https://developer.data.gov.my/faq.en
 Licence: https://creativecommons.org/licenses/by/4.0/
 
-KTM railway geography and the separately distributed ktm-tracks database:
+ERL airport timetable facts (erl-timetable database and airport replay patterns):
+Express Rail Link Sdn Bhd, KLIA Ekspres effective 8 December 2025 and
+KLIA Transit effective 21 March 2026. Retrieved 22 October 2026.
+https://www.kliaekspres.com/schedule
+Published operator timetable facts; source rights retained. No open-data licence
+is claimed for ERL. The government CC BY licence above does not apply to ERL.
+The original PDFs, artwork and branding are not redistributed in this repository.
+
+KTM / ERL railway geography, ERL station positions and ERL route colours,
+including the separately distributed ktm-tracks and erl-tracks databases:
 Copyright OpenStreetMap contributors, via the OpenStreetMap France Malaysia extract.
 Open Data Commons Open Database Licence (ODbL) 1.0.
 https://www.openstreetmap.org/copyright
@@ -13,5 +22,9 @@ https://opendatacommons.org/licenses/odbl/1-0/
 Changes by SunTrain: KL rail selection, shared stop/timing conversion, illustrative
 departures from Rapid KL headways, railway graph extraction, station matching and
 path simplification. Source timetable times and route colours are retained.
+ERL departures are converted from explicit PDF rows, not generated from headways.
+Combined late-night airport services are stored once under Transit; intermediate
+station events retain the printed times without invented dwell/arrival times.
+ERL trip IDs are SunTrain identifiers, not published train or vehicle numbers.
 Rapid KL estimates are not actual individual departures or live observations.
 Source URLs, dates and SHA-256 hashes are retained in the data and expansion notes.

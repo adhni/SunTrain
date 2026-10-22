@@ -176,7 +176,7 @@
         return lineColor(service.line);
     }
     function directionLabel(service) {
-        if (["subway", "light_rail", "regional_rail", "commuter_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
+        if (["subway", "light_rail", "regional_rail", "commuter_rail", "airport_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
         if (!service.mode || service.mode === "train") {
             if (service.direction === "U") return "Toward city";
             if (service.direction === "D") return "Away from city";

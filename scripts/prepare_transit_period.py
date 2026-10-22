@@ -15,7 +15,7 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 from dashboard.transit import PERIOD_START, PERIOD_END, REFERENCE
-from scripts.prepare_transit_replay import prepare
+from scripts.prepare_transit_replay import BRANCHES, prepare
 
 ARCHIVES = [
     "https://files.mobilitydatabase.org/mdb-657/mdb-657-202405270004/mdb-657-202405270004.zip",
@@ -50,7 +50,7 @@ def download_archive(url, cache):
     path = cache / url.rsplit("/", 1)[-1]
     if path.exists():
         with ZipFile(path) as archive:
-            if {"3/google_transit.zip", "4/google_transit.zip"}.issubset(archive.namelist()):
+            if {f"{branch}/google_transit.zip" for branch, *_ in BRANCHES}.issubset(archive.namelist()):
                 return path
     raw, slim = path.with_suffix(".download"), path.with_suffix(".tmp")
     print(f"Downloading {path.name}", flush=True)
@@ -58,9 +58,9 @@ def download_archive(url, cache):
         with urllib.request.urlopen(url, timeout=90) as response, raw.open("wb") as stream:
             while block := response.read(1024 * 1024):
                 stream.write(block)
-        # Keep only the two compressed branches needed for replay in the local cache.
+        # Keep only tram and scheduled bus/coach branches in the local cache.
         with ZipFile(raw) as source, ZipFile(slim, "w") as target:
-            for branch in ("3", "4"):
+            for branch, *_ in BRANCHES:
                 name = f"{branch}/google_transit.zip"
                 target.writestr(name, source.read(name))
         slim.replace(path)

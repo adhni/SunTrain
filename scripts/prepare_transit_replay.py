@@ -20,8 +20,15 @@ from scripts.prepare_replay_geometry import anchored_shape
 
 SOURCE_URL = "https://files.mobilitydatabase.org/mdb-657/mdb-657-202406240001/mdb-657-202406240001.zip"
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "data/reference/transit/2024-06-24.json.gz"
-# Keep complete journeys serving the Melbourne map extent, including outer termini.
-MELBOURNE = (144.55, -38.15, 145.6, -37.48)
+# Historical PTV branches. Empty TeleBus/night-bus branches are retained in the
+# audit, but do not create services without actual scheduled trips.
+BRANCHES = (("3", "tram", "PTV tram", "0"),
+            ("4", "bus", "PTV bus", "3"),
+            ("5", "bus", "V/Line coach", "3"),
+            ("6", "bus", "PTV regional bus", "3"),
+            ("7", "bus", "PTV bus", "3"),
+            ("8", "bus", "PTV bus", "3"),
+            ("11", "bus", "SkyBus", "3"))
 
 
 def records(archive, filename):
@@ -67,17 +74,23 @@ def prepare(filename, output, *, start_date="2024-06-24", end_date="2024-06-30",
     result = {"stations": [], "patterns": {}, "paths": {}, "days": {d.isoformat(): [] for d in days}}
     omitted = defaultdict(int)
     invalid_reasons = defaultdict(int)
+    branches = {}
     geometry_cache = {} if geometry_cache is None else geometry_cache
     path_cache = {} if path_cache is None else path_cache
     with ZipFile(filename) as outer:
-        for branch, mode, operator, route_type in (("3", "tram", "PTV tram", "0"), ("4", "bus", "PTV bus", "3")):
-            with ZipFile(io.BytesIO(outer.read(f"{branch}/google_transit.zip"))) as archive:
+        for branch, mode, operator, route_type in BRANCHES:
+            raw = outer.read(f"{branch}/google_transit.zip")
+            with ZipFile(io.BytesIO(raw)) as archive:
                 calendars, exceptions = list(records(archive, "calendar.txt")), list(records(archive, "calendar_dates.txt"))
                 active = {d: active_services(calendars, exceptions, d) for d in calendar_days}
                 relevant = set().union(*active.values())
                 routes = {r["route_id"]: r for r in records(archive, "routes.txt") if r["route_type"] == route_type}
                 trips = {r["trip_id"]: r for r in records(archive, "trips.txt")
                          if r["service_id"] in relevant and r["route_id"] in routes}
+                if "frequencies.txt" in archive.namelist() and any(records(archive, "frequencies.txt")):
+                    raise ValueError("PTV frequency templates need explicit handling before replay")
+                branches[branch] = {"operator": operator, "sha256": hashlib.sha256(raw).hexdigest(),
+                                    "candidate_trips": len(trips)}
                 stops = {r["stop_id"]: r for r in records(archive, "stops.txt")}
                 station_ids = {}
                 for key, stop in stops.items():
@@ -103,8 +116,6 @@ def prepare(filename, output, *, start_date="2024-06-24", end_date="2024-06-30",
                         if len(sequence) < 2 or any(s["stop_id"] not in station_ids for s in sequence):
                             raise ValueError("Missing stops")
                         coordinates = [result["stations"][station_ids[s["stop_id"]]] for s in sequence]
-                        if mode == "bus" and not any(MELBOURNE[0] <= s["lon"] <= MELBOURNE[2] and MELBOURNE[1] <= s["lat"] <= MELBOURNE[3] for s in coordinates):
-                            continue
                         times = [(seconds(s["arrival_time"]), seconds(s["departure_time"])) for s in sequence]
                         flattened = [v for pair in times for v in pair]
                         if any(b < a for a, b in zip(flattened, flattened[1:])):
@@ -148,17 +159,18 @@ def prepare(filename, output, *, start_date="2024-06-24", end_date="2024-06-30",
                         identifier = hashlib.sha256(json.dumps(pattern).encode()).hexdigest()[:16]
                         result["patterns"][identifier] = pattern
                         for d, shift in occurrences:
-                            result["days"][d.isoformat()].append([identifier, trip_id, start + shift])
+                            result["days"][d.isoformat()].append([identifier, f"{branch}:{trip_id}", start + shift])
                     except (ValueError, KeyError, TypeError) as error:
                         omitted[mode] += 1
                         invalid_reasons[str(error)] += 1
-                print(f"{mode}: {len(trips)} candidate trips; {len(geometry_cache)} route patterns; {omitted[mode]} invalid trips omitted", flush=True)
+                print(f"{operator} (branch {branch}): {len(trips)} candidate trips; {len(geometry_cache)} route patterns; {omitted[mode]} invalid trips omitted", flush=True)
     for day, rows in result["days"].items():
         if {result["patterns"][row[0]]["mode"] for row in rows} != {"tram", "bus"}:
             raise ValueError(f"No shared tram/bus coverage for {day}; use an archive covering this date")
     result["metadata"] = {"start_date": start_date, "end_date": end_date, "source": "PTV GTFS Schedule",
         "source_date": source_date, "source_url": source_url, "license": "CC BY 4.0",
-        "license_url": "https://creativecommons.org/licenses/by/4.0/", "bus_area": "Complete journeys serving the Melbourne map extent",
+        "license_url": "https://creativecommons.org/licenses/by/4.0/", "bus_area": "Statewide Victorian public buses and regional coaches, including published cross-border journeys",
+        "branches": branches,
         "omitted_trips": dict(omitted), "invalid_reasons": dict(invalid_reasons)}
     save_reference(result, output)
     print(f"Saved {output}: {output.stat().st_size / 1e6:.1f} MB; {len(result['patterns'])} patterns; {len(result['paths'])} paths", flush=True)

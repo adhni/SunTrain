@@ -52,9 +52,8 @@ def build_replay_panel(metadata, default_date):
             html.Details(id="replay-more-filters", className="replay-more-filters", children=[
                 html.Summary("More filters", id="replay-more-filters-label"),
                 html.Div(className="replay-advanced-filters", children=[
-                    field("Operator / feed", dcc.Dropdown(id="replay-operators", options=[{"label": "Metro", "value": "Metro"},
-                          {"label": "V/Line", "value": "VLine"}, {"label": "PTV tram", "value": "PTV tram"},
-                          {"label": "PTV bus", "value": "PTV bus"}], value=[], multi=True, placeholder="All operators / feeds")),
+                    field("Operator / feed", dcc.Dropdown(id="replay-operators", options=[{"label": label, "value": value}
+                          for label, value in CITIES["melbourne"]["operators"]], value=[], multi=True, placeholder="All operators / feeds")),
                     field("Direction", dcc.Dropdown(id="replay-directions", options=[{"label": "Train · toward city", "value": "U"},
                           {"label": "Train · away from city", "value": "D"}, {"label": "Tram/bus · direction A", "value": "A"},
                           {"label": "Tram/bus · direction B", "value": "B"}], value=[], multi=True, placeholder="All directions")),

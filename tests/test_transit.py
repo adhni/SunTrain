@@ -74,7 +74,7 @@ def test_outside_shared_week_and_missing_reference_preserve_train_replay(tmp_pat
 
 
 def test_preparation_keeps_valid_schedules_with_missing_shapes_as_gaps(tmp_path):
-    from scripts.prepare_transit_replay import prepare
+    from scripts.prepare_transit_replay import BRANCHES, prepare
 
     def table(rows):
         stream = io.StringIO()
@@ -85,16 +85,19 @@ def test_preparation_keeps_valid_schedules_with_missing_shapes_as_gaps(tmp_path)
 
     archive_path = tmp_path / "gtfs.zip"
     with ZipFile(archive_path, "w") as outer:
-        for branch, route_type in (("3", "0"), ("4", "3")):
+        for branch, mode, operator, route_type in BRANCHES:
             content = io.BytesIO()
             with ZipFile(content, "w") as archive:
                 archive.writestr("calendar.txt", table([{"service_id": "daily", "start_date": "20240620", "end_date": "20240702",
                     **dict.fromkeys(["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"], "1")}]))
                 archive.writestr("calendar_dates.txt", "service_id,date,exception_type\n")
                 archive.writestr("routes.txt", table([{"route_id": "r", "route_type": route_type, "route_short_name": "1", "route_long_name": "Example"}]))
-                archive.writestr("trips.txt", table([{"trip_id": "trip", "route_id": "r", "service_id": "daily", "direction_id": "0", "shape_id": "shape"}]))
-                archive.writestr("stops.txt", table([{"stop_id": "a", "stop_name": "Alpha", "stop_lat": "-37.8", "stop_lon": "145"},
-                    {"stop_id": "b", "stop_name": "Bravo", "stop_lat": "-37.81", "stop_lon": "145"}]))
+                archive.writestr("trips.txt", table([{"trip_id": "trip", "route_id": "r", "service_id": "daily", "direction_id": "0", "shape_id": "shape"}])
+                                 if branch not in {"7", "8"} else "trip_id,route_id,service_id,direction_id,shape_id\n")
+                # Mildura is entirely outside the former Melbourne bounding box.
+                lon, lat = ("142.16", "-34.18") if mode == "bus" else ("145", "-37.8")
+                archive.writestr("stops.txt", table([{"stop_id": "a", "stop_name": "Alpha", "stop_lat": lat, "stop_lon": lon},
+                    {"stop_id": "b", "stop_name": "Bravo", "stop_lat": str(float(lat) - .01), "stop_lon": lon}]))
                 archive.writestr("stop_times.txt", table([
                     {"trip_id": "trip", "stop_id": "a", "stop_sequence": "1", "arrival_time": "25:00:00", "departure_time": "25:00:00", "shape_dist_traveled": ""},
                     {"trip_id": "trip", "stop_id": "b", "stop_sequence": "2", "arrival_time": "25:10:00", "departure_time": "25:10:00", "shape_dist_traveled": ""}]))
@@ -104,7 +107,14 @@ def test_preparation_keeps_valid_schedules_with_missing_shapes_as_gaps(tmp_path)
     prepare(archive_path, output)
     with gzip.open(output, "rt") as stream:
         reference = expanded_reference(json.load(stream))
-    assert len(reference["days"]["2024-06-24"]) == 2
+    rows = reference["days"]["2024-06-24"]
+    assert len(rows) == 5
+    # Shared source IDs in different operational branches must not collide.
+    assert {row[1] for row in rows} == {"3:trip", "4:trip", "5:trip", "6:trip", "11:trip"}
+    assert {p["operator"] for p in reference["patterns"].values()} == {
+        "PTV tram", "PTV bus", "V/Line coach", "PTV regional bus", "SkyBus"}
+    assert reference["metadata"]["branches"]["7"]["candidate_trips"] == 0
+    assert reference["metadata"]["branches"]["8"]["candidate_trips"] == 0
     for pattern in reference["patterns"].values():
         assert pattern["legs"] == ["gtfs-unresolved"]
         assert pattern["direction"] == "A"
@@ -151,3 +161,53 @@ def test_snapshot_ranges_use_melbourne_capture_dates_and_cover_five_full_weeks()
     assert len(days) == len(set(days)) == 35
     assert days[0] == date(2024, 5, 27) and days[-1] == date(2024, 6, 30)
     assert days[0].weekday() == 0 and days[-1].weekday() == 6
+
+
+@pytest.mark.parametrize("compact", [False, True])
+def test_regional_coach_can_finish_after_next_business_boundary(tmp_path, monkeypatch, compact):
+    from dashboard import replay
+    from scripts.compact_transit import save_reference
+
+    reference = {"metadata": {}, "stations": [{"name": "A"}, {"name": "B"}],
+        "paths": {"gap": {"quality": "approximate", "coordinates": []}},
+        "patterns": {"coach": {"mode": "bus", "operator": "V/Line coach", "line": "Bus · Overnight coach",
+            "stops": [[0, 0, 0], [1, 7200, 7200]], "legs": ["gap"]}},
+        "days": {"2024-06-24": [["coach", "5:overnight", 26 * 3600]]}}
+    path = tmp_path / "coach.json.gz"
+    if compact:
+        save_reference(reference, path)
+    else:
+        with gzip.open(path, "wt") as stream:
+            json.dump(reference, stream)
+    monkeypatch.setenv("SUNTRAIN_TRANSIT_REFERENCE", str(path))
+    monkeypatch.setenv("SUNTRAIN_RAIL_GEOMETRY", str(tmp_path / "absent.json"))
+    monkeypatch.setattr(replay.data, "_connect", lambda: pytest.fail("bus-only replay queried train warehouse"))
+    day = replay.get_replay_day("2024-06-24", modes=["bus"])
+    assert len(day["services"]) == 1
+    assert datetime.fromtimestamp(day["end"], ZoneInfo("Australia/Melbourne")).isoformat() == "2024-06-25T04:00:00+10:00"
+
+
+def test_archive_downloader_upgrades_legacy_metro_only_cache(tmp_path, monkeypatch):
+    from scripts.prepare_transit_period import download_archive
+    from scripts.prepare_transit_replay import BRANCHES
+
+    url = "https://example.test/ptv.zip"
+    cached = tmp_path / "ptv.zip"
+    with ZipFile(cached, "w") as archive:
+        for branch in ("3", "4"):
+            archive.writestr(f"{branch}/google_transit.zip", b"legacy")
+    source = io.BytesIO()
+    with ZipFile(source, "w") as archive:
+        for branch in ("1", "2", *[b for b, *_ in BRANCHES]):
+            archive.writestr(f"{branch}/google_transit.zip", branch.encode())
+    calls = []
+    def download(requested, **kwargs):
+        calls.append(requested)
+        return io.BytesIO(source.getvalue())
+    monkeypatch.setattr("urllib.request.urlopen", download)
+    assert download_archive(url, tmp_path) == cached
+    with ZipFile(cached) as archive:
+        assert set(archive.namelist()) == {f"{branch}/google_transit.zip" for branch, *_ in BRANCHES}
+        assert archive.read("6/google_transit.zip") == b"6"
+    assert download_archive(url, tmp_path) == cached
+    assert calls == [url]

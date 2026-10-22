@@ -4,7 +4,11 @@ Historical transport replay across Australia, Austria, Belgium, Canada, France, 
 
 ## Seoul subway
 
-Choose **Seoul** for metropolitan subway **Lines 1–9**, including express services and branches. The official September 2025 bulk timetable is applied to a **20–26 October 2025 reference week**, with separate weekday/Saturday/Sunday schedules; exact effective dates are unspecified. The **480 KB gzip** bundle has **31,379 departures**, with original train calls and numbers. Connected paths cover **99.6%** of Monday journey legs; remaining sections stay gaps. Rows without running-day tags are excluded. Other metropolitan lines and KTX/intercity are not enabled yet. Existing replay, filters, dark mode and Seoul Overview apply. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md) for sources, limitations, rebuild commands and next additions.
+Choose **Seoul** for metropolitan subway **Lines 1–9**, including express services and branches. The official September 2025 bulk timetable is applied to a **20–26 October 2025 reference week**, with separate weekday/Saturday/Sunday schedules; exact effective dates are unspecified. The **480 KB gzip** bundle has **31,379 departures**, with original train calls and numbers. Connected paths cover **99.6%** of Monday journey legs; remaining sections stay gaps. Rows without running-day tags are excluded. Other metropolitan lines are not enabled; KTX/intercity has a separate South Korea view. Existing replay, filters, dark mode and Seoul Overview apply. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md) for sources, limitations, rebuild commands and next additions.
+
+## South Korea national rail
+
+Choose **South Korea** for KORAIL **KTX, Sancheon, Eum, Cheongryong, ITX-Maum, ITX-Saemaeul, Saemaeul, Mugunghwa and Nuriro**. Official April/June 2025 publications supply train numbers, station times and running days, displayed on a **20–26 October 2025 reference week**; exact operation that week is not confirmed. The **591 KB gzip** bundle contains **4,821 departures**, with **99.95%** of Monday journey legs connected to railway tracks. Existing playback, filters, themes and Overview apply. Seoul subway remains separate; SRT, ITX-Cheongchun and tourist specials are not included. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).
 
 ## Taiwan rail
 

@@ -12,6 +12,15 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'south_korea': {
+        'name': 'South Korea', 'timezone': 'Asia/Seoul',
+        'bounds': [[125.9, 34.3], [129.7, 38.2]], 'passenger_data': False,
+        'start_date': '2025-10-20', 'end_date': '2025-10-26',
+        'description': 'KORAIL KTX and conventional passenger trains · April/June 2025 timetable snapshots shown on an October reference week. Seoul subway has its own view; SRT and tourist specials are not included.',
+        'default_modes': ['high_speed_rail', 'train'],
+        'modes': [('KTX', 'high_speed_rail'), ('Intercity / conventional', 'train')],
+        'operators': [('KORAIL', 'KORAIL')], 'directions': [('Not specified', 'Not specified')],
+    },
     'seoul': {
         'name': 'Seoul', 'timezone': 'Asia/Seoul',
         'bounds': [[126.6, 37.3], [127.3, 37.75]], 'passenger_data': False,

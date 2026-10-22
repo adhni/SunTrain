@@ -1,0 +1,20 @@
+[
+  {
+    "file": "ktx.xlsx",
+    "url": "https://www.korail.com/file/cubedata/COMMON/jfile/202504/30/2025043019686017900290.xlsx",
+    "sha256": "f169c6d735d5860cc69328fafe141b011c0d0bd9aab852770b880bee135b1d2d",
+    "date": "2025-06-01"
+  },
+  {
+    "file": "intercity.xlsx",
+    "url": "https://www.korail.com/file/cubedata/COMMON/jfile/202503/28/20250328195da7b30dc650.xlsx",
+    "sha256": "0c8799780fa25d804cc885e475a8b8cb74e768163bf6e76719ab58766b47e618",
+    "date": "2025-04-14"
+  },
+  {
+    "file": "tracks.json.gz",
+    "url": "https://download.geofabrik.de/asia/south-korea.html",
+    "sha256": "be33993d5e1d7896a553da22f54a794a1238d1cd492bb3e3598b05fbf30728ff",
+    "date": "2026-10-21"
+  }
+]

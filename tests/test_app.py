@@ -336,6 +336,34 @@ def test_shared_filters_remain_available_and_passenger_reports_start_collapsed(a
     assert overview[10:13] == ({"display": "block"}, {"display": "block"}, {"display": "none"})
 
 
+def test_home_is_the_opening_view_and_keeps_replay_hidden_without_loading_schedules(app_module, monkeypatch):
+    import dashboard.replay_view as replay_view
+    from dashboard.cities import CITIES
+    from dashboard.home_view import home_places
+
+    monkeypatch.setattr(replay_view, "descriptor", lambda *a, **kw: pytest.fail("home loaded a replay"))
+    with pytest.raises(PreventUpdate):
+        app_module.load_replay_day("2024-05-27", "home", "melbourne", None)
+    state=app_module.update_tab_visibility("home")
+    assert state[4] == {"display": "none"}
+    assert state[9] == "app transport-active home-active"
+    assert state[-1] == {"display": "block"}
+    assert app_module.update_tab_visibility("replay")[-1] == {"display": "none"}
+    places=home_places()
+    assert {place["id"] for place in places} == set(CITIES)
+    assert all(place["bounds"] == CITIES[place["id"]]["bounds"] for place in places)
+    assert all(set(place)=={"id","name","bounds","modes","start","end"} for place in places)
+
+    def walk(component):
+        if isinstance(component,(list,tuple)):
+            for child in component:yield from walk(child)
+        elif component is not None:
+            yield component
+            yield from walk(getattr(component,"children",None))
+    tabs=next(component for component in walk(app_module.app.layout) if getattr(component,"id",None)=="view-tabs")
+    assert tabs.value == "home"
+
+
 @pytest.mark.parametrize("subtab,index", [("overview", 0), ("lines", 1), ("segments", 2), ("network", 3)])
 def test_overview_only_shows_selected_subtab(app_module, subtab, index):
     styles = app_module.update_tab_visibility("overview", subtab, "overview", "melbourne", True)

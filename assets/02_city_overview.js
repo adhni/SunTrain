@@ -11,7 +11,7 @@
         let departures = 0, estimatedDepartures = 0;
         for (const service of day.services) {
             if (!core.matches(service, filters, day)) continue;
-            const departure = (service.stopIds ? service.times[1] : service.stops[0][2]) + (service.timeOffset || 0);
+            const departure = core.firstDeparture(service);
             if (departure < day.start || departure >= day.end) continue;
             departures++;
             if (service.frequency_based) estimatedDepartures++;

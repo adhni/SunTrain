@@ -66,24 +66,24 @@ def build_replay_panel(metadata, default_date):
         html.Div(id="replay-load-message", role="status", className="replay-load-message"),
         html.Div(className="replay-workspace", children=[
             html.Div(className="replay-map-card", children=[
-                html.Div(className="replay-map-toolbar", children=[
-                    html.Div([html.Strong("—", id="replay-active-count"), html.Span(" active services"),
-                              html.Span("", id="replay-matching-count", className="replay-muted"),
-                              html.Span("", id="replay-position-note", className="replay-approximate")]),
-                    html.Div(className="replay-map-actions", children=[
-                        html.Button("Reset view", id="replay-melbourne", className="finder-chip", title="Return to the Melbourne starting view"),
-                        html.Button("Fit selection", id="replay-fit", className="finder-chip", title="Show the full extent of the filtered services"),
-                        html.Button("Follow service", id="replay-follow", className="finder-chip", disabled=True,
-                                    title="Select a service to follow its position", **{"aria-pressed": False}),
-                        html.Button("Filters", id="replay-fullscreen-filters", className="finder-chip replay-fullscreen-filter-button",
-                                    **{"aria-expanded": False, "aria-controls": "replay-filter-controls"}),
-                        html.Button("Fullscreen", id="replay-fullscreen", className="finder-chip", disabled=True,
-                                    **{"aria-pressed": False}),
-                        html.Button("Dark mode", id="replay-theme-toggle", className="finder-chip theme-toggle",
-                                    **{"data-theme-toggle": "true", "aria-pressed": False}),
-                    ]),
-                ]),
                 html.Div(className="replay-map-wrap", children=[
+                    html.Div(className="replay-map-toolbar", children=[
+                        html.Div([html.Strong("—", id="replay-active-count"), html.Span(" active services"),
+                                  html.Span("", id="replay-matching-count", className="replay-muted"),
+                                  html.Span("", id="replay-position-note", className="replay-approximate")], className="replay-map-counts"),
+                        html.Div(className="replay-map-actions", children=[
+                            html.Button("Reset view", id="replay-melbourne", className="finder-chip", title="Return to the Melbourne starting view"),
+                            html.Button("Fit selection", id="replay-fit", className="finder-chip", title="Show the full extent of the filtered services"),
+                            html.Button("Follow service", id="replay-follow", className="finder-chip", disabled=True,
+                                        title="Select a service to follow its position", **{"aria-pressed": False}),
+                            html.Button("Filters", id="replay-fullscreen-filters", className="finder-chip replay-fullscreen-filter-button",
+                                        **{"aria-expanded": False, "aria-controls": "replay-filter-controls"}),
+                            html.Button("Fullscreen", id="replay-fullscreen", className="finder-chip", disabled=True,
+                                        **{"aria-pressed": False}),
+                            html.Button("Dark mode", id="replay-theme-toggle", className="finder-chip theme-toggle",
+                                        **{"data-theme-toggle": "true", "aria-pressed": False}),
+                        ]),
+                    ]),
                     html.Div(id="replay-map", className="replay-map", role="region", **{"aria-label": "Historical train, tram and bus replay and train passenger demand map"}),
                     html.Details(id="replay-demand-legend", className="replay-demand-legend", hidden=True, open=True,
                                **{"aria-label": "Passenger boarding scale"}, children=[
@@ -109,34 +109,42 @@ def build_replay_panel(metadata, default_date):
                         field("Playback speed", dcc.Dropdown(id="replay-speed", options=[{"label": f"{n:,}×", "value": n} for n in [1, 10, 60, 300, 1000, 2000]],
                               value=60, clearable=False, searchable=False)),
                     ]),
+                    html.Div(className="replay-timeline-heading", children=[
+                        html.Span("Departures through the day"), html.Span("Drag to explore"),
+                    ]),
                     html.Div(id="replay-timeline", className="replay-timeline"),
                     html.Div([html.Span("03:00", id="replay-range-start"), html.Span("03:00", id="replay-range-end")],
                              id="replay-timeline-labels", className="replay-timeline-labels"),
                 ]),
-                html.Div(id="replay-demand-controls", className="replay-demand-controls", children=[
-                    html.Div(children=[html.Label("Map view", className="finder-label"),
-                        dcc.RadioItems(id="replay-map-mode", options=[{"label": " Vehicles", "value": "trains"},
-                            {"label": " Passenger heatmap", "value": "demand"}, {"label": " Both", "value": "both"}],
-                            value="trains", inline=True, className="replay-map-modes")]),
-                    html.Div(id="replay-demand-window-field", hidden=True, children=[
-                        field("Boarding window", dcc.Dropdown(id="replay-demand-window", options=[
-                            {"label": f"Last {n} minutes", "value": n} for n in (15, 30, 60)],
-                            value=30, clearable=False, searchable=False)),
+                html.Details(className="replay-options", children=[
+                    html.Summary("Map options"),
+                    html.Div(className="replay-options-body", children=[
+                        html.Div(id="replay-demand-controls", className="replay-demand-controls", children=[
+                            html.Div(children=[html.Label("Map view", className="finder-label"),
+                                dcc.RadioItems(id="replay-map-mode", options=[{"label": " Vehicles", "value": "trains"},
+                                    {"label": " Passenger heatmap", "value": "demand"}, {"label": " Both", "value": "both"}],
+                                    value="trains", inline=True, className="replay-map-modes")]),
+                            html.Div(id="replay-demand-window-field", hidden=True, children=[
+                                field("Boarding window", dcc.Dropdown(id="replay-demand-window", options=[
+                                    {"label": f"Last {n} minutes", "value": n} for n in (15, 30, 60)],
+                                    value=30, clearable=False, searchable=False)),
+                            ]),
+                        ]),
+                        html.Div(className="replay-map-footer", children=[
+                            dcc.Checklist(id="replay-display", options=[{"label": " Route paths", "value": "routes"},
+                                          {"label": " Stops & stations", "value": "stations"},
+                                          {"label": " Size trains by passengers", "value": "load"}], value=["routes", "stations"], inline=True),
+                            html.Span("Estimated positions from scheduled times", className="replay-estimate"),
+                            html.Span("Select a vehicle for details", className="replay-selection-hint replay-muted"),
+                            html.Span("Bigger train dots mean more passengers on board. All vehicles grow as you zoom in; passenger sizes stay within readable limits. Click a train for its recorded count.",
+                                      id="replay-size-help", className="replay-estimate", hidden=True),
+                        ]),
                     ]),
-                ]),
-                html.Div(className="replay-map-footer", children=[
-                    dcc.Checklist(id="replay-display", options=[{"label": " Route paths", "value": "routes"},
-                                  {"label": " Stops & stations", "value": "stations"},
-                                  {"label": " Size trains by passengers", "value": "load"}], value=["routes", "stations"], inline=True),
-                    html.Span("Estimated positions from scheduled times", className="replay-estimate"),
-                    html.Span("Select a vehicle for details", className="replay-selection-hint replay-muted"),
-                    html.Span("Bigger train dots mean more passengers on board. All vehicles grow as you zoom in; passenger sizes stay within readable limits. Click a train for its recorded count.",
-                              id="replay-size-help", className="replay-estimate", hidden=True),
                 ]),
             ]),
             html.Aside(className="replay-detail-card", children=[
                 html.Div(className="replay-detail-heading", children=[
-                    html.Div("SERVICE DETAILS", className="replay-eyebrow"),
+                    html.Div("YOUR JOURNEY", className="replay-eyebrow"),
                     html.Button("Close", id="replay-close-details", className="finder-chip", hidden=True,
                                 **{"aria-label": "Close service details"}),
                 ]),

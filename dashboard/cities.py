@@ -12,6 +12,15 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'seoul': {
+        'name': 'Seoul', 'timezone': 'Asia/Seoul',
+        'bounds': [[126.6, 37.3], [127.3, 37.75]], 'passenger_data': False,
+        'start_date': '2025-10-20', 'end_date': '2025-10-26',
+        'description': 'Metropolitan subway Lines 1–9 · September 2025 timetable snapshot; 20–26 October reference week with weekday/weekend calendars. Other metropolitan lines and KTX are not included. Fit selection shows outer termini.',
+        'default_modes': ['subway'], 'modes': [('Subway Lines 1–9', 'subway')],
+        'operators': [('Seoul metropolitan subway', 'Seoul metropolitan subway')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B')],
+    },
     'taipei': {
         'name': 'Taipei', 'timezone': 'Asia/Taipei',
         'bounds': [[121.38, 24.94], [121.65, 25.19]], 'passenger_data': False,

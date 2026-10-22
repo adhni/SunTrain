@@ -1,0 +1,19 @@
+[
+  {
+    "file": "timetable.csv",
+    "url": "https://datafile.seoul.go.kr/bigfile/iot/inf/nio_download.do?useCache=false",
+    "sha256": "46b6d9e2c2e1e23632fa72208a3ca5dc6aeba9013c403ee6f52747fec2b9a9e2",
+    "post": "infId=OA-22522&seq=1&infSeq=2",
+    "date": "2025-09-30"
+  },
+  {
+    "file": "stations.csv",
+    "url": "https://raw.githubusercontent.com/minseok852/subway-etl/94d33a0e809f9afbd2f7c3829e88acbae1ca8e6a/output/station_nodes.csv",
+    "sha256": "da3f0a265562e18b510b1634168acc5753cde522d2a3f53978e91ea7d46f3918"
+  },
+  {
+    "file": "tracks.json.gz",
+    "url": "https://download.geofabrik.de/asia/south-korea.html",
+    "sha256": "0209d6d85ed9c447dd257ab7978906bb84ba34e57506f827425e2ab653a44b14"
+  }
+]

@@ -471,7 +471,9 @@ Choose **Passenger heatmap** or **Both** under the map to explore station boardi
 
 Counts use recorded boardings at scheduled departure times, in a right-closed rolling window, from the selected business date's services only. Zero counts stay zero; unavailable counts are excluded and reported separately. Seeking backwards recomputes the window. Unresolved train paths do not prevent station demand from being shown. Prefix sums run in the browser, and the heatmap refreshes at minute boundaries (at most five times per second during fast playback) without server queries. Fullscreen retains the view/window controls and scale.
 
-Transport Replay is the opening view and first tab, with the map initially focused on metropolitan Melbourne. **Melbourne** restores that view, while **Fit selection** shows the full extent of the filtered services. **Follow service** keeps a selected vehicle centered during playback; dragging the map or choosing a view stops following.
+**Home** opens on a world map you can pan and zoom. Nearby places group together at wider zoom levels; click a group to zoom in, or find a city or country using search. Each place has a preview with its transport modes, replay dates and **Open replay** button. **World view** zooms back out. The home page uses the existing location catalogue and downloads no replay schedules until you open Transport Replay or Overview. It shares the site's light and dark themes.
+
+Transport Replay initially focuses on metropolitan Melbourne, or the place opened from Home. **Reset view** restores that location's starting view, while **Fit selection** shows the full extent of the filtered services. **Follow service** keeps a selected vehicle centered during playback; dragging the map or choosing a view stops following.
 
 **Fullscreen** expands the map with playback controls, speeds up to **2,000×**, and a **Filters** button for the date, line and operator controls. Selected-train details appear over the map and can be closed. Use **Exit fullscreen** or **Escape** to return. Browsers without native fullscreen expand the map to fill the browser window instead.
 

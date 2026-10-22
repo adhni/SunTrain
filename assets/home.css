@@ -1,0 +1,40 @@
+.home-active #replay-panel, .home-active > .replay-attribution { display: none !important; }
+.home-intro { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 12px 0 22px; }
+.home-intro h2 { font-size: clamp(1.7rem, 3.5vw, 2.6rem); line-height: 1.15; letter-spacing: -0.035em; margin: 0 0 8px; }
+.home-intro p { margin: 0; color: var(--muted); font-size: 0.92rem; }
+.home-count { flex-shrink: 0; padding: 8px 12px; border: 1px solid var(--line); border-radius: 24px; color: var(--accent-deep); background: var(--surface); font-size: 0.76rem; }
+.home-world { position: relative; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--surface-subtle); box-shadow: var(--shadow); }
+#home-map { height: clamp(430px, calc(100dvh - 245px), 900px); }
+.home-search { position: absolute; z-index: 4; left: 16px; top: 16px; width: 290px; max-width: calc(100% - 136px); padding: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: 9px; box-shadow: 0 4px 20px #18232d14; }
+.home-search label { display: block; color: var(--ink); font-size: 0.76rem; font-weight: 650; margin-bottom: 7px; }
+.home-reset { position: absolute; z-index: 3; right: 12px; top: 16px; width: auto; padding: 9px 12px; font-size: 0.74rem; }
+#home-map .maplibregl-ctrl-top-right { top: 60px; }
+.home-map-hint { position: absolute; bottom: 12px; left: 12px; max-width: calc(100% - 28px); padding: 6px 10px; border-radius: 20px; background: var(--surface); color: var(--muted); font-size: 0.68rem; pointer-events: none; }
+.home-map-message:empty { display: none; }
+.home-pin { display: flex; align-items: center; justify-content: center; width: 42px; height: 42px; padding: 0; border: 0; background: none; cursor: pointer; }
+.home-pin-dot { display: grid; place-items: center; width: 23px; height: 23px; border: 3px solid var(--surface); border-radius: 50%; color: var(--surface); background: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 3px 9px #0003; font-size: 0.86rem; font-weight: 750; transition: scale 0.15s; }
+.home-cluster .home-pin-dot { width: 39px; height: 39px; }
+.home-pin:hover .home-pin-dot, .home-pin:focus-visible .home-pin-dot { scale: 1.1; }
+.home-pin:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 50%; }
+.home-pin-label { position: absolute; top: 40px; left: 50%; translate: -50% 0; width: max-content; max-width: 180px; padding: 4px 8px; border-radius: 5px; background: var(--surface); color: var(--ink); font: 600 0.7rem "Avenir Next", "Segoe UI", sans-serif; opacity: 0; pointer-events: none; }
+.home-pin:hover .home-pin-label, .home-pin:focus-visible .home-pin-label { opacity: 1; }
+.home-popup .maplibregl-popup-content { padding: 18px; border: 1px solid var(--line); border-radius: 10px; color: var(--ink); background: var(--surface); box-shadow: 0 8px 28px #0002; }
+.home-popup .maplibregl-popup-close-button { color: var(--muted); width: 28px; height: 28px; font-size: 20px; }
+.home-place-card { font-family: "Avenir Next", "Segoe UI", sans-serif; }
+.home-place-card h3 { margin: 6px 20px 8px 0; font-size: 1.4rem; line-height: 1.2; }
+.home-place-modes { margin: 0 0 8px; color: var(--muted); font-size: 0.78rem; line-height: 1.5; }
+.home-place-dates { margin: 0 0 14px; color: var(--muted); font-size: 0.7rem; }
+.home-open-replay { width: 100%; border: 0; border-radius: 6px; padding: 10px 14px; color: var(--surface); background: var(--accent-deep); font: 650 0.82rem "Avenir Next", "Segoe UI", sans-serif; cursor: pointer; }
+.home-open-replay:hover { background: var(--accent); }
+.home-open-replay:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+@media (max-width: 640px) {
+    .home-intro { padding-top: 4px; padding-bottom: 16px; }
+    .home-intro p { font-size: 0.82rem; max-width: 260px; }
+    .home-count { display: none; }
+    .home-search { position: relative; top: 0; left: 0; width: 100%; max-width: none; height: 90px; padding: 10px 12px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; box-shadow: none; }
+    .home-search label { font-size: 0.7rem; }
+    .home-reset { top: 100px; font-size: 0.68rem; padding: 8px; }
+    #home-map { height: clamp(320px, calc(100vw - 24px), 430px); }
+    .home-map-hint { font-size: 0.6rem; bottom: 32px; }
+}
+@media (prefers-reduced-motion: reduce) { .home-pin-dot { transition: none; } }

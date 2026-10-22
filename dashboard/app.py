@@ -33,6 +33,7 @@ from dashboard.data import (
 from dashboard.replay_view import build_replay_panel, register_replay_callbacks
 from dashboard.replay_http import register_replay_routes
 from dashboard.overview_view import group_passenger_reports
+from dashboard.home_view import build_home_panel, register_home_callbacks
 
 
 META = get_metadata()
@@ -102,13 +103,14 @@ COMMUTER_DAY_TYPES = ["Normal Weekday"]
 
 app = Dash(
     __name__,
-    title="SunTrain Dashboard",
+    title="SunTrain",
     assets_folder=str(ROOT / "assets"),
     suppress_callback_exceptions=True,
     compress=True,
 )
 server = app.server
 register_replay_routes(server)
+register_home_callbacks(app)
 
 
 @server.get("/health")
@@ -354,7 +356,7 @@ def deserialize_filters(data: dict[str, object]) -> tuple[dict[str, object], obj
 app.layout = html.Div(
     className="page-shell",
     children=[
-        html.A("Skip to dashboard", href="#main-content", className="skip-link"),
+        html.A("Skip to content", href="#main-content", className="skip-link"),
         dcc.Download(id="download-data"),
         dcc.Store(id="analysis-network-ready", data=False),
         dcc.Store(id="analysis-view", data="inactive"),
@@ -366,7 +368,7 @@ app.layout = html.Div(
         ),
         html.Main(
             id="main-content",
-            className="app transport-active replay-active",
+            className="app transport-active home-active",
             tabIndex=-1,
             children=[
                 html.Section(
@@ -386,11 +388,12 @@ app.layout = html.Div(
                                 ),
                                 dcc.Tabs(
                                     id="view-tabs",
-                                    value="replay",
+                                    value="home",
                                     className="view-tabs",
                                     parent_className="view-tabs-parent",
                                     mobile_breakpoint=0,
                                     children=[
+                                        dcc.Tab(label="Home", value="home"),
                                         dcc.Tab(label="Transport Replay", value="replay"),
                                         dcc.Tab(label="Overview", value="overview"),
                                     ],
@@ -611,6 +614,7 @@ app.layout = html.Div(
                                  dcc.Tab(label="Network", value="network"),
                              ]),
                 ]),
+                build_home_panel(),
                 build_replay_panel(META, DEFAULT_START),
                 html.Div(
                     id="overview-panel",
@@ -1906,6 +1910,7 @@ def update_rows_panel(data, preview_row_count, raw_data_clicks, active_tab="over
     Output("main-content", "className"),
     Output("city-overview", "style"), Output("melbourne-analysis", "style"),
     Output("melbourne-analysis-body", "style"), Output("melbourne-analysis-toggle", "aria-expanded"),
+    Output("home-panel", "style"),
     Input("view-tabs", "value"),
     Input("overview-tabs", "value"),
     Input("analysis-view", "data"), Input("replay-city", "value"), Input("melbourne-analysis-open", "data"),
@@ -1919,14 +1924,15 @@ def update_tab_visibility(active_tab, overview_tab="overview", analysis_active="
         tab_style(analysis_view == "lines"),
         tab_style(analysis_view == "segments"),
         tab_style(analysis_view == "network"),
-        tab_style(True),
+        tab_style(active_tab in ("replay", "overview")),
         {} if show_analysis else {"display": "none"},
         {} if show_analysis else {"display": "none"},
         {} if show_analysis else {"display": "none"},
         tab_style(show_analysis),
-        "app transport-active " + ("replay-active" if active_tab == "replay" else "overview-active"),
+        "app transport-active " + {"home": "home-active", "replay": "replay-active"}.get(active_tab, "overview-active"),
         tab_style(active_tab == "overview"), tab_style(melbourne_overview),
         tab_style(melbourne_overview and opened), bool(melbourne_overview and opened),
+        tab_style(active_tab == "home"),
     )
 
 

@@ -25,6 +25,7 @@ CHICAGO_PATH = ROOT / "data/reference/chicago/2025-11-24.json.gz"
 NYC_PATH = ROOT / "data/reference/nyc/2025-12-15.json.gz"
 SINGAPORE_PATH = ROOT / "data/reference/singapore/2026-10-05.json.gz"
 TOKYO_PATH = ROOT / "data/reference/tokyo/2026-10-20.json.gz"
+KUALA_LUMPUR_PATH = ROOT / "data/reference/kuala_lumpur/2026-10-12.json.gz"
 JAPAN_PATH = ROOT / "data/reference/japan/2026-03-10.json.gz"
 JAPAN_LIMITED_PATH = ROOT / "data/reference/japan/limited-express-2026-03-17.json.gz"
 SYDNEY_PATH = ROOT / "data/reference/sydney/2026-10-05.json.gz"
@@ -63,7 +64,7 @@ JAPAN_REPLAY_NOTE = "Shinkansen: 10 March 2026 community timetable. Limited expr
 
 
 def prepared_path(city):
-    default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH, "tokyo": TOKYO_PATH, "japan": JAPAN_PATH,
+    default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH, "tokyo": TOKYO_PATH, "japan": JAPAN_PATH, "kuala_lumpur": KUALA_LUMPUR_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "us_rail": US_RAIL_PATH, "london": LONDON_PATH,
                "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH, "france": FRANCE_PATH,

@@ -75,6 +75,16 @@ CITIES = {
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"),
                        ("Inner loop", "Inner loop"), ("Outer loop", "Outer loop")],
     },
+    "kuala_lumpur": {
+        "name": "Kuala Lumpur", "timezone": "Asia/Kuala_Lumpur",
+        "bounds": [[101.35, 2.82], [101.86, 3.36]], "passenger_data": False,
+        "start_date": "2026-10-12", "end_date": "2026-10-18",
+        "description": "KTM Komuter, MRT, LRT and KL Monorail. KTM uses scheduled departures; Rapid KL movements illustrate published frequencies. Source snapshot: 22 October 2026.",
+        "default_modes": ["train", "subway", "light_rail"],
+        "modes": [("KTM Komuter", "train"), ("MRT", "subway"), ("LRT / Monorail", "light_rail")],
+        "operators": [("KTM Komuter", "KTM Komuter"), ("Rapid KL", "Rapid KL")],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
     "singapore": {
         "name": "Singapore", "timezone": "Asia/Singapore",
         "bounds": [[103.62, 1.23], [104.02, 1.46]], "passenger_data": False,

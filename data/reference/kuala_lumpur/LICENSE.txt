@@ -1,0 +1,17 @@
+Timetables and Rapid KL supplied shapes:
+Keretapi Tanah Melayu Berhad and Prasarana Malaysia Berhad, via data.gov.my.
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+Licence statement: https://developer.data.gov.my/faq.en
+Licence: https://creativecommons.org/licenses/by/4.0/
+
+KTM railway geography and the separately distributed ktm-tracks database:
+Copyright OpenStreetMap contributors, via the OpenStreetMap France Malaysia extract.
+Open Data Commons Open Database Licence (ODbL) 1.0.
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Changes by SunTrain: KL rail selection, shared stop/timing conversion, illustrative
+departures from Rapid KL headways, railway graph extraction, station matching and
+path simplification. Source timetable times and route colours are retained.
+Rapid KL estimates are not actual individual departures or live observations.
+Source URLs, dates and SHA-256 hashes are retained in the data and expansion notes.

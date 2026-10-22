@@ -384,6 +384,17 @@ app.layout = html.Div(
                                         ),
                                     ]
                                 ),
+                                dcc.Tabs(
+                                    id="view-tabs",
+                                    value="replay",
+                                    className="view-tabs",
+                                    parent_className="view-tabs-parent",
+                                    mobile_breakpoint=0,
+                                    children=[
+                                        dcc.Tab(label="Transport Replay", value="replay"),
+                                        dcc.Tab(label="Overview", value="overview"),
+                                    ],
+                                ),
                                 html.Div(
                                     className="brand-tools",
                                     children=[
@@ -589,17 +600,6 @@ app.layout = html.Div(
                                 metric_card("Peak train load", "Highest recorded departure load", "metric-peak-load"),
                             ],
                         ),
-                    ],
-                ),
-                dcc.Tabs(
-                    id="view-tabs",
-                    value="replay",
-                    className="view-tabs",
-                    parent_className="view-tabs-parent",
-                    mobile_breakpoint=0,
-                    children=[
-                        dcc.Tab(label="Transport Replay", value="replay"),
-                        dcc.Tab(label="Overview", value="overview"),
                     ],
                 ),
                 html.Div(id="overview-navigation", style={"display": "none"}, children=[

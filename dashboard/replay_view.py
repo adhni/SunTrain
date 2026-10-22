@@ -20,6 +20,8 @@ def field(label, control):
 
 def period_label(minimum, maximum):
     first, last = date.fromisoformat(minimum), date.fromisoformat(maximum)
+    if first == last:
+        return first.strftime("%d %b %Y")
     start = first.strftime("%d %b %Y" if first.year != last.year else "%d %b")
     return f"{start}–{last:%d %b %Y}"
 
@@ -39,7 +41,8 @@ def build_replay_panel(metadata, default_date):
         ]),
         html.Div(id="replay-filter-controls", className="replay-filters", children=[
             field("Location", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
-                  for key, value in CITIES.items()], value="melbourne", clearable=False, searchable=False)),
+                  for key, value in sorted(CITIES.items(), key=lambda item: item[1]["name"].casefold())],
+                  value="melbourne", clearable=False, searchable=True)),
             field("Date", dcc.DatePickerSingle(id="replay-date", date=default_date,
                   min_date_allowed=minimum, max_date_allowed=maximum,
                   display_format="DD MMM YYYY", first_day_of_week=1, clearable=False)),
@@ -69,7 +72,7 @@ def build_replay_panel(metadata, default_date):
                               html.Span("", id="replay-matching-count", className="replay-muted"),
                               html.Span("", id="replay-position-note", className="replay-approximate")]),
                     html.Div(className="replay-map-actions", children=[
-                        html.Button("Melbourne", id="replay-melbourne", className="finder-chip", title="Return to metropolitan Melbourne"),
+                        html.Button("Reset view", id="replay-melbourne", className="finder-chip", title="Return to the Melbourne starting view"),
                         html.Button("Fit selection", id="replay-fit", className="finder-chip", title="Show the full extent of the filtered services"),
                         html.Button("Follow service", id="replay-follow", className="finder-chip", disabled=True,
                                     title="Select a service to follow its position", **{"aria-pressed": False}),
@@ -108,7 +111,8 @@ def build_replay_panel(metadata, default_date):
                               value=60, clearable=False, searchable=False)),
                     ]),
                     html.Div(id="replay-timeline", className="replay-timeline"),
-                    html.Div([html.Span("03:00", id="replay-range-start"), html.Span("03:00 next day", id="replay-range-end")], className="replay-timeline-labels"),
+                    html.Div([html.Span("03:00", id="replay-range-start"), html.Span("03:00", id="replay-range-end")],
+                             id="replay-timeline-labels", className="replay-timeline-labels"),
                 ]),
                 html.Div(id="replay-demand-controls", className="replay-demand-controls", children=[
                     html.Div(children=[html.Label("Map view", className="finder-label"),
@@ -142,7 +146,10 @@ def build_replay_panel(metadata, default_date):
                          html.Div("Positions follow scheduled times. Train passenger counts are available; tram and bus counts are unavailable.", className="replay-detail-note")]),
             ]),
         ]),
-        html.Div(id="replay-legend", className="replay-legend", **{"aria-label": "Line colors"}),
+        html.Details(id="replay-legend", className="replay-legend", open=True, children=[
+            html.Summary("Line colours", id="replay-legend-label"),
+            html.Div(id="replay-legend-items", className="replay-legend-items"),
+        ]),
         html.Div(id="replay-quality", className="replay-quality", role="status"),
         html.P(id="replay-attribution", className="replay-attribution"),
     ])
@@ -172,7 +179,7 @@ def register_replay_callbacks(app, metadata):
         options = lambda key: [{"label": label, "value": value} for label, value in settings[key]]
         badge = period_label(minimum, maximum)
         return (minimum, maximum, chosen, options("modes"), settings.get("default_modes", []), options("operators"), [], options("directions"), [], [], [], "",
-                settings["description"], badge, settings["name"], f"Return to the {settings['name']} starting view",
+                settings["description"], badge, "Reset view", f"Return to the {settings['name']} starting view",
                 {} if settings["passenger_data"] else {"display": "none"}, "trains",
                 [{"label": " Route paths", "value": "routes"}, {"label": " Stops & stations", "value": "stations"}] +
                 ([{"label": " Size trains by passengers", "value": "load"}] if settings["passenger_data"] else []),

@@ -367,8 +367,9 @@ if os.getenv('SUNTRAIN_INDIA_REFERENCE'):
         'name': 'India', 'timezone': 'Asia/Kolkata',
         'bounds': [[68.0, 7.8], [97.5, 35.5]], 'passenger_data': False,
         'start_date': '2026-08-31', 'end_date': '2026-09-06',
-        'description': 'Local intercity rail pilot · community August 2026 timetable. Source reuse terms unresolved. Incomplete coverage; unsupported track sections stay gaps.',
-        'default_modes': ['train'], 'modes': [('Intercity / long-distance rail', 'train')],
+        'description': 'India rail · August 2026 community timetable. Intercity opens first; choose Regional or Suburban under Transport to add those networks. Unsupported track sections stay gaps.',
+        'default_modes': ['train'], 'modes': [('Intercity / long-distance rail', 'train'),
+            ('Regional / MEMU / DEMU', 'regional_rail'), ('Suburban / local', 'commuter_rail')],
         'operators': [('Indian Railways', 'Indian Railways')],
         'directions': [('Not specified', 'Not specified')],
     }

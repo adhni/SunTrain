@@ -33,7 +33,7 @@ The full PBF and source timetable stay in ignored cache. The runtime reads only 
 
 ## Next additions
 
-First resolve source reuse terms and audit representative timetables against official publications. Then consider broader express specials, regional/suburban services and separate metro city views. Do not treat a software licence on an NTES crawler as a licence for the timetable it collects. Live APIs and passenger statistics are not required for this pilot.
+Next candidates are a dedicated Mumbai suburban view with a coverage audit, Kolkata Metro, and remaining express specials. Regional/suburban layers and Kochi/Delhi/Chennai city views are implemented below. Do not treat a software licence on an NTES crawler as a licence for the timetable it collects. Live APIs and passenger statistics are not required.
 
 ## Validated local build — 23 October 2026
 
@@ -78,3 +78,30 @@ SUNTRAIN_CHENNAI_REFERENCE="$PWD/.cache/india-cities/chennai/2026-10-12.json.gz"
 ```
 
 Validation: **76 Python tests and 48 JavaScript tests** passed. Source audits checked departure-window ownership, shared schedules, Sunday availability, mode filtering, date mapping and geometry gaps. Browser checks opened all three from Home, rendered vehicles and advanced playback with no JavaScript errors; Home made zero initial schedule requests. Rebuilds and screenshots stay in ignored cache. Preview with all India pilots is running at `http://localhost:8089` for this session.
+
+## Nationwide regional and suburban follow-up
+
+The **India** view now offers **Regional / MEMU / DEMU** (`regional_rail`) and **Suburban / local** (`commuter_rail`) in Transport, alongside the existing intercity layer. Intercity remains the default; unselected layers are not opened. These use the same pinned nationwide GTFS and OSM railway graph, **31 August–6 September 2026**. No new source download, runtime dependency or city-specific rendering system was added.
+
+The initial intercity selection has precedence, so additional services cannot duplicate a train already in that layer. Regional scope accepts five-digit 3/4/5/6/7/9-series source numbers, plus otherwise-unselected 0/1/2-series services explicitly named MEMU, DEMU/DMU, EMU, LOCAL, SUBURBAN, PASS/PAS or PASSENGER. Cargo, parcel, goods, PCET, JPP, empty-stock and FTR labels are excluded. Explicit MEMU/DEMU names take precedence over number-based categories; 3/4/9-series and EMU/local-labelled trains use the suburban filter. Remaining selected passenger services use the regional filter. This is SunTrain's practical source-number/name grouping, not an official service taxonomy. Existing 1/2-series intercity entries remain in their original layer, including a handful named DMU or PAS. The four 8-series IRCTC Tejas entries and other unclassified specials are outside this addition. Do not claim complete Mumbai, Kolkata or Chennai suburban coverage from this feed.
+
+The source contains **6,151 selected regional/suburban route entries**, with **6,137 shared patterns** producing occurrences in this week. Missing calendars never receive invented running days. No additional active trip was omitted for malformed schedules. Separate daily bundles preserve relative timing vectors and shared stop patterns; schedules/topologies are namespaced using the existing regional bundle helper so combining modes cannot overwrite station mappings or duplicate IDs. Original train numbers remain unchanged. The runtime reuses the existing optional-rail composer and extends playback through the selected journeys' final arrivals.
+
+| Layer | Mon | Tue | Wed | Thu | Fri | Sat | Sun | Resolved journey legs |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Regional / MEMU / DEMU | 3,126 | 3,121 | 3,112 | 3,096 | 3,113 | 3,055 | 2,905 | 94.9% |
+| Suburban / local | 2,772 | 2,774 | 2,774 | 2,774 | 2,772 | 2,748 | 2,503 | 97.1% |
+
+Monday has **8,046 departures with all three modes**, versus the unchanged **2,148** default intercity departures. Unresolved legs remain empty and hide movement between calls; station calls and source clocks are retained. The supplied station-to-station straight shapes are never substituted for missing railway paths.
+
+Rebuild after preparing the existing India railway graph:
+
+```bash
+.venv/bin/python scripts/prepare_india_replay.py --regional
+```
+
+The preparation-only combined week is `.cache/india/regional-week.json.gz` (**4,144,444 bytes**). Runtime bundles are `.cache/india/regional_rail/YYYY-MM-DD.json.gz` and `.cache/india/commuter_rail/YYYY-MM-DD.json.gz`. Daily regional files are **4.05–4.22 MB**, suburban files **0.61–0.68 MB**. All fourteen files total **33,980,675 bytes**; this deliberately trades a little local disk duplication for independently opened daily layers. None are added to git. Default viewing downloads neither layer. `SUNTRAIN_INDIA_REGIONAL_RAIL_REFERENCE` and `SUNTRAIN_INDIA_COMMUTER_RAIL_REFERENCE` optionally override their directories; otherwise they sit beside `SUNTRAIN_INDIA_REFERENCE`. The local preview command above remains valid.
+
+Validation: tests cover source scope, intercity de-duplication, optional-layer isolation (including opening regional without a base file), unique combined IDs, independent station remapping, shared schedules and overnight end times. A full seven-day audit verified single departure-window ownership, mode membership, geometry gaps and selected-day bundles. Existing German regional and app/HTTP checks also pass. Source reuse status remains documented in the earlier distribution section.
+
+Checks for this follow-up: **84 Python tests and 48 JavaScript tests passed**. Browser verification covered the actual Transport options (2,148 default → 5,274 with regional → 8,046 with both layers), suburban-only filtering (2,772 Monday / 2,503 Sunday), playback and zero Home schedule downloads, with no JavaScript errors.

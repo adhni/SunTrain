@@ -58,8 +58,10 @@ def descriptor(business_date, city, modes=None):
             stamps.append(_stamp(geometry))
         if set(modes) & {"tram", "bus"}:
             stamps.append(transit.fingerprint(business_date))
-    elif city in {"germany", "great_britain", "java", "us_rail", "japan", "malaysia"}:
+    elif city in {"germany", "great_britain", "java", "us_rail", "japan", "malaysia", "india"}:
         stamps = [(mode, *_stamp(path)) for mode, path, _ in replay.rail_reference_files(city, business_date, modes)]
+        if city == 'india':
+            stamps.append((replay.INDIA_REPLAY_NOTE,))
     else:
         stamps = [] if set(modes) <= replay.bus_modes(city) else [_stamp(replay.prepared_path(city))]
         stamps.extend((mode, *_stamp(path)) for mode, path, _ in replay.bus_reference_files(city, business_date, modes))

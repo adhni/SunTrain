@@ -1,6 +1,7 @@
 """Replay settings; passenger analysis continues to use the Victorian dataset."""
 
 import json
+import os
 from pathlib import Path
 
 GERMANY_REGIONAL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
@@ -348,6 +349,20 @@ CITIES = {
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
 }
+
+
+# The India timetable's redistribution permission is unresolved. Enable the
+# local pilot explicitly; ordinary deployments do not advertise missing data.
+if os.getenv('SUNTRAIN_INDIA_REFERENCE'):
+    CITIES['india'] = {
+        'name': 'India', 'timezone': 'Asia/Kolkata',
+        'bounds': [[68.0, 7.8], [97.5, 35.5]], 'passenger_data': False,
+        'start_date': '2026-08-31', 'end_date': '2026-09-06',
+        'description': 'Local intercity rail pilot · community August 2026 timetable. Source reuse terms unresolved. Incomplete coverage; unsupported track sections stay gaps.',
+        'default_modes': ['train'], 'modes': [('Intercity / long-distance rail', 'train')],
+        'operators': [('Indian Railways', 'Indian Railways')],
+        'directions': [('Not specified', 'Not specified')],
+    }
 
 
 def city_settings(city="melbourne"):

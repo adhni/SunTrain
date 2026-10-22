@@ -556,3 +556,6 @@ Rebuild from the existing pinned source ZIPs:
 ```
 
 Prepared daily references live under `data/reference/<city>/bus/`. `SUNTRAIN_CHICAGO_BUS_REFERENCE` and `SUNTRAIN_PERTH_BUS_REFERENCE` can override those directories. Only the selected day is opened at runtime; stops, timings and geometry remain shared. Source ZIPs are preparation-only. Bus occurrences are assigned once by their start time within a 03:00–03:00 business window and may finish afterward. No frequency templates were present in these pinned bus feeds; future frequency feeds are rejected until explicitly supported. Passenger loads are unavailable. See the city expansion notes for source gaps, calendars and attribution.
+# India local pilot
+
+India intercity rail is available as an explicitly enabled local pilot; its community timetable's redistribution terms remain unresolved. See [India notes](INDIA_EXPANSION_NOTES.md) for preparation, source hashes, the August–September 2026 week and local enablement. No India timetable is bundled or advertised in ordinary deployments.

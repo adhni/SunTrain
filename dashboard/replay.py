@@ -68,6 +68,8 @@ MALAYSIA_REPLAY_NOTE = "KTM ETS, Intercity, northern Komuter and shuttles across
 
 
 def prepared_path(city):
+    if city == 'india':
+        return Path(os.environ['SUNTRAIN_INDIA_REFERENCE'])
     default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH, "tokyo": TOKYO_PATH, "japan": JAPAN_PATH, "kuala_lumpur": KUALA_LUMPUR_PATH, "malaysia": MALAYSIA_PATH, "bangkok": BANGKOK_PATH, "thailand": THAILAND_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "us_rail": US_RAIL_PATH, "london": LONDON_PATH,
@@ -421,7 +423,7 @@ def _get_prepared_day(city, business_date, path, modified, modes=None):
             service["source_trip_id"] = trip
             service["number"] = numbers.get(trip, trip)
     payload["schedule"] = payload.pop("transit")
-    if city in {"us_rail", "thailand"}:
+    if city in {"us_rail", "thailand", "india"}:
         payload["end"] = max([payload["end"], *[
             service["departure"] + int(payload["transit_patterns"][service["pattern"]]["times"][-1])
             for service in payload["services"]]])

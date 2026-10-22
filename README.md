@@ -1,6 +1,10 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, Switzerland, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, Switzerland, Taiwan, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Taiwan rail
+
+Choose **Taiwan** for **23–27 October 2026**: Taiwan Railways express, local and branch services plus Taiwan High Speed Rail. Both use actual dated official schedules, including holiday restrictions and overnight journeys. The five-day bundle contains **5,488 departures in about 546 KB gzip**, with connected railway paths for every included leg. TRA and high-speed tracks are kept separate, and original train numbers are retained. Existing filters, themes, fullscreen, details and Taiwan Overview apply. Metro networks can follow later. See [Taiwan expansion notes](TAIWAN_EXPANSION_NOTES.md) for sources, rebuild commands and next additions.
 
 ## Thailand rail
 

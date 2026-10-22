@@ -70,6 +70,8 @@ MUMBAI_REPLAY_NOTE = "Mumbai suburban rail for 31 August–6 September 2026, reu
 
 
 def prepared_path(city):
+    if city == 'taiwan':
+        return Path(os.getenv('SUNTRAIN_TAIWAN_REFERENCE', str(ROOT / 'data/reference/taiwan/2026-10-23.json.gz')))
     if city == 'mumbai':
         return prepared_path('india')
     if city in {'india', 'delhi', 'chennai'}:
@@ -449,7 +451,7 @@ def _get_prepared_day(city, business_date, path, modified, modes=None):
             service["source_trip_id"] = trip
             service["number"] = numbers.get(trip, trip)
     payload["schedule"] = payload.pop("transit")
-    if city in {"us_rail", "thailand", "india"}:
+    if city in {"us_rail", "thailand", "india", "taiwan"}:
         payload["end"] = max([payload["end"], *[
             service["departure"] + int(payload["transit_patterns"][service["pattern"]]["times"][-1])
             for service in payload["services"]]])

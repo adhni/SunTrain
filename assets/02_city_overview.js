@@ -1,7 +1,7 @@
 (function (root) {
     "use strict";
     const modeNames = {train: "Train", subway: "Subway", tram: "Tram", bus: "Bus", mikrotrans: "Mikrotrans", feeder_bus: "Feeder bus",
-        light_rail: "Light rail", regional_rail: "Regional rail", commuter_rail: "Commuter rail", airport_rail: "Airport rail", limited_express: "Limited express", silver_line: "Silver Line", ferry: "Ferry",
+        light_rail: "Light rail", regional_rail: "Regional rail", commuter_rail: "Commuter rail", airport_rail: "Airport rail", high_speed_rail: "High-speed rail", limited_express: "Limited express", silver_line: "Silver Line", ferry: "Ferry",
         transjabodetabek: "Transjabodetabek", rusun_bus: "Rusun feeder", royaltrans: "Royaltrans", shuttle_bus: "Shuttle", tourist_bus: "Tourist bus"};
 
     function summarize(day, filters, core) {

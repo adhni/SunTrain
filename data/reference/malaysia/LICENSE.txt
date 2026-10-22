@@ -1,0 +1,19 @@
+KTM timetable facts and original station records:
+Keretapi Tanah Melayu Berhad, via data.gov.my.
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://developer.data.gov.my/faq.en
+https://creativecommons.org/licenses/by/4.0/
+
+Railway alignments and verified station-position corrections:
+Copyright OpenStreetMap contributors, via the OSM France Malaysia extract.
+Open Data Commons Open Database Licence (ODbL) 1.0.
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Changes by SunTrain: selected national KTM services, compact shared schedules,
+13 station-position corrections with source evidence in station-positions-2026-10-21.json,
+and connected railway matching/simplification. Source station names and timetable
+clocks are retained. The derived geometry database is distributed separately as
+ktm-tracks-2026-10-22.json.gz under ODbL. Unknown railway sections remain gaps.
+KL commuter, MRT, LRT and monorail schedules are reused from the existing Kuala
+Lumpur reference at runtime and retain their original attribution and licences.

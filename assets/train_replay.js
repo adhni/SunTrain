@@ -176,7 +176,7 @@
         return lineColor(service.line);
     }
     function directionLabel(service) {
-        if (["subway", "light_rail", "regional_rail", "commuter_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
+        if (["subway", "light_rail", "regional_rail", "commuter_rail", "airport_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
         if (!service.mode || service.mode === "train") {
             if (service.direction === "U") return "Toward city";
             if (service.direction === "D") return "Away from city";
@@ -365,6 +365,7 @@
             labels.querySelectorAll(".replay-time-tick").forEach(tick => tick.remove());
             // Position local-hour ticks by elapsed time, including daylight-saving days.
             for (let time = this.day.start + 900; time < this.day.end; time += 900) {
+                if (this.day.end - time < 3600) continue; // Keep the last hour label clear of the arrival endpoint.
                 const text = shortTime.format(new Date(time * 1000));
                 if (!["06:00", "12:00", "18:00", "00:00"].includes(text)) continue;
                 const tick = node("span", text, "replay-time-tick");

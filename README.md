@@ -1,6 +1,10 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, Switzerland, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Thailand: Bangkok rail
+
+Choose **Bangkok** for **12–18 October 2026**: BTS Sukhumvit/Silom, MRT Blue/Purple, Gold/Yellow and both SRT Red Lines. The **140 KB gzip** week illustrates source frequency templates and journey sections: **3,687 normal weekday / 2,652 holiday-weekend occurrences**. The 13 October holiday calendar is retained. Existing filters, playback, line colours, details, themes and Overview apply. **National SRT, Pink Line and Airport Rail Link await reliable timings**; they are excluded alongside buses and ferries. Almost all journey legs have supplied railway geometry; the Red Line terminal approach remains a gap. See [Thailand expansion notes](THAILAND_EXPANSION_NOTES.md) for the official OTP source, exclusions and next steps.
 
 ## Japan intercity pilot
 

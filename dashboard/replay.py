@@ -27,6 +27,7 @@ SINGAPORE_PATH = ROOT / "data/reference/singapore/2026-10-05.json.gz"
 TOKYO_PATH = ROOT / "data/reference/tokyo/2026-10-20.json.gz"
 KUALA_LUMPUR_PATH = ROOT / "data/reference/kuala_lumpur/2026-10-12.json.gz"
 MALAYSIA_PATH = ROOT / "data/reference/malaysia/2026-10-12.json.gz"
+BANGKOK_PATH = ROOT / "data/reference/bangkok/2026-10-12.json.gz"
 JAPAN_PATH = ROOT / "data/reference/japan/2026-03-10.json.gz"
 JAPAN_LIMITED_PATH = ROOT / "data/reference/japan/limited-express-2026-03-17.json.gz"
 SYDNEY_PATH = ROOT / "data/reference/sydney/2026-10-05.json.gz"
@@ -66,7 +67,7 @@ MALAYSIA_REPLAY_NOTE = "KTM ETS, Intercity, northern Komuter and shuttles across
 
 
 def prepared_path(city):
-    default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH, "tokyo": TOKYO_PATH, "japan": JAPAN_PATH, "kuala_lumpur": KUALA_LUMPUR_PATH, "malaysia": MALAYSIA_PATH,
+    default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH, "tokyo": TOKYO_PATH, "japan": JAPAN_PATH, "kuala_lumpur": KUALA_LUMPUR_PATH, "malaysia": MALAYSIA_PATH, "bangkok": BANGKOK_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "us_rail": US_RAIL_PATH, "london": LONDON_PATH,
                "netherlands": NETHERLANDS_PATH, "germany": GERMANY_PATH, "france": FRANCE_PATH,

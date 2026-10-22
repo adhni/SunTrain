@@ -75,6 +75,16 @@ CITIES = {
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B"),
                        ("Inner loop", "Inner loop"), ("Outer loop", "Outer loop")],
     },
+    "bangkok": {
+        "name": "Bangkok", "timezone": "Asia/Bangkok",
+        "bounds": [[100.37, 13.53], [100.84, 14.02]], "passenger_data": False,
+        "start_date": "2026-10-12", "end_date": "2026-10-18",
+        "description": "Thailand: Bangkok BTS, MRT Blue/Purple, Gold/Yellow and Red Lines. Movements illustrate published frequency templates; national SRT, Pink Line and airport rail await reliable timings.",
+        "default_modes": ["subway", "light_rail", "commuter_rail"],
+        "modes": [("BTS / MRT", "subway"), ("Gold / Yellow lines", "light_rail"), ("SRT Red Lines", "commuter_rail")],
+        "operators": [(name, name) for name in ["BTS", "MRT Blue / Purple", "MRT Yellow", "SRT Red Lines"]],
+        "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
+    },
     "malaysia": {
         "name": "Malaysia", "timezone": "Asia/Kuala_Lumpur",
         "bounds": [[99.8, 1.3], [103.9, 6.8]], "passenger_data": False,

@@ -6,6 +6,7 @@ geometry stays empty; no other route or straight connector is substituted.
 from __future__ import annotations
 
 import hashlib
+import io
 import json
 import math
 import re
@@ -31,6 +32,15 @@ class TimetableArchive(ZipFile):
         super().__init__(filename)
         roots = [name[:-len('agency.txt')] for name in super().namelist()
                  if name == 'agency.txt' or name.endswith('/agency.txt')]
+        if not roots:
+            nested = [name for name in super().namelist() if name.lower().endswith('.zip')]
+            if len(nested) == 1:
+                with super().open(nested[0]) as stream:
+                    contents = stream.read()
+                self.close()
+                super().__init__(io.BytesIO(contents))
+                roots = [name[:-len('agency.txt')] for name in super().namelist()
+                         if name == 'agency.txt' or name.endswith('/agency.txt')]
         if len(roots) != 1:
             self.close()
             raise ValueError('Expected exactly one GTFS timetable in archive')

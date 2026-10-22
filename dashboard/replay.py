@@ -68,8 +68,10 @@ MALAYSIA_REPLAY_NOTE = "KTM ETS, Intercity, northern Komuter and shuttles across
 
 
 def prepared_path(city):
-    if city == 'india':
-        return Path(os.environ['SUNTRAIN_INDIA_REFERENCE'])
+    if city in {'india', 'delhi', 'chennai'}:
+        return Path(os.environ[f'SUNTRAIN_{city.upper()}_REFERENCE'])
+    if city == 'kochi':
+        return Path(os.getenv('SUNTRAIN_KOCHI_REFERENCE', str(ROOT / 'data/reference/kochi/2025-12-15.json.gz')))
     default = {"boston": BOSTON_PATH, "chicago": CHICAGO_PATH, "nyc": NYC_PATH, "singapore": SINGAPORE_PATH, "tokyo": TOKYO_PATH, "japan": JAPAN_PATH, "kuala_lumpur": KUALA_LUMPUR_PATH, "malaysia": MALAYSIA_PATH, "bangkok": BANGKOK_PATH, "thailand": THAILAND_PATH,
                "sydney": SYDNEY_PATH, "adelaide": ADELAIDE_PATH, "perth": PERTH_PATH, "brisbane": BRISBANE_PATH,
                "toronto": TORONTO_PATH, "dc": DC_PATH, "sf_bay": SF_BAY_PATH, "us_rail": US_RAIL_PATH, "london": LONDON_PATH,

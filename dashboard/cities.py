@@ -12,6 +12,15 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'kochi': {
+        'name': 'Kochi', 'timezone': 'Asia/Kolkata',
+        'bounds': [[76.24, 9.93], [76.40, 10.13]], 'passenger_data': False,
+        'start_date': '2025-12-15', 'end_date': '2025-12-21',
+        'description': 'Kochi Metro · official December 2025 schedules and supplied railway shapes.',
+        'default_modes': ['subway'], 'modes': [('Metro', 'subway')],
+        'operators': [('Kochi Metro', 'Kochi Metro Rail Limited')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B')],
+    },
     "melbourne": {
         "name": "Melbourne", "timezone": "Australia/Melbourne",
         "default_modes": ["train"],
@@ -363,6 +372,31 @@ if os.getenv('SUNTRAIN_INDIA_REFERENCE'):
         'operators': [('Indian Railways', 'Indian Railways')],
         'directions': [('Not specified', 'Not specified')],
     }
+
+
+for _city, _settings in {
+    'delhi': {
+        'name': 'Delhi', 'timezone': 'Asia/Kolkata',
+        'bounds': [[76.88, 28.35], [77.62, 28.91]], 'passenger_data': False,
+        'start_date': '2025-12-15', 'end_date': '2025-12-19',
+        'description': 'Local weekday metro pilot · Delhi, Noida Aqua and Gurgaon Rapid Metro. Approximate preserved timetable; incomplete weekend excluded. Source reuse terms need clarification.',
+        'default_modes': ['subway'], 'modes': [('Metro', 'subway')],
+        'operators': [('Delhi / Noida / Gurgaon metro', 'Delhi Metro Rail Corporation')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B')],
+    },
+    'chennai': {
+        'name': 'Chennai', 'timezone': 'Asia/Kolkata',
+        'bounds': [[80.05, 12.90], [80.33, 13.22]], 'passenger_data': False,
+        'start_date': '2026-10-12', 'end_date': '2026-10-18',
+        'description': 'Local pilot · October 2026 suburban snapshot with December 2021 metro matched by weekday. Metro Sunday unavailable; source reuse terms unspecified.',
+        'default_modes': ['train', 'subway'],
+        'modes': [('Suburban rail', 'train'), ('Metro · 2021 weekday comparison', 'subway')],
+        'operators': [('Southern Railway', 'Southern Railway'), ('Chennai Metro', 'Chennai Metro Rail Limited')],
+        'directions': [('Not specified', 'Not specified'), ('Direction unknown', 'Direction unknown')],
+    },
+}.items():
+    if os.getenv(f'SUNTRAIN_{_city.upper()}_REFERENCE'):
+        CITIES[_city] = _settings
 
 
 def city_settings(city="melbourne"):

@@ -45,3 +45,36 @@ First resolve source reuse terms and audit representative timetables against off
 - Audit verified shared schedules, single start-window ownership, empty unresolved paths, API descriptors and multi-day arrival extension. Monday's timeline extends 91 elapsed hours from its 03:00 boundary.
 - Browser: India opens from Home, 2,148 services, 511 rendered vehicle features at the checked clock, playback advances, no JavaScript errors, zero schedule requests while on Home.
 - Checks: 48 Python tests (44 existing app/HTTP + four India cases), 48 JavaScript tests, and `git diff --check`.
+
+## Kochi, Delhi and Chennai follow-up
+
+All three reuse `scripts/prepare_india_cities.py`, compact references, map playback, mode/route/operator filters and city Overview. No buses, live tracking or passenger loads were added. Kochi is bundled and visible in ordinary deployments. Delhi and Chennai remain local pilots behind `SUNTRAIN_DELHI_REFERENCE` / `SUNTRAIN_CHENNAI_REFERENCE`: Delhi OTD terms require clarification for this reuse, and CUMTA does not specify a source-data redistribution licence. A community mirror's compilation/code licence is not assumed to cover the agencies' source files.
+
+| View | Source period and coverage | Departures | Compressed week |
+| --- | --- | --- | --- |
+| Kochi | Official 15–21 December 2025 calendar, all 25 stations | 255 Mon–Sat; 195 Sunday | 32,503 bytes |
+| Delhi | Preserved OTD weekday timetable, 15–19 December 2025; Delhi lines, Noida Aqua and Gurgaon Rapid Metro; 262 station records | 5,379 each weekday | 201,736 bytes |
+| Chennai | Suburban snapshot applied to 12–18 October 2026; metro from 13–19 December 2021 matched by weekday, explicitly a comparison | 567 suburban + 625 metro Mon–Sat; 548 suburban and no supplied metro Sunday | 183,639 bytes |
+
+**Delhi weekend limitation:** the preserved feed has 5,379 weekday, only 59 Saturday and zero Sunday trip templates, despite defining all three calendar types. We therefore expose weekdays only. The official static download currently returns 404. The mirror consolidates route identifiers/names and supplies readable colours; it does not claim new metro schedules. Do not describe its broad 2019–2025 calendars or OTD's 2023 page date as proof of a fully reconstructed December 2025 timetable. Geometry uses original native distances with existing ordered per-leg recovery on the same supplied shape. **96.1%** of service-weighted legs resolve; remaining sections stay gaps. No schedules were discarded for geometry.
+
+**Chennai dates:** both GTFS ZIPs were downloaded directly from the working `test.cumta.org` portal, rather than its unreachable `opendata.cumta.org` hostname. The official metro calendar is 20 April–31 December **2021**, Monday–Saturday only; its frequencies and calendar-exceptions files are empty. Source dates and offsets are retained in preparation, and every display/source weekday mapping is recorded in the merged metadata. Sunday metro is explicitly unavailable in this dataset, not a claim that the real network closes. Suburban calendars start in August/September 2025 and expire implausibly in 2170: the replay uses an October **2026 source snapshot**, not a validated century-long or full historical archive. Nineteen suburban templates with backwards clocks and four with fewer than two calls are excluded without changing source times. All valid selected Chennai legs resolve: native metro shapes, and the existing connected OSM India railway graph for suburban services. Chennai opens on the urban core; **Fit selection** includes outer suburban termini.
+
+### Pinned downloads
+
+- Kochi: https://kochimetro.org/opendata/KMRLOpenData.zip — SHA-256 `26347766f41574bbde22e57c1ac12d8c169baed10ea7ea232008ffb428fcb158`. [KMRL terms](https://kochimetro.org/open-data/) expressly permit adaptation and redistribution with attribution. The replay displays “Contains data provided by Kochi Metro Rail Limited”. All valid journey legs use native supplied geometry. The feed has no route colour; SunTrain uses a teal display colour.
+- Delhi: https://ethanc8.github.io/delhi-gtfs/metro.zip — SHA-256 `fe9d74757a192bac058560d252c0edee6ad6a0eb2693005f71f0106a7ef711c3`. Mirror repository revision inspected: `ce9586990a5474f3e4e02b876823fc4cd058e1db` (`trunk`). Original source: https://otd.delhi.gov.in/data/staticDMRC/ ; [terms](https://otd.delhi.gov.in/terms). Supplied colours are the mirror's display palette, originally taken from INAT; no map artwork is used.
+- Chennai Metro: https://test.cumta.org/CMRL%20gtfs.zip — SHA-256 `094f6cfb2e393e5f0ccf516dc7ad41aa25e766d836c98a0b8b682dac090fc3e9`. Original folder-wrapped archive is preserved unchanged in cache; its route colours are retained, with a neutral display colour for unspecified through services.
+- Chennai suburban: https://test.cumta.org/Southern%20Railways.zip — outer ZIP SHA-256 `da3f41ab4f83ad6a4f629f4b24f706ad939114e6348a4738e875fb6080ff5533`; inner timetable SHA-256 `ed8bb1ae8aa32a70459c9fd41c20fd3070620541ed52007e7abaa0c8bef46343`. The shared archive reader now supports exactly one nested GTFS ZIP, alongside the outer archive's geography files. Source encodes suburban rail as GTFS type 1; explicit operator scoping classifies it as train. SunTrain uses a maroon display colour.
+
+The original ZIPs remain in ignored cache; preparation verifies hashes before reading them. Mutable source URLs are not assumed to be permanent archives: keep the pinned caches, and re-audit any changed file before updating hashes. The existing OSM graph is reused for preparation only, without copying India's timetable into Chennai. No new runtime API, dependency or separate map implementation is needed.
+
+```bash
+.venv/bin/python scripts/prepare_india_cities.py all
+SUNTRAIN_INDIA_REFERENCE="$PWD/.cache/india/2026-08-31.json.gz" \
+SUNTRAIN_DELHI_REFERENCE="$PWD/.cache/india-cities/delhi/2025-12-15.json.gz" \
+SUNTRAIN_CHENNAI_REFERENCE="$PWD/.cache/india-cities/chennai/2026-10-12.json.gz" \
+.venv/bin/python -m dashboard.app
+```
+
+Validation: **76 Python tests and 48 JavaScript tests** passed. Source audits checked departure-window ownership, shared schedules, Sunday availability, mode filtering, date mapping and geometry gaps. Browser checks opened all three from Home, rendered vehicles and advanced playback with no JavaScript errors; Home made zero initial schedule requests. Rebuilds and screenshots stay in ignored cache. Preview with all India pilots is running at `http://localhost:8089` for this session.

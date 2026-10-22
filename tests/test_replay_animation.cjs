@@ -7,6 +7,33 @@ const day = {stations: [{name: 'Alpha', lon: 0, lat: 0}, {name: 'Bravo', lon: 2,
 const service = {id: 'one', operator: 'Metro', line: 'Werribee', direction: 'U', number: 'X100',
     stops: [[0, 0, 10, 5, 50], [1, 20, 30, 50, 0]], legs: ['curve']};
 
+test('timeline activity counts first departures, shares packed schedules and excludes carry-in', () => {
+    const {departureActivity, hydrate} = require('../assets/train_replay.js');
+    const packed = {transit_stop_patterns:{s:{stations:[0,1],legs:['curve']}},
+        transit_patterns:{p:{stop_pattern:'s',times:[0,120,1800,1800]}},
+        services:[{pattern:'p',departure:780}]};
+    hydrate(packed);
+    const absolute = departure => ({stops:[[0,departure-60,departure],[1,departure+60,departure+60]]});
+    const clocks = packed.services[0].times;
+    const counts = departureActivity([absolute(-1),absolute(0),absolute(899),packed.services[0],absolute(3599),absolute(3600)],0,3600);
+    assert.deepEqual([...counts],[2,1,0,1]);
+    assert.strictEqual(packed.services[0].times,clocks);
+    assert.ok(!packed.services[0].stops);
+    assert.deepEqual(clocks,[0,120,1800,1800]);
+});
+
+test('timeline bins follow elapsed time through DST and beyond the following midnight', () => {
+    const {departureActivity} = require('../assets/train_replay.js');
+    const start=Date.parse('2026-10-24T15:00:00Z')/1000;
+    const trip = departure => ({stops:[[0,departure,departure],[1,departure+60,departure+60]]});
+    const counts=departureActivity([trip(start),trip(start+3600),trip(start+7200),trip(start+86400)],start,start+25*3600);
+    assert.equal(counts.length,100);
+    assert.equal(counts[0],1);assert.equal(counts[4],1);assert.equal(counts[8],1);assert.equal(counts[96],1);
+    assert.equal(counts.reduce((a,b)=>a+b),4);
+    assert.equal(departureActivity([],start,start+23*3600).length,92);
+    assert.equal(departureActivity([],start,start+28*3600).length,112);
+});
+
 test('unlocated working-timetable calls retain times and status without a map position', () => {
     const input = {...day, stations: [...day.stations, {name:'Unlocated call',lon:null,lat:null}],
         paths:{gap:{coordinates:[],distances:[],quality:'approximate'}}};

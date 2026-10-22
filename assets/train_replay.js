@@ -151,6 +151,19 @@
     function stopTime(service, stop, column) {
         return stop[column] + (service.timeOffset || 0);
     }
+    function firstDeparture(service) {
+        return stopValue(service, 0, 2) + (service.timeOffset || 0);
+    }
+    function departureActivity(services, start, end) {
+        // Fifteen elapsed minutes per bin keeps DST and overnight days aligned
+        // with the actual replay range. Count once when filters change.
+        const counts = new Uint32Array(Math.max(1, Math.ceil((end - start) / 900)));
+        for (const service of services) {
+            const departure = firstDeparture(service);
+            if (departure >= start && departure < end) counts[Math.floor((departure - start) / 900)]++;
+        }
+        return counts;
+    }
     function* uniqueSchedules(services) {
         const seen = new Set();
         for (const service of services) {
@@ -194,11 +207,11 @@
             5, ["+", halo, ["*", 1.2, scale]], 9, ["+", halo, ["*", 2.5, scale]],
             12, ["+", halo, ["*", 4, scale]], 15, ["+", halo, ["*", 5, scale]]];
     }
-    const core = {ActiveServices, pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor};
+    const core = {ActiveServices, pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor, firstDeparture, departureActivity};
     if (typeof module !== "undefined" && module.exports) module.exports = core;
     if (!root.document) return;
 
-    let clockFormat, dateFormat, shortTime;
+    let clockFormat, dateFormat, shortTime, shortDate;
     const $ = id => document.getElementById(id);
     const setText = (id, text) => { const element = $(id); if (element && element.textContent !== String(text)) element.textContent = text; };
     function node(tag, text, className) {
@@ -354,8 +367,26 @@
             if (!slider) {
                 slider = node("input"); slider.type = "range"; slider.step = "1";
                 slider.setAttribute("aria-label", "Replay time");
-                slider.addEventListener("input", () => this.seek(Number(slider.value)));
-                host.append(slider);
+                const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                svg.setAttribute("viewBox", "0 0 1000 32"); svg.setAttribute("preserveAspectRatio", "none");
+                svg.setAttribute("aria-hidden", "true"); svg.classList.add("replay-activity");
+                const preview = node("output", undefined, "replay-time-preview"); preview.hidden = true;
+                preview.setAttribute("aria-hidden", "true");
+                slider.addEventListener("input", () => { this.seek(Number(slider.value)); this.previewTime(Number(slider.value)); });
+                const timeAt = event => {
+                    const bounds = slider.getBoundingClientRect();
+                    const fraction = Math.max(0, Math.min(1, (event.clientX - bounds.left - 8) / Math.max(1, bounds.width - 16)));
+                    return this.day.start + fraction * (this.day.end - this.day.start);
+                };
+                host.addEventListener("pointermove", event => this.previewTime(timeAt(event)));
+                host.addEventListener("pointerdown", event => {
+                    if (event.target === slider || event.button !== 0) return;
+                    slider.focus(); this.seek(Math.round(timeAt(event))); this.previewTime(this.now);
+                });
+                slider.addEventListener("focus", () => this.previewTime(Number(slider.value)));
+                host.addEventListener("pointerleave", () => { preview.hidden = true; });
+                slider.addEventListener("blur", () => { preview.hidden = true; });
+                host.append(svg, slider, preview);
             }
             slider.min = String(this.day.start); slider.max = String(this.day.end); slider.value = String(this.now);
             setText("replay-range-start", shortTime.format(new Date(this.day.start * 1000)));
@@ -374,6 +405,29 @@
                 labels.append(tick);
             }
             labels.append($("replay-range-end"));
+        }
+        previewTime(time) {
+            const host = $("replay-timeline"), preview = host.querySelector("output");
+            if (!preview || !this.day) return;
+            const date = new Date(Math.round(time) * 1000);
+            preview.textContent = `${clockFormat.format(date)} · ${shortDate.format(date)}`;
+            preview.style.left = `${Math.max(84, Math.min(host.clientWidth - 84, host.clientWidth * (time - this.day.start) / (this.day.end - this.day.start)))}px`;
+            preview.hidden = false;
+        }
+        updateActivity() {
+            const svg = $("replay-timeline").querySelector("svg");
+            if (!svg) return;
+            const counts = departureActivity(this.filtered, this.day.start, this.day.end);
+            const maximum = Math.max(1, ...counts), width = 1000 / counts.length;
+            svg.replaceChildren();
+            counts.forEach((count, index) => {
+                if (!count) return;
+                const bar = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+                const height = Math.max(2, 30 * count / maximum);
+                bar.setAttribute("x", String(index * width)); bar.setAttribute("y", String(32 - height));
+                bar.setAttribute("width", String(Math.max(1, width - 1.5))); bar.setAttribute("height", String(height));
+                bar.setAttribute("rx", "1.5"); svg.append(bar);
+            });
         }
         revealTab() {
             if (!this.active) return;
@@ -426,7 +480,7 @@
                 event.preventDefault(); this.exitFullscreen(); return;
             }
             if (event.key !== "Tab") return;
-            const focusable = [...panel.querySelectorAll('button, input, select, textarea, a[href], [tabindex]:not([tabindex="-1"])')]
+            const focusable = [...panel.querySelectorAll('button, input, select, textarea, summary, a[href], [tabindex]:not([tabindex="-1"])')]
                 .filter(el => !el.disabled && el.getClientRects().length && el.tabIndex >= 0);
             if (!focusable.length) return;
             const first = focusable[0], last = focusable[focusable.length - 1];
@@ -456,6 +510,7 @@
             clockFormat = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"});
             dateFormat = new Intl.DateTimeFormat("en-AU", {timeZone, day: "numeric", month: "short", year: "numeric", timeZoneName: "short"});
             shortTime = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
+            shortDate = new Intl.DateTimeFormat("en-AU", {timeZone, day: "numeric", month: "short"});
             this.filtered = []; this.filterSignature = null; this.activeIndex = null; this.activePositions = [];
             this.demandIndex = null; this.demandSnapshot = null; this.qualityBySchedule.clear();
             this.popup?.remove(); this.demandPopupId = null;
@@ -584,6 +639,7 @@
             const sizeHelp = $("replay-size-help");
             if (sizeHelp) sizeHelp.hidden = !display.includes("load");
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
+            this.updateActivity();
             const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));
             root.dash_clientside.set_props("replay-lines", {options: [...new Set(routes.map(s => s.line))].sort()});
             this.demandIndex = null;
@@ -680,18 +736,29 @@
             $("replay-close-details").hidden = false;
             this.setFollow(this.followSelected);
             const host = $("replay-details"); host.replaceChildren();
-            const line = node("div", service.line, "replay-detail-line"); line.style.borderLeftColor = vehicleColor(service, this.day?.city);
+            host.style.setProperty("--journey-color", vehicleColor(service, this.day?.city));
+            const line = node("div", service.line, "replay-detail-line");
             const trainNumber = service.mode === "train" || this.day.city === "us_rail" && service.mode === "commuter_rail";
-            host.append(line, node("h3", trainNumber ? `Train ${service.number}` : service.line.split(" · ")[0]), node("p", `${service.origin} → ${service.destination}`, "replay-detail-route"),
-                node("p", `${service.operator === "VLine" ? "V/Line" : service.operator} · ${directionLabel(service)}`, "replay-muted"));
-            if (!trainNumber) host.append(node("p", `Trip ${this.day.city === "us_rail" ? service.source_trip_id || service.number : service.number}`, "replay-muted replay-small"));
-            const unresolved = service.legs.filter(id => !["track", "shape"].includes(this.day.paths[id]?.quality)).length;
-            if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved geometry. The route has gaps and this vehicle is hidden between those stops.`, "replay-approximate replay-small"));
+            const operator = service.operator === "VLine" ? "V/Line" : service.operator;
+            host.append(line, node("h3", service.destination), node("p", `From ${service.origin}`, "replay-detail-route"),
+                node("p", `${trainNumber ? `Train ${service.number} · ` : ""}${operator} · ${directionLabel(service)}`, "replay-muted replay-small"));
             const live = node("div", undefined, "replay-service-status"); live.id = "replay-service-status"; host.append(live);
-            host.append(node("h4", service.mode === "ferry" ? "Scheduled piers" : "Scheduled stops"));
+            this.selectedHasLoads = this.day.passenger_data !== false && !service.stopIds && service.stops.some(stop => stop[4] != null);
+            const allStops = node("details", undefined, "replay-all-stops");
+            allStops.append(node("summary", `All ${service.mode === "ferry" ? "piers" : "stops"} · ${stopCount(service)}`));
+            // Long bus schedules only become DOM rows when someone asks for them.
+            allStops.addEventListener("toggle", () => {
+                if (!allStops.isConnected || !allStops.open || allStops.dataset.built || this.selected?.id !== service.id) return;
+                allStops.dataset.built = "true";
+                this.renderStopTable(service, allStops);
+                live.dataset.signature = ""; this.paint(true);
+            });
+            host.append(allStops);
+            this.paint(true);
+        }
+        renderStopTable(service, host) {
             const scroll = node("div", undefined, "replay-stop-list"), table = node("table");
             const head = node("thead"), heading = node("tr");
-            this.selectedHasLoads = this.day.passenger_data !== false && !service.stopIds && service.stops.some(stop => stop[4] != null);
             const columns = [service.mode === "ferry" ? "Pier" : "Stop / station", "Arr.", "Dep."];
             if (this.selectedHasLoads) columns.push("Load");
             columns.forEach(label => heading.append(node("th", label)));
@@ -715,17 +782,34 @@
                 body.append(row);
             }
             table.append(body); scroll.append(table); host.append(scroll);
+            const unresolved = service.legs.filter(id => !["track", "shape"].includes(this.day.paths[id]?.quality)).length;
+            if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved geometry. The route has gaps and this vehicle is hidden between those stops.`, "replay-approximate replay-small"));
+            host.append(node("p", `Trip ${service.source_trip_id || service.number}`, "replay-muted replay-small"));
             if (this.selectedHasLoads) host.append(node("p", "Load = recorded departure passenger count, rounded to the nearest 10.", "replay-muted replay-small"));
-            this.paint(true);
         }
         detailStatus(position) {
             if (!this.selected) return;
             const host = $("replay-service-status"); if (!host) return;
-            const text = position ? `${position.state}: ${position.station}${position.next ? ` → ${position.next}` : " · Terminus"}` :
-                (this.now < stopValue(this.selected, 0, 1) + (this.selected.timeOffset || 0) ? "This service has not started yet." : "This service has finished.");
-            const signature = `${text}|${position?.load}|${position?.approximate}`;
+            const upcoming = this.now < stopValue(this.selected, 0, 1) + (this.selected.timeOffset || 0);
+            const index = position?.index ?? (upcoming ? 0 : stopCount(this.selected) - 1);
+            const text = position ? position.state : upcoming ? "Not started yet" : "Journey finished";
+            const signature = `${index}|${text}|${position?.load}|${position?.approximate}`;
             if (host.dataset.signature !== signature) {
-                host.dataset.signature = signature; host.replaceChildren(node("strong", text));
+                host.dataset.signature = signature;
+                const stops = node("ol", undefined, "replay-journey-stops");
+                for (const i of [index, index + 1]) {
+                    if (i >= stopCount(this.selected)) continue;
+                    const current = i === index;
+                    const label = current ? (position ? "Now" : upcoming ? "Starts at" : "Arrived at") : "Next stop";
+                    const station = this.day.stations[stopValue(this.selected, i, 0)];
+                    const departure = current && (position || upcoming);
+                    const at = new Date((stopValue(this.selected, i, departure ? 2 : 1) + (this.selected.timeOffset || 0)) * 1000);
+                    const row = node("li", undefined, `replay-journey-stop${current ? " is-current" : ""}`);
+                    row.append(node("span", label, "replay-journey-label"), node("strong", station.name),
+                        node("span", `${departure ? "Dep." : "Arr."} ${shortTime.format(at)} · ${shortDate.format(at)}`, "replay-journey-time"));
+                    stops.append(row);
+                }
+                host.replaceChildren(node("div", text, "replay-journey-state"), stops);
                 if (position) {
                     if (this.selectedHasLoads) host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
                     if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : ROAD_MODES.has(this.selected.mode) ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
@@ -852,7 +936,11 @@
                     setText("replay-active-count", activeCount.toLocaleString());
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString()} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");
-                    if (slider) { slider.value = String(this.now); slider.setAttribute("aria-valuetext", `${clockFormat.format(new Date(this.now * 1000))} ${dateFormat.format(new Date(this.now * 1000))}`); }
+                    if (slider) {
+                        slider.value = String(this.now);
+                        slider.setAttribute("aria-valuetext", `${clockFormat.format(new Date(this.now * 1000))} ${dateFormat.format(new Date(this.now * 1000))}`);
+                        slider.parentElement.style.setProperty("--replay-progress", `${100 * (this.now - this.day.start) / (this.day.end - this.day.start)}%`);
+                    }
                     this.detailStatus(selectedPosition);
                 }
                 this.frameCount++; this.renderMilliseconds += performance.now() - started;

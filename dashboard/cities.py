@@ -1,6 +1,7 @@
 """Replay settings; passenger analysis continues to use the Victorian dataset."""
 
 import json
+import os
 from pathlib import Path
 
 GERMANY_REGIONAL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
@@ -11,6 +12,15 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'kochi': {
+        'name': 'Kochi', 'timezone': 'Asia/Kolkata',
+        'bounds': [[76.24, 9.93], [76.40, 10.13]], 'passenger_data': False,
+        'start_date': '2025-12-15', 'end_date': '2025-12-21',
+        'description': 'Kochi Metro · official December 2025 schedules and supplied railway shapes.',
+        'default_modes': ['subway'], 'modes': [('Metro', 'subway')],
+        'operators': [('Kochi Metro', 'Kochi Metro Rail Limited')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B')],
+    },
     "melbourne": {
         "name": "Melbourne", "timezone": "Australia/Melbourne",
         "default_modes": ["train"],
@@ -348,6 +358,56 @@ CITIES = {
         "directions": [("Direction A", "Direction A"), ("Direction B", "Direction B")],
     },
 }
+
+
+# The India timetable's redistribution permission is unresolved. Enable the
+# local pilot explicitly; ordinary deployments do not advertise missing data.
+if os.getenv('SUNTRAIN_INDIA_REFERENCE'):
+    CITIES['india'] = {
+        'name': 'India', 'timezone': 'Asia/Kolkata',
+        'bounds': [[68.0, 7.8], [97.5, 35.5]], 'passenger_data': False,
+        'start_date': '2026-08-31', 'end_date': '2026-09-06',
+        'description': 'India rail · August 2026 community timetable. Intercity opens first; choose Regional or Suburban under Transport to add those networks. Unsupported track sections stay gaps.',
+        'default_modes': ['train'], 'modes': [('Intercity / long-distance rail', 'train'),
+            ('Regional / MEMU / DEMU', 'regional_rail'), ('Suburban / local', 'commuter_rail')],
+        'operators': [('Indian Railways', 'Indian Railways')],
+        'directions': [('Not specified', 'Not specified')],
+    }
+    if (Path(os.environ['SUNTRAIN_INDIA_REFERENCE']).parent / 'mumbai-scope.json').is_file():
+        CITIES['mumbai'] = {
+            'name':'Mumbai', 'timezone':'Asia/Kolkata', 'bounds':[[72.72,18.88],[73.15,19.40]],
+            'passenger_data':False, 'start_date':'2026-08-31', 'end_date':'2026-09-06',
+            'description':'Mumbai suburban rail · partial August 2026 timetable. Western, Central and limited Harbour services; Trans-Harbour unavailable. Fit selection includes outer termini.',
+            'default_modes':['commuter_rail'],
+            'modes':[('Suburban / local','commuter_rail'),('Regional connections','regional_rail')],
+            'operators':[('Indian Railways','Indian Railways')],
+            'directions':[('Not specified','Not specified')],
+        }
+
+
+for _city, _settings in {
+    'delhi': {
+        'name': 'Delhi', 'timezone': 'Asia/Kolkata',
+        'bounds': [[76.88, 28.35], [77.62, 28.91]], 'passenger_data': False,
+        'start_date': '2025-12-15', 'end_date': '2025-12-19',
+        'description': 'Local weekday metro pilot · Delhi, Noida Aqua and Gurgaon Rapid Metro. Approximate preserved timetable; incomplete weekend excluded. Source reuse terms need clarification.',
+        'default_modes': ['subway'], 'modes': [('Metro', 'subway')],
+        'operators': [('Delhi / Noida / Gurgaon metro', 'Delhi Metro Rail Corporation')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B')],
+    },
+    'chennai': {
+        'name': 'Chennai', 'timezone': 'Asia/Kolkata',
+        'bounds': [[80.05, 12.90], [80.33, 13.22]], 'passenger_data': False,
+        'start_date': '2026-10-12', 'end_date': '2026-10-18',
+        'description': 'Local pilot · October 2026 suburban snapshot with December 2021 metro matched by weekday. Metro Sunday unavailable; source reuse terms unspecified.',
+        'default_modes': ['train', 'subway'],
+        'modes': [('Suburban rail', 'train'), ('Metro · 2021 weekday comparison', 'subway')],
+        'operators': [('Southern Railway', 'Southern Railway'), ('Chennai Metro', 'Chennai Metro Rail Limited')],
+        'directions': [('Not specified', 'Not specified'), ('Direction unknown', 'Direction unknown')],
+    },
+}.items():
+    if os.getenv(f'SUNTRAIN_{_city.upper()}_REFERENCE'):
+        CITIES[_city] = _settings
 
 
 def city_settings(city="melbourne"):

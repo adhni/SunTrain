@@ -102,9 +102,10 @@
         const i = Math.max(0, lo - 1), departure = stopValue(service, i, 2), stationId = stopValue(service, i, 0);
         if (now < departure || i === length - 1) {
             const station = day.stations[stationId];
-            return {lon: station.lon, lat: station.lat, load: stopValue(service, i, now < departure ? 3 : 4) ?? null,
-                    index: i, state: service.mode === "ferry" ? "At pier" : service.mode && service.mode !== "train" ? "At stop" : "At station", station: station.name, next: i + 1 < length ? day.stations[stopValue(service, i + 1, 0)].name : null,
-                    approximate: false};
+            const located = Number.isFinite(station.lon) && Number.isFinite(station.lat);
+            return {lon: located ? station.lon : null, lat: located ? station.lat : null, load: stopValue(service, i, now < departure ? 3 : 4) ?? null,
+                    index: i, state: !located ? "Position unavailable" : service.mode === "ferry" ? "At pier" : service.mode && service.mode !== "train" ? "At stop" : "At station", station: station.name, next: i + 1 < length ? day.stations[stopValue(service, i + 1, 0)].name : null,
+                    approximate: !located};
         }
         const duration = stopValue(service, i + 1, 1) - departure;
         if (duration <= 0) return null;
@@ -623,7 +624,8 @@
             for (const service of uniqueSchedules(this.filtered)) for (const id of stopIds(service)) ids.add(id);
             if (!ids.size || !this.graph) return;
             this.setFollow(false);
-            const stations = [...ids].map(i => this.day.stations[i]);
+            const stations = [...ids].map(i => this.day.stations[i]).filter(s => Number.isFinite(s.lon) && Number.isFinite(s.lat));
+            if (!stations.length) return;
             const latitudes = stations.map(s => s.lat), longitudes = stations.map(s => s.lon);
             const south = Math.min(...latitudes), north = Math.max(...latitudes), west = Math.min(...longitudes), east = Math.max(...longitudes);
             this.graph.fitBounds([[west, south], [east, north]], {padding: 40, maxZoom: 13, duration: 0});
@@ -745,7 +747,7 @@
             }
             const routes = routeFeatures(this.day.paths, ids);
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
-            const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})) : [];
+            const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})).filter(s => Number.isFinite(s.lon) && Number.isFinite(s.lat)) : [];
             this.graph.getSource("replay-routes").setData(collection(routes));
             this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: s.id, mode: s.mode || "train"}))));
             this.graph.getSource("replay-selected-route").setData(collection(selected));

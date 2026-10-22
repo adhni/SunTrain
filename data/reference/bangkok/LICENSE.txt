@@ -1,0 +1,20 @@
+Timetables, station positions, route colours and railway shapes:
+Copyright Office of Transport and Traffic Policy and Planning, Thailand
+(OTP / สำนักงานนโยบายและแผนการขนส่งและจราจร / สนข.).
+Namtang GTFS, feed version 20261021, retrieved 22 October 2026.
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://creativecommons.org/licenses/by/4.0/
+
+Producer's open-data policy and download:
+https://namtang-api.otp.go.th/opendata
+https://namtang-api.otp.go.th/download/namtang-gtfs.zip
+
+SunTrain changes: Bangkok rail selection; English display names from the feed;
+invalid and duplicate template exclusions; source calendar/holiday selection;
+illustrative departures from headway windows; shared stop/timing representation;
+ordered projection and clipping of each trip's own supplied railway shape.
+
+These are frequency-based journey estimates and sections, not individual train
+observations, live positions or passenger counts. Source colours and selected
+station times are retained. No national SRT placeholder schedules are replayed.
+Unmatched Red Line station approaches remain gaps; no straight links are inserted.

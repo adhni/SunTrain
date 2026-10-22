@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, Switzerland, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, Switzerland, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Thailand rail
+
+Choose **Thailand** for an SRT working-timetable replay: **178 numbered passenger services** across northern, northeastern, southern, eastern, western and Bangkok suburban corridors. **Approximate period: April 2023. The displayed 3–9 April dates are illustrative; effective timetable dates are unconfirmed.** Source clocks and all scheduled calls are retained, including overnight journeys. The compact week is **459 KB gzip**; railway paths cover **83.3% of journey legs**, with unlocated calls and disconnected sections left as gaps. The existing Bangkok view remains separate.
+
+Choose **Bangkok** for **12–18 October 2026**: BTS Sukhumvit/Silom, MRT Blue/Purple, Gold/Yellow and both SRT Red Lines. The **140 KB gzip** week illustrates source frequency templates and journey sections: **3,687 normal weekday / 2,652 holiday-weekend occurrences**. The 13 October holiday calendar is retained. Existing filters, playback, line colours, details, themes and Overview apply. Pink Line and Airport Rail Link await reliable timings; buses and ferries are excluded. Almost all journey legs have supplied railway geometry; the Red Line terminal approach remains a gap. See [Thailand expansion notes](THAILAND_EXPANSION_NOTES.md) for both sources, date assumptions and next steps.
 
 ## Japan intercity pilot
 

@@ -1,0 +1,57 @@
+[
+  {
+    "file": "o-weekday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/c526a43a-fc82-4ba3-beda-0497a303fc4a/download",
+    "sha256": "db4b942b505957fa300abf65098279f280da40ae0567b54a98ee2ee0cc02aed3"
+  },
+  {
+    "file": "o-holiday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/6d2a2636-825d-4ec2-b4f5-9f853add9472/download",
+    "sha256": "1e9e4c5b363679edacd5be8520458e82f02b6d1d6c06cb77a57d791b865a3e54"
+  },
+  {
+    "file": "g-weekday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/3924acc7-6b11-411e-acd5-aacbe1186a7a/download",
+    "sha256": "feb072e1c5a69a8c876edd8c54940a5cc7dacf28fb624f6b25712e230bfaafee"
+  },
+  {
+    "file": "g-holiday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/46bd70db-62a7-4607-b0f2-221eb2002753/download",
+    "sha256": "0d896ac6ffc0b2e37011e6385e4edecc4284b7759b2df4ef04bc1cba73cc4da2"
+  },
+  {
+    "file": "bl-weekday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/9befd704-fda6-46b4-ad33-98bbc81f7bac/download",
+    "sha256": "98207af4b4d74333f1b6022921c6496c1593505f1d96a0ff27c80e63a0369328"
+  },
+  {
+    "file": "bl-holiday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/0ad40b75-d9cd-4eef-8ca2-38688be61205/download",
+    "sha256": "f55e76eaff1312051ee9a0b4f5cc93984e2c484498834f254c79539231fc37da"
+  },
+  {
+    "file": "r-weekday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/968f7322-36ca-43c4-816c-9f8448a9b4fb/download",
+    "sha256": "a20f410c6377810a086add6eb456376a82b57fc06a8c85e2aa6b94f31ce3d795"
+  },
+  {
+    "file": "r-saturday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/6fd19e60-2164-4b97-bd41-7059c4c943c8/download",
+    "sha256": "8a13123faebdac06b5f143dcf4614c99168515d084da27d770fdd2ee642f55aa"
+  },
+  {
+    "file": "r-sunday.csv",
+    "url": "https://data.taipei/api/dataset/91cc11bb-40d6-4837-9303-84e6a666c568/resource/a5f81758-a5a0-44f2-b24c-7f87ffec6283/download",
+    "sha256": "df48fc1cc82ec41f1ad410fe5e0ddb7a77f7b6ad3fd1948918798af2d7162660"
+  },
+  {
+    "file": "travel.csv",
+    "url": "https://data.taipei/api/frontstage/tpeod/dataset/resource.download?rid=c32998fa-c9b2-4324-9016-e19fbe0815f1",
+    "sha256": "2f90d1901f3c4533b1dc2f21e01ccfebf8761552ccbd92751724997aa9ffd296"
+  },
+  {
+    "file": "trtc.json",
+    "url": "https://raw.githubusercontent.com/siriushsu/taiwan-rail-live/d41aafac1482d50eb0ea72d37ebdf2f87d9d9677/data/trtc.json",
+    "sha256": "54ea1473adec35163a9ff115cda661bbd2273871d3d01c69e3ce4fae929c4132"
+  }
+]

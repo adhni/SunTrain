@@ -190,7 +190,7 @@
         return lineColor(service.line);
     }
     function directionLabel(service) {
-        if (["subway", "light_rail", "regional_rail", "commuter_rail", "airport_rail", "silver_line"].includes(service.mode)) return service.direction || "Scheduled service";
+        if (["subway", "light_rail", "regional_rail", "commuter_rail", "airport_rail", "silver_line", "high_speed_rail"].includes(service.mode)) return service.direction || "Scheduled service";
         if (!service.mode || service.mode === "train") {
             if (service.direction === "U") return "Toward city";
             if (service.direction === "D") return "Away from city";
@@ -738,7 +738,7 @@
             const host = $("replay-details"); host.replaceChildren();
             host.style.setProperty("--journey-color", vehicleColor(service, this.day?.city));
             const line = node("div", service.line, "replay-detail-line");
-            const trainNumber = service.mode === "train" || this.day.city === "us_rail" && service.mode === "commuter_rail";
+            const trainNumber = ["train", "high_speed_rail"].includes(service.mode) || this.day.city === "us_rail" && service.mode === "commuter_rail";
             const operator = service.operator === "VLine" ? "V/Line" : service.operator;
             host.append(line, node("h3", service.destination), node("p", `From ${service.origin}`, "replay-detail-route"),
                 node("p", `${trainNumber ? `Train ${service.number} · ` : ""}${operator} · ${directionLabel(service)}`, "replay-muted replay-small"));

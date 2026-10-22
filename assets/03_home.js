@@ -37,7 +37,7 @@
     }
     const modeNames = {train: "Trains", subway: "Metro", tram: "Trams", light_rail: "Light rail",
         regional_rail: "Regional rail", commuter_rail: "Commuter rail", limited_express: "Limited express",
-        airport_rail: "Airport rail", ferry: "Ferries", silver_line: "Silver Line"};
+        airport_rail: "Airport rail", high_speed_rail: "High-speed rail", ferry: "Ferries", silver_line: "Silver Line"};
     const dateFormat = new Intl.DateTimeFormat("en-AU", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"});
 
     class WorldMap {

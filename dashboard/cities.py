@@ -12,6 +12,26 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'taipei': {
+        'name': 'Taipei', 'timezone': 'Asia/Taipei',
+        'bounds': [[121.38, 24.94], [121.65, 25.19]], 'passenger_data': False,
+        'start_date': '2026-10-23', 'end_date': '2026-10-27',
+        'description': 'Metro Red, Green, Orange and Blue lines with branch shuttles. Published terminal departures; estimated intermediate timings. Brown and Circular lines are not included.',
+        'default_modes': ['subway'], 'modes': [('Taipei Metro', 'subway')],
+        'operators': [('Taipei Metro', 'Taipei Metro')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B')],
+    },
+    'taiwan': {
+        'name': 'Taiwan', 'timezone': 'Asia/Taipei',
+        'bounds': [[119.9, 21.85], [122.05, 25.4]], 'passenger_data': False,
+        'start_date': '2026-10-23', 'end_date': '2026-10-27',
+        'description': 'Taiwan Railways and high-speed rail · official 23–27 October 2026 holiday schedules. Metro networks are not included.',
+        'default_modes': ['train', 'high_speed_rail'],
+        'modes': [('Taiwan Railways', 'train'), ('High-speed rail', 'high_speed_rail')],
+        'operators': [('Taiwan Railways', 'Taiwan Railways'), ('Taiwan High Speed Rail', 'Taiwan High Speed Rail')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B'),
+                       ('Southbound', 'Southbound'), ('Northbound', 'Northbound')],
+    },
     'kochi': {
         'name': 'Kochi', 'timezone': 'Asia/Kolkata',
         'bounds': [[76.24, 9.93], [76.40, 10.13]], 'passenger_data': False,

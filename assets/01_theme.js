@@ -5,8 +5,8 @@
         light: {ink: "#18232d", surface: "#ffffff", grid: "#e0e6e3", background: "#edf1ef"},
         dark: {ink: "#e4eef0", surface: "#17212b", grid: "#34434e", background: "#101a23"}
     };
-    let theme = "light";
-    try { if (localStorage.getItem(STORAGE_KEY) === "dark") theme = "dark"; } catch (_) {}
+    let theme = "dark";
+    try { if (localStorage.getItem(STORAGE_KEY) === "light") theme = "light"; } catch (_) {}
     document.documentElement.dataset.theme = theme;
 
     function rasterPaint() {

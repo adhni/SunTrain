@@ -1,0 +1,59 @@
+[
+  {
+    "file": "tra-20261028.json",
+    "url": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/exceptionDataResource/8ae4c983a14053db01a16520bf4b3c87",
+    "sha256": "a69acdfd9e9910bba059699409c495d9f8fc7188a34beedf4f3f63fd3a5cfc87",
+    "bytes": 2043724
+  },
+  {
+    "file": "tra-20261027.json",
+    "url": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/exceptionDataResource/8ae4c983a14053db01a16520bf003c86",
+    "sha256": "ba809d2662f1c268b5bf328cc416d4d6b4a7414a9b40ebdb5bd8eb49c6384175",
+    "bytes": 2041840
+  },
+  {
+    "file": "tra-20261026.json",
+    "url": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/exceptionDataResource/8ae4c983a14053db01a16520beba3c85",
+    "sha256": "7d8c718dee7a217629b83761c400ca1364f302c50682ded677efe9e5760278e3",
+    "bytes": 2064231
+  },
+  {
+    "file": "tra-20261025.json",
+    "url": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/exceptionDataResource/8ae4c983a14053db01a16520be763c84",
+    "sha256": "ee2e8f57e15cb2a4de1cdd3b7de64dfc6d8f9975e4d9700eb9567aa94c2c55e0",
+    "bytes": 2055595
+  },
+  {
+    "file": "tra-20261024.json",
+    "url": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/exceptionDataResource/8ae4c983a14053db01a16520be313c83",
+    "sha256": "744c3304fef4c18ad8e017cf495171cdeb79608ab29906cd31eb1a4cd97ad847",
+    "bytes": 2066946
+  },
+  {
+    "file": "tra-20261023.json",
+    "url": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/exceptionDataResource/8ae4c983a14053db01a16520bde43c82",
+    "sha256": "326c9647a403acc6d68fbb2d7997d69ae0508aa2e6c1999921ab15146b5099df",
+    "bytes": 2083115
+  },
+  {
+    "file": "tra-stations.json",
+    "url": "https://ods.railway.gov.tw/tra-ods-web/ods/download/dataResource/0518b833e8964d53bfea3f7691aea0ee",
+    "sha256": "57f12bc23fddd89f712912b1f8bcf43684f594132f866c823f479244edeb2d03",
+    "bytes": 76091
+  },
+  {
+    "file": "thsr-holiday.pdf",
+    "url": "https://www.thsrc.com.tw/Attachment/Download?pageID=a3b630bb-1066-4352-a1ef-58c7b4e8ef7c&id=4d5ce117-801a-4848-aa53-adc35c3c6455",
+    "sha256": "fd42fa83f003b282f1dc35e35a40bc2aebb7b1a1daf8f2e2c6ad7e45f8d4336a"
+  },
+  {
+    "file": "mirror-thsr_schedule_dense.json",
+    "url": "https://raw.githubusercontent.com/siriushsu/taiwan-rail-live/d41aafac1482d50eb0ea72d37ebdf2f87d9d9677/data/thsr_schedule_dense.json",
+    "sha256": "1889a6d75213a6ccb2c5b694769f63aa613dd9cb123f441138657451ba153453"
+  },
+  {
+    "file": "tracks.json.gz",
+    "url": "https://download.geofabrik.de/asia/taiwan.html",
+    "sha256": "779e324658a63d17d62939f3b71d99d8d4110223900a533458e5578e61079853"
+  }
+]

@@ -66,9 +66,12 @@ US_RAIL_REPLAY_NOTE = "Amtrak and Brightline open first. Regional / commuter rai
 JAPAN_REPLAY_NOTE = "Shinkansen: 10 March 2026 community timetable. Limited express combines JR Kyushu's 17 March 2026 regular-service snapshot and JR East sections from Tokyo's 20 October 2026 snapshot, matched by weekday. These layers retain their own source dates. Kyushu sightseeing calendars and footnote-extended services are excluded. JR West / JR Central conventional intercity and overnight coverage remains incomplete. Japan local time; schedule estimates, no live positions or passenger loads. Unsupported railway sections stay gaps."
 MALAYSIA_REPLAY_NOTE = "KTM ETS, Intercity, northern Komuter and shuttles across Peninsular Malaysia, with KL Komuter reused from Kuala Lumpur. Individual KTM schedules for 12–18 October 2026, from the 22 October snapshot. Overnight journeys continue to their scheduled arrival. Optional KLIA airport rail uses ERL departure tables; combined night trains appear once under Transit. KL MRT/LRT/Monorail reuses the existing frequency estimates. Unsupported railway sections stay gaps. Sabah rail and individual passenger counts are unavailable."
 INDIA_REPLAY_NOTE = "Indian intercity trains open first. Select Regional / MEMU / DEMU or Suburban / local under Transport to add those schedules for 31 August–6 September 2026. Source calendars and original overnight clocks are retained; no claim of complete suburban coverage. Only connected railway paths are animated. Source details are in the India notes; no live tracking or passenger counts."
+MUMBAI_REPLAY_NOTE = "Mumbai suburban rail for 31 August–6 September 2026, reusing India's schedules and paths. Partial coverage: Western, Central and very limited Harbour services; Trans-Harbour unavailable. Add Regional connections under Transport. Fit selection shows outer termini. Original clocks and geometry gaps are retained."
 
 
 def prepared_path(city):
+    if city == 'mumbai':
+        return prepared_path('india')
     if city in {'india', 'delhi', 'chennai'}:
         return Path(os.environ[f'SUNTRAIN_{city.upper()}_REFERENCE'])
     if city == 'kochi':
@@ -115,7 +118,7 @@ def rail_reference_files(city, business_date, modes=None):
     for mode in sorted(selected):
         if mode == "train":
             path = prepared_path(city)
-        elif city == 'india':
+        elif city in {'india', 'mumbai'}:
             directory = Path(os.getenv(f'SUNTRAIN_INDIA_{mode.upper()}_REFERENCE', str(prepared_path(city).parent / mode)))
             path = directory / (business_date + '.json.gz')
         elif city == "malaysia":
@@ -136,6 +139,9 @@ def rail_reference_files(city, business_date, modes=None):
             directory = Path(os.getenv(f"SUNTRAIN_{city.upper()}_{mode.upper()}_REFERENCE", str(ROOT / "data/reference" / city / mode)))
             path = directory / (business_date + ".json.gz")
         files.append((mode, str(path), path.stat().st_mtime_ns))
+    if city == 'mumbai':
+        path = prepared_path('india').parent / 'mumbai-scope.json'
+        files.append(('mumbai_scope', str(path), path.stat().st_mtime_ns))
     if city == "java" and "train" in selected:
         path = prepared_path("jakarta")
         files.append(("jakarta_train", str(path), path.stat().st_mtime_ns))
@@ -227,7 +233,7 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     if city != "melbourne":
         if not settings["start_date"] <= business_date <= settings["end_date"]:
             raise ValueError(f"{settings['name']} replay covers {settings['start_date']} through {settings['end_date']}")
-        if city in {"germany", "great_britain", "java", "us_rail", "japan", "malaysia", "india"}:
+        if city in {"germany", "great_britain", "java", "us_rail", "japan", "malaysia", "india", "mumbai"}:
             files = rail_reference_files(city, business_date, modes)
             return _get_germany_day(business_date, files, city=city)
         path = prepared_path(city)
@@ -251,8 +257,12 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
 def _get_germany_day(business_date, files, city="germany"):
     """Reuse prepared rail layers, including existing networks in wider views."""
     note = {"germany": GERMANY_REPLAY_NOTE, "great_britain": GREAT_BRITAIN_REPLAY_NOTE,
-            "java": JAVA_REPLAY_NOTE, "us_rail": US_RAIL_REPLAY_NOTE, "japan": JAPAN_REPLAY_NOTE, "malaysia": MALAYSIA_REPLAY_NOTE, "india": INDIA_REPLAY_NOTE}[city]
-    modes = tuple(mode for mode, _, _ in files)
+            "java": JAVA_REPLAY_NOTE, "us_rail": US_RAIL_REPLAY_NOTE, "japan": JAPAN_REPLAY_NOTE, "malaysia": MALAYSIA_REPLAY_NOTE, "india": INDIA_REPLAY_NOTE, "mumbai": MUMBAI_REPLAY_NOTE}[city]
+    modes = tuple(mode for mode, _, _ in files if mode != 'mumbai_scope')
+    scope = None
+    if city == 'mumbai':
+        scope_path = next(path for mode,path,_ in files if mode == 'mumbai_scope')
+        scope = json.loads(Path(scope_path).read_text())
     base_path = prepared_path(city)
     modified = next((stamp for mode, _, stamp in files if mode == "train"), 0)
     base = _get_prepared_day(city, business_date, str(base_path), modified, modes)
@@ -268,7 +278,7 @@ def _get_germany_day(business_date, files, city="germany"):
     # all selected modes together, without writing another schedule bundle.
     grouped = {}
     for mode, path, _ in files:
-        if mode != "train":
+        if mode not in {"train", "mumbai_scope"}:
             grouped.setdefault(path, []).append(
                 "train" if mode == "jakarta_train" else "limited_express" if mode == "japan_limited_express" else mode)
     display_date_mapping = {}
@@ -276,6 +286,14 @@ def _get_germany_day(business_date, files, city="germany"):
     for path, selected in grouped.items():
         with gzip.open(path, "rb") as stream:
             reference = transit.load_reference(stream)
+        if scope is not None:
+            if not any(s.get('sha256') == scope['source_sha256'] for s in reference['metadata'].get('sources', [])):
+                raise ValueError('Mumbai scope belongs to a different India timetable')
+            rows = [row for row in reference['days'][business_date] if row[1] in scope['trips']]
+            selected_patterns = {key:scope['trips'][trip] for key,trip,_ in rows}
+            reference['days'] = {business_date:rows}
+            reference['patterns'] = {key:{**reference['patterns'][key], 'line':v['line'],
+                'route_id':'mumbai:'+v['line'], 'color':'#'+v['color']} for key,v in selected_patterns.items()}
         if city == "malaysia":
             reference["patterns"] = {key: {**p, "mode": "commuter_rail"} if p["mode"] == "train" else p
                                      for key, p in reference["patterns"].items()}
@@ -314,8 +332,8 @@ def _get_germany_day(business_date, files, city="germany"):
                 prefix = "jp-tokyo" if tokyo_overlay else "jp-kyushu"
             elif city == "malaysia":
                 prefix = "my-kl"
-            elif city == 'india':
-                prefix = 'in-regional'
+            elif city in {'india', 'mumbai'}:
+                prefix = 'mumbai' if city == 'mumbai' else 'in-regional'
             else:
                 prefix = "gb-london" if mode in {"subway", "light_rail", "commuter_rail"} else "gb-rv"
             service["id"] = f"{prefix}:{mode}:" + service["id"]
@@ -339,7 +357,7 @@ def _get_germany_day(business_date, files, city="germany"):
         "replay_note": note}
     if source_date_mappings:
         payload["schedule"]["source_date_mappings"] = source_date_mappings
-    if city in {"java", "us_rail", "japan", "malaysia", "india"}:
+    if city in {"java", "us_rail", "japan", "malaysia", "india", "mumbai"}:
         if display_date_mapping:
             payload["schedule"]["display_date_mapping"] = display_date_mapping
         # Long journeys belong to their departure day. Let them reach their
@@ -415,7 +433,7 @@ def _get_prepared_day(city, business_date, path, modified, modes=None):
         "services": [], "stations": [], "paths": {}, "geometry": {},
         "approximate_legs": 0, "total_legs": 0, "excluded_services": 0}
     if ((modes and set(modes) <= bus_modes(city))
-            or (city in {"germany", "great_britain", "java", "us_rail", "japan", "malaysia", "india"} and modes is not None and "train" not in modes)):
+            or (city in {"germany", "great_britain", "java", "us_rail", "japan", "malaysia", "india", "mumbai"} and modes is not None and "train" not in modes)):
         # Optional daily bundles supply their own provenance. Do not open an
         # unselected base timetable just to create the empty replay container.
         payload["schedule"] = {}

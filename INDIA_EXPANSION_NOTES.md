@@ -33,7 +33,7 @@ The full PBF and source timetable stay in ignored cache. The runtime reads only 
 
 ## Next additions
 
-Next candidates are a dedicated Mumbai suburban view with a coverage audit, Kolkata Metro, and remaining express specials. Regional/suburban layers and Kochi/Delhi/Chennai city views are implemented below. Do not treat a software licence on an NTES crawler as a licence for the timetable it collects. Live APIs and passenger statistics are not required.
+Next candidates are Kolkata Metro, missing Mumbai suburban timetables, and remaining express specials. Regional/suburban layers and Kochi/Delhi/Chennai/Mumbai city views are implemented below. Do not treat a software licence on an NTES crawler as a licence for the timetable it collects. Live APIs and passenger statistics are not required.
 
 ## Validated local build — 23 October 2026
 
@@ -105,3 +105,31 @@ The preparation-only combined week is `.cache/india/regional-week.json.gz` (**4,
 Validation: tests cover source scope, intercity de-duplication, optional-layer isolation (including opening regional without a base file), unique combined IDs, independent station remapping, shared schedules and overnight end times. A full seven-day audit verified single departure-window ownership, mode membership, geometry gaps and selected-day bundles. Existing German regional and app/HTTP checks also pass. Source reuse status remains documented in the earlier distribution section.
 
 Checks for this follow-up: **84 Python tests and 48 JavaScript tests passed**. Browser verification covered the actual Transport options (2,148 default → 5,274 with regional → 8,046 with both layers), suburban-only filtering (2,772 Monday / 2,503 Sunday), playback and zero Home schedule downloads, with no JavaScript errors.
+
+
+## Mumbai suburban view
+
+Mumbai now has its own Home pin, replay and Overview for **31 August–6 September 2026**, in **Asia/Kolkata**. It reads the existing India suburban and optional regional daily files, with no second copy of schedules or railway paths. The only additional cached data is a **32,892-byte scope index**, containing source trip IDs, corridor labels and display colours. India retains its original labels and colours.
+
+```bash
+.venv/bin/python scripts/prepare_mumbai_scope.py
+```
+
+Run this after the India regional preparation above. With `SUNTRAIN_INDIA_REFERENCE` configured, Mumbai appears when `mumbai-scope.json` exists beside that reference. Regional layer directory overrides remain the existing `SUNTRAIN_INDIA_*_REFERENCE` settings. The index verifies the pinned source hash during preparation, and runtime rejects a mismatched India source. Its modification stamp also invalidates parsed and HTTP caches.
+
+Coverage is **partial**, and the interface says so:
+
+| Corridor | Monday suburban | Monday including regional |
+| --- | ---: | ---: |
+| Western | 42 | 45 |
+| Central | 397 | 397 |
+| Harbour | 2 | 2 |
+| Diva–Vasai / regional | 0 | 16 |
+| Other regional connections | 0 | 14 |
+| **Total** | **441** | **474** |
+
+Most Central entries are outer-branch workings, including Kalyan/Karjat–Palasdhari, rather than a complete CSMT mainline timetable. Harbour has only one CSMT–Panvel pair. **Trans-Harbour is absent**. Sunday has **426 suburban / 447 including regional** departures. Missing services are not generated from assumed headways. The [Western Railway suburban timetable page](https://wr.indianrailways.gov.in/view_section.jsp?id=0%2C1%2C263%2C296%2C307&lang=0) and [Central Railway Mumbai suburban information](https://cr.indianrailways.gov.in/view_section.jsp?backgroundColor=LIGHTSTEELBLUE&fontColor=black&id=0%2C6%2C287%2C384%2C534&lang=0) are starting points for a future complete, dated timetable audit.
+
+Scope requires Mumbai core station codes and all calls within the adjoining rail corridors. A 9-series train number alone is insufficient: Pune–Lonavala and Namo Bharat entries elsewhere are excluded. Full journeys retain their original calls, calendars and clocks. Default zoom covers the urban core; **Fit selection** includes outer termini. Corridor colours are SunTrain display choices, not an official livery claim. Monday resolved track coverage is **98.6% suburban / 98.8% including regional**; remaining sections stay gaps.
+
+Validation: **75 targeted Python tests passed**, including source selection, shared-file reuse, cache invalidation and isolation from the India view. Browser checks covered Home, vehicle rendering, playback, optional regional connections, Sunday and Mumbai Overview, with zero JavaScript errors and no Home schedule downloads. Local preview: `http://localhost:8089`.

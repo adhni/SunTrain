@@ -373,6 +373,16 @@ if os.getenv('SUNTRAIN_INDIA_REFERENCE'):
         'operators': [('Indian Railways', 'Indian Railways')],
         'directions': [('Not specified', 'Not specified')],
     }
+    if (Path(os.environ['SUNTRAIN_INDIA_REFERENCE']).parent / 'mumbai-scope.json').is_file():
+        CITIES['mumbai'] = {
+            'name':'Mumbai', 'timezone':'Asia/Kolkata', 'bounds':[[72.72,18.88],[73.15,19.40]],
+            'passenger_data':False, 'start_date':'2026-08-31', 'end_date':'2026-09-06',
+            'description':'Mumbai suburban rail · partial August 2026 timetable. Western, Central and limited Harbour services; Trans-Harbour unavailable. Fit selection includes outer termini.',
+            'default_modes':['commuter_rail'],
+            'modes':[('Suburban / local','commuter_rail'),('Regional connections','regional_rail')],
+            'operators':[('Indian Railways','Indian Railways')],
+            'directions':[('Not specified','Not specified')],
+        }
 
 
 for _city, _settings in {

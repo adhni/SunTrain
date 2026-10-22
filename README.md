@@ -4,7 +4,7 @@ Historical transport replay across Australia, Austria, Belgium, Canada, France, 
 
 ## Taiwan rail
 
-Choose **Taiwan** for **23–27 October 2026**: Taiwan Railways express, local and branch services plus Taiwan High Speed Rail. Both use actual dated official schedules, including holiday restrictions and overnight journeys. The five-day bundle contains **5,488 departures in about 546 KB gzip**, with connected railway paths for every included leg. TRA and high-speed tracks are kept separate, and original train numbers are retained. Existing filters, themes, fullscreen, details and Taiwan Overview apply. Metro networks can follow later. See [Taiwan expansion notes](TAIWAN_EXPANSION_NOTES.md) for sources, rebuild commands and next additions.
+Choose **Taiwan** for **23–27 October 2026**: Taiwan Railways express, local and branch services plus Taiwan High Speed Rail. Both use actual dated official schedules, including holiday restrictions and overnight journeys. The five-day bundle contains **5,488 departures in about 546 KB gzip**, with connected railway paths for every included leg. TRA and high-speed tracks are kept separate, and original train numbers are retained. Existing filters, themes, fullscreen, details and Taiwan Overview apply. Choose **Taipei** separately for the Red, Green, Orange and Blue Metro lines and both branch shuttles on the same dates. Its roughly **75 KB** replay uses published terminal departures and estimated intermediate times from official run/dwell tables; some morning starts, Brown and Circular lines are excluded. See [Taiwan expansion notes](TAIWAN_EXPANSION_NOTES.md) for sources, rebuild commands and next additions.
 
 ## Thailand rail
 

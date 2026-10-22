@@ -49,7 +49,7 @@ All included journey legs resolve to connected railway geometry in this build. T
 
 ## Next additions
 
-1. **Taipei Metro**, using complete train-level timetables where available. Audit weekday/weekend calendars and branches; first/last departures alone do not describe every train.
+1. **Complete Taipei Metro coverage**: Brown/Wenhu, Circular and omitted morning starts. The initial four-line terminal-anchored replay is implemented below; prefer linked train-level timetables when available.
 2. Taoyuan Airport MRT, Kaohsiung MRT/light rail and Taichung MRT, one validated network at a time.
 3. Alishan Railway as a separate operator and gauge, using its own dated schedules and geometry.
 4. A longer common TRA/THSR period using archived daily files or authenticated TDX exports. Keep credentials outside git and the browser. No buses or passenger features are required for these additions.
@@ -57,3 +57,23 @@ All included journey legs resolve to connected railway geometry in this build. T
 ## Validation
 
 **49 Python tests and 48 JavaScript tests passed**. Tests cover holiday date lists/ranges, passenger scope, source clocks, midnight rollover, Mountain/Coast hints, single-day ownership, mode filtering, original train numbers, compact shared stops and the complete bundled period. Browser verification covers Home, rendered trains, Play, high-speed-only filtering, the final date and Taiwan Overview, with no JavaScript errors or Home schedule downloads. Preview for this session: **http://localhost:8090**.
+
+## Taipei Metro follow-up
+
+**Taipei** is a separate Home pin and Metro replay on the same **23–27 October 2026** dates. It includes the Red/Tamsui–Xinyi, Green/Songshan–Xindian, Orange/Zhonghe–Xinlu (both Huilong and Luzhou branches), Blue/Bannan, Xinbeitou and Xiaobitan shuttles. Source short-turn destinations are retained. Taiwan's national train view remains separate; no national timetable or geometry is copied into Taipei.
+
+The official [station timetable catalogue](https://data.gov.tw/dataset/131737) offers nine directly downloadable CSVs for weekday/holiday services, with separate Red Saturday and Sunday calendars. Downloads are Big5-encoded; service flags distinguish national holidays. Effective dates in these files are August–October 2026. Unlike a complete GTFS, these files have **station departure sequences but no train IDs linking calls**. This replay therefore anchors journeys to the published departures at route termini and uses the operator's [official run/dwell-time table](https://data.taipei/dataset/detail?id=513e97fe-6a98-4a0d-b7dc-11122c8638d4) to estimate onward arrival/departure times. It does not claim those intermediate estimates are linked published train calls. Intermediate morning starts and ambiguous alternate short-turn origins are omitted rather than counted twice. The limitation appears in the city description and replay note.
+
+The initial five days contain **10,790 terminal-origin replay journeys**: **2,333 Friday / 2,054 Saturday / 2,035 Sunday / 2,035 Monday holiday / 2,333 Tuesday**. This is a partial replay count, not the full network's official number of trains. The [official 2026 holiday calendar](https://www.dgpa.gov.tw/uploads/dgpa/files/202510/115%E5%B9%B4%E8%BE%A6%E5%85%AC%E6%97%A5%E6%9B%86%E8%A1%A8-1.pdf) identifies 26 October as the substitute holiday; Red uses its Sunday/national-holiday table on that date. After-midnight station clocks remain with their operating day, with single 03:00-window ownership.
+
+Geometry and station order come from the same pinned Rail Island repository's `data/trtc.json`, which preserves TDX railway shapes/coordinates; the Red extension uses OSM geometry. Only geography is read from that file. Its headways, station run-time estimates and dwell fields are **not used**. Actual routes are cut to the source endpoints, respecting the separate Orange branches and shuttle directions. Every included leg resolves to its supplied railway shape. Government open-data attribution and ODbL attribution for the OSM extension are retained; no source code or visual assets from that project are used. The prepared file is about **75 KB gzip**, with 22 shared timing patterns. No runtime credentials or new rendering infrastructure are needed.
+
+**Brown/Wenhu and Circular lines are excluded**: the downloaded catalogue does not supply their complete departure tables. Their presence in a community file does not establish published individual departures; that file explicitly describes headway-based generation for them. These remain future data investigations.
+
+Pinned URLs and digests: [Taipei sources](data/reference/taipei/sources.json). Download each listed file to `.cache/taipei/` using its recorded filename; changed inputs fail SHA checks. Rebuild with:
+
+```bash
+.venv/bin/python scripts/prepare_taipei_replay.py
+```
+
+The initial caches are already prepared locally. `SUNTRAIN_TAIPEI_REFERENCE` overrides the bundled reference. **51 targeted Python tests passed**. Tests cover holiday selection, midnight clocks, route/shuttle scope, unique departures, shared schedules, all five runtime days and geometry. Browser checks cover Home, rendered vehicles, Play, the holiday date and Taipei Overview. Local preview: **http://localhost:8091**.

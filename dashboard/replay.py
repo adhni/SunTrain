@@ -70,6 +70,8 @@ MUMBAI_REPLAY_NOTE = "Mumbai suburban rail for 31 August–6 September 2026, reu
 
 
 def prepared_path(city):
+    if city == 'taipei':
+        return Path(os.getenv('SUNTRAIN_TAIPEI_REFERENCE', str(ROOT / 'data/reference/taipei/2026-10-23.json.gz')))
     if city == 'taiwan':
         return Path(os.getenv('SUNTRAIN_TAIWAN_REFERENCE', str(ROOT / 'data/reference/taiwan/2026-10-23.json.gz')))
     if city == 'mumbai':

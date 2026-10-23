@@ -12,6 +12,24 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'south_korea': {
+        'name': 'South Korea', 'timezone': 'Asia/Seoul',
+        'bounds': [[125.9, 34.3], [129.7, 38.2]], 'passenger_data': False,
+        'start_date': '2025-10-20', 'end_date': '2025-10-26',
+        'description': 'KTX, SRT and KORAIL intercity trains including ITX-Cheongchun · dated 2025 timetable snapshots shown on an October reference week. Seoul subway has its own view.',
+        'default_modes': ['high_speed_rail', 'train'],
+        'modes': [('KTX / SRT', 'high_speed_rail'), ('Intercity / conventional', 'train')],
+        'operators': [('KORAIL', 'KORAIL'), ('SR / SRT', 'SR')], 'directions': [('Not specified', 'Not specified')],
+    },
+    'seoul': {
+        'name': 'Seoul', 'timezone': 'Asia/Seoul',
+        'bounds': [[126.6, 37.3], [127.3, 37.75]], 'passenger_data': False,
+        'start_date': '2026-01-05', 'end_date': '2026-01-11',
+        'description': 'Subway Lines 1–9, KORAIL suburban rail and AREX airport trains. January 2026 reference week; AREX uses an October 2026 timetable matched by weekday. Fit selection shows outer termini.',
+        'default_modes': ['subway', 'commuter_rail'], 'modes': [('Subway Lines 1–9', 'subway'), ('Suburban / airport rail', 'commuter_rail')],
+        'operators': [('Seoul metropolitan subway', 'Seoul metropolitan subway'), ('KORAIL', 'KORAIL'), ('AREX airport rail', 'AREX')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B'), ('Not specified', 'Not specified')],
+    },
     'taipei': {
         'name': 'Taipei', 'timezone': 'Asia/Taipei',
         'bounds': [[121.38, 24.94], [121.65, 25.19]], 'passenger_data': False,

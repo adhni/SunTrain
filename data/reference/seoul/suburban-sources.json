@@ -1,0 +1,20 @@
+[
+  {
+    "file": "gyeongui.xlsx",
+    "url": "https://www.korail.com/file/cubedata/COMMON/jfile/202512/23/2025122319b4a5663fe540.xlsx",
+    "sha256": "9f667a150c2186f65f4e7f4b922eba18b4e00758076538a1b2c85f786e4bb43f",
+    "date": "2025-12-30"
+  },
+  {
+    "file": "gyeongchun.xlsx",
+    "url": "https://www.korail.com/file/cubedata/COMMON/jfile/202512/23/2025122319b4a57041400.xlsx",
+    "sha256": "22763e330e0122d60d760b944597c8d7d290ff5aadc96e54b4bd43597f876ad3",
+    "date": "2025-12-30"
+  },
+  {
+    "file": "suin-bundang.xlsx",
+    "url": "https://www.korail.com/file/cubedata/COMMON/jfile/202512/23/2025122319b4a54a35e180.xlsx",
+    "sha256": "1096ff08291f541bcb47239a89397c5b31b2a7244803bf32c5a361768ee94398",
+    "date": "2025-12-30"
+  }
+]

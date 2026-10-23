@@ -1,6 +1,14 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, Switzerland, Taiwan, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Seoul subway
+
+Choose **Seoul** for subway **Lines 1–9** plus KORAIL **Gyeongui–Jungang (including the Seoul branch), Suin–Bundang and Gyeongchun**, plus **AREX express and all-stop airport trains**. The **5–11 January 2026 reference week** combines the existing September 2025 subway snapshot with official suburban timetables effective 30 December 2025; it is not a reconstruction of historical disruptions. AREX uses a clearly labelled **October 2026 timetable matched by weekday**, rather than claiming January airport services. The **661 KB gzip** bundle contains **39,552 departures**, retaining published calls, express/passing patterns, dwell and short workings. Use Transport to select subway or suburban/airport rail. Existing playback, filters, dark mode and Seoul Overview apply. KTX/intercity and ITX-Cheongchun remain in the separate South Korea view. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).
+
+## South Korea national rail
+
+Choose **South Korea** for **KTX, SRT and KORAIL intercity trains**, including ITX-Cheongchun, ITX-Maum, ITX-Saemaeul, Saemaeul, Mugunghwa and Nuriro. Official dated 2025 publications supply train numbers, station times and running days, displayed on a **20–26 October 2025 reference week**; exact operation that week is not confirmed. The **716 KB gzip** bundle contains **5,989 departures**, with **99.95%** of Monday journey legs connected to railway tracks. SRT has its own operator filter; ITX-Cheongchun retains published dwell and separate weekday/weekend schedules. Existing playback, filters, themes and Overview apply. Seoul subway remains separate; tourist specials are excluded. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).
 
 ## Taiwan rail
 

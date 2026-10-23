@@ -10,6 +10,7 @@ from dash.exceptions import PreventUpdate
 from dashboard.replay_http import descriptor, selected_modes
 from dashboard.transit import available_range
 from dashboard.cities import CITIES, city_settings
+from dashboard.theme_view import theme_picker
 
 LOGGER = logging.getLogger(__name__)
 
@@ -82,8 +83,7 @@ def build_replay_panel(metadata, default_date):
                                         **{"aria-expanded": False, "aria-controls": "replay-filter-controls"}),
                             html.Button("Fullscreen", id="replay-fullscreen", className="finder-chip", disabled=True,
                                         **{"aria-pressed": False}),
-                            html.Button("Dark mode", id="replay-theme-toggle", className="finder-chip theme-toggle",
-                                        **{"data-theme-toggle": "true", "aria-pressed": False}),
+                            theme_picker("replay-theme-toggle"),
                         ]),
                     ]),
                     html.Div(id="replay-map", className="replay-map", role="region", **{"aria-label": "Historical train, tram and bus replay and train passenger demand map"}),

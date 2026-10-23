@@ -599,7 +599,7 @@
             }
         }
         applyTheme() {
-            const dark = root.suntrainTheme.current === "dark";
+            const dark = root.suntrainTheme.isDark;
             if (this.mapReady) {
                 root.suntrainTheme.styleMap(this.graph);
                 this.graph.setPaintProperty("replay-selected-route", "line-color", this.selected ? vehicleColor(this.selected, this.day?.city) : dark ? "#8ae1ca" : "#115d51");

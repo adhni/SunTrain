@@ -3,16 +3,20 @@
     const STORAGE_KEY = "suntrain-theme";
     const palettes = {
         light: {ink: "#18232d", surface: "#ffffff", grid: "#e0e6e3", background: "#edf1ef"},
-        dark: {ink: "#e4eef0", surface: "#17212b", grid: "#34434e", background: "#101a23"}
+        dark: {ink: "#e4eef0", surface: "#17212b", grid: "#34434e", background: "#101a23", dark: true},
+        sunrise: {ink: "#33291f", surface: "#fffaf0", grid: "#deccb0", background: "#f4dfba"},
+        blueprint: {ink: "#edf5ff", surface: "#142e53", grid: "#3b5c85", background: "#092244", dark: true},
+        heritage: {ink: "#29372d", surface: "#f7f1df", grid: "#cfc5a8", background: "#dfd5b9"}
     };
     let theme = "dark";
-    try { if (localStorage.getItem(STORAGE_KEY) === "light") theme = "light"; } catch (_) {}
+    try { const saved = localStorage.getItem(STORAGE_KEY); if (Object.hasOwn(palettes, saved)) theme = saved; } catch (_) {}
     document.documentElement.dataset.theme = theme;
+    document.documentElement.dataset.tone = palettes[theme].dark ? "dark" : "light";
 
     function rasterPaint() {
-        return theme === "dark" ? {"raster-saturation": -1, "raster-contrast": 0.05,
-            "raster-brightness-min": 0.82, "raster-brightness-max": 0.10, "raster-opacity": 0.7} :
-            {"raster-saturation": -0.85, "raster-contrast": -0.05, "raster-brightness-min": 0, "raster-brightness-max": 1, "raster-opacity": 0.75};
+        return palettes[theme].dark ? {"raster-saturation": -1, "raster-contrast": 0.05,
+            "raster-brightness-min": 0.82, "raster-brightness-max": 0.10, "raster-opacity": theme === "blueprint" ? 0.48 : 0.7} :
+            {"raster-saturation": -0.85, "raster-contrast": -0.05, "raster-brightness-min": 0, "raster-brightness-max": 1, "raster-opacity": theme === "light" ? 0.75 : 0.48};
     }
     function mapStyle() {
         return {version: 8, metadata: {"suntrain-theme": theme}, sources: {basemap: {
@@ -26,15 +30,9 @@
         map.setPaintProperty("background", "background-color", palettes[theme].background);
         for (const [key, value] of Object.entries(rasterPaint())) map.setPaintProperty("basemap", key, value);
     }
-    function updateButtons() {
-        for (const button of document.querySelectorAll("[data-theme-toggle]")) {
-            const label = theme === "dark" ? "Light mode" : "Dark mode";
-            if (button.textContent !== label) {
-                if (root.dash_clientside?.set_props && button.id) root.dash_clientside.set_props(button.id, {children: label});
-                else button.textContent = label;
-            }
-            button.setAttribute("aria-pressed", String(theme === "dark"));
-            button.title = `Switch site and maps to ${theme === "dark" ? "light" : "dark"} mode`;
+    function updateSelectors() {
+        for (const select of document.querySelectorAll("[data-theme-select]")) {
+            if (select.value !== theme) select.value = theme;
         }
     }
 
@@ -42,7 +40,7 @@
     const chartColors = {"#0d6f67": "#50c4b2", "#b13b5c": "#e981a0", "#b76a16": "#edb36b", "#657142": "#b0c489"};
     function chartColor(value) {
         if (typeof value !== "string") return value;
-        if (theme === "dark") return chartColors[value.toLowerCase()] || value;
+        if (palettes[theme].dark) return chartColors[value.toLowerCase()] || value;
         return Object.entries(chartColors).find(([, bright]) => bright === value.toLowerCase())?.[0] || value;
     }
     let plotFrame = null;
@@ -105,7 +103,7 @@
         }
     }
     function refresh() {
-        updateButtons();
+        updateSelectors();
         let notReady = false;
         for (const graph of document.querySelectorAll(".js-plotly-plot")) {
             if (typeof graph.on !== "function") { notReady = true; continue; }
@@ -125,23 +123,24 @@
         if (notReady) setTimeout(refresh, 150);
     }
     function setTheme(value) {
-        if (value !== "dark" && value !== "light") return;
+        if (!Object.hasOwn(palettes, value)) return;
         theme = value;
         document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.tone = palettes[theme].dark ? "dark" : "light";
         try { localStorage.setItem(STORAGE_KEY, theme); } catch (_) {}
         refresh();
         document.dispatchEvent(new CustomEvent("suntrain:themechange", {detail: {theme}}));
     }
-    root.suntrainTheme = {get current() { return theme; }, setTheme, mapStyle, styleMap};
-    document.addEventListener("click", event => {
-        if (event.target.closest?.("[data-theme-toggle]")) setTheme(theme === "dark" ? "light" : "dark");
+    root.suntrainTheme = {get current() { return theme; }, get isDark() { return !!palettes[theme].dark; }, setTheme, mapStyle, styleMap};
+    document.addEventListener("change", event => {
+        if (event.target.matches?.("[data-theme-select]")) setTheme(event.target.value);
     });
     function start() {
         refresh();
         new MutationObserver(mutations => {
             const relevant = mutations.some(mutation => mutation.type === "attributes" ? mutation.target.matches(".js-plotly-plot") :
                 [...mutation.addedNodes].some(element => element.nodeType === 1 &&
-                    (element.matches(".js-plotly-plot, [data-theme-toggle]") || element.querySelector(".js-plotly-plot, [data-theme-toggle]"))));
+                    (element.matches(".js-plotly-plot, [data-theme-select]") || element.querySelector(".js-plotly-plot, [data-theme-select]"))));
             if (relevant) refresh();
         }).observe(document.body, {childList: true, subtree: true, attributes: true, attributeFilter: ["class"]});
     }

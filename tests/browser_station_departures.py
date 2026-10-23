@@ -73,7 +73,7 @@ with sync_playwright() as p:
     page.wait_for_function('suntrainReplay.mapMode==="both"')
     page.get_by_role('button',name='Back to departures',exact=True).click()
     page.screenshot(path='.cache/station-departures-desktop.png',full_page=True)
-    page.locator('#theme-toggle').click()
+    page.locator('#theme-toggle').select_option('light')
     page.set_viewport_size({'width':390,'height':844})
     assert not page.evaluate('document.documentElement.scrollWidth > innerWidth')
     page.locator('#replay-open-departures').click()

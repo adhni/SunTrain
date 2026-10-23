@@ -34,6 +34,7 @@ from dashboard.replay_view import build_replay_panel, register_replay_callbacks
 from dashboard.replay_http import register_replay_routes
 from dashboard.overview_view import group_passenger_reports
 from dashboard.home_view import build_home_panel, register_home_callbacks
+from dashboard.theme_view import theme_picker
 
 
 META = get_metadata()
@@ -406,8 +407,7 @@ app.layout = html.Div(
                                             html.Span("Business day: 03:00-02:59"),
                                             html.Span("Melbourne counts rounded to nearest 10"),
                                         ]),
-                                        html.Button("Dark mode", id="theme-toggle", className="theme-toggle",
-                                                    **{"data-theme-toggle": "true", "aria-pressed": False}),
+                                        theme_picker("theme-toggle"),
                                     ],
                                 ),
                             ],

@@ -25,9 +25,9 @@ CITIES = {
         'name': 'Seoul', 'timezone': 'Asia/Seoul',
         'bounds': [[126.6, 37.3], [127.3, 37.75]], 'passenger_data': False,
         'start_date': '2026-01-05', 'end_date': '2026-01-11',
-        'description': 'Subway Lines 1–9 plus Gyeongui–Jungang, Suin–Bundang and Gyeongchun. September/December 2025 snapshots on a 5–11 January 2026 reference week. Fit selection shows outer termini.',
-        'default_modes': ['subway', 'commuter_rail'], 'modes': [('Subway Lines 1–9', 'subway'), ('KORAIL suburban rail', 'commuter_rail')],
-        'operators': [('Seoul metropolitan subway', 'Seoul metropolitan subway'), ('KORAIL', 'KORAIL')],
+        'description': 'Subway Lines 1–9, KORAIL suburban rail and AREX airport trains. January 2026 reference week; AREX uses an October 2026 timetable matched by weekday. Fit selection shows outer termini.',
+        'default_modes': ['subway', 'commuter_rail'], 'modes': [('Subway Lines 1–9', 'subway'), ('Suburban / airport rail', 'commuter_rail')],
+        'operators': [('Seoul metropolitan subway', 'Seoul metropolitan subway'), ('KORAIL', 'KORAIL'), ('AREX airport rail', 'AREX')],
         'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B'), ('Not specified', 'Not specified')],
     },
     'taipei': {

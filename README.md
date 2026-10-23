@@ -4,7 +4,7 @@ Historical transport replay across Australia, Austria, Belgium, Canada, France, 
 
 ## Seoul subway
 
-Choose **Seoul** for subway **Lines 1–9** plus KORAIL **Gyeongui–Jungang (including the Seoul branch), Suin–Bundang and Gyeongchun**. The **5–11 January 2026 reference week** combines the existing September 2025 subway snapshot with official suburban timetables effective 30 December 2025; it is not a reconstruction of historical disruptions. The **627 KB gzip** bundle contains **36,673 departures**, retaining published calls, express/passing patterns, dwell and short workings. Use Transport to select subway or suburban rail. Existing playback, filters, dark mode and Seoul Overview apply. KTX/intercity and ITX-Cheongchun remain in the separate South Korea view. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).
+Choose **Seoul** for subway **Lines 1–9** plus KORAIL **Gyeongui–Jungang (including the Seoul branch), Suin–Bundang and Gyeongchun**, plus **AREX express and all-stop airport trains**. The **5–11 January 2026 reference week** combines the existing September 2025 subway snapshot with official suburban timetables effective 30 December 2025; it is not a reconstruction of historical disruptions. AREX uses a clearly labelled **October 2026 timetable matched by weekday**, rather than claiming January airport services. The **661 KB gzip** bundle contains **39,552 departures**, retaining published calls, express/passing patterns, dwell and short workings. Use Transport to select subway or suburban/airport rail. Existing playback, filters, dark mode and Seoul Overview apply. KTX/intercity and ITX-Cheongchun remain in the separate South Korea view. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).
 
 ## South Korea national rail
 

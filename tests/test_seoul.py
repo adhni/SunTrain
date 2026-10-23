@@ -70,14 +70,38 @@ def test_bundled_suburban_scope_and_mode_isolation():
     from collections import Counter
     day=replay.get_replay_day('2026-01-05','seoul')
     counts=Counter(day['transit_patterns'][s['pattern']]['line'] for s in day['services'] if s['mode']=='commuter_rail')
-    assert set(counts)=={'Gyeongui–Jungang','Suin–Bundang','Gyeongchun'}
-    assert all(v>100 for v in counts.values())
+    assert set(counts)=={'Gyeongui–Jungang','Suin–Bundang','Gyeongchun','AREX express','AREX all-stop'}
+    assert counts['AREX express']==56 and counts['AREX all-stop']==369
+    assert all(v>100 for k,v in counts.items() if not k.startswith('AREX'))
     assert len(replay.get_replay_day('2026-01-05','seoul',modes=('subway',))['services'])==4715
     suburban=replay.get_replay_day('2026-01-05','seoul',modes=('commuter_rail',))
     assert len(suburban['services'])==sum(counts.values())
-    assert all(s['number'].startswith('K') for s in suburban['services'])
-    assert all(p['operator']=='KORAIL' for p in suburban['transit_patterns'].values())
+    assert all(s['number'].startswith(('K','A')) for s in suburban['services'])
+    assert all(p['operator'] in {'KORAIL','AREX'} for p in suburban['transit_patterns'].values())
     assert not any(p['line']=='ITX-Cheongchun' for p in day['transit_patterns'].values())
     with gzip.open(OUTPUT,'rt') as f:r=json.load(f)
     assert r['metadata']['suburban_unlocated_station_trip_exclusions']=={}
     assert r['metadata']['suburban_source_audit']=={'suin-bundang:Incomplete suburban journey':1}
+
+
+def test_arex_clocks_stopping_patterns_midnight_and_weekday_overlay():
+    from datetime import date
+    from scripts.prepare_arex_replay import seconds
+    assert seconds('00:00:00')==0 and seconds('24:30:30')==88230
+    assert seconds('---') is None
+    with pytest.raises(ValueError): seconds('12:65:00')
+    for d,expected in [('2026-01-05',425),('2026-01-10',377)]:
+        day=replay.get_replay_day(d,'seoul')
+        services=[s for s in day['services'] if day['transit_patterns'][s['pattern']]['operator']=='AREX']
+        assert len(services)==expected
+        express=[s for s in services if day['transit_patterns'][s['pattern']]['line']=='AREX express']
+        assert len(express)==56
+        assert all(len(day['transit_stop_patterns'][day['transit_patterns'][s['pattern']]['stop_pattern']]['stations'])==3 for s in express)
+        midnight=next(s for s in services if s['number']=='A3293')
+        pattern=day['transit_patterns'][midnight['pattern']]
+        assert (pattern['origin'],pattern['destination'])==('서울','검암')
+        assert midnight['departure']+int(pattern['times'][1])==day['start']+21*3600
+        mapped=day['schedule']['arex_display_date_mapping'][d]
+        assert date.fromisoformat(mapped).weekday()==date.fromisoformat(d).weekday()
+        assert mapped.startswith('2026-10-')
+        assert 'October 2026' in day['schedule']['replay_note']

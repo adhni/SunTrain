@@ -23,11 +23,11 @@ COLORS={'1':'0052A4','2':'00A84D','3':'EF7C1C','4':'00A5DE','5':'996CAC','6':'CD
 NOTE=('Seoul metropolitan subway Lines 1–9 from the official 30 September 2025 bulk timetable, applied to a 5–11 January 2026 reference week; exact source effective dates are unspecified. '
       'Source snapshot replay, not a reconstruction of actual disruptions or a guarantee of every operator/extension. Original train calls and express/local patterns retained. '
       'Rows without service-day tags are excluded. Missing endpoint arrival/departure cells use the published companion clock; invalid trips are excluded. Connected OSM railway paths; unsupported sections remain gaps. '
-      'No live positions or individual passenger counts. KORAIL suburban lines are included from separate dated workbooks; AREX and other metropolitan operators are not included. KTX/intercity has its own South Korea view.')
+      'No live positions or individual passenger counts. KORAIL suburban lines are included from separate dated workbooks; Other metropolitan operators are not included. KTX/intercity has its own South Korea view.')
 
 
 COMBINED_NOTE=('5–11 January 2026 reference week. Subway Lines 1–9 use the September 2025 snapshot; KORAIL Gyeongui–Jungang, Suin–Bundang and Gyeongchun use timetables effective 30 December 2025. '
-               'Published calls, dwell and stopping patterns are retained. Railway gaps hide vehicle positions between stops. KTX, SRT and ITX-Cheongchun are in the separate South Korea view.')
+               'AREX express/all-stop uses an October 2026 timetable matched by weekday, not January airport services. Published calls, dwell and stopping patterns are retained. Railway gaps hide vehicle positions between stops. KTX, SRT and ITX-Cheongchun are in the separate South Korea view.')
 
 
 def clock(value):
@@ -107,17 +107,21 @@ def prepare(cache=CACHE,output=OUTPUT):
         'attribution':'Seoul Metro / Seoul Open Data Plaza · KOGL Type 1. Station inventory: official Korean open data preserved by minseok852/subway-etl. Railway geography © OpenStreetMap contributors, ODbL 1.0. SunTrain conversion and inferred track matching.',
         'note':NOTE,'geometry_source':geo['metadata']['source'],'geometry_source_url':geo['metadata']['source_url'],
         'geometry_license':'ODbL 1.0','geometry_license_url':geo['metadata']['license_url'],'geometry_source_date':geo['metadata']['source_date'],'geometry_sha256':file_hash(cache/'tracks.json.gz')}
-    prepare_rail('seoul',source,cache,output,lambda r,a:r['route_id'] in routes,
+    metro_output=cache/'metro.json.gz'
+    prepare_rail('seoul',source,cache,metro_output,lambda r,a:r['route_id'] in routes,
         lambda r,t:{'mode':'subway','operator':'Seoul metropolitan subway','line':r['route_short_name'],'route_id':r['route_id']},geometry_resolver=resolve)
-    with gzip.open(output,'rt') as f:result=json.load(f)
+    with gzip.open(metro_output,'rt') as f:result=json.load(f)
     result['train_numbers']=numbers;result['metadata']['source_audit']=dict(audit)
     result['metadata']['sources']=[{'source_url':s['url'],'sha256':s['sha256'],'source_date':s.get('date','2026-10-23')} for s in pins]
     from scripts.prepare_seoul_suburban import prepare as prepare_suburban
     suburban=prepare_suburban(coordinate_cache=cache)
-    result=merge_references([('metro',result),('korail',suburban)],source_name='Seoul metropolitan and KORAIL suburban railway schedules',replay_note=COMBINED_NOTE)
-    result['metadata']['license']='Seoul Metro and station inventory: KOGL Type 1; KORAIL published timetable facts; OSM geography: ODbL 1.0'
+    from scripts.prepare_arex_replay import prepare as prepare_arex
+    arex=prepare_arex(coordinate_cache=cache)
+    result=merge_references([('metro',result),('korail',suburban),('arex',arex)],source_name='Seoul metropolitan, KORAIL suburban and AREX schedules',replay_note=COMBINED_NOTE)
+    result['metadata']['license']='Seoul Metro and station inventory: KOGL Type 1; KORAIL and AREX published timetable facts; OSM geography: ODbL 1.0'
     result['metadata']['suburban_source_audit']=suburban['metadata']['source_audit']
     result['metadata']['suburban_unlocated_station_trip_exclusions']=suburban['metadata']['unlocated_station_trip_exclusions']
+    result['metadata']['arex_display_date_mapping']=arex['metadata']['display_date_mapping']
     save_reference(result,output);print('Days',{d:len(v) for d,v in result['days'].items()},'bytes',output.stat().st_size,'audit',dict(audit),flush=True)
 
 if __name__=='__main__':

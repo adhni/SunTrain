@@ -16,10 +16,10 @@ CITIES = {
         'name': 'South Korea', 'timezone': 'Asia/Seoul',
         'bounds': [[125.9, 34.3], [129.7, 38.2]], 'passenger_data': False,
         'start_date': '2025-10-20', 'end_date': '2025-10-26',
-        'description': 'KORAIL KTX and conventional passenger trains · April/June 2025 timetable snapshots shown on an October reference week. Seoul subway has its own view; SRT and tourist specials are not included.',
+        'description': 'KTX, SRT and KORAIL intercity trains including ITX-Cheongchun · dated 2025 timetable snapshots shown on an October reference week. Seoul subway has its own view.',
         'default_modes': ['high_speed_rail', 'train'],
-        'modes': [('KTX', 'high_speed_rail'), ('Intercity / conventional', 'train')],
-        'operators': [('KORAIL', 'KORAIL')], 'directions': [('Not specified', 'Not specified')],
+        'modes': [('KTX / SRT', 'high_speed_rail'), ('Intercity / conventional', 'train')],
+        'operators': [('KORAIL', 'KORAIL'), ('SR / SRT', 'SR')], 'directions': [('Not specified', 'Not specified')],
     },
     'seoul': {
         'name': 'Seoul', 'timezone': 'Asia/Seoul',

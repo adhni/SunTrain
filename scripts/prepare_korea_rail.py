@@ -1,4 +1,4 @@
-"""Prepare KORAIL's dated KTX and conventional railway publications."""
+"""Prepare dated KORAIL and SR national railway publications."""
 from __future__ import annotations
 import argparse
 from collections import Counter,defaultdict
@@ -25,14 +25,14 @@ CACHE=ROOT/'.cache/korea-rail'
 OUTPUT=ROOT/'data/reference/south_korea/2025-10-20.json.gz'
 URLS={'ktx.xlsx':'https://www.korail.com/file/cubedata/COMMON/jfile/202504/30/2025043019686017900290.xlsx',
       'intercity.xlsx':'https://www.korail.com/file/cubedata/COMMON/jfile/202503/28/20250328195da7b30dc650.xlsx'}
-NOTE=('KORAIL KTX and conventional passenger railway timetable snapshot shown on a 20–26 October 2025 reference week; exact historical operation is not confirmed. KTX publication effective 1 June; conventional publication effective 14 April. '
-      'Published station times and weekday restrictions retained. One timestamp per station; separate dwell times are unavailable. '
+NOTE=('KORAIL and SR passenger railway timetable snapshots shown on a 20–26 October 2025 reference week; exact historical operation is not confirmed. KTX/SRT publications effective 1 June; conventional publication effective 14 April; ITX-Cheongchun listed effective 1 May. '
+      'Published station times and weekday restrictions retained. Published ITX-Cheongchun dwell is retained; other tables supply one timestamp per station. '
       'Cross-corridor timetable sections are combined by train identity. Unsupported railway sections remain gaps. '
-      'Seoul urban rail has its own view. SRT, tourist specials and individual passenger loads are not included; no live tracking.')
+      'Seoul urban rail has its own view. Tourist specials and individual passenger loads are not included; no live tracking.')
 NS={'m':'http://schemas.openxmlformats.org/spreadsheetml/2006/main'}
 LABELS={'KTX':('KTX','1474AE'),'KTX-산천':('KTX-Sancheon','2267A4'),'KTX-이음':('KTX-Eum','6955A5'),
         'KTX-청룡':('KTX-Cheongryong','217E9B'),'무궁화':('Mugunghwa','C66B32'),'ITX-마음':('ITX-Maum','B64B52'),
-        'ITX-새마을':('ITX-Saemaeul','318C81'),'새마을':('Saemaeul','498C70'),'누리로':('Nuriro','5277A8')}
+        'ITX-새마을':('ITX-Saemaeul','318C81'),'새마을':('Saemaeul','498C70'),'누리로':('Nuriro','5277A8'),'ITX-청춘':('ITX-Cheongchun','3F9C45'),'SRT':('SRT','5B2455')}
 
 
 def norm(value):return re.sub(r'\s+','',str(value or '')).replace('臺','台')
@@ -91,7 +91,7 @@ def station_name(name):
     text=norm(name).removesuffix('출발').removesuffix('도착').removesuffix('역')
     if text=='판교(경기)':return '판교경기'
     text=re.sub('[^가-힣A-Za-z0-9]','',text).removesuffix('출발').removesuffix('도착')
-    return {'진부오대산':'진부'}.get(text,text)
+    return {'진부오대산':'진부','평내호':'평내호평','평택지제':'지제'}.get(text,text)
 
 
 def parse_sources(cache):
@@ -146,6 +146,93 @@ def parse_sources(cache):
     return result,dict(audit)
 
 
+def itx_clock(value):
+    # Unlike conventional zero placeholders, ITX uses blank strings for passing
+    # arrivals. A numeric 00:00 is therefore a genuine clock here.
+    if isinstance(value,dict) and 0<=value.get('time',-1)<172800:return value['time']
+    return None
+
+
+def parse_cheongchun(sheets):
+    """Only marked arrivals are stops; the paired row also contains passing times."""
+    trips=[]
+    for title,a in sheets.items():
+        if title.endswith('(평)'):days=tuple(range(5))
+        elif title.endswith('(휴)'):days=(5,6)
+        else:raise ValueError('Unknown ITX-Cheongchun calendar: '+title)
+        if norm(a[2][0])!='열차번호':raise ValueError('Changed ITX-Cheongchun layout')
+        for k,number in enumerate(a[2]):
+            if not re.fullmatch(r'S\d{4}',str(number or '')):continue
+            origin,destination=station_name(a[0][k]),station_name(a[1][k])
+            calls=[];departures=[];offset=0
+            for i in range(3,len(a)-1,2):
+                if not norm(a[i][0]):continue
+                name=station_name(a[i][0]);arrival=itx_clock(a[i][k]);departure=itx_clock(a[i+1][k])
+                if arrival is None:
+                    if name!=origin:continue  # A departure-row-only timestamp is a passing time.
+                    arrival=departure
+                if arrival is None:raise ValueError('Missing ITX origin departure: '+number)
+                departure=arrival if departure is None else departure
+                if departures and arrival+offset<departures[-1]:
+                    if departures[-1]%86400>=20*3600 and arrival<=4*3600 and offset==0:offset=86400
+                    else:raise ValueError('Backwards ITX calls: '+number)
+                arrival+=offset
+                if departure+offset<arrival:
+                    if arrival%86400>=20*3600 and departure<=4*3600 and offset==0:offset=86400
+                    else:raise ValueError('Backwards ITX dwell: '+number)
+                departure+=offset
+                calls.append((name,str(a[i][0]).strip(),arrival));departures.append(departure)
+            if len(calls)<2 or calls[0][0]!=origin or calls[-1][0]!=destination:raise ValueError('Incomplete ITX journey: '+number)
+            trips.append({'kind':'ITX-청춘','number':number,'days':days,'calls':calls,'departures':departures,'corridors':[title]})
+    return trips
+
+
+def pdf_clock(text):
+    if not re.fullmatch(r'\d{2}:\d{2}',text):raise ValueError('Invalid SRT clock: '+text)
+    h,m=map(int,text.split(':'))
+    if h>=24 or m>=60:raise ValueError('Invalid SRT clock: '+text)
+    return h*3600+m*60
+
+
+def parse_srt(filename):
+    """Read vector PDF clock positions against the published station columns."""
+    import pdfplumber  # Preparation-only, using the existing PDF tools.
+    trips=[]
+    with pdfplumber.open(filename) as pdf:
+        for page in pdf.pages:
+            clocks=page.search(r'\d{2}:\d{2}',x_tolerance=.5)
+            for table in page.find_tables():
+                headers=[norm(v) for v in table.extract()[0]]
+                cells=table.rows[0].cells
+                if headers[0]!='열차번호' or not all(cells):raise ValueError('Changed SRT table header')
+                centers=[(c[0]+c[2])/2 for c in cells]
+                for row in table.rows[1:]:
+                    bounds=[c for c in row.cells if c];y0=min(c[1] for c in bounds);y1=max(c[3] for c in bounds)
+                    number=norm(page.crop((cells[0][0],y0,cells[0][2],y1)).extract_text())
+                    if not re.fullmatch(r'\d{3}',number):raise ValueError('Invalid SRT train number: '+number)
+                    times={}
+                    for m in clocks:
+                        x=(m['x0']+m['x1'])/2;y=(m['top']+m['bottom'])/2
+                        if not table.bbox[0]<x<table.bbox[2] or not y0<y<y1:continue
+                        k=min(range(len(centers)),key=lambda k:abs(centers[k]-x))
+                        if k in times or k==0 or headers[k]=='운행일':raise ValueError('Ambiguous SRT station clock: '+number)
+                        times[k]=pdf_clock(m['text'])
+                    days=tuple(range(7))
+                    if headers[-1]=='운행일':
+                        flag=page.crop((cells[-1][0],y0,cells[-1][2],y1)).extract_text()
+                        days=running_days(flag)
+                    calls=[];offset=0;previous=None
+                    for k,t in sorted(times.items()):
+                        if previous is not None and t+offset<previous:
+                            if previous>=20*3600 and t<=4*3600 and offset==0:offset=86400
+                            else:raise ValueError('Backwards SRT calls: '+number)
+                        previous=t+offset;name=station_name(headers[k]);calls.append((name,headers[k],previous))
+                    if len(calls)<2:raise ValueError('Incomplete SRT journey: '+number)
+                    trips.append({'kind':'SRT','number':number,'days':days,'calls':calls,'corridors':[headers[1]+'–'+headers[-2 if headers[-1]=='운행일' else -1]]})
+    if len(trips)!=132:raise ValueError('Changed SRT publication scope: '+str(len(trips)))
+    return trips
+
+
 def station_candidates(geo):
     index=defaultdict(list)
     for s in geo['stations']:
@@ -172,6 +259,8 @@ def prepare(cache=CACHE,output=OUTPUT):
     for pin in pins:
         if file_hash(cache/pin['file'])!=pin['sha256']:raise ValueError('Changed national rail source: '+pin['file'])
     trips,audit=parse_sources(cache)
+    trips+=parse_cheongchun(workbook(cache/'cheongchun.xlsx'))
+    trips+=parse_srt(cache/'srt-timetable')
     with gzip.open(cache/'tracks.json.gz','rt') as f:geo=json.load(f)
     find_station=station_candidates(geo);missing=Counter();selected=[]
     for t in trips:
@@ -179,20 +268,22 @@ def prepare(cache=CACHE,output=OUTPUT):
         if absent:missing.update(absent);continue
         selected.append(t)
     print('Parsed',len(trips),'selected',len(selected),'missing station names',dict(missing),'audit',audit,flush=True)
-    tables={'agency.txt':[{'agency_id':'korail','agency_name':'KORAIL','agency_url':'https://www.korail.com/','agency_timezone':'Asia/Seoul'}],
+    tables={'agency.txt':[{'agency_id':'korail','agency_name':'KORAIL','agency_url':'https://www.korail.com/','agency_timezone':'Asia/Seoul'},{'agency_id':'sr','agency_name':'SR','agency_url':'https://etk.srail.kr/','agency_timezone':'Asia/Seoul'}],
         'stops.txt':[],'routes.txt':[],'trips.txt':[],'stop_times.txt':[],'calendar.txt':[]}
     stops=set();routes=set();numbers={}
     for idx,t in enumerate(selected):
         label,color=LABELS[t['kind']];rid=t['kind'];trip='kr-'+str(idx);numbers[trip]=t['number']
         if rid not in routes:
-            routes.add(rid);tables['routes.txt'].append({'route_id':rid,'agency_id':'korail','route_type':'2','route_short_name':label,'route_long_name':label,'route_color':color})
+            routes.add(rid);tables['routes.txt'].append({'route_id':rid,'agency_id':'sr' if rid=='SRT' else 'korail','route_type':'2','route_short_name':label,'route_long_name':label,'route_color':color})
         tables['trips.txt'].append({'trip_id':trip,'service_id':trip,'route_id':rid})
         tables['calendar.txt'].append({'service_id':trip,'start_date':'20251019','end_date':'20251027',**{d:int(i in t['days']) for i,d in enumerate(['monday','tuesday','wednesday','thursday','friday','saturday','sunday'])}})
         for i,(name,display,clock) in enumerate(t['calls']):
             if name not in stops:
                 stops.add(name);s=find_station(name);x,y=s['coordinate'];tables['stops.txt'].append({'stop_id':name,'stop_name':display,'stop_lon':x,'stop_lat':y})
             value=f'{clock//3600:02d}:{clock//60%60:02d}:{clock%60:02d}'
-            tables['stop_times.txt'].append({'trip_id':trip,'stop_id':name,'stop_sequence':i+1,'arrival_time':value,'departure_time':value})
+            dep=t.get('departures',[c[2] for c in t['calls']])[i]
+            departure=f'{dep//3600:02d}:{dep//60%60:02d}:{dep%60:02d}'
+            tables['stop_times.txt'].append({'trip_id':trip,'stop_id':name,'stop_sequence':i+1,'arrival_time':value,'departure_time':departure})
     with ZipFile(cache/'gtfs.zip','w') as z:
         for name,rows in tables.items():
             s=io.StringIO();w=csv.DictWriter(s,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows);z.writestr(ZipInfo(name,date_time=(2025,6,1,0,0,0)),s.getvalue(),compress_type=ZIP_DEFLATED)
@@ -201,16 +292,16 @@ def prepare(cache=CACHE,output=OUTPUT):
     def leg(fast,a,b):
         curve=graphs[fast].leg(list(a),list(b))
         return curve if curve and cumulative_distances(curve)[-1]<=max(5000,3*cumulative_distances([a,b])[-1]) else None
-    def resolve(route,trip,sequence,coordinates):return [leg(route['route_id'].startswith('KTX'),tuple(a),tuple(b)) for a,b in zip(coordinates,coordinates[1:])]
+    def resolve(route,trip,sequence,coordinates):return [leg(route['route_id'].startswith('KTX') or route['route_id']=='SRT',tuple(a),tuple(b)) for a,b in zip(coordinates,coordinates[1:])]
     source={'first':'2025-10-20','last':'2025-10-26','timezone':'Asia/Seoul','url':'local-conversion/gtfs.zip','sha256':file_hash(cache/'gtfs.zip'),
         'captured':'2026-10-23','published':'2025-06-01','calendar_validity':True,'assign_by_start':['train','high_speed_rail'],'geometry_quality':'track',
-        'source':'KORAIL dated KTX and conventional passenger timetables','source_url':'https://www.korail.com/ticket/reserve/train-timeTable',
-        'license':'KORAIL published timetable facts; public-work reuse policy','license_url':'https://info.korail.com/info/contents.do?key=924',
-        'attribution':'Korea Railroad Corporation (KORAIL), published timetable data. Railway geography © OpenStreetMap contributors, ODbL 1.0. SunTrain conversion and inferred track matching.',
+        'source':'KORAIL and SR dated passenger railway timetables','source_url':'https://www.korail.com/ticket/reserve/train-timeTable',
+        'license':'Published KORAIL and SR timetable facts; source attribution retained','license_url':'https://info.korail.com/info/contents.do?key=924',
+        'attribution':'Korea Railroad Corporation (KORAIL) and SR, published timetable data. Railway geography © OpenStreetMap contributors, ODbL 1.0. SunTrain conversion and inferred track matching.',
         'note':NOTE,'geometry_source':geo['metadata']['source'],'geometry_source_url':geo['metadata']['source_url'],
         'geometry_license':'ODbL 1.0','geometry_license_url':geo['metadata']['license_url'],'geometry_source_date':geo['metadata']['source_date'],'geometry_sha256':file_hash(cache/'tracks.json.gz')}
     prepare_rail('south_korea',source,cache,output,lambda r,a:r['route_id'] in routes,
-        lambda r,t:{'mode':'high_speed_rail' if r['route_id'].startswith('KTX') else 'train','operator':'KORAIL','line':r['route_short_name'],'route_id':r['route_id'],'direction':'Not specified'},geometry_resolver=resolve)
+        lambda r,t:{'mode':'high_speed_rail' if r['route_id'].startswith('KTX') or r['route_id']=='SRT' else 'train','operator':'SR' if r['route_id']=='SRT' else 'KORAIL','line':r['route_short_name'],'route_id':r['route_id'],'direction':'Not specified'},geometry_resolver=resolve)
     with gzip.open(output,'rt') as f:r=json.load(f)
     r['train_numbers']=numbers;r['metadata']['sources']=[{'source_url':s['url'],'sha256':s['sha256'],'source_date':s['date']} for s in pins]
     r['metadata']['source_audit']=audit;r['metadata']['unlocated_station_trip_exclusions']=dict(missing)

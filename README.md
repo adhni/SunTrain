@@ -8,7 +8,7 @@ Choose **Seoul** for metropolitan subway **Lines 1–9**, including express serv
 
 ## South Korea national rail
 
-Choose **South Korea** for KORAIL **KTX, Sancheon, Eum, Cheongryong, ITX-Maum, ITX-Saemaeul, Saemaeul, Mugunghwa and Nuriro**. Official April/June 2025 publications supply train numbers, station times and running days, displayed on a **20–26 October 2025 reference week**; exact operation that week is not confirmed. The **591 KB gzip** bundle contains **4,821 departures**, with **99.95%** of Monday journey legs connected to railway tracks. Existing playback, filters, themes and Overview apply. Seoul subway remains separate; SRT, ITX-Cheongchun and tourist specials are not included. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).
+Choose **South Korea** for **KTX, SRT and KORAIL intercity trains**, including ITX-Cheongchun, ITX-Maum, ITX-Saemaeul, Saemaeul, Mugunghwa and Nuriro. Official dated 2025 publications supply train numbers, station times and running days, displayed on a **20–26 October 2025 reference week**; exact operation that week is not confirmed. The **716 KB gzip** bundle contains **5,989 departures**, with **99.95%** of Monday journey legs connected to railway tracks. SRT has its own operator filter; ITX-Cheongchun retains published dwell and separate weekday/weekend schedules. Existing playback, filters, themes and Overview apply. Seoul subway remains separate; tourist specials are excluded. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).
 
 ## Taiwan rail
 

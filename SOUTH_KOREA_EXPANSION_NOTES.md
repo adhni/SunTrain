@@ -1,4 +1,4 @@
-# South Korea — Seoul subway and national KORAIL rail
+# South Korea — Seoul subway, KORAIL and SRT
 
 ## Included
 
@@ -53,7 +53,7 @@ Pyosmium is preparation-only. Keep the pinned PBF: the rolling URL changes, and 
 
 ## Next
 
-- **SRT and ITX-Cheongchun:** obtain their own dated complete timetables and calendars. SRT has a separate [official timetable archive](https://etk.srail.kr/cms/archive.do?pageId=TK0402050000). Do not import SRT from KORAIL summary sheets without validating its schedule. Tourist trains remain a possible separate addition.
+- National KTX/intercity, **SRT and ITX-Cheongchun** are implemented in the South Korea view. Tourist trains remain a possible separate addition.
 - Other metropolitan lines: AREX, Gyeongui–Jungang, Suin–Bundang, Gyeongchun, Shinbundang, Incheon and the light-rail networks require their own validated schedules. Do not infer their presence from the Lines 1–9 CSV.
 - Longer period: obtain another dated bulk snapshot or source effective calendars. The current reference week is not a full historical archive.
 - Passenger data remains optional. Station entries would not represent individual train loads.
@@ -62,39 +62,41 @@ Pyosmium is preparation-only. Keep the pinned PBF: the rolling URL changes, and 
 
 **46 targeted Python tests passed**, including source clock handling, missing companions, midnight service days, Lines 1–9 scope, express variants, compact patterns, train identity and runtime departure-window ownership. Browser checks opened Seoul from Home, rendered 417 vehicle features at the checked clock, advanced playback, loaded Sunday and opened Seoul Overview, with zero JavaScript errors and zero Home schedule downloads. The default dark theme applies to the site and map. Local preview: **http://localhost:8092**.
 
-## National KORAIL replay
+## National KORAIL and SRT replay
 
-**South Korea** is a separate Home selection, using the existing replay, mode/route filters, details, dark map and Overview. It includes KTX, KTX-Sancheon, KTX-Eum, KTX-Cheongryong, ITX-Maum, ITX-Saemaeul, Saemaeul, Mugunghwa and Nuriro across the country. Seoul subway keeps its own view and bundle; no schedules are copied between them. SRT, ITX-Cheongchun, tourist specials and metropolitan electric services are excluded.
+**South Korea** is a separate Home selection, using the existing replay, mode/route filters, details, dark map and Overview. It includes KTX, KTX-Sancheon, KTX-Eum, KTX-Cheongryong, SRT, ITX-Cheongchun, ITX-Maum, ITX-Saemaeul, Saemaeul, Mugunghwa and Nuriro across the country. SR/SRT has a separate operator filter; SRT uses purple and ITX-Cheongchun green. Seoul subway keeps its own view and bundle; no schedules are copied between them. Tourist specials and metropolitan electric services are excluded.
 
 The official downloadable publications are:
 
 - [KTX, effective 1 June 2025](https://www.korail.com/file/cubedata/COMMON/jfile/202504/30/2025043019686017900290.xlsx), published 30 April, official archive item 20163.
 - [Conventional trains, effective 14 April 2025](https://www.korail.com/file/cubedata/COMMON/jfile/202503/28/20250328195da7b30dc650.xlsx), published 28 March, official archive item 19761.
+- [ITX-Cheongchun, listed effective 1 May 2025](https://www.korail.com/file/cubedata/COMMON/jfile/202511/12/2025111219a76609a86190.xlsx), official archive item 20129. The board records publication on 28 April, but the currently served attachment path is dated 12 November 2025. This is a captured revision, not proof of the unchanged original May file.
+- [SRT, effective 1 June 2025](https://www.srail.co.kr/cms/attach/download.do?pageId=TK0402050000&atchNo=23), two-page vector PDF linked from the [official SRT timetable archive](https://etk.srail.kr/cms/archive.do?pageId=TK0402050000). The page's old `www.srail.or.kr` download host is unavailable; the same public attachment is accessible on the current `www.srail.co.kr` corporate host.
 - [KORAIL timetable board](https://www.korail.com/ticket/reserve/train-timeTable). Its public list endpoint is `https://www.korail.com/com/userBoard.do?mode=list&schBcid=ticketTable`; original attachments download under `/file/cubedata/COMMON/`.
 
-Both original Excel files were actually downloaded and parsed. No account or API key is needed. These dated publications are displayed on the same **20–26 October 2025 reference week** as Seoul. Their original effective dates are retained; the archive does not establish that all intervening revisions or disruptions are captured. This is a timetable snapshot, not a confirmed reconstruction of every October service. Do not extend it as an exact year-long calendar.
+All three original Excel files and the SRT PDF were actually downloaded and parsed. No account or API key is needed. These dated publications are displayed on the same **20–26 October 2025 reference week** as Seoul. Their original effective dates are retained; the archive does not establish that all intervening revisions or disruptions are captured. This is a timetable snapshot, not a confirmed reconstruction of every October service. Do not extend it as an exact year-long calendar.
 
 | Business date | Departures |
 | --- | ---: |
-| 20 October | 664 |
-| 21–23 October | 663 each |
-| 24 October | 716 |
-| 25 October | 727 |
-| 26 October | 725 |
+| 20 October | 822 |
+| 21–23 October | 821 each |
+| 24 October | 884 |
+| 25 October | 911 |
+| 26 October | 909 |
 
-The week contains **4,821 departures**, **705 shared timing patterns**, in **605,647 bytes (591 KB) gzip**. The browser loads only its selected day and modes. The 03:00 business-day boundary assigns each occurrence once, including late-night trains arriving beyond midnight. Daily totals can differ from civil-date train totals at that boundary.
+The week contains **5,989 departures**, **910 shared timing patterns**, in **732,951 bytes (716 KB) gzip**. The browser loads only its selected day and modes. The 03:00 business-day boundary assigns each occurrence once, including late-night trains arriving beyond midnight. Daily totals can differ from civil-date train totals at that boundary.
 
 ### Conversion and geometry
 
-The importer reads original XLSX values using Python's standard library. Positive clock cells supply published station calls; zero cells are non-stopping placeholders. A formatted Excel value of 1.0 remains **24:00**, rather than becoming midnight on the wrong date. Seconds are preserved. Weekday restrictions are explicit; conventional blank notes mean daily service according to the workbook's guide. Unknown flags are excluded and audited. KTX summary sheets are excluded to avoid duplicate trains and unvalidated SRT entries. Cross-corridor sections merge by category, train number and calendar, deduplicating identical station/time facts. Three source sections have contradictory backward clocks and are excluded; times are not invented to repair them.
+The importer reads original XLSX values using Python's standard library. In the KTX/conventional workbooks, positive clock cells supply published station calls and zero cells are non-stopping placeholders. ITX-Cheongchun instead uses blank arrival cells for passing points, so its numeric 00:00 remains a genuine midnight clock. A formatted Excel value of 1.0 remains **24:00**, rather than becoming midnight on the wrong date. Seconds are preserved. Weekday restrictions are explicit; conventional blank notes mean daily service according to the workbook's guide. Unknown flags are excluded and audited. KTX summary sheets are excluded to avoid duplicate trains and unvalidated SRT entries. Cross-corridor sections merge by category, train number and calendar, deduplicating identical station/time facts. Three source sections have contradictory backward clocks and are excluded; times are not invented to repair them.
 
-Only published station clocks are available, so separate arrival/departure dwell is not invented. All selected station names resolve to native OSM station candidates, including rail/subway interchanges. Same-name stations are disambiguated: Pangyo in Gyeonggi versus Chungnam, Yangwon on the Yeongdong Line versus Seoul, and Jangheung versus Jeonnam Jangheung. No station is skipped to bridge missing data.
+KTX, SRT and conventional tables supply one station clock, so separate dwell is not invented for them. ITX-Cheongchun provides paired arrival/departure rows: marked arrivals identify stops; departure-row-only clocks at intermediate stations are passing times and do not become stops. Published dwell, origin departures, terminal arrivals and genuine midnight clocks are retained. Its weekday templates contain 36 daily trains; weekend/holiday templates contain 52. The reference week has no public holidays. Across the week it adds **284 departures**. SRT supplies **122 trains Monday–Thursday and 132 Friday–Sunday**, adding **884 departures**. PDF clocks are extracted from vector text positions against printed station-column centres; ambiguous or duplicate cells fail preparation rather than shifting missing cells across stations. Coupled SRT train portions keep their distinct published numbers and overlap on shared trunks, as shown in the source footnotes. All selected station names resolve to native OSM station candidates, including rail/subway interchanges. Same-name stations are disambiguated: Pangyo in Gyeonggi versus Chungnam, Yangwon on the Yeongdong Line versus Seoul, and Jangheung versus Jeonnam Jangheung. No station is skipped to bridge missing data.
 
-The geometry preparation reuses Seoul's existing pinned South Korea PBF, avoiding another download. The national graph uses native standard-gauge railway connections, excluding yards, spurs, industrial/military/test and disused tracks. Current OSM geography is not proof of actual historical platforms or running tracks. KTX routing favours high-speed alignments using track speed tags as routing costs; published stops still force conventional branches where required. Speeds never generate timetable calls. Detours beyond the existing length guard are rejected. Monday has **7,286 journey legs**, with **4 unresolved legs (99.945% connected)**. Unresolved sections retain empty geometry and hide moving markers between stops; no straight-line substitute is supplied.
+The geometry preparation reuses Seoul's existing pinned South Korea PBF, avoiding another download. The national graph uses native standard-gauge railway connections, excluding yards, spurs, industrial/military/test and disused tracks. Current OSM geography is not proof of actual historical platforms or running tracks. KTX routing favours high-speed alignments using track speed tags as routing costs; published stops still force conventional branches where required. Speeds never generate timetable calls. Detours beyond the existing length guard are rejected. Monday has **8,357 journey legs**, with **4 unresolved legs (99.952% connected)**. All newly added ITX-Cheongchun and SRT legs resolve. The original 4,821 occurrences and their timing patterns are unchanged. Unresolved sections retain empty geometry and hide moving markers between stops; no straight-line substitute is supplied.
 
 ### Attribution and reuse
 
-The [KORAIL public-work reuse policy](https://info.korail.com/info/contents.do?key=924) permits reuse without separate permission for website works whose property rights KORAIL owns in full. SunTrain extracts timetable facts from the official attachments and credits **Korea Railroad Corporation (KORAIL)**. It does not reuse page prose, layout, photographs or branding, or assign a Creative Commons licence to the spreadsheets. A restrictive badge on an unrelated KORAIL information page is not treated as the licence for these attachments. Preserve source attribution and review any changed publication's own terms when replacing it. OSM-derived railway geometry is separately **ODbL 1.0**, credited in the replay. No passenger-load data is supplied.
+The [KORAIL public-work reuse policy](https://info.korail.com/info/contents.do?key=924) permits reuse without separate permission for website works whose property rights KORAIL owns in full. SunTrain extracts timetable facts from the official attachments and credits **Korea Railroad Corporation (KORAIL)**. It does not reuse page prose, layout, photographs or branding, or assign a Creative Commons licence to the spreadsheets. A restrictive badge on an unrelated KORAIL information page is not treated as the licence for these attachments. Preserve source attribution and review any changed publication's own terms when replacing it. OSM-derived railway geometry is separately **ODbL 1.0**, credited in the replay. The SR PDF is publicly downloadable; no explicit open-content licence was identified on the attachment. SunTrain extracts its timetable facts with SR attribution and source links, and does not redistribute the PDF, page layout, prose or graphics. The KORAIL policy is not presented as a licence for SR material. No passenger-load data is supplied.
 
 ### Rebuild national rail
 
@@ -104,10 +106,12 @@ Raw downloads remain in ignored `.cache/korea-rail/`. Actual file hashes are pin
 mkdir -p .cache/korea-rail
 curl -L 'https://www.korail.com/file/cubedata/COMMON/jfile/202504/30/2025043019686017900290.xlsx' -o .cache/korea-rail/ktx.xlsx
 curl -L 'https://www.korail.com/file/cubedata/COMMON/jfile/202503/28/20250328195da7b30dc650.xlsx' -o .cache/korea-rail/intercity.xlsx
+curl -L 'https://www.korail.com/file/cubedata/COMMON/jfile/202511/12/2025111219a76609a86190.xlsx' -o .cache/korea-rail/cheongchun.xlsx
+curl -L -A 'Mozilla/5.0' 'https://www.srail.co.kr/cms/attach/download.do?pageId=TK0402050000&atchNo=23' -o .cache/korea-rail/srt-timetable
 PYTHONPATH=.cache/osm-tools .venv/bin/python scripts/prepare_korea_geometry.py
-.venv/bin/python scripts/prepare_korea_rail.py
+PYTHONPATH=.cache/pdf-tools .venv/bin/python scripts/prepare_korea_rail.py
 ```
 
-Pyosmium is preparation-only; the Excel reader adds no dependency. Changed source hashes fail preparation. `SUNTRAIN_SOUTH_KOREA_REFERENCE` overrides the prepared national bundle.
+Pyosmium and pdfplumber are preparation-only; the Excel reader uses the standard library. There is no new runtime dependency. Changed source hashes fail preparation. `SUNTRAIN_SOUTH_KOREA_REFERENCE` overrides the prepared national bundle.
 
-**50 targeted Python checks passed** across national rail, Seoul, app and replay HTTP tests. National validation covers published running days, zero/nonstop and 24+ hour clocks, original train numbers, representative KTX/ITX journeys, same-name station geography, compact patterns, KTX-only mode selection and unique business-day ownership. Browser verification opened South Korea from Home, rendered moving vehicles, advanced playback, selected 326 KTX-only services, loaded Sunday and opened its own Overview with zero JavaScript errors. Home requested no schedule data. Local national preview: **http://localhost:8093**.
+**53 targeted Python checks passed** across national rail, Seoul, app and replay HTTP tests. National validation covers published running days, zero/nonstop and 24+ hour clocks, original train numbers, representative KTX/ITX journeys, same-name station geography, compact patterns, high-speed mode selection, SRT weekday restrictions, ITX weekend calendars and unique business-day ownership. Browser verification opened South Korea from Home, rendered moving vehicles, advanced playback, selected 448 high-speed services, 122 SR/SRT services and 36 ITX-Cheongchun services, loaded Sunday and opened its own Overview with zero JavaScript errors. Home requested no schedule data. Local national preview: **http://localhost:8094**.

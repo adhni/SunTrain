@@ -16,5 +16,17 @@
     "url": "https://download.geofabrik.de/asia/south-korea.html",
     "sha256": "be33993d5e1d7896a553da22f54a794a1238d1cd492bb3e3598b05fbf30728ff",
     "date": "2026-10-21"
+  },
+  {
+    "file": "cheongchun.xlsx",
+    "url": "https://www.korail.com/file/cubedata/COMMON/jfile/202511/12/2025111219a76609a86190.xlsx",
+    "sha256": "435877ad29ca275d9beaf3fc34728cbb30cf595fb6488b91a0b44b6d3e75e295",
+    "date": "2025-05-01"
+  },
+  {
+    "file": "srt-timetable",
+    "url": "https://www.srail.co.kr/cms/attach/download.do?pageId=TK0402050000&atchNo=23",
+    "sha256": "b1e038c3f7aa2314c4ba9d894caff01e2f4a7f47d0909cb8b728226f8e1175c0",
+    "date": "2025-06-01"
   }
 ]

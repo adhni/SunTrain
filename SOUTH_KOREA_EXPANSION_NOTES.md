@@ -2,17 +2,17 @@
 
 ## Included
 
-**Seoul** opens from Home with metropolitan subway **Lines 1–9**, including source express/local variants, branches, short workings and the Line 2 loop. The replay reuses existing playback, filters, Overview, themes and details. Original train numbers and station calls remain intact. Operator is labelled “Seoul metropolitan subway” because the bulk file includes metropolitan through-running services; this is not a claim that Seoul Metro alone operates every included section. Initial zoom covers Seoul/Incheon; **Fit selection** includes outer termini.
+**Seoul** opens from Home with metropolitan subway **Lines 1–9** plus KORAIL **Gyeongui–Jungang (including the Seoul branch), Suin–Bundang and Gyeongchun**. Source express/local stopping patterns, branches, short workings and the Line 2 loop are retained. Transport can select subway or suburban rail, and Operator can select the original metropolitan source or KORAIL. The replay reuses existing playback, filters, Overview, themes and details. Original train numbers and station calls remain intact. Operator is labelled “Seoul metropolitan subway” because the bulk file includes metropolitan through-running services; this is not a claim that Seoul Metro alone operates every included section. Initial zoom covers Seoul/Incheon; **Fit selection** includes outer termini.
 
-The source is the official **30 September 2025 bulk timetable**, applied to **20–26 October 2025 as a reference week**, in **Asia/Seoul**. The file has weekday/Saturday/Sunday-holiday tags, not exact effective-date calendars. These dates demonstrate the dated source snapshot; they do not establish that every train actually ran that week or capture historical disruptions. No 2026 schedule is backdated to 2025. This reference week has no South Korean national holidays.
+The source is the official **30 September 2025 bulk timetable**, applied to **5–11 January 2026 as a reference week**, in **Asia/Seoul**. The file has weekday/Saturday/Sunday-holiday tags, not exact effective-date calendars. KORAIL suburban workbooks effective 30 December 2025 are applied to the same week. These dates demonstrate the distinct dated source snapshots; they do not establish that every train actually ran that week or capture historical disruptions. The existing Lines 1–9 occurrences and clock offsets are unchanged by weekday. The expanded reference week has no South Korean national holidays. The old October bundle is replaced, so subway schedules are not stored twice.
 
 | Calendar | Daily departures |
 | --- | ---: |
-| Monday–Friday | 4,715 |
-| Saturday | 3,903 |
-| Sunday | 3,901 |
+| Monday–Friday | 5,525 |
+| Saturday | 4,525 |
+| Sunday | 4,523 |
 
-The compact week contains **31,379 departures**, **1,143 shared timing patterns**, in about **480 KB gzip**. The selected day is sent to the browser. Home downloads no schedule data. There is no runtime API call or new runtime dependency. No individual passenger counts are available.
+The compact week contains **36,673 departures**, **1,569 shared timing patterns**, in **641,610 bytes (627 KB) gzip**. The selected day is sent to the browser. Home downloads no schedule data. There is no runtime API call or new runtime dependency. No individual passenger counts are available.
 
 ## Sources and access
 
@@ -21,7 +21,7 @@ The compact week contains **31,379 departures**, **1,143 shared timing patterns*
 3. Station coordinates come from the pinned [minseok852/subway-etl station inventory](https://raw.githubusercontent.com/minseok852/subway-etl/94d33a0e809f9afbd2f7c3829e88acbae1ca8e6a/output/station_nodes.csv). Its [README](https://github.com/minseok852/subway-etl/blob/94d33a0e809f9afbd2f7c3829e88acbae1ca8e6a/README.md) attributes the underlying official Korean station/railway datasets under KOGL Type 1. It is a processed inventory, not original 2025 station geography. Only station facts are reused, not the project's code, edges, travel-time approximations or UI. Its notice is preserved in [STATION_SOURCE_NOTICE.txt](data/reference/seoul/STATION_SOURCE_NOTICE.txt). Inaccurate positions cannot force a synthetic track connector.
 4. [OpenStreetMap via Geofabrik South Korea](https://download.geofabrik.de/asia/south-korea.html), replication **21 October 2026, 20:21:46 UTC**, supplies geography separately from the timetable. OSM-derived railway paths are **ODbL 1.0** with attribution. Current geography does not identify actual historical running tracks or platforms. PBF SHA-256: `e683fcb5abf964144d3ff34d1255bb5350aa632f03388d5f07ea122a462f4d10`.
 
-All actual timetable, coordinate and graph hashes are pinned in [sources.json](data/reference/seoul/sources.json). The bulk CSV uses the same POST fields as the public portal download form. Its body is recorded in the manifest. No key, login token or credential is stored.
+The original bulk timetable, coordinate and graph hashes are pinned in [sources.json](data/reference/seoul/sources.json). New KORAIL workbook hashes are pinned in [suburban-sources.json](data/reference/seoul/suburban-sources.json). The bulk CSV uses the same POST fields as the public portal download form. Its body is recorded in the manifest. No key, login token or credential is stored.
 
 ## Source quality and geometry
 
@@ -29,7 +29,7 @@ The raw CSV has **532,832 rows**. **109,110 rows lack service-day tags**, and **
 
 Some arrival/departure cells are blank or have a zero placeholder paired with a daytime clock. For these, the available published companion clock is retained on both sides of that call; no dwell is invented. **32,375 such cells** occur across the three source calendar templates, before final day expansion. Genuine late-night times remain beyond 24:00. Source calls with both clocks missing or contradictory times are not silently joined over. These normalisations are recorded in metadata.
 
-The graph uses native OSM connections on standard-gauge `rail`/`subway` ways, excluding yards, spurs, industrial/military/test and disused tracks. Paths use the original ordered station calls. Detours beyond the existing length guard are rejected. **99.587% of Monday journey legs resolve** (638 gaps out of 154,480 legs); unresolved sections hide markers between stops. No straight station-to-station substitute is supplied. The UI retains its normal geometry-gap indicator.
+The graph uses native OSM connections on standard-gauge `rail`/`subway` ways, excluding yards, spurs, industrial/military/test and disused tracks. Paths use the original ordered station calls. Detours beyond the existing length guard are rejected. **99.587% of Monday Lines 1–9 journey legs resolve** (638 gaps out of 154,480 legs); unresolved sections hide markers between stops. No straight station-to-station substitute is supplied. The UI retains its normal geometry-gap indicator.
 
 The initial CSV contains linked train identities, unlike Taipei's terminal-anchored estimate: Seoul keeps the published intermediate call clocks. It does not extrapolate headways or create trains from first/last service times.
 
@@ -38,13 +38,16 @@ The initial CSV contains linked train identities, unlike Taipei's terminal-ancho
 Keep raw downloads in ignored `.cache/seoul/`. The prepared reference and source manifest are committed.
 
 ```bash
-mkdir -p .cache/seoul
+mkdir -p .cache/seoul .cache/seoul-suburban
 curl -L 'https://datafile.seoul.go.kr/bigfile/iot/inf/nio_download.do?useCache=false' \
   --data 'infId=OA-22522&seq=1&infSeq=2' -o .cache/seoul/timetable.csv
 curl -L 'https://raw.githubusercontent.com/minseok852/subway-etl/94d33a0e809f9afbd2f7c3829e88acbae1ca8e6a/output/station_nodes.csv' \
   -o .cache/seoul/stations.csv
 curl -L 'https://download.geofabrik.de/asia/south-korea-latest.osm.pbf' \
   -o .cache/seoul/south-korea.osm.pbf
+curl -L 'https://www.korail.com/file/cubedata/COMMON/jfile/202512/23/2025122319b4a5663fe540.xlsx' -o .cache/seoul-suburban/gyeongui.xlsx
+curl -L 'https://www.korail.com/file/cubedata/COMMON/jfile/202512/23/2025122319b4a54a35e180.xlsx' -o .cache/seoul-suburban/suin-bundang.xlsx
+curl -L 'https://www.korail.com/file/cubedata/COMMON/jfile/202512/23/2025122319b4a57041400.xlsx' -o .cache/seoul-suburban/gyeongchun.xlsx
 PYTHONPATH=.cache/osm-tools .venv/bin/python scripts/prepare_seoul_geometry.py
 .venv/bin/python scripts/prepare_seoul_replay.py
 ```
@@ -54,13 +57,13 @@ Pyosmium is preparation-only. Keep the pinned PBF: the rolling URL changes, and 
 ## Next
 
 - National KTX/intercity, **SRT and ITX-Cheongchun** are implemented in the South Korea view. Tourist trains remain a possible separate addition.
-- Other metropolitan lines: AREX, Gyeongui–Jungang, Suin–Bundang, Gyeongchun, Shinbundang, Incheon and the light-rail networks require their own validated schedules. Do not infer their presence from the Lines 1–9 CSV.
+- Other metropolitan lines: AREX, Shinbundang, Incheon, Gyeonggang, Seohae and the light-rail networks require their own validated schedules. Gyeongui–Jungang, Suin–Bundang and Gyeongchun are now included from separate KORAIL files; do not infer other networks from the Lines 1–9 CSV.
 - Longer period: obtain another dated bulk snapshot or source effective calendars. The current reference week is not a full historical archive.
 - Passenger data remains optional. Station entries would not represent individual train loads.
 
 ## Validation
 
-**46 targeted Python tests passed**, including source clock handling, missing companions, midnight service days, Lines 1–9 scope, express variants, compact patterns, train identity and runtime departure-window ownership. Browser checks opened Seoul from Home, rendered 417 vehicle features at the checked clock, advanced playback, loaded Sunday and opened Seoul Overview, with zero JavaScript errors and zero Home schedule downloads. The default dark theme applies to the site and map. Local preview: **http://localhost:8092**.
+**56 targeted Python tests passed**, including the new suburban matrix/calendar/block parsing, incomplete-trip exclusion, mode isolation and original metro weekday counts. Browser checks opened Seoul from Home, rendered 494 vehicle features, advanced playback, selected the 810-service suburban layer and its 436-service Suin–Bundang route, loaded Sunday and opened Seoul Overview, with zero JavaScript errors and zero Home schedule downloads. Local expanded preview: **http://localhost:8095**.
 
 ## National KORAIL and SRT replay
 
@@ -74,7 +77,7 @@ The official downloadable publications are:
 - [SRT, effective 1 June 2025](https://www.srail.co.kr/cms/attach/download.do?pageId=TK0402050000&atchNo=23), two-page vector PDF linked from the [official SRT timetable archive](https://etk.srail.kr/cms/archive.do?pageId=TK0402050000). The page's old `www.srail.or.kr` download host is unavailable; the same public attachment is accessible on the current `www.srail.co.kr` corporate host.
 - [KORAIL timetable board](https://www.korail.com/ticket/reserve/train-timeTable). Its public list endpoint is `https://www.korail.com/com/userBoard.do?mode=list&schBcid=ticketTable`; original attachments download under `/file/cubedata/COMMON/`.
 
-All three original Excel files and the SRT PDF were actually downloaded and parsed. No account or API key is needed. These dated publications are displayed on the same **20–26 October 2025 reference week** as Seoul. Their original effective dates are retained; the archive does not establish that all intervening revisions or disruptions are captured. This is a timetable snapshot, not a confirmed reconstruction of every October service. Do not extend it as an exact year-long calendar.
+All three original Excel files and the SRT PDF were actually downloaded and parsed. No account or API key is needed. These dated publications are displayed on a **20–26 October 2025 reference week**. Seoul now uses a separate January 2026 reference week for its newer suburban publications. Their original effective dates are retained; the archive does not establish that all intervening revisions or disruptions are captured. This is a timetable snapshot, not a confirmed reconstruction of every October service. Do not extend it as an exact year-long calendar.
 
 | Business date | Departures |
 | --- | ---: |
@@ -115,3 +118,24 @@ PYTHONPATH=.cache/pdf-tools .venv/bin/python scripts/prepare_korea_rail.py
 Pyosmium and pdfplumber are preparation-only; the Excel reader uses the standard library. There is no new runtime dependency. Changed source hashes fail preparation. `SUNTRAIN_SOUTH_KOREA_REFERENCE` overrides the prepared national bundle.
 
 **53 targeted Python checks passed** across national rail, Seoul, app and replay HTTP tests. National validation covers published running days, zero/nonstop and 24+ hour clocks, original train numbers, representative KTX/ITX journeys, same-name station geography, compact patterns, high-speed mode selection, SRT weekday restrictions, ITX weekend calendars and unique business-day ownership. Browser verification opened South Korea from Home, rendered moving vehicles, advanced playback, selected 448 high-speed services, 122 SR/SRT services and 36 ITX-Cheongchun services, loaded Sunday and opened its own Overview with zero JavaScript errors. Home requested no schedule data. Local national preview: **http://localhost:8094**.
+
+## KORAIL suburban additions to Seoul
+
+The three official archived workbooks are all **effective 30 December 2025**, downloaded from KORAIL's timetable board. Original train numbers, intermediate station calls, dwell, partial routes and station-passing clocks are available. No departure is generated from headways. Gyeongui–Jungang also includes its separate Seoul–Sinchon–Gajwa branch. Gyeongchun includes the source's Gwangundae workings. ITX-Cheongchun is not copied into this view.
+
+| Line | Weekday departures | Saturday/Sunday departures |
+| --- | ---: | ---: |
+| Gyeongui–Jungang and Seoul branch | 245 | 193 |
+| Suin–Bundang | 436 | 342 |
+| Gyeongchun | 129 | 87 |
+| **Additional total** | **810** | **622** |
+
+The additions contain **5,294 occurrences** across the reference week. They are merged at preparation time with the original subway templates into one compact bundle. The original 31,379 subway occurrences retain their weekday, train identity and clock offsets. Home still downloads no replay schedules; selecting only one transport mode sends only that mode's patterns.
+
+Matrix headers can shift by a row or have two train blocks side by side; the importer isolates each block before reading its station calls. Blank intermediate arrivals paired with departure-row clocks are passing points. Genuine 00:00 clocks and overnight rollovers are retained, along with published dwell. Unknown calendars/layouts fail preparation. One weekday Suin–Bundang source trip, **K6043**, declares Gosaek as its destination but has clocks only through Suwon, including a departure there. That entire template is excluded and audited; no Gosaek time is invented.
+
+KORAIL abbreviations such as `효창공`, `홍대입`, `평내호`, `매탄권` and `소래포` are explicitly matched to their full station names. Working names `신인천` and `신수원` match Incheon and Suwon, not invented new stations. The inventory calls Shingil Oncheon `능길`; its existing station coordinate is matched to the source's Shingil Oncheon name. Names are resolved within their own line where available, preserving the separate Gyeongui Sinchon station. All included calls resolve to the pinned station inventory. No station is skipped to join disconnected timetable sections.
+
+Suburban geometry reuses the existing pinned Seoul rail/subway graph. Monday resolves **24,639 of 25,126 suburban journey legs (98.06%)**. Most gaps lie around Mangwoo, Yangwon and Sangbong; they remain empty geometry rather than straight shortcuts. Including Lines 1–9, Monday resolves **178,481 of 179,606 legs (99.37%)**. These are inferred paths on current OSM geometry, not a claim of historical track/platform fidelity.
+
+KORAIL timetable facts retain KORAIL attribution and the same public-work reuse-policy reference as national rail; no separate open licence is invented for these workbooks. The station inventory retains its KOGL Type 1 notice and railway geography remains ODbL 1.0. New preparation uses the existing standard-library workbook reader, with no runtime dependency.

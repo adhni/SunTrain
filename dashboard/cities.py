@@ -24,11 +24,11 @@ CITIES = {
     'seoul': {
         'name': 'Seoul', 'timezone': 'Asia/Seoul',
         'bounds': [[126.6, 37.3], [127.3, 37.75]], 'passenger_data': False,
-        'start_date': '2025-10-20', 'end_date': '2025-10-26',
-        'description': 'Metropolitan subway Lines 1–9 · September 2025 timetable snapshot; 20–26 October reference week with weekday/weekend calendars. Other metropolitan lines and KTX are not included. Fit selection shows outer termini.',
-        'default_modes': ['subway'], 'modes': [('Subway Lines 1–9', 'subway')],
-        'operators': [('Seoul metropolitan subway', 'Seoul metropolitan subway')],
-        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B')],
+        'start_date': '2026-01-05', 'end_date': '2026-01-11',
+        'description': 'Subway Lines 1–9 plus Gyeongui–Jungang, Suin–Bundang and Gyeongchun. September/December 2025 snapshots on a 5–11 January 2026 reference week. Fit selection shows outer termini.',
+        'default_modes': ['subway', 'commuter_rail'], 'modes': [('Subway Lines 1–9', 'subway'), ('KORAIL suburban rail', 'commuter_rail')],
+        'operators': [('Seoul metropolitan subway', 'Seoul metropolitan subway'), ('KORAIL', 'KORAIL')],
+        'directions': [('Direction A', 'Direction A'), ('Direction B', 'Direction B'), ('Not specified', 'Not specified')],
     },
     'taipei': {
         'name': 'Taipei', 'timezone': 'Asia/Taipei',

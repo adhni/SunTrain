@@ -4,7 +4,7 @@ Historical transport replay across Australia, Austria, Belgium, Canada, France, 
 
 ## Seoul subway
 
-Choose **Seoul** for metropolitan subway **Lines 1–9**, including express services and branches. The official September 2025 bulk timetable is applied to a **20–26 October 2025 reference week**, with separate weekday/Saturday/Sunday schedules; exact effective dates are unspecified. The **480 KB gzip** bundle has **31,379 departures**, with original train calls and numbers. Connected paths cover **99.6%** of Monday journey legs; remaining sections stay gaps. Rows without running-day tags are excluded. Other metropolitan lines are not enabled; KTX/intercity has a separate South Korea view. Existing replay, filters, dark mode and Seoul Overview apply. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md) for sources, limitations, rebuild commands and next additions.
+Choose **Seoul** for subway **Lines 1–9** plus KORAIL **Gyeongui–Jungang (including the Seoul branch), Suin–Bundang and Gyeongchun**. The **5–11 January 2026 reference week** combines the existing September 2025 subway snapshot with official suburban timetables effective 30 December 2025; it is not a reconstruction of historical disruptions. The **627 KB gzip** bundle contains **36,673 departures**, retaining published calls, express/passing patterns, dwell and short workings. Use Transport to select subway or suburban rail. Existing playback, filters, dark mode and Seoul Overview apply. KTX/intercity and ITX-Cheongchun remain in the separate South Korea view. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).
 
 ## South Korea national rail
 

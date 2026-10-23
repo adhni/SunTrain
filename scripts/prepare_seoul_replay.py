@@ -16,14 +16,18 @@ from dashboard.replay import cumulative_distances
 from scripts.prepare_australian_replay import file_hash
 from scripts.prepare_france_replay import FranceRailGraph
 from scripts.prepare_rail_replay import prepare as prepare_rail
-from scripts.compact_transit import save_reference
+from scripts.compact_transit import save_reference,merge_references
 CACHE=ROOT/'.cache/seoul'
-OUTPUT=ROOT/'data/reference/seoul/2025-10-20.json.gz'
+OUTPUT=ROOT/'data/reference/seoul/2026-01-05.json.gz'
 COLORS={'1':'0052A4','2':'00A84D','3':'EF7C1C','4':'00A5DE','5':'996CAC','6':'CD7C2F','7':'747F00','8':'E6186C','9':'BDB092'}
-NOTE=('Seoul metropolitan subway Lines 1–9 from the official 30 September 2025 bulk timetable, applied to a 20–26 October 2025 reference week; exact source effective dates are unspecified. '
+NOTE=('Seoul metropolitan subway Lines 1–9 from the official 30 September 2025 bulk timetable, applied to a 5–11 January 2026 reference week; exact source effective dates are unspecified. '
       'Source snapshot replay, not a reconstruction of actual disruptions or a guarantee of every operator/extension. Original train calls and express/local patterns retained. '
       'Rows without service-day tags are excluded. Missing endpoint arrival/departure cells use the published companion clock; invalid trips are excluded. Connected OSM railway paths; unsupported sections remain gaps. '
-      'No live positions or individual passenger counts. Other metropolitan lines and KTX/intercity are not included.')
+      'No live positions or individual passenger counts. KORAIL suburban lines are included from separate dated workbooks; AREX and other metropolitan operators are not included. KTX/intercity has its own South Korea view.')
+
+
+COMBINED_NOTE=('5–11 January 2026 reference week. Subway Lines 1–9 use the September 2025 snapshot; KORAIL Gyeongui–Jungang, Suin–Bundang and Gyeongchun use timetables effective 30 December 2025. '
+               'Published calls, dwell and stopping patterns are retained. Railway gaps hide vehicle positions between stops. KTX, SRT and ITX-Cheongchun are in the separate South Korea view.')
 
 
 def clock(value):
@@ -84,7 +88,7 @@ def prepare(cache=CACHE,output=OUTPUT):
             fmt=lambda v:f'{v//3600:02d}:{v//60%60:02d}:{v%60:02d}'
             tables['stop_times.txt'].append({'trip_id':trip,'stop_id':s,'stop_sequence':i+1,'arrival_time':fmt(a),'departure_time':fmt(b)})
     for week in ['DAY','SAT','END']:
-        tables['calendar.txt'].append({'service_id':week,'start_date':'20251019','end_date':'20251027',**{d:int((i<5 and week=='DAY') or (i==5 and week=='SAT') or (i==6 and week=='END')) for i,d in enumerate(['monday','tuesday','wednesday','thursday','friday','saturday','sunday'])}})
+        tables['calendar.txt'].append({'service_id':week,'start_date':'20260104','end_date':'20260112',**{d:int((i<5 and week=='DAY') or (i==5 and week=='SAT') or (i==6 and week=='END')) for i,d in enumerate(['monday','tuesday','wednesday','thursday','friday','saturday','sunday'])}})
     with zipfile.ZipFile(cache/'gtfs.zip','w') as archive:
         for name,rows in tables.items():
             s=io.StringIO();w=csv.DictWriter(s,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
@@ -96,7 +100,7 @@ def prepare(cache=CACHE,output=OUTPUT):
         curve=graph.leg(list(a),list(b))
         return curve if curve and cumulative_distances(curve)[-1]<=max(5000,3*cumulative_distances([a,b])[-1]) else None
     def resolve(route,trip,sequence,coordinates):return [leg(tuple(a),tuple(b)) for a,b in zip(coordinates,coordinates[1:])]
-    source={'first':'2025-10-20','last':'2025-10-26','timezone':'Asia/Seoul','url':'local-conversion/gtfs.zip','sha256':file_hash(cache/'gtfs.zip'),
+    source={'first':'2026-01-05','last':'2026-01-11','timezone':'Asia/Seoul','url':'local-conversion/gtfs.zip','sha256':file_hash(cache/'gtfs.zip'),
         'captured':'2026-10-23','published':'2025-09-30','calendar_validity':True,'assign_by_start':['subway'],'geometry_quality':'track',
         'source':'Seoul Metro official September 2025 bulk train timetable','source_url':'https://data.seoul.go.kr/dataList/OA-22522/L/1/datasetView.do',
         'license':'KOGL Type 1 attribution','license_url':'https://www.kogl.or.kr/info/licenseType1.do',
@@ -108,6 +112,12 @@ def prepare(cache=CACHE,output=OUTPUT):
     with gzip.open(output,'rt') as f:result=json.load(f)
     result['train_numbers']=numbers;result['metadata']['source_audit']=dict(audit)
     result['metadata']['sources']=[{'source_url':s['url'],'sha256':s['sha256'],'source_date':s.get('date','2026-10-23')} for s in pins]
+    from scripts.prepare_seoul_suburban import prepare as prepare_suburban
+    suburban=prepare_suburban(coordinate_cache=cache)
+    result=merge_references([('metro',result),('korail',suburban)],source_name='Seoul metropolitan and KORAIL suburban railway schedules',replay_note=COMBINED_NOTE)
+    result['metadata']['license']='Seoul Metro and station inventory: KOGL Type 1; KORAIL published timetable facts; OSM geography: ODbL 1.0'
+    result['metadata']['suburban_source_audit']=suburban['metadata']['source_audit']
+    result['metadata']['suburban_unlocated_station_trip_exclusions']=suburban['metadata']['unlocated_station_trip_exclusions']
     save_reference(result,output);print('Days',{d:len(v) for d,v in result['days'].items()},'bytes',output.stat().st_size,'audit',dict(audit),flush=True)
 
 if __name__=='__main__':

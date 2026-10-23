@@ -73,7 +73,7 @@ def prepared_path(city):
     if city == 'south_korea':
         return Path(os.getenv('SUNTRAIN_SOUTH_KOREA_REFERENCE', str(ROOT / 'data/reference/south_korea/2025-10-20.json.gz')))
     if city == 'seoul':
-        return Path(os.getenv('SUNTRAIN_SEOUL_REFERENCE', str(ROOT / 'data/reference/seoul/2025-10-20.json.gz')))
+        return Path(os.getenv('SUNTRAIN_SEOUL_REFERENCE', str(ROOT / 'data/reference/seoul/2026-01-05.json.gz')))
     if city == 'taipei':
         return Path(os.getenv('SUNTRAIN_TAIPEI_REFERENCE', str(ROOT / 'data/reference/taipei/2026-10-23.json.gz')))
     if city == 'taiwan':

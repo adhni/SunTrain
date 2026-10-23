@@ -72,6 +72,8 @@ def build_replay_panel(metadata, default_date):
                                   html.Span("", id="replay-matching-count", className="replay-muted"),
                                   html.Span("", id="replay-position-note", className="replay-approximate")], className="replay-map-counts"),
                         html.Div(className="replay-map-actions", children=[
+                            html.Button("Departures", id="replay-open-departures", className="finder-chip",
+                                        disabled=True, **{"aria-expanded": False, "aria-controls": "replay-departures"}),
                             html.Button("Reset view", id="replay-melbourne", className="finder-chip", title="Return to the Melbourne starting view"),
                             html.Button("Fit selection", id="replay-fit", className="finder-chip", title="Show the full extent of the filtered services"),
                             html.Button("Follow service", id="replay-follow", className="finder-chip", disabled=True,
@@ -148,6 +150,7 @@ def build_replay_panel(metadata, default_date):
                     html.Button("Close", id="replay-close-details", className="finder-chip", hidden=True,
                                 **{"aria-label": "Close service details"}),
                 ]),
+                html.Div(id="replay-departures", hidden=True),
                 html.Div(id="replay-details", children=[html.H3("Follow a service"),
                          html.P("Click a moving vehicle to see its journey and scheduled stops.", className="replay-muted"),
                          html.Div("Positions follow scheduled times. Train passenger counts are available; tram and bus counts are unavailable.", className="replay-detail-note")]),

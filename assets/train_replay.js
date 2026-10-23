@@ -269,6 +269,7 @@
                 });
                 $("replay-close-details").addEventListener("click", () => {
                     this.selected = null; this.emptyDetails(); this.staticDirty = true; this.paint(true);
+                    $("replay-open-departures").focus();
                 });
                 this.graph.on("dragstart", () => this.setFollow(false));
                 // Train playback must not wait for external background tiles.
@@ -314,7 +315,7 @@
                     this.graph.on("click", "replay-trains", e => this.select(e.features[0].properties.id));
                     this.graph.on("mousemove", "replay-trains", e => {
                         this.graph.getCanvas().style.cursor = "pointer";
-                        this.demandPopupId = null;
+                        this.demandPinned = false; this.demandPopupId = null;
                         const feature = e.features[0], service = this.filtered.find(s => s.id === feature.properties.id);
                         if (!service) return;
                         const content = node("div", undefined, "replay-map-tooltip");
@@ -329,18 +330,23 @@
                     for (const event of ["click", "mousemove"]) this.graph.on(event, "replay-demand-stations", e => {
                         if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) return;
                         this.graph.getCanvas().style.cursor = "pointer";
+                        if (event === "mousemove" && this.demandPinned) return;
+                        this.demandPinned = event === "click";
                         this.showDemandPopup(Number(e.features[0].properties.id));
                     });
                     this.graph.on("mouseleave", "replay-demand-stations", () => {
-                        this.demandPopupId = null; this.graph.getCanvas().style.cursor = ""; this.popup.remove();
+                        if (!this.demandPinned) { this.demandPopupId = null; this.popup.remove(); }
+                        this.graph.getCanvas().style.cursor = "";
                     });
                     for (const layer of ["replay-stations", "replay-local-stops"]) this.graph.on("click", layer, e => {
                         if (this.mapMode !== "trains") {
-                            if (!this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) this.showDemandPopup(Number(e.features[0].properties.id));
+                            if (!this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) {
+                                this.demandPinned = true; this.showDemandPopup(Number(e.features[0].properties.id));
+                            }
                             return;
                         }
                         if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) return;
-                        this.popup.setLngLat(e.features[0].geometry.coordinates).setDOMContent(node("strong", e.features[0].properties.name)).addTo(this.graph);
+                        this.departures.open(Number(e.features[0].properties.id));
                     });
                     this.mapReady = true;
                     this.demandLegendMedia = root.matchMedia("(max-width: 520px)");
@@ -517,6 +523,7 @@
             if (this.mapReady) for (const id of ["replay-trains", "replay-selected-train", "replay-routes", "replay-stations", "replay-selected-route", "replay-demand"])
                 this.graph.getSource(id)?.setData(collection([]));
             this.day = hydrate(day); this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
+            this.departures?.reset();
             this.selected = null; this.staticDirty = true; this.setupTimeline(); this.emptyDetails();
             const options = [...new Set(day.stations.map(s => s.name))].sort();
             root.dash_clientside.set_props("replay-stations", {options});
@@ -639,11 +646,13 @@
             const sizeHelp = $("replay-size-help");
             if (sizeHelp) sizeHelp.hidden = !display.includes("load");
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
+            this.departures?.refresh();
             this.updateActivity();
             const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));
             root.dash_clientside.set_props("replay-lines", {options: [...new Set(routes.map(s => s.line))].sort()});
             this.demandIndex = null;
             this.activeIndex = new ActiveServices(this.filtered);
+            this.demandPinned = false;
             this.demandMinute = null; this.demandPopupId = null; this.popup?.remove();
             if (this.selected && !this.filtered.some(s => s.id === this.selected.id)) {
                 this.selected = null; this.emptyDetails();
@@ -712,6 +721,7 @@
             else this.frame = requestAnimationFrame(t => this.tick(t));
         }
         emptyDetails() {
+            this.departures?.close();
             this.setFollow(false);
             this.showDetails(false);
             if ($("replay-close-details")) $("replay-close-details").hidden = true;
@@ -727,15 +737,16 @@
             panel.classList.toggle("replay-has-selection", visible);
             if (this.graph) requestAnimationFrame(() => this.graph.resize());
         }
-        select(id) {
+        select(id, departureCall = null) {
             const service = this.filtered.find(s => s.id === id);
             if (!service) return;
             this.selected = service; this.staticDirty = true;
-            this.graph.setPaintProperty("replay-selected-route", "line-color", vehicleColor(service, this.day?.city));
+            if (this.mapReady) this.graph.setPaintProperty("replay-selected-route", "line-color", vehicleColor(service, this.day?.city));
             this.showDetails(true);
             $("replay-close-details").hidden = false;
             this.setFollow(this.followSelected);
             const host = $("replay-details"); host.replaceChildren();
+            this.departures?.journey(host, departureCall);
             host.style.setProperty("--journey-color", vehicleColor(service, this.day?.city));
             const line = node("div", service.line, "replay-detail-line");
             const trainNumber = ["train", "high_speed_rail"].includes(service.mode) || this.day.city === "us_rail" && service.mode === "commuter_rail";
@@ -755,6 +766,7 @@
             });
             host.append(allStops);
             this.paint(true);
+            if (departureCall) { host.tabIndex = -1; host.focus(); }
         }
         renderStopTable(service, host) {
             const scroll = node("div", undefined, "replay-stop-list"), table = node("table");
@@ -851,6 +863,7 @@
             $("replay-legend").hidden = mode === "demand";
             if (changed) {
                 this.staticDirty = true;
+                this.demandPinned = false;
                 this.demandMinute = null; this.demandPopupId = null; this.popup?.remove();
                 this.setFollow(this.followSelected);
             }
@@ -866,6 +879,9 @@
             if (!row.knownCalls && !row.missingCalls) content.append(node("div", "No recorded departures in this window."));
             if (row.missingCalls) content.append(node("div", `${row.missingCalls} departure counts unavailable.`));
             content.append(node("div", "Counts rounded to the nearest 10."));
+            const departures = node("button", "Departures", "finder-chip"); departures.type = "button";
+            departures.addEventListener("click", () => this.departures.open(id));
+            content.append(departures);
             this.popup.setLngLat([row.lon, row.lat]).setDOMContent(content).addTo(this.graph);
         }
         paintDemand(force) {
@@ -942,6 +958,7 @@
                         slider.parentElement.style.setProperty("--replay-progress", `${100 * (this.now - this.day.start) / (this.day.end - this.day.start)}%`);
                     }
                     this.detailStatus(selectedPosition);
+                    this.departures?.update();
                 }
                 this.frameCount++; this.renderMilliseconds += performance.now() - started;
             } catch (error) {
@@ -953,6 +970,7 @@
             }
         }
         async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne") {
+            if (!this.departures) this.departures = new root.suntrainDepartures.Board(this, core);
             this.lastTrigger = trigger;
             this.active = tab === "replay";
             if (!this.active) { this.pause(); if (this.isFullscreen()) this.exitFullscreen(); }
@@ -960,6 +978,8 @@
             if (!day || day.business_date !== date || (day.city || "melbourne") !== city || day.error) {
                 root.suntrainOverview.pending(city, date, !!day?.error);
                 this.pause(); this.loading = true;
+                if (tab !== "home") { this.departures.reset(); this.selected = null; this.emptyDetails(); }
+                $("replay-open-departures").disabled = true;
                 this.demandMinute = null; this.demandSnapshot = null; this.demandPopupId = null; this.popup?.remove();
                 if ($("replay-demand-legend")) $("replay-demand-legend").hidden = true;
                 setText("replay-position-note", "");
@@ -969,6 +989,7 @@
                 return;
             }
             this.loading = false;
+            $("replay-open-departures").disabled = false;
             $("replay-map")?.classList.remove("replay-is-loading");
             const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);

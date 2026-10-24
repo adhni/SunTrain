@@ -190,6 +190,9 @@
         return lineColor(service.line);
     }
     function directionLabel(service) {
+        const label=rawDirectionLabel(service);return root.suntrainI18n?.translate(label) || label;
+    }
+    function rawDirectionLabel(service) {
         if (["subway", "light_rail", "regional_rail", "commuter_rail", "airport_rail", "silver_line", "high_speed_rail"].includes(service.mode)) return service.direction || "Scheduled service";
         if (!service.mode || service.mode === "train") {
             if (service.direction === "U") return "Toward city";
@@ -213,10 +216,10 @@
 
     let clockFormat, dateFormat, shortTime, shortDate;
     const $ = id => document.getElementById(id);
-    const setText = (id, text) => { const element = $(id); if (element && element.textContent !== String(text)) element.textContent = text; };
+    const setText = (id, text) => { const element = $(id); if (element) { if (root.suntrainI18n) root.suntrainI18n.bind(element, text); else if(element.textContent !== String(text)) element.textContent = text; } };
     function node(tag, text, className) {
         const result = document.createElement(tag);
-        if (text !== undefined) result.textContent = text;
+        if (text !== undefined) { if (root.suntrainI18n) root.suntrainI18n.bind(result, text); else result.textContent = text; }
         if (className) result.className = className;
         return result;
     }
@@ -237,6 +240,21 @@
             document.addEventListener("visibilitychange", () => { if (document.hidden) this.pause(); });
             document.addEventListener("fullscreenchange", () => this.syncFullscreen());
             document.addEventListener("suntrain:themechange", () => this.applyTheme());
+            document.addEventListener("suntrain:languagechange", () => {
+                if (!this.day) return;
+                this.localeFormatters(this.day);
+                this.setupTimeline();
+                this.updateActivity();
+                if (this.departures?.visible) { this.departures.updateLocale(); }
+                const status=$("replay-service-status"); if(status) status.dataset.signature="";
+                for(const cell of document.querySelectorAll('[data-scheduled-at]')) {
+                    const at=new Date(Number(cell.dataset.scheduledAt)*1000);
+                    cell.textContent=shortTime.format(at)+(cell.dataset.withDate==='true'?' · '+shortDate.format(at):'');
+                }
+                this.departures?.updateJourneyLocale();
+                this.paint(true);
+                this.updateLegend();
+            });
             document.addEventListener("keydown", event => this.fullscreenKey(event));
         }
         pause() {
@@ -355,7 +373,12 @@
                     resizeLegend();
                     this.applyTheme();
                     root.dash_clientside.set_props("replay-fullscreen", {disabled: false});
-                    this.observer = new ResizeObserver(() => { this.graph.resize(); this.revealTab(); });
+                    this.observer = new ResizeObserver(() => {
+                        this.graph.resize(); this.revealTab();
+                        const workspace=document.querySelector('.replay-workspace'),toolbar=document.querySelector('.replay-map-toolbar');
+                        if(workspace && toolbar)workspace.style.setProperty('--replay-detail-top',Math.max(0,toolbar.getBoundingClientRect().bottom-workspace.getBoundingClientRect().top+8)+'px');
+                    });
+                    this.observer.observe(document.querySelector('.replay-map-toolbar'));
                     this.observer.observe($("replay-map"));
                     resolve(true);
                 });
@@ -372,7 +395,7 @@
             let slider = host.querySelector("input");
             if (!slider) {
                 slider = node("input"); slider.type = "range"; slider.step = "1";
-                slider.setAttribute("aria-label", "Replay time");
+                if(root.suntrainI18n) root.suntrainI18n.bind(slider, "Replay time", "aria-label"); else slider.setAttribute("aria-label", "Replay time");
                 const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
                 svg.setAttribute("viewBox", "0 0 1000 32"); svg.setAttribute("preserveAspectRatio", "none");
                 svg.setAttribute("aria-hidden", "true"); svg.classList.add("replay-activity");
@@ -397,7 +420,7 @@
             slider.min = String(this.day.start); slider.max = String(this.day.end); slider.value = String(this.now);
             setText("replay-range-start", shortTime.format(new Date(this.day.start * 1000)));
             setText("replay-range-end", shortTime.format(new Date(this.day.end * 1000)));
-            $("replay-range-end").title = "Next day";
+            if(root.suntrainI18n) root.suntrainI18n.bind($("replay-range-end"),"Next day","title"); else $("replay-range-end").title = "Next day";
             $("replay-range-end").setAttribute("aria-label", `${shortTime.format(new Date(this.day.end * 1000))} next day`);
             const labels = $("replay-timeline-labels");
             labels.querySelectorAll(".replay-time-tick").forEach(tick => tick.remove());
@@ -416,7 +439,7 @@
             const host = $("replay-timeline"), preview = host.querySelector("output");
             if (!preview || !this.day) return;
             const date = new Date(Math.round(time) * 1000);
-            preview.textContent = `${clockFormat.format(date)} · ${shortDate.format(date)}`;
+            if(root.suntrainI18n) root.suntrainI18n.bind(preview, `${clockFormat.format(date)} · ${shortDate.format(date)}`); else preview.textContent = `${clockFormat.format(date)} · ${shortDate.format(date)}`;
             preview.style.left = `${Math.max(84, Math.min(host.clientWidth - 84, host.clientWidth * (time - this.day.start) / (this.day.end - this.day.start)))}px`;
             preview.hidden = false;
         }
@@ -507,24 +530,34 @@
             this.graph.fitBounds(this.day?.bounds || MELBOURNE_BOUNDS, {padding: 25, duration: 0});
             this.needsFit = false;
         }
+        localeFormatters(day) {
+            const timeZone = day.timezone || "Australia/Melbourne";
+            clockFormat = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone, hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"});
+            dateFormat = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone, day: "numeric", month: "short", year: "numeric", timeZoneName: "short"});
+            shortTime = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
+            shortDate = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone, day: "numeric", month: "short"});
+        }
         load(day) {
             const sameDay = this.day?.city === day.city && this.day?.business_date === day.business_date;
             const previousNow = this.now;
             this.pause(); this.generation++;
             if (this.day?.city !== day.city) this.needsFit = true;
-            const timeZone = day.timezone || "Australia/Melbourne";
-            clockFormat = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", second: "2-digit", hourCycle: "h23"});
-            dateFormat = new Intl.DateTimeFormat("en-AU", {timeZone, day: "numeric", month: "short", year: "numeric", timeZoneName: "short"});
-            shortTime = new Intl.DateTimeFormat("en-AU", {timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
-            shortDate = new Intl.DateTimeFormat("en-AU", {timeZone, day: "numeric", month: "short"});
+            this.localeFormatters(day);
             this.filtered = []; this.filterSignature = null; this.activeIndex = null; this.activePositions = [];
             this.demandIndex = null; this.demandSnapshot = null; this.qualityBySchedule.clear();
             this.popup?.remove(); this.demandPopupId = null;
             if (this.mapReady) for (const id of ["replay-trains", "replay-selected-train", "replay-routes", "replay-stations", "replay-selected-route", "replay-demand"])
                 this.graph.getSource(id)?.setData(collection([]));
-            this.day = hydrate(day); this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
+            this.day = hydrate(day);
+            if (root.suntrainI18n) {
+                root.suntrainI18n.sourceNames.clear();
+                for (const station of day.stations) root.suntrainI18n.sourceNames.add(station.name);
+                for (const service of day.services) for (const key of ["line","operator","origin","destination","number"]) if(service[key]) root.suntrainI18n.sourceNames.add(service[key]);
+            }
+             this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
             this.departures?.reset();
             this.selected = null; this.staticDirty = true; this.setupTimeline(); this.emptyDetails();
+            if(root.suntrainI18n) root.suntrainI18n.bind($("replay-melbourne"), `Return to the ${day.city_name} starting view`, "title");
             const options = [...new Set(day.stations.map(s => s.name))].sort();
             root.dash_clientside.set_props("replay-stations", {options});
             const attribution = $("replay-attribution");
@@ -556,7 +589,7 @@
                             attribution.append(document.createTextNode(" · "), link);
                         }
                     }
-                    attribution.append(document.createTextNode(". Scheduled positions are estimates. SunTrain is independent of the data providers and operators."));
+                    attribution.append(node("span", ". Scheduled positions are estimates. SunTrain is independent of the data providers and operators."));
                     return;
                 }
                 if (day.city === "singapore") {
@@ -568,7 +601,7 @@
                     osm.href = "https://www.openstreetmap.org/copyright";
                     for (const link of [source, license, osm]) {link.target = "_blank"; link.rel = "noopener noreferrer";}
                     attribution.append(source, document.createTextNode(" · "), license, document.createTextNode(" · "), osm,
-                        document.createTextNode(". Snapshot schedules applied to 5–11 October 2026; positions are estimates. One Sunday NS trip has unresolved geometry. SunTrain is independent of LTA and the operators."));
+                        node("span", ". Snapshot schedules applied to 5–11 October 2026; positions are estimates. One Sunday NS trip has unresolved geometry. SunTrain is independent of LTA and the operators."));
                     return;
                 }
                 const chicago = day.city === "chicago";
@@ -578,7 +611,7 @@
                 const license = node("a", day.schedule.license);
                 license.href = day.schedule.license_url; license.target = "_blank"; license.rel = "noopener noreferrer";
                 attribution.append(link, document.createTextNode(" · "), license,
-                    document.createTextNode(nyc ? ". Regular December 2025–January 2026 NYC Subway and Staten Island Railway schedules; estimated positions follow published shapes, without guaranteed track-level accuracy or temporary service changes. Train passenger loads are unavailable. SunTrain is independent of MTA." : chicago ? ". Scheduled CTA transit replay for 2025; positions are estimates. Passenger counts are unavailable. This application is independent of CTA." :
+                    node("span", nyc ? ". Regular December 2025–January 2026 NYC Subway and Staten Island Railway schedules; estimated positions follow published shapes, without guaranteed track-level accuracy or temporary service changes. Train passenger loads are unavailable. SunTrain is independent of MTA." : chicago ? ". Scheduled CTA transit replay for 2025; positions are estimates. Passenger counts are unavailable. This application is independent of CTA." :
                         ". Scheduled rail and Silver Line replay; positions are estimates. Passenger counts are unavailable. This application is independent of MBTA."));
                 return;
             }
@@ -588,14 +621,14 @@
                 const license = node("a", day.geometry.license || "CC BY 4.0");
                 license.href = day.geometry.license_url; license.target = "_blank"; license.rel = "noopener noreferrer";
                 attribution.append(link, document.createTextNode(" · "), license,
-                    document.createTextNode(". Route geography may differ from FY 2023–24. Passenger counts are rounded to the nearest 10."));
+                    node("span", ". Route geography may differ from FY 2023–24. Passenger counts are rounded to the nearest 10."));
             } else {
-                attribution.textContent = "Railway geometry is unavailable. Train positions are shown at stations only. Passenger counts are rounded to the nearest 10.";
+                if(root.suntrainI18n) root.suntrainI18n.bind(attribution, "Railway geometry is unavailable. Train positions are shown at stations only. Passenger counts are rounded to the nearest 10."); else attribution.textContent = "Railway geometry is unavailable. Train positions are shown at stations only. Passenger counts are rounded to the nearest 10.";
             }
             if (day.transit?.available) {
                 const link = node("a", `Tram & bus timetables: PTV archive ${day.transit.source_date} · CC BY 4.0`);
                 link.href = day.transit.source_url; link.target = "_blank"; link.rel = "noopener noreferrer";
-                attribution.append(document.createTextNode(" "), link, document.createTextNode(". Buses cover Victoria, including regional coaches and SkyBus where scheduled. Tram/bus passenger counts are unavailable."));
+                attribution.append(document.createTextNode(" "), link, node("span", ". Buses cover Victoria, including regional coaches and SkyBus where scheduled. Tram/bus passenger counts are unavailable."));
             }
         }
         applyTheme() {
@@ -638,7 +671,7 @@
             for (const {label, color} of [...entries.values()].sort((a, b) => a.label.localeCompare(b.label, "en", {numeric: true}))) {
                 const item = node("span", undefined, "replay-legend-item");
                 const swatch = node("span", undefined, "replay-legend-swatch"); swatch.style.background = color;
-                item.append(swatch, document.createTextNode(label)); items.append(item);
+                item.append(swatch, node("span", label)); items.append(item);
             }
         }
         applyFilters(filters, display) {
@@ -671,9 +704,10 @@
             }
             const pieces = [];
             if (!this.filtered.length) pieces.push(this.day.services.length ? "No services match these filters. Clear a filter to explore this day." : "No recorded services for this business date.");
-            if (approximate) pieces.push(`${approximate.toLocaleString()} of ${total.toLocaleString()} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
+            if (approximate) pieces.push(`${approximate.toLocaleString(root.suntrainI18n?.locale || "en-AU")} of ${total.toLocaleString(root.suntrainI18n?.locale || "en-AU")} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
             else if (total) pieces.push("All selected journey legs have route geometry.");
-            if (this.day.schedule?.replay_note) pieces.push(this.day.schedule.replay_note);
+            if (this.day.schedule?.note_messages) pieces.push(...this.day.schedule.note_messages.map(message=>message.key));
+            else if (this.day.schedule?.replay_note) pieces.push(...this.day.schedule.replay_note.split(/(?<=[.!?])\s+/));
             else if (this.day.city === "boston") pieces.push("Rail and Silver Line open first. Select Buses under Transport for regular MBTA buses. Rail replacement shuttles are excluded; calendars follow the historical archive.");
             else if (this.day.city === "chicago") pieces.push("CTA trains use November–December 2025 schedules. Select Buses under Transport to include CTA buses. Metra is excluded; direction A/B follows the feed where compass directions are not supplied.");
             else if (this.day.city === "nyc") pieces.push("NYC Subway and Staten Island Railway regular schedules for December 2025–January 2026. Express/local patterns and branches follow the feed; shapes do not establish individual running tracks. LIRR, Metro-North and buses are excluded.");
@@ -681,8 +715,9 @@
             else if (!this.day.transit?.available) pieces.push("Tram and bus timetables are unavailable for this date.");
             if (uncertain) pieces.push(`${uncertain} services contain ambiguous daylight-saving times; earliest consistent times are shown.`);
             if (this.day.excluded_services) pieces.push(`${this.day.excluded_services} services omitted because their source times or coordinates are invalid.`);
-            setText("replay-quality", pieces.join(" "));
-            setText("replay-matching-count", ` · ${this.filtered.length.toLocaleString()} services in this day`);
+            const qualityHost=$("replay-quality");qualityHost.replaceChildren();
+            for(const text of pieces)qualityHost.append(node("span",text),document.createTextNode(" "));
+            setText("replay-matching-count", ` · ${this.filtered.length.toLocaleString(root.suntrainI18n?.locale || "en-AU")} services in this day`);
         }
         fit() {
             const ids = new Set();
@@ -776,7 +811,7 @@
             columns.forEach(label => heading.append(node("th", label)));
             head.append(heading); table.append(head);
             const body = node("tbody");
-            const stopDate = this.day.city === "us_rail" ? new Intl.DateTimeFormat("en-AU", {
+            const stopDate = this.day.city === "us_rail" ? new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {
                 timeZone: this.day.timezone, day: "numeric", month: "short"}) : null;
             const scheduledTime = timestamp => {
                 const date = new Date(timestamp * 1000);
@@ -785,11 +820,14 @@
             for (let i = 0; i < stopCount(service); i++) {
                 const stop = service.stopIds ? [stopValue(service, i, 0), stopValue(service, i, 1), stopValue(service, i, 2)] : service.stops[i];
                 const row = node("tr"); row.dataset.stopIndex = String(i);
-                row.append(node("td", this.day.stations[stop[0]].name), node("td", scheduledTime(stopTime(service, stop, 1))),
-                    node("td", scheduledTime(stopTime(service, stop, 2))));
+                row.append(node("td", this.day.stations[stop[0]].name));
+                for(const column of [1,2]){
+                    const at=stopTime(service,stop,column), cell=node("td",scheduledTime(at));
+                    cell.dataset.scheduledAt=String(at);cell.dataset.withDate=String(!!stopDate);row.append(cell);
+                }
                 if (this.selectedHasLoads) {
-                    row.append(node("td", stop[4] == null ? "—" : stop[4].toLocaleString()));
-                    row.title = `Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`;
+                    row.append(node("td", stop[4] == null ? "—" : stop[4].toLocaleString(root.suntrainI18n?.locale || "en-AU")));
+                    if(root.suntrainI18n) root.suntrainI18n.bind(row,`Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`,"title"); else row.title = `Boardings: ${stop[5] ?? "unknown"}; alightings: ${stop[6] ?? "unknown"}`;
                 }
                 body.append(row);
             }
@@ -818,12 +856,12 @@
                     const at = new Date((stopValue(this.selected, i, departure ? 2 : 1) + (this.selected.timeOffset || 0)) * 1000);
                     const row = node("li", undefined, `replay-journey-stop${current ? " is-current" : ""}`);
                     row.append(node("span", label, "replay-journey-label"), node("strong", station.name),
-                        node("span", `${departure ? "Dep." : "Arr."} ${shortTime.format(at)} · ${shortDate.format(at)}`, "replay-journey-time"));
+                        node("span", `${root.suntrainI18n?.translate(departure ? "Dep." : "Arr.") || (departure ? "Dep." : "Arr.")} ${shortTime.format(at)} · ${shortDate.format(at)}`, "replay-journey-time"));
                     stops.append(row);
                 }
                 host.replaceChildren(node("div", text, "replay-journey-state"), stops);
                 if (position) {
-                    if (this.selectedHasLoads) host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString()} passengers · rounded estimate`));
+                    if (this.selectedHasLoads) host.append(node("div", position.load == null ? "Passenger load unavailable" : `${position.load.toLocaleString(root.suntrainI18n?.locale || "en-AU")} passengers · rounded estimate`));
                     if (position.approximate) host.append(node("div", this.selected.mode === "ferry" ? "Water path unresolved. Position hidden until the next scheduled pier." : ROAD_MODES.has(this.selected.mode) ? "Road path unresolved. Position hidden until the next scheduled stop." : "Railway path unresolved. Position hidden until the next recorded station.", "replay-approximate"));
                 }
                 if (this.selected.timing_uncertain) host.append(node("div", "Daylight-saving times are ambiguous for this service.", "replay-approximate"));
@@ -873,7 +911,7 @@
             if (!row) return;
             this.demandPopupId = id;
             const content = node("div", undefined, "replay-map-tooltip");
-            const label = !row.knownCalls && row.missingCalls ? "Boardings unavailable" : `${row.boardings.toLocaleString()} recorded boardings`;
+            const label = !row.knownCalls && row.missingCalls ? "Boardings unavailable" : `${row.boardings.toLocaleString(root.suntrainI18n?.locale || "en-AU")} recorded boardings`;
             content.append(node("strong", row.name), node("div", `${label} · last ${this.demandWindow} minutes`),
                 node("div", `${shortTime.format(new Date(this.demandSnapshot.start * 1000))}–${shortTime.format(new Date(this.demandSnapshot.end * 1000))}`));
             if (!row.knownCalls && !row.missingCalls) content.append(node("div", "No recorded departures in this window."));
@@ -897,13 +935,13 @@
                 for (const [count, color] of root.suntrainDemand.scale) {
                     const tick = node("span");
                     const swatch = node("i"); swatch.style.background = color;
-                    tick.append(swatch, document.createTextNode(count.toLocaleString() + (count === 5000 ? "+" : "")));
+                    tick.append(swatch, document.createTextNode(count.toLocaleString(root.suntrainI18n?.locale || "en-AU") + (count === 5000 ? "+" : "")));
                     $("replay-demand-scale").append(tick);
                 }
             }
             setText("replay-demand-range", `Last ${this.demandWindow} min · ${shortTime.format(new Date(snapshot.start * 1000))}–${shortTime.format(new Date(snapshot.end * 1000))}`);
             setText("replay-demand-total", !snapshot.knownCalls && snapshot.missingCalls ? "Boarding counts unavailable" :
-                `${snapshot.total.toLocaleString()} boardings · ${snapshot.stationCount} stations`);
+                `${snapshot.total.toLocaleString(root.suntrainI18n?.locale || "en-AU")} boardings · ${snapshot.stationCount} stations`);
             const notes = [];
             notes.push("Train passenger data only. Tram/bus counts unavailable.");
             if (!snapshot.stationCount) notes.push("No recorded boardings in this window.");
@@ -949,8 +987,8 @@
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     setText("replay-clock-date", dateFormat.format(new Date(this.now * 1000)));
-                    setText("replay-active-count", activeCount.toLocaleString());
-                    setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString()} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
+                    setText("replay-active-count", activeCount.toLocaleString(root.suntrainI18n?.locale || "en-AU"));
+                    setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");
                     if (slider) {
                         slider.value = String(this.now);
@@ -1023,6 +1061,7 @@
         }
     }
     const replay = new Replay();
+    root.suntrainReplayCore=core;
     // Exposed diagnostics support browser verification without transmitting frames.
     root.suntrainReplay = replay;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainReplay: {

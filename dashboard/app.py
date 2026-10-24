@@ -34,7 +34,9 @@ from dashboard.replay_view import build_replay_panel, register_replay_callbacks
 from dashboard.replay_http import register_replay_routes
 from dashboard.overview_view import group_passenger_reports
 from dashboard.home_view import build_home_panel, register_home_callbacks
-from dashboard.theme_view import theme_picker
+from dashboard.theme_view import theme_picker, language_picker
+from dashboard.i18n import CATALOGUES, localize_layout
+import json
 
 
 META = get_metadata()
@@ -408,6 +410,7 @@ app.layout = html.Div(
                                             html.Span("Melbourne counts rounded to nearest 10"),
                                         ]),
                                         theme_picker("theme-toggle"),
+                                        language_picker("language-select"),
                                     ],
                                 ),
                             ],
@@ -1029,6 +1032,8 @@ app.layout = html.Div(
     ],
 )
 group_passenger_reports(app.layout)
+localize_layout(app.layout)
+app.index_string = app.index_string.replace("{%scripts%}", "<script>window.suntrainCatalogues=" + json.dumps(CATALOGUES, ensure_ascii=False).replace("<", "\\u003c") + ";</script>{%scripts%}")
 # Keep the page shell mounted; expensive chart/table components mount on demand.
 ANALYSIS_PANELS = {}
 def defer_analysis_panels(component):
@@ -1070,7 +1075,7 @@ def passenger_analysis_view(active_tab, city, opened):
     Output("date-range", "start_date", allow_duplicate=True), Output("date-range", "end_date", allow_duplicate=True),
     Output("line-filter", "value", allow_duplicate=True), Output("analysis-initialized", "data"),
     Input("melbourne-analysis-open", "data"), State("analysis-initialized", "data"),
-    State("replay-date", "date"), State("replay-lines", "value"), prevent_initial_call=True,
+    State("replay-date", "data"), State("replay-lines", "value"), prevent_initial_call=True,
 )
 def initialize_passenger_analysis(opened, initialized, selected_date, lines):
     if not opened or initialized:

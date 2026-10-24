@@ -10,7 +10,8 @@ from dash.exceptions import PreventUpdate
 from dashboard.replay_http import descriptor, selected_modes
 from dashboard.transit import available_range
 from dashboard.cities import CITIES, city_settings
-from dashboard.theme_view import theme_picker
+from dashboard.theme_view import theme_picker, language_picker
+from dashboard.i18n import message
 
 LOGGER = logging.getLogger(__name__)
 
@@ -44,9 +45,13 @@ def build_replay_panel(metadata, default_date):
             field("Location", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
                   for key, value in sorted(CITIES.items(), key=lambda item: item[1]["name"].casefold())],
                   value="melbourne", clearable=False, searchable=True)),
-            field("Date", dcc.DatePickerSingle(id="replay-date", date=default_date,
-                  min_date_allowed=minimum, max_date_allowed=maximum,
-                  display_format="DD MMM YYYY", first_day_of_week=1, clearable=False)),
+            html.Div(className="finder-field replay-calendar-field", children=[
+                html.Label("Date", htmlFor="replay-date-open", className="finder-label"),
+                dcc.Store(id="replay-date", data=default_date),
+                dcc.Store(id="replay-date-min", data=minimum), dcc.Store(id="replay-date-max", data=maximum),
+                dcc.Store(id="replay-calendar-state"),
+                html.Button("Choose date", id="replay-date-open", **{"aria-haspopup":"dialog", "aria-expanded":False}),
+            ]),
             field("Transport", dcc.Dropdown(id="replay-modes", options=[{"label": "Trains", "value": "train"},
                   {"label": "Trams", "value": "tram"}, {"label": "Buses", "value": "bus"}], value=["train"], multi=True, placeholder="All modes")),
             field("Route / line", dcc.Dropdown(id="replay-lines", options=metadata["lines"], value=[], multi=True, placeholder="All routes / lines")),
@@ -64,6 +69,7 @@ def build_replay_panel(metadata, default_date):
                 ]),
             ]),
         ]),
+        html.Div(id="replay-calendar", hidden=True),
         html.Div(id="replay-load-message", role="status", className="replay-load-message"),
         html.Div(className="replay-workspace", children=[
             html.Div(className="replay-map-card", children=[
@@ -84,6 +90,7 @@ def build_replay_panel(metadata, default_date):
                             html.Button("Fullscreen", id="replay-fullscreen", className="finder-chip", disabled=True,
                                         **{"aria-pressed": False}),
                             theme_picker("replay-theme-toggle"),
+                            language_picker("replay-language-select"),
                         ]),
                     ]),
                     html.Div(id="replay-map", className="replay-map", role="region", **{"aria-label": "Historical train, tram and bus replay and train passenger demand map"}),
@@ -133,9 +140,9 @@ def build_replay_panel(metadata, default_date):
                             ]),
                         ]),
                         html.Div(className="replay-map-footer", children=[
-                            dcc.Checklist(id="replay-display", options=[{"label": " Route paths", "value": "routes"},
-                                          {"label": " Stops & stations", "value": "stations"},
-                                          {"label": " Size trains by passengers", "value": "load"}], value=["routes", "stations"], inline=True),
+                            dcc.Checklist(id="replay-display", options=[{"label": message("Route paths"), "value": "routes"},
+                                          {"label": message("Stops & stations"), "value": "stations"},
+                                          {"label": message("Size trains by passengers"), "value": "load"}], value=["routes", "stations"], inline=True),
                             html.Span("Estimated positions from scheduled times", className="replay-estimate"),
                             html.Span("Select a vehicle for details", className="replay-selection-hint replay-muted"),
                             html.Span("Bigger train dots mean more passengers on board. All vehicles grow as you zoom in; passenger sizes stay within readable limits. Click a train for its recorded count.",
@@ -166,8 +173,11 @@ def build_replay_panel(metadata, default_date):
 
 
 def register_replay_callbacks(app, metadata):
+    app.clientside_callback(ClientsideFunction(namespace="suntrainCalendar", function_name="sync"),
+        Output("replay-calendar-state", "data"), Input("replay-date", "data"),
+        Input("replay-date-min", "data"), Input("replay-date-max", "data"))
     @app.callback(
-        Output("replay-date", "min_date_allowed"), Output("replay-date", "max_date_allowed"), Output("replay-date", "date"),
+        Output("replay-date-min", "data"), Output("replay-date-max", "data"), Output("replay-date", "data"),
         Output("replay-modes", "options"), Output("replay-modes", "value"),
         Output("replay-operators", "options"), Output("replay-operators", "value"),
         Output("replay-directions", "options"), Output("replay-directions", "value"),
@@ -176,7 +186,7 @@ def register_replay_callbacks(app, metadata):
         Output("replay-melbourne", "children"), Output("replay-melbourne", "title"),
         Output("replay-demand-controls", "style"), Output("replay-map-mode", "value"),
         Output("replay-display", "options"), Output("replay-display", "value"),
-        Input("replay-city", "value"), State("replay-date", "date"))
+        Input("replay-city", "value"), State("replay-date", "data"))
     def configure_city(city, current_date):
         settings = city_settings(city)
         if city != "melbourne":
@@ -186,20 +196,21 @@ def register_replay_callbacks(app, metadata):
             shared = coverage and metadata["min_date"] <= coverage[0] and metadata["max_date"] >= coverage[1]
             minimum, maximum = coverage if shared else (metadata["min_date"], metadata["max_date"])
         chosen = current_date if current_date and minimum <= current_date <= maximum else minimum
-        options = lambda key: [{"label": label, "value": value} for label, value in settings[key]]
+        options = lambda key: [{"label": message(label), "value": value} for label, value in settings[key]]
         badge = period_label(minimum, maximum)
         return (minimum, maximum, chosen, options("modes"), settings.get("default_modes", []), options("operators"), [], options("directions"), [], [], [], "",
-                settings["description"], badge, "Reset view", f"Return to the {settings['name']} starting view",
+                message(settings["description"]), badge, message("Reset view"), f"Return to the {settings['name']} starting view",
                 {} if settings["passenger_data"] else {"display": "none"}, "trains",
-                [{"label": " Route paths", "value": "routes"}, {"label": " Stops & stations", "value": "stations"}] +
-                ([{"label": " Size trains by passengers", "value": "load"}] if settings["passenger_data"] else []),
+                [{"label": message("Route paths"), "value": "routes"}, {"label": message("Stops & stations"), "value": "stations"}] +
+                ([{"label": message("Size trains by passengers"), "value": "load"}] if settings["passenger_data"] else []),
                 ["routes", "stations"])
 
     app.clientside_callback(
         """function(operators, directions, stations, number) {
             const count = [operators, directions, stations].filter(values => values && values.length).length
                 + Number(Boolean(number && number.trim()));
-            return count ? `More filters (${count})` : 'More filters';
+            const text = count ? `More filters (${count})` : 'More filters';
+            return {namespace:'dash_html_components',type:'Span',props:{children:window.suntrainI18n.translate(text),'data-l10n':text}};
         }""",
         Output("replay-more-filters-label", "children"),
         Input("replay-operators", "value"), Input("replay-directions", "value"),
@@ -224,7 +235,7 @@ def register_replay_callbacks(app, metadata):
             return {"business_date": business_date, "city": city, "error": True}, "Could not load this day. Choose another date, or return to this tab to retry."
 
     @app.callback(Output("replay-day", "data"), Output("replay-load-message", "children"),
-                  Input("replay-date", "date"), Input("view-tabs", "value"), Input("replay-city", "value"),
+                  Input("replay-date", "data"), Input("view-tabs", "value"), Input("replay-city", "value"),
                   Input("replay-modes", "value"), State("replay-client-state", "data"))
     def load_selected_modes(business_date, active_tab, city, modes, current):
         # A city change arrives before its new mode defaults. Open rail first.
@@ -234,7 +245,7 @@ def register_replay_callbacks(app, metadata):
     app.clientside_callback(
         ClientsideFunction(namespace="suntrainReplay", function_name="sync"),
         Output("replay-client-state", "data"),
-        Input("replay-day", "data"), Input("view-tabs", "value"), Input("replay-date", "date"),
+        Input("replay-day", "data"), Input("view-tabs", "value"), Input("replay-date", "data"),
         Input("replay-modes", "value"), Input("replay-operators", "value"), Input("replay-lines", "value"), Input("replay-directions", "value"),
         Input("replay-stations", "value"), Input("replay-number", "value"), Input("replay-display", "value"),
         Input("replay-map-mode", "value"), Input("replay-demand-window", "value"),

@@ -49,7 +49,8 @@ def group_passenger_reports(layout):
                 html.Section(id="melbourne-analysis", className="melbourne-analysis", style={"display": "none"}, children=[
                     html.Button("Melbourne train passenger analysis", id="melbourne-analysis-toggle",
                                 className="raw-data-toggle", **{"aria-expanded": False, "aria-controls": "melbourne-analysis-body"}),
-                    html.Div(id="melbourne-analysis-body", style={"display": "none"},
+                    html.P("Detailed passenger reports are available in English.", className="replay-muted", **{"data-l10n": "Detailed passenger reports are available in English."}),
+                    html.Div(id="melbourne-analysis-body", lang="en", style={"display": "none"},
                              children=[reports[key] for key in order]),
                 ]),
                 reports["replay-attribution"],

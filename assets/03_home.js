@@ -31,14 +31,14 @@
     const $ = id => document.getElementById(id);
     function node(tag, text, className) {
         const element = document.createElement(tag);
-        if (text !== undefined) element.textContent = text;
+        if (text !== undefined) { if (root.suntrainI18n) root.suntrainI18n.bind(element, text); else element.textContent = text; }
         if (className) element.className = className;
         return element;
     }
     const modeNames = {train: "Trains", subway: "Metro", tram: "Trams", light_rail: "Light rail",
         regional_rail: "Regional rail", commuter_rail: "Commuter rail", limited_express: "Limited express",
         airport_rail: "Airport rail", high_speed_rail: "High-speed rail", ferry: "Ferries", silver_line: "Silver Line"};
-    const dateFormat = new Intl.DateTimeFormat("en-AU", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"});
+    let dateFormat = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"});
 
     class WorldMap {
         constructor() { this.markers = []; this.sequence = 0; }
@@ -81,7 +81,7 @@
                 const button = node("button", undefined, `home-pin${cluster ? " home-cluster" : ""}`);
                 button.type = "button";
                 const title = cluster ? `Zoom to ${group.members.length} places` : `Explore ${group.members[0].place.name}`;
-                button.setAttribute("aria-label", title); button.title = title;
+                if(root.suntrainI18n) root.suntrainI18n.bind(button, title, "aria-label"); else button.setAttribute("aria-label", title); if(root.suntrainI18n)root.suntrainI18n.bind(button,title,"title");else button.title = title;
                 button.append(node("span", cluster ? String(group.members.length) : "", "home-pin-dot"));
                 if (!cluster) button.append(node("span", group.members[0].place.name, "home-pin-label"));
                 button.addEventListener("click", event => {
@@ -97,16 +97,17 @@
             }
         }
         showPlace(id) {
+            this.openPlace=id;
             const place = this.places.find(place => place.id === id);
             if (!place) return;
             const [[west, south], [east, north]] = place.bounds;
             const content = node("div", undefined, "home-place-card");
             content.append(node("span", "NEXT STOP", "replay-eyebrow"), node("h3", place.name));
-            content.append(node("p", [...new Set(place.modes.map(mode => modeNames[mode] || "Buses"))].join(" · "), "home-place-modes"));
+            content.append(node("p", [...new Set(place.modes.map(mode => root.suntrainI18n?.translate(modeNames[mode] || "Buses") || modeNames[mode] || "Buses"))].join(" · "), "home-place-modes"));
             const formatDate = value => dateFormat.format(new Date(value + "T12:00:00Z"));
             content.append(node("p", place.start === place.end ? formatDate(place.start) : `${formatDate(place.start)} – ${formatDate(place.end)}`, "home-place-dates"));
             const open = node("button", "Open replay →", "home-open-replay"); open.type = "button";
-            open.setAttribute("aria-label", `Open ${place.name} replay`);
+            if(root.suntrainI18n) root.suntrainI18n.bind(open, `Open ${place.name} replay`, "aria-label"); else open.setAttribute("aria-label", `Open ${place.name} replay`);
             open.addEventListener("click", () => root.dash_clientside.set_props("home-choice", {data: {city: place.id, sequence: ++this.sequence}}));
             content.append(open);
             this.popup?.remove();
@@ -116,6 +117,14 @@
         }
     }
     const home = new WorldMap();
+    document.addEventListener("suntrain:languagechange", () => {
+        dateFormat = new Intl.DateTimeFormat(root.suntrainI18n.locale, {day:"numeric",month:"short",year:"numeric",timeZone:"UTC"});
+        home.renderMarkers();
+        const place=home.places?.find(place=>place.id===home.openPlace);
+        const dates=document.querySelector('.home-place-dates'), modes=document.querySelector('.home-place-modes');
+        if(place && dates){const format=value=>dateFormat.format(new Date(value+'T12:00:00Z'));dates.textContent=place.start===place.end?format(place.start):format(place.start)+' – '+format(place.end);}
+        if(place && modes)modes.textContent=[...new Set(place.modes.map(mode=>root.suntrainI18n.translate(modeNames[mode] || 'Buses')))].join(' · ');
+    });
     root.suntrainHome = home;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainHome: {
         sync: async function (tab, place) {

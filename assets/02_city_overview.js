@@ -38,10 +38,10 @@
     if (!root.document) return;
 
     const $ = id => document.getElementById(id);
-    const count = value => value.toLocaleString("en-AU");
+    const count = value => value.toLocaleString(root.suntrainI18n?.locale || "en-AU");
     function element(tag, text, className) {
         const item = document.createElement(tag);
-        if (text !== undefined) item.textContent = text;
+        if (text !== undefined) { if (root.suntrainI18n) root.suntrainI18n.bind(item, text); else item.textContent = text; }
         if (className) item.className = className;
         return item;
     }
@@ -50,7 +50,7 @@
         const host = $("city-overview-content");
         if (!host) return;
         const names = JSON.parse($("city-overview").dataset.cities);
-        $("city-overview-title").textContent = `${names[city] || city} overview`;
+        root.suntrainI18n ? root.suntrainI18n.bind($("city-overview-title"),`${names[city] || city} overview`) : $("city-overview-title").textContent = `${names[city] || city} overview`;
         $("city-overview-context").textContent = date || "";
         host.replaceChildren(element("p", failed ? "This day could not load. Choose another date or return to this tab to retry." : "Loading this day…", "replay-muted"));
         host.setAttribute("aria-busy", String(!failed));
@@ -89,7 +89,7 @@
             });
             for (const [cell, button, key, text] of headings) {
                 cell.setAttribute("aria-sort", key === sortKey ? descending ? "descending" : "ascending" : "none");
-                button.textContent = text + (key === sortKey ? descending ? " ↓" : " ↑" : "");
+                if(root.suntrainI18n) root.suntrainI18n.bind(button, text + (key === sortKey ? descending ? " ↓" : " ↑" : "")); else button.textContent = text + (key === sortKey ? descending ? " ↓" : " ↑" : "");
             }
             body.replaceChildren();
             for (const row of sorted.slice(page * 15, (page + 1) * 15)) {
@@ -100,7 +100,7 @@
                 body.append(tr);
             }
             const pages = Math.max(1, Math.ceil(rows.length / 15));
-            label.textContent = `Page ${page + 1} of ${pages} · ${count(rows.length)} routes / lines`;
+            if(root.suntrainI18n) root.suntrainI18n.bind(label, `Page ${page + 1} of ${pages} · ${count(rows.length)} routes / lines`); else label.textContent = `Page ${page + 1} of ${pages} · ${count(rows.length)} routes / lines`;
             previous.disabled = page === 0; next.disabled = page + 1 >= pages;
         }
         update(); return card;
@@ -108,14 +108,14 @@
     function render(day, filters, core) {
         const host = $("city-overview-content");
         if (!host) return;
-        const key = JSON.stringify([day.revision, day.city, day.business_date, filters]);
+        const key = JSON.stringify([day.revision, day.city, day.business_date, filters, root.suntrainI18n?.language]);
         if (key === renderedKey) return;
         if (key !== cachedKey) { cachedSummary = summarize(day, filters, core); cachedKey = key; }
         const summary = cachedSummary;
-        $("city-overview-title").textContent = `${day.city_name} overview`;
-        const date = new Intl.DateTimeFormat("en-AU", {timeZone: day.timezone, day: "numeric", month: "short", year: "numeric"})
+        root.suntrainI18n ? root.suntrainI18n.bind($("city-overview-title"),`${day.city_name} overview`) : $("city-overview-title").textContent = `${day.city_name} overview`;
+        const date = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: day.timezone, day: "numeric", month: "short", year: "numeric"})
             .format(new Date(day.start * 1000));
-        $("city-overview-context").textContent = `${date} · 03:00–03:00 next day · ${day.timezone} · Current filters`;
+        root.suntrainI18n ? root.suntrainI18n.bind($("city-overview-context"),`${date} · 03:00–03:00 next day · ${day.timezone} · Current filters`) : $("city-overview-context").textContent = `${date} · 03:00–03:00 next day · ${day.timezone} · Current filters`;
         const cards = element("div", undefined, "status-grid city-overview-metrics");
         for (const [label, value, subtitle] of [[summary.estimatedDepartures ? "Replay departures" : "Scheduled departures", summary.departures,
             summary.estimatedDepartures ? "Includes frequency-based estimates" : "Starting in this business day"],
@@ -140,8 +140,8 @@
             for (const [i, hour] of summary.hours.entries()) {
                 const column = element("div", undefined, "city-hour-column"), track = element("div", undefined, "city-hour-track");
                 const bar = element("div", undefined, "city-hour-bar"), text = `${String(hour.hour).padStart(2, "0")}:00`;
-                column.title = `${text} · ${count(hour.departures)} departures`;
-                column.setAttribute("role", "img"); column.setAttribute("aria-label", column.title);
+                root.suntrainI18n ? root.suntrainI18n.bind(column,`${text} · ${count(hour.departures)} departures`,"title") : column.title = `${text} · ${count(hour.departures)} departures`;
+                column.setAttribute("role", "img"); if(root.suntrainI18n) root.suntrainI18n.bind(column, column.title, "aria-label"); else column.setAttribute("aria-label", column.title);
                 bar.style.height = `${100 * hour.departures / maximum}%`;
                 if (hour.departures === peak) bar.classList.add("city-hour-peak");
                 track.append(bar); column.append(track, element("span", i % 3 === 0 ? text : "", "city-hour-label")); bars.append(column);
@@ -152,5 +152,9 @@
         }
         renderedKey = key;
     }
+    document.addEventListener("suntrain:languagechange", () => {
+        const replay=root.suntrainReplay;
+        if(replay?.day && document.querySelector("#city-overview")?.style.display!=="none")render(replay.day,replay.filters,root.suntrainReplayCore);
+    });
     root.suntrainOverview = {summarize, pending, render};
 })(typeof window !== "undefined" ? window : globalThis);

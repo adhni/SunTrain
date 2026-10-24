@@ -88,7 +88,7 @@ with sync_playwright() as p:
     page.set_viewport_size({'width':1280,'height':900})
     # A failed replacement download must not leave actionable old station calls.
     page.route('**/api/replay/melbourne/**',lambda route:route.abort())
-    page.evaluate('dash_clientside.set_props("replay-date", {date:"2024-05-28"})')
+    page.evaluate('dash_clientside.set_props("replay-date", {data:"2024-05-28"})')
     page.wait_for_function('document.querySelector("#replay-load-message").textContent.includes("could not load")')
     assert page.evaluate('suntrainReplay.departures.station===null && !suntrainReplay.departures.visible')
     page.unroute('**/api/replay/melbourne/**')

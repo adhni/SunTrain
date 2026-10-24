@@ -230,3 +230,22 @@ body.replay-fullscreen-lock { overflow: hidden; }
 .departure-row:focus-visible, #replay-departures :is(input, select, button):focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .departure-pagination { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px; padding: 12px 0; font-size: .7rem; }
 #replay-details > button { margin: 4px 6px 4px 0; }
+.replay-calendar-field { position: relative; }
+#replay-date-open { width: 100%; min-height: 40px; padding: 9px 12px; text-align: left; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--surface); cursor: pointer; font: inherit; }
+#replay-calendar { position: absolute; top: 100%; left: 0; z-index: 30; width: min(310px, calc(100vw - 50px)); padding: 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); box-shadow: 0 6px 24px #0003; }
+#replay-calendar[hidden] { display: none; }
+.calendar-navigation, .calendar-grid > [role=row] { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; align-items: center; text-align: center; }
+.calendar-navigation { grid-template-columns: 32px 1fr 32px; margin-bottom: 10px; }
+#replay-calendar button { min-height: 32px; border: 1px solid transparent; border-radius: 4px; color: var(--ink); background: var(--surface); cursor: pointer; font: inherit; }
+#replay-calendar button:disabled { opacity: .3; cursor: default; }
+#replay-calendar button[aria-selected=true] { background: var(--accent-soft); color: var(--accent-deep); border-color: var(--accent); }
+#replay-calendar button:focus-visible, #replay-date-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+.calendar-grid [role=columnheader] { font-size: .72rem; padding: 6px 0; }
+.brand-tools { flex-wrap: wrap; }
+.replay-map-actions .language-picker { display: none; }
+#replay-panel:is(:fullscreen, .replay-expanded) .replay-map-actions .language-picker { display: inline-flex; }
+.language-picker .theme-select { max-width: 155px; }
+@media (max-width: 850px) { #replay-calendar { left: auto; right: 0; } }
+.replay-detail-card { top: var(--replay-detail-top, 66px); }
+#replay-panel:is(:fullscreen, .replay-expanded) .replay-detail-card { top: var(--replay-detail-top, 130px); max-height: calc(100% - var(--replay-detail-top, 130px) - 12px); }
+#replay-calendar { position: fixed; z-index: 6100; top: 0; left: 0; right: auto; max-height: calc(100dvh - 24px); overflow-y: auto; }

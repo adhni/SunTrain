@@ -11,3 +11,11 @@ def theme_picker(control_id):
                 ("blueprint", "Blueprint"), ("heritage", "Heritage"))
         ]),
     ])
+
+
+def language_picker(control_id):
+    return html.Label(className="theme-picker language-picker", children=[
+        html.Span("Language / Bahasa"),
+        html.Select(id=control_id, **{"data-language-select":"true", "aria-label":"Language / Bahasa"}, className="theme-select", children=[
+            html.Option("English", value="en"), html.Option("Bahasa Indonesia", value="id")]),
+    ])

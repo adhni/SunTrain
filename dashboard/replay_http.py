@@ -12,13 +12,14 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlencode
 
+import re
 import orjson
 from flask import abort, request, send_file
 
 from dashboard import data, replay, transit
 from dashboard.cities import city_settings
 
-FORMAT_VERSION = 4
+FORMAT_VERSION = 5
 CACHE_LIMIT = 256 * 1024 * 1024
 # Different dates/modes share a memory budget inside one Gunicorn worker.
 BUILD_LOCK = threading.Lock()
@@ -135,6 +136,9 @@ def write_day(info, stream):
     payload = replay.get_replay_day(info["business_date"], info["city"],
         include_buses=info["bus_data_loaded"], modes=info["modes"])
     payload = {**payload, "revision": info["revision"], "loaded_modes": info["modes"]}
+    if (payload.get("schedule") or {}).get("replay_note"):
+        payload["schedule"] = {**payload["schedule"], "note_messages": [
+            {"key": text, "params": {}} for text in re.split(r"(?<=[.!?])\s+", payload["schedule"]["replay_note"]) if text]}
     buffer = bytearray()
     for part in json_fragments(payload):
         buffer.extend(part)

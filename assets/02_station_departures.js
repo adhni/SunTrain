@@ -36,7 +36,8 @@
         const records = new Map(), seen = new Map();
         for (const service of services) {
             const topology = service.stopIds || service.stops;
-            const label = `${(service.mode || "train").replaceAll("_", " ")} · ${service.line}`;
+            const rawMode=(service.mode || "train").replaceAll("_", " ");
+            const label = `${root.suntrainI18n?.translate(rawMode[0].toUpperCase()+rawMode.slice(1)) || rawMode} · ${service.line}`;
             if (!seen.has(topology)) seen.set(topology, new Set());
             if (seen.get(topology).has(label)) continue;
             seen.get(topology).add(label);
@@ -53,7 +54,7 @@
         }).sort((a, b) => a.name.localeCompare(b.name) || a.id - b.id);
     }
     function formatCallTime(at, timezone) {
-        return new Intl.DateTimeFormat("en-AU", {timeZone: timezone, day: "numeric", month: "short",
+        return new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: timezone, day: "numeric", month: "short",
             hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZoneName: "shortOffset"}).format(new Date(at * 1000));
     }
     const api = {stationCalls, upcomingPage, stationCatalogue, formatCallTime};
@@ -62,7 +63,7 @@
     const $ = id => document.getElementById(id);
     function node(tag, text, className) {
         const element = document.createElement(tag);
-        if (text !== undefined) element.textContent = text;
+        if (text !== undefined) { if (root.suntrainI18n) root.suntrainI18n.bind(element, text); else element.textContent = text; }
         if (className) element.className = className;
         return element;
     }
@@ -81,6 +82,7 @@
             this.host.replaceChildren(); this.list = null; this.search = null; this.choices = null;
         }
         close() {
+            this.previewCall=null;
             this.visible = false; this.host.hidden = true;
             $("replay-details").hidden = false;
             $("replay-panel").classList.remove("replay-browsing");
@@ -118,8 +120,8 @@
             picker.append(node("summary", this.station === null ? "Choose a stop" : "Change stop"));
             const label = node("label", "Find a station, stop or pier"); label.htmlFor = "departure-search";
             this.search = node("input"); this.search.id = "departure-search"; this.search.type = "search";
-            this.search.placeholder = "Search by name or route…";
-            this.choices = node("select"); this.choices.size = 5; this.choices.setAttribute("aria-label", "Matching stops");
+            root.suntrainI18n ? root.suntrainI18n.bind(this.search,"Search by name or route…","placeholder") : this.search.placeholder = "Search by name or route…";
+            this.choices = node("select"); this.choices.size = 5; if(root.suntrainI18n) root.suntrainI18n.bind(this.choices, "Matching stops", "aria-label"); else this.choices.setAttribute("aria-label", "Matching stops");
             this.matchCount = node("p", "", "replay-muted replay-small");
             this.search.addEventListener("input", () => this.updateChoices());
             this.choose = button("Open departures", () => { if (this.choices.value !== "") this.open(Number(this.choices.value)); });
@@ -130,10 +132,23 @@
             this.previous = button("Previous", () => { this.page--; this.update(true); });
             this.next = button("Next", () => { this.page++; this.update(true); });
             this.pageLabel = node("span");
-            const nav = node("nav", undefined, "departure-pagination"); nav.setAttribute("aria-label", "Departure pages");
+            const nav = node("nav", undefined, "departure-pagination"); if(root.suntrainI18n) root.suntrainI18n.bind(nav, "Departure pages", "aria-label"); else nav.setAttribute("aria-label", "Departure pages");
             nav.append(this.previous, this.pageLabel, this.next);
             this.host.append(this.clock, this.list, nav, node("p", "Scheduled replay events; boarding permissions may differ. Final stops are excluded.", "replay-muted replay-small"));
             this.update(true);
+        }
+        updateLocale() {
+            const page=this.page, query=this.search?.value || '', open=this.host.querySelector('details')?.open;
+            this.catalogue=null;this.render();this.search.value=query;this.updateChoices();
+            if(open!==undefined)this.host.querySelector('details').open=open;
+            this.page=page;this.update(true);
+        }
+        updateJourneyLocale() {
+            const host=document.querySelector('.departure-context');
+            if(host && this.previewCall) {
+                const text=`From ${this.replay.day.stations[this.station].name} · ${formatCallTime(this.previewCall.at,this.replay.day.timezone)}`;
+                if(root.suntrainI18n)root.suntrainI18n.bind(host,text);else host.textContent=text;
+            }
         }
         updateChoices() {
             if (!this.catalogue) this.catalogue = stationCatalogue(this.services, this.replay.day.stations);
@@ -146,12 +161,12 @@
             }
             this.choices.value = this.station === null ? "" : String(this.station);
             this.choose.disabled = this.choices.value === "";
-            this.matchCount.textContent = matches.length > 60 ? `Showing 60 of ${matches.length} stops. Refine your search.` : `${matches.length} matching stops`;
+            if(root.suntrainI18n) root.suntrainI18n.bind(this.matchCount, matches.length > 60 ? `Showing 60 of ${matches.length} stops. Refine your search.` : `${matches.length} matching stops`); else this.matchCount.textContent = matches.length > 60 ? `Showing 60 of ${matches.length} stops. Refine your search.` : `${matches.length} matching stops`;
         }
         update(force = false) {
             if (!this.visible || !this.list) return;
             const replay = this.replay;
-            this.clock.textContent = `Departures from ${formatCallTime(replay.now, replay.day.timezone)}`;
+            if(root.suntrainI18n) root.suntrainI18n.bind(this.clock, `Departures from ${formatCallTime(replay.now, replay.day.timezone)}`); else this.clock.textContent = `Departures from ${formatCallTime(replay.now, replay.day.timezone)}`;
             // Keep a keyboard-focused departure stable until focus leaves the list.
             if (!force && this.list.contains(document.activeElement)) return;
             const result = upcomingPage(this.calls, replay.now, this.page); this.page = result.page;
@@ -170,10 +185,11 @@
                 if (service.terminal_arrival_missing) row.append(node("small", "Terminal arrival unavailable"));
                 this.list.append(row);
             }
-            this.pageLabel.textContent = `${result.page + 1} / ${result.pages} · ${result.total} departures`;
+            if(root.suntrainI18n) root.suntrainI18n.bind(this.pageLabel, `${result.page + 1} / ${result.pages} · ${result.total} departures`); else this.pageLabel.textContent = `${result.page + 1} / ${result.pages} · ${result.total} departures`;
             this.previous.disabled = !result.page; this.next.disabled = result.page + 1 >= result.pages;
         }
         journey(host, call) {
+            this.previewCall=call;
             this.visible = false; this.host.hidden = true; $("replay-details").hidden = false;
             if (!call) { this.close(); return; }
             const replay = this.replay;
@@ -190,7 +206,7 @@
                     if (replay.mapReady && Number.isFinite(station.lon) && Number.isFinite(station.lat))
                         replay.graph.setCenter([station.lon, station.lat]);
                 }));
-            host.append(node("p", `From ${replay.day.stations[this.station].name} · ${formatCallTime(call.at, replay.day.timezone)}`, "replay-muted replay-small"));
+            host.append(node("p", `From ${replay.day.stations[this.station].name} · ${formatCallTime(call.at, replay.day.timezone)}`, "replay-muted replay-small departure-context"));
         }
     }
     root.suntrainDepartures = {...api, Board};

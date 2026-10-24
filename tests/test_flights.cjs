@@ -84,3 +84,17 @@ test('foreign airport clocks keep local dates and daylight-saving offsets', () =
     assert.match(formatCallTime(at,'Europe/Amsterdam'),/1 Nov.*18:00 GMT\+1/);
     assert.match(formatCallTime(at,'Pacific/Auckland'),/2 Nov.*06:00 GMT\+13/);
 });
+
+test('Pacific airport bounds choose the short longitude span in either direction',()=>{
+ const {bounds}=require('../assets/02_flights.js');
+ const airports=[{lon:151.177,lat:-33.95},{lon:-118.408,lat:33.94}];
+ const box=bounds(airports);
+ assert.ok(box[1][0]-box[0][0]<100);
+ assert.deepEqual(bounds([...airports].reverse()),box);
+ assert.ok(Math.abs(box[0][0]-151.177)<1e-9);
+ assert.ok(Math.abs(box[1][0]-241.592)<1e-9);
+ const europe=bounds([{lon:4.7,lat:52.3},{lon:115.2,lat:-8.7}]);
+ assert.ok(Math.abs(europe[0][0]-4.7)<1e-9 && Math.abs(europe[1][0]-115.2)<1e-9);
+ assert.equal(europe[0][1],-8.7);assert.equal(europe[1][1],52.3);
+ assert.equal(bounds([]),null);
+});

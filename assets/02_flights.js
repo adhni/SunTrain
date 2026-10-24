@@ -5,6 +5,19 @@
         return (Math.atan2(Math.sin(delta) * Math.cos(lat2),
             Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(delta)) / rad + 360) % 360;
     }
+    function bounds(stations, centre = 135) {
+        if (!stations.length) return null;
+        const lons = stations.map(s => (s.lon % 360 + 360) % 360).sort((a,b) => a-b);
+        let gap = -1, first = lons[0];
+        for (let i=0; i<lons.length; i++) {
+            const next = lons[(i+1)%lons.length] + (i===lons.length-1 ? 360 : 0);
+            if (next-lons[i]>gap) { gap=next-lons[i]; first=next%360; }
+        }
+        const west = first, east = first+360-gap;
+        const shift = 360*Math.round((centre-(west+east)/2)/360);
+        return [[west+shift, Math.min(...stations.map(s=>s.lat))],
+            [east+shift, Math.max(...stations.map(s=>s.lat))]];
+    }
     function planeImage(color = '#f57c28') {
         const canvas = document.createElement('canvas'); canvas.width = canvas.height = 64;
         const ctx = canvas.getContext('2d');
@@ -23,7 +36,7 @@
         ctx.fillStyle = '#fff'; ctx.fillText(code, 44, 20);
         return ctx.getImageData(0, 0, 88, 40);
     }
-    const api = {bearing, planeImage, airportImage};
+    const api = {bearing, bounds, planeImage, airportImage};
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     root.suntrainFlights = api;
 })(typeof window !== 'undefined' ? window : globalThis);

@@ -1,0 +1,4605 @@
+{
+  "country": "AU",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Australia/Melbourne",
+  "max_duration": 86400,
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+  "route_source_sha256": "ea1c46bd8c436f713fa0d1b0354da8afc3b76e3efb2ce2b403339885ee4c2c25",
+  "route_source_period": "2026-07",
+  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_timezone": "Australia/Melbourne",
+  "airports": [
+    {
+      "code": "ADL",
+      "icao": "YPAD",
+      "name": "Adelaide International Airport (ADL)",
+      "municipality": "Adelaide",
+      "timezone": "Australia/Adelaide",
+      "mode": "flight",
+      "lat": -34.947512,
+      "lon": 138.533393,
+      "country": "AU"
+    },
+    {
+      "code": "AKL",
+      "icao": "NZAA",
+      "name": "Auckland International Airport (AKL)",
+      "municipality": "Auckland",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.01199,
+      "lon": 174.786331
+    },
+    {
+      "code": "APW",
+      "icao": "NSFA",
+      "name": "Faleolo International Airport (APW)",
+      "municipality": "Apia",
+      "country": "WS",
+      "timezone": "Pacific/Apia",
+      "mode": "flight",
+      "lat": -13.83,
+      "lon": -172.007996
+    },
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "AVV",
+      "icao": "YMAV",
+      "name": "Melbourne Avalon International Airport (AVV)",
+      "municipality": "Geelong/Melbourne",
+      "timezone": "Australia/Melbourne",
+      "mode": "flight",
+      "lat": -38.040269,
+      "lon": 144.467196,
+      "country": "AU"
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BLR",
+      "icao": "VOBL",
+      "name": "Kempegowda International Airport Bengaluru (BLR)",
+      "municipality": "Bengaluru",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 13.1979,
+      "lon": 77.706299
+    },
+    {
+      "code": "BNE",
+      "icao": "YBBN",
+      "name": "Brisbane International Airport (BNE)",
+      "municipality": "Brisbane",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125,
+      "country": "AU"
+    },
+    {
+      "code": "BWN",
+      "icao": "WBSB",
+      "name": "Brunei International Airport (BWN)",
+      "municipality": "Bandar Seri Begawan",
+      "country": "BN",
+      "timezone": "Asia/Brunei",
+      "mode": "flight",
+      "lat": 4.9442,
+      "lon": 114.928001
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CBR",
+      "icao": "YSCB",
+      "name": "Canberra Airport (CBR)",
+      "municipality": "Canberra",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -35.3069,
+      "lon": 149.195007,
+      "country": "AU"
+    },
+    {
+      "code": "CDG",
+      "icao": "LFPG",
+      "name": "Charles de Gaulle International Airport (CDG)",
+      "municipality": "Paris (Roissy-en-France, Val-d'Oise)",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "mode": "flight",
+      "lat": 49.00896,
+      "lon": 2.554117
+    },
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998
+    },
+    {
+      "code": "CHC",
+      "icao": "NZCH",
+      "name": "Christchurch International Airport (CHC)",
+      "municipality": "Christchurch",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -43.489029,
+      "lon": 172.532065
+    },
+    {
+      "code": "CMB",
+      "icao": "VCBI",
+      "name": "Bandaranaike International Colombo Airport (CMB)",
+      "municipality": "Colombo",
+      "country": "LK",
+      "timezone": "Asia/Colombo",
+      "mode": "flight",
+      "lat": 7.180759906768799,
+      "lon": 79.88410186767578
+    },
+    {
+      "code": "CNS",
+      "icao": "YBCS",
+      "name": "Cairns International Airport (CNS)",
+      "municipality": "Cairns",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -16.878921,
+      "lon": 145.74948,
+      "country": "AU"
+    },
+    {
+      "code": "CTU",
+      "icao": "ZUUU",
+      "name": "Chengdu Shuangliu International Airport (CTU)",
+      "municipality": "Chengdu (Shuangliu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.558257,
+      "lon": 103.945966
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DFW",
+      "icao": "KDFW",
+      "name": "Dallas Fort Worth International Airport (DFW)",
+      "municipality": "Dallas-Fort Worth",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 32.896801,
+      "lon": -97.038002
+    },
+    {
+      "code": "DIL",
+      "icao": "WPDL",
+      "name": "Presidente Nicolau Lobato International Airport (DIL)",
+      "municipality": "Dili",
+      "country": "TL",
+      "timezone": "Asia/Dili",
+      "mode": "flight",
+      "lat": -8.546562,
+      "lon": 125.524507
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123
+    },
+    {
+      "code": "DRW",
+      "icao": "YPDN",
+      "name": "Darwin International Airport / RAAF Darwin (DRW)",
+      "municipality": "Darwin",
+      "timezone": "Australia/Darwin",
+      "mode": "flight",
+      "lat": -12.41497,
+      "lon": 130.88185,
+      "country": "AU"
+    },
+    {
+      "code": "DUD",
+      "icao": "NZDN",
+      "name": "Dunedin International Airport (DUD)",
+      "municipality": "Dunedin",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -45.929017,
+      "lon": 170.197758
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "FCO",
+      "icao": "LIRF",
+      "name": "Rome–Fiumicino Leonardo da Vinci International Airport (FCO)",
+      "municipality": "Rome",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "mode": "flight",
+      "lat": 41.804532,
+      "lon": 12.251998
+    },
+    {
+      "code": "HAK",
+      "icao": "ZJHK",
+      "name": "Haikou Meilan International Airport (HAK)",
+      "municipality": "Haikou (Meilan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 19.9349,
+      "lon": 110.459
+    },
+    {
+      "code": "HAN",
+      "icao": "VVNB",
+      "name": "Noi Bai International Airport (HAN)",
+      "municipality": "Hanoi (Soc Son)",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 21.221201,
+      "lon": 105.806999
+    },
+    {
+      "code": "HBA",
+      "icao": "YMHB",
+      "name": "Hobart International Airport (HBA)",
+      "municipality": "Hobart (Cambridge)",
+      "timezone": "Australia/Hobart",
+      "mode": "flight",
+      "lat": -42.837032,
+      "lon": 147.513022,
+      "country": "AU"
+    },
+    {
+      "code": "HGH",
+      "icao": "ZSHC",
+      "name": "Hangzhou Xiaoshan International Airport (HGH)",
+      "municipality": "Hangzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.23609,
+      "lon": 120.428865
+    },
+    {
+      "code": "HIR",
+      "icao": "AGGH",
+      "name": "Honiara International Airport (HIR)",
+      "municipality": "Honiara",
+      "country": "SB",
+      "timezone": "Pacific/Guadalcanal",
+      "mode": "flight",
+      "lat": -9.428,
+      "lon": 160.054993
+    },
+    {
+      "code": "HKG",
+      "icao": "VHHH",
+      "name": "Hong Kong International Airport (HKG)",
+      "municipality": "Hong Kong",
+      "country": "HK",
+      "timezone": "Asia/Hong_Kong",
+      "mode": "flight",
+      "lat": 22.31184,
+      "lon": 113.914862
+    },
+    {
+      "code": "HKT",
+      "icao": "VTSP",
+      "name": "Phuket International Airport (HKT)",
+      "municipality": "Phuket",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 8.113257,
+      "lon": 98.3174
+    },
+    {
+      "code": "HLZ",
+      "icao": "NZHN",
+      "name": "Hamilton International Airport (HLZ)",
+      "municipality": "Hamilton",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.866961,
+      "lon": 175.331952
+    },
+    {
+      "code": "HND",
+      "icao": "RJTT",
+      "name": "Tokyo Haneda International Airport (HND)",
+      "municipality": "Tokyo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.549678,
+      "lon": 139.786958
+    },
+    {
+      "code": "HNL",
+      "icao": "PHNL",
+      "name": "Daniel K. Inouye International Airport (HNL)",
+      "municipality": "Honolulu, Oahu",
+      "country": "US",
+      "timezone": "Pacific/Honolulu",
+      "mode": "flight",
+      "lat": 21.318387,
+      "lon": -157.92567
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "INU",
+      "icao": "ANYN",
+      "name": "Nauru International Airport (INU)",
+      "municipality": "Yaren",
+      "country": "NR",
+      "timezone": "Pacific/Nauru",
+      "mode": "flight",
+      "lat": -0.547893,
+      "lon": 166.919525
+    },
+    {
+      "code": "IST",
+      "icao": "LTFM",
+      "name": "İstanbul Airport (IST)",
+      "municipality": "Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 41.274874,
+      "lon": 28.732136
+    },
+    {
+      "code": "JFK",
+      "icao": "KJFK",
+      "name": "John F. Kennedy International Airport (JFK)",
+      "municipality": "New York",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.639447,
+      "lon": -73.779317
+    },
+    {
+      "code": "JNB",
+      "icao": "FAOR",
+      "name": "O.R. Tambo International Airport (JNB)",
+      "municipality": "Johannesburg",
+      "country": "ZA",
+      "timezone": "Africa/Johannesburg",
+      "mode": "flight",
+      "lat": -26.140081,
+      "lon": 28.246801
+    },
+    {
+      "code": "KIX",
+      "icao": "RJBB",
+      "name": "Kansai International Airport (KIX)",
+      "municipality": "Osaka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.427299,
+      "lon": 135.244003
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "LAX",
+      "icao": "KLAX",
+      "name": "Los Angeles International Airport (LAX)",
+      "municipality": "Los Angeles",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 33.942501,
+      "lon": -118.407997
+    },
+    {
+      "code": "LHR",
+      "icao": "EGLL",
+      "name": "London Heathrow Airport (LHR)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 51.470748,
+      "lon": -0.459909
+    },
+    {
+      "code": "MCY",
+      "icao": "YBSU",
+      "name": "Sunshine Coast Airport (MCY)",
+      "municipality": "Maroochydore",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -26.593324,
+      "lon": 153.08319,
+      "country": "AU"
+    },
+    {
+      "code": "MEL",
+      "icao": "YMML",
+      "name": "Melbourne Airport (MEL)",
+      "municipality": "Melbourne",
+      "timezone": "Australia/Melbourne",
+      "mode": "flight",
+      "lat": -37.670732,
+      "lon": 144.837898,
+      "country": "AU"
+    },
+    {
+      "code": "MNL",
+      "icao": "RPLL",
+      "name": "Ninoy Aquino International Airport (MNL)",
+      "municipality": "Manila (Pasay)",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 14.5086,
+      "lon": 121.019997
+    },
+    {
+      "code": "MRU",
+      "icao": "FIMP",
+      "name": "Sir Seewoosagur Ramgoolam International Airport (MRU)",
+      "municipality": "Plaine Magnien",
+      "country": "MU",
+      "timezone": "Indian/Mauritius",
+      "mode": "flight",
+      "lat": -20.430201,
+      "lon": 57.683601
+    },
+    {
+      "code": "MUA",
+      "icao": "AGGM",
+      "name": "Munda Airport (MUA)",
+      "municipality": "Munda",
+      "country": "SB",
+      "timezone": "Pacific/Guadalcanal",
+      "mode": "flight",
+      "lat": -8.32797,
+      "lon": 157.263
+    },
+    {
+      "code": "NAN",
+      "icao": "NFFN",
+      "name": "Nadi International Airport (NAN)",
+      "municipality": "Nadi",
+      "country": "FJ",
+      "timezone": "Pacific/Fiji",
+      "mode": "flight",
+      "lat": -17.761822,
+      "lon": 177.437843
+    },
+    {
+      "code": "NKG",
+      "icao": "ZSNJ",
+      "name": "Nanjing Lukou International Airport (NKG)",
+      "municipality": "Nanjing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.735032,
+      "lon": 118.865949
+    },
+    {
+      "code": "NOU",
+      "icao": "NWWW",
+      "name": "La Tontouta International Airport (NOU)",
+      "municipality": "Nouméa (La Tontouta)",
+      "country": "NC",
+      "timezone": "Pacific/Noumea",
+      "mode": "flight",
+      "lat": -22.014601,
+      "lon": 166.212997
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "NTL",
+      "icao": "YWLM",
+      "name": "Newcastle Airport (NTL)",
+      "municipality": "Williamtown",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -32.796114,
+      "lon": 151.835025,
+      "country": "AU"
+    },
+    {
+      "code": "OOL",
+      "icao": "YBCG",
+      "name": "Gold Coast Airport (OOL)",
+      "municipality": "Gold Coast",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -28.165962,
+      "lon": 153.506641,
+      "country": "AU"
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PER",
+      "icao": "YPPH",
+      "name": "Perth International Airport (PER)",
+      "municipality": "Perth",
+      "timezone": "Australia/Perth",
+      "mode": "flight",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234,
+      "country": "AU"
+    },
+    {
+      "code": "PKX",
+      "icao": "ZBAD",
+      "name": "Beijing Daxing International Airport (PKX)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 39.501289,
+      "lon": 116.413967
+    },
+    {
+      "code": "POM",
+      "icao": "AYPY",
+      "name": "Port Moresby Jacksons International Airport (POM)",
+      "municipality": "Port Moresby",
+      "country": "PG",
+      "timezone": "Pacific/Port_Moresby",
+      "mode": "flight",
+      "lat": -9.443380355834961,
+      "lon": 147.22000122070312
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "RAR",
+      "icao": "NCRG",
+      "name": "Rarotonga International Airport (RAR)",
+      "municipality": "Avarua",
+      "country": "CK",
+      "timezone": "Pacific/Rarotonga",
+      "mode": "flight",
+      "lat": -21.2027,
+      "lon": -159.806
+    },
+    {
+      "code": "ROR",
+      "icao": "PTRO",
+      "name": "Roman Tmetuchl International Airport (ROR)",
+      "municipality": "Babelthuap Island",
+      "country": "PW",
+      "timezone": "Pacific/Palau",
+      "mode": "flight",
+      "lat": 7.366965,
+      "lon": 134.544085
+    },
+    {
+      "code": "SCL",
+      "icao": "SCEL",
+      "name": "Comodoro Arturo Merino Benítez International Airport (SCL)",
+      "municipality": "Santiago",
+      "country": "CL",
+      "timezone": "America/Santiago",
+      "mode": "flight",
+      "lat": -33.393001556396484,
+      "lon": -70.78579711914062
+    },
+    {
+      "code": "SFO",
+      "icao": "KSFO",
+      "name": "San Francisco International Airport (SFO)",
+      "municipality": "San Francisco",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 37.619806,
+      "lon": -122.374821
+    },
+    {
+      "code": "SGN",
+      "icao": "VVTS",
+      "name": "Tan Son Nhat International Airport (SGN)",
+      "municipality": "Ho Chi Minh City",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.8188,
+      "lon": 106.652
+    },
+    {
+      "code": "SHA",
+      "icao": "ZSSS",
+      "name": "Shanghai Hongqiao International Airport (SHA)",
+      "municipality": "Shanghai (Minhang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.198104,
+      "lon": 121.33426
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "SON",
+      "icao": "NVSS",
+      "name": "Santo Pekoa International Airport (SON)",
+      "municipality": "Luganville",
+      "country": "VU",
+      "timezone": "Pacific/Efate",
+      "mode": "flight",
+      "lat": -15.505000114399998,
+      "lon": 167.220001221
+    },
+    {
+      "code": "SYD",
+      "icao": "YSSY",
+      "name": "Sydney Kingsford Smith International Airport (SYD)",
+      "municipality": "Sydney (Mascot)",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.946098,
+      "lon": 151.177002,
+      "country": "AU"
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TAO",
+      "icao": "ZSQD",
+      "name": "Qingdao Jiaodong International Airport (TAO)",
+      "municipality": "Qingdao (Jiaozhou)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 36.361953,
+      "lon": 120.088171
+    },
+    {
+      "code": "TBU",
+      "icao": "NFTF",
+      "name": "Fua'amotu International Airport (TBU)",
+      "municipality": "Nuku'alofa",
+      "country": "TO",
+      "timezone": "Pacific/Tongatapu",
+      "mode": "flight",
+      "lat": -21.241438,
+      "lon": -175.149164
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    },
+    {
+      "code": "TNA",
+      "icao": "ZSJN",
+      "name": "Jinan Yaoqiang International Airport (TNA)",
+      "municipality": "Jinan (Licheng)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 36.857201,
+      "lon": 117.216003
+    },
+    {
+      "code": "TPE",
+      "icao": "RCTP",
+      "name": "Taiwan Taoyuan International Airport (TPE)",
+      "municipality": "Taoyuan",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "mode": "flight",
+      "lat": 25.0777,
+      "lon": 121.233002
+    },
+    {
+      "code": "VLI",
+      "icao": "NVVV",
+      "name": "Bauerfield International Airport (VLI)",
+      "municipality": "Port Vila",
+      "country": "VU",
+      "timezone": "Pacific/Efate",
+      "mode": "flight",
+      "lat": -17.699301,
+      "lon": 168.320007
+    },
+    {
+      "code": "WLG",
+      "icao": "NZWN",
+      "name": "Wellington International Airport (WLG)",
+      "municipality": "Wellington",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -41.326839,
+      "lon": 174.806862
+    },
+    {
+      "code": "WSI",
+      "icao": "AU-0539",
+      "name": "Western Sydney International (Nancy-Bird Walton) Airport (WSI)",
+      "municipality": "Sydney",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.883461,
+      "lon": 150.712981
+    },
+    {
+      "code": "WUH",
+      "icao": "ZHHH",
+      "name": "Wuhan Tianhe International Airport (WUH)",
+      "municipality": "Wuhan (Huangpi)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.774798,
+      "lon": 114.213723
+    },
+    {
+      "code": "XIY",
+      "icao": "ZLXY",
+      "name": "Xi'an Xianyang International Airport (XIY)",
+      "municipality": "Xi'an",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 34.442207,
+      "lon": 108.762385
+    },
+    {
+      "code": "XMN",
+      "icao": "ZSAM",
+      "name": "Xiamen Gaoqi International Airport (XMN)",
+      "municipality": "Xiamen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 24.543889,
+      "lon": 118.127454
+    },
+    {
+      "code": "YVR",
+      "icao": "CYVR",
+      "name": "Vancouver International Airport (YVR)",
+      "municipality": "Vancouver",
+      "country": "CA",
+      "timezone": "America/Vancouver",
+      "mode": "flight",
+      "lat": 49.193901,
+      "lon": -123.183998
+    },
+    {
+      "code": "YYZ",
+      "icao": "CYYZ",
+      "name": "Toronto Pearson International Airport (YYZ)",
+      "municipality": "Toronto",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "mode": "flight",
+      "lat": 43.675935,
+      "lon": -79.629421
+    },
+    {
+      "code": "ZQN",
+      "icao": "NZQN",
+      "name": "Queenstown Airport (ZQN)",
+      "municipality": "Queenstown",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -45.019205,
+      "lon": 168.746379
+    }
+  ],
+  "routes": [
+    [
+      "ADL",
+      "AKL"
+    ],
+    [
+      "ADL",
+      "CAN"
+    ],
+    [
+      "ADL",
+      "CHC"
+    ],
+    [
+      "ADL",
+      "DOH"
+    ],
+    [
+      "ADL",
+      "DPS"
+    ],
+    [
+      "ADL",
+      "DXB"
+    ],
+    [
+      "ADL",
+      "KUL"
+    ],
+    [
+      "ADL",
+      "NAN"
+    ],
+    [
+      "ADL",
+      "PVG"
+    ],
+    [
+      "ADL",
+      "SHA"
+    ],
+    [
+      "ADL",
+      "SIN"
+    ],
+    [
+      "AKL",
+      "ADL"
+    ],
+    [
+      "AKL",
+      "BNE"
+    ],
+    [
+      "AKL",
+      "CNS"
+    ],
+    [
+      "AKL",
+      "HBA"
+    ],
+    [
+      "AKL",
+      "MCY"
+    ],
+    [
+      "AKL",
+      "MEL"
+    ],
+    [
+      "AKL",
+      "OOL"
+    ],
+    [
+      "AKL",
+      "PER"
+    ],
+    [
+      "AKL",
+      "SYD"
+    ],
+    [
+      "AKL",
+      "WSI"
+    ],
+    [
+      "APW",
+      "BNE"
+    ],
+    [
+      "APW",
+      "SYD"
+    ],
+    [
+      "AUH",
+      "MEL"
+    ],
+    [
+      "AUH",
+      "SYD"
+    ],
+    [
+      "AVV",
+      "DPS"
+    ],
+    [
+      "BKK",
+      "BNE"
+    ],
+    [
+      "BKK",
+      "MEL"
+    ],
+    [
+      "BKK",
+      "PER"
+    ],
+    [
+      "BKK",
+      "SYD"
+    ],
+    [
+      "BLR",
+      "SYD"
+    ],
+    [
+      "BNE",
+      "AKL"
+    ],
+    [
+      "BNE",
+      "APW"
+    ],
+    [
+      "BNE",
+      "BKK"
+    ],
+    [
+      "BNE",
+      "CAN"
+    ],
+    [
+      "BNE",
+      "CHC"
+    ],
+    [
+      "BNE",
+      "DMK"
+    ],
+    [
+      "BNE",
+      "DOH"
+    ],
+    [
+      "BNE",
+      "DPS"
+    ],
+    [
+      "BNE",
+      "DXB"
+    ],
+    [
+      "BNE",
+      "HIR"
+    ],
+    [
+      "BNE",
+      "HKG"
+    ],
+    [
+      "BNE",
+      "HND"
+    ],
+    [
+      "BNE",
+      "ICN"
+    ],
+    [
+      "BNE",
+      "INU"
+    ],
+    [
+      "BNE",
+      "KIX"
+    ],
+    [
+      "BNE",
+      "KUL"
+    ],
+    [
+      "BNE",
+      "LAX"
+    ],
+    [
+      "BNE",
+      "MNL"
+    ],
+    [
+      "BNE",
+      "MUA"
+    ],
+    [
+      "BNE",
+      "NAN"
+    ],
+    [
+      "BNE",
+      "NOU"
+    ],
+    [
+      "BNE",
+      "NRT"
+    ],
+    [
+      "BNE",
+      "POM"
+    ],
+    [
+      "BNE",
+      "PVG"
+    ],
+    [
+      "BNE",
+      "RAR"
+    ],
+    [
+      "BNE",
+      "ROR"
+    ],
+    [
+      "BNE",
+      "SFO"
+    ],
+    [
+      "BNE",
+      "SGN"
+    ],
+    [
+      "BNE",
+      "SHA"
+    ],
+    [
+      "BNE",
+      "SIN"
+    ],
+    [
+      "BNE",
+      "SON"
+    ],
+    [
+      "BNE",
+      "TPE"
+    ],
+    [
+      "BNE",
+      "VLI"
+    ],
+    [
+      "BNE",
+      "WLG"
+    ],
+    [
+      "BNE",
+      "YVR"
+    ],
+    [
+      "BNE",
+      "ZQN"
+    ],
+    [
+      "BWN",
+      "MEL"
+    ],
+    [
+      "CAN",
+      "ADL"
+    ],
+    [
+      "CAN",
+      "BNE"
+    ],
+    [
+      "CAN",
+      "DRW"
+    ],
+    [
+      "CAN",
+      "MEL"
+    ],
+    [
+      "CAN",
+      "PER"
+    ],
+    [
+      "CAN",
+      "SYD"
+    ],
+    [
+      "CBR",
+      "DPS"
+    ],
+    [
+      "CBR",
+      "NAN"
+    ],
+    [
+      "CDG",
+      "PER"
+    ],
+    [
+      "CDG",
+      "SYD"
+    ],
+    [
+      "CGK",
+      "MEL"
+    ],
+    [
+      "CGK",
+      "PER"
+    ],
+    [
+      "CGK",
+      "SYD"
+    ],
+    [
+      "CHC",
+      "ADL"
+    ],
+    [
+      "CHC",
+      "BNE"
+    ],
+    [
+      "CHC",
+      "CNS"
+    ],
+    [
+      "CHC",
+      "MEL"
+    ],
+    [
+      "CHC",
+      "OOL"
+    ],
+    [
+      "CHC",
+      "SYD"
+    ],
+    [
+      "CMB",
+      "MEL"
+    ],
+    [
+      "CMB",
+      "SYD"
+    ],
+    [
+      "CNS",
+      "AKL"
+    ],
+    [
+      "CNS",
+      "CHC"
+    ],
+    [
+      "CNS",
+      "DPS"
+    ],
+    [
+      "CNS",
+      "HND"
+    ],
+    [
+      "CNS",
+      "KIX"
+    ],
+    [
+      "CNS",
+      "NAN"
+    ],
+    [
+      "CNS",
+      "NRT"
+    ],
+    [
+      "CNS",
+      "POM"
+    ],
+    [
+      "CNS",
+      "SIN"
+    ],
+    [
+      "CTU",
+      "MEL"
+    ],
+    [
+      "CTU",
+      "SYD"
+    ],
+    [
+      "DEL",
+      "MEL"
+    ],
+    [
+      "DEL",
+      "SYD"
+    ],
+    [
+      "DFW",
+      "MEL"
+    ],
+    [
+      "DFW",
+      "SYD"
+    ],
+    [
+      "DIL",
+      "DRW"
+    ],
+    [
+      "DMK",
+      "BNE"
+    ],
+    [
+      "DMK",
+      "MEL"
+    ],
+    [
+      "DMK",
+      "PER"
+    ],
+    [
+      "DMK",
+      "SYD"
+    ],
+    [
+      "DOH",
+      "ADL"
+    ],
+    [
+      "DOH",
+      "BNE"
+    ],
+    [
+      "DOH",
+      "MEL"
+    ],
+    [
+      "DOH",
+      "PER"
+    ],
+    [
+      "DOH",
+      "SYD"
+    ],
+    [
+      "DPS",
+      "ADL"
+    ],
+    [
+      "DPS",
+      "AVV"
+    ],
+    [
+      "DPS",
+      "BNE"
+    ],
+    [
+      "DPS",
+      "CBR"
+    ],
+    [
+      "DPS",
+      "CNS"
+    ],
+    [
+      "DPS",
+      "DRW"
+    ],
+    [
+      "DPS",
+      "MCY"
+    ],
+    [
+      "DPS",
+      "MEL"
+    ],
+    [
+      "DPS",
+      "NTL"
+    ],
+    [
+      "DPS",
+      "OOL"
+    ],
+    [
+      "DPS",
+      "PER"
+    ],
+    [
+      "DPS",
+      "SYD"
+    ],
+    [
+      "DRW",
+      "CAN"
+    ],
+    [
+      "DRW",
+      "DIL"
+    ],
+    [
+      "DRW",
+      "DPS"
+    ],
+    [
+      "DRW",
+      "SIN"
+    ],
+    [
+      "DUD",
+      "OOL"
+    ],
+    [
+      "DXB",
+      "ADL"
+    ],
+    [
+      "DXB",
+      "BNE"
+    ],
+    [
+      "DXB",
+      "MEL"
+    ],
+    [
+      "DXB",
+      "PER"
+    ],
+    [
+      "DXB",
+      "SYD"
+    ],
+    [
+      "FCO",
+      "PER"
+    ],
+    [
+      "FCO",
+      "SYD"
+    ],
+    [
+      "HAK",
+      "MEL"
+    ],
+    [
+      "HAK",
+      "SYD"
+    ],
+    [
+      "HAN",
+      "MEL"
+    ],
+    [
+      "HAN",
+      "SYD"
+    ],
+    [
+      "HBA",
+      "AKL"
+    ],
+    [
+      "HGH",
+      "MEL"
+    ],
+    [
+      "HIR",
+      "BNE"
+    ],
+    [
+      "HKG",
+      "BNE"
+    ],
+    [
+      "HKG",
+      "MEL"
+    ],
+    [
+      "HKG",
+      "PER"
+    ],
+    [
+      "HKG",
+      "SYD"
+    ],
+    [
+      "HKT",
+      "MEL"
+    ],
+    [
+      "HKT",
+      "PER"
+    ],
+    [
+      "HKT",
+      "SYD"
+    ],
+    [
+      "HLZ",
+      "OOL"
+    ],
+    [
+      "HLZ",
+      "SYD"
+    ],
+    [
+      "HND",
+      "BNE"
+    ],
+    [
+      "HND",
+      "CNS"
+    ],
+    [
+      "HND",
+      "MEL"
+    ],
+    [
+      "HND",
+      "PER"
+    ],
+    [
+      "HND",
+      "SYD"
+    ],
+    [
+      "HNL",
+      "SYD"
+    ],
+    [
+      "ICN",
+      "BNE"
+    ],
+    [
+      "ICN",
+      "SYD"
+    ],
+    [
+      "INU",
+      "BNE"
+    ],
+    [
+      "IST",
+      "MEL"
+    ],
+    [
+      "IST",
+      "SYD"
+    ],
+    [
+      "JFK",
+      "SYD"
+    ],
+    [
+      "JNB",
+      "PER"
+    ],
+    [
+      "JNB",
+      "SYD"
+    ],
+    [
+      "KIX",
+      "BNE"
+    ],
+    [
+      "KIX",
+      "CNS"
+    ],
+    [
+      "KIX",
+      "SYD"
+    ],
+    [
+      "KUL",
+      "ADL"
+    ],
+    [
+      "KUL",
+      "BNE"
+    ],
+    [
+      "KUL",
+      "MEL"
+    ],
+    [
+      "KUL",
+      "PER"
+    ],
+    [
+      "KUL",
+      "SYD"
+    ],
+    [
+      "LAX",
+      "BNE"
+    ],
+    [
+      "LAX",
+      "MEL"
+    ],
+    [
+      "LAX",
+      "SYD"
+    ],
+    [
+      "LHR",
+      "PER"
+    ],
+    [
+      "LHR",
+      "SYD"
+    ],
+    [
+      "MCY",
+      "AKL"
+    ],
+    [
+      "MCY",
+      "DPS"
+    ],
+    [
+      "MEL",
+      "AKL"
+    ],
+    [
+      "MEL",
+      "AUH"
+    ],
+    [
+      "MEL",
+      "BKK"
+    ],
+    [
+      "MEL",
+      "BWN"
+    ],
+    [
+      "MEL",
+      "CAN"
+    ],
+    [
+      "MEL",
+      "CGK"
+    ],
+    [
+      "MEL",
+      "CHC"
+    ],
+    [
+      "MEL",
+      "CMB"
+    ],
+    [
+      "MEL",
+      "CTU"
+    ],
+    [
+      "MEL",
+      "DEL"
+    ],
+    [
+      "MEL",
+      "DFW"
+    ],
+    [
+      "MEL",
+      "DMK"
+    ],
+    [
+      "MEL",
+      "DOH"
+    ],
+    [
+      "MEL",
+      "DPS"
+    ],
+    [
+      "MEL",
+      "DXB"
+    ],
+    [
+      "MEL",
+      "HAK"
+    ],
+    [
+      "MEL",
+      "HAN"
+    ],
+    [
+      "MEL",
+      "HGH"
+    ],
+    [
+      "MEL",
+      "HKG"
+    ],
+    [
+      "MEL",
+      "HKT"
+    ],
+    [
+      "MEL",
+      "HND"
+    ],
+    [
+      "MEL",
+      "IST"
+    ],
+    [
+      "MEL",
+      "KUL"
+    ],
+    [
+      "MEL",
+      "LAX"
+    ],
+    [
+      "MEL",
+      "MNL"
+    ],
+    [
+      "MEL",
+      "NAN"
+    ],
+    [
+      "MEL",
+      "NKG"
+    ],
+    [
+      "MEL",
+      "NRT"
+    ],
+    [
+      "MEL",
+      "PEK"
+    ],
+    [
+      "MEL",
+      "PKX"
+    ],
+    [
+      "MEL",
+      "PVG"
+    ],
+    [
+      "MEL",
+      "SCL"
+    ],
+    [
+      "MEL",
+      "SFO"
+    ],
+    [
+      "MEL",
+      "SGN"
+    ],
+    [
+      "MEL",
+      "SHA"
+    ],
+    [
+      "MEL",
+      "SIN"
+    ],
+    [
+      "MEL",
+      "SZX"
+    ],
+    [
+      "MEL",
+      "TAO"
+    ],
+    [
+      "MEL",
+      "TFU"
+    ],
+    [
+      "MEL",
+      "TPE"
+    ],
+    [
+      "MEL",
+      "WLG"
+    ],
+    [
+      "MEL",
+      "XMN"
+    ],
+    [
+      "MEL",
+      "ZQN"
+    ],
+    [
+      "MNL",
+      "BNE"
+    ],
+    [
+      "MNL",
+      "MEL"
+    ],
+    [
+      "MNL",
+      "PER"
+    ],
+    [
+      "MNL",
+      "SYD"
+    ],
+    [
+      "MRU",
+      "PER"
+    ],
+    [
+      "MUA",
+      "BNE"
+    ],
+    [
+      "NAN",
+      "ADL"
+    ],
+    [
+      "NAN",
+      "BNE"
+    ],
+    [
+      "NAN",
+      "CBR"
+    ],
+    [
+      "NAN",
+      "CNS"
+    ],
+    [
+      "NAN",
+      "MEL"
+    ],
+    [
+      "NAN",
+      "OOL"
+    ],
+    [
+      "NAN",
+      "SYD"
+    ],
+    [
+      "NKG",
+      "MEL"
+    ],
+    [
+      "NKG",
+      "SYD"
+    ],
+    [
+      "NOU",
+      "BNE"
+    ],
+    [
+      "NOU",
+      "SYD"
+    ],
+    [
+      "NRT",
+      "BNE"
+    ],
+    [
+      "NRT",
+      "CNS"
+    ],
+    [
+      "NRT",
+      "MEL"
+    ],
+    [
+      "NRT",
+      "PER"
+    ],
+    [
+      "NRT",
+      "SYD"
+    ],
+    [
+      "NTL",
+      "DPS"
+    ],
+    [
+      "OOL",
+      "AKL"
+    ],
+    [
+      "OOL",
+      "CHC"
+    ],
+    [
+      "OOL",
+      "DPS"
+    ],
+    [
+      "OOL",
+      "DUD"
+    ],
+    [
+      "OOL",
+      "HLZ"
+    ],
+    [
+      "OOL",
+      "NAN"
+    ],
+    [
+      "OOL",
+      "WLG"
+    ],
+    [
+      "OOL",
+      "ZQN"
+    ],
+    [
+      "PEK",
+      "MEL"
+    ],
+    [
+      "PEK",
+      "SYD"
+    ],
+    [
+      "PER",
+      "AKL"
+    ],
+    [
+      "PER",
+      "BKK"
+    ],
+    [
+      "PER",
+      "CAN"
+    ],
+    [
+      "PER",
+      "CDG"
+    ],
+    [
+      "PER",
+      "CGK"
+    ],
+    [
+      "PER",
+      "DMK"
+    ],
+    [
+      "PER",
+      "DOH"
+    ],
+    [
+      "PER",
+      "DPS"
+    ],
+    [
+      "PER",
+      "DXB"
+    ],
+    [
+      "PER",
+      "FCO"
+    ],
+    [
+      "PER",
+      "HKG"
+    ],
+    [
+      "PER",
+      "HKT"
+    ],
+    [
+      "PER",
+      "HND"
+    ],
+    [
+      "PER",
+      "JNB"
+    ],
+    [
+      "PER",
+      "KUL"
+    ],
+    [
+      "PER",
+      "LHR"
+    ],
+    [
+      "PER",
+      "MNL"
+    ],
+    [
+      "PER",
+      "MRU"
+    ],
+    [
+      "PER",
+      "NRT"
+    ],
+    [
+      "PER",
+      "SGN"
+    ],
+    [
+      "PER",
+      "SIN"
+    ],
+    [
+      "PKX",
+      "MEL"
+    ],
+    [
+      "PKX",
+      "SYD"
+    ],
+    [
+      "POM",
+      "BNE"
+    ],
+    [
+      "POM",
+      "CNS"
+    ],
+    [
+      "POM",
+      "SYD"
+    ],
+    [
+      "PVG",
+      "ADL"
+    ],
+    [
+      "PVG",
+      "BNE"
+    ],
+    [
+      "PVG",
+      "MEL"
+    ],
+    [
+      "PVG",
+      "SYD"
+    ],
+    [
+      "RAR",
+      "BNE"
+    ],
+    [
+      "RAR",
+      "SYD"
+    ],
+    [
+      "ROR",
+      "BNE"
+    ],
+    [
+      "SCL",
+      "MEL"
+    ],
+    [
+      "SCL",
+      "SYD"
+    ],
+    [
+      "SFO",
+      "BNE"
+    ],
+    [
+      "SFO",
+      "MEL"
+    ],
+    [
+      "SFO",
+      "SYD"
+    ],
+    [
+      "SGN",
+      "BNE"
+    ],
+    [
+      "SGN",
+      "MEL"
+    ],
+    [
+      "SGN",
+      "PER"
+    ],
+    [
+      "SGN",
+      "SYD"
+    ],
+    [
+      "SHA",
+      "ADL"
+    ],
+    [
+      "SHA",
+      "BNE"
+    ],
+    [
+      "SHA",
+      "MEL"
+    ],
+    [
+      "SHA",
+      "SYD"
+    ],
+    [
+      "SIN",
+      "ADL"
+    ],
+    [
+      "SIN",
+      "BNE"
+    ],
+    [
+      "SIN",
+      "CNS"
+    ],
+    [
+      "SIN",
+      "DRW"
+    ],
+    [
+      "SIN",
+      "MEL"
+    ],
+    [
+      "SIN",
+      "PER"
+    ],
+    [
+      "SIN",
+      "SYD"
+    ],
+    [
+      "SON",
+      "BNE"
+    ],
+    [
+      "SYD",
+      "AKL"
+    ],
+    [
+      "SYD",
+      "APW"
+    ],
+    [
+      "SYD",
+      "AUH"
+    ],
+    [
+      "SYD",
+      "BKK"
+    ],
+    [
+      "SYD",
+      "BLR"
+    ],
+    [
+      "SYD",
+      "CAN"
+    ],
+    [
+      "SYD",
+      "CDG"
+    ],
+    [
+      "SYD",
+      "CGK"
+    ],
+    [
+      "SYD",
+      "CHC"
+    ],
+    [
+      "SYD",
+      "CMB"
+    ],
+    [
+      "SYD",
+      "CTU"
+    ],
+    [
+      "SYD",
+      "DEL"
+    ],
+    [
+      "SYD",
+      "DFW"
+    ],
+    [
+      "SYD",
+      "DMK"
+    ],
+    [
+      "SYD",
+      "DOH"
+    ],
+    [
+      "SYD",
+      "DPS"
+    ],
+    [
+      "SYD",
+      "DXB"
+    ],
+    [
+      "SYD",
+      "FCO"
+    ],
+    [
+      "SYD",
+      "HAK"
+    ],
+    [
+      "SYD",
+      "HAN"
+    ],
+    [
+      "SYD",
+      "HKG"
+    ],
+    [
+      "SYD",
+      "HKT"
+    ],
+    [
+      "SYD",
+      "HLZ"
+    ],
+    [
+      "SYD",
+      "HND"
+    ],
+    [
+      "SYD",
+      "HNL"
+    ],
+    [
+      "SYD",
+      "ICN"
+    ],
+    [
+      "SYD",
+      "IST"
+    ],
+    [
+      "SYD",
+      "JFK"
+    ],
+    [
+      "SYD",
+      "JNB"
+    ],
+    [
+      "SYD",
+      "KIX"
+    ],
+    [
+      "SYD",
+      "KUL"
+    ],
+    [
+      "SYD",
+      "LAX"
+    ],
+    [
+      "SYD",
+      "LHR"
+    ],
+    [
+      "SYD",
+      "MNL"
+    ],
+    [
+      "SYD",
+      "NAN"
+    ],
+    [
+      "SYD",
+      "NKG"
+    ],
+    [
+      "SYD",
+      "NOU"
+    ],
+    [
+      "SYD",
+      "NRT"
+    ],
+    [
+      "SYD",
+      "PEK"
+    ],
+    [
+      "SYD",
+      "PKX"
+    ],
+    [
+      "SYD",
+      "POM"
+    ],
+    [
+      "SYD",
+      "PVG"
+    ],
+    [
+      "SYD",
+      "RAR"
+    ],
+    [
+      "SYD",
+      "SCL"
+    ],
+    [
+      "SYD",
+      "SFO"
+    ],
+    [
+      "SYD",
+      "SGN"
+    ],
+    [
+      "SYD",
+      "SHA"
+    ],
+    [
+      "SYD",
+      "SIN"
+    ],
+    [
+      "SYD",
+      "TAO"
+    ],
+    [
+      "SYD",
+      "TBU"
+    ],
+    [
+      "SYD",
+      "TFU"
+    ],
+    [
+      "SYD",
+      "TNA"
+    ],
+    [
+      "SYD",
+      "TPE"
+    ],
+    [
+      "SYD",
+      "VLI"
+    ],
+    [
+      "SYD",
+      "WLG"
+    ],
+    [
+      "SYD",
+      "WUH"
+    ],
+    [
+      "SYD",
+      "XIY"
+    ],
+    [
+      "SYD",
+      "XMN"
+    ],
+    [
+      "SYD",
+      "YVR"
+    ],
+    [
+      "SYD",
+      "YYZ"
+    ],
+    [
+      "SYD",
+      "ZQN"
+    ],
+    [
+      "SZX",
+      "MEL"
+    ],
+    [
+      "TAO",
+      "MEL"
+    ],
+    [
+      "TAO",
+      "SYD"
+    ],
+    [
+      "TBU",
+      "SYD"
+    ],
+    [
+      "TFU",
+      "MEL"
+    ],
+    [
+      "TFU",
+      "SYD"
+    ],
+    [
+      "TNA",
+      "SYD"
+    ],
+    [
+      "TPE",
+      "BNE"
+    ],
+    [
+      "TPE",
+      "MEL"
+    ],
+    [
+      "TPE",
+      "SYD"
+    ],
+    [
+      "VLI",
+      "BNE"
+    ],
+    [
+      "VLI",
+      "SYD"
+    ],
+    [
+      "WLG",
+      "BNE"
+    ],
+    [
+      "WLG",
+      "MEL"
+    ],
+    [
+      "WLG",
+      "OOL"
+    ],
+    [
+      "WLG",
+      "SYD"
+    ],
+    [
+      "WSI",
+      "AKL"
+    ],
+    [
+      "WUH",
+      "SYD"
+    ],
+    [
+      "XIY",
+      "SYD"
+    ],
+    [
+      "XMN",
+      "MEL"
+    ],
+    [
+      "XMN",
+      "SYD"
+    ],
+    [
+      "YVR",
+      "BNE"
+    ],
+    [
+      "YVR",
+      "SYD"
+    ],
+    [
+      "YYZ",
+      "SYD"
+    ],
+    [
+      "ZQN",
+      "BNE"
+    ],
+    [
+      "ZQN",
+      "MEL"
+    ],
+    [
+      "ZQN",
+      "OOL"
+    ],
+    [
+      "ZQN",
+      "SYD"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "ADL",
+      "destination": "AKL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 6,
+      "foreign_city": "Auckland",
+      "australian_city": "Adelaide",
+      "passengers_2026": 7270
+    },
+    {
+      "origin": "ADL",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 7,
+      "foreign_city": "Denpasar",
+      "australian_city": "Adelaide",
+      "passengers_2026": 27259
+    },
+    {
+      "origin": "ADL",
+      "destination": "DOH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 8,
+      "foreign_city": "Doha",
+      "australian_city": "Adelaide",
+      "passengers_2026": 10838
+    },
+    {
+      "origin": "ADL",
+      "destination": "DXB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 9,
+      "foreign_city": "Dubai",
+      "australian_city": "Adelaide",
+      "passengers_2026": 8947
+    },
+    {
+      "origin": "ADL",
+      "destination": "CAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 10,
+      "foreign_city": "Guangzhou",
+      "australian_city": "Adelaide",
+      "passengers_2026": 4066
+    },
+    {
+      "origin": "ADL",
+      "destination": "KUL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 11,
+      "foreign_city": "Kuala Lumpur",
+      "australian_city": "Adelaide",
+      "passengers_2026": 15705
+    },
+    {
+      "origin": "ADL",
+      "destination": "NAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 12,
+      "foreign_city": "Nadi",
+      "australian_city": "Adelaide",
+      "passengers_2026": 3332
+    },
+    {
+      "origin": "ADL",
+      "destination": "PVG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 13,
+      "foreign_city": "Shanghai",
+      "australian_city": "Adelaide",
+      "passengers_2026": 5562
+    },
+    {
+      "origin": "ADL",
+      "destination": "SHA",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 13,
+      "foreign_city": "Shanghai",
+      "australian_city": "Adelaide",
+      "passengers_2026": 5562
+    },
+    {
+      "origin": "ADL",
+      "destination": "SIN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 14,
+      "foreign_city": "Singapore",
+      "australian_city": "Adelaide",
+      "passengers_2026": 26459
+    },
+    {
+      "origin": "BNE",
+      "destination": "APW",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 16,
+      "foreign_city": "Apia",
+      "australian_city": "Brisbane",
+      "passengers_2026": 6067
+    },
+    {
+      "origin": "BNE",
+      "destination": "AKL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 17,
+      "foreign_city": "Auckland",
+      "australian_city": "Brisbane",
+      "passengers_2026": 79489
+    },
+    {
+      "origin": "BNE",
+      "destination": "BKK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 18,
+      "foreign_city": "Bangkok",
+      "australian_city": "Brisbane",
+      "passengers_2026": 12885
+    },
+    {
+      "origin": "BNE",
+      "destination": "DMK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 18,
+      "foreign_city": "Bangkok",
+      "australian_city": "Brisbane",
+      "passengers_2026": 12885
+    },
+    {
+      "origin": "BNE",
+      "destination": "CHC",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 19,
+      "foreign_city": "Christchurch",
+      "australian_city": "Brisbane",
+      "passengers_2026": 24688
+    },
+    {
+      "origin": "BNE",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 20,
+      "foreign_city": "Denpasar",
+      "australian_city": "Brisbane",
+      "passengers_2026": 39675
+    },
+    {
+      "origin": "BNE",
+      "destination": "DOH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 21,
+      "foreign_city": "Doha",
+      "australian_city": "Brisbane",
+      "passengers_2026": 20362
+    },
+    {
+      "origin": "BNE",
+      "destination": "DXB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 22,
+      "foreign_city": "Dubai",
+      "australian_city": "Brisbane",
+      "passengers_2026": 24360
+    },
+    {
+      "origin": "BNE",
+      "destination": "SON",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 23,
+      "foreign_city": "Espiritu Santo",
+      "australian_city": "Brisbane",
+      "passengers_2026": 1744
+    },
+    {
+      "origin": "BNE",
+      "destination": "CAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 24,
+      "foreign_city": "Guangzhou",
+      "australian_city": "Brisbane",
+      "passengers_2026": 15848
+    },
+    {
+      "origin": "BNE",
+      "destination": "SGN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 25,
+      "foreign_city": "Ho Chi Minh City",
+      "australian_city": "Brisbane",
+      "passengers_2026": 13899
+    },
+    {
+      "origin": "BNE",
+      "destination": "HKG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 26,
+      "foreign_city": "Hong Kong",
+      "australian_city": "Brisbane",
+      "passengers_2026": 30771
+    },
+    {
+      "origin": "BNE",
+      "destination": "HIR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 27,
+      "foreign_city": "Honiara",
+      "australian_city": "Brisbane",
+      "passengers_2026": 5215
+    },
+    {
+      "origin": "BNE",
+      "destination": "KUL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 28,
+      "foreign_city": "Kuala Lumpur",
+      "australian_city": "Brisbane",
+      "passengers_2026": 9981
+    },
+    {
+      "origin": "BNE",
+      "destination": "LAX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 29,
+      "foreign_city": "Los Angeles",
+      "australian_city": "Brisbane",
+      "passengers_2026": 11534
+    },
+    {
+      "origin": "BNE",
+      "destination": "MNL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 30,
+      "foreign_city": "Manila",
+      "australian_city": "Brisbane",
+      "passengers_2026": 13872
+    },
+    {
+      "origin": "BNE",
+      "destination": "MUA",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 31,
+      "foreign_city": "Munda",
+      "australian_city": "Brisbane",
+      "passengers_2026": 168
+    },
+    {
+      "origin": "BNE",
+      "destination": "NAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 32,
+      "foreign_city": "Nadi",
+      "australian_city": "Brisbane",
+      "passengers_2026": 23362
+    },
+    {
+      "origin": "BNE",
+      "destination": "INU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 33,
+      "foreign_city": "Nauru",
+      "australian_city": "Brisbane",
+      "passengers_2026": 2123
+    },
+    {
+      "origin": "BNE",
+      "destination": "NOU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 34,
+      "foreign_city": "Noumea",
+      "australian_city": "Brisbane",
+      "passengers_2026": 5016
+    },
+    {
+      "origin": "BNE",
+      "destination": "KIX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 35,
+      "foreign_city": "Osaka",
+      "australian_city": "Brisbane",
+      "passengers_2026": 9490
+    },
+    {
+      "origin": "BNE",
+      "destination": "ROR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 36,
+      "foreign_city": "Palau",
+      "australian_city": "Brisbane",
+      "passengers_2026": 633
+    },
+    {
+      "origin": "BNE",
+      "destination": "POM",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 37,
+      "foreign_city": "Port Moresby",
+      "australian_city": "Brisbane",
+      "passengers_2026": 15726
+    },
+    {
+      "origin": "BNE",
+      "destination": "VLI",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 38,
+      "foreign_city": "Port Vila",
+      "australian_city": "Brisbane",
+      "passengers_2026": 14494
+    },
+    {
+      "origin": "BNE",
+      "destination": "ZQN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 39,
+      "foreign_city": "Queenstown",
+      "australian_city": "Brisbane",
+      "passengers_2026": 35062
+    },
+    {
+      "origin": "BNE",
+      "destination": "RAR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 40,
+      "foreign_city": "Rarotonga",
+      "australian_city": "Brisbane",
+      "passengers_2026": 4014
+    },
+    {
+      "origin": "BNE",
+      "destination": "SFO",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 41,
+      "foreign_city": "San Francisco",
+      "australian_city": "Brisbane",
+      "passengers_2026": 7460
+    },
+    {
+      "origin": "BNE",
+      "destination": "ICN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 42,
+      "foreign_city": "Seoul",
+      "australian_city": "Brisbane",
+      "passengers_2026": 14664
+    },
+    {
+      "origin": "BNE",
+      "destination": "PVG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 43,
+      "foreign_city": "Shanghai",
+      "australian_city": "Brisbane",
+      "passengers_2026": 14582
+    },
+    {
+      "origin": "BNE",
+      "destination": "SHA",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 43,
+      "foreign_city": "Shanghai",
+      "australian_city": "Brisbane",
+      "passengers_2026": 14582
+    },
+    {
+      "origin": "BNE",
+      "destination": "SIN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 44,
+      "foreign_city": "Singapore",
+      "australian_city": "Brisbane",
+      "passengers_2026": 86890
+    },
+    {
+      "origin": "BNE",
+      "destination": "TPE",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 45,
+      "foreign_city": "Taipei",
+      "australian_city": "Brisbane",
+      "passengers_2026": 18445
+    },
+    {
+      "origin": "BNE",
+      "destination": "HND",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 46,
+      "foreign_city": "Tokyo",
+      "australian_city": "Brisbane",
+      "passengers_2026": 26701
+    },
+    {
+      "origin": "BNE",
+      "destination": "NRT",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 46,
+      "foreign_city": "Tokyo",
+      "australian_city": "Brisbane",
+      "passengers_2026": 26701
+    },
+    {
+      "origin": "BNE",
+      "destination": "YVR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 47,
+      "foreign_city": "Vancouver",
+      "australian_city": "Brisbane",
+      "passengers_2026": 14238
+    },
+    {
+      "origin": "BNE",
+      "destination": "WLG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 48,
+      "foreign_city": "Wellington",
+      "australian_city": "Brisbane",
+      "passengers_2026": 15051
+    },
+    {
+      "origin": "CNS",
+      "destination": "AKL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 52,
+      "foreign_city": "Auckland",
+      "australian_city": "Cairns",
+      "passengers_2026": 7678
+    },
+    {
+      "origin": "CNS",
+      "destination": "CHC",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 53,
+      "foreign_city": "Christchurch",
+      "australian_city": "Cairns",
+      "passengers_2026": 4312
+    },
+    {
+      "origin": "CNS",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 54,
+      "foreign_city": "Denpasar",
+      "australian_city": "Cairns",
+      "passengers_2026": 6064
+    },
+    {
+      "origin": "CNS",
+      "destination": "NAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 55,
+      "foreign_city": "Nadi",
+      "australian_city": "Cairns",
+      "passengers_2026": 2724
+    },
+    {
+      "origin": "CNS",
+      "destination": "KIX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 56,
+      "foreign_city": "Osaka",
+      "australian_city": "Cairns",
+      "passengers_2026": 9678
+    },
+    {
+      "origin": "CNS",
+      "destination": "POM",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 57,
+      "foreign_city": "Port Moresby",
+      "australian_city": "Cairns",
+      "passengers_2026": 4185
+    },
+    {
+      "origin": "CNS",
+      "destination": "SIN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 58,
+      "foreign_city": "Singapore",
+      "australian_city": "Cairns",
+      "passengers_2026": 10545
+    },
+    {
+      "origin": "CNS",
+      "destination": "HND",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 59,
+      "foreign_city": "Tokyo",
+      "australian_city": "Cairns",
+      "passengers_2026": 17280
+    },
+    {
+      "origin": "CNS",
+      "destination": "NRT",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 59,
+      "foreign_city": "Tokyo",
+      "australian_city": "Cairns",
+      "passengers_2026": 17280
+    },
+    {
+      "origin": "CBR",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 61,
+      "foreign_city": "Denpasar",
+      "australian_city": "Canberra",
+      "passengers_2026": 4140
+    },
+    {
+      "origin": "CBR",
+      "destination": "NAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 62,
+      "foreign_city": "Nadi",
+      "australian_city": "Canberra",
+      "passengers_2026": 2334
+    },
+    {
+      "origin": "DRW",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 64,
+      "foreign_city": "Denpasar",
+      "australian_city": "Darwin",
+      "passengers_2026": 7504
+    },
+    {
+      "origin": "DRW",
+      "destination": "DIL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 65,
+      "foreign_city": "Dili",
+      "australian_city": "Darwin",
+      "passengers_2026": 3497
+    },
+    {
+      "origin": "DRW",
+      "destination": "CAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 66,
+      "foreign_city": "Guangzhou",
+      "australian_city": "Darwin",
+      "passengers_2026": 555
+    },
+    {
+      "origin": "DRW",
+      "destination": "SIN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 68,
+      "foreign_city": "Singapore",
+      "australian_city": "Darwin",
+      "passengers_2026": 12657
+    },
+    {
+      "origin": "OOL",
+      "destination": "AKL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 70,
+      "foreign_city": "Auckland",
+      "australian_city": "Gold Coast",
+      "passengers_2026": 32761
+    },
+    {
+      "origin": "OOL",
+      "destination": "CHC",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 71,
+      "foreign_city": "Christchurch",
+      "australian_city": "Gold Coast",
+      "passengers_2026": 8407
+    },
+    {
+      "origin": "OOL",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 72,
+      "foreign_city": "Denpasar",
+      "australian_city": "Gold Coast",
+      "passengers_2026": 14124
+    },
+    {
+      "origin": "OOL",
+      "destination": "DUD",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 73,
+      "foreign_city": "Dunedin",
+      "australian_city": "Gold Coast",
+      "passengers_2026": 5022
+    },
+    {
+      "origin": "OOL",
+      "destination": "HLZ",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 74,
+      "foreign_city": "Hamilton",
+      "australian_city": "Gold Coast",
+      "passengers_2026": 5300
+    },
+    {
+      "origin": "OOL",
+      "destination": "NAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 75,
+      "foreign_city": "Nadi",
+      "australian_city": "Gold Coast",
+      "passengers_2026": 3300
+    },
+    {
+      "origin": "OOL",
+      "destination": "ZQN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 76,
+      "foreign_city": "Queenstown",
+      "australian_city": "Gold Coast",
+      "passengers_2026": 5970
+    },
+    {
+      "origin": "OOL",
+      "destination": "WLG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 77,
+      "foreign_city": "Wellington",
+      "australian_city": "Gold Coast",
+      "passengers_2026": 4555
+    },
+    {
+      "origin": "MEL",
+      "destination": "AUH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 79,
+      "foreign_city": "Abu Dhabi",
+      "australian_city": "Melbourne",
+      "passengers_2026": 12446
+    },
+    {
+      "origin": "MEL",
+      "destination": "AKL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 80,
+      "foreign_city": "Auckland",
+      "australian_city": "Melbourne",
+      "passengers_2026": 79227
+    },
+    {
+      "origin": "MEL",
+      "destination": "BWN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 81,
+      "foreign_city": "Bandar Seri Begawan",
+      "australian_city": "Melbourne",
+      "passengers_2026": 6523
+    },
+    {
+      "origin": "MEL",
+      "destination": "BKK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 82,
+      "foreign_city": "Bangkok",
+      "australian_city": "Melbourne",
+      "passengers_2026": 45258
+    },
+    {
+      "origin": "MEL",
+      "destination": "DMK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 82,
+      "foreign_city": "Bangkok",
+      "australian_city": "Melbourne",
+      "passengers_2026": 45258
+    },
+    {
+      "origin": "MEL",
+      "destination": "PEK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 83,
+      "foreign_city": "Beijing",
+      "australian_city": "Melbourne",
+      "passengers_2026": 9966
+    },
+    {
+      "origin": "MEL",
+      "destination": "PKX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 83,
+      "foreign_city": "Beijing",
+      "australian_city": "Melbourne",
+      "passengers_2026": 9966
+    },
+    {
+      "origin": "MEL",
+      "destination": "TFU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 84,
+      "foreign_city": "Chengdu",
+      "australian_city": "Melbourne",
+      "passengers_2026": 4034
+    },
+    {
+      "origin": "MEL",
+      "destination": "CTU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 84,
+      "foreign_city": "Chengdu",
+      "australian_city": "Melbourne",
+      "passengers_2026": 4034
+    },
+    {
+      "origin": "MEL",
+      "destination": "CHC",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 86,
+      "foreign_city": "Christchurch",
+      "australian_city": "Melbourne",
+      "passengers_2026": 26620
+    },
+    {
+      "origin": "MEL",
+      "destination": "CMB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 87,
+      "foreign_city": "Colombo",
+      "australian_city": "Melbourne",
+      "passengers_2026": 15392
+    },
+    {
+      "origin": "MEL",
+      "destination": "DFW",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 88,
+      "foreign_city": "Dallas",
+      "australian_city": "Melbourne",
+      "passengers_2026": 4588
+    },
+    {
+      "origin": "MEL",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 89,
+      "foreign_city": "Denpasar",
+      "australian_city": "Melbourne",
+      "passengers_2026": 105320
+    },
+    {
+      "origin": "MEL",
+      "destination": "DOH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 90,
+      "foreign_city": "Doha",
+      "australian_city": "Melbourne",
+      "passengers_2026": 38436
+    },
+    {
+      "origin": "MEL",
+      "destination": "DXB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 91,
+      "foreign_city": "Dubai",
+      "australian_city": "Melbourne",
+      "passengers_2026": 43725
+    },
+    {
+      "origin": "MEL",
+      "destination": "CAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 92,
+      "foreign_city": "Guangzhou",
+      "australian_city": "Melbourne",
+      "passengers_2026": 22080
+    },
+    {
+      "origin": "MEL",
+      "destination": "HAK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 93,
+      "foreign_city": "Haikou",
+      "australian_city": "Melbourne",
+      "passengers_2026": 4113
+    },
+    {
+      "origin": "MEL",
+      "destination": "HGH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 94,
+      "foreign_city": "Hangzhou",
+      "australian_city": "Melbourne",
+      "passengers_2026": 1087
+    },
+    {
+      "origin": "MEL",
+      "destination": "HAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 95,
+      "foreign_city": "Hanoi",
+      "australian_city": "Melbourne",
+      "passengers_2026": 9249
+    },
+    {
+      "origin": "MEL",
+      "destination": "SGN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 96,
+      "foreign_city": "Ho Chi Minh City",
+      "australian_city": "Melbourne",
+      "passengers_2026": 42621
+    },
+    {
+      "origin": "MEL",
+      "destination": "HKG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 97,
+      "foreign_city": "Hong Kong",
+      "australian_city": "Melbourne",
+      "passengers_2026": 73584
+    },
+    {
+      "origin": "MEL",
+      "destination": "IST",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 99,
+      "foreign_city": "Istanbul",
+      "australian_city": "Melbourne",
+      "passengers_2026": 6597
+    },
+    {
+      "origin": "MEL",
+      "destination": "CGK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 100,
+      "foreign_city": "Jakarta",
+      "australian_city": "Melbourne",
+      "passengers_2026": 14025
+    },
+    {
+      "origin": "MEL",
+      "destination": "KUL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 101,
+      "foreign_city": "Kuala Lumpur",
+      "australian_city": "Melbourne",
+      "passengers_2026": 56967
+    },
+    {
+      "origin": "MEL",
+      "destination": "LAX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 102,
+      "foreign_city": "Los Angeles",
+      "australian_city": "Melbourne",
+      "passengers_2026": 25880
+    },
+    {
+      "origin": "MEL",
+      "destination": "MNL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 103,
+      "foreign_city": "Manila",
+      "australian_city": "Melbourne",
+      "passengers_2026": 20379
+    },
+    {
+      "origin": "MEL",
+      "destination": "NAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 104,
+      "foreign_city": "Nadi",
+      "australian_city": "Melbourne",
+      "passengers_2026": 30722
+    },
+    {
+      "origin": "MEL",
+      "destination": "NKG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 105,
+      "foreign_city": "Nanjing",
+      "australian_city": "Melbourne",
+      "passengers_2026": 3955
+    },
+    {
+      "origin": "MEL",
+      "destination": "DEL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 106,
+      "foreign_city": "New Delhi",
+      "australian_city": "Melbourne",
+      "passengers_2026": 8640
+    },
+    {
+      "origin": "MEL",
+      "destination": "HKT",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 108,
+      "foreign_city": "Phuket",
+      "australian_city": "Melbourne",
+      "passengers_2026": 9983
+    },
+    {
+      "origin": "MEL",
+      "destination": "TAO",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 109,
+      "foreign_city": "Qingdao",
+      "australian_city": "Melbourne",
+      "passengers_2026": 2703
+    },
+    {
+      "origin": "MEL",
+      "destination": "ZQN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 110,
+      "foreign_city": "Queenstown",
+      "australian_city": "Melbourne",
+      "passengers_2026": 30034
+    },
+    {
+      "origin": "MEL",
+      "destination": "SFO",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 111,
+      "foreign_city": "San Francisco",
+      "australian_city": "Melbourne",
+      "passengers_2026": 12278
+    },
+    {
+      "origin": "MEL",
+      "destination": "SCL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 112,
+      "foreign_city": "Santiago",
+      "australian_city": "Melbourne",
+      "passengers_2026": 11258
+    },
+    {
+      "origin": "MEL",
+      "destination": "PVG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 114,
+      "foreign_city": "Shanghai",
+      "australian_city": "Melbourne",
+      "passengers_2026": 36372
+    },
+    {
+      "origin": "MEL",
+      "destination": "SHA",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 114,
+      "foreign_city": "Shanghai",
+      "australian_city": "Melbourne",
+      "passengers_2026": 36372
+    },
+    {
+      "origin": "MEL",
+      "destination": "SZX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 115,
+      "foreign_city": "Shenzhen",
+      "australian_city": "Melbourne",
+      "passengers_2026": 6921
+    },
+    {
+      "origin": "MEL",
+      "destination": "SIN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 116,
+      "foreign_city": "Singapore",
+      "australian_city": "Melbourne",
+      "passengers_2026": 160526
+    },
+    {
+      "origin": "MEL",
+      "destination": "TPE",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 117,
+      "foreign_city": "Taipei",
+      "australian_city": "Melbourne",
+      "passengers_2026": 9214
+    },
+    {
+      "origin": "MEL",
+      "destination": "HND",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 118,
+      "foreign_city": "Tokyo",
+      "australian_city": "Melbourne",
+      "passengers_2026": 16351
+    },
+    {
+      "origin": "MEL",
+      "destination": "NRT",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 118,
+      "foreign_city": "Tokyo",
+      "australian_city": "Melbourne",
+      "passengers_2026": 16351
+    },
+    {
+      "origin": "MEL",
+      "destination": "WLG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 119,
+      "foreign_city": "Wellington",
+      "australian_city": "Melbourne",
+      "passengers_2026": 13357
+    },
+    {
+      "origin": "MEL",
+      "destination": "XMN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 120,
+      "foreign_city": "Xiamen",
+      "australian_city": "Melbourne",
+      "passengers_2026": 12338
+    },
+    {
+      "origin": "NTL",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 122,
+      "foreign_city": "Denpasar",
+      "australian_city": "Newcastle",
+      "passengers_2026": 7751
+    },
+    {
+      "origin": "PER",
+      "destination": "AKL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 124,
+      "foreign_city": "Auckland",
+      "australian_city": "Perth",
+      "passengers_2026": 24161
+    },
+    {
+      "origin": "PER",
+      "destination": "BKK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 125,
+      "foreign_city": "Bangkok",
+      "australian_city": "Perth",
+      "passengers_2026": 20538
+    },
+    {
+      "origin": "PER",
+      "destination": "DMK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 125,
+      "foreign_city": "Bangkok",
+      "australian_city": "Perth",
+      "passengers_2026": 20538
+    },
+    {
+      "origin": "PER",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 126,
+      "foreign_city": "Denpasar",
+      "australian_city": "Perth",
+      "passengers_2026": 114761
+    },
+    {
+      "origin": "PER",
+      "destination": "DOH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 127,
+      "foreign_city": "Doha",
+      "australian_city": "Perth",
+      "passengers_2026": 19643
+    },
+    {
+      "origin": "PER",
+      "destination": "DXB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 128,
+      "foreign_city": "Dubai",
+      "australian_city": "Perth",
+      "passengers_2026": 17160
+    },
+    {
+      "origin": "PER",
+      "destination": "CAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 129,
+      "foreign_city": "Guangzhou",
+      "australian_city": "Perth",
+      "passengers_2026": 4059
+    },
+    {
+      "origin": "PER",
+      "destination": "SGN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 130,
+      "foreign_city": "Ho Chi Minh City",
+      "australian_city": "Perth",
+      "passengers_2026": 13284
+    },
+    {
+      "origin": "PER",
+      "destination": "HKG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 131,
+      "foreign_city": "Hong Kong",
+      "australian_city": "Perth",
+      "passengers_2026": 26187
+    },
+    {
+      "origin": "PER",
+      "destination": "CGK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 132,
+      "foreign_city": "Jakarta",
+      "australian_city": "Perth",
+      "passengers_2026": 5513
+    },
+    {
+      "origin": "PER",
+      "destination": "JNB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 133,
+      "foreign_city": "Johannesburg",
+      "australian_city": "Perth",
+      "passengers_2026": 12240
+    },
+    {
+      "origin": "PER",
+      "destination": "KUL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 134,
+      "foreign_city": "Kuala Lumpur",
+      "australian_city": "Perth",
+      "passengers_2026": 45634
+    },
+    {
+      "origin": "PER",
+      "destination": "LHR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 135,
+      "foreign_city": "London",
+      "australian_city": "Perth",
+      "passengers_2026": 11558
+    },
+    {
+      "origin": "PER",
+      "destination": "MNL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 136,
+      "foreign_city": "Manila",
+      "australian_city": "Perth",
+      "passengers_2026": 8248
+    },
+    {
+      "origin": "PER",
+      "destination": "MRU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 137,
+      "foreign_city": "Mauritius",
+      "australian_city": "Perth",
+      "passengers_2026": 5751
+    },
+    {
+      "origin": "PER",
+      "destination": "HKT",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 139,
+      "foreign_city": "Phuket",
+      "australian_city": "Perth",
+      "passengers_2026": 12144
+    },
+    {
+      "origin": "PER",
+      "destination": "FCO",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 140,
+      "foreign_city": "Rome",
+      "australian_city": "Perth",
+      "passengers_2026": 10047
+    },
+    {
+      "origin": "PER",
+      "destination": "SIN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 141,
+      "foreign_city": "Singapore",
+      "australian_city": "Perth",
+      "passengers_2026": 125469
+    },
+    {
+      "origin": "PER",
+      "destination": "HND",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 142,
+      "foreign_city": "Tokyo",
+      "australian_city": "Perth",
+      "passengers_2026": 3994
+    },
+    {
+      "origin": "PER",
+      "destination": "NRT",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 142,
+      "foreign_city": "Tokyo",
+      "australian_city": "Perth",
+      "passengers_2026": 3994
+    },
+    {
+      "origin": "MCY",
+      "destination": "AKL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 144,
+      "foreign_city": "Auckland",
+      "australian_city": "Sunshine Coast",
+      "passengers_2026": 7045
+    },
+    {
+      "origin": "MCY",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 145,
+      "foreign_city": "Denpasar",
+      "australian_city": "Sunshine Coast",
+      "passengers_2026": 5777
+    },
+    {
+      "origin": "SYD",
+      "destination": "AUH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 147,
+      "foreign_city": "Abu Dhabi",
+      "australian_city": "Sydney",
+      "passengers_2026": 24466
+    },
+    {
+      "origin": "SYD",
+      "destination": "APW",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 148,
+      "foreign_city": "Apia",
+      "australian_city": "Sydney",
+      "passengers_2026": 354
+    },
+    {
+      "origin": "SYD",
+      "destination": "AKL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 149,
+      "foreign_city": "Auckland",
+      "australian_city": "Sydney",
+      "passengers_2026": 101626
+    },
+    {
+      "origin": "SYD",
+      "destination": "BLR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 150,
+      "foreign_city": "Bangalore",
+      "australian_city": "Sydney",
+      "passengers_2026": 9246
+    },
+    {
+      "origin": "SYD",
+      "destination": "BKK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 151,
+      "foreign_city": "Bangkok",
+      "australian_city": "Sydney",
+      "passengers_2026": 44961
+    },
+    {
+      "origin": "SYD",
+      "destination": "DMK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 151,
+      "foreign_city": "Bangkok",
+      "australian_city": "Sydney",
+      "passengers_2026": 44961
+    },
+    {
+      "origin": "SYD",
+      "destination": "PEK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 152,
+      "foreign_city": "Beijing",
+      "australian_city": "Sydney",
+      "passengers_2026": 16732
+    },
+    {
+      "origin": "SYD",
+      "destination": "PKX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 152,
+      "foreign_city": "Beijing",
+      "australian_city": "Sydney",
+      "passengers_2026": 16732
+    },
+    {
+      "origin": "SYD",
+      "destination": "TFU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 153,
+      "foreign_city": "Chengdu",
+      "australian_city": "Sydney",
+      "passengers_2026": 4526
+    },
+    {
+      "origin": "SYD",
+      "destination": "CTU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 153,
+      "foreign_city": "Chengdu",
+      "australian_city": "Sydney",
+      "passengers_2026": 4526
+    },
+    {
+      "origin": "SYD",
+      "destination": "CHC",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 156,
+      "foreign_city": "Christchurch",
+      "australian_city": "Sydney",
+      "passengers_2026": 32004
+    },
+    {
+      "origin": "SYD",
+      "destination": "CMB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 157,
+      "foreign_city": "Colombo",
+      "australian_city": "Sydney",
+      "passengers_2026": 7663
+    },
+    {
+      "origin": "SYD",
+      "destination": "DFW",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 158,
+      "foreign_city": "Dallas",
+      "australian_city": "Sydney",
+      "passengers_2026": 20286
+    },
+    {
+      "origin": "SYD",
+      "destination": "DPS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 159,
+      "foreign_city": "Denpasar",
+      "australian_city": "Sydney",
+      "passengers_2026": 79228
+    },
+    {
+      "origin": "SYD",
+      "destination": "DOH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 160,
+      "foreign_city": "Doha",
+      "australian_city": "Sydney",
+      "passengers_2026": 39087
+    },
+    {
+      "origin": "SYD",
+      "destination": "DXB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 161,
+      "foreign_city": "Dubai",
+      "australian_city": "Sydney",
+      "passengers_2026": 51000
+    },
+    {
+      "origin": "SYD",
+      "destination": "CAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 162,
+      "foreign_city": "Guangzhou",
+      "australian_city": "Sydney",
+      "passengers_2026": 34398
+    },
+    {
+      "origin": "SYD",
+      "destination": "HAK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 163,
+      "foreign_city": "Haikou",
+      "australian_city": "Sydney",
+      "passengers_2026": 4682
+    },
+    {
+      "origin": "SYD",
+      "destination": "HLZ",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 164,
+      "foreign_city": "Hamilton",
+      "australian_city": "Sydney",
+      "passengers_2026": 2990
+    },
+    {
+      "origin": "SYD",
+      "destination": "HAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 166,
+      "foreign_city": "Hanoi",
+      "australian_city": "Sydney",
+      "passengers_2026": 9550
+    },
+    {
+      "origin": "SYD",
+      "destination": "SGN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 167,
+      "foreign_city": "Ho Chi Minh City",
+      "australian_city": "Sydney",
+      "passengers_2026": 40716
+    },
+    {
+      "origin": "SYD",
+      "destination": "HKG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 168,
+      "foreign_city": "Hong Kong",
+      "australian_city": "Sydney",
+      "passengers_2026": 88439
+    },
+    {
+      "origin": "SYD",
+      "destination": "HNL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 169,
+      "foreign_city": "Honolulu",
+      "australian_city": "Sydney",
+      "passengers_2026": 22334
+    },
+    {
+      "origin": "SYD",
+      "destination": "IST",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 170,
+      "foreign_city": "Istanbul",
+      "australian_city": "Sydney",
+      "passengers_2026": 12935
+    },
+    {
+      "origin": "SYD",
+      "destination": "CGK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 171,
+      "foreign_city": "Jakarta",
+      "australian_city": "Sydney",
+      "passengers_2026": 19137
+    },
+    {
+      "origin": "SYD",
+      "destination": "TNA",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 172,
+      "foreign_city": "Jinan",
+      "australian_city": "Sydney",
+      "passengers_2026": 558
+    },
+    {
+      "origin": "SYD",
+      "destination": "JNB",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 173,
+      "foreign_city": "Johannesburg",
+      "australian_city": "Sydney",
+      "passengers_2026": 11116
+    },
+    {
+      "origin": "SYD",
+      "destination": "KUL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 174,
+      "foreign_city": "Kuala Lumpur",
+      "australian_city": "Sydney",
+      "passengers_2026": 62299
+    },
+    {
+      "origin": "SYD",
+      "destination": "LHR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 175,
+      "foreign_city": "London",
+      "australian_city": "Sydney",
+      "passengers_2026": 18922
+    },
+    {
+      "origin": "SYD",
+      "destination": "LAX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 176,
+      "foreign_city": "Los Angeles",
+      "australian_city": "Sydney",
+      "passengers_2026": 62749
+    },
+    {
+      "origin": "SYD",
+      "destination": "MNL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 179,
+      "foreign_city": "Manila",
+      "australian_city": "Sydney",
+      "passengers_2026": 37192
+    },
+    {
+      "origin": "SYD",
+      "destination": "NAN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 180,
+      "foreign_city": "Nadi",
+      "australian_city": "Sydney",
+      "passengers_2026": 53402
+    },
+    {
+      "origin": "SYD",
+      "destination": "NKG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 181,
+      "foreign_city": "Nanjing",
+      "australian_city": "Sydney",
+      "passengers_2026": 3843
+    },
+    {
+      "origin": "SYD",
+      "destination": "DEL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 182,
+      "foreign_city": "New Delhi",
+      "australian_city": "Sydney",
+      "passengers_2026": 6814
+    },
+    {
+      "origin": "SYD",
+      "destination": "JFK",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 183,
+      "foreign_city": "New York",
+      "australian_city": "Sydney",
+      "passengers_2026": 4034
+    },
+    {
+      "origin": "SYD",
+      "destination": "NOU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 184,
+      "foreign_city": "Noumea",
+      "australian_city": "Sydney",
+      "passengers_2026": 6500
+    },
+    {
+      "origin": "SYD",
+      "destination": "KIX",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 186,
+      "foreign_city": "Osaka",
+      "australian_city": "Sydney",
+      "passengers_2026": 7511
+    },
+    {
+      "origin": "SYD",
+      "destination": "CDG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 187,
+      "foreign_city": "Paris",
+      "australian_city": "Sydney",
+      "passengers_2026": 4347
+    },
+    {
+      "origin": "SYD",
+      "destination": "HKT",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 188,
+      "foreign_city": "Phuket",
+      "australian_city": "Sydney",
+      "passengers_2026": 7726
+    },
+    {
+      "origin": "SYD",
+      "destination": "POM",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 189,
+      "foreign_city": "Port Moresby",
+      "australian_city": "Sydney",
+      "passengers_2026": 2838
+    },
+    {
+      "origin": "SYD",
+      "destination": "VLI",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 190,
+      "foreign_city": "Port Vila",
+      "australian_city": "Sydney",
+      "passengers_2026": 5387
+    },
+    {
+      "origin": "SYD",
+      "destination": "TAO",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 191,
+      "foreign_city": "Qingdao",
+      "australian_city": "Sydney",
+      "passengers_2026": 3602
+    },
+    {
+      "origin": "SYD",
+      "destination": "ZQN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 192,
+      "foreign_city": "Queenstown",
+      "australian_city": "Sydney",
+      "passengers_2026": 54216
+    },
+    {
+      "origin": "SYD",
+      "destination": "RAR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 193,
+      "foreign_city": "Rarotonga",
+      "australian_city": "Sydney",
+      "passengers_2026": 4984
+    },
+    {
+      "origin": "SYD",
+      "destination": "FCO",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 194,
+      "foreign_city": "Rome",
+      "australian_city": "Sydney",
+      "passengers_2026": 2703
+    },
+    {
+      "origin": "SYD",
+      "destination": "SFO",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 195,
+      "foreign_city": "San Francisco",
+      "australian_city": "Sydney",
+      "passengers_2026": 17609
+    },
+    {
+      "origin": "SYD",
+      "destination": "SCL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 196,
+      "foreign_city": "Santiago",
+      "australian_city": "Sydney",
+      "passengers_2026": 21079
+    },
+    {
+      "origin": "SYD",
+      "destination": "ICN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 198,
+      "foreign_city": "Seoul",
+      "australian_city": "Sydney",
+      "passengers_2026": 53218
+    },
+    {
+      "origin": "SYD",
+      "destination": "PVG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 199,
+      "foreign_city": "Shanghai",
+      "australian_city": "Sydney",
+      "passengers_2026": 39333
+    },
+    {
+      "origin": "SYD",
+      "destination": "SHA",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 199,
+      "foreign_city": "Shanghai",
+      "australian_city": "Sydney",
+      "passengers_2026": 39333
+    },
+    {
+      "origin": "SYD",
+      "destination": "SIN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 201,
+      "foreign_city": "Singapore",
+      "australian_city": "Sydney",
+      "passengers_2026": 151235
+    },
+    {
+      "origin": "SYD",
+      "destination": "TPE",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 202,
+      "foreign_city": "Taipei",
+      "australian_city": "Sydney",
+      "passengers_2026": 12216
+    },
+    {
+      "origin": "SYD",
+      "destination": "HND",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 204,
+      "foreign_city": "Tokyo",
+      "australian_city": "Sydney",
+      "passengers_2026": 55657
+    },
+    {
+      "origin": "SYD",
+      "destination": "NRT",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 204,
+      "foreign_city": "Tokyo",
+      "australian_city": "Sydney",
+      "passengers_2026": 55657
+    },
+    {
+      "origin": "SYD",
+      "destination": "TBU",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 205,
+      "foreign_city": "Tongatapu",
+      "australian_city": "Sydney",
+      "passengers_2026": 2118
+    },
+    {
+      "origin": "SYD",
+      "destination": "YYZ",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 206,
+      "foreign_city": "Toronto",
+      "australian_city": "Sydney",
+      "passengers_2026": 2534
+    },
+    {
+      "origin": "SYD",
+      "destination": "YVR",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 207,
+      "foreign_city": "Vancouver",
+      "australian_city": "Sydney",
+      "passengers_2026": 20924
+    },
+    {
+      "origin": "SYD",
+      "destination": "WLG",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 208,
+      "foreign_city": "Wellington",
+      "australian_city": "Sydney",
+      "passengers_2026": 19756
+    },
+    {
+      "origin": "SYD",
+      "destination": "WUH",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 209,
+      "foreign_city": "Wuhan",
+      "australian_city": "Sydney",
+      "passengers_2026": 1667
+    },
+    {
+      "origin": "SYD",
+      "destination": "XMN",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 210,
+      "foreign_city": "Xiamen",
+      "australian_city": "Sydney",
+      "passengers_2026": 12941
+    },
+    {
+      "origin": "SYD",
+      "destination": "XIY",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "sheet": "Table_5",
+      "row": 211,
+      "foreign_city": "Xi'an",
+      "australian_city": "Sydney",
+      "passengers_2026": 1363
+    },
+    {
+      "origin": "AVV",
+      "destination": "DPS",
+      "source": "https://avalonairport.com.au/flights/airlines-schedules/",
+      "kind": "published airport destination"
+    },
+    {
+      "origin": "HBA",
+      "destination": "AKL",
+      "source": "https://hobartairport.com.au/travellers/destinations/",
+      "kind": "published airport destination"
+    },
+    {
+      "origin": "WSI",
+      "destination": "AKL",
+      "source": "https://www.wsiairport.com.au/faqs?page=1",
+      "kind": "published airport destination"
+    },
+    {
+      "origin": "ADL",
+      "destination": "CHC",
+      "source": "https://southaustralia.com/plan-a-trip/fly-to-adelaide-south-australia",
+      "kind": "published airport destination"
+    },
+    {
+      "origin": "PER",
+      "destination": "CDG",
+      "source": "https://www.qantas.com/en-au/where-we-fly/international-flight-routes",
+      "kind": "published airport destination"
+    }
+  ],
+  "unresolved_airports": [],
+  "excluded_candidates": [
+    {
+      "airport": "WSI",
+      "destination": "SIN",
+      "reason": "Published start 23 November 2026 is after replay date",
+      "source": "https://www.destinationnsw.com.au/newsroom/western-sydney-to-open-to-passengers-on-25-october-2026"
+    },
+    {
+      "airport": "ADL",
+      "destination": "SFO",
+      "reason": "Published seasonal service December to February, outside replay date",
+      "source": "https://southaustralia.com/plan-a-trip/fly-to-adelaide-south-australia"
+    },
+    {
+      "airport": "NTL",
+      "destination": "SIN",
+      "reason": "Published service via DPS; search nonstop NTL-DPS only",
+      "source": "https://www.newcastleairport.com.au/flights/our-destinations/"
+    },
+    {
+      "airport": "MCY",
+      "destination": "SIN",
+      "reason": "Published service via DPS; search nonstop MCY-DPS only",
+      "source": "https://www.sunshinecoastairport.com.au/flights/our-destinations/bali-singapore/"
+    },
+    {
+      "airport": "ADL",
+      "destination": "HKG",
+      "reason": "Published seasonal return 10 November 2026 is after replay date",
+      "source": "https://tourism.sa.gov.au/news-articles/tourism-and-trade-boom-with-more-hong-kong-to-adelaide-flights-this-summer"
+    },
+    {
+      "airport": "MEL",
+      "destination": "ICN",
+      "reason": "Published seasonal return 18 December 2026 is after replay date",
+      "source": "https://www.melbourneairport.com.au/corporate/Korean-Air-set-to-land-at-Melbourne-Airport"
+    }
+  ],
+  "search_strategy": "Only reported passenger city pairs and explicit dated airport supplements; both directions, exact IATA airports. No domestic-airport Cartesian product. City-pair traffic may include stops; only dated exact-airport segments are retained."
+}

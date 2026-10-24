@@ -2,6 +2,12 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Malaysian domestic flights
+
+Choose **Malaysia · Flights** for **2 November 2026**. Airport boards and flight previews show the **lowest captured MYR quote per exact flight**, for **one adult, economy, one-way**. Unreturned fares display **Price unavailable**. Prices are dated snapshots; optional baggage and charges may cost extra. KUL and Subang (SZB) remain separate airports, and all clocks use MYT.
+
+The snapshot has **457 overlapping flights across 18 airports**, with **409 fares** and **48 unreturned prices**. Airline/airport filters, departures/arrivals, Destinations, fullscreen boards and flight-frequency lines reuse the existing flight explorer. Peninsular Malaysia, Sabah/Labuan and Sarawak are searched, including historical rural-route candidates; rural flights remain a coverage gap. See [Malaysian flight notes](MALAYSIAN_FLIGHTS_NOTES.md) for actual coverage, fare semantics and cached rebuilding.
+
 ## Australian international flights
 
 In **Australia · Flights**, choose **Flights → International / Both** to explore captured overseas connections for **2 November 2026**, alongside the existing domestic snapshot. Domestic still opens first. Airport boards use local time while the timeline stays on Melbourne time. Airline-code filters, airport Departures/Arrivals/Both, Destinations, fullscreen boards and frequency maps work across both scopes. Pacific routes remain continuous across the date line.

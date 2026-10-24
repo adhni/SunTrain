@@ -108,16 +108,19 @@ def routes():
 
 
 def country_config(country='AU', scope='domestic'):
+    if country == 'MY' and scope != 'domestic':
+        raise ValueError('Malaysia currently supports domestic flights only')
     if country == 'AU' and scope == 'domestic':
         return dict(country='AU', zones=ZONES, timezone='Australia/Melbourne', end_date=None, manifest=None)
-    if country not in {'AU', 'ID'}:
+    if country not in {'AU', 'ID', 'MY'}:
         raise ValueError(f'Unsupported flight country: {country}')
-    filename = ('australia_international_routes.json' if country == 'AU' else
+    filename = ('malaysia_flights_routes.json' if country == 'MY' else
+        'australia_international_routes.json' if country == 'AU' else
         'indonesia_international_routes.json' if scope == 'international' else 'indonesia_flights_routes.json')
     manifest = json.loads((ROOT / 'data/sources' / filename).read_text())
     return dict(country=country, zones={a['code']: a['timezone'] for a in manifest['airports']},
         timezone=manifest['timezone'], end_date=manifest['end_date'], manifest=manifest,
-        scope=scope, max_duration=manifest.get('max_duration', 8 * 3600))
+        scope=scope, capture_prices=country=='MY', currency='MYR' if country=='MY' else None, max_duration=manifest.get('max_duration', 8 * 3600))
 
 
 def expected_queries(search_date, pairs, config=None, end_date=None):
@@ -130,9 +133,9 @@ def expected_queries(search_date, pairs, config=None, end_date=None):
             start = (midnight - timedelta(seconds=config['max_duration'])).astimezone(zone).date()
             end = (finish - timedelta(seconds=1)).astimezone(zone).date()
             dates = [(start + timedelta(days=n)).isoformat() for n in range((end-start).days+1)]
-        elif config['country'] == 'ID':
+        elif config['country'] in {'ID','MY'}:
             start = date.fromisoformat(search_date) - timedelta(days=1)
-            end = date.fromisoformat(end_date or config['end_date']) + timedelta(days=1)
+            end = date.fromisoformat(end_date or config['end_date']) + timedelta(days=1 if config['country']=='ID' else 0)
             dates = [(start + timedelta(days=n)).isoformat() for n in range((end-start).days+1)]
         else:
             midnight = datetime.fromisoformat(search_date).replace(tzinfo=ZoneInfo(config['timezone']))
@@ -181,7 +184,10 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                     if shutil.disk_usage(cache).free < 128 * 1024 * 1024:
                         raise RuntimeError('Low disk space; collection stopped before exhausting the disk')
                     origin, destination, day, path = batch.get_nowait()
-                    url = 'https://www.google.com/travel/flights?' + urlencode(dict(hl='en', q=f'Flights from {origin} to {destination} on {day} one way nonstop'))
+                    params=dict(hl='en', q=f'Flights from {origin} to {destination} on {day} one way nonstop')
+                    if config.get('capture_prices'):
+                        params.update(curr=config['currency']);params['q']+=' one adult economy'
+                    url = 'https://www.google.com/travel/flights?' + urlencode(params)
                     try:
                         await page.goto(url, wait_until='commit', timeout=45000)
                         if '/sorry/' in page.url:
@@ -189,13 +195,20 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                         # Functions avoid the page's Trusted Types restriction on eval strings.
                         await page.wait_for_function('''() => [...document.scripts].some(s => s.textContent.includes("key: 'ds:1'"))''', timeout=15000)
                         scripts = await page.locator('script').all_text_contents()
-                        rejected = [] if config['country'] == 'ID' or config.get('scope') == 'international' else None
+                        rejected = [] if config['country'] in {'ID','MY'} or config.get('scope') == 'international' else None
                         records = parse_results(scripts, origin, destination, day, config['zones'], rejected, config.get('max_duration', 8 * 3600))
                         body = await page.locator('body').inner_text()
                         if '/sorry/' in page.url or 'unusual traffic' in body.lower():
                             raise RuntimeError('Search access limited; stop rather than retrying a challenge')
+                        captured_at=datetime.now(timezone.utc).isoformat()
+                        if config.get('capture_prices'):
+                            from scripts.flight_prices import cheapest_prices, verify_fare_context
+                            verify_fare_context(body,config['currency'])
+                            prices=cheapest_prices(scripts,records,config['currency'])
+                            for record in records:
+                                if record['id'] in prices:record['price']={**prices[record['id']],'captured_at':captured_at}
                         result = dict(origin=origin, destination=destination, date=day, url=url,
-                            captured_at=datetime.now(timezone.utc).isoformat(), flights=records,
+                            captured_at=captured_at, flights=records,
                             page_sha256=hashlib.sha256('\n'.join(scripts).encode()).hexdigest(),
                             status='results' if records else ('rejected_source_records' if rejected else 'no_matching_direct_flights'))
                         if rejected:
@@ -242,6 +255,10 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
     records, queries = {}, []
     config = config or country_config()
     end_date = end_date or config['end_date'] or day
+    if config['country'] == 'MY':
+        countries = {a['code']: a['country'] for a in config['manifest']['airports']}
+        if any(countries.get(a) != 'MY' or countries.get(b) != 'MY' for a, b in pairs):
+            raise ValueError('Malaysian domestic routes require two Malaysian airports')
     if config.get('scope') == 'international':
         countries = {a['code']: a['country'] for a in config['manifest']['airports']}
         if any((countries[a] == config['country']) == (countries[b] == config['country']) for a, b in pairs):
@@ -299,9 +316,14 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
         reference['airports'] = [a for a in airports if a['code'] in represented]
         metadata = reference['metadata']
         metadata['country'] = config['country']
+        if config.get('capture_prices'):
+            metadata['fare_context']=dict(currency=config['currency'],adults=1,cabin='economy',trip_type='one_way',taxes='Required taxes and fees included; optional charges and baggage may cost extra',basis='Lowest returned quote for the exact flight; captured prices, not live fares')
+            metadata['priced_flights']=sum('price' in f for f in reference['flights'])
         metadata['airlines'] = sorted({f['airline'] for f in reference['flights']})
         metadata['replay_note'] = ('Indonesian domestic flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
             if config['country'] == 'ID' else f'Australian domestic flight schedules for {day}. Timeline: Melbourne time; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.')
+        if config['country']=='MY':
+            metadata['replay_note']='Malaysian domestic flight schedules for 2 November 2026. Timeline and airport boards use Malaysia time. Prices are captured one-adult economy one-way quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
         if config.get('scope') == 'international':
             metadata['scope'] = 'international'
             metadata['replay_note'] = metadata['replay_note'].replace('domestic', 'international')
@@ -339,7 +361,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--country', choices=['AU', 'ID'], default='AU')
+    parser.add_argument('--country', choices=['AU', 'ID', 'MY'], default='AU')
     parser.add_argument('--scope', choices=['domestic', 'international'], default='domestic')
     parser.add_argument('--end-date')
     parser.add_argument('--date', default=DAY)
@@ -353,8 +375,9 @@ if __name__ == '__main__':
     if args.country == 'ID' and args.scope == 'domestic':
         priority = [('CGK','DPS'), ('HLP','SUB'), ('YIA','UPG'), ('PNK','KTG'), ('UPG','AMQ'), ('DJJ','WMX')]
         pairs = priority + [tuple(pair) for pair in pairs if tuple(pair) not in priority]
-    cache = args.cache or ROOT / ('.cache/google-flights-indonesia' if args.country == 'ID' else '.cache/google-flights')
-    output = args.output or ROOT / f"data/reference/{'indonesia' if args.country == 'ID' else 'australia'}_flights/{args.date}.json.gz"
+    name={'AU':'australia','ID':'indonesia','MY':'malaysia'}[args.country]
+    cache = args.cache or ROOT / (f'.cache/google-flights-{name}' if args.country != 'AU' else '.cache/google-flights')
+    output = args.output or ROOT / f"data/reference/{name}_flights/{args.date}.json.gz"
     if args.scope == 'international':
         name = 'indonesia' if args.country == 'ID' else 'australia'
         cache = args.cache or ROOT / f'.cache/google-flights-{name}-international'

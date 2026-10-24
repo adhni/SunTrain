@@ -28,16 +28,21 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'CX': ('Cathay Pacific', '#54aa93'), 'UA': ('United', '#649ce0'),
             'AA': ('American', '#a0afc6'), 'DL': ('Delta', '#cf7b89'),
             'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
-            'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9')}
+            'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9'), 'AK': ('AirAsia', '#e95055'),
+            'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa')}
 
 
 def airline_style(carrier, name):
     palette = ('#62b4b4', '#d58b68', '#9ba9da', '#d3b85f', '#ba8fc4')
     index = int(hashlib.sha256(carrier.encode()).hexdigest()[:8], 16) % len(palette)
+    if carrier == 'MY':
+        return (name or AIRLINES[carrier][0], AIRLINES[carrier][1])
     return AIRLINES.get(carrier, (name or carrier, palette[index]))
 
 
 def reference_path(business_date=None, city='australia_flights'):
+    if city == 'malaysia_flights':
+        return Path(os.getenv('SUNTRAIN_MALAYSIA_FLIGHTS_REFERENCE', str(DIRECTORY.parent / 'malaysia_flights/2026-11-02.json.gz')))
     if city == 'indonesia_flights':
         return Path(os.getenv('SUNTRAIN_INDONESIA_FLIGHTS_REFERENCE', str(DIRECTORY.parent / 'indonesia_flights/2026-11-02.json.gz')))
     if city != 'australia_flights':
@@ -48,6 +53,7 @@ def reference_path(business_date=None, city='australia_flights'):
 
 def reference_paths(business_date=None, city='australia_flights'):
     paths = [reference_path(business_date, city)]
+    if city == 'malaysia_flights':return paths
     prefix = 'INDONESIA' if city == 'indonesia_flights' else 'AUSTRALIA'
     # The legacy March 2013 Australian snapshot remains isolated.
     if not (city == 'australia_flights' and business_date and business_date.startswith('2013-03-')):
@@ -96,7 +102,7 @@ def load_reference(business_date, city):
     for path in reference_paths(business_date, city):
         with gzip.open(path, 'rt') as stream:
             references.append(json.load(stream))
-    country = 'ID' if city == 'indonesia_flights' else 'AU'
+    country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY'}[city]
     airports, flights = {}, {}
     for reference in references:
         catalogue = {a['code']: {**a, 'country': a.get('country', country)} for a in reference['airports']}
@@ -175,6 +181,7 @@ def replay_day(business_date, city='australia_flights'):
             line=route, route_id=key, direction='Scheduled service', origin=a['name'], destination=b['name'],
             color=color, carrier=carrier, flight_scope=flight['flight_scope'], aircraft=flight.get('aircraft') or ('Airbus A' + flight['equipment'] if flight.get('equipment') else 'Aircraft not specified'),
             operating_airline=flight.get('airline', operator), source_page=flight.get('source_page'),
+            **({'price':flight['price']} if flight.get('price') else {}),
             stops=[[origin, flight['departure'], flight['departure']], [destination, flight['arrival'], flight['arrival']]],
             legs=[key], timing_uncertain=False))
     return dict(**replay_settings(city), business_date=business_date,

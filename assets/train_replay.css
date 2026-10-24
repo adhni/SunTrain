@@ -300,3 +300,7 @@ body.replay-board-lock { overflow: hidden; }
   .replay-frequency-help { font-size: .68rem; padding: 8px; }
 }
 .departure-event-tabs .finder-chip { width: auto; min-width: 0; flex: 1 1 0; padding: 9px 6px; font-size: .8rem; line-height: 1.35; overflow-wrap: anywhere; }
+
+.departure-row .departure-fare { grid-column: 1 / -1; font-weight: 650; color: var(--accent); }
+.replay-board-expanded .departure-row .departure-fare { grid-column: 2 / -1; }
+.replay-flight-fare { font-size: 1.15rem; font-weight: 700; margin: 12px 0 4px; }

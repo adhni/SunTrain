@@ -18,6 +18,11 @@
         return [[west+shift, Math.min(...stations.map(s=>s.lat))],
             [east+shift, Math.max(...stations.map(s=>s.lat))]];
     }
+    function priceLabel(service) {
+        const p=service.price;
+        if (!p || !Number.isSafeInteger(p.amount_minor) || p.amount_minor<=0 || p.currency!=='MYR') return 'Price unavailable';
+        return new Intl.NumberFormat(root.suntrainI18n?.locale || 'en-MY', {style:'currency',currency:p.currency,currencyDisplay:'code'}).format(p.amount_minor/100);
+    }
     function planeImage(color = '#f57c28') {
         const canvas = document.createElement('canvas'); canvas.width = canvas.height = 64;
         const ctx = canvas.getContext('2d');
@@ -36,7 +41,7 @@
         ctx.fillStyle = '#fff'; ctx.fillText(code, 44, 20);
         return ctx.getImageData(0, 0, 88, 40);
     }
-    const api = {bearing, bounds, planeImage, airportImage};
+    const api = {bearing, bounds, priceLabel, planeImage, airportImage};
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     root.suntrainFlights = api;
 })(typeof window !== 'undefined' ? window : globalThis);

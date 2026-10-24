@@ -727,5 +727,15 @@
   "Domestic flight schedules for 2 November 2026.": "Domestic flight schedules for 2 November 2026.",
   "Airline colours identify the carrier.": "Airline colours identify the carrier.",
   "Search coverage is partial; some flights may be absent.": "Search coverage is partial; some flights may be absent.",
-  "Paths are illustrative, not recorded flight tracks.": "Paths are illustrative, not recorded flight tracks."
+  "Paths are illustrative, not recorded flight tracks.": "Paths are illustrative, not recorded flight tracks.",
+  "Indonesia · Flights": "Indonesia · Flights",
+  "Indonesian domestic flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.": "Indonesian domestic flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.",
+  "Indonesian domestic flight schedules for 2–8 November 2026.": "Indonesian domestic flight schedules for 2–8 November 2026.",
+  "Timeline: WIB; airport boards use local time.": "Timeline: WIB; airport boards use local time.",
+  "Airport times are local (WIB / WITA / WIT). The replay clock uses WIB.": "Airport times are local (WIB / WITA / WIT). The replay clock uses WIB.",
+  "Return to the Indonesia · Flights starting view": "Return to the Indonesia · Flights starting view",
+  "{n} airports returned · {total} airports searched · Week snapshot": "{n} airports returned · {total} airports searched · Week snapshot",
+  "{n} queries captured · {total} queries planned · Coverage is partial": "{n} queries captured · {total} queries planned · Coverage is partial",
+  "{n} queries failed · {total} queries pending": "{n} queries failed · {total} queries pending",
+  "{n} source records omitted after validation": "{n} source records omitted after validation"
 }

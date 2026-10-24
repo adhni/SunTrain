@@ -121,13 +121,20 @@
         const cards = element("div", undefined, "status-grid city-overview-metrics");
         for (const [label, value, subtitle] of [[summary.estimatedDepartures ? "Replay departures" : "Scheduled departures", summary.departures,
             summary.estimatedDepartures ? "Includes frequency-based estimates" : "Starting in this business day"],
-            ["Routes / lines", summary.routes.length, "Represented in the selection"], [day.city === 'australia_flights' ? 'Airports served' : "Stops served", summary.stops, day.city === 'australia_flights' ? 'Covered by this timetable' : "Distinct mapped stops / platforms"]]) {
+            ["Routes / lines", summary.routes.length, "Represented in the selection"], [day.replay_kind === 'flights' ? 'Airports served' : "Stops served", summary.stops, day.replay_kind === 'flights' ? 'Covered by this timetable' : "Distinct mapped stops / platforms"]]) {
             const card = element("div", undefined, "metric-card");
             card.append(element("div", label, "metric-label"), element("div", count(value), "metric-value"), element("div", subtitle, "metric-subtitle"));
             cards.append(card);
         }
         host.replaceChildren(cards); host.setAttribute("aria-busy", "false");
-        if (day.city === 'australia_flights') host.append(element('p', 'Schedule snapshot. Loaded flights only; search coverage is partial.', 'replay-muted'));
+        if (day.replay_kind === 'flights') host.append(element('p', 'Schedule snapshot. Loaded flights only; search coverage is partial.', 'replay-muted'));
+        if (day.schedule?.coverage) {
+            const c = day.schedule.coverage;
+            host.append(element('p', `${c.airports_returned} airports returned · ${c.airports_searched} airports searched · Week snapshot`, 'replay-muted'));
+            host.append(element('p', `${c.queries_captured} queries captured · ${c.queries_planned} queries planned · Coverage is partial`, 'replay-muted'));
+            if (c.rejected_records) host.append(element('p', `${c.rejected_records} source records omitted after validation`, 'replay-muted'));
+            if (c.failed_queries || c.unattempted_queries) host.append(element('p', `${c.failed_queries} queries failed · ${c.unattempted_queries} queries pending`, 'replay-muted'));
+        }
         if (!summary.departures) {
             host.append(element("p", "No scheduled departures match this date and these filters. Clear a filter or choose another date.", "city-empty replay-muted"));
         } else {

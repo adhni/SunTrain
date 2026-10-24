@@ -608,7 +608,7 @@
                 for (const service of day.services) for (const key of ["line","operator","origin","destination","number"]) if(service[key]) root.suntrainI18n.sourceNames.add(service[key]);
             }
              this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
-            const flights = day.city === 'australia_flights';
+            const flights = day.replay_kind === 'flights';
             setText('replay-open-departures', flights ? 'Airports' : 'Departures');
             setText('replay-legend-label', flights ? 'Flights' : 'Line colours');
             const restartLabel = flights ? 'Restart at midnight' : 'Restart at 03:00';
@@ -623,7 +623,7 @@
             const attribution = $("replay-attribution");
             attribution.replaceChildren();
             if (day.schedule) {
-                if (day.city === 'australia_flights') {
+                if (day.replay_kind === 'flights') {
                     const source = node('a', day.schedule.source);
                     source.href = day.schedule.source_url; source.target = '_blank'; source.rel = 'noopener noreferrer';
                     const airports = node('a', 'Airport coordinates: OurAirports · Public Domain');
@@ -729,7 +729,7 @@
                     service.mode === "bus" && !["chicago", "perth"].includes(this.day.city) ? "Buses" : service.line;
                 entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service, this.day?.city)});
             }
-            setText("replay-legend-label", this.day?.city === "australia_flights" ? "Airlines" : `Line colours · ${entries.size}`);
+            setText("replay-legend-label", this.day?.replay_kind === "flights" ? "Airlines" : `Line colours · ${entries.size}`);
             const disclosure = `${this.day?.city || ""}:${entries.size <= 8}`;
             if (disclosure !== this.legendDisclosure) {
                 legend.open = entries.size <= 8;
@@ -773,7 +773,7 @@
             const pieces = [];
             if (!this.filtered.length) pieces.push(this.day.services.length ? "No services match these filters. Clear a filter to explore this day." : "No recorded services for this business date.");
             if (approximate) pieces.push(`${approximate.toLocaleString(root.suntrainI18n?.locale || "en-AU")} of ${total.toLocaleString(root.suntrainI18n?.locale || "en-AU")} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
-            else if (total && this.day.city !== "australia_flights") pieces.push("All selected journey legs have route geometry.");
+            else if (total && this.day.replay_kind !== "flights") pieces.push("All selected journey legs have route geometry.");
             if (this.day.schedule?.note_messages) pieces.push(...this.day.schedule.note_messages.map(message=>message.key));
             else if (this.day.schedule?.replay_note) pieces.push(...this.day.schedule.replay_note.split(/(?<=[.!?])\s+/));
             else if (this.day.city === "boston") pieces.push("Rail and Silver Line open first. Select Buses under Transport for regular MBTA buses. Rail replacement shuttles are excluded; calendars follow the historical archive.");
@@ -975,7 +975,7 @@
             for (const service of uniqueSchedules(this.filtered)) {
                 if (this.mapMode === "demand" && service.mode !== "train") continue;
                 for (const id of stopIds(service)) stationIds.add(id);
-                if (this.display.includes("routes") && (this.day.city !== 'australia_flights' ||
+                if (this.display.includes("routes") && (this.day.replay_kind !== 'flights' ||
                     this.filters.stations.length || this.filters.lines.length ||
                     ((this.departures?.visible || this.departures?.previewCall) && this.departures.station != null && [...stopIds(service)].includes(this.departures.station))))
                     for (const id of service.legs) ids.add(id);
@@ -1063,7 +1063,7 @@
             try {
                 const trains = [], vehicleDots = [];
                 const zoom = this.graph.getZoom();
-                const airportFocus = this.day.city === 'australia_flights' && (this.departures?.visible || this.departures?.previewCall) ? this.departures.station : null;
+                const airportFocus = this.day.replay_kind === 'flights' && (this.departures?.visible || this.departures?.previewCall) ? this.departures.station : null;
                 let selectedPosition = null, selectedMarker = null, activeCount = 0, missingCount = 0;
                 for (const service of this.activeIndex.at(this.now)) {
                     const position = servicePosition(service, this.now, this.day);
@@ -1108,7 +1108,7 @@
                 if (force || performance.now() - this.lastUI >= 200 || !this.playing) {
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
-                    setText("replay-clock-date", dateFormat.format(new Date(this.now * 1000)));
+                    setText("replay-clock-date", this.day.timezone === "Asia/Jakarta" ? dateFormat.format(new Date(this.now * 1000)).replace(/GMT\+7/, "WIB") : dateFormat.format(new Date(this.now * 1000)));
                     setText("replay-active-count", activeCount.toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");

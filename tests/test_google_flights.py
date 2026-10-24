@@ -48,3 +48,60 @@ def test_conflicting_times_are_not_silently_merged():
     other = segment(departure=[8,None], arrival=[9,30])
     with pytest.raises(ValueError, match='Conflicting'):
         parse_results(scripts(row, other), 'MEL', 'SYD', '2026-11-02')
+
+
+def test_access_challenge_before_schedule_readiness_stops_remaining_queries(tmp_path,monkeypatch):
+    import asyncio
+    import sys
+    from types import SimpleNamespace
+    from scripts.prepare_google_flights import capture
+    visits=[]
+    class Page:
+        url='https://www.google.com/travel/flights'
+        async def goto(self,url,**kwargs):
+            visits.append(url)
+        async def wait_for_function(self,*args,**kwargs):
+            raise TimeoutError('No schedule data appeared')
+        def locator(self,*args):
+            return self
+        async def inner_text(self,**kwargs):
+            return 'Our systems have detected unusual traffic from your computer network.'
+    class Context:
+        async def new_page(self):
+            return Page()
+    class Browser:
+        async def close(self):
+            pass
+        async def new_context(self,**kwargs):
+            return Context()
+    class Playwright:
+        async def __aenter__(self):
+            return self
+        async def __aexit__(self,*args):
+            return False
+        @property
+        def chromium(self):
+            return self
+        async def launch(self,**kwargs):
+            return Browser()
+    monkeypatch.setitem(sys.modules,'playwright.async_api',SimpleNamespace(async_playwright=Playwright))
+    with pytest.raises(RuntimeError,match='access limited'):
+        asyncio.run(capture(tmp_path,'2026-11-02',[('MEL','SYD'),('MEL','BNE')],1))
+    assert len(visits)==1
+    assert not list(tmp_path.glob('*.json'))
+
+    visits.clear()
+    monkeypatch.setattr('shutil.disk_usage',lambda _:SimpleNamespace(free=0))
+    with pytest.raises(RuntimeError,match='Low disk space'):
+        asyncio.run(capture(tmp_path,'2026-11-02',[('MEL','SYD')],1))
+    assert not visits
+
+
+def test_collection_lock_prevents_overlapping_browser_workers(tmp_path):
+    import asyncio
+    import fcntl
+    from scripts.prepare_google_flights import capture
+    with (tmp_path/'.collection.lock').open('a') as lock:
+        fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+        with pytest.raises(RuntimeError,match='Another collector'):
+            asyncio.run(capture(tmp_path,'2026-11-02',[('MEL','SYD')],2))

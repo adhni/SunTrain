@@ -727,5 +727,15 @@
   "Domestic flight schedules for 2 November 2026.": "Jadwal penerbangan domestik untuk 2 November 2026.",
   "Airline colours identify the carrier.": "Warna maskapai menunjukkan operator.",
   "Search coverage is partial; some flights may be absent.": "Cakupan pencarian belum lengkap; sebagian penerbangan mungkin tidak disertakan.",
-  "Paths are illustrative, not recorded flight tracks.": "Jalur hanya ilustrasi, bukan rekaman jalur penerbangan."
+  "Paths are illustrative, not recorded flight tracks.": "Jalur hanya ilustrasi, bukan rekaman jalur penerbangan.",
+  "Indonesia · Flights": "Indonesia · Penerbangan",
+  "Indonesian domestic flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.": "Penerbangan domestik Indonesia · Cuplikan jadwal 2–8 November 2026. Setiap bandara ditampilkan terpisah, dengan keberangkatan dan kedatangan dalam waktu setempat. Jalur hanya ilustrasi; cakupan belum lengkap.",
+  "Indonesian domestic flight schedules for 2–8 November 2026.": "Jadwal penerbangan domestik Indonesia untuk 2–8 November 2026.",
+  "Timeline: WIB; airport boards use local time.": "Linimasa: WIB; papan bandara menggunakan waktu setempat.",
+  "Airport times are local (WIB / WITA / WIT). The replay clock uses WIB.": "Waktu bandara adalah waktu setempat (WIB / WITA / WIT). Jam pemutaran menggunakan WIB.",
+  "Return to the Indonesia · Flights starting view": "Kembali ke tampilan awal Indonesia · Penerbangan",
+  "{n} airports returned · {total} airports searched · Week snapshot": "{n} bandara ditemukan · {total} bandara dicari · Cuplikan mingguan",
+  "{n} queries captured · {total} queries planned · Coverage is partial": "{n} pencarian tersimpan · {total} pencarian direncanakan · Cakupan belum lengkap",
+  "{n} queries failed · {total} queries pending": "{n} pencarian gagal · {total} pencarian belum dilakukan",
+  "{n} source records omitted after validation": "{n} catatan sumber diabaikan setelah validasi"
 }

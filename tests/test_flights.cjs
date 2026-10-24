@@ -42,3 +42,21 @@ test('flight overview owns departures by Melbourne midnight and excludes carry-i
     assert.equal(result.routes[0].mode,'Flight');
     assert.notEqual(formatCallTime(start,stations[0].timezone),formatCallTime(start,stations[1].timezone));
 });
+
+test('Indonesian airport clocks show WIB, WITA and WIT for the same instant', () => {
+    const at = Date.parse('2026-11-02T00:00:00Z') / 1000;
+    assert.match(formatCallTime(at, 'Asia/Jakarta'), /07:00 WIB/);
+    assert.match(formatCallTime(at, 'Asia/Pontianak'), /07:00 WIB/);
+    assert.match(formatCallTime(at, 'Asia/Makassar'), /08:00 WITA/);
+    assert.match(formatCallTime(at, 'Asia/Jayapura'), /09:00 WIT/);
+});
+
+test('eastern Indonesia next-day departures stay in the Jakarta day without duplicated board events', () => {
+    const start = Date.parse('2026-11-01T17:00:00Z') / 1000, end = start + 86400;
+    const s = {...service, id:'east', stops:[[0,end-1800,end-1800],[1,end+3600,end+3600]]};
+    assert.equal(stationCalls([s],0,start,end).length,1);
+    assert.equal(stationCalls([s],0,end,end+86400).length,0);
+    assert.equal(stationCalls([s],1,start,end,'arrival').length,0);
+    assert.equal(stationCalls([s],1,end,end+86400,'arrival').length,1);
+    assert.match(formatCallTime(end-1800, 'Asia/Jayapura'), /01:30 WIT/);
+});

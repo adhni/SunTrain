@@ -12,8 +12,16 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'indonesia_flights': {
+        'replay_kind': 'flights', 'name': 'Indonesia · Flights', 'timezone': 'Asia/Jakarta',
+        'bounds': [[94.5, -11.5], [141.5, 6.5]], 'passenger_data': False,
+        'start_date': '2026-11-02', 'end_date': '2026-11-08',
+        'description': 'Indonesian domestic flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.',
+        'default_modes': ['flight'], 'modes': [('Flights', 'flight')],
+        'operators': [], 'directions': [('Scheduled service', 'Scheduled service')],
+    },
     'australia_flights': {
-        'name': 'Australia · Flights', 'timezone': 'Australia/Melbourne',
+        'replay_kind': 'flights', 'name': 'Australia · Flights', 'timezone': 'Australia/Melbourne',
         'bounds': [[113.0, -44.0], [154.0, -10.0]], 'passenger_data': False,
         'start_date': '2026-11-02', 'end_date': '2026-11-02',
         'description': 'Australian domestic flights · 2 November 2026 schedule snapshot. Qantas, Virgin Australia, Jetstar and regional flights where returned by the searches. MEL and AVV are separate airports. Click an airport for departures and arrivals. Paths are illustrative; coverage is partial.',
@@ -465,4 +473,4 @@ def city_settings(city="melbourne"):
 def replay_settings(city="melbourne"):
     settings = city_settings(city)
     return {"city": city, **{key: settings[key] for key in ("timezone", "bounds", "passenger_data")},
-            "city_name": settings["name"]}
+            "city_name": settings["name"], "replay_kind": settings.get("replay_kind", "transit")}

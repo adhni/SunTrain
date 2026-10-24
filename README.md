@@ -2,6 +2,10 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Indonesian domestic flights
+
+Choose **Indonesia · Flights** for **2–8 November 2026**: **13,586 captured departures, 107 airports and 13 airlines** in a partial domestic schedule replay across the archipelago, with airline colours, exact airport identities and fullscreen departures/arrivals. The timeline uses **WIB**; each airport board uses **WIB, WITA or WIT**. **CGK/HLP** and **YIA/JOG** remain separate airports. Overview reports captured search coverage; frequency-only regional services are not invented. Paths are illustrative, not live tracks. See [Indonesia flight notes](INDONESIAN_FLIGHTS_NOTES.md) for sources, coverage and reproducible preparation.
+
 ## Seoul subway
 
 Choose **Seoul** for subway **Lines 1–9** plus KORAIL **Gyeongui–Jungang (including the Seoul branch), Suin–Bundang and Gyeongchun**, plus **AREX express and all-stop airport trains**. The **5–11 January 2026 reference week** combines the existing September 2025 subway snapshot with official suburban timetables effective 30 December 2025; it is not a reconstruction of historical disruptions. AREX uses a clearly labelled **October 2026 timetable matched by weekday**, rather than claiming January airport services. The **661 KB gzip** bundle contains **39,552 departures**, retaining published calls, express/passing patterns, dwell and short workings. Use Transport to select subway or suburban/airport rail. Existing playback, filters, dark mode and Seoul Overview apply. KTX/intercity and ITX-Cheongchun remain in the separate South Korea view. See [South Korea notes](SOUTH_KOREA_EXPANSION_NOTES.md).

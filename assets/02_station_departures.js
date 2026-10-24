@@ -55,9 +55,11 @@
             return {...row, label: `${row.name} · ${routes} · ${location}`};
         }).sort((a, b) => a.name.localeCompare(b.name) || a.id - b.id);
     }
+    const indonesiaZones = {'Asia/Jakarta': 'WIB', 'Asia/Pontianak': 'WIB', 'Asia/Makassar': 'WITA', 'Asia/Jayapura': 'WIT'};
     function formatCallTime(at, timezone) {
-        return new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: timezone, day: "numeric", month: "short",
+        const formatted = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: timezone, day: "numeric", month: "short",
             hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZoneName: "shortOffset"}).format(new Date(at * 1000));
+        return indonesiaZones[timezone] ? formatted.replace(/GMT\+[789]/, indonesiaZones[timezone]) : formatted;
     }
     function formatBoardTime(at, now, timezone) {
         const locale = root.suntrainI18n?.locale || "en-AU";
@@ -153,14 +155,14 @@
             $("replay-close-details").hidden = false; $("replay-details").hidden = true;
             $("replay-panel").classList.add("replay-browsing");
             const eyebrow = document.querySelector('.replay-detail-heading .replay-eyebrow');
-            if (eyebrow) root.suntrainI18n?.bind(eyebrow, replay.day.city === 'australia_flights' ? 'AIRPORT BOARD' : 'STATION DEPARTURES');
+            if (eyebrow) root.suntrainI18n?.bind(eyebrow, replay.day.replay_kind === 'flights' ? 'AIRPORT BOARD' : 'STATION DEPARTURES');
             $("replay-open-departures").setAttribute("aria-expanded", "true");
             this.host.hidden = false; this.render(); replay.paint(true);
             (this.station === null ? this.search : this.title).focus();
         }
         render() {
             const replay = this.replay;
-            const flights = replay.day.city === 'australia_flights', arrivals = flights && this.event === 'arrival';
+            const flights = replay.day.replay_kind === 'flights', arrivals = flights && this.event === 'arrival';
             this.timezone = flights && this.station !== null ? replay.day.stations[this.station].timezone : replay.day.timezone;
             this.host.replaceChildren(); this.signature = null;
             this.title = node("h3", this.station === null ? (flights ? 'Airports' : "Station departures") : replay.day.stations[this.station].name);
@@ -182,7 +184,7 @@
                     });
                     control.dataset.event = event; control.setAttribute('aria-pressed', String(event === this.event)); tabs.append(control);
                 }
-                this.host.append(tabs, node('p', 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
+                this.host.append(tabs, node('p', replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local (WIB / WITA / WIT). The replay clock uses WIB.' : 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
             }
             const picker = node("details"); picker.open = this.station === null;
             picker.append(node("summary", this.station === null ? (flights ? 'Choose an airport' : "Choose a stop") : (flights ? 'Change airport' : "Change stop")));
@@ -217,7 +219,7 @@
         updateJourneyLocale() {
             const host=document.querySelector('.departure-context');
             if(host && this.previewCall) {
-                const text=`${this.replay.day.city === 'australia_flights' ? 'At' : 'From'} ${this.replay.day.stations[this.station].name} · ${formatCallTime(this.previewCall.at,this.timezone || this.replay.day.timezone)}`;
+                const text=`${this.replay.day.replay_kind === 'flights' ? 'At' : 'From'} ${this.replay.day.stations[this.station].name} · ${formatCallTime(this.previewCall.at,this.timezone || this.replay.day.timezone)}`;
                 if(root.suntrainI18n)root.suntrainI18n.bind(host,text);else host.textContent=text;
             }
         }
@@ -237,7 +239,7 @@
         update(force = false) {
             if (!this.visible || !this.list) return;
             const replay = this.replay;
-            const flights = replay.day.city === 'australia_flights', arrivals = flights && this.event === 'arrival';
+            const flights = replay.day.replay_kind === 'flights', arrivals = flights && this.event === 'arrival';
             const clockText = `${arrivals ? 'Arrivals from' : 'Departures from'} ${formatCallTime(replay.now, this.timezone)}`;
             if(root.suntrainI18n) root.suntrainI18n.bind(this.clock, clockText); else this.clock.textContent = clockText;
             // Keep a keyboard-focused departure stable until focus leaves the list.
@@ -272,7 +274,7 @@
             if (!call) { this.close(); return; }
             const replay = this.replay;
             replay.setFollow(false);
-            host.append(button(replay.day.city === 'australia_flights' ? 'Back to airport board' : "Back to departures", () => { this.open(); if (wasExpanded) this.setExpanded(true); }),
+            host.append(button(replay.day.replay_kind === 'flights' ? 'Back to airport board' : "Back to departures", () => { this.open(); if (wasExpanded) this.setExpanded(true); }),
                 button(call.event === 'arrival' ? 'Go to arrival' : "Go to departure", () => {
                     replay.pause();
                     if (replay.mapMode === "demand") {
@@ -284,7 +286,7 @@
                     if (replay.mapReady && Number.isFinite(station.lon) && Number.isFinite(station.lat))
                         replay.graph.setCenter([station.lon, station.lat]);
                 }));
-            host.append(node("p", `${replay.day.city === 'australia_flights' ? 'At' : 'From'} ${replay.day.stations[this.station].name} · ${formatCallTime(call.at, this.timezone)}`, "replay-muted replay-small departure-context"));
+            host.append(node("p", `${replay.day.replay_kind === 'flights' ? 'At' : 'From'} ${replay.day.stations[this.station].name} · ${formatCallTime(call.at, this.timezone)}`, "replay-muted replay-small departure-context"));
         }
     }
     root.suntrainDepartures = {...api, Board};

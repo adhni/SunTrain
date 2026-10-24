@@ -1,0 +1,93 @@
+"""Scope selection, overseas clocks, flight previews and responsive airport boards."""
+import os
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser=p.chromium.launch(channel='chrome',headless=True,args=['--enable-unsafe-swiftshader','--use-angle=swiftshader'])
+    page=browser.new_page(viewport={'width':1440,'height':1000},ignore_https_errors=True)
+    errors=[];downloads=[]
+    page.on('pageerror',lambda e:errors.append(str(e)))
+    page.on('request',lambda r:downloads.append(r.url) if '/api/replay/indonesia_flights/' in r.url else None)
+    page.goto(os.environ.get('SUNTRAIN_TEST_URL','http://127.0.0.1:8864'),wait_until='domcontentloaded')
+    page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
+    page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"indonesia_flights"})')
+    page.wait_for_function('suntrainReplay?.day?.city==="indonesia_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
+    assert page.locator('#replay-flight-scope-field').is_visible()
+    assert not page.locator('#replay-transport-field').is_visible()
+    assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
+    count=len(downloads)
+    page.locator('#replay-flight-scope').click()
+    page.get_by_text('International',exact=True).click()
+    page.wait_for_function('suntrainReplay.filters.flightScope==="international" && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.flight_scope==="international")')
+    assert len(downloads)==count
+    assert page.evaluate('suntrainReplay.graph.getBounds().getWest()<10')
+    assert page.evaluate('suntrainReplay.graph.getSource("replay-routes")._data.features.length')==0
+    page.wait_for_function('suntrainReplay.graph.queryRenderedFeatures({layers:["replay-planes"]}).length>0')
+    page.screenshot(path='.cache/indonesia-international-map.png')
+    page.evaluate('suntrainReplay.seek(suntrainReplay.day.start)')
+    print('International filter, map fit and cached switching passed',flush=True)
+    for code,zone,offset in [('AMS','Europe/Amsterdam','GMT+1'),('ADL','Australia/Adelaide','GMT+10:30')]:
+        page.evaluate('(code)=>suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))',code)
+        assert page.evaluate('suntrainReplay.departures.timezone')==zone
+        assert offset in page.locator('#replay-departures').inner_text()
+        assert 'replay clock uses WIB' in page.locator('#replay-departures').inner_text()
+        assert page.evaluate('suntrainReplay.departures.calls.length')>0
+        page.get_by_role('button',name='Expand board',exact=True).click()
+        now=page.evaluate('suntrainReplay.now')
+        page.locator('.departure-row').first.click()
+        assert page.evaluate('suntrainReplay.now')==now
+        assert offset in page.locator('#replay-details').inner_text()
+        assert 'WIB' in page.locator('#replay-details').inner_text() or 'WITA' in page.locator('#replay-details').inner_text()
+        page.get_by_role('button',name='Back to airport board',exact=True).click()
+        assert page.evaluate('suntrainReplay.departures.expanded')
+        page.locator('[data-event="arrival"]').click()
+        assert page.evaluate('suntrainReplay.departures.calls.every(c=>c.event==="arrival" && c.index===1)')
+        page.locator('[data-event="departure"]').click()
+        page.evaluate('suntrainReplay.departures.close()')
+    print('Overseas boards, half-hour/DST clocks and preview return passed',flush=True)
+    page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"both"})')
+    page.wait_for_function('new Set(suntrainReplay.filtered.map(s=>s.flight_scope)).size===2')
+    page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"international"})')
+    page.wait_for_function('suntrainReplay.filters.flightScope==="international"')
+    operator=page.evaluate('suntrainReplay.filtered[0].operator')
+    page.evaluate('(operator)=>dash_clientside.set_props("replay-operators",{value:[operator]})',operator)
+    page.wait_for_function('(operator)=>suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.operator===operator && s.flight_scope==="international")',arg=operator)
+    page.evaluate('dash_clientside.set_props("replay-operators",{value:[]})')
+    page.wait_for_function('new Set(suntrainReplay.filtered.map(s=>s.operator)).size>1')
+    page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="CGK"));suntrainReplay.departures.setExpanded(true)')
+    for theme in ['light','dark','sunrise','blueprint','heritage']:
+        page.locator('#theme-toggle').select_option(theme)
+        assert page.evaluate('suntrainReplay.departures.expanded')
+    page.locator('#language-select').select_option('id')
+    page.wait_for_function('document.documentElement.lang==="id"')
+    assert 'Jam pemutaran menggunakan WIB' in page.locator('#replay-departures').inner_text()
+    page.set_viewport_size({'width':390,'height':844})
+    assert page.evaluate('document.documentElement.scrollWidth<=window.innerWidth')
+    page.screenshot(path='.cache/indonesia-international-board-mobile.png')
+    page.evaluate('suntrainReplay.departures.close()')
+    assert 'Internasional' in page.locator('#replay-flight-scope-field').inner_text()
+    page.locator('#language-select').select_option('en')
+    page.wait_for_function('document.documentElement.lang==="en"')
+    page.set_viewport_size({'width':1440,'height':1000})
+    for n in range(2,9):
+        day=f'2026-11-{n:02}'
+        page.evaluate('(day)=>dash_clientside.set_props("replay-date",{data:day})',day)
+        page.wait_for_function('(day)=>suntrainReplay.day.business_date===day && !suntrainReplay.loading && suntrainReplay.filtered.length',arg=day,timeout=120000)
+        assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="international")')
+    count=len(downloads)
+    print('International scope persists across all seven dates',flush=True)
+    page.evaluate('dash_clientside.set_props("view-tabs",{value:"overview"})')
+    page.wait_for_function('document.querySelector("#city-overview-content").textContent.includes("queries captured")')
+    international=page.evaluate('suntrainReplay.day.schedule.coverage_by_scope.international.queries_planned')
+    assert str(international) in page.locator('#city-overview-content').inner_text().replace(',','')
+    page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"domestic"})')
+    page.wait_for_function('document.querySelector("#city-overview-content").textContent.replaceAll(",", "").includes("6930 queries planned")')
+    assert len(downloads)==count
+    page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"australia_flights"})')
+    page.wait_for_function('suntrainReplay.day.city==="australia_flights" && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
+    assert not page.locator('#replay-flight-scope-field').is_visible()
+    assert page.locator('#replay-transport-field').is_visible()
+    assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
+    assert not errors,errors
+    print('Both scopes, airline filters, themes, Indonesian, mobile, overview and Australian defaults passed',flush=True)
+    browser.close()

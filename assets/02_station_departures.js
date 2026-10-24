@@ -184,7 +184,7 @@
                     });
                     control.dataset.event = event; control.setAttribute('aria-pressed', String(event === this.event)); tabs.append(control);
                 }
-                this.host.append(tabs, node('p', replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local (WIB / WITA / WIT). The replay clock uses WIB.' : 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
+                this.host.append(tabs, node('p', replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
             }
             const picker = node("details"); picker.open = this.station === null;
             picker.append(node("summary", this.station === null ? (flights ? 'Choose an airport' : "Choose a stop") : (flights ? 'Change airport' : "Change stop")));

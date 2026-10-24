@@ -118,7 +118,8 @@
     }
     function matches(service, filters, day) {
         const inScope = (values, value) => !values.length || values.includes(value);
-        return inScope(filters.modes || [], service.mode || "train") && inScope(filters.operators, service.operator) && inScope(filters.lines, service.line) &&
+        return (service.mode !== 'flight' || !filters.flightScope || filters.flightScope === 'both' ||
+            (service.flight_scope || 'domestic') === filters.flightScope) && inScope(filters.modes || [], service.mode || "train") && inScope(filters.operators, service.operator) && inScope(filters.lines, service.line) &&
             inScope(filters.directions, service.direction) &&
             (!filters.number || service.number.toLowerCase().includes(filters.number.toLowerCase().trim())) &&
             (!filters.stations.length || (service.stopIds ? service.stopIds.some(id => filters.stations.includes(day.stations[id].name)) :
@@ -1129,7 +1130,7 @@
                 if (this.paintAgain) { this.paintAgain = false; requestAnimationFrame(() => this.paint(true)); }
             }
         }
-        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne") {
+        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne", flightScope = "domestic") {
             if (!this.departures) this.departures = new root.suntrainDepartures.Board(this, core);
             this.lastTrigger = trigger;
             this.active = tab === "replay";
@@ -1153,7 +1154,7 @@
             $("replay-map")?.classList.remove("replay-is-loading");
             const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);
-            const filters = {modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
+            const filters = {flightScope: flightScope || "domestic", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             if (tab === "overview") {
                 const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));
                 root.dash_clientside.set_props("replay-lines", {options: [...new Set(routes.map(s => s.line))].sort()});
@@ -1164,6 +1165,7 @@
             if (!this.active || this.day.city !== city || this.day.business_date !== day.business_date) return;
             this.speed = Number(speed) || 60;
             this.setMapMode(this.day.passenger_data === false ? "trains" : mode, demandWindow);
+            const scopeChanged = this.filters?.flightScope !== filters.flightScope;
             const filterSignature = JSON.stringify([filters, display]);
             if (newDay || this.filterSignature !== filterSignature) {
                 this.filterSignature = filterSignature; this.applyFilters(filters, display || []);
@@ -1177,7 +1179,8 @@
                 if (trigger === "replay-back") this.seek(this.now - 60);
                 if (trigger === "replay-forward") this.seek(this.now + 60);
             }
-            if (trigger === "replay-fit") this.fit();
+            if (trigger === "replay-fit" || (this.day.flight_scopes &&
+                ((scopeChanged && !newDay) || (newDay && filters.flightScope !== "domestic")))) this.fit();
             this.paint(true);
             this.graph.resize();
         }
@@ -1187,11 +1190,11 @@
     // Exposed diagnostics support browser verification without transmitting frames.
     root.suntrainReplay = replay;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainReplay: {
-        sync: async function (info, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city) {
+        sync: async function (info, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city, flightScope) {
             const context = root.dash_clientside.callback_context;
             const trigger = context.triggered_id || context.triggered?.[0]?.prop_id?.split(".")[0];
             const generation = ++replay.requestGeneration;
-            const run = day => replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city);
+            const run = day => replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city, flightScope);
             const valid = info && !info.error && info.business_date === date && info.city === city;
             try {
                 if (!["replay", "overview"].includes(tab) || !valid) {

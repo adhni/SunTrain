@@ -2,7 +2,9 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
-## Indonesian domestic flights
+## Indonesian flights
+
+Use **Flights → Domestic / International / Both** to explore Indonesia and its overseas connections. Domestic opens first. The international snapshot adds **4,004 captured departures, 52 overseas airports and 58 carrier codes**, with **65 airports total**. Foreign airports use their own local dates and time zones while the replay clock stays WIB. Coverage remains partial. International coverage and rebuilding are documented in the [international flight notes](INDONESIAN_INTERNATIONAL_FLIGHTS_NOTES.md).
 
 Choose **Indonesia · Flights** for **2–8 November 2026**: **13,586 captured departures, 107 airports and 13 airlines** in a partial domestic schedule replay across the archipelago, with airline colours, exact airport identities and fullscreen departures/arrivals. The timeline uses **WIB**; each airport board uses **WIB, WITA or WIT**. **CGK/HLP** and **YIA/JOG** remain separate airports. Overview reports captured search coverage; frequency-only regional services are not invented. Paths are illustrative, not live tracks. See [Indonesia flight notes](INDONESIAN_FLIGHTS_NOTES.md) for sources, coverage and reproducible preparation.
 

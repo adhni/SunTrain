@@ -737,5 +737,10 @@
   "{n} airports returned · {total} airports searched · Week snapshot": "{n} airports returned · {total} airports searched · Week snapshot",
   "{n} queries captured · {total} queries planned · Coverage is partial": "{n} queries captured · {total} queries planned · Coverage is partial",
   "{n} queries failed · {total} queries pending": "{n} queries failed · {total} queries pending",
-  "{n} source records omitted after validation": "{n} source records omitted after validation"
+  "{n} source records omitted after validation": "{n} source records omitted after validation",
+  "Domestic": "Domestic",
+  "International": "International",
+  "Airport times are local. The replay clock uses WIB.": "Airport times are local. The replay clock uses WIB.",
+  "Indonesian domestic and international flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.": "Indonesian domestic and international flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.",
+  "Indonesian domestic and international flight schedules for 2–8 November 2026.": "Indonesian domestic and international flight schedules for 2–8 November 2026."
 }

@@ -737,5 +737,10 @@
   "{n} airports returned · {total} airports searched · Week snapshot": "{n} bandara ditemukan · {total} bandara dicari · Cuplikan mingguan",
   "{n} queries captured · {total} queries planned · Coverage is partial": "{n} pencarian tersimpan · {total} pencarian direncanakan · Cakupan belum lengkap",
   "{n} queries failed · {total} queries pending": "{n} pencarian gagal · {total} pencarian belum dilakukan",
-  "{n} source records omitted after validation": "{n} catatan sumber diabaikan setelah validasi"
+  "{n} source records omitted after validation": "{n} catatan sumber diabaikan setelah validasi",
+  "Domestic": "Domestik",
+  "International": "Internasional",
+  "Airport times are local. The replay clock uses WIB.": "Waktu bandara menggunakan waktu setempat. Jam pemutaran menggunakan WIB.",
+  "Indonesian domestic and international flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.": "Penerbangan domestik dan internasional Indonesia · Cuplikan jadwal 2–8 November 2026. Setiap bandara terpisah, dengan keberangkatan dan kedatangan dalam waktu setempat. Jalur bersifat ilustratif; cakupan terbatas.",
+  "Indonesian domestic and international flight schedules for 2–8 November 2026.": "Jadwal penerbangan domestik dan internasional Indonesia untuk 2–8 November 2026."
 }

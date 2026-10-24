@@ -11,6 +11,10 @@ the timeline. Filters run locally. Airport visibility remains optional, and rout
 arcs appear only for selected airports, routes or flights. Existing themes and
 English / Indonesian interfaces apply.
 
+International connections are available through the Flights filter; see the
+[international flight notes](INDONESIAN_INTERNATIONAL_FLIGHTS_NOTES.md). The counts
+below describe the unchanged domestic snapshot.
+
 ## Captured week
 
 The bundle contains **13,586 departures** owned by the Jakarta calendar week,

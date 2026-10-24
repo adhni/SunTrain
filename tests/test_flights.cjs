@@ -60,3 +60,27 @@ test('eastern Indonesia next-day departures stay in the Jakarta day without dupl
     assert.equal(stationCalls([s],1,end,end+86400,'arrival').length,1);
     assert.match(formatCallTime(end-1800, 'Asia/Jayapura'), /01:30 WIT/);
 });
+
+test('flight scopes filter map, airport boards and overview while preserving transit filters', () => {
+    const filters={modes:[],operators:[],lines:[],directions:[],stations:[],number:'',flightScope:'international'};
+    const today={...service,stops:[[0,start,start],[1,start+7200,start+7200]]};
+    const domestic={...today,id:'domestic',flight_scope:'domestic'};
+    const international={...today,id:'international',flight_scope:'international'};
+    const mixed={...day,services:[domestic,international]};
+    assert.equal(core.matches(domestic,filters,mixed),false);
+    assert.equal(core.matches(international,filters,mixed),true);
+    assert.equal(core.matches({...today,mode:'train'},filters,mixed),true);
+    assert.equal(core.matches(today,{...filters,flightScope:'domestic'},mixed),true,'legacy flights default to domestic');
+    const selected=mixed.services.filter(s=>core.matches(s,filters,mixed));
+    assert.equal(stationCalls(selected,0,start,day.end).length,1);
+    assert.equal(summarize(mixed,filters,core).departures,1);
+    assert.equal(summarize(mixed,{...filters,flightScope:'both'},core).departures,2);
+    assert.equal(core.matches(international,{...filters,operators:['Other airline']},mixed),false);
+});
+
+test('foreign airport clocks keep local dates and daylight-saving offsets', () => {
+    const at=Date.parse('2026-11-01T17:00:00Z')/1000;
+    assert.match(formatCallTime(at,'Australia/Adelaide'),/2 Nov.*03:30 GMT\+10:30/);
+    assert.match(formatCallTime(at,'Europe/Amsterdam'),/1 Nov.*18:00 GMT\+1/);
+    assert.match(formatCallTime(at,'Pacific/Auckland'),/2 Nov.*06:00 GMT\+13/);
+});

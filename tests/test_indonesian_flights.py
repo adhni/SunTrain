@@ -139,7 +139,7 @@ def test_invalid_source_record_does_not_hide_other_valid_flights():
     result=parse_results(scripts(valid,bad,bad),'CGK','DPS','2026-11-02',CONFIG['zones'],rejected)
     assert [f['number'] for f in result]==['QF1']
     assert len(rejected)==1 and rejected[0]['number']=='QF2'
-    assert 'Invalid domestic flight duration' in rejected[0]['reason']
+    assert 'Invalid flight duration' in rejected[0]['reason']
     conflict=segment('CGK','DPS',[8,0],[10,0],60,number='1')
     rejected=[]
     assert parse_results(scripts(valid,conflict,valid),'CGK','DPS','2026-11-02',CONFIG['zones'],rejected)==[]

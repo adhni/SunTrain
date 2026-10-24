@@ -16,8 +16,8 @@ from dashboard.i18n import message
 LOGGER = logging.getLogger(__name__)
 
 
-def field(label, control):
-    return html.Div([html.Label(label, htmlFor=control.id, className="finder-label"), control], className="finder-field")
+def field(label, control, **props):
+    return html.Div([html.Label(label, htmlFor=control.id, className="finder-label"), control], className="finder-field", **props)
 
 
 def period_label(minimum, maximum):
@@ -53,7 +53,8 @@ def build_replay_panel(metadata, default_date):
                 html.Button("Choose date", id="replay-date-open", **{"aria-haspopup":"dialog", "aria-expanded":False}),
             ]),
             field("Transport", dcc.Dropdown(id="replay-modes", options=[{"label": "Trains", "value": "train"},
-                  {"label": "Trams", "value": "tram"}, {"label": "Buses", "value": "bus"}], value=["train"], multi=True, placeholder="All modes")),
+                  {"label": "Trams", "value": "tram"}, {"label": "Buses", "value": "bus"}], value=["train"], multi=True, placeholder="All modes"), id="replay-transport-field"),
+            field("Flights", dcc.Dropdown(id="replay-flight-scope", options=[{"label": label, "value": value} for label, value in [("Domestic", "domestic"), ("International", "international"), ("Both", "both")]], value="domestic", clearable=False, searchable=False), id="replay-flight-scope-field", style={"display": "none"}),
             field("Route / line", dcc.Dropdown(id="replay-lines", options=metadata["lines"], value=[], multi=True, placeholder="All routes / lines")),
             html.Details(id="replay-more-filters", className="replay-more-filters", children=[
                 html.Summary("More filters", id="replay-more-filters-label"),
@@ -188,6 +189,8 @@ def register_replay_callbacks(app, metadata):
         Output("replay-melbourne", "children"), Output("replay-melbourne", "title"),
         Output("replay-demand-controls", "style"), Output("replay-map-mode", "value"),
         Output("replay-display", "options"), Output("replay-display", "value"),
+        Output("replay-transport-field", "style"), Output("replay-flight-scope-field", "style"),
+        Output("replay-flight-scope", "value"),
         Input("replay-city", "value"), State("replay-date", "data"))
     def configure_city(city, current_date):
         settings = city_settings(city)
@@ -205,7 +208,9 @@ def register_replay_callbacks(app, metadata):
                 {} if settings["passenger_data"] else {"display": "none"}, "trains",
                 [{"label": message("Airport connections" if city_settings(city).get('replay_kind') == 'flights' else "Route paths"), "value": "routes"}, {"label": message("Airports" if city_settings(city).get('replay_kind') == 'flights' else "Stops & stations"), "value": "stations"}] +
                 ([{"label": message("Size trains by passengers"), "value": "load"}] if settings["passenger_data"] else []),
-                ["routes", "stations"])
+                ["routes", "stations"],
+                {"display": "none"} if settings.get("flight_scopes") else {},
+                {} if settings.get("flight_scopes") else {"display": "none"}, "domestic")
 
     app.clientside_callback(
         """function(operators, directions, stations, number) {
@@ -253,6 +258,6 @@ def register_replay_callbacks(app, metadata):
         Input("replay-map-mode", "value"), Input("replay-demand-window", "value"),
         Input("replay-speed", "value"), Input("replay-play", "n_clicks"), Input("replay-restart", "n_clicks"),
         Input("replay-back", "n_clicks"), Input("replay-forward", "n_clicks"), Input("replay-fit", "n_clicks"),
-        Input("replay-city", "value"),
+        Input("replay-city", "value"), Input("replay-flight-scope", "value"),
     )
     return load_replay_day

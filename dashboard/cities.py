@@ -12,6 +12,14 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'australia_flights': {
+        'name': 'Australia · Flights', 'timezone': 'Australia/Melbourne',
+        'bounds': [[113.0, -44.0], [154.0, -10.0]], 'passenger_data': False,
+        'start_date': '2013-03-04', 'end_date': '2013-03-10',
+        'description': 'Australian domestic flights · Jetstar timetable for 4–10 March 2013. Click an airport for departures and arrivals. Plane positions and paths are illustrative; other airlines are not included.',
+        'default_modes': ['flight'], 'modes': [('Flights', 'flight')],
+        'operators': [('Jetstar', 'Jetstar')], 'directions': [('Scheduled service', 'Scheduled service')],
+    },
     'south_korea': {
         'name': 'South Korea', 'timezone': 'Asia/Seoul',
         'bounds': [[125.9, 34.3], [129.7, 38.2]], 'passenger_data': False,

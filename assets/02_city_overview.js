@@ -1,11 +1,12 @@
 (function (root) {
     "use strict";
-    const modeNames = {train: "Train", subway: "Subway", tram: "Tram", bus: "Bus", mikrotrans: "Mikrotrans", feeder_bus: "Feeder bus",
+    const modeNames = {flight: "Flight", train: "Train", subway: "Subway", tram: "Tram", bus: "Bus", mikrotrans: "Mikrotrans", feeder_bus: "Feeder bus",
         light_rail: "Light rail", regional_rail: "Regional rail", commuter_rail: "Commuter rail", airport_rail: "Airport rail", high_speed_rail: "High-speed rail", limited_express: "Limited express", silver_line: "Silver Line", ferry: "Ferry",
         transjabodetabek: "Transjabodetabek", rusun_bus: "Rusun feeder", royaltrans: "Royaltrans", shuttle_bus: "Shuttle", tourist_bus: "Tourist bus"};
 
     function summarize(day, filters, core) {
-        const hours = Array.from({length: 24}, (_, i) => ({hour: (i + 3) % 24, departures: 0}));
+        const firstHour = day.day_start_hour ?? 3;
+        const hours = Array.from({length: 24}, (_, i) => ({hour: (i + firstHour) % 24, departures: 0}));
         const routes = new Map(), stops = new Set(), seenSchedules = new Set(), minuteHours = new Map();
         const formatter = new Intl.DateTimeFormat("en-GB", {timeZone: day.timezone, hour: "2-digit", hourCycle: "h23"});
         let departures = 0, estimatedDepartures = 0;
@@ -17,7 +18,7 @@
             if (service.frequency_based) estimatedDepartures++;
             const minute = Math.floor(departure / 60);
             if (!minuteHours.has(minute)) minuteHours.set(minute, Number(formatter.format(new Date(departure * 1000))));
-            hours[(minuteHours.get(minute) + 21) % 24].departures++;
+            hours[(minuteHours.get(minute) + 24 - firstHour) % 24].departures++;
             const mode = service.mode || "train";
             const key = JSON.stringify([mode, service.operator, service.route_id || service.line]);
             const germanMode = day.city === "germany" ? {commuter_rail: "S-Bahn", subway: "U-Bahn / Stadtbahn"}[mode] : null;
@@ -115,16 +116,18 @@
         root.suntrainI18n ? root.suntrainI18n.bind($("city-overview-title"),`${day.city_name} overview`) : $("city-overview-title").textContent = `${day.city_name} overview`;
         const date = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: day.timezone, day: "numeric", month: "short", year: "numeric"})
             .format(new Date(day.start * 1000));
-        root.suntrainI18n ? root.suntrainI18n.bind($("city-overview-context"),`${date} · 03:00–03:00 next day · ${day.timezone} · Current filters`) : $("city-overview-context").textContent = `${date} · 03:00–03:00 next day · ${day.timezone} · Current filters`;
+        const context = `${date} · ${day.day_start_hour === 0 ? '00:00–00:00' : '03:00–03:00'} next day · ${day.timezone} · Current filters`;
+        root.suntrainI18n ? root.suntrainI18n.bind($("city-overview-context"), context) : $("city-overview-context").textContent = context;
         const cards = element("div", undefined, "status-grid city-overview-metrics");
         for (const [label, value, subtitle] of [[summary.estimatedDepartures ? "Replay departures" : "Scheduled departures", summary.departures,
             summary.estimatedDepartures ? "Includes frequency-based estimates" : "Starting in this business day"],
-            ["Routes / lines", summary.routes.length, "Represented in the selection"], ["Stops served", summary.stops, "Distinct mapped stops / platforms"]]) {
+            ["Routes / lines", summary.routes.length, "Represented in the selection"], [day.city === 'australia_flights' ? 'Airports served' : "Stops served", summary.stops, day.city === 'australia_flights' ? 'Covered by this timetable' : "Distinct mapped stops / platforms"]]) {
             const card = element("div", undefined, "metric-card");
             card.append(element("div", label, "metric-label"), element("div", count(value), "metric-value"), element("div", subtitle, "metric-subtitle"));
             cards.append(card);
         }
         host.replaceChildren(cards); host.setAttribute("aria-busy", "false");
+        if (day.city === 'australia_flights') host.append(element('p', 'Jetstar domestic timetable · March 2013. Other airlines are not included.', 'replay-muted'));
         if (!summary.departures) {
             host.append(element("p", "No scheduled departures match this date and these filters. Clear a filter or choose another date.", "city-empty replay-muted"));
         } else {

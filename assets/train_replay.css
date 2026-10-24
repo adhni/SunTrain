@@ -220,6 +220,8 @@ body.replay-fullscreen-lock { overflow: hidden; }
 /* Station boards share the journey card in normal and fullscreen layouts. */
 .replay-demand-only.replay-browsing.replay-has-selection .replay-detail-card { display: block !important; }
 #replay-departures[hidden], #replay-details[hidden] { display: none; }
+.departure-event-tabs { display: flex; gap: 8px; margin: 12px 0; }
+.departure-event-tabs [aria-pressed="true"] { background: var(--accent); color: var(--surface); border-color: var(--accent); }
 #replay-departures input, #replay-departures select { width: 100%; margin: 6px 0; padding: 8px; border: 1px solid var(--line); border-radius: 5px; color: var(--ink); background: var(--surface); font: inherit; font-size: .8rem; }
 #replay-departures label, #replay-departures summary { font-size: .8rem; }
 #replay-departures summary { cursor: pointer; padding: 8px 0; }

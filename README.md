@@ -209,9 +209,11 @@ Select **Regional / commuter rail** under Transport to add LIRR, Metro-North, NJ
 
 Rebuild with `./.venv/bin/python scripts/prepare_american_replay.py`. See [US railway expansion notes](US_RAIL_EXPANSION_NOTES.md) for pinned downloads, time-zone handling, geometry gaps, source rights and Alaska follow-up.
 
-## Australian flights: feasibility assessment
+## Australian domestic flights
 
-An airport-based domestic flight replay was assessed on **24 October 2026**. Open airport geography and monthly route statistics are available, but **no timetable source assessed has confirmed rights for public display and downloadable snapshots**. Flights remain unavailable while a suitable source is sought. See the [source assessment](AUSTRALIAN_FLIGHTS_FEASIBILITY.md) for verified downloads, coverage, reuse terms and the conditions for a dated pilot.
+Choose **Australia · Flights** for **4–10 March 2013** to explore Jetstar's published domestic timetable across **18 airports**. Planes move along illustrative great-circle routes. Click an airport or its code for **Departures / Arrivals**, then expand the board or select a flight. Airport boards and flight endpoints use their own local time; the national replay clock uses Melbourne time. Overnight flights carry into the next day's replay. Other airlines are not included, and 13 malformed source entries are excluded.
+
+The prepared week is **29 KB gzip** and needs no flight API key. Themes, languages, replay controls and Overview are shared with the transit explorer. See the [flight pilot notes](AUSTRALIAN_FLIGHTS_FEASIBILITY.md) for source dates, coverage, preparation and validation.
 
 ## Additional Australian cities
 

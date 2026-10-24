@@ -70,6 +70,9 @@ MUMBAI_REPLAY_NOTE = "Mumbai suburban rail for 31 August–6 September 2026, reu
 
 
 def prepared_path(city):
+    if city == 'australia_flights':
+        from dashboard.flights import reference_path
+        return reference_path()
     if city == 'south_korea':
         return Path(os.getenv('SUNTRAIN_SOUTH_KOREA_REFERENCE', str(ROOT / 'data/reference/south_korea/2025-10-20.json.gz')))
     if city == 'seoul':
@@ -241,6 +244,9 @@ def get_replay_day(business_date: str, city: str = "melbourne", include_buses: b
     if city != "melbourne":
         if not settings["start_date"] <= business_date <= settings["end_date"]:
             raise ValueError(f"{settings['name']} replay covers {settings['start_date']} through {settings['end_date']}")
+        if city == 'australia_flights':
+            from dashboard.flights import replay_day
+            return replay_day(business_date)
         if city in {"germany", "great_britain", "java", "us_rail", "japan", "malaysia", "india", "mumbai"}:
             files = rail_reference_files(city, business_date, modes)
             return _get_germany_day(business_date, files, city=city)

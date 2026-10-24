@@ -1,101 +1,91 @@
-# Australian domestic flight pilot
+# Australian domestic flights
 
-Choose **Australia · Flights** in Location for **4–10 March 2013**. The pilot
-replays the published Jetstar domestic timetable across 18 airports, including
-Melbourne, Avalon, Sydney, Brisbane, Perth, Adelaide, Darwin, Cairns and Hobart.
-Other airlines are absent. This is a dated personal-project timetable replay;
-plane positions and great-circle paths are illustrative.
+Choose **Australia · Flights** for **2 November 2026**. The expanded snapshot has
+**36 airports**, **1,170 scheduled departures** in the Melbourne calendar day and
+**19 overnight carry-ins**. Visible carriers are Qantas, Virgin Australia,
+Jetstar, Rex, Link Airways and Alliance Airlines. Search coverage is partial.
 
-Click an airport marker or code to open its **Departures / Arrivals** board.
-The map shows its connections and mutes unrelated planes. The board expands to
-fill the viewport, supports paging and returns to the same arrival/departure
-selection after viewing a flight. Previewing a flight preserves replay time;
-**Go to departure / arrival** explicitly seeks to that event and pauses playback.
+**MEL and AVV are independent airports** throughout: query inputs, IATA identity,
+coordinates, route keys, flight identifiers, markers and arrivals/departures.
+Searches never use a city name as an airport identifier. The snapshot has seven
+AVV departures and seven arrivals; MEL has 235 departures and 234 arrivals,
+including overlapping journeys at the calendar boundary.
 
-## Timetable and preparation
+Planes use airline colours. Airport markers or code labels open their boards,
+show connections and mute unrelated planes. Boards offer Departures / Arrivals,
+expanded view, paging and flight previews. Previewing preserves the replay clock;
+Go to departure / arrival explicitly seeks and pauses. More filters → Operator /
+feed selects airlines without downloading another timetable. Smaller national
+plane icons keep the busier corridors readable; zooming reveals more detail.
 
-The [official Jetstar domestic NW12 PDF](https://www.jetstar.com/_/media/Jetstar%20Australia/Files/PDF/Flight%20Schedules/NW12_Timetable_Domestic.pdf)
-is dated **9 October 2012**, valid **28 October 2012–30 March 2013**. Its internal
-dates determine coverage; recent web indexing dates are irrelevant. The dated
-week is within that period, with adjacent origin-local departure dates retained
-for overnight and cross-timezone flights.
+## Collection and provenance
 
-The source contains **568 parseable schedule rows**. **Thirteen rows on page 3**
-have malformed flight identifiers or date serials in printed fields. They are
-excluded, rather than assigning guessed flight numbers or dates. This makes
-coverage partial, particularly in the Sydney–Melbourne direction. Every retained
-flight has its source PDF page in the prepared reference. Equipment is the
-published A320/A321 type, rather than an observed aircraft registration.
+The source is the rendered public [Google Flights](https://www.google.com/travel/flights)
+search page, captured **24 October 2026** for **2 November 2026**. Queries specify
+one-way, nonstop travel between exact IATA codes. The collector reads JSON arrays
+already embedded in those pages; it never executes the source data as code and
+requires no API key or signed-in profile.
 
-The prepared gzip is `data/reference/australia_flights/2013-03-04.json.gz`, about
-29 KB. It contains 1,451 departures in the selected Melbourne-time week, plus
-adjacent departure dates (1,871 source occurrences in the prepared file).
-It does not bundle the PDF. Source URLs and SHA-256 checksums are recorded in the
-reference and [source register](data/sources/australian_flights_feasibility.json).
-The publisher's [terms](https://www.jetstar.com/au/en/terms-of-use) remain linked;
-this personal pilot makes no claim of an open-data licence or a separate
-publisher agreement.
+The prepared file is `data/reference/australia_flights/2026-11-02.json.gz`
+(**46,306 bytes**). It contains **1,623 unique flight occurrences** across the
+queried local dates, including adjacent dates needed for carry-ins. Runtime
+selection clips these to the selected Melbourne day. All **271 planned
+airport/date queries** were captured; none remains uncollected. Empty query
+results mean no matching flights were returned, rather than proving that an
+airport pair has no services.
 
-Rebuild using a preparation-only PDF reader:
+Each query retains its exact airport codes/date, source URL, capture timestamp,
+response-data SHA-256 and result status in the bundle's `metadata.queries`.
+The [source register](data/sources/australian_flights_feasibility.json) records the
+selected source and earlier alternatives. Search options for the same flight
+are deduplicated by local departure date, flight number and airport pair;
+conflicting schedule records are rejected. Flight numbers, aircraft descriptions
+and endpoint dates/times come from the source. No departure times are generated
+from route frequencies. Bookable search results may omit flights and airlines;
+this is not a complete operational movements feed or observed tracking.
+
+Rebuild from the saved local query cache, or resume uncaptured queries:
 
 ```bash
-.venv/bin/python -m pip install --target .cache/flight-tools pypdf==6.21.2
-PYTHONPATH=.cache/flight-tools .venv/bin/python scripts/prepare_australian_flights.py
+PYTHONPATH=.cache/browser-tools python3 scripts/prepare_google_flights.py --prepare-only
+PYTHONPATH=.cache/browser-tools python3 scripts/prepare_google_flights.py
 ```
 
-The script verifies pinned source checksums before parsing, checks parsed and
-malformed row totals, applies effective-date/weekday restrictions, resolves each
-airport clock to UTC, checks domestic durations and rejects duplicate operating
-flight identities. The runtime app uses the prepared gzip and existing replay
-HTTP cache; it needs neither pypdf nor a flight-data API. Override the prepared
-file with `SUNTRAIN_AUSTRALIA_FLIGHTS_REFERENCE`.
+Collection uses installed Chrome and preparation-only Playwright, two concurrent
+pages by default, a pause between queries and an ignored on-disk cache. Access
+challenges stop collection. The runtime app reads the prepared snapshot through
+the existing replay cache and makes no requests to Google during playback.
 
-## Airports, time and paths
+## Airports and time
 
-Airport names, IATA/ICAO codes and coordinates come from the public-domain
+Airport names, IATA/ICAO codes and coordinates use the public-domain
 [OurAirports data](https://ourairports.com/data/), pinned to commit
-`3b10d0b967cc04c62eb6411939e4e9936a88e701` on **24 October 2026**. The full CSV
-contains 2,795 Australian records and 157 non-closed airports marked for scheduled
-service, with valid coordinates and unique nonempty IATA codes. The pilot uses
-only its 18 source-matched airports. The scheduled-service flag is not used to
-invent flights. Modern airport names/coordinates are a geographic reference,
-not a reconstruction of all 2013 naming or infrastructure.
+`3b10d0b967cc04c62eb6411939e4e9936a88e701`. Its checksum is verified before the
+36 individual airports are matched. Airports have explicit IANA zones, including
+**Australia/Broken_Hill**, Queensland's lack of daylight saving, Adelaide's
+half-hour offset and Darwin/Perth differences. Every converted flight duration
+must match the duration reported by the search result.
 
-OurAirports has no airport timezone column. The preparation script explicitly
-maps these 18 airports to IANA zones, preserving Queensland's lack of daylight
-saving, Adelaide's half-hour offset and Darwin/Perth differences. It rejects
-ambiguous or nonexistent local clocks. Arrival date rollover is resolved using
-UTC ordering and checked domestic flight duration, rather than comparing local
-clock numbers alone.
+Boards and flight details show airport-local clocks. The national timeline is
+**00:00–00:00 Melbourne time**. Prior local departure dates are searched where
+that timezone is behind Melbourne, so overnight flights can carry into the day.
+Overview counts departures owned by the selected Melbourne calendar day.
+Great-circle paths illustrate scheduled block-time progression; they are not
+actual tracks or takeoff/landing observations. Live delays, gates and passenger
+loads are outside this snapshot.
 
-The national day runs **00:00–00:00 Melbourne time**. Flights overlapping that
-window remain visible, including departures from the preceding origin-local day.
-Overview counts only departures owned by that Melbourne day. Boards show their
-window and event clocks in airport-local time; selected-flight details show each
-endpoint in its own timezone. Scheduled block times are not labelled as actual
-takeoff/landing times. Gates, delays, fares, passenger loads and codeshare
-inventories are not provided by this source.
+## Validation and the earlier pilot
 
-Each unique directional airport pair shares a sampled great-circle path, tagged
-`quality=illustrative`. Unresolved transit paths continue to stay hidden. Plane
-icons are drawn locally in canvas, rotate along the path and keep a crisp outline
-in all five themes. Airport codes use locally rendered labels without an extra
-font service. Airport connections appear on selection to limit clutter.
+Python tests cover exact MEL/AVV isolation, published flight identity, zero-minute
+source encoding, deduplication/conflicts, Broken Hill offsets, duration checks,
+all carriers, airport identity, source-query completion and cached downloads.
+Browser checks cover airline filtering, independent MEL/AVV boards, map clicks,
+plane motion, local arrivals, expanded boards, mobile, themes, Indonesian,
+Overview and returning to Melbourne. Existing transit tests remain applicable.
 
-## Validation
-
-- Python checks cover the actual JQ402 Sydney–Gold Coast source clocks, operating
-  days, Adelaide/Darwin and Perth/Melbourne overnight differences, DST ambiguity,
-  all seven prepared days, unique flights, carry-ins, paths and cached downloads.
-- JavaScript checks cover terminal arrivals, date-window ownership, illustrative
-  movement, headings, local clocks and midnight Overview totals.
-- `tests/browser_australian_flights.py` exercises actual airport clicks, moving
-  planes and seeking, local boards, arrival paging, journey return, fullscreen,
-  mobile, themes, Indonesian, the last date, station visibility and Melbourne
-  return. Screenshots are saved to `.cache/australia-flights-*.png`.
-
-The source register also retains the alternatives investigated: Rex/FlyPelican
-published regional timetables, Qantas, BITRE monthly statistics, Airservices,
-OpenSky, ADSB.lol and Aviationstack. These are not mixed into this pilot. BITRE
-aggregates do not reconstruct flight times, and historical tracking archives
-would need their own recorded-flight experience and coverage validation.
+The earlier Jetstar-only **4–10 March 2013** bundle remains in the repository for
+reproducibility and regression tests. It is not the active flight view. Its
+preparation script is `scripts/prepare_australian_flights.py`, using the pinned
+[2012 Jetstar PDF](https://www.jetstar.com/_/media/Jetstar%20Australia/Files/PDF/Flight%20Schedules/NW12_Timetable_Domestic.pdf)
+and preparation-only `pypdf==6.21.2`. That older parser retains 568 valid schedule
+rows and excludes 13 malformed rows. It is not mixed into the November snapshot.

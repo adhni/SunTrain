@@ -205,7 +205,7 @@
             const columns = node('div', undefined, 'departure-columns'); columns.setAttribute('aria-hidden', 'true');
             for (const title of [arrivals ? 'Arrival' : 'Departure', flights ? 'Flight' : 'Route', arrivals ? 'Origin' : 'Destination', 'Operator']) columns.append(node('span', title));
             this.host.append(this.clock, node("p", flights ? 'Replay paused · scheduled flights' : "Replay paused · scheduled departures", "departure-board-note replay-muted"), columns, this.list, nav,
-                node("p", flights ? 'Jetstar timetable · March 2013. Loaded flights only.' : "Scheduled replay events; boarding permissions may differ. Final stops are excluded.", "replay-muted replay-small"));
+                node("p", flights ? 'Schedule snapshot. Loaded flights only; search coverage is partial.' : "Scheduled replay events; boarding permissions may differ. Final stops are excluded.", "replay-muted replay-small"));
             this.update(true);
         }
         updateLocale() {

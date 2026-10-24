@@ -127,7 +127,7 @@
             cards.append(card);
         }
         host.replaceChildren(cards); host.setAttribute("aria-busy", "false");
-        if (day.city === 'australia_flights') host.append(element('p', 'Jetstar domestic timetable · March 2013. Other airlines are not included.', 'replay-muted'));
+        if (day.city === 'australia_flights') host.append(element('p', 'Schedule snapshot. Loaded flights only; search coverage is partial.', 'replay-muted'));
         if (!summary.departures) {
             host.append(element("p", "No scheduled departures match this date and these filters. Clear a filter or choose another date.", "city-empty replay-muted"));
         } else {

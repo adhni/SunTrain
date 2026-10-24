@@ -15,10 +15,19 @@ with sync_playwright() as p:
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"australia_flights"})')
     page.wait_for_function('window.suntrainReplay?.day?.city === "australia_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length', timeout=120000)
     page.wait_for_function('suntrainReplay.graph.queryRenderedFeatures({layers:["replay-planes"]}).length > 0')
-    assert page.evaluate('suntrainReplay.day.stations.length') == 18
+    assert page.evaluate('suntrainReplay.day.stations.length') >= 18
+    assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.operator)).size') >= 3
+    assert page.evaluate('suntrainReplay.day.stations.filter(a=>["MEL","AVV"].includes(a.code)).length') == 2
     assert page.evaluate('suntrainReplay.day.day_start_hour') == 0
     assert page.locator('#replay-range-start').inner_text() == '00:00'
     assert page.evaluate('suntrainReplay.graph.getSource("replay-routes")._data.features.length') == 0
+    query_count = len(downloads)
+    page.evaluate('dash_clientside.set_props("replay-operators",{value:["Qantas"]})')
+    page.wait_for_function('() => suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.operator==="Qantas")')
+    assert page.evaluate('suntrainReplay.activePositions.every(f=>f.properties.color==="#e53935")')
+    page.evaluate('dash_clientside.set_props("replay-operators",{value:[]})')
+    page.wait_for_function('() => new Set(suntrainReplay.filtered.map(s=>s.operator)).size>=3')
+    assert len(downloads) == query_count
     assert page.evaluate('suntrainReplay.activePositions.every(f=>Number.isFinite(f.properties.bearing))')
     original = page.evaluate('JSON.stringify(suntrainReplay.activePositions)')
     now = page.evaluate('suntrainReplay.now')
@@ -47,7 +56,13 @@ with sync_playwright() as p:
     print('Actual airport click, Perth local times, airport focus and terminal arrivals passed', flush=True)
 
     # Melbourne has enough flights to exercise board paging and journey return state.
+    page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="AVV"))')
+    assert '(AVV)' in page.locator('#departure-title').inner_text()
+    avv_calls = page.evaluate('suntrainReplay.departures.calls.length')
+    assert avv_calls > 0
     page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="MEL"))')
+    assert '(MEL)' in page.locator('#departure-title').inner_text()
+    assert page.evaluate('suntrainReplay.departures.calls.length') > avv_calls
     page.get_by_role('button', name='Expand board', exact=True).click()
     assert page.evaluate('suntrainReplay.departures.expanded && !suntrainReplay.playing')
     page.locator('.departure-pagination button').last.click()
@@ -89,8 +104,8 @@ with sync_playwright() as p:
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"overview"})')
     page.wait_for_function('document.querySelector("#city-overview-context").textContent.includes("00:00–00:00")')
     assert 'Airports served' in page.locator('#city-overview-content').inner_text()
-    page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-date",{data:"2013-03-10"})')
-    page.wait_for_function('suntrainReplay.day.business_date === "2013-03-10" && !suntrainReplay.loading')
+    page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-date",{data:"2026-11-02"})')
+    page.wait_for_function('suntrainReplay.day.business_date === "2026-11-02" && !suntrainReplay.loading')
     assert page.evaluate('suntrainReplay.day.services.length') > 150
     page.evaluate('dash_clientside.set_props("replay-display",{value:[]})')
     page.wait_for_function('suntrainReplay.graph.getSource("replay-stations")._data.features.length === 0')

@@ -719,5 +719,13 @@
   "Other airlines are not included.": "Other airlines are not included.",
   "Paths illustrate scheduled travel between airports; they are not recorded flight tracks.": "Paths illustrate scheduled travel between airports; they are not recorded flight tracks.",
   "Some malformed source entries are excluded.": "Some malformed source entries are excluded.",
-  "Arrived": "Arrived"
+  "Arrived": "Arrived",
+  "Australian domestic flights · 2 November 2026 schedule snapshot. Qantas, Virgin Australia, Jetstar and regional flights where returned by the searches. MEL and AVV are separate airports. Click an airport for departures and arrivals. Paths are illustrative; coverage is partial.": "Australian domestic flights · 2 November 2026 schedule snapshot. Qantas, Virgin Australia, Jetstar and regional flights where returned by the searches. MEL and AVV are separate airports. Click an airport for departures and arrivals. Paths are illustrative; coverage is partial.",
+  "Airlines": "Airlines",
+  "Aircraft not specified": "Aircraft not specified",
+  "Schedule snapshot. Loaded flights only; search coverage is partial.": "Schedule snapshot. Loaded flights only; search coverage is partial.",
+  "Domestic flight schedules for 2 November 2026.": "Domestic flight schedules for 2 November 2026.",
+  "Airline colours identify the carrier.": "Airline colours identify the carrier.",
+  "Search coverage is partial; some flights may be absent.": "Search coverage is partial; some flights may be absent.",
+  "Paths are illustrative, not recorded flight tracks.": "Paths are illustrative, not recorded flight tracks."
 }

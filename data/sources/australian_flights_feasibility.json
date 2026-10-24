@@ -1,7 +1,7 @@
 {
   "assessed_on": "2026-10-24",
   "scope": "Australian domestic passenger flights; scheduled replay; free sources first; dated partial pilot acceptable",
-  "decision": "dated_personal_timetable_pilot",
+  "decision": "recent_airport_code_snapshot",
   "flight_view_enabled": true,
   "sources": [
     {
@@ -233,12 +233,27 @@
         "verified snapshot retention and redistribution rights"
       ],
       "limitations": "Schedules and historical flights are listed on paid plans. No key, subscription or data sample was obtained; advertised features do not establish coverage or redistribution rights."
+    },
+    {
+      "id": "google_flights",
+      "kind": "public_flight_search_snapshot",
+      "decision": "selected_for_personal_pilot",
+      "source_url": "https://www.google.com/travel/flights",
+      "captured_on": "2026-10-24",
+      "schedule_date": "2026-11-02",
+      "airport_count": 36,
+      "source_occurrences_including_adjacent_dates": 1623,
+      "departures_in_melbourne_day": 1170,
+      "queries": 271,
+      "uncollected_queries": 0,
+      "query_provenance": "Stored in prepared reference metadata.queries",
+      "limitations": "Bookable search results may omit services. Uses exact origin/destination IATA codes and preserves MEL and AVV separately. Prior-local-date searches supply overnight carry-ins; all scheduled times are checked against published durations."
     }
   ],
   "openly_licensed_timetable_sources": [],
-  "selected_pilot_source": "jetstar_nw12",
+  "selected_pilot_source": "google_flights",
   "pilot_period": [
-    "2013-03-04",
-    "2013-03-10"
+    "2026-11-02",
+    "2026-11-02"
   ]
 }

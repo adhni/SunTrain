@@ -35,7 +35,7 @@ def test_calendar_restrictions_and_local_clocks():
 
 
 def test_actual_published_flight_preserves_times_and_flight_number():
-    payload = get_replay_day('2013-03-04', 'australia_flights')
+    payload = flights.replay_day('2013-03-04')
     flight = next(s for s in payload['services'] if s['number'] == 'JQ402' and s['id'].startswith('2013-03-04'))
     dep, arr = flight['stops'][0][2], flight['stops'][1][1]
     assert datetime.fromtimestamp(dep, ZoneInfo('Australia/Sydney')).strftime('%H:%M') == '07:00'
@@ -49,7 +49,7 @@ def test_actual_published_flight_preserves_times_and_flight_number():
 
 @pytest.mark.parametrize('day', [f'2013-03-{n:02}' for n in range(4, 11)])
 def test_every_day_has_unique_real_flights_and_overnight_carry_ins(day):
-    payload = get_replay_day(day, 'australia_flights')
+    payload = flights.replay_day(day)
     assert payload['end'] - payload['start'] == 86400
     assert datetime.fromtimestamp(payload['start'], ZoneInfo(payload['timezone'])).hour == 0
     assert len(payload['services']) > 150
@@ -82,7 +82,7 @@ def test_flight_download_uses_existing_cache_and_rejects_wrong_dates(tmp_path, m
     app = Flask(__name__)
     replay_http.register_replay_routes(app)
     client = app.test_client()
-    info = replay_http.descriptor('2013-03-04', 'australia_flights')
+    info = replay_http.descriptor('2026-11-02', 'australia_flights')
     result = client.get(info['url'], headers={'Accept-Encoding': 'gzip'})
     assert result.status_code == 200
     payload = json.loads(gzip.decompress(result.data))
@@ -91,5 +91,22 @@ def test_flight_download_uses_existing_cache_and_rejects_wrong_dates(tmp_path, m
     assert payload['schedule']['note_messages']
     assert 'transit_patterns' not in payload
     assert client.get(info['url'], headers={'Accept-Encoding': 'gzip', 'If-None-Match': result.headers['ETag']}).status_code == 304
-    assert client.get(info['url'].replace('2013-03-04', '2026-10-24')).status_code == 404
+    assert client.get(info['url'].replace('2026-11-02', '2026-10-24')).status_code == 404
     assert client.get(info['url'].replace('modes=flight', 'modes=train')).status_code == 404
+
+
+def test_recent_snapshot_has_multiple_airlines_and_distinct_mel_and_avv():
+    payload = get_replay_day('2026-11-02', 'australia_flights')
+    by_code = {a['code']: index for index, a in enumerate(payload['stations'])}
+    assert by_code['MEL'] != by_code['AVV']
+    assert len(by_code) >= 30
+    assert {'Qantas', 'Virgin Australia', 'Jetstar', 'Rex'} <= {f['operator'] for f in payload['services']}
+    assert len({f['color'] for f in payload['services']}) >= 4
+    assert len(payload['services']) > 500
+    assert len({f['id'] for f in payload['services']}) == len(payload['services'])
+    for code in ['MEL', 'AVV']:
+        assert any(f['stops'][0][0] == by_code[code] for f in payload['services'])
+        assert any(f['stops'][1][0] == by_code[code] for f in payload['services'])
+    for query in payload['schedule']['queries']:
+        assert f"from+{query['origin']}+to+{query['destination']}" in query['url']
+    assert payload['schedule']['uncollected_queries'] == []

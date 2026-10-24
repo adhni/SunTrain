@@ -211,9 +211,9 @@ Rebuild with `./.venv/bin/python scripts/prepare_american_replay.py`. See [US ra
 
 ## Australian domestic flights
 
-Choose **Australia · Flights** for **4–10 March 2013** to explore Jetstar's published domestic timetable across **18 airports**. Planes move along illustrative great-circle routes. Click an airport or its code for **Departures / Arrivals**, then expand the board or select a flight. Airport boards and flight endpoints use their own local time; the national replay clock uses Melbourne time. Overnight flights carry into the next day's replay. Other airlines are not included, and 13 malformed source entries are excluded.
+Choose **Australia · Flights** for **2 November 2026**. The newer snapshot covers **36 airports** and **1,170 scheduled departures**, with overnight carry-ins. It includes Qantas, Virgin Australia, Jetstar, Rex, Link Airways and Alliance where returned by the airport-specific searches. **MEL and AVV are separate airports**, with independent searches, markers and boards.
 
-The prepared week is **29 KB gzip** and needs no flight API key. Themes, languages, replay controls and Overview are shared with the transit explorer. See the [flight pilot notes](AUSTRALIAN_FLIGHTS_FEASIBILITY.md) for source dates, coverage, preparation and validation.
+Planes have distinct airline colours. Click an airport or its code for **Departures / Arrivals**, expand the board, or use **More filters → Operator / feed** to focus an airline. Airport boards and flight endpoints use local time; the national clock uses Melbourne time. The dated snapshot loads locally without a flight API key. Search coverage is partial, and paths illustrate scheduled travel. See the [flight notes](AUSTRALIAN_FLIGHTS_FEASIBILITY.md) for source coverage and rebuilding.
 
 ## Additional Australian cities
 

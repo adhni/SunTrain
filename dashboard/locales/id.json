@@ -719,5 +719,13 @@
   "Other airlines are not included.": "Maskapai lain tidak disertakan.",
   "Paths illustrate scheduled travel between airports; they are not recorded flight tracks.": "Jalur mengilustrasikan perjalanan terjadwal antarbandara; bukan rekaman jalur penerbangan.",
   "Some malformed source entries are excluded.": "Sebagian entri sumber yang rusak tidak disertakan.",
-  "Arrived": "Tiba"
+  "Arrived": "Tiba",
+  "Australian domestic flights · 2 November 2026 schedule snapshot. Qantas, Virgin Australia, Jetstar and regional flights where returned by the searches. MEL and AVV are separate airports. Click an airport for departures and arrivals. Paths are illustrative; coverage is partial.": "Penerbangan domestik Australia · snapshot jadwal 2 November 2026. Qantas, Virgin Australia, Jetstar, dan penerbangan regional yang ditemukan. MEL dan AVV adalah bandara terpisah. Klik bandara untuk keberangkatan dan kedatangan. Jalur hanya ilustrasi; cakupan belum lengkap.",
+  "Airlines": "Maskapai",
+  "Aircraft not specified": "Pesawat tidak disebutkan",
+  "Schedule snapshot. Loaded flights only; search coverage is partial.": "Snapshot jadwal. Hanya penerbangan yang dimuat; cakupan pencarian belum lengkap.",
+  "Domestic flight schedules for 2 November 2026.": "Jadwal penerbangan domestik untuk 2 November 2026.",
+  "Airline colours identify the carrier.": "Warna maskapai menunjukkan operator.",
+  "Search coverage is partial; some flights may be absent.": "Cakupan pencarian belum lengkap; sebagian penerbangan mungkin tidak disertakan.",
+  "Paths are illustrative, not recorded flight tracks.": "Jalur hanya ilustrasi, bukan rekaman jalur penerbangan."
 }

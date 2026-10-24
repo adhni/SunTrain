@@ -9,16 +9,22 @@ import os
 from dashboard.cities import replay_settings
 from scripts.prepare_australian_flights import great_circle
 
-DEFAULT = Path(__file__).resolve().parents[1] / 'data/reference/australia_flights/2013-03-04.json.gz'
+DIRECTORY = Path(__file__).resolve().parents[1] / 'data/reference/australia_flights'
+DEFAULT = DIRECTORY / '2026-11-02.json.gz'
+AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
+            'JQ': ('Jetstar', '#f57c28'), 'ZL': ('Rex', '#439edd'),
+            'FC': ('Link Airways', '#50b6a1'), 'QQ': ('Alliance Airlines', '#eab54d'),
+            'FP': ('FlyPelican', '#a1c75b')}
 
 
-def reference_path():
-    return Path(os.getenv('SUNTRAIN_AUSTRALIA_FLIGHTS_REFERENCE', str(DEFAULT)))
+def reference_path(business_date=None):
+    default = DIRECTORY / '2013-03-04.json.gz' if business_date and business_date.startswith('2013-03-') else DEFAULT
+    return Path(os.getenv('SUNTRAIN_AUSTRALIA_FLIGHTS_REFERENCE', str(default)))
 
 
 def replay_day(business_date):
     from dashboard.replay import cumulative_distances
-    with gzip.open(reference_path(), 'rt') as stream:
+    with gzip.open(reference_path(business_date), 'rt') as stream:
         reference = json.load(stream)
     day = date.fromisoformat(business_date)
     zone = ZoneInfo('Australia/Melbourne')
@@ -37,9 +43,12 @@ def replay_day(business_date):
         if key not in paths:
             coordinates = great_circle([a['lon'], a['lat']], [b['lon'], b['lat']])
             paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
-        services.append(dict(id=flight['id'], number=flight['number'], mode='flight', operator='Jetstar',
+        carrier = flight.get('carrier', 'JQ')
+        operator, color = AIRLINES.get(carrier, (flight.get('airline', carrier), '#62b4b4'))
+        services.append(dict(id=flight['id'], number=flight['number'], mode='flight', operator=operator,
             line=route, route_id=key, direction='Scheduled service', origin=a['name'], destination=b['name'],
-            color='#F57C28', equipment=flight['equipment'], source_page=flight['source_page'],
+            color=color, carrier=carrier, aircraft=flight.get('aircraft', 'Airbus A' + flight.get('equipment', '320')),
+            operating_airline=flight.get('airline', operator), source_page=flight.get('source_page'),
             stops=[[origin, flight['departure'], flight['departure']], [destination, flight['arrival'], flight['arrival']]],
             legs=[key], timing_uncertain=False))
     return dict(**replay_settings('australia_flights'), business_date=business_date,

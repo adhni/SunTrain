@@ -207,7 +207,7 @@
     function markerRadius(halo = 0) {
         const scale = ["coalesce", ["get", "sizeFactor"], 1];
         return ["interpolate", ["linear"], ["zoom"],
-            5, ["+", halo, ["*", 1.2, scale]], 9, ["+", halo, ["*", 2.5, scale]],
+            5, ["+", halo, ["*", 1.8, scale]], 9, ["+", halo, ["*", 3.1, scale]],
             12, ["+", halo, ["*", 4, scale]], 15, ["+", halo, ["*", 5, scale]]];
     }
     const core = {ActiveServices, pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor, firstDeparture, departureActivity};
@@ -286,6 +286,7 @@
                     this.paint(true);
                 });
                 $("replay-close-details").addEventListener("click", () => {
+                    if (this.departures?.expanded) { this.departures.setExpanded(false); return; }
                     this.selected = null; this.emptyDetails(); this.staticDirty = true; this.paint(true);
                     $("replay-open-departures").focus();
                 });
@@ -309,13 +310,13 @@
                         paint: {"line-color": "#115d51", "line-width": 4, "line-opacity": 0.8}});
                     this.graph.addLayer({id: "replay-stations", type: "circle", source: "replay-stations",
                         filter: ["in", ["get", "mode"], ["literal", ["train", "ferry"]]],
-                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 6, 1.2, 9, 1.6, 12, 2.3, 15, 3],
-                            "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 9, 0.3, 15, 0.7], "circle-stroke-color": "white",
-                            "circle-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.18, 9, 0.35, 12, 0.75, 15, 1],
-                            "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.18, 9, 0.35, 12, 0.75, 15, 1]}});
+                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 6, 2, 9, 3, 12, 4, 15, 4.5],
+                            "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 9, 1.2, 15, 1.5], "circle-stroke-color": "white",
+                            "circle-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.4, 9, 0.7, 12, 0.9, 15, 1],
+                            "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.4, 9, 0.7, 12, 0.9, 15, 1]}});
                     this.graph.addLayer({id: "replay-local-stops", type: "circle", source: "replay-stations", minzoom: 12,
                         filter: ["in", ["get", "mode"], ["literal", ["tram", "bus"]]],
-                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 12, 1.3, 15, 2],
+                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 12, 1.7, 15, 2.5],
                             "circle-stroke-width": 0.5, "circle-stroke-color": "white",
                             "circle-opacity": ["interpolate", ["linear"], ["zoom"], 12, 0, 13, 0.75, 15, 1],
                             "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 12, 0, 13, 0.75, 15, 1]}});
@@ -323,18 +324,43 @@
                         paint: {"circle-color": ["interpolate", ["linear"], ["get", "boardings"], ...root.suntrainDemand.scale.flat()],
                             "circle-radius": ["interpolate", ["linear"], ["get", "boardings"], 0, 5, 500, 7, 2000, 10, 5000, 13],
                             "circle-stroke-color": "#fff", "circle-stroke-width": 1.5, "circle-opacity": 0.95}});
+                    this.graph.addLayer({id: "replay-station-focus", type: "circle", source: "replay-stations",
+                        filter: ["==", ["get", "id"], -1],
+                        paint: {"circle-radius": 8, "circle-opacity": 0, "circle-stroke-width": 2, "circle-stroke-color": "#1caa92"}});
+                    this.graph.addLayer({id: "replay-vehicle-bodies", type: "symbol", source: "replay-trains",
+                        filter: ["!=", ["get", "body"], ""], layout: {
+                            "icon-image": ["get", "body"], "icon-rotate": ["get", "bearing"],
+                            "icon-rotation-alignment": "map", "icon-pitch-alignment": "map",
+                            "icon-anchor": "top", "icon-offset": [0, -8],
+                            "icon-size": ["interpolate", ["linear"], ["zoom"], 5, 0.55, 9, 0.72, 12, 1, 15, 1.25],
+                            "icon-allow-overlap": true, "icon-ignore-placement": true}});
+                    this.graph.addLayer({id: "replay-vehicle-outline", type: "circle", source: "replay-trains",
+                        paint: {"circle-color": "#17212b", "circle-radius": markerRadius(1.7), "circle-opacity": 0.9}});
                     this.graph.addLayer({id: "replay-selected-train", type: "circle", source: "replay-selected-train",
                         paint: {"circle-radius": markerRadius(3), "circle-opacity": 0,
                             "circle-stroke-color": "#18232d", "circle-stroke-width": 1.5}});
                     this.graph.addLayer({id: "replay-trains", type: "circle", source: "replay-trains",
                         paint: {"circle-color": ["get", "color"], "circle-radius": markerRadius(),
-                            "circle-stroke-color": "#fff", "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 6, 0.25, 9, 0.4, 12, 0.7, 15, 1], "circle-opacity": 0.95}});
+                            "circle-stroke-color": "#fff", "circle-stroke-width": 1.2, "circle-opacity": 0.95}});
                     this.popup = new root.maplibregl.Popup({closeButton: false, closeOnClick: false, offset: 10});
-                    this.graph.on("click", "replay-trains", e => this.select(e.features[0].properties.id));
-                    this.graph.on("mousemove", "replay-trains", e => {
+                    this.graph.on("click", e => {
+                        const vehicles = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-vehicle-bodies"]});
+                        if (vehicles.length) { this.select(vehicles[0].properties.id); return; }
+                        const station = this.stationNear(e.point);
+                        if (!station) return;
+                        if (this.mapMode === "trains") this.departures.open(Number(station.properties.id));
+                        else { this.demandPinned = true; this.showDemandPopup(Number(station.properties.id)); }
+                    });
+                    this.graph.on("mousemove", e => {
+                        const features = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-vehicle-bodies"]});
+                        if (!features.length) {
+                            if (this.vehicleHover) { this.vehicleHover = false; this.popup.remove(); this.graph.getCanvas().style.cursor = ""; }
+                            return;
+                        }
+                        this.vehicleHover = true;
                         this.graph.getCanvas().style.cursor = "pointer";
                         this.demandPinned = false; this.demandPopupId = null;
-                        const feature = e.features[0], service = this.filtered.find(s => s.id === feature.properties.id);
+                        const feature = features[0], service = this.filtered.find(s => s.id === feature.properties.id);
                         if (!service) return;
                         const content = node("div", undefined, "replay-map-tooltip");
                         content.append(node("strong", `${service.line} · ${service.number}`),
@@ -344,9 +370,9 @@
                         if (feature.properties.approximate) content.append(node("div", "Approximate route"));
                         this.popup.setLngLat(feature.geometry.coordinates).setDOMContent(content).addTo(this.graph);
                     });
-                    this.graph.on("mouseleave", "replay-trains", () => { this.graph.getCanvas().style.cursor = ""; this.popup.remove(); });
+                    this.graph.on("mouseout", () => { this.stationHover = false; this.vehicleHover = false; this.graph.getCanvas().style.cursor = ""; if (!this.demandPinned) this.popup.remove(); });
                     for (const event of ["click", "mousemove"]) this.graph.on(event, "replay-demand-stations", e => {
-                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) return;
+                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-vehicle-bodies"]}).length) return;
                         this.graph.getCanvas().style.cursor = "pointer";
                         if (event === "mousemove" && this.demandPinned) return;
                         this.demandPinned = event === "click";
@@ -356,15 +382,17 @@
                         if (!this.demandPinned) { this.demandPopupId = null; this.popup.remove(); }
                         this.graph.getCanvas().style.cursor = "";
                     });
-                    for (const layer of ["replay-stations", "replay-local-stops"]) this.graph.on("click", layer, e => {
-                        if (this.mapMode !== "trains") {
-                            if (!this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) {
-                                this.demandPinned = true; this.showDemandPopup(Number(e.features[0].properties.id));
-                            }
-                            return;
-                        }
-                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) return;
-                        this.departures.open(Number(e.features[0].properties.id));
+                    this.graph.on("mousemove", e => {
+                        if (this.mapMode !== "trains") return;
+                        if (this.vehicleHover) { this.stationHover = false; return; }
+                        const station = this.stationNear(e.point);
+                        this.graph.getCanvas().style.cursor = station ? "pointer" : "";
+                        if (station) {
+                            this.stationHover = true;
+                            const content = node("div", undefined, "replay-map-tooltip");
+                            content.append(node("strong", station.properties.name), node("div", "Click for departures"));
+                            this.popup.setLngLat(station.geometry.coordinates).setDOMContent(content).addTo(this.graph);
+                        } else if (this.stationHover) { this.stationHover = false; this.popup.remove(); }
                     });
                     this.mapReady = true;
                     this.demandLegendMedia = root.matchMedia("(max-width: 520px)");
@@ -466,6 +494,16 @@
             if (item.right > host.right) tabs.scrollLeft += item.right - host.right;
             else if (item.left < host.left) tabs.scrollLeft -= host.left - item.left;
         }
+        stationNear(point) {
+            if (!this.display.includes("stations")) return null;
+            const candidates = this.graph.queryRenderedFeatures([[point.x - 8, point.y - 8], [point.x + 8, point.y + 8]],
+                {layers: ["replay-stations", "replay-local-stops"]});
+            const distance = feature => {
+                const p = this.graph.project(feature.geometry.coordinates);
+                return Math.hypot(p.x - point.x, p.y - point.y);
+            };
+            return candidates.filter(f => distance(f) <= 10).sort((a, b) => distance(a) - distance(b))[0] || null;
+        }
         isFullscreen() {
             const panel = $("replay-panel");
             return !!panel && (document.fullscreenElement === panel || panel.classList.contains("replay-expanded"));
@@ -556,6 +594,7 @@
             }
              this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
             this.departures?.reset();
+            if ($("replay-vehicle-help")) $("replay-vehicle-help").hidden = day.city !== "melbourne";
             this.selected = null; this.staticDirty = true; this.setupTimeline(); this.emptyDetails();
             if(root.suntrainI18n) root.suntrainI18n.bind($("replay-melbourne"), `Return to the ${day.city_name} starting view`, "title");
             const options = [...new Set(day.stations.map(s => s.name))].sort();
@@ -638,11 +677,11 @@
                 this.graph.setPaintProperty("replay-selected-route", "line-color", this.selected ? vehicleColor(this.selected, this.day?.city) : dark ? "#8ae1ca" : "#115d51");
                 this.graph.setPaintProperty("replay-demand-stations", "circle-stroke-color", dark ? "#e4eef0" : "#fff");
                 for (const layer of ["replay-stations", "replay-local-stops"]) {
-                    this.graph.setPaintProperty(layer, "circle-color", dark ? "#a6bdb5" : "#6d8980");
-                    this.graph.setPaintProperty(layer, "circle-stroke-color", dark ? "#17212b" : "#fff");
+                    this.graph.setPaintProperty(layer, "circle-color", dark ? "#17212b" : "#fff");
+                    this.graph.setPaintProperty(layer, "circle-stroke-color", dark ? "#bccbc7" : "#526d66");
                 }
                 this.graph.setPaintProperty("replay-selected-train", "circle-stroke-color", dark ? "#f2f8fa" : "#18232d");
-                this.graph.setPaintProperty("replay-trains", "circle-stroke-color", dark ? "#d2dadd" : "#fff");
+                this.graph.setPaintProperty("replay-trains", "circle-stroke-color", "#fff");
                 this.graph.setPaintProperty("replay-routes", "line-color", dark ? "#789b92" : "#78908a");
             }
             this.updateLegend();
@@ -885,6 +924,7 @@
             this.graph.getSource("replay-routes").setData(collection(routes));
             this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: s.id, mode: s.mode || "train"}))));
             this.graph.getSource("replay-selected-route").setData(collection(selected));
+            this.graph.setFilter("replay-station-focus", ["==", ["get", "id"], (this.departures?.visible || this.departures?.previewCall) ? this.departures.station : -1]);
         }
         setMapMode(mode, minutes) {
             mode = ["trains", "demand", "both"].includes(mode) ? mode : "trains";
@@ -892,7 +932,7 @@
             const changed = this.mapMode !== mode || this.demandWindow !== minutes;
             this.mapMode = mode; this.demandWindow = minutes;
             $("replay-panel").classList.toggle("replay-demand-only", mode === "demand");
-            for (const id of ["replay-trains", "replay-selected-train", "replay-selected-route"])
+            for (const id of ["replay-trains", "replay-vehicle-bodies", "replay-vehicle-outline", "replay-selected-train", "replay-selected-route"])
                 this.graph.setLayoutProperty(id, "visibility", mode === "demand" ? "none" : "visible");
             for (const id of ["replay-demand-glow", "replay-demand-stations"])
                 this.graph.setLayoutProperty(id, "visibility", mode === "trains" ? "none" : "visible");
@@ -965,8 +1005,11 @@
                     activeCount++;
                     if (service.id === this.selected?.id) selectedPosition = position;
                     if (position.lon === null || position.lat === null) { missingCount++; continue; }
+                    const kind = root.suntrainVehicles.bodyKind(this.day.city, service.mode);
+                    const bearing = kind ? root.suntrainVehicles.heading(service, position, this.day, this.now, pointAlong) : null;
+                    const body = bearing === null ? "" : root.suntrainVehicles.image(this.graph, kind, vehicleColor(service, this.day.city));
                     const marker = pointFeature([position.lon, position.lat], {id: service.id, color: vehicleColor(service, this.day?.city),
-                        sizeFactor: markerScale(position.load, this.display.includes("load")), load: position.load, approximate: position.approximate});
+                        body, bearing: bearing || 0, sizeFactor: markerScale(position.load, this.display.includes("load")), load: position.load, approximate: position.approximate});
                     trains.push(marker);
                     if (service.id === this.selected?.id) selectedMarker = marker;
                 }
@@ -1011,7 +1054,7 @@
             if (!this.departures) this.departures = new root.suntrainDepartures.Board(this, core);
             this.lastTrigger = trigger;
             this.active = tab === "replay";
-            if (!this.active) { this.pause(); if (this.isFullscreen()) this.exitFullscreen(); }
+            if (!this.active) { this.pause(); this.departures.setExpanded(false); if (this.isFullscreen()) this.exitFullscreen(); }
             this.revealTab();
             if (!day || day.business_date !== date || (day.city || "melbourne") !== city || day.error) {
                 root.suntrainOverview.pending(city, date, !!day?.error);

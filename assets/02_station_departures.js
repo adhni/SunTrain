@@ -57,7 +57,14 @@
         return new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: timezone, day: "numeric", month: "short",
             hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZoneName: "shortOffset"}).format(new Date(at * 1000));
     }
-    const api = {stationCalls, upcomingPage, stationCatalogue, formatCallTime};
+    function formatBoardTime(at, now, timezone) {
+        const locale = root.suntrainI18n?.locale || "en-AU";
+        const day = new Intl.DateTimeFormat('en-AU', {timeZone: timezone, year: 'numeric', month: 'numeric', day: 'numeric'});
+        const date = new Intl.DateTimeFormat(locale, {timeZone: timezone, day: 'numeric', month: 'short'});
+        const time = new Intl.DateTimeFormat(locale, {timeZone: timezone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23'}).format(new Date(at * 1000));
+        return time + (day.format(new Date(at * 1000)) !== day.format(new Date(now * 1000)) ? ' · ' + date.format(new Date(at * 1000)) : '');
+    }
+    const api = {stationCalls, upcomingPage, stationCatalogue, formatCallTime, formatBoardTime};
     if (typeof module !== "undefined" && module.exports) module.exports = api;
     if (!root.document) return;
     const $ = id => document.getElementById(id);
@@ -76,17 +83,53 @@
             this.replay = replay; this.core = core; this.station = null; this.page = 0;
             this.host = $("replay-departures");
             $("replay-open-departures").addEventListener("click", () => this.open());
+            document.addEventListener("keydown", event => {
+                if (!this.expanded) return;
+                if (event.key === "Escape") { event.preventDefault(); event.stopImmediatePropagation(); this.setExpanded(false); return; }
+                if (event.key !== "Tab") return;
+                const card = this.host.closest(".replay-detail-card");
+                const controls = [...card.querySelectorAll('button, input, select, summary, [tabindex]')]
+                    .filter(el => !el.disabled && el.tabIndex >= 0 && el.getClientRects().length);
+                const first = controls[0], last = controls.at(-1);
+                if (event.shiftKey && (document.activeElement === first || !card.contains(document.activeElement))) { event.preventDefault(); last?.focus(); }
+                else if (!event.shiftKey && (document.activeElement === last || !card.contains(document.activeElement))) { event.preventDefault(); first?.focus(); }
+            }, true);
         }
         reset() {
             this.close(); this.station = null; this.services = null; this.catalogue = null; this.calls = []; this.page = 0;
             this.host.replaceChildren(); this.list = null; this.search = null; this.choices = null;
         }
         close() {
+            this.setExpanded(false);
             this.previewCall=null;
             this.visible = false; this.host.hidden = true;
             $("replay-details").hidden = false;
             $("replay-panel").classList.remove("replay-browsing");
+            const eyebrow = document.querySelector('.replay-detail-heading .replay-eyebrow');
+            if (eyebrow) root.suntrainI18n?.bind(eyebrow, 'YOUR JOURNEY');
             $("replay-open-departures").setAttribute("aria-expanded", "false");
+        }
+        setExpanded(value) {
+            value = !!value && this.visible && this.station !== null;
+            if (!!this.expanded === value) return;
+            this.expanded = value;
+            const card = this.host.closest(".replay-detail-card");
+            $("replay-panel").classList.toggle("replay-board-expanded", value);
+            document.body.classList.toggle("replay-board-lock", value);
+            if (value) {
+                this.replay.pause(); card.scrollTop = 0;
+                card.setAttribute('role', 'dialog'); card.setAttribute('aria-modal', 'true'); card.setAttribute('aria-labelledby', 'departure-title');
+            } else {
+                for (const name of ['role', 'aria-modal', 'aria-labelledby']) card.removeAttribute(name);
+            }
+            const close = $("replay-close-details");
+            const label = value ? "Back to map" : "Close";
+            const ariaLabel = value ? "Back to map" : "Close service details";
+            if (root.suntrainI18n) { root.suntrainI18n.bind(close, label); root.suntrainI18n.bind(close, ariaLabel, 'aria-label'); }
+            else { close.textContent = label; close.setAttribute('aria-label', ariaLabel); }
+            this.expandButton?.setAttribute('aria-expanded', String(value));
+            if (this.list) this.update(true);
+            if (this.replay.active) (value ? close : this.expandButton)?.focus({preventScroll: true});
         }
         refresh() {
             const replay = this.replay;
@@ -106,6 +149,8 @@
             replay.popup?.remove(); replay.showDetails(true);
             $("replay-close-details").hidden = false; $("replay-details").hidden = true;
             $("replay-panel").classList.add("replay-browsing");
+            const eyebrow = document.querySelector('.replay-detail-heading .replay-eyebrow');
+            if (eyebrow) root.suntrainI18n?.bind(eyebrow, 'STATION DEPARTURES');
             $("replay-open-departures").setAttribute("aria-expanded", "true");
             this.host.hidden = false; this.render(); replay.paint(true);
             (this.station === null ? this.search : this.title).focus();
@@ -114,7 +159,12 @@
             const replay = this.replay;
             this.host.replaceChildren(); this.signature = null;
             this.title = node("h3", this.station === null ? "Station departures" : replay.day.stations[this.station].name);
-            this.title.tabIndex = -1;
+            this.title.tabIndex = -1; this.title.id = "departure-title";
+            this.expandButton = button("Expand departures", () => this.setExpanded(!this.expanded));
+            this.expandButton.disabled = this.station === null;
+            this.expandButton.setAttribute('aria-expanded', String(!!this.expanded));
+            const actions = node('div', undefined, 'departure-board-actions'); actions.append(this.expandButton);
+            this.host.append(actions);
             this.host.append(this.title, node("p", `${replay.day.business_date} · ${replay.day.timezone} · Loaded replay services only`, "replay-muted replay-small"));
             const picker = node("details"); picker.open = this.station === null;
             picker.append(node("summary", this.station === null ? "Choose a stop" : "Change stop"));
@@ -134,7 +184,9 @@
             this.pageLabel = node("span");
             const nav = node("nav", undefined, "departure-pagination"); if(root.suntrainI18n) root.suntrainI18n.bind(nav, "Departure pages", "aria-label"); else nav.setAttribute("aria-label", "Departure pages");
             nav.append(this.previous, this.pageLabel, this.next);
-            this.host.append(this.clock, this.list, nav, node("p", "Scheduled replay events; boarding permissions may differ. Final stops are excluded.", "replay-muted replay-small"));
+            const columns = node('div', undefined, 'departure-columns'); columns.setAttribute('aria-hidden', 'true');
+            for (const title of ['Departure', 'Route', 'Destination', 'Operator']) columns.append(node('span', title));
+            this.host.append(this.clock, node("p", "Replay paused · scheduled departures", "departure-board-note replay-muted"), columns, this.list, nav, node("p", "Scheduled replay events; boarding permissions may differ. Final stops are excluded.", "replay-muted replay-small"));
             this.update(true);
         }
         updateLocale() {
@@ -178,9 +230,9 @@
                 const service = call.service;
                 const row = button("", () => replay.select(service.id, call)); row.className = "departure-row";
                 row.style.setProperty("--journey-color", this.core.vehicleColor(service, replay.day.city));
-                row.append(node("strong", formatCallTime(call.at, replay.day.timezone)),
-                    node("span", `${service.line} → ${service.destination}`),
-                    node("small", `${service.operator} · ${service.number}`));
+                row.append(node("strong", this.expanded ? formatBoardTime(call.at, replay.now, replay.day.timezone) : formatCallTime(call.at, replay.day.timezone), 'departure-time'),
+                    node("span", service.line, 'departure-route'), node("span", service.destination, 'departure-destination'),
+                    node("small", `${service.operator} · ${service.number}`, 'departure-operator'));
                 if (service.frequency_based) row.append(node("small", "Frequency-based estimate"));
                 if (service.terminal_arrival_missing) row.append(node("small", "Terminal arrival unavailable"));
                 this.list.append(row);
@@ -189,12 +241,16 @@
             this.previous.disabled = !result.page; this.next.disabled = result.page + 1 >= result.pages;
         }
         journey(host, call) {
+            const wasExpanded = !!this.expanded;
+            this.setExpanded(false);
             this.previewCall=call;
+            const eyebrow = document.querySelector('.replay-detail-heading .replay-eyebrow');
+            if (eyebrow) root.suntrainI18n?.bind(eyebrow, 'YOUR JOURNEY');
             this.visible = false; this.host.hidden = true; $("replay-details").hidden = false;
             if (!call) { this.close(); return; }
             const replay = this.replay;
             replay.setFollow(false);
-            host.append(button("Back to departures", () => this.open()),
+            host.append(button("Back to departures", () => { this.open(); if (wasExpanded) this.setExpanded(true); }),
                 button("Go to departure", () => {
                     replay.pause();
                     if (replay.mapMode === "demand") {

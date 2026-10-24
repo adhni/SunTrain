@@ -86,3 +86,23 @@ Java's URL names 18 October 2026; Kyushu's names 20 October 2026. London is pinn
 ```
 
 Total removed: 2829366787 bytes (2.635 GiB logical file size).
+
+## Disposable cache cleanup — 25 October 2026
+
+Removed the additional file groups selected by the user. Files were checked for open handles before removal, and files changing since inventory were excluded.
+
+| Group | Files removed | Allocated size before removal |
+|---|---:|---:|
+| `.cache/replay-http` | 124 | 150.24 MiB |
+| `.cache/indonesia-http` | 29 | 30.70 MiB |
+| `.cache/flights-http` | 7 | 8.24 MiB |
+| `.cache/pycache` | 1253 | 20.86 MiB |
+| `.pytest_cache` | 6 | 0.10 MiB |
+| `.cache/replay-weekday-memory.json` | 1 | 34.22 MiB |
+| `.cache/london-audit/bods-london.zip.part` | 1 | 149.72 MiB |
+| `.cache/**/*.png` | 237 | 140.90 MiB |
+| `.cache/**/*.log` | 463 | 2.80 MiB |
+
+Total: **2121 files, 537.79 MiB** of allocated file storage. Skipped: 0 files. Free disk space after cleanup: approximately 4.53 GiB. SHA-256 verification confirmed all 369 retained app-data and prepared-geometry files unchanged, excluding macOS Finder `.DS_Store` metadata.
+
+Replay HTTP responses regenerate on demand. Python and pytest caches regenerate when their tools run. Screenshots, logs and the benchmark JSON are discarded development artifacts; rerun the corresponding checks to produce new ones. The unfinished London download was discarded; see `LONDON_EXPANSION_NOTES.md` for the retained source and preparation workflow. No original completed source archives, Google Flights captures or tool environments were removed in this second cleanup.

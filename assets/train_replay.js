@@ -206,9 +206,8 @@
     }
     function markerRadius(halo = 0) {
         const scale = ["coalesce", ["get", "sizeFactor"], 1];
-        return ["interpolate", ["linear"], ["zoom"],
-            5, ["+", halo, ["*", 1.8, scale]], 9, ["+", halo, ["*", 3.1, scale]],
-            12, ["+", halo, ["*", 4, scale]], 15, ["+", halo, ["*", 5, scale]]];
+        return ["interpolate", ["linear"], ["zoom"], ...root.suntrainVehicles.radiusStops.flatMap(([zoom, radius]) =>
+            [zoom, ["+", halo, ["*", radius, scale]]])];
     }
     const core = {ActiveServices, pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor, firstDeparture, departureActivity};
     if (typeof module !== "undefined" && module.exports) module.exports = core;
@@ -291,6 +290,7 @@
                     $("replay-open-departures").focus();
                 });
                 this.graph.on("dragstart", () => this.setFollow(false));
+                this.graph.on("zoom", () => this.paint(true));
                 // Train playback must not wait for external background tiles.
                 this.graph.once("style.load", () => {
                     for (const id of ["routes", "stations", "selected-route", "trains", "selected-train", "demand"]) {
@@ -327,13 +327,6 @@
                     this.graph.addLayer({id: "replay-station-focus", type: "circle", source: "replay-stations",
                         filter: ["==", ["get", "id"], -1],
                         paint: {"circle-radius": 8, "circle-opacity": 0, "circle-stroke-width": 2, "circle-stroke-color": "#1caa92"}});
-                    this.graph.addLayer({id: "replay-vehicle-bodies", type: "symbol", source: "replay-trains",
-                        filter: ["!=", ["get", "body"], ""], layout: {
-                            "icon-image": ["get", "body"], "icon-rotate": ["get", "bearing"],
-                            "icon-rotation-alignment": "map", "icon-pitch-alignment": "map",
-                            "icon-anchor": "top", "icon-offset": [0, -8],
-                            "icon-size": ["interpolate", ["linear"], ["zoom"], 5, 0.55, 9, 0.72, 12, 1, 15, 1.25],
-                            "icon-allow-overlap": true, "icon-ignore-placement": true}});
                     this.graph.addLayer({id: "replay-vehicle-outline", type: "circle", source: "replay-trains",
                         paint: {"circle-color": "#17212b", "circle-radius": markerRadius(1.7), "circle-opacity": 0.9}});
                     this.graph.addLayer({id: "replay-selected-train", type: "circle", source: "replay-selected-train",
@@ -344,7 +337,7 @@
                             "circle-stroke-color": "#fff", "circle-stroke-width": 1.2, "circle-opacity": 0.95}});
                     this.popup = new root.maplibregl.Popup({closeButton: false, closeOnClick: false, offset: 10});
                     this.graph.on("click", e => {
-                        const vehicles = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-vehicle-bodies"]});
+                        const vehicles = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]});
                         if (vehicles.length) { this.select(vehicles[0].properties.id); return; }
                         const station = this.stationNear(e.point);
                         if (!station) return;
@@ -352,7 +345,7 @@
                         else { this.demandPinned = true; this.showDemandPopup(Number(station.properties.id)); }
                     });
                     this.graph.on("mousemove", e => {
-                        const features = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-vehicle-bodies"]});
+                        const features = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]});
                         if (!features.length) {
                             if (this.vehicleHover) { this.vehicleHover = false; this.popup.remove(); this.graph.getCanvas().style.cursor = ""; }
                             return;
@@ -372,7 +365,7 @@
                     });
                     this.graph.on("mouseout", () => { this.stationHover = false; this.vehicleHover = false; this.graph.getCanvas().style.cursor = ""; if (!this.demandPinned) this.popup.remove(); });
                     for (const event of ["click", "mousemove"]) this.graph.on(event, "replay-demand-stations", e => {
-                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-vehicle-bodies"]}).length) return;
+                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) return;
                         this.graph.getCanvas().style.cursor = "pointer";
                         if (event === "mousemove" && this.demandPinned) return;
                         this.demandPinned = event === "click";
@@ -932,7 +925,7 @@
             const changed = this.mapMode !== mode || this.demandWindow !== minutes;
             this.mapMode = mode; this.demandWindow = minutes;
             $("replay-panel").classList.toggle("replay-demand-only", mode === "demand");
-            for (const id of ["replay-trains", "replay-vehicle-bodies", "replay-vehicle-outline", "replay-selected-train", "replay-selected-route"])
+            for (const id of ["replay-trains", "replay-vehicle-outline", "replay-selected-train", "replay-selected-route"])
                 this.graph.setLayoutProperty(id, "visibility", mode === "demand" ? "none" : "visible");
             for (const id of ["replay-demand-glow", "replay-demand-stations"])
                 this.graph.setLayoutProperty(id, "visibility", mode === "trains" ? "none" : "visible");
@@ -997,7 +990,8 @@
             this.busy = true;
             const started = performance.now(), generation = this.generation;
             try {
-                const trains = [];
+                const trains = [], vehicleDots = [];
+                const zoom = this.graph.getZoom();
                 let selectedPosition = null, selectedMarker = null, activeCount = 0, missingCount = 0;
                 for (const service of this.activeIndex.at(this.now)) {
                     const position = servicePosition(service, this.now, this.day);
@@ -1006,11 +1000,16 @@
                     if (service.id === this.selected?.id) selectedPosition = position;
                     if (position.lon === null || position.lat === null) { missingCount++; continue; }
                     const kind = root.suntrainVehicles.bodyKind(this.day.city, service.mode);
-                    const bearing = kind ? root.suntrainVehicles.heading(service, position, this.day, this.now, pointAlong) : null;
-                    const body = bearing === null ? "" : root.suntrainVehicles.image(this.graph, kind, vehicleColor(service, this.day.city));
-                    const marker = pointFeature([position.lon, position.lat], {id: service.id, color: vehicleColor(service, this.day?.city),
-                        body, bearing: bearing || 0, sizeFactor: markerScale(position.load, this.display.includes("load")), load: position.load, approximate: position.approximate});
+                    const sizeFactor = markerScale(position.load, this.display.includes("load"));
+                    const spacing = (2 * root.suntrainVehicles.radius(zoom, sizeFactor) + 1) *
+                        156543.033928 * Math.cos(position.lat * Math.PI / 180) / 2 ** zoom;
+                    const coordinates = kind ? root.suntrainVehicles.footprint(service, position, this.day, this.now, spacing, pointAlong) : [[position.lon, position.lat]];
+                    const properties = {id: service.id, color: vehicleColor(service, this.day.city), body: kind,
+                        sizeFactor, load: position.load, approximate: position.approximate, dotCount: coordinates.length};
+                    const marker = pointFeature(coordinates[0], {...properties, part: 0});
                     trains.push(marker);
+                    for (let part = 0; part < coordinates.length; part++)
+                        vehicleDots.push(pointFeature(coordinates[part], {...properties, part}));
                     if (service.id === this.selected?.id) selectedMarker = marker;
                 }
                 if (this.staticDirty) {
@@ -1020,7 +1019,7 @@
                 this.activePositions = trains;
                 this.missingPositions = missingCount;
                 const selectedVisible = selectedPosition && selectedPosition.lon !== null && selectedPosition.lat !== null;
-                this.graph.getSource("replay-trains").setData(collection(trains));
+                this.graph.getSource("replay-trains").setData(collection(vehicleDots));
                 this.graph.getSource("replay-selected-train").setData(collection(selectedMarker ? [selectedMarker] : []));
                 if (generation !== this.generation) { this.staticDirty = true; this.paintAgain = true; return; }
                 if (this.needsFit) this.metroView();

@@ -1,10 +1,10 @@
 (function (root) {
     'use strict';
-    // The replay day owns departures by UTC instant; carry-ins never add frequency.
-    function ownedFlights(services, day) {
+    // Each view counts its event inside the half-open replay day, once per identity.
+    function ownedFlights(services, day, event = 'departure') {
         const seen = new Set();
         return services.filter(s => {
-            const at = s.stops?.[0]?.[2];
+            const at = event === 'arrival' ? s.stops?.at(-1)?.[1] : s.stops?.[0]?.[2];
             if (s.mode !== 'flight' || seen.has(s.id) || !Number.isFinite(at) || at < day.start || at >= day.end) return false;
             seen.add(s.id); return true;
         });
@@ -22,9 +22,9 @@
             .sort((a,b) => b.count-a.count || day.stations[a.destination].code.localeCompare(day.stations[b.destination].code));
     }
     function frequencyWidth(count) { return Math.min(12, 0.8 + Math.sqrt(count) * 0.85); }
-    function frequencyNetwork(services, day) {
+    function frequencyNetwork(services, day, event = 'departure') {
         const groups = new Map();
-        for (const s of ownedFlights(services, day)) {
+        for (const s of ownedFlights(services, day, event)) {
             const origin = s.stops[0][0], destination = s.stops.at(-1)[0];
             const codes = [day.stations[origin].code, day.stations[destination].code].sort();
             const key = codes.join('-');

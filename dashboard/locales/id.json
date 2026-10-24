@@ -758,5 +758,18 @@
   " connections": " koneksi",
   "{page} / {pages} · {n} destinations": "{page} / {pages} · {n} tujuan",
   "Full selected replay day · departures": "Sepanjang hari pemutaran terpilih · keberangkatan",
-  "Thicker lines mean more captured flights that day (both directions). Click a line to explore.": "Garis lebih tebal berarti lebih banyak penerbangan tercatat pada hari itu (kedua arah). Klik garis untuk menjelajah."
+  "Thicker lines mean more captured flights that day (both directions). Click a line to explore.": "Garis lebih tebal berarti lebih banyak penerbangan tercatat pada hari itu (kedua arah). Klik garis untuk menjelajah.",
+  "Airport traffic": "Lalu lintas bandara",
+  "Arrivals through the day": "Kedatangan sepanjang hari",
+  "Scheduled arrivals": "Kedatangan terjadwal",
+  "Arriving in this replay day": "Tiba pada hari pemutaran ini",
+  "Arrivals through the day · local time": "Kedatangan sepanjang hari · waktu setempat",
+  "Full selected replay day · arrivals": "Sepanjang hari pemutaran terpilih · kedatangan",
+  "{n} captured arrivals": "{n} kedatangan tercatat",
+  " · {n} captured arrivals": " · {n} kedatangan tercatat",
+  "Thicker lines mean more captured arrivals at the selected airports that day. Click a line to explore.": "Garis lebih tebal berarti lebih banyak kedatangan tercatat di bandara terpilih pada hari itu. Klik garis untuk menjelajah.",
+  "Thicker lines mean more captured departures from the selected airports that day. Click a line to explore.": "Garis lebih tebal berarti lebih banyak keberangkatan tercatat dari bandara terpilih pada hari itu. Klik garis untuk menjelajah.",
+  "No scheduled arrivals match this date and these filters. Clear a filter or choose another date.": "Tidak ada kedatangan terjadwal yang cocok dengan tanggal dan filter ini. Hapus filter atau pilih tanggal lain.",
+  "Busiest hour: {hour} · {n} arrivals": "Jam tersibuk: {hour} · {n} kedatangan",
+  "{hour} · {n} arrivals": "{hour} · {n} kedatangan"
 }

@@ -758,5 +758,18 @@
   " connections": " connections",
   "{page} / {pages} · {n} destinations": "{page} / {pages} · {n} destinations",
   "Full selected replay day · departures": "Full selected replay day · departures",
-  "Thicker lines mean more captured flights that day (both directions). Click a line to explore.": "Thicker lines mean more captured flights that day (both directions). Click a line to explore."
+  "Thicker lines mean more captured flights that day (both directions). Click a line to explore.": "Thicker lines mean more captured flights that day (both directions). Click a line to explore.",
+  "Airport traffic": "Airport traffic",
+  "Arrivals through the day": "Arrivals through the day",
+  "Scheduled arrivals": "Scheduled arrivals",
+  "Arriving in this replay day": "Arriving in this replay day",
+  "Arrivals through the day · local time": "Arrivals through the day · local time",
+  "Full selected replay day · arrivals": "Full selected replay day · arrivals",
+  "{n} captured arrivals": "{n} captured arrivals",
+  " · {n} captured arrivals": " · {n} captured arrivals",
+  "Thicker lines mean more captured arrivals at the selected airports that day. Click a line to explore.": "Thicker lines mean more captured arrivals at the selected airports that day. Click a line to explore.",
+  "Thicker lines mean more captured departures from the selected airports that day. Click a line to explore.": "Thicker lines mean more captured departures from the selected airports that day. Click a line to explore.",
+  "No scheduled arrivals match this date and these filters. Clear a filter or choose another date.": "No scheduled arrivals match this date and these filters. Clear a filter or choose another date.",
+  "Busiest hour: {hour} · {n} arrivals": "Busiest hour: {hour} · {n} arrivals",
+  "{hour} · {n} arrivals": "{hour} · {n} arrivals"
 }

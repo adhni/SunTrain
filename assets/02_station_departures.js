@@ -148,6 +148,12 @@
         open(station = this.station, fullDay = station === this.station && this.fullDay) {
             const replay = this.replay;
             if (!replay.day || replay.loading) return;
+            if (replay.day.replay_kind === 'flights' && station != null) {
+                const code = replay.day.stations[station].code;
+                if (replay.filters.airports?.length !== 1 || replay.filters.airports[0] !== code)
+                    root.dash_clientside.set_props('replay-airports', {value: [code]});
+                if (replay.filters.airportDirection === 'arrivals') this.event = 'arrival';
+            }
             this.fullDay = !!fullDay;
             if (station !== this.station) { this.station = station; this.services = null; this.page = 0; }
             this.visible = false; this.refresh(); this.visible = true;
@@ -181,6 +187,7 @@
                 const tabs = node('div', undefined, 'departure-event-tabs');
                 for (const [event, label] of [['departure', 'Departures'], ['arrival', 'Arrivals'], ['destinations', 'Destinations']]) {
                     const control = button(label, () => {
+                        root.dash_clientside.set_props('replay-airport-direction', {value: event === 'arrival' ? 'arrivals' : 'departures'});
                         this.event = event; this.fullDay = false; this.services = null; this.page = 0; this.refresh();
                         this.host.querySelector(`[data-event="${event}"]`)?.focus();
                     });
@@ -244,7 +251,7 @@
             const replay = this.replay;
             const flights = replay.day.replay_kind === 'flights', arrivals = flights && this.event === 'arrival';
             if (flights && this.event === 'destinations') { this.updateDestinations(force); return; }
-            const clockText = this.fullDay ? 'Full selected replay day · departures' : `${arrivals ? 'Arrivals from' : 'Departures from'} ${formatCallTime(replay.now, this.timezone)}`;
+            const clockText = this.fullDay ? (arrivals ? 'Full selected replay day · arrivals' : 'Full selected replay day · departures') : `${arrivals ? 'Arrivals from' : 'Departures from'} ${formatCallTime(replay.now, this.timezone)}`;
             if(root.suntrainI18n) root.suntrainI18n.bind(this.clock, clockText); else this.clock.textContent = clockText;
             // Keep a keyboard-focused departure stable until focus leaves the list.
             if (!force && this.list.contains(document.activeElement)) return;

@@ -28,6 +28,7 @@ with sync_playwright() as p:
     print('International filter, map fit and cached switching passed',flush=True)
     for code,zone,offset in [('AMS','Europe/Amsterdam','GMT+1'),('ADL','Australia/Adelaide','GMT+10:30')]:
         page.evaluate('(code)=>suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))',code)
+        page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.departures.services===suntrainReplay.filtered',arg=code)
         assert page.evaluate('suntrainReplay.departures.timezone')==zone
         assert offset in page.locator('#replay-departures').inner_text()
         assert 'replay clock uses WIB' in page.locator('#replay-departures').inner_text()
@@ -45,7 +46,7 @@ with sync_playwright() as p:
         page.locator('[data-event="departure"]').click()
         page.evaluate('suntrainReplay.departures.close()')
     print('Overseas boards, half-hour/DST clocks and preview return passed',flush=True)
-    page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"both"})')
+    page.evaluate('dash_clientside.set_props("replay-airports",{value:[]});dash_clientside.set_props("replay-airport-direction",{value:"both"});dash_clientside.set_props("replay-flight-scope",{value:"both"})')
     page.wait_for_function('new Set(suntrainReplay.filtered.map(s=>s.flight_scope)).size===2')
     page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"international"})')
     page.wait_for_function('suntrainReplay.filters.flightScope==="international"')

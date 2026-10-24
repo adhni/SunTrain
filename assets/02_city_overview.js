@@ -5,6 +5,7 @@
         transjabodetabek: "Transjabodetabek", rusun_bus: "Rusun feeder", royaltrans: "Royaltrans", shuttle_bus: "Shuttle", tourist_bus: "Tourist bus"};
 
     function summarize(day, filters, core) {
+        const arrivals = day.replay_kind === 'flights' && filters.airports?.length > 0 && filters.airportDirection === 'arrivals';
         const firstHour = day.day_start_hour ?? 3;
         const hours = Array.from({length: 24}, (_, i) => ({hour: (i + firstHour) % 24, departures: 0}));
         const routes = new Map(), stops = new Set(), seenSchedules = new Set(), minuteHours = new Map();
@@ -12,7 +13,7 @@
         let departures = 0, estimatedDepartures = 0;
         for (const service of day.services) {
             if (!core.matches(service, filters, day)) continue;
-            const departure = core.firstDeparture(service);
+            const departure = arrivals ? service.stops.at(-1)[1] : core.firstDeparture(service);
             if (departure < day.start || departure >= day.end) continue;
             departures++;
             if (service.frequency_based) estimatedDepartures++;
@@ -33,7 +34,7 @@
                 if (Number.isFinite(station.lon) && Number.isFinite(station.lat)) stops.add(JSON.stringify([station.name, station.lon, station.lat]));
             }
         }
-        return {departures, estimatedDepartures, stops: stops.size, routes: [...routes.values()], hours};
+        return {arrivals, departures, estimatedDepartures, stops: stops.size, routes: [...routes.values()], hours};
     }
     if (typeof module !== "undefined" && module.exports) module.exports = {summarize};
     if (!root.document) return;
@@ -46,7 +47,7 @@
         if (className) item.className = className;
         return item;
     }
-    let cachedKey, cachedSummary, renderedKey;
+    let cachedKey, cachedSummary, renderedKey, renderedSelection;
     function pending(city, date, failed = false) {
         const host = $("city-overview-content");
         if (!host) return;
@@ -56,14 +57,15 @@
         host.replaceChildren(element("p", failed ? "This day could not load. Choose another date or return to this tab to retry." : "Loading this day…", "replay-muted"));
         host.setAttribute("aria-busy", String(!failed));
         renderedKey = null;
+        renderedSelection = null;
     }
-    function routeTable(rows) {
+    function routeTable(rows, arrivals = false) {
         const card = element("section", undefined, "table-card city-routes");
         card.append(element("h3", "Routes and services", "viz-title"));
         const scroll = element("div", undefined, "city-table-scroll"), table = element("table");
         const head = element("thead"), header = element("tr"), body = element("tbody");
         let sortKey = "departures", descending = true, page = 0;
-        const columns = [["line", "Route / line"], ["mode", "Transport"], ["operator", "Operator"], ["departures", "Departures"]];
+        const columns = [["line", "Route / line"], ["mode", "Transport"], ["operator", "Operator"], ["departures", arrivals ? "Arrivals" : "Departures"]];
         const headings = [];
         for (const [key, label] of columns) {
             const cell = element("th"), button = element("button", label);
@@ -109,6 +111,7 @@
     function render(day, filters, core) {
         const host = $("city-overview-content");
         if (!host) return;
+        renderedSelection = {day, filters, core};
         const key = JSON.stringify([day.revision, day.city, day.business_date, filters, root.suntrainI18n?.language]);
         if (key === renderedKey) return;
         if (key !== cachedKey) { cachedSummary = summarize(day, filters, core); cachedKey = key; }
@@ -119,8 +122,8 @@
         const context = `${date} · ${day.day_start_hour === 0 ? '00:00–00:00' : '03:00–03:00'} next day · ${day.timezone} · Current filters`;
         root.suntrainI18n ? root.suntrainI18n.bind($("city-overview-context"), context) : $("city-overview-context").textContent = context;
         const cards = element("div", undefined, "status-grid city-overview-metrics");
-        for (const [label, value, subtitle] of [[summary.estimatedDepartures ? "Replay departures" : "Scheduled departures", summary.departures,
-            summary.estimatedDepartures ? "Includes frequency-based estimates" : "Starting in this business day"],
+        for (const [label, value, subtitle] of [[summary.arrivals ? "Scheduled arrivals" : summary.estimatedDepartures ? "Replay departures" : "Scheduled departures", summary.departures,
+            summary.arrivals ? "Arriving in this replay day" : summary.estimatedDepartures ? "Includes frequency-based estimates" : "Starting in this business day"],
             ["Routes / lines", summary.routes.length, "Represented in the selection"], [day.replay_kind === 'flights' ? 'Airports served' : "Stops served", summary.stops, day.replay_kind === 'flights' ? 'Covered by this timetable' : "Distinct mapped stops / platforms"]]) {
             const card = element("div", undefined, "metric-card");
             card.append(element("div", label, "metric-label"), element("div", count(value), "metric-value"), element("div", subtitle, "metric-subtitle"));
@@ -136,10 +139,10 @@
             if (c.failed_queries || c.unattempted_queries) host.append(element('p', `${c.failed_queries} queries failed · ${c.unattempted_queries} queries pending`, 'replay-muted'));
         }
         if (!summary.departures) {
-            host.append(element("p", "No scheduled departures match this date and these filters. Clear a filter or choose another date.", "city-empty replay-muted"));
+            host.append(element("p", summary.arrivals ? "No scheduled arrivals match this date and these filters. Clear a filter or choose another date." : "No scheduled departures match this date and these filters. Clear a filter or choose another date.", "city-empty replay-muted"));
         } else {
             const figure = element("figure", undefined, "viz-card city-hour-chart");
-            figure.append(element("figcaption", "Departures through the day · local time", "viz-title"));
+            figure.append(element("figcaption", summary.arrivals ? "Arrivals through the day · local time" : "Departures through the day · local time", "viz-title"));
             const bars = element("div", undefined, "city-hour-bars");
             const peak = Math.max(...summary.hours.map(hour => hour.departures), 1);
             const magnitude = 10 ** Math.floor(Math.log10(peak));
@@ -150,21 +153,23 @@
             for (const [i, hour] of summary.hours.entries()) {
                 const column = element("div", undefined, "city-hour-column"), track = element("div", undefined, "city-hour-track");
                 const bar = element("div", undefined, "city-hour-bar"), text = `${String(hour.hour).padStart(2, "0")}:00`;
-                root.suntrainI18n ? root.suntrainI18n.bind(column,`${text} · ${count(hour.departures)} departures`,"title") : column.title = `${text} · ${count(hour.departures)} departures`;
+                root.suntrainI18n ? root.suntrainI18n.bind(column,`${text} · ${count(hour.departures)} ${summary.arrivals ? "arrivals" : "departures"}`,"title") : column.title = `${text} · ${count(hour.departures)} ${summary.arrivals ? "arrivals" : "departures"}`;
                 column.setAttribute("role", "img"); if(root.suntrainI18n) root.suntrainI18n.bind(column, column.title, "aria-label"); else column.setAttribute("aria-label", column.title);
                 bar.style.height = `${100 * hour.departures / maximum}%`;
                 if (hour.departures === peak) bar.classList.add("city-hour-peak");
                 track.append(bar); column.append(track, element("span", i % 3 === 0 ? text : "", "city-hour-label")); bars.append(column);
             }
             plot.append(axis, bars);
-            figure.append(plot, element("p", `Busiest hour: ${String(summary.hours.find(h => h.departures === peak).hour).padStart(2, "0")}:00 · ${count(peak)} departures`, "replay-muted city-chart-note"));
-            host.append(figure, routeTable(summary.routes));
+            figure.append(plot, element("p", `Busiest hour: ${String(summary.hours.find(h => h.departures === peak).hour).padStart(2, "0")}:00 · ${count(peak)} ${summary.arrivals ? "arrivals" : "departures"}`, "replay-muted city-chart-note"));
+            host.append(figure, routeTable(summary.routes, summary.arrivals));
         }
         renderedKey = key;
     }
     document.addEventListener("suntrain:languagechange", () => {
-        const replay=root.suntrainReplay;
-        if(replay?.day && document.querySelector("#city-overview")?.style.display!=="none")render(replay.day,replay.filters,root.suntrainReplayCore);
+        if(renderedSelection && document.querySelector("#city-overview")?.style.display!=="none") {
+            const {day, filters, core} = renderedSelection;
+            render(day, filters, core);
+        }
     });
     root.suntrainOverview = {summarize, pending, render};
 })(typeof window !== "undefined" ? window : globalThis);

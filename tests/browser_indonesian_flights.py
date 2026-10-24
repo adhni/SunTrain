@@ -30,7 +30,10 @@ with sync_playwright() as p:
     now=page.evaluate('suntrainReplay.now')
     # Use real map clicks for airports in all three Indonesian time zones.
     for code,zone,label in [('KTG','Asia/Pontianak','WIB'),('UPG','Asia/Makassar','WITA'),('DJJ','Asia/Jayapura','WIT')]:
-        page.evaluate('suntrainReplay.graph.resize()')
+        page.evaluate('dash_clientside.set_props("replay-airports",{value:[]})')
+        page.wait_for_function('!suntrainReplay.filters.airports.length')
+        page.evaluate('suntrainReplay.metroView();suntrainReplay.graph.resize()')
+        page.wait_for_function('(code)=>!suntrainReplay.graph.isMoving() && suntrainReplay.graph.queryRenderedFeatures({layers:["replay-airport-labels"]}).some(f=>f.properties.code===code)',arg=code)
         print('Checking airport',code,flush=True)
         point=page.evaluate('''(code)=>{
             const r=suntrainReplay,a=r.day.stations.find(a=>a.code===code);
@@ -47,12 +50,15 @@ with sync_playwright() as p:
         if code != 'DJJ':
             assert page.evaluate('suntrainReplay.departures.calls.length')>0
         page.evaluate('suntrainReplay.departures.close()')
-    page.evaluate("suntrainReplay.departures.event='departure';suntrainReplay.departures.services=null")
+    page.evaluate('dash_clientside.set_props("replay-airport-direction",{value:"departures"})')
+    page.wait_for_function('suntrainReplay.filters.airportDirection==="departures"')
     for code in ['CGK','HLP']:
         page.evaluate('(code)=>suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))',code)
+        page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.departures.services===suntrainReplay.filtered',arg=code)
         assert f'({code})' in page.locator('#departure-title').inner_text()
         assert page.evaluate('suntrainReplay.departures.calls.length')>0
     page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="CGK"))')
+    page.wait_for_function('suntrainReplay.filters.airports[0]==="CGK" && suntrainReplay.departures.services===suntrainReplay.filtered')
     page.get_by_role('button',name='Expand board',exact=True).click()
     assert page.evaluate('suntrainReplay.departures.expanded && !suntrainReplay.playing')
     page.locator('.departure-pagination button').last.click()

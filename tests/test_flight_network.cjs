@@ -40,3 +40,30 @@ test('fixed frequency scale is monotonic, bounded and comparable when filters ch
  const subset=network.frequencyNetwork([flights[3]],day)[0];
  assert.equal(all.properties.width,subset.properties.width);
 });
+
+test('airport traffic restricts the correct endpoint, supports multiple airports and ignores transit',()=>{
+ const filters={modes:[],operators:[],lines:[],directions:[],stations:[],number:'',airports:['CGK']};
+ const out=flight('out',0,1,1100),back=flight('in',1,0,1100),unrelated=flight('other',1,2,1100);
+ assert.equal(core.matches(out,{...filters,airportDirection:'departures'},day),true);
+ assert.equal(core.matches(back,{...filters,airportDirection:'departures'},day),false);
+ assert.equal(core.matches(out,{...filters,airportDirection:'arrivals'},day),false);
+ assert.equal(core.matches(back,{...filters,airportDirection:'arrivals'},day),true);
+ for(const airportDirection of ['both','arrivals','departures']) assert.equal(core.matches(unrelated,{...filters,airportDirection},day),false);
+ assert.equal(core.matches(unrelated,{...filters,airports:['CGK','AVV'],airportDirection:'arrivals'},day),true);
+ assert.equal(core.matches(out,{...filters,airports:[],airportDirection:'arrivals'},day),true);
+ assert.equal(core.matches({...out,mode:'train'},{...filters,airportDirection:'arrivals'},day),true);
+});
+
+test('arrival frequency, timeline and overview own arrivals, including carry-ins and excluding next-day arrivals',()=>{
+ const {summarize}=require('../assets/02_city_overview.js');
+ const arrivals=[flight('carry-in',1,0,500),flight('today',1,0,1300),flight('midnight-end',1,0,1500),flight('tomorrow',1,0,1900)];
+ const duplicate=[...arrivals,arrivals[0]];
+ assert.deepEqual(network.ownedFlights(duplicate,day,'arrival').map(s=>s.id),['carry-in','today']);
+ const features=network.frequencyNetwork(duplicate,day,'arrival');
+ assert.equal(features[0].properties.count,2);
+ assert.equal(core.departureActivity(arrivals,day.start,day.end,'arrival').reduce((a,b)=>a+b,0),2);
+ const summary=summarize({...day,replay_kind:'flights',services:arrivals,timezone:'Asia/Jakarta'},
+  {modes:[],operators:[],lines:[],directions:[],stations:[],number:'',airports:['CGK'],airportDirection:'arrivals'},core);
+ assert.equal(summary.arrivals,true);assert.equal(summary.departures,2);
+ assert.equal(summary.hours.reduce((n,h)=>n+h.departures,0),2);
+});

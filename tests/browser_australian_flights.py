@@ -48,7 +48,8 @@ with sync_playwright() as p:
     page.wait_for_function('suntrainReplay.departures.visible && suntrainReplay.day.stations[suntrainReplay.departures.station].code === "PER"')
     assert 'GMT+8' in page.locator('#replay-departures').inner_text()
     assert page.evaluate('suntrainReplay.departures.timezone') == 'Australia/Perth'
-    assert page.evaluate('suntrainReplay.activePositions.some(f=>f.properties.opacity===0.2)')
+    page.wait_for_function('suntrainReplay.filters.airports[0]==="PER"')
+    assert page.evaluate('suntrainReplay.activePositions.every(f=>suntrainReplay.filtered.some(s=>s.id===f.properties.id && s.stops.some(stop=>suntrainReplay.day.stations[stop[0]].code==="PER")))')
     assert page.evaluate('suntrainReplay.graph.getSource("replay-routes")._data.features.length') > 0
     page.locator('[data-event="arrival"]').click()
     assert page.evaluate('suntrainReplay.departures.calls.every(c=>c.index===1 && c.event==="arrival")')
@@ -57,10 +58,12 @@ with sync_playwright() as p:
 
     # Melbourne has enough flights to exercise board paging and journey return state.
     page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="AVV"))')
+    page.wait_for_function('suntrainReplay.filters.airports[0]==="AVV" && suntrainReplay.departures.services===suntrainReplay.filtered')
     assert '(AVV)' in page.locator('#departure-title').inner_text()
     avv_calls = page.evaluate('suntrainReplay.departures.calls.length')
     assert avv_calls > 0
     page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="MEL"))')
+    page.wait_for_function('suntrainReplay.filters.airports[0]==="MEL" && suntrainReplay.departures.services===suntrainReplay.filtered')
     assert '(MEL)' in page.locator('#departure-title').inner_text()
     assert page.evaluate('suntrainReplay.departures.calls.length') > avv_calls
     page.get_by_role('button', name='Expand board', exact=True).click()

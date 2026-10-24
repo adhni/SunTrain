@@ -328,13 +328,13 @@
                         filter: ["==", ["get", "id"], -1],
                         paint: {"circle-radius": 8, "circle-opacity": 0, "circle-stroke-width": 2, "circle-stroke-color": "#1caa92"}});
                     this.graph.addLayer({id: "replay-vehicle-outline", type: "circle", source: "replay-trains",
-                        paint: {"circle-color": "#17212b", "circle-radius": markerRadius(1.7), "circle-opacity": 0.9}});
+                        paint: {"circle-color": "#17212b", "circle-radius": markerRadius(1.2), "circle-opacity": 0.9}});
                     this.graph.addLayer({id: "replay-selected-train", type: "circle", source: "replay-selected-train",
                         paint: {"circle-radius": markerRadius(3), "circle-opacity": 0,
                             "circle-stroke-color": "#18232d", "circle-stroke-width": 1.5}});
                     this.graph.addLayer({id: "replay-trains", type: "circle", source: "replay-trains",
                         paint: {"circle-color": ["get", "color"], "circle-radius": markerRadius(),
-                            "circle-stroke-color": "#fff", "circle-stroke-width": 1.2, "circle-opacity": 0.95}});
+                            "circle-stroke-color": "#fff", "circle-stroke-width": 0.9, "circle-opacity": 0.95}});
                     this.popup = new root.maplibregl.Popup({closeButton: false, closeOnClick: false, offset: 10});
                     this.graph.on("click", e => {
                         const vehicles = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]});
@@ -1000,9 +1000,9 @@
                     if (service.id === this.selected?.id) selectedPosition = position;
                     if (position.lon === null || position.lat === null) { missingCount++; continue; }
                     const kind = root.suntrainVehicles.bodyKind(this.day.city, service.mode);
-                    const sizeFactor = markerScale(position.load, this.display.includes("load"));
-                    const spacing = (2 * root.suntrainVehicles.radius(zoom, sizeFactor) + 1) *
-                        156543.033928 * Math.cos(position.lat * Math.PI / 180) / 2 ** zoom;
+                    const sizeFactor = markerScale(position.load, this.display.includes("load")) * (this.day.city === "melbourne" ? 0.75 : 1);
+                    const spacing = kind ? root.suntrainVehicles.spacingPixels(zoom, sizeFactor) *
+                        root.suntrainVehicles.metersPerPixel(this.graph, [position.lon, position.lat]) : 0;
                     const coordinates = kind ? root.suntrainVehicles.footprint(service, position, this.day, this.now, spacing, pointAlong) : [[position.lon, position.lat]];
                     const properties = {id: service.id, color: vehicleColor(service, this.day.city), body: kind,
                         sizeFactor, load: position.load, approximate: position.approximate, dotCount: coordinates.length};

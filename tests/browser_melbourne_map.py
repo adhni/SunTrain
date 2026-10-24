@@ -20,7 +20,7 @@ with sync_playwright() as p:
     }''')
     page.wait_for_function('suntrainReplay.filtered.some(s=>s.mode==="bus")')
     page.wait_for_function('suntrainReplay.activePositions.some(f=>f.properties.body==="tram" && f.properties.dotCount===2)')
-    assert page.evaluate('suntrainReplay.activePositions.some(f=>f.properties.body==="train" && f.properties.dotCount===4)')
+    assert page.evaluate('suntrainReplay.activePositions.some(f=>f.properties.body==="train" && f.properties.dotCount===3)')
     assert page.evaluate('suntrainReplay.activePositions.some(f=>f.properties.color==="#FF8200" && f.properties.body==="")')
     # Styling adds no synthetic services or inflated vehicle counts.
     assert page.evaluate('new Set(suntrainReplay.activePositions.map(f=>f.properties.id)).size === suntrainReplay.activePositions.length')
@@ -59,9 +59,9 @@ with sync_playwright() as p:
     for offset in [-1, 0, 1]:
         page.evaluate('(at)=>suntrainReplay.seek(at)', turn['at']+offset)
         dots = page.evaluate('(id)=>suntrainReplay.graph.getSource("replay-trains")._data.features.filter(f=>f.properties.id===id)', turn['id'])
-        assert len(dots)==4
+        assert len(dots)==3
         assert len({dot['properties']['sizeFactor'] for dot in dots})==1
-        assert [dot['properties']['part'] for dot in dots]==[0,1,2,3]
+        assert [dot['properties']['part'] for dot in dots]==[0,1,2]
     # Rewinding reproduces the same train; no delayed per-dot animation state.
     page.evaluate('(at)=>suntrainReplay.seek(at)', turn['at']+1)
     assert page.evaluate('(id)=>suntrainReplay.graph.getSource("replay-trains")._data.features.filter(f=>f.properties.id===id)', turn['id'])==dots

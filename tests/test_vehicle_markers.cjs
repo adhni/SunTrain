@@ -1,6 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const {bodyKind, radius, footprint} = require('../assets/02_vehicle_markers.js');
+const {bodyKind, radius, spacingPixels, metersPerPixel, footprint} = require('../assets/02_vehicle_markers.js');
 const {pointAlong, servicePosition} = require('../assets/train_replay.js');
 const {formatBoardTime} = require('../assets/02_station_departures.js');
 
@@ -25,9 +25,9 @@ function near(actual, expected) {
 }
 
 test('one spatial footprint bends along the route instead of rotating a straight body', () => {
-    near(dots(75), [[.001, .0005], [.001, .00025], [.001, 0], [.00075, 0]]);
+    near(dots(75), [[.001, .0005], [.001, .00025], [.001, 0]]);
     const before = dots(49), after = dots(51);
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 3; i++) {
         assert.ok(Math.hypot(after[i][0]-before[i][0], after[i][1]-before[i][1]) <= .000041);
     }
     assert.deepEqual(dots(75), dots(75)); // Seeking back is independent of animation history.
@@ -39,7 +39,7 @@ test('the entire vehicle stays together through a dwell and across successive ro
     near(dots(100), dots(105));
     near(dots(105), dots(110));
     const continued = dots(120);
-    near(continued, [[.001 + 10/90 * .001, .001], [.001, .0008611111111111111], [.001, .0006111111111111111], [.001, .0003611111111111111]]);
+    near(continued, [[.001 + 10/90 * .001, .001], [.001, .0008611111111111111], [.001, .0006111111111111111]]);
     const compact = {mode: 'train', stopIds: [0, 1, 2], times: [0, 0, 100, 110, 200, 210], legs: service.legs, timeOffset: 1000};
     near(dots(1075, compact), dots(75));
 });
@@ -69,4 +69,12 @@ test('expanded departure times make overnight dates explicit and use Melbourne l
     const now = at('2024-05-27T13:50:00Z'); // 23:50 Melbourne
     assert.equal(formatBoardTime(now, now, 'Australia/Melbourne'), '23:50');
     assert.equal(formatBoardTime(at('2024-05-27T14:05:00Z'), now, 'Australia/Melbourne'), '00:05 · 28 May');
+});
+
+test('compact spacing is expressed in actual map pixels, independent of world size assumptions', () => {
+    const scale = .75;
+    assert.equal(spacingPixels(12, scale), 6);
+    // A real map projection can have a different pixel scale from tile formulas.
+    const map = {project: () => ({x: 200, y: 100}), unproject: ([x]) => ({lng: (x - 200) * .0001, lat: 0})};
+    assert.ok(Math.abs(metersPerPixel(map, [0, 0]) - 11.11949) < .00001);
 });

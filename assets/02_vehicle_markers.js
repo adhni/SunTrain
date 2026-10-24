@@ -18,9 +18,19 @@
         const latitude = (a[1] + b[1]) * Math.PI / 360;
         return Math.hypot((a[0] - b[0]) * Math.cos(latitude), a[1] - b[1]) * Math.PI / 180 * 6371000;
     }
+    function spacingPixels(zoom, scale = 1) {
+        return 2 * radius(zoom, scale); // Touching coloured dots, with overlapping outlines.
+    }
+    function metersPerPixel(map, coordinate) {
+        // MapLibre's projected CSS pixels are the source of truth. A 256-tile
+        // zoom formula doubles the spacing on its 512-pixel world.
+        const pixel = map.project(coordinate);
+        const next = map.unproject([pixel.x + 1, pixel.y]);
+        return separation(coordinate, [next.lng, next.lat]);
+    }
     function footprint(service, position, day, now, spacing, pointAlong) {
         const points = [[position.lon, position.lat]];
-        const dots = !service.mode || service.mode === 'train' ? 4 : service.mode === 'tram' ? 2 : 1;
+        const dots = !service.mode || service.mode === 'train' ? 3 : service.mode === 'tram' ? 2 : 1;
         if (dots === 1 || position.approximate || !(spacing > 0)) return points;
         const count = service.stopIds ? service.stopIds.length : service.stops.length;
         const time = (i, column) => service.stopIds ? service.times[i * 2 + column - 1] : service.stops[i][column];
@@ -54,7 +64,7 @@
         }
         return points;
     }
-    const api = {bodyKind, radiusStops, radius, footprint};
+    const api = {bodyKind, radiusStops, radius, spacingPixels, metersPerPixel, footprint};
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     root.suntrainVehicles = api;
 })(typeof window !== 'undefined' ? window : globalThis);

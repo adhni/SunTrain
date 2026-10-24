@@ -4,6 +4,17 @@ const core = require('../assets/train_replay.js');
 const {stationCalls, formatCallTime} = require('../assets/02_station_departures.js');
 const {summarize} = require('../assets/02_city_overview.js');
 const {bearing} = require('../assets/02_flights.js');
+const {priceLabel} = require('../assets/02_flights.js');
+
+test('Malaysian fares format minor units without inventing missing prices', () => {
+    assert.match(priceLabel({price:{amount_minor:12050,currency:'MYR'}}), /MYR\s*120\.50/);
+    for (const price of [undefined, {}, {amount_minor:0,currency:'MYR'}, {amount_minor:134.5,currency:'MYR'}, {amount_minor:13400,currency:'USD'}]) {
+        assert.equal(priceLabel({price}), 'Price unavailable');
+    }
+    const at=Date.parse('2026-11-02T00:00:00Z')/1000;
+    assert.match(formatCallTime(at,'Asia/Kuala_Lumpur'), /08:00 MYT/);
+    assert.match(formatCallTime(at,'Asia/Kuching'), /08:00 MYT/);
+});
 const stations = [{name:'Perth (PER)',lon:116,lat:-32,timezone:'Australia/Perth'},
     {name:'Melbourne (MEL)',lon:145,lat:-38,timezone:'Australia/Melbourne'}];
 const start = Date.parse('2013-03-03T13:00:00Z') / 1000;

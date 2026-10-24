@@ -1,0 +1,1680 @@
+{
+  "country": "MY",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Kuala_Lumpur",
+  "max_duration": 28800,
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+  "route_source_sha256": "71813f33bdefe28c85605aacf4e4caa8e287870f2f9f9dc9f39eab67762d437f",
+  "route_hash_basis": "Curated candidate evidence, not raw website bytes",
+  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_timezone": "Australia/Melbourne",
+  "airports": [
+    {
+      "code": "AOR",
+      "icao": "WMKA",
+      "name": "Sultan Abdul Halim Airport (AOR)",
+      "municipality": "Alor Satar",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 6.189670085906982,
+      "lon": 100.39800262451172
+    },
+    {
+      "code": "BBN",
+      "icao": "WBGZ",
+      "name": "Bario Airport (BBN)",
+      "municipality": "Bario",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 3.734648,
+      "lon": 115.478548
+    },
+    {
+      "code": "BKI",
+      "icao": "WBKK",
+      "name": "Kota Kinabalu International Airport (BKI)",
+      "municipality": "Kota Kinabalu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sabah & Labuan",
+      "mode": "flight",
+      "lat": 5.932743,
+      "lon": 116.049324
+    },
+    {
+      "code": "BKM",
+      "icao": "WBGQ",
+      "name": "Bakalalan Airport (BKM)",
+      "municipality": "Bakalalan",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 3.974,
+      "lon": 115.617996
+    },
+    {
+      "code": "BTU",
+      "icao": "WBGB",
+      "name": "Bintulu Airport (BTU)",
+      "municipality": "Bintulu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 3.12385010719,
+      "lon": 113.019996643
+    },
+    {
+      "code": "IPH",
+      "icao": "WMKI",
+      "name": "Sultan Azlan Shah Airport (IPH)",
+      "municipality": "Ipoh",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 4.56733,
+      "lon": 101.091643
+    },
+    {
+      "code": "JHB",
+      "icao": "WMKJ",
+      "name": "Senai International Airport (JHB)",
+      "municipality": "Johor Bahru",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 1.64131,
+      "lon": 103.669998
+    },
+    {
+      "code": "KBR",
+      "icao": "WMKC",
+      "name": "Sultan Ismail Petra Airport (KBR)",
+      "municipality": "Kota Baharu",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 6.1668500900268555,
+      "lon": 102.29299926757812
+    },
+    {
+      "code": "KCH",
+      "icao": "WBGG",
+      "name": "Kuching International Airport (KCH)",
+      "municipality": "Kuching",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 1.487364,
+      "lon": 110.352859
+    },
+    {
+      "code": "KUA",
+      "icao": "WMKD",
+      "name": "Kuantan Airport (KUA)",
+      "municipality": "Kuantan",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 3.7753899097442627,
+      "lon": 103.20899963378906
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "LBP",
+      "icao": "MY-LBP",
+      "name": "Long Banga Airport (LBP)",
+      "municipality": "Long Banga",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 3.202138,
+      "lon": 115.401811
+    },
+    {
+      "code": "LBU",
+      "icao": "WBKL",
+      "name": "Labuan Airport (LBU)",
+      "municipality": "Labuan",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sabah & Labuan",
+      "mode": "flight",
+      "lat": 5.301667,
+      "lon": 115.248333
+    },
+    {
+      "code": "LDU",
+      "icao": "WBKD",
+      "name": "Lahad Datu Airport (LDU)",
+      "municipality": "Lahad Datu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sabah & Labuan",
+      "mode": "flight",
+      "lat": 5.03241,
+      "lon": 118.32376
+    },
+    {
+      "code": "LGK",
+      "icao": "WMKL",
+      "name": "Langkawi International Airport (LGK)",
+      "municipality": "Langkawi",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 6.32973,
+      "lon": 99.728699
+    },
+    {
+      "code": "LGL",
+      "icao": "WBGF",
+      "name": "Long Lellang Airport (LGL)",
+      "municipality": "Long Datih",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 3.4210000038099997,
+      "lon": 115.153999329
+    },
+    {
+      "code": "LKH",
+      "icao": "WBGL",
+      "name": "Long Akah Airport (LKH)",
+      "municipality": "Long Akah",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 3.310909,
+      "lon": 114.785553
+    },
+    {
+      "code": "LMN",
+      "icao": "WBGJ",
+      "name": "Limbang Airport (LMN)",
+      "municipality": "Limbang",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 4.808300018310547,
+      "lon": 115.01000213623047
+    },
+    {
+      "code": "LWY",
+      "icao": "WBGW",
+      "name": "Lawas Airport (LWY)",
+      "municipality": "Lawas",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 4.84917,
+      "lon": 115.407997
+    },
+    {
+      "code": "MKM",
+      "icao": "WBGK",
+      "name": "Mukah Airport (MKM)",
+      "municipality": "Mukah",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 2.881944,
+      "lon": 112.043333
+    },
+    {
+      "code": "MUR",
+      "icao": "WBGM",
+      "name": "Marudi Airport (MUR)",
+      "municipality": "Marudi",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 4.178734,
+      "lon": 114.330318
+    },
+    {
+      "code": "MYY",
+      "icao": "WBGR",
+      "name": "Miri Airport (MYY)",
+      "municipality": "Miri",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 4.32201,
+      "lon": 113.987
+    },
+    {
+      "code": "MZV",
+      "icao": "WBMU",
+      "name": "Mulu Airport (MZV)",
+      "municipality": "Mulu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 4.048329830169678,
+      "lon": 114.80500030517578
+    },
+    {
+      "code": "ODN",
+      "icao": "WBGI",
+      "name": "Long Seridan Airport (ODN)",
+      "municipality": "Long Seridan",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 3.976087,
+      "lon": 115.067303
+    },
+    {
+      "code": "PEN",
+      "icao": "WMKP",
+      "name": "Penang International Airport (PEN)",
+      "municipality": "Penang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 5.296303,
+      "lon": 100.276185
+    },
+    {
+      "code": "SBW",
+      "icao": "WBGS",
+      "name": "Sibu Airport (SBW)",
+      "municipality": "Sibu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 2.2616,
+      "lon": 111.985001
+    },
+    {
+      "code": "SDK",
+      "icao": "WBKS",
+      "name": "Sandakan Airport (SDK)",
+      "municipality": "Sandakan",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sabah & Labuan",
+      "mode": "flight",
+      "lat": 5.900899887084961,
+      "lon": 118.05899810791016
+    },
+    {
+      "code": "SZB",
+      "icao": "WMSA",
+      "name": "Sultan Abdul Aziz Shah International Airport (SZB)",
+      "municipality": "Subang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 3.13058,
+      "lon": 101.549004
+    },
+    {
+      "code": "TGC",
+      "icao": "WBTM",
+      "name": "Tanjung Manis Airport (TGC)",
+      "municipality": "Belawai",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 2.17784,
+      "lon": 111.202003
+    },
+    {
+      "code": "TGG",
+      "icao": "WMKN",
+      "name": "Sultan Mahmud Airport (TGG)",
+      "municipality": "Kuala Terengganu",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 5.3826398849487305,
+      "lon": 103.10299682617188
+    },
+    {
+      "code": "TWU",
+      "icao": "WBKW",
+      "name": "Tawau Airport (TWU)",
+      "municipality": "Tawau",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sabah & Labuan",
+      "mode": "flight",
+      "lat": 4.31338,
+      "lon": 118.12152
+    }
+  ],
+  "routes": [
+    [
+      "AOR",
+      "KUL"
+    ],
+    [
+      "AOR",
+      "SZB"
+    ],
+    [
+      "BBN",
+      "BKM"
+    ],
+    [
+      "BBN",
+      "LGL"
+    ],
+    [
+      "BBN",
+      "MUR"
+    ],
+    [
+      "BBN",
+      "MYY"
+    ],
+    [
+      "BBN",
+      "ODN"
+    ],
+    [
+      "BKI",
+      "BTU"
+    ],
+    [
+      "BKI",
+      "JHB"
+    ],
+    [
+      "BKI",
+      "KCH"
+    ],
+    [
+      "BKI",
+      "KUL"
+    ],
+    [
+      "BKI",
+      "LBU"
+    ],
+    [
+      "BKI",
+      "LDU"
+    ],
+    [
+      "BKI",
+      "LMN"
+    ],
+    [
+      "BKI",
+      "LWY"
+    ],
+    [
+      "BKI",
+      "MYY"
+    ],
+    [
+      "BKI",
+      "MZV"
+    ],
+    [
+      "BKI",
+      "PEN"
+    ],
+    [
+      "BKI",
+      "SBW"
+    ],
+    [
+      "BKI",
+      "SDK"
+    ],
+    [
+      "BKI",
+      "SZB"
+    ],
+    [
+      "BKI",
+      "TWU"
+    ],
+    [
+      "BKM",
+      "BBN"
+    ],
+    [
+      "BKM",
+      "LWY"
+    ],
+    [
+      "BKM",
+      "MYY"
+    ],
+    [
+      "BTU",
+      "BKI"
+    ],
+    [
+      "BTU",
+      "KCH"
+    ],
+    [
+      "BTU",
+      "KUL"
+    ],
+    [
+      "BTU",
+      "MKM"
+    ],
+    [
+      "BTU",
+      "MYY"
+    ],
+    [
+      "BTU",
+      "SBW"
+    ],
+    [
+      "BTU",
+      "SZB"
+    ],
+    [
+      "IPH",
+      "JHB"
+    ],
+    [
+      "IPH",
+      "PEN"
+    ],
+    [
+      "JHB",
+      "BKI"
+    ],
+    [
+      "JHB",
+      "IPH"
+    ],
+    [
+      "JHB",
+      "KCH"
+    ],
+    [
+      "JHB",
+      "KUL"
+    ],
+    [
+      "JHB",
+      "LGK"
+    ],
+    [
+      "JHB",
+      "MYY"
+    ],
+    [
+      "JHB",
+      "PEN"
+    ],
+    [
+      "JHB",
+      "SBW"
+    ],
+    [
+      "JHB",
+      "SZB"
+    ],
+    [
+      "JHB",
+      "TWU"
+    ],
+    [
+      "KBR",
+      "KUL"
+    ],
+    [
+      "KBR",
+      "PEN"
+    ],
+    [
+      "KBR",
+      "SZB"
+    ],
+    [
+      "KCH",
+      "BKI"
+    ],
+    [
+      "KCH",
+      "BTU"
+    ],
+    [
+      "KCH",
+      "JHB"
+    ],
+    [
+      "KCH",
+      "KUL"
+    ],
+    [
+      "KCH",
+      "LGK"
+    ],
+    [
+      "KCH",
+      "LMN"
+    ],
+    [
+      "KCH",
+      "MKM"
+    ],
+    [
+      "KCH",
+      "MYY"
+    ],
+    [
+      "KCH",
+      "MZV"
+    ],
+    [
+      "KCH",
+      "PEN"
+    ],
+    [
+      "KCH",
+      "SBW"
+    ],
+    [
+      "KCH",
+      "SZB"
+    ],
+    [
+      "KCH",
+      "TGC"
+    ],
+    [
+      "KUA",
+      "KUL"
+    ],
+    [
+      "KUA",
+      "PEN"
+    ],
+    [
+      "KUL",
+      "AOR"
+    ],
+    [
+      "KUL",
+      "BKI"
+    ],
+    [
+      "KUL",
+      "BTU"
+    ],
+    [
+      "KUL",
+      "JHB"
+    ],
+    [
+      "KUL",
+      "KBR"
+    ],
+    [
+      "KUL",
+      "KCH"
+    ],
+    [
+      "KUL",
+      "KUA"
+    ],
+    [
+      "KUL",
+      "LBU"
+    ],
+    [
+      "KUL",
+      "LGK"
+    ],
+    [
+      "KUL",
+      "MYY"
+    ],
+    [
+      "KUL",
+      "PEN"
+    ],
+    [
+      "KUL",
+      "SBW"
+    ],
+    [
+      "KUL",
+      "SDK"
+    ],
+    [
+      "KUL",
+      "TGG"
+    ],
+    [
+      "KUL",
+      "TWU"
+    ],
+    [
+      "LBP",
+      "MUR"
+    ],
+    [
+      "LBP",
+      "MYY"
+    ],
+    [
+      "LBU",
+      "BKI"
+    ],
+    [
+      "LBU",
+      "KUL"
+    ],
+    [
+      "LBU",
+      "MYY"
+    ],
+    [
+      "LDU",
+      "BKI"
+    ],
+    [
+      "LDU",
+      "SDK"
+    ],
+    [
+      "LGK",
+      "JHB"
+    ],
+    [
+      "LGK",
+      "KCH"
+    ],
+    [
+      "LGK",
+      "KUL"
+    ],
+    [
+      "LGK",
+      "PEN"
+    ],
+    [
+      "LGK",
+      "SZB"
+    ],
+    [
+      "LGL",
+      "BBN"
+    ],
+    [
+      "LGL",
+      "MUR"
+    ],
+    [
+      "LGL",
+      "MYY"
+    ],
+    [
+      "LKH",
+      "MUR"
+    ],
+    [
+      "LKH",
+      "MYY"
+    ],
+    [
+      "LMN",
+      "BKI"
+    ],
+    [
+      "LMN",
+      "KCH"
+    ],
+    [
+      "LMN",
+      "LWY"
+    ],
+    [
+      "LMN",
+      "MYY"
+    ],
+    [
+      "LWY",
+      "BKI"
+    ],
+    [
+      "LWY",
+      "BKM"
+    ],
+    [
+      "LWY",
+      "LMN"
+    ],
+    [
+      "LWY",
+      "MYY"
+    ],
+    [
+      "MKM",
+      "BTU"
+    ],
+    [
+      "MKM",
+      "KCH"
+    ],
+    [
+      "MKM",
+      "MYY"
+    ],
+    [
+      "MKM",
+      "SBW"
+    ],
+    [
+      "MUR",
+      "BBN"
+    ],
+    [
+      "MUR",
+      "LBP"
+    ],
+    [
+      "MUR",
+      "LGL"
+    ],
+    [
+      "MUR",
+      "LKH"
+    ],
+    [
+      "MUR",
+      "MYY"
+    ],
+    [
+      "MUR",
+      "ODN"
+    ],
+    [
+      "MYY",
+      "BBN"
+    ],
+    [
+      "MYY",
+      "BKI"
+    ],
+    [
+      "MYY",
+      "BKM"
+    ],
+    [
+      "MYY",
+      "BTU"
+    ],
+    [
+      "MYY",
+      "JHB"
+    ],
+    [
+      "MYY",
+      "KCH"
+    ],
+    [
+      "MYY",
+      "KUL"
+    ],
+    [
+      "MYY",
+      "LBP"
+    ],
+    [
+      "MYY",
+      "LBU"
+    ],
+    [
+      "MYY",
+      "LGL"
+    ],
+    [
+      "MYY",
+      "LKH"
+    ],
+    [
+      "MYY",
+      "LMN"
+    ],
+    [
+      "MYY",
+      "LWY"
+    ],
+    [
+      "MYY",
+      "MKM"
+    ],
+    [
+      "MYY",
+      "MUR"
+    ],
+    [
+      "MYY",
+      "MZV"
+    ],
+    [
+      "MYY",
+      "ODN"
+    ],
+    [
+      "MYY",
+      "PEN"
+    ],
+    [
+      "MYY",
+      "SBW"
+    ],
+    [
+      "MYY",
+      "SZB"
+    ],
+    [
+      "MZV",
+      "BKI"
+    ],
+    [
+      "MZV",
+      "KCH"
+    ],
+    [
+      "MZV",
+      "MYY"
+    ],
+    [
+      "ODN",
+      "BBN"
+    ],
+    [
+      "ODN",
+      "MUR"
+    ],
+    [
+      "ODN",
+      "MYY"
+    ],
+    [
+      "PEN",
+      "BKI"
+    ],
+    [
+      "PEN",
+      "IPH"
+    ],
+    [
+      "PEN",
+      "JHB"
+    ],
+    [
+      "PEN",
+      "KBR"
+    ],
+    [
+      "PEN",
+      "KCH"
+    ],
+    [
+      "PEN",
+      "KUA"
+    ],
+    [
+      "PEN",
+      "KUL"
+    ],
+    [
+      "PEN",
+      "LGK"
+    ],
+    [
+      "PEN",
+      "MYY"
+    ],
+    [
+      "PEN",
+      "SZB"
+    ],
+    [
+      "PEN",
+      "TGG"
+    ],
+    [
+      "SBW",
+      "BKI"
+    ],
+    [
+      "SBW",
+      "BTU"
+    ],
+    [
+      "SBW",
+      "JHB"
+    ],
+    [
+      "SBW",
+      "KCH"
+    ],
+    [
+      "SBW",
+      "KUL"
+    ],
+    [
+      "SBW",
+      "MKM"
+    ],
+    [
+      "SBW",
+      "MYY"
+    ],
+    [
+      "SBW",
+      "SZB"
+    ],
+    [
+      "SDK",
+      "BKI"
+    ],
+    [
+      "SDK",
+      "KUL"
+    ],
+    [
+      "SDK",
+      "LDU"
+    ],
+    [
+      "SDK",
+      "TWU"
+    ],
+    [
+      "SZB",
+      "AOR"
+    ],
+    [
+      "SZB",
+      "BKI"
+    ],
+    [
+      "SZB",
+      "BTU"
+    ],
+    [
+      "SZB",
+      "JHB"
+    ],
+    [
+      "SZB",
+      "KBR"
+    ],
+    [
+      "SZB",
+      "KCH"
+    ],
+    [
+      "SZB",
+      "LGK"
+    ],
+    [
+      "SZB",
+      "MYY"
+    ],
+    [
+      "SZB",
+      "PEN"
+    ],
+    [
+      "SZB",
+      "SBW"
+    ],
+    [
+      "SZB",
+      "TGG"
+    ],
+    [
+      "SZB",
+      "TWU"
+    ],
+    [
+      "TGC",
+      "KCH"
+    ],
+    [
+      "TGG",
+      "KUL"
+    ],
+    [
+      "TGG",
+      "PEN"
+    ],
+    [
+      "TGG",
+      "SZB"
+    ],
+    [
+      "TWU",
+      "BKI"
+    ],
+    [
+      "TWU",
+      "JHB"
+    ],
+    [
+      "TWU",
+      "KUL"
+    ],
+    [
+      "TWU",
+      "SDK"
+    ],
+    [
+      "TWU",
+      "SZB"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "MYY",
+      "destination": "MZV",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "LMN",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "BTU",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "SBW",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BTU",
+      "destination": "SBW",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "KCH",
+      "destination": "MZV",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "KCH",
+      "destination": "LMN",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "LWY",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "LMN",
+      "destination": "LWY",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "BKM",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "LWY",
+      "destination": "BKM",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "BBN",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MUR",
+      "destination": "BBN",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "MUR",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "LGL",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MUR",
+      "destination": "LGL",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "LKH",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MUR",
+      "destination": "LKH",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BBN",
+      "destination": "BKM",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "SBW",
+      "destination": "MKM",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MKM",
+      "destination": "MYY",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MKM",
+      "destination": "BTU",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MKM",
+      "destination": "KCH",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "ODN",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MUR",
+      "destination": "ODN",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "LBP",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MUR",
+      "destination": "LBP",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "KCH",
+      "destination": "TGC",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BBN",
+      "destination": "ODN",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BBN",
+      "destination": "LGL",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BKI",
+      "destination": "LDU",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "SDK",
+      "destination": "TWU",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BKI",
+      "destination": "LBU",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "LDU",
+      "destination": "SDK",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "MYY",
+      "destination": "LBU",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BKI",
+      "destination": "MZV",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BKI",
+      "destination": "LMN",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "BKI",
+      "destination": "LWY",
+      "source": "https://www.caam.gov.my/industry/public-service-obligations/current-ras-programme/",
+      "kind": "Historical published RAS candidate; verify dated results"
+    },
+    {
+      "origin": "KUL",
+      "destination": "AOR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "LGK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PEN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KBR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TGG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KUA",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "JHB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BKI",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SDK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TWU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "LBU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KCH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MYY",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SBW",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BTU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "AOR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "LGK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "PEN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "KBR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "TGG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "JHB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "BKI",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "KCH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "MYY",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "SBW",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "BTU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "TWU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "LGK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "JHB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "KBR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "TGG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "KUA",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "BKI",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "KCH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "MYY",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "IPH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "LGK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "IPH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "BKI",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "KCH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "MYY",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "SBW",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "TWU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "KCH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "MYY",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "SBW",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "BTU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "SDK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "TWU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "MYY",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "SBW",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "BTU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "LGK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations/flights-to-malaysia.html",
+      "kind": "Targeted hub/airport probe; not evidence of current service"
+    }
+  ],
+  "unresolved_airports": [],
+  "excluded_candidates": [
+    {
+      "origin": "BKI",
+      "destination": "KUD",
+      "reason": "Explicitly suspended in CAAM table"
+    },
+    {
+      "origin": "KUD",
+      "destination": "SDK",
+      "reason": "Explicitly suspended in CAAM table"
+    }
+  ]
+}

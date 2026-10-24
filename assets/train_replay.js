@@ -256,6 +256,10 @@
                     cell.textContent=shortTime.format(at)+(cell.dataset.withDate==='true'?' · '+shortDate.format(at):'');
                 }
                 this.departures?.updateJourneyLocale();
+                const fare=document.querySelector('.replay-flight-fare');
+                if (fare && this.selected) fare.textContent=root.suntrainFlights.priceLabel(this.selected);
+                const captured=document.querySelector('[data-fare-captured-at]');
+                if (captured) root.suntrainI18n.bind(captured, 'Captured: '+new Intl.DateTimeFormat(root.suntrainI18n.locale, {timeZone:this.day.timezone,dateStyle:'medium',timeStyle:'short'}).format(new Date(captured.dataset.fareCapturedAt))+' MYT');
                 this.paint(true);
                 this.updateLegend();
             });
@@ -901,6 +905,14 @@
                 host.append(line, node('h3', service.number), node('p', `${service.origin} → ${service.destination}`, 'replay-detail-route'),
                     node('p', `${service.operator} · ${service.aircraft}`, 'replay-muted replay-small'),
                     node('p', 'Scheduled replay · illustrative paths', 'replay-detail-note'));
+                if (this.day.schedule?.fare_context) {
+                    host.append(node('p', root.suntrainFlights.priceLabel(service), 'replay-flight-fare'),
+                        node('p', 'Lowest captured fare · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.', 'replay-muted replay-small'));
+                    if (service.price?.captured_at) {
+                        const captured=node('p', 'Captured: '+new Intl.DateTimeFormat(root.suntrainI18n?.locale || 'en-MY', {timeZone:this.day.timezone,dateStyle:'medium',timeStyle:'short'}).format(new Date(service.price.captured_at))+' MYT', 'replay-muted replay-small');
+                        captured.dataset.fareCapturedAt=service.price.captured_at;host.append(captured);
+                    }
+                }
                 const live = node('div', undefined, 'replay-service-status'); live.id = 'replay-service-status'; host.append(live);
                 const duration = Math.round((service.stops[1][1] - service.stops[0][2]) / 60);
                 host.append(node('p', `${Math.floor(duration / 60)} h ${duration % 60} min`, 'replay-muted replay-small'));
@@ -1151,7 +1163,10 @@
                 if (force || performance.now() - this.lastUI >= 200 || !this.playing) {
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
-                    setText("replay-clock-date", this.day.timezone === "Asia/Jakarta" ? dateFormat.format(new Date(this.now * 1000)).replace(/GMT\+7/, "WIB") : dateFormat.format(new Date(this.now * 1000)));
+                    let dateText=dateFormat.format(new Date(this.now * 1000));
+                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':null;
+                    if (zoneLabel) dateText=dateText.replace(/GMT\+[78]/,zoneLabel);
+                    setText("replay-clock-date",dateText);
                     setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");

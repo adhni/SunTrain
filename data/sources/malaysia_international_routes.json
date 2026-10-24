@@ -1,0 +1,4585 @@
+{
+  "country": "MY",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Kuala_Lumpur",
+  "max_duration": 86400,
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+  "route_source_sha256": "5eaac42d86675937114b1e5607f6b2ce134c8c2441f4ea8d821388a91b19f5b5",
+  "route_hash_basis": "Curated candidate evidence, not raw website bytes",
+  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_timezone": "Australia/Melbourne",
+  "airports": [
+    {
+      "code": "ADL",
+      "icao": "YPAD",
+      "name": "Adelaide International Airport (ADL)",
+      "municipality": "Adelaide",
+      "timezone": "Australia/Adelaide",
+      "mode": "flight",
+      "lat": -34.947512,
+      "lon": 138.533393,
+      "country": "AU"
+    },
+    {
+      "code": "AKL",
+      "icao": "NZAA",
+      "name": "Auckland International Airport (AKL)",
+      "municipality": "Auckland",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -37.01199,
+      "lon": 174.786331
+    },
+    {
+      "code": "ALA",
+      "icao": "UAAA",
+      "name": "Almaty International Airport (ALA)",
+      "municipality": "Almaty",
+      "country": "KZ",
+      "timezone": "Asia/Almaty",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 43.354267,
+      "lon": 77.042828
+    },
+    {
+      "code": "AMD",
+      "icao": "VAAH",
+      "name": "Sardar Vallabh Patel International Airport (AMD)",
+      "municipality": "Ahmedabad",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 23.0772,
+      "lon": 72.634697
+    },
+    {
+      "code": "AMS",
+      "icao": "EHAM",
+      "name": "Amsterdam Airport Schiphol (AMS)",
+      "municipality": "Amsterdam",
+      "country": "NL",
+      "timezone": "Europe/Amsterdam",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 52.308601,
+      "lon": 4.76389
+    },
+    {
+      "code": "ASB",
+      "icao": "UTAA",
+      "name": "Ashgabat International Airport (ASB)",
+      "municipality": "Ashgabat",
+      "country": "TM",
+      "timezone": "Asia/Ashgabat",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 37.986801,
+      "lon": 58.361
+    },
+    {
+      "code": "ATQ",
+      "icao": "VIAR",
+      "name": "Sri Guru Ram Das Ji International Airport (ATQ)",
+      "municipality": "Amritsar",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 31.7096,
+      "lon": 74.797302
+    },
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "BAR",
+      "icao": "ZJQH",
+      "name": "Qionghai Bo'ao Airport (BAR)",
+      "municipality": "Qionghai (Basuo)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 19.140951,
+      "lon": 110.452766
+    },
+    {
+      "code": "BKI",
+      "icao": "WBKK",
+      "name": "Kota Kinabalu International Airport (BKI)",
+      "municipality": "Kota Kinabalu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sabah & Labuan",
+      "mode": "flight",
+      "lat": 5.932743,
+      "lon": 116.049324
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BLR",
+      "icao": "VOBL",
+      "name": "Kempegowda International Airport Bengaluru (BLR)",
+      "municipality": "Bengaluru",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 13.1979,
+      "lon": 77.706299
+    },
+    {
+      "code": "BNE",
+      "icao": "YBBN",
+      "name": "Brisbane International Airport (BNE)",
+      "municipality": "Brisbane",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125,
+      "country": "AU"
+    },
+    {
+      "code": "BOM",
+      "icao": "VABB",
+      "name": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+      "municipality": "Mumbai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 19.088699,
+      "lon": 72.867897
+    },
+    {
+      "code": "BPN",
+      "icao": "WALL",
+      "name": "Sultan Aji Muhammad Sulaiman Sepinggan International Airport (BPN)",
+      "municipality": "Balikpapan",
+      "timezone": "Asia/Makassar",
+      "island_group": "Kalimantan",
+      "mode": "flight",
+      "lat": -1.268342,
+      "lon": 116.89452,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "BTH",
+      "icao": "WIDD",
+      "name": "Hang Nadim International Airport (BTH)",
+      "municipality": "Batam",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": 1.12103,
+      "lon": 104.119003,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "BTJ",
+      "icao": "WITT",
+      "name": "Sultan Iskandar Muda International Airport (BTJ)",
+      "municipality": "Banda Aceh",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": 5.525087,
+      "lon": 95.41997,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "BWN",
+      "icao": "WBSB",
+      "name": "Brunei International Airport (BWN)",
+      "municipality": "Bandar Seri Begawan",
+      "country": "BN",
+      "timezone": "Asia/Brunei",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 4.9442,
+      "lon": 114.928001
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CCU",
+      "icao": "VECC",
+      "name": "Netaji Subhash Chandra Bose International Airport (CCU)",
+      "municipality": "Kolkata",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.654012,
+      "lon": 88.44765
+    },
+    {
+      "code": "CDG",
+      "icao": "LFPG",
+      "name": "Charles de Gaulle International Airport (CDG)",
+      "municipality": "Paris (Roissy-en-France, Val-d'Oise)",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 49.00896,
+      "lon": 2.554117
+    },
+    {
+      "code": "CEB",
+      "icao": "RPVM",
+      "name": "Mactan Cebu International Airport (CEB)",
+      "municipality": "Cebu City/Lapu-Lapu City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 10.309261,
+      "lon": 123.97974
+    },
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "CGO",
+      "icao": "ZHCC",
+      "name": "Zhengzhou Xinzheng International Airport (CGO)",
+      "municipality": "Zhengzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 34.526497,
+      "lon": 113.849165
+    },
+    {
+      "code": "CJU",
+      "icao": "RKPC",
+      "name": "Jeju International Airport (CJU)",
+      "municipality": "Jeju City",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 33.512058,
+      "lon": 126.492548
+    },
+    {
+      "code": "CKG",
+      "icao": "ZUCK",
+      "name": "Chongqing Jiangbei International Airport (CKG)",
+      "municipality": "Chongqing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 29.712254,
+      "lon": 106.651895
+    },
+    {
+      "code": "CMB",
+      "icao": "VCBI",
+      "name": "Bandaranaike International Colombo Airport (CMB)",
+      "municipality": "Colombo",
+      "country": "LK",
+      "timezone": "Asia/Colombo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 7.180759906768799,
+      "lon": 79.88410186767578
+    },
+    {
+      "code": "CNX",
+      "icao": "VTCC",
+      "name": "Chiang Mai International Airport (CNX)",
+      "municipality": "Chiang Mai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 18.766799926799997,
+      "lon": 98.962600708
+    },
+    {
+      "code": "COK",
+      "icao": "VOCI",
+      "name": "Cochin International Airport (COK)",
+      "municipality": "Kochi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 10.151047,
+      "lon": 76.400838
+    },
+    {
+      "code": "CRK",
+      "icao": "RPLC",
+      "name": "Clark International Airport / Clark Air Base (CRK)",
+      "municipality": "Mabalacat",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 15.186,
+      "lon": 120.559998
+    },
+    {
+      "code": "CSX",
+      "icao": "ZGHA",
+      "name": "Changsha Huanghua International Airport (CSX)",
+      "municipality": "Changsha (Changsha)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 28.189199,
+      "lon": 113.220001
+    },
+    {
+      "code": "CTS",
+      "icao": "RJCC",
+      "name": "New Chitose Airport (CTS)",
+      "municipality": "Sapporo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 42.774753,
+      "lon": 141.690414
+    },
+    {
+      "code": "CTU",
+      "icao": "ZUUU",
+      "name": "Chengdu Shuangliu International Airport (CTU)",
+      "municipality": "Chengdu (Shuangliu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.558257,
+      "lon": 103.945966
+    },
+    {
+      "code": "CXR",
+      "icao": "VVCR",
+      "name": "Cam Ranh International Airport / Cam Ranh Air Base (CXR)",
+      "municipality": "Nha Trang/nha Trang aiurportCam Ranh",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 11.9982,
+      "lon": 109.219002
+    },
+    {
+      "code": "DAC",
+      "icao": "VGHS",
+      "name": "Hazrat Shahjalal International Airport (DAC)",
+      "municipality": "Dhaka",
+      "country": "BD",
+      "timezone": "Asia/Dhaka",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 23.843347,
+      "lon": 90.397783
+    },
+    {
+      "code": "DAD",
+      "icao": "VVDN",
+      "name": "Da Nang International Airport (DAD)",
+      "municipality": "Da Nang",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 16.0439,
+      "lon": 108.198997
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DLI",
+      "icao": "VVDL",
+      "name": "Lien Khuong Airport (DLI)",
+      "municipality": "Da Lat",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 11.750556,
+      "lon": 108.366997
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "DMM",
+      "icao": "OEDF",
+      "name": "King Fahd International Airport (DMM)",
+      "municipality": "Ad Dammam",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 26.4691,
+      "lon": 49.798209
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "timezone": "Asia/Makassar",
+      "island_group": "Bali & Nusa Tenggara",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "DVO",
+      "icao": "RPMD",
+      "name": "Francisco Bangoy International Airport (DVO)",
+      "municipality": "Davao",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 7.12552,
+      "lon": 125.646004
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "FOC",
+      "icao": "ZSFZ",
+      "name": "Fuzhou Changle International Airport (FOC)",
+      "municipality": "Fuzhou (Changle)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.929254,
+      "lon": 119.672524
+    },
+    {
+      "code": "FRA",
+      "icao": "EDDF",
+      "name": "Frankfurt Main Airport (FRA)",
+      "municipality": "Frankfurt am Main",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 50.026706,
+      "lon": 8.55835
+    },
+    {
+      "code": "FUK",
+      "icao": "RJFF",
+      "name": "Fukuoka Airport (FUK)",
+      "municipality": "Fukuoka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 33.585899353027344,
+      "lon": 130.4510040283203
+    },
+    {
+      "code": "HAK",
+      "icao": "ZJHK",
+      "name": "Haikou Meilan International Airport (HAK)",
+      "municipality": "Haikou (Meilan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 19.9349,
+      "lon": 110.459
+    },
+    {
+      "code": "HAN",
+      "icao": "VVNB",
+      "name": "Noi Bai International Airport (HAN)",
+      "municipality": "Hanoi (Soc Son)",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 21.221201,
+      "lon": 105.806999
+    },
+    {
+      "code": "HDY",
+      "icao": "VTSS",
+      "name": "Hat Yai International Airport (HDY)",
+      "municipality": "Hat Yai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 6.93321,
+      "lon": 100.392998
+    },
+    {
+      "code": "HGH",
+      "icao": "ZSHC",
+      "name": "Hangzhou Xiaoshan International Airport (HGH)",
+      "municipality": "Hangzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.23609,
+      "lon": 120.428865
+    },
+    {
+      "code": "HKG",
+      "icao": "VHHH",
+      "name": "Hong Kong International Airport (HKG)",
+      "municipality": "Hong Kong",
+      "country": "HK",
+      "timezone": "Asia/Hong_Kong",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.31184,
+      "lon": 113.914862
+    },
+    {
+      "code": "HKT",
+      "icao": "VTSP",
+      "name": "Phuket International Airport (HKT)",
+      "municipality": "Phuket",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 8.113257,
+      "lon": 98.3174
+    },
+    {
+      "code": "HND",
+      "icao": "RJTT",
+      "name": "Tokyo Haneda International Airport (HND)",
+      "municipality": "Tokyo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 35.549678,
+      "lon": 139.786958
+    },
+    {
+      "code": "HYD",
+      "icao": "VOHS",
+      "name": "Rajiv Gandhi International Airport (HYD)",
+      "municipality": "Hyderabad",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 17.231318,
+      "lon": 78.429855
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "IPH",
+      "icao": "WMKI",
+      "name": "Sultan Azlan Shah Airport (IPH)",
+      "municipality": "Ipoh",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 4.56733,
+      "lon": 101.091643
+    },
+    {
+      "code": "ISB",
+      "icao": "OPIS",
+      "name": "Islamabad International Airport (ISB)",
+      "municipality": "Attock",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 33.549,
+      "lon": 72.82566
+    },
+    {
+      "code": "IST",
+      "icao": "LTFM",
+      "name": "İstanbul Airport (IST)",
+      "municipality": "Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 41.274874,
+      "lon": 28.732136
+    },
+    {
+      "code": "JED",
+      "icao": "OEJN",
+      "name": "King Abdulaziz International Airport (JED)",
+      "municipality": "Jeddah",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 21.680241,
+      "lon": 39.157436
+    },
+    {
+      "code": "JHB",
+      "icao": "WMKJ",
+      "name": "Senai International Airport (JHB)",
+      "municipality": "Johor Bahru",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 1.64131,
+      "lon": 103.669998
+    },
+    {
+      "code": "KBR",
+      "icao": "WMKC",
+      "name": "Sultan Ismail Petra Airport (KBR)",
+      "municipality": "Kota Baharu",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 6.1668500900268555,
+      "lon": 102.29299926757812
+    },
+    {
+      "code": "KBV",
+      "icao": "VTSG",
+      "name": "Krabi International Airport (KBV)",
+      "municipality": "Krabi",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 8.095591,
+      "lon": 98.988955
+    },
+    {
+      "code": "KCH",
+      "icao": "WBGG",
+      "name": "Kuching International Airport (KCH)",
+      "municipality": "Kuching",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 1.487364,
+      "lon": 110.352859
+    },
+    {
+      "code": "KHH",
+      "icao": "RCKH",
+      "name": "Kaohsiung International Airport (KHH)",
+      "municipality": "Kaohsiung (Xiaogang)",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.577101,
+      "lon": 120.349998
+    },
+    {
+      "code": "KHI",
+      "icao": "OPKC",
+      "name": "Jinnah International Airport (KHI)",
+      "municipality": "Karachi",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.9065,
+      "lon": 67.160797
+    },
+    {
+      "code": "KIX",
+      "icao": "RJBB",
+      "name": "Kansai International Airport (KIX)",
+      "municipality": "Osaka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 34.427299,
+      "lon": 135.244003
+    },
+    {
+      "code": "KJT",
+      "icao": "WICA",
+      "name": "Kertajati International Airport (KJT)",
+      "municipality": "Kertajati",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -6.647384,
+      "lon": 108.165561,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "KMG",
+      "icao": "ZPPP",
+      "name": "Kunming Changshui International Airport (KMG)",
+      "municipality": "Kunming",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.110313,
+      "lon": 102.936743
+    },
+    {
+      "code": "KNO",
+      "icao": "WIMM",
+      "name": "Kualanamu International Airport (KNO)",
+      "municipality": "Beringin",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": 3.637847,
+      "lon": 98.870566,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "KTI",
+      "icao": "KH-0002",
+      "name": "Techo International Airport (KTI)",
+      "municipality": "Phnom Penh (Boeng Khyang)",
+      "country": "KH",
+      "timezone": "Asia/Phnom_Penh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 11.359987,
+      "lon": 104.921272
+    },
+    {
+      "code": "KTM",
+      "icao": "VNKT",
+      "name": "Tribhuvan International Airport (KTM)",
+      "municipality": "Kathmandu",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 27.6966,
+      "lon": 85.3591
+    },
+    {
+      "code": "KUA",
+      "icao": "WMKD",
+      "name": "Kuantan Airport (KUA)",
+      "municipality": "Kuantan",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 3.7753899097442627,
+      "lon": 103.20899963378906
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "KWL",
+      "icao": "ZGKL",
+      "name": "Guilin Liangjiang International Airport (KWL)",
+      "municipality": "Guilin (Lingui)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.219828,
+      "lon": 110.039553
+    },
+    {
+      "code": "LGK",
+      "icao": "WMKL",
+      "name": "Langkawi International Airport (LGK)",
+      "municipality": "Langkawi",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 6.32973,
+      "lon": 99.728699
+    },
+    {
+      "code": "LGW",
+      "icao": "EGKK",
+      "name": "London Gatwick Airport (LGW)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 51.148744,
+      "lon": -0.185739
+    },
+    {
+      "code": "LHE",
+      "icao": "OPLA",
+      "name": "Allama Iqbal International Airport (LHE)",
+      "municipality": "Lahore",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 31.521601,
+      "lon": 74.403603
+    },
+    {
+      "code": "LHR",
+      "icao": "EGLL",
+      "name": "London Heathrow Airport (LHR)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 51.470748,
+      "lon": -0.459909
+    },
+    {
+      "code": "LOP",
+      "icao": "WADL",
+      "name": "Lombok International Airport (LOP)",
+      "municipality": "Mataram (Pujut, Lombok Tengah)",
+      "timezone": "Asia/Makassar",
+      "island_group": "Bali & Nusa Tenggara",
+      "mode": "flight",
+      "lat": -8.759962,
+      "lon": 116.278169,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "MAA",
+      "icao": "VOMM",
+      "name": "Chennai International Airport (MAA)",
+      "municipality": "Chennai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 12.990005,
+      "lon": 80.169296
+    },
+    {
+      "code": "MCT",
+      "icao": "OOMS",
+      "name": "Muscat International Airport (MCT)",
+      "municipality": "Muscat/Seeb",
+      "country": "OM",
+      "timezone": "Asia/Muscat",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 23.600218,
+      "lon": 58.285268
+    },
+    {
+      "code": "MED",
+      "icao": "OEMA",
+      "name": "Prince Mohammad Bin Abdulaziz Airport (MED)",
+      "municipality": "Medina",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.5534,
+      "lon": 39.705101
+    },
+    {
+      "code": "MEL",
+      "icao": "YMML",
+      "name": "Melbourne Airport (MEL)",
+      "municipality": "Melbourne",
+      "timezone": "Australia/Melbourne",
+      "mode": "flight",
+      "lat": -37.670732,
+      "lon": 144.837898,
+      "country": "AU"
+    },
+    {
+      "code": "MFM",
+      "icao": "VMMC",
+      "name": "Macau International Airport (MFM)",
+      "municipality": "Nossa Senhora do Carmo",
+      "country": "MO",
+      "timezone": "Asia/Macau",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.149599,
+      "lon": 113.592003
+    },
+    {
+      "code": "MKZ",
+      "icao": "WMKM",
+      "name": "Malacca International Airport (MKZ)",
+      "municipality": "Malacca",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 2.265613,
+      "lon": 102.252778
+    },
+    {
+      "code": "MLE",
+      "icao": "VRMM",
+      "name": "Velana International Airport (MLE)",
+      "municipality": "Malé",
+      "country": "MV",
+      "timezone": "Indian/Maldives",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 4.19183,
+      "lon": 73.529099
+    },
+    {
+      "code": "MNL",
+      "icao": "RPLL",
+      "name": "Ninoy Aquino International Airport (MNL)",
+      "municipality": "Manila (Pasay)",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 14.5086,
+      "lon": 121.019997
+    },
+    {
+      "code": "MRU",
+      "icao": "FIMP",
+      "name": "Sir Seewoosagur Ramgoolam International Airport (MRU)",
+      "municipality": "Plaine Magnien",
+      "country": "MU",
+      "timezone": "Indian/Mauritius",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -20.430201,
+      "lon": 57.683601
+    },
+    {
+      "code": "MYY",
+      "icao": "WBGR",
+      "name": "Miri Airport (MYY)",
+      "municipality": "Miri",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 4.32201,
+      "lon": 113.987
+    },
+    {
+      "code": "NGB",
+      "icao": "ZSNB",
+      "name": "Ningbo Lishe International Airport (NGB)",
+      "municipality": "Ningbo",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 29.82670021057129,
+      "lon": 121.46199798583984
+    },
+    {
+      "code": "NKG",
+      "icao": "ZSNJ",
+      "name": "Nanjing Lukou International Airport (NKG)",
+      "municipality": "Nanjing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 31.735032,
+      "lon": 118.865949
+    },
+    {
+      "code": "NNG",
+      "icao": "ZGNN",
+      "name": "Nanning Wuxu International Airport (NNG)",
+      "municipality": "Nanning (Jiangnan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.598071,
+      "lon": 108.181922
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "OKA",
+      "icao": "ROAH",
+      "name": "Naha International Airport (OKA)",
+      "municipality": "Naha",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 26.192437,
+      "lon": 127.639804
+    },
+    {
+      "code": "PDG",
+      "icao": "WIPT",
+      "name": "Minangkabau International Airport (PDG)",
+      "municipality": "Padang (Katapiang)",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": -0.785964,
+      "lon": 100.280384,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PEN",
+      "icao": "WMKP",
+      "name": "Penang International Airport (PEN)",
+      "municipality": "Penang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 5.296303,
+      "lon": 100.276185
+    },
+    {
+      "code": "PER",
+      "icao": "YPPH",
+      "name": "Perth International Airport (PER)",
+      "municipality": "Perth",
+      "timezone": "Australia/Perth",
+      "mode": "flight",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234,
+      "country": "AU"
+    },
+    {
+      "code": "PKU",
+      "icao": "WIBB",
+      "name": "Sultan Syarif Kasim II International Airport / Roesmin Nurjadin AFB (PKU)",
+      "municipality": "Pekanbaru",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": 0.458647,
+      "lon": 101.444321,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "PKX",
+      "icao": "ZBAD",
+      "name": "Beijing Daxing International Airport (PKX)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 39.501289,
+      "lon": 116.413967
+    },
+    {
+      "code": "PQC",
+      "icao": "VVPQ",
+      "name": "Phú Quốc International Airport (PQC)",
+      "municipality": "Phu Quoc Island",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 10.169783,
+      "lon": 103.99353
+    },
+    {
+      "code": "PUS",
+      "icao": "RKPK",
+      "name": "Gimhae International Airport (PUS)",
+      "municipality": "Busan",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 35.179501,
+      "lon": 128.938004
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "RGN",
+      "icao": "VYYY",
+      "name": "Yangon International Airport (RGN)",
+      "municipality": "Yangon",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 16.907300949099998,
+      "lon": 96.1332015991
+    },
+    {
+      "code": "RUH",
+      "icao": "OERK",
+      "name": "King Khalid International Airport (RUH)",
+      "municipality": "Riyadh",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.9576,
+      "lon": 46.698799
+    },
+    {
+      "code": "SAI",
+      "icao": "VDSA",
+      "name": "Siem Reap-Angkor International Airport (SAI)",
+      "municipality": "Siem Reap",
+      "country": "KH",
+      "timezone": "Asia/Phnom_Penh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 13.36974,
+      "lon": 104.223831
+    },
+    {
+      "code": "SAW",
+      "icao": "LTFJ",
+      "name": "Istanbul Sabiha Gökçen International Airport (SAW)",
+      "municipality": "Pendik, Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 40.898602,
+      "lon": 29.3092
+    },
+    {
+      "code": "SBW",
+      "icao": "WBGS",
+      "name": "Sibu Airport (SBW)",
+      "municipality": "Sibu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sarawak",
+      "mode": "flight",
+      "lat": 2.2616,
+      "lon": 111.985001
+    },
+    {
+      "code": "SGN",
+      "icao": "VVTS",
+      "name": "Tan Son Nhat International Airport (SGN)",
+      "municipality": "Ho Chi Minh City",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 10.8188,
+      "lon": 106.652
+    },
+    {
+      "code": "SHJ",
+      "icao": "OMSJ",
+      "name": "Sharjah International Airport (SHJ)",
+      "municipality": "Sharjah",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.3286,
+      "lon": 55.5172
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "SUB",
+      "icao": "WARR",
+      "name": "Juanda International Airport (SUB)",
+      "municipality": "Surabaya",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -7.37983,
+      "lon": 112.787003,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "SWA",
+      "icao": "ZGOW",
+      "name": "Jieyang Chaoshan International Airport (SWA)",
+      "municipality": "Jieyang (Rongcheng)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 23.552,
+      "lon": 116.5033
+    },
+    {
+      "code": "SYD",
+      "icao": "YSSY",
+      "name": "Sydney Kingsford Smith International Airport (SYD)",
+      "municipality": "Sydney (Mascot)",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.946098,
+      "lon": 151.177002,
+      "country": "AU"
+    },
+    {
+      "code": "SYX",
+      "icao": "ZJSY",
+      "name": "Sanya Phoenix International Airport (SYX)",
+      "municipality": "Sanya (Tianya)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 18.3029,
+      "lon": 109.412003
+    },
+    {
+      "code": "SZB",
+      "icao": "WMSA",
+      "name": "Sultan Abdul Aziz Shah International Airport (SZB)",
+      "municipality": "Subang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Peninsular Malaysia",
+      "mode": "flight",
+      "lat": 3.13058,
+      "lon": 101.549004
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TAO",
+      "icao": "ZSQD",
+      "name": "Qingdao Jiaodong International Airport (TAO)",
+      "municipality": "Qingdao (Jiaozhou)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 36.361953,
+      "lon": 120.088171
+    },
+    {
+      "code": "TAS",
+      "icao": "UTTT",
+      "name": "Tashkent International Airport (TAS)",
+      "municipality": "Tashkent",
+      "country": "UZ",
+      "timezone": "Asia/Tashkent",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 41.2579,
+      "lon": 69.281197
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    },
+    {
+      "code": "TNA",
+      "icao": "ZSJN",
+      "name": "Jinan Yaoqiang International Airport (TNA)",
+      "municipality": "Jinan (Licheng)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 36.857201,
+      "lon": 117.216003
+    },
+    {
+      "code": "TPE",
+      "icao": "RCTP",
+      "name": "Taiwan Taoyuan International Airport (TPE)",
+      "municipality": "Taoyuan",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.0777,
+      "lon": 121.233002
+    },
+    {
+      "code": "TRV",
+      "icao": "VOTV",
+      "name": "Thiruvananthapuram International Airport (TRV)",
+      "municipality": "Thiruvananthapuram",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 8.481889,
+      "lon": 76.920029
+    },
+    {
+      "code": "TRZ",
+      "icao": "VOTR",
+      "name": "Tiruchirappalli International Airport (TRZ)",
+      "municipality": "Tiruchirappalli",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 10.762915,
+      "lon": 78.717741
+    },
+    {
+      "code": "TSN",
+      "icao": "ZBTJ",
+      "name": "Tianjin Binhai International Airport (TSN)",
+      "municipality": "Tianjin",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 39.124401092499994,
+      "lon": 117.346000671
+    },
+    {
+      "code": "TWU",
+      "icao": "WBKW",
+      "name": "Tawau Airport (TWU)",
+      "municipality": "Tawau",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Sabah & Labuan",
+      "mode": "flight",
+      "lat": 4.31338,
+      "lon": 118.12152
+    },
+    {
+      "code": "UPG",
+      "icao": "WAAA",
+      "name": "Sultan Hasanuddin International Airport (UPG)",
+      "municipality": "Makassar",
+      "timezone": "Asia/Makassar",
+      "island_group": "Sulawesi",
+      "mode": "flight",
+      "lat": -5.075539,
+      "lon": 119.553702,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "URC",
+      "icao": "ZWWW",
+      "name": "Ürümqi Tianshan International Airport (URC)",
+      "municipality": "Ürümqi",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 43.913584,
+      "lon": 87.479372
+    },
+    {
+      "code": "URT",
+      "icao": "VTSB",
+      "name": "Surat Thani Airport (URT)",
+      "municipality": "Surat Thani",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 9.13259983063,
+      "lon": 99.135597229
+    },
+    {
+      "code": "USM",
+      "icao": "VTSM",
+      "name": "Samui International Airport (USM)",
+      "municipality": "Na Thon (Ko Samui Island)",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 9.54779,
+      "lon": 100.061996
+    },
+    {
+      "code": "VTE",
+      "icao": "VLVT",
+      "name": "Wattay International Airport (VTE)",
+      "municipality": "Vientiane",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 17.985052,
+      "lon": 102.566692
+    },
+    {
+      "code": "WNZ",
+      "icao": "ZSWZ",
+      "name": "Wenzhou Longwan International Airport (WNZ)",
+      "municipality": "Wenzhou (Longwan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 27.910572,
+      "lon": 120.853465
+    },
+    {
+      "code": "WUH",
+      "icao": "ZHHH",
+      "name": "Wuhan Tianhe International Airport (WUH)",
+      "municipality": "Wuhan (Huangpi)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.774798,
+      "lon": 114.213723
+    },
+    {
+      "code": "XIY",
+      "icao": "ZLXY",
+      "name": "Xi'an Xianyang International Airport (XIY)",
+      "municipality": "Xi'an",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 34.442207,
+      "lon": 108.762385
+    },
+    {
+      "code": "XMN",
+      "icao": "ZSAM",
+      "name": "Xiamen Gaoqi International Airport (XMN)",
+      "municipality": "Xiamen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.543889,
+      "lon": 118.127454
+    },
+    {
+      "code": "XSP",
+      "icao": "WSSL",
+      "name": "Seletar Airport (XSP)",
+      "municipality": "Seletar",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 1.41555,
+      "lon": 103.86673
+    },
+    {
+      "code": "YIA",
+      "icao": "WAHI",
+      "name": "Yogyakarta International Airport (YIA)",
+      "municipality": "Yogyakarta",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -7.905338,
+      "lon": 110.057264,
+      "scheduled": true,
+      "country": "ID"
+    }
+  ],
+  "routes": [
+    [
+      "ADL",
+      "KUL"
+    ],
+    [
+      "AKL",
+      "KUL"
+    ],
+    [
+      "ALA",
+      "KUL"
+    ],
+    [
+      "AMD",
+      "KUL"
+    ],
+    [
+      "AMS",
+      "KUL"
+    ],
+    [
+      "ASB",
+      "KUL"
+    ],
+    [
+      "ATQ",
+      "KUL"
+    ],
+    [
+      "AUH",
+      "KUL"
+    ],
+    [
+      "BAR",
+      "KUL"
+    ],
+    [
+      "BKI",
+      "BWN"
+    ],
+    [
+      "BKI",
+      "CAN"
+    ],
+    [
+      "BKI",
+      "CGK"
+    ],
+    [
+      "BKI",
+      "DMK"
+    ],
+    [
+      "BKI",
+      "DPS"
+    ],
+    [
+      "BKI",
+      "HGH"
+    ],
+    [
+      "BKI",
+      "HKG"
+    ],
+    [
+      "BKI",
+      "ICN"
+    ],
+    [
+      "BKI",
+      "KMG"
+    ],
+    [
+      "BKI",
+      "MNL"
+    ],
+    [
+      "BKI",
+      "NNG"
+    ],
+    [
+      "BKI",
+      "NRT"
+    ],
+    [
+      "BKI",
+      "PKX"
+    ],
+    [
+      "BKI",
+      "PUS"
+    ],
+    [
+      "BKI",
+      "PVG"
+    ],
+    [
+      "BKI",
+      "SIN"
+    ],
+    [
+      "BKI",
+      "SZX"
+    ],
+    [
+      "BKI",
+      "TPE"
+    ],
+    [
+      "BKI",
+      "WUH"
+    ],
+    [
+      "BKK",
+      "JHB"
+    ],
+    [
+      "BKK",
+      "KUL"
+    ],
+    [
+      "BKK",
+      "PEN"
+    ],
+    [
+      "BLR",
+      "KUL"
+    ],
+    [
+      "BNE",
+      "KUL"
+    ],
+    [
+      "BOM",
+      "KUL"
+    ],
+    [
+      "BPN",
+      "KCH"
+    ],
+    [
+      "BPN",
+      "KUL"
+    ],
+    [
+      "BTH",
+      "SZB"
+    ],
+    [
+      "BTJ",
+      "KUL"
+    ],
+    [
+      "BTJ",
+      "PEN"
+    ],
+    [
+      "BWN",
+      "BKI"
+    ],
+    [
+      "BWN",
+      "KCH"
+    ],
+    [
+      "BWN",
+      "KUL"
+    ],
+    [
+      "BWN",
+      "TWU"
+    ],
+    [
+      "CAN",
+      "BKI"
+    ],
+    [
+      "CAN",
+      "JHB"
+    ],
+    [
+      "CAN",
+      "KCH"
+    ],
+    [
+      "CAN",
+      "KUL"
+    ],
+    [
+      "CAN",
+      "PEN"
+    ],
+    [
+      "CAN",
+      "TWU"
+    ],
+    [
+      "CCU",
+      "KUL"
+    ],
+    [
+      "CDG",
+      "KUL"
+    ],
+    [
+      "CEB",
+      "KUL"
+    ],
+    [
+      "CGK",
+      "BKI"
+    ],
+    [
+      "CGK",
+      "JHB"
+    ],
+    [
+      "CGK",
+      "KCH"
+    ],
+    [
+      "CGK",
+      "KUL"
+    ],
+    [
+      "CGK",
+      "MKZ"
+    ],
+    [
+      "CGK",
+      "PEN"
+    ],
+    [
+      "CGK",
+      "SZB"
+    ],
+    [
+      "CGO",
+      "KUL"
+    ],
+    [
+      "CJU",
+      "KUL"
+    ],
+    [
+      "CKG",
+      "KUL"
+    ],
+    [
+      "CMB",
+      "KUL"
+    ],
+    [
+      "CNX",
+      "KUL"
+    ],
+    [
+      "COK",
+      "KUL"
+    ],
+    [
+      "CRK",
+      "KUL"
+    ],
+    [
+      "CSX",
+      "KUL"
+    ],
+    [
+      "CTS",
+      "KUL"
+    ],
+    [
+      "CTU",
+      "KUL"
+    ],
+    [
+      "CXR",
+      "KUL"
+    ],
+    [
+      "DAC",
+      "KUL"
+    ],
+    [
+      "DAD",
+      "KUL"
+    ],
+    [
+      "DEL",
+      "KUL"
+    ],
+    [
+      "DLI",
+      "KUL"
+    ],
+    [
+      "DMK",
+      "BKI"
+    ],
+    [
+      "DMK",
+      "JHB"
+    ],
+    [
+      "DMK",
+      "KCH"
+    ],
+    [
+      "DMK",
+      "KUL"
+    ],
+    [
+      "DMK",
+      "PEN"
+    ],
+    [
+      "DMK",
+      "SZB"
+    ],
+    [
+      "DMM",
+      "KUL"
+    ],
+    [
+      "DOH",
+      "KUL"
+    ],
+    [
+      "DOH",
+      "LGK"
+    ],
+    [
+      "DOH",
+      "PEN"
+    ],
+    [
+      "DPS",
+      "BKI"
+    ],
+    [
+      "DPS",
+      "JHB"
+    ],
+    [
+      "DPS",
+      "KCH"
+    ],
+    [
+      "DPS",
+      "KUL"
+    ],
+    [
+      "DPS",
+      "MKZ"
+    ],
+    [
+      "DPS",
+      "PEN"
+    ],
+    [
+      "DPS",
+      "SZB"
+    ],
+    [
+      "DVO",
+      "KUL"
+    ],
+    [
+      "DXB",
+      "KUL"
+    ],
+    [
+      "DXB",
+      "LGK"
+    ],
+    [
+      "DXB",
+      "PEN"
+    ],
+    [
+      "FOC",
+      "KUL"
+    ],
+    [
+      "FRA",
+      "KUL"
+    ],
+    [
+      "FUK",
+      "KUL"
+    ],
+    [
+      "HAK",
+      "JHB"
+    ],
+    [
+      "HAK",
+      "KUL"
+    ],
+    [
+      "HAN",
+      "KUL"
+    ],
+    [
+      "HDY",
+      "KUL"
+    ],
+    [
+      "HGH",
+      "BKI"
+    ],
+    [
+      "HGH",
+      "KUL"
+    ],
+    [
+      "HKG",
+      "BKI"
+    ],
+    [
+      "HKG",
+      "KCH"
+    ],
+    [
+      "HKG",
+      "KUL"
+    ],
+    [
+      "HKG",
+      "PEN"
+    ],
+    [
+      "HKG",
+      "SZB"
+    ],
+    [
+      "HKT",
+      "KUL"
+    ],
+    [
+      "HKT",
+      "PEN"
+    ],
+    [
+      "HND",
+      "KUL"
+    ],
+    [
+      "HYD",
+      "KUL"
+    ],
+    [
+      "ICN",
+      "BKI"
+    ],
+    [
+      "ICN",
+      "JHB"
+    ],
+    [
+      "ICN",
+      "KUL"
+    ],
+    [
+      "ICN",
+      "PEN"
+    ],
+    [
+      "IPH",
+      "SIN"
+    ],
+    [
+      "ISB",
+      "KUL"
+    ],
+    [
+      "IST",
+      "KUL"
+    ],
+    [
+      "JED",
+      "KUL"
+    ],
+    [
+      "JHB",
+      "BKK"
+    ],
+    [
+      "JHB",
+      "CAN"
+    ],
+    [
+      "JHB",
+      "CGK"
+    ],
+    [
+      "JHB",
+      "DMK"
+    ],
+    [
+      "JHB",
+      "DPS"
+    ],
+    [
+      "JHB",
+      "HAK"
+    ],
+    [
+      "JHB",
+      "ICN"
+    ],
+    [
+      "JHB",
+      "SIN"
+    ],
+    [
+      "JHB",
+      "SUB"
+    ],
+    [
+      "KBR",
+      "SIN"
+    ],
+    [
+      "KBV",
+      "KUL"
+    ],
+    [
+      "KCH",
+      "BPN"
+    ],
+    [
+      "KCH",
+      "BWN"
+    ],
+    [
+      "KCH",
+      "CAN"
+    ],
+    [
+      "KCH",
+      "CGK"
+    ],
+    [
+      "KCH",
+      "DMK"
+    ],
+    [
+      "KCH",
+      "DPS"
+    ],
+    [
+      "KCH",
+      "HKG"
+    ],
+    [
+      "KCH",
+      "SIN"
+    ],
+    [
+      "KCH",
+      "SZX"
+    ],
+    [
+      "KHH",
+      "KUL"
+    ],
+    [
+      "KHI",
+      "KUL"
+    ],
+    [
+      "KIX",
+      "KUL"
+    ],
+    [
+      "KJT",
+      "KUL"
+    ],
+    [
+      "KMG",
+      "BKI"
+    ],
+    [
+      "KMG",
+      "KUL"
+    ],
+    [
+      "KMG",
+      "PEN"
+    ],
+    [
+      "KNO",
+      "KUL"
+    ],
+    [
+      "KNO",
+      "PEN"
+    ],
+    [
+      "KTI",
+      "KUL"
+    ],
+    [
+      "KTM",
+      "KUL"
+    ],
+    [
+      "KUA",
+      "SIN"
+    ],
+    [
+      "KUL",
+      "ADL"
+    ],
+    [
+      "KUL",
+      "AKL"
+    ],
+    [
+      "KUL",
+      "ALA"
+    ],
+    [
+      "KUL",
+      "AMD"
+    ],
+    [
+      "KUL",
+      "AMS"
+    ],
+    [
+      "KUL",
+      "ASB"
+    ],
+    [
+      "KUL",
+      "ATQ"
+    ],
+    [
+      "KUL",
+      "AUH"
+    ],
+    [
+      "KUL",
+      "BAR"
+    ],
+    [
+      "KUL",
+      "BKK"
+    ],
+    [
+      "KUL",
+      "BLR"
+    ],
+    [
+      "KUL",
+      "BNE"
+    ],
+    [
+      "KUL",
+      "BOM"
+    ],
+    [
+      "KUL",
+      "BPN"
+    ],
+    [
+      "KUL",
+      "BTJ"
+    ],
+    [
+      "KUL",
+      "BWN"
+    ],
+    [
+      "KUL",
+      "CAN"
+    ],
+    [
+      "KUL",
+      "CCU"
+    ],
+    [
+      "KUL",
+      "CDG"
+    ],
+    [
+      "KUL",
+      "CEB"
+    ],
+    [
+      "KUL",
+      "CGK"
+    ],
+    [
+      "KUL",
+      "CGO"
+    ],
+    [
+      "KUL",
+      "CJU"
+    ],
+    [
+      "KUL",
+      "CKG"
+    ],
+    [
+      "KUL",
+      "CMB"
+    ],
+    [
+      "KUL",
+      "CNX"
+    ],
+    [
+      "KUL",
+      "COK"
+    ],
+    [
+      "KUL",
+      "CRK"
+    ],
+    [
+      "KUL",
+      "CSX"
+    ],
+    [
+      "KUL",
+      "CTS"
+    ],
+    [
+      "KUL",
+      "CTU"
+    ],
+    [
+      "KUL",
+      "CXR"
+    ],
+    [
+      "KUL",
+      "DAC"
+    ],
+    [
+      "KUL",
+      "DAD"
+    ],
+    [
+      "KUL",
+      "DEL"
+    ],
+    [
+      "KUL",
+      "DLI"
+    ],
+    [
+      "KUL",
+      "DMK"
+    ],
+    [
+      "KUL",
+      "DMM"
+    ],
+    [
+      "KUL",
+      "DOH"
+    ],
+    [
+      "KUL",
+      "DPS"
+    ],
+    [
+      "KUL",
+      "DVO"
+    ],
+    [
+      "KUL",
+      "DXB"
+    ],
+    [
+      "KUL",
+      "FOC"
+    ],
+    [
+      "KUL",
+      "FRA"
+    ],
+    [
+      "KUL",
+      "FUK"
+    ],
+    [
+      "KUL",
+      "HAK"
+    ],
+    [
+      "KUL",
+      "HAN"
+    ],
+    [
+      "KUL",
+      "HDY"
+    ],
+    [
+      "KUL",
+      "HGH"
+    ],
+    [
+      "KUL",
+      "HKG"
+    ],
+    [
+      "KUL",
+      "HKT"
+    ],
+    [
+      "KUL",
+      "HND"
+    ],
+    [
+      "KUL",
+      "HYD"
+    ],
+    [
+      "KUL",
+      "ICN"
+    ],
+    [
+      "KUL",
+      "ISB"
+    ],
+    [
+      "KUL",
+      "IST"
+    ],
+    [
+      "KUL",
+      "JED"
+    ],
+    [
+      "KUL",
+      "KBV"
+    ],
+    [
+      "KUL",
+      "KHH"
+    ],
+    [
+      "KUL",
+      "KHI"
+    ],
+    [
+      "KUL",
+      "KIX"
+    ],
+    [
+      "KUL",
+      "KJT"
+    ],
+    [
+      "KUL",
+      "KMG"
+    ],
+    [
+      "KUL",
+      "KNO"
+    ],
+    [
+      "KUL",
+      "KTI"
+    ],
+    [
+      "KUL",
+      "KTM"
+    ],
+    [
+      "KUL",
+      "KWL"
+    ],
+    [
+      "KUL",
+      "LGW"
+    ],
+    [
+      "KUL",
+      "LHE"
+    ],
+    [
+      "KUL",
+      "LHR"
+    ],
+    [
+      "KUL",
+      "LOP"
+    ],
+    [
+      "KUL",
+      "MAA"
+    ],
+    [
+      "KUL",
+      "MCT"
+    ],
+    [
+      "KUL",
+      "MED"
+    ],
+    [
+      "KUL",
+      "MEL"
+    ],
+    [
+      "KUL",
+      "MFM"
+    ],
+    [
+      "KUL",
+      "MLE"
+    ],
+    [
+      "KUL",
+      "MNL"
+    ],
+    [
+      "KUL",
+      "MRU"
+    ],
+    [
+      "KUL",
+      "NGB"
+    ],
+    [
+      "KUL",
+      "NKG"
+    ],
+    [
+      "KUL",
+      "NNG"
+    ],
+    [
+      "KUL",
+      "NRT"
+    ],
+    [
+      "KUL",
+      "OKA"
+    ],
+    [
+      "KUL",
+      "PDG"
+    ],
+    [
+      "KUL",
+      "PEK"
+    ],
+    [
+      "KUL",
+      "PER"
+    ],
+    [
+      "KUL",
+      "PKU"
+    ],
+    [
+      "KUL",
+      "PKX"
+    ],
+    [
+      "KUL",
+      "PQC"
+    ],
+    [
+      "KUL",
+      "PUS"
+    ],
+    [
+      "KUL",
+      "PVG"
+    ],
+    [
+      "KUL",
+      "RGN"
+    ],
+    [
+      "KUL",
+      "RUH"
+    ],
+    [
+      "KUL",
+      "SAI"
+    ],
+    [
+      "KUL",
+      "SAW"
+    ],
+    [
+      "KUL",
+      "SGN"
+    ],
+    [
+      "KUL",
+      "SHJ"
+    ],
+    [
+      "KUL",
+      "SIN"
+    ],
+    [
+      "KUL",
+      "SUB"
+    ],
+    [
+      "KUL",
+      "SWA"
+    ],
+    [
+      "KUL",
+      "SYD"
+    ],
+    [
+      "KUL",
+      "SYX"
+    ],
+    [
+      "KUL",
+      "SZX"
+    ],
+    [
+      "KUL",
+      "TAO"
+    ],
+    [
+      "KUL",
+      "TAS"
+    ],
+    [
+      "KUL",
+      "TFU"
+    ],
+    [
+      "KUL",
+      "TNA"
+    ],
+    [
+      "KUL",
+      "TPE"
+    ],
+    [
+      "KUL",
+      "TRV"
+    ],
+    [
+      "KUL",
+      "TRZ"
+    ],
+    [
+      "KUL",
+      "TSN"
+    ],
+    [
+      "KUL",
+      "UPG"
+    ],
+    [
+      "KUL",
+      "URC"
+    ],
+    [
+      "KUL",
+      "URT"
+    ],
+    [
+      "KUL",
+      "USM"
+    ],
+    [
+      "KUL",
+      "VTE"
+    ],
+    [
+      "KUL",
+      "WNZ"
+    ],
+    [
+      "KUL",
+      "WUH"
+    ],
+    [
+      "KUL",
+      "XIY"
+    ],
+    [
+      "KUL",
+      "XMN"
+    ],
+    [
+      "KUL",
+      "YIA"
+    ],
+    [
+      "KWL",
+      "KUL"
+    ],
+    [
+      "LGK",
+      "DOH"
+    ],
+    [
+      "LGK",
+      "DXB"
+    ],
+    [
+      "LGK",
+      "SHJ"
+    ],
+    [
+      "LGK",
+      "SIN"
+    ],
+    [
+      "LGW",
+      "KUL"
+    ],
+    [
+      "LHE",
+      "KUL"
+    ],
+    [
+      "LHR",
+      "KUL"
+    ],
+    [
+      "LOP",
+      "KUL"
+    ],
+    [
+      "MAA",
+      "KUL"
+    ],
+    [
+      "MAA",
+      "PEN"
+    ],
+    [
+      "MCT",
+      "KUL"
+    ],
+    [
+      "MED",
+      "KUL"
+    ],
+    [
+      "MEL",
+      "KUL"
+    ],
+    [
+      "MFM",
+      "KUL"
+    ],
+    [
+      "MKZ",
+      "CGK"
+    ],
+    [
+      "MKZ",
+      "DPS"
+    ],
+    [
+      "MKZ",
+      "PKU"
+    ],
+    [
+      "MKZ",
+      "SIN"
+    ],
+    [
+      "MLE",
+      "KUL"
+    ],
+    [
+      "MNL",
+      "BKI"
+    ],
+    [
+      "MNL",
+      "KUL"
+    ],
+    [
+      "MRU",
+      "KUL"
+    ],
+    [
+      "MYY",
+      "SIN"
+    ],
+    [
+      "NGB",
+      "KUL"
+    ],
+    [
+      "NKG",
+      "KUL"
+    ],
+    [
+      "NKG",
+      "TWU"
+    ],
+    [
+      "NNG",
+      "BKI"
+    ],
+    [
+      "NNG",
+      "KUL"
+    ],
+    [
+      "NRT",
+      "BKI"
+    ],
+    [
+      "NRT",
+      "KUL"
+    ],
+    [
+      "OKA",
+      "KUL"
+    ],
+    [
+      "PDG",
+      "KUL"
+    ],
+    [
+      "PEK",
+      "KUL"
+    ],
+    [
+      "PEN",
+      "BKK"
+    ],
+    [
+      "PEN",
+      "BTJ"
+    ],
+    [
+      "PEN",
+      "CAN"
+    ],
+    [
+      "PEN",
+      "CGK"
+    ],
+    [
+      "PEN",
+      "DMK"
+    ],
+    [
+      "PEN",
+      "DOH"
+    ],
+    [
+      "PEN",
+      "DPS"
+    ],
+    [
+      "PEN",
+      "DXB"
+    ],
+    [
+      "PEN",
+      "HKG"
+    ],
+    [
+      "PEN",
+      "HKT"
+    ],
+    [
+      "PEN",
+      "ICN"
+    ],
+    [
+      "PEN",
+      "KMG"
+    ],
+    [
+      "PEN",
+      "KNO"
+    ],
+    [
+      "PEN",
+      "MAA"
+    ],
+    [
+      "PEN",
+      "PKX"
+    ],
+    [
+      "PEN",
+      "PVG"
+    ],
+    [
+      "PEN",
+      "SIN"
+    ],
+    [
+      "PEN",
+      "SUB"
+    ],
+    [
+      "PEN",
+      "SZX"
+    ],
+    [
+      "PEN",
+      "TFU"
+    ],
+    [
+      "PEN",
+      "TPE"
+    ],
+    [
+      "PEN",
+      "XMN"
+    ],
+    [
+      "PER",
+      "KUL"
+    ],
+    [
+      "PKU",
+      "KUL"
+    ],
+    [
+      "PKU",
+      "MKZ"
+    ],
+    [
+      "PKX",
+      "BKI"
+    ],
+    [
+      "PKX",
+      "KUL"
+    ],
+    [
+      "PKX",
+      "PEN"
+    ],
+    [
+      "PQC",
+      "KUL"
+    ],
+    [
+      "PUS",
+      "BKI"
+    ],
+    [
+      "PUS",
+      "KUL"
+    ],
+    [
+      "PVG",
+      "BKI"
+    ],
+    [
+      "PVG",
+      "KUL"
+    ],
+    [
+      "PVG",
+      "PEN"
+    ],
+    [
+      "RGN",
+      "KUL"
+    ],
+    [
+      "RUH",
+      "KUL"
+    ],
+    [
+      "SAI",
+      "KUL"
+    ],
+    [
+      "SAW",
+      "KUL"
+    ],
+    [
+      "SBW",
+      "SIN"
+    ],
+    [
+      "SGN",
+      "KUL"
+    ],
+    [
+      "SHJ",
+      "KUL"
+    ],
+    [
+      "SHJ",
+      "LGK"
+    ],
+    [
+      "SIN",
+      "BKI"
+    ],
+    [
+      "SIN",
+      "IPH"
+    ],
+    [
+      "SIN",
+      "JHB"
+    ],
+    [
+      "SIN",
+      "KBR"
+    ],
+    [
+      "SIN",
+      "KCH"
+    ],
+    [
+      "SIN",
+      "KUA"
+    ],
+    [
+      "SIN",
+      "KUL"
+    ],
+    [
+      "SIN",
+      "LGK"
+    ],
+    [
+      "SIN",
+      "MKZ"
+    ],
+    [
+      "SIN",
+      "MYY"
+    ],
+    [
+      "SIN",
+      "PEN"
+    ],
+    [
+      "SIN",
+      "SBW"
+    ],
+    [
+      "SIN",
+      "SZB"
+    ],
+    [
+      "SUB",
+      "JHB"
+    ],
+    [
+      "SUB",
+      "KUL"
+    ],
+    [
+      "SUB",
+      "PEN"
+    ],
+    [
+      "SWA",
+      "KUL"
+    ],
+    [
+      "SYD",
+      "KUL"
+    ],
+    [
+      "SYX",
+      "KUL"
+    ],
+    [
+      "SZB",
+      "BTH"
+    ],
+    [
+      "SZB",
+      "CGK"
+    ],
+    [
+      "SZB",
+      "DMK"
+    ],
+    [
+      "SZB",
+      "DPS"
+    ],
+    [
+      "SZB",
+      "HKG"
+    ],
+    [
+      "SZB",
+      "SIN"
+    ],
+    [
+      "SZB",
+      "XSP"
+    ],
+    [
+      "SZX",
+      "BKI"
+    ],
+    [
+      "SZX",
+      "KCH"
+    ],
+    [
+      "SZX",
+      "KUL"
+    ],
+    [
+      "SZX",
+      "PEN"
+    ],
+    [
+      "TAO",
+      "KUL"
+    ],
+    [
+      "TAS",
+      "KUL"
+    ],
+    [
+      "TFU",
+      "KUL"
+    ],
+    [
+      "TFU",
+      "PEN"
+    ],
+    [
+      "TNA",
+      "KUL"
+    ],
+    [
+      "TPE",
+      "BKI"
+    ],
+    [
+      "TPE",
+      "KUL"
+    ],
+    [
+      "TPE",
+      "PEN"
+    ],
+    [
+      "TRV",
+      "KUL"
+    ],
+    [
+      "TRZ",
+      "KUL"
+    ],
+    [
+      "TSN",
+      "KUL"
+    ],
+    [
+      "TWU",
+      "BWN"
+    ],
+    [
+      "TWU",
+      "CAN"
+    ],
+    [
+      "TWU",
+      "NKG"
+    ],
+    [
+      "UPG",
+      "KUL"
+    ],
+    [
+      "URC",
+      "KUL"
+    ],
+    [
+      "URT",
+      "KUL"
+    ],
+    [
+      "USM",
+      "KUL"
+    ],
+    [
+      "VTE",
+      "KUL"
+    ],
+    [
+      "WNZ",
+      "KUL"
+    ],
+    [
+      "WUH",
+      "BKI"
+    ],
+    [
+      "WUH",
+      "KUL"
+    ],
+    [
+      "XIY",
+      "KUL"
+    ],
+    [
+      "XMN",
+      "KUL"
+    ],
+    [
+      "XMN",
+      "PEN"
+    ],
+    [
+      "XSP",
+      "SZB"
+    ],
+    [
+      "YIA",
+      "KUL"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "KUL",
+      "destination": "ADL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BNE",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MEL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PER",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SYD",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "BKI",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "BKI",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "JHB",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "JHB",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "JHB",
+      "destination": "SUB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KCH",
+      "destination": "BPN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KCH",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KCH",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BPN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BTJ",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KJT",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "LOP",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PDG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PKU",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SUB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "UPG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "YIA",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "MKZ",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "MKZ",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "MKZ",
+      "destination": "PKU",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "PEN",
+      "destination": "BTJ",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "PEN",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "PEN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "PEN",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "PEN",
+      "destination": "SUB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "SZB",
+      "destination": "BTH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "SZB",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "SZB",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json; not current service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SIN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BKK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DMK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HKT",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KBV",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CNX",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HDY",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "URT",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "USM",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HAN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SGN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DAD",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CXR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DLI",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PQC",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "VTE",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KTI",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SAI",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "RGN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BWN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MNL",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CEB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DVO",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CRK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HKG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MFM",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TPE",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KHH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "ICN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PUS",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CJU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "NRT",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HND",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KIX",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CTS",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "FUK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "OKA",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PEK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PKX",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PVG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CAN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SZX",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "XMN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CTU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TFU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KMG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HGH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "WUH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CSX",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "NNG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HAK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SYX",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "FOC",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "XIY",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CGO",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CKG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KWL",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SWA",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "WNZ",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "NKG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TNA",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TAO",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "NGB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TSN",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "URC",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BAR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DEL",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BOM",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BLR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MAA",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HYD",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "COK",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TRV",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TRZ",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CCU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "AMD",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "ATQ",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DAC",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CMB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MLE",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KTM",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KHI",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "LHE",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "ISB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DXB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "AUH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DOH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MCT",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SHJ",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "JED",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MED",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "RUH",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DMM",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "IST",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SAW",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "TAS",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "ALA",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "ASB",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "LHR",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "LGW",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CDG",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "AMS",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "FRA",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "AKL",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MRU",
+      "source": "https://www.malaysiaairlines.com/hq/en/plan-trip/destinations.html",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "SIN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "BKK",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "DMK",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "HKT",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "HKG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "TPE",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "ICN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "CAN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "SZX",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "XMN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "PVG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "PKX",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "TFU",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "KMG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "DOH",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "DXB",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "PEN",
+      "destination": "MAA",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "SIN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "BWN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "HKG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "TPE",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "ICN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "PUS",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "NRT",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "CAN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "SZX",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "PVG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "PKX",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "HGH",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "WUH",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "NNG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "KMG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "MNL",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "BKI",
+      "destination": "DMK",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "SIN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "DMK",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "BKK",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "CAN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "HAK",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "JHB",
+      "destination": "ICN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "SIN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "BWN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "HKG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "CAN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "SZX",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KCH",
+      "destination": "DMK",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "LGK",
+      "destination": "SIN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "LGK",
+      "destination": "DXB",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "LGK",
+      "destination": "SHJ",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "LGK",
+      "destination": "DOH",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "SIN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "XSP",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "DMK",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "SZB",
+      "destination": "HKG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "TWU",
+      "destination": "CAN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "TWU",
+      "destination": "NKG",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "TWU",
+      "destination": "BWN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KBR",
+      "destination": "SIN",
+      "source": "https://www.airasia.com/flights/",
+      "kind": "Targeted gateway probe; not evidence of current nonstop service"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "PEN",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "SZB",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "IPH",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "KCH",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "BKI",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "KUA",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "LGK",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "MKZ",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "MYY",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "SBW",
+      "destination": "SIN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Published Singapore Airlines/Scoot gateway; verify replay date"
+    },
+    {
+      "origin": "KBR",
+      "destination": "SIN",
+      "source": "https://www.flyscoot.com/flights/en-my/",
+      "kind": "Published Scoot airport candidate; verify replay date"
+    }
+  ],
+  "unresolved_airports": [],
+  "search_strategy": "Both directions of published Singapore gateways, existing AU/ID reciprocal candidates and targeted gateway probes. Exact IATA only; no national airport/world Cartesian product. Probes are not proof of current service."
+}

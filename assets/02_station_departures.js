@@ -55,11 +55,11 @@
             return {...row, label: `${row.name} · ${routes} · ${location}`};
         }).sort((a, b) => a.name.localeCompare(b.name) || a.id - b.id);
     }
-    const indonesiaZones = {'Asia/Jakarta': 'WIB', 'Asia/Pontianak': 'WIB', 'Asia/Makassar': 'WITA', 'Asia/Jayapura': 'WIT'};
+    const airportZoneLabels = {'Asia/Jakarta': 'WIB', 'Asia/Pontianak': 'WIB', 'Asia/Makassar': 'WITA', 'Asia/Jayapura': 'WIT', 'Asia/Kuala_Lumpur': 'MYT', 'Asia/Kuching': 'MYT'};
     function formatCallTime(at, timezone) {
         const formatted = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: timezone, day: "numeric", month: "short",
             hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZoneName: "shortOffset"}).format(new Date(at * 1000));
-        return indonesiaZones[timezone] ? formatted.replace(/GMT\+[789]/, indonesiaZones[timezone]) : formatted;
+        return airportZoneLabels[timezone] ? formatted.replace(/GMT\+[789]/, airportZoneLabels[timezone]) : formatted;
     }
     function formatBoardTime(at, now, timezone) {
         const locale = root.suntrainI18n?.locale || "en-AU";
@@ -194,7 +194,8 @@
                     control.disabled = event === 'destinations' && this.station === null;
                     control.dataset.event = event; control.setAttribute('aria-pressed', String(event === this.event)); tabs.append(control);
                 }
-                this.host.append(tabs, node('p', replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
+                this.host.append(tabs, node('p', replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : replay.day.timezone === 'Asia/Kuala_Lumpur' ? 'Airport times are local. The replay clock uses MYT.' : 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
+                if (replay.day.schedule?.fare_context) this.host.append(node('p', 'Captured fares · 1 adult · Economy · One-way. Prices may change.', 'replay-muted replay-small'));
             }
             const picker = node("details"); picker.open = this.station === null;
             picker.append(node("summary", this.station === null ? (flights ? 'Choose an airport' : "Choose a stop") : (flights ? 'Change airport' : "Change stop")));
@@ -269,6 +270,7 @@
                     node("small", flights ? service.operator : `${service.operator} · ${service.number}`, 'departure-operator'));
                 if (service.frequency_based) row.append(node("small", "Frequency-based estimate"));
                 if (service.terminal_arrival_missing) row.append(node("small", "Terminal arrival unavailable"));
+                if (flights && replay.day.schedule?.fare_context) row.append(node('small', root.suntrainFlights.priceLabel(service), 'departure-fare'));
                 this.list.append(row);
             }
             const pageText = `${result.page + 1} / ${result.pages} · ${result.total} ${flights ? 'flights' : 'departures'}`;

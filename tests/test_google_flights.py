@@ -6,6 +6,30 @@ import pytest
 from scripts.prepare_google_flights import parse_results, ZONES
 
 
+def test_browser_cleanup_only_overlaps_batches_after_disconnection():
+    import asyncio
+    from scripts.prepare_google_flights import close_browser,browser_cleanup_tasks
+    async def check():
+        class Browser:
+            def __init__(self,connected):self.connected=connected;self.release=asyncio.Event()
+            async def close(self):await self.release.wait()
+            def is_connected(self):return self.connected
+        closed=Browser(False)
+        with pytest.raises(ValueError,match='stop collection'):
+            async with browser_cleanup_tasks() as cleanups:
+                await close_browser(closed,cleanups,timeout=0.001)
+                assert len(cleanups)==1 and not cleanups[0].done()
+                closed.release.set()
+                raise ValueError('stop collection')
+        assert cleanups[0].done()
+        live=Browser(True);cleanups=[]
+        closing=asyncio.create_task(close_browser(live,cleanups,timeout=0.001))
+        await asyncio.sleep(0.01)
+        assert not closing.done() and not cleanups
+        live.release.set();await closing
+    asyncio.run(check())
+
+
 def segment(origin='MEL', destination='SYD', departure=None, arrival=None, duration=90, carrier='QF', number='400'):
     row = [None] * 33
     row[3], row[6], row[8], row[10], row[11] = origin, destination, departure or [6, None], arrival or [7, 30], duration

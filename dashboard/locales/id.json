@@ -771,5 +771,10 @@
   "Thicker lines mean more captured departures from the selected airports that day. Click a line to explore.": "Garis lebih tebal berarti lebih banyak keberangkatan tercatat dari bandara terpilih pada hari itu. Klik garis untuk menjelajah.",
   "No scheduled arrivals match this date and these filters. Clear a filter or choose another date.": "Tidak ada kedatangan terjadwal yang cocok dengan tanggal dan filter ini. Hapus filter atau pilih tanggal lain.",
   "Busiest hour: {hour} · {n} arrivals": "Jam tersibuk: {hour} · {n} kedatangan",
-  "{hour} · {n} arrivals": "{hour} · {n} kedatangan"
+  "{hour} · {n} arrivals": "{hour} · {n} kedatangan",
+  "Australian domestic and international flights · 2 November 2026 schedule snapshot. MEL and AVV, SYD and WSI are separate airports. Airport boards use local time. Paths are illustrative; coverage is partial.": "Penerbangan domestik dan internasional Australia · Cuplikan jadwal 2 November 2026. MEL dan AVV, SYD dan WSI adalah bandara terpisah. Papan bandara memakai waktu setempat. Jalur hanya ilustrasi; cakupan belum lengkap.",
+  "Australian domestic and international flight schedules for 2 November 2026.": "Jadwal penerbangan domestik dan internasional Australia untuk 2 November 2026.",
+  "Australian international flight schedules for 2026-11-02.": "Jadwal penerbangan internasional Australia untuk 2 November 2026.",
+  "Timeline: Melbourne time; airport boards use local time.": "Linimasa: waktu Melbourne; papan bandara memakai waktu setempat.",
+  "{n} airports returned · {m} airports searched · Schedule snapshot": "{n} bandara menampilkan hasil · {m} bandara dicari · Cuplikan jadwal"
 }

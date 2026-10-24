@@ -108,13 +108,14 @@ def routes():
 
 
 def country_config(country='AU', scope='domestic'):
-    if country == 'AU':
+    if country == 'AU' and scope == 'domestic':
         return dict(country='AU', zones=ZONES, timezone='Australia/Melbourne', end_date=None, manifest=None)
-    if country != 'ID':
+    if country not in {'AU', 'ID'}:
         raise ValueError(f'Unsupported flight country: {country}')
-    filename = 'indonesia_international_routes.json' if scope == 'international' else 'indonesia_flights_routes.json'
+    filename = ('australia_international_routes.json' if country == 'AU' else
+        'indonesia_international_routes.json' if scope == 'international' else 'indonesia_flights_routes.json')
     manifest = json.loads((ROOT / 'data/sources' / filename).read_text())
-    return dict(country='ID', zones={a['code']: a['timezone'] for a in manifest['airports']},
+    return dict(country=country, zones={a['code']: a['timezone'] for a in manifest['airports']},
         timezone=manifest['timezone'], end_date=manifest['end_date'], manifest=manifest,
         scope=scope, max_duration=manifest.get('max_duration', 8 * 3600))
 
@@ -188,7 +189,7 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                         # Functions avoid the page's Trusted Types restriction on eval strings.
                         await page.wait_for_function('''() => [...document.scripts].some(s => s.textContent.includes("key: 'ds:1'"))''', timeout=15000)
                         scripts = await page.locator('script').all_text_contents()
-                        rejected = [] if config['country'] == 'ID' else None
+                        rejected = [] if config['country'] == 'ID' or config.get('scope') == 'international' else None
                         records = parse_results(scripts, origin, destination, day, config['zones'], rejected, config.get('max_duration', 8 * 3600))
                         body = await page.locator('body').inner_text()
                         if '/sorry/' in page.url or 'unusual traffic' in body.lower():
@@ -243,8 +244,8 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
     end_date = end_date or config['end_date'] or day
     if config.get('scope') == 'international':
         countries = {a['code']: a['country'] for a in config['manifest']['airports']}
-        if any((countries[a] == 'ID') == (countries[b] == 'ID') for a, b in pairs):
-            raise ValueError('International routes must have exactly one Indonesian endpoint')
+        if any((countries[a] == config['country']) == (countries[b] == config['country']) for a, b in pairs):
+            raise ValueError('International routes must have exactly one national endpoint')
     expected = list(expected_queries(day, pairs, config, end_date))
     missing = []
     for d, a, b in expected:
@@ -299,7 +300,8 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
         metadata = reference['metadata']
         metadata['country'] = config['country']
         metadata['airlines'] = sorted({f['airline'] for f in reference['flights']})
-        metadata['replay_note'] = 'Indonesian domestic flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+        metadata['replay_note'] = ('Indonesian domestic flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+            if config['country'] == 'ID' else f'Australian domestic flight schedules for {day}. Timeline: Melbourne time; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.')
         if config.get('scope') == 'international':
             metadata['scope'] = 'international'
             metadata['replay_note'] = metadata['replay_note'].replace('domestic', 'international')
@@ -314,11 +316,11 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             queries_not_returned=sum(q['status'] == 'no_matching_direct_flights' for q in queries),
             queries_rejected=sum(q['status'] == 'rejected_source_records' for q in queries),
             rejected_records=sum(len(q.get('rejected_flights', [])) for q in queries), failed_or_missing_queries=len(missing),
-            island_groups={g: dict(candidate_airports=sum(a['island_group']==g for a in config['manifest']['airports']),
-                airports_returned=sum(a['island_group']==g for a in reference['airports']))
-                for g in sorted({a['island_group'] for a in config['manifest']['airports']})})
+            island_groups={g: dict(candidate_airports=sum(a.get('island_group', a.get('country', config['country']))==g for a in config['manifest']['airports']),
+                airports_returned=sum(a.get('island_group', a.get('country', config['country']))==g for a in reference['airports']))
+                for g in sorted({a.get('island_group', a.get('country', config['country'])) for a in config['manifest']['airports']})})
         if config.get('scope') == 'international':
-            metadata['coverage']['candidate_foreign_airports'] = sum(a['country'] != 'ID' for a in config['manifest']['airports'])
+            metadata['coverage']['candidate_foreign_airports'] = sum(a['country'] != config['country'] for a in config['manifest']['airports'])
         metadata['failed_queries'] = [json.loads((cache / f'{d}-{a}-{b}.error.json').read_text())
             for d, a, b in missing if (cache / f'{d}-{a}-{b}.error.json').exists()]
         metadata['coverage']['failed_queries'] = len(metadata['failed_queries'])
@@ -348,16 +350,15 @@ if __name__ == '__main__':
     args = parser.parse_args()
     config = country_config(args.country, args.scope)
     pairs = config['manifest']['routes'] if config['manifest'] else routes()
-    if args.country == 'AU' and args.scope != 'domestic':
-        parser.error('International collection is configured for Indonesia only')
     if args.country == 'ID' and args.scope == 'domestic':
         priority = [('CGK','DPS'), ('HLP','SUB'), ('YIA','UPG'), ('PNK','KTG'), ('UPG','AMQ'), ('DJJ','WMX')]
         pairs = priority + [tuple(pair) for pair in pairs if tuple(pair) not in priority]
     cache = args.cache or ROOT / ('.cache/google-flights-indonesia' if args.country == 'ID' else '.cache/google-flights')
     output = args.output or ROOT / f"data/reference/{'indonesia' if args.country == 'ID' else 'australia'}_flights/{args.date}.json.gz"
-    if args.country == 'ID' and args.scope == 'international':
-        cache = args.cache or ROOT / '.cache/google-flights-indonesia-international'
-        output = args.output or ROOT / f'data/reference/indonesia_flights/{args.date}-international.json.gz'
+    if args.scope == 'international':
+        name = 'indonesia' if args.country == 'ID' else 'australia'
+        cache = args.cache or ROOT / f'.cache/google-flights-{name}-international'
+        output = args.output or ROOT / f'data/reference/{name}_flights/{args.date}-international.json.gz'
     stopped = None
     if not args.prepare_only:
         try:

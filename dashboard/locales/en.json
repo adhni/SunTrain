@@ -771,5 +771,10 @@
   "Thicker lines mean more captured departures from the selected airports that day. Click a line to explore.": "Thicker lines mean more captured departures from the selected airports that day. Click a line to explore.",
   "No scheduled arrivals match this date and these filters. Clear a filter or choose another date.": "No scheduled arrivals match this date and these filters. Clear a filter or choose another date.",
   "Busiest hour: {hour} · {n} arrivals": "Busiest hour: {hour} · {n} arrivals",
-  "{hour} · {n} arrivals": "{hour} · {n} arrivals"
+  "{hour} · {n} arrivals": "{hour} · {n} arrivals",
+  "Australian domestic and international flights · 2 November 2026 schedule snapshot. MEL and AVV, SYD and WSI are separate airports. Airport boards use local time. Paths are illustrative; coverage is partial.": "Australian domestic and international flights · 2 November 2026 schedule snapshot. MEL and AVV, SYD and WSI are separate airports. Airport boards use local time. Paths are illustrative; coverage is partial.",
+  "Australian domestic and international flight schedules for 2 November 2026.": "Australian domestic and international flight schedules for 2 November 2026.",
+  "Australian international flight schedules for 2026-11-02.": "Australian international flight schedules for 2026-11-02.",
+  "Timeline: Melbourne time; airport boards use local time.": "Timeline: Melbourne time; airport boards use local time.",
+  "{n} airports returned · {m} airports searched · Schedule snapshot": "{n} airports returned · {m} airports searched · Schedule snapshot"
 }

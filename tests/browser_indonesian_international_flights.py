@@ -86,8 +86,8 @@ with sync_playwright() as p:
     assert len(downloads)==count
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"australia_flights"})')
     page.wait_for_function('suntrainReplay.day.city==="australia_flights" && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
-    assert not page.locator('#replay-flight-scope-field').is_visible()
-    assert page.locator('#replay-transport-field').is_visible()
+    assert page.locator('#replay-flight-scope-field').is_visible()
+    assert not page.locator('#replay-transport-field').is_visible()
     assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
     assert not errors,errors
     print('Both scopes, airline filters, themes, Indonesian, mobile, overview and Australian defaults passed',flush=True)

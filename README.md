@@ -2,6 +2,12 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Australian international flights
+
+In **Australia · Flights**, choose **Flights → International / Both** to explore captured overseas connections for **2 November 2026**, alongside the existing domestic snapshot. Domestic still opens first. Airport boards use local time while the timeline stays on Melbourne time. Airline-code filters, airport Departures/Arrivals/Both, Destinations, fullscreen boards and frequency maps work across both scopes. Pacific routes remain continuous across the date line.
+
+Collection uses exact airport pairs drawn from BITRE passenger routes and targeted airport/airline supplements, rather than searching every Australian airport against overseas hubs. MEL/AVV and SYD/WSI remain separate; advertised routes with no returned dated flights remain coverage gaps. See the [Australian international flight notes](AUSTRALIAN_INTERNATIONAL_FLIGHTS_NOTES.md) for sources, actual coverage and reproducible preparation. These are partial dated schedules, not live tracking or a complete nationwide flight list.
+
 ## Indonesian flights
 
 Flight maps in Indonesia and Australia include visible **Airline / code** and **Airport / code** filters. Clicking an airport applies the same filter as the airport dropdown and hides unrelated flights. **Airport traffic → Departures / Arrivals / Both** chooses the matching endpoint; nearby airports remain separate. Clearing the airport filter restores the network. Open an airport's **Destinations** tab for captured departures grouped by destination and airline; clicking a destination shows its full-day flight board without seeking the clock.

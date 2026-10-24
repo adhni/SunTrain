@@ -839,7 +839,8 @@
             if (!stations.length) return;
             const latitudes = stations.map(s => s.lat), longitudes = stations.map(s => s.lon);
             const south = Math.min(...latitudes), north = Math.max(...latitudes), west = Math.min(...longitudes), east = Math.max(...longitudes);
-            this.graph.fitBounds([[west, south], [east, north]], {padding: 40, maxZoom: 13, duration: 0});
+            const bounds = this.day.replay_kind === 'flights' ? root.suntrainFlights.bounds(stations) : [[west, south], [east, north]];
+            this.graph.fitBounds(bounds, {padding: this.day.replay_kind === 'flights' ? {top: 90, bottom: 50, left: 50, right: 50} : 40, maxZoom: 13, duration: 0});
             this.needsFit = false;
         }
         seek(value) {

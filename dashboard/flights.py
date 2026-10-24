@@ -22,7 +22,13 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'QZ': ('Indonesia AirAsia', '#ef647b'), 'SJ': ('Sriwijaya Air', '#eab54d'),
             'IN': ('NAM Air', '#50b6a1'), 'IL': ('Trigana Air', '#d88bd6'),
             '8B': ('TransNusa', '#5ba4c6'), 'IP': ('Pelita Air', '#9ca8e7'),
-            'OD': ('Batik Air (OD)', '#c58cb6')}
+            'OD': ('Batik Air (OD)', '#c58cb6'),
+            'SQ': ('Singapore Airlines', '#e5b748'), 'EK': ('Emirates', '#d94e54'),
+            'NZ': ('Air New Zealand', '#65b7ad'), 'QR': ('Qatar Airways', '#b57f9c'),
+            'CX': ('Cathay Pacific', '#54aa93'), 'UA': ('United', '#649ce0'),
+            'AA': ('American', '#a0afc6'), 'DL': ('Delta', '#cf7b89'),
+            'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
+            'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9')}
 
 
 def airline_style(carrier, name):
@@ -42,14 +48,47 @@ def reference_path(business_date=None, city='australia_flights'):
 
 def reference_paths(business_date=None, city='australia_flights'):
     paths = [reference_path(business_date, city)]
-    if city == 'indonesia_flights':
-        override = os.getenv('SUNTRAIN_INDONESIA_INTERNATIONAL_REFERENCE')
+    prefix = 'INDONESIA' if city == 'indonesia_flights' else 'AUSTRALIA'
+    # The legacy March 2013 Australian snapshot remains isolated.
+    if not (city == 'australia_flights' and business_date and business_date.startswith('2013-03-')):
+        override = os.getenv(f'SUNTRAIN_{prefix}_INTERNATIONAL_REFERENCE')
         # A custom domestic fixture is isolated unless international data is explicit.
-        if override or not os.getenv('SUNTRAIN_INDONESIA_FLIGHTS_REFERENCE'):
-            international = Path(override or DIRECTORY.parent / 'indonesia_flights/2026-11-02-international.json.gz')
+        if override or not os.getenv(f'SUNTRAIN_{prefix}_FLIGHTS_REFERENCE'):
+            international = Path(override or reference_path(business_date, city).with_name('2026-11-02-international.json.gz'))
             if override or international.exists():
                 paths.append(international)
     return paths
+
+
+def snapshot_coverage(reference):
+    queries = reference['metadata'].get('queries', [])
+    missing = reference['metadata'].get('uncollected_queries', [])
+    pairs = {(q['origin'], q['destination']) for q in queries}
+    planned = pairs | {(a, b) for _, a, b in missing}
+    represented = {f[k] for f in reference['flights'] for k in ('origin', 'destination')}
+    return dict(candidate_airports=len({c for pair in planned for c in pair} | represented), airports_returned=len(represented),
+        airports_planned=len({c for pair in planned for c in pair}),
+        airports_searched=len({c for pair in pairs for c in pair}),
+        routes_planned=len(planned), routes_searched=len(pairs),
+        routes_with_search_results=len({(q['origin'],q['destination']) for q in queries if q.get('status')=='results'}),
+        routes_returned=len({(f['origin'],f['destination']) for f in reference['flights']}),
+        queries_planned=len(queries)+len(missing), queries_captured=len(queries),
+        queries_not_returned=sum(q.get('status')=='no_matching_direct_flights' for q in queries),
+        failed_or_missing_queries=len(missing), unattempted_queries=len(missing), failed_queries=0)
+
+
+def continuous_arc(a, b):
+    """Keep Pacific flights continuous instead of interpolating across the world.
+
+    Use Australia's world copy for both directions so reverse frequency arcs align.
+    Longitudes beyond 180 are intentional and supported by MapLibre world copies.
+    """
+    points = great_circle(a, b)
+    previous = 135
+    for point in points:
+        point[0] += 360 * round((previous - point[0]) / 360)
+        previous = point[0]
+    return points
 
 
 def load_reference(business_date, city):
@@ -77,8 +116,8 @@ def load_reference(business_date, city):
                 raise ValueError('Conflicting flight identity')
             flights[flight['id']] = record
     metadata = dict(references[0]['metadata'])
-    if city == 'indonesia_flights':
-        coverages = {r['metadata'].get('scope', 'domestic'): r['metadata'].get('coverage', {}) for r in references}
+    if city in {'indonesia_flights', 'australia_flights'}:
+        coverages = {r['metadata'].get('scope', 'domestic'): r['metadata'].get('coverage') or snapshot_coverage(r) for r in references}
         if len(references) > 1:
             combined = {key: sum(c.get(key, 0) for c in coverages.values()) for key in (
                 'routes_planned', 'routes_searched', 'routes_with_search_results', 'routes_returned',
@@ -90,10 +129,12 @@ def load_reference(business_date, city):
             searched = {q[k] for q in queries + failed for k in ('origin', 'destination')}
             planned = searched | {code for _, a, b in missing for code in (a, b)}
             combined.update(airports_returned=len(airports), airports_searched=len(searched),
-                airports_planned=len(planned), candidate_airports=coverages.get('domestic', {}).get('candidate_airports', 0)
-                + coverages.get('international', {}).get('candidate_foreign_airports', 0))
+                airports_planned=len(planned), candidate_airports=(len(planned | set(airports)) if country == 'AU' else
+                coverages.get('domestic', {}).get('candidate_airports', 0)
+                + coverages.get('international', {}).get('candidate_foreign_airports', 0)))
             coverages['both'] = combined
-            metadata['replay_note'] = 'Indonesian domestic and international flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+            metadata['replay_note'] = ('Indonesian domestic and international flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+                if country == 'ID' else 'Australian domestic and international flight schedules for 2 November 2026. Timeline: Melbourne time; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.')
             metadata['queries'] = queries
             metadata['uncollected_queries'] = missing
             metadata['failed_queries'] = failed
@@ -126,7 +167,7 @@ def replay_day(business_date, city='australia_flights'):
         route = f"{flight['origin']} → {flight['destination']}"
         key = flight['origin'] + '-' + flight['destination']
         if key not in paths:
-            coordinates = great_circle([a['lon'], a['lat']], [b['lon'], b['lat']])
+            coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']])
             paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
         carrier = flight.get('carrier') or ('JQ' if city == 'australia_flights' else 'Unknown')
         operator, color = airline_style(carrier, flight.get('airline'))

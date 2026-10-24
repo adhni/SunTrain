@@ -203,7 +203,7 @@ def register_replay_callbacks(app, metadata):
         return (minimum, maximum, chosen, options("modes"), settings.get("default_modes", []), options("operators"), [], options("directions"), [], [], [], "",
                 message(settings["description"]), badge, message("Reset view"), f"Return to the {settings['name']} starting view",
                 {} if settings["passenger_data"] else {"display": "none"}, "trains",
-                [{"label": message("Route paths"), "value": "routes"}, {"label": message("Stops & stations"), "value": "stations"}] +
+                [{"label": message("Airport connections" if city == 'australia_flights' else "Route paths"), "value": "routes"}, {"label": message("Airports" if city == 'australia_flights' else "Stops & stations"), "value": "stations"}] +
                 ([{"label": message("Size trains by passengers"), "value": "load"}] if settings["passenger_data"] else []),
                 ["routes", "stations"])
 

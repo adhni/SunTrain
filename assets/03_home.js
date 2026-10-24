@@ -35,7 +35,7 @@
         if (className) element.className = className;
         return element;
     }
-    const modeNames = {train: "Trains", subway: "Metro", tram: "Trams", light_rail: "Light rail",
+    const modeNames = {flight: "Flights", train: "Trains", subway: "Metro", tram: "Trams", light_rail: "Light rail",
         regional_rail: "Regional rail", commuter_rail: "Commuter rail", limited_express: "Limited express",
         airport_rail: "Airport rail", high_speed_rail: "High-speed rail", ferry: "Ferries", silver_line: "Silver Line"};
     let dateFormat = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"});

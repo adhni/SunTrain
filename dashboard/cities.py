@@ -12,6 +12,14 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'australia_flights': {
+        'name': 'Australia · Flights', 'timezone': 'Australia/Melbourne',
+        'bounds': [[113.0, -44.0], [154.0, -10.0]], 'passenger_data': False,
+        'start_date': '2026-11-02', 'end_date': '2026-11-02',
+        'description': 'Australian domestic flights · 2 November 2026 schedule snapshot. Qantas, Virgin Australia, Jetstar and regional flights where returned by the searches. MEL and AVV are separate airports. Click an airport for departures and arrivals. Paths are illustrative; coverage is partial.',
+        'default_modes': ['flight'], 'modes': [('Flights', 'flight')],
+        'operators': [(name, name) for name in ['Qantas', 'Virgin Australia', 'Jetstar', 'Rex']], 'directions': [('Scheduled service', 'Scheduled service')],
+    },
     'south_korea': {
         'name': 'South Korea', 'timezone': 'Asia/Seoul',
         'bounds': [[125.9, 34.3], [129.7, 38.2]], 'passenger_data': False,

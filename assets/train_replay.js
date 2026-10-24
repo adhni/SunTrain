@@ -68,7 +68,7 @@
         }
     }
     function pointAlong(path, fraction) {
-        if (!path || !["track", "shape"].includes(path.quality) || path.coordinates.length < 2) return null;
+        if (!path || !["track", "shape", "illustrative"].includes(path.quality) || path.coordinates.length < 2) return null;
         const points = path.coordinates, distances = path.distances;
         if (fraction <= 0 || !distances.length || !distances[distances.length - 1]) return points[0];
         if (fraction >= 1) return points[points.length - 1];
@@ -104,7 +104,7 @@
             const station = day.stations[stationId];
             const located = Number.isFinite(station.lon) && Number.isFinite(station.lat);
             return {lon: located ? station.lon : null, lat: located ? station.lat : null, load: stopValue(service, i, now < departure ? 3 : 4) ?? null,
-                    index: i, state: !located ? "Position unavailable" : service.mode === "ferry" ? "At pier" : service.mode && service.mode !== "train" ? "At stop" : "At station", station: station.name, next: i + 1 < length ? day.stations[stopValue(service, i + 1, 0)].name : null,
+                    index: i, state: !located ? "Position unavailable" : service.mode === "flight" ? "At airport" : service.mode === "ferry" ? "At pier" : service.mode && service.mode !== "train" ? "At stop" : "At station", station: station.name, next: i + 1 < length ? day.stations[stopValue(service, i + 1, 0)].name : null,
                     approximate: !located};
         }
         const duration = stopValue(service, i + 1, 1) - departure;
@@ -112,7 +112,7 @@
         const path = day.paths[service.legs[i]];
         const point = pointAlong(path, (now - departure) / duration);
         return {lon: point ? point[0] : null, lat: point ? point[1] : null, load: stopValue(service, i, 4) ?? null, index: i,
-                state: point ? (service.mode === "ferry" ? "Between piers" : service.mode && service.mode !== "train" ? "Between stops" : "Between stations") : "Position unavailable",
+                state: point ? (service.mode === "flight" ? "Scheduled flight in progress" : service.mode === "ferry" ? "Between piers" : service.mode && service.mode !== "train" ? "Between stops" : "Between stations") : "Position unavailable",
                 station: day.stations[stationId].name, next: day.stations[stopValue(service, i + 1, 0)].name,
                 approximate: !point};
     }
@@ -127,7 +127,7 @@
     function routeFeatures(paths, ids) {
         return [...new Set(ids)].flatMap(id => {
             const path = paths[id];
-            if (!path || !["track", "shape"].includes(path.quality) || path.coordinates.length < 2) return [];
+            if (!path || !["track", "shape", "illustrative"].includes(path.quality) || path.coordinates.length < 2) return [];
             return [{type: "Feature", properties: {quality: path.quality},
                 geometry: {type: "LineString", coordinates: path.coordinates}}];
         });
@@ -309,11 +309,12 @@
                     this.graph.addLayer({id: "replay-selected-route", type: "line", source: "replay-selected-route",
                         paint: {"line-color": "#115d51", "line-width": 4, "line-opacity": 0.8}});
                     this.graph.addLayer({id: "replay-stations", type: "circle", source: "replay-stations",
-                        filter: ["in", ["get", "mode"], ["literal", ["train", "ferry"]]],
-                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 6, 2, 9, 3, 12, 4, 15, 4.5],
+                        filter: ["in", ["get", "mode"], ["literal", ["train", "ferry", "flight"]]],
+                        paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"],
+                            6, ['case', ['==', ['get', 'mode'], 'flight'], 4, 2], 9, ['case', ['==', ['get', 'mode'], 'flight'], 4.5, 3], 12, 4, 15, 4.5],
                             "circle-stroke-width": ["interpolate", ["linear"], ["zoom"], 9, 1.2, 15, 1.5], "circle-stroke-color": "white",
                             "circle-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.4, 9, 0.7, 12, 0.9, 15, 1],
-                            "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.4, 9, 0.7, 12, 0.9, 15, 1]}});
+                            "circle-stroke-opacity": ["interpolate", ["linear"], ["zoom"], 6, ['case', ['==', ['get', 'mode'], 'flight'], 1, 0.4], 9, 0.7, 12, 0.9, 15, 1]}});
                     this.graph.addLayer({id: "replay-local-stops", type: "circle", source: "replay-stations", minzoom: 12,
                         filter: ["in", ["get", "mode"], ["literal", ["tram", "bus"]]],
                         paint: {"circle-color": "#6d8980", "circle-radius": ["interpolate", ["linear"], ["zoom"], 12, 1.7, 15, 2.5],
@@ -328,16 +329,35 @@
                         filter: ["==", ["get", "id"], -1],
                         paint: {"circle-radius": 8, "circle-opacity": 0, "circle-stroke-width": 2, "circle-stroke-color": "#1caa92"}});
                     this.graph.addLayer({id: "replay-vehicle-outline", type: "circle", source: "replay-trains",
+                        filter: ["!=", ["get", "mode"], "flight"],
                         paint: {"circle-color": "#17212b", "circle-radius": markerRadius(1.2), "circle-opacity": 0.9}});
                     this.graph.addLayer({id: "replay-selected-train", type: "circle", source: "replay-selected-train",
+                        filter: ["!=", ["get", "mode"], "flight"],
                         paint: {"circle-radius": markerRadius(3), "circle-opacity": 0,
                             "circle-stroke-color": "#18232d", "circle-stroke-width": 1.5}});
                     this.graph.addLayer({id: "replay-trains", type: "circle", source: "replay-trains",
+                        filter: ["!=", ["get", "mode"], "flight"],
                         paint: {"circle-color": ["get", "color"], "circle-radius": markerRadius(),
                             "circle-stroke-color": "#fff", "circle-stroke-width": 0.9, "circle-opacity": 0.95}});
+                    this.graph.addImage('suntrain-plane', root.suntrainFlights.planeImage(), {pixelRatio: 2});
+                    this.graph.addLayer({id: 'replay-selected-plane', type: 'circle', source: 'replay-selected-train',
+                        filter: ['==', ['get', 'mode'], 'flight'],
+                        paint: {'circle-radius': 15, 'circle-opacity': 0, 'circle-stroke-color': '#fff', 'circle-stroke-width': 2}});
+                    this.graph.addLayer({id: 'replay-planes', type: 'symbol', source: 'replay-trains',
+                        filter: ['==', ['get', 'mode'], 'flight'], layout: {
+                            'icon-image': ['coalesce', ['get', 'planeIcon'], 'suntrain-plane'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 3, 0.45, 8, 0.85, 12, 1],
+                            'icon-rotate': ['coalesce', ['get', 'bearing'], 0], 'icon-rotation-alignment': 'map',
+                            'icon-allow-overlap': true, 'icon-ignore-placement': true},
+                        paint: {'icon-opacity': ['coalesce', ['get', 'opacity'], 1]}});
+                    this.graph.addLayer({id: 'replay-airport-labels', type: 'symbol', source: 'replay-stations',
+                        filter: ['==', ['get', 'mode'], 'flight'], layout: {
+                            'icon-image': ['concat', 'airport-', ['get', 'code']],
+                            'icon-offset': [0, 6], 'icon-anchor': 'top', 'icon-allow-overlap': false}});
                     this.popup = new root.maplibregl.Popup({closeButton: false, closeOnClick: false, offset: 10});
                     this.graph.on("click", e => {
-                        const vehicles = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]});
+                        const label = this.graph.queryRenderedFeatures(e.point, {layers: ['replay-airport-labels']})[0];
+                        if (label) { this.departures.open(Number(label.properties.id)); return; }
+                        const vehicles = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-planes"]});
                         if (vehicles.length) { this.select(vehicles[0].properties.id); return; }
                         const station = this.stationNear(e.point);
                         if (!station) return;
@@ -345,7 +365,7 @@
                         else { this.demandPinned = true; this.showDemandPopup(Number(station.properties.id)); }
                     });
                     this.graph.on("mousemove", e => {
-                        const features = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]});
+                        const features = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-planes"]});
                         if (!features.length) {
                             if (this.vehicleHover) { this.vehicleHover = false; this.popup.remove(); this.graph.getCanvas().style.cursor = ""; }
                             return;
@@ -365,7 +385,7 @@
                     });
                     this.graph.on("mouseout", () => { this.stationHover = false; this.vehicleHover = false; this.graph.getCanvas().style.cursor = ""; if (!this.demandPinned) this.popup.remove(); });
                     for (const event of ["click", "mousemove"]) this.graph.on(event, "replay-demand-stations", e => {
-                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains"]}).length) return;
+                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-planes"]}).length) return;
                         this.graph.getCanvas().style.cursor = "pointer";
                         if (event === "mousemove" && this.demandPinned) return;
                         this.demandPinned = event === "click";
@@ -489,6 +509,8 @@
         }
         stationNear(point) {
             if (!this.display.includes("stations")) return null;
+            const airportLabel = this.graph.queryRenderedFeatures(point, {layers: ['replay-airport-labels']})[0];
+            if (airportLabel) return airportLabel;
             const candidates = this.graph.queryRenderedFeatures([[point.x - 8, point.y - 8], [point.x + 8, point.y + 8]],
                 {layers: ["replay-stations", "replay-local-stops"]});
             const distance = feature => {
@@ -586,15 +608,29 @@
                 for (const service of day.services) for (const key of ["line","operator","origin","destination","number"]) if(service[key]) root.suntrainI18n.sourceNames.add(service[key]);
             }
              this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
+            const flights = day.city === 'australia_flights';
+            setText('replay-open-departures', flights ? 'Airports' : 'Departures');
+            setText('replay-legend-label', flights ? 'Flights' : 'Line colours');
+            const restartLabel = flights ? 'Restart at midnight' : 'Restart at 03:00';
+            for (const attr of ['title', 'aria-label']) root.suntrainI18n.bind($('replay-restart'), restartLabel, attr);
             this.departures?.reset();
             if ($("replay-vehicle-help")) $("replay-vehicle-help").hidden = day.city !== "melbourne";
             this.selected = null; this.staticDirty = true; this.setupTimeline(); this.emptyDetails();
             if(root.suntrainI18n) root.suntrainI18n.bind($("replay-melbourne"), `Return to the ${day.city_name} starting view`, "title");
             const options = [...new Set(day.stations.map(s => s.name))].sort();
             root.dash_clientside.set_props("replay-stations", {options});
+            if (flights) root.dash_clientside.set_props('replay-operators', {options: [...new Set(day.services.map(s => s.operator))].sort()});
             const attribution = $("replay-attribution");
             attribution.replaceChildren();
             if (day.schedule) {
+                if (day.city === 'australia_flights') {
+                    const source = node('a', day.schedule.source);
+                    source.href = day.schedule.source_url; source.target = '_blank'; source.rel = 'noopener noreferrer';
+                    const airports = node('a', 'Airport coordinates: OurAirports · Public Domain');
+                    airports.href = day.schedule.airport_source_url; airports.target = '_blank'; airports.rel = 'noopener noreferrer';
+                    attribution.append(source, document.createTextNode(' · '), airports);
+                    return;
+                }
                 if (day.schedule.attribution) {
                     const source = node("a", day.schedule.attribution);
                     source.href = day.schedule.source_url;
@@ -689,11 +725,11 @@
             for (const service of this.filtered) {
                 const label = service.mode === "tram" ? (this.day.city === "netherlands" ? service.line :
                     this.day.city === "toronto" ? `Streetcar ${service.line}` : `Tram ${tramRoute(service) || "other"}`) :
-                    service.mode === "mikrotrans" ? "Mikrotrans" :
+                    service.mode === "flight" ? service.operator : service.mode === "mikrotrans" ? "Mikrotrans" :
                     service.mode === "bus" && !["chicago", "perth"].includes(this.day.city) ? "Buses" : service.line;
                 entries.set(`${service.mode || "train"}:${label}`, {label, color: vehicleColor(service, this.day?.city)});
             }
-            setText("replay-legend-label", `Line colours · ${entries.size}`);
+            setText("replay-legend-label", this.day?.city === "australia_flights" ? "Airlines" : `Line colours · ${entries.size}`);
             const disclosure = `${this.day?.city || ""}:${entries.size <= 8}`;
             if (disclosure !== this.legendDisclosure) {
                 legend.open = entries.size <= 8;
@@ -729,7 +765,7 @@
                 const key = service.stopIds || service.legs;
                 if (!this.qualityBySchedule.has(key)) this.qualityBySchedule.set(key, {
                     total: service.legs.length,
-                    approximate: service.legs.reduce((sum, id) => sum + Number(!["track", "shape"].includes(this.day.paths[id].quality)), 0)});
+                    approximate: service.legs.reduce((sum, id) => sum + Number(!["track", "shape", "illustrative"].includes(this.day.paths[id].quality)), 0)});
                 const quality = this.qualityBySchedule.get(key);
                 total += quality.total; approximate += quality.approximate;
                 uncertain += service.timing_uncertain ? 1 : 0;
@@ -737,7 +773,7 @@
             const pieces = [];
             if (!this.filtered.length) pieces.push(this.day.services.length ? "No services match these filters. Clear a filter to explore this day." : "No recorded services for this business date.");
             if (approximate) pieces.push(`${approximate.toLocaleString(root.suntrainI18n?.locale || "en-AU")} of ${total.toLocaleString(root.suntrainI18n?.locale || "en-AU")} journey legs have unresolved paths. These are left as gaps; vehicle positions are hidden between those stops.`);
-            else if (total) pieces.push("All selected journey legs have route geometry.");
+            else if (total && this.day.city !== "australia_flights") pieces.push("All selected journey legs have route geometry.");
             if (this.day.schedule?.note_messages) pieces.push(...this.day.schedule.note_messages.map(message=>message.key));
             else if (this.day.schedule?.replay_note) pieces.push(...this.day.schedule.replay_note.split(/(?<=[.!?])\s+/));
             else if (this.day.city === "boston") pieces.push("Rail and Silver Line open first. Select Buses under Transport for regular MBTA buses. Rail replacement shuttles are excluded; calendars follow the historical archive.");
@@ -816,6 +852,18 @@
             this.departures?.journey(host, departureCall);
             host.style.setProperty("--journey-color", vehicleColor(service, this.day?.city));
             const line = node("div", service.line, "replay-detail-line");
+            if (service.mode === 'flight') {
+                this.selectedHasLoads = false;
+                host.append(line, node('h3', service.number), node('p', `${service.origin} → ${service.destination}`, 'replay-detail-route'),
+                    node('p', `${service.operator} · ${service.aircraft}`, 'replay-muted replay-small'),
+                    node('p', 'Scheduled replay · illustrative paths', 'replay-detail-note'));
+                const live = node('div', undefined, 'replay-service-status'); live.id = 'replay-service-status'; host.append(live);
+                const duration = Math.round((service.stops[1][1] - service.stops[0][2]) / 60);
+                host.append(node('p', `${Math.floor(duration / 60)} h ${duration % 60} min`, 'replay-muted replay-small'));
+                this.paint(true);
+                if (departureCall) { host.tabIndex = -1; host.focus(); }
+                return;
+            }
             const trainNumber = ["train", "high_speed_rail"].includes(service.mode) || this.day.city === "us_rail" && service.mode === "commuter_rail";
             const operator = service.operator === "VLine" ? "V/Line" : service.operator;
             host.append(line, node("h3", service.destination), node("p", `From ${service.origin}`, "replay-detail-route"),
@@ -864,7 +912,7 @@
                 body.append(row);
             }
             table.append(body); scroll.append(table); host.append(scroll);
-            const unresolved = service.legs.filter(id => !["track", "shape"].includes(this.day.paths[id]?.quality)).length;
+            const unresolved = service.legs.filter(id => !["track", "shape", "illustrative"].includes(this.day.paths[id]?.quality)).length;
             if (unresolved) host.append(node("p", `${unresolved} journey leg${unresolved === 1 ? " has" : "s have"} unresolved geometry. The route has gaps and this vehicle is hidden between those stops.`, "replay-approximate replay-small"));
             host.append(node("p", `Trip ${service.source_trip_id || service.number}`, "replay-muted replay-small"));
             if (this.selectedHasLoads) host.append(node("p", "Load = recorded departure passenger count, rounded to the nearest 10.", "replay-muted replay-small"));
@@ -872,6 +920,22 @@
         detailStatus(position) {
             if (!this.selected) return;
             const host = $("replay-service-status"); if (!host) return;
+            if (this.selected.mode === 'flight') {
+                const service = this.selected;
+                const text = this.now < service.stops[0][2] ? 'Not started yet' : this.now >= service.stops[1][1] ? 'Arrived' : 'Scheduled flight in progress';
+                const signature = text + (root.suntrainI18n?.language || 'en');
+                if (host.dataset.signature === signature) return;
+                host.dataset.signature = signature;
+                const list = node('ol', undefined, 'replay-journey-stops');
+                for (const [index, label, column] of [[0, 'Departure', 2], [1, 'Arrival', 1]]) {
+                    const airport = this.day.stations[service.stops[index][0]], row = node('li', undefined, 'replay-journey-stop');
+                    row.append(node('span', label, 'replay-journey-label'), node('strong', airport.name),
+                        node('span', root.suntrainDepartures.formatCallTime(service.stops[index][column], airport.timezone), 'replay-journey-time'));
+                    list.append(row);
+                }
+                host.replaceChildren(node('div', text, 'replay-journey-state'), list);
+                return;
+            }
             const upcoming = this.now < stopValue(this.selected, 0, 1) + (this.selected.timeOffset || 0);
             const index = position?.index ?? (upcoming ? 0 : stopCount(this.selected) - 1);
             const text = position ? position.state : upcoming ? "Not started yet" : "Journey finished";
@@ -906,16 +970,23 @@
         }
         updateStaticLayers() {
             const ids = new Set(), stationIds = new Set();
+            for (const service of this.filtered) if (service.mode === 'flight' && !this.graph.hasImage('plane-' + service.carrier))
+                this.graph.addImage('plane-' + service.carrier, root.suntrainFlights.planeImage(service.color), {pixelRatio: 2});
             for (const service of uniqueSchedules(this.filtered)) {
                 if (this.mapMode === "demand" && service.mode !== "train") continue;
                 for (const id of stopIds(service)) stationIds.add(id);
-                if (this.display.includes("routes")) for (const id of service.legs) ids.add(id);
+                if (this.display.includes("routes") && (this.day.city !== 'australia_flights' ||
+                    this.filters.stations.length || this.filters.lines.length ||
+                    ((this.departures?.visible || this.departures?.previewCall) && this.departures.station != null && [...stopIds(service)].includes(this.departures.station))))
+                    for (const id of service.legs) ids.add(id);
             }
             const routes = routeFeatures(this.day.paths, ids);
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
             const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})).filter(s => Number.isFinite(s.lon) && Number.isFinite(s.lat)) : [];
+            for (const station of stations) if (station.code && !this.graph.hasImage('airport-' + station.code))
+                this.graph.addImage('airport-' + station.code, root.suntrainFlights.airportImage(station.code), {pixelRatio: 2});
             this.graph.getSource("replay-routes").setData(collection(routes));
-            this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: s.id, mode: s.mode || "train"}))));
+            this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: s.id, mode: s.mode || "train", code: s.code || ""}))));
             this.graph.getSource("replay-selected-route").setData(collection(selected));
             this.graph.setFilter("replay-station-focus", ["==", ["get", "id"], (this.departures?.visible || this.departures?.previewCall) ? this.departures.station : -1]);
         }
@@ -925,7 +996,7 @@
             const changed = this.mapMode !== mode || this.demandWindow !== minutes;
             this.mapMode = mode; this.demandWindow = minutes;
             $("replay-panel").classList.toggle("replay-demand-only", mode === "demand");
-            for (const id of ["replay-trains", "replay-vehicle-outline", "replay-selected-train", "replay-selected-route"])
+            for (const id of ["replay-trains", "replay-planes", "replay-selected-plane", "replay-vehicle-outline", "replay-selected-train", "replay-selected-route"])
                 this.graph.setLayoutProperty(id, "visibility", mode === "demand" ? "none" : "visible");
             for (const id of ["replay-demand-glow", "replay-demand-stations"])
                 this.graph.setLayoutProperty(id, "visibility", mode === "trains" ? "none" : "visible");
@@ -992,6 +1063,7 @@
             try {
                 const trains = [], vehicleDots = [];
                 const zoom = this.graph.getZoom();
+                const airportFocus = this.day.city === 'australia_flights' && (this.departures?.visible || this.departures?.previewCall) ? this.departures.station : null;
                 let selectedPosition = null, selectedMarker = null, activeCount = 0, missingCount = 0;
                 for (const service of this.activeIndex.at(this.now)) {
                     const position = servicePosition(service, this.now, this.day);
@@ -1004,8 +1076,16 @@
                     const spacing = kind ? root.suntrainVehicles.spacingPixels(zoom, sizeFactor) *
                         root.suntrainVehicles.metersPerPixel(this.graph, [position.lon, position.lat]) : 0;
                     const coordinates = kind ? root.suntrainVehicles.footprint(service, position, this.day, this.now, spacing, pointAlong) : [[position.lon, position.lat]];
-                    const properties = {id: service.id, color: vehicleColor(service, this.day.city), body: kind,
+                    const properties = {id: service.id, color: vehicleColor(service, this.day.city), body: kind, mode: service.mode || "train",
                         sizeFactor, load: position.load, approximate: position.approximate, dotCount: coordinates.length};
+                    if (service.mode === 'flight') {
+                        properties.planeIcon = 'plane-' + service.carrier;
+                        properties.opacity = airportFocus !== null && !service.stops.some(stop => stop[0] === airportFocus) ? 0.2 : 1;
+                        const path = this.day.paths[service.legs[0]];
+                        const f = (this.now - service.stops[0][2]) / (service.stops[1][1] - service.stops[0][2]);
+                        const a = pointAlong(path, Math.max(0, f - 0.001)), b = pointAlong(path, Math.min(1, f + 0.001));
+                        properties.bearing = root.suntrainFlights.bearing(a, b);
+                    }
                     const marker = pointFeature(coordinates[0], {...properties, part: 0});
                     trains.push(marker);
                     for (let part = 0; part < coordinates.length; part++)

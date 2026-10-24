@@ -209,6 +209,12 @@ Select **Regional / commuter rail** under Transport to add LIRR, Metro-North, NJ
 
 Rebuild with `./.venv/bin/python scripts/prepare_american_replay.py`. See [US railway expansion notes](US_RAIL_EXPANSION_NOTES.md) for pinned downloads, time-zone handling, geometry gaps, source rights and Alaska follow-up.
 
+## Australian domestic flights
+
+Choose **Australia · Flights** for **2 November 2026**. The newer snapshot covers **36 airports** and **1,170 scheduled departures**, with overnight carry-ins. It includes Qantas, Virgin Australia, Jetstar, Rex, Link Airways and Alliance where returned by the airport-specific searches. **MEL and AVV are separate airports**, with independent searches, markers and boards.
+
+Planes have distinct airline colours. Click an airport or its code for **Departures / Arrivals**, expand the board, or use **More filters → Operator / feed** to focus an airline. Airport boards and flight endpoints use local time; the national clock uses Melbourne time. The dated snapshot loads locally without a flight API key. Search coverage is partial, and paths illustrate scheduled travel. See the [flight notes](AUSTRALIAN_FLIGHTS_FEASIBILITY.md) for source coverage and rebuilding.
+
 ## Additional Australian cities
 
 Choose the city in **Location**. These railway additions reuse route/operator/direction/station filters, scheduled movement, route colours, local clocks, fullscreen, themes and all playback speeds.

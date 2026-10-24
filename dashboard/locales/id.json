@@ -672,5 +672,12 @@
   "Eastbound": "Ke timur",
   "Westbound": "Ke barat",
   "Underground": "Metro",
-  "Suburban rail": "Kereta suburban"
+  "Suburban rail": "Kereta suburban",
+  "Click for departures": "Klik untuk melihat keberangkatan",
+  "Expand departures": "Perbesar papan keberangkatan",
+  "Back to map": "Kembali ke peta",
+  "STATION DEPARTURES": "KEBERANGKATAN STASIUN",
+  "Departure": "Keberangkatan",
+  "Replay paused · scheduled departures": "Pemutaran dijeda · keberangkatan terjadwal",
+  "Train ···  Tram ··  Bus · — illustrative vehicle size, not carriage counts or occupancy.": "Kereta ···  Trem ··  Bus · — ukuran kendaraan sebagai ilustrasi, bukan jumlah gerbong atau penumpang."
 }

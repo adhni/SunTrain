@@ -144,6 +144,8 @@ def build_replay_panel(metadata, default_date):
                                           {"label": message("Stops & stations"), "value": "stations"},
                                           {"label": message("Size trains by passengers"), "value": "load"}], value=["routes", "stations"], inline=True),
                             html.Span("Estimated positions from scheduled times", className="replay-estimate"),
+                            html.Span("Train ···  Tram ··  Bus · — illustrative vehicle size, not carriage counts or occupancy.",
+                                      id="replay-vehicle-help", className="replay-estimate"),
                             html.Span("Select a vehicle for details", className="replay-selection-hint replay-muted"),
                             html.Span("Bigger train dots mean more passengers on board. All vehicles grow as you zoom in; passenger sizes stay within readable limits. Click a train for its recorded count.",
                                       id="replay-size-help", className="replay-estimate", hidden=True),

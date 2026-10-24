@@ -42,8 +42,6 @@ def test_cheapest_exact_flight_quote_ignores_page_minima_connections_and_missing
 
 
 def test_malaysia_manifest_exact_airports_east_west_zones_and_adjacent_queries():
-    with pytest.raises(ValueError,match='domestic'):
-        country_config('MY','international')
     c=country_config('MY');a={a['code']:a for a in c['manifest']['airports']}
     assert a['KUL']['lon']!=a['SZB']['lon']
     assert a['BKI']['timezone']==a['KCH']['timezone']=='Asia/Kuching'

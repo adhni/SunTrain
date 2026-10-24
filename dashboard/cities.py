@@ -15,8 +15,8 @@ CITIES = {
     'malaysia_flights': {
         'replay_kind': 'flights', 'name': 'Malaysia · Flights', 'timezone': 'Asia/Kuala_Lumpur',
         'bounds': [[99.0, 0.5], [120.0, 8.0]], 'passenger_data': False,
-        'start_date': '2026-11-02', 'end_date': '2026-11-02',
-        'description': 'Malaysian domestic flights · 2 November 2026 schedule snapshot. KUL and SZB are separate airports. Lowest captured MYR fares for one adult, economy, one-way. Prices and coverage are partial; paths are illustrative.',
+        'start_date': '2026-11-02', 'end_date': '2026-11-02', 'flight_scopes': True,
+        'description': 'Malaysian domestic and international flights · 2 November 2026 schedule snapshot. KUL and SZB are separate airports. Airport boards use local time. Lowest captured MYR fares for one adult, economy, one-way. Prices and coverage are partial; paths are illustrative.',
         'default_modes': ['flight'], 'modes': [('Flights', 'flight')],
         'operators': [], 'directions': [('Scheduled service', 'Scheduled service')],
     },

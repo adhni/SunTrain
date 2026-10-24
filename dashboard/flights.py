@@ -29,7 +29,8 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'AA': ('American', '#a0afc6'), 'DL': ('Delta', '#cf7b89'),
             'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
             'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9'), 'AK': ('AirAsia', '#e95055'),
-            'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa')}
+            'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa'),
+            'D7': ('AirAsia X', '#c75668'), 'BI': ('Royal Brunei', '#bca64b')}
 
 
 def airline_style(carrier, name):
@@ -53,8 +54,7 @@ def reference_path(business_date=None, city='australia_flights'):
 
 def reference_paths(business_date=None, city='australia_flights'):
     paths = [reference_path(business_date, city)]
-    if city == 'malaysia_flights':return paths
-    prefix = 'INDONESIA' if city == 'indonesia_flights' else 'AUSTRALIA'
+    prefix = {'indonesia_flights':'INDONESIA','australia_flights':'AUSTRALIA','malaysia_flights':'MALAYSIA'}[city]
     # The legacy March 2013 Australian snapshot remains isolated.
     if not (city == 'australia_flights' and business_date and business_date.startswith('2013-03-')):
         override = os.getenv(f'SUNTRAIN_{prefix}_INTERNATIONAL_REFERENCE')
@@ -122,7 +122,7 @@ def load_reference(business_date, city):
                 raise ValueError('Conflicting flight identity')
             flights[flight['id']] = record
     metadata = dict(references[0]['metadata'])
-    if city in {'indonesia_flights', 'australia_flights'}:
+    if city in {'indonesia_flights', 'australia_flights', 'malaysia_flights'}:
         coverages = {r['metadata'].get('scope', 'domestic'): r['metadata'].get('coverage') or snapshot_coverage(r) for r in references}
         if len(references) > 1:
             combined = {key: sum(c.get(key, 0) for c in coverages.values()) for key in (
@@ -135,12 +135,17 @@ def load_reference(business_date, city):
             searched = {q[k] for q in queries + failed for k in ('origin', 'destination')}
             planned = searched | {code for _, a, b in missing for code in (a, b)}
             combined.update(airports_returned=len(airports), airports_searched=len(searched),
-                airports_planned=len(planned), candidate_airports=(len(planned | set(airports)) if country == 'AU' else
+                airports_planned=len(planned), candidate_airports=(len(planned | set(airports)) if country in {'AU','MY'} else
                 coverages.get('domestic', {}).get('candidate_airports', 0)
                 + coverages.get('international', {}).get('candidate_foreign_airports', 0)))
             coverages['both'] = combined
             metadata['replay_note'] = ('Indonesian domestic and international flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
                 if country == 'ID' else 'Australian domestic and international flight schedules for 2 November 2026. Timeline: Melbourne time; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.')
+            if country == 'MY':
+                metadata['replay_note']='Malaysian domestic and international flight schedules for 2 November 2026. Timeline: MYT; airport boards use local time. Prices are captured one-adult economy one-way quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+                metadata['priced_flights']=sum('price' in f for f in flights.values())
+                metadata['priced_flights_by_scope']={r['metadata'].get('scope','domestic'):r['metadata'].get('priced_flights',0) for r in references}
+                metadata['fare_context_unverified_queries']=sum(r['metadata'].get('fare_context_unverified_queries',0) for r in references)
             metadata['queries'] = queries
             metadata['uncollected_queries'] = missing
             metadata['failed_queries'] = failed

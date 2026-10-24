@@ -1,12 +1,18 @@
-# Malaysian domestic flights and captured fares
+# Malaysian flights and captured fares
 
-**Malaysia · Flights** is a separate domestic schedule replay for **2 November
+**Malaysia · Flights** is a separate domestic/international schedule replay for **2 November
 2026**, with a midnight-to-midnight **MYT** timeline. It leaves Malaysia/Kuala
 Lumpur rail views and the existing Australian/Indonesian flight snapshots intact.
 This is a partial dated capture, with illustrative paths rather than observed
 aircraft positions.
 
-## Captured coverage
+Domestic opens first; use **Flights → International / Both** for cross-border
+services. Airport boards use airport-local clocks; the replay stays on MYT.
+Both scopes use the same captured MYR fare context. Airline/airport filters,
+arrivals/departures, Destinations, fullscreen boards and frequency lines apply
+to the selected scope.
+
+## Captured domestic coverage
 
 The bundle contains **449 departures on 2 November plus 8 overnight carry-ins**:
 **457 overlapping flights**, **18 airports** and **81 directional routes**, in
@@ -37,11 +43,49 @@ MZV, ODN and TGC**. Rural flights are a material coverage gap; no AirBorneo/RAS
 timings were invented from the historical candidate table. Other airports or
 routes outside this manifest may also be absent.
 
-## Fares
+## Captured international coverage
+
+The international supplement adds **910 departures owned by the MYT day plus
+126 overnight carry-ins**: **1,036 overlapping flights**, **110 airports**
+(**11 Malaysian and 99 overseas in 33 foreign countries**), **273 directional
+routes** and **67 carrier codes**, in **94,573 bytes gzip**. **857 flights have
+captured MYR fares; 179 do not**. International captures were made on
+**25 October 2026, 04:48–05:14 MYT**.
+
+| Malaysian gateway | Overlapping international flights | With a fare | Returned foreign airports |
+| --- | ---: | ---: | ---: |
+| KUL | 872 | 712 | 98 |
+| PEN | 75 | 66 | 14 |
+| BKI | 36 | 34 | 12 |
+| SZB | 24 | 16 | 5 |
+| JHB | 9 | 9 | 3 |
+| IPH | 6 | 6 | 1 |
+| KCH | 6 | 6 | 2 |
+| KUA | 2 | 2 | 1 |
+| LGK | 2 | 2 | 1 |
+| MYY | 2 | 2 | 1 |
+| TWU | 2 | 2 | 1 |
+
+All **925 planned queries** were captured, with **no failed or pending queries**.
+**306 returned no matching dated direct flight**. Four captures on **CAN–PEN /
+PEN–CAN** could not verify fare context and returned no usable dated services;
+they remain explicit search gaps, not evidence of no service. **Six PEN–KNO
+Lion Air records** reported 24-hour-55-minute durations and were rejected rather
+than having their dates repaired. Other valid records in those queries remain.
+The candidate gateways **KBR, MKZ and SBW** returned no overlapping international
+services for this replay day. Probed destinations outside the returned network
+remain gaps; the manifest is not an exhaustive global route list.
+
+With both scopes selected, the explorer contains **1,493 overlapping flights,
+117 airports and 1,266 captured fares**. The original domestic bundle is unchanged.
+
+## Fare interpretation
 
 Searches explicitly request **MYR, one adult, economy, one-way, nonstop**. The
 collector verifies the displayed currency, passenger count, cabin and trip type
-before saving fares. A fare belongs to a single-leg offer for an exact departure
+before saving fares. If that context cannot be confirmed, dated schedules stay
+available without prices and the query records a `price_error`.
+A fare belongs to a single-leg offer for an exact departure
 date, flight number, origin and destination. Multiple returned quotes for that
 identity reduce to the cheapest positive quote. Different flight numbers remain
 distinct, even when their times match; no codeshares are inferred.
@@ -98,13 +142,42 @@ per-query records include exact query URL, source timestamp, script hash,
 schedules and associated minimum fares; raw pages and booking tokens are not
 stored in the normal cache. Access challenges stop collection; successful
 captures remain available and failed/missing queries are reported. No challenge
-bypass, paid API, international collection or automatic refresh is enabled.
+bypass, paid API or automatic refresh is enabled.
 
 The deterministic runtime bundle is
 **`data/reference/malaysia_flights/2026-11-02.json.gz`**. It uses existing compressed
 HTTP replay caching; `SUNTRAIN_MALAYSIA_FLIGHTS_REFERENCE` can override it for
-tests. Missing dates are rejected. `--country MY --scope international` is
-explicitly unsupported.
+tests. Missing dates are rejected.
+
+The international manifest uses **14 Malaysian gateways, 124 overseas airports
+and 408 directional pairs**, with **925 airport/date queries**. It combines
+published [Singapore Airlines/Scoot gateways](https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/),
+the [Scoot airport catalogue](https://www.flyscoot.com/flights/en-my/), reciprocal
+candidates from the existing Australian/Indonesian manifests, and explicitly
+labelled gateway probes. Malaysia Airlines/AirAsia destination pages are
+background sources for the probes, not proof of operating nonstop routes.
+The manifest's route hash covers curated evidence rather than source HTML.
+Nearby airports remain distinct, including KUL/SZB, BKK/DMK and HND/NRT.
+
+International collection searches both directions and the necessary adjacent
+origin-local dates, using UTC overlaps with the MYT replay day. Maximum duration
+is 24 hours for long-haul services; the domestic eight-hour limit is unchanged.
+Foreign boards show their local dates/times, and board events use half-open day
+boundaries. Frequency counts are captured schedules, not live movements.
+
+```bash
+.venv/bin/python scripts/prepare_malaysia_international.py
+PYTHONPATH=.cache/browser-tools .venv/bin/python scripts/prepare_google_flights.py --country MY --scope international --concurrency 2
+.venv/bin/python scripts/prepare_google_flights.py --country MY --scope international --prepare-only
+```
+
+Keep **`.cache/google-flights-malaysia-international/`** to reproduce the captured
+international schedules and fares. The supplement is
+**`data/reference/malaysia_flights/2026-11-02-international.json.gz`**;
+`SUNTRAIN_MALAYSIA_INTERNATIONAL_REFERENCE` overrides it for tests. Domestic-only
+fixtures remain isolated unless the international override is explicit. The
+loader merges coverage without double-counting shared airports, retains each
+flight's fare, and invalidates the HTTP revision when either bundle changes.
 
 ## Validation
 

@@ -6,6 +6,7 @@ No flight search runs in the app. Cached queries are resumed rather than repeate
 import argparse
 import asyncio
 import csv
+from contextlib import asynccontextmanager
 import fcntl
 from datetime import date, datetime, timedelta, timezone
 import gzip
@@ -108,15 +109,13 @@ def routes():
 
 
 def country_config(country='AU', scope='domestic'):
-    if country == 'MY' and scope != 'domestic':
-        raise ValueError('Malaysia currently supports domestic flights only')
     if country == 'AU' and scope == 'domestic':
         return dict(country='AU', zones=ZONES, timezone='Australia/Melbourne', end_date=None, manifest=None)
     if country not in {'AU', 'ID', 'MY'}:
         raise ValueError(f'Unsupported flight country: {country}')
-    filename = ('malaysia_flights_routes.json' if country == 'MY' else
-        'australia_international_routes.json' if country == 'AU' else
-        'indonesia_international_routes.json' if scope == 'international' else 'indonesia_flights_routes.json')
+    name = {'AU':'australia','ID':'indonesia','MY':'malaysia'}[country]
+    kind = 'international' if scope == 'international' else 'flights'
+    filename = f'{name}_{kind}_routes.json'
     manifest = json.loads((ROOT / 'data/sources' / filename).read_text())
     return dict(country=country, zones={a['code']: a['timezone'] for a in manifest['airports']},
         timezone=manifest['timezone'], end_date=manifest['end_date'], manifest=manifest,
@@ -157,6 +156,30 @@ async def capture(cache, search_date, pairs, concurrency, config=None, end_date=
             fcntl.flock(lock, fcntl.LOCK_UN)
 
 
+@asynccontextmanager
+async def browser_cleanup_tasks():
+    cleanups=[]
+    try:
+        yield cleanups
+    finally:
+        await asyncio.gather(*cleanups)
+
+
+async def close_browser(browser, cleanups, timeout=10):
+    """Let disconnected Chrome profile cleanup finish without holding the next batch.
+
+    A connected browser must finish closing before we open another. All pending
+    cleanup tasks are awaited before the Playwright driver exits.
+    """
+    task=asyncio.create_task(browser.close())
+    done,_=await asyncio.wait([task],timeout=timeout)
+    if task in done or browser.is_connected():
+        await task
+    else:
+        cleanups.append(task)
+        print('Browser disconnected; finishing profile cleanup in background',flush=True)
+
+
 async def _capture(cache, search_date, pairs, concurrency, config=None, end_date=None):
     from playwright.async_api import async_playwright
     cache.mkdir(parents=True, exist_ok=True)
@@ -168,7 +191,7 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
             pending.put_nowait((origin, destination, day, path))
     total = pending.qsize()
     print(f'Collecting {total} uncached airport/date queries', flush=True)
-    async with async_playwright() as p:
+    async with async_playwright() as p, browser_cleanup_tasks() as cleanups:
         completed = 0
         # Bound browser memory/cache growth during thousands of dated searches.
         while not pending.empty():
@@ -201,16 +224,24 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                         if '/sorry/' in page.url or 'unusual traffic' in body.lower():
                             raise RuntimeError('Search access limited; stop rather than retrying a challenge')
                         captured_at=datetime.now(timezone.utc).isoformat()
+                        price_error=None
                         if config.get('capture_prices'):
                             from scripts.flight_prices import cheapest_prices, verify_fare_context
-                            verify_fare_context(body,config['currency'])
-                            prices=cheapest_prices(scripts,records,config['currency'])
-                            for record in records:
-                                if record['id'] in prices:record['price']={**prices[record['id']],'captured_at':captured_at}
+                            try:
+                                verify_fare_context(body,config['currency'])
+                            except ValueError as error:
+                                # Exact dated schedules remain useful when fare context
+                                # cannot be confirmed. Never relabel an uncertain quote.
+                                price_error=str(error)
+                            else:
+                                prices=cheapest_prices(scripts,records,config['currency'])
+                                for record in records:
+                                    if record['id'] in prices:record['price']={**prices[record['id']],'captured_at':captured_at}
                         result = dict(origin=origin, destination=destination, date=day, url=url,
                             captured_at=captured_at, flights=records,
                             page_sha256=hashlib.sha256('\n'.join(scripts).encode()).hexdigest(),
                             status='results' if records else ('rejected_source_records' if rejected else 'no_matching_direct_flights'))
+                        if price_error:result['price_error']=price_error
                         if rejected:
                             result['rejected_flights'] = rejected
                         temporary = path.with_suffix('.tmp')
@@ -247,7 +278,8 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                 await asyncio.gather(*tasks, return_exceptions=True)
                 raise
             finally:
-                await browser.close()
+                await close_browser(browser,cleanups)
+
 
 
 
@@ -255,7 +287,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
     records, queries = {}, []
     config = config or country_config()
     end_date = end_date or config['end_date'] or day
-    if config['country'] == 'MY':
+    if config['country'] == 'MY' and config.get('scope') != 'international':
         countries = {a['code']: a['country'] for a in config['manifest']['airports']}
         if any(countries.get(a) != 'MY' or countries.get(b) != 'MY' for a, b in pairs):
             raise ValueError('Malaysian domestic routes require two Malaysian airports')
@@ -319,6 +351,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
         if config.get('capture_prices'):
             metadata['fare_context']=dict(currency=config['currency'],adults=1,cabin='economy',trip_type='one_way',taxes='Required taxes and fees included; optional charges and baggage may cost extra',basis='Lowest returned quote for the exact flight; captured prices, not live fares')
             metadata['priced_flights']=sum('price' in f for f in reference['flights'])
+            metadata['fare_context_unverified_queries']=sum(bool(q.get('price_error')) for q in queries)
         metadata['airlines'] = sorted({f['airline'] for f in reference['flights']})
         metadata['replay_note'] = ('Indonesian domestic flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
             if config['country'] == 'ID' else f'Australian domestic flight schedules for {day}. Timeline: Melbourne time; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.')
@@ -327,6 +360,8 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
         if config.get('scope') == 'international':
             metadata['scope'] = 'international'
             metadata['replay_note'] = metadata['replay_note'].replace('domestic', 'international')
+            if config['country']=='MY':
+                metadata['replay_note']=metadata['replay_note'].replace('Timeline and airport boards use Malaysia time.','Timeline: MYT; airport boards use local time.')
         successful = {(q['origin'], q['destination']) for q in queries if q['status'] == 'results'}
         attempted = {(q['origin'], q['destination']) for q in queries}
         attempted.update((a, b) for d, a, b in missing if (cache / f'{d}-{a}-{b}.error.json').exists())
@@ -379,7 +414,6 @@ if __name__ == '__main__':
     cache = args.cache or ROOT / (f'.cache/google-flights-{name}' if args.country != 'AU' else '.cache/google-flights')
     output = args.output or ROOT / f"data/reference/{name}_flights/{args.date}.json.gz"
     if args.scope == 'international':
-        name = 'indonesia' if args.country == 'ID' else 'australia'
         cache = args.cache or ROOT / f'.cache/google-flights-{name}-international'
         output = args.output or ROOT / f'data/reference/{name}_flights/{args.date}-international.json.gz'
     stopped = None

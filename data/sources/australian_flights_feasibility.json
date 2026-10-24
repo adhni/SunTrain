@@ -1,0 +1,151 @@
+{
+  "assessed_on": "2026-10-24",
+  "scope": "Australian domestic passenger flights; scheduled replay; free sources first; dated partial pilot acceptable",
+  "decision": "needs_timetable_source",
+  "flight_view_enabled": false,
+  "qualifying_timetable_sources": [],
+  "sources": [
+    {
+      "id": "ourairports",
+      "kind": "airport_geography",
+      "decision": "usable_supporting_data",
+      "source_url": "https://ourairports.com/data/",
+      "download_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+      "commit": "3b10d0b967cc04c62eb6411939e4e9936a88e701",
+      "sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+      "bytes": 12751569,
+      "license": "Public Domain",
+      "license_url": "https://ourairports.com/data/",
+      "coverage": {
+        "country": "AU",
+        "records": 2795,
+        "non_closed_scheduled_service_records": 157,
+        "scheduled_records_missing_iata": 0,
+        "scheduled_records_duplicate_iata": [],
+        "scheduled_records_invalid_coordinates": 0,
+        "checked_iata_codes": ["MEL", "AVV", "SYD", "BNE", "PER", "ADL", "CBR", "HBA", "DRW", "CNS", "OOL"]
+      },
+      "missing_for_timetable_replay": ["individual flights", "scheduled times", "airport timezones", "dated service calendars"],
+      "limitations": "Community scheduled_service flags do not prove current service or historical airport availability. The count uses iso_country=AU, scheduled_service=yes and type!=closed."
+    },
+    {
+      "id": "rex_queensland",
+      "kind": "published_timetable",
+      "decision": "permission_not_established",
+      "source_url": "https://rex.com.au/Schedules/default.aspx",
+      "download_url": "https://rex.com.au/Products_Promo/Freight/_lib/pdf/QLD_schedule_to15Nov.pdf?d=300926",
+      "sha256": "c857fd465e93d81f7b3464c7afab9218f16ac583ad95b8a6741ddfa2db52b51b",
+      "bytes": 3030753,
+      "terms_url": "https://rex.com.au/site_terms.aspx",
+      "terms_sha256": "d62e29e60eb2b4a80a1f7c31e05984dc6dc2f7c03ea2d4a7638d52942a01e278",
+      "coverage": "Rex Queensland regulated routes, including multi-stop flights; not nationwide",
+      "valid_from": null,
+      "valid_to": "2026-11-15",
+      "fields_observed": ["flight number", "leg airport codes", "weekdays", "scheduled departure clock", "scheduled arrival clock"],
+      "missing_for_timetable_replay": ["confirmed public reuse rights", "explicit effective start date"],
+      "limitations": "Proprietary Rights and Copyright sections restrict reuse without permission. The PDF also contains Burketown replacement bus information, which must not become aircraft legs. No dated week was prepared."
+    },
+    {
+      "id": "flypelican",
+      "kind": "published_timetable",
+      "decision": "permission_not_established",
+      "source_url": "https://www.flypelican.com.au/timetable",
+      "terms_url": "https://www.flypelican.com.au/policy/1",
+      "coverage": "Regional network; not nationwide",
+      "valid_from": null,
+      "valid_to": null,
+      "access": "Rendered page readable via web retrieval; direct Python HTTP requests to timetable and policies returned 403",
+      "fields_observed": ["flight number", "endpoint names", "departure clock", "arrival clock", "weekday labels"],
+      "missing_for_timetable_replay": ["confirmed public reuse rights", "effective dates", "validated active-weekday styling", "reproducible source export"],
+      "limitations": "Terms sections 3 and 7 reserve reuse rights. Seven visible weekday labels are not proof that every flight operates daily."
+    },
+    {
+      "id": "jetstar_nw12",
+      "kind": "published_timetable",
+      "decision": "permission_not_established",
+      "source_url": "https://www.jetstar.com/_/media/Jetstar%20Australia/Files/PDF/Flight%20Schedules/NW12_Timetable_Domestic.pdf",
+      "sha256": "03bf458def29b6298311e3d6ced21c7bf585bb6167c611b6e2c13f459b63c4b1",
+      "bytes": 138231,
+      "terms_url": "https://www.jetstar.com/au/en/terms-of-use",
+      "coverage": "Jetstar domestic network in its NW12 edition; not all airlines",
+      "published_as_at": "2012-10-09",
+      "valid_from": "2012-10-28",
+      "valid_to": "2013-03-30",
+      "fields_observed": ["flight number", "effective and discontinue dates", "weekday restrictions", "airport codes", "equipment", "departure clock", "arrival clock"],
+      "missing_for_timetable_replay": ["confirmed public reuse rights", "validated endpoint timezones and overnight-date handling"],
+      "limitations": "Website terms section 3 restrict publication without consent, subject to statutory exceptions. A search indexing date is not the schedule date. The PDF was inspected, not converted into a validated flight dataset."
+    },
+    {
+      "id": "qantas",
+      "kind": "interactive_timetable",
+      "decision": "permission_not_established",
+      "source_url": "https://www.qantas.com/en-au/where-we-fly/timetables",
+      "terms_url": "https://www.qantas.com/en-au/help/policies/website-terms-of-use",
+      "coverage": "Official page advertises Qantas, QantasLink, Jetstar and codeshare timetable information; no bulk coverage validated",
+      "missing_for_timetable_replay": ["confirmed public reuse rights", "reproducible bulk timetable snapshot", "validated source date range"],
+      "limitations": "Terms section 2 restricts copying, storage and publication without consent, subject to statutory exceptions. No qualifying archive was obtained."
+    },
+    {
+      "id": "bitre_domestic_citypairs",
+      "kind": "monthly_statistics",
+      "decision": "usable_supporting_data",
+      "source_url": "https://data.gov.au/data/dataset/c5029f2a-39b3-4aef-8ae1-73e7962f6170",
+      "catalogue_api_url": "https://data.gov.au/data/api/3/action/package_show?id=domestic-airlines-top-routes-and-totals",
+      "download_url": "https://data.gov.au/data/dataset/c5029f2a-39b3-4aef-8ae1-73e7962f6170/resource/677d307f-6a1f-4de4-9b85-5e1aa7074423/download/dom_citypairs_web.csv",
+      "sha256": "ff7b0da45aeb8e0846cbef64bfbb3b8310e8801c277e637d9eca5a06fa9fd515",
+      "bytes": 2190642,
+      "license": "Creative Commons Attribution 3.0 Australia",
+      "license_url": "https://creativecommons.org/licenses/by/3.0/au/",
+      "row_count": 29676,
+      "columns": ["City1", "City2", "Month", "Passenger_Trips", "Aircraft_Trips", "Passenger_Load_Factor", "Distance_GC_(km)", "RPKs", "ASKs", "Seats", "Year", "Month_num"],
+      "missing_for_timetable_replay": ["individual flight numbers", "airlines", "scheduled departure and arrival times", "dated flight calendars"],
+      "limitations": "City-pair/month aggregates cannot reconstruct individual flights or always identify a specific airport."
+    },
+    {
+      "id": "international_timetable_summary",
+      "kind": "approved_route_frequencies",
+      "decision": "outside_scope_and_insufficient_fields",
+      "source_url": "https://www.infrastructure.gov.au/infrastructure-transport-vehicles/aviation/international-aviation/air-services-agreements-arrangements/international-airlines-timetable-summary",
+      "coverage": "International services and codeshares under bilateral arrangements",
+      "missing_for_timetable_replay": ["domestic services", "individual departure and arrival clocks"],
+      "limitations": "Approved route/weekly-frequency information, not an individual-flight timetable."
+    },
+    {
+      "id": "airservices_summary",
+      "kind": "recorded_airport_movements",
+      "decision": "subscription_and_different_time_semantics",
+      "source_url": "https://data.airservicesaustralia.com/node/586",
+      "coverage": "Customer-selected airport and date range; actual dataset not obtained",
+      "missing_for_timetable_replay": ["free source access", "confirmed public redistribution rights", "scheduled departure and arrival times"],
+      "limitations": "Ad-hoc CSV delivery requires subscription. Documented clocks are actual takeoff/landing times, not scheduled block times. No price verified."
+    },
+    {
+      "id": "opensky",
+      "kind": "observed_tracking",
+      "decision": "different_experience_and_agreement_required",
+      "source_url": "https://opensky-network.org/about/faq",
+      "terms_url": "https://opensky-network.org/about/terms-of-use",
+      "missing_for_timetable_replay": ["commercial schedules", "operational API agreement"],
+      "limitations": "OpenSky documents that it does not supply commercial timetables. Current terms require a written agreement for operational REST API use, including nonprofit use."
+    },
+    {
+      "id": "adsblol_history",
+      "kind": "observed_tracking_archive",
+      "decision": "alternative_experience_unvalidated",
+      "source_url": "https://www.adsb.lol/docs/open-data/historical",
+      "license": "ODbL 1.0",
+      "missing_for_timetable_replay": ["scheduled departure and arrival times", "complete airport flight lists"],
+      "limitations": "Potential recorded-flight replay with attribution/share-alike requirements. Australian coverage, inferred airports and endpoint timing have not been validated. No archive was converted or substituted for the requested timetable pilot."
+    },
+    {
+      "id": "aviationstack",
+      "kind": "flight_data_api",
+      "decision": "paid_candidate_unvalidated",
+      "source_url": "https://aviationstack.com/pricing",
+      "free_tier_requests_per_month": 100,
+      "free_tier_use": "Personal/noncommercial",
+      "missing_for_free_timetable_replay": ["free schedule endpoint entitlement", "verified Australian coverage", "verified snapshot retention and redistribution rights"],
+      "limitations": "Schedules and historical flights are listed on paid plans. No key, subscription or data sample was obtained; advertised features do not establish coverage or redistribution rights."
+    }
+  ]
+}

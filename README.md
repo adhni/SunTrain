@@ -209,6 +209,10 @@ Select **Regional / commuter rail** under Transport to add LIRR, Metro-North, NJ
 
 Rebuild with `./.venv/bin/python scripts/prepare_american_replay.py`. See [US railway expansion notes](US_RAIL_EXPANSION_NOTES.md) for pinned downloads, time-zone handling, geometry gaps, source rights and Alaska follow-up.
 
+## Australian flights: feasibility assessment
+
+An airport-based domestic flight replay was assessed on **24 October 2026**. Open airport geography and monthly route statistics are available, but **no timetable source assessed has confirmed rights for public display and downloadable snapshots**. Flights remain unavailable while a suitable source is sought. See the [source assessment](AUSTRALIAN_FLIGHTS_FEASIBILITY.md) for verified downloads, coverage, reuse terms and the conditions for a dated pilot.
+
 ## Additional Australian cities
 
 Choose the city in **Location**. These railway additions reuse route/operator/direction/station filters, scheduled movement, route colours, local clocks, fullscreen, themes and all playback speeds.

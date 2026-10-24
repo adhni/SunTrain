@@ -56,15 +56,20 @@ def build_replay_panel(metadata, default_date):
                   {"label": "Trams", "value": "tram"}, {"label": "Buses", "value": "bus"}], value=["train"], multi=True, placeholder="All modes"), id="replay-transport-field"),
             field("Flights", dcc.Dropdown(id="replay-flight-scope", options=[{"label": label, "value": value} for label, value in [("Domestic", "domestic"), ("International", "international"), ("Both", "both")]], value="domestic", clearable=False, searchable=False), id="replay-flight-scope-field", style={"display": "none"}),
             field("Route / line", dcc.Dropdown(id="replay-lines", options=metadata["lines"], value=[], multi=True, placeholder="All routes / lines")),
+            html.Div(id="replay-flight-controls", className="replay-flight-controls", style={"display": "none"}, children=[
+                field("Airline / code", dcc.Dropdown(id="replay-carriers", options=[], value=[], multi=True, placeholder="All airlines")),
+                field("Airport / code", dcc.Dropdown(id="replay-airports", options=[], value=[], multi=True, placeholder="All airports")),
+                field("Flight map", dcc.Dropdown(id="replay-flight-view", options=[{"label": "Moving planes", "value": "planes"}, {"label": "Flight frequency", "value": "frequency"}], value="planes", clearable=False, searchable=False)),
+            ]),
             html.Details(id="replay-more-filters", className="replay-more-filters", children=[
                 html.Summary("More filters", id="replay-more-filters-label"),
                 html.Div(className="replay-advanced-filters", children=[
                     field("Operator / feed", dcc.Dropdown(id="replay-operators", options=[{"label": label, "value": value}
-                          for label, value in CITIES["melbourne"]["operators"]], value=[], multi=True, placeholder="All operators / feeds")),
+                          for label, value in CITIES["melbourne"]["operators"]], value=[], multi=True, placeholder="All operators / feeds"), id="replay-generic-operator-field"),
                     field("Direction", dcc.Dropdown(id="replay-directions", options=[{"label": "Train · toward city", "value": "U"},
                           {"label": "Train · away from city", "value": "D"}, {"label": "Tram/bus · direction A", "value": "A"},
                           {"label": "Tram/bus · direction B", "value": "B"}], value=[], multi=True, placeholder="All directions")),
-                    field("Services calling at", dcc.Dropdown(id="replay-stations", options=[], value=[], multi=True, placeholder="Any stop or station")),
+                    field("Services calling at", dcc.Dropdown(id="replay-stations", options=[], value=[], multi=True, placeholder="Any stop or station"), id="replay-generic-station-field"),
                     field("Service number / trip", dcc.Input(id="replay-number", type="search", placeholder="e.g. 6200", value="", debounce=0.3,
                           className="replay-search")),
                 ]),
@@ -76,7 +81,7 @@ def build_replay_panel(metadata, default_date):
             html.Div(className="replay-map-card", children=[
                 html.Div(className="replay-map-wrap", children=[
                     html.Div(className="replay-map-toolbar", children=[
-                        html.Div([html.Strong("—", id="replay-active-count"), html.Span(" active services"),
+                        html.Div([html.Strong("—", id="replay-active-count"), html.Span(" active services", id="replay-active-label"),
                                   html.Span("", id="replay-matching-count", className="replay-muted"),
                                   html.Span("", id="replay-position-note", className="replay-approximate")], className="replay-map-counts"),
                         html.Div(className="replay-map-actions", children=[
@@ -94,6 +99,7 @@ def build_replay_panel(metadata, default_date):
                             language_picker("replay-language-select"),
                         ]),
                     ]),
+                    html.P("Thicker lines mean more captured flights that day (both directions). Click a line to explore.", id="replay-frequency-help", className="replay-frequency-help", hidden=True),
                     html.Div(id="replay-map", className="replay-map", role="region", **{"aria-label": "Historical train, tram and bus replay and train passenger demand map"}),
                     html.Details(id="replay-demand-legend", className="replay-demand-legend", hidden=True, open=True,
                                **{"aria-label": "Passenger boarding scale"}, children=[
@@ -191,6 +197,8 @@ def register_replay_callbacks(app, metadata):
         Output("replay-display", "options"), Output("replay-display", "value"),
         Output("replay-transport-field", "style"), Output("replay-flight-scope-field", "style"),
         Output("replay-flight-scope", "value"),
+        Output("replay-flight-controls", "style"), Output("replay-carriers", "value"), Output("replay-airports", "value"), Output("replay-flight-view", "value"),
+        Output("replay-generic-operator-field", "style"), Output("replay-generic-station-field", "style"),
         Input("replay-city", "value"), State("replay-date", "data"))
     def configure_city(city, current_date):
         settings = city_settings(city)
@@ -210,7 +218,10 @@ def register_replay_callbacks(app, metadata):
                 ([{"label": message("Size trains by passengers"), "value": "load"}] if settings["passenger_data"] else []),
                 ["routes", "stations"],
                 {"display": "none"} if settings.get("flight_scopes") else {},
-                {} if settings.get("flight_scopes") else {"display": "none"}, "domestic")
+                {} if settings.get("flight_scopes") else {"display": "none"}, "domestic",
+                {} if settings.get("replay_kind") == "flights" else {"display": "none"}, [], [], "planes",
+                {"display": "none"} if settings.get("replay_kind") == "flights" else {},
+                {"display": "none"} if settings.get("replay_kind") == "flights" else {})
 
     app.clientside_callback(
         """function(operators, directions, stations, number) {
@@ -259,5 +270,6 @@ def register_replay_callbacks(app, metadata):
         Input("replay-speed", "value"), Input("replay-play", "n_clicks"), Input("replay-restart", "n_clicks"),
         Input("replay-back", "n_clicks"), Input("replay-forward", "n_clicks"), Input("replay-fit", "n_clicks"),
         Input("replay-city", "value"), Input("replay-flight-scope", "value"),
+        Input("replay-carriers", "value"), Input("replay-airports", "value"), Input("replay-flight-view", "value"),
     )
     return load_replay_day

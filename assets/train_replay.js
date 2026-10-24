@@ -118,7 +118,9 @@
     }
     function matches(service, filters, day) {
         const inScope = (values, value) => !values.length || values.includes(value);
-        return (service.mode !== 'flight' || !filters.flightScope || filters.flightScope === 'both' ||
+        return (service.mode !== 'flight' || ((!filters.carriers?.length || filters.carriers.includes(service.carrier)) &&
+            (!filters.airports?.length || service.stops.some(stop => filters.airports.includes(day.stations[stop[0]].code))))) &&
+            (service.mode !== 'flight' || !filters.flightScope || filters.flightScope === 'both' ||
             (service.flight_scope || 'domestic') === filters.flightScope) && inScope(filters.modes || [], service.mode || "train") && inScope(filters.operators, service.operator) && inScope(filters.lines, service.line) &&
             inScope(filters.directions, service.direction) &&
             (!filters.number || service.number.toLowerCase().includes(filters.number.toLowerCase().trim())) &&
@@ -294,13 +296,16 @@
                 this.graph.on("zoom", () => this.paint(true));
                 // Train playback must not wait for external background tiles.
                 this.graph.once("style.load", () => {
-                    for (const id of ["routes", "stations", "selected-route", "trains", "selected-train", "demand"]) {
+                    for (const id of ["routes", "stations", "selected-route", "trains", "selected-train", "demand", "frequency"]) {
                         this.graph.addSource(`replay-${id}`, {type: "geojson", data: collection([])});
                     }
                     this.graph.addLayer({id: "replay-routes", type: "line", source: "replay-routes",
                         paint: {"line-color": "#78908a",
                             "line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.8, 12, 1.2, 15, 1.6],
                             "line-opacity": ["interpolate", ["linear"], ["zoom"], 6, 0.28, 12, 0.4, 15, 0.5]}});
+                    this.graph.addLayer({id: 'replay-frequency', type: 'line', source: 'replay-frequency',
+                        layout: {visibility: 'none', 'line-cap': 'round'},
+                        paint: {'line-color': '#51b9b0', 'line-width': ['get', 'width'], 'line-opacity': 0.65}});
                     this.graph.addLayer({id: "replay-demand-glow", type: "heatmap", source: "replay-demand", layout: {visibility: "none"},
                         paint: {"heatmap-weight": ["interpolate", ["linear"], ["get", "boardings"], 0, 0, 1000, 1],
                             "heatmap-radius": ["interpolate", ["linear"], ["zoom"], 6, 22, 10, 38, 14, 60],
@@ -354,6 +359,16 @@
                         filter: ['==', ['get', 'mode'], 'flight'], layout: {
                             'icon-image': ['concat', 'airport-', ['get', 'code']],
                             'icon-offset': [0, 6], 'icon-anchor': 'top', 'icon-allow-overlap': false}});
+                    this.graph.on('mouseenter', 'replay-frequency', () => { this.graph.getCanvas().style.cursor = 'pointer'; });
+                    this.graph.on('mouseleave', 'replay-frequency', () => { this.graph.getCanvas().style.cursor = ''; this.popup?.remove(); });
+                    this.graph.on('mousemove', 'replay-frequency', event => {
+                        if (!event.features?.length) return;
+                        const f = event.features[0].properties, content = node('div', undefined, 'replay-map-tooltip');
+                        content.append(node('strong', f.label), node('div', `${f.count} captured departures`),
+                            node('div', `${this.day.stations[f.a].code} → ${this.day.stations[f.b].code}: ${f.forward}`),
+                            node('div', `${this.day.stations[f.b].code} → ${this.day.stations[f.a].code}: ${f.reverse}`), node('small', f.carriers));
+                        this.popup.setLngLat(event.lngLat).setDOMContent(content).addTo(this.graph);
+                    });
                     this.popup = new root.maplibregl.Popup({closeButton: false, closeOnClick: false, offset: 10});
                     this.graph.on("click", e => {
                         const label = this.graph.queryRenderedFeatures(e.point, {layers: ['replay-airport-labels']})[0];
@@ -361,7 +376,11 @@
                         const vehicles = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-planes"]});
                         if (vehicles.length) { this.select(vehicles[0].properties.id); return; }
                         const station = this.stationNear(e.point);
-                        if (!station) return;
+                        if (!station) {
+                            const connection = this.graph.queryRenderedFeatures(e.point, {layers: ['replay-frequency']})[0];
+                            if (connection) this.focusFlightConnection(Number(connection.properties.a), Number(connection.properties.b));
+                            return;
+                        }
                         if (this.mapMode === "trains") this.departures.open(Number(station.properties.id));
                         else { this.demandPinned = true; this.showDemandPopup(Number(station.properties.id)); }
                     });
@@ -600,7 +619,7 @@
             this.filtered = []; this.filterSignature = null; this.activeIndex = null; this.activePositions = [];
             this.demandIndex = null; this.demandSnapshot = null; this.qualityBySchedule.clear();
             this.popup?.remove(); this.demandPopupId = null;
-            if (this.mapReady) for (const id of ["replay-trains", "replay-selected-train", "replay-routes", "replay-stations", "replay-selected-route", "replay-demand"])
+            if (this.mapReady) for (const id of ["replay-trains", "replay-selected-train", "replay-routes", "replay-stations", "replay-selected-route", "replay-demand", "replay-frequency"])
                 this.graph.getSource(id)?.setData(collection([]));
             this.day = hydrate(day);
             if (root.suntrainI18n) {
@@ -621,6 +640,11 @@
             const options = [...new Set(day.stations.map(s => s.name))].sort();
             root.dash_clientside.set_props("replay-stations", {options});
             if (flights) root.dash_clientside.set_props('replay-operators', {options: [...new Set(day.services.map(s => s.operator))].sort()});
+            if (flights) {
+                const carriers = new Map(day.services.map(s => [s.carrier, s.operator]));
+                root.dash_clientside.set_props('replay-carriers', {options: [...carriers].sort((a,b) => a[0].localeCompare(b[0])).map(([value,name]) => ({value, label: `${value} · ${name}`}))});
+                root.dash_clientside.set_props('replay-airports', {options: day.stations.map(a => ({value: a.code, label: `${a.code} · ${a.name}`})).sort((a,b) => a.value.localeCompare(b.value))});
+            }
             const attribution = $("replay-attribution");
             attribution.replaceChildren();
             if (day.schedule) {
@@ -704,6 +728,7 @@
             const dark = root.suntrainTheme.isDark;
             if (this.mapReady) {
                 root.suntrainTheme.styleMap(this.graph);
+                this.graph.setPaintProperty("replay-frequency", "line-color", dark ? "#8ae1ca" : "#087d73");
                 this.graph.setPaintProperty("replay-selected-route", "line-color", this.selected ? vehicleColor(this.selected, this.day?.city) : dark ? "#8ae1ca" : "#115d51");
                 this.graph.setPaintProperty("replay-demand-stations", "circle-stroke-color", dark ? "#e4eef0" : "#fff");
                 for (const layer of ["replay-stations", "replay-local-stops"]) {
@@ -748,6 +773,7 @@
             const sizeHelp = $("replay-size-help");
             if (sizeHelp) sizeHelp.hidden = !display.includes("load");
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
+            this.frequencyFeatures = this.day.replay_kind === 'flights' ? root.suntrainFlightNetwork.frequencyNetwork(this.filtered, this.day) : [];
             this.departures?.refresh();
             this.updateActivity();
             const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));
@@ -787,6 +813,13 @@
             const qualityHost=$("replay-quality");qualityHost.replaceChildren();
             for(const text of pieces)qualityHost.append(node("span",text),document.createTextNode(" "));
             setText("replay-matching-count", ` · ${this.filtered.length.toLocaleString(root.suntrainI18n?.locale || "en-AU")} services in this day`);
+        }
+        focusFlightConnection(a, b) {
+            const lines = [...new Set(this.day.services.filter(s => s.mode === 'flight' &&
+                ((s.stops[0][0] === a && s.stops[1][0] === b) || (s.stops[0][0] === b && s.stops[1][0] === a))).map(s => s.line))];
+            root.dash_clientside.set_props('replay-lines', {value: lines});
+            this.departures.event = 'departure'; this.departures.services = null;
+            this.departures.open(a, true);
         }
         fit() {
             const ids = new Set();
@@ -977,7 +1010,7 @@
                 if (this.mapMode === "demand" && service.mode !== "train") continue;
                 for (const id of stopIds(service)) stationIds.add(id);
                 if (this.display.includes("routes") && (this.day.replay_kind !== 'flights' ||
-                    this.filters.stations.length || this.filters.lines.length ||
+                    this.filters.stations.length || this.filters.airports?.length || this.filters.lines.length ||
                     ((this.departures?.visible || this.departures?.previewCall) && this.departures.station != null && [...stopIds(service)].includes(this.departures.station))))
                     for (const id of service.legs) ids.add(id);
             }
@@ -986,6 +1019,7 @@
             const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})).filter(s => Number.isFinite(s.lon) && Number.isFinite(s.lat)) : [];
             for (const station of stations) if (station.code && !this.graph.hasImage('airport-' + station.code))
                 this.graph.addImage('airport-' + station.code, root.suntrainFlights.airportImage(station.code), {pixelRatio: 2});
+            this.graph.getSource('replay-frequency').setData(collection(this.frequencyFeatures || []));
             this.graph.getSource("replay-routes").setData(collection(routes));
             this.graph.getSource("replay-stations").setData(collection(stations.map(s => pointFeature([s.lon, s.lat], {name: s.name, id: s.id, mode: s.mode || "train", code: s.code || ""}))));
             this.graph.getSource("replay-selected-route").setData(collection(selected));
@@ -1110,7 +1144,7 @@
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     setText("replay-clock-date", this.day.timezone === "Asia/Jakarta" ? dateFormat.format(new Date(this.now * 1000)).replace(/GMT\+7/, "WIB") : dateFormat.format(new Date(this.now * 1000)));
-                    setText("replay-active-count", activeCount.toLocaleString(root.suntrainI18n?.locale || "en-AU"));
+                    setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");
                     if (slider) {
@@ -1130,7 +1164,7 @@
                 if (this.paintAgain) { this.paintAgain = false; requestAnimationFrame(() => this.paint(true)); }
             }
         }
-        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne", flightScope = "domestic") {
+        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne", flightScope = "domestic", carriers = [], airports = [], flightView = "planes") {
             if (!this.departures) this.departures = new root.suntrainDepartures.Board(this, core);
             this.lastTrigger = trigger;
             this.active = tab === "replay";
@@ -1154,7 +1188,7 @@
             $("replay-map")?.classList.remove("replay-is-loading");
             const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);
-            const filters = {flightScope: flightScope || "domestic", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
+            const filters = {carriers: carriers || [], airports: airports || [], flightScope: flightScope || "domestic", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             if (tab === "overview") {
                 const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));
                 root.dash_clientside.set_props("replay-lines", {options: [...new Set(routes.map(s => s.line))].sort()});
@@ -1165,21 +1199,34 @@
             if (!this.active || this.day.city !== city || this.day.business_date !== day.business_date) return;
             this.speed = Number(speed) || 60;
             this.setMapMode(this.day.passenger_data === false ? "trains" : mode, demandWindow);
+            const frequency = this.day.replay_kind === 'flights' && flightView === 'frequency';
+            if (frequency && !this.frequencyView) { this.pause(); this.setFollow(false); }
+            if (this.frequencyView !== frequency) this.staticDirty = true;
+            this.frequencyView = frequency;
+            if (this.day.replay_kind === 'flights') for (const id of ['replay-planes', 'replay-selected-plane']) this.graph.setLayoutProperty(id, 'visibility', frequency ? 'none' : 'visible');
+            this.graph.setLayoutProperty('replay-frequency', 'visibility', frequency ? 'visible' : 'none');
+            this.graph.setLayoutProperty('replay-routes', 'visibility', frequency ? 'none' : 'visible');
+            $('replay-frequency-help').hidden = !frequency;
+            $('replay-follow').hidden = frequency;
+            setText('replay-active-label', frequency ? ' connections' : ' active services');
+            const airportsChanged = JSON.stringify(this.filters?.airports || []) !== JSON.stringify(filters.airports);
             const scopeChanged = this.filters?.flightScope !== filters.flightScope;
             const filterSignature = JSON.stringify([filters, display]);
             if (newDay || this.filterSignature !== filterSignature) {
                 this.filterSignature = filterSignature; this.applyFilters(filters, display || []);
             }
-            root.dash_clientside.set_props("replay-play", {disabled: !this.filtered.length});
+            $("replay-legend").hidden = frequency || !this.filtered.length || this.mapMode === "demand";
+            if (frequency) setText('replay-matching-count', ` · ${this.frequencyFeatures.reduce((sum,f) => sum + f.properties.count, 0)} captured departures`);
+            root.dash_clientside.set_props("replay-play", {disabled: !this.filtered.length || frequency});
             if (!this.filtered.length) this.pause();
             // A queued button event must not restart a newly selected date.
             if (!newDay) {
-                if (trigger === "replay-play") { if (this.playing) this.pause(); else this.play(); }
+                if (trigger === "replay-play" && !frequency) { if (this.playing) this.pause(); else this.play(); }
                 if (trigger === "replay-restart") this.seek(day.start);
                 if (trigger === "replay-back") this.seek(this.now - 60);
                 if (trigger === "replay-forward") this.seek(this.now + 60);
             }
-            if (trigger === "replay-fit" || (this.day.flight_scopes &&
+            if (trigger === "replay-fit" || airportsChanged || (this.day.flight_scopes &&
                 ((scopeChanged && !newDay) || (newDay && filters.flightScope !== "domestic")))) this.fit();
             this.paint(true);
             this.graph.resize();
@@ -1190,11 +1237,11 @@
     // Exposed diagnostics support browser verification without transmitting frames.
     root.suntrainReplay = replay;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainReplay: {
-        sync: async function (info, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city, flightScope) {
+        sync: async function (info, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city, flightScope, carriers, airports, flightView) {
             const context = root.dash_clientside.callback_context;
             const trigger = context.triggered_id || context.triggered?.[0]?.prop_id?.split(".")[0];
             const generation = ++replay.requestGeneration;
-            const run = day => replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city, flightScope);
+            const run = day => replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city, flightScope, carriers, airports, flightView);
             const valid = info && !info.error && info.business_date === date && info.city === city;
             try {
                 if (!["replay", "overview"].includes(tab) || !valid) {

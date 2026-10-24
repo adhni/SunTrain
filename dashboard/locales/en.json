@@ -742,5 +742,21 @@
   "International": "International",
   "Airport times are local. The replay clock uses WIB.": "Airport times are local. The replay clock uses WIB.",
   "Indonesian domestic and international flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.": "Indonesian domestic and international flights · 2–8 November 2026 schedule snapshot. Separate airports, airport-local departures and arrivals. Paths are illustrative; coverage is partial.",
-  "Indonesian domestic and international flight schedules for 2–8 November 2026.": "Indonesian domestic and international flight schedules for 2–8 November 2026."
+  "Indonesian domestic and international flight schedules for 2–8 November 2026.": "Indonesian domestic and international flight schedules for 2–8 November 2026.",
+  "Airline / code": "Airline / code",
+  "Airport / code": "Airport / code",
+  "All airlines": "All airlines",
+  "All airports": "All airports",
+  "Flight map": "Flight map",
+  "Moving planes": "Moving planes",
+  "Flight frequency": "Flight frequency",
+  "Destinations": "Destinations",
+  "Captured departures in the full selected replay day. Click a destination to see its flights.": "Captured departures in the full selected replay day. Click a destination to see its flights.",
+  "No captured destinations match this airport and these filters.": "No captured destinations match this airport and these filters.",
+  "{n} captured departures": "{n} captured departures",
+  " · {n} captured departures": " · {n} captured departures",
+  " connections": " connections",
+  "{page} / {pages} · {n} destinations": "{page} / {pages} · {n} destinations",
+  "Full selected replay day · departures": "Full selected replay day · departures",
+  "Thicker lines mean more captured flights that day (both directions). Click a line to explore.": "Thicker lines mean more captured flights that day (both directions). Click a line to explore."
 }

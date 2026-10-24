@@ -1,7 +1,8 @@
-"""Pinned domestic flight schedules adapted to the existing replay payload."""
+"""Pinned flight schedules adapted to the existing replay payload."""
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
+import hashlib
 import gzip
 import json
 import os
@@ -14,26 +15,110 @@ DEFAULT = DIRECTORY / '2026-11-02.json.gz'
 AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'JQ': ('Jetstar', '#f57c28'), 'ZL': ('Rex', '#439edd'),
             'FC': ('Link Airways', '#50b6a1'), 'QQ': ('Alliance Airlines', '#eab54d'),
-            'FP': ('FlyPelican', '#a1c75b')}
+            'FP': ('FlyPelican', '#a1c75b'),
+            'GA': ('Garuda Indonesia', '#439edd'), 'QG': ('Citilink', '#63b547'),
+            'JT': ('Lion Air', '#e53935'), 'ID': ('Batik Air', '#aa76db'),
+            'IW': ('Wings Air', '#f57c28'), 'IU': ('Super Air Jet', '#bb965f'),
+            'QZ': ('Indonesia AirAsia', '#ef647b'), 'SJ': ('Sriwijaya Air', '#eab54d'),
+            'IN': ('NAM Air', '#50b6a1'), 'IL': ('Trigana Air', '#d88bd6'),
+            '8B': ('TransNusa', '#5ba4c6'), 'IP': ('Pelita Air', '#9ca8e7'),
+            'OD': ('Batik Air (OD)', '#c58cb6')}
 
 
-def reference_path(business_date=None):
+def airline_style(carrier, name):
+    palette = ('#62b4b4', '#d58b68', '#9ba9da', '#d3b85f', '#ba8fc4')
+    index = int(hashlib.sha256(carrier.encode()).hexdigest()[:8], 16) % len(palette)
+    return AIRLINES.get(carrier, (name or carrier, palette[index]))
+
+
+def reference_path(business_date=None, city='australia_flights'):
+    if city == 'indonesia_flights':
+        return Path(os.getenv('SUNTRAIN_INDONESIA_FLIGHTS_REFERENCE', str(DIRECTORY.parent / 'indonesia_flights/2026-11-02.json.gz')))
+    if city != 'australia_flights':
+        raise ValueError(f'Unknown flight country: {city}')
     default = DIRECTORY / '2013-03-04.json.gz' if business_date and business_date.startswith('2013-03-') else DEFAULT
     return Path(os.getenv('SUNTRAIN_AUSTRALIA_FLIGHTS_REFERENCE', str(default)))
 
 
-def replay_day(business_date):
+def reference_paths(business_date=None, city='australia_flights'):
+    paths = [reference_path(business_date, city)]
+    if city == 'indonesia_flights':
+        override = os.getenv('SUNTRAIN_INDONESIA_INTERNATIONAL_REFERENCE')
+        # A custom domestic fixture is isolated unless international data is explicit.
+        if override or not os.getenv('SUNTRAIN_INDONESIA_FLIGHTS_REFERENCE'):
+            international = Path(override or DIRECTORY.parent / 'indonesia_flights/2026-11-02-international.json.gz')
+            if override or international.exists():
+                paths.append(international)
+    return paths
+
+
+def load_reference(business_date, city):
+    references = []
+    for path in reference_paths(business_date, city):
+        with gzip.open(path, 'rt') as stream:
+            references.append(json.load(stream))
+    country = 'ID' if city == 'indonesia_flights' else 'AU'
+    airports, flights = {}, {}
+    for reference in references:
+        catalogue = {a['code']: {**a, 'country': a.get('country', country)} for a in reference['airports']}
+        for code, airport in catalogue.items():
+            if code in airports and airports[code] != airport:
+                raise ValueError(f'Conflicting airport identity: {code}')
+            airports[code] = airport
+        for flight in reference['flights']:
+            a, b = catalogue[flight['origin']], catalogue[flight['destination']]
+            scope = 'domestic' if a['country'] == b['country'] == country else 'international'
+            if scope == 'international' and (a['country'] == country) == (b['country'] == country):
+                raise ValueError('Flight has no national endpoint')
+            if reference['metadata'].get('scope') == 'international' and scope != 'international':
+                raise ValueError('International reference contains a domestic flight')
+            record = {**flight, 'flight_scope': scope}
+            if flight['id'] in flights and flights[flight['id']] != record:
+                raise ValueError('Conflicting flight identity')
+            flights[flight['id']] = record
+    metadata = dict(references[0]['metadata'])
+    if city == 'indonesia_flights':
+        coverages = {r['metadata'].get('scope', 'domestic'): r['metadata'].get('coverage', {}) for r in references}
+        if len(references) > 1:
+            combined = {key: sum(c.get(key, 0) for c in coverages.values()) for key in (
+                'routes_planned', 'routes_searched', 'routes_with_search_results', 'routes_returned',
+                'queries_planned', 'queries_captured', 'queries_not_returned', 'queries_rejected',
+                'rejected_records', 'failed_or_missing_queries', 'failed_queries', 'unattempted_queries')}
+            queries = [q for r in references for q in r['metadata'].get('queries', [])]
+            missing = [q for r in references for q in r['metadata'].get('uncollected_queries', [])]
+            failed = [q for r in references for q in r['metadata'].get('failed_queries', [])]
+            searched = {q[k] for q in queries + failed for k in ('origin', 'destination')}
+            planned = searched | {code for _, a, b in missing for code in (a, b)}
+            combined.update(airports_returned=len(airports), airports_searched=len(searched),
+                airports_planned=len(planned), candidate_airports=coverages.get('domestic', {}).get('candidate_airports', 0)
+                + coverages.get('international', {}).get('candidate_foreign_airports', 0))
+            coverages['both'] = combined
+            metadata['replay_note'] = 'Indonesian domestic and international flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+            metadata['queries'] = queries
+            metadata['uncollected_queries'] = missing
+            metadata['failed_queries'] = failed
+            metadata['unresolved_airports'] = [a for r in references for a in r['metadata'].get('unresolved_airports', [])]
+            metadata['airlines'] = sorted({f.get('airline', f.get('carrier', 'Unknown')) for f in flights.values()})
+            metadata['source_dates_by_scope'] = {r['metadata'].get('scope', 'domestic'): r['metadata'].get('source_date') for r in references}
+            metadata['source_date'] = max((value for value in metadata['source_dates_by_scope'].values() if value), default=None)
+            metadata['coverage'] = combined
+        coverages.setdefault('both', coverages.get('domestic', {}))
+        metadata['coverage_by_scope'] = coverages
+    return dict(airports=list(airports.values()), flights=list(flights.values()), metadata=metadata)
+
+
+def replay_day(business_date, city='australia_flights'):
     from dashboard.replay import cumulative_distances
-    with gzip.open(reference_path(business_date), 'rt') as stream:
-        reference = json.load(stream)
+    reference = load_reference(business_date, city)
     day = date.fromisoformat(business_date)
-    zone = ZoneInfo('Australia/Melbourne')
+    zone = ZoneInfo(replay_settings(city)['timezone'])
     start = int(datetime.combine(day, time(), zone).timestamp())
     end = int(datetime.combine(day + timedelta(days=1), time(), zone).timestamp())
     airports = reference['airports']
     indices = {a['code']: i for i, a in enumerate(airports)}
     services, paths = [], {}
     for flight in reference['flights']:
+        # Retain arrivals exactly at midnight so the new day's arrival board owns them.
         if flight['departure'] >= end or flight['arrival'] < start:
             continue
         origin, destination = indices[flight['origin']], indices[flight['destination']]
@@ -43,15 +128,15 @@ def replay_day(business_date):
         if key not in paths:
             coordinates = great_circle([a['lon'], a['lat']], [b['lon'], b['lat']])
             paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
-        carrier = flight.get('carrier', 'JQ')
-        operator, color = AIRLINES.get(carrier, (flight.get('airline', carrier), '#62b4b4'))
+        carrier = flight.get('carrier') or ('JQ' if city == 'australia_flights' else 'Unknown')
+        operator, color = airline_style(carrier, flight.get('airline'))
         services.append(dict(id=flight['id'], number=flight['number'], mode='flight', operator=operator,
             line=route, route_id=key, direction='Scheduled service', origin=a['name'], destination=b['name'],
-            color=color, carrier=carrier, aircraft=flight.get('aircraft', 'Airbus A' + flight.get('equipment', '320')),
+            color=color, carrier=carrier, flight_scope=flight['flight_scope'], aircraft=flight.get('aircraft') or ('Airbus A' + flight['equipment'] if flight.get('equipment') else 'Aircraft not specified'),
             operating_airline=flight.get('airline', operator), source_page=flight.get('source_page'),
             stops=[[origin, flight['departure'], flight['departure']], [destination, flight['arrival'], flight['arrival']]],
             legs=[key], timing_uncertain=False))
-    return dict(**replay_settings('australia_flights'), business_date=business_date,
+    return dict(**replay_settings(city), business_date=business_date,
         start=start, end=end, initial=start + 10 * 3600, day_start_hour=0,
         services=services, stations=airports, paths=paths, geometry={},
         approximate_legs=0, total_legs=len(services), excluded_services=0,

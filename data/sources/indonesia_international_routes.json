@@ -1,0 +1,3088 @@
+{
+  "country": "ID",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-08",
+  "timezone": "Asia/Jakarta",
+  "max_duration": 86400,
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+  "route_source_sha256": "34f2109ee7926c3923fe9abf405bd46941a0d9be528508a5306bf1b29f31a017",
+  "historical_route_year": 2023,
+  "airports": [
+    {
+      "code": "ADL",
+      "icao": "YPAD",
+      "name": "Adelaide International Airport (ADL)",
+      "municipality": "Adelaide",
+      "country": "AU",
+      "timezone": "Australia/Adelaide",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -34.947512,
+      "lon": 138.533393
+    },
+    {
+      "code": "AKL",
+      "icao": "NZAA",
+      "name": "Auckland International Airport (AKL)",
+      "municipality": "Auckland",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -37.01199,
+      "lon": 174.786331
+    },
+    {
+      "code": "AMS",
+      "icao": "EHAM",
+      "name": "Amsterdam Airport Schiphol (AMS)",
+      "municipality": "Amsterdam",
+      "country": "NL",
+      "timezone": "Europe/Amsterdam",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 52.308601,
+      "lon": 4.76389
+    },
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "AVV",
+      "icao": "YMAV",
+      "name": "Melbourne Avalon International Airport (AVV)",
+      "municipality": "Geelong/Melbourne",
+      "country": "AU",
+      "timezone": "Australia/Melbourne",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -38.040269,
+      "lon": 144.467196
+    },
+    {
+      "code": "BKI",
+      "icao": "WBKK",
+      "name": "Kota Kinabalu International Airport (BKI)",
+      "municipality": "Kota Kinabalu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 5.932743,
+      "lon": 116.049324
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BNE",
+      "icao": "YBBN",
+      "name": "Brisbane International Airport (BNE)",
+      "municipality": "Brisbane",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125
+    },
+    {
+      "code": "BOM",
+      "icao": "VABB",
+      "name": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+      "municipality": "Mumbai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 19.088699,
+      "lon": 72.867897
+    },
+    {
+      "code": "BPN",
+      "icao": "WALL",
+      "name": "Sultan Aji Muhammad Sulaiman Sepinggan International Airport (BPN)",
+      "municipality": "Balikpapan",
+      "timezone": "Asia/Makassar",
+      "island_group": "Kalimantan",
+      "mode": "flight",
+      "lat": -1.268342,
+      "lon": 116.89452,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "BTH",
+      "icao": "WIDD",
+      "name": "Hang Nadim International Airport (BTH)",
+      "municipality": "Batam",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": 1.12103,
+      "lon": 104.119003,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "BTJ",
+      "icao": "WITT",
+      "name": "Sultan Iskandar Muda International Airport (BTJ)",
+      "municipality": "Banda Aceh",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": 5.525087,
+      "lon": 95.41997,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "BWN",
+      "icao": "WBSB",
+      "name": "Brunei International Airport (BWN)",
+      "municipality": "Bandar Seri Begawan",
+      "country": "BN",
+      "timezone": "Asia/Brunei",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 4.9442,
+      "lon": 114.928001
+    },
+    {
+      "code": "CAI",
+      "icao": "HECA",
+      "name": "Cairo International Airport (CAI)",
+      "municipality": "Cairo",
+      "country": "EG",
+      "timezone": "Africa/Cairo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.111534,
+      "lon": 31.396694
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "CMB",
+      "icao": "VCBI",
+      "name": "Bandaranaike International Colombo Airport (CMB)",
+      "municipality": "Colombo",
+      "country": "LK",
+      "timezone": "Asia/Colombo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 7.180759906768799,
+      "lon": 79.88410186767578
+    },
+    {
+      "code": "CNS",
+      "icao": "YBCS",
+      "name": "Cairns International Airport (CNS)",
+      "municipality": "Cairns",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -16.878921,
+      "lon": 145.74948
+    },
+    {
+      "code": "CTU",
+      "icao": "ZUUU",
+      "name": "Chengdu Shuangliu International Airport (CTU)",
+      "municipality": "Chengdu (Shuangliu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.558257,
+      "lon": 103.945966
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DIL",
+      "icao": "WPDL",
+      "name": "Presidente Nicolau Lobato International Airport (DIL)",
+      "municipality": "Dili",
+      "country": "TL",
+      "timezone": "Asia/Dili",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -8.546562,
+      "lon": 125.524507
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "timezone": "Asia/Makassar",
+      "island_group": "Bali & Nusa Tenggara",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "DRW",
+      "icao": "YPDN",
+      "name": "Darwin International Airport / RAAF Darwin (DRW)",
+      "municipality": "Darwin",
+      "country": "AU",
+      "timezone": "Australia/Darwin",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -12.41497,
+      "lon": 130.88185
+    },
+    {
+      "code": "DWC",
+      "icao": "OMDW",
+      "name": "Al Maktoum International Airport (DWC)",
+      "municipality": "Dubai(Jebel Ali)",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.896171,
+      "lon": 55.16235
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "FOC",
+      "icao": "ZSFZ",
+      "name": "Fuzhou Changle International Airport (FOC)",
+      "municipality": "Fuzhou (Changle)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.929254,
+      "lon": 119.672524
+    },
+    {
+      "code": "HAN",
+      "icao": "VVNB",
+      "name": "Noi Bai International Airport (HAN)",
+      "municipality": "Hanoi (Soc Son)",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 21.221201,
+      "lon": 105.806999
+    },
+    {
+      "code": "HGH",
+      "icao": "ZSHC",
+      "name": "Hangzhou Xiaoshan International Airport (HGH)",
+      "municipality": "Hangzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.23609,
+      "lon": 120.428865
+    },
+    {
+      "code": "HKG",
+      "icao": "VHHH",
+      "name": "Hong Kong International Airport (HKG)",
+      "municipality": "Hong Kong",
+      "country": "HK",
+      "timezone": "Asia/Hong_Kong",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.31184,
+      "lon": 113.914862
+    },
+    {
+      "code": "HLP",
+      "icao": "WIHH",
+      "name": "Halim Perdanakusuma International Airport (HLP)",
+      "municipality": "Jakarta",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -6.266989,
+      "lon": 106.890318,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "HND",
+      "icao": "RJTT",
+      "name": "Tokyo Haneda International Airport (HND)",
+      "municipality": "Tokyo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 35.549678,
+      "lon": 139.786958
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "IST",
+      "icao": "LTFM",
+      "name": "İstanbul Airport (IST)",
+      "municipality": "Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 41.274874,
+      "lon": 28.732136
+    },
+    {
+      "code": "JED",
+      "icao": "OEJN",
+      "name": "King Abdulaziz International Airport (JED)",
+      "municipality": "Jeddah",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 21.680241,
+      "lon": 39.157436
+    },
+    {
+      "code": "JHB",
+      "icao": "WMKJ",
+      "name": "Senai International Airport (JHB)",
+      "municipality": "Johor Bahru",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 1.64131,
+      "lon": 103.669998
+    },
+    {
+      "code": "KCH",
+      "icao": "WBGG",
+      "name": "Kuching International Airport (KCH)",
+      "municipality": "Kuching",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 1.487364,
+      "lon": 110.352859
+    },
+    {
+      "code": "KJT",
+      "icao": "WICA",
+      "name": "Kertajati International Airport (KJT)",
+      "municipality": "Kertajati",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -6.647384,
+      "lon": 108.165561,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "KMG",
+      "icao": "ZPPP",
+      "name": "Kunming Changshui International Airport (KMG)",
+      "municipality": "Kunming",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.110313,
+      "lon": 102.936743
+    },
+    {
+      "code": "KNO",
+      "icao": "WIMM",
+      "name": "Kualanamu International Airport (KNO)",
+      "municipality": "Beringin",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": 3.637847,
+      "lon": 98.870566,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "KWL",
+      "icao": "ZGKL",
+      "name": "Guilin Liangjiang International Airport (KWL)",
+      "municipality": "Guilin (Lingui)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.219828,
+      "lon": 110.039553
+    },
+    {
+      "code": "LOP",
+      "icao": "WADL",
+      "name": "Lombok International Airport (LOP)",
+      "municipality": "Mataram (Pujut, Lombok Tengah)",
+      "timezone": "Asia/Makassar",
+      "island_group": "Bali & Nusa Tenggara",
+      "mode": "flight",
+      "lat": -8.759962,
+      "lon": 116.278169,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "MAA",
+      "icao": "VOMM",
+      "name": "Chennai International Airport (MAA)",
+      "municipality": "Chennai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 12.990005,
+      "lon": 80.169296
+    },
+    {
+      "code": "MCT",
+      "icao": "OOMS",
+      "name": "Muscat International Airport (MCT)",
+      "municipality": "Muscat/Seeb",
+      "country": "OM",
+      "timezone": "Asia/Muscat",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 23.600218,
+      "lon": 58.285268
+    },
+    {
+      "code": "MDC",
+      "icao": "WAMM",
+      "name": "Sam Ratulangi International Airport (MDC)",
+      "municipality": "Manado",
+      "timezone": "Asia/Makassar",
+      "island_group": "Sulawesi",
+      "mode": "flight",
+      "lat": 1.548591,
+      "lon": 124.92625,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "MED",
+      "icao": "OEMA",
+      "name": "Prince Mohammad Bin Abdulaziz Airport (MED)",
+      "municipality": "Medina",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.5534,
+      "lon": 39.705101
+    },
+    {
+      "code": "MEL",
+      "icao": "YMML",
+      "name": "Melbourne Airport (MEL)",
+      "municipality": "Melbourne",
+      "country": "AU",
+      "timezone": "Australia/Melbourne",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -37.670732,
+      "lon": 144.837898
+    },
+    {
+      "code": "MFM",
+      "icao": "VMMC",
+      "name": "Macau International Airport (MFM)",
+      "municipality": "Nossa Senhora do Carmo",
+      "country": "MO",
+      "timezone": "Asia/Macau",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.149599,
+      "lon": 113.592003
+    },
+    {
+      "code": "MKZ",
+      "icao": "WMKM",
+      "name": "Malacca International Airport (MKZ)",
+      "municipality": "Malacca",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 2.265613,
+      "lon": 102.252778
+    },
+    {
+      "code": "MNL",
+      "icao": "RPLL",
+      "name": "Ninoy Aquino International Airport (MNL)",
+      "municipality": "Manila (Pasay)",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 14.5086,
+      "lon": 121.019997
+    },
+    {
+      "code": "NKG",
+      "icao": "ZSNJ",
+      "name": "Nanjing Lukou International Airport (NKG)",
+      "municipality": "Nanjing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 31.735032,
+      "lon": 118.865949
+    },
+    {
+      "code": "NNG",
+      "icao": "ZGNN",
+      "name": "Nanning Wuxu International Airport (NNG)",
+      "municipality": "Nanning (Jiangnan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.598071,
+      "lon": 108.181922
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "OOL",
+      "icao": "YBCG",
+      "name": "Gold Coast Airport (OOL)",
+      "municipality": "Gold Coast",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -28.165962,
+      "lon": 153.506641
+    },
+    {
+      "code": "PDG",
+      "icao": "WIPT",
+      "name": "Minangkabau International Airport (PDG)",
+      "municipality": "Padang (Katapiang)",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": -0.785964,
+      "lon": 100.280384,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PEN",
+      "icao": "WMKP",
+      "name": "Penang International Airport (PEN)",
+      "municipality": "Penang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 5.296303,
+      "lon": 100.276185
+    },
+    {
+      "code": "PER",
+      "icao": "YPPH",
+      "name": "Perth International Airport (PER)",
+      "municipality": "Perth",
+      "country": "AU",
+      "timezone": "Australia/Perth",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234
+    },
+    {
+      "code": "PKU",
+      "icao": "WIBB",
+      "name": "Sultan Syarif Kasim II International Airport / Roesmin Nurjadin AFB (PKU)",
+      "municipality": "Pekanbaru",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Sumatra",
+      "mode": "flight",
+      "lat": 0.458647,
+      "lon": 101.444321,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "PNH",
+      "icao": "VDPP",
+      "name": "Phnom Penh International Airport (PNH)",
+      "municipality": "Phnom Penh (Pou Senchey)",
+      "country": "KH",
+      "timezone": "Asia/Phnom_Penh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 11.547155,
+      "lon": 104.844699
+    },
+    {
+      "code": "POM",
+      "icao": "AYPY",
+      "name": "Port Moresby Jacksons International Airport (POM)",
+      "municipality": "Port Moresby",
+      "country": "PG",
+      "timezone": "Pacific/Port_Moresby",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -9.443380355834961,
+      "lon": 147.22000122070312
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "RUH",
+      "icao": "OERK",
+      "name": "King Khalid International Airport (RUH)",
+      "municipality": "Riyadh",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.9576,
+      "lon": 46.698799
+    },
+    {
+      "code": "SGN",
+      "icao": "VVTS",
+      "name": "Tan Son Nhat International Airport (SGN)",
+      "municipality": "Ho Chi Minh City",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 10.8188,
+      "lon": 106.652
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "SRG",
+      "icao": "WARS",
+      "name": "Jenderal Ahmad Yani Airport (SRG)",
+      "municipality": "Semarang",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -6.970732,
+      "lon": 110.373244,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "SUB",
+      "icao": "WARR",
+      "name": "Juanda International Airport (SUB)",
+      "municipality": "Surabaya",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -7.37983,
+      "lon": 112.787003,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "SYD",
+      "icao": "YSSY",
+      "name": "Sydney Kingsford Smith International Airport (SYD)",
+      "municipality": "Sydney (Mascot)",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": -33.946098,
+      "lon": 151.177002
+    },
+    {
+      "code": "SZB",
+      "icao": "WMSA",
+      "name": "Sultan Abdul Aziz Shah International Airport (SZB)",
+      "municipality": "Subang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 3.13058,
+      "lon": 101.549004
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TAS",
+      "icao": "UTTT",
+      "name": "Tashkent International Airport (TAS)",
+      "municipality": "Tashkent",
+      "country": "UZ",
+      "timezone": "Asia/Tashkent",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 41.2579,
+      "lon": 69.281197
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    },
+    {
+      "code": "TPE",
+      "icao": "RCTP",
+      "name": "Taiwan Taoyuan International Airport (TPE)",
+      "municipality": "Taoyuan",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 25.0777,
+      "lon": 121.233002
+    },
+    {
+      "code": "UPG",
+      "icao": "WAAA",
+      "name": "Sultan Hasanuddin International Airport (UPG)",
+      "municipality": "Makassar",
+      "timezone": "Asia/Makassar",
+      "island_group": "Sulawesi",
+      "mode": "flight",
+      "lat": -5.075539,
+      "lon": 119.553702,
+      "scheduled": true,
+      "country": "ID"
+    },
+    {
+      "code": "WNZ",
+      "icao": "ZSWZ",
+      "name": "Wenzhou Longwan International Airport (WNZ)",
+      "municipality": "Wenzhou (Longwan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 27.910572,
+      "lon": 120.853465
+    },
+    {
+      "code": "WUH",
+      "icao": "ZHHH",
+      "name": "Wuhan Tianhe International Airport (WUH)",
+      "municipality": "Wuhan (Huangpi)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 30.774798,
+      "lon": 114.213723
+    },
+    {
+      "code": "XMN",
+      "icao": "ZSAM",
+      "name": "Xiamen Gaoqi International Airport (XMN)",
+      "municipality": "Xiamen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Overseas",
+      "mode": "flight",
+      "lat": 24.543889,
+      "lon": 118.127454
+    },
+    {
+      "code": "YIA",
+      "icao": "WAHI",
+      "name": "Yogyakarta International Airport (YIA)",
+      "municipality": "Yogyakarta",
+      "timezone": "Asia/Jakarta",
+      "island_group": "Java",
+      "mode": "flight",
+      "lat": -7.905338,
+      "lon": 110.057264,
+      "scheduled": true,
+      "country": "ID"
+    }
+  ],
+  "routes": [
+    [
+      "ADL",
+      "CGK"
+    ],
+    [
+      "ADL",
+      "DPS"
+    ],
+    [
+      "AKL",
+      "CGK"
+    ],
+    [
+      "AKL",
+      "DPS"
+    ],
+    [
+      "AMS",
+      "CGK"
+    ],
+    [
+      "AMS",
+      "DPS"
+    ],
+    [
+      "AUH",
+      "CGK"
+    ],
+    [
+      "AUH",
+      "DPS"
+    ],
+    [
+      "AVV",
+      "DPS"
+    ],
+    [
+      "BKI",
+      "CGK"
+    ],
+    [
+      "BKI",
+      "DPS"
+    ],
+    [
+      "BKK",
+      "CGK"
+    ],
+    [
+      "BKK",
+      "DPS"
+    ],
+    [
+      "BNE",
+      "CGK"
+    ],
+    [
+      "BNE",
+      "DPS"
+    ],
+    [
+      "BOM",
+      "CGK"
+    ],
+    [
+      "BOM",
+      "DPS"
+    ],
+    [
+      "BPN",
+      "BWN"
+    ],
+    [
+      "BPN",
+      "KCH"
+    ],
+    [
+      "BPN",
+      "KUL"
+    ],
+    [
+      "BPN",
+      "SIN"
+    ],
+    [
+      "BTH",
+      "SZB"
+    ],
+    [
+      "BTJ",
+      "KUL"
+    ],
+    [
+      "BTJ",
+      "PEN"
+    ],
+    [
+      "BWN",
+      "BPN"
+    ],
+    [
+      "BWN",
+      "CGK"
+    ],
+    [
+      "BWN",
+      "DPS"
+    ],
+    [
+      "BWN",
+      "SUB"
+    ],
+    [
+      "CAI",
+      "CGK"
+    ],
+    [
+      "CAI",
+      "DPS"
+    ],
+    [
+      "CAN",
+      "CGK"
+    ],
+    [
+      "CAN",
+      "DPS"
+    ],
+    [
+      "CAN",
+      "MDC"
+    ],
+    [
+      "CGK",
+      "ADL"
+    ],
+    [
+      "CGK",
+      "AKL"
+    ],
+    [
+      "CGK",
+      "AMS"
+    ],
+    [
+      "CGK",
+      "AUH"
+    ],
+    [
+      "CGK",
+      "BKI"
+    ],
+    [
+      "CGK",
+      "BKK"
+    ],
+    [
+      "CGK",
+      "BNE"
+    ],
+    [
+      "CGK",
+      "BOM"
+    ],
+    [
+      "CGK",
+      "BWN"
+    ],
+    [
+      "CGK",
+      "CAI"
+    ],
+    [
+      "CGK",
+      "CAN"
+    ],
+    [
+      "CGK",
+      "CMB"
+    ],
+    [
+      "CGK",
+      "CNS"
+    ],
+    [
+      "CGK",
+      "CTU"
+    ],
+    [
+      "CGK",
+      "DEL"
+    ],
+    [
+      "CGK",
+      "DIL"
+    ],
+    [
+      "CGK",
+      "DMK"
+    ],
+    [
+      "CGK",
+      "DOH"
+    ],
+    [
+      "CGK",
+      "DRW"
+    ],
+    [
+      "CGK",
+      "DWC"
+    ],
+    [
+      "CGK",
+      "DXB"
+    ],
+    [
+      "CGK",
+      "FOC"
+    ],
+    [
+      "CGK",
+      "HAN"
+    ],
+    [
+      "CGK",
+      "HGH"
+    ],
+    [
+      "CGK",
+      "HKG"
+    ],
+    [
+      "CGK",
+      "HND"
+    ],
+    [
+      "CGK",
+      "ICN"
+    ],
+    [
+      "CGK",
+      "IST"
+    ],
+    [
+      "CGK",
+      "JED"
+    ],
+    [
+      "CGK",
+      "JHB"
+    ],
+    [
+      "CGK",
+      "KCH"
+    ],
+    [
+      "CGK",
+      "KMG"
+    ],
+    [
+      "CGK",
+      "KUL"
+    ],
+    [
+      "CGK",
+      "KWL"
+    ],
+    [
+      "CGK",
+      "MAA"
+    ],
+    [
+      "CGK",
+      "MCT"
+    ],
+    [
+      "CGK",
+      "MED"
+    ],
+    [
+      "CGK",
+      "MEL"
+    ],
+    [
+      "CGK",
+      "MFM"
+    ],
+    [
+      "CGK",
+      "MKZ"
+    ],
+    [
+      "CGK",
+      "MNL"
+    ],
+    [
+      "CGK",
+      "NKG"
+    ],
+    [
+      "CGK",
+      "NNG"
+    ],
+    [
+      "CGK",
+      "NRT"
+    ],
+    [
+      "CGK",
+      "OOL"
+    ],
+    [
+      "CGK",
+      "PEK"
+    ],
+    [
+      "CGK",
+      "PEN"
+    ],
+    [
+      "CGK",
+      "PER"
+    ],
+    [
+      "CGK",
+      "PNH"
+    ],
+    [
+      "CGK",
+      "POM"
+    ],
+    [
+      "CGK",
+      "PVG"
+    ],
+    [
+      "CGK",
+      "RUH"
+    ],
+    [
+      "CGK",
+      "SGN"
+    ],
+    [
+      "CGK",
+      "SIN"
+    ],
+    [
+      "CGK",
+      "SYD"
+    ],
+    [
+      "CGK",
+      "SZB"
+    ],
+    [
+      "CGK",
+      "SZX"
+    ],
+    [
+      "CGK",
+      "TAS"
+    ],
+    [
+      "CGK",
+      "TFU"
+    ],
+    [
+      "CGK",
+      "TPE"
+    ],
+    [
+      "CGK",
+      "WNZ"
+    ],
+    [
+      "CGK",
+      "WUH"
+    ],
+    [
+      "CGK",
+      "XMN"
+    ],
+    [
+      "CMB",
+      "CGK"
+    ],
+    [
+      "CMB",
+      "DPS"
+    ],
+    [
+      "CNS",
+      "CGK"
+    ],
+    [
+      "CNS",
+      "DPS"
+    ],
+    [
+      "CTU",
+      "CGK"
+    ],
+    [
+      "CTU",
+      "DPS"
+    ],
+    [
+      "DEL",
+      "CGK"
+    ],
+    [
+      "DEL",
+      "DPS"
+    ],
+    [
+      "DEL",
+      "KNO"
+    ],
+    [
+      "DIL",
+      "CGK"
+    ],
+    [
+      "DIL",
+      "DPS"
+    ],
+    [
+      "DMK",
+      "CGK"
+    ],
+    [
+      "DMK",
+      "DPS"
+    ],
+    [
+      "DMK",
+      "KNO"
+    ],
+    [
+      "DOH",
+      "CGK"
+    ],
+    [
+      "DOH",
+      "DPS"
+    ],
+    [
+      "DPS",
+      "ADL"
+    ],
+    [
+      "DPS",
+      "AKL"
+    ],
+    [
+      "DPS",
+      "AMS"
+    ],
+    [
+      "DPS",
+      "AUH"
+    ],
+    [
+      "DPS",
+      "AVV"
+    ],
+    [
+      "DPS",
+      "BKI"
+    ],
+    [
+      "DPS",
+      "BKK"
+    ],
+    [
+      "DPS",
+      "BNE"
+    ],
+    [
+      "DPS",
+      "BOM"
+    ],
+    [
+      "DPS",
+      "BWN"
+    ],
+    [
+      "DPS",
+      "CAI"
+    ],
+    [
+      "DPS",
+      "CAN"
+    ],
+    [
+      "DPS",
+      "CMB"
+    ],
+    [
+      "DPS",
+      "CNS"
+    ],
+    [
+      "DPS",
+      "CTU"
+    ],
+    [
+      "DPS",
+      "DEL"
+    ],
+    [
+      "DPS",
+      "DIL"
+    ],
+    [
+      "DPS",
+      "DMK"
+    ],
+    [
+      "DPS",
+      "DOH"
+    ],
+    [
+      "DPS",
+      "DRW"
+    ],
+    [
+      "DPS",
+      "DWC"
+    ],
+    [
+      "DPS",
+      "DXB"
+    ],
+    [
+      "DPS",
+      "FOC"
+    ],
+    [
+      "DPS",
+      "HAN"
+    ],
+    [
+      "DPS",
+      "HGH"
+    ],
+    [
+      "DPS",
+      "HKG"
+    ],
+    [
+      "DPS",
+      "HND"
+    ],
+    [
+      "DPS",
+      "ICN"
+    ],
+    [
+      "DPS",
+      "IST"
+    ],
+    [
+      "DPS",
+      "JED"
+    ],
+    [
+      "DPS",
+      "JHB"
+    ],
+    [
+      "DPS",
+      "KCH"
+    ],
+    [
+      "DPS",
+      "KMG"
+    ],
+    [
+      "DPS",
+      "KUL"
+    ],
+    [
+      "DPS",
+      "KWL"
+    ],
+    [
+      "DPS",
+      "MAA"
+    ],
+    [
+      "DPS",
+      "MCT"
+    ],
+    [
+      "DPS",
+      "MED"
+    ],
+    [
+      "DPS",
+      "MEL"
+    ],
+    [
+      "DPS",
+      "MFM"
+    ],
+    [
+      "DPS",
+      "MKZ"
+    ],
+    [
+      "DPS",
+      "MNL"
+    ],
+    [
+      "DPS",
+      "NKG"
+    ],
+    [
+      "DPS",
+      "NNG"
+    ],
+    [
+      "DPS",
+      "NRT"
+    ],
+    [
+      "DPS",
+      "OOL"
+    ],
+    [
+      "DPS",
+      "PEK"
+    ],
+    [
+      "DPS",
+      "PEN"
+    ],
+    [
+      "DPS",
+      "PER"
+    ],
+    [
+      "DPS",
+      "PNH"
+    ],
+    [
+      "DPS",
+      "POM"
+    ],
+    [
+      "DPS",
+      "PVG"
+    ],
+    [
+      "DPS",
+      "RUH"
+    ],
+    [
+      "DPS",
+      "SGN"
+    ],
+    [
+      "DPS",
+      "SIN"
+    ],
+    [
+      "DPS",
+      "SYD"
+    ],
+    [
+      "DPS",
+      "SZB"
+    ],
+    [
+      "DPS",
+      "SZX"
+    ],
+    [
+      "DPS",
+      "TAS"
+    ],
+    [
+      "DPS",
+      "TFU"
+    ],
+    [
+      "DPS",
+      "TPE"
+    ],
+    [
+      "DPS",
+      "WNZ"
+    ],
+    [
+      "DPS",
+      "WUH"
+    ],
+    [
+      "DPS",
+      "XMN"
+    ],
+    [
+      "DRW",
+      "CGK"
+    ],
+    [
+      "DRW",
+      "DPS"
+    ],
+    [
+      "DWC",
+      "CGK"
+    ],
+    [
+      "DWC",
+      "DPS"
+    ],
+    [
+      "DXB",
+      "CGK"
+    ],
+    [
+      "DXB",
+      "DPS"
+    ],
+    [
+      "FOC",
+      "CGK"
+    ],
+    [
+      "FOC",
+      "DPS"
+    ],
+    [
+      "FOC",
+      "MDC"
+    ],
+    [
+      "HAN",
+      "CGK"
+    ],
+    [
+      "HAN",
+      "DPS"
+    ],
+    [
+      "HGH",
+      "CGK"
+    ],
+    [
+      "HGH",
+      "DPS"
+    ],
+    [
+      "HKG",
+      "CGK"
+    ],
+    [
+      "HKG",
+      "DPS"
+    ],
+    [
+      "HKG",
+      "SUB"
+    ],
+    [
+      "HLP",
+      "SIN"
+    ],
+    [
+      "HND",
+      "CGK"
+    ],
+    [
+      "HND",
+      "DPS"
+    ],
+    [
+      "ICN",
+      "CGK"
+    ],
+    [
+      "ICN",
+      "DPS"
+    ],
+    [
+      "IST",
+      "CGK"
+    ],
+    [
+      "IST",
+      "DPS"
+    ],
+    [
+      "JED",
+      "CGK"
+    ],
+    [
+      "JED",
+      "DPS"
+    ],
+    [
+      "JED",
+      "KNO"
+    ],
+    [
+      "JED",
+      "UPG"
+    ],
+    [
+      "JHB",
+      "CGK"
+    ],
+    [
+      "JHB",
+      "DPS"
+    ],
+    [
+      "JHB",
+      "SUB"
+    ],
+    [
+      "KCH",
+      "BPN"
+    ],
+    [
+      "KCH",
+      "CGK"
+    ],
+    [
+      "KCH",
+      "DPS"
+    ],
+    [
+      "KJT",
+      "KUL"
+    ],
+    [
+      "KMG",
+      "CGK"
+    ],
+    [
+      "KMG",
+      "DPS"
+    ],
+    [
+      "KNO",
+      "DEL"
+    ],
+    [
+      "KNO",
+      "DMK"
+    ],
+    [
+      "KNO",
+      "JED"
+    ],
+    [
+      "KNO",
+      "KUL"
+    ],
+    [
+      "KNO",
+      "MAA"
+    ],
+    [
+      "KNO",
+      "MED"
+    ],
+    [
+      "KNO",
+      "PEN"
+    ],
+    [
+      "KNO",
+      "SIN"
+    ],
+    [
+      "KUL",
+      "BPN"
+    ],
+    [
+      "KUL",
+      "BTJ"
+    ],
+    [
+      "KUL",
+      "CGK"
+    ],
+    [
+      "KUL",
+      "DPS"
+    ],
+    [
+      "KUL",
+      "KJT"
+    ],
+    [
+      "KUL",
+      "KNO"
+    ],
+    [
+      "KUL",
+      "LOP"
+    ],
+    [
+      "KUL",
+      "PDG"
+    ],
+    [
+      "KUL",
+      "PKU"
+    ],
+    [
+      "KUL",
+      "SUB"
+    ],
+    [
+      "KUL",
+      "UPG"
+    ],
+    [
+      "KUL",
+      "YIA"
+    ],
+    [
+      "KWL",
+      "CGK"
+    ],
+    [
+      "KWL",
+      "DPS"
+    ],
+    [
+      "LOP",
+      "KUL"
+    ],
+    [
+      "LOP",
+      "SIN"
+    ],
+    [
+      "MAA",
+      "CGK"
+    ],
+    [
+      "MAA",
+      "DPS"
+    ],
+    [
+      "MAA",
+      "KNO"
+    ],
+    [
+      "MCT",
+      "CGK"
+    ],
+    [
+      "MCT",
+      "DPS"
+    ],
+    [
+      "MDC",
+      "CAN"
+    ],
+    [
+      "MDC",
+      "FOC"
+    ],
+    [
+      "MDC",
+      "NRT"
+    ],
+    [
+      "MDC",
+      "SIN"
+    ],
+    [
+      "MED",
+      "CGK"
+    ],
+    [
+      "MED",
+      "DPS"
+    ],
+    [
+      "MED",
+      "KNO"
+    ],
+    [
+      "MED",
+      "UPG"
+    ],
+    [
+      "MEL",
+      "CGK"
+    ],
+    [
+      "MEL",
+      "DPS"
+    ],
+    [
+      "MFM",
+      "CGK"
+    ],
+    [
+      "MFM",
+      "DPS"
+    ],
+    [
+      "MKZ",
+      "CGK"
+    ],
+    [
+      "MKZ",
+      "DPS"
+    ],
+    [
+      "MKZ",
+      "PKU"
+    ],
+    [
+      "MNL",
+      "CGK"
+    ],
+    [
+      "MNL",
+      "DPS"
+    ],
+    [
+      "NKG",
+      "CGK"
+    ],
+    [
+      "NKG",
+      "DPS"
+    ],
+    [
+      "NNG",
+      "CGK"
+    ],
+    [
+      "NNG",
+      "DPS"
+    ],
+    [
+      "NRT",
+      "CGK"
+    ],
+    [
+      "NRT",
+      "DPS"
+    ],
+    [
+      "NRT",
+      "MDC"
+    ],
+    [
+      "OOL",
+      "CGK"
+    ],
+    [
+      "OOL",
+      "DPS"
+    ],
+    [
+      "PDG",
+      "KUL"
+    ],
+    [
+      "PEK",
+      "CGK"
+    ],
+    [
+      "PEK",
+      "DPS"
+    ],
+    [
+      "PEN",
+      "BTJ"
+    ],
+    [
+      "PEN",
+      "CGK"
+    ],
+    [
+      "PEN",
+      "DPS"
+    ],
+    [
+      "PEN",
+      "KNO"
+    ],
+    [
+      "PEN",
+      "SUB"
+    ],
+    [
+      "PER",
+      "CGK"
+    ],
+    [
+      "PER",
+      "DPS"
+    ],
+    [
+      "PKU",
+      "KUL"
+    ],
+    [
+      "PKU",
+      "MKZ"
+    ],
+    [
+      "PKU",
+      "SIN"
+    ],
+    [
+      "PNH",
+      "CGK"
+    ],
+    [
+      "PNH",
+      "DPS"
+    ],
+    [
+      "POM",
+      "CGK"
+    ],
+    [
+      "POM",
+      "DPS"
+    ],
+    [
+      "PVG",
+      "CGK"
+    ],
+    [
+      "PVG",
+      "DPS"
+    ],
+    [
+      "RUH",
+      "CGK"
+    ],
+    [
+      "RUH",
+      "DPS"
+    ],
+    [
+      "SGN",
+      "CGK"
+    ],
+    [
+      "SGN",
+      "DPS"
+    ],
+    [
+      "SIN",
+      "BPN"
+    ],
+    [
+      "SIN",
+      "CGK"
+    ],
+    [
+      "SIN",
+      "DPS"
+    ],
+    [
+      "SIN",
+      "HLP"
+    ],
+    [
+      "SIN",
+      "KNO"
+    ],
+    [
+      "SIN",
+      "LOP"
+    ],
+    [
+      "SIN",
+      "MDC"
+    ],
+    [
+      "SIN",
+      "PKU"
+    ],
+    [
+      "SIN",
+      "SRG"
+    ],
+    [
+      "SIN",
+      "SUB"
+    ],
+    [
+      "SIN",
+      "UPG"
+    ],
+    [
+      "SIN",
+      "YIA"
+    ],
+    [
+      "SRG",
+      "SIN"
+    ],
+    [
+      "SUB",
+      "BWN"
+    ],
+    [
+      "SUB",
+      "HKG"
+    ],
+    [
+      "SUB",
+      "JHB"
+    ],
+    [
+      "SUB",
+      "KUL"
+    ],
+    [
+      "SUB",
+      "PEN"
+    ],
+    [
+      "SUB",
+      "SIN"
+    ],
+    [
+      "SYD",
+      "CGK"
+    ],
+    [
+      "SYD",
+      "DPS"
+    ],
+    [
+      "SZB",
+      "BTH"
+    ],
+    [
+      "SZB",
+      "CGK"
+    ],
+    [
+      "SZB",
+      "DPS"
+    ],
+    [
+      "SZX",
+      "CGK"
+    ],
+    [
+      "SZX",
+      "DPS"
+    ],
+    [
+      "TAS",
+      "CGK"
+    ],
+    [
+      "TAS",
+      "DPS"
+    ],
+    [
+      "TFU",
+      "CGK"
+    ],
+    [
+      "TFU",
+      "DPS"
+    ],
+    [
+      "TPE",
+      "CGK"
+    ],
+    [
+      "TPE",
+      "DPS"
+    ],
+    [
+      "UPG",
+      "JED"
+    ],
+    [
+      "UPG",
+      "KUL"
+    ],
+    [
+      "UPG",
+      "MED"
+    ],
+    [
+      "UPG",
+      "SIN"
+    ],
+    [
+      "WNZ",
+      "CGK"
+    ],
+    [
+      "WNZ",
+      "DPS"
+    ],
+    [
+      "WUH",
+      "CGK"
+    ],
+    [
+      "WUH",
+      "DPS"
+    ],
+    [
+      "XMN",
+      "CGK"
+    ],
+    [
+      "XMN",
+      "DPS"
+    ],
+    [
+      "YIA",
+      "KUL"
+    ],
+    [
+      "YIA",
+      "SIN"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "BWN",
+      "destination": "BPN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "SGN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "TFU",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "DOH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "DXB",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "SZX",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "MAA",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "BOM",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "NRT",
+      "destination": "MDC",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "IST",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "RUH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "KUL",
+      "destination": "KJT",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "DPS",
+      "destination": "CAN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "SZX",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "FOC",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "DPS",
+      "destination": "AKL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "MDC",
+      "destination": "CAN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "SIN",
+      "destination": "HLP",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "OOL",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "SUB",
+      "destination": "JHB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "POM",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "CAI",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "CTU",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "MFM",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "NNG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "PNH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "KUL",
+      "destination": "BPN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "TAS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "MDC",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "DRW",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "PVG",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "KNO",
+      "destination": "DEL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "XMN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "NRT",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "BKI",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "CAN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "DMK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "HAN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "KWL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "KCH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "DPS",
+      "destination": "DEL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "MNL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "MDC",
+      "destination": "FOC",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "CGK",
+      "destination": "PVG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 41
+    },
+    {
+      "origin": "DPS",
+      "destination": "BNE",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "HAN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "KNO",
+      "destination": "DMK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "PDG",
+      "destination": "KUL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "PKU",
+      "destination": "MKZ",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "SIN",
+      "destination": "PKU",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "SIN",
+      "destination": "LOP",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "SYD",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "SUB",
+      "destination": "PEN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "HND",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "UPG",
+      "destination": "MED",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "NRT",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "AMS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "SIN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "CMB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "WUH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "HGH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "HKG",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "KMG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "KUL",
+      "destination": "BTJ",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "NKG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "PEN",
+      "destination": "BTJ",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "TPE",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "SRG",
+      "destination": "SIN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "KNO",
+      "destination": "JED",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "SZB",
+      "destination": "BTH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "SIN",
+      "destination": "MDC",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "YIA",
+      "destination": "KUL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "SUB",
+      "destination": "SIN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "BKK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "UPG",
+      "destination": "SIN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "ICN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "AUH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "MCT",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "HKG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "PEK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "KUL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "SYD",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "SGN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "XMN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "CGK",
+      "destination": "WNZ",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "DPS",
+      "destination": "DIL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "DPS",
+      "destination": "CNS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "ICN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 42
+    },
+    {
+      "origin": "KUL",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "PER",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "MED",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "DPS",
+      "destination": "DOH",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "PEN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "KCH",
+      "destination": "BPN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "SIN",
+      "destination": "BPN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "KUL",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "SUB",
+      "destination": "BWN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "MNL",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "YIA",
+      "destination": "SIN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "PER",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "DWC",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "UPG",
+      "destination": "JED",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "MED",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "FOC",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "PEN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "JHB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "SZB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "DPS",
+      "destination": "BKK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "DPS",
+      "destination": "ADL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "LOP",
+      "destination": "KUL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "DPS",
+      "destination": "DMK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "PKU",
+      "destination": "KUL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "IST",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "SIN",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "MEL",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "SUB",
+      "destination": "KUL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "PEN",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "UPG",
+      "destination": "KUL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "SIN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "SUB",
+      "destination": "HKG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "TPE",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "BWN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "DXB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "JED",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    },
+    {
+      "origin": "CGK",
+      "destination": "MEL",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "page": 43
+    }
+  ],
+  "unresolved_airports": [
+    {
+      "origin": "MDC",
+      "destination": "DPS",
+      "reason": "Not a cross-border Indonesian pair"
+    }
+  ]
+}

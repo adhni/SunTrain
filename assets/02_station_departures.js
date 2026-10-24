@@ -55,9 +55,11 @@
             return {...row, label: `${row.name} · ${routes} · ${location}`};
         }).sort((a, b) => a.name.localeCompare(b.name) || a.id - b.id);
     }
+    const indonesiaZones = {'Asia/Jakarta': 'WIB', 'Asia/Pontianak': 'WIB', 'Asia/Makassar': 'WITA', 'Asia/Jayapura': 'WIT'};
     function formatCallTime(at, timezone) {
-        return new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: timezone, day: "numeric", month: "short",
+        const formatted = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: timezone, day: "numeric", month: "short",
             hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZoneName: "shortOffset"}).format(new Date(at * 1000));
+        return indonesiaZones[timezone] ? formatted.replace(/GMT\+[789]/, indonesiaZones[timezone]) : formatted;
     }
     function formatBoardTime(at, now, timezone) {
         const locale = root.suntrainI18n?.locale || "en-AU";
@@ -99,7 +101,7 @@
         }
         reset() {
             this.close(); this.station = null; this.services = null; this.catalogue = null; this.calls = []; this.page = 0;
-            this.event = 'departure';
+            this.event = 'departure'; this.fullDay = false;
             this.host.replaceChildren(); this.list = null; this.search = null; this.choices = null;
         }
         close() {
@@ -139,12 +141,20 @@
             if (this.services !== replay.filtered) {
                 this.services = replay.filtered; this.catalogue = null; this.page = 0; this.signature = null;
                 this.calls = this.station === null ? [] : stationCalls(this.services, this.station, replay.day.start, replay.day.end, this.event);
+                this.destinationRows = this.station === null || replay.day.replay_kind !== 'flights' ? [] : root.suntrainFlightNetwork.destinations(this.services, this.station, replay.day);
                 if (this.visible) this.render();
             }
         }
-        open(station = this.station) {
+        open(station = this.station, fullDay = station === this.station && this.fullDay) {
             const replay = this.replay;
             if (!replay.day || replay.loading) return;
+            if (replay.day.replay_kind === 'flights' && station != null) {
+                const code = replay.day.stations[station].code;
+                if (replay.filters.airports?.length !== 1 || replay.filters.airports[0] !== code)
+                    root.dash_clientside.set_props('replay-airports', {value: [code]});
+                if (replay.filters.airportDirection === 'arrivals') this.event = 'arrival';
+            }
+            this.fullDay = !!fullDay;
             if (station !== this.station) { this.station = station; this.services = null; this.page = 0; }
             this.visible = false; this.refresh(); this.visible = true;
             replay.selected = null; replay.setFollow(false); replay.staticDirty = true;
@@ -153,14 +163,14 @@
             $("replay-close-details").hidden = false; $("replay-details").hidden = true;
             $("replay-panel").classList.add("replay-browsing");
             const eyebrow = document.querySelector('.replay-detail-heading .replay-eyebrow');
-            if (eyebrow) root.suntrainI18n?.bind(eyebrow, replay.day.city === 'australia_flights' ? 'AIRPORT BOARD' : 'STATION DEPARTURES');
+            if (eyebrow) root.suntrainI18n?.bind(eyebrow, replay.day.replay_kind === 'flights' ? 'AIRPORT BOARD' : 'STATION DEPARTURES');
             $("replay-open-departures").setAttribute("aria-expanded", "true");
             this.host.hidden = false; this.render(); replay.paint(true);
             (this.station === null ? this.search : this.title).focus();
         }
         render() {
             const replay = this.replay;
-            const flights = replay.day.city === 'australia_flights', arrivals = flights && this.event === 'arrival';
+            const flights = replay.day.replay_kind === 'flights', arrivals = flights && this.event === 'arrival';
             this.timezone = flights && this.station !== null ? replay.day.stations[this.station].timezone : replay.day.timezone;
             this.host.replaceChildren(); this.signature = null;
             this.title = node("h3", this.station === null ? (flights ? 'Airports' : "Station departures") : replay.day.stations[this.station].name);
@@ -175,14 +185,16 @@
                 `${replay.day.business_date} · ${this.timezone} · Loaded replay services only`, "replay-muted replay-small"));
             if (flights) {
                 const tabs = node('div', undefined, 'departure-event-tabs');
-                for (const [event, label] of [['departure', 'Departures'], ['arrival', 'Arrivals']]) {
+                for (const [event, label] of [['departure', 'Departures'], ['arrival', 'Arrivals'], ['destinations', 'Destinations']]) {
                     const control = button(label, () => {
-                        this.event = event; this.services = null; this.page = 0; this.refresh();
+                        root.dash_clientside.set_props('replay-airport-direction', {value: event === 'arrival' ? 'arrivals' : 'departures'});
+                        this.event = event; this.fullDay = false; this.services = null; this.page = 0; this.refresh();
                         this.host.querySelector(`[data-event="${event}"]`)?.focus();
                     });
+                    control.disabled = event === 'destinations' && this.station === null;
                     control.dataset.event = event; control.setAttribute('aria-pressed', String(event === this.event)); tabs.append(control);
                 }
-                this.host.append(tabs, node('p', 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
+                this.host.append(tabs, node('p', replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
             }
             const picker = node("details"); picker.open = this.station === null;
             picker.append(node("summary", this.station === null ? (flights ? 'Choose an airport' : "Choose a stop") : (flights ? 'Change airport' : "Change stop")));
@@ -197,12 +209,12 @@
             picker.append(label, this.search, this.choices, this.matchCount, this.choose); this.host.append(picker); this.updateChoices();
             this.clock = node("p", "", "replay-muted replay-small");
             this.list = node("div", undefined, "departure-list");
-            this.previous = button("Previous", () => { this.page--; this.update(true); });
-            this.next = button("Next", () => { this.page++; this.update(true); });
+            this.previous = button("Previous", () => { this.page--; this.update(true); if (this.event === "destinations") this.host.closest(".replay-detail-card").scrollTop = 0; });
+            this.next = button("Next", () => { this.page++; this.update(true); if (this.event === "destinations") this.host.closest(".replay-detail-card").scrollTop = 0; });
             this.pageLabel = node("span");
             const nav = node("nav", undefined, "departure-pagination"); if(root.suntrainI18n) root.suntrainI18n.bind(nav, "Departure pages", "aria-label"); else nav.setAttribute("aria-label", "Departure pages");
             nav.append(this.previous, this.pageLabel, this.next);
-            const columns = node('div', undefined, 'departure-columns'); columns.setAttribute('aria-hidden', 'true');
+            const columns = node('div', undefined, 'departure-columns'); columns.hidden = this.event === 'destinations'; columns.setAttribute('aria-hidden', 'true');
             for (const title of [arrivals ? 'Arrival' : 'Departure', flights ? 'Flight' : 'Route', arrivals ? 'Origin' : 'Destination', 'Operator']) columns.append(node('span', title));
             this.host.append(this.clock, node("p", flights ? 'Replay paused · scheduled flights' : "Replay paused · scheduled departures", "departure-board-note replay-muted"), columns, this.list, nav,
                 node("p", flights ? 'Schedule snapshot. Loaded flights only; search coverage is partial.' : "Scheduled replay events; boarding permissions may differ. Final stops are excluded.", "replay-muted replay-small"));
@@ -217,7 +229,7 @@
         updateJourneyLocale() {
             const host=document.querySelector('.departure-context');
             if(host && this.previewCall) {
-                const text=`${this.replay.day.city === 'australia_flights' ? 'At' : 'From'} ${this.replay.day.stations[this.station].name} · ${formatCallTime(this.previewCall.at,this.timezone || this.replay.day.timezone)}`;
+                const text=`${this.replay.day.replay_kind === 'flights' ? 'At' : 'From'} ${this.replay.day.stations[this.station].name} · ${formatCallTime(this.previewCall.at,this.timezone || this.replay.day.timezone)}`;
                 if(root.suntrainI18n)root.suntrainI18n.bind(host,text);else host.textContent=text;
             }
         }
@@ -237,12 +249,13 @@
         update(force = false) {
             if (!this.visible || !this.list) return;
             const replay = this.replay;
-            const flights = replay.day.city === 'australia_flights', arrivals = flights && this.event === 'arrival';
-            const clockText = `${arrivals ? 'Arrivals from' : 'Departures from'} ${formatCallTime(replay.now, this.timezone)}`;
+            const flights = replay.day.replay_kind === 'flights', arrivals = flights && this.event === 'arrival';
+            if (flights && this.event === 'destinations') { this.updateDestinations(force); return; }
+            const clockText = this.fullDay ? (arrivals ? 'Full selected replay day · arrivals' : 'Full selected replay day · departures') : `${arrivals ? 'Arrivals from' : 'Departures from'} ${formatCallTime(replay.now, this.timezone)}`;
             if(root.suntrainI18n) root.suntrainI18n.bind(this.clock, clockText); else this.clock.textContent = clockText;
             // Keep a keyboard-focused departure stable until focus leaves the list.
             if (!force && this.list.contains(document.activeElement)) return;
-            const result = upcomingPage(this.calls, replay.now, this.page); this.page = result.page;
+            const result = upcomingPage(this.calls, this.fullDay ? replay.day.start : replay.now, this.page); this.page = result.page;
             const signature = JSON.stringify([this.page, result.total, result.rows.map(row => row.key)]);
             if (!force && signature === this.signature) return;
             this.signature = signature; this.list.replaceChildren();
@@ -262,6 +275,26 @@
             if(root.suntrainI18n) root.suntrainI18n.bind(this.pageLabel, pageText); else this.pageLabel.textContent = pageText;
             this.previous.disabled = !result.page; this.next.disabled = result.page + 1 >= result.pages;
         }
+        updateDestinations(force) {
+            root.suntrainI18n.bind(this.clock, 'Captured departures in the full selected replay day. Click a destination to see its flights.');
+            const rows = this.destinationRows || [], pages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE));
+            this.page = Math.max(0, Math.min(this.page, pages - 1));
+            const signature = JSON.stringify(['destinations', this.page, rows]);
+            if (!force && signature === this.signature) return;
+            this.signature = signature; this.list.replaceChildren();
+            if (!rows.length) this.list.append(node('p', 'No captured destinations match this airport and these filters.', 'replay-muted'));
+            for (const row of rows.slice(this.page * PAGE_SIZE, (this.page + 1) * PAGE_SIZE)) {
+                const airport = this.replay.day.stations[row.destination];
+                const control = button('', () => this.replay.focusFlightConnection(this.station, row.destination));
+                control.className = 'destination-row';
+                control.append(node('strong', airport.code, 'destination-code'), node('span', airport.name),
+                    node('strong', `${row.count} captured departures`),
+                    node('small', row.carriers.map(([code,name]) => `${code} · ${name}`).join(' / ')));
+                this.list.append(control);
+            }
+            root.suntrainI18n.bind(this.pageLabel, `${this.page + 1} / ${pages} · ${rows.length} destinations`);
+            this.previous.disabled = this.page === 0; this.next.disabled = this.page + 1 >= pages;
+        }
         journey(host, call) {
             const wasExpanded = !!this.expanded;
             this.setExpanded(false);
@@ -272,7 +305,7 @@
             if (!call) { this.close(); return; }
             const replay = this.replay;
             replay.setFollow(false);
-            host.append(button(replay.day.city === 'australia_flights' ? 'Back to airport board' : "Back to departures", () => { this.open(); if (wasExpanded) this.setExpanded(true); }),
+            host.append(button(replay.day.replay_kind === 'flights' ? 'Back to airport board' : "Back to departures", () => { this.open(); if (wasExpanded) this.setExpanded(true); }),
                 button(call.event === 'arrival' ? 'Go to arrival' : "Go to departure", () => {
                     replay.pause();
                     if (replay.mapMode === "demand") {
@@ -284,7 +317,7 @@
                     if (replay.mapReady && Number.isFinite(station.lon) && Number.isFinite(station.lat))
                         replay.graph.setCenter([station.lon, station.lat]);
                 }));
-            host.append(node("p", `${replay.day.city === 'australia_flights' ? 'At' : 'From'} ${replay.day.stations[this.station].name} · ${formatCallTime(call.at, this.timezone)}`, "replay-muted replay-small departure-context"));
+            host.append(node("p", `${replay.day.replay_kind === 'flights' ? 'At' : 'From'} ${replay.day.stations[this.station].name} · ${formatCallTime(call.at, this.timezone)}`, "replay-muted replay-small departure-context"));
         }
     }
     root.suntrainDepartures = {...api, Board};

@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, India, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Indian flights
+
+Choose **India · Flights** for **2 November 2026**. Domestic opens first; switch to **International / Both** to explore overseas routes. The timeline uses **IST**, airport boards use local time, and prices are the **cheapest captured USD quote per exact flight** for one adult, economy, one-way. BOM/NMI, DEL/DXN and GOI/GOX remain separate airports. Reuses airline/airport filters, departures/arrivals, Destinations, fullscreen boards and frequency lines. Coverage and prices are partial; paths are illustrative. See [Indian flight notes](INDIAN_FLIGHTS_NOTES.md) for sources, coverage gaps and cached rebuilding.
+
+The snapshot has **4,497 overlapping flights across 180 airports**, with **4,134 USD fares** and **363 unavailable prices**, in about **467 KiB gzip**. All **5,523 planned queries** were captured; nationwide coverage remains partial.
 
 ## Singapore flights
 

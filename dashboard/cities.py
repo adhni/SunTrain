@@ -12,6 +12,14 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'india_flights': {
+        'replay_kind':'flights', 'name':'India · Flights', 'timezone':'Asia/Kolkata',
+        'bounds':[[68.0,6.0],[97.5,36.0]], 'passenger_data':False,
+        'start_date':'2026-11-02', 'end_date':'2026-11-02', 'flight_scopes':True,
+        'description':'Indian domestic and international flights · 2 November 2026 schedule snapshot. BOM/NMI, DEL/DXN and GOI/GOX are separate airports. Timeline: IST; airport boards use local time. Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.',
+        'default_modes':['flight'], 'modes':[('Flights','flight')],
+        'operators':[], 'directions':[('Scheduled service','Scheduled service')],
+    },
     'singapore_flights': {
         'replay_kind':'flights','name':'Singapore · Flights','timezone':'Asia/Singapore',
         'bounds':[[103.6,1.15],[104.1,1.5]],'passenger_data':False,

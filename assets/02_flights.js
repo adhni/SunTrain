@@ -27,8 +27,8 @@
         const text=new Intl.DateTimeFormat(root.suntrainI18n?.locale || 'en-AU', {
             timeZone:timezone,year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZoneName:'shortOffset'
         }).format(new Date(at));
-        const label={'Asia/Kuala_Lumpur':'MYT','Asia/Singapore':'SGT'}[timezone];
-        return label?text.replace(/GMT\+8/,label):text;
+        const label={'Asia/Kuala_Lumpur':'MYT','Asia/Singapore':'SGT','Asia/Kolkata':'IST'}[timezone];
+        return label?text.replace(/GMT\+(?:8|5[.:]30)/,label):text;
     }
     function planeImage(color = '#f57c28') {
         const canvas = document.createElement('canvas'); canvas.width = canvas.height = 64;

@@ -32,7 +32,12 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa'),
             'D7': ('AirAsia X', '#c75668'), 'BI': ('Royal Brunei', '#bca64b'),
             'EY': ('Etihad Airways', '#bd9d61'), 'FZ': ('flydubai', '#ee9353'),
-            '3L': ('Air Arabia Abu Dhabi', '#df8078')}
+            '3L': ('Air Arabia Abu Dhabi', '#df8078'),
+            '6E': ('IndiGo', '#6996e5'), 'AI': ('Air India', '#e66767'),
+            'IX': ('Air India Express', '#f49b50'), 'QP': ('Akasa Air', '#b18bdd'),
+            'SG': ('SpiceJet', '#efbd4f'), '9I': ('Alliance Air', '#60b7ac'),
+            'S5': ('Star Air', '#df90b3'), 'S9': ('FlyBig', '#89b951'),
+            'IC': ('Fly91', '#b89162')}
 
 
 def airline_style(carrier, name):
@@ -44,6 +49,8 @@ def airline_style(carrier, name):
 
 
 def reference_path(business_date=None, city='australia_flights'):
+    if city=='india_flights':
+        return Path(os.getenv('SUNTRAIN_INDIA_FLIGHTS_REFERENCE',str(DIRECTORY.parent/'india_flights/2026-11-02.json.gz')))
     if city=='singapore_flights':
         return Path(os.getenv('SUNTRAIN_SINGAPORE_FLIGHTS_REFERENCE',str(DIRECTORY.parent/'singapore_flights/2026-11-02.json.gz')))
     if city=='gulf_flights':
@@ -65,7 +72,7 @@ def reference_paths(business_date=None, city='australia_flights'):
         return hub_paths(business_date)
     paths = [reference_path(business_date, city)]
     if city=='singapore_flights':return paths
-    prefix = {'indonesia_flights':'INDONESIA','australia_flights':'AUSTRALIA','malaysia_flights':'MALAYSIA'}[city]
+    prefix = {'indonesia_flights':'INDONESIA','australia_flights':'AUSTRALIA','malaysia_flights':'MALAYSIA','india_flights':'INDIA'}[city]
     # The legacy March 2013 Australian snapshot remains isolated.
     if not (city == 'australia_flights' and business_date and business_date.startswith('2013-03-')):
         override = os.getenv(f'SUNTRAIN_{prefix}_INTERNATIONAL_REFERENCE')
@@ -116,13 +123,14 @@ def load_reference(business_date, city):
     for path in reference_paths(business_date, city):
         with gzip.open(path, 'rt') as stream:
             references.append(json.load(stream))
-    country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY','singapore_flights':'SG'}[city]
+    country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY','singapore_flights':'SG','india_flights':'IN'}[city]
     airports, flights = {}, {}
     for reference in references:
-        if country=='SG':
+        if country in {'SG','IN'}:
             context=reference['metadata'].get('fare_context',{})
             if tuple(context.get(k) for k in ('currency','adults','cabin','trip_type'))!=('USD',1,'economy','one_way'):
-                raise ValueError('Singapore fares require USD, one adult, economy, one-way')
+                label='Singapore' if country=='SG' else 'Indian'
+                raise ValueError(f'{label} fares require USD, one adult, economy, one-way')
         catalogue = {a['code']: {**a, 'country': a.get('country', country)} for a in reference['airports']}
         for code, airport in catalogue.items():
             if code in airports and airports[code] != airport:
@@ -136,17 +144,23 @@ def load_reference(business_date, city):
                 price=flight.get('price')
                 if price and (price.get('currency')!='USD' or type(price.get('amount_minor')) is not int or price['amount_minor']<=0):
                     raise ValueError('Singapore prices require positive USD minor units; no implicit conversion')
+            if country=='IN':
+                price=flight.get('price')
+                if price and (tuple(price.get(k) for k in ('currency','adults','cabin','trip_type'))!=('USD',1,'economy','one_way') or type(price.get('amount_minor')) is not int or price['amount_minor']<=0):
+                    raise ValueError('Indian prices require positive USD minor units, one adult, economy, one-way; no implicit conversion')
             scope = 'domestic' if a['country'] == b['country'] == country else 'international'
             if scope == 'international' and (a['country'] == country) == (b['country'] == country):
                 raise ValueError('Flight has no national endpoint')
             if reference['metadata'].get('scope') == 'international' and scope != 'international':
                 raise ValueError('International reference contains a domestic flight')
+            if reference['metadata'].get('scope')=='domestic' and scope!='domestic':
+                raise ValueError('Domestic reference contains an international flight')
             record = {**flight, 'flight_scope': scope}
             if flight['id'] in flights and flights[flight['id']] != record:
                 raise ValueError('Conflicting flight identity')
             flights[flight['id']] = record
     metadata = dict(references[0]['metadata'])
-    if city in {'indonesia_flights', 'australia_flights', 'malaysia_flights'}:
+    if city in {'indonesia_flights', 'australia_flights', 'malaysia_flights','india_flights'}:
         coverages = {r['metadata'].get('scope', 'domestic'): r['metadata'].get('coverage') or snapshot_coverage(r) for r in references}
         if len(references) > 1:
             combined = {key: sum(c.get(key, 0) for c in coverages.values()) for key in (
@@ -159,14 +173,17 @@ def load_reference(business_date, city):
             searched = {q[k] for q in queries + failed for k in ('origin', 'destination')}
             planned = searched | {code for _, a, b in missing for code in (a, b)}
             combined.update(airports_returned=len(airports), airports_searched=len(searched),
-                airports_planned=len(planned), candidate_airports=(len(planned | set(airports)) if country in {'AU','MY'} else
+                airports_planned=len(planned), candidate_airports=(len(planned | set(airports)) if country in {'AU','MY','IN'} else
                 coverages.get('domestic', {}).get('candidate_airports', 0)
                 + coverages.get('international', {}).get('candidate_foreign_airports', 0)))
             coverages['both'] = combined
             metadata['replay_note'] = ('Indonesian domestic and international flight schedules for 2–8 November 2026. Timeline: WIB; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
                 if country == 'ID' else 'Australian domestic and international flight schedules for 2 November 2026. Timeline: Melbourne time; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.')
-            if country == 'MY':
+            if country in {'MY','IN'}:
                 metadata['replay_note']='Malaysian domestic and international flight schedules for 2 November 2026. Timeline: MYT; airport boards use local time. Prices are captured one-adult economy one-way quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+                if country=='IN':
+                    metadata['scope']='both'
+                    metadata['replay_note']='Indian domestic and international flight schedules for 2 November 2026. Timeline: IST; airport boards use local time. Prices are captured one-adult economy one-way USD quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
                 metadata['priced_flights']=sum('price' in f for f in flights.values())
                 metadata['priced_flights_by_scope']={r['metadata'].get('scope','domestic'):r['metadata'].get('priced_flights',0) for r in references}
                 metadata['fare_context_unverified_queries']=sum(r['metadata'].get('fare_context_unverified_queries',0) for r in references)

@@ -126,3 +126,20 @@ test('Pacific airport bounds choose the short longitude span in either direction
  assert.equal(europe[0][1],-8.7);assert.equal(europe[1][1],52.3);
  assert.equal(bounds([]),null);
 });
+
+test('Indian airport and fare capture times retain the half-hour IST offset',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    const at=Date.parse('2026-11-01T18:30:00Z')/1000;
+    assert.match(formatCallTime(at,'Asia/Kolkata'),/2 Nov.*00:00 IST/);
+    assert.match(captureTime('2026-11-01T18:30:00Z','Asia/Kolkata'),/2 Nov.*00:00 IST/);
+    assert.match(formatCallTime(at,'America/New_York'),/1 Nov.*13:30 GMT-5/);
+});
+
+test('Indonesian locale uses IST despite formatting half-hour offsets with a dot',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    globalThis.suntrainI18n={locale:'id-ID'};
+    try {
+        assert.match(formatCallTime(Date.parse('2026-11-01T18:30:00Z')/1000,'Asia/Kolkata'),/IST/);
+        assert.match(captureTime('2026-11-01T18:30:00Z','Asia/Kolkata'),/IST/);
+    } finally { delete globalThis.suntrainI18n; }
+});

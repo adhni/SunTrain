@@ -1,4 +1,4 @@
-# Thailand flights: domestic now, international next
+# Thailand domestic and international flights
 
 ## Domestic release
 
@@ -14,8 +14,10 @@ filters, boards and flight identities. The release reuses moving planes, airline
 codes and exact-airport filters, departure/arrival boards, fullscreen/back and
 pagination, Destinations, fare previews without implicit seeking, frequency
 lines, airport visibility, themes, English/Indonesian and mobile layout.
-International/Both controls remain hidden. Existing Thailand SRT and Bangkok rail
-views are separate and retain their original source periods and data.
+Domestic remains the default. International and Both include captured connections
+to the other existing SunTrain flight countries and DXB/AUH/DOH. Airport boards
+use each airport’s local zone; the Thai replay clock remains ICT. Existing Thailand
+SRT and Bangkok rail views retain their original source periods and data.
 
 The manifest contains **30 airports and 112 directional search candidates**:
 
@@ -83,42 +85,64 @@ URL. Curated manifest rebuilding needs no official-page downloads. Audit HTML,
 test logs and browser screenshots stay in `.cache/thailand-flights-audit/` and
 `.cache/thai-flights-*.png`. Generated replay HTTP caches regenerate.
 
-## International plan — not executed in this release
+## International release: selected SunTrain flight locations
 
-1. **Start with existing flight locations.** Reuse the **176 directional candidates**
-   already present in other countries' international manifests. Their Thai endpoints
-   are BKK, DMK, HKT, CNX, CEI, HDY, KBV, URT and USM. Review current official
-   airport/airline lists, prioritising BKK/DMK/HKT, then CNX/KBV/USM. Add UTP and other
-   regional gateways only with explicit passenger-route evidence. Treat seasonal,
-   announced, via-only and cargo routes as candidates or exclusions, not flights.
-2. **Extend the shared network in one collection.** Add TH and the Thai view to the
-   shared network's country/consumer configuration and manifest builder. Include
-   only cross-country pairs within the existing flight footprint; Gulf endpoints
-   remain DXB/AUH/DOH. Reuse exact airport/date raw captures from Australia,
-   Indonesia, Malaysia, Singapore, India and Gulf caches, preserving timestamps and
-   valid original USD/MYR context. Do not join prepared bundles with different UTC
-   day windows or re-search successful captures merely for a price.
-3. **Keep separate clocks and truthful prices.** Calculate the query union for the
-   UTC network day, Thailand's ICT day and other country-local days, including
-   adjacent origin-local dates with a 24-hour international duration ceiling.
-   New queries request USD; retained USD/MYR quotes follow the shared network's
-   existing no-conversion policy. Domestic Thai USD data stays unchanged.
-4. **Enable the same country experience only with data.** Keep domestic as default;
-   add International/Both when the replacement shared bundle contains Thailand's
-   consumer queries. Apply domestic-only endpoint rules only to domestic records;
-   international flights must have exactly one Thai endpoint. Stamp the shared
-   archive in the Thai HTTP revision and use the existing event-window, filter,
-   board, Destinations and frequency behaviour. Existing country routes outside
-   this footprint survive. Worldwide Thai expansion beyond these locations is a
-   later, separate scope.
-5. **Validate before enabling.** Probe BKK and DMK separately, HKT/USM, overnight
-   routes, ICT↔IST/UTC+8/JST/Australia/Gulf boundaries, reused currencies, missing
-   queries and duplicate identities. Check no flight leaks through airport/country
-   filters; each shared flight appears once and consistently in both endpoint
-   country views. Test all scopes, local boards, UTC network counts, HTTP cache
-   invalidation, reproducible preparation, mobile, themes and Indonesian. Report
-   actual gateway/country-pair coverage and priced/unpriced records. Do not equate
-   query completion with complete international coverage.
+The international scope connects Thailand with Australia, Indonesia, Malaysia,
+Singapore, India, mainland China, Japan, South Korea and DXB/AUH/DOH. It also
+appears in **International network · Flights**. This is selected-country coverage,
+not worldwide coverage. BKK/DMK remain separate and exactly one endpoint of each
+Thai international record is in Thailand. Domestic data is unchanged.
+
+`data/sources/thailand_international_routes.json` contains **264 directional
+candidates across 64 airports**, starting with **176 directions** from existing
+international manifests. Thai candidate endpoints are BKK, DMK, HKT, CNX, CEI,
+HDY, KBV, URT and USM. Focused East Asian additions use:
+
+- [Thai Airways’ Bangkok–China exact-airport offer directory](https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china).
+  The offers are discovery candidates, not proof of nonstop operation or a source
+  of November 2 timings/fares.
+- [AirAsia’s December 2025 China announcement](https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares),
+  whose promotion ends before this replay. Historical city candidates are labelled
+  accordingly; Chengdu/Shanghai resolve to TFU/PVG probes, not claimed airport labels.
+- [AirAsia’s September 2026 winter expansion](https://newsroom.airasia.com/news/airasia-gears-up-for-high-season-with-major-international-expansion)
+  for DMK–Japan/Delhi candidates. Later-November launches do not create Nov 2 flights.
+- Official [Narita](https://www.narita-airport.jp/en/discover/citylist/),
+  [Haneda](https://tokyo-haneda.com/en/flight/city_list.html?tab=intFlight),
+  [Kansai summer 2026](https://assets.kansai-airports.co.jp/551f6859-e_20260324_pressrelease_s26.pdf),
+  [Centrair](https://www.centrair.jp/en/),
+  [Asiana](https://m.flyasiana.com/C/KR/KO/booking/route) and
+  [Air Busan](https://en.airbusan.com/content/individual/booking/route) route lists.
+  Bangkok city entries at HND/PUS resolve to BKK candidates. Seasonal lists are
+  discovery evidence, not dated schedules.
+- Limited China/Korea–HKT/CNX/DMK gateway probes, explicitly marked supplemental.
+  The AOT directory provides airport identity context, not published-route evidence.
+
+Both directions are searched, with exact IATA and required adjacent origin-local
+dates. The shared collector unions the UTC network window and all country-local
+windows with a 24-hour duration ceiling. **452 saved captures were reused and 472
+new searches were required**; all 4,313 previous shared queries remain untouched.
+New searches request USD. Valid reused USD/MYR quotes keep their original currency,
+context and capture timestamp; there is no conversion or numerical comparison
+between currencies. Missing prices remain unavailable. Dated nonstop captures
+alone establish replay records. Empty results mean not returned, not no service.
+
+```bash
+.venv/bin/python scripts/prepare_thai_international_routes.py
+.venv/bin/python scripts/prepare_international_network_routes.py
+.venv/bin/python scripts/prepare_international_network.py --dry-run
+PYTHONPATH=.cache/browser-tools .venv/bin/python scripts/prepare_international_network.py
+.venv/bin/python scripts/prepare_international_network.py --prepare-only
+```
+
+International data is stored once in
+`data/reference/international_network/2026-11-02.json.gz`, independently projected
+into Thailand’s ICT day and the shared UTC day. No redundant Thai international
+bundle is stored. The Thai HTTP revision fingerprints both domestic and shared
+references. Older shared archives without a Thai consumer entry leave the overlay
+disabled. Custom Thai fixtures remain isolated unless an explicit shared reference
+is also supplied. Resumable captures live in `.cache/google-flights-international-network/`;
+audit logs and screenshots live in `.cache/thailand-international-audit/`. Deleting
+captures requires new searches for rebuilding; committed replays continue working.
 
 ## Actual domestic coverage and validation
 
@@ -158,4 +182,51 @@ carrier/airport filters and empty intersections, fullscreen/back/pagination,
 Destinations, frequency totals stable during seeking, airport visibility, all five
 themes, Indonesian, mobile viewport coverage, cache reuse and switching back to
 Japan's separate JST view. Screenshots were visually inspected; no page errors
-occurred. International is planned only; the shared network footprint is unchanged.
+occurred. These domestic checks predate the international extension; see the additional validation below.
+
+## Actual international coverage
+
+Captured **25 October 2026**, for **2 November 2026 ICT**:
+
+- **679 overlapping international records**, **583 departures** and
+  **590 arrivals inside the ICT day; **181 directional routes**, **52 airports**
+  and **54 carriers**. Records include overnight flights overlapping the selected day.
+- **541 priced records** (468 USD, 73 MYR), **138 unpriced**.
+  Reused MYR amounts remain MYR; no conversion is performed.
+- **657 / 657 Thai-view queries captured**, all **264 directions** searched,
+  **201 directions** returned flights on at least one searched date. **224 queries**
+  returned no matching direct flights. Zero failed/missing queries, rejected source
+  records or unresolved airport identities in the Thai projection.
+- Returned Thai airports: **BKK, DMK, CNX, CEI, HKT, KBV, USM and HDY**.
+  **URT** was searched but not returned. Additional Thai gateways, other foreign
+  countries, regional routes, and uncaptured airlines/flights remain coverage gaps.
+  Completing the search manifest does not imply complete international coverage.
+- Combined domestic/international Thai view: **1,294 records**; domestic remains the
+  initial scope. The shared UTC network uses its own day, containing **3,596 records**
+  and **3,122 captured departures**, including **625 overlapping Thai connections**.
+
+| Thai airport | ICT-day departures | ICT-day arrivals |
+| --- | ---: | ---: |
+| BKK | 178 | 164 |
+| CEI | 0 | 1 |
+| CNX | 12 | 18 |
+| DMK | 43 | 45 |
+| HDY | 3 | 3 |
+| HKT | 51 | 49 |
+| KBV | 6 | 7 |
+| USM | 4 | 4 |
+
+International data uses the shared archive and reproducible hash documented in
+[International network notes](INTERNATIONAL_NETWORK_NOTES.md). No existing country
+bundle was rewritten. All 3,894 previous shared records and 4,313 previous queries
+retain their original schedules, fares and provenance.
+
+Final extension validation: **215 Python tests and 93 JavaScript tests passed**,
+including all existing flight profiles, Melbourne replay/HTTP, app/i18n, Japan rail,
+and Thailand rail. Three Chrome suites passed the domestic regression, Thai
+international scopes and the combined network, including BKK/DMK/HKT/CNX/USM,
+foreign ICN boards with KST times and an ICT replay clock, airline/airport/country
+filters, fullscreen/back/pagination, Destinations, frequency totals, visibility,
+all five themes, Indonesian, mobile and cache reuse. Desktop/mobile screenshots
+were visually inspected; no page errors occurred. Both manifests and the shared
+compressed archive reproduce byte for byte offline from their cached inputs.

@@ -32,8 +32,8 @@ def test_exact_domestic_airports_routes_and_explicit_probe_provenance():
     assert {'HGN','PRH'}=={a['code'] for a in m['deferred_airports']}
     assert any('Supplemental exact-airport' in e['kind'] for e in m['evidence'])
     assert any('Historical Airpass' in e['kind'] for e in m['evidence'])
-    assert not CITIES['thailand_flights'].get('flight_scopes')
-    with pytest.raises(ValueError,match='planned; only domestic'):country_config('TH','international')
+    assert CITIES['thailand_flights'].get('flight_scopes')
+    with pytest.raises(ValueError,match='use prepare_international_network'):country_config('TH','international')
     assert CONFIG['currency']=='USD' and country_config()['manifest'] is None
 
 
@@ -90,7 +90,8 @@ def test_foreign_airport_metro_substitution_wrong_zone_and_currency_are_rejected
     with pytest.raises(ValueError,match='fares require USD'):flights.load_reference(DAY,'thailand_flights')
 
 
-def test_prepared_thai_snapshot_preserves_scope_and_reports_actual_coverage():
+def test_prepared_thai_snapshot_preserves_scope_and_reports_actual_coverage(monkeypatch):
+    monkeypatch.setenv("SUNTRAIN_THAILAND_FLIGHTS_REFERENCE",str(flights.reference_path(city="thailand_flights")))
     if not flights.reference_path(city='thailand_flights').exists():pytest.skip('Collection in progress')
     day=flights.replay_day(DAY,'thailand_flights');codes={a['code'] for a in day['stations']}
     assert {'BKK','DMK','CNX','HKT','USM','HDY','UBP'}<=codes

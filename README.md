@@ -2,9 +2,9 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, India, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
-## Thai domestic flights
+## Thailand flights
 
-Choose **Thailand · Flights** for **2 November 2026**, using **ICT (UTC+7)** and captured **USD** fares. BKK and DMK remain separate. This domestic release reuses airport/airline filters, boards, Destinations and frequency lines; international expansion is planned in the [Thai flight notes](THAI_FLIGHTS_NOTES.md). The snapshot has **615 flights across 29 airports**, all with captured USD fares. Coverage remains partial. Existing Thailand/Bangkok rail views stay separate.
+Choose **Thailand · Flights** for **2 November 2026**, using **ICT (UTC+7)** and captured **USD** fares. BKK and DMK remain separate. Domestic / International / Both reuse airport/airline filters, boards, Destinations and frequency lines. International connects to the other SunTrain flight countries and DXB/AUH/DOH, and appears in **International network · Flights**. International quotes retain their captured USD/MYR currencies. See the [Thai flight notes](THAI_FLIGHTS_NOTES.md). The domestic snapshot has **615 flights across 29 airports**, all with captured USD fares. The international scope adds **679 overlapping records across 8 Thai airports**, with 541 captured fares. Coverage remains partial. Existing Thailand/Bangkok rail views stay separate.
 
 ## International flight network
 

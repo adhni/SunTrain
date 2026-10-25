@@ -115,7 +115,9 @@ def country_config(country='AU', scope='domestic'):
         raise ValueError(f'Unsupported flight country: {country}')
     if country=='SG' and scope!='international':
         raise ValueError('Singapore flights use international scope')
-    if country in {'KR', 'JP', 'CN', 'TH'} and scope != 'domestic':
+    if country=='TH' and scope!='domestic':
+        raise ValueError('Thailand international flights use prepare_international_network.py')
+    if country in {'KR', 'JP', 'CN'} and scope != 'domestic':
         label = {'KR':'South Korea','JP':'Japan','CN':'China','TH':'Thailand'}[country]
         raise ValueError(f'{label} international flights are planned; only domestic is available')
     name = {'AU':'australia','ID':'indonesia','MY':'malaysia','SG':'singapore','IN':'india','KR':'south_korea','JP':'japan','CN':'china','TH':'thailand'}[country]

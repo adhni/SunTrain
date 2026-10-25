@@ -12,10 +12,10 @@ with sync_playwright() as p:
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"thailand_flights"})')
     page.wait_for_function('window.suntrainReplay?.day?.city==="thailand_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && !suntrainReplay.needsFit && suntrainReplay.filtered.length',timeout=120000)
-    assert not page.locator('#replay-flight-scope-field').is_visible()
+    assert page.locator('#replay-flight-scope-field').is_visible()
     assert not page.locator('#replay-flight-hubs-field').is_visible()
     assert page.evaluate('suntrainReplay.day.timezone')=='Asia/Bangkok'
-    assert page.evaluate('suntrainReplay.day.schedule.fare_context.currency')=='USD'
+    assert page.evaluate('suntrainReplay.day.schedule.fare_context.currency')=='mixed'
     assert 'ICT' in page.locator('#replay-clock-date').inner_text()
     assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
     assert page.evaluate('suntrainReplay.graph.getBounds().getNorth()-suntrainReplay.graph.getBounds().getSouth()<40')
@@ -23,7 +23,7 @@ with sync_playwright() as p:
     page.evaluate('dash_clientside.set_props("replay-display",{value:["routes"]})')
     page.wait_for_function('!suntrainReplay.display.includes("stations") && !suntrainReplay.graph.getSource("replay-stations")._data.features.length')
     page.evaluate('dash_clientside.set_props("replay-display",{value:["routes","stations"]});dash_clientside.set_props("replay-airport-direction",{value:"departures"})')
-    page.wait_for_function('suntrainReplay.graph.getSource("replay-stations")._data.features.length===suntrainReplay.day.stations.length && suntrainReplay.filters.airportDirection==="departures"')
+    page.wait_for_function('suntrainReplay.graph.getSource("replay-stations")._data.features.length===new Set(suntrainReplay.filtered.flatMap(s=>s.stops.map(stop=>stop[0]))).size && suntrainReplay.filters.airportDirection==="departures"')
     page.screenshot(path='.cache/thai-flights-map.png')
     for code in ['BKK','DMK','CNX','HKT','USM','HDY','UBP']:
         print(f'Checking {code} departure/arrival boards',flush=True)

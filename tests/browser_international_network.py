@@ -21,7 +21,7 @@ with sync_playwright() as p:
     assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="international" && suntrainReplay.day.stations[s.stops[0][0]].country!==suntrainReplay.day.stations[s.stops.at(-1)[0]].country)')
     initial_downloads=len(downloads)
     page.screenshot(path='.cache/international-network-audit/map.png')
-    for origin,destination in [('CN','JP'),('CN','KR'),('JP','KR'),('SG','AU'),('AE','IN')]:
+    for origin,destination in [('CN','JP'),('CN','KR'),('JP','KR'),('SG','AU'),('AE','IN'),('TH','CN'),('TH','JP'),('TH','KR'),('AU','TH')]:
         page.evaluate('([a,b])=>{dash_clientside.set_props("replay-from-countries",{value:[a]});dash_clientside.set_props("replay-to-countries",{value:[b]})}',[origin,destination])
         page.wait_for_function('([a,b])=>suntrainReplay.filters.fromCountries[0]===a && suntrainReplay.filters.toCountries[0]===b && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].country===a && suntrainReplay.day.stations[s.stops.at(-1)[0]].country===b)',arg=[origin,destination])
         print(f'{origin} → {destination}: {page.evaluate("suntrainReplay.filtered.length")} flights',flush=True)
@@ -75,7 +75,7 @@ with sync_playwright() as p:
     page.screenshot(path='.cache/international-network-audit/mobile.png')
     page.evaluate('suntrainReplay.departures.close()');page.set_viewport_size({'width':1440,'height':1100})
     page.locator('#language-select').select_option('en')
-    for city,zone in [('china_flights','Asia/Shanghai'),('japan_flights','Asia/Tokyo'),('south_korea_flights','Asia/Seoul')]:
+    for city,zone in [('china_flights','Asia/Shanghai'),('japan_flights','Asia/Tokyo'),('south_korea_flights','Asia/Seoul'),('thailand_flights','Asia/Bangkok')]:
         page.evaluate('(city)=>dash_clientside.set_props("replay-city",{value:city})',city)
         page.wait_for_function('(city)=>suntrainReplay.day.city===city && !suntrainReplay.loading && suntrainReplay.filtered.length && suntrainReplay.filters.flightScope==="domestic"',arg=city,timeout=120000)
         assert page.locator('#replay-flight-scope-field').is_visible()

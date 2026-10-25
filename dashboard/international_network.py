@@ -1,5 +1,6 @@
 """One shared capture archive, projected into UTC and country-local replay days."""
 from datetime import datetime, timedelta
+from functools import lru_cache
 import gzip
 import json
 import os
@@ -9,12 +10,12 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 DAY = '2026-11-02'
 COUNTRIES = {'AU':'Australia','ID':'Indonesia','MY':'Malaysia','SG':'Singapore','IN':'India',
-             'CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}
+             'TH':'Thailand','CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}
 CITIES = {'australia_flights':('AU','Australia/Melbourne'),'indonesia_flights':('ID','Asia/Jakarta'),
           'malaysia_flights':('MY','Asia/Kuala_Lumpur'),'singapore_flights':('SG','Asia/Singapore'),
           'india_flights':('IN','Asia/Kolkata'),'china_flights':('CN','Asia/Shanghai'),
           'japan_flights':('JP','Asia/Tokyo'),'south_korea_flights':('KR','Asia/Seoul'),
-          'gulf_flights':(None,'Asia/Dubai')}
+          'gulf_flights':(None,'Asia/Dubai'),'thailand_flights':('TH','Asia/Bangkok')}
 HUBS = {'DXB','AUH','DOH'}
 # Earlier Indonesian snapshots stored OurAirports' stable `ident`; newer
 # catalogues use the same row's `icao_code`. These are exact pinned row aliases,
@@ -27,8 +28,19 @@ def reference_path():
     return Path(os.getenv('SUNTRAIN_INTERNATIONAL_NETWORK_REFERENCE',str(ROOT/'data/reference/international_network/2026-11-02.json.gz')))
 
 
+@lru_cache(maxsize=8)
+def _has_consumer(path, mtime_ns, size, city):
+    # A previous shared snapshot may predate this country. Fingerprints keep this
+    # inexpensive while allowing an atomically replaced archive to enable it.
+    with gzip.open(path, "rt") as stream:
+        return city in json.load(stream)["metadata"].get("queries_by_view", {})
+
+
 def enabled(business_date, city):
     if business_date!=DAY or city not in CITIES or not reference_path().exists():return False
+    if city=='thailand_flights':
+        path=reference_path();stamp=path.stat()
+        if not _has_consumer(str(path),stamp.st_mtime_ns,stamp.st_size,city):return False
     # Existing custom reference fixtures stay isolated unless a shared reference
     # is explicitly provided as well.
     prefix={'gulf_flights':'GULF','south_korea_flights':'SOUTH_KOREA'}.get(city,city.removesuffix('_flights').upper())
@@ -121,6 +133,8 @@ def load_archive():
         if not 60<=f['arrival']-f['departure']<=86400:raise ValueError('Invalid international duration')
         if any(x['country']=='CN' and x['timezone']!='Asia/Shanghai' for x in (a,b)):
             raise ValueError('Chinese airports require China standard time')
+        if any(x['country']=='TH' and x['timezone']!='Asia/Bangkok' for x in (a,b)):
+            raise ValueError('Thai airports require ICT Asia/Bangkok')
         price=f.get('price')
         if price and (price.get('currency') not in {'USD','MYR'} or type(price.get('amount_minor')) is not int or price['amount_minor']<=0
             or tuple(price.get(k) for k in ('adults','cabin','trip_type'))!=(1,'economy','one_way')):
@@ -155,7 +169,7 @@ def overlay(base, city):
     # Existing worldwide route coverage remains separate from the network's
     # selected-country coverage; never label the latter all international routes.
     meta['coverage_by_country_pair'] = shared['metadata']['coverage_by_country_pair']
-    if city in {'china_flights','japan_flights','south_korea_flights'}:
+    if city in {'china_flights','japan_flights','south_korea_flights','thailand_flights'}:
         scopes={'domestic':base['metadata']['coverage'],'international':shared['metadata']['coverage']}
         both={k:scopes['domestic'].get(k,0)+scopes['international'].get(k,0) for k in (
             'routes_planned','routes_searched','routes_returned','routes_with_search_results','queries_planned','queries_captured',

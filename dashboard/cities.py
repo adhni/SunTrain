@@ -15,8 +15,8 @@ CITIES = {
     'thailand_flights': {
         'replay_kind':'flights','name':'Thailand · Flights','timezone':'Asia/Bangkok',
         'bounds':[[97.0,5.4],[106.0,20.6]],'passenger_data':False,
-        'start_date':'2026-11-02','end_date':'2026-11-02',
-        'description':'Thai domestic flights · 2 November 2026 schedule snapshot. BKK and DMK are separate airports. Timeline and airport boards use ICT (UTC+7). Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.',
+        'start_date':'2026-11-02','end_date':'2026-11-02','flight_scopes':True,
+        'description':'Thai domestic flights and international connections to selected SunTrain flight locations · 2 November 2026. BKK and DMK are separate airports. Timeline: ICT (UTC+7); airport boards use local time. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.',
         'default_modes':['flight'],'modes':[('Flights','flight')],'operators':[],
         'directions':[('Scheduled service','Scheduled service')],
     },

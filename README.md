@@ -2,6 +2,10 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, India, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## South Korean flights
+
+Choose **South Korea · Flights** for domestic schedules on **2 November 2026**: **357 captured flights, 12 airports, 32 directional routes and 309 USD fares**. The timeline and airport boards use **KST**. Reuses airline/airport filters, departures/arrivals, Destinations, fullscreen boards and frequency lines. Muan is excluded because of its reported closure; Incheon's transfer-only domestic links are excluded. Coverage and prices are partial. International flights are planned as the next phase; see [South Korean flight notes](SOUTH_KOREAN_FLIGHTS_NOTES.md) for the full rollout, sources, gaps and cached rebuilding.
+
 ## Indian flights
 
 Choose **India · Flights** for **2 November 2026**. Domestic opens first; switch to **International / Both** to explore overseas routes. The timeline uses **IST**, airport boards use local time, and prices are the **cheapest captured USD quote per exact flight** for one adult, economy, one-way. BOM/NMI, DEL/DXN and GOI/GOX remain separate airports. Reuses airline/airport filters, departures/arrivals, Destinations, fullscreen boards and frequency lines. Coverage and prices are partial; paths are illustrative. See [Indian flight notes](INDIAN_FLIGHTS_NOTES.md) for sources, coverage gaps and cached rebuilding.

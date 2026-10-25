@@ -6,14 +6,24 @@ const {summarize} = require('../assets/02_city_overview.js');
 const {bearing} = require('../assets/02_flights.js');
 const {priceLabel} = require('../assets/02_flights.js');
 
-test('Malaysian fares format minor units without inventing missing prices', () => {
+test('Captured MYR and USD fares format minor units without inventing missing prices', () => {
     assert.match(priceLabel({price:{amount_minor:12050,currency:'MYR'}}), /MYR\s*120\.50/);
-    for (const price of [undefined, {}, {amount_minor:0,currency:'MYR'}, {amount_minor:134.5,currency:'MYR'}, {amount_minor:13400,currency:'USD'}]) {
+    assert.match(priceLabel({price:{amount_minor:13400,currency:'USD'}}),/USD\s*134\.00/);
+    for (const price of [undefined, {}, {amount_minor:0,currency:'MYR'}, {amount_minor:134.5,currency:'MYR'}, {amount_minor:13400,currency:'ZZZ'}]) {
         assert.equal(priceLabel({price}), 'Price unavailable');
     }
     const at=Date.parse('2026-11-02T00:00:00Z')/1000;
     assert.match(formatCallTime(at,'Asia/Kuala_Lumpur'), /08:00 MYT/);
     assert.match(formatCallTime(at,'Asia/Kuching'), /08:00 MYT/);
+});
+
+test('Gulf airport clocks differ by one hour and capture times keep their zone',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    const at=Date.parse('2026-11-02T00:00:00Z')/1000;
+    assert.match(formatCallTime(at,'Asia/Dubai'),/04:00 GMT\+4/);
+    assert.match(formatCallTime(at,'Asia/Qatar'),/03:00 GMT\+3/);
+    assert.match(captureTime('2026-11-02T00:00:00Z','Asia/Dubai'),/04:00 GMT\+4/);
+    assert.match(captureTime('2026-11-02T00:00:00Z','Asia/Kuala_Lumpur'),/08:00 MYT/);
 });
 const stations = [{name:'Perth (PER)',lon:116,lat:-32,timezone:'Australia/Perth'},
     {name:'Melbourne (MEL)',lon:145,lat:-38,timezone:'Australia/Melbourne'}];

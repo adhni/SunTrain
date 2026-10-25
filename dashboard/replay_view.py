@@ -57,6 +57,7 @@ def build_replay_panel(metadata, default_date):
             field("Flights", dcc.Dropdown(id="replay-flight-scope", options=[{"label": label, "value": value} for label, value in [("Domestic", "domestic"), ("International", "international"), ("Both", "both")]], value="domestic", clearable=False, searchable=False), id="replay-flight-scope-field", style={"display": "none"}),
             field("Route / line", dcc.Dropdown(id="replay-lines", options=metadata["lines"], value=[], multi=True, placeholder="All routes / lines")),
             html.Div(id="replay-flight-controls", className="replay-flight-controls", style={"display": "none"}, children=[
+                field("Hub",html.Div(id='replay-flight-hubs',className='replay-hub-buttons'),id='replay-flight-hubs-field',style={'display':'none'}),
                 field("Airline / code", dcc.Dropdown(id="replay-carriers", options=[], value=[], multi=True, placeholder="All airlines")),
                 field("Airport / code", dcc.Dropdown(id="replay-airports", options=[], value=[], multi=True, placeholder="All airports")),
                 field("Airport traffic", dcc.Dropdown(id="replay-airport-direction", options=[{"label": label, "value": value} for label, value in [("Departures", "departures"), ("Arrivals", "arrivals"), ("Both", "both")]], value="both", disabled=True, clearable=False, searchable=False)),
@@ -218,9 +219,9 @@ def register_replay_callbacks(app, metadata):
                 [{"label": message("Airport connections" if city_settings(city).get('replay_kind') == 'flights' else "Route paths"), "value": "routes"}, {"label": message("Airports" if city_settings(city).get('replay_kind') == 'flights' else "Stops & stations"), "value": "stations"}] +
                 ([{"label": message("Size trains by passengers"), "value": "load"}] if settings["passenger_data"] else []),
                 ["routes", "stations"],
-                {"display": "none"} if settings.get("flight_scopes") else {},
-                {} if settings.get("flight_scopes") else {"display": "none"}, "domestic",
-                {} if settings.get("replay_kind") == "flights" else {"display": "none"}, [], [], "planes", "both",
+                {"display": "none"} if settings.get('replay_kind')=='flights' else {},
+                {} if settings.get("flight_scopes") else {"display": "none"}, "both" if settings.get('flight_hubs') else "domestic",
+                {} if settings.get("replay_kind") == "flights" else {"display": "none"}, [], [settings['default_airport']] if settings.get('default_airport') else [], "planes", "both",
                 {"display": "none"} if settings.get("replay_kind") == "flights" else {},
                 {"display": "none"} if settings.get("replay_kind") == "flights" else {})
 

@@ -304,3 +304,7 @@ body.replay-board-lock { overflow: hidden; }
 .departure-row .departure-fare { grid-column: 1 / -1; font-weight: 650; color: var(--accent); }
 .replay-board-expanded .departure-row .departure-fare { grid-column: 2 / -1; }
 .replay-flight-fare { font-size: 1.15rem; font-weight: 700; margin: 12px 0 4px; }
+.replay-hub-buttons { display: flex; gap: 6px; flex-wrap: wrap; }
+#replay-flight-hubs-field { grid-column: 1 / -1; }
+.replay-hub-buttons .finder-chip { width: auto; padding: 9px 12px; }
+#replay-flight-hubs [aria-pressed="true"] { background: var(--accent); color: var(--surface); border-color: var(--accent); }

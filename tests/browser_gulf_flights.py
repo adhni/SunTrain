@@ -1,0 +1,83 @@
+"""Three hub shortcuts, USD fares, foreign clocks and shared flight explorer UX."""
+import os
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser=p.chromium.launch(channel='chrome',headless=True,args=['--enable-unsafe-swiftshader','--use-angle=swiftshader'])
+    page=browser.new_page(viewport={'width':1440,'height':1100},ignore_https_errors=True)
+    errors=[];downloads=[]
+    page.on('pageerror',lambda e:errors.append(str(e)))
+    page.on('request',lambda r:downloads.append(r.url) if '/api/replay/gulf_flights/' in r.url else None)
+    page.goto(os.environ.get('SUNTRAIN_TEST_URL','http://127.0.0.1:8867'),wait_until='domcontentloaded')
+    page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
+    page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"gulf_flights"})')
+    page.wait_for_function('window.suntrainReplay?.day?.city==="gulf_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
+    page.wait_for_function('suntrainReplay.filters.airports[0]==="DXB"')
+    assert page.evaluate('suntrainReplay.day.schedule.fare_context.currency')=='USD'
+    assert not page.locator('#replay-flight-scope-field').is_visible()
+    count=len(downloads)
+    for code,zone,offset in [('DXB','Asia/Dubai','GMT+4'),('AUH','Asia/Dubai','GMT+4'),('DOH','Asia/Qatar','GMT+3')]:
+        page.locator(f'[data-hub="{code}"]').click()
+        page.wait_for_function('(code)=>suntrainReplay.filters.airports.length===1 && suntrainReplay.filters.airports[0]===code && suntrainReplay.filtered.length',arg=code)
+        assert page.evaluate('(code)=>suntrainReplay.filtered.every(s=>s.stops.some(stop=>suntrainReplay.day.stations[stop[0]].code===code))',code)
+        assert page.locator(f'[data-hub="{code}"]').get_attribute('aria-pressed')=='true'
+        page.mouse.move(0,0)
+        page.locator(f'[data-hub="{code}"]').evaluate('(el)=>el.getAnimations().forEach(a=>a.finish())')
+        selected_background=page.locator(f'[data-hub="{code}"]').evaluate('(el)=>getComputedStyle(el).backgroundColor')
+        page.locator(f'[data-hub="{code}"]').hover()
+        page.locator(f'[data-hub="{code}"]').evaluate('(el)=>el.getAnimations().forEach(a=>a.finish())')
+        assert page.locator(f'[data-hub="{code}"]').evaluate('(el)=>getComputedStyle(el).backgroundColor')==selected_background
+        page.evaluate('(code)=>{suntrainReplay.seek(suntrainReplay.day.start);suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))}',code)
+        page.wait_for_function('suntrainReplay.departures.services===suntrainReplay.filtered')
+        assert page.evaluate('suntrainReplay.departures.timezone')==zone
+        assert offset in page.locator('#replay-departures').inner_text()
+        assert 'USD' in page.locator('#replay-departures').inner_text()
+        page.locator('[data-event="arrival"]').click()
+        page.wait_for_function('suntrainReplay.filters.airportDirection==="arrivals"')
+        assert page.evaluate('(code)=>suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[1][0]].code===code)',code)
+        page.locator('[data-event="departure"]').click()
+        page.wait_for_function('suntrainReplay.filters.airportDirection==="departures"')
+        page.get_by_role('button',name='Expand board',exact=True).click()
+        now=page.evaluate('suntrainReplay.now')
+        page.locator('.departure-row').filter(has_text='USD').first.click()
+        assert page.evaluate('suntrainReplay.now')==now
+        assert 'USD' in page.locator('.replay-flight-fare').inner_text()
+        assert 'GMT+4' in page.locator('[data-fare-captured-at]').inner_text()
+        page.get_by_role('button',name='Back to airport board',exact=True).click()
+        assert page.evaluate('suntrainReplay.departures.expanded')
+        page.evaluate('suntrainReplay.departures.close()')
+    print('DXB default, three hub switches, isolated traffic, USD fares, local clocks, fullscreen and preview return passed',flush=True)
+    page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="DOH"))')
+    page.locator('[data-hub="DXB"]').click()
+    page.wait_for_function('!suntrainReplay.departures.visible && suntrainReplay.filters.airports[0]==="DXB"')
+    assert not page.evaluate('document.body.classList.contains("replay-board-lock")')
+    page.locator('[data-hub="all"]').click()
+    page.wait_for_function('!suntrainReplay.filters.airports.length && !suntrainReplay.filters.lines.length')
+    assert page.evaluate('suntrainReplay.filtered.length===suntrainReplay.day.services.length')
+    page.evaluate('dash_clientside.set_props("replay-flight-view",{value:"frequency"})')
+    page.wait_for_function('suntrainReplay.frequencyView && suntrainReplay.frequencyFeatures.length')
+    assert page.evaluate('suntrainReplay.frequencyFeatures.reduce((n,f)=>n+f.properties.count,0)===suntrainFlightNetwork.ownedFlights(suntrainReplay.filtered,suntrainReplay.day).length')
+    data=page.evaluate('JSON.stringify(suntrainReplay.frequencyFeatures)')
+    page.evaluate('suntrainReplay.seek(suntrainReplay.day.end)')
+    assert page.evaluate('JSON.stringify(suntrainReplay.frequencyFeatures)')==data
+    for theme in ['light','dark','sunrise','blueprint','heritage']:page.locator('#theme-toggle').select_option(theme)
+    page.locator('#theme-toggle').select_option('dark')
+    page.locator('[data-hub="DXB"]').click()
+    page.wait_for_function('suntrainReplay.filters.airports[0]==="DXB"')
+    page.evaluate('suntrainReplay.seek(suntrainReplay.day.start);suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="DXB"))')
+    page.locator('[data-event="destinations"]').click()
+    page.wait_for_function('suntrainReplay.departures.destinationRows.length>0')
+    page.get_by_role('button',name='Expand board',exact=True).click()
+    page.locator('#language-select').select_option('id')
+    assert 'Tujuan' in page.locator('#replay-departures').inner_text()
+    page.set_viewport_size({'width':390,'height':844})
+    page.wait_for_function('document.querySelector(".replay-detail-card").getBoundingClientRect().height===innerHeight')
+    page.evaluate('() => new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))')
+    assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+    page.screenshot(path='.cache/gulf-destinations-mobile.png')
+    page.evaluate('suntrainReplay.departures.close();dash_clientside.set_props("view-tabs",{value:"overview"})')
+    page.wait_for_function('document.querySelector("#city-overview-content").textContent.includes("DXB")')
+    assert len(downloads)==count
+    assert not errors,errors
+    print('All hubs, fixed frequency counts, themes, Indonesian, mobile, destinations, overview and cache reuse passed',flush=True)
+    browser.close()

@@ -12,6 +12,13 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'gulf_flights': {
+        'replay_kind':'flights','name':'Gulf hubs · Flights','timezone':'Asia/Dubai',
+        'bounds':[[50.3,23.6],[56.0,26.2]],'passenger_data':False,
+        'start_date':'2026-11-02','end_date':'2026-11-02','flight_hubs':['DXB','AUH','DOH'],'default_airport':'DXB',
+        'description':'Dubai (DXB), Abu Dhabi (AUH) and Doha (DOH) · 2 November 2026 schedule snapshot. Airport boards use local time; the replay clock uses Dubai time (UTC+4). Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.',
+        'default_modes':['flight'],'modes':[('Flights','flight')],'operators':[],'directions':[('Scheduled service','Scheduled service')],
+    },
     'malaysia_flights': {
         'replay_kind': 'flights', 'name': 'Malaysia · Flights', 'timezone': 'Asia/Kuala_Lumpur',
         'bounds': [[99.0, 0.5], [120.0, 8.0]], 'passenger_data': False,
@@ -483,4 +490,5 @@ def replay_settings(city="melbourne"):
     settings = city_settings(city)
     return {"city": city, **{key: settings[key] for key in ("timezone", "bounds", "passenger_data")},
             "city_name": settings["name"], "replay_kind": settings.get("replay_kind", "transit"),
-            "flight_scopes": bool(settings.get("flight_scopes"))}
+            "flight_scopes": bool(settings.get("flight_scopes")),
+            **({'flight_hubs':settings['flight_hubs'],'default_airport':settings.get('default_airport')} if settings.get('flight_hubs') else {})}

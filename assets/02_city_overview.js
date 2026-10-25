@@ -132,7 +132,8 @@
         host.replaceChildren(cards); host.setAttribute("aria-busy", "false");
         if (day.replay_kind === 'flights') host.append(element('p', 'Schedule snapshot. Loaded flights only; search coverage is partial.', 'replay-muted'));
         if (day.schedule?.coverage) {
-            const c = day.schedule.coverage_by_scope?.[filters.flightScope || 'domestic'] || day.schedule.coverage;
+            const hub=filters.airports?.length===1?filters.airports[0]:null;
+            const c = day.schedule.coverage_by_hub?.[hub] || day.schedule.coverage_by_scope?.[filters.flightScope || 'domestic'] || day.schedule.coverage;
             host.append(element('p', `${c.airports_returned} airports returned · ${c.airports_searched} airports searched · Schedule snapshot`, 'replay-muted'));
             host.append(element('p', `${c.queries_captured} queries captured · ${c.queries_planned} queries planned · Coverage is partial`, 'replay-muted'));
             if (c.rejected_records) host.append(element('p', `${c.rejected_records} source records omitted after validation`, 'replay-muted'));

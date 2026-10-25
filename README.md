@@ -1,6 +1,14 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Gulf hub flights
+
+Choose **Gulf hubs · Flights** for **2 November 2026**. Opens on **DXB**; use **DXB / AUH / DOH / All hubs** to switch traffic, or select any captured airport using **Airport / code**. Reuses airline filters, departures/arrivals, Destinations, fullscreen boards and the frequency map. The replay day uses **Dubai time (UTC+4)**; boards use each airport’s local time, including **Doha (UTC+3)**. Lowest returned **USD** fares are dated quotes for one adult, economy, one-way. Missing prices remain unavailable.
+
+The snapshot contains **2,461 overlapping flights across 211 airports**, with **2,421 USD fares** and **40 unavailable prices**. All 3,095 planned queries were captured; that does not establish complete hub timetables. The three prepared bundles total about **282 KiB**.
+
+All three hubs share one view, with separate resumable capture folders and compact prepared bundles. Exact airport queries and deduplicated inter-hub searches avoid treating Dubai and Abu Dhabi as one airport. Coverage is partial; paths are illustrative, not live tracks. See [Gulf flight notes](GULF_FLIGHTS_NOTES.md) for sources, actual coverage and rebuilding.
 
 ## Malaysian flights
 

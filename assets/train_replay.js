@@ -259,7 +259,7 @@
                 const fare=document.querySelector('.replay-flight-fare');
                 if (fare && this.selected) fare.textContent=root.suntrainFlights.priceLabel(this.selected);
                 const captured=document.querySelector('[data-fare-captured-at]');
-                if (captured) root.suntrainI18n.bind(captured, 'Captured: '+new Intl.DateTimeFormat(root.suntrainI18n.locale, {timeZone:this.day.timezone,dateStyle:'medium',timeStyle:'short'}).format(new Date(captured.dataset.fareCapturedAt))+' MYT');
+                if (captured) root.suntrainI18n.bind(captured, 'Captured: '+root.suntrainFlights.captureTime(captured.dataset.fareCapturedAt,this.day.timezone));
                 this.paint(true);
                 this.updateLegend();
             });
@@ -636,6 +636,23 @@
             }
              this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
             const flights = day.replay_kind === 'flights';
+            const hubs=$('replay-flight-hubs'),hubField=$('replay-flight-hubs-field');
+            const hubCodes=hubs && hubField?day.flight_hubs || []:[];
+            if(hubField)hubField.style.display=hubCodes.length?'':'none';hubs?.replaceChildren();
+            const chooseHub=code=>{
+                this.selected=null;this.emptyDetails();this.staticDirty=true;this.paint(true);
+                root.dash_clientside.set_props('replay-airports',{value:code?[code]:[]});
+                root.dash_clientside.set_props('replay-lines',{value:[]});
+            };
+            for (const code of hubCodes) {
+                const control=node('button',code,'finder-chip');control.type='button';control.dataset.hub=code;
+                control.title=day.stations.find(a=>a.code===code)?.name || code;
+                control.addEventListener('click',()=>chooseHub(code));hubs.append(control);
+            }
+            if (hubCodes.length) {
+                const all=node('button','All hubs','finder-chip');all.type='button';all.dataset.hub='all';
+                all.addEventListener('click',()=>chooseHub(null));hubs.append(all);
+            }
             setText('replay-open-departures', flights ? 'Airports' : 'Departures');
             setText('replay-legend-label', flights ? 'Flights' : 'Line colours');
             const restartLabel = flights ? 'Restart at midnight' : 'Restart at 03:00';
@@ -650,7 +667,9 @@
             if (flights) {
                 const carriers = new Map(day.services.map(s => [s.carrier, s.operator]));
                 root.dash_clientside.set_props('replay-carriers', {options: [...carriers].sort((a,b) => a[0].localeCompare(b[0])).map(([value,name]) => ({value, label: `${value} · ${name}`}))});
-                root.dash_clientside.set_props('replay-airports', {options: day.stations.map(a => ({value: a.code, label: `${a.code} · ${a.name}`})).sort((a,b) => a.value.localeCompare(b.value))});
+                const airportProps={options: day.stations.map(a => ({value: a.code, label: `${a.code} · ${a.name}`})).sort((a,b) => a.value.localeCompare(b.value))};
+                if(!sameDay && day.flight_hubs?.length)airportProps.value=[day.default_airport || day.flight_hubs[0]];
+                root.dash_clientside.set_props('replay-airports',airportProps);
             }
             const attribution = $("replay-attribution");
             attribution.replaceChildren();
@@ -909,7 +928,7 @@
                     host.append(node('p', root.suntrainFlights.priceLabel(service), 'replay-flight-fare'),
                         node('p', 'Lowest captured fare · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.', 'replay-muted replay-small'));
                     if (service.price?.captured_at) {
-                        const captured=node('p', 'Captured: '+new Intl.DateTimeFormat(root.suntrainI18n?.locale || 'en-MY', {timeZone:this.day.timezone,dateStyle:'medium',timeStyle:'short'}).format(new Date(service.price.captured_at))+' MYT', 'replay-muted replay-small');
+                        const captured=node('p', 'Captured: '+root.suntrainFlights.captureTime(service.price.captured_at,this.day.timezone), 'replay-muted replay-small');
                         captured.dataset.fareCapturedAt=service.price.captured_at;host.append(captured);
                     }
                 }
@@ -1212,6 +1231,10 @@
             const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);
             const filters = {airportDirection, carriers: carriers || [], airports: airports || [], flightScope: flightScope || "domestic", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
+            for (const control of document.querySelectorAll('[data-hub]')) {
+                const active=control.dataset.hub==='all'?!filters.airports.length:filters.airports.length===1 && filters.airports[0]===control.dataset.hub;
+                control.setAttribute('aria-pressed',String(active));
+            }
             root.dash_clientside.set_props('replay-airport-direction', {disabled: !filters.airports.length});
             if (tab === "overview") {
                 const routes = this.day.services.filter(service => matches(service, {...filters, lines: [], stations: [], directions: [], number: ""}, this.day));

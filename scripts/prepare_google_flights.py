@@ -125,7 +125,7 @@ def country_config(country='AU', scope='domestic'):
 def expected_queries(search_date, pairs, config=None, end_date=None):
     config = config or country_config()
     for origin, destination in pairs:
-        if config.get('scope') == 'international':
+        if config.get('scope') in {'international','hubs'}:
             zone = ZoneInfo(config['zones'][origin])
             midnight = datetime.fromisoformat(search_date).replace(tzinfo=ZoneInfo(config['timezone']))
             finish = datetime.fromisoformat(end_date or config['end_date']).replace(tzinfo=ZoneInfo(config['timezone'])) + timedelta(days=1)
@@ -154,6 +154,14 @@ async def capture(cache, search_date, pairs, concurrency, config=None, end_date=
             return await _capture(cache, search_date, pairs, concurrency, config, end_date)
         finally:
             fcntl.flock(lock, fcntl.LOCK_UN)
+
+
+def query_path(cache, day, origin, destination, config):
+    if config.get('hub_codes'):
+        owner=next((h for h in config['hub_codes'] if h in (origin,destination)),None)
+        if owner is None:raise ValueError('Flight route must touch a selected hub')
+        cache=cache/owner
+    return cache/f'{day}-{origin}-{destination}.json'
 
 
 @asynccontextmanager
@@ -186,8 +194,9 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
     pending = asyncio.Queue()
     config = config or country_config()
     for day, origin, destination in expected_queries(search_date, pairs, config, end_date):
-        path = cache / f'{day}-{origin}-{destination}.json'
+        path = query_path(cache,day,origin,destination,config)
         if not path.exists():
+            path.parent.mkdir(parents=True,exist_ok=True)
             pending.put_nowait((origin, destination, day, path))
     total = pending.qsize()
     print(f'Collecting {total} uncached airport/date queries', flush=True)
@@ -218,7 +227,7 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                         # Functions avoid the page's Trusted Types restriction on eval strings.
                         await page.wait_for_function('''() => [...document.scripts].some(s => s.textContent.includes("key: 'ds:1'"))''', timeout=15000)
                         scripts = await page.locator('script').all_text_contents()
-                        rejected = [] if config['country'] in {'ID','MY'} or config.get('scope') == 'international' else None
+                        rejected = [] if config['country'] in {'ID','MY'} or config.get('scope') in {'international','hubs'} else None
                         records = parse_results(scripts, origin, destination, day, config['zones'], rejected, config.get('max_duration', 8 * 3600))
                         body = await page.locator('body').inner_text()
                         if '/sorry/' in page.url or 'unusual traffic' in body.lower():
@@ -259,7 +268,7 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                             pass  # Diagnostic only: preserve the original collection error.
                         if '/sorry/' in page.url or 'unusual traffic' in body.lower():
                             raise RuntimeError('Search access limited; collection stopped') from error
-                        (cache / f'{day}-{origin}-{destination}.error.json').write_text(json.dumps(dict(
+                        path.with_suffix('.error.json').write_text(json.dumps(dict(
                             origin=origin, destination=destination, date=day, error=str(error)[:300])))
                         print(f'Uncollected {origin}-{destination} {day}: {str(error)[:110]}', flush=True)
                         if 'ERR_INTERNET_DISCONNECTED' in str(error):
@@ -287,6 +296,8 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
     records, queries = {}, []
     config = config or country_config()
     end_date = end_date or config['end_date'] or day
+    if config.get('hub_codes') and any(not set((a,b)) & set(config['hub_codes']) or a==b for a,b in pairs):
+        raise ValueError('Flight route must touch a selected hub')
     if config['country'] == 'MY' and config.get('scope') != 'international':
         countries = {a['code']: a['country'] for a in config['manifest']['airports']}
         if any(countries.get(a) != 'MY' or countries.get(b) != 'MY' for a, b in pairs):
@@ -298,7 +309,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
     expected = list(expected_queries(day, pairs, config, end_date))
     missing = []
     for d, a, b in expected:
-        path = cache / f'{d}-{a}-{b}.json'
+        path = query_path(cache,d,a,b,config)
         if not path.exists():
             missing.append([d, a, b]); continue
         query = json.loads(path.read_text())
@@ -347,7 +358,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
         represented = {f[k] for f in reference['flights'] for k in ['origin', 'destination']}
         reference['airports'] = [a for a in airports if a['code'] in represented]
         metadata = reference['metadata']
-        metadata['country'] = config['country']
+        metadata['profile' if config.get('hub_codes') else 'country']='gulf' if config.get('hub_codes') else config['country']
         if config.get('capture_prices'):
             metadata['fare_context']=dict(currency=config['currency'],adults=1,cabin='economy',trip_type='one_way',taxes='Required taxes and fees included; optional charges and baggage may cost extra',basis='Lowest returned quote for the exact flight; captured prices, not live fares')
             metadata['priced_flights']=sum('price' in f for f in reference['flights'])
@@ -357,6 +368,11 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             if config['country'] == 'ID' else f'Australian domestic flight schedules for {day}. Timeline: Melbourne time; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.')
         if config['country']=='MY':
             metadata['replay_note']='Malaysian domestic flight schedules for 2 November 2026. Timeline and airport boards use Malaysia time. Prices are captured one-adult economy one-way quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+        if config.get('hub_codes'):
+            metadata['hubs']=config['hub_codes']
+            metadata['scope']='hubs'
+            metadata['query_owner']=config.get('query_owner')
+            metadata['replay_note']='Gulf hub flight schedules for 2 November 2026. Timeline: Dubai time (UTC+4); airport boards use local time. Prices are captured one-adult economy one-way USD quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
         if config.get('scope') == 'international':
             metadata['scope'] = 'international'
             metadata['replay_note'] = metadata['replay_note'].replace('domestic', 'international')
@@ -364,7 +380,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
                 metadata['replay_note']=metadata['replay_note'].replace('Timeline and airport boards use Malaysia time.','Timeline: MYT; airport boards use local time.')
         successful = {(q['origin'], q['destination']) for q in queries if q['status'] == 'results'}
         attempted = {(q['origin'], q['destination']) for q in queries}
-        attempted.update((a, b) for d, a, b in missing if (cache / f'{d}-{a}-{b}.error.json').exists())
+        attempted.update((a, b) for d, a, b in missing if query_path(cache,d,a,b,config).with_suffix('.error.json').exists())
         metadata['coverage'] = dict(candidate_airports=len(config['manifest']['airports']),
             airports_planned=len({c for pair in pairs for c in pair}),
             airports_searched=len({c for pair in attempted for c in pair}), airports_returned=len(represented),
@@ -378,8 +394,8 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
                 for g in sorted({a.get('island_group', a.get('country', config['country'])) for a in config['manifest']['airports']})})
         if config.get('scope') == 'international':
             metadata['coverage']['candidate_foreign_airports'] = sum(a['country'] != config['country'] for a in config['manifest']['airports'])
-        metadata['failed_queries'] = [json.loads((cache / f'{d}-{a}-{b}.error.json').read_text())
-            for d, a, b in missing if (cache / f'{d}-{a}-{b}.error.json').exists()]
+        metadata['failed_queries'] = [json.loads(query_path(cache,d,a,b,config).with_suffix('.error.json').read_text())
+            for d, a, b in missing if query_path(cache,d,a,b,config).with_suffix('.error.json').exists()]
         metadata['coverage']['failed_queries'] = len(metadata['failed_queries'])
         metadata['coverage']['unattempted_queries'] = len(missing) - len(metadata['failed_queries'])
         metadata['unresolved_airports'] = config['manifest']['unresolved_airports']

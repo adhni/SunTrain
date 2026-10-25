@@ -192,3 +192,10 @@ test('Philippine boards and quote timestamps use PHT at the UTC+8 day boundary',
     assert.match(captureTime(at,'Asia/Manila'),/2 Nov.*00:00 PHT/);
     assert.match(formatCallTime(Date.parse(at)/1000,'UTC'),/1 Nov.*16:00 GMT\+0/);
 });
+
+test('Vietnam boards and fare timestamps retain ICT at the UTC+7 day boundary',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    const at='2026-11-01T17:00:00Z';
+    assert.match(formatCallTime(Date.parse(at)/1000,'Asia/Ho_Chi_Minh'),/2 Nov.*00:00 ICT/);
+    assert.match(captureTime(at,'Asia/Ho_Chi_Minh'),/2 Nov.*00:00 ICT/);
+});

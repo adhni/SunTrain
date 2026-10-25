@@ -12,6 +12,14 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'vietnam_flights': {
+        'replay_kind':'flights','name':'Vietnam · Flights','timezone':'Asia/Ho_Chi_Minh',
+        'bounds':[[102.0,8.0],[110.0,23.5]],'passenger_data':False,
+        'start_date':'2026-11-02','end_date':'2026-11-02','flight_scopes':True,
+        'description':'Vietnamese domestic flights and international connections to selected SunTrain flight locations · 2 November 2026. Exact airports are kept separate. Timeline: Vietnam time (ICT, UTC+7); airport boards use local time. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.',
+        'default_modes':['flight'],'modes':[('Flights','flight')],'operators':[],
+        'directions':[('Scheduled service','Scheduled service')],
+    },
     'philippines_flights': {
         'replay_kind':'flights','name':'Philippines · Flights','timezone':'Asia/Manila',
         'bounds':[[116.5,4.4],[127.0,21.5]],'passenger_data':False,

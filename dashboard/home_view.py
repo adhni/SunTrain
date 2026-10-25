@@ -21,7 +21,12 @@ def build_home_panel():
         dcc.Store(id="home-map-state"), dcc.Store(id="home-choice"),
         html.Div(className="home-intro", children=[
             html.Div([html.H2("The world, in motion."),
-                      html.P("Pick a place and bring its transport network to life.")]),
+                      html.P("Pick a place and bring its transport network to life."),
+                      html.Div(className='home-legend',role='list',**{'aria-label':'Map key'},children=[
+                          html.Span([html.Span(className='home-key-dot',**{'aria-hidden':'true'}),html.Span('Rail & local transport')],className='home-legend-item',role='listitem'),
+                          html.Span([html.Span('\u2708\uFE0E',className='home-key-dot home-key-flight',**{'aria-hidden':'true'}),html.Span('Flights')],className='home-legend-item',role='listitem'),
+                          html.Span([html.Span(className='home-key-dot home-key-mixed',**{'aria-hidden':'true'}),html.Span('Both')],className='home-legend-item',role='listitem'),
+                      ])]),
             html.Span(f"{len(places)} places to explore", className="home-count"),
         ]),
         html.Div(className="home-world", children=[

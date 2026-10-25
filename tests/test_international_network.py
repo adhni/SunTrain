@@ -56,11 +56,11 @@ def bundle(tmp_path,monkeypatch,records=None):
 
 def test_manifest_has_exact_countries_and_focused_east_asian_candidates():
     cfg=config();m=cfg['manifest'];air={a['code']:a for a in m['airports']}
-    assert m['base_directional_routes']==1814 and len(m['routes'])==2102 and len(air)==185
-    assert len(set(cfg['queries']))==len(cfg['queries'])==7180
+    assert m['base_directional_routes']==2504 and len(m['routes'])==2792 and len(air)==289
+    assert len(set(cfg['queries']))==len(cfg['queries'])==9440
     assert all(eligible(air[a],air[b]) and [b,a] in m['routes'] for a,b in m['routes'])
     assert all(a['country'] not in {'AE','QA'} or a['code'] in network.HUBS for a in air.values())
-    assert not {'ITM','MWX','HKG','MFM','TPE','BJS','TYO','SEL'} & air.keys()
+    assert not {'ITM','MWX','BJS','TYO','SEL'} & air.keys()
     for pair in [('PVG','ICN'),('HND','GMP'),('PEK','NRT'),('PKX','HND'),('SHA','GMP'),('CJU','PVG')]:
         assert list(pair) in m['routes']
     assert all(a['timezone']=='Asia/Shanghai' for a in air.values() if a['country']=='CN')

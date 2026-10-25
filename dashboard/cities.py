@@ -39,9 +39,9 @@ CITIES = {
     },
     'international_network': {
         'replay_kind':'flights','name':'International network · Flights','timezone':'UTC',
-        'bounds':[[47,-45],[155,48]],'passenger_data':False,
+        'bounds':[[-180,-55],[180,75]],'passenger_data':False,
         'start_date':'2026-11-02','end_date':'2026-11-02','flight_country_filters':True,
-        'description':'International connections between selected SunTrain flight locations · 2 November 2026. Timeline: UTC; airport boards use local dates and times. Captured USD/MYR fares retain their original currencies. Coverage and prices are partial; paths are illustrative.',
+        'description':'International connections between SunTrain flight locations and worldwide Taiwan/Hong Kong routes · 2 November 2026. Timeline: UTC; airport boards use local dates and times. Captured USD/MYR fares retain their original currencies. Coverage and prices are partial; paths are illustrative.',
         'default_modes':['flight'],'modes':[('Flights','flight')],'operators':[],
         'directions':[('Scheduled service','Scheduled service')],
     },

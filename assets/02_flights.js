@@ -28,7 +28,7 @@
             timeZone:timezone,year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZoneName:'shortOffset'
         }).format(new Date(at));
         if (timezone==='Pacific/Auckland') return text.replace(/GMT\+(12|13)/, (_,offset)=>offset==='13'?'NZDT':'NZST');
-        const label={'Asia/Brunei':'BNT','Asia/Phnom_Penh':'ICT','Asia/Vientiane':'ICT','Asia/Yangon':'MMT','Asia/Rangoon':'MMT','Asia/Dili':'TLT','Asia/Ho_Chi_Minh':'ICT','Asia/Manila':'PHT','Asia/Bangkok':'ICT','Asia/Kuala_Lumpur':'MYT','Asia/Singapore':'SGT','Asia/Kolkata':'IST','Asia/Seoul':'KST','Asia/Tokyo':'JST','Asia/Shanghai':'CST'}[timezone];
+        const label={'Asia/Taipei':'CST','Asia/Hong_Kong':'HKT','Asia/Brunei':'BNT','Asia/Phnom_Penh':'ICT','Asia/Vientiane':'ICT','Asia/Yangon':'MMT','Asia/Rangoon':'MMT','Asia/Dili':'TLT','Asia/Ho_Chi_Minh':'ICT','Asia/Manila':'PHT','Asia/Bangkok':'ICT','Asia/Kuala_Lumpur':'MYT','Asia/Singapore':'SGT','Asia/Kolkata':'IST','Asia/Seoul':'KST','Asia/Tokyo':'JST','Asia/Shanghai':'CST'}[timezone];
         return timezone==='UTC'?text.replace(/GMT(?:\+0)?/,'UTC'):label?text.replace(/GMT\+(?:13|[789]|[56][.:]30)/,label):text;
     }
     function planeImage(color = '#f57c28') {

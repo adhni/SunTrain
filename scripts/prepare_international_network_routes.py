@@ -9,10 +9,8 @@ sys.path.insert(0, str(ROOT))
 
 from dashboard.flight_profiles import PROFILES
 from dashboard.asean_flights import RETIRED_AIRPORTS
+from dashboard.international_network import COUNTRIES,within_footprint
 
-COUNTRIES = {'AU':'Australia','ID':'Indonesia','MY':'Malaysia','SG':'Singapore','IN':'India',
-             'VN':'Vietnam','PH':'Philippines','TH':'Thailand','CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}
-COUNTRIES.update({c:p['name'] for c,p in PROFILES.items()})
 HUBS = {'DXB','AUH','DOH'}
 SOURCES = {
     'NRT':'https://www.narita-airport.jp/en/discover/citylist/',
@@ -51,7 +49,7 @@ HISTORICAL = {
 
 
 def eligible(a, b):
-    return (a['country'] in COUNTRIES and b['country'] in COUNTRIES and a['country'] != b['country']
+    return (within_footprint(a,b)
             and all(x['country'] not in {'AE','QA'} or x['code'] in HUBS for x in (a,b))
             and not ({a['code'],b['code']} & {'MWX','ITM',*RETIRED_AIRPORTS}))
 

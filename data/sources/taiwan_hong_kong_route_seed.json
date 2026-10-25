@@ -1,0 +1,4735 @@
+{
+  "reviewed": "2026-10-26",
+  "sources": {
+    "caa_2026_08": {
+      "url": "https://www.caa.gov.tw/FileAtt.ashx?id=41534&lang=1",
+      "index_url": "https://www.caa.gov.tw/article.aspx?a=1741&lang=1",
+      "sha256": "e079dd1f8fa59bb3a6ca0a6b11d88663a74aa169494f16a94a35e9e23ff9e6fa",
+      "bytes": 126798
+    },
+    "hkg_2026": {
+      "url": "https://www.hongkongairport.com/iwov-resources/file/airport-authority/publications/annual-and-interim-reports/en/25_26/E_24_Airlines%20and%20Destinations.pdf",
+      "sha256": "917922a01f52ea01831d9a68558a35730703e0bfc77d3333b8394ab97c182e13",
+      "bytes": 45286
+    },
+    "cathay_destinations": {
+      "url": "https://flights.cathaypacific.com/destinations/en_HK/"
+    },
+    "khh_schedule": {
+      "url": "https://www.kia.gov.tw/data/flightplan.json",
+      "index_url": "https://www.kia.gov.tw/FLIPLAN.html",
+      "sha256": "95148b3335f49b59e2e4a42963a6a3c271adcc2caf1c0c2206953c3d25e8f06e",
+      "bytes": 906400
+    }
+  },
+  "candidates": [
+    {
+      "origin": "TPE",
+      "destination": "KIX",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 12,
+      "label": "大阪",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ICN",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 13,
+      "label": "首爾仁川",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CDG",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 14,
+      "label": "巴黎",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SDJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 15,
+      "label": "仙台",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "BNE",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 16,
+      "label": "布里斯本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CTS",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 17,
+      "label": "札幌",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KUL",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 18,
+      "label": "吉隆坡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "NGO",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 19,
+      "label": "名古屋",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "IST",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 20,
+      "label": "伊斯坦堡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "IAH",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 21,
+      "label": "休士頓",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SEA",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 22,
+      "label": "西雅圖",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "BKI",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 23,
+      "label": "亞庇",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ROR",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 24,
+      "label": "帛琉",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HND",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 25,
+      "label": "東京羽田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "NRT",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 26,
+      "label": "東京成田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "UKB",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 27,
+      "label": "神戶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HAN",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 28,
+      "label": "河內",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PRG",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 29,
+      "label": "布拉格",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FRA",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 30,
+      "label": "法蘭克福",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MUC",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 31,
+      "label": "慕尼黑",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ONT",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 32,
+      "label": "安大略",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ORD",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 33,
+      "label": "芝加哥",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KTI",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 34,
+      "label": "金邊",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AUH",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 35,
+      "label": "阿布達比",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "LAX",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 36,
+      "label": "洛杉磯",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SGN",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 37,
+      "label": "胡志明市",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "IAD",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 38,
+      "label": "華盛頓杜勒斯",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HKG",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 39,
+      "label": "香港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "OKA",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 40,
+      "label": "沖繩",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "JFK",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 41,
+      "label": "紐約",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PUS",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 42,
+      "label": "釜山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MNL",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 43,
+      "label": "馬尼拉",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "BKK",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 44,
+      "label": "曼谷蘇凡納布",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DMK",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 45,
+      "label": "曼谷廊曼",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CNX",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 46,
+      "label": "清邁",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DFW",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 47,
+      "label": "達拉斯",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MEL",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 48,
+      "label": "墨爾本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SYD",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 49,
+      "label": "雪梨",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HKT",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 50,
+      "label": "普吉",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CGK",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 51,
+      "label": "雅加達",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AKL",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 52,
+      "label": "奧克蘭",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SIN",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 53,
+      "label": "新加坡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "YVR",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 54,
+      "label": "溫哥華",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FUK",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 55,
+      "label": "福岡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FKS",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 56,
+      "label": "福島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PHX",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 57,
+      "label": "鳳凰城",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HIJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 58,
+      "label": "廣島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MFM",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 70,
+      "label": "澳門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CJU",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 71,
+      "label": "濟州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PEN",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 72,
+      "label": "檳城",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SFO",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 73,
+      "label": "舊金山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "GUM",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 74,
+      "label": "關島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CJJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 75,
+      "label": "清州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "BWN",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 76,
+      "label": "汶萊",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CXR",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 77,
+      "label": "芽莊金蘭",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PQC",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 78,
+      "label": "富國島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DPS",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 79,
+      "label": "峇里島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CEB",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 80,
+      "label": "宿霧",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TAE",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 81,
+      "label": "大邱",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KMQ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 82,
+      "label": "小松",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SHI",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 83,
+      "label": "下地島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KMI",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 84,
+      "label": "宮崎",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "YGJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 85,
+      "label": "米子",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "VIE",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 86,
+      "label": "維也納",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DAD",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 87,
+      "label": "峴港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CRK",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 88,
+      "label": "克拉克",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MXP",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 89,
+      "label": "米蘭",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FCO",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 90,
+      "label": "羅馬",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AOJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 91,
+      "label": "青森",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "LHR",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 92,
+      "label": "倫敦希斯洛",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "YYZ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 93,
+      "label": "多倫多",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HKD",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 94,
+      "label": "函館",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KMJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 95,
+      "label": "熊本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TOY",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 96,
+      "label": "富山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ISG",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 97,
+      "label": "石垣島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AMS",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 98,
+      "label": "阿姆斯特丹",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DXB",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 99,
+      "label": "杜拜",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KOJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 100,
+      "label": "鹿兒島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "OIT",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 101,
+      "label": "大分",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HSG",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 102,
+      "label": "佐賀",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "OKJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 103,
+      "label": "岡山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KCZ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 104,
+      "label": "高知",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MYJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 105,
+      "label": "松山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TAK",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 106,
+      "label": "高松",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HNA",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 107,
+      "label": "花卷",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AXT",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 108,
+      "label": "秋田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KIJ",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 109,
+      "label": "新潟",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PVG",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 111,
+      "label": "上海浦東",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "NGB",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 112,
+      "label": "寧波",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "NKG",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 113,
+      "label": "南京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CGO",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 114,
+      "label": "鄭州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HGH",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 115,
+      "label": "杭州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FOC",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 116,
+      "label": "福州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "WUH",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 117,
+      "label": "武漢",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TAO",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 118,
+      "label": "青島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CTU",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 130,
+      "label": "成都雙流",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "XMN",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 131,
+      "label": "廈門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CKG",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 132,
+      "label": "重慶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SZX",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 133,
+      "label": "深圳",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PEK",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 134,
+      "label": "北京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PKX",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 134,
+      "label": "北京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CAN",
+      "source": "caa_2026_08",
+      "sheet": "33-1",
+      "row": 135,
+      "label": "廣州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KIX",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 12,
+      "label": "大阪",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "ICN",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 13,
+      "label": "首爾仁川",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "GMP",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 14,
+      "label": "首爾金浦",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SDJ",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 15,
+      "label": "仙台",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CTS",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 16,
+      "label": "札幌",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KUL",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 17,
+      "label": "吉隆坡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NGO",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 18,
+      "label": "名古屋",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NRT",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 19,
+      "label": "東京成田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "HAN",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 20,
+      "label": "河內",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SGN",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 21,
+      "label": "胡志明市",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "HKG",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 22,
+      "label": "香港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "OKA",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 23,
+      "label": "沖繩",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "PUS",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 24,
+      "label": "釜山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MNL",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 25,
+      "label": "馬尼拉",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "BKK",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 26,
+      "label": "曼谷蘇凡納布",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "DMK",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 27,
+      "label": "曼谷廊曼",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SIN",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 28,
+      "label": "新加坡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "FUK",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 29,
+      "label": "福岡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MFM",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 30,
+      "label": "澳門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CJU",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 31,
+      "label": "濟州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "DAD",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 32,
+      "label": "峴港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KMJ",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 33,
+      "label": "熊本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "OKJ",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 34,
+      "label": "岡山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "PVG",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 36,
+      "label": "上海浦東",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NGB",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 37,
+      "label": "寧波",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NKG",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 38,
+      "label": "南京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "FOC",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 39,
+      "label": "福州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "WUH",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 40,
+      "label": "武漢",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "XMN",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 41,
+      "label": "廈門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CKG",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 42,
+      "label": "重慶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SZX",
+      "source": "caa_2026_08",
+      "sheet": "33-2",
+      "row": 43,
+      "label": "深圳",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "GMP",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 12,
+      "label": "首爾金浦",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "HND",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 13,
+      "label": "東京羽田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "PVG",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 15,
+      "label": "上海浦東",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "SHA",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 16,
+      "label": "上海虹橋",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "FOC",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 17,
+      "label": "福州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "WUH",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 18,
+      "label": "武漢",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "CTU",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 19,
+      "label": "成都雙流",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "XMN",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 20,
+      "label": "廈門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "CKG",
+      "source": "caa_2026_08",
+      "sheet": "33-3",
+      "row": 21,
+      "label": "重慶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "ICN",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 12,
+      "label": "首爾仁川",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "NGO",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 13,
+      "label": "名古屋",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "NRT",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 14,
+      "label": "東京成田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "UKB",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 15,
+      "label": "神戶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "HAN",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 16,
+      "label": "河內",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "SGN",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 17,
+      "label": "胡志明市",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "HKG",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 18,
+      "label": "香港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "OKA",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 19,
+      "label": "沖繩",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "PUS",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 20,
+      "label": "釜山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "MFM",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 21,
+      "label": "澳門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "CJU",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 22,
+      "label": "濟州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "PQC",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 23,
+      "label": "富國島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "SHI",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 24,
+      "label": "下地島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "DAD",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 25,
+      "label": "峴港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "KMJ",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 26,
+      "label": "熊本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "TAK",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 27,
+      "label": "高松",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "NKG",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 29,
+      "label": "南京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "TAO",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 30,
+      "label": "青島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "TFU",
+      "source": "caa_2026_08",
+      "sheet": "33-4",
+      "row": 31,
+      "label": "成都天府",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "HUN",
+      "destination": "OKA",
+      "source": "caa_2026_08",
+      "sheet": "33-5",
+      "row": 12,
+      "label": "沖繩",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "HUN",
+      "destination": "KMJ",
+      "source": "caa_2026_08",
+      "sheet": "33-5",
+      "row": 13,
+      "label": "熊本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KIX",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 12,
+      "label": "大阪",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ICN",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 13,
+      "label": "首爾仁川",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CDG",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 14,
+      "label": "巴黎",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SDJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 15,
+      "label": "仙台",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "BNE",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 16,
+      "label": "布里斯本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CTS",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 17,
+      "label": "札幌",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KUL",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 18,
+      "label": "吉隆坡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "NGO",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 19,
+      "label": "名古屋",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "IST",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 20,
+      "label": "伊斯坦堡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "IAH",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 21,
+      "label": "休士頓",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SEA",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 22,
+      "label": "西雅圖",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "BKI",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 23,
+      "label": "亞庇",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ROR",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 24,
+      "label": "帛琉",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HND",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 25,
+      "label": "東京羽田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "NRT",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 26,
+      "label": "東京成田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "UKB",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 27,
+      "label": "神戶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HAN",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 28,
+      "label": "河內",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PRG",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 29,
+      "label": "布拉格",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FRA",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 30,
+      "label": "法蘭克福",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MUC",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 31,
+      "label": "慕尼黑",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ONT",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 32,
+      "label": "安大略",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ORD",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 33,
+      "label": "芝加哥",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KTI",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 34,
+      "label": "金邊",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AUH",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 35,
+      "label": "阿布達比",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "LAX",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 36,
+      "label": "洛杉磯",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SGN",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 37,
+      "label": "胡志明市",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "IAD",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 38,
+      "label": "華盛頓杜勒斯",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HKG",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 39,
+      "label": "香港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "OKA",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 40,
+      "label": "沖繩",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "JFK",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 41,
+      "label": "紐約",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PUS",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 42,
+      "label": "釜山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MNL",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 43,
+      "label": "馬尼拉",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "BKK",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 44,
+      "label": "曼谷蘇凡納布",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DMK",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 45,
+      "label": "曼谷廊曼",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CNX",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 46,
+      "label": "清邁",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DFW",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 47,
+      "label": "達拉斯",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MEL",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 48,
+      "label": "墨爾本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SYD",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 49,
+      "label": "雪梨",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HKT",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 50,
+      "label": "普吉",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CGK",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 51,
+      "label": "雅加達",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AKL",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 52,
+      "label": "奧克蘭",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SIN",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 53,
+      "label": "新加坡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "YVR",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 54,
+      "label": "溫哥華",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FUK",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 55,
+      "label": "福岡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FKS",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 56,
+      "label": "福島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PHX",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 57,
+      "label": "鳳凰城",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HIJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 58,
+      "label": "廣島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MFM",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 70,
+      "label": "澳門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CJU",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 71,
+      "label": "濟州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PEN",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 72,
+      "label": "檳城",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SFO",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 73,
+      "label": "舊金山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "GUM",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 74,
+      "label": "關島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CJJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 75,
+      "label": "清州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DLI",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 76,
+      "label": "蓮姜",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "BWN",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 77,
+      "label": "汶萊",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CXR",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 78,
+      "label": "芽莊金蘭",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PQC",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 79,
+      "label": "富國島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MPH",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 80,
+      "label": "長灘島(卡提克蘭)",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DPS",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 81,
+      "label": "峇里島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CEB",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 82,
+      "label": "宿霧",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TAE",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 83,
+      "label": "大邱",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KMQ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 84,
+      "label": "小松",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SHI",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 85,
+      "label": "下地島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KMI",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 86,
+      "label": "宮崎",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "YGJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 87,
+      "label": "米子",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "VIE",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 88,
+      "label": "維也納",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DAD",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 89,
+      "label": "峴港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CRK",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 90,
+      "label": "克拉克",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MXP",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 91,
+      "label": "米蘭",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FCO",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 92,
+      "label": "羅馬",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AOJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 93,
+      "label": "青森",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FSZ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 94,
+      "label": "靜岡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "LHR",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 95,
+      "label": "倫敦希斯洛",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "YYZ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 96,
+      "label": "多倫多",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HKD",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 97,
+      "label": "函館",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KMJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 98,
+      "label": "熊本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TOY",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 99,
+      "label": "富山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "ISG",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 100,
+      "label": "石垣島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AMS",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 101,
+      "label": "阿姆斯特丹",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "DXB",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 102,
+      "label": "杜拜",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AKJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 103,
+      "label": "旭川",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KOJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 104,
+      "label": "鹿兒島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "OIT",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 105,
+      "label": "大分",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KKJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 106,
+      "label": "北九州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HSG",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 107,
+      "label": "佐賀",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "OKJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 108,
+      "label": "岡山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KCZ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 109,
+      "label": "高知",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MYJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 110,
+      "label": "松山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TAK",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 111,
+      "label": "高松",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HNA",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 112,
+      "label": "花卷",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "AXT",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 113,
+      "label": "秋田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "KIJ",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 114,
+      "label": "新潟",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PVG",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 116,
+      "label": "上海浦東",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "NGB",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 117,
+      "label": "寧波",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "NKG",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 118,
+      "label": "南京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CGO",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 130,
+      "label": "鄭州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "HGH",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 131,
+      "label": "杭州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "FOC",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 132,
+      "label": "福州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "WUH",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 133,
+      "label": "武漢",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TAO",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 134,
+      "label": "青島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CTU",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 135,
+      "label": "成都雙流",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "TFU",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 136,
+      "label": "成都天府",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "XMN",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 137,
+      "label": "廈門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CKG",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 138,
+      "label": "重慶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "SZX",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 139,
+      "label": "深圳",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PEK",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 140,
+      "label": "北京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "PKX",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 140,
+      "label": "北京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CAN",
+      "source": "caa_2026_08",
+      "sheet": "39-1",
+      "row": 141,
+      "label": "廣州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KIX",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 12,
+      "label": "大阪",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "ICN",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 13,
+      "label": "首爾仁川",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "GMP",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 14,
+      "label": "首爾金浦",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SDJ",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 15,
+      "label": "仙台",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CTS",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 16,
+      "label": "札幌",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KUL",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 17,
+      "label": "吉隆坡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NGO",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 18,
+      "label": "名古屋",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NRT",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 19,
+      "label": "東京成田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "HAN",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 20,
+      "label": "河內",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SGN",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 21,
+      "label": "胡志明市",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "HKG",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 22,
+      "label": "香港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "OKA",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 23,
+      "label": "沖繩",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "PUS",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 24,
+      "label": "釜山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MNL",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 25,
+      "label": "馬尼拉",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "BKK",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 26,
+      "label": "曼谷蘇凡納布",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "DMK",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 27,
+      "label": "曼谷廊曼",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CNX",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 28,
+      "label": "清邁",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SIN",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 29,
+      "label": "新加坡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "FUK",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 30,
+      "label": "福岡",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MFM",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 31,
+      "label": "澳門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CJU",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 32,
+      "label": "濟州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "DLI",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 33,
+      "label": "蓮姜",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CXR",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 34,
+      "label": "芽莊金蘭",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "DAD",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 35,
+      "label": "峴港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KMJ",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 36,
+      "label": "熊本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "OKJ",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 37,
+      "label": "岡山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "PVG",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 39,
+      "label": "上海浦東",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NGB",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 40,
+      "label": "寧波",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NKG",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 41,
+      "label": "南京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "FOC",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 42,
+      "label": "福州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "WUH",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 43,
+      "label": "武漢",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "XMN",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 44,
+      "label": "廈門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CKG",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 45,
+      "label": "重慶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SZX",
+      "source": "caa_2026_08",
+      "sheet": "39-2",
+      "row": 46,
+      "label": "深圳",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "GMP",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 12,
+      "label": "首爾金浦",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "HND",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 13,
+      "label": "東京羽田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "PVG",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 15,
+      "label": "上海浦東",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "SHA",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 16,
+      "label": "上海虹橋",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "FOC",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 17,
+      "label": "福州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "WUH",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 18,
+      "label": "武漢",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "CTU",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 19,
+      "label": "成都雙流",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "TFU",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 20,
+      "label": "成都天府",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "XMN",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 21,
+      "label": "廈門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TSA",
+      "destination": "CKG",
+      "source": "caa_2026_08",
+      "sheet": "39-3",
+      "row": 22,
+      "label": "重慶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "ICN",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 12,
+      "label": "首爾仁川",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "NGO",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 13,
+      "label": "名古屋",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "NRT",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 14,
+      "label": "東京成田",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "UKB",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 15,
+      "label": "神戶",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "HAN",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 16,
+      "label": "河內",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "SGN",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 17,
+      "label": "胡志明市",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "HKG",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 18,
+      "label": "香港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "OKA",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 19,
+      "label": "沖繩",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "PUS",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 20,
+      "label": "釜山",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "MFM",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 21,
+      "label": "澳門",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "CJU",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 22,
+      "label": "濟州",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "PQC",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 23,
+      "label": "富國島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "SHI",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 24,
+      "label": "下地島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "DAD",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 25,
+      "label": "峴港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "KMJ",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 26,
+      "label": "熊本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "TAK",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 27,
+      "label": "高松",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "NKG",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 29,
+      "label": "南京",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "TAO",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 30,
+      "label": "青島",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "TFU",
+      "source": "caa_2026_08",
+      "sheet": "39-4",
+      "row": 31,
+      "label": "成都天府",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "HUN",
+      "destination": "HKG",
+      "source": "caa_2026_08",
+      "sheet": "39-5",
+      "row": 12,
+      "label": "香港",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TNN",
+      "destination": "OKA",
+      "source": "caa_2026_08",
+      "sheet": "39-6",
+      "row": 12,
+      "label": "沖繩",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "TNN",
+      "destination": "KMJ",
+      "source": "caa_2026_08",
+      "sheet": "39-6",
+      "row": 13,
+      "label": "熊本",
+      "kind": "Monthly/YTD passenger-route candidate; city labels explicitly resolved to airport probes, not dated nonstop evidence"
+    },
+    {
+      "origin": "HKG",
+      "destination": "PEK",
+      "source": "hkg_2026",
+      "label": "Beijing/Capital",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "PKX",
+      "source": "hkg_2026",
+      "label": "Beijing/Daxing",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "PUS",
+      "source": "hkg_2026",
+      "label": "Busan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CGQ",
+      "source": "hkg_2026",
+      "label": "Changchun",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CSX",
+      "source": "hkg_2026",
+      "label": "Changsha",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CZX",
+      "source": "hkg_2026",
+      "label": "Changzhou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TFU",
+      "source": "hkg_2026",
+      "label": "Chengdu/Tianfu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CJJ",
+      "source": "hkg_2026",
+      "label": "Cheongju",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CKG",
+      "source": "hkg_2026",
+      "label": "Chongqing",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TAE",
+      "source": "hkg_2026",
+      "label": "Daegu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DLU",
+      "source": "hkg_2026",
+      "label": "Dali City",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DLC",
+      "source": "hkg_2026",
+      "label": "Dalian",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DAT",
+      "source": "hkg_2026",
+      "label": "Datong",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DNH",
+      "source": "hkg_2026",
+      "label": "Dunhuang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ENH",
+      "source": "hkg_2026",
+      "label": "Enshi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "FUK",
+      "source": "hkg_2026",
+      "label": "Fukuoka",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "FOC",
+      "source": "hkg_2026",
+      "label": "Fuzhou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CAN",
+      "source": "hkg_2026",
+      "label": "Guangzhou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KWL",
+      "source": "hkg_2026",
+      "label": "Guilin",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KWE",
+      "source": "hkg_2026",
+      "label": "Guiyang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HAK",
+      "source": "hkg_2026",
+      "label": "Haikou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HGH",
+      "source": "hkg_2026",
+      "label": "Hangzhou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HRB",
+      "source": "hkg_2026",
+      "label": "Harbin",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HFE",
+      "source": "hkg_2026",
+      "label": "Hefei",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HIJ",
+      "source": "hkg_2026",
+      "label": "Hiroshima",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HET",
+      "source": "hkg_2026",
+      "label": "Hohhot",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HUN",
+      "source": "hkg_2026",
+      "label": "Hualien",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TXN",
+      "source": "hkg_2026",
+      "label": "Huangshan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HLD",
+      "source": "hkg_2026",
+      "label": "Hulunbuir",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ISG",
+      "source": "hkg_2026",
+      "label": "Ishigaki",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CJU",
+      "source": "hkg_2026",
+      "label": "Jeju",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TNA",
+      "source": "hkg_2026",
+      "label": "Jinan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "JJN",
+      "source": "hkg_2026",
+      "label": "Jinjiang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KOJ",
+      "source": "hkg_2026",
+      "label": "Kagoshima",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KHH",
+      "source": "hkg_2026",
+      "label": "Kaohsiung",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KMQ",
+      "source": "hkg_2026",
+      "label": "Komatsu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KMJ",
+      "source": "hkg_2026",
+      "label": "Kumamoto",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KMG",
+      "source": "hkg_2026",
+      "label": "Kunming",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "LHW",
+      "source": "hkg_2026",
+      "label": "Lanzhou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "LXA",
+      "source": "hkg_2026",
+      "label": "Lhasa",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "LJG",
+      "source": "hkg_2026",
+      "label": "Lijiang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "LYI",
+      "source": "hkg_2026",
+      "label": "Linyi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "NGO",
+      "source": "hkg_2026",
+      "label": "Nagoya",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "NKG",
+      "source": "hkg_2026",
+      "label": "Nanjing",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "NTG",
+      "source": "hkg_2026",
+      "label": "Nantong",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "NGB",
+      "source": "hkg_2026",
+      "label": "Ningbo",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "OKA",
+      "source": "hkg_2026",
+      "label": "Okinawa",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DSN",
+      "source": "hkg_2026",
+      "label": "Ordos",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KIX",
+      "source": "hkg_2026",
+      "label": "Osaka/Kansai",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TAO",
+      "source": "hkg_2026",
+      "label": "Qingdao",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SYX",
+      "source": "hkg_2026",
+      "label": "Sanya",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CTS",
+      "source": "hkg_2026",
+      "label": "Sapporo",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SDJ",
+      "source": "hkg_2026",
+      "label": "Sendai",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ICN",
+      "source": "hkg_2026",
+      "label": "Seoul/Incheon",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SHA",
+      "source": "hkg_2026",
+      "label": "Shanghai/Hongqiao",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "PVG",
+      "source": "hkg_2026",
+      "label": "Shanghai/Pudong",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SHE",
+      "source": "hkg_2026",
+      "label": "Shenyang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SJW",
+      "source": "hkg_2026",
+      "label": "Shijiazhuang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SHI",
+      "source": "hkg_2026",
+      "label": "Shimojishima",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "WDS",
+      "source": "hkg_2026",
+      "label": "Shiyan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "FSZ",
+      "source": "hkg_2026",
+      "label": "Shizuoka",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "RMQ",
+      "source": "hkg_2026",
+      "label": "Taichung",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TPE",
+      "source": "hkg_2026",
+      "label": "Taipei",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TYN",
+      "source": "hkg_2026",
+      "label": "Taiyuan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TAK",
+      "source": "hkg_2026",
+      "label": "Takamatsu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TSN",
+      "source": "hkg_2026",
+      "label": "Tianjin",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TKS",
+      "source": "hkg_2026",
+      "label": "Tokushima",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HND",
+      "source": "hkg_2026",
+      "label": "Tokyo/Haneda",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "NRT",
+      "source": "hkg_2026",
+      "label": "Tokyo/Narita",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "UBN",
+      "source": "hkg_2026",
+      "label": "Ulaanbaatar",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "URC",
+      "source": "hkg_2026",
+      "label": "Urumqi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "WNZ",
+      "source": "hkg_2026",
+      "label": "Wenzhou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "WUH",
+      "source": "hkg_2026",
+      "label": "Wuhan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "WUX",
+      "source": "hkg_2026",
+      "label": "Wuxi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "XMN",
+      "source": "hkg_2026",
+      "label": "Xiamen",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "XIY",
+      "source": "hkg_2026",
+      "label": "Xian",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "XNN",
+      "source": "hkg_2026",
+      "label": "Xining",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "XUZ",
+      "source": "hkg_2026",
+      "label": "Xuzhou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "YNT",
+      "source": "hkg_2026",
+      "label": "Yantai",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "YIH",
+      "source": "hkg_2026",
+      "label": "Yichang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "INC",
+      "source": "hkg_2026",
+      "label": "Yinchuan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "YIW",
+      "source": "hkg_2026",
+      "label": "Yiwu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "YGJ",
+      "source": "hkg_2026",
+      "label": "Yonago",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "YCU",
+      "source": "hkg_2026",
+      "label": "Yuncheng",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DYG",
+      "source": "hkg_2026",
+      "label": "Zhangjiajie",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CGO",
+      "source": "hkg_2026",
+      "label": "Zhengzhou",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HSN",
+      "source": "hkg_2026",
+      "label": "Zhoushan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BWN",
+      "source": "hkg_2026",
+      "label": "B S Begawan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DMK",
+      "source": "hkg_2026",
+      "label": "Bangkok/Don Mueang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BKK",
+      "source": "hkg_2026",
+      "label": "Bangkok/Suvarnabhumi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CEB",
+      "source": "hkg_2026",
+      "label": "Cebu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CNX",
+      "source": "hkg_2026",
+      "label": "Chiang Mai",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DAD",
+      "source": "hkg_2026",
+      "label": "Da Nang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DVO",
+      "source": "hkg_2026",
+      "label": "Davao",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DPS",
+      "source": "hkg_2026",
+      "label": "Denpasar",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HAN",
+      "source": "hkg_2026",
+      "label": "Hanoi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SGN",
+      "source": "hkg_2026",
+      "label": "Ho Chi Minh",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ILO",
+      "source": "hkg_2026",
+      "label": "Iloilo",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CGK",
+      "source": "hkg_2026",
+      "label": "Jakarta",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "USM",
+      "source": "hkg_2026",
+      "label": "Koh Samui",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BKI",
+      "source": "hkg_2026",
+      "label": "Kota Kinabalu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KTI",
+      "source": "hkg_2026",
+      "label": "Krong Ta Khmau",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KUL",
+      "source": "hkg_2026",
+      "label": "Kuala Lumpur",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SZB",
+      "source": "hkg_2026",
+      "label": "Kuala Lumpur/Subang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MNL",
+      "source": "hkg_2026",
+      "label": "Manila",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CXR",
+      "source": "hkg_2026",
+      "label": "Nha Trang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "PKZ",
+      "source": "hkg_2026",
+      "label": "Pakse",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CRK",
+      "source": "hkg_2026",
+      "label": "Pampanga",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "PEN",
+      "source": "hkg_2026",
+      "label": "Penang",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KTI",
+      "source": "hkg_2026",
+      "label": "Phnom Penh",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "PQC",
+      "source": "hkg_2026",
+      "label": "Phu Quoc",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HKT",
+      "source": "hkg_2026",
+      "label": "Phuket",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SIN",
+      "source": "hkg_2026",
+      "label": "Singapore",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SUB",
+      "source": "hkg_2026",
+      "label": "Surabaya",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TWU",
+      "source": "hkg_2026",
+      "label": "Tawau",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "VTE",
+      "source": "hkg_2026",
+      "label": "Vientiane",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "AUH",
+      "source": "hkg_2026",
+      "label": "Abu Dhabi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BLR",
+      "source": "hkg_2026",
+      "label": "Bangalore",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MAA",
+      "source": "hkg_2026",
+      "label": "Chennai",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CMB",
+      "source": "hkg_2026",
+      "label": "Colombo",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DEL",
+      "source": "hkg_2026",
+      "label": "Delhi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DAC",
+      "source": "hkg_2026",
+      "label": "Dhaka",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DOH",
+      "source": "hkg_2026",
+      "label": "Doha",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DXB",
+      "source": "hkg_2026",
+      "label": "Dubai",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HYD",
+      "source": "hkg_2026",
+      "label": "Hyderabad",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KTM",
+      "source": "hkg_2026",
+      "label": "Kathmandu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ROR",
+      "source": "hkg_2026",
+      "label": "Koror",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MLE",
+      "source": "hkg_2026",
+      "label": "Male",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BOM",
+      "source": "hkg_2026",
+      "label": "Mumbai",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "RUH",
+      "source": "hkg_2026",
+      "label": "Riyadh",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "AMS",
+      "source": "hkg_2026",
+      "label": "Amsterdam",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BCN",
+      "source": "hkg_2026",
+      "label": "Barcelona",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BRU",
+      "source": "hkg_2026",
+      "label": "Brussels",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "FRA",
+      "source": "hkg_2026",
+      "label": "Frankfurt",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HEL",
+      "source": "hkg_2026",
+      "label": "Helsinki",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "IST",
+      "source": "hkg_2026",
+      "label": "Istanbul",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "LHR",
+      "source": "hkg_2026",
+      "label": "London/Heathrow",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MAD",
+      "source": "hkg_2026",
+      "label": "Madrid/Barajas",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MAN",
+      "source": "hkg_2026",
+      "label": "Manchester",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MXP",
+      "source": "hkg_2026",
+      "label": "Milan/Malpensa",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SVO",
+      "source": "hkg_2026",
+      "label": "Moscow",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DME",
+      "source": "hkg_2026",
+      "label": "Moscow",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "VKO",
+      "source": "hkg_2026",
+      "label": "Moscow",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MUC",
+      "source": "hkg_2026",
+      "label": "Munich",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CDG",
+      "source": "hkg_2026",
+      "label": "Paris/Charles De Gaulle",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "FCO",
+      "source": "hkg_2026",
+      "label": "Rome",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ZRH",
+      "source": "hkg_2026",
+      "label": "Zurich",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ADL",
+      "source": "hkg_2026",
+      "label": "Adelaide",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "AKL",
+      "source": "hkg_2026",
+      "label": "Auckland",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BNE",
+      "source": "hkg_2026",
+      "label": "Brisbane",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CNS",
+      "source": "hkg_2026",
+      "label": "Cairns",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CHC",
+      "source": "hkg_2026",
+      "label": "Christchurch",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MEL",
+      "source": "hkg_2026",
+      "label": "Melbourne",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "NAN",
+      "source": "hkg_2026",
+      "label": "Nadi",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "PER",
+      "source": "hkg_2026",
+      "label": "Perth",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "POM",
+      "source": "hkg_2026",
+      "label": "Port Moresby",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SYD",
+      "source": "hkg_2026",
+      "label": "Sydney",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ADD",
+      "source": "hkg_2026",
+      "label": "Addis Ababa",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "JNB",
+      "source": "hkg_2026",
+      "label": "Johannesburg",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "BOS",
+      "source": "hkg_2026",
+      "label": "Boston",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ORD",
+      "source": "hkg_2026",
+      "label": "Chicago/O’Hare",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DFW",
+      "source": "hkg_2026",
+      "label": "Dallas",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "HNL",
+      "source": "hkg_2026",
+      "label": "Honolulu",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "LAX",
+      "source": "hkg_2026",
+      "label": "Los Angeles",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "JFK",
+      "source": "hkg_2026",
+      "label": "New York/John Kennedy",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SPN",
+      "source": "hkg_2026",
+      "label": "Saipan",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SFO",
+      "source": "hkg_2026",
+      "label": "San Francisco",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "YYZ",
+      "source": "hkg_2026",
+      "label": "Toronto",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "YVR",
+      "source": "hkg_2026",
+      "label": "Vancouver",
+      "kind": "Airport authority March 2026 passenger destination candidate; airport-specific city resolution, dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "SEA",
+      "source": "cathay_destinations",
+      "label": "SEA",
+      "kind": "Supplemental exact-airport probe from current airline destination context; not dated service evidence"
+    },
+    {
+      "origin": "HKG",
+      "destination": "TLV",
+      "source": "cathay_destinations",
+      "label": "TLV",
+      "kind": "Supplemental exact-airport probe from current airline destination context; not dated service evidence"
+    },
+    {
+      "origin": "MNL",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MNL",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "GMP",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "GMP",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "PUS",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "PUS",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "PVG",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "PVG",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "NGB",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NGB",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "XMN",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "XMN",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "HKG",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KNH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KNH",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MZG",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "MZG",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "LZN",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "LZN",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "HUN",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "HUN",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KIX",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KUL",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KIX",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "ICN",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "ICN",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MFM",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "MFM",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NRT",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "FUK",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "FUK",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CKG",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "CKG",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SIN",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "OKA",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "OKA",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KMJ",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KMJ",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SZX",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "SZX",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "BKK",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "BKK",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "WUH",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "WUH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CMJ",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "CMJ",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "WOT",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "WOT",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "DMK",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "DAD",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KMQ",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "DAD",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KMQ",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CJU",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "ISG",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "CJU",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "ISG",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SDJ",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "SDJ",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "CTS",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "CTS",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "OKJ",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "OKJ",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NGO",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "NGO",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "FOC",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "FOC",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "NKG",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "NKG",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "SGN",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "KHH",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "HAN",
+      "source": "khh_schedule",
+      "kind": "Exact airport pair in official public schedule; period/frequency is discovery only, Google dated capture required"
+    }
+  ],
+  "freight_only_excluded": true,
+  "flight_records_remapped": false,
+  "deferred_routes": [
+    {
+      "origin": "HKG",
+      "destination": "ALA",
+      "reason": "Cathay passenger launch 9 January 2027, after replay date",
+      "source": "https://news.cathaypacific.com/cathay-pacific-launches-direct-flights-to-almaty-from-9-january-2027"
+    }
+  ]
+}

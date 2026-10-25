@@ -17,6 +17,8 @@ RETIRED_AIRPORTS={'PNH':'KTI','REP':'SAI'}
 
 def description(profile):
     prefix='International flights' if not profile['domestic'] else 'Domestic flights and international connections'
+    if profile.get('worldwide'):
+        return f"{profile['name']} · {'Domestic flights and worldwide international connections' if profile['domestic'] else 'Worldwide international flights'} · 2 November 2026. Timeline: {profile['clock']}; airport boards use local time. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative."
     return f"{profile['name']} · {prefix} to selected SunTrain flight locations · 2 November 2026. Timeline: {profile['clock']}; airport boards use local time. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative."
 
 

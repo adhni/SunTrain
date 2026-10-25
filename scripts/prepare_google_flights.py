@@ -45,6 +45,17 @@ def parse_results(scripts, origin, destination, search_date, zones=None, rejecte
         if local_departure.date().isoformat() != search_date:
             return None
         departure, arrival = int(local_departure.timestamp()), int(local_arrival.timestamp())
+        # A repeated clock hour has two UTC meanings. The source's dated arrival
+        # and stated duration may identify exactly one; never guess between two.
+        def instants(local):
+            return {int(local.replace(fold=fold).timestamp()) for fold in (0,1)
+                if datetime.fromtimestamp(local.replace(fold=fold).timestamp(),local.tzinfo).replace(tzinfo=None)==local.replace(tzinfo=None)}
+        departures,arrivals=instants(local_departure),instants(local_arrival)
+        if not departures or not arrivals:raise ValueError('Nonexistent airport-local clock time')
+        matching={(d,a) for d in departures for a in arrivals
+            if 60<=a-d<=max_duration and abs((a-d)/60-value[11])<=1}
+        if len(matching)>1:raise ValueError('Ambiguous airport-local timestamps despite source duration')
+        if matching:departure,arrival=matching.pop()
         if not 60 <= arrival - departure <= max_duration:
             raise ValueError(f'Invalid flight duration: {origin}-{destination} {local_departure.isoformat()} to {local_arrival.isoformat()} (source {value[11]} min)')
         if abs((arrival - departure) / 60 - value[11]) > 1:
@@ -113,6 +124,7 @@ def country_config(country='AU', scope='domestic'):
     if country in PROFILES:
         p=PROFILES[country]
         if scope!='domestic' or not p['domestic']:
+            if p.get('worldwide'):raise ValueError('Use prepare_taiwan_hong_kong_flights.py for worldwide international flights')
             raise ValueError('This country profile uses prepare_international_network.py for international flights')
         manifest=json.loads((ROOT/f"data/sources/{p['slug']}_flights_routes.json").read_text())
         return dict(country=country,zones={a['code']:a['timezone'] for a in manifest['airports']},timezone=p['zone'],end_date=manifest['end_date'],manifest=manifest,scope='domestic',capture_prices=True,currency='USD',max_duration=28800,allow_empty_snapshot=True)
@@ -305,7 +317,7 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                 await asyncio.gather(*tasks, return_exceptions=True)
                 raise
             finally:
-                await close_browser(browser,cleanups)
+                await close_browser(browser,cleanups,timeout=config.get('browser_cleanup_timeout',10))
 
 
 

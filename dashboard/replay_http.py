@@ -19,7 +19,7 @@ from flask import abort, request, send_file
 from dashboard import data, replay, transit
 from dashboard.cities import city_settings
 
-FORMAT_VERSION = 22
+FORMAT_VERSION = 23
 CACHE_LIMIT = 256 * 1024 * 1024
 # Different dates/modes share a memory budget inside one Gunicorn worker.
 BUILD_LOCK = threading.Lock()

@@ -607,6 +607,7 @@
         metroView() {
             if (!this.mapReady) return;
             this.setFollow(false);
+            this.graph.resize();
             this.graph.fitBounds(this.day?.bounds || MELBOURNE_BOUNDS, {padding: 25, duration: 0});
             this.needsFit = false;
         }
@@ -1178,15 +1179,19 @@
                 this.graph.getSource("replay-trains").setData(collection(vehicleDots));
                 this.graph.getSource("replay-selected-train").setData(collection(selectedMarker ? [selectedMarker] : []));
                 if (generation !== this.generation) { this.staticDirty = true; this.paintAgain = true; return; }
-                if (this.needsFit) this.metroView();
+                // City controls can change the map's height in the same render.
+                // Fit after that layout, so the starting country fills the map.
+                if (this.needsFit) requestAnimationFrame(() => {
+                    if (this.needsFit && generation === this.generation) this.metroView();
+                });
                 if (this.followSelected && selectedVisible) this.graph.setCenter([selectedPosition.lon, selectedPosition.lat]);
                 else if (this.followSelected && this.now > stopValue(this.selected, stopCount(this.selected) - 1, 2) + (this.selected.timeOffset || 0)) this.setFollow(false);
                 if (force || performance.now() - this.lastUI >= 200 || !this.playing) {
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     let dateText=dateFormat.format(new Date(this.now * 1000));
-                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':this.day.timezone==='Asia/Kolkata'?'IST':null;
-                    if (zoneLabel) dateText=dateText.replace(/GMT\+(?:[78]|5[.:]30)/,zoneLabel);
+                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':this.day.timezone==='Asia/Kolkata'?'IST':this.day.timezone==='Asia/Seoul'?'KST':null;
+                    if (zoneLabel) dateText=dateText.replace(/GMT\+(?:[789]|5[.:]30)/,zoneLabel);
                     setText("replay-clock-date",dateText);
                     setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");

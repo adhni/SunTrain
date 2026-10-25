@@ -12,6 +12,14 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'south_korea_flights': {
+        'replay_kind':'flights', 'name':'South Korea · Flights', 'timezone':'Asia/Seoul',
+        'bounds':[[125.5,32.8],[130.0,38.7]], 'passenger_data':False,
+        'start_date':'2026-11-02', 'end_date':'2026-11-02',
+        'description':'South Korean domestic flights · 2 November 2026 schedule snapshot. Timeline and airport boards use KST. Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.',
+        'default_modes':['flight'], 'modes':[('Flights','flight')],
+        'operators':[], 'directions':[('Scheduled service','Scheduled service')],
+    },
     'india_flights': {
         'replay_kind':'flights', 'name':'India · Flights', 'timezone':'Asia/Kolkata',
         'bounds':[[68.0,6.0],[97.5,36.0]], 'passenger_data':False,

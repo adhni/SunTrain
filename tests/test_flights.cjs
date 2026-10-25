@@ -6,6 +6,14 @@ const {summarize} = require('../assets/02_city_overview.js');
 const {bearing} = require('../assets/02_flights.js');
 const {priceLabel} = require('../assets/02_flights.js');
 
+test('Korean airport and capture clocks own midnight in KST',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    const at=Date.parse('2026-11-01T15:00:00Z')/1000;
+    assert.match(formatCallTime(at,'Asia/Seoul'),/00:00 KST/);
+    assert.match(captureTime('2026-11-01T15:00:00Z','Asia/Seoul'),/2 Nov.*00:00 KST/);
+    assert.match(formatCallTime(at-60,'Asia/Seoul'),/23:59 KST/);
+});
+
 test('Captured MYR and USD fares format minor units without inventing missing prices', () => {
     assert.match(priceLabel({price:{amount_minor:12050,currency:'MYR'}}), /MYR\s*120\.50/);
     assert.match(priceLabel({price:{amount_minor:13400,currency:'USD'}}),/USD\s*134\.00/);

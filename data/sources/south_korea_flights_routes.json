@@ -1,0 +1,466 @@
+{
+  "country": "KR",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Seoul",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+  "route_source_sha256": "4f442af7f1d5bdc1ab49773173b4f319d41a27d92f8469938ea810d8100a0ee9",
+  "route_hash_basis": "Curated published exact-airport candidates, not raw website bytes",
+  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_timezone": "Australia/Melbourne",
+  "airports": [
+    {
+      "code": "CJJ",
+      "icao": "RKTU",
+      "name": "Cheongju International Airport/Cheongju Air Base (K-59/G-513) (CJJ)",
+      "municipality": "Cheongju",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 36.71556,
+      "lon": 127.500289
+    },
+    {
+      "code": "CJU",
+      "icao": "RKPC",
+      "name": "Jeju International Airport (CJU)",
+      "municipality": "Jeju City",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 33.512058,
+      "lon": 126.492548
+    },
+    {
+      "code": "GMP",
+      "icao": "RKSS",
+      "name": "Seoul Gimpo International Airport (GMP)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.5583,
+      "lon": 126.791
+    },
+    {
+      "code": "HIN",
+      "icao": "RKPS",
+      "name": "Sacheon Airport / Sacheon Air Base (HIN)",
+      "municipality": "Sacheon",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.088591,
+      "lon": 128.071747
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "KPO",
+      "icao": "RKTH",
+      "name": "Pohang Airport (G-815/K-3) (KPO)",
+      "municipality": "Pohang",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.987955,
+      "lon": 129.420383
+    },
+    {
+      "code": "KUV",
+      "icao": "RKJK",
+      "name": "Gunsan Airport / Gunsan Air Base (KUV)",
+      "municipality": "Gunsan",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.903801,
+      "lon": 126.615997
+    },
+    {
+      "code": "KWJ",
+      "icao": "RKJJ",
+      "name": "Gwangju Airport (KWJ)",
+      "municipality": "Gwangju",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.123173,
+      "lon": 126.805444
+    },
+    {
+      "code": "MWX",
+      "icao": "RKJB",
+      "name": "Muan International Airport (MWX)",
+      "municipality": "Muan (Piseo-ri)",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 34.991406,
+      "lon": 126.382814
+    },
+    {
+      "code": "PUS",
+      "icao": "RKPK",
+      "name": "Gimhae International Airport (PUS)",
+      "municipality": "Busan",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.179501,
+      "lon": 128.938004
+    },
+    {
+      "code": "RSU",
+      "icao": "RKJY",
+      "name": "Yeosu Airport (RSU)",
+      "municipality": "Yeosu",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 34.84230041503906,
+      "lon": 127.61699676513672
+    },
+    {
+      "code": "TAE",
+      "icao": "RKTN",
+      "name": "Daegu International Airport (TAE)",
+      "municipality": "Daegu",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.894394,
+      "lon": 128.656989
+    },
+    {
+      "code": "USN",
+      "icao": "RKPU",
+      "name": "Ulsan Airport (USN)",
+      "municipality": "Ulsan",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.59349823,
+      "lon": 129.352005005
+    },
+    {
+      "code": "WJU",
+      "icao": "RKNW",
+      "name": "Wonju Airport / Hoengseong Air Base (K-38/K-46) (WJU)",
+      "municipality": "Wonju",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.437113,
+      "lon": 127.960051
+    },
+    {
+      "code": "YNY",
+      "icao": "RKNY",
+      "name": "Yangyang International Airport (YNY)",
+      "municipality": "Gonghang-ro",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 38.060481,
+      "lon": 128.669822
+    }
+  ],
+  "routes": [
+    [
+      "CJJ",
+      "CJU"
+    ],
+    [
+      "CJU",
+      "CJJ"
+    ],
+    [
+      "CJU",
+      "GMP"
+    ],
+    [
+      "CJU",
+      "HIN"
+    ],
+    [
+      "CJU",
+      "KPO"
+    ],
+    [
+      "CJU",
+      "KUV"
+    ],
+    [
+      "CJU",
+      "KWJ"
+    ],
+    [
+      "CJU",
+      "PUS"
+    ],
+    [
+      "CJU",
+      "RSU"
+    ],
+    [
+      "CJU",
+      "TAE"
+    ],
+    [
+      "CJU",
+      "USN"
+    ],
+    [
+      "CJU",
+      "WJU"
+    ],
+    [
+      "CJU",
+      "YNY"
+    ],
+    [
+      "GMP",
+      "CJU"
+    ],
+    [
+      "GMP",
+      "HIN"
+    ],
+    [
+      "GMP",
+      "KPO"
+    ],
+    [
+      "GMP",
+      "KWJ"
+    ],
+    [
+      "GMP",
+      "PUS"
+    ],
+    [
+      "GMP",
+      "RSU"
+    ],
+    [
+      "GMP",
+      "TAE"
+    ],
+    [
+      "GMP",
+      "USN"
+    ],
+    [
+      "HIN",
+      "CJU"
+    ],
+    [
+      "HIN",
+      "GMP"
+    ],
+    [
+      "KPO",
+      "CJU"
+    ],
+    [
+      "KPO",
+      "GMP"
+    ],
+    [
+      "KUV",
+      "CJU"
+    ],
+    [
+      "KWJ",
+      "CJU"
+    ],
+    [
+      "KWJ",
+      "GMP"
+    ],
+    [
+      "PUS",
+      "CJU"
+    ],
+    [
+      "PUS",
+      "GMP"
+    ],
+    [
+      "RSU",
+      "CJU"
+    ],
+    [
+      "RSU",
+      "GMP"
+    ],
+    [
+      "TAE",
+      "CJU"
+    ],
+    [
+      "TAE",
+      "GMP"
+    ],
+    [
+      "USN",
+      "CJU"
+    ],
+    [
+      "USN",
+      "GMP"
+    ],
+    [
+      "WJU",
+      "CJU"
+    ],
+    [
+      "YNY",
+      "CJU"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "CJU",
+      "destination": "GMP",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "PUS",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "CJJ",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "TAE",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "KWJ",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "RSU",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "USN",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "KPO",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "HIN",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "KUV",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "WJU",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "CJU",
+      "destination": "YNY",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "GMP",
+      "destination": "PUS",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "GMP",
+      "destination": "USN",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "GMP",
+      "destination": "RSU",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "GMP",
+      "destination": "HIN",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "GMP",
+      "destination": "KPO",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "GMP",
+      "destination": "KWJ",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    },
+    {
+      "origin": "GMP",
+      "destination": "TAE",
+      "source": "https://files.jinair.com/documents/%EC%A7%84%EC%97%90%EC%96%B4%20%EC%83%81%EC%9A%A9%EC%9A%B0%EB%8C%80%20%EC%9D%B4%EC%9A%A9%EC%95%88%EB%82%B4%EC%84%9C%282026%29.pdf",
+      "kind": "Published route candidate; not evidence of service on the replay date"
+    }
+  ],
+  "excluded_airports": [
+    {
+      "code": "MWX",
+      "reason": "Closed through 2026-12-24 23:59, beyond the replay date",
+      "source": "https://english.visitkorea.or.kr/svc/contents/infoHtmlView.do?vcontsId=171992"
+    },
+    {
+      "code": "ICN",
+      "reason": "Transit-exclusive domestic connections are not ordinary standalone domestic services; historical ICN–CJU listing is not dated evidence",
+      "source": "https://www.airport.kr/ap_en/1467/subview.do"
+    }
+  ],
+  "unresolved_airports": []
+}

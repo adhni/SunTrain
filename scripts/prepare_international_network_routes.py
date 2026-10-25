@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
 COUNTRIES = {'AU':'Australia','ID':'Indonesia','MY':'Malaysia','SG':'Singapore','IN':'India',
-             'TH':'Thailand','CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}
+             'PH':'Philippines','TH':'Thailand','CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}
 HUBS = {'DXB','AUH','DOH'}
 SOURCES = {
     'NRT':'https://www.narita-airport.jp/en/discover/citylist/',

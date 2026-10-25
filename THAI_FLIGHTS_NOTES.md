@@ -184,7 +184,12 @@ themes, Indonesian, mobile viewport coverage, cache reuse and switching back to
 Japan's separate JST view. Screenshots were visually inspected; no page errors
 occurred. These domestic checks predate the international extension; see the additional validation below.
 
-## Actual international coverage
+## Actual international coverage at the initial Thailand release
+
+The figures below describe the initial Thailand release. The Philippine extension
+adds 31 overlapping records, bringing the current Thai international view to
+**710 records**, **610 ICT-day departures** and **572 priced records**. Current
+shared-network totals are in [International network notes](INTERNATIONAL_NETWORK_NOTES.md).
 
 Captured **25 October 2026**, for **2 November 2026 ICT**:
 

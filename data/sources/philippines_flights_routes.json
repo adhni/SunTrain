@@ -1,0 +1,3206 @@
+{
+  "country": "PH",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Manila",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "BCD",
+      "icao": "RPVB",
+      "name": "Bacolod-Silay International Airport (BCD)",
+      "municipality": "Bacolod City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 10.776237,
+      "lon": 123.018879,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "BSO",
+      "icao": "RPUO",
+      "name": "Basco Airport (BSO)",
+      "municipality": "Basco",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 20.4513,
+      "lon": 121.980003,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "BXU",
+      "icao": "RPME",
+      "name": "Bancasi Airport (BXU)",
+      "municipality": "Butuan",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 8.9515,
+      "lon": 125.4788,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "CBO",
+      "icao": "RPMC",
+      "name": "Cotabato (Awang) Airport (CBO)",
+      "municipality": "Datu Odin Sinsuat",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 7.164753,
+      "lon": 124.209938,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "CEB",
+      "icao": "RPVM",
+      "name": "Mactan Cebu International Airport (CEB)",
+      "municipality": "Cebu City/Lapu-Lapu City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 10.309261,
+      "lon": 123.97974,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "CGY",
+      "icao": "RPMY",
+      "name": "Laguindingan International Airport (CGY)",
+      "municipality": "Laguindingan",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 8.612203,
+      "lon": 124.456496,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "CRK",
+      "icao": "RPLC",
+      "name": "Clark International Airport / Clark Air Base (CRK)",
+      "municipality": "Mabalacat",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 15.186,
+      "lon": 120.559998,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "CYP",
+      "icao": "RPVC",
+      "name": "Calbayog Airport (CYP)",
+      "municipality": "Calbayog City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 12.072574,
+      "lon": 124.54508,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "CYZ",
+      "icao": "RPUY",
+      "name": "Cauayan Airport (CYZ)",
+      "municipality": "Cauayan City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 16.9298992157,
+      "lon": 121.752998352,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "DGT",
+      "icao": "RPVD",
+      "name": "Sibulan Airport (DGT)",
+      "municipality": "Dumaguete City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 9.334183,
+      "lon": 123.30191,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "DPL",
+      "icao": "RPMG",
+      "name": "Dipolog Airport (DPL)",
+      "municipality": "Dipolog",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 8.601983,
+      "lon": 123.341875,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "DRP",
+      "icao": "RPLK",
+      "name": "Bicol International Airport (DRP)",
+      "municipality": "Legazpi",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 13.111915,
+      "lon": 123.676829,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "DVO",
+      "icao": "RPMD",
+      "name": "Francisco Bangoy International Airport (DVO)",
+      "municipality": "Davao",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 7.12552,
+      "lon": 125.646004,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "ENI",
+      "icao": "RPEN",
+      "name": "El Nido Airport (ENI)",
+      "municipality": "El Nido",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 11.202399,
+      "lon": 119.416087,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "GES",
+      "icao": "RPMR",
+      "name": "General Santos International Airport (GES)",
+      "municipality": "General Santos",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 6.057208,
+      "lon": 125.096243,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "IAO",
+      "icao": "RPNS",
+      "name": "Siargao Airport (IAO)",
+      "municipality": "Del Carmen",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 9.8591,
+      "lon": 126.014,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "ILO",
+      "icao": "RPVI",
+      "name": "Iloilo International Airport (ILO)",
+      "municipality": "Cabatuan",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 10.833017,
+      "lon": 122.493358,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "KLO",
+      "icao": "RPVK",
+      "name": "Kalibo International Airport (KLO)",
+      "municipality": "Kalibo",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 11.6794,
+      "lon": 122.375999,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "LAO",
+      "icao": "RPLI",
+      "name": "Laoag International Airport (LAO)",
+      "municipality": "Laoag City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 18.175089,
+      "lon": 120.531006,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "MBT",
+      "icao": "RPVJ",
+      "name": "Moises R. Espinosa Airport (MBT)",
+      "municipality": "Masbate",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 12.369682,
+      "lon": 123.630095,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "MNL",
+      "icao": "RPLL",
+      "name": "Ninoy Aquino International Airport (MNL)",
+      "municipality": "Manila (Pasay)",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 14.5086,
+      "lon": 121.019997,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "MPH",
+      "icao": "RPVE",
+      "name": "Godofredo P. Ramos Airport (MPH)",
+      "municipality": "Caticlan",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 11.9245,
+      "lon": 121.954002,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "OZC",
+      "icao": "RPMO",
+      "name": "Labo Airport (OZC)",
+      "municipality": "Ozamiz",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 8.17851,
+      "lon": 123.842003,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "PAG",
+      "icao": "RPMP",
+      "name": "Pagadian Airport (PAG)",
+      "municipality": "Pagadian",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 7.825632,
+      "lon": 123.459635,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "PPS",
+      "icao": "RPVP",
+      "name": "Puerto Princesa International Airport / PAF Antonio Bautista Air Base (PPS)",
+      "municipality": "Puerto Princesa",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 9.742044,
+      "lon": 118.75911,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "RXS",
+      "icao": "RPVR",
+      "name": "Roxas Airport (RXS)",
+      "municipality": "Roxas City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 11.597700119018555,
+      "lon": 122.75199890136719,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "SJI",
+      "icao": "RPUH",
+      "name": "San Jose Airport (SJI)",
+      "municipality": "San Jose",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 12.361499786399998,
+      "lon": 121.04699707,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "SUG",
+      "icao": "RPMS",
+      "name": "Surigao Airport (SUG)",
+      "municipality": "Surigao City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 9.755838325629998,
+      "lon": 125.480947495,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "TAC",
+      "icao": "RPVA",
+      "name": "Daniel Z. Romualdez Airport (TAC)",
+      "municipality": "Tacloban City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 11.227761,
+      "lon": 125.027783,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "TAG",
+      "icao": "RPSP",
+      "name": "Bohol-Panglao International Airport (TAG)",
+      "municipality": "Panglao",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 9.573045,
+      "lon": 123.770143,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "TBH",
+      "icao": "RPVU",
+      "name": "Tugdan Airport (TBH)",
+      "municipality": "Tablas Island",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 12.3109998703,
+      "lon": 122.084999084,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "TUG",
+      "icao": "RPUT",
+      "name": "Tuguegarao Airport (TUG)",
+      "municipality": "Tuguegarao City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 17.6433676823,
+      "lon": 121.733150482,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "TWT",
+      "icao": "RPMN",
+      "name": "Sanga Sanga Airport (TWT)",
+      "municipality": "Bongao",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 5.048196,
+      "lon": 119.743338,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "USU",
+      "icao": "RPVV",
+      "name": "Francisco B. Reyes (Busuanga) Airport (USU)",
+      "municipality": "Coron",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 12.121865,
+      "lon": 120.100801,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "VRC",
+      "icao": "RPUV",
+      "name": "Virac Airport (VRC)",
+      "municipality": "Virac",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 13.576399803161621,
+      "lon": 124.20600128173828,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "WNP",
+      "icao": "RPUN",
+      "name": "Naga Airport (WNP)",
+      "municipality": "Naga",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 13.58489990234375,
+      "lon": 123.2699966430664,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "ZAM",
+      "icao": "RPMZ",
+      "name": "Zamboanga International Airport (ZAM)",
+      "municipality": "Zamboanga",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 6.92242,
+      "lon": 122.059998,
+      "island_group": "Mindanao"
+    }
+  ],
+  "routes": [
+    [
+      "BCD",
+      "CEB"
+    ],
+    [
+      "BCD",
+      "DVO"
+    ],
+    [
+      "BCD",
+      "MNL"
+    ],
+    [
+      "BSO",
+      "CRK"
+    ],
+    [
+      "BXU",
+      "CEB"
+    ],
+    [
+      "BXU",
+      "MNL"
+    ],
+    [
+      "CBO",
+      "TWT"
+    ],
+    [
+      "CEB",
+      "BCD"
+    ],
+    [
+      "CEB",
+      "BXU"
+    ],
+    [
+      "CEB",
+      "CGY"
+    ],
+    [
+      "CEB",
+      "CRK"
+    ],
+    [
+      "CEB",
+      "CYP"
+    ],
+    [
+      "CEB",
+      "DGT"
+    ],
+    [
+      "CEB",
+      "DPL"
+    ],
+    [
+      "CEB",
+      "DRP"
+    ],
+    [
+      "CEB",
+      "DVO"
+    ],
+    [
+      "CEB",
+      "ENI"
+    ],
+    [
+      "CEB",
+      "GES"
+    ],
+    [
+      "CEB",
+      "IAO"
+    ],
+    [
+      "CEB",
+      "ILO"
+    ],
+    [
+      "CEB",
+      "MBT"
+    ],
+    [
+      "CEB",
+      "MNL"
+    ],
+    [
+      "CEB",
+      "MPH"
+    ],
+    [
+      "CEB",
+      "OZC"
+    ],
+    [
+      "CEB",
+      "PAG"
+    ],
+    [
+      "CEB",
+      "PPS"
+    ],
+    [
+      "CEB",
+      "SUG"
+    ],
+    [
+      "CEB",
+      "TAC"
+    ],
+    [
+      "CEB",
+      "USU"
+    ],
+    [
+      "CEB",
+      "ZAM"
+    ],
+    [
+      "CGY",
+      "CEB"
+    ],
+    [
+      "CGY",
+      "DVO"
+    ],
+    [
+      "CGY",
+      "ILO"
+    ],
+    [
+      "CGY",
+      "MNL"
+    ],
+    [
+      "CRK",
+      "BSO"
+    ],
+    [
+      "CRK",
+      "CEB"
+    ],
+    [
+      "CRK",
+      "DVO"
+    ],
+    [
+      "CRK",
+      "ENI"
+    ],
+    [
+      "CRK",
+      "GES"
+    ],
+    [
+      "CRK",
+      "IAO"
+    ],
+    [
+      "CRK",
+      "ILO"
+    ],
+    [
+      "CRK",
+      "MBT"
+    ],
+    [
+      "CRK",
+      "MPH"
+    ],
+    [
+      "CRK",
+      "PPS"
+    ],
+    [
+      "CRK",
+      "SJI"
+    ],
+    [
+      "CRK",
+      "TAG"
+    ],
+    [
+      "CRK",
+      "TBH"
+    ],
+    [
+      "CRK",
+      "USU"
+    ],
+    [
+      "CRK",
+      "WNP"
+    ],
+    [
+      "CYP",
+      "CEB"
+    ],
+    [
+      "CYZ",
+      "MNL"
+    ],
+    [
+      "DGT",
+      "CEB"
+    ],
+    [
+      "DGT",
+      "MNL"
+    ],
+    [
+      "DPL",
+      "CEB"
+    ],
+    [
+      "DPL",
+      "MNL"
+    ],
+    [
+      "DRP",
+      "CEB"
+    ],
+    [
+      "DRP",
+      "ILO"
+    ],
+    [
+      "DRP",
+      "MNL"
+    ],
+    [
+      "DVO",
+      "BCD"
+    ],
+    [
+      "DVO",
+      "CEB"
+    ],
+    [
+      "DVO",
+      "CGY"
+    ],
+    [
+      "DVO",
+      "CRK"
+    ],
+    [
+      "DVO",
+      "IAO"
+    ],
+    [
+      "DVO",
+      "ILO"
+    ],
+    [
+      "DVO",
+      "MNL"
+    ],
+    [
+      "DVO",
+      "MPH"
+    ],
+    [
+      "DVO",
+      "PPS"
+    ],
+    [
+      "DVO",
+      "TAC"
+    ],
+    [
+      "DVO",
+      "TAG"
+    ],
+    [
+      "DVO",
+      "ZAM"
+    ],
+    [
+      "ENI",
+      "CEB"
+    ],
+    [
+      "ENI",
+      "CRK"
+    ],
+    [
+      "GES",
+      "CEB"
+    ],
+    [
+      "GES",
+      "CRK"
+    ],
+    [
+      "GES",
+      "ILO"
+    ],
+    [
+      "GES",
+      "MNL"
+    ],
+    [
+      "IAO",
+      "CEB"
+    ],
+    [
+      "IAO",
+      "CRK"
+    ],
+    [
+      "IAO",
+      "DVO"
+    ],
+    [
+      "ILO",
+      "CEB"
+    ],
+    [
+      "ILO",
+      "CGY"
+    ],
+    [
+      "ILO",
+      "CRK"
+    ],
+    [
+      "ILO",
+      "DRP"
+    ],
+    [
+      "ILO",
+      "DVO"
+    ],
+    [
+      "ILO",
+      "GES"
+    ],
+    [
+      "ILO",
+      "MNL"
+    ],
+    [
+      "ILO",
+      "PPS"
+    ],
+    [
+      "ILO",
+      "TAC"
+    ],
+    [
+      "ILO",
+      "TAG"
+    ],
+    [
+      "KLO",
+      "MNL"
+    ],
+    [
+      "LAO",
+      "MNL"
+    ],
+    [
+      "MBT",
+      "CEB"
+    ],
+    [
+      "MBT",
+      "CRK"
+    ],
+    [
+      "MNL",
+      "BCD"
+    ],
+    [
+      "MNL",
+      "BXU"
+    ],
+    [
+      "MNL",
+      "CEB"
+    ],
+    [
+      "MNL",
+      "CGY"
+    ],
+    [
+      "MNL",
+      "CYZ"
+    ],
+    [
+      "MNL",
+      "DGT"
+    ],
+    [
+      "MNL",
+      "DPL"
+    ],
+    [
+      "MNL",
+      "DRP"
+    ],
+    [
+      "MNL",
+      "DVO"
+    ],
+    [
+      "MNL",
+      "GES"
+    ],
+    [
+      "MNL",
+      "ILO"
+    ],
+    [
+      "MNL",
+      "KLO"
+    ],
+    [
+      "MNL",
+      "LAO"
+    ],
+    [
+      "MNL",
+      "MPH"
+    ],
+    [
+      "MNL",
+      "OZC"
+    ],
+    [
+      "MNL",
+      "PAG"
+    ],
+    [
+      "MNL",
+      "PPS"
+    ],
+    [
+      "MNL",
+      "RXS"
+    ],
+    [
+      "MNL",
+      "TAC"
+    ],
+    [
+      "MNL",
+      "TAG"
+    ],
+    [
+      "MNL",
+      "TUG"
+    ],
+    [
+      "MNL",
+      "VRC"
+    ],
+    [
+      "MNL",
+      "ZAM"
+    ],
+    [
+      "MPH",
+      "CEB"
+    ],
+    [
+      "MPH",
+      "CRK"
+    ],
+    [
+      "MPH",
+      "DVO"
+    ],
+    [
+      "MPH",
+      "MNL"
+    ],
+    [
+      "OZC",
+      "CEB"
+    ],
+    [
+      "OZC",
+      "MNL"
+    ],
+    [
+      "PAG",
+      "CEB"
+    ],
+    [
+      "PAG",
+      "MNL"
+    ],
+    [
+      "PPS",
+      "CEB"
+    ],
+    [
+      "PPS",
+      "CRK"
+    ],
+    [
+      "PPS",
+      "DVO"
+    ],
+    [
+      "PPS",
+      "ILO"
+    ],
+    [
+      "PPS",
+      "MNL"
+    ],
+    [
+      "RXS",
+      "MNL"
+    ],
+    [
+      "SJI",
+      "CRK"
+    ],
+    [
+      "SUG",
+      "CEB"
+    ],
+    [
+      "TAC",
+      "CEB"
+    ],
+    [
+      "TAC",
+      "DVO"
+    ],
+    [
+      "TAC",
+      "ILO"
+    ],
+    [
+      "TAC",
+      "MNL"
+    ],
+    [
+      "TAG",
+      "CRK"
+    ],
+    [
+      "TAG",
+      "DVO"
+    ],
+    [
+      "TAG",
+      "ILO"
+    ],
+    [
+      "TAG",
+      "MNL"
+    ],
+    [
+      "TBH",
+      "CRK"
+    ],
+    [
+      "TUG",
+      "MNL"
+    ],
+    [
+      "TWT",
+      "CBO"
+    ],
+    [
+      "USU",
+      "CEB"
+    ],
+    [
+      "USU",
+      "CRK"
+    ],
+    [
+      "VRC",
+      "MNL"
+    ],
+    [
+      "WNP",
+      "CRK"
+    ],
+    [
+      "ZAM",
+      "CEB"
+    ],
+    [
+      "ZAM",
+      "DVO"
+    ],
+    [
+      "ZAM",
+      "MNL"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "BCD",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "BCD",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "BCD",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "BCD",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "BCD",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "BCD",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "BSO",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "BSO",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "BXU",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "BXU",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "BXU",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "BXU",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CBO",
+      "destination": "TWT",
+      "source": "https://flights.philippineairlines.com/en-ph/flights-from-cotabato-city",
+      "source_locator": "PAL flight inventory",
+      "original_origin": "CBO",
+      "original_destination": "TWT",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Fare inventory does not prove nonstop on 2 Nov."
+    },
+    {
+      "origin": "CEB",
+      "destination": "BCD",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "BCD",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "BXU",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "BXU",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "CGY",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "CGY",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CEB",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "CYP",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "CYP",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "DGT",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "DGT",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "DPL",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "DPL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "DRP",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "DRP",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "ENI",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "ENI",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "GES",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "GES",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "IAO",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "IAO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "MBT",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "MBT",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "MPH",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "MPH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "OZC",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "OZC",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "PAG",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "PAG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "PPS",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "PPS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "SUG",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "SUG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "TAC",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "TAC",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "USU",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "USU",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CEB",
+      "destination": "ZAM",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CEB",
+      "original_destination": "ZAM",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CGY",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CGY",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CGY",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "CGY",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CGY",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "CGY",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CGY",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "CGY",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "BSO",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "BSO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "CEB",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "DVO",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "ENI",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "ENI",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "GES",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "GES",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "IAO",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "IAO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "ILO",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "MBT",
+      "source": "https://help.cebupacificair.com/article/transfer-of-cebgo-dg-and-air-swift-t-220100",
+      "source_locator": "Mar 29 2026 transfer notice",
+      "original_origin": "CRK",
+      "original_destination": "MBT",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-03-29",
+      "effective_to": "",
+      "notes": "Manila-to-Clark transfer. Verify actual direct operating flight on target date."
+    },
+    {
+      "origin": "CRK",
+      "destination": "MPH",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "MPH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "WNP",
+      "source": "https://help.cebupacificair.com/article/transfer-of-cebgo-dg-and-air-swift-t-220100",
+      "source_locator": "Mar 29 2026 transfer notice",
+      "original_origin": "CRK",
+      "original_destination": "NAG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-03-29",
+      "effective_to": "",
+      "notes": "Manila-to-Clark transfer. Verify actual direct operating flight on target date."
+    },
+    {
+      "origin": "CRK",
+      "destination": "PPS",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "PPS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "SJI",
+      "source": "https://help.cebupacificair.com/article/transfer-of-cebgo-dg-and-air-swift-t-220100",
+      "source_locator": "Mar 29 2026 transfer notice",
+      "original_origin": "CRK",
+      "original_destination": "SJI",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-03-29",
+      "effective_to": "",
+      "notes": "Manila-to-Clark transfer. Verify actual direct operating flight on target date."
+    },
+    {
+      "origin": "CRK",
+      "destination": "TAG",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "TAG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CRK",
+      "destination": "TBH",
+      "source": "https://www.sunlightair.ph/news-releases/clark-to-tablas-romblon-flights-launch-august-2026",
+      "source_locator": "Aug 2026 service launch",
+      "original_origin": "CRK",
+      "original_destination": "TBH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-08-11",
+      "effective_to": "",
+      "notes": "Twice weekly is not evidence of a Monday flight."
+    },
+    {
+      "origin": "CRK",
+      "destination": "USU",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "USU",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CYP",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "CYP",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "CYZ",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "CYZ",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DGT",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "DGT",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DGT",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "DGT",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DPL",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "DPL",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DPL",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "DPL",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DRP",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "DRP",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DRP",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "DRP",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DRP",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "DRP",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "BCD",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "BCD",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "CGY",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "CGY",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "DVO",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "IAO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "IAO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "MPH",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "MPH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "PPS",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "PPS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "TAC",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "TAC",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "TAG",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "TAG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "DVO",
+      "destination": "ZAM",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "DVO",
+      "original_destination": "ZAM",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ENI",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "ENI",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ENI",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "ENI",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "GES",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "GES",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "GES",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "GES",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "GES",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "GES",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "GES",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "GES",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "IAO",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "IAO",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "IAO",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "IAO",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "IAO",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "IAO",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "CGY",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "CGY",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "ILO",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "DRP",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "DRP",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "GES",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "GES",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "PPS",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "PPS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "TAC",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "TAC",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ILO",
+      "destination": "TAG",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "ILO",
+      "original_destination": "TAG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "KLO",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "KLO",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "LAO",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "LAO",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MBT",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "MBT",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MBT",
+      "destination": "CRK",
+      "source": "https://help.cebupacificair.com/article/transfer-of-cebgo-dg-and-air-swift-t-220100",
+      "source_locator": "Mar 29 2026 transfer notice",
+      "original_origin": "MBT",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-03-29",
+      "effective_to": "",
+      "notes": "Manila-to-Clark transfer. Verify actual direct operating flight on target date."
+    },
+    {
+      "origin": "MNL",
+      "destination": "BCD",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "BCD",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "BXU",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "BXU",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "CGY",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "CGY",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "CYZ",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "CYZ",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DGT",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "DGT",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DPL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "DPL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DRP",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "DRP",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "GES",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "GES",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "KLO",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "KLO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "LAO",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "LAO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "MPH",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "MPH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "OZC",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "OZC",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "PAG",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "PAG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "PPS",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "PPS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "RXS",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "RXS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "TAC",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "TAC",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "TAG",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "TAG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "TUG",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "TUG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "VRC",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "VRC",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MNL",
+      "destination": "ZAM",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MNL",
+      "original_destination": "ZAM",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MPH",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "MPH",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MPH",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "MPH",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MPH",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "MPH",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "MPH",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "MPH",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "WNP",
+      "destination": "CRK",
+      "source": "https://help.cebupacificair.com/article/transfer-of-cebgo-dg-and-air-swift-t-220100",
+      "source_locator": "Mar 29 2026 transfer notice",
+      "original_origin": "NAG",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-03-29",
+      "effective_to": "",
+      "notes": "Manila-to-Clark transfer. Verify actual direct operating flight on target date."
+    },
+    {
+      "origin": "OZC",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "OZC",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "OZC",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "OZC",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "PAG",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "PAG",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "PAG",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "PAG",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "PPS",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "PPS",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "PPS",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "PPS",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "PPS",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "PPS",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "PPS",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "PPS",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "PPS",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "PPS",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "RXS",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "RXS",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "SJI",
+      "destination": "CRK",
+      "source": "https://help.cebupacificair.com/article/transfer-of-cebgo-dg-and-air-swift-t-220100",
+      "source_locator": "Mar 29 2026 transfer notice",
+      "original_origin": "SJI",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-03-29",
+      "effective_to": "",
+      "notes": "Manila-to-Clark transfer. Verify actual direct operating flight on target date."
+    },
+    {
+      "origin": "SUG",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "SUG",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TAC",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "TAC",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TAC",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "TAC",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TAC",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "TAC",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TAC",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "TAC",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TAG",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "TAG",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TAG",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "TAG",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TAG",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/iloilo-travel-guide-iloilo-international-airport-ilo-211297",
+      "source_locator": "official hub route list",
+      "original_origin": "TAG",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TAG",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "TAG",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TBH",
+      "destination": "CRK",
+      "source": "https://www.sunlightair.ph/news-releases/clark-to-tablas-romblon-flights-launch-august-2026",
+      "source_locator": "Aug 2026 service launch",
+      "original_origin": "TBH",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-08-11",
+      "effective_to": "",
+      "notes": "Twice weekly is not evidence of a Monday flight."
+    },
+    {
+      "origin": "TUG",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "TUG",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "TWT",
+      "destination": "CBO",
+      "source": "https://flights.philippineairlines.com/en-ph/flights-from-cotabato-city",
+      "source_locator": "PAL flight inventory",
+      "original_origin": "TWT",
+      "original_destination": "CBO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Fare inventory does not prove nonstop on 2 Nov."
+    },
+    {
+      "origin": "USU",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "USU",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "USU",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "DOMESTIC FLIGHTS",
+      "original_origin": "USU",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "VRC",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "VRC",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ZAM",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "official hub route list",
+      "original_origin": "ZAM",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ZAM",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "official hub route list",
+      "original_origin": "ZAM",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    },
+    {
+      "origin": "ZAM",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "official hub route list",
+      "original_origin": "ZAM",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "No flight times inferred. Verify operating carrier and nonstop result for 2026-11-02."
+    }
+  ],
+  "coverage_scope": "Recovered selected candidates; international restricted to existing SunTrain flight countries",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "identity_corrections": [
+    {
+      "original": "NAG",
+      "resolved": "WNP",
+      "country": "PH",
+      "reason": "Recovered Naga row used Nagpur IATA; pinned PH/Naga identity is WNP/RPUN"
+    }
+  ],
+  "recovered_package": {
+    "filename": "philippines_recovered_partial_2026-11-02.zip",
+    "sha256": "ac3d3775777d14f09d787ac6b5244ccae74c3cc7b0d1d83a10acce87554c3169",
+    "metadata": {
+      "package_type": "reconstructed_partial_package_not_original_deep_research_zip",
+      "date": "2026-11-02",
+      "timezone": "Asia/Manila",
+      "window": "2026-11-02T00:00:00+08:00 until 2026-11-03T00:00:00+08:00 exclusive",
+      "domestic_directional_rows": 150,
+      "international_directional_rows": 128,
+      "evidence_rows": 314,
+      "airports_endpoints": 74,
+      "collector_directions": 278,
+      "timetable_rows": 0,
+      "critical_disclosures": [
+        "Original research ZIP is not accessible in this conversation runtime. This is an independently reconstructed reduced-scope route-candidate package.",
+        "Cebu Pacific sources were rendered without all route table contents; network transcription is drawn from completed Deep Research report, not newly directly downloaded route-table data.",
+        "Airport identities and coordinates were not available from the pinned OurAirports download. Join against existing pinned catalogue; blank cells are deliberately blank.",
+        "PAL W26 international PDF direct URL is referenced, but no timetable flights have been extracted into this replacement ZIP.",
+        "Published route candidates are not necessarily actual 2 November departures; use the exact origin/destination/date collector.",
+        "Returned sources have differing as-of dates; Clark airport page inspected here displayed August 10 2026 while previous research referred to a later edition. Treat it as a candidate source, not confirmation for 2 November.",
+        "Some Manila and Clark route assignments remain carrier-specific due to Cebgo transfer.",
+        "Emirates Dubai-Cebu-Clark-Dubai circular itinerary is asymmetric.",
+        "Iloilo-Singapore start-date evidence for Cebu Pacific is 23 November, but prior suspensions and other operators need further independent investigation."
+      ]
+    }
+  },
+  "input_seed_sha256": "5c0501e379feea5da700e0f49b4f325598ec59b6ac705f6382c37ea05b63a286",
+  "input_manifests": [],
+  "route_source_url": "https://clarkinternationalairport.com/flights/",
+  "route_hash_basis": "Curated recovered candidates and input pins, not raw website bytes",
+  "unresolved_airports": [],
+  "deferred_international_routes": [],
+  "source_reviewed_date": "2026-10-25",
+  "base_directional_routes": 0,
+  "route_source_sha256": "29a05144955bcf368483d2a175d750f360eaa6f9b970bd80a63902e9d13f2ba4"
+}

@@ -3,7 +3,7 @@
 ## Scope and experience
 
 The **International network · Flights** replay connects Australia, Indonesia,
-Malaysia, Singapore, India, Thailand, mainland China, Japan and South Korea, plus the Gulf
+Malaysia, Singapore, India, Thailand, the Philippines, mainland China, Japan and South Korea, plus the Gulf
 hubs **DXB, AUH and DOH**. It covers **2 November 2026, 00:00–24:00 UTC**.
 Moving planes is the default; frequency lines remain available. Directional
 From country / To country filters combine with airline codes and exact airports.
@@ -11,7 +11,7 @@ Airport boards retain local dates/zones and explicitly show the converted day
 window, which can cross two local calendar dates.
 
 Country views retain their own clocks and day windows. China, Japan and South
-Korea and Thailand now offer Domestic / International / Both, defaulting to domestic. Their
+Korea, Thailand and the Philippines now offer Domestic / International / Both, defaulting to domestic. Their
 new international scope covers this selected group, not every foreign country.
 Other flight views retain existing worldwide routes outside the shared group.
 Indonesia's dates after 2 November and all original domestic bundles are unchanged.
@@ -21,18 +21,20 @@ live tracking, paid sources or automatic refresh.
 
 ## Candidate evidence
 
-The manifest includes **1,530 directional candidates across 154 airports**. The
+The manifest includes **1,620 directional candidates across 160 airports**. The
 original 1,266 directions are preserved. Thailand adds **264 directions**, including
 176 reused candidates and focused East Asian route discovery/probes documented in
 [Thai flight notes](THAI_FLIGHTS_NOTES.md). The builder imports 1,242 directions
-from existing country manifests and adds 288 original East Asian directions. These are search targets, never a claim
-that every route operates. This is a major-gateway release; regional gaps remain.
+from existing country manifests before the Philippine extension and adds 288
+original East Asian directions. The Philippines adds 90 directions, documented in
+[Philippine flight notes](PHILIPPINE_FLIGHTS_NOTES.md). These are search targets,
+never a claim that every route operates. This is a major-gateway release; regional gaps remain.
 
 New discovery uses China's existing 30 major airports; HND/NRT/KIX/NGO/FUK/CTS/OKA
 in Japan; and ICN/GMP/PUS/CJU/CJJ/TAE in Korea. Existing regional candidates survive.
 ITM remains domestic-only, MWX retains its documented closure exclusion, and
 restricted ICN domestic transfer products are not ordinary international flights.
-PEK/PKX, SHA/PVG, CTU/TFU, HND/NRT, ICN/GMP, BKK/DMK, MEL/AVV, KUL/SZB and SIN/XSP stay separate.
+PEK/PKX, SHA/PVG, CTU/TFU, HND/NRT, ICN/GMP, BKK/DMK, MNL/CRK, MEL/AVV, KUL/SZB and SIN/XSP stay separate.
 
 The builder retains input-manifest paths/hashes and evidence per candidate:
 
@@ -65,12 +67,13 @@ mainland Chinese schedules use Asia/Shanghai, including Ürümqi.
 
 ## Collection, ownership and fares
 
-One queue contains **5,237 unique airport/date queries**, the union needed by the
+One queue contains **5,540 unique airport/date queries**, the union needed by the
 UTC network day and each endpoint country's local day. Dates are calculated in
 the origin airport's zone with a conservative 24-hour international duration cap;
 this includes necessary adjacent dates rather than assuming every search is Nov 2.
 The initial release reused **2,691 captures**, leaving **1,622 searches**. The Thai
-extension preserves those 4,313 captures, reuses another 452 and needs 472 new searches.
+extension preserves those 4,313 captures, reuses another 452 and needs 472 new searches. The Philippine extension
+preserves all 5,237 of those queries, reuses another 127 and needs 176 new searches.
 
 Cached successful empty searches are reused too. Latest captures own schedules
 for the same exact airport/date query; removed flights are not resurrected from
@@ -99,13 +102,13 @@ For 2 November country views, successful shared queries replace matching old
 international airport/date results, including successful empty queries. Other
 worldwide routes and unsuccessful/unsearched old queries remain available.
 Original worldwide snapshot coverage and the added shared-network coverage are
-reported separately. China/Japan/Korea/Thailand expose coverage by Domestic/International/Both.
+reported separately. China/Japan/Korea/Thailand/Philippines expose coverage by Domestic/International/Both.
 The combined network reports coverage for each selected country pair.
 
 ## Rebuild and local storage
 
 ```bash
-.venv/bin/python scripts/prepare_thai_international_routes.py
+.venv/bin/python scripts/prepare_philippine_flight_airports.py
 .venv/bin/python scripts/prepare_international_network_routes.py
 .venv/bin/python scripts/prepare_international_network.py --dry-run
 PYTHONPATH=.cache/browser-tools .venv/bin/python scripts/prepare_international_network.py
@@ -129,13 +132,13 @@ coverage audit and browser screenshots. Generated replay HTTP caches regenerate.
 
 ## Actual coverage and validation
 
-The final UTC view contains **3,596 overlapping flight records**, **3,122 departures within 2 November UTC**, **121 airports** and **77 carriers**. **2,808 records have captured quotes** (2,449 USD, 359 MYR); **788 remain unpriced**. The archive retains **4,778 records** across the wider envelope needed by all country-local views. Distinct flight numbers are not inferred physical aircraft movements.
+The final UTC view contains **3,849 overlapping flight records**, **3,336 departures within 2 November UTC**, **126 airports** and **81 carriers**. **3,038 records have captured quotes** (2,661 USD, 377 MYR); **811 remain unpriced**. The archive retains **5,143 records** across the envelope needed by all country-local views. Distinct flight numbers are not inferred physical aircraft movements.
 
-Archive collection: **5,237 / 5,237 queries captured**, **0 missing**, **0 failed**. The UTC projection’s own 4,590 required queries include 1,813 unreturned results. Empty queries mean not returned, not no service. There are 9 rejected source records, 9 unverified fare-context queries, and 0 unresolved airports. Coverage remains partial, including within the selected countries. The extension preserves all **3,894 previous archive records**, original quotes and **4,313 previous queries** exactly; the Thai domestic archive is also unchanged byte for byte.
+Archive collection: **5,540 / 5,540 queries captured**, **0 missing**, **0 failed**. The UTC projection's own 4,860 queries include 1,880 unreturned results. Empty queries mean not returned, not no service. There are 9 rejected source records, 10 unverified fare-context queries, and 0 unresolved airports. Coverage remains partial. The Philippine extension preserves all **4,778 previous archive records** and **5,237 previous queries**, including schedules, fares and provenance. Every domestic country bundle remains unchanged.
 
-Gzip: **589,209 bytes**, SHA-256 `86598987a334607312b8da479660ffced560e9bcc46ad7830bfa36774fe12213`. Offline preparation from cached captures reproduces the bytes exactly.
+Gzip: **625,007 bytes**, SHA-256 `6a7adf9aba6f8d74f9ab84f1e080a397c57f516909b14012e28de7b7a64b51d2`. Offline preparation from cached captures reproduces the bytes exactly.
 
-The table lists directional routes represented by overlapping records, departures owned by the UTC day, priced overlapping records and captured/planned searches. Gulf endpoints remain DXB/AUH/DOH only. Thailand's country-local figures are documented separately in [Thai flight notes](THAI_FLIGHTS_NOTES.md).
+The table lists directional routes represented by overlapping records, departures owned by the UTC day, priced overlapping records and captured/planned searches. Gulf endpoints remain DXB/AUH/DOH only. Country-local figures use different windows; see [Philippine flight notes](PHILIPPINE_FLIGHTS_NOTES.md).
 
 | Country pair | Routes returned | UTC-day departures | Priced records | Queries |
 | --- | ---: | ---: | ---: | ---: |
@@ -146,6 +149,7 @@ The table lists directional routes represented by overlapping records, departure
 | AE-JP | 8 | 8 | 16 | 30 / 30 |
 | AE-KR | 4 | 8 | 11 | 12 / 12 |
 | AE-MY | 4 | 10 | 14 | 24 / 24 |
+| AE-PH | 6 | 18 | 26 | 24 / 24 |
 | AE-QA | 4 | 36 | 36 | 12 / 12 |
 | AE-SG | 4 | 10 | 16 | 12 / 12 |
 | AE-TH | 14 | 41 | 54 | 48 / 48 |
@@ -155,6 +159,7 @@ The table lists directional routes represented by overlapping records, departure
 | AU-JP | 14 | 26 | 6 | 78 / 78 |
 | AU-KR | 4 | 10 | 3 | 12 / 12 |
 | AU-MY | 10 | 25 | 28 | 30 / 30 |
+| AU-PH | 6 | 10 | 1 | 24 / 24 |
 | AU-QA | 10 | 14 | 25 | 30 / 30 |
 | AU-SG | 13 | 69 | 84 | 42 / 42 |
 | AU-TH | 7 | 19 | 4 | 66 / 66 |
@@ -163,6 +168,7 @@ The table lists directional routes represented by overlapping records, departure
 | CN-JP | 59 | 158 | 141 | 390 / 390 |
 | CN-KR | 54 | 193 | 144 | 306 / 306 |
 | CN-MY | 57 | 158 | 105 | 300 / 300 |
+| CN-PH | 4 | 21 | 17 | 12 / 12 |
 | CN-QA | 11 | 11 | 19 | 48 / 48 |
 | CN-SG | 45 | 125 | 67 | 222 / 222 |
 | CN-TH | 43 | 138 | 85 | 168 / 168 |
@@ -170,31 +176,39 @@ The table lists directional routes represented by overlapping records, departure
 | ID-JP | 6 | 14 | 0 | 30 / 30 |
 | ID-KR | 5 | 15 | 1 | 18 / 18 |
 | ID-MY | 38 | 190 | 147 | 186 / 186 |
+| ID-PH | 4 | 8 | 0 | 12 / 12 |
 | ID-QA | 4 | 10 | 13 | 18 / 18 |
 | ID-SG | 20 | 114 | 104 | 108 / 108 |
 | ID-TH | 10 | 20 | 0 | 30 / 30 |
 | IN-JP | 10 | 14 | 16 | 30 / 30 |
 | IN-KR | 2 | 4 | 5 | 6 / 6 |
 | IN-MY | 23 | 51 | 47 | 96 / 96 |
+| IN-PH | 2 | 2 | 2 | 6 / 6 |
 | IN-QA | 26 | 61 | 81 | 96 / 96 |
 | IN-SG | 25 | 72 | 84 | 144 / 144 |
 | IN-TH | 40 | 94 | 99 | 228 / 228 |
 | JP-KR | 48 | 393 | 391 | 156 / 156 |
 | JP-MY | 9 | 23 | 23 | 48 / 48 |
+| JP-PH | 13 | 37 | 43 | 48 / 48 |
 | JP-QA | 6 | 8 | 13 | 18 / 18 |
 | JP-SG | 11 | 45 | 52 | 42 / 42 |
 | JP-TH | 14 | 52 | 55 | 54 / 54 |
 | KR-MY | 4 | 12 | 12 | 42 / 42 |
+| KR-PH | 6 | 33 | 37 | 30 / 30 |
 | KR-QA | 2 | 2 | 4 | 6 / 6 |
 | KR-SG | 6 | 19 | 24 | 18 / 18 |
 | KR-TH | 7 | 37 | 36 | 42 / 42 |
+| MY-PH | 5 | 17 | 20 | 30 / 30 |
 | MY-QA | 2 | 10 | 15 | 18 / 18 |
 | MY-SG | 19 | 130 | 128 | 90 / 90 |
 | MY-TH | 22 | 81 | 76 | 96 / 96 |
+| PH-QA | 4 | 9 | 14 | 24 / 24 |
+| PH-SG | 9 | 32 | 41 | 36 / 36 |
+| PH-TH | 8 | 27 | 29 | 24 / 24 |
 | QA-SG | 2 | 6 | 9 | 6 / 6 |
 | QA-TH | 4 | 14 | 20 | 12 / 12 |
 | SG-TH | 14 | 76 | 79 | 48 / 48 |
 
 The nine rejected source records are JT133/JT135/JT139 on PEN→KNO for 1–3 November. Google returned 1,495-minute timings (24 hours 55 minutes), exceeding the validated 24-hour international limit. They remain documented gaps; the app does not invent a plausible short-flight timing.
 
-Validation for the Thailand extension covers exact BKK/DMK identities, ICT versus UTC and adjacent-day overlap, original USD/MYR fares, domestic isolation, duplicate identities, absent queries, old-archive compatibility, Thai airport zones, HTTP ETags and shared-file revision invalidation. Browser checks cover Thailand in the UTC network and all Thai scopes, airport/carrier filters, foreign local boards, fullscreen/back/pagination, Destinations, frequency, themes, Indonesian, mobile and cache reuse. See the final test totals in the Thai notes.
+Validation for the Thailand and Philippine extensions covers exact BKK/DMK identities, ICT versus UTC and adjacent-day overlap, original USD/MYR fares, domestic isolation, duplicate identities, absent queries, old-archive compatibility, Thai/Philippine airport zones, HTTP ETags and shared-file revision invalidation. Browser checks cover Thailand/the Philippines in the UTC network and all country scopes, airport/carrier filters, foreign local boards, fullscreen/back/pagination, Destinations, frequency, themes, Indonesian, mobile and cache reuse. See the final test totals in the Philippine notes.

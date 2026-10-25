@@ -37,7 +37,7 @@ def test_distinct_airports_and_major_route_scope():
     for pair in [('HND','CTS'),('NRT','FUK'),('ITM','SDJ'),('KIX','OKA'),('OKA','MMY'),('UKB','SHI')]:
         assert list(pair) in manifest['routes']
     assert CITIES['japan_flights']['replay_kind']=='flights'
-    assert not CITIES['japan_flights'].get('flight_scopes')
+    assert CITIES['japan_flights'].get('flight_scopes')
     for city in ['japan','tokyo']:
         assert CITIES[city].get('replay_kind','transit')=='transit'
     with pytest.raises(ValueError, match='planned; only domestic'):
@@ -113,7 +113,8 @@ def test_deferred_and_foreign_routes_cannot_enter_the_domestic_snapshot(tmp_path
         flights.load_reference(DAY,'japan_flights')
 
 
-def test_prepared_domestic_coverage_and_prices():
+def test_prepared_domestic_coverage_and_prices(monkeypatch):
+    monkeypatch.setenv("SUNTRAIN_JAPAN_FLIGHTS_REFERENCE",str(flights.reference_path(city="japan_flights")))
     day=flights.replay_day(DAY,'japan_flights')
     codes={a['code'] for a in day['stations']}
     assert {'HND','NRT','ITM','KIX','UKB','NGO','CTS','FUK','OKA','MMY','SHI'}<=codes

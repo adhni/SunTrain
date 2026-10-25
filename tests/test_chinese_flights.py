@@ -39,7 +39,7 @@ def test_exact_airports_focused_mainland_manifest_and_expanded_candidate_provena
     for pair in [('PEK','SHA'),('PKX','PVG'),('CTU','CAN'),('TFU','SZX'),('CAN','URC'),('PVG','LHW')]:
         assert list(pair) in manifest['routes']
     assert CITIES['china_flights']['replay_kind']=='flights'
-    assert not CITIES['china_flights'].get('flight_scopes')
+    assert CITIES['china_flights'].get('flight_scopes')
     with pytest.raises(ValueError,match='planned; only domestic'):
         country_config('CN','international')
     assert country_config()['manifest'] is None and country_config('MY')['currency']=='MYR'
@@ -112,7 +112,8 @@ def test_scope_currency_and_wrong_timezone_are_rejected(tmp_path,monkeypatch):
         flights.load_reference(DAY,'china_flights')
 
 
-def test_prepared_snapshot_reports_actual_coverage_and_missing_fares():
+def test_prepared_snapshot_reports_actual_coverage_and_missing_fares(monkeypatch):
+    monkeypatch.setenv("SUNTRAIN_CHINA_FLIGHTS_REFERENCE",str(flights.reference_path(city="china_flights")))
     day=flights.replay_day(DAY,'china_flights')
     assert {'PEK','PKX','SHA','PVG','CTU','TFU','CAN','SZX','URC','LHW'} <= {a['code'] for a in day['stations']}
     assert day['services'] and all(s['flight_scope']=='domestic' for s in day['services'])

@@ -72,6 +72,9 @@ def airline_style(carrier, name):
 
 
 def reference_path(business_date=None, city='australia_flights'):
+    if city=='international_network':
+        from dashboard.international_network import reference_path as network_path
+        return network_path()
     if city=='china_flights':
         return Path(os.getenv('SUNTRAIN_CHINA_FLIGHTS_REFERENCE',str(DIRECTORY.parent/'china_flights/2026-11-02.json.gz')))
     if city=='japan_flights':
@@ -95,7 +98,15 @@ def reference_path(business_date=None, city='australia_flights'):
     return Path(os.getenv('SUNTRAIN_AUSTRALIA_FLIGHTS_REFERENCE', str(default)))
 
 
-def reference_paths(business_date=None, city='australia_flights'):
+def reference_paths(business_date=None, city='australia_flights', include_network=True):
+    paths = _reference_paths(business_date,city)
+    from dashboard.international_network import enabled, reference_path as network_path
+    if include_network and enabled(business_date,city):paths.append(network_path())
+    return paths
+
+
+def _reference_paths(business_date=None, city='australia_flights'):
+    if city=='international_network':return [reference_path(business_date,city)]
     if city=='gulf_flights':
         from dashboard.gulf_flights import reference_paths as hub_paths
         return hub_paths(business_date)
@@ -145,11 +156,18 @@ def continuous_arc(a, b):
 
 
 def load_reference(business_date, city):
+    from dashboard.international_network import enabled,load_archive,project,overlay
+    if city=='international_network':return project(load_archive(),city)
+    reference=_load_reference(business_date,city)
+    return overlay(reference,city) if enabled(business_date,city) else reference
+
+
+def _load_reference(business_date, city):
     if city=='gulf_flights':
         from dashboard.gulf_flights import load_reference as hub_reference
         return hub_reference(business_date)
     references = []
-    for path in reference_paths(business_date, city):
+    for path in reference_paths(business_date, city, include_network=False):
         with gzip.open(path, 'rt') as stream:
             references.append(json.load(stream))
     country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY','singapore_flights':'SG','india_flights':'IN','south_korea_flights':'KR','japan_flights':'JP','china_flights':'CN'}[city]

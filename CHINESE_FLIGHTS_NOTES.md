@@ -1,5 +1,7 @@
 # Mainland Chinese flights
 
+International connections to selected existing flight locations are now supplied by the shared [international network](INTERNATIONAL_NETWORK_NOTES.md). The domestic capture results and original scope below remain unchanged; its former international rollout notes describe the earlier domestic-only release.
+
 ## First-pass scope
 
 **China · Flights** replays domestic schedules for **2 November 2026**, using **China standard time, UTC+8 (`Asia/Shanghai`)**, including Ürümqi. Airport board/capture labels use **CST** in this explicitly Chinese context; the replay clock and explanatory copy spell out **China time (UTC+8)**. Do not replace Ürümqi's airline schedule zone with `Asia/Urumqi` (UTC+6).

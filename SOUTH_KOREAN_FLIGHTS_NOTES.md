@@ -1,5 +1,7 @@
 # South Korean flights
 
+International connections to selected existing flight locations are now supplied by the shared [international network](INTERNATIONAL_NETWORK_NOTES.md). The domestic capture results and original scope below remain unchanged; its former international rollout notes describe the earlier domestic-only release.
+
 ## Rollout plan
 
 Domestic first, then international in the same **South Korea · Flights** view. The existing South Korea railway and Seoul transport views remain separate. Both phases use the **2 November 2026** snapshot, **Asia/Seoul (KST, UTC+9)** timeline and captured **USD** quotes for one adult, economy, one-way. This is scheduled replay, not live tracking. Paths illustrate connections rather than recorded aircraft tracks.

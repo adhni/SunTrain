@@ -7,6 +7,21 @@ const day = {stations: [{name: 'Alpha', lon: 0, lat: 0}, {name: 'Bravo', lon: 2,
 const service = {id: 'one', operator: 'Metro', line: 'Werribee', direction: 'U', number: 'X100',
     stops: [[0, 0, 10, 5, 50], [1, 20, 30, 50, 0]], legs: ['curve']};
 
+test('international country filters are directional and combine with airline and exact airports',()=>{
+    const day={stations:[{code:'HND',country:'JP',name:'Haneda'},{code:'GMP',country:'KR',name:'Gimpo'},
+        {code:'NRT',country:'JP',name:'Narita'}]};
+    const f={mode:'flight',carrier:'NH',flight_scope:'international',operator:'ANA',line:'HND-GMP',number:'NH1',direction:'Scheduled service',stops:[[0,0,0],[1,5400,5400]]};
+    const filters={fromCountries:['JP'],toCountries:['KR'],carriers:['NH'],airports:['HND'],airportDirection:'departures',
+        flightScope:'international',modes:['flight'],operators:[],lines:[],directions:[],stations:[],number:''};
+    assert.equal(matches(f,filters,day),true);
+    assert.equal(matches(f,{...filters,fromCountries:['KR'],toCountries:['JP']},day),false);
+    assert.equal(matches(f,{...filters,carriers:['KE']},day),false);
+    assert.equal(matches(f,{...filters,airports:['NRT']},day),false);
+    assert.equal(matches(f,{...filters,airports:['GMP'],airportDirection:'arrivals'},day),true);
+    assert.equal(matches(f,{...filters,fromCountries:[],toCountries:[]},day),true);
+    assert.equal(matches({...f,stops:[[1,0,0],[0,5400,5400]]},filters,day),false);
+});
+
 test('timeline activity counts first departures, shares packed schedules and excludes carry-in', () => {
     const {departureActivity, hydrate} = require('../assets/train_replay.js');
     const packed = {transit_stop_patterns:{s:{stations:[0,1],legs:['curve']}},

@@ -168,3 +168,11 @@ test('Indonesian locale uses IST despite formatting half-hour offsets with a dot
         assert.match(captureTime('2026-11-01T18:30:00Z','Asia/Kolkata'),/IST/);
     } finally { delete globalThis.suntrainI18n; }
 });
+
+test('original USD and MYR amounts are labelled independently without implicit conversion',()=>{
+    const {priceLabel}=require('../assets/02_flights.js');
+    assert.match(priceLabel({price:{currency:'USD',amount_minor:10000}}),/USD.*100\.00/);
+    assert.match(priceLabel({price:{currency:'MYR',amount_minor:10000}}),/MYR.*100\.00/);
+    assert.equal(priceLabel({price:{currency:'CNY',amount_minor:10000}}),'Price unavailable');
+    assert.equal(priceLabel({}),'Price unavailable');
+});

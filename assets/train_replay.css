@@ -285,6 +285,7 @@ body.replay-board-lock { overflow: hidden; }
 #replay-panel:is(:fullscreen, .replay-expanded) .replay-detail-card { top: var(--replay-detail-top, 130px); max-height: calc(100% - var(--replay-detail-top, 130px) - 12px); }
 #replay-calendar { position: fixed; z-index: 6100; top: 0; left: 0; right: auto; max-height: calc(100dvh - 24px); overflow-y: auto; }
 .replay-flight-controls { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1.2fr .75fr .8fr; gap: 12px; padding: 8px 0; }
+.replay-country-controls { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 .replay-frequency-help { position: absolute; bottom: 40px; line-height: 1.5; left: 12px; z-index: 2; max-width: min(580px, calc(100% - 24px)); margin: 0; padding: 10px 12px; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 6px; font-size: .75rem; box-shadow: 0 2px 8px #0002; }
 .departure-columns[hidden] { display: none !important; }
 .destination-row { display: grid; grid-template-columns: 60px minmax(0, 1fr); gap: 6px 12px; width: 100%; padding: 14px; text-align: left; color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 6px; font: inherit; cursor: pointer; overflow-wrap: anywhere; }

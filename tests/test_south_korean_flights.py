@@ -35,7 +35,7 @@ def test_exact_catalogue_and_published_manifest_exclude_closed_and_transfer_only
         assert not {a, b} & {'ICN', 'MWX', 'SEL'}
     assert ['CJU', 'WJU'] in manifest['routes'] and ['GMP', 'HIN'] in manifest['routes']
     assert CITIES['south_korea_flights']['replay_kind'] == 'flights'
-    assert not CITIES['south_korea_flights'].get('flight_scopes')
+    assert CITIES['south_korea_flights'].get('flight_scopes')
     for city in ['south_korea', 'seoul']:
         assert CITIES[city].get('replay_kind', 'transit') == 'transit'
     with pytest.raises(ValueError, match='planned; only domestic'):
@@ -127,7 +127,8 @@ def test_runtime_rejects_bad_currency_foreign_closed_and_transfer_only(tmp_path,
         flights.load_reference(DAY, 'south_korea_flights')
 
 
-def test_prepared_domestic_capture_coverage_is_honest():
+def test_prepared_domestic_capture_coverage_is_honest(monkeypatch):
+    monkeypatch.setenv("SUNTRAIN_SOUTH_KOREA_FLIGHTS_REFERENCE",str(flights.reference_path(city="south_korea_flights")))
     day = flights.replay_day(DAY, 'south_korea_flights')
     codes = {a['code'] for a in day['stations']}
     assert {'GMP','CJU','PUS','CJJ','WJU','HIN'} <= codes

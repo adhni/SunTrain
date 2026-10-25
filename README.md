@@ -2,6 +2,10 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, India, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## International flight network
+
+Choose **International network · Flights** to explore connections between our existing flight countries and DXB/AUH/DOH on **2 November 2026 (UTC)**. Moving planes open by default; filter **From country / To country**, airline or exact airport, or switch to frequency lines. Airport boards use local dates and times. Existing USD/MYR quotes retain their original currencies without conversion. China, Japan and South Korea now offer **Domestic / International / Both**, with international coverage limited to this selected group. Other existing worldwide routes remain available in their country views. The UTC view contains **2,550 departures**, **110 airports** and **787 returned directional routes**, with 2,971 overlapping flight records. See [international network notes](INTERNATIONAL_NETWORK_NOTES.md) for coverage, sources and offline rebuilding.
+
 ## Mainland Chinese flights
 
 Choose **China · Flights** for domestic schedules on **2 November 2026**. This first pass searches published route candidates between **30 major mainland airports**, preserving PEK/PKX, SHA/PVG and CTU/TFU separately. Timeline and boards use **China time (UTC+8)**, including Ürümqi. Reuses airport/airline filters, departure/arrival boards, Destinations, fullscreen pagination and frequency lines. The snapshot contains **3,246 flights**, **31 carriers** and **261 directional routes**; **1,312 flights have captured USD fares**, while 1,934 have no available price. Coverage is partial; small airports and international/regional connections are deferred. See [Chinese flight notes](CHINESE_FLIGHTS_NOTES.md) for actual coverage, sources, price gaps and cached rebuilding.

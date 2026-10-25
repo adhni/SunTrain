@@ -129,6 +129,10 @@ def country_config(country='AU', scope='domestic'):
 
 def expected_queries(search_date, pairs, config=None, end_date=None):
     config = config or country_config()
+    if 'queries' in config:
+        allowed = {tuple(p) for p in pairs}
+        yield from (tuple(q) for q in config['queries'] if tuple(q[1:]) in allowed)
+        return
     for origin, destination in pairs:
         if config.get('scope') in {'international','hubs'}:
             zone = ZoneInfo(config['zones'][origin])

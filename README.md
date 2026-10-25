@@ -2,6 +2,10 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, India, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Thailand flights
+
+Choose **Thailand · Flights** for **2 November 2026**, using **ICT (UTC+7)** and captured **USD** fares. BKK and DMK remain separate. Domestic / International / Both reuse airport/airline filters, boards, Destinations and frequency lines. International connects to the other SunTrain flight countries and DXB/AUH/DOH, and appears in **International network · Flights**. International quotes retain their captured USD/MYR currencies. See the [Thai flight notes](THAI_FLIGHTS_NOTES.md). The domestic snapshot has **615 flights across 29 airports**, all with captured USD fares. The international scope adds **679 overlapping records across 8 Thai airports**, with 541 captured fares. Coverage remains partial. Existing Thailand/Bangkok rail views stay separate.
+
 ## International flight network
 
 Choose **International network · Flights** to explore connections between our existing flight countries and DXB/AUH/DOH on **2 November 2026 (UTC)**. Moving planes open by default; filter **From country / To country**, airline or exact airport, or switch to frequency lines. Airport boards use local dates and times. Existing USD/MYR quotes retain their original currencies without conversion. China, Japan and South Korea now offer **Domestic / International / Both**, with international coverage limited to this selected group. Other existing worldwide routes remain available in their country views. The UTC view contains **2,550 departures**, **110 airports** and **787 returned directional routes**, with 2,971 overlapping flight records. See [international network notes](INTERNATIONAL_NETWORK_NOTES.md) for coverage, sources and offline rebuilding.

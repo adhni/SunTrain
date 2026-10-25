@@ -6,6 +6,14 @@ const {summarize} = require('../assets/02_city_overview.js');
 const {bearing} = require('../assets/02_flights.js');
 const {priceLabel} = require('../assets/02_flights.js');
 
+test('Thai flight boards and captured fares use ICT UTC+7 independently of WIB',()=>{
+ const {captureTime}=require('../assets/02_flights.js');
+ const at=Date.parse('2026-11-01T17:00:00Z')/1000;
+ assert.match(formatCallTime(at,'Asia/Bangkok'),/2 Nov.*00:00 ICT/);
+ assert.match(captureTime('2026-11-01T17:00:00Z','Asia/Bangkok'),/2 Nov.*00:00 ICT/);
+ assert.match(formatCallTime(at,'Asia/Jakarta'),/2 Nov.*00:00 WIB/);
+});
+
 test('China airport and fare clocks use UTC+8 CST without changing American clocks',()=>{
     const {captureTime}=require('../assets/02_flights.js');
     const at=Date.parse('2026-11-01T16:00:00Z')/1000;

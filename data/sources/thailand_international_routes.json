@@ -1,0 +1,3178 @@
+{
+  "country": "TH",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Bangkok",
+  "currency": "USD",
+  "max_duration": 86400,
+  "airports": [
+    {
+      "code": "AMD",
+      "icao": "VAAH",
+      "name": "Sardar Vallabh Patel International Airport (AMD)",
+      "municipality": "Ahmedabad",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 23.0772,
+      "lon": 72.634697
+    },
+    {
+      "code": "ATQ",
+      "icao": "VIAR",
+      "name": "Sri Guru Ram Das Ji International Airport (ATQ)",
+      "municipality": "Amritsar",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 31.7096,
+      "lon": 74.797302
+    },
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "BBI",
+      "icao": "VEBS",
+      "name": "Biju Patnaik International Airport (BBI)",
+      "municipality": "Bhubaneswar",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 20.251021,
+      "lon": 85.814747
+    },
+    {
+      "code": "BKI",
+      "icao": "WBKK",
+      "name": "Kota Kinabalu International Airport (BKI)",
+      "municipality": "Kota Kinabalu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "mode": "flight",
+      "lat": 5.932743,
+      "lon": 116.049324
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BLR",
+      "icao": "VOBL",
+      "name": "Kempegowda International Airport Bengaluru (BLR)",
+      "municipality": "Bengaluru",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 13.1979,
+      "lon": 77.706299
+    },
+    {
+      "code": "BNE",
+      "icao": "YBBN",
+      "name": "Brisbane International Airport (BNE)",
+      "municipality": "Brisbane",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125
+    },
+    {
+      "code": "BOM",
+      "icao": "VABB",
+      "name": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+      "municipality": "Mumbai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 19.088699,
+      "lon": 72.867897
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CCU",
+      "icao": "VECC",
+      "name": "Netaji Subhash Chandra Bose International Airport (CCU)",
+      "municipality": "Kolkata",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 22.654012,
+      "lon": 88.44765
+    },
+    {
+      "code": "CEI",
+      "icao": "VTCT",
+      "name": "Mae Fah Luang - Chiang Rai International Airport (CEI)",
+      "municipality": "Chiang Rai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 19.952299,
+      "lon": 99.882896
+    },
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998
+    },
+    {
+      "code": "CKG",
+      "icao": "ZUCK",
+      "name": "Chongqing Jiangbei International Airport (CKG)",
+      "municipality": "Chongqing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 29.712254,
+      "lon": 106.651895
+    },
+    {
+      "code": "CNX",
+      "icao": "VTCC",
+      "name": "Chiang Mai International Airport (CNX)",
+      "municipality": "Chiang Mai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 18.766799926799997,
+      "lon": 98.962600708
+    },
+    {
+      "code": "COK",
+      "icao": "VOCI",
+      "name": "Cochin International Airport (COK)",
+      "municipality": "Kochi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 10.151047,
+      "lon": 76.400838
+    },
+    {
+      "code": "CSX",
+      "icao": "ZGHA",
+      "name": "Changsha Huanghua International Airport (CSX)",
+      "municipality": "Changsha (Changsha)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 28.189199,
+      "lon": 113.220001
+    },
+    {
+      "code": "CTS",
+      "icao": "RJCC",
+      "name": "New Chitose Airport (CTS)",
+      "municipality": "Sapporo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 42.774753,
+      "lon": 141.690414
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "GAU",
+      "icao": "VEGT",
+      "name": "Lokpriya Gopinath Bordoloi International Airport (GAU)",
+      "municipality": "Guwahati",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 26.106654,
+      "lon": 91.585226
+    },
+    {
+      "code": "GAY",
+      "icao": "VEGY",
+      "name": "Gaya Airport (GAY)",
+      "municipality": "Gaya",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 24.744301,
+      "lon": 84.951202
+    },
+    {
+      "code": "HDY",
+      "icao": "VTSS",
+      "name": "Hat Yai International Airport (HDY)",
+      "municipality": "Hat Yai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 6.93321,
+      "lon": 100.392998
+    },
+    {
+      "code": "HGH",
+      "icao": "ZSHC",
+      "name": "Hangzhou Xiaoshan International Airport (HGH)",
+      "municipality": "Hangzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.23609,
+      "lon": 120.428865
+    },
+    {
+      "code": "HKT",
+      "icao": "VTSP",
+      "name": "Phuket International Airport (HKT)",
+      "municipality": "Phuket",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 8.113257,
+      "lon": 98.3174
+    },
+    {
+      "code": "HND",
+      "icao": "RJTT",
+      "name": "Tokyo Haneda International Airport (HND)",
+      "municipality": "Tokyo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.549678,
+      "lon": 139.786958
+    },
+    {
+      "code": "HYD",
+      "icao": "VOHS",
+      "name": "Rajiv Gandhi International Airport (HYD)",
+      "municipality": "Hyderabad",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 17.231318,
+      "lon": 78.429855
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "IXB",
+      "icao": "VEBD",
+      "name": "Bagdogra Airport (IXB)",
+      "municipality": "Siliguri",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 26.6812,
+      "lon": 88.328598
+    },
+    {
+      "code": "JAI",
+      "icao": "VIJP",
+      "name": "Jaipur International Airport (JAI)",
+      "municipality": "Jaipur",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 26.8242,
+      "lon": 75.812202
+    },
+    {
+      "code": "JHB",
+      "icao": "WMKJ",
+      "name": "Senai International Airport (JHB)",
+      "municipality": "Johor Bahru",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 1.64131,
+      "lon": 103.669998
+    },
+    {
+      "code": "KBV",
+      "icao": "VTSG",
+      "name": "Krabi International Airport (KBV)",
+      "municipality": "Krabi",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 8.095591,
+      "lon": 98.988955
+    },
+    {
+      "code": "KCH",
+      "icao": "WBGG",
+      "name": "Kuching International Airport (KCH)",
+      "municipality": "Kuching",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "mode": "flight",
+      "lat": 1.487364,
+      "lon": 110.352859
+    },
+    {
+      "code": "KIX",
+      "icao": "RJBB",
+      "name": "Kansai International Airport (KIX)",
+      "municipality": "Osaka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.427299,
+      "lon": 135.244003
+    },
+    {
+      "code": "KMG",
+      "icao": "ZPPP",
+      "name": "Kunming Changshui International Airport (KMG)",
+      "municipality": "Kunming",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 25.110313,
+      "lon": 102.936743
+    },
+    {
+      "code": "KNO",
+      "icao": "WIMM",
+      "name": "Kualanamu International Airport (KNO)",
+      "municipality": "Beringin",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": 3.637847,
+      "lon": 98.870566
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "LKO",
+      "icao": "VILK",
+      "name": "Chaudhary Charan Singh International Airport (LKO)",
+      "municipality": "Lucknow",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 26.760599,
+      "lon": 80.889297
+    },
+    {
+      "code": "MAA",
+      "icao": "VOMM",
+      "name": "Chennai International Airport (MAA)",
+      "municipality": "Chennai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 12.990005,
+      "lon": 80.169296
+    },
+    {
+      "code": "MEL",
+      "icao": "YMML",
+      "name": "Melbourne Airport (MEL)",
+      "municipality": "Melbourne",
+      "country": "AU",
+      "timezone": "Australia/Melbourne",
+      "mode": "flight",
+      "lat": -37.670732,
+      "lon": 144.837898
+    },
+    {
+      "code": "NGO",
+      "icao": "RJGG",
+      "name": "Chubu Centrair International Airport (NGO)",
+      "municipality": "Tokoname",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.858398,
+      "lon": 136.804993
+    },
+    {
+      "code": "NMI",
+      "icao": "VANM",
+      "name": "Navi Mumbai International Airport (NMI)",
+      "municipality": "Navi Mumbai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 18.984597,
+      "lon": 73.065253
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PEN",
+      "icao": "WMKP",
+      "name": "Penang International Airport (PEN)",
+      "municipality": "Penang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 5.296303,
+      "lon": 100.276185
+    },
+    {
+      "code": "PER",
+      "icao": "YPPH",
+      "name": "Perth International Airport (PER)",
+      "municipality": "Perth",
+      "country": "AU",
+      "timezone": "Australia/Perth",
+      "mode": "flight",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234
+    },
+    {
+      "code": "PNQ",
+      "icao": "VAPO",
+      "name": "Pune International Airport (PNQ)",
+      "municipality": "Pune",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 18.5821,
+      "lon": 73.919701
+    },
+    {
+      "code": "PUS",
+      "icao": "RKPK",
+      "name": "Gimhae International Airport (PUS)",
+      "municipality": "Busan",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.179501,
+      "lon": 128.938004
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "STV",
+      "icao": "VASU",
+      "name": "Surat International Airport (STV)",
+      "municipality": "Surat",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 21.115531,
+      "lon": 72.743251
+    },
+    {
+      "code": "SYD",
+      "icao": "YSSY",
+      "name": "Sydney Kingsford Smith International Airport (SYD)",
+      "municipality": "Sydney (Mascot)",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.946098,
+      "lon": 151.177002
+    },
+    {
+      "code": "SZB",
+      "icao": "WMSA",
+      "name": "Sultan Abdul Aziz Shah International Airport (SZB)",
+      "municipality": "Subang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 3.13058,
+      "lon": 101.549004
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    },
+    {
+      "code": "URT",
+      "icao": "VTSB",
+      "name": "Surat Thani Airport (URT)",
+      "municipality": "Surat Thani",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 9.13259983063,
+      "lon": 99.135597229
+    },
+    {
+      "code": "USM",
+      "icao": "VTSM",
+      "name": "Samui International Airport (USM)",
+      "municipality": "Na Thon (Ko Samui Island)",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 9.54779,
+      "lon": 100.061996
+    },
+    {
+      "code": "VNS",
+      "icao": "VEBN",
+      "name": "Lal Bahadur Shastri International Airport (VNS)",
+      "municipality": "Varanasi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 25.452171,
+      "lon": 82.862549
+    },
+    {
+      "code": "WUH",
+      "icao": "ZHHH",
+      "name": "Wuhan Tianhe International Airport (WUH)",
+      "municipality": "Wuhan (Huangpi)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.774798,
+      "lon": 114.213723
+    },
+    {
+      "code": "XIY",
+      "icao": "ZLXY",
+      "name": "Xi'an Xianyang International Airport (XIY)",
+      "municipality": "Xi'an",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 34.442207,
+      "lon": 108.762385
+    },
+    {
+      "code": "XMN",
+      "icao": "ZSAM",
+      "name": "Xiamen Gaoqi International Airport (XMN)",
+      "municipality": "Xiamen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 24.543889,
+      "lon": 118.127454
+    }
+  ],
+  "routes": [
+    [
+      "AMD",
+      "BKK"
+    ],
+    [
+      "AMD",
+      "DMK"
+    ],
+    [
+      "ATQ",
+      "DMK"
+    ],
+    [
+      "AUH",
+      "BKK"
+    ],
+    [
+      "AUH",
+      "CNX"
+    ],
+    [
+      "AUH",
+      "HKT"
+    ],
+    [
+      "AUH",
+      "KBV"
+    ],
+    [
+      "BBI",
+      "BKK"
+    ],
+    [
+      "BKI",
+      "DMK"
+    ],
+    [
+      "BKK",
+      "AMD"
+    ],
+    [
+      "BKK",
+      "AUH"
+    ],
+    [
+      "BKK",
+      "BBI"
+    ],
+    [
+      "BKK",
+      "BLR"
+    ],
+    [
+      "BKK",
+      "BNE"
+    ],
+    [
+      "BKK",
+      "BOM"
+    ],
+    [
+      "BKK",
+      "CAN"
+    ],
+    [
+      "BKK",
+      "CCU"
+    ],
+    [
+      "BKK",
+      "CGK"
+    ],
+    [
+      "BKK",
+      "CKG"
+    ],
+    [
+      "BKK",
+      "DEL"
+    ],
+    [
+      "BKK",
+      "DOH"
+    ],
+    [
+      "BKK",
+      "DPS"
+    ],
+    [
+      "BKK",
+      "DXB"
+    ],
+    [
+      "BKK",
+      "GAU"
+    ],
+    [
+      "BKK",
+      "GAY"
+    ],
+    [
+      "BKK",
+      "HND"
+    ],
+    [
+      "BKK",
+      "HYD"
+    ],
+    [
+      "BKK",
+      "ICN"
+    ],
+    [
+      "BKK",
+      "IXB"
+    ],
+    [
+      "BKK",
+      "JHB"
+    ],
+    [
+      "BKK",
+      "KIX"
+    ],
+    [
+      "BKK",
+      "KMG"
+    ],
+    [
+      "BKK",
+      "KUL"
+    ],
+    [
+      "BKK",
+      "MAA"
+    ],
+    [
+      "BKK",
+      "MEL"
+    ],
+    [
+      "BKK",
+      "NGO"
+    ],
+    [
+      "BKK",
+      "NMI"
+    ],
+    [
+      "BKK",
+      "NRT"
+    ],
+    [
+      "BKK",
+      "PEK"
+    ],
+    [
+      "BKK",
+      "PEN"
+    ],
+    [
+      "BKK",
+      "PER"
+    ],
+    [
+      "BKK",
+      "PNQ"
+    ],
+    [
+      "BKK",
+      "PUS"
+    ],
+    [
+      "BKK",
+      "PVG"
+    ],
+    [
+      "BKK",
+      "SIN"
+    ],
+    [
+      "BKK",
+      "STV"
+    ],
+    [
+      "BKK",
+      "SYD"
+    ],
+    [
+      "BKK",
+      "SZX"
+    ],
+    [
+      "BKK",
+      "TFU"
+    ],
+    [
+      "BKK",
+      "VNS"
+    ],
+    [
+      "BKK",
+      "XMN"
+    ],
+    [
+      "BLR",
+      "BKK"
+    ],
+    [
+      "BLR",
+      "DMK"
+    ],
+    [
+      "BLR",
+      "HKT"
+    ],
+    [
+      "BLR",
+      "KBV"
+    ],
+    [
+      "BNE",
+      "BKK"
+    ],
+    [
+      "BNE",
+      "DMK"
+    ],
+    [
+      "BOM",
+      "BKK"
+    ],
+    [
+      "BOM",
+      "DMK"
+    ],
+    [
+      "BOM",
+      "HKT"
+    ],
+    [
+      "BOM",
+      "KBV"
+    ],
+    [
+      "CAN",
+      "BKK"
+    ],
+    [
+      "CAN",
+      "CNX"
+    ],
+    [
+      "CAN",
+      "DMK"
+    ],
+    [
+      "CAN",
+      "HKT"
+    ],
+    [
+      "CCU",
+      "BKK"
+    ],
+    [
+      "CCU",
+      "DMK"
+    ],
+    [
+      "CCU",
+      "HKT"
+    ],
+    [
+      "CEI",
+      "SIN"
+    ],
+    [
+      "CGK",
+      "BKK"
+    ],
+    [
+      "CGK",
+      "DMK"
+    ],
+    [
+      "CKG",
+      "BKK"
+    ],
+    [
+      "CKG",
+      "DMK"
+    ],
+    [
+      "CNX",
+      "AUH"
+    ],
+    [
+      "CNX",
+      "CAN"
+    ],
+    [
+      "CNX",
+      "ICN"
+    ],
+    [
+      "CNX",
+      "KIX"
+    ],
+    [
+      "CNX",
+      "KMG"
+    ],
+    [
+      "CNX",
+      "KUL"
+    ],
+    [
+      "CNX",
+      "PEK"
+    ],
+    [
+      "CNX",
+      "PVG"
+    ],
+    [
+      "CNX",
+      "SIN"
+    ],
+    [
+      "COK",
+      "DMK"
+    ],
+    [
+      "COK",
+      "HKT"
+    ],
+    [
+      "CSX",
+      "DMK"
+    ],
+    [
+      "CTS",
+      "DMK"
+    ],
+    [
+      "DEL",
+      "BKK"
+    ],
+    [
+      "DEL",
+      "DMK"
+    ],
+    [
+      "DEL",
+      "HKT"
+    ],
+    [
+      "DEL",
+      "KBV"
+    ],
+    [
+      "DMK",
+      "AMD"
+    ],
+    [
+      "DMK",
+      "ATQ"
+    ],
+    [
+      "DMK",
+      "BKI"
+    ],
+    [
+      "DMK",
+      "BLR"
+    ],
+    [
+      "DMK",
+      "BNE"
+    ],
+    [
+      "DMK",
+      "BOM"
+    ],
+    [
+      "DMK",
+      "CAN"
+    ],
+    [
+      "DMK",
+      "CCU"
+    ],
+    [
+      "DMK",
+      "CGK"
+    ],
+    [
+      "DMK",
+      "CKG"
+    ],
+    [
+      "DMK",
+      "COK"
+    ],
+    [
+      "DMK",
+      "CSX"
+    ],
+    [
+      "DMK",
+      "CTS"
+    ],
+    [
+      "DMK",
+      "DEL"
+    ],
+    [
+      "DMK",
+      "DPS"
+    ],
+    [
+      "DMK",
+      "DXB"
+    ],
+    [
+      "DMK",
+      "GAU"
+    ],
+    [
+      "DMK",
+      "GAY"
+    ],
+    [
+      "DMK",
+      "HGH"
+    ],
+    [
+      "DMK",
+      "HYD"
+    ],
+    [
+      "DMK",
+      "ICN"
+    ],
+    [
+      "DMK",
+      "JAI"
+    ],
+    [
+      "DMK",
+      "JHB"
+    ],
+    [
+      "DMK",
+      "KCH"
+    ],
+    [
+      "DMK",
+      "KIX"
+    ],
+    [
+      "DMK",
+      "KMG"
+    ],
+    [
+      "DMK",
+      "KNO"
+    ],
+    [
+      "DMK",
+      "KUL"
+    ],
+    [
+      "DMK",
+      "LKO"
+    ],
+    [
+      "DMK",
+      "MAA"
+    ],
+    [
+      "DMK",
+      "MEL"
+    ],
+    [
+      "DMK",
+      "NGO"
+    ],
+    [
+      "DMK",
+      "NRT"
+    ],
+    [
+      "DMK",
+      "PEN"
+    ],
+    [
+      "DMK",
+      "PER"
+    ],
+    [
+      "DMK",
+      "PUS"
+    ],
+    [
+      "DMK",
+      "PVG"
+    ],
+    [
+      "DMK",
+      "SIN"
+    ],
+    [
+      "DMK",
+      "SYD"
+    ],
+    [
+      "DMK",
+      "SZB"
+    ],
+    [
+      "DMK",
+      "SZX"
+    ],
+    [
+      "DMK",
+      "TFU"
+    ],
+    [
+      "DMK",
+      "WUH"
+    ],
+    [
+      "DMK",
+      "XIY"
+    ],
+    [
+      "DOH",
+      "BKK"
+    ],
+    [
+      "DOH",
+      "HKT"
+    ],
+    [
+      "DPS",
+      "BKK"
+    ],
+    [
+      "DPS",
+      "DMK"
+    ],
+    [
+      "DXB",
+      "BKK"
+    ],
+    [
+      "DXB",
+      "DMK"
+    ],
+    [
+      "DXB",
+      "HKT"
+    ],
+    [
+      "DXB",
+      "KBV"
+    ],
+    [
+      "GAU",
+      "BKK"
+    ],
+    [
+      "GAU",
+      "DMK"
+    ],
+    [
+      "GAY",
+      "BKK"
+    ],
+    [
+      "GAY",
+      "DMK"
+    ],
+    [
+      "HDY",
+      "KUL"
+    ],
+    [
+      "HDY",
+      "SIN"
+    ],
+    [
+      "HGH",
+      "DMK"
+    ],
+    [
+      "HKT",
+      "AUH"
+    ],
+    [
+      "HKT",
+      "BLR"
+    ],
+    [
+      "HKT",
+      "BOM"
+    ],
+    [
+      "HKT",
+      "CAN"
+    ],
+    [
+      "HKT",
+      "CCU"
+    ],
+    [
+      "HKT",
+      "COK"
+    ],
+    [
+      "HKT",
+      "DEL"
+    ],
+    [
+      "HKT",
+      "DOH"
+    ],
+    [
+      "HKT",
+      "DXB"
+    ],
+    [
+      "HKT",
+      "HYD"
+    ],
+    [
+      "HKT",
+      "ICN"
+    ],
+    [
+      "HKT",
+      "KMG"
+    ],
+    [
+      "HKT",
+      "KUL"
+    ],
+    [
+      "HKT",
+      "MAA"
+    ],
+    [
+      "HKT",
+      "MEL"
+    ],
+    [
+      "HKT",
+      "PEK"
+    ],
+    [
+      "HKT",
+      "PEN"
+    ],
+    [
+      "HKT",
+      "PER"
+    ],
+    [
+      "HKT",
+      "PUS"
+    ],
+    [
+      "HKT",
+      "PVG"
+    ],
+    [
+      "HKT",
+      "SIN"
+    ],
+    [
+      "HKT",
+      "SYD"
+    ],
+    [
+      "HKT",
+      "SZX"
+    ],
+    [
+      "HKT",
+      "TFU"
+    ],
+    [
+      "HND",
+      "BKK"
+    ],
+    [
+      "HYD",
+      "BKK"
+    ],
+    [
+      "HYD",
+      "DMK"
+    ],
+    [
+      "HYD",
+      "HKT"
+    ],
+    [
+      "ICN",
+      "BKK"
+    ],
+    [
+      "ICN",
+      "CNX"
+    ],
+    [
+      "ICN",
+      "DMK"
+    ],
+    [
+      "ICN",
+      "HKT"
+    ],
+    [
+      "IXB",
+      "BKK"
+    ],
+    [
+      "JAI",
+      "DMK"
+    ],
+    [
+      "JHB",
+      "BKK"
+    ],
+    [
+      "JHB",
+      "DMK"
+    ],
+    [
+      "KBV",
+      "AUH"
+    ],
+    [
+      "KBV",
+      "BLR"
+    ],
+    [
+      "KBV",
+      "BOM"
+    ],
+    [
+      "KBV",
+      "DEL"
+    ],
+    [
+      "KBV",
+      "DXB"
+    ],
+    [
+      "KBV",
+      "KUL"
+    ],
+    [
+      "KBV",
+      "SIN"
+    ],
+    [
+      "KCH",
+      "DMK"
+    ],
+    [
+      "KIX",
+      "BKK"
+    ],
+    [
+      "KIX",
+      "CNX"
+    ],
+    [
+      "KIX",
+      "DMK"
+    ],
+    [
+      "KMG",
+      "BKK"
+    ],
+    [
+      "KMG",
+      "CNX"
+    ],
+    [
+      "KMG",
+      "DMK"
+    ],
+    [
+      "KMG",
+      "HKT"
+    ],
+    [
+      "KNO",
+      "DMK"
+    ],
+    [
+      "KUL",
+      "BKK"
+    ],
+    [
+      "KUL",
+      "CNX"
+    ],
+    [
+      "KUL",
+      "DMK"
+    ],
+    [
+      "KUL",
+      "HDY"
+    ],
+    [
+      "KUL",
+      "HKT"
+    ],
+    [
+      "KUL",
+      "KBV"
+    ],
+    [
+      "KUL",
+      "URT"
+    ],
+    [
+      "KUL",
+      "USM"
+    ],
+    [
+      "LKO",
+      "DMK"
+    ],
+    [
+      "MAA",
+      "BKK"
+    ],
+    [
+      "MAA",
+      "DMK"
+    ],
+    [
+      "MAA",
+      "HKT"
+    ],
+    [
+      "MEL",
+      "BKK"
+    ],
+    [
+      "MEL",
+      "DMK"
+    ],
+    [
+      "MEL",
+      "HKT"
+    ],
+    [
+      "NGO",
+      "BKK"
+    ],
+    [
+      "NGO",
+      "DMK"
+    ],
+    [
+      "NMI",
+      "BKK"
+    ],
+    [
+      "NRT",
+      "BKK"
+    ],
+    [
+      "NRT",
+      "DMK"
+    ],
+    [
+      "PEK",
+      "BKK"
+    ],
+    [
+      "PEK",
+      "CNX"
+    ],
+    [
+      "PEK",
+      "HKT"
+    ],
+    [
+      "PEN",
+      "BKK"
+    ],
+    [
+      "PEN",
+      "DMK"
+    ],
+    [
+      "PEN",
+      "HKT"
+    ],
+    [
+      "PER",
+      "BKK"
+    ],
+    [
+      "PER",
+      "DMK"
+    ],
+    [
+      "PER",
+      "HKT"
+    ],
+    [
+      "PNQ",
+      "BKK"
+    ],
+    [
+      "PUS",
+      "BKK"
+    ],
+    [
+      "PUS",
+      "DMK"
+    ],
+    [
+      "PUS",
+      "HKT"
+    ],
+    [
+      "PVG",
+      "BKK"
+    ],
+    [
+      "PVG",
+      "CNX"
+    ],
+    [
+      "PVG",
+      "DMK"
+    ],
+    [
+      "PVG",
+      "HKT"
+    ],
+    [
+      "SIN",
+      "BKK"
+    ],
+    [
+      "SIN",
+      "CEI"
+    ],
+    [
+      "SIN",
+      "CNX"
+    ],
+    [
+      "SIN",
+      "DMK"
+    ],
+    [
+      "SIN",
+      "HDY"
+    ],
+    [
+      "SIN",
+      "HKT"
+    ],
+    [
+      "SIN",
+      "KBV"
+    ],
+    [
+      "SIN",
+      "USM"
+    ],
+    [
+      "STV",
+      "BKK"
+    ],
+    [
+      "SYD",
+      "BKK"
+    ],
+    [
+      "SYD",
+      "DMK"
+    ],
+    [
+      "SYD",
+      "HKT"
+    ],
+    [
+      "SZB",
+      "DMK"
+    ],
+    [
+      "SZX",
+      "BKK"
+    ],
+    [
+      "SZX",
+      "DMK"
+    ],
+    [
+      "SZX",
+      "HKT"
+    ],
+    [
+      "TFU",
+      "BKK"
+    ],
+    [
+      "TFU",
+      "DMK"
+    ],
+    [
+      "TFU",
+      "HKT"
+    ],
+    [
+      "URT",
+      "KUL"
+    ],
+    [
+      "USM",
+      "KUL"
+    ],
+    [
+      "USM",
+      "SIN"
+    ],
+    [
+      "VNS",
+      "BKK"
+    ],
+    [
+      "WUH",
+      "DMK"
+    ],
+    [
+      "XIY",
+      "DMK"
+    ],
+    [
+      "XMN",
+      "BKK"
+    ]
+  ],
+  "base_directional_routes": 176,
+  "evidence": [
+    {
+      "origin": "BKK",
+      "destination": "BNE",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "MEL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "PER",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
+      "destination": "BKK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
+      "destination": "DMK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "BNE",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "MEL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "PER",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "MEL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "PER",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "BKK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "DMK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "HKT",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PER",
+      "destination": "BKK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PER",
+      "destination": "DMK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PER",
+      "destination": "HKT",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "BKK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "DMK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "HKT",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "DEL",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DEL",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "BOM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BOM",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DEL",
+      "destination": "HKT",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "DEL",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "BLR",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BLR",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BOM",
+      "destination": "HKT",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "BOM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "CCU",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CCU",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BLR",
+      "destination": "HKT",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "BLR",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "MAA",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MAA",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "HYD",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HYD",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DEL",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "DEL",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "MAA",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MAA",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "COK",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "COK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CCU",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CCU",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BLR",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "BLR",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AMD",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "AMD",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AMD",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "AMD",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "PNQ",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PNQ",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CCU",
+      "destination": "HKT",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "CCU",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DEL",
+      "destination": "KBV",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KBV",
+      "destination": "DEL",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BOM",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "BOM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "HYD",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HYD",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "HYD",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HYD",
+      "destination": "HKT",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "JAI",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "JAI",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "STV",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "STV",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "LKO",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "LKO",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BOM",
+      "destination": "KBV",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KBV",
+      "destination": "BOM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ATQ",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "ATQ",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "GAU",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "GAU",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "GAY",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "GAY",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BBI",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "BBI",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "MAA",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MAA",
+      "destination": "HKT",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "COK",
+      "destination": "HKT",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "COK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "GAY",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "GAY",
+      "destination": "DMK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BLR",
+      "destination": "KBV",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KBV",
+      "destination": "BLR",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "VNS",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "VNS",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "IXB",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "IXB",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "GAU",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "GAU",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "NMI",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "NMI",
+      "destination": "BKK",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "CGK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "DPS",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CGK",
+      "destination": "BKK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CGK",
+      "destination": "DMK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CGK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "DPS",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KNO",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DPS",
+      "destination": "BKK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DPS",
+      "destination": "DMK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KNO",
+      "destination": "DMK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKI",
+      "destination": "DMK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "JHB",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "PEN",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "BKI",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "JHB",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KCH",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "PEN",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "SZB",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HDY",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "PEN",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "JHB",
+      "destination": "BKK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "JHB",
+      "destination": "DMK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KBV",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KCH",
+      "destination": "DMK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BKK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CNX",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DMK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HDY",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HKT",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KBV",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "URT",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "USM",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PEN",
+      "destination": "BKK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PEN",
+      "destination": "DMK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PEN",
+      "destination": "HKT",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SZB",
+      "destination": "DMK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "URT",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "USM",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CEI",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HDY",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KBV",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BKK",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CEI",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CNX",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DMK",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HDY",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HKT",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KBV",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "USM",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "USM",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AUH",
+      "destination": "BKK",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AUH",
+      "destination": "CNX",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AUH",
+      "destination": "HKT",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AUH",
+      "destination": "KBV",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "AUH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "DOH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "AUH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DOH",
+      "destination": "BKK",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DOH",
+      "destination": "HKT",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "BKK",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "DMK",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "HKT",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "KBV",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "AUH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "DOH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KBV",
+      "destination": "AUH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KBV",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "PVG",
+      "source": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+      "kind": "Airline exact-airport offer candidates; not dated nonstop evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "PEK",
+      "source": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+      "kind": "Airline exact-airport offer candidates; not dated nonstop evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "CAN",
+      "source": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+      "kind": "Airline exact-airport offer candidates; not dated nonstop evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "TFU",
+      "source": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+      "kind": "Airline exact-airport offer candidates; not dated nonstop evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "KMG",
+      "source": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+      "kind": "Airline exact-airport offer candidates; not dated nonstop evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "XMN",
+      "source": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+      "kind": "Airline exact-airport offer candidates; not dated nonstop evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "SZX",
+      "source": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+      "kind": "Airline exact-airport offer candidates; not dated nonstop evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "CKG",
+      "source": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+      "kind": "Airline exact-airport offer candidates; not dated nonstop evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CAN",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "SZX",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "TFU",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "XIY",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KMG",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "HGH",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "WUH",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CSX",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "PVG",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CKG",
+      "source": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+      "kind": "Historical December 2025 city routes, Chengdu/Shanghai resolved to TFU/PVG probes; promotion ended before replay"
+    },
+    {
+      "origin": "DMK",
+      "destination": "NRT",
+      "source": "https://newsroom.airasia.com/news/airasia-gears-up-for-high-season-with-major-international-expansion",
+      "kind": "Winter 2026 city candidates resolved to exact airports; dated nonstop captures required"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KIX",
+      "source": "https://newsroom.airasia.com/news/airasia-gears-up-for-high-season-with-major-international-expansion",
+      "kind": "Winter 2026 city candidates resolved to exact airports; dated nonstop captures required"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CTS",
+      "source": "https://newsroom.airasia.com/news/airasia-gears-up-for-high-season-with-major-international-expansion",
+      "kind": "Winter 2026 city candidates resolved to exact airports; dated nonstop captures required"
+    },
+    {
+      "origin": "DMK",
+      "destination": "NGO",
+      "source": "https://newsroom.airasia.com/news/airasia-gears-up-for-high-season-with-major-international-expansion",
+      "kind": "Winter 2026 city candidates resolved to exact airports; dated nonstop captures required"
+    },
+    {
+      "origin": "DMK",
+      "destination": "DEL",
+      "source": "https://newsroom.airasia.com/news/airasia-gears-up-for-high-season-with-major-international-expansion",
+      "kind": "Winter 2026 city candidates resolved to exact airports; dated nonstop captures required"
+    },
+    {
+      "origin": "NRT",
+      "destination": "BKK",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "DMK",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "BKK",
+      "source": "https://tokyo-haneda.com/en/flight/city_list.html?tab=intFlight",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "BKK",
+      "source": "https://assets.kansai-airports.co.jp/551f6859-e_20260324_pressrelease_s26.pdf",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "DMK",
+      "source": "https://assets.kansai-airports.co.jp/551f6859-e_20260324_pressrelease_s26.pdf",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "CNX",
+      "source": "https://assets.kansai-airports.co.jp/551f6859-e_20260324_pressrelease_s26.pdf",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "BKK",
+      "source": "https://www.centrair.jp/en/",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "DMK",
+      "source": "https://www.centrair.jp/en/",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "ICN",
+      "destination": "BKK",
+      "source": "https://m.flyasiana.com/C/KR/KO/booking/route",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "PUS",
+      "destination": "BKK",
+      "source": "https://en.airbusan.com/content/individual/booking/route",
+      "kind": "Official airport/airline candidate; Bangkok city labels at HND/PUS resolved to BKK; not dated service evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "PVG",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "CAN",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "PEK",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "KMG",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "SZX",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "TFU",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "ICN",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "PUS",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "PEK",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "PVG",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "CAN",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "KMG",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "ICN",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "ICN",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "PUS",
+      "source": "https://www.airportthai.co.th/en/homeen/",
+      "kind": "Supplemental exact-airport gateway probe; airport directory is identity context, not route evidence"
+    }
+  ],
+  "input_manifests": [
+    {
+      "path": "data/sources/china_flights_routes.json",
+      "sha256": "2f3dd916d232c794c4551b0c6f39091c20cafbb6e3aea7dae6ccee37ba47a637"
+    },
+    {
+      "path": "data/sources/japan_flights_routes.json",
+      "sha256": "d127dc91b23a344f5635686d26353bd57200792a6549d02eab1e627916db3dc5"
+    },
+    {
+      "path": "data/sources/south_korea_flights_routes.json",
+      "sha256": "28a7840d6cfdc299b51c5e9a23418e32ab50685b4f4b9dd84f0896550ab0b0f6"
+    },
+    {
+      "path": "data/sources/thailand_flights_routes.json",
+      "sha256": "832f720cc677b368875100f74ec6d5f040de635cb2c665809bdb1924422d4f0c"
+    },
+    {
+      "path": "data/sources/australia_international_routes.json",
+      "sha256": "951aaaf884a16510eb2aad211150e832157734dacf02183676b53c59c2d0f8c1"
+    },
+    {
+      "path": "data/sources/india_international_routes.json",
+      "sha256": "b419b11ec71ffc8f48a3745a69c6c3f2b8d0d6f04aabd73d0142333e54683a3d"
+    },
+    {
+      "path": "data/sources/indonesia_international_routes.json",
+      "sha256": "7b0e24fc286e8184900bfd71ed778a8a5faaed1f27768aca37f03e274cfafad4"
+    },
+    {
+      "path": "data/sources/malaysia_international_routes.json",
+      "sha256": "94f91fcc8380423ea350c6f77ba21af8536b14b0b81148b520b03200b092cd73"
+    },
+    {
+      "path": "data/sources/singapore_international_routes.json",
+      "sha256": "6d1d8a79eb7de4066ea448e1040c12d17661a418b76348df8db3c707d5aa2219"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    }
+  ],
+  "source_urls": {
+    "thai_china": "https://www.thaiairways.com/flights/en/flights-from-bangkok-to-china",
+    "airasia_china": "https://newsroom.airasia.com/news/nihao-china-airasia-welcomes-the-new-year-with-special-fares",
+    "airasia_winter": "https://newsroom.airasia.com/news/airasia-gears-up-for-high-season-with-major-international-expansion",
+    "NRT": "https://www.narita-airport.jp/en/discover/citylist/",
+    "HND": "https://tokyo-haneda.com/en/flight/city_list.html?tab=intFlight",
+    "KIX": "https://assets.kansai-airports.co.jp/551f6859-e_20260324_pressrelease_s26.pdf",
+    "NGO": "https://www.centrair.jp/en/",
+    "ICN": "https://m.flyasiana.com/C/KR/KO/booking/route",
+    "PUS": "https://en.airbusan.com/content/individual/booking/route",
+    "probe": "https://www.airportthai.co.th/en/homeen/"
+  },
+  "source_reviewed_date": "2026-10-25",
+  "unresolved_airports": [],
+  "coverage_scope": "Selected existing SunTrain countries and Gulf hubs; not worldwide or exhaustive",
+  "route_source_sha256": "763c5bb9db0d80d9ebcb0581cc038502e7b4f64212205b44b69437e202f2ddfa"
+}

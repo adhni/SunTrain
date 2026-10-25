@@ -2,6 +2,12 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Singapore flights
+
+Choose **Singapore · Flights** for **2 November 2026**. Opens on Changi **SIN**, with **SIN / XSP / All airports** shortcuts. Seletar **XSP** and Changi remain separate, as do Subang **SZB** and Kuala Lumpur **KUL**. Reuses airline and airport filters, departures/arrivals, Destinations, fullscreen boards and flight-frequency lines. The timeline uses **SGT**; overseas airport boards use local time. Fares are the cheapest returned **USD** quote per exact flight for one adult, economy, one-way, with the original capture timestamp.
+
+The snapshot contains **1,101 overlapping flights across 136 airports**, with **979 USD fares** and **122 unavailable prices**, in about **92 KiB gzip**. All 859 planned queries were captured; coverage remains partial. Singapore’s existing MRT/LRT/bus view remains under **Singapore**. Sources, coverage and cached rebuilding are documented in [Singapore flight notes](SINGAPORE_FLIGHTS_NOTES.md).
+
 ## Gulf hub flights
 
 Choose **Gulf hubs · Flights** for **2 November 2026**. Opens on **DXB**; use **DXB / AUH / DOH / All hubs** to switch traffic, or select any captured airport using **Airport / code**. Reuses airline filters, departures/arrivals, Destinations, fullscreen boards and the frequency map. The replay day uses **Dubai time (UTC+4)**; boards use each airport’s local time, including **Doha (UTC+3)**. Lowest returned **USD** fares are dated quotes for one adult, economy, one-way. Missing prices remain unavailable.

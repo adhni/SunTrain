@@ -25,6 +25,13 @@ test('Gulf airport clocks differ by one hour and capture times keep their zone',
     assert.match(captureTime('2026-11-02T00:00:00Z','Asia/Dubai'),/04:00 GMT\+4/);
     assert.match(captureTime('2026-11-02T00:00:00Z','Asia/Kuala_Lumpur'),/08:00 MYT/);
 });
+test('Singapore airport and capture clocks use SGT while foreign clocks stay local',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    const at=Date.parse('2026-11-02T00:00:00Z')/1000;
+    assert.match(formatCallTime(at,'Asia/Singapore'),/08:00 SGT/);
+    assert.match(captureTime('2026-11-02T00:00:00Z','Asia/Singapore'),/08:00 SGT/);
+    assert.match(formatCallTime(at,'America/New_York'),/19:00 GMT-5/);
+});
 const stations = [{name:'Perth (PER)',lon:116,lat:-32,timezone:'Australia/Perth'},
     {name:'Melbourne (MEL)',lon:145,lat:-38,timezone:'Australia/Melbourne'}];
 const start = Date.parse('2013-03-03T13:00:00Z') / 1000;

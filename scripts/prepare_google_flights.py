@@ -111,15 +111,17 @@ def routes():
 def country_config(country='AU', scope='domestic'):
     if country == 'AU' and scope == 'domestic':
         return dict(country='AU', zones=ZONES, timezone='Australia/Melbourne', end_date=None, manifest=None)
-    if country not in {'AU', 'ID', 'MY'}:
+    if country not in {'AU', 'ID', 'MY', 'SG'}:
         raise ValueError(f'Unsupported flight country: {country}')
-    name = {'AU':'australia','ID':'indonesia','MY':'malaysia'}[country]
+    if country=='SG' and scope!='international':
+        raise ValueError('Singapore flights use international scope')
+    name = {'AU':'australia','ID':'indonesia','MY':'malaysia','SG':'singapore'}[country]
     kind = 'international' if scope == 'international' else 'flights'
     filename = f'{name}_{kind}_routes.json'
     manifest = json.loads((ROOT / 'data/sources' / filename).read_text())
     return dict(country=country, zones={a['code']: a['timezone'] for a in manifest['airports']},
         timezone=manifest['timezone'], end_date=manifest['end_date'], manifest=manifest,
-        scope=scope, capture_prices=country=='MY', currency='MYR' if country=='MY' else None, max_duration=manifest.get('max_duration', 8 * 3600))
+        scope=scope, capture_prices=country in {'MY','SG'}, currency={'MY':'MYR','SG':'USD'}.get(country), max_duration=manifest.get('max_duration', 8 * 3600))
 
 
 def expected_queries(search_date, pairs, config=None, end_date=None):
@@ -368,6 +370,8 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             if config['country'] == 'ID' else f'Australian domestic flight schedules for {day}. Timeline: Melbourne time; airport boards use local time. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.')
         if config['country']=='MY':
             metadata['replay_note']='Malaysian domestic flight schedules for 2 November 2026. Timeline and airport boards use Malaysia time. Prices are captured one-adult economy one-way quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+        if config['country']=='SG':
+            metadata['replay_note']='Singapore flight schedules for 2 November 2026. SIN and XSP are separate airports. Timeline: SGT; airport boards use local time. Prices are captured one-adult economy one-way USD quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
         if config.get('hub_codes'):
             metadata['hubs']=config['hub_codes']
             metadata['scope']='hubs'
@@ -412,7 +416,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--country', choices=['AU', 'ID', 'MY'], default='AU')
+    parser.add_argument('--country', choices=['AU', 'ID', 'MY', 'SG'], default='AU')
     parser.add_argument('--scope', choices=['domestic', 'international'], default='domestic')
     parser.add_argument('--end-date')
     parser.add_argument('--date', default=DAY)
@@ -426,10 +430,10 @@ if __name__ == '__main__':
     if args.country == 'ID' and args.scope == 'domestic':
         priority = [('CGK','DPS'), ('HLP','SUB'), ('YIA','UPG'), ('PNK','KTG'), ('UPG','AMQ'), ('DJJ','WMX')]
         pairs = priority + [tuple(pair) for pair in pairs if tuple(pair) not in priority]
-    name={'AU':'australia','ID':'indonesia','MY':'malaysia'}[args.country]
+    name={'AU':'australia','ID':'indonesia','MY':'malaysia','SG':'singapore'}[args.country]
     cache = args.cache or ROOT / (f'.cache/google-flights-{name}' if args.country != 'AU' else '.cache/google-flights')
     output = args.output or ROOT / f"data/reference/{name}_flights/{args.date}.json.gz"
-    if args.scope == 'international':
+    if args.scope == 'international' and args.country!='SG':
         cache = args.cache or ROOT / f'.cache/google-flights-{name}-international'
         output = args.output or ROOT / f'data/reference/{name}_flights/{args.date}-international.json.gz'
     stopped = None

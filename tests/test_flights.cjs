@@ -6,6 +6,15 @@ const {summarize} = require('../assets/02_city_overview.js');
 const {bearing} = require('../assets/02_flights.js');
 const {priceLabel} = require('../assets/02_flights.js');
 
+test('China airport and fare clocks use UTC+8 CST without changing American clocks',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    const at=Date.parse('2026-11-01T16:00:00Z')/1000;
+    assert.match(formatCallTime(at,'Asia/Shanghai'),/00:00 CST/);
+    assert.match(formatCallTime(at-60,'Asia/Shanghai'),/23:59 CST/);
+    assert.match(captureTime('2026-11-01T16:00:00Z','Asia/Shanghai'),/2 Nov.*00:00 CST/);
+    assert.match(formatCallTime(at,'America/Chicago'),/GMT-6/);
+});
+
 test('Japanese airport and fare capture clocks retain JST at midnight',()=>{
     const {captureTime}=require('../assets/02_flights.js');
     const at=Date.parse('2026-11-01T15:00:00Z')/1000;
@@ -158,4 +167,12 @@ test('Indonesian locale uses IST despite formatting half-hour offsets with a dot
         assert.match(formatCallTime(Date.parse('2026-11-01T18:30:00Z')/1000,'Asia/Kolkata'),/IST/);
         assert.match(captureTime('2026-11-01T18:30:00Z','Asia/Kolkata'),/IST/);
     } finally { delete globalThis.suntrainI18n; }
+});
+
+test('original USD and MYR amounts are labelled independently without implicit conversion',()=>{
+    const {priceLabel}=require('../assets/02_flights.js');
+    assert.match(priceLabel({price:{currency:'USD',amount_minor:10000}}),/USD.*100\.00/);
+    assert.match(priceLabel({price:{currency:'MYR',amount_minor:10000}}),/MYR.*100\.00/);
+    assert.equal(priceLabel({price:{currency:'CNY',amount_minor:10000}}),'Price unavailable');
+    assert.equal(priceLabel({}),'Price unavailable');
 });

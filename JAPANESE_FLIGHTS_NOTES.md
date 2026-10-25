@@ -1,5 +1,7 @@
 # Japanese flights
 
+International connections to selected existing flight locations are now supplied by the shared [international network](INTERNATIONAL_NETWORK_NOTES.md). The domestic capture results and original scope below remain unchanged; its former international rollout notes describe the earlier domestic-only release.
+
 ## Scope and rollout
 
 Add **Japan · Flights** for **2 November 2026**, with an **Asia/Tokyo (JST, UTC+9)** timeline and airport-local boards. Captured prices use **USD**, one adult, economy, one-way. This remains a schedule replay: paths illustrate connections and do not represent recorded aircraft tracks.

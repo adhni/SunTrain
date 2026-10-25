@@ -62,6 +62,10 @@ def build_replay_panel(metadata, default_date):
                 field("Airport / code", dcc.Dropdown(id="replay-airports", options=[], value=[], multi=True, placeholder="All airports")),
                 field("Airport traffic", dcc.Dropdown(id="replay-airport-direction", options=[{"label": label, "value": value} for label, value in [("Departures", "departures"), ("Arrivals", "arrivals"), ("Both", "both")]], value="both", disabled=True, clearable=False, searchable=False)),
                 field("Flight map", dcc.Dropdown(id="replay-flight-view", options=[{"label": "Moving planes", "value": "planes"}, {"label": "Flight frequency", "value": "frequency"}], value="planes", clearable=False, searchable=False)),
+                html.Div(id='replay-country-controls',className='replay-country-controls',style={'display':'none'},children=[
+                    field('From country',dcc.Dropdown(id='replay-from-countries',options=[],value=[],multi=True,placeholder='All countries')),
+                    field('To country',dcc.Dropdown(id='replay-to-countries',options=[],value=[],multi=True,placeholder='All countries')),
+                ]),
             ]),
             html.Details(id="replay-more-filters", className="replay-more-filters", children=[
                 html.Summary("More filters", id="replay-more-filters-label"),
@@ -201,6 +205,7 @@ def register_replay_callbacks(app, metadata):
         Output("replay-flight-scope", "value"),
         Output("replay-flight-controls", "style"), Output("replay-carriers", "value"), Output("replay-airports", "value"), Output("replay-flight-view", "value"), Output("replay-airport-direction", "value"),
         Output("replay-generic-operator-field", "style"), Output("replay-generic-station-field", "style"),
+        Output('replay-from-countries','value'),Output('replay-to-countries','value'),
         Input("replay-city", "value"), State("replay-date", "data"))
     def configure_city(city, current_date):
         settings = city_settings(city)
@@ -220,10 +225,10 @@ def register_replay_callbacks(app, metadata):
                 ([{"label": message("Size trains by passengers"), "value": "load"}] if settings["passenger_data"] else []),
                 ["routes", "stations"],
                 {"display": "none"} if settings.get('replay_kind')=='flights' else {},
-                {} if settings.get("flight_scopes") else {"display": "none"}, "both" if settings.get('flight_hubs') else "domestic",
+                {} if settings.get("flight_scopes") else {"display": "none"}, "both" if settings.get('flight_hubs') or settings.get('flight_country_filters') else "domestic",
                 {} if settings.get("replay_kind") == "flights" else {"display": "none"}, [], [settings['default_airport']] if settings.get('default_airport') else [], "planes", "both",
                 {"display": "none"} if settings.get("replay_kind") == "flights" else {},
-                {"display": "none"} if settings.get("replay_kind") == "flights" else {})
+                {"display": "none"} if settings.get("replay_kind") == "flights" else {},[],[])
 
     app.clientside_callback(
         """function(operators, directions, stations, number) {
@@ -273,5 +278,6 @@ def register_replay_callbacks(app, metadata):
         Input("replay-back", "n_clicks"), Input("replay-forward", "n_clicks"), Input("replay-fit", "n_clicks"),
         Input("replay-city", "value"), Input("replay-flight-scope", "value"),
         Input("replay-carriers", "value"), Input("replay-airports", "value"), Input("replay-flight-view", "value"), Input("replay-airport-direction", "value"),
+        Input('replay-from-countries','value'),Input('replay-to-countries','value'),
     )
     return load_replay_day

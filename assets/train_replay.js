@@ -118,7 +118,9 @@
     }
     function matches(service, filters, day) {
         const inScope = (values, value) => !values.length || values.includes(value);
-        return (service.mode !== 'flight' || ((!filters.carriers?.length || filters.carriers.includes(service.carrier)) &&
+        return (service.mode !== 'flight' || ((!filters.fromCountries?.length || filters.fromCountries.includes(day.stations[service.stops[0][0]].country)) &&
+            (!filters.toCountries?.length || filters.toCountries.includes(day.stations[service.stops.at(-1)[0]].country)) &&
+            (!filters.carriers?.length || filters.carriers.includes(service.carrier)) &&
             (!filters.airports?.length ||
                 ((filters.airportDirection !== 'arrivals') && filters.airports.includes(day.stations[service.stops[0][0]].code)) ||
                 ((filters.airportDirection !== 'departures') && filters.airports.includes(day.stations[service.stops.at(-1)[0]].code))))) &&
@@ -247,6 +249,7 @@
             document.addEventListener("suntrain:languagechange", () => {
                 if (!this.day) return;
                 this.localeFormatters(this.day);
+                this.updateCountryOptions(this.day);
                 this.setupTimeline();
                 this.updateActivity();
                 if (this.departures?.visible) { this.departures.updateLocale(); }
@@ -618,6 +621,12 @@
             shortTime = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone, hour: "2-digit", minute: "2-digit", hourCycle: "h23"});
             shortDate = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone, day: "numeric", month: "short"});
         }
+        updateCountryOptions(day) {
+            if(!day.flight_country_filters)return;
+            const names=new Intl.DisplayNames([root.suntrainI18n?.locale || 'en'],{type:'region'});
+            const options=[...new Set(day.stations.map(a=>a.country))].sort().map(value=>({value,label:names.of(value)}));
+            for(const id of ['replay-from-countries','replay-to-countries'])root.dash_clientside.set_props(id,{options});
+        }
         load(day) {
             const sameDay = this.day?.city === day.city && this.day?.business_date === day.business_date;
             const previousNow = this.now;
@@ -637,6 +646,9 @@
             }
              this.now = Math.min(day.end, Math.max(day.start, sameDay ? previousNow : day.initial));
             const flights = day.replay_kind === 'flights';
+            const countryControls=$('replay-country-controls');
+            if(countryControls)countryControls.style.display=day.flight_country_filters?'':'none';
+            this.updateCountryOptions(day);
             const hubs=$('replay-flight-hubs'),hubField=$('replay-flight-hubs-field');
             const hubCodes=hubs && hubField?day.flight_hubs || []:[];
             if(hubField)hubField.style.display=hubCodes.length?'':'none';hubs?.replaceChildren();
@@ -1190,8 +1202,9 @@
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     let dateText=dateFormat.format(new Date(this.now * 1000));
-                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':this.day.timezone==='Asia/Kolkata'?'IST':this.day.timezone==='Asia/Seoul'?'KST':this.day.timezone==='Asia/Tokyo'?'JST':null;
+                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':this.day.timezone==='Asia/Kolkata'?'IST':this.day.timezone==='Asia/Seoul'?'KST':this.day.timezone==='Asia/Tokyo'?'JST':this.day.timezone==='Asia/Shanghai'?(root.suntrainI18n?.translate('China time (UTC+8)') || 'China time (UTC+8)'):null;
                     if (zoneLabel) dateText=dateText.replace(/GMT\+(?:[789]|5[.:]30)/,zoneLabel);
+                    if(this.day.timezone==='UTC')dateText=dateText.replace(/GMT(?:\+0)?/,'UTC');
                     setText("replay-clock-date",dateText);
                     setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
@@ -1213,7 +1226,7 @@
                 if (this.paintAgain) { this.paintAgain = false; requestAnimationFrame(() => this.paint(true)); }
             }
         }
-        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne", flightScope = "domestic", carriers = [], airports = [], flightView = "planes", airportDirection = "both") {
+        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne", flightScope = "domestic", carriers = [], airports = [], flightView = "planes", airportDirection = "both", fromCountries = [], toCountries = []) {
             if (!this.departures) this.departures = new root.suntrainDepartures.Board(this, core);
             this.lastTrigger = trigger;
             this.active = tab === "replay";
@@ -1237,7 +1250,7 @@
             $("replay-map")?.classList.remove("replay-is-loading");
             const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);
-            const filters = {airportDirection, carriers: carriers || [], airports: airports || [], flightScope: flightScope || "domestic", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
+            const filters = {fromCountries:fromCountries || [],toCountries:toCountries || [],airportDirection, carriers: carriers || [], airports: airports || [], flightScope: flightScope || "domestic", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             for (const control of document.querySelectorAll('[data-hub]')) {
                 const active=control.dataset.hub==='all'?!filters.airports.length:filters.airports.length===1 && filters.airports[0]===control.dataset.hub;
                 control.setAttribute('aria-pressed',String(active));
@@ -1296,11 +1309,11 @@
     // Exposed diagnostics support browser verification without transmitting frames.
     root.suntrainReplay = replay;
     root.dash_clientside = Object.assign({}, root.dash_clientside, {suntrainReplay: {
-        sync: async function (info, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city, flightScope, carriers, airports, flightView, airportDirection) {
+        sync: async function (info, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, play, restart, back, forward, fit, city, flightScope, carriers, airports, flightView, airportDirection, fromCountries, toCountries) {
             const context = root.dash_clientside.callback_context;
             const trigger = context.triggered_id || context.triggered?.[0]?.prop_id?.split(".")[0];
             const generation = ++replay.requestGeneration;
-            const run = day => replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city, flightScope, carriers, airports, flightView, airportDirection);
+            const run = day => replay.sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city, flightScope, carriers, airports, flightView, airportDirection, fromCountries, toCountries);
             const valid = info && !info.error && info.business_date === date && info.city === city;
             try {
                 if (!["replay", "overview"].includes(tab) || !valid) {

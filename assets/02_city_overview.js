@@ -139,6 +139,10 @@
             if (c.rejected_records) host.append(element('p', `${c.rejected_records} source records omitted after validation`, 'replay-muted'));
             if (c.failed_queries || c.unattempted_queries) host.append(element('p', `${c.failed_queries} queries failed · ${c.unattempted_queries} queries pending`, 'replay-muted'));
         }
+        if(day.schedule?.shared_network_coverage && filters.flightScope!=='domestic'){
+            const c=day.schedule.shared_network_coverage;
+            host.append(element('p',`International network: ${c.queries_captured} / ${c.queries_planned} queries captured · ${c.routes_returned} routes returned · Coverage is partial`,'replay-muted'));
+        }
         if (!summary.departures) {
             host.append(element("p", summary.arrivals ? "No scheduled arrivals match this date and these filters. Clear a filter or choose another date." : "No scheduled departures match this date and these filters. Clear a filter or choose another date.", "city-empty replay-muted"));
         } else {

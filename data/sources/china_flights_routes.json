@@ -1,0 +1,2558 @@
+{
+  "country": "CN",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Shanghai",
+  "currency": "USD",
+  "max_duration": 28800,
+  "coverage_scope": "Selected major mainland airports and published route candidates; small airports and international/regional connections deferred",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+  "route_source_sha256": "c14cf7acf06508a1afb01ab2a7707c3269cbaf46c0c73f5ff851688e9c702217",
+  "route_hash_basis": "Curated candidate evidence and explicit city-to-airport expansion, not raw webpage bytes",
+  "source_documents": [
+    {
+      "url": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "sha256": "0d9e3261fccd255474e935b53d118fc777e49402c6f819c4b7c794d0883b3450",
+      "purpose": "Reviewed 2025 route-table HTML; expired product, candidates only"
+    }
+  ],
+  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_timezone": "Australia/Melbourne",
+  "airports": [
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CGO",
+      "icao": "ZHCC",
+      "name": "Zhengzhou Xinzheng International Airport (CGO)",
+      "municipality": "Zhengzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Central",
+      "mode": "flight",
+      "lat": 34.526497,
+      "lon": 113.849165
+    },
+    {
+      "code": "CKG",
+      "icao": "ZUCK",
+      "name": "Chongqing Jiangbei International Airport (CKG)",
+      "municipality": "Chongqing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Southwest",
+      "mode": "flight",
+      "lat": 29.712254,
+      "lon": 106.651895
+    },
+    {
+      "code": "CSX",
+      "icao": "ZGHA",
+      "name": "Changsha Huanghua International Airport (CSX)",
+      "municipality": "Changsha (Changsha)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Central",
+      "mode": "flight",
+      "lat": 28.189199,
+      "lon": 113.220001
+    },
+    {
+      "code": "CTU",
+      "icao": "ZUUU",
+      "name": "Chengdu Shuangliu International Airport (CTU)",
+      "municipality": "Chengdu (Shuangliu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Southwest",
+      "mode": "flight",
+      "lat": 30.558257,
+      "lon": 103.945966
+    },
+    {
+      "code": "DLC",
+      "icao": "ZYTL",
+      "name": "Dalian Zhoushuizi International Airport (DLC)",
+      "municipality": "Dalian (Ganjingzi)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 38.965719,
+      "lon": 121.538477
+    },
+    {
+      "code": "FOC",
+      "icao": "ZSFZ",
+      "name": "Fuzhou Changle International Airport (FOC)",
+      "municipality": "Fuzhou (Changle)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 25.929254,
+      "lon": 119.672524
+    },
+    {
+      "code": "HAK",
+      "icao": "ZJHK",
+      "name": "Haikou Meilan International Airport (HAK)",
+      "municipality": "Haikou (Meilan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 19.9349,
+      "lon": 110.459
+    },
+    {
+      "code": "HGH",
+      "icao": "ZSHC",
+      "name": "Hangzhou Xiaoshan International Airport (HGH)",
+      "municipality": "Hangzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 30.23609,
+      "lon": 120.428865
+    },
+    {
+      "code": "HRB",
+      "icao": "ZYHB",
+      "name": "Harbin Taiping International Airport (HRB)",
+      "municipality": "Harbin",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 45.623402,
+      "lon": 126.25
+    },
+    {
+      "code": "KMG",
+      "icao": "ZPPP",
+      "name": "Kunming Changshui International Airport (KMG)",
+      "municipality": "Kunming",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Southwest",
+      "mode": "flight",
+      "lat": 25.110313,
+      "lon": 102.936743
+    },
+    {
+      "code": "KWE",
+      "icao": "ZUGY",
+      "name": "Guiyang Longdongbao International Airport (KWE)",
+      "municipality": "Guiyang (Nanming)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Southwest",
+      "mode": "flight",
+      "lat": 26.541805,
+      "lon": 106.80402
+    },
+    {
+      "code": "LHW",
+      "icao": "ZLLL",
+      "name": "Lanzhou Zhongchuan International Airport (LHW)",
+      "municipality": "Lanzhou (Yongdeng)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Northwest",
+      "mode": "flight",
+      "lat": 36.515202,
+      "lon": 103.620003
+    },
+    {
+      "code": "NKG",
+      "icao": "ZSNJ",
+      "name": "Nanjing Lukou International Airport (NKG)",
+      "municipality": "Nanjing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 31.735032,
+      "lon": 118.865949
+    },
+    {
+      "code": "NNG",
+      "icao": "ZGNN",
+      "name": "Nanning Wuxu International Airport (NNG)",
+      "municipality": "Nanning (Jiangnan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 22.598071,
+      "lon": 108.181922
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PKX",
+      "icao": "ZBAD",
+      "name": "Beijing Daxing International Airport (PKX)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 39.501289,
+      "lon": 116.413967
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "SHA",
+      "icao": "ZSSS",
+      "name": "Shanghai Hongqiao International Airport (SHA)",
+      "municipality": "Shanghai (Minhang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 31.198104,
+      "lon": 121.33426
+    },
+    {
+      "code": "SHE",
+      "icao": "ZYTX",
+      "name": "Shenyang Taoxian International Airport (SHE)",
+      "municipality": "Shenyang",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 41.6398,
+      "lon": 123.483668
+    },
+    {
+      "code": "SYX",
+      "icao": "ZJSY",
+      "name": "Sanya Phoenix International Airport (SYX)",
+      "municipality": "Sanya (Tianya)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 18.3029,
+      "lon": 109.412003
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TAO",
+      "icao": "ZSQD",
+      "name": "Qingdao Jiaodong International Airport (TAO)",
+      "municipality": "Qingdao (Jiaozhou)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 36.361953,
+      "lon": 120.088171
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Southwest",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    },
+    {
+      "code": "TNA",
+      "icao": "ZSJN",
+      "name": "Jinan Yaoqiang International Airport (TNA)",
+      "municipality": "Jinan (Licheng)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 36.857201,
+      "lon": 117.216003
+    },
+    {
+      "code": "TSN",
+      "icao": "ZBTJ",
+      "name": "Tianjin Binhai International Airport (TSN)",
+      "municipality": "Tianjin",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 39.124401092499994,
+      "lon": 117.346000671
+    },
+    {
+      "code": "URC",
+      "icao": "ZWWW",
+      "name": "Ürümqi Tianshan International Airport (URC)",
+      "municipality": "Ürümqi",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Northwest",
+      "mode": "flight",
+      "lat": 43.913584,
+      "lon": 87.479372
+    },
+    {
+      "code": "WUH",
+      "icao": "ZHHH",
+      "name": "Wuhan Tianhe International Airport (WUH)",
+      "municipality": "Wuhan (Huangpi)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Central",
+      "mode": "flight",
+      "lat": 30.774798,
+      "lon": 114.213723
+    },
+    {
+      "code": "XIY",
+      "icao": "ZLXY",
+      "name": "Xi'an Xianyang International Airport (XIY)",
+      "municipality": "Xi'an",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "Northwest",
+      "mode": "flight",
+      "lat": 34.442207,
+      "lon": 108.762385
+    },
+    {
+      "code": "XMN",
+      "icao": "ZSAM",
+      "name": "Xiamen Gaoqi International Airport (XMN)",
+      "municipality": "Xiamen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 24.543889,
+      "lon": 118.127454
+    }
+  ],
+  "routes": [
+    [
+      "CAN",
+      "CKG"
+    ],
+    [
+      "CAN",
+      "CTU"
+    ],
+    [
+      "CAN",
+      "DLC"
+    ],
+    [
+      "CAN",
+      "FOC"
+    ],
+    [
+      "CAN",
+      "HAK"
+    ],
+    [
+      "CAN",
+      "HGH"
+    ],
+    [
+      "CAN",
+      "KMG"
+    ],
+    [
+      "CAN",
+      "NKG"
+    ],
+    [
+      "CAN",
+      "PEK"
+    ],
+    [
+      "CAN",
+      "PKX"
+    ],
+    [
+      "CAN",
+      "PVG"
+    ],
+    [
+      "CAN",
+      "SHA"
+    ],
+    [
+      "CAN",
+      "SYX"
+    ],
+    [
+      "CAN",
+      "TAO"
+    ],
+    [
+      "CAN",
+      "TFU"
+    ],
+    [
+      "CAN",
+      "TNA"
+    ],
+    [
+      "CAN",
+      "TSN"
+    ],
+    [
+      "CAN",
+      "URC"
+    ],
+    [
+      "CAN",
+      "WUH"
+    ],
+    [
+      "CAN",
+      "XIY"
+    ],
+    [
+      "CAN",
+      "XMN"
+    ],
+    [
+      "CGO",
+      "PEK"
+    ],
+    [
+      "CGO",
+      "PVG"
+    ],
+    [
+      "CGO",
+      "SHA"
+    ],
+    [
+      "CKG",
+      "CAN"
+    ],
+    [
+      "CKG",
+      "PEK"
+    ],
+    [
+      "CKG",
+      "PKX"
+    ],
+    [
+      "CKG",
+      "PVG"
+    ],
+    [
+      "CKG",
+      "SHA"
+    ],
+    [
+      "CKG",
+      "URC"
+    ],
+    [
+      "CSX",
+      "PEK"
+    ],
+    [
+      "CSX",
+      "PKX"
+    ],
+    [
+      "CSX",
+      "PVG"
+    ],
+    [
+      "CSX",
+      "SHA"
+    ],
+    [
+      "CSX",
+      "TSN"
+    ],
+    [
+      "CTU",
+      "CAN"
+    ],
+    [
+      "CTU",
+      "FOC"
+    ],
+    [
+      "CTU",
+      "HGH"
+    ],
+    [
+      "CTU",
+      "NKG"
+    ],
+    [
+      "CTU",
+      "PEK"
+    ],
+    [
+      "CTU",
+      "PKX"
+    ],
+    [
+      "CTU",
+      "PVG"
+    ],
+    [
+      "CTU",
+      "SHA"
+    ],
+    [
+      "CTU",
+      "SZX"
+    ],
+    [
+      "CTU",
+      "TAO"
+    ],
+    [
+      "CTU",
+      "TSN"
+    ],
+    [
+      "CTU",
+      "URC"
+    ],
+    [
+      "DLC",
+      "CAN"
+    ],
+    [
+      "DLC",
+      "HAK"
+    ],
+    [
+      "DLC",
+      "HGH"
+    ],
+    [
+      "DLC",
+      "PEK"
+    ],
+    [
+      "DLC",
+      "PKX"
+    ],
+    [
+      "DLC",
+      "PVG"
+    ],
+    [
+      "DLC",
+      "SHA"
+    ],
+    [
+      "DLC",
+      "TSN"
+    ],
+    [
+      "FOC",
+      "CAN"
+    ],
+    [
+      "FOC",
+      "CTU"
+    ],
+    [
+      "FOC",
+      "PEK"
+    ],
+    [
+      "FOC",
+      "PKX"
+    ],
+    [
+      "FOC",
+      "PVG"
+    ],
+    [
+      "FOC",
+      "SHA"
+    ],
+    [
+      "FOC",
+      "TSN"
+    ],
+    [
+      "HAK",
+      "CAN"
+    ],
+    [
+      "HAK",
+      "DLC"
+    ],
+    [
+      "HAK",
+      "HGH"
+    ],
+    [
+      "HAK",
+      "PEK"
+    ],
+    [
+      "HAK",
+      "PKX"
+    ],
+    [
+      "HAK",
+      "PVG"
+    ],
+    [
+      "HAK",
+      "SHA"
+    ],
+    [
+      "HAK",
+      "TSN"
+    ],
+    [
+      "HAK",
+      "WUH"
+    ],
+    [
+      "HGH",
+      "CAN"
+    ],
+    [
+      "HGH",
+      "CTU"
+    ],
+    [
+      "HGH",
+      "DLC"
+    ],
+    [
+      "HGH",
+      "HAK"
+    ],
+    [
+      "HGH",
+      "HRB"
+    ],
+    [
+      "HGH",
+      "KMG"
+    ],
+    [
+      "HGH",
+      "PEK"
+    ],
+    [
+      "HGH",
+      "PKX"
+    ],
+    [
+      "HGH",
+      "SZX"
+    ],
+    [
+      "HGH",
+      "TFU"
+    ],
+    [
+      "HGH",
+      "TSN"
+    ],
+    [
+      "HRB",
+      "HGH"
+    ],
+    [
+      "HRB",
+      "PEK"
+    ],
+    [
+      "HRB",
+      "PKX"
+    ],
+    [
+      "HRB",
+      "PVG"
+    ],
+    [
+      "HRB",
+      "TSN"
+    ],
+    [
+      "KMG",
+      "CAN"
+    ],
+    [
+      "KMG",
+      "HGH"
+    ],
+    [
+      "KMG",
+      "PEK"
+    ],
+    [
+      "KMG",
+      "PKX"
+    ],
+    [
+      "KMG",
+      "PVG"
+    ],
+    [
+      "KMG",
+      "SHA"
+    ],
+    [
+      "KMG",
+      "TFU"
+    ],
+    [
+      "KWE",
+      "PEK"
+    ],
+    [
+      "KWE",
+      "PKX"
+    ],
+    [
+      "KWE",
+      "PVG"
+    ],
+    [
+      "KWE",
+      "SHA"
+    ],
+    [
+      "LHW",
+      "PEK"
+    ],
+    [
+      "LHW",
+      "PKX"
+    ],
+    [
+      "LHW",
+      "PVG"
+    ],
+    [
+      "LHW",
+      "SHA"
+    ],
+    [
+      "LHW",
+      "TFU"
+    ],
+    [
+      "NKG",
+      "CAN"
+    ],
+    [
+      "NKG",
+      "CTU"
+    ],
+    [
+      "NKG",
+      "PEK"
+    ],
+    [
+      "NKG",
+      "TFU"
+    ],
+    [
+      "NNG",
+      "PEK"
+    ],
+    [
+      "NNG",
+      "TSN"
+    ],
+    [
+      "PEK",
+      "CAN"
+    ],
+    [
+      "PEK",
+      "CGO"
+    ],
+    [
+      "PEK",
+      "CKG"
+    ],
+    [
+      "PEK",
+      "CSX"
+    ],
+    [
+      "PEK",
+      "CTU"
+    ],
+    [
+      "PEK",
+      "DLC"
+    ],
+    [
+      "PEK",
+      "FOC"
+    ],
+    [
+      "PEK",
+      "HAK"
+    ],
+    [
+      "PEK",
+      "HGH"
+    ],
+    [
+      "PEK",
+      "HRB"
+    ],
+    [
+      "PEK",
+      "KMG"
+    ],
+    [
+      "PEK",
+      "KWE"
+    ],
+    [
+      "PEK",
+      "LHW"
+    ],
+    [
+      "PEK",
+      "NKG"
+    ],
+    [
+      "PEK",
+      "NNG"
+    ],
+    [
+      "PEK",
+      "PVG"
+    ],
+    [
+      "PEK",
+      "SHA"
+    ],
+    [
+      "PEK",
+      "SHE"
+    ],
+    [
+      "PEK",
+      "SYX"
+    ],
+    [
+      "PEK",
+      "SZX"
+    ],
+    [
+      "PEK",
+      "TAO"
+    ],
+    [
+      "PEK",
+      "TFU"
+    ],
+    [
+      "PEK",
+      "WUH"
+    ],
+    [
+      "PEK",
+      "XIY"
+    ],
+    [
+      "PEK",
+      "XMN"
+    ],
+    [
+      "PKX",
+      "CAN"
+    ],
+    [
+      "PKX",
+      "CKG"
+    ],
+    [
+      "PKX",
+      "CSX"
+    ],
+    [
+      "PKX",
+      "CTU"
+    ],
+    [
+      "PKX",
+      "DLC"
+    ],
+    [
+      "PKX",
+      "FOC"
+    ],
+    [
+      "PKX",
+      "HAK"
+    ],
+    [
+      "PKX",
+      "HGH"
+    ],
+    [
+      "PKX",
+      "HRB"
+    ],
+    [
+      "PKX",
+      "KMG"
+    ],
+    [
+      "PKX",
+      "KWE"
+    ],
+    [
+      "PKX",
+      "LHW"
+    ],
+    [
+      "PKX",
+      "PVG"
+    ],
+    [
+      "PKX",
+      "SHA"
+    ],
+    [
+      "PKX",
+      "SHE"
+    ],
+    [
+      "PKX",
+      "SYX"
+    ],
+    [
+      "PKX",
+      "SZX"
+    ],
+    [
+      "PKX",
+      "TAO"
+    ],
+    [
+      "PKX",
+      "TFU"
+    ],
+    [
+      "PKX",
+      "WUH"
+    ],
+    [
+      "PKX",
+      "XIY"
+    ],
+    [
+      "PKX",
+      "XMN"
+    ],
+    [
+      "PVG",
+      "CAN"
+    ],
+    [
+      "PVG",
+      "CGO"
+    ],
+    [
+      "PVG",
+      "CKG"
+    ],
+    [
+      "PVG",
+      "CSX"
+    ],
+    [
+      "PVG",
+      "CTU"
+    ],
+    [
+      "PVG",
+      "DLC"
+    ],
+    [
+      "PVG",
+      "FOC"
+    ],
+    [
+      "PVG",
+      "HAK"
+    ],
+    [
+      "PVG",
+      "HRB"
+    ],
+    [
+      "PVG",
+      "KMG"
+    ],
+    [
+      "PVG",
+      "KWE"
+    ],
+    [
+      "PVG",
+      "LHW"
+    ],
+    [
+      "PVG",
+      "PEK"
+    ],
+    [
+      "PVG",
+      "PKX"
+    ],
+    [
+      "PVG",
+      "SHE"
+    ],
+    [
+      "PVG",
+      "SYX"
+    ],
+    [
+      "PVG",
+      "SZX"
+    ],
+    [
+      "PVG",
+      "TAO"
+    ],
+    [
+      "PVG",
+      "TFU"
+    ],
+    [
+      "PVG",
+      "TSN"
+    ],
+    [
+      "PVG",
+      "WUH"
+    ],
+    [
+      "PVG",
+      "XIY"
+    ],
+    [
+      "PVG",
+      "XMN"
+    ],
+    [
+      "SHA",
+      "CAN"
+    ],
+    [
+      "SHA",
+      "CGO"
+    ],
+    [
+      "SHA",
+      "CKG"
+    ],
+    [
+      "SHA",
+      "CSX"
+    ],
+    [
+      "SHA",
+      "CTU"
+    ],
+    [
+      "SHA",
+      "DLC"
+    ],
+    [
+      "SHA",
+      "FOC"
+    ],
+    [
+      "SHA",
+      "HAK"
+    ],
+    [
+      "SHA",
+      "KMG"
+    ],
+    [
+      "SHA",
+      "KWE"
+    ],
+    [
+      "SHA",
+      "LHW"
+    ],
+    [
+      "SHA",
+      "PEK"
+    ],
+    [
+      "SHA",
+      "PKX"
+    ],
+    [
+      "SHA",
+      "SYX"
+    ],
+    [
+      "SHA",
+      "SZX"
+    ],
+    [
+      "SHA",
+      "TAO"
+    ],
+    [
+      "SHA",
+      "TFU"
+    ],
+    [
+      "SHA",
+      "TSN"
+    ],
+    [
+      "SHA",
+      "WUH"
+    ],
+    [
+      "SHA",
+      "XIY"
+    ],
+    [
+      "SHA",
+      "XMN"
+    ],
+    [
+      "SHE",
+      "PEK"
+    ],
+    [
+      "SHE",
+      "PKX"
+    ],
+    [
+      "SHE",
+      "PVG"
+    ],
+    [
+      "SHE",
+      "WUH"
+    ],
+    [
+      "SYX",
+      "CAN"
+    ],
+    [
+      "SYX",
+      "PEK"
+    ],
+    [
+      "SYX",
+      "PKX"
+    ],
+    [
+      "SYX",
+      "PVG"
+    ],
+    [
+      "SYX",
+      "SHA"
+    ],
+    [
+      "SZX",
+      "CTU"
+    ],
+    [
+      "SZX",
+      "HGH"
+    ],
+    [
+      "SZX",
+      "PEK"
+    ],
+    [
+      "SZX",
+      "PKX"
+    ],
+    [
+      "SZX",
+      "PVG"
+    ],
+    [
+      "SZX",
+      "SHA"
+    ],
+    [
+      "SZX",
+      "TFU"
+    ],
+    [
+      "TAO",
+      "CAN"
+    ],
+    [
+      "TAO",
+      "CTU"
+    ],
+    [
+      "TAO",
+      "PEK"
+    ],
+    [
+      "TAO",
+      "PKX"
+    ],
+    [
+      "TAO",
+      "PVG"
+    ],
+    [
+      "TAO",
+      "SHA"
+    ],
+    [
+      "TFU",
+      "CAN"
+    ],
+    [
+      "TFU",
+      "HGH"
+    ],
+    [
+      "TFU",
+      "KMG"
+    ],
+    [
+      "TFU",
+      "LHW"
+    ],
+    [
+      "TFU",
+      "NKG"
+    ],
+    [
+      "TFU",
+      "PEK"
+    ],
+    [
+      "TFU",
+      "PKX"
+    ],
+    [
+      "TFU",
+      "PVG"
+    ],
+    [
+      "TFU",
+      "SHA"
+    ],
+    [
+      "TFU",
+      "SZX"
+    ],
+    [
+      "TFU",
+      "TNA"
+    ],
+    [
+      "TFU",
+      "TSN"
+    ],
+    [
+      "TFU",
+      "URC"
+    ],
+    [
+      "TNA",
+      "CAN"
+    ],
+    [
+      "TNA",
+      "TFU"
+    ],
+    [
+      "TSN",
+      "CAN"
+    ],
+    [
+      "TSN",
+      "CSX"
+    ],
+    [
+      "TSN",
+      "CTU"
+    ],
+    [
+      "TSN",
+      "DLC"
+    ],
+    [
+      "TSN",
+      "FOC"
+    ],
+    [
+      "TSN",
+      "HAK"
+    ],
+    [
+      "TSN",
+      "HGH"
+    ],
+    [
+      "TSN",
+      "HRB"
+    ],
+    [
+      "TSN",
+      "NNG"
+    ],
+    [
+      "TSN",
+      "PVG"
+    ],
+    [
+      "TSN",
+      "SHA"
+    ],
+    [
+      "TSN",
+      "TFU"
+    ],
+    [
+      "TSN",
+      "WUH"
+    ],
+    [
+      "TSN",
+      "XMN"
+    ],
+    [
+      "URC",
+      "CAN"
+    ],
+    [
+      "URC",
+      "CKG"
+    ],
+    [
+      "URC",
+      "CTU"
+    ],
+    [
+      "URC",
+      "TFU"
+    ],
+    [
+      "WUH",
+      "CAN"
+    ],
+    [
+      "WUH",
+      "HAK"
+    ],
+    [
+      "WUH",
+      "PEK"
+    ],
+    [
+      "WUH",
+      "PKX"
+    ],
+    [
+      "WUH",
+      "PVG"
+    ],
+    [
+      "WUH",
+      "SHA"
+    ],
+    [
+      "WUH",
+      "SHE"
+    ],
+    [
+      "WUH",
+      "TSN"
+    ],
+    [
+      "WUH",
+      "XMN"
+    ],
+    [
+      "XIY",
+      "CAN"
+    ],
+    [
+      "XIY",
+      "PEK"
+    ],
+    [
+      "XIY",
+      "PKX"
+    ],
+    [
+      "XIY",
+      "PVG"
+    ],
+    [
+      "XIY",
+      "SHA"
+    ],
+    [
+      "XMN",
+      "CAN"
+    ],
+    [
+      "XMN",
+      "PEK"
+    ],
+    [
+      "XMN",
+      "PKX"
+    ],
+    [
+      "XMN",
+      "PVG"
+    ],
+    [
+      "XMN",
+      "SHA"
+    ],
+    [
+      "XMN",
+      "TSN"
+    ],
+    [
+      "XMN",
+      "WUH"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "PEK",
+      "destination": "SHA",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "PVG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "SHA",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "PVG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CAN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "CAN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CTU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "TFU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "CTU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "TFU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "SZX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "SZX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "KMG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "KMG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CKG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "CKG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "XIY",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "XIY",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "HGH",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "HGH",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "XMN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "XMN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CSX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "CSX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "WUH",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "WUH",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "TAO",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "TAO",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "SYX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "SYX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "HAK",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "HAK",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "DLC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "DLC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "KWE",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "KWE",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "FOC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PKX",
+      "destination": "FOC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "CAN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "CAN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "CTU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "TFU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "CTU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "TFU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "SZX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "SZX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "KMG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "KMG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "CKG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "CKG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "XIY",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "XIY",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "XMN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "XMN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "CSX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "CSX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "WUH",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "WUH",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "TAO",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "TAO",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "CGO",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "CGO",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "SYX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "SYX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "HAK",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "HAK",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "DLC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "DLC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "KWE",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "KWE",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "SHA",
+      "destination": "FOC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PVG",
+      "destination": "FOC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "CTU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "TFU",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "KMG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "CKG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "XIY",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "HGH",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "XMN",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "TAO",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "NKG",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "SYX",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "HAK",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "DLC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "FOC",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "CAN",
+      "destination": "TNA",
+      "source": "https://www.caac.gov.cn/XXGK/XXGK/TZTG/201811/P020181115387162391198.pdf",
+      "kind": "Historical 2018 city-pair candidate expanded to exact airports; no claim that every airport combination operates"
+    },
+    {
+      "origin": "PEK",
+      "destination": "SHA",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "PVG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "HGH",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CTU",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "TFU",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CKG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CAN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "SZX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "XMN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "FOC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "SYX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "HAK",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "NKG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "XIY",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "LHW",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CSX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "SHE",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "DLC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "NNG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "KWE",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "KMG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "CGO",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "TAO",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "HRB",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "WUH",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "PVG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "HGH",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "TFU",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "CKG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "HAK",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "XIY",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "LHW",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "CSX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "SHE",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "KWE",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "KMG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PKX",
+      "destination": "HRB",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "SHA",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "PVG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "HGH",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "CTU",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "TFU",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "CAN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "XMN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "FOC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "HAK",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "CSX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "DLC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "NNG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "HRB",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TSN",
+      "destination": "WUH",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "CAN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "SZX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "HGH",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "SHA",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "PVG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "TAO",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "NKG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "FOC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CTU",
+      "destination": "URC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "CAN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "SZX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "HGH",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "PVG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "TNA",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "NKG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "URC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "LHW",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "KMG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "SHA",
+      "destination": "CAN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PVG",
+      "destination": "CAN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PVG",
+      "destination": "SZX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PVG",
+      "destination": "HRB",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PVG",
+      "destination": "SHE",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PVG",
+      "destination": "DLC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "PVG",
+      "destination": "HAK",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "HGH",
+      "destination": "CAN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "HGH",
+      "destination": "SZX",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "HGH",
+      "destination": "DLC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "HGH",
+      "destination": "HRB",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "HGH",
+      "destination": "KMG",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "HGH",
+      "destination": "HAK",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CKG",
+      "destination": "URC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "WUH",
+      "destination": "SHE",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "WUH",
+      "destination": "CAN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "WUH",
+      "destination": "XMN",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "WUH",
+      "destination": "HAK",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "HAK",
+      "destination": "DLC",
+      "source": "https://webresource.airchina.com.cn/zh-CN/content/marketing/yxhdymjh/2025scck/",
+      "kind": "Airport-specific 2025 route candidate from an expired product; not dated service or price evidence"
+    },
+    {
+      "origin": "CAN",
+      "destination": "URC",
+      "source": "https://www.caac.gov.cn/English/BeltAndRoad/202606/t20260604_230981.html",
+      "kind": "Published 2026 domestic leg of a longer international routing; domestic search verifies standalone dated segments"
+    },
+    {
+      "origin": "SHA",
+      "destination": "LHW",
+      "source": "https://www.ceair.com/global/static/AboutChinaEasternAirlines/intoEasternAirlines/InvestorRelations/announcement/ShanghaiExchangeReleased/shExcReleased2026/202601/P020260115596082764942.pdf",
+      "kind": "Published China Eastern route candidate; no dated schedule or aircraft inference"
+    },
+    {
+      "origin": "PVG",
+      "destination": "LHW",
+      "source": "https://flights.ch.com/flight-date/SHA-LHW/",
+      "kind": "Spring route page identifies Pudong explicitly despite its SHA city slug; older dates are candidates only"
+    }
+  ],
+  "deferred_airports": [],
+  "unresolved_airports": []
+}

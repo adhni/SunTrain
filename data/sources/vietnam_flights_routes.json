@@ -1,0 +1,1420 @@
+{
+  "country": "VN",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "BMV",
+      "icao": "VVBM",
+      "name": "Buon Ma Thuot Airport (BMV)",
+      "municipality": "Buon Ma Thuot",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 12.668299675,
+      "lon": 108.120002747,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "CAH",
+      "icao": "VVCM",
+      "name": "Cà Mau Airport (CAH)",
+      "municipality": "Ca Mau City",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 9.177667,
+      "lon": 105.177778,
+      "island_group": "South"
+    },
+    {
+      "code": "CXR",
+      "icao": "VVCR",
+      "name": "Cam Ranh International Airport / Cam Ranh Air Base (CXR)",
+      "municipality": "Nha Trang/nha Trang aiurportCam Ranh",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 11.9982,
+      "lon": 109.219002,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "DAD",
+      "icao": "VVDN",
+      "name": "Da Nang International Airport (DAD)",
+      "municipality": "Da Nang",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 16.0439,
+      "lon": 108.198997,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "DIN",
+      "icao": "VVDB",
+      "name": "Dien Bien Phu Airport (DIN)",
+      "municipality": "Dien Bien Phu",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 21.3974990845,
+      "lon": 103.008003235,
+      "island_group": "North"
+    },
+    {
+      "code": "DLI",
+      "icao": "VVDL",
+      "name": "Lien Khuong Airport (DLI)",
+      "municipality": "Da Lat",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 11.750556,
+      "lon": 108.366997,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "HAN",
+      "icao": "VVNB",
+      "name": "Noi Bai International Airport (HAN)",
+      "municipality": "Hanoi (Soc Son)",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 21.221201,
+      "lon": 105.806999,
+      "island_group": "North"
+    },
+    {
+      "code": "HPH",
+      "icao": "VVCI",
+      "name": "Cat Bi International Airport (HPH)",
+      "municipality": "Haiphong (Hai An)",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 20.817428,
+      "lon": 106.724315,
+      "island_group": "North"
+    },
+    {
+      "code": "HUI",
+      "icao": "VVPB",
+      "name": "Phu Bai International Airport (HUI)",
+      "municipality": "Huế",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 16.400581,
+      "lon": 107.704094,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "PQC",
+      "icao": "VVPQ",
+      "name": "Phú Quốc International Airport (PQC)",
+      "municipality": "Phu Quoc Island",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.169783,
+      "lon": 103.99353,
+      "island_group": "South"
+    },
+    {
+      "code": "PXU",
+      "icao": "VVPK",
+      "name": "Pleiku Airport (PXU)",
+      "municipality": "Pleiku",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 14.004500389099121,
+      "lon": 108.01699829101562,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "SGN",
+      "icao": "VVTS",
+      "name": "Tan Son Nhat International Airport (SGN)",
+      "municipality": "Ho Chi Minh City",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.8188,
+      "lon": 106.652,
+      "island_group": "South"
+    },
+    {
+      "code": "TBB",
+      "icao": "VVTH",
+      "name": "Dong Tac Airport (TBB)",
+      "municipality": "Tuy Hoa",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 13.0496,
+      "lon": 109.334,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "THD",
+      "icao": "VVTX",
+      "name": "Tho Xuan Airport (THD)",
+      "municipality": "Thanh Hóa",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 19.901667,
+      "lon": 105.467778,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "UIH",
+      "icao": "VVPC",
+      "name": "Phu Cat Airport (UIH)",
+      "municipality": "Quy Nohn",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 13.955,
+      "lon": 109.042,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "VCA",
+      "icao": "VVCT",
+      "name": "Can Tho International Airport (VCA)",
+      "municipality": "Can Tho",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.083397,
+      "lon": 105.709371,
+      "island_group": "South"
+    },
+    {
+      "code": "VCL",
+      "icao": "VVCA",
+      "name": "Chu Lai Airport (VCL)",
+      "municipality": "Tam Nghĩa",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 15.4033,
+      "lon": 108.706001,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "VCS",
+      "icao": "VVCS",
+      "name": "Con Dao Airport (VCS)",
+      "municipality": "Con Dao",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 8.73183,
+      "lon": 106.633003,
+      "island_group": "South"
+    },
+    {
+      "code": "VDH",
+      "icao": "VVDH",
+      "name": "Dong Hoi Airport (VDH)",
+      "municipality": "Dong Hoi",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 17.515,
+      "lon": 106.590556,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "VDO",
+      "icao": "VVVD",
+      "name": "Van Don International Airport (VDO)",
+      "municipality": "Van Don",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 21.120693,
+      "lon": 107.41539,
+      "island_group": "North"
+    },
+    {
+      "code": "VII",
+      "icao": "VVVH",
+      "name": "Vinh Airport (VII)",
+      "municipality": "Vinh",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 18.7376003265,
+      "lon": 105.67099762,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "VKG",
+      "icao": "VVRG",
+      "name": "Rach Gia Airport (VKG)",
+      "municipality": "Rach Gia",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 9.95802997234,
+      "lon": 105.132379532,
+      "island_group": "South"
+    }
+  ],
+  "routes": [
+    [
+      "BMV",
+      "DAD"
+    ],
+    [
+      "BMV",
+      "HAN"
+    ],
+    [
+      "BMV",
+      "SGN"
+    ],
+    [
+      "BMV",
+      "VCA"
+    ],
+    [
+      "BMV",
+      "VII"
+    ],
+    [
+      "CAH",
+      "HAN"
+    ],
+    [
+      "CAH",
+      "SGN"
+    ],
+    [
+      "CXR",
+      "DAD"
+    ],
+    [
+      "CXR",
+      "HAN"
+    ],
+    [
+      "CXR",
+      "HUI"
+    ],
+    [
+      "CXR",
+      "SGN"
+    ],
+    [
+      "DAD",
+      "BMV"
+    ],
+    [
+      "DAD",
+      "CXR"
+    ],
+    [
+      "DAD",
+      "DLI"
+    ],
+    [
+      "DAD",
+      "HAN"
+    ],
+    [
+      "DAD",
+      "HPH"
+    ],
+    [
+      "DAD",
+      "PQC"
+    ],
+    [
+      "DAD",
+      "PXU"
+    ],
+    [
+      "DAD",
+      "SGN"
+    ],
+    [
+      "DAD",
+      "THD"
+    ],
+    [
+      "DAD",
+      "VCA"
+    ],
+    [
+      "DAD",
+      "VDO"
+    ],
+    [
+      "DAD",
+      "VII"
+    ],
+    [
+      "DIN",
+      "HAN"
+    ],
+    [
+      "DIN",
+      "HPH"
+    ],
+    [
+      "DIN",
+      "SGN"
+    ],
+    [
+      "DLI",
+      "DAD"
+    ],
+    [
+      "DLI",
+      "HAN"
+    ],
+    [
+      "DLI",
+      "HUI"
+    ],
+    [
+      "DLI",
+      "PQC"
+    ],
+    [
+      "DLI",
+      "SGN"
+    ],
+    [
+      "DLI",
+      "THD"
+    ],
+    [
+      "DLI",
+      "VCA"
+    ],
+    [
+      "HAN",
+      "BMV"
+    ],
+    [
+      "HAN",
+      "CAH"
+    ],
+    [
+      "HAN",
+      "CXR"
+    ],
+    [
+      "HAN",
+      "DAD"
+    ],
+    [
+      "HAN",
+      "DIN"
+    ],
+    [
+      "HAN",
+      "DLI"
+    ],
+    [
+      "HAN",
+      "HPH"
+    ],
+    [
+      "HAN",
+      "HUI"
+    ],
+    [
+      "HAN",
+      "PQC"
+    ],
+    [
+      "HAN",
+      "PXU"
+    ],
+    [
+      "HAN",
+      "SGN"
+    ],
+    [
+      "HAN",
+      "TBB"
+    ],
+    [
+      "HAN",
+      "THD"
+    ],
+    [
+      "HAN",
+      "UIH"
+    ],
+    [
+      "HAN",
+      "VCA"
+    ],
+    [
+      "HAN",
+      "VCL"
+    ],
+    [
+      "HAN",
+      "VCS"
+    ],
+    [
+      "HAN",
+      "VDH"
+    ],
+    [
+      "HAN",
+      "VDO"
+    ],
+    [
+      "HAN",
+      "VII"
+    ],
+    [
+      "HAN",
+      "VKG"
+    ],
+    [
+      "HPH",
+      "DAD"
+    ],
+    [
+      "HPH",
+      "DIN"
+    ],
+    [
+      "HPH",
+      "HAN"
+    ],
+    [
+      "HPH",
+      "SGN"
+    ],
+    [
+      "HUI",
+      "CXR"
+    ],
+    [
+      "HUI",
+      "DLI"
+    ],
+    [
+      "HUI",
+      "HAN"
+    ],
+    [
+      "HUI",
+      "SGN"
+    ],
+    [
+      "PQC",
+      "DAD"
+    ],
+    [
+      "PQC",
+      "DLI"
+    ],
+    [
+      "PQC",
+      "HAN"
+    ],
+    [
+      "PQC",
+      "SGN"
+    ],
+    [
+      "PQC",
+      "VCA"
+    ],
+    [
+      "PXU",
+      "DAD"
+    ],
+    [
+      "PXU",
+      "HAN"
+    ],
+    [
+      "PXU",
+      "SGN"
+    ],
+    [
+      "SGN",
+      "BMV"
+    ],
+    [
+      "SGN",
+      "CAH"
+    ],
+    [
+      "SGN",
+      "CXR"
+    ],
+    [
+      "SGN",
+      "DAD"
+    ],
+    [
+      "SGN",
+      "DIN"
+    ],
+    [
+      "SGN",
+      "DLI"
+    ],
+    [
+      "SGN",
+      "HAN"
+    ],
+    [
+      "SGN",
+      "HPH"
+    ],
+    [
+      "SGN",
+      "HUI"
+    ],
+    [
+      "SGN",
+      "PQC"
+    ],
+    [
+      "SGN",
+      "PXU"
+    ],
+    [
+      "SGN",
+      "TBB"
+    ],
+    [
+      "SGN",
+      "THD"
+    ],
+    [
+      "SGN",
+      "UIH"
+    ],
+    [
+      "SGN",
+      "VCA"
+    ],
+    [
+      "SGN",
+      "VCL"
+    ],
+    [
+      "SGN",
+      "VCS"
+    ],
+    [
+      "SGN",
+      "VDH"
+    ],
+    [
+      "SGN",
+      "VDO"
+    ],
+    [
+      "SGN",
+      "VII"
+    ],
+    [
+      "SGN",
+      "VKG"
+    ],
+    [
+      "TBB",
+      "HAN"
+    ],
+    [
+      "TBB",
+      "SGN"
+    ],
+    [
+      "THD",
+      "DAD"
+    ],
+    [
+      "THD",
+      "DLI"
+    ],
+    [
+      "THD",
+      "HAN"
+    ],
+    [
+      "THD",
+      "SGN"
+    ],
+    [
+      "UIH",
+      "HAN"
+    ],
+    [
+      "UIH",
+      "SGN"
+    ],
+    [
+      "VCA",
+      "BMV"
+    ],
+    [
+      "VCA",
+      "DAD"
+    ],
+    [
+      "VCA",
+      "DLI"
+    ],
+    [
+      "VCA",
+      "HAN"
+    ],
+    [
+      "VCA",
+      "PQC"
+    ],
+    [
+      "VCA",
+      "SGN"
+    ],
+    [
+      "VCA",
+      "VCS"
+    ],
+    [
+      "VCL",
+      "HAN"
+    ],
+    [
+      "VCL",
+      "SGN"
+    ],
+    [
+      "VCS",
+      "HAN"
+    ],
+    [
+      "VCS",
+      "SGN"
+    ],
+    [
+      "VCS",
+      "VCA"
+    ],
+    [
+      "VDH",
+      "HAN"
+    ],
+    [
+      "VDH",
+      "SGN"
+    ],
+    [
+      "VDO",
+      "DAD"
+    ],
+    [
+      "VDO",
+      "HAN"
+    ],
+    [
+      "VDO",
+      "SGN"
+    ],
+    [
+      "VII",
+      "BMV"
+    ],
+    [
+      "VII",
+      "DAD"
+    ],
+    [
+      "VII",
+      "HAN"
+    ],
+    [
+      "VII",
+      "SGN"
+    ],
+    [
+      "VKG",
+      "HAN"
+    ],
+    [
+      "VKG",
+      "SGN"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "HAN",
+      "destination": "DAD",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "CXR",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DLI",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "HUI",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "UIH",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VCL",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "TBB",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VII",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VCA",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VDH",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DIN",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service or fare evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HAN",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HPH",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VII",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "BMV",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "PXU",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VDH",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "THD",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VDO",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VCL",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HUI",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CXR",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DLI",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DAD",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VKG",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CAH",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "TBB",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "UIH",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+      "kind": "Airline promotional route table, city labels resolved to exact airports; not dated service evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "HPH",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "VCA",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "CXR",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "VDO",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "DLI",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "VII",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "THD",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "BMV",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "PXU",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; not current operation evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HUI",
+      "destination": "DLI",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HUI",
+      "destination": "CXR",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "THD",
+      "destination": "DLI",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VCA",
+      "destination": "BMV",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VCA",
+      "destination": "DLI",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VCA",
+      "destination": "VCS",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VCA",
+      "destination": "PQC",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VII",
+      "destination": "BMV",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "PQC",
+      "destination": "DLI",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HPH",
+      "destination": "DIN",
+      "source": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+      "kind": "Undated airline route-group candidate, city labels resolved; dated captures required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "DAD",
+      "destination": "PQC",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport cross-country probe; not published pair evidence",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "BMV",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "CAH",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "CXR",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DAD",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DIN",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DLI",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "HPH",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "HUI",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "PQC",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "PXU",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "SGN",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "TBB",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "THD",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "UIH",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VCA",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VCL",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VCS",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VDH",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VDO",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VII",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HAN",
+      "destination": "VKG",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "BMV",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CAH",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CXR",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DAD",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DIN",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DLI",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HAN",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HPH",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HUI",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "PQC",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "PXU",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "TBB",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "THD",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "UIH",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VCA",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VCL",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VCS",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VDH",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VDO",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VII",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SGN",
+      "destination": "VKG",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport hub probe; airport map establishes identity, not this route",
+      "scope": "domestic"
+    }
+  ],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+  "route_hash_basis": "Curated candidate evidence and input hashes, not raw website bytes",
+  "source_urls": {
+    "domestic": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+    "regional": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+    "international": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+    "japan": "https://www.vietnamairlines.com/en-vn/flights-from-hanoi-to-japan",
+    "korea": "https://www.vietjetair.com/vi/ve-may-bay/san-bay-da-nang-dad-da-nang",
+    "airport_identity": "https://airportmap.vietnamairlines.com/?lang=en",
+    "dli": "https://caa.gov.vn/Pages/Print.aspx?NewsId=20260805113611646"
+  },
+  "source_reviewed_date": "2026-10-25",
+  "input_manifests": [],
+  "unresolved_airports": [],
+  "base_directional_routes": 0,
+  "coverage_scope": "Selected domestic hubs and regions; international restricted to existing SunTrain flight countries",
+  "airport_notes": [
+    "SGN remains Tan Son Nhat; Long Thanh is not substituted or assigned invented schedules.",
+    "DLI closure earlier in 2026 is not treated as a November closure; dated captures determine coverage."
+  ],
+  "route_source_sha256": "ce337df6ce01a2d5d6b9b8fd69a54ab7219d644baea204cdcfb347b417972266"
+}

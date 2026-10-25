@@ -1,0 +1,2261 @@
+{
+  "country": "VN",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Ho_Chi_Minh",
+  "currency": "USD",
+  "max_duration": 86400,
+  "airports": [
+    {
+      "code": "AMD",
+      "icao": "VAAH",
+      "name": "Sardar Vallabh Patel International Airport (AMD)",
+      "municipality": "Ahmedabad",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 23.0772,
+      "lon": 72.634697
+    },
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BLR",
+      "icao": "VOBL",
+      "name": "Kempegowda International Airport Bengaluru (BLR)",
+      "municipality": "Bengaluru",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 13.1979,
+      "lon": 77.706299
+    },
+    {
+      "code": "BNE",
+      "icao": "YBBN",
+      "name": "Brisbane International Airport (BNE)",
+      "municipality": "Brisbane",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125
+    },
+    {
+      "code": "BOM",
+      "icao": "VABB",
+      "name": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+      "municipality": "Mumbai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 19.088699,
+      "lon": 72.867897
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CCU",
+      "icao": "VECC",
+      "name": "Netaji Subhash Chandra Bose International Airport (CCU)",
+      "municipality": "Kolkata",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 22.654012,
+      "lon": 88.44765
+    },
+    {
+      "code": "CEB",
+      "icao": "RPVM",
+      "name": "Mactan Cebu International Airport (CEB)",
+      "municipality": "Cebu City/Lapu-Lapu City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 10.309261,
+      "lon": 123.97974
+    },
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998
+    },
+    {
+      "code": "CXR",
+      "icao": "VVCR",
+      "name": "Cam Ranh International Airport / Cam Ranh Air Base (CXR)",
+      "municipality": "Nha Trang/nha Trang aiurportCam Ranh",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 11.9982,
+      "lon": 109.219002,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "DAD",
+      "icao": "VVDN",
+      "name": "Da Nang International Airport (DAD)",
+      "municipality": "Da Nang",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 16.0439,
+      "lon": 108.198997,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DLI",
+      "icao": "VVDL",
+      "name": "Lien Khuong Airport (DLI)",
+      "municipality": "Da Lat",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 11.750556,
+      "lon": 108.366997,
+      "island_group": "Central and Highlands"
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "FUK",
+      "icao": "RJFF",
+      "name": "Fukuoka Airport (FUK)",
+      "municipality": "Fukuoka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 33.585899353027344,
+      "lon": 130.4510040283203
+    },
+    {
+      "code": "HAN",
+      "icao": "VVNB",
+      "name": "Noi Bai International Airport (HAN)",
+      "municipality": "Hanoi (Soc Son)",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 21.221201,
+      "lon": 105.806999,
+      "island_group": "North"
+    },
+    {
+      "code": "HKT",
+      "icao": "VTSP",
+      "name": "Phuket International Airport (HKT)",
+      "municipality": "Phuket",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 8.113257,
+      "lon": 98.3174
+    },
+    {
+      "code": "HND",
+      "icao": "RJTT",
+      "name": "Tokyo Haneda International Airport (HND)",
+      "municipality": "Tokyo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.549678,
+      "lon": 139.786958
+    },
+    {
+      "code": "HYD",
+      "icao": "VOHS",
+      "name": "Rajiv Gandhi International Airport (HYD)",
+      "municipality": "Hyderabad",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 17.231318,
+      "lon": 78.429855
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "KIX",
+      "icao": "RJBB",
+      "name": "Kansai International Airport (KIX)",
+      "municipality": "Osaka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.427299,
+      "lon": 135.244003
+    },
+    {
+      "code": "KMG",
+      "icao": "ZPPP",
+      "name": "Kunming Changshui International Airport (KMG)",
+      "municipality": "Kunming",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 25.110313,
+      "lon": 102.936743
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "MEL",
+      "icao": "YMML",
+      "name": "Melbourne Airport (MEL)",
+      "municipality": "Melbourne",
+      "country": "AU",
+      "timezone": "Australia/Melbourne",
+      "mode": "flight",
+      "lat": -37.670732,
+      "lon": 144.837898
+    },
+    {
+      "code": "MNL",
+      "icao": "RPLL",
+      "name": "Ninoy Aquino International Airport (MNL)",
+      "municipality": "Manila (Pasay)",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 14.5086,
+      "lon": 121.019997
+    },
+    {
+      "code": "NGO",
+      "icao": "RJGG",
+      "name": "Chubu Centrair International Airport (NGO)",
+      "municipality": "Tokoname",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.858398,
+      "lon": 136.804993
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PER",
+      "icao": "YPPH",
+      "name": "Perth International Airport (PER)",
+      "municipality": "Perth",
+      "country": "AU",
+      "timezone": "Australia/Perth",
+      "mode": "flight",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234
+    },
+    {
+      "code": "PKX",
+      "icao": "ZBAD",
+      "name": "Beijing Daxing International Airport (PKX)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 39.501289,
+      "lon": 116.413967
+    },
+    {
+      "code": "PQC",
+      "icao": "VVPQ",
+      "name": "Phú Quốc International Airport (PQC)",
+      "municipality": "Phu Quoc Island",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.169783,
+      "lon": 103.99353,
+      "island_group": "South"
+    },
+    {
+      "code": "PUS",
+      "icao": "RKPK",
+      "name": "Gimhae International Airport (PUS)",
+      "municipality": "Busan",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.179501,
+      "lon": 128.938004
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "SGN",
+      "icao": "VVTS",
+      "name": "Tan Son Nhat International Airport (SGN)",
+      "municipality": "Ho Chi Minh City",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.8188,
+      "lon": 106.652,
+      "island_group": "South"
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "SYD",
+      "icao": "YSSY",
+      "name": "Sydney Kingsford Smith International Airport (SYD)",
+      "municipality": "Sydney (Mascot)",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.946098,
+      "lon": 151.177002
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    }
+  ],
+  "routes": [
+    [
+      "AMD",
+      "HAN"
+    ],
+    [
+      "AMD",
+      "SGN"
+    ],
+    [
+      "AUH",
+      "HAN"
+    ],
+    [
+      "BKK",
+      "DAD"
+    ],
+    [
+      "BKK",
+      "HAN"
+    ],
+    [
+      "BKK",
+      "PQC"
+    ],
+    [
+      "BKK",
+      "SGN"
+    ],
+    [
+      "BLR",
+      "HAN"
+    ],
+    [
+      "BLR",
+      "SGN"
+    ],
+    [
+      "BNE",
+      "SGN"
+    ],
+    [
+      "BOM",
+      "HAN"
+    ],
+    [
+      "BOM",
+      "SGN"
+    ],
+    [
+      "CAN",
+      "CXR"
+    ],
+    [
+      "CAN",
+      "DAD"
+    ],
+    [
+      "CAN",
+      "HAN"
+    ],
+    [
+      "CAN",
+      "SGN"
+    ],
+    [
+      "CCU",
+      "HAN"
+    ],
+    [
+      "CCU",
+      "SGN"
+    ],
+    [
+      "CEB",
+      "SGN"
+    ],
+    [
+      "CGK",
+      "HAN"
+    ],
+    [
+      "CGK",
+      "SGN"
+    ],
+    [
+      "CXR",
+      "CAN"
+    ],
+    [
+      "CXR",
+      "ICN"
+    ],
+    [
+      "CXR",
+      "KUL"
+    ],
+    [
+      "CXR",
+      "PEK"
+    ],
+    [
+      "CXR",
+      "PUS"
+    ],
+    [
+      "CXR",
+      "PVG"
+    ],
+    [
+      "CXR",
+      "SIN"
+    ],
+    [
+      "DAD",
+      "BKK"
+    ],
+    [
+      "DAD",
+      "CAN"
+    ],
+    [
+      "DAD",
+      "DMK"
+    ],
+    [
+      "DAD",
+      "DXB"
+    ],
+    [
+      "DAD",
+      "HND"
+    ],
+    [
+      "DAD",
+      "ICN"
+    ],
+    [
+      "DAD",
+      "KIX"
+    ],
+    [
+      "DAD",
+      "KUL"
+    ],
+    [
+      "DAD",
+      "MNL"
+    ],
+    [
+      "DAD",
+      "NRT"
+    ],
+    [
+      "DAD",
+      "PUS"
+    ],
+    [
+      "DAD",
+      "PVG"
+    ],
+    [
+      "DAD",
+      "SIN"
+    ],
+    [
+      "DAD",
+      "TFU"
+    ],
+    [
+      "DEL",
+      "HAN"
+    ],
+    [
+      "DEL",
+      "SGN"
+    ],
+    [
+      "DLI",
+      "KUL"
+    ],
+    [
+      "DMK",
+      "DAD"
+    ],
+    [
+      "DMK",
+      "HAN"
+    ],
+    [
+      "DMK",
+      "PQC"
+    ],
+    [
+      "DMK",
+      "SGN"
+    ],
+    [
+      "DOH",
+      "HAN"
+    ],
+    [
+      "DOH",
+      "SGN"
+    ],
+    [
+      "DPS",
+      "HAN"
+    ],
+    [
+      "DPS",
+      "SGN"
+    ],
+    [
+      "DXB",
+      "DAD"
+    ],
+    [
+      "DXB",
+      "HAN"
+    ],
+    [
+      "DXB",
+      "SGN"
+    ],
+    [
+      "FUK",
+      "HAN"
+    ],
+    [
+      "FUK",
+      "SGN"
+    ],
+    [
+      "HAN",
+      "AMD"
+    ],
+    [
+      "HAN",
+      "AUH"
+    ],
+    [
+      "HAN",
+      "BKK"
+    ],
+    [
+      "HAN",
+      "BLR"
+    ],
+    [
+      "HAN",
+      "BOM"
+    ],
+    [
+      "HAN",
+      "CAN"
+    ],
+    [
+      "HAN",
+      "CCU"
+    ],
+    [
+      "HAN",
+      "CGK"
+    ],
+    [
+      "HAN",
+      "DEL"
+    ],
+    [
+      "HAN",
+      "DMK"
+    ],
+    [
+      "HAN",
+      "DOH"
+    ],
+    [
+      "HAN",
+      "DPS"
+    ],
+    [
+      "HAN",
+      "DXB"
+    ],
+    [
+      "HAN",
+      "FUK"
+    ],
+    [
+      "HAN",
+      "HKT"
+    ],
+    [
+      "HAN",
+      "HND"
+    ],
+    [
+      "HAN",
+      "HYD"
+    ],
+    [
+      "HAN",
+      "ICN"
+    ],
+    [
+      "HAN",
+      "KIX"
+    ],
+    [
+      "HAN",
+      "KMG"
+    ],
+    [
+      "HAN",
+      "KUL"
+    ],
+    [
+      "HAN",
+      "MEL"
+    ],
+    [
+      "HAN",
+      "MNL"
+    ],
+    [
+      "HAN",
+      "NGO"
+    ],
+    [
+      "HAN",
+      "NRT"
+    ],
+    [
+      "HAN",
+      "PEK"
+    ],
+    [
+      "HAN",
+      "PKX"
+    ],
+    [
+      "HAN",
+      "PUS"
+    ],
+    [
+      "HAN",
+      "PVG"
+    ],
+    [
+      "HAN",
+      "SIN"
+    ],
+    [
+      "HAN",
+      "SYD"
+    ],
+    [
+      "HAN",
+      "SZX"
+    ],
+    [
+      "HAN",
+      "TFU"
+    ],
+    [
+      "HKT",
+      "HAN"
+    ],
+    [
+      "HKT",
+      "SGN"
+    ],
+    [
+      "HND",
+      "DAD"
+    ],
+    [
+      "HND",
+      "HAN"
+    ],
+    [
+      "HND",
+      "SGN"
+    ],
+    [
+      "HYD",
+      "HAN"
+    ],
+    [
+      "HYD",
+      "SGN"
+    ],
+    [
+      "ICN",
+      "CXR"
+    ],
+    [
+      "ICN",
+      "DAD"
+    ],
+    [
+      "ICN",
+      "HAN"
+    ],
+    [
+      "ICN",
+      "PQC"
+    ],
+    [
+      "ICN",
+      "SGN"
+    ],
+    [
+      "KIX",
+      "DAD"
+    ],
+    [
+      "KIX",
+      "HAN"
+    ],
+    [
+      "KIX",
+      "SGN"
+    ],
+    [
+      "KMG",
+      "HAN"
+    ],
+    [
+      "KMG",
+      "SGN"
+    ],
+    [
+      "KUL",
+      "CXR"
+    ],
+    [
+      "KUL",
+      "DAD"
+    ],
+    [
+      "KUL",
+      "DLI"
+    ],
+    [
+      "KUL",
+      "HAN"
+    ],
+    [
+      "KUL",
+      "PQC"
+    ],
+    [
+      "KUL",
+      "SGN"
+    ],
+    [
+      "MEL",
+      "HAN"
+    ],
+    [
+      "MEL",
+      "SGN"
+    ],
+    [
+      "MNL",
+      "DAD"
+    ],
+    [
+      "MNL",
+      "HAN"
+    ],
+    [
+      "MNL",
+      "SGN"
+    ],
+    [
+      "NGO",
+      "HAN"
+    ],
+    [
+      "NGO",
+      "SGN"
+    ],
+    [
+      "NRT",
+      "DAD"
+    ],
+    [
+      "NRT",
+      "HAN"
+    ],
+    [
+      "NRT",
+      "SGN"
+    ],
+    [
+      "PEK",
+      "CXR"
+    ],
+    [
+      "PEK",
+      "HAN"
+    ],
+    [
+      "PEK",
+      "SGN"
+    ],
+    [
+      "PER",
+      "SGN"
+    ],
+    [
+      "PKX",
+      "HAN"
+    ],
+    [
+      "PQC",
+      "BKK"
+    ],
+    [
+      "PQC",
+      "DMK"
+    ],
+    [
+      "PQC",
+      "ICN"
+    ],
+    [
+      "PQC",
+      "KUL"
+    ],
+    [
+      "PQC",
+      "PUS"
+    ],
+    [
+      "PQC",
+      "SIN"
+    ],
+    [
+      "PUS",
+      "CXR"
+    ],
+    [
+      "PUS",
+      "DAD"
+    ],
+    [
+      "PUS",
+      "HAN"
+    ],
+    [
+      "PUS",
+      "PQC"
+    ],
+    [
+      "PUS",
+      "SGN"
+    ],
+    [
+      "PVG",
+      "CXR"
+    ],
+    [
+      "PVG",
+      "DAD"
+    ],
+    [
+      "PVG",
+      "HAN"
+    ],
+    [
+      "PVG",
+      "SGN"
+    ],
+    [
+      "SGN",
+      "AMD"
+    ],
+    [
+      "SGN",
+      "BKK"
+    ],
+    [
+      "SGN",
+      "BLR"
+    ],
+    [
+      "SGN",
+      "BNE"
+    ],
+    [
+      "SGN",
+      "BOM"
+    ],
+    [
+      "SGN",
+      "CAN"
+    ],
+    [
+      "SGN",
+      "CCU"
+    ],
+    [
+      "SGN",
+      "CEB"
+    ],
+    [
+      "SGN",
+      "CGK"
+    ],
+    [
+      "SGN",
+      "DEL"
+    ],
+    [
+      "SGN",
+      "DMK"
+    ],
+    [
+      "SGN",
+      "DOH"
+    ],
+    [
+      "SGN",
+      "DPS"
+    ],
+    [
+      "SGN",
+      "DXB"
+    ],
+    [
+      "SGN",
+      "FUK"
+    ],
+    [
+      "SGN",
+      "HKT"
+    ],
+    [
+      "SGN",
+      "HND"
+    ],
+    [
+      "SGN",
+      "HYD"
+    ],
+    [
+      "SGN",
+      "ICN"
+    ],
+    [
+      "SGN",
+      "KIX"
+    ],
+    [
+      "SGN",
+      "KMG"
+    ],
+    [
+      "SGN",
+      "KUL"
+    ],
+    [
+      "SGN",
+      "MEL"
+    ],
+    [
+      "SGN",
+      "MNL"
+    ],
+    [
+      "SGN",
+      "NGO"
+    ],
+    [
+      "SGN",
+      "NRT"
+    ],
+    [
+      "SGN",
+      "PEK"
+    ],
+    [
+      "SGN",
+      "PER"
+    ],
+    [
+      "SGN",
+      "PUS"
+    ],
+    [
+      "SGN",
+      "PVG"
+    ],
+    [
+      "SGN",
+      "SIN"
+    ],
+    [
+      "SGN",
+      "SYD"
+    ],
+    [
+      "SGN",
+      "SZX"
+    ],
+    [
+      "SGN",
+      "TFU"
+    ],
+    [
+      "SIN",
+      "CXR"
+    ],
+    [
+      "SIN",
+      "DAD"
+    ],
+    [
+      "SIN",
+      "HAN"
+    ],
+    [
+      "SIN",
+      "PQC"
+    ],
+    [
+      "SIN",
+      "SGN"
+    ],
+    [
+      "SYD",
+      "HAN"
+    ],
+    [
+      "SYD",
+      "SGN"
+    ],
+    [
+      "SZX",
+      "HAN"
+    ],
+    [
+      "SZX",
+      "SGN"
+    ],
+    [
+      "TFU",
+      "DAD"
+    ],
+    [
+      "TFU",
+      "HAN"
+    ],
+    [
+      "TFU",
+      "SGN"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "BNE",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "MEL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "SYD",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MEL",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MEL",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "PER",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "BNE",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "MEL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "PER",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "SYD",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SYD",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SYD",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CGK",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CGK",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DPS",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DPS",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "CGK",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DPS",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CGK",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DPS",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CXR",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DAD",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DLI",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CXR",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DAD",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DLI",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "PQC",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "PQC",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CXR",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DAD",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "PQC",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CXR",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DAD",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PQC",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DEL",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DEL",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DEL",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DEL",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "BOM",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "BOM",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "BOM",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "BOM",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CCU",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "CCU",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CCU",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CCU",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "AMD",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "AMD",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "BLR",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "BLR",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "BLR",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "BLR",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "AMD",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "AMD",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "HYD",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HYD",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HYD",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HYD",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "AUH",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DAD",
+      "destination": "DXB",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DOH",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DOH",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DXB",
+      "destination": "DAD",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DXB",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DXB",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "AUH",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DOH",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DXB",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DOH",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DXB",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CEB",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence"
+    },
+    {
+      "origin": "DAD",
+      "destination": "MNL",
+      "scope": "international",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence"
+    },
+    {
+      "origin": "HAN",
+      "destination": "MNL",
+      "scope": "international",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence"
+    },
+    {
+      "origin": "MNL",
+      "destination": "DAD",
+      "scope": "international",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence"
+    },
+    {
+      "origin": "MNL",
+      "destination": "HAN",
+      "scope": "international",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence"
+    },
+    {
+      "origin": "MNL",
+      "destination": "SGN",
+      "scope": "international",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CEB",
+      "scope": "international",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence"
+    },
+    {
+      "origin": "SGN",
+      "destination": "MNL",
+      "scope": "international",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence"
+    },
+    {
+      "origin": "HAN",
+      "destination": "NRT",
+      "source": "https://www.vietnamairlines.com/en-vn/flights-from-hanoi-to-japan",
+      "kind": "Exact-airport airline offer candidate, not dated nonstop evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "KIX",
+      "source": "https://www.vietnamairlines.com/en-vn/flights-from-hanoi-to-japan",
+      "kind": "Exact-airport airline offer candidate, not dated nonstop evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "NGO",
+      "source": "https://www.vietnamairlines.com/en-vn/flights-from-hanoi-to-japan",
+      "kind": "Exact-airport airline offer candidate, not dated nonstop evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "BKK",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dates/fares are not copied",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "HKT",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dates/fares are not copied",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "ICN",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dates/fares are not copied",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "PUS",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dates/fares are not copied",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "BKK",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dates/fares are not copied",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HKT",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dates/fares are not copied",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "ICN",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dates/fares are not copied",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "PUS",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dates/fares are not copied",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "ICN",
+      "source": "https://www.vietjetair.com/vi/ve-may-bay/san-bay-da-nang-dad-da-nang",
+      "kind": "Official city/airport route candidate, Bangkok resolved to BKK; dated capture required",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "PUS",
+      "source": "https://www.vietjetair.com/vi/ve-may-bay/san-bay-da-nang-dad-da-nang",
+      "kind": "Official city/airport route candidate, Bangkok resolved to BKK; dated capture required",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "BKK",
+      "source": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+      "kind": "Airline city-pair promotional table, Bangkok resolved to BKK; dated capture required",
+      "scope": "international"
+    },
+    {
+      "origin": "CXR",
+      "destination": "ICN",
+      "source": "https://www.vietjetair.com/vi/ve-may-bay/san-bay-da-nang-dad-da-nang",
+      "kind": "Supplemental exact-airport Korean gateway probe; contextual airline page is not pair evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "CXR",
+      "destination": "PUS",
+      "source": "https://www.vietjetair.com/vi/ve-may-bay/san-bay-da-nang-dad-da-nang",
+      "kind": "Supplemental exact-airport Korean gateway probe; contextual airline page is not pair evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "PQC",
+      "destination": "ICN",
+      "source": "https://www.vietjetair.com/vi/ve-may-bay/san-bay-da-nang-dad-da-nang",
+      "kind": "Supplemental exact-airport Korean gateway probe; contextual airline page is not pair evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "PQC",
+      "destination": "PUS",
+      "source": "https://www.vietjetair.com/vi/ve-may-bay/san-bay-da-nang-dad-da-nang",
+      "kind": "Supplemental exact-airport Korean gateway probe; contextual airline page is not pair evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "PVG",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "PEK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "PKX",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "CAN",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "SZX",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "TFU",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "KMG",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "HND",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "FUK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "DMK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "PVG",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "PEK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CAN",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "SZX",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "TFU",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "KMG",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "NRT",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "HND",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "KIX",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "NGO",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "FUK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "DMK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "PVG",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "CAN",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "TFU",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "NRT",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "HND",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "KIX",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DAD",
+      "destination": "DMK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "CXR",
+      "destination": "PVG",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "CXR",
+      "destination": "CAN",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "CXR",
+      "destination": "PEK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "PQC",
+      "destination": "BKK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "PQC",
+      "destination": "DMK",
+      "source": "https://airportmap.vietnamairlines.com/?lang=en",
+      "kind": "Supplemental exact-airport major-gateway probe; identity map is not route evidence",
+      "scope": "international"
+    }
+  ],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+  "route_hash_basis": "Curated candidate evidence and input hashes, not raw website bytes",
+  "source_urls": {
+    "domestic": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-DOM-EN.pdf",
+    "regional": "https://giftcards.vietnamairlines.com/nhom-duong-bay/",
+    "international": "https://www.vietnamairlines.com/content/dam/vna/vna-assets/MKT-PDF/BOD-WKS-INT-VI.pdf",
+    "japan": "https://www.vietnamairlines.com/en-vn/flights-from-hanoi-to-japan",
+    "korea": "https://www.vietjetair.com/vi/ve-may-bay/san-bay-da-nang-dad-da-nang",
+    "airport_identity": "https://airportmap.vietnamairlines.com/?lang=en",
+    "dli": "https://caa.gov.vn/Pages/Print.aspx?NewsId=20260805113611646"
+  },
+  "source_reviewed_date": "2026-10-25",
+  "input_manifests": [
+    {
+      "path": "data/sources/australia_international_routes.json",
+      "sha256": "951aaaf884a16510eb2aad211150e832157734dacf02183676b53c59c2d0f8c1"
+    },
+    {
+      "path": "data/sources/indonesia_international_routes.json",
+      "sha256": "7b0e24fc286e8184900bfd71ed778a8a5faaed1f27768aca37f03e274cfafad4"
+    },
+    {
+      "path": "data/sources/malaysia_international_routes.json",
+      "sha256": "94f91fcc8380423ea350c6f77ba21af8536b14b0b81148b520b03200b092cd73"
+    },
+    {
+      "path": "data/sources/singapore_international_routes.json",
+      "sha256": "6d1d8a79eb7de4066ea448e1040c12d17661a418b76348df8db3c707d5aa2219"
+    },
+    {
+      "path": "data/sources/india_international_routes.json",
+      "sha256": "b419b11ec71ffc8f48a3745a69c6c3f2b8d0d6f04aabd73d0142333e54683a3d"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    },
+    {
+      "path": "data/sources/philippines_recovered_candidates.json",
+      "sha256": "5c0501e379feea5da700e0f49b4f325598ec59b6ac705f6382c37ea05b63a286"
+    }
+  ],
+  "unresolved_airports": [],
+  "base_directional_routes": 78,
+  "coverage_scope": "Selected domestic hubs and regions; international restricted to existing SunTrain flight countries",
+  "airport_notes": [
+    "SGN remains Tan Son Nhat; Long Thanh is not substituted or assigned invented schedules.",
+    "DLI closure earlier in 2026 is not treated as a November closure; dated captures determine coverage."
+  ],
+  "route_source_sha256": "d548de7e0ca1996fd0f6fb9275b33798da1fc7bfcf419a36e1710be7d17c88d5"
+}

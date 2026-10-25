@@ -113,7 +113,12 @@ work. The pinned OurAirports CSV is reused from `.cache/australia-flights-audit/
 Generated HTTP caches are disposable. Gzip uses stable ordering, fixed mtime and
 atomic replacement for reproducible offline preparation.
 
-## Actual coverage
+## Actual coverage at the initial Philippine release
+
+The figures below describe the initial Philippine release. Vietnam adds 33
+overlapping international records; the current international view has **310 records**,
+**260 Manila-day departures** and **278 priced records**. Current shared totals
+are in [International network notes](INTERNATIONAL_NETWORK_NOTES.md).
 
 Captured **25 October 2026** for the **2 November 2026 Manila day**:
 

@@ -187,8 +187,9 @@ occurred. These domestic checks predate the international extension; see the add
 ## Actual international coverage at the initial Thailand release
 
 The figures below describe the initial Thailand release. The Philippine extension
-adds 31 overlapping records, bringing the current Thai international view to
-**710 records**, **610 ICT-day departures** and **572 priced records**. Current
+adds 31 overlapping records and Vietnam adds another 72, bringing the current
+Thai international view to **782 records**, **680 ICT-day departures** and **644
+priced records**. Current
 shared-network totals are in [International network notes](INTERNATIONAL_NETWORK_NOTES.md).
 
 Captured **25 October 2026**, for **2 November 2026 ICT**:

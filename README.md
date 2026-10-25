@@ -2,6 +2,10 @@
 
 Historical transport replay across Australia, Austria, Belgium, Canada, France, Germany, India, Indonesia, Italy, Japan, Luxembourg, Malaysia, the Netherlands, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, the United Arab Emirates, the United Kingdom, the United States and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Japanese flights
+
+Choose **Japan · Flights** for domestic schedules on **2 November 2026**: **1,932 captured flights across 44 airports, with 1,920 USD fares**. Clocks use **JST**; quotes are the cheapest captured per exact flight. This first pass focuses on major airports and city routes; small island and commuter networks are deferred. Haneda/Narita, Itami/Kansai/Kobe and Miyako/Shimojishima stay separate. Reuses airport/airline filters, departure/arrival boards, Destinations, fullscreen pagination and frequency lines. Coverage and prices are partial. See [Japanese flight notes](JAPANESE_FLIGHTS_NOTES.md) for sources, actual coverage, rebuilding and the later international plan.
+
 ## South Korean flights
 
 Choose **South Korea · Flights** for domestic schedules on **2 November 2026**: **357 captured flights, 12 airports, 32 directional routes and 309 USD fares**. The timeline and airport boards use **KST**. Reuses airline/airport filters, departures/arrivals, Destinations, fullscreen boards and frequency lines. Muan is excluded because of its reported closure; Incheon's transfer-only domestic links are excluded. Coverage and prices are partial. International flights are planned as the next phase; see [South Korean flight notes](SOUTH_KOREAN_FLIGHTS_NOTES.md) for the full rollout, sources, gaps and cached rebuilding.

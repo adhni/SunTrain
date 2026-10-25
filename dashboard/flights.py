@@ -41,7 +41,14 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'KE': ('Korean Air', '#75b9df'), 'OZ': ('Asiana Airlines', '#c98b9c'),
             '7C': ('Jeju Air', '#f3a450'), 'LJ': ('Jin Air', '#a5c94e'),
             'BX': ('Air Busan', '#67a8e1'), 'RS': ('Air Seoul', '#57c3ab'),
-            'ZE': ('Eastar Jet', '#e46d7b'), 'RF': ('Aero K', '#8b97df')}
+            'ZE': ('Eastar Jet', '#e46d7b'), 'RF': ('Aero K', '#8b97df'),
+            'JL': ('Japan Airlines', '#e76b75'), 'NH': ('ANA', '#679fe1'),
+            'BC': ('Skymark Airlines', '#e3bd54'), 'MM': ('Peach', '#cc87c2'),
+            'GK': ('Jetstar Japan', '#ed9a52'), 'HD': ('AIRDO', '#74c9dc'),
+            '6J': ('Solaseed Air', '#a7c85c'), '7G': ('StarFlyer', '#a3acc4'),
+            'IJ': ('Spring Japan', '#69bd8b'), 'NU': ('Japan Transocean Air', '#dc91a7'),
+            'FW': ('IBEX Airlines', '#aa94d8'), 'JH': ('Fuji Dream Airlines', '#cf9a69'),
+            'OC': ('Oriental Air Bridge', '#64bba9'), 'MZ': ('Amakusa Airlines', '#b8a77b')}
 
 
 def airline_style(carrier, name):
@@ -53,6 +60,8 @@ def airline_style(carrier, name):
 
 
 def reference_path(business_date=None, city='australia_flights'):
+    if city=='japan_flights':
+        return Path(os.getenv('SUNTRAIN_JAPAN_FLIGHTS_REFERENCE',str(DIRECTORY.parent/'japan_flights/2026-11-02.json.gz')))
     if city=='south_korea_flights':
         return Path(os.getenv('SUNTRAIN_SOUTH_KOREA_FLIGHTS_REFERENCE',str(DIRECTORY.parent/'south_korea_flights/2026-11-02.json.gz')))
     if city=='india_flights':
@@ -77,7 +86,7 @@ def reference_paths(business_date=None, city='australia_flights'):
         from dashboard.gulf_flights import reference_paths as hub_paths
         return hub_paths(business_date)
     paths = [reference_path(business_date, city)]
-    if city in {'singapore_flights','south_korea_flights'}:return paths
+    if city in {'singapore_flights','south_korea_flights','japan_flights'}:return paths
     prefix = {'indonesia_flights':'INDONESIA','australia_flights':'AUSTRALIA','malaysia_flights':'MALAYSIA','india_flights':'INDIA'}[city]
     # The legacy March 2013 Australian snapshot remains isolated.
     if not (city == 'australia_flights' and business_date and business_date.startswith('2013-03-')):
@@ -129,13 +138,13 @@ def load_reference(business_date, city):
     for path in reference_paths(business_date, city):
         with gzip.open(path, 'rt') as stream:
             references.append(json.load(stream))
-    country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY','singapore_flights':'SG','india_flights':'IN','south_korea_flights':'KR'}[city]
+    country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY','singapore_flights':'SG','india_flights':'IN','south_korea_flights':'KR','japan_flights':'JP'}[city]
     airports, flights = {}, {}
     for reference in references:
-        if country in {'SG','IN','KR'}:
+        if country in {'SG','IN','KR','JP'}:
             context=reference['metadata'].get('fare_context',{})
             if tuple(context.get(k) for k in ('currency','adults','cabin','trip_type'))!=('USD',1,'economy','one_way'):
-                label={'SG':'Singapore','IN':'Indian','KR':'South Korean'}[country]
+                label={'SG':'Singapore','IN':'Indian','KR':'South Korean','JP':'Japanese'}[country]
                 raise ValueError(f'{label} fares require USD, one adult, economy, one-way')
         catalogue = {a['code']: {**a, 'country': a.get('country', country)} for a in reference['airports']}
         for code, airport in catalogue.items():
@@ -150,14 +159,16 @@ def load_reference(business_date, city):
                 price=flight.get('price')
                 if price and (price.get('currency')!='USD' or type(price.get('amount_minor')) is not int or price['amount_minor']<=0):
                     raise ValueError('Singapore prices require positive USD minor units; no implicit conversion')
-            if country in {'IN','KR'}:
+            if country in {'IN','KR','JP'}:
                 price=flight.get('price')
                 if price and (tuple(price.get(k) for k in ('currency','adults','cabin','trip_type'))!=('USD',1,'economy','one_way') or type(price.get('amount_minor')) is not int or price['amount_minor']<=0):
-                    label='Indian' if country=='IN' else 'South Korean'
+                    label={'IN':'Indian','KR':'South Korean','JP':'Japanese'}[country]
                     raise ValueError(f'{label} prices require positive USD minor units, one adult, economy, one-way; no implicit conversion')
             scope = 'domestic' if a['country'] == b['country'] == country else 'international'
             if country=='KR' and (scope!='domestic' or {flight['origin'],flight['destination']} & {'ICN','MWX'}):
                 raise ValueError('South Korean domestic snapshot excludes foreign, transit-only and closed airports')
+            if country=='JP' and scope!='domestic':
+                raise ValueError('Japanese domestic snapshot excludes foreign airports')
             if scope == 'international' and (a['country'] == country) == (b['country'] == country):
                 raise ValueError('Flight has no national endpoint')
             if reference['metadata'].get('scope') == 'international' and scope != 'international':

@@ -1190,7 +1190,7 @@
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     let dateText=dateFormat.format(new Date(this.now * 1000));
-                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':this.day.timezone==='Asia/Kolkata'?'IST':this.day.timezone==='Asia/Seoul'?'KST':null;
+                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':this.day.timezone==='Asia/Kolkata'?'IST':this.day.timezone==='Asia/Seoul'?'KST':this.day.timezone==='Asia/Tokyo'?'JST':null;
                     if (zoneLabel) dateText=dateText.replace(/GMT\+(?:[789]|5[.:]30)/,zoneLabel);
                     setText("replay-clock-date",dateText);
                     setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));

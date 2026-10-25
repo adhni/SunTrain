@@ -1,0 +1,1280 @@
+{
+  "country": "TH",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Bangkok",
+  "currency": "USD",
+  "max_duration": 28800,
+  "coverage_scope": "Selected domestic hubs and regional airports; smaller/charter-only services deferred",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+  "route_source_sha256": "a5c02664351d3fb78e31f01bfa4f5cd7bd8303c905f874877d5cd02337be9b4a",
+  "route_hash_basis": "Curated exact-airport evidence and explicit probes; not raw website bytes",
+  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_timezone": "Australia/Melbourne",
+  "source_documents": [
+    {
+      "url": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "sha256": "7372e24aeff86fe08c02c65bbce3030fd498cdeac82fb2178e625f148bc5f093",
+      "bytes": 161686
+    },
+    {
+      "url": "https://www.utapao.com/apps/domestic.php",
+      "sha256": "28b1d7cc0f54d925e83d8cb280d6c895541764a3875f45e96d66f9825013dabb",
+      "bytes": 33356
+    }
+  ],
+  "airports": [
+    {
+      "code": "BFV",
+      "icao": "VTUO",
+      "name": "Buri Ram Airport (BFV)",
+      "municipality": "Buriram",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 15.2295,
+      "lon": 103.252998
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Central",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "CEI",
+      "icao": "VTCT",
+      "name": "Mae Fah Luang - Chiang Rai International Airport (CEI)",
+      "municipality": "Chiang Rai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 19.952299,
+      "lon": 99.882896
+    },
+    {
+      "code": "CJM",
+      "icao": "VTSE",
+      "name": "Chumphon Airport (CJM)",
+      "municipality": "Chumphon",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 10.7112,
+      "lon": 99.361702
+    },
+    {
+      "code": "CNX",
+      "icao": "VTCC",
+      "name": "Chiang Mai International Airport (CNX)",
+      "municipality": "Chiang Mai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 18.766799926799997,
+      "lon": 98.962600708
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Central",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "HDY",
+      "icao": "VTSS",
+      "name": "Hat Yai International Airport (HDY)",
+      "municipality": "Hat Yai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 6.93321,
+      "lon": 100.392998
+    },
+    {
+      "code": "HHQ",
+      "icao": "VTPH",
+      "name": "Hua Hin Airport (HHQ)",
+      "municipality": "Hua Hin",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Central",
+      "mode": "flight",
+      "lat": 12.6361999512,
+      "lon": 99.951499939
+    },
+    {
+      "code": "HKT",
+      "icao": "VTSP",
+      "name": "Phuket International Airport (HKT)",
+      "municipality": "Phuket",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 8.113257,
+      "lon": 98.3174
+    },
+    {
+      "code": "KBV",
+      "icao": "VTSG",
+      "name": "Krabi International Airport (KBV)",
+      "municipality": "Krabi",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 8.095591,
+      "lon": 98.988955
+    },
+    {
+      "code": "KKC",
+      "icao": "VTUK",
+      "name": "Khon Kaen Airport (KKC)",
+      "municipality": "Khon Kaen",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 16.466600418099997,
+      "lon": 102.783996582
+    },
+    {
+      "code": "KOP",
+      "icao": "VTUW",
+      "name": "Nakhon Phanom Airport (KOP)",
+      "municipality": "Nakhon Phanom",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 17.383801,
+      "lon": 104.642998
+    },
+    {
+      "code": "LOE",
+      "icao": "VTUL",
+      "name": "Loei Airport (LOE)",
+      "municipality": "",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 17.43910026550293,
+      "lon": 101.72200012207031
+    },
+    {
+      "code": "LPT",
+      "icao": "VTCL",
+      "name": "Lampang Airport (LPT)",
+      "municipality": "",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 18.27090072631836,
+      "lon": 99.50420379638672
+    },
+    {
+      "code": "MAQ",
+      "icao": "VTPM",
+      "name": "Mae Sot Airport (MAQ)",
+      "municipality": "",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 16.699899673461914,
+      "lon": 98.54509735107422
+    },
+    {
+      "code": "NAW",
+      "icao": "VTSC",
+      "name": "Narathiwat Airport (NAW)",
+      "municipality": "",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 6.5199198722839355,
+      "lon": 101.74299621582031
+    },
+    {
+      "code": "NNT",
+      "icao": "VTCN",
+      "name": "Nan Airport (NNT)",
+      "municipality": "",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 18.807899475097656,
+      "lon": 100.78299713134766
+    },
+    {
+      "code": "NST",
+      "icao": "VTSF",
+      "name": "Nakhon Si Thammarat Airport (NST)",
+      "municipality": "Nakhon Si Thammarat",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 8.539620399475098,
+      "lon": 99.9447021484375
+    },
+    {
+      "code": "PHS",
+      "icao": "VTPP",
+      "name": "Phitsanulok Airport (PHS)",
+      "municipality": "Phitsanulok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 16.7829,
+      "lon": 100.278999
+    },
+    {
+      "code": "ROI",
+      "icao": "VTUV",
+      "name": "Roi Et Airport (ROI)",
+      "municipality": "Roi Et",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 16.1168,
+      "lon": 103.774002
+    },
+    {
+      "code": "SNO",
+      "icao": "VTUI",
+      "name": "Sakon Nakhon Airport (SNO)",
+      "municipality": "",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 17.195100784301758,
+      "lon": 104.11900329589844
+    },
+    {
+      "code": "TDX",
+      "icao": "VTBO",
+      "name": "Trat Airport (TDX)",
+      "municipality": "Laem Ngop",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 12.2746,
+      "lon": 102.319
+    },
+    {
+      "code": "THS",
+      "icao": "VTPO",
+      "name": "Sukhothai Airport (THS)",
+      "municipality": "",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "North",
+      "mode": "flight",
+      "lat": 17.238000869750977,
+      "lon": 99.81819915771484
+    },
+    {
+      "code": "TST",
+      "icao": "VTST",
+      "name": "Trang Airport (TST)",
+      "municipality": "Trang",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 7.50874,
+      "lon": 99.6166
+    },
+    {
+      "code": "UBP",
+      "icao": "VTUU",
+      "name": "Ubon Ratchathani Airport (UBP)",
+      "municipality": "Ubon Ratchathani",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 15.2512998581,
+      "lon": 104.870002747
+    },
+    {
+      "code": "UNN",
+      "icao": "VTSR",
+      "name": "Ranong Airport (UNN)",
+      "municipality": "Ranong",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 9.77762,
+      "lon": 98.585503
+    },
+    {
+      "code": "URT",
+      "icao": "VTSB",
+      "name": "Surat Thani Airport (URT)",
+      "municipality": "Surat Thani",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 9.13259983063,
+      "lon": 99.135597229
+    },
+    {
+      "code": "USM",
+      "icao": "VTSM",
+      "name": "Samui International Airport (USM)",
+      "municipality": "Na Thon (Ko Samui Island)",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "South",
+      "mode": "flight",
+      "lat": 9.54779,
+      "lon": 100.061996
+    },
+    {
+      "code": "UTH",
+      "icao": "VTUD",
+      "name": "Udon Thani International Airport (UTH)",
+      "municipality": "Udon Thani",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "Northeast",
+      "mode": "flight",
+      "lat": 17.386186,
+      "lon": 102.788577
+    },
+    {
+      "code": "UTP",
+      "icao": "VTBU",
+      "name": "U-Tapao–Rayong–Pattaya International Airport (UTP)",
+      "municipality": "Rayong",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "island_group": "East",
+      "mode": "flight",
+      "lat": 12.6799,
+      "lon": 101.004997
+    }
+  ],
+  "routes": [
+    [
+      "BFV",
+      "DMK"
+    ],
+    [
+      "BKK",
+      "CEI"
+    ],
+    [
+      "BKK",
+      "CNX"
+    ],
+    [
+      "BKK",
+      "HDY"
+    ],
+    [
+      "BKK",
+      "HKT"
+    ],
+    [
+      "BKK",
+      "KBV"
+    ],
+    [
+      "BKK",
+      "KKC"
+    ],
+    [
+      "BKK",
+      "LPT"
+    ],
+    [
+      "BKK",
+      "NST"
+    ],
+    [
+      "BKK",
+      "TDX"
+    ],
+    [
+      "BKK",
+      "THS"
+    ],
+    [
+      "BKK",
+      "UBP"
+    ],
+    [
+      "BKK",
+      "USM"
+    ],
+    [
+      "BKK",
+      "UTH"
+    ],
+    [
+      "CEI",
+      "BKK"
+    ],
+    [
+      "CEI",
+      "DMK"
+    ],
+    [
+      "CJM",
+      "DMK"
+    ],
+    [
+      "CNX",
+      "BKK"
+    ],
+    [
+      "CNX",
+      "DMK"
+    ],
+    [
+      "CNX",
+      "HDY"
+    ],
+    [
+      "CNX",
+      "HHQ"
+    ],
+    [
+      "CNX",
+      "HKT"
+    ],
+    [
+      "CNX",
+      "KBV"
+    ],
+    [
+      "CNX",
+      "KKC"
+    ],
+    [
+      "CNX",
+      "URT"
+    ],
+    [
+      "CNX",
+      "USM"
+    ],
+    [
+      "CNX",
+      "UTH"
+    ],
+    [
+      "CNX",
+      "UTP"
+    ],
+    [
+      "DMK",
+      "BFV"
+    ],
+    [
+      "DMK",
+      "CEI"
+    ],
+    [
+      "DMK",
+      "CJM"
+    ],
+    [
+      "DMK",
+      "CNX"
+    ],
+    [
+      "DMK",
+      "HDY"
+    ],
+    [
+      "DMK",
+      "HKT"
+    ],
+    [
+      "DMK",
+      "KBV"
+    ],
+    [
+      "DMK",
+      "KKC"
+    ],
+    [
+      "DMK",
+      "KOP"
+    ],
+    [
+      "DMK",
+      "LOE"
+    ],
+    [
+      "DMK",
+      "LPT"
+    ],
+    [
+      "DMK",
+      "MAQ"
+    ],
+    [
+      "DMK",
+      "NAW"
+    ],
+    [
+      "DMK",
+      "NNT"
+    ],
+    [
+      "DMK",
+      "NST"
+    ],
+    [
+      "DMK",
+      "PHS"
+    ],
+    [
+      "DMK",
+      "ROI"
+    ],
+    [
+      "DMK",
+      "SNO"
+    ],
+    [
+      "DMK",
+      "TST"
+    ],
+    [
+      "DMK",
+      "UBP"
+    ],
+    [
+      "DMK",
+      "UNN"
+    ],
+    [
+      "DMK",
+      "URT"
+    ],
+    [
+      "DMK",
+      "UTH"
+    ],
+    [
+      "DMK",
+      "UTP"
+    ],
+    [
+      "HDY",
+      "BKK"
+    ],
+    [
+      "HDY",
+      "CNX"
+    ],
+    [
+      "HDY",
+      "DMK"
+    ],
+    [
+      "HDY",
+      "HKT"
+    ],
+    [
+      "HDY",
+      "UTP"
+    ],
+    [
+      "HHQ",
+      "CNX"
+    ],
+    [
+      "HKT",
+      "BKK"
+    ],
+    [
+      "HKT",
+      "CNX"
+    ],
+    [
+      "HKT",
+      "DMK"
+    ],
+    [
+      "HKT",
+      "HDY"
+    ],
+    [
+      "HKT",
+      "KKC"
+    ],
+    [
+      "HKT",
+      "USM"
+    ],
+    [
+      "HKT",
+      "UTH"
+    ],
+    [
+      "HKT",
+      "UTP"
+    ],
+    [
+      "KBV",
+      "BKK"
+    ],
+    [
+      "KBV",
+      "CNX"
+    ],
+    [
+      "KBV",
+      "DMK"
+    ],
+    [
+      "KBV",
+      "USM"
+    ],
+    [
+      "KKC",
+      "BKK"
+    ],
+    [
+      "KKC",
+      "CNX"
+    ],
+    [
+      "KKC",
+      "DMK"
+    ],
+    [
+      "KKC",
+      "HKT"
+    ],
+    [
+      "KKC",
+      "UTP"
+    ],
+    [
+      "KOP",
+      "DMK"
+    ],
+    [
+      "LOE",
+      "DMK"
+    ],
+    [
+      "LPT",
+      "BKK"
+    ],
+    [
+      "LPT",
+      "DMK"
+    ],
+    [
+      "MAQ",
+      "DMK"
+    ],
+    [
+      "NAW",
+      "DMK"
+    ],
+    [
+      "NNT",
+      "DMK"
+    ],
+    [
+      "NST",
+      "BKK"
+    ],
+    [
+      "NST",
+      "DMK"
+    ],
+    [
+      "PHS",
+      "DMK"
+    ],
+    [
+      "ROI",
+      "DMK"
+    ],
+    [
+      "SNO",
+      "DMK"
+    ],
+    [
+      "TDX",
+      "BKK"
+    ],
+    [
+      "THS",
+      "BKK"
+    ],
+    [
+      "TST",
+      "DMK"
+    ],
+    [
+      "UBP",
+      "BKK"
+    ],
+    [
+      "UBP",
+      "DMK"
+    ],
+    [
+      "UNN",
+      "DMK"
+    ],
+    [
+      "URT",
+      "CNX"
+    ],
+    [
+      "URT",
+      "DMK"
+    ],
+    [
+      "USM",
+      "BKK"
+    ],
+    [
+      "USM",
+      "CNX"
+    ],
+    [
+      "USM",
+      "HKT"
+    ],
+    [
+      "USM",
+      "KBV"
+    ],
+    [
+      "USM",
+      "UTP"
+    ],
+    [
+      "UTH",
+      "BKK"
+    ],
+    [
+      "UTH",
+      "CNX"
+    ],
+    [
+      "UTH",
+      "DMK"
+    ],
+    [
+      "UTH",
+      "HKT"
+    ],
+    [
+      "UTH",
+      "UTP"
+    ],
+    [
+      "UTP",
+      "CNX"
+    ],
+    [
+      "UTP",
+      "DMK"
+    ],
+    [
+      "UTP",
+      "HDY"
+    ],
+    [
+      "UTP",
+      "HKT"
+    ],
+    [
+      "UTP",
+      "KKC"
+    ],
+    [
+      "UTP",
+      "USM"
+    ],
+    [
+      "UTP",
+      "UTH"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "BKK",
+      "destination": "CNX",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "CEI",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "HDY",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "KKC",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "KBV",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "HKT",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "UBP",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "UTH",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "CNX",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "KBV",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "HKT",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "DMK",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "BKK",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "UTH",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "KKC",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "HHQ",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "HDY",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "HKT",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "KBV",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "CNX",
+      "destination": "URT",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "DMK",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "BKK",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "CNX",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "HKT",
+      "destination": "KKC",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Published route candidate; not dated operation or fare evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "CNX",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate; no product prices or timings retained"
+    },
+    {
+      "origin": "BKK",
+      "destination": "HKT",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate; no product prices or timings retained"
+    },
+    {
+      "origin": "BKK",
+      "destination": "KBV",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate; no product prices or timings retained"
+    },
+    {
+      "origin": "BKK",
+      "destination": "THS",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate; no product prices or timings retained"
+    },
+    {
+      "origin": "BKK",
+      "destination": "TDX",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate; no product prices or timings retained"
+    },
+    {
+      "origin": "BKK",
+      "destination": "LPT",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate; no product prices or timings retained"
+    },
+    {
+      "origin": "BKK",
+      "destination": "CEI",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate; no product prices or timings retained"
+    },
+    {
+      "origin": "BKK",
+      "destination": "USM",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate; no product prices or timings retained"
+    },
+    {
+      "origin": "CNX",
+      "destination": "HKT",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate"
+    },
+    {
+      "origin": "CNX",
+      "destination": "KBV",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate"
+    },
+    {
+      "origin": "CNX",
+      "destination": "USM",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate"
+    },
+    {
+      "origin": "USM",
+      "destination": "HKT",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate"
+    },
+    {
+      "origin": "USM",
+      "destination": "KBV",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate"
+    },
+    {
+      "origin": "USM",
+      "destination": "UTP",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate"
+    },
+    {
+      "origin": "HKT",
+      "destination": "HDY",
+      "source": "https://www.bangkokair.com/eng/discovery-airpass/route-fare",
+      "kind": "Historical Airpass route candidate"
+    },
+    {
+      "origin": "UTP",
+      "destination": "CNX",
+      "source": "https://www.utapao.com/apps/domestic.php",
+      "kind": "Undated airport timetable candidate; dated captures required"
+    },
+    {
+      "origin": "UTP",
+      "destination": "HDY",
+      "source": "https://www.utapao.com/apps/domestic.php",
+      "kind": "Undated airport timetable candidate; dated captures required"
+    },
+    {
+      "origin": "UTP",
+      "destination": "KKC",
+      "source": "https://www.utapao.com/apps/domestic.php",
+      "kind": "Undated airport timetable candidate; dated captures required"
+    },
+    {
+      "origin": "UTP",
+      "destination": "HKT",
+      "source": "https://www.utapao.com/apps/domestic.php",
+      "kind": "Undated airport timetable candidate; dated captures required"
+    },
+    {
+      "origin": "UTP",
+      "destination": "UTH",
+      "source": "https://www.utapao.com/apps/domestic.php",
+      "kind": "Undated airport timetable candidate; dated captures required"
+    },
+    {
+      "origin": "UTP",
+      "destination": "DMK",
+      "source": "https://www.utapao.com/apps/domestic.php",
+      "kind": "Undated airport timetable candidate; dated captures required"
+    },
+    {
+      "origin": "UTP",
+      "destination": "USM",
+      "source": "https://www.utapao.com/apps/domestic.php",
+      "kind": "Undated airport timetable candidate; dated captures required"
+    },
+    {
+      "origin": "DMK",
+      "destination": "BFV",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CEI",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CJM",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "CNX",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "HDY",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KBV",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KKC",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KOP",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "LOE",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "LPT",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "MAQ",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "NNT",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "NST",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "NAW",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "PHS",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "HKT",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "UNN",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "ROI",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "SNO",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "URT",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "TST",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "UBP",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "DMK",
+      "destination": "UTH",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "BKK",
+      "destination": "NST",
+      "source": "https://www.thaiairways.com/en-bd/content/where-we-fly/thailand/",
+      "kind": "Supplemental exact-airport regional probe; not a published pair or proof of service"
+    },
+    {
+      "origin": "HKT",
+      "destination": "UTH",
+      "source": "https://newsroom.airasia.com/news/airasia-is-back-at-suvarnabhumi-direct-flights-resume-oct-1-to-chiang-mai-krabi-and-phuket",
+      "kind": "Supplemental northeast connection probe; dated availability checked separately"
+    }
+  ],
+  "unresolved_airports": [],
+  "deferred_airports": [
+    {
+      "code": "HGN",
+      "reason": "Smaller/commuter airport outside this first pass"
+    },
+    {
+      "code": "PRH",
+      "reason": "Smaller/commuter airport outside this first pass"
+    }
+  ]
+}

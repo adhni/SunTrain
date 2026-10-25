@@ -10,12 +10,12 @@ from zoneinfo import ZoneInfo
 ROOT = Path(__file__).resolve().parents[1]
 DAY = '2026-11-02'
 COUNTRIES = {'AU':'Australia','ID':'Indonesia','MY':'Malaysia','SG':'Singapore','IN':'India',
-             'TH':'Thailand','CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}
+             'PH':'Philippines','TH':'Thailand','CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}
 CITIES = {'australia_flights':('AU','Australia/Melbourne'),'indonesia_flights':('ID','Asia/Jakarta'),
           'malaysia_flights':('MY','Asia/Kuala_Lumpur'),'singapore_flights':('SG','Asia/Singapore'),
           'india_flights':('IN','Asia/Kolkata'),'china_flights':('CN','Asia/Shanghai'),
           'japan_flights':('JP','Asia/Tokyo'),'south_korea_flights':('KR','Asia/Seoul'),
-          'gulf_flights':(None,'Asia/Dubai'),'thailand_flights':('TH','Asia/Bangkok')}
+          'gulf_flights':(None,'Asia/Dubai'),'thailand_flights':('TH','Asia/Bangkok'),'philippines_flights':('PH','Asia/Manila')}
 HUBS = {'DXB','AUH','DOH'}
 # Earlier Indonesian snapshots stored OurAirports' stable `ident`; newer
 # catalogues use the same row's `icao_code`. These are exact pinned row aliases,
@@ -38,7 +38,7 @@ def _has_consumer(path, mtime_ns, size, city):
 
 def enabled(business_date, city):
     if business_date!=DAY or city not in CITIES or not reference_path().exists():return False
-    if city=='thailand_flights':
+    if city in {'thailand_flights','philippines_flights'}:
         path=reference_path();stamp=path.stat()
         if not _has_consumer(str(path),stamp.st_mtime_ns,stamp.st_size,city):return False
     # Existing custom reference fixtures stay isolated unless a shared reference
@@ -135,6 +135,8 @@ def load_archive():
             raise ValueError('Chinese airports require China standard time')
         if any(x['country']=='TH' and x['timezone']!='Asia/Bangkok' for x in (a,b)):
             raise ValueError('Thai airports require ICT Asia/Bangkok')
+        if any(x['country']=='PH' and x['timezone']!='Asia/Manila' for x in (a,b)):
+            raise ValueError('Philippine airports require Asia/Manila')
         price=f.get('price')
         if price and (price.get('currency') not in {'USD','MYR'} or type(price.get('amount_minor')) is not int or price['amount_minor']<=0
             or tuple(price.get(k) for k in ('adults','cabin','trip_type'))!=(1,'economy','one_way')):
@@ -169,7 +171,7 @@ def overlay(base, city):
     # Existing worldwide route coverage remains separate from the network's
     # selected-country coverage; never label the latter all international routes.
     meta['coverage_by_country_pair'] = shared['metadata']['coverage_by_country_pair']
-    if city in {'china_flights','japan_flights','south_korea_flights','thailand_flights'}:
+    if city in {'china_flights','japan_flights','south_korea_flights','thailand_flights','philippines_flights'}:
         scopes={'domestic':base['metadata']['coverage'],'international':shared['metadata']['coverage']}
         both={k:scopes['domestic'].get(k,0)+scopes['international'].get(k,0) for k in (
             'routes_planned','routes_searched','routes_returned','routes_with_search_results','queries_planned','queries_captured',

@@ -1,0 +1,2557 @@
+{
+  "country": "PH",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Manila",
+  "currency": "USD",
+  "max_duration": 86400,
+  "airports": [
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "BKI",
+      "icao": "WBKK",
+      "name": "Kota Kinabalu International Airport (BKI)",
+      "municipality": "Kota Kinabalu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "mode": "flight",
+      "lat": 5.932743,
+      "lon": 116.049324
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BNE",
+      "icao": "YBBN",
+      "name": "Brisbane International Airport (BNE)",
+      "municipality": "Brisbane",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CEB",
+      "icao": "RPVM",
+      "name": "Mactan Cebu International Airport (CEB)",
+      "municipality": "Cebu City/Lapu-Lapu City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 10.309261,
+      "lon": 123.97974,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998
+    },
+    {
+      "code": "CJJ",
+      "icao": "RKTU",
+      "name": "Cheongju International Airport/Cheongju Air Base (K-59/G-513) (CJJ)",
+      "municipality": "Cheongju",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 36.71556,
+      "lon": 127.500289
+    },
+    {
+      "code": "CRK",
+      "icao": "RPLC",
+      "name": "Clark International Airport / Clark Air Base (CRK)",
+      "municipality": "Mabalacat",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 15.186,
+      "lon": 120.559998,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "CTS",
+      "icao": "RJCC",
+      "name": "New Chitose Airport (CTS)",
+      "municipality": "Sapporo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 42.774753,
+      "lon": 141.690414
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123
+    },
+    {
+      "code": "DVO",
+      "icao": "RPMD",
+      "name": "Francisco Bangoy International Airport (DVO)",
+      "municipality": "Davao",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 7.12552,
+      "lon": 125.646004,
+      "island_group": "Mindanao"
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "FUK",
+      "icao": "RJFF",
+      "name": "Fukuoka Airport (FUK)",
+      "municipality": "Fukuoka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 33.585899353027344,
+      "lon": 130.4510040283203
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "ILO",
+      "icao": "RPVI",
+      "name": "Iloilo International Airport (ILO)",
+      "municipality": "Cabatuan",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 10.833017,
+      "lon": 122.493358,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "KIX",
+      "icao": "RJBB",
+      "name": "Kansai International Airport (KIX)",
+      "municipality": "Osaka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.427299,
+      "lon": 135.244003
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "MEL",
+      "icao": "YMML",
+      "name": "Melbourne Airport (MEL)",
+      "municipality": "Melbourne",
+      "country": "AU",
+      "timezone": "Australia/Melbourne",
+      "mode": "flight",
+      "lat": -37.670732,
+      "lon": 144.837898
+    },
+    {
+      "code": "MNL",
+      "icao": "RPLL",
+      "name": "Ninoy Aquino International Airport (MNL)",
+      "municipality": "Manila (Pasay)",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 14.5086,
+      "lon": 121.019997,
+      "island_group": "Luzon"
+    },
+    {
+      "code": "MPH",
+      "icao": "RPVE",
+      "name": "Godofredo P. Ramos Airport (MPH)",
+      "municipality": "Caticlan",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 11.9245,
+      "lon": 121.954002,
+      "island_group": "Visayas"
+    },
+    {
+      "code": "NGO",
+      "icao": "RJGG",
+      "name": "Chubu Centrair International Airport (NGO)",
+      "municipality": "Tokoname",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.858398,
+      "lon": 136.804993
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "PER",
+      "icao": "YPPH",
+      "name": "Perth International Airport (PER)",
+      "municipality": "Perth",
+      "country": "AU",
+      "timezone": "Australia/Perth",
+      "mode": "flight",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234
+    },
+    {
+      "code": "PUS",
+      "icao": "RKPK",
+      "name": "Gimhae International Airport (PUS)",
+      "municipality": "Busan",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.179501,
+      "lon": 128.938004
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "SYD",
+      "icao": "YSSY",
+      "name": "Sydney Kingsford Smith International Airport (SYD)",
+      "municipality": "Sydney (Mascot)",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.946098,
+      "lon": 151.177002
+    }
+  ],
+  "routes": [
+    [
+      "AUH",
+      "MNL"
+    ],
+    [
+      "BKI",
+      "MNL"
+    ],
+    [
+      "BKK",
+      "CRK"
+    ],
+    [
+      "BKK",
+      "MNL"
+    ],
+    [
+      "BNE",
+      "MNL"
+    ],
+    [
+      "CAN",
+      "MNL"
+    ],
+    [
+      "CEB",
+      "DMK"
+    ],
+    [
+      "CEB",
+      "DOH"
+    ],
+    [
+      "CEB",
+      "DXB"
+    ],
+    [
+      "CEB",
+      "ICN"
+    ],
+    [
+      "CEB",
+      "KIX"
+    ],
+    [
+      "CEB",
+      "KUL"
+    ],
+    [
+      "CEB",
+      "NRT"
+    ],
+    [
+      "CEB",
+      "SIN"
+    ],
+    [
+      "CGK",
+      "MNL"
+    ],
+    [
+      "CJJ",
+      "CRK"
+    ],
+    [
+      "CRK",
+      "BKK"
+    ],
+    [
+      "CRK",
+      "CJJ"
+    ],
+    [
+      "CRK",
+      "DOH"
+    ],
+    [
+      "CRK",
+      "DXB"
+    ],
+    [
+      "CRK",
+      "ICN"
+    ],
+    [
+      "CRK",
+      "KUL"
+    ],
+    [
+      "CRK",
+      "NRT"
+    ],
+    [
+      "CRK",
+      "PUS"
+    ],
+    [
+      "CRK",
+      "SIN"
+    ],
+    [
+      "CTS",
+      "MNL"
+    ],
+    [
+      "DEL",
+      "MNL"
+    ],
+    [
+      "DMK",
+      "CEB"
+    ],
+    [
+      "DMK",
+      "MNL"
+    ],
+    [
+      "DOH",
+      "CEB"
+    ],
+    [
+      "DOH",
+      "CRK"
+    ],
+    [
+      "DOH",
+      "DVO"
+    ],
+    [
+      "DOH",
+      "MNL"
+    ],
+    [
+      "DPS",
+      "MNL"
+    ],
+    [
+      "DVO",
+      "DOH"
+    ],
+    [
+      "DVO",
+      "KUL"
+    ],
+    [
+      "DVO",
+      "SIN"
+    ],
+    [
+      "DXB",
+      "CEB"
+    ],
+    [
+      "DXB",
+      "CRK"
+    ],
+    [
+      "DXB",
+      "MNL"
+    ],
+    [
+      "FUK",
+      "MNL"
+    ],
+    [
+      "ICN",
+      "CEB"
+    ],
+    [
+      "ICN",
+      "CRK"
+    ],
+    [
+      "ICN",
+      "MNL"
+    ],
+    [
+      "ILO",
+      "SIN"
+    ],
+    [
+      "KIX",
+      "CEB"
+    ],
+    [
+      "KIX",
+      "MNL"
+    ],
+    [
+      "KUL",
+      "CEB"
+    ],
+    [
+      "KUL",
+      "CRK"
+    ],
+    [
+      "KUL",
+      "DVO"
+    ],
+    [
+      "KUL",
+      "MNL"
+    ],
+    [
+      "MEL",
+      "MNL"
+    ],
+    [
+      "MNL",
+      "AUH"
+    ],
+    [
+      "MNL",
+      "BKI"
+    ],
+    [
+      "MNL",
+      "BKK"
+    ],
+    [
+      "MNL",
+      "BNE"
+    ],
+    [
+      "MNL",
+      "CAN"
+    ],
+    [
+      "MNL",
+      "CGK"
+    ],
+    [
+      "MNL",
+      "CTS"
+    ],
+    [
+      "MNL",
+      "DEL"
+    ],
+    [
+      "MNL",
+      "DMK"
+    ],
+    [
+      "MNL",
+      "DOH"
+    ],
+    [
+      "MNL",
+      "DPS"
+    ],
+    [
+      "MNL",
+      "DXB"
+    ],
+    [
+      "MNL",
+      "FUK"
+    ],
+    [
+      "MNL",
+      "ICN"
+    ],
+    [
+      "MNL",
+      "KIX"
+    ],
+    [
+      "MNL",
+      "KUL"
+    ],
+    [
+      "MNL",
+      "MEL"
+    ],
+    [
+      "MNL",
+      "NGO"
+    ],
+    [
+      "MNL",
+      "NRT"
+    ],
+    [
+      "MNL",
+      "PER"
+    ],
+    [
+      "MNL",
+      "PVG"
+    ],
+    [
+      "MNL",
+      "SIN"
+    ],
+    [
+      "MNL",
+      "SYD"
+    ],
+    [
+      "MPH",
+      "SIN"
+    ],
+    [
+      "NGO",
+      "MNL"
+    ],
+    [
+      "NRT",
+      "CEB"
+    ],
+    [
+      "NRT",
+      "CRK"
+    ],
+    [
+      "NRT",
+      "MNL"
+    ],
+    [
+      "PER",
+      "MNL"
+    ],
+    [
+      "PUS",
+      "CRK"
+    ],
+    [
+      "PVG",
+      "MNL"
+    ],
+    [
+      "SIN",
+      "CEB"
+    ],
+    [
+      "SIN",
+      "CRK"
+    ],
+    [
+      "SIN",
+      "DVO"
+    ],
+    [
+      "SIN",
+      "ILO"
+    ],
+    [
+      "SIN",
+      "MNL"
+    ],
+    [
+      "SIN",
+      "MPH"
+    ],
+    [
+      "SYD",
+      "MNL"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "BNE",
+      "destination": "MNL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MEL",
+      "destination": "MNL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "BNE",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "MEL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "PER",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "PER",
+      "destination": "MNL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SYD",
+      "destination": "MNL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DEL",
+      "destination": "MNL",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "DEL",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CGK",
+      "destination": "MNL",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DPS",
+      "destination": "MNL",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "CGK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "DPS",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "BKI",
+      "destination": "MNL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CEB",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CRK",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DVO",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CEB",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "CRK",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DVO",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "KUL",
+      "destination": "MNL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "BKI",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CEB",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CRK",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DVO",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "ILO",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MPH",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CEB",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CRK",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DVO",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ILO",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MNL",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MPH",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "AUH",
+      "destination": "MNL",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CEB",
+      "destination": "DOH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CEB",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CRK",
+      "destination": "DOH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "CRK",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DOH",
+      "destination": "CEB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DOH",
+      "destination": "CRK",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DOH",
+      "destination": "DVO",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DOH",
+      "destination": "MNL",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DVO",
+      "destination": "DOH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DXB",
+      "destination": "CEB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DXB",
+      "destination": "CRK",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "DXB",
+      "destination": "MNL",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "AUH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "DOH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "MNL",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing route/probe candidate; dated nonstop capture required"
+    },
+    {
+      "origin": "AUH",
+      "destination": "MNL",
+      "source": "https://www.etihad.com/en/flights/flights-from-abu-dhabi-to-manila",
+      "source_locator": "direct flight marketing page",
+      "original_origin": "AUH",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Exact date/flight not captured"
+    },
+    {
+      "origin": "BKI",
+      "destination": "MNL",
+      "source": "https://newsroom.airasia.com/stories/2026/6/24/airasia-low-fares-are-back-your-gateway-to-more-adventures",
+      "source_locator": "June 2026 promotion; travel through March 2027",
+      "original_origin": "BKI",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "2027-03-31",
+      "notes": "Campaign evidence is not a dated flight record."
+    },
+    {
+      "origin": "BKK",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "BKK",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "BKK",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "BKK",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "BNE",
+      "destination": "MNL",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "BNE",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "CAN",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "CAN",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CEB",
+      "destination": "DMK",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "CEB",
+      "original_destination": "DMK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CEB",
+      "destination": "DOH",
+      "source": "https://www.qatarairways.com/press-releases/en-WW/265707-qatar-airways-and-philippine-airlines-strengthen-partnership-expand-markets-and-benefits-for-loyalty-members/",
+      "source_locator": "May 2026 Qatar/PAL partnership announcement",
+      "original_origin": "CEB",
+      "original_destination": "DOH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-06-01",
+      "effective_to": "",
+      "notes": "QR-operated gateway route; codeshare PR marketing is not a separate flight."
+    },
+    {
+      "origin": "CEB",
+      "destination": "DXB",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "CEB",
+      "original_destination": "DXB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "CEB",
+      "destination": "ICN",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "CEB",
+      "original_destination": "ICN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CEB",
+      "destination": "KIX",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "CEB",
+      "original_destination": "KIX",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CEB",
+      "destination": "KUL",
+      "source": "https://newsroom.airasia.com/news/flying-stronger-with-cebu-eng",
+      "source_locator": "AirAsia Cebu expansion notice",
+      "original_origin": "CEB",
+      "original_destination": "KUL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Confirm target-date schedule."
+    },
+    {
+      "origin": "CEB",
+      "destination": "NRT",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "CEB",
+      "original_destination": "NRT",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CEB",
+      "destination": "SIN",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "CEB",
+      "original_destination": "SIN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CGK",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "CGK",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CJJ",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "CJJ",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CRK",
+      "destination": "BKK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "BKK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CRK",
+      "destination": "CJJ",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "CJJ",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CRK",
+      "destination": "DOH",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "DOH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CRK",
+      "destination": "DXB",
+      "source": "https://www.emirates.com/media-centre/emirates-ramps-up-operations-to-manila-with-four-new-weekly-flights/",
+      "source_locator": "Dubai-Cebu-Clark-Dubai circular service",
+      "original_origin": "CRK",
+      "original_destination": "DXB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Nonstop sector of EK338 triangular itinerary. Search this direction."
+    },
+    {
+      "origin": "CRK",
+      "destination": "ICN",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "ICN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CRK",
+      "destination": "KUL",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "CRK",
+      "original_destination": "KUL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "CRK",
+      "destination": "NRT",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "NRT",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CRK",
+      "destination": "PUS",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "PUS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CRK",
+      "destination": "SIN",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "CRK",
+      "original_destination": "SIN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "CTS",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "CTS",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "DEL",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "DEL",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "DMK",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "DMK",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "DMK",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "DMK",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "DOH",
+      "destination": "CEB",
+      "source": "https://www.qatarairways.com/press-releases/en-WW/265707-qatar-airways-and-philippine-airlines-strengthen-partnership-expand-markets-and-benefits-for-loyalty-members/",
+      "source_locator": "May 2026 Qatar/PAL partnership announcement",
+      "original_origin": "DOH",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-06-01",
+      "effective_to": "",
+      "notes": "QR-operated gateway route; codeshare PR marketing is not a separate flight."
+    },
+    {
+      "origin": "DOH",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "DOH",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "DOH",
+      "destination": "DVO",
+      "source": "https://www.qatarairways.com/press-releases/en-WW/265707-qatar-airways-and-philippine-airlines-strengthen-partnership-expand-markets-and-benefits-for-loyalty-members/",
+      "source_locator": "May 2026 Qatar/PAL partnership announcement",
+      "original_origin": "DOH",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-06-01",
+      "effective_to": "",
+      "notes": "QR-operated gateway route; codeshare PR marketing is not a separate flight."
+    },
+    {
+      "origin": "DOH",
+      "destination": "MNL",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "DOH",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "DPS",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "DPS",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "DVO",
+      "destination": "DOH",
+      "source": "https://www.qatarairways.com/press-releases/en-WW/265707-qatar-airways-and-philippine-airlines-strengthen-partnership-expand-markets-and-benefits-for-loyalty-members/",
+      "source_locator": "May 2026 Qatar/PAL partnership announcement",
+      "original_origin": "DVO",
+      "original_destination": "DOH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "2026-06-01",
+      "effective_to": "",
+      "notes": "QR-operated gateway route; codeshare PR marketing is not a separate flight."
+    },
+    {
+      "origin": "DVO",
+      "destination": "KUL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "DVO",
+      "original_destination": "KUL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "DVO",
+      "destination": "SIN",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "international route list",
+      "original_origin": "DVO",
+      "original_destination": "SIN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "DXB",
+      "destination": "CEB",
+      "source": "https://www.emirates.com/media-centre/emirates-ramps-up-operations-to-manila-with-four-new-weekly-flights/",
+      "source_locator": "Dubai-Cebu-Clark-Dubai circular service",
+      "original_origin": "DXB",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Nonstop sector of EK338 triangular itinerary. Search this direction."
+    },
+    {
+      "origin": "DXB",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "DXB",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "DXB",
+      "destination": "MNL",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "DXB",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "FUK",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "FUK",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "ICN",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "ICN",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "ICN",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "ICN",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "ICN",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "ICN",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "ILO",
+      "destination": "SIN",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "ILO",
+      "original_destination": "SIN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "KIX",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "KIX",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "KIX",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "KIX",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "KUL",
+      "destination": "CEB",
+      "source": "https://newsroom.airasia.com/news/flying-stronger-with-cebu-eng",
+      "source_locator": "AirAsia Cebu expansion notice",
+      "original_origin": "KUL",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Confirm target-date schedule."
+    },
+    {
+      "origin": "KUL",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "KUL",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "KUL",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "KUL",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "KUL",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "KUL",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MEL",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MEL",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "AUH",
+      "source": "https://www.etihad.com/en/flights/flights-from-abu-dhabi-to-manila",
+      "source_locator": "direct flight marketing page",
+      "original_origin": "MNL",
+      "original_destination": "AUH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Exact date/flight not captured"
+    },
+    {
+      "origin": "MNL",
+      "destination": "BKI",
+      "source": "https://newsroom.airasia.com/stories/2026/6/24/airasia-low-fares-are-back-your-gateway-to-more-adventures",
+      "source_locator": "June 2026 promotion; travel through March 2027",
+      "original_origin": "MNL",
+      "original_destination": "BKI",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "2027-03-31",
+      "notes": "Campaign evidence is not a dated flight record."
+    },
+    {
+      "origin": "MNL",
+      "destination": "BKK",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "BKK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "BNE",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "MNL",
+      "original_destination": "BNE",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "MNL",
+      "destination": "CAN",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "CAN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "CGK",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "CGK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "CTS",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "CTS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DEL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "MNL",
+      "original_destination": "DEL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DMK",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "DMK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DOH",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "MNL",
+      "original_destination": "DOH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DPS",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "DPS",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "DXB",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "MNL",
+      "original_destination": "DXB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "MNL",
+      "destination": "FUK",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "FUK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "ICN",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "ICN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "KIX",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "KIX",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "KUL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "KUL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "MEL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "MEL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "NGO",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "NGO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "NRT",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "NRT",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "PER",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "MNL",
+      "original_destination": "PER",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "MNL",
+      "destination": "PVG",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "MNL",
+      "original_destination": "PVG",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "MNL",
+      "destination": "SIN",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "MNL",
+      "original_destination": "SIN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "MNL",
+      "destination": "SYD",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "MNL",
+      "original_destination": "SYD",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "MPH",
+      "destination": "SIN",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "MPH",
+      "original_destination": "SIN",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "NGO",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "NGO",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "NRT",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "NRT",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "NRT",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "NRT",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "NRT",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "NRT",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "PER",
+      "destination": "MNL",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "PER",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "PUS",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "PUS",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "PVG",
+      "destination": "MNL",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "international route list",
+      "original_origin": "PVG",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "SIN",
+      "destination": "CEB",
+      "source": "https://help.cebupacificair.com/article/cebu-travel-guide-mactan-cebu-international-airport-ceb-211355",
+      "source_locator": "international route list",
+      "original_origin": "SIN",
+      "original_destination": "CEB",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "SIN",
+      "destination": "CRK",
+      "source": "https://clarkinternationalairport.com/flights/",
+      "source_locator": "INTERNATIONAL FLIGHTS",
+      "original_origin": "SIN",
+      "original_destination": "CRK",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "SIN",
+      "destination": "DVO",
+      "source": "https://help.cebupacificair.com/article/davao-travel-guide-davao-international-airport-dvo-211354",
+      "source_locator": "international route list",
+      "original_origin": "SIN",
+      "original_destination": "DVO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_route",
+      "target_date_status": "needs_exact_date_collection",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Verify target-date nonstop flight before replay."
+    },
+    {
+      "origin": "SIN",
+      "destination": "ILO",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "SIN",
+      "original_destination": "ILO",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "SIN",
+      "destination": "MNL",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "SIN",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    },
+    {
+      "origin": "SIN",
+      "destination": "MPH",
+      "source": "https://help.cebupacificair.com/article/manila-travel-guide-ninoy-aquino-international-airport-guide-212559",
+      "source_locator": "existing SunTrain seed / supplemental original source",
+      "original_origin": "SIN",
+      "original_destination": "MPH",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "existing_seed_unverified",
+      "target_date_status": "not_established_for_2026_11_02",
+      "effective_from": "",
+      "effective_to": "",
+      "notes": "Seed provided by project; requires nonstop verification; source URL may be contextual, not proof of this pair."
+    },
+    {
+      "origin": "SYD",
+      "destination": "MNL",
+      "source": "https://www.philippineairlines.com/content/dam/palportal/migration/feature/timetable/261016-International-W26-as-of-Oct-16-2026.pdf",
+      "source_locator": "W26, four pages, edition 16 Oct 2026",
+      "original_origin": "SYD",
+      "original_destination": "MNL",
+      "kind": "Recovered partial-package candidate, not independently verified route or dated-flight evidence",
+      "original_candidate_type": "published_winter_timetable",
+      "target_date_status": "w26_weekday_pattern_requires_record_join",
+      "effective_from": "2026-10-25",
+      "effective_to": "2027-03-27",
+      "notes": "Confirmed timetable edition applicable to target season; do not infer specific flight instance from this route row."
+    }
+  ],
+  "coverage_scope": "Recovered selected candidates; international restricted to existing SunTrain flight countries",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "identity_corrections": [
+    {
+      "original": "NAG",
+      "resolved": "WNP",
+      "country": "PH",
+      "reason": "Recovered Naga row used Nagpur IATA; pinned PH/Naga identity is WNP/RPUN"
+    }
+  ],
+  "recovered_package": {
+    "filename": "philippines_recovered_partial_2026-11-02.zip",
+    "sha256": "ac3d3775777d14f09d787ac6b5244ccae74c3cc7b0d1d83a10acce87554c3169",
+    "metadata": {
+      "package_type": "reconstructed_partial_package_not_original_deep_research_zip",
+      "date": "2026-11-02",
+      "timezone": "Asia/Manila",
+      "window": "2026-11-02T00:00:00+08:00 until 2026-11-03T00:00:00+08:00 exclusive",
+      "domestic_directional_rows": 150,
+      "international_directional_rows": 128,
+      "evidence_rows": 314,
+      "airports_endpoints": 74,
+      "collector_directions": 278,
+      "timetable_rows": 0,
+      "critical_disclosures": [
+        "Original research ZIP is not accessible in this conversation runtime. This is an independently reconstructed reduced-scope route-candidate package.",
+        "Cebu Pacific sources were rendered without all route table contents; network transcription is drawn from completed Deep Research report, not newly directly downloaded route-table data.",
+        "Airport identities and coordinates were not available from the pinned OurAirports download. Join against existing pinned catalogue; blank cells are deliberately blank.",
+        "PAL W26 international PDF direct URL is referenced, but no timetable flights have been extracted into this replacement ZIP.",
+        "Published route candidates are not necessarily actual 2 November departures; use the exact origin/destination/date collector.",
+        "Returned sources have differing as-of dates; Clark airport page inspected here displayed August 10 2026 while previous research referred to a later edition. Treat it as a candidate source, not confirmation for 2 November.",
+        "Some Manila and Clark route assignments remain carrier-specific due to Cebgo transfer.",
+        "Emirates Dubai-Cebu-Clark-Dubai circular itinerary is asymmetric.",
+        "Iloilo-Singapore start-date evidence for Cebu Pacific is 23 November, but prior suspensions and other operators need further independent investigation."
+      ]
+    }
+  },
+  "input_seed_sha256": "5c0501e379feea5da700e0f49b4f325598ec59b6ac705f6382c37ea05b63a286",
+  "input_manifests": [
+    {
+      "path": "data/sources/australia_international_routes.json",
+      "sha256": "951aaaf884a16510eb2aad211150e832157734dacf02183676b53c59c2d0f8c1"
+    },
+    {
+      "path": "data/sources/india_international_routes.json",
+      "sha256": "b419b11ec71ffc8f48a3745a69c6c3f2b8d0d6f04aabd73d0142333e54683a3d"
+    },
+    {
+      "path": "data/sources/indonesia_international_routes.json",
+      "sha256": "7b0e24fc286e8184900bfd71ed778a8a5faaed1f27768aca37f03e274cfafad4"
+    },
+    {
+      "path": "data/sources/malaysia_international_routes.json",
+      "sha256": "94f91fcc8380423ea350c6f77ba21af8536b14b0b81148b520b03200b092cd73"
+    },
+    {
+      "path": "data/sources/singapore_international_routes.json",
+      "sha256": "6d1d8a79eb7de4066ea448e1040c12d17661a418b76348df8db3c707d5aa2219"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    }
+  ],
+  "route_source_url": "https://clarkinternationalairport.com/flights/",
+  "route_hash_basis": "Curated recovered candidates and input pins, not raw website bytes",
+  "unresolved_airports": [],
+  "deferred_international_routes": [
+    {
+      "origin": "BWN",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "CEB",
+      "destination": "HKG",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "CEB",
+      "destination": "MFM",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "CEB",
+      "destination": "SGN",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "CRK",
+      "destination": "HKG",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "CRK",
+      "destination": "TPE",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "DAD",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "DVO",
+      "destination": "HKG",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "HAN",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CEB",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "HKG",
+      "destination": "CRK",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "HKG",
+      "destination": "DVO",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "HKG",
+      "destination": "ILO",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "HKG",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "ILO",
+      "destination": "HKG",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MFM",
+      "destination": "CEB",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MFM",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "BWN",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "DAD",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "HAN",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "HKG",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "KHH",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "MFM",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "ROR",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "RUH",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "SGN",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "SPN",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "TPE",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "MNL",
+      "destination": "YYZ",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "ROR",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "RUH",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "SGN",
+      "destination": "CEB",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "SGN",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "SPN",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "TPE",
+      "destination": "CRK",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "TPE",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    },
+    {
+      "origin": "YYZ",
+      "destination": "MNL",
+      "reason": "Outside existing SunTrain flight countries"
+    }
+  ],
+  "source_reviewed_date": "2026-10-25",
+  "base_directional_routes": 52,
+  "route_source_sha256": "aac1c261c2d466138d4f55c3f88d80b637b52dcdcf109faf3971cdc98e9a8caa"
+}

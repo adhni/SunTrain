@@ -184,3 +184,11 @@ test('original USD and MYR amounts are labelled independently without implicit c
     assert.equal(priceLabel({price:{currency:'CNY',amount_minor:10000}}),'Price unavailable');
     assert.equal(priceLabel({}),'Price unavailable');
 });
+
+test('Philippine boards and quote timestamps use PHT at the UTC+8 day boundary',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    const at='2026-11-01T16:00:00Z';
+    assert.match(formatCallTime(Date.parse(at)/1000,'Asia/Manila'),/2 Nov.*00:00 PHT/);
+    assert.match(captureTime(at,'Asia/Manila'),/2 Nov.*00:00 PHT/);
+    assert.match(formatCallTime(Date.parse(at)/1000,'UTC'),/1 Nov.*16:00 GMT\+0/);
+});

@@ -1,0 +1,893 @@
+{
+  "country": "NZ",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Pacific/Auckland",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "AKL",
+      "icao": "NZAA",
+      "name": "Auckland International Airport (AKL)",
+      "municipality": "Auckland",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.01199,
+      "lon": 174.786331,
+      "island_group": "North Island"
+    },
+    {
+      "code": "BHE",
+      "icao": "NZWB",
+      "name": "Woodbourne Airport (BHE)",
+      "municipality": "Blenheim",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -41.5182991027832,
+      "lon": 173.8699951171875,
+      "island_group": "South Island"
+    },
+    {
+      "code": "CHC",
+      "icao": "NZCH",
+      "name": "Christchurch International Airport (CHC)",
+      "municipality": "Christchurch",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -43.489029,
+      "lon": 172.532065,
+      "island_group": "South Island"
+    },
+    {
+      "code": "DUD",
+      "icao": "NZDN",
+      "name": "Dunedin International Airport (DUD)",
+      "municipality": "Dunedin",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -45.929017,
+      "lon": 170.197758,
+      "island_group": "South Island"
+    },
+    {
+      "code": "GIS",
+      "icao": "NZGS",
+      "name": "Gisborne Airport (GIS)",
+      "municipality": "Gisborne",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -38.6633,
+      "lon": 177.977997,
+      "island_group": "North Island"
+    },
+    {
+      "code": "HKK",
+      "icao": "NZHK",
+      "name": "Hokitika Airfield (HKK)",
+      "municipality": "",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -42.713600158691406,
+      "lon": 170.98500061035156,
+      "island_group": "South Island"
+    },
+    {
+      "code": "HLZ",
+      "icao": "NZHN",
+      "name": "Hamilton International Airport (HLZ)",
+      "municipality": "Hamilton",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.866961,
+      "lon": 175.331952,
+      "island_group": "North Island"
+    },
+    {
+      "code": "IVC",
+      "icao": "NZNV",
+      "name": "Invercargill Airport (IVC)",
+      "municipality": "Invercargill",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -46.41239929199219,
+      "lon": 168.31300354003906,
+      "island_group": "South Island"
+    },
+    {
+      "code": "KKE",
+      "icao": "NZKK",
+      "name": "Kerikeri Airport (KKE)",
+      "municipality": "Kerikeri",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -35.259148,
+      "lon": 173.913317,
+      "island_group": "North Island"
+    },
+    {
+      "code": "NPE",
+      "icao": "NZNR",
+      "name": "Hawke's Bay Airport (NPE)",
+      "municipality": "Napier",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -39.465801,
+      "lon": 176.869995,
+      "island_group": "North Island"
+    },
+    {
+      "code": "NPL",
+      "icao": "NZNP",
+      "name": "New Plymouth Airport (NPL)",
+      "municipality": "New Plymouth",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -39.00859832763672,
+      "lon": 174.1790008544922,
+      "island_group": "North Island"
+    },
+    {
+      "code": "NSN",
+      "icao": "NZNS",
+      "name": "Nelson Airport (NSN)",
+      "municipality": "Nelson",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -41.296709,
+      "lon": 173.224323,
+      "island_group": "South Island"
+    },
+    {
+      "code": "PMR",
+      "icao": "NZPM",
+      "name": "Palmerston North Airport (PMR)",
+      "municipality": "Palmerston North",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -40.320599,
+      "lon": 175.617004,
+      "island_group": "North Island"
+    },
+    {
+      "code": "ROT",
+      "icao": "NZRO",
+      "name": "Rotorua Regional Airport (ROT)",
+      "municipality": "Rotorua",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -38.1092,
+      "lon": 176.317001,
+      "island_group": "North Island"
+    },
+    {
+      "code": "TIU",
+      "icao": "NZTU",
+      "name": "Timaru Airport (TIU)",
+      "municipality": "",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -44.302799224853516,
+      "lon": 171.22500610351562,
+      "island_group": "South Island"
+    },
+    {
+      "code": "TRG",
+      "icao": "NZTG",
+      "name": "Tauranga Airport (TRG)",
+      "municipality": "Tauranga",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.67190170288086,
+      "lon": 176.1959991455078,
+      "island_group": "North Island"
+    },
+    {
+      "code": "TUO",
+      "icao": "NZAP",
+      "name": "Taupo Airport (TUO)",
+      "municipality": "Taupo",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -38.73970031738281,
+      "lon": 176.08399963378906,
+      "island_group": "North Island"
+    },
+    {
+      "code": "WLG",
+      "icao": "NZWN",
+      "name": "Wellington International Airport (WLG)",
+      "municipality": "Wellington",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -41.326839,
+      "lon": 174.806862,
+      "island_group": "North Island"
+    },
+    {
+      "code": "WRE",
+      "icao": "NZWR",
+      "name": "Whangarei Airport (WRE)",
+      "municipality": "Whangarei",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -35.769253,
+      "lon": 174.363713,
+      "island_group": "North Island"
+    },
+    {
+      "code": "ZQN",
+      "icao": "NZQN",
+      "name": "Queenstown Airport (ZQN)",
+      "municipality": "Queenstown",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -45.019205,
+      "lon": 168.746379,
+      "island_group": "South Island"
+    }
+  ],
+  "routes": [
+    [
+      "AKL",
+      "BHE"
+    ],
+    [
+      "AKL",
+      "CHC"
+    ],
+    [
+      "AKL",
+      "DUD"
+    ],
+    [
+      "AKL",
+      "GIS"
+    ],
+    [
+      "AKL",
+      "IVC"
+    ],
+    [
+      "AKL",
+      "KKE"
+    ],
+    [
+      "AKL",
+      "NPE"
+    ],
+    [
+      "AKL",
+      "NPL"
+    ],
+    [
+      "AKL",
+      "NSN"
+    ],
+    [
+      "AKL",
+      "PMR"
+    ],
+    [
+      "AKL",
+      "ROT"
+    ],
+    [
+      "AKL",
+      "TRG"
+    ],
+    [
+      "AKL",
+      "TUO"
+    ],
+    [
+      "AKL",
+      "WLG"
+    ],
+    [
+      "AKL",
+      "WRE"
+    ],
+    [
+      "AKL",
+      "ZQN"
+    ],
+    [
+      "BHE",
+      "AKL"
+    ],
+    [
+      "BHE",
+      "WLG"
+    ],
+    [
+      "CHC",
+      "AKL"
+    ],
+    [
+      "CHC",
+      "DUD"
+    ],
+    [
+      "CHC",
+      "HKK"
+    ],
+    [
+      "CHC",
+      "HLZ"
+    ],
+    [
+      "CHC",
+      "IVC"
+    ],
+    [
+      "CHC",
+      "NPE"
+    ],
+    [
+      "CHC",
+      "NPL"
+    ],
+    [
+      "CHC",
+      "NSN"
+    ],
+    [
+      "CHC",
+      "PMR"
+    ],
+    [
+      "CHC",
+      "ROT"
+    ],
+    [
+      "CHC",
+      "TRG"
+    ],
+    [
+      "CHC",
+      "WLG"
+    ],
+    [
+      "CHC",
+      "ZQN"
+    ],
+    [
+      "DUD",
+      "AKL"
+    ],
+    [
+      "DUD",
+      "CHC"
+    ],
+    [
+      "DUD",
+      "WLG"
+    ],
+    [
+      "GIS",
+      "AKL"
+    ],
+    [
+      "GIS",
+      "WLG"
+    ],
+    [
+      "HKK",
+      "CHC"
+    ],
+    [
+      "HLZ",
+      "CHC"
+    ],
+    [
+      "HLZ",
+      "WLG"
+    ],
+    [
+      "IVC",
+      "AKL"
+    ],
+    [
+      "IVC",
+      "CHC"
+    ],
+    [
+      "IVC",
+      "WLG"
+    ],
+    [
+      "KKE",
+      "AKL"
+    ],
+    [
+      "NPE",
+      "AKL"
+    ],
+    [
+      "NPE",
+      "CHC"
+    ],
+    [
+      "NPE",
+      "WLG"
+    ],
+    [
+      "NPL",
+      "AKL"
+    ],
+    [
+      "NPL",
+      "CHC"
+    ],
+    [
+      "NPL",
+      "WLG"
+    ],
+    [
+      "NSN",
+      "AKL"
+    ],
+    [
+      "NSN",
+      "CHC"
+    ],
+    [
+      "NSN",
+      "WLG"
+    ],
+    [
+      "PMR",
+      "AKL"
+    ],
+    [
+      "PMR",
+      "CHC"
+    ],
+    [
+      "ROT",
+      "AKL"
+    ],
+    [
+      "ROT",
+      "CHC"
+    ],
+    [
+      "ROT",
+      "WLG"
+    ],
+    [
+      "TIU",
+      "WLG"
+    ],
+    [
+      "TRG",
+      "AKL"
+    ],
+    [
+      "TRG",
+      "CHC"
+    ],
+    [
+      "TRG",
+      "WLG"
+    ],
+    [
+      "TUO",
+      "AKL"
+    ],
+    [
+      "TUO",
+      "WLG"
+    ],
+    [
+      "WLG",
+      "AKL"
+    ],
+    [
+      "WLG",
+      "BHE"
+    ],
+    [
+      "WLG",
+      "CHC"
+    ],
+    [
+      "WLG",
+      "DUD"
+    ],
+    [
+      "WLG",
+      "GIS"
+    ],
+    [
+      "WLG",
+      "HLZ"
+    ],
+    [
+      "WLG",
+      "IVC"
+    ],
+    [
+      "WLG",
+      "NPE"
+    ],
+    [
+      "WLG",
+      "NPL"
+    ],
+    [
+      "WLG",
+      "NSN"
+    ],
+    [
+      "WLG",
+      "ROT"
+    ],
+    [
+      "WLG",
+      "TIU"
+    ],
+    [
+      "WLG",
+      "TRG"
+    ],
+    [
+      "WLG",
+      "TUO"
+    ],
+    [
+      "WLG",
+      "ZQN"
+    ],
+    [
+      "WRE",
+      "AKL"
+    ],
+    [
+      "ZQN",
+      "AKL"
+    ],
+    [
+      "ZQN",
+      "CHC"
+    ],
+    [
+      "ZQN",
+      "WLG"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "AKL",
+      "destination": "WLG",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "CHC",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "ZQN",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "NSN",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "NPE",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "PMR",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "TRG",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "NPL",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "GIS",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "KKE",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "BHE",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "ROT",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DUD",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "TUO",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "IVC",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "AKL",
+      "destination": "WRE",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "WLG",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "ZQN",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "DUD",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "IVC",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "NSN",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "HLZ",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "PMR",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "TRG",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "NPE",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "ROT",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "NPL",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "CHC",
+      "destination": "HKK",
+      "scope": "domestic",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "ZQN",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "DUD",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "NSN",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "NPE",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "BHE",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "HLZ",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "NPL",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "TRG",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "ROT",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "GIS",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "TIU",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "IVC",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    },
+    {
+      "origin": "WLG",
+      "destination": "TUO",
+      "scope": "domestic",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+      "kind": "Selected exact-airport hub probe; destination list is context, not proof of a dated pair"
+    }
+  ],
+  "input_manifests": [],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+  "source_urls": {
+    "airline": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+    "wlg_domestic": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+    "wlg_international": "https://www.wellingtonairport.co.nz/flight-information/routes/international-destinations/",
+    "akl_network": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+    "chc_schedule": "https://www.christchurchairport.nz/about-us/who-we-are/media/2026/christchurch-airports-biggest-ever-international-summer-takes-flight/"
+  },
+  "source_reviewed_date": "2026-10-26",
+  "unresolved_airports": [],
+  "base_directional_routes": 0,
+  "coverage_scope": "Selected North and South Island hubs and regional airports; international limited to existing SunTrain flight countries",
+  "deferred_airports": [
+    "CHT and smaller commuter, island and scenic services"
+  ],
+  "deferred_routes": [
+    "CHC-NRT starts 2026-11-28",
+    "CHC-PER starts 2026-11-30"
+  ],
+  "route_source_sha256": "60076dee27568516b10458cf3163f8c98abff62a11107eddf1e2392a874317bb"
+}

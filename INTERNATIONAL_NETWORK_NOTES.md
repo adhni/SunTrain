@@ -4,7 +4,7 @@
 
 The **International network · Flights** replay connects Australia, Indonesia,
 Malaysia, Singapore, India, Thailand, the Philippines, Vietnam, Brunei, Cambodia, Laos, Myanmar,
-Timor-Leste, mainland China, Japan and South Korea, plus the Gulf
+Timor-Leste, New Zealand, mainland China, Japan and South Korea, plus the Gulf
 hubs **DXB, AUH and DOH**. It covers **2 November 2026, 00:00–24:00 UTC**.
 Moving planes is the default; frequency lines remain available. Directional
 From country / To country filters combine with airline codes and exact airports.
@@ -12,7 +12,7 @@ Airport boards retain local dates/zones and explicitly show the converted day
 window, which can cross two local calendar dates.
 
 Country views retain their own clocks and day windows. China, Japan and South
-Korea, Thailand, the Philippines, Vietnam, Laos and Myanmar offer Domestic / International / Both, defaulting to domestic. Cambodia and Timor-Leste default to International and retain an empty Domestic scope with explicit coverage gaps. Brunei has only International. Their
+Korea, Thailand, the Philippines, Vietnam, Laos, Myanmar and New Zealand offer Domestic / International / Both, defaulting to domestic. Cambodia and Timor-Leste default to International and retain an empty Domestic scope with explicit coverage gaps. Brunei has only International. Their
 new international scope covers this selected group, not every foreign country.
 Other flight views retain existing worldwide routes outside the shared group.
 Indonesia's dates after 2 November and all original domestic bundles are unchanged.
@@ -22,11 +22,12 @@ live tracking, paid sources or automatic refresh.
 
 ## Candidate evidence
 
-The manifest contains **2,012 directional candidates across 177 airports**. It
-preserves the previous 1,810 directions and adds **202 unique directions** for
-the five remaining ASEAN locations. The builder imports 1,724 directions from
-country manifests and adds the original 288 East Asian directions. Sources and
-explicit probes are documented in [ASEAN flight notes](ASEAN_FLIGHTS_NOTES.md),
+The manifest contains **2,102 directional candidates across 185 airports**. It
+preserves the previous 2,012 directions and adds **90 New Zealand directions**.
+The builder imports 1,814 directions from country manifests and adds the original
+288 East Asian directions. Sources and explicit probes are documented in
+[New Zealand flight notes](NEW_ZEALAND_FLIGHTS_NOTES.md),
+[ASEAN flight notes](ASEAN_FLIGHTS_NOTES.md),
 [Vietnam flight notes](VIETNAM_FLIGHTS_NOTES.md),
 [Philippine flight notes](PHILIPPINE_FLIGHTS_NOTES.md) and
 [Thai flight notes](THAI_FLIGHTS_NOTES.md). These are search targets, never proof
@@ -74,7 +75,7 @@ untouched. Myanmar uses Asia/Yangon, UTC+6:30.
 
 ## Collection, ownership and fares
 
-One queue contains **6,865 unique airport/date queries**, the union needed by the
+One queue contains **7,180 unique airport/date queries**, the union needed by the
 UTC network day and each endpoint country's local day. Dates are calculated in
 the origin airport's zone with a conservative 24-hour international duration cap;
 this includes necessary adjacent dates rather than assuming every search is Nov 2.
@@ -84,6 +85,10 @@ preserves all 5,237 of those queries, reuses another 127 and needs 176 new searc
 Vietnam preserves all 5,540 prior queries, reuses another 203 and needs 450 new searches.
 The remaining ASEAN extension preserves all 6,193 prior queries and requires 672
 additional query captures, reusing available exact-airport/date captures first.
+New Zealand preserves all 6,865 prior queries, reuses another 194 exact captures
+and needs only 121 new international searches. Its Pacific/Auckland day uses
+NZDT (UTC+13); the shared archive envelope expands two hours earlier, while
+existing views retain their own independent windows.
 
 Cached successful empty searches are reused too. Latest captures own schedules
 for the same exact airport/date query; removed flights are not resurrected from
@@ -118,7 +123,7 @@ The combined network reports coverage for each selected country pair.
 ## Rebuild and local storage
 
 ```bash
-.venv/bin/python scripts/prepare_remaining_asean_routes.py
+.venv/bin/python scripts/prepare_new_zealand_routes.py
 .venv/bin/python scripts/prepare_international_network_routes.py
 .venv/bin/python scripts/prepare_international_network.py --dry-run
 PYTHONPATH=.cache/browser-tools .venv/bin/python scripts/prepare_international_network.py
@@ -142,13 +147,13 @@ coverage audit and browser screenshots. Generated replay HTTP caches regenerate.
 
 ## Actual coverage and validation
 
-The final UTC view contains **4,550 overlapping flight records**, **3,996 departures within 2 November UTC**, **140 airports** and **94 carriers**. **3,593 records have captured quotes** (3,158 USD, 435 MYR); **957 remain unpriced**. The archive retains **6,125 records** across all country-local windows. Distinct flight numbers are not inferred physical aircraft movements.
+The final UTC view contains **4,750 overlapping flight records**, **4,153 departures within 2 November UTC**, **147 airports** and **95 carriers**. **3,655 records have captured quotes** (3,216 USD, 439 MYR); **1,095 remain unpriced**. The archive retains **6,767 records** across all country-local windows. Distinct flight numbers are not inferred physical aircraft movements.
 
-Archive collection: **6,865 / 6,865 queries captured**, **0 missing**, **0 failed**. The UTC projection's own 6,036 queries include 2,332 unreturned results. Empty queries mean not returned, not no service. There are 9 rejected source records, 11 unverified fare-context queries, and 0 unresolved selected airports. Coverage remains partial. The remaining ASEAN extension preserves all **5,886 previous archive records** and **6,193 previous queries** unchanged, including schedules, fares and provenance. Existing domestic country bundles remain unchanged.
+Archive collection: **7,180 / 7,180 queries captured**, **0 missing**, **0 failed**. The UTC projection's own 6,306 queries include 2,427 unreturned results. Empty queries mean not returned, not no service. There are 9 rejected source records, 11 unverified fare-context queries, and 0 unresolved selected airports. Coverage remains partial. The New Zealand extension preserves all **6,125 previous archive records** and **6,865 previous queries** unchanged, including schedules, fares and provenance. The earlier NZ day extends the shared envelope by two hours; extra non-NZ archive records outside all earlier day windows do not shift previous view ownership. Existing country bundles remain unchanged.
 
-Gzip: **758,250 bytes**, SHA-256 `4c864001dd4796ff6614f0203d1033faf74c418deb8d345688c32f1132bee971`. Offline preparation reproduces the bytes exactly.
+Gzip: **803,467 bytes**, SHA-256 `87fdf474b40947c1eb678bbfea80ff7cf4a041d577ca4b3de16bfb6a00c00304`. Offline preparation reproduces the bytes exactly.
 
-The table lists directional routes represented by overlapping records, departures owned by the UTC day, priced overlapping records and captured/planned searches. Gulf endpoints remain DXB/AUH/DOH only. Country-local figures use different windows; see [ASEAN flight notes](ASEAN_FLIGHTS_NOTES.md).
+The table lists directional routes represented by overlapping records, departures owned by the UTC day, priced overlapping records and captured/planned searches. Gulf endpoints remain DXB/AUH/DOH only. Country-local figures use different windows; see [New Zealand flight notes](NEW_ZEALAND_FLIGHTS_NOTES.md).
 
 | Country pair | Routes returned | UTC-day departures | Priced records | Queries |
 | --- | ---: | ---: | ---: | ---: |
@@ -161,6 +166,7 @@ The table lists directional routes represented by overlapping records, departure
 | AE-KH | 0 | 0 | 0 | 18 / 18 |
 | AE-KR | 4 | 8 | 11 | 12 / 12 |
 | AE-MY | 4 | 10 | 14 | 24 / 24 |
+| AE-NZ | 2 | 2 | 3 | 12 / 12 |
 | AE-PH | 6 | 18 | 26 | 24 / 24 |
 | AE-QA | 4 | 36 | 36 | 12 / 12 |
 | AE-SG | 4 | 10 | 16 | 12 / 12 |
@@ -173,6 +179,7 @@ The table lists directional routes represented by overlapping records, departure
 | AU-JP | 14 | 26 | 6 | 78 / 78 |
 | AU-KR | 4 | 10 | 3 | 12 / 12 |
 | AU-MY | 10 | 25 | 28 | 30 / 30 |
+| AU-NZ | 37 | 128 | 26 | 162 / 162 |
 | AU-PH | 6 | 10 | 1 | 24 / 24 |
 | AU-QA | 10 | 14 | 25 | 30 / 30 |
 | AU-SG | 13 | 69 | 84 | 42 / 42 |
@@ -197,6 +204,7 @@ The table lists directional routes represented by overlapping records, departure
 | CN-LA | 4 | 9 | 2 | 18 / 18 |
 | CN-MM | 5 | 8 | 4 | 18 / 18 |
 | CN-MY | 57 | 158 | 105 | 300 / 300 |
+| CN-NZ | 7 | 9 | 9 | 48 / 48 |
 | CN-PH | 4 | 21 | 17 | 12 / 12 |
 | CN-QA | 11 | 11 | 19 | 48 / 48 |
 | CN-SG | 45 | 125 | 67 | 222 / 222 |
@@ -208,6 +216,7 @@ The table lists directional routes represented by overlapping records, departure
 | ID-KH | 0 | 0 | 0 | 12 / 12 |
 | ID-KR | 5 | 15 | 1 | 18 / 18 |
 | ID-MY | 38 | 190 | 147 | 186 / 186 |
+| ID-NZ | 0 | 0 | 0 | 12 / 12 |
 | ID-PH | 4 | 8 | 0 | 12 / 12 |
 | ID-QA | 4 | 10 | 13 | 18 / 18 |
 | ID-SG | 20 | 114 | 104 | 108 / 108 |
@@ -226,6 +235,7 @@ The table lists directional routes represented by overlapping records, departure
 | IN-VN | 15 | 24 | 26 | 72 / 72 |
 | JP-KR | 48 | 393 | 391 | 156 / 156 |
 | JP-MY | 9 | 23 | 23 | 48 / 48 |
+| JP-NZ | 2 | 2 | 3 | 6 / 6 |
 | JP-PH | 13 | 37 | 43 | 48 / 48 |
 | JP-QA | 6 | 8 | 13 | 18 / 18 |
 | JP-SG | 11 | 45 | 52 | 42 / 42 |
@@ -242,6 +252,7 @@ The table lists directional routes represented by overlapping records, departure
 | KR-LA | 2 | 2 | 2 | 18 / 18 |
 | KR-MM | 0 | 0 | 0 | 6 / 6 |
 | KR-MY | 4 | 12 | 12 | 42 / 42 |
+| KR-NZ | 2 | 2 | 3 | 6 / 6 |
 | KR-PH | 6 | 33 | 37 | 30 / 30 |
 | KR-QA | 2 | 2 | 4 | 6 / 6 |
 | KR-SG | 6 | 19 | 24 | 18 / 18 |
@@ -255,12 +266,15 @@ The table lists directional routes represented by overlapping records, departure
 | MM-SG | 2 | 7 | 0 | 12 / 12 |
 | MM-TH | 10 | 40 | 14 | 30 / 30 |
 | MM-VN | 2 | 2 | 0 | 12 / 12 |
+| MY-NZ | 2 | 4 | 4 | 6 / 6 |
 | MY-PH | 5 | 17 | 20 | 30 / 30 |
 | MY-QA | 2 | 10 | 15 | 18 / 18 |
 | MY-SG | 19 | 130 | 128 | 90 / 90 |
 | MY-TH | 22 | 81 | 76 | 96 / 96 |
 | MY-TL | 1 | 0 | 0 | 6 / 6 |
 | MY-VN | 12 | 46 | 45 | 36 / 36 |
+| NZ-QA | 0 | 0 | 0 | 6 / 6 |
+| NZ-SG | 4 | 10 | 14 | 12 / 12 |
 | PH-QA | 4 | 9 | 14 | 24 / 24 |
 | PH-SG | 9 | 32 | 41 | 36 / 36 |
 | PH-TH | 8 | 27 | 29 | 24 / 24 |

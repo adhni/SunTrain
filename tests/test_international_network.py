@@ -56,8 +56,8 @@ def bundle(tmp_path,monkeypatch,records=None):
 
 def test_manifest_has_exact_countries_and_focused_east_asian_candidates():
     cfg=config();m=cfg['manifest'];air={a['code']:a for a in m['airports']}
-    assert m['base_directional_routes']==1724 and len(m['routes'])==2012 and len(air)==177
-    assert len(set(cfg['queries']))==len(cfg['queries'])==6865
+    assert m['base_directional_routes']==1814 and len(m['routes'])==2102 and len(air)==185
+    assert len(set(cfg['queries']))==len(cfg['queries'])==7180
     assert all(eligible(air[a],air[b]) and [b,a] in m['routes'] for a,b in m['routes'])
     assert all(a['country'] not in {'AE','QA'} or a['code'] in network.HUBS for a in air.values())
     assert not {'ITM','MWX','HKG','MFM','TPE','BJS','TYO','SEL'} & air.keys()
@@ -213,7 +213,7 @@ def test_prepared_network_and_country_overlays_are_consistent():
     assert raw['metadata']['queries_by_view'] and view['flights']
     assert len({f['id'] for f in view['flights']})==len(view['flights'])
     assert {'CN-JP','CN-KR','JP-KR'}<=view['metadata']['coverage_by_country_pair'].keys()
-    for city in ['china_flights','japan_flights','south_korea_flights','australia_flights','gulf_flights','thailand_flights','philippines_flights','vietnam_flights','brunei_flights','cambodia_flights','laos_flights','myanmar_flights','timor_leste_flights']:
+    for city in ['china_flights','japan_flights','south_korea_flights','australia_flights','gulf_flights','thailand_flights','philippines_flights','vietnam_flights','brunei_flights','cambodia_flights','laos_flights','myanmar_flights','timor_leste_flights','new_zealand_flights']:
         projected=network.project(raw,city);loaded=flights.load_reference(network.DAY,city)
         byid={f['id']:f for f in loaded['flights']}
         assert all(byid[f['id']]['departure']==f['departure'] and byid[f['id']].get('price')==f.get('price') for f in projected['flights'])

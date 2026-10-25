@@ -143,7 +143,7 @@ test('foreign airport clocks keep local dates and daylight-saving offsets', () =
     const at=Date.parse('2026-11-01T17:00:00Z')/1000;
     assert.match(formatCallTime(at,'Australia/Adelaide'),/2 Nov.*03:30 GMT\+10:30/);
     assert.match(formatCallTime(at,'Europe/Amsterdam'),/1 Nov.*18:00 GMT\+1/);
-    assert.match(formatCallTime(at,'Pacific/Auckland'),/2 Nov.*06:00 GMT\+13/);
+    assert.match(formatCallTime(at,'Pacific/Auckland'),/2 Nov.*06:00 NZDT/);
 });
 
 test('Pacific airport bounds choose the short longitude span in either direction',()=>{
@@ -214,5 +214,17 @@ test('remaining ASEAN airport and fare clocks retain local midnight including My
     }
     globalThis.suntrainI18n={locale:'id-ID'};
     try {assert.match(captureTime('2026-11-01T17:30:00Z','Asia/Yangon'),/MMT/);}
+    finally {delete globalThis.suntrainI18n;}
+});
+
+
+test('New Zealand clocks use daylight saving and retain winter capture offsets',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    for(const [at,expected] of [['2026-11-01T11:00:00Z','2 Nov.*00:00 NZDT'],['2026-06-01T12:00:00Z','2 June?.*00:00 NZST']]) {
+        assert.match(formatCallTime(Date.parse(at)/1000,'Pacific/Auckland'),new RegExp(expected));
+        assert.match(captureTime(at,'Pacific/Auckland'),new RegExp(expected));
+    }
+    globalThis.suntrainI18n={locale:'id-ID'};
+    try {assert.match(captureTime('2026-11-01T11:00:00Z','Pacific/Auckland'),/NZDT/);}
     finally {delete globalThis.suntrainI18n;}
 });

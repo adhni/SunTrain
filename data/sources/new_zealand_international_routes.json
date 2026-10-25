@@ -1,0 +1,1358 @@
+{
+  "country": "NZ",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Pacific/Auckland",
+  "currency": "USD",
+  "max_duration": 86400,
+  "airports": [
+    {
+      "code": "ADL",
+      "icao": "YPAD",
+      "name": "Adelaide International Airport (ADL)",
+      "municipality": "Adelaide",
+      "country": "AU",
+      "timezone": "Australia/Adelaide",
+      "mode": "flight",
+      "lat": -34.947512,
+      "lon": 138.533393
+    },
+    {
+      "code": "AKL",
+      "icao": "NZAA",
+      "name": "Auckland International Airport (AKL)",
+      "municipality": "Auckland",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.01199,
+      "lon": 174.786331,
+      "island_group": "North Island"
+    },
+    {
+      "code": "BNE",
+      "icao": "YBBN",
+      "name": "Brisbane International Airport (BNE)",
+      "municipality": "Brisbane",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998
+    },
+    {
+      "code": "CHC",
+      "icao": "NZCH",
+      "name": "Christchurch International Airport (CHC)",
+      "municipality": "Christchurch",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -43.489029,
+      "lon": 172.532065,
+      "island_group": "South Island"
+    },
+    {
+      "code": "CNS",
+      "icao": "YBCS",
+      "name": "Cairns International Airport (CNS)",
+      "municipality": "Cairns",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -16.878921,
+      "lon": 145.74948
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123
+    },
+    {
+      "code": "DUD",
+      "icao": "NZDN",
+      "name": "Dunedin International Airport (DUD)",
+      "municipality": "Dunedin",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -45.929017,
+      "lon": 170.197758,
+      "island_group": "South Island"
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "HAK",
+      "icao": "ZJHK",
+      "name": "Haikou Meilan International Airport (HAK)",
+      "municipality": "Haikou (Meilan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 19.9349,
+      "lon": 110.459
+    },
+    {
+      "code": "HBA",
+      "icao": "YMHB",
+      "name": "Hobart International Airport (HBA)",
+      "municipality": "Hobart (Cambridge)",
+      "country": "AU",
+      "timezone": "Australia/Hobart",
+      "mode": "flight",
+      "lat": -42.837032,
+      "lon": 147.513022
+    },
+    {
+      "code": "HGH",
+      "icao": "ZSHC",
+      "name": "Hangzhou Xiaoshan International Airport (HGH)",
+      "municipality": "Hangzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.23609,
+      "lon": 120.428865
+    },
+    {
+      "code": "HLZ",
+      "icao": "NZHN",
+      "name": "Hamilton International Airport (HLZ)",
+      "municipality": "Hamilton",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.866961,
+      "lon": 175.331952,
+      "island_group": "North Island"
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "MCY",
+      "icao": "YBSU",
+      "name": "Sunshine Coast Airport (MCY)",
+      "municipality": "Maroochydore",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -26.593324,
+      "lon": 153.08319
+    },
+    {
+      "code": "MEL",
+      "icao": "YMML",
+      "name": "Melbourne Airport (MEL)",
+      "municipality": "Melbourne",
+      "country": "AU",
+      "timezone": "Australia/Melbourne",
+      "mode": "flight",
+      "lat": -37.670732,
+      "lon": 144.837898
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "OOL",
+      "icao": "YBCG",
+      "name": "Gold Coast Airport (OOL)",
+      "municipality": "Gold Coast",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -28.165962,
+      "lon": 153.506641
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PER",
+      "icao": "YPPH",
+      "name": "Perth International Airport (PER)",
+      "municipality": "Perth",
+      "country": "AU",
+      "timezone": "Australia/Perth",
+      "mode": "flight",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "SYD",
+      "icao": "YSSY",
+      "name": "Sydney Kingsford Smith International Airport (SYD)",
+      "municipality": "Sydney (Mascot)",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.946098,
+      "lon": 151.177002
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    },
+    {
+      "code": "WLG",
+      "icao": "NZWN",
+      "name": "Wellington International Airport (WLG)",
+      "municipality": "Wellington",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -41.326839,
+      "lon": 174.806862,
+      "island_group": "North Island"
+    },
+    {
+      "code": "WSI",
+      "icao": "YSWS",
+      "name": "Western Sydney International (Nancy-Bird Walton) Airport (WSI)",
+      "municipality": "Sydney",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.883461,
+      "lon": 150.712981
+    },
+    {
+      "code": "ZQN",
+      "icao": "NZQN",
+      "name": "Queenstown Airport (ZQN)",
+      "municipality": "Queenstown",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -45.019205,
+      "lon": 168.746379,
+      "island_group": "South Island"
+    }
+  ],
+  "routes": [
+    [
+      "ADL",
+      "AKL"
+    ],
+    [
+      "ADL",
+      "CHC"
+    ],
+    [
+      "AKL",
+      "ADL"
+    ],
+    [
+      "AKL",
+      "BNE"
+    ],
+    [
+      "AKL",
+      "CAN"
+    ],
+    [
+      "AKL",
+      "CGK"
+    ],
+    [
+      "AKL",
+      "CNS"
+    ],
+    [
+      "AKL",
+      "DOH"
+    ],
+    [
+      "AKL",
+      "DPS"
+    ],
+    [
+      "AKL",
+      "DXB"
+    ],
+    [
+      "AKL",
+      "HAK"
+    ],
+    [
+      "AKL",
+      "HBA"
+    ],
+    [
+      "AKL",
+      "HGH"
+    ],
+    [
+      "AKL",
+      "ICN"
+    ],
+    [
+      "AKL",
+      "KUL"
+    ],
+    [
+      "AKL",
+      "MCY"
+    ],
+    [
+      "AKL",
+      "MEL"
+    ],
+    [
+      "AKL",
+      "NRT"
+    ],
+    [
+      "AKL",
+      "OOL"
+    ],
+    [
+      "AKL",
+      "PEK"
+    ],
+    [
+      "AKL",
+      "PER"
+    ],
+    [
+      "AKL",
+      "PVG"
+    ],
+    [
+      "AKL",
+      "SIN"
+    ],
+    [
+      "AKL",
+      "SYD"
+    ],
+    [
+      "AKL",
+      "SZX"
+    ],
+    [
+      "AKL",
+      "TFU"
+    ],
+    [
+      "AKL",
+      "WSI"
+    ],
+    [
+      "BNE",
+      "AKL"
+    ],
+    [
+      "BNE",
+      "CHC"
+    ],
+    [
+      "BNE",
+      "WLG"
+    ],
+    [
+      "BNE",
+      "ZQN"
+    ],
+    [
+      "CAN",
+      "AKL"
+    ],
+    [
+      "CAN",
+      "CHC"
+    ],
+    [
+      "CGK",
+      "AKL"
+    ],
+    [
+      "CHC",
+      "ADL"
+    ],
+    [
+      "CHC",
+      "BNE"
+    ],
+    [
+      "CHC",
+      "CAN"
+    ],
+    [
+      "CHC",
+      "CNS"
+    ],
+    [
+      "CHC",
+      "DXB"
+    ],
+    [
+      "CHC",
+      "MEL"
+    ],
+    [
+      "CHC",
+      "OOL"
+    ],
+    [
+      "CHC",
+      "SIN"
+    ],
+    [
+      "CHC",
+      "SYD"
+    ],
+    [
+      "CNS",
+      "AKL"
+    ],
+    [
+      "CNS",
+      "CHC"
+    ],
+    [
+      "DOH",
+      "AKL"
+    ],
+    [
+      "DPS",
+      "AKL"
+    ],
+    [
+      "DUD",
+      "OOL"
+    ],
+    [
+      "DXB",
+      "AKL"
+    ],
+    [
+      "DXB",
+      "CHC"
+    ],
+    [
+      "HAK",
+      "AKL"
+    ],
+    [
+      "HBA",
+      "AKL"
+    ],
+    [
+      "HGH",
+      "AKL"
+    ],
+    [
+      "HLZ",
+      "OOL"
+    ],
+    [
+      "HLZ",
+      "SYD"
+    ],
+    [
+      "ICN",
+      "AKL"
+    ],
+    [
+      "KUL",
+      "AKL"
+    ],
+    [
+      "MCY",
+      "AKL"
+    ],
+    [
+      "MEL",
+      "AKL"
+    ],
+    [
+      "MEL",
+      "CHC"
+    ],
+    [
+      "MEL",
+      "WLG"
+    ],
+    [
+      "MEL",
+      "ZQN"
+    ],
+    [
+      "NRT",
+      "AKL"
+    ],
+    [
+      "OOL",
+      "AKL"
+    ],
+    [
+      "OOL",
+      "CHC"
+    ],
+    [
+      "OOL",
+      "DUD"
+    ],
+    [
+      "OOL",
+      "HLZ"
+    ],
+    [
+      "OOL",
+      "WLG"
+    ],
+    [
+      "OOL",
+      "ZQN"
+    ],
+    [
+      "PEK",
+      "AKL"
+    ],
+    [
+      "PER",
+      "AKL"
+    ],
+    [
+      "PVG",
+      "AKL"
+    ],
+    [
+      "SIN",
+      "AKL"
+    ],
+    [
+      "SIN",
+      "CHC"
+    ],
+    [
+      "SYD",
+      "AKL"
+    ],
+    [
+      "SYD",
+      "CHC"
+    ],
+    [
+      "SYD",
+      "HLZ"
+    ],
+    [
+      "SYD",
+      "WLG"
+    ],
+    [
+      "SYD",
+      "ZQN"
+    ],
+    [
+      "SZX",
+      "AKL"
+    ],
+    [
+      "TFU",
+      "AKL"
+    ],
+    [
+      "WLG",
+      "BNE"
+    ],
+    [
+      "WLG",
+      "MEL"
+    ],
+    [
+      "WLG",
+      "OOL"
+    ],
+    [
+      "WLG",
+      "SYD"
+    ],
+    [
+      "WSI",
+      "AKL"
+    ],
+    [
+      "ZQN",
+      "BNE"
+    ],
+    [
+      "ZQN",
+      "MEL"
+    ],
+    [
+      "ZQN",
+      "OOL"
+    ],
+    [
+      "ZQN",
+      "SYD"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "ADL",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "ADL",
+      "destination": "CHC",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "ADL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "BNE",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "CNS",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "HBA",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "MCY",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "MEL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "OOL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "PER",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "SYD",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "WSI",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "BNE",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "BNE",
+      "destination": "CHC",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "BNE",
+      "destination": "WLG",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "BNE",
+      "destination": "ZQN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CHC",
+      "destination": "ADL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CHC",
+      "destination": "BNE",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CHC",
+      "destination": "CNS",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CHC",
+      "destination": "MEL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CHC",
+      "destination": "OOL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CHC",
+      "destination": "SYD",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CNS",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CNS",
+      "destination": "CHC",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "DUD",
+      "destination": "OOL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "HBA",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "HLZ",
+      "destination": "OOL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "HLZ",
+      "destination": "SYD",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "MCY",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "MEL",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "MEL",
+      "destination": "CHC",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "MEL",
+      "destination": "WLG",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "MEL",
+      "destination": "ZQN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "OOL",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "OOL",
+      "destination": "CHC",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "OOL",
+      "destination": "DUD",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "OOL",
+      "destination": "HLZ",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "OOL",
+      "destination": "WLG",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "OOL",
+      "destination": "ZQN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "PER",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "SYD",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "SYD",
+      "destination": "CHC",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "SYD",
+      "destination": "HLZ",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "SYD",
+      "destination": "WLG",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "SYD",
+      "destination": "ZQN",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "WLG",
+      "destination": "BNE",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "WLG",
+      "destination": "MEL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "WLG",
+      "destination": "OOL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "WLG",
+      "destination": "SYD",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "WSI",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "BNE",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "MEL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "OOL",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "SYD",
+      "scope": "international",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "CGK",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DPS",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CGK",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "DPS",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "KUL",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CHC",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "SIN",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CHC",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DOH",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DXB",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "CHC",
+      "destination": "DXB",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "DOH",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "DXB",
+      "destination": "AKL",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "DXB",
+      "destination": "CHC",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; no cached flight identity changes"
+    },
+    {
+      "origin": "AKL",
+      "destination": "NRT",
+      "scope": "international",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Airline destination candidate, Tokyo explicitly probed as NRT; dated nonstop capture required"
+    },
+    {
+      "origin": "AKL",
+      "destination": "PVG",
+      "scope": "international",
+      "source": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+      "kind": "Airline destination candidate, Tokyo explicitly probed as NRT; dated nonstop capture required"
+    },
+    {
+      "origin": "AKL",
+      "destination": "ICN",
+      "scope": "international",
+      "source": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+      "kind": "Historical airport network context; exact gateway probes, not dated operation evidence; Chengdu explicitly probed as TFU"
+    },
+    {
+      "origin": "AKL",
+      "destination": "PEK",
+      "scope": "international",
+      "source": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+      "kind": "Historical airport network context; exact gateway probes, not dated operation evidence; Chengdu explicitly probed as TFU"
+    },
+    {
+      "origin": "AKL",
+      "destination": "CAN",
+      "scope": "international",
+      "source": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+      "kind": "Historical airport network context; exact gateway probes, not dated operation evidence; Chengdu explicitly probed as TFU"
+    },
+    {
+      "origin": "AKL",
+      "destination": "SZX",
+      "scope": "international",
+      "source": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+      "kind": "Historical airport network context; exact gateway probes, not dated operation evidence; Chengdu explicitly probed as TFU"
+    },
+    {
+      "origin": "AKL",
+      "destination": "HGH",
+      "scope": "international",
+      "source": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+      "kind": "Historical airport network context; exact gateway probes, not dated operation evidence; Chengdu explicitly probed as TFU"
+    },
+    {
+      "origin": "AKL",
+      "destination": "HAK",
+      "scope": "international",
+      "source": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+      "kind": "Historical airport network context; exact gateway probes, not dated operation evidence; Chengdu explicitly probed as TFU"
+    },
+    {
+      "origin": "AKL",
+      "destination": "TFU",
+      "scope": "international",
+      "source": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+      "kind": "Historical airport network context; exact gateway probes, not dated operation evidence; Chengdu explicitly probed as TFU"
+    },
+    {
+      "origin": "CHC",
+      "destination": "CAN",
+      "scope": "international",
+      "source": "https://www.christchurchairport.nz/about-us/who-we-are/media/2026/christchurch-airports-biggest-ever-international-summer-takes-flight/",
+      "kind": "Airport summer schedule candidate; only dated captures create flight records"
+    },
+    {
+      "origin": "WLG",
+      "destination": "BNE",
+      "scope": "international",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/international-destinations/",
+      "kind": "Official airport nonstop destination candidate, dated capture required"
+    },
+    {
+      "origin": "WLG",
+      "destination": "SYD",
+      "scope": "international",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/international-destinations/",
+      "kind": "Official airport nonstop destination candidate, dated capture required"
+    },
+    {
+      "origin": "WLG",
+      "destination": "MEL",
+      "scope": "international",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/international-destinations/",
+      "kind": "Official airport nonstop destination candidate, dated capture required"
+    },
+    {
+      "origin": "WLG",
+      "destination": "OOL",
+      "scope": "international",
+      "source": "https://www.wellingtonairport.co.nz/flight-information/routes/international-destinations/",
+      "kind": "Official airport nonstop destination candidate, dated capture required"
+    }
+  ],
+  "input_manifests": [
+    {
+      "path": "data/sources/australia_international_routes.json",
+      "sha256": "951aaaf884a16510eb2aad211150e832157734dacf02183676b53c59c2d0f8c1"
+    },
+    {
+      "path": "data/sources/indonesia_international_routes.json",
+      "sha256": "7b0e24fc286e8184900bfd71ed778a8a5faaed1f27768aca37f03e274cfafad4"
+    },
+    {
+      "path": "data/sources/malaysia_international_routes.json",
+      "sha256": "94f91fcc8380423ea350c6f77ba21af8536b14b0b81148b520b03200b092cd73"
+    },
+    {
+      "path": "data/sources/singapore_international_routes.json",
+      "sha256": "6d1d8a79eb7de4066ea448e1040c12d17661a418b76348df8db3c707d5aa2219"
+    },
+    {
+      "path": "data/sources/india_international_routes.json",
+      "sha256": "b419b11ec71ffc8f48a3745a69c6c3f2b8d0d6f04aabd73d0142333e54683a3d"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    }
+  ],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+  "source_urls": {
+    "airline": "https://www.airnewzealand.com/en-nz/travel-info/destinations-we-fly-to",
+    "wlg_domestic": "https://www.wellingtonairport.co.nz/flight-information/routes/domestic-destinations/",
+    "wlg_international": "https://www.wellingtonairport.co.nz/flight-information/routes/international-destinations/",
+    "akl_network": "https://www.aucklandairport.co.nz/content/dam/aia/files/corporate/annual-report-2025/FY25%20Annual%20results%20presentation.pdf",
+    "chc_schedule": "https://www.christchurchairport.nz/about-us/who-we-are/media/2026/christchurch-airports-biggest-ever-international-summer-takes-flight/"
+  },
+  "source_reviewed_date": "2026-10-26",
+  "unresolved_airports": [],
+  "base_directional_routes": 70,
+  "coverage_scope": "Selected North and South Island hubs and regional airports; international limited to existing SunTrain flight countries",
+  "deferred_airports": [
+    "CHT and smaller commuter, island and scenic services"
+  ],
+  "deferred_routes": [
+    "CHC-NRT starts 2026-11-28",
+    "CHC-PER starts 2026-11-30"
+  ],
+  "route_source_sha256": "3d8be305a4b74a838fcd9af694e85a814ed9d3699476af3334b705611773355d"
+}

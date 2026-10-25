@@ -24,14 +24,15 @@
     "KH": "Cambodia",
     "LA": "Laos",
     "MM": "Myanmar",
-    "TL": "Timor-Leste"
+    "TL": "Timor-Leste",
+    "NZ": "New Zealand"
   },
   "hubs": [
     "AUH",
     "DOH",
     "DXB"
   ],
-  "base_directional_routes": 1724,
+  "base_directional_routes": 1814,
   "airports": [
     {
       "code": "ADL",
@@ -43,6 +44,17 @@
       "mode": "flight",
       "lat": -34.947512,
       "lon": 138.533393
+    },
+    {
+      "code": "AKL",
+      "icao": "NZAA",
+      "name": "Auckland International Airport (AKL)",
+      "municipality": "Auckland",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.01199,
+      "lon": 174.786331
     },
     {
       "code": "AMD",
@@ -322,6 +334,17 @@
       "lon": 125.684998
     },
     {
+      "code": "CHC",
+      "icao": "NZCH",
+      "name": "Christchurch International Airport (CHC)",
+      "municipality": "Christchurch",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -43.489029,
+      "lon": 172.532065
+    },
+    {
       "code": "CJB",
       "icao": "VOCB",
       "name": "Coimbatore International Airport (CJB)",
@@ -564,6 +587,17 @@
       "lon": 130.88185
     },
     {
+      "code": "DUD",
+      "icao": "NZDN",
+      "name": "Dunedin International Airport (DUD)",
+      "municipality": "Dunedin",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -45.929017,
+      "lon": 170.197758
+    },
+    {
       "code": "DVO",
       "icao": "RPMD",
       "name": "Francisco Bangoy International Airport (DVO)",
@@ -696,6 +730,17 @@
       "lon": 105.806999
     },
     {
+      "code": "HBA",
+      "icao": "YMHB",
+      "name": "Hobart International Airport (HBA)",
+      "municipality": "Hobart (Cambridge)",
+      "country": "AU",
+      "timezone": "Australia/Hobart",
+      "mode": "flight",
+      "lat": -42.837032,
+      "lon": 147.513022
+    },
+    {
       "code": "HDY",
       "icao": "VTSS",
       "name": "Hat Yai International Airport (HDY)",
@@ -749,6 +794,17 @@
       "mode": "flight",
       "lat": -6.266989,
       "lon": 106.890318
+    },
+    {
+      "code": "HLZ",
+      "icao": "NZHN",
+      "name": "Hamilton International Airport (HLZ)",
+      "municipality": "Hamilton",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.866961,
+      "lon": 175.331952
     },
     {
       "code": "HND",
@@ -1184,11 +1240,11 @@
       "icao": "YBSU",
       "name": "Sunshine Coast Airport (MCY)",
       "municipality": "Maroochydore",
+      "country": "AU",
       "timezone": "Australia/Brisbane",
       "mode": "flight",
       "lat": -26.593324,
-      "lon": 153.08319,
-      "country": "AU"
+      "lon": 153.08319
     },
     {
       "code": "MDC",
@@ -1895,6 +1951,17 @@
       "lon": 83.503617
     },
     {
+      "code": "WLG",
+      "icao": "NZWN",
+      "name": "Wellington International Airport (WLG)",
+      "municipality": "Wellington",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -41.326839,
+      "lon": 174.806862
+    },
+    {
       "code": "WNZ",
       "icao": "ZSWZ",
       "name": "Wenzhou Longwan International Airport (WNZ)",
@@ -1904,6 +1971,17 @@
       "mode": "flight",
       "lat": 27.910572,
       "lon": 120.853465
+    },
+    {
+      "code": "WSI",
+      "icao": "YSWS",
+      "name": "Western Sydney International (Nancy-Bird Walton) Airport (WSI)",
+      "municipality": "Sydney",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.883461,
+      "lon": 150.712981
     },
     {
       "code": "WUH",
@@ -1981,9 +2059,24 @@
       "mode": "flight",
       "lat": 30.554132,
       "lon": 111.482563
+    },
+    {
+      "code": "ZQN",
+      "icao": "NZQN",
+      "name": "Queenstown Airport (ZQN)",
+      "municipality": "Queenstown",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -45.019205,
+      "lon": 168.746379
     }
   ],
   "routes": [
+    [
+      "ADL",
+      "AKL"
+    ],
     [
       "ADL",
       "CAN"
@@ -1991,6 +2084,10 @@
     [
       "ADL",
       "CGK"
+    ],
+    [
+      "ADL",
+      "CHC"
     ],
     [
       "ADL",
@@ -2019,6 +2116,106 @@
     [
       "ADL",
       "SIN"
+    ],
+    [
+      "AKL",
+      "ADL"
+    ],
+    [
+      "AKL",
+      "BNE"
+    ],
+    [
+      "AKL",
+      "CAN"
+    ],
+    [
+      "AKL",
+      "CGK"
+    ],
+    [
+      "AKL",
+      "CNS"
+    ],
+    [
+      "AKL",
+      "DOH"
+    ],
+    [
+      "AKL",
+      "DPS"
+    ],
+    [
+      "AKL",
+      "DXB"
+    ],
+    [
+      "AKL",
+      "HAK"
+    ],
+    [
+      "AKL",
+      "HBA"
+    ],
+    [
+      "AKL",
+      "HGH"
+    ],
+    [
+      "AKL",
+      "ICN"
+    ],
+    [
+      "AKL",
+      "KUL"
+    ],
+    [
+      "AKL",
+      "MCY"
+    ],
+    [
+      "AKL",
+      "MEL"
+    ],
+    [
+      "AKL",
+      "NRT"
+    ],
+    [
+      "AKL",
+      "OOL"
+    ],
+    [
+      "AKL",
+      "PEK"
+    ],
+    [
+      "AKL",
+      "PER"
+    ],
+    [
+      "AKL",
+      "PVG"
+    ],
+    [
+      "AKL",
+      "SIN"
+    ],
+    [
+      "AKL",
+      "SYD"
+    ],
+    [
+      "AKL",
+      "SZX"
+    ],
+    [
+      "AKL",
+      "TFU"
+    ],
+    [
+      "AKL",
+      "WSI"
     ],
     [
       "AMD",
@@ -2634,6 +2831,10 @@
     ],
     [
       "BNE",
+      "AKL"
+    ],
+    [
+      "BNE",
       "BKK"
     ],
     [
@@ -2643,6 +2844,10 @@
     [
       "BNE",
       "CGK"
+    ],
+    [
+      "BNE",
+      "CHC"
     ],
     [
       "BNE",
@@ -2699,6 +2904,14 @@
     [
       "BNE",
       "SIN"
+    ],
+    [
+      "BNE",
+      "WLG"
+    ],
+    [
+      "BNE",
+      "ZQN"
     ],
     [
       "BOM",
@@ -2882,6 +3095,10 @@
     ],
     [
       "CAN",
+      "AKL"
+    ],
+    [
+      "CAN",
       "BKI"
     ],
     [
@@ -2903,6 +3120,10 @@
     [
       "CAN",
       "CGK"
+    ],
+    [
+      "CAN",
+      "CHC"
     ],
     [
       "CAN",
@@ -3170,6 +3391,10 @@
     ],
     [
       "CGK",
+      "AKL"
+    ],
+    [
+      "CGK",
       "AUH"
     ],
     [
@@ -3369,6 +3594,42 @@
       "SIN"
     ],
     [
+      "CHC",
+      "ADL"
+    ],
+    [
+      "CHC",
+      "BNE"
+    ],
+    [
+      "CHC",
+      "CAN"
+    ],
+    [
+      "CHC",
+      "CNS"
+    ],
+    [
+      "CHC",
+      "DXB"
+    ],
+    [
+      "CHC",
+      "MEL"
+    ],
+    [
+      "CHC",
+      "OOL"
+    ],
+    [
+      "CHC",
+      "SIN"
+    ],
+    [
+      "CHC",
+      "SYD"
+    ],
+    [
       "CJB",
       "AUH"
     ],
@@ -3534,7 +3795,15 @@
     ],
     [
       "CNS",
+      "AKL"
+    ],
+    [
+      "CNS",
       "CGK"
+    ],
+    [
+      "CNS",
+      "CHC"
     ],
     [
       "CNS",
@@ -4218,6 +4487,10 @@
     ],
     [
       "DOH",
+      "AKL"
+    ],
+    [
+      "DOH",
       "AMD"
     ],
     [
@@ -4419,6 +4692,10 @@
     [
       "DPS",
       "ADL"
+    ],
+    [
+      "DPS",
+      "AKL"
     ],
     [
       "DPS",
@@ -4657,6 +4934,10 @@
       "SIN"
     ],
     [
+      "DUD",
+      "OOL"
+    ],
+    [
       "DVO",
       "DOH"
     ],
@@ -4671,6 +4952,10 @@
     [
       "DXB",
       "ADL"
+    ],
+    [
+      "DXB",
+      "AKL"
     ],
     [
       "DXB",
@@ -4723,6 +5008,10 @@
     [
       "DXB",
       "CGK"
+    ],
+    [
+      "DXB",
+      "CHC"
     ],
     [
       "DXB",
@@ -5062,6 +5351,10 @@
     ],
     [
       "HAK",
+      "AKL"
+    ],
+    [
+      "HAK",
       "AUH"
     ],
     [
@@ -5249,6 +5542,10 @@
       "VTE"
     ],
     [
+      "HBA",
+      "AKL"
+    ],
+    [
       "HDY",
       "KUL"
     ],
@@ -5259,6 +5556,10 @@
     [
       "HFE",
       "SIN"
+    ],
+    [
+      "HGH",
+      "AKL"
     ],
     [
       "HGH",
@@ -5433,6 +5734,14 @@
       "SIN"
     ],
     [
+      "HLZ",
+      "OOL"
+    ],
+    [
+      "HLZ",
+      "SYD"
+    ],
+    [
       "HND",
       "BKK"
     ],
@@ -5603,6 +5912,10 @@
     [
       "HYD",
       "SIN"
+    ],
+    [
+      "ICN",
+      "AKL"
     ],
     [
       "ICN",
@@ -6418,6 +6731,10 @@
     ],
     [
       "KUL",
+      "AKL"
+    ],
+    [
+      "KUL",
       "AMD"
     ],
     [
@@ -6978,6 +7295,10 @@
     ],
     [
       "MCY",
+      "AKL"
+    ],
+    [
+      "MCY",
       "DPS"
     ],
     [
@@ -7014,6 +7335,10 @@
     ],
     [
       "MEL",
+      "AKL"
+    ],
+    [
+      "MEL",
       "AUH"
     ],
     [
@@ -7031,6 +7356,10 @@
     [
       "MEL",
       "CGK"
+    ],
+    [
+      "MEL",
+      "CHC"
     ],
     [
       "MEL",
@@ -7130,7 +7459,15 @@
     ],
     [
       "MEL",
+      "WLG"
+    ],
+    [
+      "MEL",
       "XMN"
+    ],
+    [
+      "MEL",
+      "ZQN"
     ],
     [
       "MKZ",
@@ -7470,6 +7807,10 @@
     ],
     [
       "NRT",
+      "AKL"
+    ],
+    [
+      "NRT",
       "AUH"
     ],
     [
@@ -7682,11 +8023,35 @@
     ],
     [
       "OOL",
+      "AKL"
+    ],
+    [
+      "OOL",
       "CGK"
     ],
     [
       "OOL",
+      "CHC"
+    ],
+    [
+      "OOL",
       "DPS"
+    ],
+    [
+      "OOL",
+      "DUD"
+    ],
+    [
+      "OOL",
+      "HLZ"
+    ],
+    [
+      "OOL",
+      "WLG"
+    ],
+    [
+      "OOL",
+      "ZQN"
     ],
     [
       "PAT",
@@ -7699,6 +8064,10 @@
     [
       "PDG",
       "SIN"
+    ],
+    [
+      "PEK",
+      "AKL"
     ],
     [
       "PEK",
@@ -7875,6 +8244,10 @@
     [
       "PEN",
       "XMN"
+    ],
+    [
+      "PER",
+      "AKL"
     ],
     [
       "PER",
@@ -8199,6 +8572,10 @@
     [
       "PVG",
       "ADL"
+    ],
+    [
+      "PVG",
+      "AKL"
     ],
     [
       "PVG",
@@ -8674,6 +9051,10 @@
     ],
     [
       "SIN",
+      "AKL"
+    ],
+    [
+      "SIN",
       "AMD"
     ],
     [
@@ -8751,6 +9132,10 @@
     [
       "SIN",
       "CGQ"
+    ],
+    [
+      "SIN",
+      "CHC"
     ],
     [
       "SIN",
@@ -9270,6 +9655,10 @@
     ],
     [
       "SYD",
+      "AKL"
+    ],
+    [
+      "SYD",
       "AUH"
     ],
     [
@@ -9287,6 +9676,10 @@
     [
       "SYD",
       "CGK"
+    ],
+    [
+      "SYD",
+      "CHC"
     ],
     [
       "SYD",
@@ -9323,6 +9716,10 @@
     [
       "SYD",
       "HKT"
+    ],
+    [
+      "SYD",
+      "HLZ"
     ],
     [
       "SYD",
@@ -9390,6 +9787,10 @@
     ],
     [
       "SYD",
+      "WLG"
+    ],
+    [
+      "SYD",
       "WUH"
     ],
     [
@@ -9399,6 +9800,10 @@
     [
       "SYD",
       "XMN"
+    ],
+    [
+      "SYD",
+      "ZQN"
     ],
     [
       "SYX",
@@ -9439,6 +9844,10 @@
     [
       "SZB",
       "XSP"
+    ],
+    [
+      "SZX",
+      "AKL"
     ],
     [
       "SZX",
@@ -9599,6 +10008,10 @@
     [
       "TAO",
       "SYD"
+    ],
+    [
+      "TFU",
+      "AKL"
     ],
     [
       "TFU",
@@ -9877,6 +10290,22 @@
       "SIN"
     ],
     [
+      "WLG",
+      "BNE"
+    ],
+    [
+      "WLG",
+      "MEL"
+    ],
+    [
+      "WLG",
+      "OOL"
+    ],
+    [
+      "WLG",
+      "SYD"
+    ],
+    [
       "WNZ",
       "CGK"
     ],
@@ -9891,6 +10320,10 @@
     [
       "WNZ",
       "SIN"
+    ],
+    [
+      "WSI",
+      "AKL"
     ],
     [
       "WUH",
@@ -10031,12 +10464,40 @@
     [
       "YIH",
       "SIN"
+    ],
+    [
+      "ZQN",
+      "BNE"
+    ],
+    [
+      "ZQN",
+      "MEL"
+    ],
+    [
+      "ZQN",
+      "OOL"
+    ],
+    [
+      "ZQN",
+      "SYD"
     ]
   ],
   "evidence": [
     {
       "origin": "ADL",
+      "destination": "AKL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ADL",
       "destination": "CAN",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ADL",
+      "destination": "CHC",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -10079,6 +10540,66 @@
     {
       "origin": "ADL",
       "destination": "SIN",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "ADL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "BNE",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "CNS",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "HBA",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "MCY",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "MEL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "OOL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "PER",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "WSI",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -10132,6 +10653,12 @@
     },
     {
       "origin": "BNE",
+      "destination": "AKL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
       "destination": "BKK",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -10139,6 +10666,12 @@
     {
       "origin": "BNE",
       "destination": "CAN",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
+      "destination": "CHC",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -10227,6 +10760,18 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "BNE",
+      "destination": "WLG",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
+      "destination": "ZQN",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "BWN",
       "destination": "MEL",
       "source": "data/sources/australia_international_routes.json",
@@ -10289,6 +10834,54 @@
     {
       "origin": "CGK",
       "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "ADL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "BNE",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "CNS",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "MEL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "OOL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CNS",
+      "destination": "AKL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CNS",
+      "destination": "CHC",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -10503,6 +11096,12 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "DUD",
+      "destination": "OOL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "DXB",
       "destination": "ADL",
       "source": "data/sources/australia_international_routes.json",
@@ -10557,6 +11156,12 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "HBA",
+      "destination": "AKL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "HGH",
       "destination": "MEL",
       "source": "data/sources/australia_international_routes.json",
@@ -10576,6 +11181,18 @@
     },
     {
       "origin": "HKT",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HLZ",
+      "destination": "OOL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HLZ",
       "destination": "SYD",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -10672,7 +11289,19 @@
     },
     {
       "origin": "MCY",
+      "destination": "AKL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MCY",
       "destination": "DPS",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "AKL",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -10703,6 +11332,12 @@
     {
       "origin": "MEL",
       "destination": "CGK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "CHC",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -10852,7 +11487,19 @@
     },
     {
       "origin": "MEL",
+      "destination": "WLG",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
       "destination": "XMN",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "ZQN",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -10930,7 +11577,43 @@
     },
     {
       "origin": "OOL",
+      "destination": "AKL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "CHC",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
       "destination": "DPS",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "DUD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "HLZ",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "WLG",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "ZQN",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -10943,6 +11626,12 @@
     {
       "origin": "PEK",
       "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PER",
+      "destination": "AKL",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -11158,6 +11847,12 @@
     },
     {
       "origin": "SYD",
+      "destination": "AKL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
       "destination": "AUH",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -11183,6 +11878,12 @@
     {
       "origin": "SYD",
       "destination": "CGK",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "CHC",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -11237,6 +11938,12 @@
     {
       "origin": "SYD",
       "destination": "HKT",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "HLZ",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -11338,6 +12045,12 @@
     },
     {
       "origin": "SYD",
+      "destination": "WLG",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
       "destination": "WUH",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -11351,6 +12064,12 @@
     {
       "origin": "SYD",
       "destination": "XMN",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "ZQN",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -11391,6 +12110,36 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "WLG",
+      "destination": "BNE",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WLG",
+      "destination": "MEL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WLG",
+      "destination": "OOL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WLG",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WSI",
+      "destination": "AKL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "WUH",
       "destination": "SYD",
       "source": "data/sources/australia_international_routes.json",
@@ -11410,6 +12159,30 @@
     },
     {
       "origin": "XMN",
+      "destination": "SYD",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "BNE",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "MEL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "OOL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ZQN",
       "destination": "SYD",
       "source": "data/sources/australia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -14415,6 +15188,18 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "AKL",
+      "destination": "CGK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DPS",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "AUH",
       "destination": "CGK",
       "source": "data/sources/indonesia_international_routes.json",
@@ -14567,6 +15352,12 @@
     {
       "origin": "CGK",
       "destination": "ADL",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CGK",
+      "destination": "AKL",
       "source": "data/sources/indonesia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -14933,6 +15724,12 @@
     {
       "origin": "DPS",
       "destination": "ADL",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DPS",
+      "destination": "AKL",
       "source": "data/sources/indonesia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -16233,6 +17030,12 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "AKL",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "AMD",
       "destination": "KUL",
       "source": "data/sources/malaysia_international_routes.json",
@@ -17009,6 +17812,12 @@
     {
       "origin": "KUL",
       "destination": "ADL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "AKL",
       "source": "data/sources/malaysia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -18459,6 +19268,546 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "ADL",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ADL",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "ADL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "BNE",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "CAN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "CGK",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "CNS",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DOH",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DPS",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DXB",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "HAK",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "HBA",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "HGH",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "ICN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "KUL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "MCY",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "MEL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "NRT",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "OOL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "PEK",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "PER",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "PVG",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "SIN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "SYD",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "SZX",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "TFU",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "WSI",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
+      "destination": "WLG",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BNE",
+      "destination": "ZQN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CAN",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CAN",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CGK",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "ADL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "BNE",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "CAN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "CNS",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "DXB",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "MEL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "OOL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "SIN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
+      "destination": "SYD",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CNS",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CNS",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DOH",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DPS",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DUD",
+      "destination": "OOL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HAK",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HBA",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HGH",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HLZ",
+      "destination": "OOL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HLZ",
+      "destination": "SYD",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ICN",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MCY",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "WLG",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "MEL",
+      "destination": "ZQN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "DUD",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "HLZ",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "WLG",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "OOL",
+      "destination": "ZQN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PEK",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PER",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PVG",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "CHC",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "HLZ",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "WLG",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SYD",
+      "destination": "ZQN",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SZX",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WLG",
+      "destination": "BNE",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WLG",
+      "destination": "MEL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WLG",
+      "destination": "OOL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WLG",
+      "destination": "SYD",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "WSI",
+      "destination": "AKL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "BNE",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "MEL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "OOL",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ZQN",
+      "destination": "SYD",
+      "source": "data/sources/new_zealand_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "AUH",
       "destination": "MNL",
       "source": "data/sources/philippines_international_routes.json",
@@ -19005,6 +20354,12 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "AKL",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "AMD",
       "destination": "SIN",
       "source": "data/sources/singapore_international_routes.json",
@@ -19120,6 +20475,12 @@
     },
     {
       "origin": "CGQ",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CHC",
       "destination": "SIN",
       "source": "data/sources/singapore_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -19684,6 +21045,12 @@
     },
     {
       "origin": "SIN",
+      "destination": "AKL",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
       "destination": "AMD",
       "source": "data/sources/singapore_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -19799,6 +21166,12 @@
     {
       "origin": "SIN",
       "destination": "CGQ",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CHC",
       "source": "data/sources/singapore_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -23499,6 +24872,18 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "AKL",
+      "destination": "DOH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AKL",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "AMD",
       "destination": "AUH",
       "source": "data/sources/gulf_flights_routes.json",
@@ -23931,6 +25316,12 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "CHC",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "CJB",
       "destination": "AUH",
       "source": "data/sources/gulf_flights_routes.json",
@@ -24029,6 +25420,12 @@
     {
       "origin": "DOH",
       "destination": "ADL",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DOH",
+      "destination": "AKL",
       "source": "data/sources/gulf_flights_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -24352,6 +25749,12 @@
     },
     {
       "origin": "DXB",
+      "destination": "AKL",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
       "destination": "AMD",
       "source": "data/sources/gulf_flights_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -24419,6 +25822,12 @@
     {
       "origin": "DXB",
       "destination": "CGK",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "CHC",
       "source": "data/sources/gulf_flights_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -26473,6 +27882,10 @@
       "sha256": "2d86896b9f471e9ec4e0d44e3410c41c985e378c877b3580827a95de2d6cd765"
     },
     {
+      "path": "data/sources/new_zealand_international_routes.json",
+      "sha256": "b986348f3ec1c9add1af9bf826ae87546b073ceaefaf3be5bf64719272b8cfe6"
+    },
+    {
       "path": "data/sources/philippines_international_routes.json",
       "sha256": "17ae841f722deaec2ad5072df4a164e50134df3fca08b35632335e00c09c6a6f"
     },
@@ -26527,5 +27940,5 @@
   "route_hash_basis": "SHA256 of curated candidates and input manifest pins; not raw-page bytes",
   "unresolved_airports": [],
   "coverage_scope": "Existing inter-country candidates plus major East Asian gateways; regional gaps remain",
-  "route_source_sha256": "4f83e7d979dcb10c37b65f0fb9d3007291870ae0a95c84d7b607c02211c7ec7b"
+  "route_source_sha256": "b1fa21b8eaef7f431d1f9b1f1f3aa023c7cb6ccdc7938e5bf0cbd1bfdd8ad2f1"
 }

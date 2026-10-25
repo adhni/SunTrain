@@ -3,7 +3,7 @@
 import json
 import os
 from pathlib import Path
-from dashboard.asean_flights import city_settings as asean_city_settings
+from dashboard.flight_profiles import city_settings as profile_city_settings
 
 GERMANY_REGIONAL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/germany/regional-operators.json").read_text())
@@ -553,7 +553,7 @@ for _city, _settings in {
         CITIES[_city] = _settings
 
 
-CITIES.update(asean_city_settings())
+CITIES.update(profile_city_settings())
 
 def city_settings(city="melbourne"):
     if city not in CITIES:

@@ -194,7 +194,8 @@
                     control.disabled = event === 'destinations' && this.station === null;
                     control.dataset.event = event; control.setAttribute('aria-pressed', String(event === this.event)); tabs.append(control);
                 }
-                this.host.append(tabs, node('p', replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : replay.day.timezone === 'Asia/Kuala_Lumpur' ? 'Airport times are local. The replay clock uses MYT.' : 'Airport times are local. The replay clock uses Melbourne time.', 'replay-muted replay-small'));
+                const clockNote=replay.day.timezone==='Asia/Dubai'?'Airport times are local. The replay clock uses Dubai time (UTC+4).':replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : replay.day.timezone === 'Asia/Kuala_Lumpur' ? 'Airport times are local. The replay clock uses MYT.' : 'Airport times are local. The replay clock uses Melbourne time.';
+                this.host.append(tabs,node('p',clockNote,'replay-muted replay-small'));
                 if (replay.day.schedule?.fare_context) this.host.append(node('p', 'Captured fares · 1 adult · Economy · One-way. Prices may change.', 'replay-muted replay-small'));
             }
             const picker = node("details"); picker.open = this.station === null;

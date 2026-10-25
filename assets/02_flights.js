@@ -20,8 +20,14 @@
     }
     function priceLabel(service) {
         const p=service.price;
-        if (!p || !Number.isSafeInteger(p.amount_minor) || p.amount_minor<=0 || p.currency!=='MYR') return 'Price unavailable';
+        if (!p || !Number.isSafeInteger(p.amount_minor) || p.amount_minor<=0 || !['MYR','USD'].includes(p.currency)) return 'Price unavailable';
         return new Intl.NumberFormat(root.suntrainI18n?.locale || 'en-MY', {style:'currency',currency:p.currency,currencyDisplay:'code'}).format(p.amount_minor/100);
+    }
+    function captureTime(at, timezone) {
+        const text=new Intl.DateTimeFormat(root.suntrainI18n?.locale || 'en-AU', {
+            timeZone:timezone,year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZoneName:'shortOffset'
+        }).format(new Date(at));
+        return timezone==='Asia/Kuala_Lumpur'?text.replace(/GMT\+8/,'MYT'):text;
     }
     function planeImage(color = '#f57c28') {
         const canvas = document.createElement('canvas'); canvas.width = canvas.height = 64;
@@ -41,7 +47,7 @@
         ctx.fillStyle = '#fff'; ctx.fillText(code, 44, 20);
         return ctx.getImageData(0, 0, 88, 40);
     }
-    const api = {bearing, bounds, priceLabel, planeImage, airportImage};
+    const api = {bearing, bounds, priceLabel, captureTime, planeImage, airportImage};
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     root.suntrainFlights = api;
 })(typeof window !== 'undefined' ? window : globalThis);

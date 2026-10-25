@@ -30,7 +30,9 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
             'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9'), 'AK': ('AirAsia', '#e95055'),
             'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa'),
-            'D7': ('AirAsia X', '#c75668'), 'BI': ('Royal Brunei', '#bca64b')}
+            'D7': ('AirAsia X', '#c75668'), 'BI': ('Royal Brunei', '#bca64b'),
+            'EY': ('Etihad Airways', '#bd9d61'), 'FZ': ('flydubai', '#ee9353'),
+            '3L': ('Air Arabia Abu Dhabi', '#df8078')}
 
 
 def airline_style(carrier, name):
@@ -42,6 +44,9 @@ def airline_style(carrier, name):
 
 
 def reference_path(business_date=None, city='australia_flights'):
+    if city=='gulf_flights':
+        from dashboard.gulf_flights import reference_paths as hub_paths
+        return hub_paths(business_date)[0]
     if city == 'malaysia_flights':
         return Path(os.getenv('SUNTRAIN_MALAYSIA_FLIGHTS_REFERENCE', str(DIRECTORY.parent / 'malaysia_flights/2026-11-02.json.gz')))
     if city == 'indonesia_flights':
@@ -53,6 +58,9 @@ def reference_path(business_date=None, city='australia_flights'):
 
 
 def reference_paths(business_date=None, city='australia_flights'):
+    if city=='gulf_flights':
+        from dashboard.gulf_flights import reference_paths as hub_paths
+        return hub_paths(business_date)
     paths = [reference_path(business_date, city)]
     prefix = {'indonesia_flights':'INDONESIA','australia_flights':'AUSTRALIA','malaysia_flights':'MALAYSIA'}[city]
     # The legacy March 2013 Australian snapshot remains isolated.
@@ -98,6 +106,9 @@ def continuous_arc(a, b):
 
 
 def load_reference(business_date, city):
+    if city=='gulf_flights':
+        from dashboard.gulf_flights import load_reference as hub_reference
+        return hub_reference(business_date)
     references = []
     for path in reference_paths(business_date, city):
         with gzip.open(path, 'rt') as stream:

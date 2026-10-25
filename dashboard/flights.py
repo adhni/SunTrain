@@ -8,7 +8,7 @@ import json
 import os
 
 from dashboard.cities import replay_settings
-from dashboard.asean_flights import BY_CITY as ASEAN_CITIES, load_domestic as load_asean_domestic
+from dashboard.flight_profiles import BY_CITY as PROFILE_CITIES, load_domestic as load_profile_domestic
 from scripts.prepare_australian_flights import great_circle
 
 DIRECTORY = Path(__file__).resolve().parents[1] / 'data/reference/australia_flights'
@@ -86,8 +86,8 @@ def airline_style(carrier, name):
 
 
 def reference_path(business_date=None, city='australia_flights'):
-    if city in ASEAN_CITIES:
-        _,p=ASEAN_CITIES[city]
+    if city in PROFILE_CITIES:
+        _,p=PROFILE_CITIES[city]
         if not p['domestic']:
             from dashboard.international_network import reference_path as network_path
             return network_path()
@@ -125,7 +125,7 @@ def reference_path(business_date=None, city='australia_flights'):
 
 
 def reference_paths(business_date=None, city='australia_flights', include_network=True):
-    if city in ASEAN_CITIES and not ASEAN_CITIES[city][1]['domestic']:return [reference_path(business_date,city)]
+    if city in PROFILE_CITIES and not PROFILE_CITIES[city][1]['domestic']:return [reference_path(business_date,city)]
     paths = _reference_paths(business_date,city)
     from dashboard.international_network import enabled, reference_path as network_path
     if include_network and enabled(business_date,city):paths.append(network_path())
@@ -137,7 +137,7 @@ def _reference_paths(business_date=None, city='australia_flights'):
     if city=='gulf_flights':
         from dashboard.gulf_flights import reference_paths as hub_paths
         return hub_paths(business_date)
-    if city in ASEAN_CITIES:return [reference_path(business_date,city)]
+    if city in PROFILE_CITIES:return [reference_path(business_date,city)]
     paths = [reference_path(business_date, city)]
     if city in {'singapore_flights','south_korea_flights','japan_flights','china_flights','thailand_flights','philippines_flights','vietnam_flights'}:return paths
     prefix = {'indonesia_flights':'INDONESIA','australia_flights':'AUSTRALIA','malaysia_flights':'MALAYSIA','india_flights':'INDIA'}[city]
@@ -185,13 +185,13 @@ def continuous_arc(a, b):
 
 def load_reference(business_date, city):
     from dashboard.international_network import enabled,load_archive,project,overlay
-    if city=='international_network' or (city in ASEAN_CITIES and not ASEAN_CITIES[city][1]['domestic']):return project(load_archive(),city)
+    if city=='international_network' or (city in PROFILE_CITIES and not PROFILE_CITIES[city][1]['domestic']):return project(load_archive(),city)
     reference=_load_reference(business_date,city)
     return overlay(reference,city) if enabled(business_date,city) else reference
 
 
 def _load_reference(business_date, city):
-    if city in ASEAN_CITIES:return load_asean_domestic(reference_path(business_date,city),ASEAN_CITIES[city][0])
+    if city in PROFILE_CITIES:return load_profile_domestic(reference_path(business_date,city),PROFILE_CITIES[city][0])
     if city=='gulf_flights':
         from dashboard.gulf_flights import load_reference as hub_reference
         return hub_reference(business_date)

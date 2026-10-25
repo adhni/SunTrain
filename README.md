@@ -1,6 +1,10 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia, Canada, France, Germany, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Myanmar, the Netherlands, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia, Canada, France, Germany, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Myanmar, the Netherlands, New Zealand, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## New Zealand flights
+
+Choose **New Zealand · Flights** for **2 November 2026**, with Domestic / International / Both and an **NZDT (UTC+13)** replay clock. Domestic covers selected North and South Island hubs and regional airports; international connects to existing SunTrain flight countries and the shared UTC network. New quotes use USD; reused fares retain their original currency. Airport/airline filters, local boards, Destinations and frequency lines are shared. Chatham Islands and smaller commuter services remain gaps. The snapshot has **433 domestic records across 20 airports** and **198 international records**, with **477 captured fares**. See [New Zealand flight notes](NEW_ZEALAND_FLIGHTS_NOTES.md) for sources, exact airports, captured coverage and rebuilding.
 
 ## Remaining ASEAN flights
 
@@ -20,7 +24,7 @@ Choose **Thailand · Flights** for **2 November 2026**, using **ICT (UTC+7)** an
 
 ## International flight network
 
-Choose **International network · Flights** to explore connections between our existing flight countries and DXB/AUH/DOH on **2 November 2026 (UTC)**. Moving planes open by default; filter **From country / To country**, airline or exact airport, or switch to frequency lines. Airport boards use local dates and times. Existing USD/MYR quotes retain their original currencies without conversion. China, Japan, South Korea, Thailand, the Philippines, Vietnam, Cambodia, Laos, Myanmar and Timor-Leste offer **Domestic / International / Both**, with international coverage limited to this selected group. Other existing worldwide routes remain available in their country views. The UTC view contains **3,996 departures**, **140 airports** and **1,269 returned directional routes**, with 4,550 overlapping flight records. See [international network notes](INTERNATIONAL_NETWORK_NOTES.md) for coverage, sources and offline rebuilding.
+Choose **International network · Flights** to explore connections between our existing flight countries and DXB/AUH/DOH on **2 November 2026 (UTC)**. Moving planes open by default; filter **From country / To country**, airline or exact airport, or switch to frequency lines. Airport boards use local dates and times. Existing USD/MYR quotes retain their original currencies without conversion. China, Japan, South Korea, Thailand, the Philippines, Vietnam, Cambodia, Laos, Myanmar, Timor-Leste and New Zealand offer **Domestic / International / Both**, with international coverage limited to this selected group. Other existing worldwide routes remain available in their country views. The UTC view contains **4,153 departures**, **147 airports** and **1,325 returned directional routes**, with 4,750 overlapping flight records. See [international network notes](INTERNATIONAL_NETWORK_NOTES.md) for coverage, sources and offline rebuilding.
 
 ## Mainland Chinese flights
 

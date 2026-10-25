@@ -7,7 +7,8 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from dashboard.asean_flights import PROFILES, RETIRED_AIRPORTS
+from dashboard.flight_profiles import PROFILES
+from dashboard.asean_flights import RETIRED_AIRPORTS
 
 COUNTRIES = {'AU':'Australia','ID':'Indonesia','MY':'Malaysia','SG':'Singapore','IN':'India',
              'VN':'Vietnam','PH':'Philippines','TH':'Thailand','CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}

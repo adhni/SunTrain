@@ -109,11 +109,11 @@ def routes():
 
 
 def country_config(country='AU', scope='domestic'):
-    from dashboard.asean_flights import PROFILES
+    from dashboard.flight_profiles import PROFILES
     if country in PROFILES:
         p=PROFILES[country]
         if scope!='domestic' or not p['domestic']:
-            raise ValueError('This ASEAN profile uses prepare_international_network.py for international flights')
+            raise ValueError('This country profile uses prepare_international_network.py for international flights')
         manifest=json.loads((ROOT/f"data/sources/{p['slug']}_flights_routes.json").read_text())
         return dict(country=country,zones={a['code']:a['timezone'] for a in manifest['airports']},timezone=p['zone'],end_date=manifest['end_date'],manifest=manifest,scope='domestic',capture_prices=True,currency='USD',max_duration=28800,allow_empty_snapshot=True)
     if country == 'AU' and scope == 'domestic':
@@ -316,7 +316,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
     end_date = end_date or config['end_date'] or day
     if config.get('allow_empty_snapshot'):
         allowed={tuple(p) for p in config['manifest']['routes']}
-        if any(tuple(p) not in allowed for p in pairs):raise ValueError('ASEAN route outside approved manifest')
+        if any(tuple(p) not in allowed for p in pairs):raise ValueError('Country route outside approved manifest')
     if config.get('hub_codes') and any(not set((a,b)) & set(config['hub_codes']) or a==b for a,b in pairs):
         raise ValueError('Flight route must touch a selected hub')
     if config['country'] in {'MY','IN','KR','JP','CN','TH','PH','VN'} and config.get('scope') != 'international':
@@ -412,6 +412,8 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             if stop.exists():metadata['collection_stop']=json.loads(stop.read_text())
             metadata['coverage_scope']=config['manifest']['coverage_scope']
             metadata['replay_note']='Captured domestic schedules only. Empty results mean not returned, not no service. Coverage and prices are partial; paths are illustrative.'
+            for key in ('deferred_airports','deferred_routes'):
+                if key in config['manifest']:metadata[key]=config['manifest'][key]
         if config['country']=='VN':
             metadata['scope']='domestic'
             metadata['coverage_scope']=config['manifest']['coverage_scope']

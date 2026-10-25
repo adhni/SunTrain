@@ -44,6 +44,8 @@ def airline_style(carrier, name):
 
 
 def reference_path(business_date=None, city='australia_flights'):
+    if city=='singapore_flights':
+        return Path(os.getenv('SUNTRAIN_SINGAPORE_FLIGHTS_REFERENCE',str(DIRECTORY.parent/'singapore_flights/2026-11-02.json.gz')))
     if city=='gulf_flights':
         from dashboard.gulf_flights import reference_paths as hub_paths
         return hub_paths(business_date)[0]
@@ -62,6 +64,7 @@ def reference_paths(business_date=None, city='australia_flights'):
         from dashboard.gulf_flights import reference_paths as hub_paths
         return hub_paths(business_date)
     paths = [reference_path(business_date, city)]
+    if city=='singapore_flights':return paths
     prefix = {'indonesia_flights':'INDONESIA','australia_flights':'AUSTRALIA','malaysia_flights':'MALAYSIA'}[city]
     # The legacy March 2013 Australian snapshot remains isolated.
     if not (city == 'australia_flights' and business_date and business_date.startswith('2013-03-')):
@@ -113,9 +116,13 @@ def load_reference(business_date, city):
     for path in reference_paths(business_date, city):
         with gzip.open(path, 'rt') as stream:
             references.append(json.load(stream))
-    country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY'}[city]
+    country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY','singapore_flights':'SG'}[city]
     airports, flights = {}, {}
     for reference in references:
+        if country=='SG':
+            context=reference['metadata'].get('fare_context',{})
+            if tuple(context.get(k) for k in ('currency','adults','cabin','trip_type'))!=('USD',1,'economy','one_way'):
+                raise ValueError('Singapore fares require USD, one adult, economy, one-way')
         catalogue = {a['code']: {**a, 'country': a.get('country', country)} for a in reference['airports']}
         for code, airport in catalogue.items():
             if code in airports and airports[code] != airport:
@@ -123,6 +130,12 @@ def load_reference(business_date, city):
             airports[code] = airport
         for flight in reference['flights']:
             a, b = catalogue[flight['origin']], catalogue[flight['destination']]
+            if country=='SG':
+                if not ({flight['origin'],flight['destination']} & {'SIN','XSP'}):
+                    raise ValueError('Singapore flight must touch SIN or XSP')
+                price=flight.get('price')
+                if price and (price.get('currency')!='USD' or type(price.get('amount_minor')) is not int or price['amount_minor']<=0):
+                    raise ValueError('Singapore prices require positive USD minor units; no implicit conversion')
             scope = 'domestic' if a['country'] == b['country'] == country else 'international'
             if scope == 'international' and (a['country'] == country) == (b['country'] == country):
                 raise ValueError('Flight has no national endpoint')

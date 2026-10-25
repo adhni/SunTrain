@@ -639,6 +639,8 @@
             const hubs=$('replay-flight-hubs'),hubField=$('replay-flight-hubs-field');
             const hubCodes=hubs && hubField?day.flight_hubs || []:[];
             if(hubField)hubField.style.display=hubCodes.length?'':'none';hubs?.replaceChildren();
+            const hubLabel=hubField?.querySelector('label');
+            if(hubLabel)root.suntrainI18n?root.suntrainI18n.bind(hubLabel,day.flight_hub_labels?.heading || 'Hub'):hubLabel.textContent=day.flight_hub_labels?.heading || 'Hub';
             const chooseHub=code=>{
                 this.selected=null;this.emptyDetails();this.staticDirty=true;this.paint(true);
                 root.dash_clientside.set_props('replay-airports',{value:code?[code]:[]});
@@ -650,7 +652,7 @@
                 control.addEventListener('click',()=>chooseHub(code));hubs.append(control);
             }
             if (hubCodes.length) {
-                const all=node('button','All hubs','finder-chip');all.type='button';all.dataset.hub='all';
+                const all=node('button',day.flight_hub_labels?.all || 'All hubs','finder-chip');all.type='button';all.dataset.hub='all';
                 all.addEventListener('click',()=>chooseHub(null));hubs.append(all);
             }
             setText('replay-open-departures', flights ? 'Airports' : 'Departures');
@@ -1183,7 +1185,7 @@
                     this.lastUI = performance.now();
                     setText("replay-clock", clockFormat.format(new Date(this.now * 1000)));
                     let dateText=dateFormat.format(new Date(this.now * 1000));
-                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':null;
+                    const zoneLabel=this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':null;
                     if (zoneLabel) dateText=dateText.replace(/GMT\+[78]/,zoneLabel);
                     setText("replay-clock-date",dateText);
                     setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));

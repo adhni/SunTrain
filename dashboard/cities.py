@@ -12,6 +12,14 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'singapore_flights': {
+        'replay_kind':'flights','name':'Singapore · Flights','timezone':'Asia/Singapore',
+        'bounds':[[103.6,1.15],[104.1,1.5]],'passenger_data':False,
+        'start_date':'2026-11-02','end_date':'2026-11-02','flight_hubs':['SIN','XSP'],'default_airport':'SIN',
+        'flight_hub_labels':{'heading':'Airports','all':'All airports'},
+        'description':'Singapore international flights · 2 November 2026 schedule snapshot. Changi (SIN) and Seletar (XSP) are separate airports. Timeline: SGT; airport boards use local time. Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.',
+        'default_modes':['flight'],'modes':[('Flights','flight')],'operators':[],'directions':[('Scheduled service','Scheduled service')],
+    },
     'gulf_flights': {
         'replay_kind':'flights','name':'Gulf hubs · Flights','timezone':'Asia/Dubai',
         'bounds':[[50.3,23.6],[56.0,26.2]],'passenger_data':False,
@@ -491,4 +499,5 @@ def replay_settings(city="melbourne"):
     return {"city": city, **{key: settings[key] for key in ("timezone", "bounds", "passenger_data")},
             "city_name": settings["name"], "replay_kind": settings.get("replay_kind", "transit"),
             "flight_scopes": bool(settings.get("flight_scopes")),
-            **({'flight_hubs':settings['flight_hubs'],'default_airport':settings.get('default_airport')} if settings.get('flight_hubs') else {})}
+            **({'flight_hubs':settings['flight_hubs'],'default_airport':settings.get('default_airport'),
+                **({'flight_hub_labels':settings['flight_hub_labels']} if settings.get('flight_hub_labels') else {})} if settings.get('flight_hubs') else {})}

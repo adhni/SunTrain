@@ -1,0 +1,5595 @@
+{
+  "country": "SG",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Singapore",
+  "max_duration": 86400,
+  "currency": "USD",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "timezone_source_url": "https://raw.githubusercontent.com/jpatokal/openflights/e539814f664cf31e662710555b27e9688610a911/data/airports.dat",
+  "timezone_source_sha256": "9387cdb38df5bd664da823f8ccb69fdd9b33a1888f5b7cca09c34a3cd9ff59f9",
+  "timezone_overrides": {
+    "SIN": "Asia/Singapore",
+    "XSP": "Asia/Singapore",
+    "UBN": "Asia/Ulaanbaatar",
+    "DIL": "Asia/Dili",
+    "INC": "Asia/Shanghai",
+    "VGA": "Asia/Kolkata",
+    "IXZ": "Asia/Kolkata"
+  },
+  "route_source_url": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+  "route_source_sha256": "7451bf8cdde9de2a73b07716e5ca2c945d1d48123e579429d6f84dfb03b10300",
+  "route_hash_basis": "Curated exact-airport candidates and explicit probes; not raw website bytes",
+  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_timezone": "Australia/Melbourne",
+  "airports": [
+    {
+      "code": "ADD",
+      "icao": "HAAB",
+      "name": "Addis Ababa Bole International Airport (ADD)",
+      "municipality": "Addis Ababa",
+      "country": "ET",
+      "timezone": "Africa/Addis_Ababa",
+      "mode": "flight",
+      "lat": 8.97789,
+      "lon": 38.799301
+    },
+    {
+      "code": "ADL",
+      "icao": "YPAD",
+      "name": "Adelaide International Airport (ADL)",
+      "municipality": "Adelaide",
+      "country": "AU",
+      "timezone": "Australia/Adelaide",
+      "mode": "flight",
+      "lat": -34.947512,
+      "lon": 138.533393
+    },
+    {
+      "code": "AKL",
+      "icao": "NZAA",
+      "name": "Auckland International Airport (AKL)",
+      "municipality": "Auckland",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -37.01199,
+      "lon": 174.786331
+    },
+    {
+      "code": "AMD",
+      "icao": "VAAH",
+      "name": "Sardar Vallabh Patel International Airport (AMD)",
+      "municipality": "Ahmedabad",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 23.0772,
+      "lon": 72.634697
+    },
+    {
+      "code": "AMS",
+      "icao": "EHAM",
+      "name": "Amsterdam Airport Schiphol (AMS)",
+      "municipality": "Amsterdam",
+      "country": "NL",
+      "timezone": "Europe/Amsterdam",
+      "mode": "flight",
+      "lat": 52.308601,
+      "lon": 4.76389
+    },
+    {
+      "code": "ATH",
+      "icao": "LGAV",
+      "name": "Athens Eleftherios Venizelos International Airport (ATH)",
+      "municipality": "Spata-Artemida",
+      "country": "GR",
+      "timezone": "Europe/Athens",
+      "mode": "flight",
+      "lat": 37.936401,
+      "lon": 23.9445
+    },
+    {
+      "code": "ATQ",
+      "icao": "VIAR",
+      "name": "Sri Guru Ram Das Ji International Airport (ATQ)",
+      "municipality": "Amritsar",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 31.7096,
+      "lon": 74.797302
+    },
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "BAH",
+      "icao": "OBBI",
+      "name": "Bahrain International Airport (BAH)",
+      "municipality": "Manama",
+      "country": "BH",
+      "timezone": "Asia/Bahrain",
+      "mode": "flight",
+      "lat": 26.267295,
+      "lon": 50.63764
+    },
+    {
+      "code": "BBI",
+      "icao": "VEBS",
+      "name": "Biju Patnaik International Airport (BBI)",
+      "municipality": "Bhubaneswar",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 20.251021,
+      "lon": 85.814747
+    },
+    {
+      "code": "BCN",
+      "icao": "LEBL",
+      "name": "Josep Tarradellas Barcelona-El Prat Airport (BCN)",
+      "municipality": "Barcelona",
+      "country": "ES",
+      "timezone": "Europe/Madrid",
+      "mode": "flight",
+      "lat": 41.2971,
+      "lon": 2.07846
+    },
+    {
+      "code": "BKI",
+      "icao": "WBKK",
+      "name": "Kota Kinabalu International Airport (BKI)",
+      "municipality": "Kota Kinabalu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "mode": "flight",
+      "lat": 5.932743,
+      "lon": 116.049324
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BLR",
+      "icao": "VOBL",
+      "name": "Kempegowda International Airport Bengaluru (BLR)",
+      "municipality": "Bengaluru",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 13.1979,
+      "lon": 77.706299
+    },
+    {
+      "code": "BNE",
+      "icao": "YBBN",
+      "name": "Brisbane International Airport (BNE)",
+      "municipality": "Brisbane",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -27.384199142456055,
+      "lon": 153.11700439453125
+    },
+    {
+      "code": "BOM",
+      "icao": "VABB",
+      "name": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+      "municipality": "Mumbai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 19.088699,
+      "lon": 72.867897
+    },
+    {
+      "code": "BPN",
+      "icao": "WALL",
+      "name": "Sultan Aji Muhammad Sulaiman Sepinggan International Airport (BPN)",
+      "municipality": "Balikpapan",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -1.268342,
+      "lon": 116.89452
+    },
+    {
+      "code": "BRU",
+      "icao": "EBBR",
+      "name": "Brussels Airport (BRU)",
+      "municipality": "Zaventem",
+      "country": "BE",
+      "timezone": "Europe/Brussels",
+      "mode": "flight",
+      "lat": 50.901402,
+      "lon": 4.48444
+    },
+    {
+      "code": "BTU",
+      "icao": "WBGB",
+      "name": "Bintulu Airport (BTU)",
+      "municipality": "Bintulu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "mode": "flight",
+      "lat": 3.12385010719,
+      "lon": 113.019996643
+    },
+    {
+      "code": "BWN",
+      "icao": "WBSB",
+      "name": "Brunei International Airport (BWN)",
+      "municipality": "Bandar Seri Begawan",
+      "country": "BN",
+      "timezone": "Asia/Brunei",
+      "mode": "flight",
+      "lat": 4.9442,
+      "lon": 114.928001
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CCJ",
+      "icao": "VOCL",
+      "name": "Calicut International Airport (CCJ)",
+      "municipality": "Calicut",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 11.135996,
+      "lon": 75.955152
+    },
+    {
+      "code": "CCU",
+      "icao": "VECC",
+      "name": "Netaji Subhash Chandra Bose International Airport (CCU)",
+      "municipality": "Kolkata",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 22.654012,
+      "lon": 88.44765
+    },
+    {
+      "code": "CDG",
+      "icao": "LFPG",
+      "name": "Charles de Gaulle International Airport (CDG)",
+      "municipality": "Paris (Roissy-en-France, Val-d'Oise)",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "mode": "flight",
+      "lat": 49.00896,
+      "lon": 2.554117
+    },
+    {
+      "code": "CEB",
+      "icao": "RPVM",
+      "name": "Mactan Cebu International Airport (CEB)",
+      "municipality": "Cebu City/Lapu-Lapu City",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 10.309261,
+      "lon": 123.97974
+    },
+    {
+      "code": "CEI",
+      "icao": "VTCT",
+      "name": "Mae Fah Luang - Chiang Rai International Airport (CEI)",
+      "municipality": "Chiang Rai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 19.952299,
+      "lon": 99.882896
+    },
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998
+    },
+    {
+      "code": "CGO",
+      "icao": "ZHCC",
+      "name": "Zhengzhou Xinzheng International Airport (CGO)",
+      "municipality": "Zhengzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 34.526497,
+      "lon": 113.849165
+    },
+    {
+      "code": "CGQ",
+      "icao": "ZYCC",
+      "name": "Changchun Longjia International Airport (CGQ)",
+      "municipality": "Changchun",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 43.996201,
+      "lon": 125.684998
+    },
+    {
+      "code": "CHC",
+      "icao": "NZCH",
+      "name": "Christchurch International Airport (CHC)",
+      "municipality": "Christchurch",
+      "country": "NZ",
+      "timezone": "Pacific/Auckland",
+      "mode": "flight",
+      "lat": -43.489029,
+      "lon": 172.532065
+    },
+    {
+      "code": "CJB",
+      "icao": "VOCB",
+      "name": "Coimbatore International Airport (CJB)",
+      "municipality": "Coimbatore",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 11.03,
+      "lon": 77.043404
+    },
+    {
+      "code": "CJU",
+      "icao": "RKPC",
+      "name": "Jeju International Airport (CJU)",
+      "municipality": "Jeju City",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 33.512058,
+      "lon": 126.492548
+    },
+    {
+      "code": "CKG",
+      "icao": "ZUCK",
+      "name": "Chongqing Jiangbei International Airport (CKG)",
+      "municipality": "Chongqing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 29.712254,
+      "lon": 106.651895
+    },
+    {
+      "code": "CMB",
+      "icao": "VCBI",
+      "name": "Bandaranaike International Colombo Airport (CMB)",
+      "municipality": "Colombo",
+      "country": "LK",
+      "timezone": "Asia/Colombo",
+      "mode": "flight",
+      "lat": 7.180759906768799,
+      "lon": 79.88410186767578
+    },
+    {
+      "code": "CNS",
+      "icao": "YBCS",
+      "name": "Cairns International Airport (CNS)",
+      "municipality": "Cairns",
+      "country": "AU",
+      "timezone": "Australia/Brisbane",
+      "mode": "flight",
+      "lat": -16.878921,
+      "lon": 145.74948
+    },
+    {
+      "code": "CNX",
+      "icao": "VTCC",
+      "name": "Chiang Mai International Airport (CNX)",
+      "municipality": "Chiang Mai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 18.766799926799997,
+      "lon": 98.962600708
+    },
+    {
+      "code": "COK",
+      "icao": "VOCI",
+      "name": "Cochin International Airport (COK)",
+      "municipality": "Kochi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 10.151047,
+      "lon": 76.400838
+    },
+    {
+      "code": "CPH",
+      "icao": "EKCH",
+      "name": "Copenhagen Kastrup Airport (CPH)",
+      "municipality": "Copenhagen",
+      "country": "DK",
+      "timezone": "Europe/Copenhagen",
+      "mode": "flight",
+      "lat": 55.617900848389,
+      "lon": 12.656000137329
+    },
+    {
+      "code": "CPT",
+      "icao": "FACT",
+      "name": "Cape Town International Airport (CPT)",
+      "municipality": "Cape Town",
+      "country": "ZA",
+      "timezone": "Africa/Johannesburg",
+      "mode": "flight",
+      "lat": -33.97403,
+      "lon": 18.604333
+    },
+    {
+      "code": "CRK",
+      "icao": "RPLC",
+      "name": "Clark International Airport / Clark Air Base (CRK)",
+      "municipality": "Mabalacat",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 15.186,
+      "lon": 120.559998
+    },
+    {
+      "code": "CSX",
+      "icao": "ZGHA",
+      "name": "Changsha Huanghua International Airport (CSX)",
+      "municipality": "Changsha (Changsha)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 28.189199,
+      "lon": 113.220001
+    },
+    {
+      "code": "CTS",
+      "icao": "RJCC",
+      "name": "New Chitose Airport (CTS)",
+      "municipality": "Sapporo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 42.774753,
+      "lon": 141.690414
+    },
+    {
+      "code": "CXR",
+      "icao": "VVCR",
+      "name": "Cam Ranh International Airport / Cam Ranh Air Base (CXR)",
+      "municipality": "Nha Trang/nha Trang aiurportCam Ranh",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 11.9982,
+      "lon": 109.219002
+    },
+    {
+      "code": "DAC",
+      "icao": "VGHS",
+      "name": "Hazrat Shahjalal International Airport (DAC)",
+      "municipality": "Dhaka",
+      "country": "BD",
+      "timezone": "Asia/Dhaka",
+      "mode": "flight",
+      "lat": 23.843347,
+      "lon": 90.397783
+    },
+    {
+      "code": "DAD",
+      "icao": "VVDN",
+      "name": "Da Nang International Airport (DAD)",
+      "municipality": "Da Nang",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 16.0439,
+      "lon": 108.198997
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DIL",
+      "icao": "WPDL",
+      "name": "Presidente Nicolau Lobato International Airport (DIL)",
+      "municipality": "Dili",
+      "country": "TL",
+      "timezone": "Asia/Dili",
+      "mode": "flight",
+      "lat": -8.546562,
+      "lon": 125.524507
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123
+    },
+    {
+      "code": "DRW",
+      "icao": "YPDN",
+      "name": "Darwin International Airport / RAAF Darwin (DRW)",
+      "municipality": "Darwin",
+      "country": "AU",
+      "timezone": "Australia/Darwin",
+      "mode": "flight",
+      "lat": -12.41497,
+      "lon": 130.88185
+    },
+    {
+      "code": "DVO",
+      "icao": "RPMD",
+      "name": "Francisco Bangoy International Airport (DVO)",
+      "municipality": "Davao",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 7.12552,
+      "lon": 125.646004
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "DYG",
+      "icao": "ZGDY",
+      "name": "Zhangjiajie Hehua International Airport (DYG)",
+      "municipality": "Zhangjiajie (Yongding)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 29.104749,
+      "lon": 110.442786
+    },
+    {
+      "code": "EWR",
+      "icao": "KEWR",
+      "name": "Newark Liberty International Airport (EWR)",
+      "municipality": "Newark",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.6894,
+      "lon": -74.170545
+    },
+    {
+      "code": "FCO",
+      "icao": "LIRF",
+      "name": "Rome–Fiumicino Leonardo da Vinci International Airport (FCO)",
+      "municipality": "Rome",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "mode": "flight",
+      "lat": 41.804532,
+      "lon": 12.251998
+    },
+    {
+      "code": "FOC",
+      "icao": "ZSFZ",
+      "name": "Fuzhou Changle International Airport (FOC)",
+      "municipality": "Fuzhou (Changle)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 25.929254,
+      "lon": 119.672524
+    },
+    {
+      "code": "FRA",
+      "icao": "EDDF",
+      "name": "Frankfurt Main Airport (FRA)",
+      "municipality": "Frankfurt am Main",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 50.026706,
+      "lon": 8.55835
+    },
+    {
+      "code": "FUK",
+      "icao": "RJFF",
+      "name": "Fukuoka Airport (FUK)",
+      "municipality": "Fukuoka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 33.585899353027344,
+      "lon": 130.4510040283203
+    },
+    {
+      "code": "HAK",
+      "icao": "ZJHK",
+      "name": "Haikou Meilan International Airport (HAK)",
+      "municipality": "Haikou (Meilan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 19.9349,
+      "lon": 110.459
+    },
+    {
+      "code": "HAN",
+      "icao": "VVNB",
+      "name": "Noi Bai International Airport (HAN)",
+      "municipality": "Hanoi (Soc Son)",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 21.221201,
+      "lon": 105.806999
+    },
+    {
+      "code": "HDY",
+      "icao": "VTSS",
+      "name": "Hat Yai International Airport (HDY)",
+      "municipality": "Hat Yai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 6.93321,
+      "lon": 100.392998
+    },
+    {
+      "code": "HEL",
+      "icao": "EFHK",
+      "name": "Helsinki Vantaa Airport (HEL)",
+      "municipality": "Helsinki (Vantaa)",
+      "country": "FI",
+      "timezone": "Europe/Helsinki",
+      "mode": "flight",
+      "lat": 60.318363,
+      "lon": 24.963341
+    },
+    {
+      "code": "HFE",
+      "icao": "ZSOF",
+      "name": "Hefei Xinqiao International Airport (HFE)",
+      "municipality": "Hefei",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.98779,
+      "lon": 116.9769
+    },
+    {
+      "code": "HGH",
+      "icao": "ZSHC",
+      "name": "Hangzhou Xiaoshan International Airport (HGH)",
+      "municipality": "Hangzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.23609,
+      "lon": 120.428865
+    },
+    {
+      "code": "HKG",
+      "icao": "VHHH",
+      "name": "Hong Kong International Airport (HKG)",
+      "municipality": "Hong Kong",
+      "country": "HK",
+      "timezone": "Asia/Hong_Kong",
+      "mode": "flight",
+      "lat": 22.31184,
+      "lon": 113.914862
+    },
+    {
+      "code": "HKT",
+      "icao": "VTSP",
+      "name": "Phuket International Airport (HKT)",
+      "municipality": "Phuket",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 8.113257,
+      "lon": 98.3174
+    },
+    {
+      "code": "HLP",
+      "icao": "WIHH",
+      "name": "Halim Perdanakusuma International Airport (HLP)",
+      "municipality": "Jakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.266989,
+      "lon": 106.890318
+    },
+    {
+      "code": "HND",
+      "icao": "RJTT",
+      "name": "Tokyo Haneda International Airport (HND)",
+      "municipality": "Tokyo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.549678,
+      "lon": 139.786958
+    },
+    {
+      "code": "HRB",
+      "icao": "ZYHB",
+      "name": "Harbin Taiping International Airport (HRB)",
+      "municipality": "Harbin",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 45.623402,
+      "lon": 126.25
+    },
+    {
+      "code": "HYD",
+      "icao": "VOHS",
+      "name": "Rajiv Gandhi International Airport (HYD)",
+      "municipality": "Hyderabad",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 17.231318,
+      "lon": 78.429855
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "ILO",
+      "icao": "RPVI",
+      "name": "Iloilo International Airport (ILO)",
+      "municipality": "Cabatuan",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 10.833017,
+      "lon": 122.493358
+    },
+    {
+      "code": "INC",
+      "icao": "ZLIC",
+      "name": "Yinchuan Hedong International Airport (INC)",
+      "municipality": "Yinchuan",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 38.322758,
+      "lon": 106.393214
+    },
+    {
+      "code": "IPH",
+      "icao": "WMKI",
+      "name": "Sultan Azlan Shah Airport (IPH)",
+      "municipality": "Ipoh",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 4.56733,
+      "lon": 101.091643
+    },
+    {
+      "code": "IST",
+      "icao": "LTFM",
+      "name": "İstanbul Airport (IST)",
+      "municipality": "Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 41.274874,
+      "lon": 28.732136
+    },
+    {
+      "code": "IXB",
+      "icao": "VEBD",
+      "name": "Bagdogra Airport (IXB)",
+      "municipality": "Siliguri",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 26.6812,
+      "lon": 88.328598
+    },
+    {
+      "code": "IXE",
+      "icao": "VOML",
+      "name": "Mangaluru International Airport (IXE)",
+      "municipality": "Mangaluru",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 12.95471,
+      "lon": 74.886812
+    },
+    {
+      "code": "IXM",
+      "icao": "VOMD",
+      "name": "Madurai Airport (IXM)",
+      "municipality": "Madurai",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 9.83450984955,
+      "lon": 78.09339904790001
+    },
+    {
+      "code": "IXZ",
+      "icao": "VOPB",
+      "name": "Veer Savarkar International Airport / INS Utkrosh (IXZ)",
+      "municipality": "Port Blair",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 11.640194,
+      "lon": 92.72902
+    },
+    {
+      "code": "JAI",
+      "icao": "VIJP",
+      "name": "Jaipur International Airport (JAI)",
+      "municipality": "Jaipur",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 26.8242,
+      "lon": 75.812202
+    },
+    {
+      "code": "JED",
+      "icao": "OEJN",
+      "name": "King Abdulaziz International Airport (JED)",
+      "municipality": "Jeddah",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 21.680241,
+      "lon": 39.157436
+    },
+    {
+      "code": "JFK",
+      "icao": "KJFK",
+      "name": "John F. Kennedy International Airport (JFK)",
+      "municipality": "New York",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.639447,
+      "lon": -73.779317
+    },
+    {
+      "code": "JHB",
+      "icao": "WMKJ",
+      "name": "Senai International Airport (JHB)",
+      "municipality": "Johor Bahru",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 1.64131,
+      "lon": 103.669998
+    },
+    {
+      "code": "JJN",
+      "icao": "ZSQZ",
+      "name": "Quanzhou Jinjiang International Airport (JJN)",
+      "municipality": "Quanzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 24.795855,
+      "lon": 118.588599
+    },
+    {
+      "code": "JNB",
+      "icao": "FAOR",
+      "name": "O.R. Tambo International Airport (JNB)",
+      "municipality": "Johannesburg",
+      "country": "ZA",
+      "timezone": "Africa/Johannesburg",
+      "mode": "flight",
+      "lat": -26.140081,
+      "lon": 28.246801
+    },
+    {
+      "code": "KBR",
+      "icao": "WMKC",
+      "name": "Sultan Ismail Petra Airport (KBR)",
+      "municipality": "Kota Baharu",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 6.1668500900268555,
+      "lon": 102.29299926757812
+    },
+    {
+      "code": "KBV",
+      "icao": "VTSG",
+      "name": "Krabi International Airport (KBV)",
+      "municipality": "Krabi",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 8.095591,
+      "lon": 98.988955
+    },
+    {
+      "code": "KCH",
+      "icao": "WBGG",
+      "name": "Kuching International Airport (KCH)",
+      "municipality": "Kuching",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "mode": "flight",
+      "lat": 1.487364,
+      "lon": 110.352859
+    },
+    {
+      "code": "KHH",
+      "icao": "RCKH",
+      "name": "Kaohsiung International Airport (KHH)",
+      "municipality": "Kaohsiung (Xiaogang)",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "mode": "flight",
+      "lat": 22.577101,
+      "lon": 120.349998
+    },
+    {
+      "code": "KHN",
+      "icao": "ZSCN",
+      "name": "Nanchang Changbei International Airport (KHN)",
+      "municipality": "Nanchang",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 28.864815,
+      "lon": 115.90271
+    },
+    {
+      "code": "KIX",
+      "icao": "RJBB",
+      "name": "Kansai International Airport (KIX)",
+      "municipality": "Osaka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.427299,
+      "lon": 135.244003
+    },
+    {
+      "code": "KJT",
+      "icao": "WICA",
+      "name": "Kertajati International Airport (KJT)",
+      "municipality": "Kertajati",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.647384,
+      "lon": 108.165561
+    },
+    {
+      "code": "KMG",
+      "icao": "ZPPP",
+      "name": "Kunming Changshui International Airport (KMG)",
+      "municipality": "Kunming",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 25.110313,
+      "lon": 102.936743
+    },
+    {
+      "code": "KNO",
+      "icao": "WIMM",
+      "name": "Kualanamu International Airport (KNO)",
+      "municipality": "Beringin",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": 3.637847,
+      "lon": 98.870566
+    },
+    {
+      "code": "KTI",
+      "icao": "VDTI",
+      "name": "Techo International Airport (KTI)",
+      "municipality": "Phnom Penh (Boeng Khyang)",
+      "country": "KH",
+      "timezone": "Asia/Phnom_Penh",
+      "mode": "flight",
+      "lat": 11.359987,
+      "lon": 104.921272
+    },
+    {
+      "code": "KTM",
+      "icao": "VNKT",
+      "name": "Tribhuvan International Airport (KTM)",
+      "municipality": "Kathmandu",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.6966,
+      "lon": 85.3591
+    },
+    {
+      "code": "KUA",
+      "icao": "WMKD",
+      "name": "Kuantan Airport (KUA)",
+      "municipality": "Kuantan",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 3.7753899097442627,
+      "lon": 103.20899963378906
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "KWE",
+      "icao": "ZUGY",
+      "name": "Guiyang Longdongbao International Airport (KWE)",
+      "municipality": "Guiyang (Nanming)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 26.541805,
+      "lon": 106.80402
+    },
+    {
+      "code": "LAX",
+      "icao": "KLAX",
+      "name": "Los Angeles International Airport (LAX)",
+      "municipality": "Los Angeles",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 33.942501,
+      "lon": -118.407997
+    },
+    {
+      "code": "LBJ",
+      "icao": "WATO",
+      "name": "Komodo Airport (LBJ)",
+      "municipality": "Labuan Bajo, Manggarai Barat",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.480694,
+      "lon": 119.888306
+    },
+    {
+      "code": "LGK",
+      "icao": "WMKL",
+      "name": "Langkawi International Airport (LGK)",
+      "municipality": "Langkawi",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 6.32973,
+      "lon": 99.728699
+    },
+    {
+      "code": "LGW",
+      "icao": "EGKK",
+      "name": "London Gatwick Airport (LGW)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 51.148744,
+      "lon": -0.185739
+    },
+    {
+      "code": "LHR",
+      "icao": "EGLL",
+      "name": "London Heathrow Airport (LHR)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 51.470748,
+      "lon": -0.459909
+    },
+    {
+      "code": "LHW",
+      "icao": "ZLLL",
+      "name": "Lanzhou Zhongchuan International Airport (LHW)",
+      "municipality": "Lanzhou (Yongdeng)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 36.515202,
+      "lon": 103.620003
+    },
+    {
+      "code": "LKO",
+      "icao": "VILK",
+      "name": "Chaudhary Charan Singh International Airport (LKO)",
+      "municipality": "Lucknow",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 26.760599,
+      "lon": 80.889297
+    },
+    {
+      "code": "LOP",
+      "icao": "WADL",
+      "name": "Lombok International Airport (LOP)",
+      "municipality": "Mataram (Pujut, Lombok Tengah)",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.759962,
+      "lon": 116.278169
+    },
+    {
+      "code": "LPQ",
+      "icao": "VLLB",
+      "name": "Luang Phabang International Airport (LPQ)",
+      "municipality": "Luang Phabang",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 19.904273,
+      "lon": 102.167191
+    },
+    {
+      "code": "MAA",
+      "icao": "VOMM",
+      "name": "Chennai International Airport (MAA)",
+      "municipality": "Chennai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 12.990005,
+      "lon": 80.169296
+    },
+    {
+      "code": "MAD",
+      "icao": "LEMD",
+      "name": "Adolfo Suárez Madrid–Barajas Airport (MAD)",
+      "municipality": "Madrid",
+      "country": "ES",
+      "timezone": "Europe/Madrid",
+      "mode": "flight",
+      "lat": 40.493407,
+      "lon": -3.572249
+    },
+    {
+      "code": "MAN",
+      "icao": "EGCC",
+      "name": "Manchester Airport (MAN)",
+      "municipality": "Manchester, Greater Manchester",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 53.349375,
+      "lon": -2.279521
+    },
+    {
+      "code": "MCT",
+      "icao": "OOMS",
+      "name": "Muscat International Airport (MCT)",
+      "municipality": "Muscat/Seeb",
+      "country": "OM",
+      "timezone": "Asia/Muscat",
+      "mode": "flight",
+      "lat": 23.600218,
+      "lon": 58.285268
+    },
+    {
+      "code": "MDC",
+      "icao": "WAMM",
+      "name": "Sam Ratulangi International Airport (MDC)",
+      "municipality": "Manado",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": 1.548591,
+      "lon": 124.92625
+    },
+    {
+      "code": "MDL",
+      "icao": "VYMD",
+      "name": "Mandalay International Airport (MDL)",
+      "municipality": "Mandalay",
+      "country": "MM",
+      "timezone": "Asia/Rangoon",
+      "mode": "flight",
+      "lat": 21.702199935913086,
+      "lon": 95.97789764404297
+    },
+    {
+      "code": "MEL",
+      "icao": "YMML",
+      "name": "Melbourne Airport (MEL)",
+      "municipality": "Melbourne",
+      "country": "AU",
+      "timezone": "Australia/Melbourne",
+      "mode": "flight",
+      "lat": -37.670732,
+      "lon": 144.837898
+    },
+    {
+      "code": "MFM",
+      "icao": "VMMC",
+      "name": "Macau International Airport (MFM)",
+      "municipality": "Nossa Senhora do Carmo",
+      "country": "MO",
+      "timezone": "Asia/Macau",
+      "mode": "flight",
+      "lat": 22.149599,
+      "lon": 113.592003
+    },
+    {
+      "code": "MKZ",
+      "icao": "WMKM",
+      "name": "Malacca International Airport (MKZ)",
+      "municipality": "Malacca",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.265613,
+      "lon": 102.252778
+    },
+    {
+      "code": "MLE",
+      "icao": "VRMM",
+      "name": "Velana International Airport (MLE)",
+      "municipality": "Malé",
+      "country": "MV",
+      "timezone": "Indian/Maldives",
+      "mode": "flight",
+      "lat": 4.19183,
+      "lon": 73.529099
+    },
+    {
+      "code": "MNL",
+      "icao": "RPLL",
+      "name": "Ninoy Aquino International Airport (MNL)",
+      "municipality": "Manila (Pasay)",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 14.5086,
+      "lon": 121.019997
+    },
+    {
+      "code": "MPH",
+      "icao": "RPVE",
+      "name": "Godofredo P. Ramos Airport (MPH)",
+      "municipality": "Caticlan",
+      "country": "PH",
+      "timezone": "Asia/Manila",
+      "mode": "flight",
+      "lat": 11.9245,
+      "lon": 121.954002
+    },
+    {
+      "code": "MRU",
+      "icao": "FIMP",
+      "name": "Sir Seewoosagur Ramgoolam International Airport (MRU)",
+      "municipality": "Plaine Magnien",
+      "country": "MU",
+      "timezone": "Indian/Mauritius",
+      "mode": "flight",
+      "lat": -20.430201,
+      "lon": 57.683601
+    },
+    {
+      "code": "MUC",
+      "icao": "EDDM",
+      "name": "Munich Airport (MUC)",
+      "municipality": "Munich",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 48.353802,
+      "lon": 11.7861
+    },
+    {
+      "code": "MXP",
+      "icao": "LIMC",
+      "name": "Milan Malpensa International Airport (MXP)",
+      "municipality": "Ferno (VA)",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "mode": "flight",
+      "lat": 45.6306,
+      "lon": 8.72811
+    },
+    {
+      "code": "MYY",
+      "icao": "WBGR",
+      "name": "Miri Airport (MYY)",
+      "municipality": "Miri",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "mode": "flight",
+      "lat": 4.32201,
+      "lon": 113.987
+    },
+    {
+      "code": "NAN",
+      "icao": "NFFN",
+      "name": "Nadi International Airport (NAN)",
+      "municipality": "Nadi",
+      "country": "FJ",
+      "timezone": "Pacific/Fiji",
+      "mode": "flight",
+      "lat": -17.761822,
+      "lon": 177.437843
+    },
+    {
+      "code": "NGB",
+      "icao": "ZSNB",
+      "name": "Ningbo Lishe International Airport (NGB)",
+      "municipality": "Ningbo",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 29.82670021057129,
+      "lon": 121.46199798583984
+    },
+    {
+      "code": "NGO",
+      "icao": "RJGG",
+      "name": "Chubu Centrair International Airport (NGO)",
+      "municipality": "Tokoname",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 34.858398,
+      "lon": 136.804993
+    },
+    {
+      "code": "NKG",
+      "icao": "ZSNJ",
+      "name": "Nanjing Lukou International Airport (NKG)",
+      "municipality": "Nanjing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.735032,
+      "lon": 118.865949
+    },
+    {
+      "code": "NNG",
+      "icao": "ZGNN",
+      "name": "Nanning Wuxu International Airport (NNG)",
+      "municipality": "Nanning (Jiangnan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 22.598071,
+      "lon": 108.181922
+    },
+    {
+      "code": "NOU",
+      "icao": "NWWW",
+      "name": "La Tontouta International Airport (NOU)",
+      "municipality": "Nouméa (La Tontouta)",
+      "country": "NC",
+      "timezone": "Pacific/Noumea",
+      "mode": "flight",
+      "lat": -22.014601,
+      "lon": 166.212997
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "OKA",
+      "icao": "ROAH",
+      "name": "Naha International Airport (OKA)",
+      "municipality": "Naha",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 26.192437,
+      "lon": 127.639804
+    },
+    {
+      "code": "PDG",
+      "icao": "WIEE",
+      "name": "Minangkabau International Airport (PDG)",
+      "municipality": "Padang (Katapiang)",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -0.785964,
+      "lon": 100.280384
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PEN",
+      "icao": "WMKP",
+      "name": "Penang International Airport (PEN)",
+      "municipality": "Penang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 5.296303,
+      "lon": 100.276185
+    },
+    {
+      "code": "PER",
+      "icao": "YPPH",
+      "name": "Perth International Airport (PER)",
+      "municipality": "Perth",
+      "country": "AU",
+      "timezone": "Australia/Perth",
+      "mode": "flight",
+      "lat": -31.94029998779297,
+      "lon": 115.96700286865234
+    },
+    {
+      "code": "PKU",
+      "icao": "WIBB",
+      "name": "Sultan Syarif Kasim II International Airport / Roesmin Nurjadin AFB (PKU)",
+      "municipality": "Pekanbaru",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": 0.458647,
+      "lon": 101.444321
+    },
+    {
+      "code": "PKX",
+      "icao": "ZBAD",
+      "name": "Beijing Daxing International Airport (PKX)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 39.501289,
+      "lon": 116.413967
+    },
+    {
+      "code": "PLM",
+      "icao": "WIPP",
+      "name": "Sultan Mahmud Badaruddin II Airport (PLM)",
+      "municipality": "Palembang",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -2.897653,
+      "lon": 104.698147
+    },
+    {
+      "code": "PNK",
+      "icao": "WIOO",
+      "name": "Supadio International Airport (PNK)",
+      "municipality": "Pontianak",
+      "country": "ID",
+      "timezone": "Asia/Pontianak",
+      "mode": "flight",
+      "lat": -0.152258,
+      "lon": 109.404493
+    },
+    {
+      "code": "PNQ",
+      "icao": "VAPO",
+      "name": "Pune International Airport (PNQ)",
+      "municipality": "Pune",
+      "country": "IN",
+      "timezone": "Asia/Calcutta",
+      "mode": "flight",
+      "lat": 18.5821,
+      "lon": 73.919701
+    },
+    {
+      "code": "POM",
+      "icao": "AYPY",
+      "name": "Port Moresby Jacksons International Airport (POM)",
+      "municipality": "Port Moresby",
+      "country": "PG",
+      "timezone": "Pacific/Port_Moresby",
+      "mode": "flight",
+      "lat": -9.443380355834961,
+      "lon": 147.22000122070312
+    },
+    {
+      "code": "PQC",
+      "icao": "VVPQ",
+      "name": "Phú Quốc International Airport (PQC)",
+      "municipality": "Phu Quoc Island",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.169783,
+      "lon": 103.99353
+    },
+    {
+      "code": "PUS",
+      "icao": "RKPK",
+      "name": "Gimhae International Airport (PUS)",
+      "municipality": "Busan",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 35.179501,
+      "lon": 128.938004
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "RGN",
+      "icao": "VYYY",
+      "name": "Yangon International Airport (RGN)",
+      "municipality": "Yangon",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 16.907300949099998,
+      "lon": 96.1332015991
+    },
+    {
+      "code": "RUH",
+      "icao": "OERK",
+      "name": "King Khalid International Airport (RUH)",
+      "municipality": "Riyadh",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 24.9576,
+      "lon": 46.698799
+    },
+    {
+      "code": "SAI",
+      "icao": "VDSA",
+      "name": "Siem Reap-Angkor International Airport (SAI)",
+      "municipality": "Siem Reap",
+      "country": "KH",
+      "timezone": "Asia/Phnom_Penh",
+      "mode": "flight",
+      "lat": 13.36974,
+      "lon": 104.223831
+    },
+    {
+      "code": "SBW",
+      "icao": "WBGS",
+      "name": "Sibu Airport (SBW)",
+      "municipality": "Sibu",
+      "country": "MY",
+      "timezone": "Asia/Kuching",
+      "mode": "flight",
+      "lat": 2.2616,
+      "lon": 111.985001
+    },
+    {
+      "code": "SEA",
+      "icao": "KSEA",
+      "name": "Seattle–Tacoma International Airport (SEA)",
+      "municipality": "Seattle",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 47.447943,
+      "lon": -122.310276
+    },
+    {
+      "code": "SFO",
+      "icao": "KSFO",
+      "name": "San Francisco International Airport (SFO)",
+      "municipality": "San Francisco",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 37.619806,
+      "lon": -122.374821
+    },
+    {
+      "code": "SGN",
+      "icao": "VVTS",
+      "name": "Tan Son Nhat International Airport (SGN)",
+      "municipality": "Ho Chi Minh City",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.8188,
+      "lon": 106.652
+    },
+    {
+      "code": "SHE",
+      "icao": "ZYTX",
+      "name": "Shenyang Taoxian International Airport (SHE)",
+      "municipality": "Shenyang",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 41.6398,
+      "lon": 123.483668
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "SRG",
+      "icao": "WAHS",
+      "name": "Jenderal Ahmad Yani Airport (SRG)",
+      "municipality": "Semarang",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.970732,
+      "lon": 110.373244
+    },
+    {
+      "code": "SUB",
+      "icao": "WARR",
+      "name": "Juanda International Airport (SUB)",
+      "municipality": "Surabaya",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -7.37983,
+      "lon": 112.787003
+    },
+    {
+      "code": "SWA",
+      "icao": "ZGOW",
+      "name": "Jieyang Chaoshan International Airport (SWA)",
+      "municipality": "Jieyang (Rongcheng)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.552,
+      "lon": 116.5033
+    },
+    {
+      "code": "SYD",
+      "icao": "YSSY",
+      "name": "Sydney Kingsford Smith International Airport (SYD)",
+      "municipality": "Sydney (Mascot)",
+      "country": "AU",
+      "timezone": "Australia/Sydney",
+      "mode": "flight",
+      "lat": -33.946098,
+      "lon": 151.177002
+    },
+    {
+      "code": "SYX",
+      "icao": "ZJSY",
+      "name": "Sanya Phoenix International Airport (SYX)",
+      "municipality": "Sanya (Tianya)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 18.3029,
+      "lon": 109.412003
+    },
+    {
+      "code": "SZB",
+      "icao": "WMSA",
+      "name": "Sultan Abdul Aziz Shah International Airport (SZB)",
+      "municipality": "Subang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 3.13058,
+      "lon": 101.549004
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TAO",
+      "icao": "ZSQD",
+      "name": "Qingdao Jiaodong International Airport (TAO)",
+      "municipality": "Qingdao (Jiaozhou)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 36.361953,
+      "lon": 120.088171
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    },
+    {
+      "code": "TJQ",
+      "icao": "WIKT",
+      "name": "H A S Hanandjoeddin International Airport (TJQ)",
+      "municipality": "Tanjung Pandan",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -2.744109,
+      "lon": 107.754535
+    },
+    {
+      "code": "TNA",
+      "icao": "ZSJN",
+      "name": "Jinan Yaoqiang International Airport (TNA)",
+      "municipality": "Jinan (Licheng)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 36.857201,
+      "lon": 117.216003
+    },
+    {
+      "code": "TPE",
+      "icao": "RCTP",
+      "name": "Taiwan Taoyuan International Airport (TPE)",
+      "municipality": "Taoyuan",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "mode": "flight",
+      "lat": 25.0777,
+      "lon": 121.233002
+    },
+    {
+      "code": "TRV",
+      "icao": "VOTV",
+      "name": "Thiruvananthapuram International Airport (TRV)",
+      "municipality": "Thiruvananthapuram",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 8.481889,
+      "lon": 76.920029
+    },
+    {
+      "code": "TRZ",
+      "icao": "VOTR",
+      "name": "Tiruchirappalli International Airport (TRZ)",
+      "municipality": "Tiruchirappalli",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 10.762915,
+      "lon": 78.717741
+    },
+    {
+      "code": "TSN",
+      "icao": "ZBTJ",
+      "name": "Tianjin Binhai International Airport (TSN)",
+      "municipality": "Tianjin",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 39.124401092499994,
+      "lon": 117.346000671
+    },
+    {
+      "code": "UBN",
+      "icao": "ZMCK",
+      "name": "Ulaanbaatar Chinggis Khaan International Airport (UBN)",
+      "municipality": "Ulaanbaatar (Sergelen)",
+      "country": "MN",
+      "timezone": "Asia/Ulaanbaatar",
+      "mode": "flight",
+      "lat": 47.646916,
+      "lon": 106.819833
+    },
+    {
+      "code": "UPG",
+      "icao": "WAAA",
+      "name": "Sultan Hasanuddin International Airport (UPG)",
+      "municipality": "Makassar",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -5.075539,
+      "lon": 119.553702
+    },
+    {
+      "code": "USM",
+      "icao": "VTSM",
+      "name": "Samui International Airport (USM)",
+      "municipality": "Na Thon (Ko Samui Island)",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 9.54779,
+      "lon": 100.061996
+    },
+    {
+      "code": "VGA",
+      "icao": "VOBZ",
+      "name": "Vijayawada International Airport (VGA)",
+      "municipality": "Vijayawada",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 16.530011,
+      "lon": 80.804888
+    },
+    {
+      "code": "VIE",
+      "icao": "LOWW",
+      "name": "Vienna International Airport (VIE)",
+      "municipality": "Vienna",
+      "country": "AT",
+      "timezone": "Europe/Vienna",
+      "mode": "flight",
+      "lat": 48.110298,
+      "lon": 16.5697
+    },
+    {
+      "code": "VTE",
+      "icao": "VLVT",
+      "name": "Wattay International Airport (VTE)",
+      "municipality": "Vientiane",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 17.985052,
+      "lon": 102.566692
+    },
+    {
+      "code": "VTZ",
+      "icao": "VOVI",
+      "name": "Alluri Sitarama Raju International Airport (Vizag) (VTZ)",
+      "municipality": "Visakhapatnam",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 17.971512,
+      "lon": 83.503617
+    },
+    {
+      "code": "VVO",
+      "icao": "UHWW",
+      "name": "Vladivostok International Airport (VVO)",
+      "municipality": "Artyom",
+      "country": "RU",
+      "timezone": "Asia/Vladivostok",
+      "mode": "flight",
+      "lat": 43.396256,
+      "lon": 132.148155
+    },
+    {
+      "code": "WNZ",
+      "icao": "ZSWZ",
+      "name": "Wenzhou Longwan International Airport (WNZ)",
+      "municipality": "Wenzhou (Longwan)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 27.910572,
+      "lon": 120.853465
+    },
+    {
+      "code": "WUH",
+      "icao": "ZHHH",
+      "name": "Wuhan Tianhe International Airport (WUH)",
+      "municipality": "Wuhan (Huangpi)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.774798,
+      "lon": 114.213723
+    },
+    {
+      "code": "WUX",
+      "icao": "ZSWX",
+      "name": "Sunan Shuofang International Airport (WUX)",
+      "municipality": "Wuxi",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.496952,
+      "lon": 120.43038
+    },
+    {
+      "code": "XIY",
+      "icao": "ZLXY",
+      "name": "Xi'an Xianyang International Airport (XIY)",
+      "municipality": "Xi'an",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 34.442207,
+      "lon": 108.762385
+    },
+    {
+      "code": "XMN",
+      "icao": "ZSAM",
+      "name": "Xiamen Gaoqi International Airport (XMN)",
+      "municipality": "Xiamen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 24.543889,
+      "lon": 118.127454
+    },
+    {
+      "code": "XSP",
+      "icao": "WSSL",
+      "name": "Seletar Airport (XSP)",
+      "municipality": "Seletar",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.41555,
+      "lon": 103.86673
+    },
+    {
+      "code": "YIA",
+      "icao": "WAHI",
+      "name": "Yogyakarta International Airport (YIA)",
+      "municipality": "Yogyakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -7.905338,
+      "lon": 110.057264
+    },
+    {
+      "code": "YIH",
+      "icao": "ZHYC",
+      "name": "Yichang Sanxia Airport (YIH)",
+      "municipality": "Yichang (Xiaoting)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.554132,
+      "lon": 111.482563
+    },
+    {
+      "code": "YVR",
+      "icao": "CYVR",
+      "name": "Vancouver International Airport (YVR)",
+      "municipality": "Vancouver",
+      "country": "CA",
+      "timezone": "America/Vancouver",
+      "mode": "flight",
+      "lat": 49.193901,
+      "lon": -123.183998
+    }
+  ],
+  "routes": [
+    [
+      "ADD",
+      "SIN"
+    ],
+    [
+      "ADL",
+      "SIN"
+    ],
+    [
+      "AKL",
+      "SIN"
+    ],
+    [
+      "AMD",
+      "SIN"
+    ],
+    [
+      "AMS",
+      "SIN"
+    ],
+    [
+      "ATH",
+      "SIN"
+    ],
+    [
+      "ATQ",
+      "SIN"
+    ],
+    [
+      "AUH",
+      "SIN"
+    ],
+    [
+      "BAH",
+      "SIN"
+    ],
+    [
+      "BBI",
+      "SIN"
+    ],
+    [
+      "BCN",
+      "SIN"
+    ],
+    [
+      "BKI",
+      "SIN"
+    ],
+    [
+      "BKK",
+      "SIN"
+    ],
+    [
+      "BLR",
+      "SIN"
+    ],
+    [
+      "BNE",
+      "SIN"
+    ],
+    [
+      "BOM",
+      "SIN"
+    ],
+    [
+      "BPN",
+      "SIN"
+    ],
+    [
+      "BRU",
+      "SIN"
+    ],
+    [
+      "BTU",
+      "SIN"
+    ],
+    [
+      "BWN",
+      "SIN"
+    ],
+    [
+      "CAN",
+      "SIN"
+    ],
+    [
+      "CCJ",
+      "SIN"
+    ],
+    [
+      "CCU",
+      "SIN"
+    ],
+    [
+      "CDG",
+      "SIN"
+    ],
+    [
+      "CEB",
+      "SIN"
+    ],
+    [
+      "CEI",
+      "SIN"
+    ],
+    [
+      "CGK",
+      "SIN"
+    ],
+    [
+      "CGO",
+      "SIN"
+    ],
+    [
+      "CGQ",
+      "SIN"
+    ],
+    [
+      "CHC",
+      "SIN"
+    ],
+    [
+      "CJB",
+      "SIN"
+    ],
+    [
+      "CJU",
+      "SIN"
+    ],
+    [
+      "CKG",
+      "SIN"
+    ],
+    [
+      "CMB",
+      "SIN"
+    ],
+    [
+      "CNS",
+      "SIN"
+    ],
+    [
+      "CNX",
+      "SIN"
+    ],
+    [
+      "COK",
+      "SIN"
+    ],
+    [
+      "CPH",
+      "SIN"
+    ],
+    [
+      "CPT",
+      "SIN"
+    ],
+    [
+      "CRK",
+      "SIN"
+    ],
+    [
+      "CSX",
+      "SIN"
+    ],
+    [
+      "CTS",
+      "SIN"
+    ],
+    [
+      "CXR",
+      "SIN"
+    ],
+    [
+      "DAC",
+      "SIN"
+    ],
+    [
+      "DAD",
+      "SIN"
+    ],
+    [
+      "DEL",
+      "SIN"
+    ],
+    [
+      "DIL",
+      "SIN"
+    ],
+    [
+      "DMK",
+      "SIN"
+    ],
+    [
+      "DOH",
+      "SIN"
+    ],
+    [
+      "DPS",
+      "SIN"
+    ],
+    [
+      "DRW",
+      "SIN"
+    ],
+    [
+      "DVO",
+      "SIN"
+    ],
+    [
+      "DXB",
+      "SIN"
+    ],
+    [
+      "DYG",
+      "SIN"
+    ],
+    [
+      "EWR",
+      "SIN"
+    ],
+    [
+      "FCO",
+      "SIN"
+    ],
+    [
+      "FOC",
+      "SIN"
+    ],
+    [
+      "FRA",
+      "SIN"
+    ],
+    [
+      "FUK",
+      "SIN"
+    ],
+    [
+      "HAK",
+      "SIN"
+    ],
+    [
+      "HAN",
+      "SIN"
+    ],
+    [
+      "HDY",
+      "SIN"
+    ],
+    [
+      "HEL",
+      "SIN"
+    ],
+    [
+      "HFE",
+      "SIN"
+    ],
+    [
+      "HGH",
+      "SIN"
+    ],
+    [
+      "HKG",
+      "SIN"
+    ],
+    [
+      "HKT",
+      "SIN"
+    ],
+    [
+      "HLP",
+      "SIN"
+    ],
+    [
+      "HND",
+      "SIN"
+    ],
+    [
+      "HRB",
+      "SIN"
+    ],
+    [
+      "HYD",
+      "SIN"
+    ],
+    [
+      "ICN",
+      "SIN"
+    ],
+    [
+      "ILO",
+      "SIN"
+    ],
+    [
+      "INC",
+      "SIN"
+    ],
+    [
+      "IPH",
+      "SIN"
+    ],
+    [
+      "IST",
+      "SIN"
+    ],
+    [
+      "IXB",
+      "SIN"
+    ],
+    [
+      "IXE",
+      "SIN"
+    ],
+    [
+      "IXM",
+      "SIN"
+    ],
+    [
+      "IXZ",
+      "SIN"
+    ],
+    [
+      "JAI",
+      "SIN"
+    ],
+    [
+      "JED",
+      "SIN"
+    ],
+    [
+      "JFK",
+      "SIN"
+    ],
+    [
+      "JHB",
+      "SIN"
+    ],
+    [
+      "JJN",
+      "SIN"
+    ],
+    [
+      "JNB",
+      "SIN"
+    ],
+    [
+      "KBR",
+      "SIN"
+    ],
+    [
+      "KBV",
+      "SIN"
+    ],
+    [
+      "KCH",
+      "SIN"
+    ],
+    [
+      "KHH",
+      "SIN"
+    ],
+    [
+      "KHN",
+      "SIN"
+    ],
+    [
+      "KIX",
+      "SIN"
+    ],
+    [
+      "KJT",
+      "SIN"
+    ],
+    [
+      "KMG",
+      "SIN"
+    ],
+    [
+      "KNO",
+      "SIN"
+    ],
+    [
+      "KTI",
+      "SIN"
+    ],
+    [
+      "KTM",
+      "SIN"
+    ],
+    [
+      "KUA",
+      "SIN"
+    ],
+    [
+      "KUL",
+      "SIN"
+    ],
+    [
+      "KWE",
+      "SIN"
+    ],
+    [
+      "LAX",
+      "SIN"
+    ],
+    [
+      "LBJ",
+      "SIN"
+    ],
+    [
+      "LGK",
+      "SIN"
+    ],
+    [
+      "LGW",
+      "SIN"
+    ],
+    [
+      "LHR",
+      "SIN"
+    ],
+    [
+      "LHW",
+      "SIN"
+    ],
+    [
+      "LKO",
+      "SIN"
+    ],
+    [
+      "LOP",
+      "SIN"
+    ],
+    [
+      "LPQ",
+      "SIN"
+    ],
+    [
+      "MAA",
+      "SIN"
+    ],
+    [
+      "MAD",
+      "SIN"
+    ],
+    [
+      "MAN",
+      "SIN"
+    ],
+    [
+      "MCT",
+      "SIN"
+    ],
+    [
+      "MDC",
+      "SIN"
+    ],
+    [
+      "MDL",
+      "SIN"
+    ],
+    [
+      "MEL",
+      "SIN"
+    ],
+    [
+      "MFM",
+      "SIN"
+    ],
+    [
+      "MKZ",
+      "SIN"
+    ],
+    [
+      "MLE",
+      "SIN"
+    ],
+    [
+      "MNL",
+      "SIN"
+    ],
+    [
+      "MPH",
+      "SIN"
+    ],
+    [
+      "MRU",
+      "SIN"
+    ],
+    [
+      "MUC",
+      "SIN"
+    ],
+    [
+      "MXP",
+      "SIN"
+    ],
+    [
+      "MYY",
+      "SIN"
+    ],
+    [
+      "NAN",
+      "SIN"
+    ],
+    [
+      "NGB",
+      "SIN"
+    ],
+    [
+      "NGO",
+      "SIN"
+    ],
+    [
+      "NKG",
+      "SIN"
+    ],
+    [
+      "NNG",
+      "SIN"
+    ],
+    [
+      "NOU",
+      "SIN"
+    ],
+    [
+      "NRT",
+      "SIN"
+    ],
+    [
+      "OKA",
+      "SIN"
+    ],
+    [
+      "PDG",
+      "SIN"
+    ],
+    [
+      "PEK",
+      "SIN"
+    ],
+    [
+      "PEN",
+      "SIN"
+    ],
+    [
+      "PER",
+      "SIN"
+    ],
+    [
+      "PKU",
+      "SIN"
+    ],
+    [
+      "PKX",
+      "SIN"
+    ],
+    [
+      "PLM",
+      "SIN"
+    ],
+    [
+      "PNK",
+      "SIN"
+    ],
+    [
+      "PNQ",
+      "SIN"
+    ],
+    [
+      "POM",
+      "SIN"
+    ],
+    [
+      "PQC",
+      "SIN"
+    ],
+    [
+      "PUS",
+      "SIN"
+    ],
+    [
+      "PVG",
+      "SIN"
+    ],
+    [
+      "RGN",
+      "SIN"
+    ],
+    [
+      "RUH",
+      "SIN"
+    ],
+    [
+      "SAI",
+      "SIN"
+    ],
+    [
+      "SBW",
+      "SIN"
+    ],
+    [
+      "SEA",
+      "SIN"
+    ],
+    [
+      "SFO",
+      "SIN"
+    ],
+    [
+      "SGN",
+      "SIN"
+    ],
+    [
+      "SHE",
+      "SIN"
+    ],
+    [
+      "SIN",
+      "ADD"
+    ],
+    [
+      "SIN",
+      "ADL"
+    ],
+    [
+      "SIN",
+      "AKL"
+    ],
+    [
+      "SIN",
+      "AMD"
+    ],
+    [
+      "SIN",
+      "AMS"
+    ],
+    [
+      "SIN",
+      "ATH"
+    ],
+    [
+      "SIN",
+      "ATQ"
+    ],
+    [
+      "SIN",
+      "AUH"
+    ],
+    [
+      "SIN",
+      "BAH"
+    ],
+    [
+      "SIN",
+      "BBI"
+    ],
+    [
+      "SIN",
+      "BCN"
+    ],
+    [
+      "SIN",
+      "BKI"
+    ],
+    [
+      "SIN",
+      "BKK"
+    ],
+    [
+      "SIN",
+      "BLR"
+    ],
+    [
+      "SIN",
+      "BNE"
+    ],
+    [
+      "SIN",
+      "BOM"
+    ],
+    [
+      "SIN",
+      "BPN"
+    ],
+    [
+      "SIN",
+      "BRU"
+    ],
+    [
+      "SIN",
+      "BTU"
+    ],
+    [
+      "SIN",
+      "BWN"
+    ],
+    [
+      "SIN",
+      "CAN"
+    ],
+    [
+      "SIN",
+      "CCJ"
+    ],
+    [
+      "SIN",
+      "CCU"
+    ],
+    [
+      "SIN",
+      "CDG"
+    ],
+    [
+      "SIN",
+      "CEB"
+    ],
+    [
+      "SIN",
+      "CEI"
+    ],
+    [
+      "SIN",
+      "CGK"
+    ],
+    [
+      "SIN",
+      "CGO"
+    ],
+    [
+      "SIN",
+      "CGQ"
+    ],
+    [
+      "SIN",
+      "CHC"
+    ],
+    [
+      "SIN",
+      "CJB"
+    ],
+    [
+      "SIN",
+      "CJU"
+    ],
+    [
+      "SIN",
+      "CKG"
+    ],
+    [
+      "SIN",
+      "CMB"
+    ],
+    [
+      "SIN",
+      "CNS"
+    ],
+    [
+      "SIN",
+      "CNX"
+    ],
+    [
+      "SIN",
+      "COK"
+    ],
+    [
+      "SIN",
+      "CPH"
+    ],
+    [
+      "SIN",
+      "CPT"
+    ],
+    [
+      "SIN",
+      "CRK"
+    ],
+    [
+      "SIN",
+      "CSX"
+    ],
+    [
+      "SIN",
+      "CTS"
+    ],
+    [
+      "SIN",
+      "CXR"
+    ],
+    [
+      "SIN",
+      "DAC"
+    ],
+    [
+      "SIN",
+      "DAD"
+    ],
+    [
+      "SIN",
+      "DEL"
+    ],
+    [
+      "SIN",
+      "DIL"
+    ],
+    [
+      "SIN",
+      "DMK"
+    ],
+    [
+      "SIN",
+      "DOH"
+    ],
+    [
+      "SIN",
+      "DPS"
+    ],
+    [
+      "SIN",
+      "DRW"
+    ],
+    [
+      "SIN",
+      "DVO"
+    ],
+    [
+      "SIN",
+      "DXB"
+    ],
+    [
+      "SIN",
+      "DYG"
+    ],
+    [
+      "SIN",
+      "EWR"
+    ],
+    [
+      "SIN",
+      "FCO"
+    ],
+    [
+      "SIN",
+      "FOC"
+    ],
+    [
+      "SIN",
+      "FRA"
+    ],
+    [
+      "SIN",
+      "FUK"
+    ],
+    [
+      "SIN",
+      "HAK"
+    ],
+    [
+      "SIN",
+      "HAN"
+    ],
+    [
+      "SIN",
+      "HDY"
+    ],
+    [
+      "SIN",
+      "HEL"
+    ],
+    [
+      "SIN",
+      "HFE"
+    ],
+    [
+      "SIN",
+      "HGH"
+    ],
+    [
+      "SIN",
+      "HKG"
+    ],
+    [
+      "SIN",
+      "HKT"
+    ],
+    [
+      "SIN",
+      "HLP"
+    ],
+    [
+      "SIN",
+      "HND"
+    ],
+    [
+      "SIN",
+      "HRB"
+    ],
+    [
+      "SIN",
+      "HYD"
+    ],
+    [
+      "SIN",
+      "ICN"
+    ],
+    [
+      "SIN",
+      "ILO"
+    ],
+    [
+      "SIN",
+      "INC"
+    ],
+    [
+      "SIN",
+      "IPH"
+    ],
+    [
+      "SIN",
+      "IST"
+    ],
+    [
+      "SIN",
+      "IXB"
+    ],
+    [
+      "SIN",
+      "IXE"
+    ],
+    [
+      "SIN",
+      "IXM"
+    ],
+    [
+      "SIN",
+      "IXZ"
+    ],
+    [
+      "SIN",
+      "JAI"
+    ],
+    [
+      "SIN",
+      "JED"
+    ],
+    [
+      "SIN",
+      "JFK"
+    ],
+    [
+      "SIN",
+      "JHB"
+    ],
+    [
+      "SIN",
+      "JJN"
+    ],
+    [
+      "SIN",
+      "JNB"
+    ],
+    [
+      "SIN",
+      "KBR"
+    ],
+    [
+      "SIN",
+      "KBV"
+    ],
+    [
+      "SIN",
+      "KCH"
+    ],
+    [
+      "SIN",
+      "KHH"
+    ],
+    [
+      "SIN",
+      "KHN"
+    ],
+    [
+      "SIN",
+      "KIX"
+    ],
+    [
+      "SIN",
+      "KJT"
+    ],
+    [
+      "SIN",
+      "KMG"
+    ],
+    [
+      "SIN",
+      "KNO"
+    ],
+    [
+      "SIN",
+      "KTI"
+    ],
+    [
+      "SIN",
+      "KTM"
+    ],
+    [
+      "SIN",
+      "KUA"
+    ],
+    [
+      "SIN",
+      "KUL"
+    ],
+    [
+      "SIN",
+      "KWE"
+    ],
+    [
+      "SIN",
+      "LAX"
+    ],
+    [
+      "SIN",
+      "LBJ"
+    ],
+    [
+      "SIN",
+      "LGK"
+    ],
+    [
+      "SIN",
+      "LGW"
+    ],
+    [
+      "SIN",
+      "LHR"
+    ],
+    [
+      "SIN",
+      "LHW"
+    ],
+    [
+      "SIN",
+      "LKO"
+    ],
+    [
+      "SIN",
+      "LOP"
+    ],
+    [
+      "SIN",
+      "LPQ"
+    ],
+    [
+      "SIN",
+      "MAA"
+    ],
+    [
+      "SIN",
+      "MAD"
+    ],
+    [
+      "SIN",
+      "MAN"
+    ],
+    [
+      "SIN",
+      "MCT"
+    ],
+    [
+      "SIN",
+      "MDC"
+    ],
+    [
+      "SIN",
+      "MDL"
+    ],
+    [
+      "SIN",
+      "MEL"
+    ],
+    [
+      "SIN",
+      "MFM"
+    ],
+    [
+      "SIN",
+      "MKZ"
+    ],
+    [
+      "SIN",
+      "MLE"
+    ],
+    [
+      "SIN",
+      "MNL"
+    ],
+    [
+      "SIN",
+      "MPH"
+    ],
+    [
+      "SIN",
+      "MRU"
+    ],
+    [
+      "SIN",
+      "MUC"
+    ],
+    [
+      "SIN",
+      "MXP"
+    ],
+    [
+      "SIN",
+      "MYY"
+    ],
+    [
+      "SIN",
+      "NAN"
+    ],
+    [
+      "SIN",
+      "NGB"
+    ],
+    [
+      "SIN",
+      "NGO"
+    ],
+    [
+      "SIN",
+      "NKG"
+    ],
+    [
+      "SIN",
+      "NNG"
+    ],
+    [
+      "SIN",
+      "NOU"
+    ],
+    [
+      "SIN",
+      "NRT"
+    ],
+    [
+      "SIN",
+      "OKA"
+    ],
+    [
+      "SIN",
+      "PDG"
+    ],
+    [
+      "SIN",
+      "PEK"
+    ],
+    [
+      "SIN",
+      "PEN"
+    ],
+    [
+      "SIN",
+      "PER"
+    ],
+    [
+      "SIN",
+      "PKU"
+    ],
+    [
+      "SIN",
+      "PKX"
+    ],
+    [
+      "SIN",
+      "PLM"
+    ],
+    [
+      "SIN",
+      "PNK"
+    ],
+    [
+      "SIN",
+      "PNQ"
+    ],
+    [
+      "SIN",
+      "POM"
+    ],
+    [
+      "SIN",
+      "PQC"
+    ],
+    [
+      "SIN",
+      "PUS"
+    ],
+    [
+      "SIN",
+      "PVG"
+    ],
+    [
+      "SIN",
+      "RGN"
+    ],
+    [
+      "SIN",
+      "RUH"
+    ],
+    [
+      "SIN",
+      "SAI"
+    ],
+    [
+      "SIN",
+      "SBW"
+    ],
+    [
+      "SIN",
+      "SEA"
+    ],
+    [
+      "SIN",
+      "SFO"
+    ],
+    [
+      "SIN",
+      "SGN"
+    ],
+    [
+      "SIN",
+      "SHE"
+    ],
+    [
+      "SIN",
+      "SRG"
+    ],
+    [
+      "SIN",
+      "SUB"
+    ],
+    [
+      "SIN",
+      "SWA"
+    ],
+    [
+      "SIN",
+      "SYD"
+    ],
+    [
+      "SIN",
+      "SYX"
+    ],
+    [
+      "SIN",
+      "SZB"
+    ],
+    [
+      "SIN",
+      "SZX"
+    ],
+    [
+      "SIN",
+      "TAO"
+    ],
+    [
+      "SIN",
+      "TFU"
+    ],
+    [
+      "SIN",
+      "TJQ"
+    ],
+    [
+      "SIN",
+      "TNA"
+    ],
+    [
+      "SIN",
+      "TPE"
+    ],
+    [
+      "SIN",
+      "TRV"
+    ],
+    [
+      "SIN",
+      "TRZ"
+    ],
+    [
+      "SIN",
+      "TSN"
+    ],
+    [
+      "SIN",
+      "UBN"
+    ],
+    [
+      "SIN",
+      "UPG"
+    ],
+    [
+      "SIN",
+      "USM"
+    ],
+    [
+      "SIN",
+      "VGA"
+    ],
+    [
+      "SIN",
+      "VIE"
+    ],
+    [
+      "SIN",
+      "VTE"
+    ],
+    [
+      "SIN",
+      "VTZ"
+    ],
+    [
+      "SIN",
+      "VVO"
+    ],
+    [
+      "SIN",
+      "WNZ"
+    ],
+    [
+      "SIN",
+      "WUH"
+    ],
+    [
+      "SIN",
+      "WUX"
+    ],
+    [
+      "SIN",
+      "XIY"
+    ],
+    [
+      "SIN",
+      "XMN"
+    ],
+    [
+      "SIN",
+      "YIA"
+    ],
+    [
+      "SIN",
+      "YIH"
+    ],
+    [
+      "SIN",
+      "YVR"
+    ],
+    [
+      "SRG",
+      "SIN"
+    ],
+    [
+      "SUB",
+      "SIN"
+    ],
+    [
+      "SWA",
+      "SIN"
+    ],
+    [
+      "SYD",
+      "SIN"
+    ],
+    [
+      "SYX",
+      "SIN"
+    ],
+    [
+      "SZB",
+      "SIN"
+    ],
+    [
+      "SZB",
+      "XSP"
+    ],
+    [
+      "SZX",
+      "SIN"
+    ],
+    [
+      "TAO",
+      "SIN"
+    ],
+    [
+      "TFU",
+      "SIN"
+    ],
+    [
+      "TJQ",
+      "SIN"
+    ],
+    [
+      "TNA",
+      "SIN"
+    ],
+    [
+      "TPE",
+      "SIN"
+    ],
+    [
+      "TRV",
+      "SIN"
+    ],
+    [
+      "TRZ",
+      "SIN"
+    ],
+    [
+      "TSN",
+      "SIN"
+    ],
+    [
+      "UBN",
+      "SIN"
+    ],
+    [
+      "UPG",
+      "SIN"
+    ],
+    [
+      "USM",
+      "SIN"
+    ],
+    [
+      "VGA",
+      "SIN"
+    ],
+    [
+      "VIE",
+      "SIN"
+    ],
+    [
+      "VTE",
+      "SIN"
+    ],
+    [
+      "VTZ",
+      "SIN"
+    ],
+    [
+      "VVO",
+      "SIN"
+    ],
+    [
+      "WNZ",
+      "SIN"
+    ],
+    [
+      "WUH",
+      "SIN"
+    ],
+    [
+      "WUX",
+      "SIN"
+    ],
+    [
+      "XIY",
+      "SIN"
+    ],
+    [
+      "XMN",
+      "SIN"
+    ],
+    [
+      "XSP",
+      "SZB"
+    ],
+    [
+      "YIA",
+      "SIN"
+    ],
+    [
+      "YIH",
+      "SIN"
+    ],
+    [
+      "YVR",
+      "SIN"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "SIN",
+      "destination": "ADL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "AMD",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "AMS",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "AKL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BWN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BKK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BCN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PEK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PKX",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BLR",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BNE",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BRU",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PUS",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CNS",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CPT",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CEB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TFU",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MAA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CKG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CHC",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CMB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CPH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DAD",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DRW",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DEL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DPS",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DAC",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DXB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "FRA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "FUK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CAN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KWE",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HGH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HAN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SGN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HKG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HYD",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IST",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CGK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "JNB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KTM",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "COK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CCU",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KUL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SZB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LHR",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LGW",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LAX",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MLE",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MAN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MEL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MXP",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BOM",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MUC",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NGO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "JFK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "EWR",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KIX",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CDG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PEN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PER",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KTI",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HKT",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "FCO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SFO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SEA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ICN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PVG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SZX",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SAI",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SUB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SYD",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TPE",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HND",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NRT",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "XMN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "RGN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "FOC",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HAK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NKG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NNG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TAO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SWA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SHE",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TSN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "WUH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "XIY",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CGO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "OKA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CTS",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MFM",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CJU",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BPN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LBJ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LOP",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KJT",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "UPG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MDC",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PDG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PLM",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PKU",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PNK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SRG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TJQ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "YIA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "VTE",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BTU",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IPH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KBR",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BKI",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KUA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KCH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LGK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MKZ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MYY",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SBW",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CRK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MPH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DVO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ILO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CNX",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CEI",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HDY",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KBV",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CXR",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PQC",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ATH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ATQ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "VTZ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CJB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TRZ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TRV",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "JED",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "SQ/TR directory entry; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ATQ",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "VTZ",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MAA",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CJB",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TRZ",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TRV",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CEI",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CNX",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "USM",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HKT",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HDY",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KBV",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LGK",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PEN",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KBR",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IPH",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KUA",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SZB",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KUL",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MKZ",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KCH",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SBW",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MYY",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BKI",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KNO",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BPN",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "UPG",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MDC",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CGK",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KJT",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "YIA",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SUB",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DPS",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LOP",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LBJ",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PKU",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PDG",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PLM",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PNK",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TJQ",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SRG",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HAN",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DAD",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CXR",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SGN",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PQC",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "VTE",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MNL",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CRK",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ILO",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CEB",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DVO",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HAK",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HKG",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MFM",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TPE",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "FOC",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CAN",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NNG",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CSX",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KMG",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KWE",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "WUH",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NKG",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "XIY",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CGO",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TAO",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TSN",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SHE",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HGH",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SWA",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ICN",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CJU",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KIX",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NRT",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HND",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "OKA",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CTS",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PER",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MEL",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SYD",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ATH",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "VIE",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "JED",
+      "source": "https://cdn.flyscoot.com/prod/images/default-source/where-we-fly/scoot-network-aug26.webp",
+      "kind": "August 2026 network map candidate; not dated nonstop evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MNL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KNO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ADD",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "AUH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BAH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DOH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HEL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "YVR",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DIL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "POM",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NOU",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NAN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MRU",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MCT",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "RUH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "VVO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DMK",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KHH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LPQ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MDL",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KHN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "NGB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "WNZ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "WUX",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "JJN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "TNA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HFE",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HRB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CGQ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LHW",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "YIH",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DYG",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "INC",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SYX",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "UBN",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "VGA",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IXM",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IXZ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CCJ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IXE",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BBI",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PNQ",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LKO",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "JAI",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IXB",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MAD",
+      "source": "https://www.singaporeair.com/sg/en/plan-travel/destinations/",
+      "kind": "Supplemental exact-airport probe; not proof of published/current service"
+    },
+    {
+      "origin": "XSP",
+      "destination": "SZB",
+      "source": "https://www.seletarairport.com/commercial-flights.html",
+      "kind": "Published Seletar commercial route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ADL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BNE",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CNS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DRW",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MEL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PER",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "ADL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BNE",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CNS",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DRW",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MEL",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PER",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SYD",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SYD",
+      "source": "https://www.bitre.gov.au/sites/default/files/documents/International_airline_activity_0726.xlsx",
+      "kind": "Reciprocal candidate from australia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BPN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HLP",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LOP",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MDC",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PKU",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BPN",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "CGK",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DPS",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "HLP",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KNO",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LOP",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MDC",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PKU",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SRG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SUB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "UPG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "YIA",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SRG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SUB",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "UPG",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "YIA",
+      "source": "https://hubud.kemenhub.go.id/hubud/website/assets/file/bukustatistik/9a4eaeb68ab0e5bb3be1a8b5202ccb90.pdf",
+      "kind": "Reciprocal candidate from indonesia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BKI",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IPH",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "JHB",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KBR",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KCH",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KUA",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KUL",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LGK",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MKZ",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MYY",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PEN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SBW",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "BKI",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "IPH",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "JHB",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KBR",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KCH",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KUA",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KUL",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "LGK",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MKZ",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MYY",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "PEN",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SBW",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SZB",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "SZB",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "XSP",
+      "destination": "SZB",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "XSP",
+      "destination": "SZB",
+      "source": "https://www.singaporeair.com/en_UK/my/plan-travel/local-promotions/malaysia/",
+      "kind": "Reciprocal candidate from malaysia_international_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "AUH",
+      "source": "https://www.zayedinternationalairport.ae/en/flights-and-check-in/destination-and-airlines/destinations",
+      "kind": "Reciprocal candidate from gulf_flights_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DOH",
+      "source": "https://www.zayedinternationalairport.ae/en/flights-and-check-in/destination-and-airlines/destinations",
+      "kind": "Reciprocal candidate from gulf_flights_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DXB",
+      "source": "https://www.zayedinternationalairport.ae/en/flights-and-check-in/destination-and-airlines/destinations",
+      "kind": "Reciprocal candidate from gulf_flights_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "AUH",
+      "source": "https://www.zayedinternationalairport.ae/en/flights-and-check-in/destination-and-airlines/destinations",
+      "kind": "Reciprocal candidate from gulf_flights_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DOH",
+      "source": "https://www.zayedinternationalairport.ae/en/flights-and-check-in/destination-and-airlines/destinations",
+      "kind": "Reciprocal candidate from gulf_flights_routes.json"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DXB",
+      "source": "https://www.zayedinternationalairport.ae/en/flights-and-check-in/destination-and-airlines/destinations",
+      "kind": "Reciprocal candidate from gulf_flights_routes.json"
+    }
+  ],
+  "unresolved_airports": []
+}

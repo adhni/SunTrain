@@ -109,6 +109,13 @@ def routes():
 
 
 def country_config(country='AU', scope='domestic'):
+    from dashboard.asean_flights import PROFILES
+    if country in PROFILES:
+        p=PROFILES[country]
+        if scope!='domestic' or not p['domestic']:
+            raise ValueError('This ASEAN profile uses prepare_international_network.py for international flights')
+        manifest=json.loads((ROOT/f"data/sources/{p['slug']}_flights_routes.json").read_text())
+        return dict(country=country,zones={a['code']:a['timezone'] for a in manifest['airports']},timezone=p['zone'],end_date=manifest['end_date'],manifest=manifest,scope='domestic',capture_prices=True,currency='USD',max_duration=28800,allow_empty_snapshot=True)
     if country == 'AU' and scope == 'domestic':
         return dict(country='AU', zones=ZONES, timezone='Australia/Melbourne', end_date=None, manifest=None)
     if country not in {'AU', 'ID', 'MY', 'SG', 'IN', 'KR', 'JP', 'CN', 'TH', 'PH', 'VN'}:
@@ -143,7 +150,7 @@ def expected_queries(search_date, pairs, config=None, end_date=None):
             start = (midnight - timedelta(seconds=config['max_duration'])).astimezone(zone).date()
             end = (finish - timedelta(seconds=1)).astimezone(zone).date()
             dates = [(start + timedelta(days=n)).isoformat() for n in range((end-start).days+1)]
-        elif config['country'] in {'ID','MY','IN','KR','JP','CN','TH','PH','VN'}:
+        elif config.get('allow_empty_snapshot') or config['country'] in {'ID','MY','IN','KR','JP','CN','TH','PH','VN'}:
             start = date.fromisoformat(search_date) - timedelta(days=1)
             end = date.fromisoformat(end_date or config['end_date']) + timedelta(days=1 if config['country']=='ID' else 0)
             dates = [(start + timedelta(days=n)).isoformat() for n in range((end-start).days+1)]
@@ -307,6 +314,9 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
     records, queries = {}, []
     config = config or country_config()
     end_date = end_date or config['end_date'] or day
+    if config.get('allow_empty_snapshot'):
+        allowed={tuple(p) for p in config['manifest']['routes']}
+        if any(tuple(p) not in allowed for p in pairs):raise ValueError('ASEAN route outside approved manifest')
     if config.get('hub_codes') and any(not set((a,b)) & set(config['hub_codes']) or a==b for a,b in pairs):
         raise ValueError('Flight route must touch a selected hub')
     if config['country'] in {'MY','IN','KR','JP','CN','TH','PH','VN'} and config.get('scope') != 'international':
@@ -338,7 +348,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             if f['id'] in records and records[f['id']] != f:
                 raise ValueError('Conflicting flight snapshots')
             records[f['id']] = f
-    if not records:
+    if not records and not config.get('allow_empty_snapshot'):
         raise ValueError('No flights collected')
     # Match individual IATA codes; never merge MEL and AVV by municipality.
     codes = sorted({f[key] for f in records.values() for key in ['origin', 'destination']})
@@ -361,7 +371,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             airports.append(dict(code=code, icao=a['ident'], name=f"{a['name']} ({code})", municipality=a['municipality'],
                 timezone=config['zones'][code], mode='flight', lat=float(a['latitude_deg']), lon=float(a['longitude_deg'])))
     reference = dict(metadata=dict(start_date=day, end_date=end_date, source='Google Flights airport-specific search snapshot',
-        source_url='https://www.google.com/travel/flights', source_date=max(q['captured_at'] for q in queries)[:10],
+        source_url='https://www.google.com/travel/flights', source_date=max((q['captured_at'] for q in queries),default='')[:10],
         airport_source_sha256=AIRPORT_HASH,
         airport_source='OurAirports', airport_source_url='https://ourairports.com/data/', queries=queries,
         uncollected_queries=missing, airlines=sorted({f['airline'] for f in records.values()}),
@@ -396,6 +406,12 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             metadata['coverage_scope']=config['manifest']['coverage_scope']
             metadata['deferred_airports']=config['manifest']['deferred_airports']
             metadata['replay_note']='Japanese domestic flight schedules for 2 November 2026. Timeline and airport boards use JST. Major airports and city routes first; small island and commuter services are not included. Prices are captured one-adult economy one-way USD quotes, not live fares. Search coverage is partial; some flights may be absent. Paths are illustrative, not recorded flight tracks.'
+        if config.get('allow_empty_snapshot'):
+            metadata['scope']='domestic'
+            stop=cache/'collection-stop.json'
+            if stop.exists():metadata['collection_stop']=json.loads(stop.read_text())
+            metadata['coverage_scope']=config['manifest']['coverage_scope']
+            metadata['replay_note']='Captured domestic schedules only. Empty results mean not returned, not no service. Coverage and prices are partial; paths are illustrative.'
         if config['country']=='VN':
             metadata['scope']='domestic'
             metadata['coverage_scope']=config['manifest']['coverage_scope']

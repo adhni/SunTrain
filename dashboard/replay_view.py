@@ -225,7 +225,7 @@ def register_replay_callbacks(app, metadata):
                 ([{"label": message("Size trains by passengers"), "value": "load"}] if settings["passenger_data"] else []),
                 ["routes", "stations"],
                 {"display": "none"} if settings.get('replay_kind')=='flights' else {},
-                {} if settings.get("flight_scopes") else {"display": "none"}, "both" if settings.get('flight_hubs') or settings.get('flight_country_filters') else "domestic",
+                {} if settings.get("flight_scopes") else {"display": "none"}, settings.get("default_flight_scope", "both" if settings.get('flight_hubs') or settings.get('flight_country_filters') else "domestic"),
                 {} if settings.get("replay_kind") == "flights" else {"display": "none"}, [], [settings['default_airport']] if settings.get('default_airport') else [], "planes", "both",
                 {"display": "none"} if settings.get("replay_kind") == "flights" else {},
                 {"display": "none"} if settings.get("replay_kind") == "flights" else {},[],[])

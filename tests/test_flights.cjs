@@ -228,3 +228,13 @@ test('New Zealand clocks use daylight saving and retain winter capture offsets',
     try {assert.match(captureTime('2026-11-01T11:00:00Z','Pacific/Auckland'),/NZDT/);}
     finally {delete globalThis.suntrainI18n;}
 });
+
+
+test('Taiwan and Hong Kong clocks retain separate local zone labels',()=>{
+ const {captureTime}=require('../assets/02_flights.js');
+ const at='2026-11-01T16:00:00Z';
+ assert.match(formatCallTime(Date.parse(at)/1000,'Asia/Taipei'),/2 Nov.*00:00 CST/);
+ assert.match(formatCallTime(Date.parse(at)/1000,'Asia/Hong_Kong'),/2 Nov.*00:00 HKT/);
+ assert.match(captureTime(at,'Asia/Taipei'),/CST/);
+ assert.match(captureTime(at,'Asia/Hong_Kong'),/HKT/);
+});

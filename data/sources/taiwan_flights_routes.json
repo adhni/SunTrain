@@ -1,0 +1,465 @@
+{
+  "country": "TW",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Taipei",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "CYI",
+      "icao": "RCKU",
+      "name": "Chiayi Airport (CYI)",
+      "municipality": "Shuishang",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Main island",
+      "mode": "flight",
+      "lat": 23.462577,
+      "lon": 120.390544
+    },
+    {
+      "code": "GNI",
+      "icao": "RCGI",
+      "name": "Lüdao Airport (GNI)",
+      "municipality": "Lüdao",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Eastern islands",
+      "mode": "flight",
+      "lat": 22.673901,
+      "lon": 121.466003
+    },
+    {
+      "code": "HUN",
+      "icao": "RCYU",
+      "name": "Hualien Chiashan Airport (HUN)",
+      "municipality": "Hualien City",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Main island",
+      "mode": "flight",
+      "lat": 24.023163,
+      "lon": 121.617991
+    },
+    {
+      "code": "KHH",
+      "icao": "RCKH",
+      "name": "Kaohsiung International Airport (KHH)",
+      "municipality": "Kaohsiung (Xiaogang)",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Main island",
+      "mode": "flight",
+      "lat": 22.577101,
+      "lon": 120.349998
+    },
+    {
+      "code": "KNH",
+      "icao": "RCBS",
+      "name": "Kinmen Airport (KNH)",
+      "municipality": "Shang-I",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Kinmen",
+      "mode": "flight",
+      "lat": 24.4279,
+      "lon": 118.359001
+    },
+    {
+      "code": "KYD",
+      "icao": "RCLY",
+      "name": "Lanyu Airport (KYD)",
+      "municipality": "Orchid Island",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Eastern islands",
+      "mode": "flight",
+      "lat": 22.027000427246094,
+      "lon": 121.53500366210938
+    },
+    {
+      "code": "LZN",
+      "icao": "RCFG",
+      "name": "Matsu Nangan Airport (LZN)",
+      "municipality": "Matsu (Nangan)",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Matsu",
+      "mode": "flight",
+      "lat": 26.159656,
+      "lon": 119.958376
+    },
+    {
+      "code": "MFK",
+      "icao": "RCMT",
+      "name": "Matsu Beigan Airport (MFK)",
+      "municipality": "Matsu (Beigan)",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Matsu",
+      "mode": "flight",
+      "lat": 26.22414,
+      "lon": 120.002679
+    },
+    {
+      "code": "MZG",
+      "icao": "RCQC",
+      "name": "Penghu Magong Airport (MZG)",
+      "municipality": "Huxi",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Penghu",
+      "mode": "flight",
+      "lat": 23.568701,
+      "lon": 119.627998
+    },
+    {
+      "code": "RMQ",
+      "icao": "RCMQ",
+      "name": "Taichung International Airport / Ching Chuang Kang Air Base (RMQ)",
+      "municipality": "Taichung (Qingshui)",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Main island",
+      "mode": "flight",
+      "lat": 24.2647,
+      "lon": 120.621002
+    },
+    {
+      "code": "TNN",
+      "icao": "RCNN",
+      "name": "Tainan International Airport / Tainan Air Base (TNN)",
+      "municipality": "Tainan (Rende)",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Main island",
+      "mode": "flight",
+      "lat": 22.950399,
+      "lon": 120.206001
+    },
+    {
+      "code": "TSA",
+      "icao": "RCSS",
+      "name": "Taipei Songshan International Airport (TSA)",
+      "municipality": "Taipei (Songshan)",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Main island",
+      "mode": "flight",
+      "lat": 25.067244,
+      "lon": 121.552822
+    },
+    {
+      "code": "TTT",
+      "icao": "RCFN",
+      "name": "Taitung Airport (TTT)",
+      "municipality": "Taitung City",
+      "country": "TW",
+      "timezone": "Asia/Taipei",
+      "island_group": "Main island",
+      "mode": "flight",
+      "lat": 22.754856,
+      "lon": 121.101794
+    }
+  ],
+  "routes": [
+    [
+      "CYI",
+      "KNH"
+    ],
+    [
+      "CYI",
+      "MZG"
+    ],
+    [
+      "GNI",
+      "TTT"
+    ],
+    [
+      "HUN",
+      "KHH"
+    ],
+    [
+      "HUN",
+      "RMQ"
+    ],
+    [
+      "HUN",
+      "TSA"
+    ],
+    [
+      "KHH",
+      "HUN"
+    ],
+    [
+      "KHH",
+      "KNH"
+    ],
+    [
+      "KHH",
+      "MZG"
+    ],
+    [
+      "KNH",
+      "CYI"
+    ],
+    [
+      "KNH",
+      "KHH"
+    ],
+    [
+      "KNH",
+      "MZG"
+    ],
+    [
+      "KNH",
+      "RMQ"
+    ],
+    [
+      "KNH",
+      "TNN"
+    ],
+    [
+      "KNH",
+      "TSA"
+    ],
+    [
+      "KYD",
+      "TTT"
+    ],
+    [
+      "LZN",
+      "RMQ"
+    ],
+    [
+      "LZN",
+      "TSA"
+    ],
+    [
+      "MFK",
+      "TSA"
+    ],
+    [
+      "MZG",
+      "CYI"
+    ],
+    [
+      "MZG",
+      "KHH"
+    ],
+    [
+      "MZG",
+      "KNH"
+    ],
+    [
+      "MZG",
+      "RMQ"
+    ],
+    [
+      "MZG",
+      "TNN"
+    ],
+    [
+      "MZG",
+      "TSA"
+    ],
+    [
+      "RMQ",
+      "HUN"
+    ],
+    [
+      "RMQ",
+      "KNH"
+    ],
+    [
+      "RMQ",
+      "LZN"
+    ],
+    [
+      "RMQ",
+      "MZG"
+    ],
+    [
+      "TNN",
+      "KNH"
+    ],
+    [
+      "TNN",
+      "MZG"
+    ],
+    [
+      "TSA",
+      "HUN"
+    ],
+    [
+      "TSA",
+      "KNH"
+    ],
+    [
+      "TSA",
+      "LZN"
+    ],
+    [
+      "TSA",
+      "MFK"
+    ],
+    [
+      "TSA",
+      "MZG"
+    ],
+    [
+      "TSA",
+      "TTT"
+    ],
+    [
+      "TTT",
+      "GNI"
+    ],
+    [
+      "TTT",
+      "KYD"
+    ],
+    [
+      "TTT",
+      "TSA"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "TSA",
+      "destination": "HUN",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TSA",
+      "destination": "TTT",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TSA",
+      "destination": "MZG",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TSA",
+      "destination": "KNH",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TSA",
+      "destination": "LZN",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TSA",
+      "destination": "MFK",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "HUN",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "MZG",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "KNH",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "RMQ",
+      "destination": "LZN",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "HUN",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "MZG",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "KHH",
+      "destination": "KNH",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "CYI",
+      "destination": "MZG",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "CYI",
+      "destination": "KNH",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TNN",
+      "destination": "MZG",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TNN",
+      "destination": "KNH",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TTT",
+      "destination": "GNI",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "TTT",
+      "destination": "KYD",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    },
+    {
+      "origin": "MZG",
+      "destination": "KNH",
+      "source": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+      "kind": "Official airport/tourism route candidate; may be historical or frequency-only, dated capture required"
+    }
+  ],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://eng.taiwan.net.tw/m1.aspx?sno=0024034",
+  "route_source_sha256": "f85f5da0e049d0b7c08d83a4801d1cea54f1ef0a945c1508aeed16d06b86a802",
+  "unresolved_airports": [],
+  "source_reviewed_date": "2026-10-26",
+  "coverage_scope": "Selected main-island and offshore domestic airports; schedules and prices remain partial",
+  "deferred_airports": [
+    "HCN and small Penghu commuter/island services"
+  ],
+  "airport_notes": [
+    "TPE and TSA remain separate; no TPE domestic trunk service is inferred.",
+    "LZN Nangan and MFK Beigan remain separate."
+  ]
+}

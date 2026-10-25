@@ -74,7 +74,12 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'K6': ('Air Cambodia', '#b596d8'), 'ZA': ('Sky Angkor Airlines', '#dfaa70'),
             'KR': ('Cambodia Airways', '#79b3c8'), 'QV': ('Lao Airlines', '#73b69b'),
             'LK': ('Lao Skyway', '#d3bd71'), '8M': ('Myanmar Airways International', '#91a6d9'),
-            'UB': ('Myanmar National Airlines', '#bf99c3'), 'TL': ('Airnorth', '#9aabd8')}
+            'UB': ('Myanmar National Airlines', '#bf99c3'), 'TL': ('Airnorth', '#9aabd8'),
+            'CI': ('China Airlines', '#c690bb'), 'BR': ('EVA Air', '#6db597'),
+            'JX': ('STARLUX Airlines', '#b5a276'), 'IT': ('Tigerair Taiwan', '#dfbe62'),
+            'B7': ('UNI Air', '#8ebe7e'), 'AE': ('Mandarin Airlines', '#b39dc9'),
+            'HX': ('Hong Kong Airlines', '#cf838b'), 'UO': ('HK Express', '#b197d6'),
+            'HB': ('Greater Bay Airlines', '#79b8ca')}
 
 
 def airline_style(carrier, name):

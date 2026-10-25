@@ -19,13 +19,27 @@ CITIES = {'australia_flights':('AU','Australia/Melbourne'),'indonesia_flights':(
           'japan_flights':('JP','Asia/Tokyo'),'south_korea_flights':('KR','Asia/Seoul'),
           'gulf_flights':(None,'Asia/Dubai'),'thailand_flights':('TH','Asia/Bangkok'),'philippines_flights':('PH','Asia/Manila'),'vietnam_flights':('VN','Asia/Ho_Chi_Minh')}
 COUNTRIES.update({c:p['name'] for c,p in PROFILES.items()})
+CORE_COUNTRIES=set(COUNTRIES)
+# These endpoints are eligible only on a Taiwan/Hong Kong route. Adding them
+# must not silently collect every older country's worldwide route catalogue.
+COUNTRIES.update({'AT':'Austria','BD':'Bangladesh','BE':'Belgium','CA':'Canada','CH':'Switzerland',
+ 'CZ':'Czechia','DE':'Germany','ES':'Spain','ET':'Ethiopia','FI':'Finland','FJ':'Fiji','FR':'France',
+ 'GB':'United Kingdom','GU':'Guam','IL':'Israel','IT':'Italy','LK':'Sri Lanka','MN':'Mongolia',
+ 'MO':'Macau','MP':'Northern Mariana Islands','MV':'Maldives','NL':'Netherlands','NP':'Nepal',
+ 'PG':'Papua New Guinea','PW':'Palau','RU':'Russia','SA':'Saudi Arabia','TR':'Turkey',
+ 'US':'United States','ZA':'South Africa'})
 CITIES.update({city:(c,p['zone']) for city,(c,p) in PROFILE_CITIES.items()})
 HUBS = {'DXB','AUH','DOH'}
 # Earlier Indonesian and Malaysian snapshots stored OurAirports' stable `ident`; newer
 # catalogues use the same row's `icao_code`. These are exact pinned row aliases,
 # not permission to merge airports sharing a municipality or similar name.
 ICAO_ALIASES = {'PDG':{'WIPT','WIEE'},'SRG':{'WARS','WAHS'},'TJQ':{'WIOD','WIKT'},'KTI':{'KH-0002','VDTI'}}
-NOTE = 'International flights between selected SunTrain flight locations · 2 November 2026. The network clock uses UTC; airport boards use local dates and times. Captured USD/MYR fares are shown in their original currency without conversion. Coverage and prices are partial; paths are illustrative.'
+NOTE = 'International flights between SunTrain flight locations and worldwide Taiwan/Hong Kong connections · 2 November 2026. The network clock uses UTC; airport boards use local dates and times. Captured USD/MYR fares are shown in their original currency without conversion. Coverage and prices are partial; paths are illustrative.'
+
+
+def within_footprint(a,b):
+    return (a['country'] in COUNTRIES and b['country'] in COUNTRIES and a['country']!=b['country']
+        and ({a['country'],b['country']}<=(CORE_COUNTRIES) or bool({a['country'],b['country']}&{'TW','HK'})))
 
 
 def reference_path():
@@ -131,7 +145,7 @@ def load_archive():
     airports = {a['code']:a for a in reference['airports']}
     for f in reference['flights']:
         a,b = airports[f['origin']],airports[f['destination']]
-        if (a['country'] not in COUNTRIES or b['country'] not in COUNTRIES or a['country']==b['country']
+        if (not within_footprint(a,b)
             or any(x['country'] in {'AE','QA'} and x['code'] not in HUBS for x in (a,b))):
             raise ValueError('Flight outside the international network footprint')
         if not 60<=f['arrival']-f['departure']<=86400:raise ValueError('Invalid international duration')
@@ -191,5 +205,7 @@ def overlay(base, city):
         both.update(airports_returned=len(airports),airports_planned=len(planned),candidate_airports=len(planned),airports_searched=len(searched))
         scopes['both']=both;meta['coverage']=both;meta['scope']='both'
         meta['replay_note']='Domestic flights and captured international connections to selected SunTrain flight locations. Airport boards use local dates and times. Coverage and prices are partial; paths are illustrative.'
+        if city in PROFILE_CITIES and PROFILE_CITIES[city][1].get('worldwide'):
+            meta['replay_note']='Domestic flights and captured worldwide international connections. Airport boards use local dates and times. Coverage and prices are partial; paths are illustrative.'
     if scopes:meta['coverage_by_scope']=scopes
     return dict(airports=sorted(airports.values(),key=lambda a:a['code']),flights=sorted(flights.values(),key=lambda f:(f['departure'],f['id'])),metadata=meta)

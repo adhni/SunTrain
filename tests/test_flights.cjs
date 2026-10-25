@@ -6,6 +6,14 @@ const {summarize} = require('../assets/02_city_overview.js');
 const {bearing} = require('../assets/02_flights.js');
 const {priceLabel} = require('../assets/02_flights.js');
 
+test('Japanese airport and fare capture clocks retain JST at midnight',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    const at=Date.parse('2026-11-01T15:00:00Z')/1000;
+    assert.match(formatCallTime(at,'Asia/Tokyo'),/00:00 JST/);
+    assert.match(formatCallTime(at-60,'Asia/Tokyo'),/23:59 JST/);
+    assert.match(captureTime('2026-11-01T15:00:00Z','Asia/Tokyo'),/2 Nov.*00:00 JST/);
+});
+
 test('Korean airport and capture clocks own midnight in KST',()=>{
     const {captureTime}=require('../assets/02_flights.js');
     const at=Date.parse('2026-11-01T15:00:00Z')/1000;

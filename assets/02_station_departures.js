@@ -55,7 +55,7 @@
             return {...row, label: `${row.name} · ${routes} · ${location}`};
         }).sort((a, b) => a.name.localeCompare(b.name) || a.id - b.id);
     }
-    const airportZoneLabels = {'Asia/Jakarta': 'WIB', 'Asia/Pontianak': 'WIB', 'Asia/Makassar': 'WITA', 'Asia/Jayapura': 'WIT', 'Asia/Kuala_Lumpur': 'MYT', 'Asia/Kuching': 'MYT', 'Asia/Singapore':'SGT','Asia/Kolkata':'IST','Asia/Seoul':'KST'};
+    const airportZoneLabels = {'Asia/Jakarta': 'WIB', 'Asia/Pontianak': 'WIB', 'Asia/Makassar': 'WITA', 'Asia/Jayapura': 'WIT', 'Asia/Kuala_Lumpur': 'MYT', 'Asia/Kuching': 'MYT', 'Asia/Singapore':'SGT','Asia/Kolkata':'IST','Asia/Seoul':'KST','Asia/Tokyo':'JST'};
     function formatCallTime(at, timezone) {
         const formatted = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {timeZone: timezone, day: "numeric", month: "short",
             hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZoneName: "shortOffset"}).format(new Date(at * 1000));
@@ -194,7 +194,7 @@
                     control.disabled = event === 'destinations' && this.station === null;
                     control.dataset.event = event; control.setAttribute('aria-pressed', String(event === this.event)); tabs.append(control);
                 }
-                const clockNote=replay.day.timezone==='Asia/Seoul'?'Airport times are local. The replay clock uses KST.':replay.day.timezone==='Asia/Kolkata'?'Airport times are local. The replay clock uses IST.':replay.day.timezone==='Asia/Singapore'?'Airport times are local. The replay clock uses SGT.':replay.day.timezone==='Asia/Dubai'?'Airport times are local. The replay clock uses Dubai time (UTC+4).':replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : replay.day.timezone === 'Asia/Kuala_Lumpur' ? 'Airport times are local. The replay clock uses MYT.' : 'Airport times are local. The replay clock uses Melbourne time.';
+                const clockNote=replay.day.timezone==='Asia/Tokyo'?'Airport times are local. The replay clock uses JST.':replay.day.timezone==='Asia/Seoul'?'Airport times are local. The replay clock uses KST.':replay.day.timezone==='Asia/Kolkata'?'Airport times are local. The replay clock uses IST.':replay.day.timezone==='Asia/Singapore'?'Airport times are local. The replay clock uses SGT.':replay.day.timezone==='Asia/Dubai'?'Airport times are local. The replay clock uses Dubai time (UTC+4).':replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : replay.day.timezone === 'Asia/Kuala_Lumpur' ? 'Airport times are local. The replay clock uses MYT.' : 'Airport times are local. The replay clock uses Melbourne time.';
                 this.host.append(tabs,node('p',clockNote,'replay-muted replay-small'));
                 if (replay.day.schedule?.fare_context) this.host.append(node('p', 'Captured fares · 1 adult · Economy · One-way. Prices may change.', 'replay-muted replay-small'));
             }

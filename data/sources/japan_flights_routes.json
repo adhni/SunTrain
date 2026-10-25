@@ -1,0 +1,3181 @@
+{
+  "country": "JP",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Tokyo",
+  "currency": "USD",
+  "max_duration": 28800,
+  "coverage_scope": "Major airports and city routes first; small island and commuter services deferred",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+  "route_source_sha256": "f30a3422ca52cfbd51640ad34eefc08d7e7be228f4d40983461de8aedfa5d7fa",
+  "route_hash_basis": "Curated exact-airport candidate evidence, not raw website bytes",
+  "source_documents": [
+    {
+      "url": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "sha256": "db3f438961d14e13a6275b21b8ce5cbcb5f09cf828c46b166e623c06f449d223",
+      "purpose": "Route headings only; no timetable adapter"
+    }
+  ],
+  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_timezone": "Australia/Melbourne",
+  "airports": [
+    {
+      "code": "AKJ",
+      "icao": "RJEC",
+      "name": "Asahikawa Airport (AKJ)",
+      "municipality": "Higashikagura",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Hokkaido",
+      "mode": "flight",
+      "lat": 43.670799,
+      "lon": 142.447006
+    },
+    {
+      "code": "AOJ",
+      "icao": "RJSA",
+      "name": "Aomori Airport (AOJ)",
+      "municipality": "Aomori",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 40.733777,
+      "lon": 140.689477
+    },
+    {
+      "code": "AXT",
+      "icao": "RJSK",
+      "name": "Akita Airport (AXT)",
+      "municipality": "Akita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 39.615601,
+      "lon": 140.218994
+    },
+    {
+      "code": "CTS",
+      "icao": "RJCC",
+      "name": "New Chitose Airport (CTS)",
+      "municipality": "Sapporo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Hokkaido",
+      "mode": "flight",
+      "lat": 42.774753,
+      "lon": 141.690414
+    },
+    {
+      "code": "FKS",
+      "icao": "RJSF",
+      "name": "Fukushima Airport (FKS)",
+      "municipality": "Sukagawa",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 37.22740173339844,
+      "lon": 140.43099975585938
+    },
+    {
+      "code": "FSZ",
+      "icao": "RJNS",
+      "name": "Mount Fuji Shizuoka Airport (FSZ)",
+      "municipality": "Makinohara / Shimada",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 34.795022,
+      "lon": 138.190976
+    },
+    {
+      "code": "FUK",
+      "icao": "RJFF",
+      "name": "Fukuoka Airport (FUK)",
+      "municipality": "Fukuoka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Kyushu",
+      "mode": "flight",
+      "lat": 33.585899353027344,
+      "lon": 130.4510040283203
+    },
+    {
+      "code": "HIJ",
+      "icao": "RJOA",
+      "name": "Hiroshima Airport (HIJ)",
+      "municipality": "Hiroshima",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 34.4361,
+      "lon": 132.919006
+    },
+    {
+      "code": "HKD",
+      "icao": "RJCH",
+      "name": "Hakodate Airport (HKD)",
+      "municipality": "Hakodate",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Hokkaido",
+      "mode": "flight",
+      "lat": 41.77,
+      "lon": 140.822006
+    },
+    {
+      "code": "HNA",
+      "icao": "RJSI",
+      "name": "Iwate Hanamaki Airport (HNA)",
+      "municipality": "Hanamaki",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 39.4286,
+      "lon": 141.134995
+    },
+    {
+      "code": "HND",
+      "icao": "RJTT",
+      "name": "Tokyo Haneda International Airport (HND)",
+      "municipality": "Tokyo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 35.549678,
+      "lon": 139.786958
+    },
+    {
+      "code": "HSG",
+      "icao": "RJFS",
+      "name": "Kyushu Saga International Airport (HSG)",
+      "municipality": "Saga",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Kyushu",
+      "mode": "flight",
+      "lat": 33.1497,
+      "lon": 130.302002
+    },
+    {
+      "code": "IBR",
+      "icao": "RJAH",
+      "name": "Ibaraki Airport (IBR)",
+      "municipality": "Omitama",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 36.181456,
+      "lon": 140.414434
+    },
+    {
+      "code": "ISG",
+      "icao": "ROIG",
+      "name": "New Ishigaki Airport (ISG)",
+      "municipality": "Ishigaki",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Okinawa",
+      "mode": "flight",
+      "lat": 24.396389,
+      "lon": 124.245
+    },
+    {
+      "code": "ITM",
+      "icao": "RJOO",
+      "name": "Osaka Itami International Airport (ITM)",
+      "municipality": "Osaka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 34.780853,
+      "lon": 135.440829
+    },
+    {
+      "code": "IWK",
+      "icao": "RJOI",
+      "name": "Iwakuni Kintaikyo Airport (IWK)",
+      "municipality": "Iwakuni",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 34.146333,
+      "lon": 132.247238
+    },
+    {
+      "code": "KCZ",
+      "icao": "RJOK",
+      "name": "Kochi Ryoma Airport (KCZ)",
+      "municipality": "Nankoku",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Shikoku",
+      "mode": "flight",
+      "lat": 33.545217,
+      "lon": 133.670166
+    },
+    {
+      "code": "KIJ",
+      "icao": "RJSN",
+      "name": "Niigata Airport (KIJ)",
+      "municipality": "Niigata",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 37.954166,
+      "lon": 139.112189
+    },
+    {
+      "code": "KIX",
+      "icao": "RJBB",
+      "name": "Kansai International Airport (KIX)",
+      "municipality": "Osaka",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 34.427299,
+      "lon": 135.244003
+    },
+    {
+      "code": "KKJ",
+      "icao": "RJFR",
+      "name": "Kitakyushu Airport (KKJ)",
+      "municipality": "Kitakyushu",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Kyushu",
+      "mode": "flight",
+      "lat": 33.845901,
+      "lon": 131.035004
+    },
+    {
+      "code": "KMI",
+      "icao": "RJFM",
+      "name": "Miyazaki Airport (KMI)",
+      "municipality": "Miyazaki",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Kyushu",
+      "mode": "flight",
+      "lat": 31.877199,
+      "lon": 131.449005
+    },
+    {
+      "code": "KMJ",
+      "icao": "RJFT",
+      "name": "Kumamoto Airport (KMJ)",
+      "municipality": "Kumamoto",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Kyushu",
+      "mode": "flight",
+      "lat": 32.837299,
+      "lon": 130.854996
+    },
+    {
+      "code": "KMQ",
+      "icao": "RJNK",
+      "name": "Komatsu Airport / JASDF Komatsu Air Base (KMQ)",
+      "municipality": "Kanazawa",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 36.393407,
+      "lon": 136.406895
+    },
+    {
+      "code": "KOJ",
+      "icao": "RJFK",
+      "name": "Kagoshima Airport (KOJ)",
+      "municipality": "Kagoshima",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Kyushu",
+      "mode": "flight",
+      "lat": 31.8034,
+      "lon": 130.718994
+    },
+    {
+      "code": "KUH",
+      "icao": "RJCK",
+      "name": "Kushiro Airport (KUH)",
+      "municipality": "Kushiro",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Hokkaido",
+      "mode": "flight",
+      "lat": 43.041,
+      "lon": 144.192993
+    },
+    {
+      "code": "MMB",
+      "icao": "RJCM",
+      "name": "Memanbetsu Airport (MMB)",
+      "municipality": "Ōzora",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Hokkaido",
+      "mode": "flight",
+      "lat": 43.8805999756,
+      "lon": 144.164001465
+    },
+    {
+      "code": "MMY",
+      "icao": "ROMY",
+      "name": "Miyako Airport (MMY)",
+      "municipality": "Miyakojima",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Okinawa",
+      "mode": "flight",
+      "lat": 24.782801,
+      "lon": 125.294998
+    },
+    {
+      "code": "MYJ",
+      "icao": "RJOM",
+      "name": "Matsuyama Airport (MYJ)",
+      "municipality": "Matsuyama",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Shikoku",
+      "mode": "flight",
+      "lat": 33.826893,
+      "lon": 132.700114
+    },
+    {
+      "code": "NGO",
+      "icao": "RJGG",
+      "name": "Chubu Centrair International Airport (NGO)",
+      "municipality": "Tokoname",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 34.858398,
+      "lon": 136.804993
+    },
+    {
+      "code": "NGS",
+      "icao": "RJFU",
+      "name": "Nagasaki Airport (NGS)",
+      "municipality": "Nagasaki",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Kyushu",
+      "mode": "flight",
+      "lat": 32.916901,
+      "lon": 129.914001
+    },
+    {
+      "code": "NKM",
+      "icao": "RJNA",
+      "name": "Nagoya Airport / JASDF Komaki Air Base (NKM)",
+      "municipality": "Nagoya",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 35.255759,
+      "lon": 136.924095
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "OBO",
+      "icao": "RJCB",
+      "name": "Tokachi-Obihiro Airport (OBO)",
+      "municipality": "Obihiro",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Hokkaido",
+      "mode": "flight",
+      "lat": 42.7332992554,
+      "lon": 143.216995239
+    },
+    {
+      "code": "OIT",
+      "icao": "RJFO",
+      "name": "Oita Airport (OIT)",
+      "municipality": "Oita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Kyushu",
+      "mode": "flight",
+      "lat": 33.479400634799994,
+      "lon": 131.736999512
+    },
+    {
+      "code": "OKA",
+      "icao": "ROAH",
+      "name": "Naha International Airport (OKA)",
+      "municipality": "Naha",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Okinawa",
+      "mode": "flight",
+      "lat": 26.192437,
+      "lon": 127.639804
+    },
+    {
+      "code": "OKD",
+      "icao": "RJCO",
+      "name": "Sapporo Okadama Airport (OKD)",
+      "municipality": "Sapporo",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Hokkaido",
+      "mode": "flight",
+      "lat": 43.117447,
+      "lon": 141.38134
+    },
+    {
+      "code": "OKJ",
+      "icao": "RJOB",
+      "name": "Okayama Momotaro Airport (OKJ)",
+      "municipality": "Okayama",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 34.756901,
+      "lon": 133.854996
+    },
+    {
+      "code": "SDJ",
+      "icao": "RJSS",
+      "name": "Sendai Airport (SDJ)",
+      "municipality": "Natori",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 38.139702,
+      "lon": 140.917007
+    },
+    {
+      "code": "SHI",
+      "icao": "RORS",
+      "name": "Shimojishima Airport (SHI)",
+      "municipality": "Miyakojima",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Okinawa",
+      "mode": "flight",
+      "lat": 24.8267,
+      "lon": 125.144997
+    },
+    {
+      "code": "SYO",
+      "icao": "RJSY",
+      "name": "Shonai Airport (SYO)",
+      "municipality": "Shonai",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 38.812199,
+      "lon": 139.787003
+    },
+    {
+      "code": "TAK",
+      "icao": "RJOT",
+      "name": "Takamatsu Airport (TAK)",
+      "municipality": "Takamatsu",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Shikoku",
+      "mode": "flight",
+      "lat": 34.214963,
+      "lon": 134.015454
+    },
+    {
+      "code": "TKS",
+      "icao": "RJOS",
+      "name": "Tokushima Awaodori Airport / JMSDF Tokushima Air Base (TKS)",
+      "municipality": "Tokushima",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Shikoku",
+      "mode": "flight",
+      "lat": 34.132559,
+      "lon": 134.607816
+    },
+    {
+      "code": "TOY",
+      "icao": "RJNT",
+      "name": "Toyama Kitokito Airport (TOY)",
+      "municipality": "Toyama",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 36.648416,
+      "lon": 137.187359
+    },
+    {
+      "code": "TTJ",
+      "icao": "RJOR",
+      "name": "Tottori Sand Dunes Conan Airport (TTJ)",
+      "municipality": "Tottori",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 35.530058,
+      "lon": 134.165023
+    },
+    {
+      "code": "UBJ",
+      "icao": "RJDC",
+      "name": "Yamaguchi Ube Airport (UBJ)",
+      "municipality": "Ube",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 33.93,
+      "lon": 131.279007
+    },
+    {
+      "code": "UKB",
+      "icao": "RJBE",
+      "name": "Kobe Airport (UKB)",
+      "municipality": "Kobe",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 34.632801,
+      "lon": 135.223999
+    },
+    {
+      "code": "YGJ",
+      "icao": "RJOH",
+      "name": "Yonago Kitaro Airport / JASDF Miho Air Base (YGJ)",
+      "municipality": "Yonago",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "island_group": "Honshu",
+      "mode": "flight",
+      "lat": 35.492199,
+      "lon": 133.235992
+    }
+  ],
+  "routes": [
+    [
+      "AKJ",
+      "HND"
+    ],
+    [
+      "AKJ",
+      "ITM"
+    ],
+    [
+      "AKJ",
+      "NRT"
+    ],
+    [
+      "AOJ",
+      "CTS"
+    ],
+    [
+      "AOJ",
+      "HND"
+    ],
+    [
+      "AOJ",
+      "ITM"
+    ],
+    [
+      "AXT",
+      "CTS"
+    ],
+    [
+      "AXT",
+      "HND"
+    ],
+    [
+      "AXT",
+      "ITM"
+    ],
+    [
+      "AXT",
+      "NGO"
+    ],
+    [
+      "CTS",
+      "AOJ"
+    ],
+    [
+      "CTS",
+      "AXT"
+    ],
+    [
+      "CTS",
+      "FKS"
+    ],
+    [
+      "CTS",
+      "FUK"
+    ],
+    [
+      "CTS",
+      "HIJ"
+    ],
+    [
+      "CTS",
+      "HKD"
+    ],
+    [
+      "CTS",
+      "HNA"
+    ],
+    [
+      "CTS",
+      "HND"
+    ],
+    [
+      "CTS",
+      "IBR"
+    ],
+    [
+      "CTS",
+      "ITM"
+    ],
+    [
+      "CTS",
+      "KIJ"
+    ],
+    [
+      "CTS",
+      "KIX"
+    ],
+    [
+      "CTS",
+      "KMQ"
+    ],
+    [
+      "CTS",
+      "KUH"
+    ],
+    [
+      "CTS",
+      "MMB"
+    ],
+    [
+      "CTS",
+      "NGO"
+    ],
+    [
+      "CTS",
+      "NRT"
+    ],
+    [
+      "CTS",
+      "OKA"
+    ],
+    [
+      "CTS",
+      "OKJ"
+    ],
+    [
+      "CTS",
+      "SDJ"
+    ],
+    [
+      "CTS",
+      "TOY"
+    ],
+    [
+      "CTS",
+      "UKB"
+    ],
+    [
+      "FKS",
+      "CTS"
+    ],
+    [
+      "FKS",
+      "ITM"
+    ],
+    [
+      "FSZ",
+      "OKA"
+    ],
+    [
+      "FUK",
+      "CTS"
+    ],
+    [
+      "FUK",
+      "HND"
+    ],
+    [
+      "FUK",
+      "IBR"
+    ],
+    [
+      "FUK",
+      "ISG"
+    ],
+    [
+      "FUK",
+      "ITM"
+    ],
+    [
+      "FUK",
+      "KCZ"
+    ],
+    [
+      "FUK",
+      "KIJ"
+    ],
+    [
+      "FUK",
+      "KIX"
+    ],
+    [
+      "FUK",
+      "KMI"
+    ],
+    [
+      "FUK",
+      "KMQ"
+    ],
+    [
+      "FUK",
+      "MYJ"
+    ],
+    [
+      "FUK",
+      "NGO"
+    ],
+    [
+      "FUK",
+      "NRT"
+    ],
+    [
+      "FUK",
+      "OKA"
+    ],
+    [
+      "FUK",
+      "SDJ"
+    ],
+    [
+      "FUK",
+      "SHI"
+    ],
+    [
+      "FUK",
+      "TKS"
+    ],
+    [
+      "HIJ",
+      "CTS"
+    ],
+    [
+      "HIJ",
+      "HND"
+    ],
+    [
+      "HIJ",
+      "NRT"
+    ],
+    [
+      "HIJ",
+      "OKA"
+    ],
+    [
+      "HIJ",
+      "SDJ"
+    ],
+    [
+      "HKD",
+      "CTS"
+    ],
+    [
+      "HKD",
+      "HND"
+    ],
+    [
+      "HKD",
+      "ITM"
+    ],
+    [
+      "HKD",
+      "NGO"
+    ],
+    [
+      "HKD",
+      "NRT"
+    ],
+    [
+      "HNA",
+      "CTS"
+    ],
+    [
+      "HNA",
+      "ITM"
+    ],
+    [
+      "HND",
+      "AKJ"
+    ],
+    [
+      "HND",
+      "AOJ"
+    ],
+    [
+      "HND",
+      "AXT"
+    ],
+    [
+      "HND",
+      "CTS"
+    ],
+    [
+      "HND",
+      "FUK"
+    ],
+    [
+      "HND",
+      "HIJ"
+    ],
+    [
+      "HND",
+      "HKD"
+    ],
+    [
+      "HND",
+      "HSG"
+    ],
+    [
+      "HND",
+      "ISG"
+    ],
+    [
+      "HND",
+      "ITM"
+    ],
+    [
+      "HND",
+      "IWK"
+    ],
+    [
+      "HND",
+      "KCZ"
+    ],
+    [
+      "HND",
+      "KIX"
+    ],
+    [
+      "HND",
+      "KKJ"
+    ],
+    [
+      "HND",
+      "KMI"
+    ],
+    [
+      "HND",
+      "KMJ"
+    ],
+    [
+      "HND",
+      "KMQ"
+    ],
+    [
+      "HND",
+      "KOJ"
+    ],
+    [
+      "HND",
+      "KUH"
+    ],
+    [
+      "HND",
+      "MMB"
+    ],
+    [
+      "HND",
+      "MMY"
+    ],
+    [
+      "HND",
+      "MYJ"
+    ],
+    [
+      "HND",
+      "NGO"
+    ],
+    [
+      "HND",
+      "NGS"
+    ],
+    [
+      "HND",
+      "OBO"
+    ],
+    [
+      "HND",
+      "OIT"
+    ],
+    [
+      "HND",
+      "OKA"
+    ],
+    [
+      "HND",
+      "OKJ"
+    ],
+    [
+      "HND",
+      "SHI"
+    ],
+    [
+      "HND",
+      "SYO"
+    ],
+    [
+      "HND",
+      "TAK"
+    ],
+    [
+      "HND",
+      "TKS"
+    ],
+    [
+      "HND",
+      "TOY"
+    ],
+    [
+      "HND",
+      "TTJ"
+    ],
+    [
+      "HND",
+      "UBJ"
+    ],
+    [
+      "HND",
+      "UKB"
+    ],
+    [
+      "HND",
+      "YGJ"
+    ],
+    [
+      "HSG",
+      "HND"
+    ],
+    [
+      "IBR",
+      "CTS"
+    ],
+    [
+      "IBR",
+      "FUK"
+    ],
+    [
+      "IBR",
+      "OKA"
+    ],
+    [
+      "IBR",
+      "UKB"
+    ],
+    [
+      "ISG",
+      "FUK"
+    ],
+    [
+      "ISG",
+      "HND"
+    ],
+    [
+      "ISG",
+      "ITM"
+    ],
+    [
+      "ISG",
+      "KIX"
+    ],
+    [
+      "ISG",
+      "MMY"
+    ],
+    [
+      "ISG",
+      "NGO"
+    ],
+    [
+      "ISG",
+      "NRT"
+    ],
+    [
+      "ISG",
+      "OKA"
+    ],
+    [
+      "ITM",
+      "AKJ"
+    ],
+    [
+      "ITM",
+      "AOJ"
+    ],
+    [
+      "ITM",
+      "AXT"
+    ],
+    [
+      "ITM",
+      "CTS"
+    ],
+    [
+      "ITM",
+      "FKS"
+    ],
+    [
+      "ITM",
+      "FUK"
+    ],
+    [
+      "ITM",
+      "HKD"
+    ],
+    [
+      "ITM",
+      "HNA"
+    ],
+    [
+      "ITM",
+      "HND"
+    ],
+    [
+      "ITM",
+      "ISG"
+    ],
+    [
+      "ITM",
+      "KCZ"
+    ],
+    [
+      "ITM",
+      "KIJ"
+    ],
+    [
+      "ITM",
+      "KMI"
+    ],
+    [
+      "ITM",
+      "KMJ"
+    ],
+    [
+      "ITM",
+      "KOJ"
+    ],
+    [
+      "ITM",
+      "MMY"
+    ],
+    [
+      "ITM",
+      "MYJ"
+    ],
+    [
+      "ITM",
+      "NGS"
+    ],
+    [
+      "ITM",
+      "NRT"
+    ],
+    [
+      "ITM",
+      "OIT"
+    ],
+    [
+      "ITM",
+      "OKA"
+    ],
+    [
+      "ITM",
+      "SDJ"
+    ],
+    [
+      "IWK",
+      "HND"
+    ],
+    [
+      "IWK",
+      "OKA"
+    ],
+    [
+      "KCZ",
+      "FUK"
+    ],
+    [
+      "KCZ",
+      "HND"
+    ],
+    [
+      "KCZ",
+      "ITM"
+    ],
+    [
+      "KCZ",
+      "NRT"
+    ],
+    [
+      "KIJ",
+      "CTS"
+    ],
+    [
+      "KIJ",
+      "FUK"
+    ],
+    [
+      "KIJ",
+      "ITM"
+    ],
+    [
+      "KIJ",
+      "OKA"
+    ],
+    [
+      "KIX",
+      "CTS"
+    ],
+    [
+      "KIX",
+      "FUK"
+    ],
+    [
+      "KIX",
+      "HND"
+    ],
+    [
+      "KIX",
+      "ISG"
+    ],
+    [
+      "KIX",
+      "KMI"
+    ],
+    [
+      "KIX",
+      "KOJ"
+    ],
+    [
+      "KIX",
+      "MMY"
+    ],
+    [
+      "KIX",
+      "NGS"
+    ],
+    [
+      "KIX",
+      "NRT"
+    ],
+    [
+      "KIX",
+      "OKA"
+    ],
+    [
+      "KIX",
+      "SDJ"
+    ],
+    [
+      "KKJ",
+      "HND"
+    ],
+    [
+      "KKJ",
+      "NRT"
+    ],
+    [
+      "KMI",
+      "FUK"
+    ],
+    [
+      "KMI",
+      "HND"
+    ],
+    [
+      "KMI",
+      "ITM"
+    ],
+    [
+      "KMI",
+      "KIX"
+    ],
+    [
+      "KMI",
+      "NGO"
+    ],
+    [
+      "KMI",
+      "NRT"
+    ],
+    [
+      "KMI",
+      "OKA"
+    ],
+    [
+      "KMJ",
+      "HND"
+    ],
+    [
+      "KMJ",
+      "ITM"
+    ],
+    [
+      "KMJ",
+      "NRT"
+    ],
+    [
+      "KMJ",
+      "OKA"
+    ],
+    [
+      "KMQ",
+      "CTS"
+    ],
+    [
+      "KMQ",
+      "FUK"
+    ],
+    [
+      "KMQ",
+      "HND"
+    ],
+    [
+      "KMQ",
+      "OKA"
+    ],
+    [
+      "KOJ",
+      "HND"
+    ],
+    [
+      "KOJ",
+      "ITM"
+    ],
+    [
+      "KOJ",
+      "KIX"
+    ],
+    [
+      "KOJ",
+      "NGO"
+    ],
+    [
+      "KOJ",
+      "NRT"
+    ],
+    [
+      "KOJ",
+      "OKA"
+    ],
+    [
+      "KOJ",
+      "UKB"
+    ],
+    [
+      "KUH",
+      "CTS"
+    ],
+    [
+      "KUH",
+      "HND"
+    ],
+    [
+      "MMB",
+      "CTS"
+    ],
+    [
+      "MMB",
+      "HND"
+    ],
+    [
+      "MMY",
+      "HND"
+    ],
+    [
+      "MMY",
+      "ISG"
+    ],
+    [
+      "MMY",
+      "ITM"
+    ],
+    [
+      "MMY",
+      "KIX"
+    ],
+    [
+      "MMY",
+      "NGO"
+    ],
+    [
+      "MMY",
+      "OKA"
+    ],
+    [
+      "MYJ",
+      "FUK"
+    ],
+    [
+      "MYJ",
+      "HND"
+    ],
+    [
+      "MYJ",
+      "ITM"
+    ],
+    [
+      "MYJ",
+      "NGO"
+    ],
+    [
+      "MYJ",
+      "NRT"
+    ],
+    [
+      "MYJ",
+      "OKA"
+    ],
+    [
+      "NGO",
+      "AXT"
+    ],
+    [
+      "NGO",
+      "CTS"
+    ],
+    [
+      "NGO",
+      "FUK"
+    ],
+    [
+      "NGO",
+      "HKD"
+    ],
+    [
+      "NGO",
+      "HND"
+    ],
+    [
+      "NGO",
+      "ISG"
+    ],
+    [
+      "NGO",
+      "KMI"
+    ],
+    [
+      "NGO",
+      "KOJ"
+    ],
+    [
+      "NGO",
+      "MMY"
+    ],
+    [
+      "NGO",
+      "MYJ"
+    ],
+    [
+      "NGO",
+      "NGS"
+    ],
+    [
+      "NGO",
+      "NRT"
+    ],
+    [
+      "NGO",
+      "OIT"
+    ],
+    [
+      "NGO",
+      "OKA"
+    ],
+    [
+      "NGO",
+      "SDJ"
+    ],
+    [
+      "NGS",
+      "HND"
+    ],
+    [
+      "NGS",
+      "ITM"
+    ],
+    [
+      "NGS",
+      "KIX"
+    ],
+    [
+      "NGS",
+      "NGO"
+    ],
+    [
+      "NGS",
+      "NRT"
+    ],
+    [
+      "NGS",
+      "OKA"
+    ],
+    [
+      "NGS",
+      "UKB"
+    ],
+    [
+      "NRT",
+      "AKJ"
+    ],
+    [
+      "NRT",
+      "CTS"
+    ],
+    [
+      "NRT",
+      "FUK"
+    ],
+    [
+      "NRT",
+      "HIJ"
+    ],
+    [
+      "NRT",
+      "HKD"
+    ],
+    [
+      "NRT",
+      "ISG"
+    ],
+    [
+      "NRT",
+      "ITM"
+    ],
+    [
+      "NRT",
+      "KCZ"
+    ],
+    [
+      "NRT",
+      "KIX"
+    ],
+    [
+      "NRT",
+      "KKJ"
+    ],
+    [
+      "NRT",
+      "KMI"
+    ],
+    [
+      "NRT",
+      "KMJ"
+    ],
+    [
+      "NRT",
+      "KOJ"
+    ],
+    [
+      "NRT",
+      "MYJ"
+    ],
+    [
+      "NRT",
+      "NGO"
+    ],
+    [
+      "NRT",
+      "NGS"
+    ],
+    [
+      "NRT",
+      "OIT"
+    ],
+    [
+      "NRT",
+      "OKA"
+    ],
+    [
+      "NRT",
+      "TAK"
+    ],
+    [
+      "OBO",
+      "HND"
+    ],
+    [
+      "OIT",
+      "HND"
+    ],
+    [
+      "OIT",
+      "ITM"
+    ],
+    [
+      "OIT",
+      "NGO"
+    ],
+    [
+      "OIT",
+      "NRT"
+    ],
+    [
+      "OKA",
+      "CTS"
+    ],
+    [
+      "OKA",
+      "FSZ"
+    ],
+    [
+      "OKA",
+      "FUK"
+    ],
+    [
+      "OKA",
+      "HIJ"
+    ],
+    [
+      "OKA",
+      "HND"
+    ],
+    [
+      "OKA",
+      "IBR"
+    ],
+    [
+      "OKA",
+      "ISG"
+    ],
+    [
+      "OKA",
+      "ITM"
+    ],
+    [
+      "OKA",
+      "IWK"
+    ],
+    [
+      "OKA",
+      "KIJ"
+    ],
+    [
+      "OKA",
+      "KIX"
+    ],
+    [
+      "OKA",
+      "KMI"
+    ],
+    [
+      "OKA",
+      "KMJ"
+    ],
+    [
+      "OKA",
+      "KMQ"
+    ],
+    [
+      "OKA",
+      "KOJ"
+    ],
+    [
+      "OKA",
+      "MMY"
+    ],
+    [
+      "OKA",
+      "MYJ"
+    ],
+    [
+      "OKA",
+      "NGO"
+    ],
+    [
+      "OKA",
+      "NGS"
+    ],
+    [
+      "OKA",
+      "NRT"
+    ],
+    [
+      "OKA",
+      "OKJ"
+    ],
+    [
+      "OKA",
+      "SDJ"
+    ],
+    [
+      "OKA",
+      "SHI"
+    ],
+    [
+      "OKA",
+      "TAK"
+    ],
+    [
+      "OKA",
+      "UKB"
+    ],
+    [
+      "OKJ",
+      "CTS"
+    ],
+    [
+      "OKJ",
+      "HND"
+    ],
+    [
+      "OKJ",
+      "OKA"
+    ],
+    [
+      "SDJ",
+      "CTS"
+    ],
+    [
+      "SDJ",
+      "FUK"
+    ],
+    [
+      "SDJ",
+      "HIJ"
+    ],
+    [
+      "SDJ",
+      "ITM"
+    ],
+    [
+      "SDJ",
+      "KIX"
+    ],
+    [
+      "SDJ",
+      "NGO"
+    ],
+    [
+      "SDJ",
+      "OKA"
+    ],
+    [
+      "SDJ",
+      "UKB"
+    ],
+    [
+      "SHI",
+      "FUK"
+    ],
+    [
+      "SHI",
+      "HND"
+    ],
+    [
+      "SHI",
+      "OKA"
+    ],
+    [
+      "SHI",
+      "UKB"
+    ],
+    [
+      "SYO",
+      "HND"
+    ],
+    [
+      "TAK",
+      "HND"
+    ],
+    [
+      "TAK",
+      "NRT"
+    ],
+    [
+      "TAK",
+      "OKA"
+    ],
+    [
+      "TKS",
+      "FUK"
+    ],
+    [
+      "TKS",
+      "HND"
+    ],
+    [
+      "TOY",
+      "CTS"
+    ],
+    [
+      "TOY",
+      "HND"
+    ],
+    [
+      "TTJ",
+      "HND"
+    ],
+    [
+      "UBJ",
+      "HND"
+    ],
+    [
+      "UKB",
+      "CTS"
+    ],
+    [
+      "UKB",
+      "HND"
+    ],
+    [
+      "UKB",
+      "IBR"
+    ],
+    [
+      "UKB",
+      "KOJ"
+    ],
+    [
+      "UKB",
+      "NGS"
+    ],
+    [
+      "UKB",
+      "OKA"
+    ],
+    [
+      "UKB",
+      "SDJ"
+    ],
+    [
+      "UKB",
+      "SHI"
+    ],
+    [
+      "YGJ",
+      "HND"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "AKJ",
+      "destination": "HND",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "AOJ",
+      "destination": "CTS",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "AOJ",
+      "destination": "ITM",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "AXT",
+      "destination": "CTS",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "AXT",
+      "destination": "HND",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "AXT",
+      "destination": "ITM",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "AXT",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "FKS",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "FUK",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "HIJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "HKD",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "HND",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "ITM",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "KIJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "KMQ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "KUH",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "MMB",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "NRT",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "OKJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "SDJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "TOY",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "UKB",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FKS",
+      "destination": "ITM",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "HND",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "ITM",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "KIJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "KMI",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "KMQ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "SDJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HIJ",
+      "destination": "HND",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HIJ",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HIJ",
+      "destination": "SDJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HKD",
+      "destination": "HND",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HKD",
+      "destination": "ITM",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HKD",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "HSG",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "ISG",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "ITM",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "IWK",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KCZ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KIX",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KKJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KMI",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KMJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KMQ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KOJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KUH",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "MMB",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "MMY",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "MYJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "NGS",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "OBO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "OIT",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "OKJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "SYO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "TAK",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "TKS",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "TOY",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "TTJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "UBJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "UKB",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "YGJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ISG",
+      "destination": "ITM",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ISG",
+      "destination": "KIX",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ISG",
+      "destination": "MMY",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ISG",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ISG",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KCZ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KIJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KMI",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KMJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KOJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "MMY",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "MYJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "NGS",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "NRT",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "OIT",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "SDJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "IWK",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "MMY",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KMI",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KMI",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KMJ",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KOJ",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KOJ",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "MMY",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "MMY",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "MYJ",
+      "destination": "NGO",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "MYJ",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "NGS",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "NRT",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "OIT",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "OKA",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "SDJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "SDJ",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "TAK",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "UKB",
+      "source": "https://www.ana.co.jp/guide/plan/airinfo/dom-timetable/pdf/timetable_all_20261025_20270131.pdf",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "AOJ",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "AXT",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "SYO",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "HKD",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "MMB",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "AKJ",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KUH",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "OBO",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KOJ",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KMI",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "OKA",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "MMY",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "ISG",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "SHI",
+      "source": "https://tokyo-haneda.com/en/flight/monthlyFlightSchedule.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "AKJ",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "CTS",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "ITM",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KIX",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "NGO",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "HIJ",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KCZ",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "MYJ",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "TAK",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "FUK",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "ISG",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KKJ",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KMI",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KMJ",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KOJ",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "NGS",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "OIT",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "OKA",
+      "source": "https://www.narita-airport.jp/en/discover/citylist/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "HKD",
+      "source": "https://www.narita-airport.jp/files/3a7f642590e6b43238a824febdcc3d359b4d6efa4dea8211b674fc4b1e9b4303",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "ITM",
+      "destination": "HKD",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "AOJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "AXT",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "HNA",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "SDJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KIJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "MYJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "OIT",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "FUK",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "NGS",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KMJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KMI",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "KOJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "CTS",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Regional-city and seasonal network candidate; dated availability is checked separately"
+    },
+    {
+      "origin": "ITM",
+      "destination": "AKJ",
+      "source": "https://press.jal.co.jp/ja/release/202608/009668.html",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "TKS",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "KCZ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "MYJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "KMI",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "MMB",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "AOJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "HNA",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "SDJ",
+      "source": "https://www.jair.co.jp/area/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KIX",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "CTS",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "FUK",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "OKA",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "ISG",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "NRT",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "CTS",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "SDJ",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "FUK",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "NGS",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "KMI",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "KOJ",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "OKA",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "KIX",
+      "destination": "ISG",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "CTS",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "OKA",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "ISG",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "CTS",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "OKA",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "ISG",
+      "source": "https://www.flypeach.com/en/lm/st/routemap",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "CTS",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "UKB",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "FUK",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "KOJ",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "OKA",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "HND",
+      "destination": "SHI",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "IBR",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "NGO",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "UKB",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "CTS",
+      "destination": "FUK",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "SDJ",
+      "destination": "UKB",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "IBR",
+      "destination": "UKB",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "IBR",
+      "destination": "FUK",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "IBR",
+      "destination": "OKA",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "KOJ",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "NGO",
+      "destination": "OKA",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "UKB",
+      "destination": "NGS",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "UKB",
+      "destination": "KOJ",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "UKB",
+      "destination": "OKA",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "UKB",
+      "destination": "SHI",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "OKA",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "FUK",
+      "destination": "SHI",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "SHI",
+      "source": "https://www.skymark.co.jp/en/dom_network/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "CTS",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "SDJ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "HND",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "NRT",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "IBR",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "KIJ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "KMQ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "FSZ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "NGO",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "KIX",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "ITM",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "UKB",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "IWK",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "HIJ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "OKJ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "MYJ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "TAK",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "FUK",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "NGS",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "KMJ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "KMI",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "KOJ",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "ISG",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "MMY",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    },
+    {
+      "origin": "OKA",
+      "destination": "SHI",
+      "source": "https://www.naha-airport.co.jp/flight/city_list/",
+      "kind": "Published route candidate; not dated flight evidence"
+    }
+  ],
+  "deferred_airports": [
+    {
+      "code": "NKM",
+      "reason": "Commuter-focused airport deferred from the major-airport first pass"
+    },
+    {
+      "code": "OKD",
+      "reason": "Commuter-focused airport deferred from the major-airport first pass"
+    }
+  ],
+  "unresolved_airports": []
+}

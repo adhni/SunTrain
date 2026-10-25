@@ -56,8 +56,8 @@ def bundle(tmp_path,monkeypatch,records=None):
 
 def test_manifest_has_exact_countries_and_focused_east_asian_candidates():
     cfg=config();m=cfg['manifest'];air={a['code']:a for a in m['airports']}
-    assert m['base_directional_routes']==1522 and len(m['routes'])==1810 and len(air)==166
-    assert len(set(cfg['queries']))==len(cfg['queries'])==6193
+    assert m['base_directional_routes']==1724 and len(m['routes'])==2012 and len(air)==177
+    assert len(set(cfg['queries']))==len(cfg['queries'])==6865
     assert all(eligible(air[a],air[b]) and [b,a] in m['routes'] for a,b in m['routes'])
     assert all(a['country'] not in {'AE','QA'} or a['code'] in network.HUBS for a in air.values())
     assert not {'ITM','MWX','HKG','MFM','TPE','BJS','TYO','SEL'} & air.keys()
@@ -149,21 +149,22 @@ def test_shared_overlay_removes_authoritative_old_records_but_preserves_other_ro
     assert result['metadata']['fare_context']['currency']=='mixed'
 
 
-def test_pinned_stable_airport_ident_alias_does_not_allow_other_identity_conflicts(tmp_path,monkeypatch):
+@pytest.mark.parametrize('code,country,old_icao,new_icao',[('PDG','ID','WIPT','WIEE'),('KTI','KH','KH-0002','VDTI')])
+def test_pinned_stable_airport_ident_alias_does_not_allow_other_identity_conflicts(tmp_path,monkeypatch,code,country,old_icao,new_icao):
     from copy import deepcopy
     cfg,_,_=bundle(tmp_path,monkeypatch)
     raw=network.load_archive();real_project=network.project
     shared=real_project(raw,'south_korea_flights');airport=shared['airports'][0]
     # Exercise the explicit pinned alias without relaxing country/coordinate matching.
-    old_code=airport['code'];airport.update(code='PDG',icao='WIEE',country='ID')
+    old_code=airport['code'];airport.update(code=code,icao=new_icao,country=country)
     for f in shared['flights']:
         for k in ('origin','destination'):
-            if f[k]==old_code:f[k]='PDG'
+            if f[k]==old_code:f[k]=code
     monkeypatch.setattr(network,'project',lambda *args:shared)
-    old={**airport,'icao':'WIPT'}
+    old={**airport,'icao':old_icao}
     base=dict(airports=[old],flights=[],metadata=dict(coverage={},queries=[]))
     result=network.overlay(base,'indonesia_flights')
-    assert any(a['code']=='PDG' and a['icao']=='WIEE' for a in result['airports'])
+    assert any(a['code']==code and a['icao']==new_icao for a in result['airports'])
     wrong=deepcopy(base);wrong['airports'][0]['lon']+=1
     with pytest.raises(ValueError,match='airport identity'):network.overlay(wrong,'indonesia_flights')
 
@@ -212,7 +213,7 @@ def test_prepared_network_and_country_overlays_are_consistent():
     assert raw['metadata']['queries_by_view'] and view['flights']
     assert len({f['id'] for f in view['flights']})==len(view['flights'])
     assert {'CN-JP','CN-KR','JP-KR'}<=view['metadata']['coverage_by_country_pair'].keys()
-    for city in ['china_flights','japan_flights','south_korea_flights','australia_flights','gulf_flights','thailand_flights','philippines_flights','vietnam_flights']:
+    for city in ['china_flights','japan_flights','south_korea_flights','australia_flights','gulf_flights','thailand_flights','philippines_flights','vietnam_flights','brunei_flights','cambodia_flights','laos_flights','myanmar_flights','timor_leste_flights']:
         projected=network.project(raw,city);loaded=flights.load_reference(network.DAY,city)
         byid={f['id']:f for f in loaded['flights']}
         assert all(byid[f['id']]['departure']==f['departure'] and byid[f['id']].get('price')==f.get('price') for f in projected['flights'])

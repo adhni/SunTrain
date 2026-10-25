@@ -7,8 +7,11 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
+from dashboard.asean_flights import PROFILES, RETIRED_AIRPORTS
+
 COUNTRIES = {'AU':'Australia','ID':'Indonesia','MY':'Malaysia','SG':'Singapore','IN':'India',
              'VN':'Vietnam','PH':'Philippines','TH':'Thailand','CN':'China','JP':'Japan','KR':'South Korea','AE':'United Arab Emirates','QA':'Qatar'}
+COUNTRIES.update({c:p['name'] for c,p in PROFILES.items()})
 HUBS = {'DXB','AUH','DOH'}
 SOURCES = {
     'NRT':'https://www.narita-airport.jp/en/discover/citylist/',
@@ -49,7 +52,7 @@ HISTORICAL = {
 def eligible(a, b):
     return (a['country'] in COUNTRIES and b['country'] in COUNTRIES and a['country'] != b['country']
             and all(x['country'] not in {'AE','QA'} or x['code'] in HUBS for x in (a,b))
-            and not ({a['code'],b['code']} & {'MWX','ITM'}))
+            and not ({a['code'],b['code']} & {'MWX','ITM',*RETIRED_AIRPORTS}))
 
 
 def prepare():
@@ -81,6 +84,7 @@ def prepare():
     catalogue = []
     for code in sorted(codes):
         a = dict(airports[code]); a.pop('island_group',None)
+        if a['country'] in PROFILES:a['timezone']=PROFILES[a['country']]['zone']
         if a['country']=='CN':a['timezone']='Asia/Shanghai'
         if a['country']=='IN':a['timezone']='Asia/Kolkata'
         catalogue.append(a)

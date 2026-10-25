@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from dashboard.asean_flights import PROFILES, BY_CITY as ASEAN_CITIES, RETIRED_AIRPORTS
 
 ROOT = Path(__file__).resolve().parents[1]
 DAY = '2026-11-02'
@@ -16,11 +17,13 @@ CITIES = {'australia_flights':('AU','Australia/Melbourne'),'indonesia_flights':(
           'india_flights':('IN','Asia/Kolkata'),'china_flights':('CN','Asia/Shanghai'),
           'japan_flights':('JP','Asia/Tokyo'),'south_korea_flights':('KR','Asia/Seoul'),
           'gulf_flights':(None,'Asia/Dubai'),'thailand_flights':('TH','Asia/Bangkok'),'philippines_flights':('PH','Asia/Manila'),'vietnam_flights':('VN','Asia/Ho_Chi_Minh')}
+COUNTRIES.update({c:p['name'] for c,p in PROFILES.items()})
+CITIES.update({city:(c,p['zone']) for city,(c,p) in ASEAN_CITIES.items()})
 HUBS = {'DXB','AUH','DOH'}
-# Earlier Indonesian snapshots stored OurAirports' stable `ident`; newer
+# Earlier Indonesian and Malaysian snapshots stored OurAirports' stable `ident`; newer
 # catalogues use the same row's `icao_code`. These are exact pinned row aliases,
 # not permission to merge airports sharing a municipality or similar name.
-ICAO_ALIASES = {'PDG':{'WIPT','WIEE'},'SRG':{'WARS','WAHS'},'TJQ':{'WIOD','WIKT'}}
+ICAO_ALIASES = {'PDG':{'WIPT','WIEE'},'SRG':{'WARS','WAHS'},'TJQ':{'WIOD','WIKT'},'KTI':{'KH-0002','VDTI'}}
 NOTE = 'International flights between selected SunTrain flight locations · 2 November 2026. The network clock uses UTC; airport boards use local dates and times. Captured USD/MYR fares are shown in their original currency without conversion. Coverage and prices are partial; paths are illustrative.'
 
 
@@ -38,7 +41,7 @@ def _has_consumer(path, mtime_ns, size, city):
 
 def enabled(business_date, city):
     if business_date!=DAY or city not in CITIES or not reference_path().exists():return False
-    if city in {'thailand_flights','philippines_flights','vietnam_flights'}:
+    if city in ASEAN_CITIES or city in {'thailand_flights','philippines_flights','vietnam_flights'}:
         path=reference_path();stamp=path.stat()
         if not _has_consumer(str(path),stamp.st_mtime_ns,stamp.st_size,city):return False
     # Existing custom reference fixtures stay isolated unless a shared reference
@@ -139,6 +142,9 @@ def load_archive():
             raise ValueError('Philippine airports require Asia/Manila')
         if any(x['country']=='VN' and x['timezone']!='Asia/Ho_Chi_Minh' for x in (a,b)):
             raise ValueError('Vietnamese airports require Asia/Ho_Chi_Minh')
+        if any(x['country'] in PROFILES and x['timezone']!=PROFILES[x['country']]['zone'] for x in (a,b)):
+            raise ValueError('ASEAN airports require their explicit national IANA zone')
+        if f['origin'] in RETIRED_AIRPORTS or f['destination'] in RETIRED_AIRPORTS:raise ValueError('Retired Cambodian commercial endpoint')
         price=f.get('price')
         if price and (price.get('currency') not in {'USD','MYR'} or type(price.get('amount_minor')) is not int or price['amount_minor']<=0
             or tuple(price.get(k) for k in ('adults','cabin','trip_type'))!=(1,'economy','one_way')):
@@ -151,10 +157,10 @@ def overlay(base, city):
     shared = project(load_archive(),city)
     keys = {(q['date'],q['origin'],q['destination']) for q in shared['metadata']['queries']
             if q['status'] in {'results','no_matching_direct_flights'}}
-    flights = {f['id']:f for f in base['flights'] if not (f.get('flight_scope')=='international'
+    flights = {f['id']:f for f in base['flights'] if not ({f['origin'],f['destination']} & RETIRED_AIRPORTS.keys()) and not (f.get('flight_scope')=='international'
         and (f['source_date'],f['origin'],f['destination']) in keys)}
     flights.update({f['id']:f for f in shared['flights']})
-    airports = {a['code']:a for a in base['airports']}
+    airports = {a['code']:a for a in base['airports'] if a['code'] not in RETIRED_AIRPORTS}
     for a in shared['airports']:
         old = airports.get(a['code'])
         alias=old and {old.get('icao'),a.get('icao')}<=ICAO_ALIASES.get(a['code'],set())
@@ -173,7 +179,7 @@ def overlay(base, city):
     # Existing worldwide route coverage remains separate from the network's
     # selected-country coverage; never label the latter all international routes.
     meta['coverage_by_country_pair'] = shared['metadata']['coverage_by_country_pair']
-    if city in {'china_flights','japan_flights','south_korea_flights','thailand_flights','philippines_flights','vietnam_flights'}:
+    if city in ASEAN_CITIES or city in {'china_flights','japan_flights','south_korea_flights','thailand_flights','philippines_flights','vietnam_flights'}:
         scopes={'domestic':base['metadata']['coverage'],'international':shared['metadata']['coverage']}
         both={k:scopes['domestic'].get(k,0)+scopes['international'].get(k,0) for k in (
             'routes_planned','routes_searched','routes_returned','routes_with_search_results','queries_planned','queries_captured',

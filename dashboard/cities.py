@@ -3,6 +3,7 @@
 import json
 import os
 from pathlib import Path
+from dashboard.asean_flights import city_settings as asean_city_settings
 
 GERMANY_REGIONAL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/germany/regional-operators.json").read_text())
@@ -551,6 +552,8 @@ for _city, _settings in {
     if os.getenv(f'SUNTRAIN_{_city.upper()}_REFERENCE'):
         CITIES[_city] = _settings
 
+
+CITIES.update(asean_city_settings())
 
 def city_settings(city="melbourne"):
     if city not in CITIES:

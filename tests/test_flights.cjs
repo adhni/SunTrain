@@ -199,3 +199,20 @@ test('Vietnam boards and fare timestamps retain ICT at the UTC+7 day boundary',(
     assert.match(formatCallTime(Date.parse(at)/1000,'Asia/Ho_Chi_Minh'),/2 Nov.*00:00 ICT/);
     assert.match(captureTime(at,'Asia/Ho_Chi_Minh'),/2 Nov.*00:00 ICT/);
 });
+
+test('remaining ASEAN airport and fare clocks retain local midnight including Myanmar half hours',()=>{
+    const {captureTime}=require('../assets/02_flights.js');
+    for(const [zone,at,label] of [
+        ['Asia/Brunei','2026-11-01T16:00:00Z','BNT'],
+        ['Asia/Phnom_Penh','2026-11-01T17:00:00Z','ICT'],
+        ['Asia/Vientiane','2026-11-01T17:00:00Z','ICT'],
+        ['Asia/Yangon','2026-11-01T17:30:00Z','MMT'],
+        ['Asia/Dili','2026-11-01T15:00:00Z','TLT'],
+    ]) {
+        assert.match(formatCallTime(Date.parse(at)/1000,zone),new RegExp('2 Nov.*00:00 '+label));
+        assert.match(captureTime(at,zone),new RegExp('2 Nov.*00:00 '+label));
+    }
+    globalThis.suntrainI18n={locale:'id-ID'};
+    try {assert.match(captureTime('2026-11-01T17:30:00Z','Asia/Yangon'),/MMT/);}
+    finally {delete globalThis.suntrainI18n;}
+});

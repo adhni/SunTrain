@@ -1,0 +1,325 @@
+{
+  "country": "LA",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Vientiane",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "HOE",
+      "icao": "VLHS",
+      "name": "Ban Huoeisay Airport (HOE)",
+      "municipality": "Huay Xai",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 20.257299,
+      "lon": 100.436996
+    },
+    {
+      "code": "LPQ",
+      "icao": "VLLB",
+      "name": "Luang Phabang International Airport (LPQ)",
+      "municipality": "Luang Phabang",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 19.904273,
+      "lon": 102.167191
+    },
+    {
+      "code": "LXG",
+      "icao": "VLLN",
+      "name": "Luang Namtha Airport (LXG)",
+      "municipality": "Luang Namtha",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 20.966999,
+      "lon": 101.400002
+    },
+    {
+      "code": "ODY",
+      "icao": "VLOS",
+      "name": "Oudomsay Airport (ODY)",
+      "municipality": "Oudomsay",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 20.68269920349121,
+      "lon": 101.99400329589844
+    },
+    {
+      "code": "PKZ",
+      "icao": "VLPS",
+      "name": "Pakse International Airport (PKZ)",
+      "municipality": "Pakse",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 15.133973,
+      "lon": 105.779871
+    },
+    {
+      "code": "VTE",
+      "icao": "VLVT",
+      "name": "Wattay International Airport (VTE)",
+      "municipality": "Vientiane",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 17.985052,
+      "lon": 102.566692
+    },
+    {
+      "code": "XKH",
+      "icao": "VLXK",
+      "name": "Xieng Khouang Airport (XKH)",
+      "municipality": "Xieng Khouang",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 19.450001,
+      "lon": 103.157997
+    },
+    {
+      "code": "ZVK",
+      "icao": "VLSK",
+      "name": "Savannakhet Airport (ZVK)",
+      "municipality": "",
+      "country": "LA",
+      "timezone": "Asia/Vientiane",
+      "mode": "flight",
+      "lat": 16.55660057067871,
+      "lon": 104.76000213623047
+    }
+  ],
+  "routes": [
+    [
+      "HOE",
+      "VTE"
+    ],
+    [
+      "LPQ",
+      "PKZ"
+    ],
+    [
+      "LPQ",
+      "VTE"
+    ],
+    [
+      "LXG",
+      "VTE"
+    ],
+    [
+      "ODY",
+      "VTE"
+    ],
+    [
+      "PKZ",
+      "LPQ"
+    ],
+    [
+      "PKZ",
+      "VTE"
+    ],
+    [
+      "PKZ",
+      "ZVK"
+    ],
+    [
+      "VTE",
+      "HOE"
+    ],
+    [
+      "VTE",
+      "LPQ"
+    ],
+    [
+      "VTE",
+      "LXG"
+    ],
+    [
+      "VTE",
+      "ODY"
+    ],
+    [
+      "VTE",
+      "PKZ"
+    ],
+    [
+      "VTE",
+      "XKH"
+    ],
+    [
+      "VTE",
+      "ZVK"
+    ],
+    [
+      "XKH",
+      "VTE"
+    ],
+    [
+      "ZVK",
+      "PKZ"
+    ],
+    [
+      "ZVK",
+      "VTE"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "VTE",
+      "destination": "LPQ",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "LPQ",
+      "destination": "VTE",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VTE",
+      "destination": "PKZ",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "PKZ",
+      "destination": "VTE",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VTE",
+      "destination": "LXG",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "LXG",
+      "destination": "VTE",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VTE",
+      "destination": "ODY",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "ODY",
+      "destination": "VTE",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VTE",
+      "destination": "XKH",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "XKH",
+      "destination": "VTE",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VTE",
+      "destination": "ZVK",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "ZVK",
+      "destination": "VTE",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "VTE",
+      "destination": "HOE",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HOE",
+      "destination": "VTE",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "LPQ",
+      "destination": "PKZ",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "PKZ",
+      "destination": "LPQ",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "PKZ",
+      "destination": "ZVK",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "ZVK",
+      "destination": "PKZ",
+      "source": "https://laoairlines.com/en/route-map/",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    }
+  ],
+  "unresolved_airports": [],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://laoairlines.com/en/route-map/",
+  "source_urls": {
+    "BN": "https://www.flyroyalbrunei.com/brunei/en/destination/route-map/route-map/",
+    "KH": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+    "LA": "https://laoairlines.com/en/route-map/",
+    "MM": "https://secure.flymna.com/plan-a-trip",
+    "TL": "https://timorleste.tl/plan-your-trip",
+    "relocation": "https://www.techoairport.com.kh/news/techo-intl-airport-welcome-first-flight-09-sep-2025",
+    "sai_relocation": "https://www.icao.int/sites/default/files/APAC/Meetings/2023/2023%20MET%20SG%2027/3-Working%20Papers/WP24_A.I.5_KHM_SIEM-REAP-ANGKOR-INTERNATIONAL-AIRPORT-VDSA.pdf",
+    "TL_domestic": "https://www.aerodili.com/about/"
+  },
+  "source_reviewed_date": "2026-10-26",
+  "base_directional_routes": 0,
+  "input_manifests": [],
+  "coverage_scope": "Selected captured schedules and exact-airport probes; not complete national coverage",
+  "retired_airport_candidate_migrations": {
+    "PNH": "KTI",
+    "REP": "SAI"
+  },
+  "flight_records_remapped": false,
+  "route_source_sha256": "a2f12b9fcbbdd1496eaa22913843570cc74a974e43720b56b1f27f059ac7abe6"
+}

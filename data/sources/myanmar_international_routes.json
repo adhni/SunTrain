@@ -1,0 +1,706 @@
+{
+  "country": "MM",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Yangon",
+  "currency": "USD",
+  "max_duration": 86400,
+  "airports": [
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CCU",
+      "icao": "VECC",
+      "name": "Netaji Subhash Chandra Bose International Airport (CCU)",
+      "municipality": "Kolkata",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 22.654012,
+      "lon": 88.44765
+    },
+    {
+      "code": "CNX",
+      "icao": "VTCC",
+      "name": "Chiang Mai International Airport (CNX)",
+      "municipality": "Chiang Mai",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 18.766799926799997,
+      "lon": 98.962600708
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "GAY",
+      "icao": "VEGY",
+      "name": "Gaya Airport (GAY)",
+      "municipality": "Gaya",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 24.744301,
+      "lon": 84.951202
+    },
+    {
+      "code": "HAN",
+      "icao": "VVNB",
+      "name": "Noi Bai International Airport (HAN)",
+      "municipality": "Hanoi (Soc Son)",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 21.221201,
+      "lon": 105.806999
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "KMG",
+      "icao": "ZPPP",
+      "name": "Kunming Changshui International Airport (KMG)",
+      "municipality": "Kunming",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 25.110313,
+      "lon": 102.936743
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "MAA",
+      "icao": "VOMM",
+      "name": "Chennai International Airport (MAA)",
+      "municipality": "Chennai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 12.990005,
+      "lon": 80.169296
+    },
+    {
+      "code": "MDL",
+      "icao": "VYMD",
+      "name": "Mandalay International Airport (MDL)",
+      "municipality": "Mandalay",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 21.702199935913086,
+      "lon": 95.97789764404297
+    },
+    {
+      "code": "RGN",
+      "icao": "VYYY",
+      "name": "Yangon International Airport (RGN)",
+      "municipality": "Yangon",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 16.907300949099998,
+      "lon": 96.1332015991
+    },
+    {
+      "code": "SGN",
+      "icao": "VVTS",
+      "name": "Tan Son Nhat International Airport (SGN)",
+      "municipality": "Ho Chi Minh City",
+      "country": "VN",
+      "timezone": "Asia/Ho_Chi_Minh",
+      "mode": "flight",
+      "lat": 10.8188,
+      "lon": 106.652
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    }
+  ],
+  "routes": [
+    [
+      "BKK",
+      "MDL"
+    ],
+    [
+      "BKK",
+      "RGN"
+    ],
+    [
+      "CAN",
+      "RGN"
+    ],
+    [
+      "CCU",
+      "RGN"
+    ],
+    [
+      "CNX",
+      "RGN"
+    ],
+    [
+      "DEL",
+      "RGN"
+    ],
+    [
+      "DMK",
+      "MDL"
+    ],
+    [
+      "DMK",
+      "RGN"
+    ],
+    [
+      "GAY",
+      "RGN"
+    ],
+    [
+      "HAN",
+      "RGN"
+    ],
+    [
+      "ICN",
+      "RGN"
+    ],
+    [
+      "KMG",
+      "MDL"
+    ],
+    [
+      "KMG",
+      "RGN"
+    ],
+    [
+      "KUL",
+      "RGN"
+    ],
+    [
+      "MAA",
+      "RGN"
+    ],
+    [
+      "MDL",
+      "BKK"
+    ],
+    [
+      "MDL",
+      "DMK"
+    ],
+    [
+      "MDL",
+      "KMG"
+    ],
+    [
+      "MDL",
+      "SIN"
+    ],
+    [
+      "RGN",
+      "BKK"
+    ],
+    [
+      "RGN",
+      "CAN"
+    ],
+    [
+      "RGN",
+      "CCU"
+    ],
+    [
+      "RGN",
+      "CNX"
+    ],
+    [
+      "RGN",
+      "DEL"
+    ],
+    [
+      "RGN",
+      "DMK"
+    ],
+    [
+      "RGN",
+      "GAY"
+    ],
+    [
+      "RGN",
+      "HAN"
+    ],
+    [
+      "RGN",
+      "ICN"
+    ],
+    [
+      "RGN",
+      "KMG"
+    ],
+    [
+      "RGN",
+      "KUL"
+    ],
+    [
+      "RGN",
+      "MAA"
+    ],
+    [
+      "RGN",
+      "SGN"
+    ],
+    [
+      "RGN",
+      "SIN"
+    ],
+    [
+      "SGN",
+      "RGN"
+    ],
+    [
+      "SIN",
+      "MDL"
+    ],
+    [
+      "SIN",
+      "RGN"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "KUL",
+      "destination": "RGN",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "MDL",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "SIN",
+      "destination": "MDL",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "SIN",
+      "destination": "RGN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "GAY",
+      "destination": "RGN",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "GAY",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "CCU",
+      "destination": "RGN",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "CCU",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "DEL",
+      "destination": "RGN",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "DEL",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "MAA",
+      "destination": "RGN",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "MAA",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "BKK",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "BKK",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "DMK",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DMK",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "CNX",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "CNX",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "SIN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SIN",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "KUL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "KUL",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "HAN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "HAN",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "SGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SGN",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "ICN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "ICN",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "KMG",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "KMG",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "CAN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "CAN",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "DEL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DEL",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "CCU",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "CCU",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "RGN",
+      "destination": "GAY",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "GAY",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "MDL",
+      "destination": "BKK",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "BKK",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "MDL",
+      "destination": "DMK",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DMK",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "MDL",
+      "destination": "KMG",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "KMG",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    }
+  ],
+  "unresolved_airports": [],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://secure.flymna.com/plan-a-trip",
+  "source_urls": {
+    "BN": "https://www.flyroyalbrunei.com/brunei/en/destination/route-map/route-map/",
+    "KH": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+    "LA": "https://laoairlines.com/en/route-map/",
+    "MM": "https://secure.flymna.com/plan-a-trip",
+    "TL": "https://timorleste.tl/plan-your-trip",
+    "relocation": "https://www.techoairport.com.kh/news/techo-intl-airport-welcome-first-flight-09-sep-2025",
+    "sai_relocation": "https://www.icao.int/sites/default/files/APAC/Meetings/2023/2023%20MET%20SG%2027/3-Working%20Papers/WP24_A.I.5_KHM_SIEM-REAP-ANGKOR-INTERNATIONAL-AIRPORT-VDSA.pdf",
+    "TL_domestic": "https://www.aerodili.com/about/"
+  },
+  "source_reviewed_date": "2026-10-26",
+  "base_directional_routes": 14,
+  "input_manifests": [
+    {
+      "path": "data/sources/australia_international_routes.json",
+      "sha256": "951aaaf884a16510eb2aad211150e832157734dacf02183676b53c59c2d0f8c1"
+    },
+    {
+      "path": "data/sources/indonesia_international_routes.json",
+      "sha256": "7b0e24fc286e8184900bfd71ed778a8a5faaed1f27768aca37f03e274cfafad4"
+    },
+    {
+      "path": "data/sources/malaysia_international_routes.json",
+      "sha256": "94f91fcc8380423ea350c6f77ba21af8536b14b0b81148b520b03200b092cd73"
+    },
+    {
+      "path": "data/sources/singapore_international_routes.json",
+      "sha256": "6d1d8a79eb7de4066ea448e1040c12d17661a418b76348df8db3c707d5aa2219"
+    },
+    {
+      "path": "data/sources/india_international_routes.json",
+      "sha256": "b419b11ec71ffc8f48a3745a69c6c3f2b8d0d6f04aabd73d0142333e54683a3d"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    }
+  ],
+  "coverage_scope": "Selected captured schedules and exact-airport probes; not complete national coverage",
+  "retired_airport_candidate_migrations": {
+    "PNH": "KTI",
+    "REP": "SAI"
+  },
+  "flight_records_remapped": false,
+  "route_source_sha256": "37c3974fcea9cf703f3cbd00c76a5d4a131dd7eaa84093cc75b517c7de15f484"
+}

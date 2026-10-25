@@ -1,0 +1,589 @@
+{
+  "country": "MM",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Yangon",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "AKY",
+      "icao": "VYSW",
+      "name": "Sittwe Airport (AKY)",
+      "municipality": "Sittwe",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 20.133165,
+      "lon": 92.870693
+    },
+    {
+      "code": "HEH",
+      "icao": "VYHH",
+      "name": "Heho Airport (HEH)",
+      "municipality": "Heho",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 20.74714,
+      "lon": 96.792029
+    },
+    {
+      "code": "KAW",
+      "icao": "VYKT",
+      "name": "Kawthoung Airport (KAW)",
+      "municipality": "Kawthoung",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 10.049300193786621,
+      "lon": 98.53800201416016
+    },
+    {
+      "code": "KMV",
+      "icao": "VYKL",
+      "name": "Kalay Airport (KMV)",
+      "municipality": "Kalemyo",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 23.188801,
+      "lon": 94.051102
+    },
+    {
+      "code": "MDL",
+      "icao": "VYMD",
+      "name": "Mandalay International Airport (MDL)",
+      "municipality": "Mandalay",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 21.702199935913086,
+      "lon": 95.97789764404297
+    },
+    {
+      "code": "MGZ",
+      "icao": "VYME",
+      "name": "Myeik Airport (MGZ)",
+      "municipality": "Mkeik",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 12.439800262451172,
+      "lon": 98.62149810791016
+    },
+    {
+      "code": "MYT",
+      "icao": "VYMK",
+      "name": "Myitkyina Airport (MYT)",
+      "municipality": "Myitkyina",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 25.3836,
+      "lon": 97.351898
+    },
+    {
+      "code": "NYT",
+      "icao": "VYNT",
+      "name": "Nay Pyi Taw International Airport (NYT)",
+      "municipality": "Naypyitaw",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 19.623501,
+      "lon": 96.200996
+    },
+    {
+      "code": "NYU",
+      "icao": "VYBG",
+      "name": "Bagan Airport (NYU)",
+      "municipality": "Nyaung U",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 21.178800582885742,
+      "lon": 94.9301986694336
+    },
+    {
+      "code": "PBU",
+      "icao": "VYPT",
+      "name": "Putao Airport (PBU)",
+      "municipality": "Putao",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 27.32990074157715,
+      "lon": 97.42630004882812
+    },
+    {
+      "code": "RGN",
+      "icao": "VYYY",
+      "name": "Yangon International Airport (RGN)",
+      "municipality": "Yangon",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 16.907300949099998,
+      "lon": 96.1332015991
+    },
+    {
+      "code": "SNW",
+      "icao": "VYTD",
+      "name": "Thandwe Airport (SNW)",
+      "municipality": "Thandwe",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 18.4606990814209,
+      "lon": 94.30010223388672
+    },
+    {
+      "code": "THL",
+      "icao": "VYTL",
+      "name": "Tachileik Airport (THL)",
+      "municipality": "Tachileik",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 20.483800888061523,
+      "lon": 99.9354019165039
+    },
+    {
+      "code": "TVY",
+      "icao": "VYDW",
+      "name": "Dawei Airport (TVY)",
+      "municipality": "Dawei",
+      "country": "MM",
+      "timezone": "Asia/Yangon",
+      "mode": "flight",
+      "lat": 14.1039,
+      "lon": 98.203598
+    }
+  ],
+  "routes": [
+    [
+      "AKY",
+      "RGN"
+    ],
+    [
+      "HEH",
+      "MDL"
+    ],
+    [
+      "HEH",
+      "RGN"
+    ],
+    [
+      "KAW",
+      "RGN"
+    ],
+    [
+      "KMV",
+      "RGN"
+    ],
+    [
+      "MDL",
+      "HEH"
+    ],
+    [
+      "MDL",
+      "MYT"
+    ],
+    [
+      "MDL",
+      "NYU"
+    ],
+    [
+      "MDL",
+      "PBU"
+    ],
+    [
+      "MDL",
+      "RGN"
+    ],
+    [
+      "MDL",
+      "THL"
+    ],
+    [
+      "MGZ",
+      "RGN"
+    ],
+    [
+      "MYT",
+      "MDL"
+    ],
+    [
+      "MYT",
+      "RGN"
+    ],
+    [
+      "NYT",
+      "RGN"
+    ],
+    [
+      "NYU",
+      "MDL"
+    ],
+    [
+      "NYU",
+      "RGN"
+    ],
+    [
+      "PBU",
+      "MDL"
+    ],
+    [
+      "PBU",
+      "RGN"
+    ],
+    [
+      "RGN",
+      "AKY"
+    ],
+    [
+      "RGN",
+      "HEH"
+    ],
+    [
+      "RGN",
+      "KAW"
+    ],
+    [
+      "RGN",
+      "KMV"
+    ],
+    [
+      "RGN",
+      "MDL"
+    ],
+    [
+      "RGN",
+      "MGZ"
+    ],
+    [
+      "RGN",
+      "MYT"
+    ],
+    [
+      "RGN",
+      "NYT"
+    ],
+    [
+      "RGN",
+      "NYU"
+    ],
+    [
+      "RGN",
+      "PBU"
+    ],
+    [
+      "RGN",
+      "SNW"
+    ],
+    [
+      "RGN",
+      "THL"
+    ],
+    [
+      "RGN",
+      "TVY"
+    ],
+    [
+      "SNW",
+      "RGN"
+    ],
+    [
+      "THL",
+      "MDL"
+    ],
+    [
+      "THL",
+      "RGN"
+    ],
+    [
+      "TVY",
+      "RGN"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "RGN",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MDL",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "HEH",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HEH",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "NYU",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "NYU",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "THL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "THL",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "MYT",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MYT",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "PBU",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "PBU",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "KAW",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "KAW",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "MGZ",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MGZ",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "TVY",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "TVY",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "NYT",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "NYT",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "KMV",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "KMV",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "AKY",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "AKY",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "RGN",
+      "destination": "SNW",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SNW",
+      "destination": "RGN",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MDL",
+      "destination": "HEH",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "HEH",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MDL",
+      "destination": "NYU",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "NYU",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MDL",
+      "destination": "THL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "THL",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MDL",
+      "destination": "MYT",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MYT",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "MDL",
+      "destination": "PBU",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "PBU",
+      "destination": "MDL",
+      "source": "https://secure.flymna.com/plan-a-trip",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    }
+  ],
+  "unresolved_airports": [],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://secure.flymna.com/plan-a-trip",
+  "source_urls": {
+    "BN": "https://www.flyroyalbrunei.com/brunei/en/destination/route-map/route-map/",
+    "KH": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+    "LA": "https://laoairlines.com/en/route-map/",
+    "MM": "https://secure.flymna.com/plan-a-trip",
+    "TL": "https://timorleste.tl/plan-your-trip",
+    "relocation": "https://www.techoairport.com.kh/news/techo-intl-airport-welcome-first-flight-09-sep-2025",
+    "sai_relocation": "https://www.icao.int/sites/default/files/APAC/Meetings/2023/2023%20MET%20SG%2027/3-Working%20Papers/WP24_A.I.5_KHM_SIEM-REAP-ANGKOR-INTERNATIONAL-AIRPORT-VDSA.pdf",
+    "TL_domestic": "https://www.aerodili.com/about/"
+  },
+  "source_reviewed_date": "2026-10-26",
+  "base_directional_routes": 0,
+  "input_manifests": [],
+  "coverage_scope": "Selected captured schedules and exact-airport probes; not complete national coverage",
+  "retired_airport_candidate_migrations": {
+    "PNH": "KTI",
+    "REP": "SAI"
+  },
+  "flight_records_remapped": false,
+  "route_source_sha256": "cf5673f9d62d35cb9a43abb5f91960359c50972d35c65576e4a34aa8ad251c26"
+}

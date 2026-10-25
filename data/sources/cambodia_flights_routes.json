@@ -1,0 +1,138 @@
+{
+  "country": "KH",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Phnom_Penh",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "KOS",
+      "icao": "VDSV",
+      "name": "Sihanouk International Airport (KOS)",
+      "municipality": "Preah Sihanouk",
+      "country": "KH",
+      "timezone": "Asia/Phnom_Penh",
+      "mode": "flight",
+      "lat": 10.570557,
+      "lon": 103.632067
+    },
+    {
+      "code": "KTI",
+      "icao": "VDTI",
+      "name": "Techo International Airport (KTI)",
+      "municipality": "Phnom Penh (Boeng Khyang)",
+      "country": "KH",
+      "timezone": "Asia/Phnom_Penh",
+      "mode": "flight",
+      "lat": 11.359987,
+      "lon": 104.921272
+    },
+    {
+      "code": "SAI",
+      "icao": "VDSA",
+      "name": "Siem Reap-Angkor International Airport (SAI)",
+      "municipality": "Siem Reap",
+      "country": "KH",
+      "timezone": "Asia/Phnom_Penh",
+      "mode": "flight",
+      "lat": 13.36974,
+      "lon": 104.223831
+    }
+  ],
+  "routes": [
+    [
+      "KOS",
+      "KTI"
+    ],
+    [
+      "KOS",
+      "SAI"
+    ],
+    [
+      "KTI",
+      "KOS"
+    ],
+    [
+      "KTI",
+      "SAI"
+    ],
+    [
+      "SAI",
+      "KOS"
+    ],
+    [
+      "SAI",
+      "KTI"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "KTI",
+      "destination": "SAI",
+      "source": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SAI",
+      "destination": "KTI",
+      "source": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "KTI",
+      "destination": "KOS",
+      "source": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "KOS",
+      "destination": "KTI",
+      "source": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "SAI",
+      "destination": "KOS",
+      "source": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    },
+    {
+      "origin": "KOS",
+      "destination": "SAI",
+      "source": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+      "kind": "Selected domestic route/probe candidate; undated airline network is context, dated capture required",
+      "scope": "domestic"
+    }
+  ],
+  "unresolved_airports": [],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+  "source_urls": {
+    "BN": "https://www.flyroyalbrunei.com/brunei/en/destination/route-map/route-map/",
+    "KH": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+    "LA": "https://laoairlines.com/en/route-map/",
+    "MM": "https://secure.flymna.com/plan-a-trip",
+    "TL": "https://timorleste.tl/plan-your-trip",
+    "relocation": "https://www.techoairport.com.kh/news/techo-intl-airport-welcome-first-flight-09-sep-2025",
+    "sai_relocation": "https://www.icao.int/sites/default/files/APAC/Meetings/2023/2023%20MET%20SG%2027/3-Working%20Papers/WP24_A.I.5_KHM_SIEM-REAP-ANGKOR-INTERNATIONAL-AIRPORT-VDSA.pdf",
+    "TL_domestic": "https://www.aerodili.com/about/"
+  },
+  "source_reviewed_date": "2026-10-26",
+  "base_directional_routes": 0,
+  "input_manifests": [],
+  "coverage_scope": "Selected captured schedules and exact-airport probes; not complete national coverage",
+  "retired_airport_candidate_migrations": {
+    "PNH": "KTI",
+    "REP": "SAI"
+  },
+  "flight_records_remapped": false,
+  "route_source_sha256": "d30897c2aa66a9f8ef9c3a3d0ef09b27be8ee28ccd5c21b3fd1640c3624ff8df"
+}

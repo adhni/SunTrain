@@ -1,0 +1,348 @@
+{
+  "country": "TL",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Dili",
+  "currency": "USD",
+  "max_duration": 86400,
+  "airports": [
+    {
+      "code": "CGK",
+      "icao": "WIII",
+      "name": "Soekarno-Hatta International Airport (CGK)",
+      "municipality": "Jakarta",
+      "country": "ID",
+      "timezone": "Asia/Jakarta",
+      "mode": "flight",
+      "lat": -6.12557,
+      "lon": 106.655998
+    },
+    {
+      "code": "DIL",
+      "icao": "WPDL",
+      "name": "Presidente Nicolau Lobato International Airport (DIL)",
+      "municipality": "Dili",
+      "country": "TL",
+      "timezone": "Asia/Dili",
+      "mode": "flight",
+      "lat": -8.546562,
+      "lon": 125.524507
+    },
+    {
+      "code": "DPS",
+      "icao": "WADD",
+      "name": "Denpasar I Gusti Ngurah Rai International Airport (DPS)",
+      "municipality": "Kuta, Badung",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -8.748409,
+      "lon": 115.167123
+    },
+    {
+      "code": "DRW",
+      "icao": "YPDN",
+      "name": "Darwin International Airport / RAAF Darwin (DRW)",
+      "municipality": "Darwin",
+      "country": "AU",
+      "timezone": "Australia/Darwin",
+      "mode": "flight",
+      "lat": -12.41497,
+      "lon": 130.88185
+    },
+    {
+      "code": "KOE",
+      "icao": "WATT",
+      "name": "El Tari Airport (KOE)",
+      "municipality": "Kupang",
+      "country": "ID",
+      "timezone": "Asia/Makassar",
+      "mode": "flight",
+      "lat": -10.1716,
+      "lon": 123.670998
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "XMN",
+      "icao": "ZSAM",
+      "name": "Xiamen Gaoqi International Airport (XMN)",
+      "municipality": "Xiamen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 24.543889,
+      "lon": 118.127454
+    }
+  ],
+  "routes": [
+    [
+      "CGK",
+      "DIL"
+    ],
+    [
+      "DIL",
+      "CGK"
+    ],
+    [
+      "DIL",
+      "DPS"
+    ],
+    [
+      "DIL",
+      "DRW"
+    ],
+    [
+      "DIL",
+      "KOE"
+    ],
+    [
+      "DIL",
+      "KUL"
+    ],
+    [
+      "DIL",
+      "SIN"
+    ],
+    [
+      "DIL",
+      "XMN"
+    ],
+    [
+      "DPS",
+      "DIL"
+    ],
+    [
+      "DRW",
+      "DIL"
+    ],
+    [
+      "KOE",
+      "DIL"
+    ],
+    [
+      "KUL",
+      "DIL"
+    ],
+    [
+      "SIN",
+      "DIL"
+    ],
+    [
+      "XMN",
+      "DIL"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "DIL",
+      "destination": "DRW",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "DRW",
+      "destination": "DIL",
+      "source": "data/sources/australia_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "CGK",
+      "destination": "DIL",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "CGK",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "DPS",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "DPS",
+      "destination": "DIL",
+      "source": "data/sources/indonesia_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DIL",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing candidate; retired airport labels explicitly migrated for discovery only, never cached flights",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "DRW",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DRW",
+      "destination": "DIL",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "DPS",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DPS",
+      "destination": "DIL",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "SIN",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "SIN",
+      "destination": "DIL",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "KUL",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "KUL",
+      "destination": "DIL",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "KOE",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "KOE",
+      "destination": "DIL",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "DIL",
+      "destination": "XMN",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    },
+    {
+      "origin": "XMN",
+      "destination": "DIL",
+      "source": "https://timorleste.tl/plan-your-trip",
+      "kind": "Supplemental exact-airport gateway probe; contextual network page is not dated service evidence",
+      "scope": "international"
+    }
+  ],
+  "unresolved_airports": [],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://timorleste.tl/plan-your-trip",
+  "source_urls": {
+    "BN": "https://www.flyroyalbrunei.com/brunei/en/destination/route-map/route-map/",
+    "KH": "https://www.aircambodia.com/en/offer/-ready-for-your-ultimate-vacation-ready-for-takeoff-",
+    "LA": "https://laoairlines.com/en/route-map/",
+    "MM": "https://secure.flymna.com/plan-a-trip",
+    "TL": "https://timorleste.tl/plan-your-trip",
+    "relocation": "https://www.techoairport.com.kh/news/techo-intl-airport-welcome-first-flight-09-sep-2025",
+    "sai_relocation": "https://www.icao.int/sites/default/files/APAC/Meetings/2023/2023%20MET%20SG%2027/3-Working%20Papers/WP24_A.I.5_KHM_SIEM-REAP-ANGKOR-INTERNATIONAL-AIRPORT-VDSA.pdf",
+    "TL_domestic": "https://www.aerodili.com/about/"
+  },
+  "source_reviewed_date": "2026-10-26",
+  "base_directional_routes": 8,
+  "input_manifests": [
+    {
+      "path": "data/sources/australia_international_routes.json",
+      "sha256": "951aaaf884a16510eb2aad211150e832157734dacf02183676b53c59c2d0f8c1"
+    },
+    {
+      "path": "data/sources/indonesia_international_routes.json",
+      "sha256": "7b0e24fc286e8184900bfd71ed778a8a5faaed1f27768aca37f03e274cfafad4"
+    },
+    {
+      "path": "data/sources/malaysia_international_routes.json",
+      "sha256": "94f91fcc8380423ea350c6f77ba21af8536b14b0b81148b520b03200b092cd73"
+    },
+    {
+      "path": "data/sources/singapore_international_routes.json",
+      "sha256": "6d1d8a79eb7de4066ea448e1040c12d17661a418b76348df8db3c707d5aa2219"
+    },
+    {
+      "path": "data/sources/india_international_routes.json",
+      "sha256": "b419b11ec71ffc8f48a3745a69c6c3f2b8d0d6f04aabd73d0142333e54683a3d"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    }
+  ],
+  "coverage_scope": "Selected captured schedules and exact-airport probes; not complete national coverage",
+  "retired_airport_candidate_migrations": {
+    "PNH": "KTI",
+    "REP": "SAI"
+  },
+  "flight_records_remapped": false,
+  "route_source_sha256": "8eb806351a008a538026ec6c17bfe8cffae75f4698eec216812829f6ed8810f9"
+}

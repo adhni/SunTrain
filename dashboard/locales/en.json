@@ -830,5 +830,13 @@
   "Timeline and airport boards use JST.": "Timeline and airport boards use JST.",
   "Major airports and city routes first; small island and commuter services are not included.": "Major airports and city routes first; small island and commuter services are not included.",
   "Airport times are local. The replay clock uses JST.": "Airport times are local. The replay clock uses JST.",
-  "Return to the Japan · Flights starting view": "Return to the Japan · Flights starting view"
+  "Return to the Japan · Flights starting view": "Return to the Japan · Flights starting view",
+  "China · Flights": "China · Flights",
+  "Mainland Chinese domestic flights · 2 November 2026 schedule snapshot. Major airports first; small airports and international/regional connections are not included. Timeline and airport boards use China time (UTC+8), including Urumqi. Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.": "Mainland Chinese domestic flights · 2 November 2026 schedule snapshot. Major airports first; small airports and international/regional connections are not included. Timeline and airport boards use China time (UTC+8), including Urumqi. Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.",
+  "Mainland Chinese domestic flight schedules for 2 November 2026.": "Mainland Chinese domestic flight schedules for 2 November 2026.",
+  "Timeline and airport boards use China time (UTC+8), including Urumqi.": "Timeline and airport boards use China time (UTC+8), including Urumqi.",
+  "Selected major airports and published route candidates; small airports and international/regional connections are not included.": "Selected major airports and published route candidates; small airports and international/regional connections are not included.",
+  "Airport times and the replay clock use China time (UTC+8).": "Airport times and the replay clock use China time (UTC+8).",
+  "China time (UTC+8)": "China time (UTC+8)",
+  "Return to the China · Flights starting view": "Return to the China · Flights starting view"
 }

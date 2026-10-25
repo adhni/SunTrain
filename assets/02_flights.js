@@ -27,7 +27,7 @@
         const text=new Intl.DateTimeFormat(root.suntrainI18n?.locale || 'en-AU', {
             timeZone:timezone,year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZoneName:'shortOffset'
         }).format(new Date(at));
-        const label={'Asia/Kuala_Lumpur':'MYT','Asia/Singapore':'SGT','Asia/Kolkata':'IST','Asia/Seoul':'KST','Asia/Tokyo':'JST'}[timezone];
+        const label={'Asia/Kuala_Lumpur':'MYT','Asia/Singapore':'SGT','Asia/Kolkata':'IST','Asia/Seoul':'KST','Asia/Tokyo':'JST','Asia/Shanghai':'CST'}[timezone];
         return label?text.replace(/GMT\+(?:[89]|5[.:]30)/,label):text;
     }
     function planeImage(color = '#f57c28') {

@@ -830,5 +830,13 @@
   "Timeline and airport boards use JST.": "Linimasa dan papan bandara menggunakan JST.",
   "Major airports and city routes first; small island and commuter services are not included.": "Bandara utama dan rute antarkota terlebih dahulu; layanan pulau kecil dan komuter belum disertakan.",
   "Airport times are local. The replay clock uses JST.": "Waktu bandara adalah waktu setempat. Jam pemutaran menggunakan JST.",
-  "Return to the Japan · Flights starting view": "Kembali ke tampilan awal Jepang · Penerbangan"
+  "Return to the Japan · Flights starting view": "Kembali ke tampilan awal Jepang · Penerbangan",
+  "China · Flights": "Tiongkok · Penerbangan",
+  "Mainland Chinese domestic flights · 2 November 2026 schedule snapshot. Major airports first; small airports and international/regional connections are not included. Timeline and airport boards use China time (UTC+8), including Urumqi. Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.": "Penerbangan domestik Tiongkok daratan · Cuplikan jadwal 2 November 2026. Bandara utama terlebih dahulu; bandara kecil dan koneksi internasional/regional belum disertakan. Linimasa dan papan bandara menggunakan waktu Tiongkok (UTC+8), termasuk Urumqi. Tarif USD terendah yang terekam untuk satu dewasa, ekonomi, sekali jalan. Cakupan dan harga sebagian; jalur berupa ilustrasi.",
+  "Mainland Chinese domestic flight schedules for 2 November 2026.": "Jadwal penerbangan domestik Tiongkok daratan untuk 2 November 2026.",
+  "Timeline and airport boards use China time (UTC+8), including Urumqi.": "Linimasa dan papan bandara menggunakan waktu Tiongkok (UTC+8), termasuk Urumqi.",
+  "Selected major airports and published route candidates; small airports and international/regional connections are not included.": "Bandara utama dan kandidat rute yang diterbitkan; bandara kecil dan koneksi internasional/regional belum disertakan.",
+  "Airport times and the replay clock use China time (UTC+8).": "Waktu bandara dan jam pemutaran menggunakan waktu Tiongkok (UTC+8).",
+  "China time (UTC+8)": "Waktu Tiongkok (UTC+8)",
+  "Return to the China · Flights starting view": "Kembali ke tampilan awal Tiongkok · Penerbangan"
 }

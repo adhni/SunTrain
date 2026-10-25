@@ -12,6 +12,14 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'china_flights': {
+        'replay_kind':'flights', 'name':'China · Flights', 'timezone':'Asia/Shanghai',
+        'bounds':[[85.8,17.8],[133.0,47.5]], 'passenger_data':False,
+        'start_date':'2026-11-02', 'end_date':'2026-11-02',
+        'description':'Mainland Chinese domestic flights · 2 November 2026 schedule snapshot. Major airports first; small airports and international/regional connections are not included. Timeline and airport boards use China time (UTC+8), including Urumqi. Lowest captured USD fares for one adult, economy, one-way. Coverage and prices are partial; paths are illustrative.',
+        'default_modes':['flight'], 'modes':[('Flights','flight')],
+        'operators':[], 'directions':[('Scheduled service','Scheduled service')],
+    },
     'japan_flights': {
         'replay_kind':'flights', 'name':'Japan · Flights', 'timezone':'Asia/Tokyo',
         'bounds':[[122.3,23.7],[146.5,46.0]], 'passenger_data':False,

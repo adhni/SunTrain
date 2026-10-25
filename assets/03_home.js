@@ -78,11 +78,18 @@
             const groups = groupPlaces(this.places, coordinates => this.map.project(coordinates));
             for (const group of groups) {
                 const cluster = group.members.length > 1;
-                const button = node("button", undefined, `home-pin${cluster ? " home-cluster" : ""}`);
+                const flightCount=group.members.filter(member=>member.place.modes.includes('flight')).length;
+                const kind=!flightCount?'transit':flightCount===group.members.length?'flights':'mixed';
+                const button = node("button", undefined, `home-pin home-pin-${kind}${cluster ? " home-cluster" : ""}`);
                 button.type = "button";
                 const title = cluster ? `Zoom to ${group.members.length} places` : `Explore ${group.members[0].place.name}`;
                 if(root.suntrainI18n) root.suntrainI18n.bind(button, title, "aria-label"); else button.setAttribute("aria-label", title); if(root.suntrainI18n)root.suntrainI18n.bind(button,title,"title");else button.title = title;
-                button.append(node("span", cluster ? String(group.members.length) : "", "home-pin-dot"));
+                if(flightCount) {
+                    if(root.suntrainI18n)root.suntrainI18n.bind(button,'Includes flights','aria-description');
+                    else button.setAttribute('aria-description','Includes flights');
+                }
+                const dot=node("span", cluster ? String(group.members.length) : flightCount ? '\u2708\uFE0E' : "", "home-pin-dot");
+                dot.setAttribute('aria-hidden','true');button.append(dot);
                 if (!cluster) button.append(node("span", group.members[0].place.name, "home-pin-label"));
                 button.addEventListener("click", event => {
                     event.stopPropagation();

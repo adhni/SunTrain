@@ -806,5 +806,8 @@
   "Airport times are local. The replay clock uses SGT.": "Waktu bandara memakai waktu setempat. Jam pemutaran menggunakan SGT.",
   "Singapore flight schedules for 2 November 2026.": "Jadwal penerbangan Singapura untuk 2 November 2026.",
   "SIN and XSP are separate airports.": "SIN dan XSP adalah bandara terpisah.",
-  "Timeline: SGT; airport boards use local time.": "Linimasa: SGT; papan bandara menggunakan waktu setempat."
+  "Timeline: SGT; airport boards use local time.": "Linimasa: SGT; papan bandara menggunakan waktu setempat.",
+  "Map key": "Legenda peta",
+  "Rail & local transport": "Kereta & transportasi lokal",
+  "Includes flights": "Termasuk penerbangan"
 }

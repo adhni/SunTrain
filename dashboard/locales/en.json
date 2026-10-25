@@ -806,5 +806,8 @@
   "Airport times are local. The replay clock uses SGT.": "Airport times are local. The replay clock uses SGT.",
   "Singapore flight schedules for 2 November 2026.": "Singapore flight schedules for 2 November 2026.",
   "SIN and XSP are separate airports.": "SIN and XSP are separate airports.",
-  "Timeline: SGT; airport boards use local time.": "Timeline: SGT; airport boards use local time."
+  "Timeline: SGT; airport boards use local time.": "Timeline: SGT; airport boards use local time.",
+  "Map key": "Map key",
+  "Rail & local transport": "Rail & local transport",
+  "Includes flights": "Includes flights"
 }

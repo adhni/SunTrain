@@ -9,12 +9,14 @@ from scripts.prepare_google_flights import capture
 CONTEXT=dict(profile='europe_flights',version=1,currency='EUR',adults=1,cabin='economy',trip_type='one_way',airline_filter='none',parser='google-dated-segments-v1',max_duration=28800)
 
 
-def config():
- m=json.loads((ROOT/'data/sources/europe_flights_starter_routes.json').read_text());zones={a['code']:a['timezone'] for a in m['airports']};start=datetime.fromisoformat(DAY).replace(tzinfo=timezone.utc);end=start+timedelta(days=1);queries=[]
+def config(brand=None):
+ m=json.loads((ROOT/('data/sources/europe_flights_routes.json' if brand else 'data/sources/europe_flights_starter_routes.json')).read_text())
+ if brand:m={**m,'routes':m['routes_by_brand'][brand]}
+ zones={a['code']:a['timezone'] for a in m['airports']};start=datetime.fromisoformat(DAY).replace(tzinfo=timezone.utc);end=start+timedelta(days=1);queries=[]
  for a,b in m['routes']:
   zone=ZoneInfo(zones[a]);first=(start-timedelta(hours=8)).astimezone(zone).date();last=(end-timedelta(seconds=1)).astimezone(zone).date()
   queries.extend(((first+timedelta(days=n)).isoformat(),a,b) for n in range((last-first).days+1))
- return dict(country='REGION',scope='region',timezone='UTC',end_date=DAY,zones=zones,manifest=m,queries=sorted(set(queries)),capture_prices=True,currency='EUR',max_duration=28800,capture_context=CONTEXT,reject_invalid_segments=True)
+ return dict(country='REGION',scope='region',timezone='UTC',end_date=DAY,zones=zones,manifest=m,queries=sorted(set(queries)),capture_prices=True,currency='EUR',max_duration=28800,capture_context=CONTEXT,reject_invalid_segments=True,allowed_brands=[brand] if brand else list(BRANDS))
 
 
 def seed_pilot(cache,cfg):
@@ -44,9 +46,9 @@ def prepare(cache,output,cfg):
   for f in q['flights']:
    if (f['origin'],f['destination'],f['source_date'])!=(key[1],key[2],key[0]):raise ValueError('Wrong exact European segment identity')
    brand=CARRIERS.get(f['carrier'])
-   if not brand:others+=1;continue
+   if not brand or brand not in cfg.get('allowed_brands',BRANDS):others+=1;continue
    if not 60<=f['arrival']-f['departure']<=28800:raise ValueError('Invalid European source duration')
-   if f.get('price') and not valid_price(f['price']):raise ValueError('Invalid European quote')
+   if f.get('price') and (not valid_price(f['price']) or f['price']['currency']!=cfg['currency']):raise ValueError('Invalid European quote')
    a,b=air[f['origin']],air[f['destination']]
    if not (a['europe'] or b['europe']):raise ValueError('Flight outside European membership')
    target.append(f)
@@ -72,7 +74,8 @@ def prepare(cache,output,cfg):
 
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--cache',type=Path,default=ROOT/'.cache/google-flights-europe-eur-v1');p.add_argument('--output',type=Path,default=ROOT/'data/sources/europe_flights_google_seed.json.gz');p.add_argument('--concurrency',type=int,choices=[1,2],default=2);p.add_argument('--prepare-only',action='store_true');p.add_argument('--dry-run',action='store_true');a=p.parse_args();cfg=config();a.cache.mkdir(parents=True,exist_ok=True)
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--brand',choices=list(BRANDS));p.add_argument('--cache',type=Path,default=ROOT/'.cache/google-flights-europe-eur-v1');p.add_argument('--output',type=Path);p.add_argument('--concurrency',type=int,choices=[1,2],default=2);p.add_argument('--prepare-only',action='store_true');p.add_argument('--collect-only',action='store_true');p.add_argument('--dry-run',action='store_true');a=p.parse_args();cfg=config(a.brand);a.cache.mkdir(parents=True,exist_ok=True)
+ if a.output is None:a.output=(a.cache/f'prepared-{a.brand}.json.gz') if a.brand else ROOT/'data/sources/europe_flights_google_seed.json.gz'
  with (a.cache/'.preparation.lock').open('a') as lock:
   try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
   except BlockingIOError:raise RuntimeError('Another Europe preparation is running')
@@ -83,7 +86,7 @@ def main():
   stopped=None;(a.cache/'collection-stop.json').unlink(missing_ok=True)
   try:asyncio.run(capture(a.cache,DAY,cfg['manifest']['routes'],a.concurrency,cfg))
   except RuntimeError as e:stopped=e;(a.cache/'collection-stop.json').write_text(json.dumps(dict(reason=str(e),at=datetime.now(timezone.utc).isoformat())))
-  prepare(a.cache,a.output,cfg)
+  if not a.collect_only:prepare(a.cache,a.output,cfg)
   if stopped:print(f'{stopped}; captures retained; no challenge retry',file=sys.stderr);return 2
  return 0
 

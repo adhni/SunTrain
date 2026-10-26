@@ -95,8 +95,40 @@ def parse_month(q,air):
  return list(fs.values()),rejected
 
 
-def prepare(cache,output,m,seed_path):
- seed=read(seed_path);air={a['code']:a for a in m['airports']};air.update({a['code']:a for a in seed['airports']});records={f['id']:f for f in seed['flights']};requests_meta=[];missing=[];failed=[];rejected=[];updates=[];official_ids=set();start=int(datetime.fromisoformat(DAY).replace(tzinfo=timezone.utc).timestamp());end=start+86400
+def merge_easyjet(seed,extra,m):
+ """Merge only verified easyJet records; deduplicate reused Google source queries."""
+ if any(extra['metadata'].get(k)!=seed['metadata'].get(k) for k in ['profile','start_date','end_date','timezone','fare_context']):raise ValueError('Incompatible easyJet snapshot context')
+ records={f['id']:f for f in seed['flights']};air={a['code']:a for a in m['airports']};changes=[];incoming={}
+ for f in extra['flights']:
+  if f['id'] in incoming:
+   if incoming[f['id']]!=f:raise ValueError('Conflicting easyJet flight identity')
+   continue
+  incoming[f['id']]=f
+  if CARRIERS.get(f['carrier'])!='easyjet' or f.get('brand')!='easyjet':raise ValueError('Non-easyJet record in easyJet expansion')
+  a,b=air[f['origin']],air[f['destination']]
+  if not (a['europe'] or b['europe']) or f['flight_scope']!=('domestic' if a['country']==b['country'] else 'international') or not 60<=f['arrival']-f['departure']<=28800:raise ValueError('Invalid easyJet segment')
+  if f.get('price') and not valid_price(f['price']):raise ValueError('Invalid easyJet quote')
+  old=records.get(f['id'])
+  if old:
+   if old['brand']!='easyjet':raise ValueError('Flight identity collides with another brand')
+   if (old['departure'],old['arrival'])==(f['departure'],f['arrival']):
+    if old.get('price') and (not f.get('price') or (old['price']['currency']==f['price']['currency'] and old['price']['amount_minor']<=f['price']['amount_minor'])):f={**f,'price':old['price']}
+   else:changes.append(dict(id=f['id'],previous_departure=old['departure'],previous_arrival=old['arrival'],departure=f['departure'],arrival=f['arrival']))
+  records[f['id']]=f
+ queries={(q['date'],q['origin'],q['destination']):q for q in seed['metadata']['queries']}
+ for q in extra['metadata']['queries']:
+  key=(q['date'],q['origin'],q['destination'])
+  if key in queries and (queries[key].get('page_sha256'),queries[key].get('capture_context'))!=(q.get('page_sha256'),q.get('capture_context')):raise ValueError('Conflicting reused Google capture')
+  queries.setdefault(key,q)
+ meta={**seed['metadata'],'queries':[queries[k] for k in sorted(queries)],'easyjet_schedule_updates':changes}
+ return dict(airports=list(air.values()),flights=sorted(records.values(),key=lambda f:(f['departure'],f['id'])),metadata=meta)
+
+
+def prepare(cache,output,m,seed_path,easyjet_path=None):
+ seed=read(seed_path);starter_query_count=len(seed['metadata']['queries']);easyjet=read(easyjet_path) if easyjet_path else None
+ if easyjet:seed=merge_easyjet(seed,easyjet,m)
+ google_missing=easyjet['metadata']['uncollected_queries'] if easyjet else [];google_failed=easyjet['metadata']['failed_queries'] if easyjet else []
+ air={a['code']:a for a in m['airports']};air.update({a['code']:a for a in seed['airports']});records={f['id']:f for f in seed['flights']};requests_meta=[];missing=[];failed=[];rejected=[];updates=[];official_ids=set();start=int(datetime.fromisoformat(DAY).replace(tzinfo=timezone.utc).timestamp());end=start+86400
  for a,b in m['routes_by_brand']['ryanair']:
   p=path_for(cache,a,b)
   if not p.exists():
@@ -120,9 +152,17 @@ def prepare(cache,output,m,seed_path):
  fs=sorted(records.values(),key=lambda f:(f['departure'],f['id']));codes={f[k] for f in fs for k in ['origin','destination']};queries=seed['metadata']['queries']+requests_meta
  def counts(selected):return dict(flights=len(selected),priced_flights=sum(bool(f.get('price')) for f in selected),airports_returned=len({f[k] for f in selected for k in ['origin','destination']}),routes_returned=len({(f['origin'],f['destination']) for f in selected}))
  def coverage(scope):
-  pairs={tuple(p) for p in m['routes'] if scope=='both' or ('domestic' if air[p[0]]['country']==air[p[1]]['country'] else 'international')==scope};qs=[q for q in queries if (q['origin'],q['destination']) in pairs];absent=[p for p in missing if tuple(p) in pairs];errors=[q for q in failed if (q['origin'],q['destination']) in pairs];selected=[f for f in fs if scope=='both' or f['flight_scope']==scope]
-  return dict(candidate_airports=len({c for p in pairs for c in p}),airports_planned=len({c for p in pairs for c in p}),airports_searched=len({q[k] for q in qs for k in ['origin','destination']}),routes_planned=len(pairs),routes_searched=len({(q['origin'],q['destination']) for q in qs}),source_counts=dict(monthly_captured=sum(q.get('source')=='ryanair_public_timetable' for q in qs),monthly_planned=sum(q.get('source')=='ryanair_public_timetable' for q in qs)+len(absent),dated_captured=sum(q.get('source')!='ryanair_public_timetable' for q in qs),dated_planned=sum(q.get('source')!='ryanair_public_timetable' for q in qs)),queries_planned=len(qs)+len(absent),queries_captured=len(qs),query_unit='source_request; monthly timetables and dated Google searches reported separately',queries_not_returned=sum(q.get('status') in {'no_returned_timetable_records','no_matching_direct_flights'} for q in qs),queries_rejected=sum(q.get('status')=='rejected_source_records' or q.get('rejected_records',0)>0 for q in qs),failed_or_missing_queries=len(absent),failed_queries=len(errors),unattempted_queries=len(absent)-len(errors),rejected_records=sum(q.get('rejected_records',len(q.get('rejected_flights',[]))) for q in qs),**counts(selected))
- bybrand={brand:counts([f for f in fs if f['brand']==brand]) for brand in ['ryanair','easyjet']};bybrand['ryanair'].update(routes_planned=len(m['routes_by_brand']['ryanair']),official_records=len(official_ids),google_only_records=sum(f['brand']=='ryanair' and f['id'] not in official_ids for f in fs));meta={**seed['metadata'],'capture_context':dict(profile='europe_flights',version=2,sources=dict(google_starter=seed['metadata'].get('capture_context'),ryanair_timetable=CONTEXT)),'airlines':sorted({f['airline'] for f in fs}),'source':'Ryanair public timetables plus preserved Google Flights starter quotes and easyJet sample','source_url':BASE,'queries':queries,'coverage':coverage('both'),'coverage_by_scope':{s:coverage(s) for s in ['both','domestic','international']},'coverage_by_brand':bybrand,'coverage_by_source':dict(ryanair_timetable=dict(request_unit='airport_pair_month',planned=len(m['routes_by_brand']['ryanair']),captured=len(requests_meta),failed=len(failed),unattempted=len(missing)-len(failed),routes_with_day_flights=sum(q['overlapping_records']>0 for q in requests_meta),dated_flights=len(official_ids)),google_starter=dict(request_unit='airport_pair_date',planned=len(seed['metadata']['queries']),captured=len(seed['metadata']['queries']),easyjet='unchanged starter')),'uncollected_queries':[[DAY,a,b] for a,b in missing],'failed_queries':failed,'official_rejected_records':rejected,'schedule_updates':updates,'priced_flights':sum(bool(f.get('price')) for f in fs),'replay_note':NOTE,'route_source_sha256':m['route_source_sha256'],'selection':m['selection'],'quote_policy':'Original seed quotes retained only for identical source flight identity and UTC schedule; new timetable-only records have no invented price','seed_sha256':hashlib.sha256(seed_path.read_bytes()).hexdigest()}
+  pairs={tuple(p) for p in m['routes'] if scope=='both' or ('domestic' if air[p[0]]['country']==air[p[1]]['country'] else 'international')==scope};qs=[q for q in queries if (q['origin'],q['destination']) in pairs];absent=[p for p in missing if tuple(p) in pairs];google_absent=[q for q in google_missing if tuple(q[1:]) in pairs];errors=[q for q in failed+google_failed if (q['origin'],q['destination']) in pairs];selected=[f for f in fs if scope=='both' or f['flight_scope']==scope]
+  return dict(candidate_airports=len({c for p in pairs for c in p}),airports_planned=len({c for p in pairs for c in p}),airports_searched=len({q[k] for q in qs for k in ['origin','destination']}),routes_planned=len(pairs),routes_searched=len({(q['origin'],q['destination']) for q in qs}),source_counts=dict(monthly_captured=sum(q.get('source')=='ryanair_public_timetable' for q in qs),monthly_planned=sum(q.get('source')=='ryanair_public_timetable' for q in qs)+len(absent),dated_captured=sum(q.get('source')!='ryanair_public_timetable' for q in qs),dated_planned=sum(q.get('source')!='ryanair_public_timetable' for q in qs)+len(google_absent)),queries_planned=len(qs)+len(absent)+len(google_absent),queries_captured=len(qs),query_unit='source_request; monthly timetables and dated Google searches reported separately',queries_not_returned=sum(q.get('status') in {'no_returned_timetable_records','no_matching_direct_flights'} for q in qs),queries_rejected=sum(q.get('status')=='rejected_source_records' or q.get('rejected_records',0)>0 for q in qs),failed_or_missing_queries=len(absent)+len(google_absent),failed_queries=len(errors),unattempted_queries=len(absent)+len(google_absent)-len(errors),rejected_records=sum(q.get('rejected_records',len(q.get('rejected_flights',[]))) for q in qs),**counts(selected))
+ bybrand={brand:counts([f for f in fs if f['brand']==brand]) for brand in ['ryanair','easyjet']};bybrand['ryanair'].update(routes_planned=len(m['routes_by_brand']['ryanair']),official_records=len(official_ids),google_only_records=sum(f['brand']=='ryanair' and f['id'] not in official_ids for f in fs));meta={**seed['metadata'],'capture_context':dict(profile='europe_flights',version=2,sources=dict(google_starter=seed['metadata'].get('capture_context'),ryanair_timetable=CONTEXT)),'airlines':sorted({f['airline'] for f in fs}),'source':('Ryanair public timetables and full-catalogue easyJet Google Flights captures' if easyjet else 'Ryanair public timetables plus preserved Google Flights starter quotes and easyJet sample'),'source_url':BASE,'queries':queries,'coverage':coverage('both'),'coverage_by_scope':{s:coverage(s) for s in ['both','domestic','international']},'coverage_by_brand':bybrand,'coverage_by_source':dict(ryanair_timetable=dict(request_unit='airport_pair_month',planned=len(m['routes_by_brand']['ryanair']),captured=len(requests_meta),failed=len(failed),unattempted=len(missing)-len(failed),routes_with_day_flights=sum(q['overlapping_records']>0 for q in requests_meta),dated_flights=len(official_ids)),google_starter=dict(request_unit='airport_pair_date',planned=starter_query_count,captured=starter_query_count,easyjet='starter preserved within expansion' if easyjet else 'unchanged starter')),'uncollected_queries':[[DAY,a,b] for a,b in missing]+google_missing,'failed_queries':failed+google_failed,'official_rejected_records':rejected,'schedule_updates':updates,'priced_flights':sum(bool(f.get('price')) for f in fs),'replay_note':NOTE,'route_source_sha256':m['route_source_sha256'],'selection':m['selection'],'quote_policy':'Original seed quotes retained only for identical source flight identity and UTC schedule; new timetable-only records have no invented price','seed_sha256':hashlib.sha256(seed_path.read_bytes()).hexdigest()}
+ if easyjet:
+  meta['capture_context']['sources']['google_easyjet']=easyjet['metadata']['capture_context']
+  meta['source_urls']=dict(ryanair=BASE,easyjet='https://www.google.com/travel/flights')
+  meta['easyjet_seed_sha256']=hashlib.sha256(easyjet_path.read_bytes()).hexdigest()
+  meta['coverage_by_source']['google_easyjet']=dict(request_unit='airport_pair_date',planned=easyjet['metadata']['coverage']['queries_planned'],captured=len(easyjet['metadata']['queries']),failed=len(google_failed),unattempted=len(google_missing)-len(google_failed),reused_starter_queries=starter_query_count+len(easyjet['metadata']['queries'])-len(seed['metadata']['queries']))
+  meta['coverage_by_source']['google_unique']=dict(request_unit='airport_pair_date',planned=len(seed['metadata']['queries'])+len(google_missing),captured=len(seed['metadata']['queries']))
+  meta['coverage_by_brand']['easyjet'].update(routes_planned=len(m['routes_by_brand']['easyjet']),queries_planned=easyjet['metadata']['coverage']['queries_planned'],queries_captured=len(easyjet['metadata']['queries']))
+  if easyjet['metadata'].get('collection_stop'):meta['easyjet_collection_stop']=easyjet['metadata']['collection_stop']
  stop=cache/'collection-stop.json'
  if stop.exists():meta['collection_stop']=json.loads(stop.read_text())
  doc=dict(airports=[air[c] for c in sorted(codes)],flights=fs,metadata=meta);save(output,doc)
@@ -130,7 +170,7 @@ def prepare(cache,output,m,seed_path):
 
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--cache',type=Path,default=ROOT/'.cache/ryanair-timetables-v1');p.add_argument('--output',type=Path,default=ROOT/f'data/reference/europe_flights/{DAY}.json.gz');p.add_argument('--seed',type=Path,default=ROOT/'data/sources/europe_flights_google_seed.json.gz');p.add_argument('--concurrency',type=int,choices=[1,2],default=2);p.add_argument('--prepare-only',action='store_true');p.add_argument('--collect-only',action='store_true');a=p.parse_args();a.cache.mkdir(parents=True,exist_ok=True);m=manifest()
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--cache',type=Path,default=ROOT/'.cache/ryanair-timetables-v1');p.add_argument('--output',type=Path,default=ROOT/f'data/reference/europe_flights/{DAY}.json.gz');p.add_argument('--seed',type=Path,default=ROOT/'data/sources/europe_flights_google_seed.json.gz');p.add_argument('--easyjet-cache',type=Path,default=ROOT/'.cache/google-flights-europe-eur-v1');p.add_argument('--ryanair-only',action='store_true');p.add_argument('--concurrency',type=int,choices=[1,2],default=2);p.add_argument('--prepare-only',action='store_true');p.add_argument('--collect-only',action='store_true');a=p.parse_args();a.cache.mkdir(parents=True,exist_ok=True);m=manifest()
  with (a.cache/'.collection.lock').open('a') as lock:
   try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
   except BlockingIOError:raise RuntimeError('Another official timetable collector is running')
@@ -139,7 +179,16 @@ def main():
    (a.cache/'collection-stop.json').unlink(missing_ok=True)
    try:collect(a.cache,m,a.concurrency)
    except RuntimeError as error:stopped=error;(a.cache/'collection-stop.json').write_text(json.dumps(dict(reason=str(error),at=datetime.now(timezone.utc).isoformat())))
-  if not a.collect_only:prepare(a.cache,a.output,m,a.seed)
+  if not a.collect_only:
+   easyjet_path=None
+   if not a.ryanair_only and len(m['routes_by_brand']['easyjet'])>160:
+    from scripts.prepare_europe_flights import config,prepare as prepare_google
+    a.easyjet_cache.mkdir(parents=True,exist_ok=True)
+    with (a.easyjet_cache/'.preparation.lock').open('a') as google_lock:
+     try:fcntl.flock(google_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+     except BlockingIOError:raise RuntimeError('easyJet collection is still running; cannot prepare the final snapshot yet')
+     easyjet_path=a.easyjet_cache/'prepared-easyjet.json.gz';prepare_google(a.easyjet_cache,easyjet_path,config('easyjet'))
+   prepare(a.cache,a.output,m,a.seed,easyjet_path)
   if stopped:print(f'{stopped}; captures preserved; no access-challenge retry',file=sys.stderr);return 2
  return 0
 

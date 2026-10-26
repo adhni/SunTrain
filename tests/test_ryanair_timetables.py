@@ -14,10 +14,10 @@ def query(a='STN',b='DUB',day=2,dep='06:35',arr='07:55',carrier='FR',number='203
  return dict(origin=a,destination=b,context=r.CONTEXT,url=r.url(a,b),captured_at='2026-10-26T00:00:00Z',body_sha256='fixture',payload=dict(month=11,days=[dict(day=day,flights=[dict(carrierCode=carrier,number=number,departureTime=dep,arrivalTime=arr)])]))
 
 
-def test_full_manifest_preserves_exact_airports_and_easyjet_sample():
+def test_full_manifest_preserves_exact_airports_and_both_catalogues():
  m=r.manifest();assert len(m['routes_by_brand']['ryanair'])==5305
- assert len(m['routes_by_brand']['easyjet'])==160
- assert len(m['routes'])==5443 and len(m['airports'])==245
+ assert len(m['routes_by_brand']['easyjet'])==2564
+ assert len(m['routes'])==7409 and len(m['airports'])==279
  airports={a['code']:a for a in m['airports']}
  assert airports['TFS']['timezone']=='Atlantic/Canary'
  assert airports['BGY']['icao']!=airports['MXP']['icao']
@@ -101,14 +101,15 @@ def test_collector_resumes_and_stops_on_access_challenge(tmp_path,monkeypatch):
 def test_prepared_expansion_keeps_easyjet_and_only_reuses_exact_seed_quotes():
  from dashboard.europe_flights import load_reference
  doc=load_reference(r.DAY);seed=r.read(r.ROOT/'data/sources/europe_flights_google_seed.json.gz')
- assert [f for f in doc['flights'] if f['brand']=='easyjet']==[f for f in seed['flights'] if f['brand']=='easyjet']
+ prepared={f['id']:f for f in doc['flights']}
+ assert all(prepared[f['id']]==f for f in seed['flights'] if f['brand']=='easyjet')
  assert len(doc['flights'])>len(seed['flights'])
  stats=doc['metadata']['coverage_by_source']['ryanair_timetable']
  assert stats['planned']==5305 and stats['captured']+stats['failed']+stats['unattempted']==5305
  assert stats['unattempted']==0
  originals={f['id']:f for f in seed['flights']}
  for f in doc['flights']:
-  if f.get('price'):
+  if f.get('price') and f['id'] in originals:
    old=originals[f['id']];assert (f['departure'],f['arrival'],f['price'])==(old['departure'],old['arrival'],old['price'])
   if f.get('schedule_source')=='ryanair_public_timetable' and f['id'] not in originals:
    assert not f.get('price') and f['aircraft']=='Aircraft not specified'

@@ -10,8 +10,8 @@ BRANDS={'ryanair':'Ryanair','easyjet':'easyJet'}
 CARRIERS={'FR':'ryanair','RK':'ryanair','RR':'ryanair','AL':'ryanair',
  'U2':'easyjet','EC':'easyjet','DS':'easyjet','EZY':'easyjet','EJU':'easyjet','EZS':'easyjet'}
 COLORS={'ryanair':'#82ace0','easyjet':'#f59c57'}
-NOTE='Ryanair timetables and selected easyJet routes · 2 November 2026. Timeline: UTC; airport boards use local dates and times. Prices are available for selected flights only; paths are illustrative.'
-SETTINGS=dict(replay_kind='flights',name='Europe · Flights',timezone='UTC',bounds=[[-26,27],[46,70]],passenger_data=False,
+NOTE='Ryanair and easyJet · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.'
+SETTINGS=dict(replay_kind='flights',name='Europe · Flights',timezone='UTC',bounds=[[-26,13],[46,70]],passenger_data=False,
  start_date=DAY,end_date=DAY,flight_scopes=True,default_flight_scope='both',flight_country_filters=True,flight_brands=BRANDS,
  description=NOTE,default_modes=['flight'],modes=[('Flights','flight')],operators=[],directions=[('Scheduled service','Scheduled service')])
 

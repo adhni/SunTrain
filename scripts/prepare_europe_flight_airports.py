@@ -1,4 +1,4 @@
-"""Full Ryanair discovery plus the reproducible easyJet starter."""
+"""Pinned full Ryanair and easyJet Europe-connected route discovery."""
 import csv,hashlib,json,sys
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -12,7 +12,7 @@ SOURCES={'ryanair':'https://www.ryanair.com/api/views/locate/3/aggregate/all/en'
 PILOT={'ryanair':'STN-DUB BGY-CTA STN-RAK BFS-STN','easyjet':'LGW-BCN GVA-LGW BSL-NCE LTN-EDI'}
 
 
-def build(ryanair_full=True):
+def build(ryanair_full=True,easyjet_full=True):
  seed=json.loads((ROOT/'data/sources/europe_flights_discovery.json').read_text())
  raw=pinned_download(AIRPORT_URL,ROOT/'.cache/australia-flights-audit/ourairports-airports.csv',AIRPORT_HASH)
  with raw.open(encoding='utf-8-sig') as f:rows=list(csv.DictReader(f))
@@ -48,12 +48,12 @@ def build(ryanair_full=True):
     if len(chosen)>=80:break
     if len(options)>offset:chosen.add(options[offset])
    if len(chosen)>=80:break
-  selected[brand]=sorted(candidates if brand=='ryanair' and ryanair_full else (p for p in candidates if tuple(sorted(p)) in chosen))
+  selected[brand]=sorted(candidates if {'ryanair':ryanair_full,'easyjet':easyjet_full}[brand] else (p for p in candidates if tuple(sorted(p)) in chosen))
  pairs=sorted({p for ps in selected.values() for p in ps});codes={c for p in pairs for c in p}
  doc=dict(profile='europe_flights',scope='both',start_date='2026-11-02',end_date='2026-11-02',timezone='UTC',currency='EUR',max_duration=28800,
   airports=[air[c] for c in sorted(codes)],routes=pairs,routes_by_brand=selected,europe_countries=sorted(EUROPE),source_urls=SOURCES,source_documents=seed['sources'],source_reviewed_date='2026-10-26',
   discovered_routes_by_brand=discovered,discovered_unique_routes=len({p for ps in seed['routes'].values() for p in map(tuple,ps) if air[p[0]]['europe'] or air[p[1]]['europe']}),
-  selection=('Full published Ryanair airport-pair catalogue; easyJet retains the 80-pair broad starter' if ryanair_full else 'Broad starter requested by user: published-country coverage, reviewed major/secondary airports, then deterministic round-robin; up to 80 undirected pairs per brand'),unresolved_airports=[],airport_source_url=AIRPORT_URL,airport_source_sha256=AIRPORT_HASH)
+  selection=('Full published Europe-connected Ryanair and easyJet airport-pair catalogues' if ryanair_full and easyjet_full else ('Full published Ryanair airport-pair catalogue; easyJet retains the 80-pair broad starter' if ryanair_full else 'Broad starter requested by user: published-country coverage, reviewed major/secondary airports, then deterministic round-robin; up to 80 undirected pairs per brand')),unresolved_airports=[],airport_source_url=AIRPORT_URL,airport_source_sha256=AIRPORT_HASH)
  doc['route_source_sha256']=hashlib.sha256(json.dumps(dict(seed=seed,selection=doc['selection'],core=CORE,routes=pairs),sort_keys=True).encode()).hexdigest()
  (ROOT/'data/sources/europe_flights_routes.json').write_text(json.dumps(doc,ensure_ascii=False,indent=2)+'\n');print(dict(airports=len(codes),directions=len(pairs),brands={k:len(v) for k,v in selected.items()},discovered=discovered))
 

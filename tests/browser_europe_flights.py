@@ -43,7 +43,7 @@ with sync_playwright() as p:
   page.wait_for_function('([a,b])=>suntrainReplay.filters.fromCountries[0]===a && suntrainReplay.filters.toCountries[0]===b && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].country===a && suntrainReplay.day.stations[s.stops[1][0]].country===b)',arg=[origin,destination])
  page.evaluate('dash_clientside.set_props("replay-from-countries",{value:[]});dash_clientside.set_props("replay-to-countries",{value:[]});dash_clientside.set_props("replay-airport-direction",{value:"departures"})')
  page.wait_for_function('!suntrainReplay.filters.fromCountries.length && !suntrainReplay.filters.toCountries.length && suntrainReplay.filters.airportDirection==="departures"')
- for code in ['STN','LGW','DUB','BGY','GVA','BSL']:
+ for code in ['STN','LGW','DUB','BGY','GVA','BSL','NCE','MXP']:
   page.evaluate('(code)=>dash_clientside.set_props("replay-airports",{value:[code]})',code)
   page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].code===code)',arg=code)
   page.evaluate('(code)=>{suntrainReplay.seek(suntrainReplay.day.start);suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))}',code)
@@ -66,7 +66,12 @@ with sync_playwright() as p:
   page.locator('[data-event="arrival"]').click();page.wait_for_function('(code)=>suntrainReplay.filters.airportDirection==="arrivals" && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[1][0]].code===code)',arg=code)
   page.locator('[data-event="destinations"]').click();page.wait_for_function('suntrainReplay.departures.destinationRows.length')
   page.locator('[data-event="departure"]').click();page.wait_for_function('suntrainReplay.filters.airportDirection==="departures"');page.evaluate('suntrainReplay.departures.close()');print(code,'board passed',flush=True)
- page.evaluate('dash_clientside.set_props("replay-airports",{value:[]});dash_clientside.set_props("replay-flight-view",{value:"frequency"})')
+ page.evaluate('dash_clientside.set_props("replay-airports",{value:["SID"]});dash_clientside.set_props("replay-airport-direction",{value:"arrivals"})')
+ page.wait_for_function('suntrainReplay.filters.airports[0]==="SID" && suntrainReplay.filters.airportDirection==="arrivals" && suntrainReplay.filtered.length')
+ page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="SID"))')
+ page.wait_for_function('suntrainReplay.departures.calls.length && suntrainReplay.departures.timezone==="Atlantic/Cape_Verde"')
+ assert 'GMT-1' in page.locator('#replay-departures').inner_text()
+ page.evaluate('suntrainReplay.departures.close();dash_clientside.set_props("replay-airports",{value:[]});dash_clientside.set_props("replay-flight-view",{value:"frequency"})')
  page.wait_for_function('(n)=>!suntrainReplay.filters.airports.length && suntrainReplay.frequencyView && suntrainReplay.filtered.length===n && suntrainReplay.frequencyFeatures.length',arg=total)
  assert page.evaluate('suntrainReplay.frequencyFeatures.reduce((n,f)=>n+f.properties.count,0)===suntrainFlightNetwork.ownedFlights(suntrainReplay.filtered,suntrainReplay.day).length')
  assert len(downloads)==count

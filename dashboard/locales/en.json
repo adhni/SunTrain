@@ -949,5 +949,6 @@
   "Return to the Europe · Flights starting view": "Return to the Europe · Flights starting view",
   "Europe · Flights overview": "Europe · Flights overview",
   "{n} / {total} monthly route timetables captured": "{n} / {total} monthly route timetables captured",
-  "{n} / {total} dated flight searches captured · Coverage is partial": "{n} / {total} dated flight searches captured · Coverage is partial"
+  "{n} / {total} dated flight searches captured · Coverage is partial": "{n} / {total} dated flight searches captured · Coverage is partial",
+  "Ryanair, easyJet, Wizz Air and nine European flag carriers · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.": "Ryanair, easyJet, Wizz Air and nine European flag carriers · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative."
 }

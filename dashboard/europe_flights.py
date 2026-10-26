@@ -6,14 +6,35 @@ ROOT=Path(__file__).resolve().parents[1]
 DAY='2026-11-02'
 EUROPE_COUNTRIES=set('AL AD AT AX BA BE BG BY CH CY CZ DE DK EE ES FI FO FR GB GE GG GI GR HR HU IE IM IS IT JE LI LT LU LV MC MD ME MK MT NL NO PL PT RO RS SE SI SK SM TR UA VA XK'.split())
 BRANDS={'ryanair':'Ryanair','easyjet':'easyJet','wizzair':'Wizz Air'}
+GROUPS={'lufthansa_group':'Lufthansa Group','iag':'IAG','air_france_klm':'Air France–KLM'}
+FLAG_CARRIERS={
+ 'lufthansa':('LH','Lufthansa','lufthansa_group'),
+ 'swiss':('LX','SWISS','lufthansa_group'),
+ 'austrian':('OS','Austrian','lufthansa_group'),
+ 'brussels':('SN','Brussels Airlines','lufthansa_group'),
+ 'british_airways':('BA','British Airways','iag'),
+ 'iberia':('IB','Iberia','iag'),
+ 'aer_lingus':('EI','Aer Lingus','iag'),
+ 'air_france':('AF','Air France','air_france_klm'),
+ 'klm':('KL','KLM','air_france_klm')}
+BRANDS.update({brand:v[1] for brand,v in FLAG_CARRIERS.items()})
+BRAND_GROUPS={brand:v[2] for brand,v in FLAG_CARRIERS.items()}
+GROUP_COLORS={'lufthansa_group':'#efcf58','iag':'#43c9bc','air_france_klm':'#b4a1f3'}
+
+
+def duration_limit(brand):return 86400 if brand in FLAG_CARRIERS else 28800
+
+
 # Reviewed carrier codes, never airline-name substring matching.
 CARRIERS={'FR':'ryanair','RK':'ryanair','RR':'ryanair','AL':'ryanair',
  'U2':'easyjet','EC':'easyjet','DS':'easyjet','EZY':'easyjet','EJU':'easyjet','EZS':'easyjet',
  'W6':'wizzair','W4':'wizzair','W9':'wizzair','WZZ':'wizzair','WMT':'wizzair','WUK':'wizzair'}
+CARRIERS.update({v[0]:brand for brand,v in FLAG_CARRIERS.items()})
 COLORS={'ryanair':'#82ace0','easyjet':'#f59c57','wizzair':'#e660b6'}
-NOTE='Ryanair, easyJet and Wizz Air · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.'
+COLORS.update({brand:GROUP_COLORS[group] for brand,group in BRAND_GROUPS.items()})
+NOTE='Ryanair, easyJet, Wizz Air and nine European flag carriers · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.'
 SETTINGS=dict(replay_kind='flights',name='Europe · Flights',timezone='UTC',bounds=[[-26,13],[57,70]],passenger_data=False,
- start_date=DAY,end_date=DAY,flight_scopes=True,default_flight_scope='both',flight_country_filters=True,flight_brands=BRANDS,
+ start_date=DAY,end_date=DAY,flight_scopes=True,default_flight_scope='both',flight_country_filters=True,flight_brands=BRANDS,flight_groups=GROUPS,
  description=NOTE,default_modes=['flight'],modes=[('Flights','flight')],operators=[],directions=[('Scheduled service','Scheduled service')])
 
 
@@ -42,7 +63,7 @@ def load_reference(day):
   if not brand or f.get('brand')!=brand:raise ValueError('Flight outside verified Europe launch brands')
   if not (a['europe'] or b['europe']):raise ValueError('Flight wholly outside reviewed Europe footprint')
   scope='domestic' if a['country']==b['country'] else 'international'
-  if f.get('flight_scope')!=scope or not 60<=f['arrival']-f['departure']<=28800:raise ValueError('Invalid European flight scope or duration')
+  if f.get('flight_scope')!=scope or not 60<=f['arrival']-f['departure']<=duration_limit(brand):raise ValueError('Invalid European flight scope or duration')
   if f.get('price') and not valid_price(f['price']):raise ValueError('Invalid European fare context')
   if f['id'] in ids:raise ValueError('Duplicate European flight identity')
   ids[f['id']]=f

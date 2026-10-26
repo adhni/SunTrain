@@ -257,3 +257,16 @@ test('Nepal midnight and fare timestamps retain the quarter-hour offset',()=>{
  assert.match(formatCallTime(Date.parse(at)/1000,'Asia/Kathmandu'),/2 Nov.*00:00 NPT/);
  assert.match(captureTime(at,'Asia/Kathmandu'),/NPT/);
 });
+
+test('European group, airline and code filters compose with exact airport direction',()=>{
+ const day={stations:[{code:'LHR',country:'GB'},{code:'JFK',country:'US'}]};
+ const flight={mode:'flight',carrier:'BA',flight_brand:'british_airways',flight_group:'iag',stops:[[0,0,0],[1,3600,3600]],flight_scope:'international'};
+ const filters={modes:[],operators:[],lines:[],directions:[],stations:[],number:'',flightScope:'both',carriers:['group:iag']};
+ assert.equal(core.matches(flight,filters,day),true);
+ assert.equal(core.matches(flight,{...filters,carriers:['group:lufthansa_group']},day),false);
+ assert.equal(core.matches(flight,{...filters,carriers:['brand:british_airways']},day),true);
+ assert.equal(core.matches(flight,{...filters,carriers:['BA']},day),true);
+ assert.equal(core.matches(flight,{...filters,airports:['JFK'],airportDirection:'departures'},day),false);
+ assert.equal(core.matches(flight,{...filters,airports:['JFK'],airportDirection:'arrivals'},day),true);
+ assert.equal(core.matches({...flight,flight_group:undefined},filters,day),false);
+});

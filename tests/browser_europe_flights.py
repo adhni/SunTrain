@@ -21,17 +21,22 @@ with sync_playwright() as p:
  page.locator('#language-select').select_option('id');page.wait_for_function('document.querySelector("#city-overview-content").textContent.includes("jadwal rute bulanan tersimpan")')
  page.locator('#language-select').select_option('en');page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"})')
  page.wait_for_function('suntrainReplay.active && suntrainReplay.mapReady && !suntrainReplay.loading')
- assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.flight_brand)).size')==3
+ assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.flight_brand)).size')==12
  assert page.evaluate('suntrainReplay.day.stations.some(a=>a.code==="STN") && suntrainReplay.day.stations.some(a=>a.code==="LGW")')
+ assert page.evaluate('suntrainReplay.graph.getBounds().getSouth()>0'),'Europe should keep its regional initial frame'
  count=len(downloads);total=page.evaluate('suntrainReplay.filtered.length')
  page.evaluate('dash_clientside.set_props("replay-display",{value:["routes"]})');page.wait_for_function('!suntrainReplay.graph.getSource("replay-stations")._data.features.length')
  page.evaluate('dash_clientside.set_props("replay-display",{value:["routes","stations"]})');page.wait_for_function('suntrainReplay.graph.getSource("replay-stations")._data.features.length')
  page.screenshot(path='.cache/europe-flights-audit/map.png')
- for brand in ['ryanair','easyjet','wizzair']:
+ for brand in ['ryanair','easyjet','wizzair','lufthansa','swiss','austrian','brussels','british_airways','iberia','aer_lingus','air_france','klm']:
   page.evaluate('(brand)=>dash_clientside.set_props("replay-carriers",{value:["brand:"+brand]})',brand)
   page.wait_for_function('(brand)=>suntrainReplay.filters.carriers[0]==="brand:"+brand && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.flight_brand===brand)',arg=brand)
   assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.color)).size')==1
- for carrier in ['RK','W6','W4','W9']:
+ for group in ['lufthansa_group','iag','air_france_klm']:
+  page.evaluate('(group)=>dash_clientside.set_props("replay-carriers",{value:["group:"+group]})',group)
+  page.wait_for_function('(group)=>suntrainReplay.filters.carriers[0]==="group:"+group && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.flight_group===group)',arg=group)
+  assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.color)).size')==1
+ for carrier in ['RK','W6','W4','W9','LH','LX','OS','SN','BA','IB','EI','AF','KL']:
   page.evaluate('(carrier)=>dash_clientside.set_props("replay-carriers",{value:[carrier]})',carrier)
   page.wait_for_function('(carrier)=>suntrainReplay.filters.carriers[0]===carrier && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.carrier===carrier)',arg=carrier)
  page.evaluate('dash_clientside.set_props("replay-carriers",{value:[]})');page.wait_for_function('!suntrainReplay.filters.carriers.length')
@@ -44,7 +49,7 @@ with sync_playwright() as p:
   page.wait_for_function('([a,b])=>suntrainReplay.filters.fromCountries[0]===a && suntrainReplay.filters.toCountries[0]===b && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].country===a && suntrainReplay.day.stations[s.stops[1][0]].country===b)',arg=[origin,destination])
  page.evaluate('dash_clientside.set_props("replay-from-countries",{value:[]});dash_clientside.set_props("replay-to-countries",{value:[]});dash_clientside.set_props("replay-airport-direction",{value:"departures"})')
  page.wait_for_function('!suntrainReplay.filters.fromCountries.length && !suntrainReplay.filters.toCountries.length && suntrainReplay.filters.airportDirection==="departures"')
- for code in ['STN','LGW','DUB','BGY','GVA','BSL','NCE','MXP','BUD','OTP','LTN']:
+ for code in ['STN','LGW','DUB','BGY','GVA','BSL','NCE','MXP','BUD','OTP','LTN','FRA','ZRH','VIE','BRU','LHR','MAD','AMS','CDG','JFK']:
   page.evaluate('(code)=>dash_clientside.set_props("replay-airports",{value:[code]})',code)
   page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].code===code)',arg=code)
   page.evaluate('(code)=>{suntrainReplay.seek(suntrainReplay.day.start);suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))}',code)
@@ -54,6 +59,10 @@ with sync_playwright() as p:
    page.get_by_role('button',name='Previous',exact=True).click();before=page.evaluate('suntrainReplay.now');page.locator('.departure-row').filter(has_text='EUR').first.click()
    assert page.evaluate('suntrainReplay.now')==before and 'EUR' in page.locator('.replay-flight-fare').inner_text()
    page.get_by_role('button',name='Back to airport board',exact=True).click();assert page.evaluate('suntrainReplay.departures.expanded')
+  if code=='JFK':
+   assert page.evaluate('suntrainReplay.graph.getBounds().contains([-73.7781,40.6413])')
+   assert page.evaluate('suntrainReplay.departures.timezone')=='America/New_York'
+   assert 'GMT-5' in page.locator('#replay-departures').inner_text()
   if code=='GVA':
    assert page.evaluate('suntrainReplay.departures.timezone')=='Europe/Zurich'
    assert 'GMT+1' in page.locator('#replay-departures').inner_text() and 'UTC' in page.locator('#replay-departures').inner_text()
@@ -78,6 +87,6 @@ with sync_playwright() as p:
  assert len(downloads)==count
  page.evaluate('dash_clientside.set_props("replay-city",{value:"nepal_flights"})')
  page.wait_for_function('suntrainReplay.day.city==="nepal_flights" && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
- assert page.evaluate('suntrainReplay.filters.flightScope')=='domestic' and not page.evaluate('suntrainReplay.day.flight_brands')
+ assert page.evaluate('suntrainReplay.filters.flightScope')=='domestic' and not page.evaluate('suntrainReplay.day.flight_brands') and not page.evaluate('suntrainReplay.day.flight_groups')
  assert not errors,errors
  print(f'{total} records: brand/carrier filters, actual-country scopes, UTC/local clocks, EUR, boards, mobile, themes, Indonesian and existing-country reset passed',flush=True);browser.close()

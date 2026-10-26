@@ -49,7 +49,7 @@ def test_wizz_merge_preserves_existing_brands_and_deduplicates_shared_gaps(tmp_p
  cache,out,m,seed,path,base,extra=merge_fixture(tmp_path);m['routes_by_brand'].update(easyjet=[['STN','DUB'],['DUB','STN']],wizzair=[['STN','DUB'],['DUB','STN']])
  wizz={**extra,'flights':[{**extra['flights'][0],'id':'wizz','brand':'wizzair','carrier':'W4','number':'W41'}]};wizz_path=tmp_path/'wizz.gz';r.save(wizz_path,wizz)
  r.prepare(cache,out,m,seed,path,wizz_path);doc=r.read(out);meta=doc['metadata']
- assert {f['brand'] for f in doc['flights']}==set(e.BRANDS) and len(doc['flights'])==4
+ assert {f['brand'] for f in doc['flights']}=={'ryanair','easyjet','wizzair'} and len(doc['flights'])==4
  assert next(f for f in doc['flights'] if f['brand']=='ryanair')==base['flights'][0]
  assert meta['coverage_by_source']['google_wizzair']['reused_google_queries']==1
  assert meta['coverage_by_source']['google_unique']['planned']==2

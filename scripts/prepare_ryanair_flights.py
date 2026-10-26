@@ -5,13 +5,21 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from dashboard.europe_flights import BRANDS,CARRIERS,DAY,NOTE,valid_price
+from dashboard.europe_flights import BRANDS,CARRIERS,DAY,NOTE,valid_price,duration_limit,FLAG_CARRIERS
 CONTEXT=dict(source='ryanair_public_timetable',version=1,year=2026,month=11)
 BASE='https://services-api.ryanair.com/timtbl/3/schedules'
 LABELS={'FR':'Ryanair','RK':'Ryanair UK','RR':'Buzz','AL':'Malta Air'}
 
 
-def manifest():return json.loads((ROOT/'data/sources/europe_flights_routes.json').read_text())
+def manifest():
+ m=json.loads((ROOT/'data/sources/europe_flights_routes.json').read_text());path=ROOT/'data/sources/europe_groups_routes.json'
+ if not path.exists():return m
+ groups=json.loads(path.read_text());air={a['code']:a for a in m['airports']}
+ for a in groups['airports']:
+  if a['code'] in air and any(air[a['code']][k]!=a[k] for k in ['country','timezone','icao']):raise ValueError('Conflicting group airport identity')
+  air.setdefault(a['code'],a)
+ return {**m,'selection':m['selection']+'; nine main flag-carrier worldwide route candidates','airports':[air[c] for c in sorted(air)],'routes':sorted({tuple(p) for p in m['routes']+groups['routes']}),'routes_by_brand':{**m['routes_by_brand'],**groups['routes_by_brand']},'source_urls':{**m['source_urls'],**groups['source_urls']},'group_route_source_sha256':groups['route_source_sha256']}
+
 def url(a,b):return f'{BASE}/{a}/{b}/years/2026/months/11'
 def path_for(cache,a,b):return cache/f'2026-11-{a}-{b}.json.gz'
 def save(path,value):
@@ -95,22 +103,23 @@ def parse_month(q,air):
  return list(fs.values()),rejected
 
 
-def merge_google_brand(seed,extra,m,brand):
+def merge_google_brand(seed,extra,m,brand,allowed_brands=None):
  """Merge a verified brand without changing the other brands or repeating queries."""
  if any(extra['metadata'].get(k)!=seed['metadata'].get(k) for k in ['profile','start_date','end_date','timezone','fare_context']):raise ValueError(f'Incompatible {brand} snapshot context')
+ allowed=set(allowed_brands or [brand])
  records={f['id']:f for f in seed['flights']};air={a['code']:a for a in m['airports']};changes=[];incoming={}
  for f in extra['flights']:
   if f['id'] in incoming:
    if incoming[f['id']]!=f:raise ValueError(f'Conflicting {brand} flight identity')
    continue
   incoming[f['id']]=f
-  if CARRIERS.get(f['carrier'])!=brand or f.get('brand')!=brand:raise ValueError(f'Wrong carrier in {brand} expansion')
+  if CARRIERS.get(f['carrier'])!=f.get('brand') or f.get('brand') not in allowed:raise ValueError(f'Wrong carrier in {brand} expansion')
   a,b=air[f['origin']],air[f['destination']]
-  if not (a['europe'] or b['europe']) or f['flight_scope']!=('domestic' if a['country']==b['country'] else 'international') or not 60<=f['arrival']-f['departure']<=28800:raise ValueError(f'Invalid {brand} segment')
+  if not (a['europe'] or b['europe']) or f['flight_scope']!=('domestic' if a['country']==b['country'] else 'international') or not 60<=f['arrival']-f['departure']<=duration_limit(f['brand']):raise ValueError(f'Invalid {brand} segment')
   if f.get('price') and not valid_price(f['price']):raise ValueError(f'Invalid {brand} quote')
   old=records.get(f['id'])
   if old:
-   if old['brand']!=brand:raise ValueError('Flight identity collides with another brand')
+   if old['brand']!=f['brand']:raise ValueError('Flight identity collides with another brand')
    if (old['departure'],old['arrival'])==(f['departure'],f['arrival']):
     if old.get('price') and (not f.get('price') or (old['price']['currency']==f['price']['currency'] and old['price']['amount_minor']<=f['price']['amount_minor'])):f={**f,'price':old['price']}
    else:changes.append(dict(id=f['id'],previous_departure=old['departure'],previous_arrival=old['arrival'],departure=f['departure'],arrival=f['arrival']))
@@ -128,10 +137,10 @@ def merge_easyjet(seed,extra,m):
  return merge_google_brand(seed,extra,m,'easyjet')
 
 
-def prepare(cache,output,m,seed_path,easyjet_path=None,wizzair_path=None):
- seed=read(seed_path);starter_query_count=len(seed['metadata']['queries']);paths={brand:path for brand,path in [('easyjet',easyjet_path),('wizzair',wizzair_path)] if path};snapshots={brand:read(path) for brand,path in paths.items()};reused={}
+def prepare(cache,output,m,seed_path,easyjet_path=None,wizzair_path=None,groups_path=None):
+ seed=read(seed_path);starter_query_count=len(seed['metadata']['queries']);paths={brand:path for brand,path in [('easyjet',easyjet_path),('wizzair',wizzair_path),('groups',groups_path)] if path};snapshots={brand:read(path) for brand,path in paths.items()};reused={}
  for brand,extra in snapshots.items():
-  previous=len(seed['metadata']['queries']);seed=merge_google_brand(seed,extra,m,brand);reused[brand]=previous+len(extra['metadata']['queries'])-len(seed['metadata']['queries'])
+  previous=len(seed['metadata']['queries']);seed=merge_google_brand(seed,extra,m,brand,list(FLAG_CARRIERS) if brand=='groups' else None);reused[brand]=previous+len(extra['metadata']['queries'])-len(seed['metadata']['queries'])
  captured_keys={(q['date'],q['origin'],q['destination']) for q in seed['metadata']['queries']}
  google_missing=sorted({tuple(q) for extra in snapshots.values() for q in extra['metadata']['uncollected_queries'] if tuple(q) not in captured_keys})
  google_failed=list({(q['date'],q['origin'],q['destination']):q for extra in snapshots.values() for q in extra['metadata']['failed_queries'] if (q['date'],q['origin'],q['destination']) in google_missing}.values())
@@ -162,7 +171,7 @@ def prepare(cache,output,m,seed_path,easyjet_path=None,wizzair_path=None):
  def coverage(scope):
   pairs={tuple(p) for p in m['routes'] if scope=='both' or ('domestic' if air[p[0]]['country']==air[p[1]]['country'] else 'international')==scope};qs=[q for q in queries if (q['origin'],q['destination']) in pairs];absent=[p for p in missing if tuple(p) in pairs];google_absent=[q for q in google_missing if tuple(q[1:]) in pairs];errors=[q for q in failed+google_failed if (q['origin'],q['destination']) in pairs];selected=[f for f in fs if scope=='both' or f['flight_scope']==scope]
   return dict(candidate_airports=len({c for p in pairs for c in p}),airports_planned=len({c for p in pairs for c in p}),airports_searched=len({q[k] for q in qs for k in ['origin','destination']}),routes_planned=len(pairs),routes_searched=len({(q['origin'],q['destination']) for q in qs}),source_counts=dict(monthly_captured=sum(q.get('source')=='ryanair_public_timetable' for q in qs),monthly_planned=sum(q.get('source')=='ryanair_public_timetable' for q in qs)+len(absent),dated_captured=sum(q.get('source')!='ryanair_public_timetable' for q in qs),dated_planned=sum(q.get('source')!='ryanair_public_timetable' for q in qs)+len(google_absent)),queries_planned=len(qs)+len(absent)+len(google_absent),queries_captured=len(qs),query_unit='source_request; monthly timetables and dated Google searches reported separately',queries_not_returned=sum(q.get('status') in {'no_returned_timetable_records','no_matching_direct_flights'} for q in qs),queries_rejected=sum(q.get('status')=='rejected_source_records' or q.get('rejected_records',0)>0 for q in qs),failed_or_missing_queries=len(absent)+len(google_absent),failed_queries=len(errors),unattempted_queries=len(absent)+len(google_absent)-len(errors),rejected_records=sum(q.get('rejected_records',len(q.get('rejected_flights',[]))) for q in qs),**counts(selected))
- bybrand={brand:counts([f for f in fs if f['brand']==brand]) for brand in BRANDS};bybrand['ryanair'].update(routes_planned=len(m['routes_by_brand']['ryanair']),official_records=len(official_ids),google_only_records=sum(f['brand']=='ryanair' and f['id'] not in official_ids for f in fs));meta={**seed['metadata'],'capture_context':dict(profile='europe_flights',version=2,sources=dict(google_starter=seed['metadata'].get('capture_context'),ryanair_timetable=CONTEXT)),'airlines':sorted({f['airline'] for f in fs}),'source':('Ryanair public timetables and dated easyJet/Wizz Air Google Flights captures' if snapshots else 'Ryanair public timetables plus preserved Google Flights starter quotes and easyJet sample'),'source_url':BASE,'queries':queries,'coverage':coverage('both'),'coverage_by_scope':{s:coverage(s) for s in ['both','domestic','international']},'coverage_by_brand':bybrand,'coverage_by_source':dict(ryanair_timetable=dict(request_unit='airport_pair_month',planned=len(m['routes_by_brand']['ryanair']),captured=len(requests_meta),failed=len(failed),unattempted=len(missing)-len(failed),routes_with_day_flights=sum(q['overlapping_records']>0 for q in requests_meta),dated_flights=len(official_ids)),google_starter=dict(request_unit='airport_pair_date',planned=starter_query_count,captured=starter_query_count,easyjet='starter preserved within expansion' if easyjet else 'unchanged starter')),'uncollected_queries':[[DAY,a,b] for a,b in missing]+google_missing,'failed_queries':failed+google_failed,'official_rejected_records':rejected,'schedule_updates':updates,'priced_flights':sum(bool(f.get('price')) for f in fs),'replay_note':NOTE,'route_source_sha256':m['route_source_sha256'],'selection':m['selection'],'quote_policy':'Original seed quotes retained only for identical source flight identity and UTC schedule; new timetable-only records have no invented price','seed_sha256':hashlib.sha256(seed_path.read_bytes()).hexdigest()}
+ bybrand={brand:counts([f for f in fs if f['brand']==brand]) for brand in BRANDS};bybrand['ryanair'].update(routes_planned=len(m['routes_by_brand']['ryanair']),official_records=len(official_ids),google_only_records=sum(f['brand']=='ryanair' and f['id'] not in official_ids for f in fs));meta={**seed['metadata'],'capture_context':dict(profile='europe_flights',version=2,sources=dict(google_starter=seed['metadata'].get('capture_context'),ryanair_timetable=CONTEXT)),'airlines':sorted({f['airline'] for f in fs}),'source':('Ryanair public timetables and dated European airline Google Flights captures' if snapshots else 'Ryanair public timetables plus preserved Google Flights starter quotes and easyJet sample'),'source_url':BASE,'queries':queries,'coverage':coverage('both'),'coverage_by_scope':{s:coverage(s) for s in ['both','domestic','international']},'coverage_by_brand':bybrand,'coverage_by_source':dict(ryanair_timetable=dict(request_unit='airport_pair_month',planned=len(m['routes_by_brand']['ryanair']),captured=len(requests_meta),failed=len(failed),unattempted=len(missing)-len(failed),routes_with_day_flights=sum(q['overlapping_records']>0 for q in requests_meta),dated_flights=len(official_ids)),google_starter=dict(request_unit='airport_pair_date',planned=starter_query_count,captured=starter_query_count,easyjet='starter preserved within expansion' if easyjet else 'unchanged starter')),'uncollected_queries':[[DAY,a,b] for a,b in missing]+google_missing,'failed_queries':failed+google_failed,'official_rejected_records':rejected,'schedule_updates':updates,'priced_flights':sum(bool(f.get('price')) for f in fs),'replay_note':NOTE,'route_source_sha256':m['route_source_sha256'],'selection':m['selection'],'quote_policy':'Original seed quotes retained only for identical source flight identity and UTC schedule; new timetable-only records have no invented price','seed_sha256':hashlib.sha256(seed_path.read_bytes()).hexdigest()}
  if snapshots:
   meta['source_urls']=dict(ryanair=BASE,**{brand:'https://www.google.com/travel/flights' for brand in snapshots})
   meta['route_source_urls']=m['source_urls'] if 'source_urls' in m else {}
@@ -171,8 +180,11 @@ def prepare(cache,output,m,seed_path,easyjet_path=None,wizzair_path=None):
   extra_meta=extra['metadata'];source_count=extra_meta['coverage'];meta['capture_context']['sources']['google_'+brand]=extra_meta['capture_context']
   meta[brand+'_seed_sha256']=hashlib.sha256(paths[brand].read_bytes()).hexdigest()
   meta['coverage_by_source']['google_'+brand]=dict(request_unit='airport_pair_date',query_date_policy=extra_meta.get('query_date_policy','utc_day_overlap'),planned=source_count['queries_planned'],captured=len(extra_meta['queries']),failed=source_count.get('failed_queries',len(extra_meta['failed_queries'])),unattempted=source_count.get('unattempted_queries',len(extra_meta['uncollected_queries'])-len(extra_meta['failed_queries'])),reused_google_queries=reused[brand],**({'reused_starter_queries':reused[brand]} if brand=='easyjet' else {}))
-  meta['coverage_by_brand'][brand].update(routes_planned=len(m['routes_by_brand'][brand]),queries_planned=source_count['queries_planned'],queries_captured=len(extra_meta['queries']))
+  for member in (FLAG_CARRIERS if brand=='groups' else [brand]):
+   pairs={tuple(p) for p in m['routes_by_brand'][member]}
+   meta['coverage_by_brand'][member].update(routes_planned=len(pairs),queries_planned=len(pairs) if brand=='groups' else source_count['queries_planned'],queries_captured=sum((q['origin'],q['destination']) in pairs for q in extra_meta['queries']))
   if extra_meta.get('collection_stop'):meta[brand+'_collection_stop']=extra_meta['collection_stop']
+ if m.get('group_route_source_sha256'):meta['group_route_source_sha256']=m['group_route_source_sha256']
  if m.get('wizzair_inventory'):meta['wizzair_inventory']=m['wizzair_inventory']
  stop=cache/'collection-stop.json'
  if stop.exists():meta['collection_stop']=json.loads(stop.read_text())
@@ -201,6 +213,12 @@ def main():
      for brand in ['easyjet','wizzair']:
       if brand not in m['routes_by_brand']:continue
       path=a.google_cache/f'prepared-{brand}.json.gz';prepare_google(a.google_cache,path,config(brand));extras[brand+'_path']=path
+   if not a.ryanair_only and 'lufthansa' in m['routes_by_brand']:
+    from scripts.prepare_europe_groups import CACHE,config as group_config
+    CACHE.mkdir(parents=True,exist_ok=True)
+    with (CACHE/'.preparation.lock').open('a') as group_lock:
+     fcntl.flock(group_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+     path=CACHE/'prepared-groups.json.gz';prepare_google(CACHE,path,group_config());extras['groups_path']=path
    prepare(a.cache,a.output,m,a.seed,**extras)
   if stopped:print(f'{stopped}; captures preserved; no access-challenge retry',file=sys.stderr);return 2
  return 0

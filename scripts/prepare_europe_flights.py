@@ -4,7 +4,7 @@ from datetime import datetime,timedelta,timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from dashboard.europe_flights import BRANDS,CARRIERS,DAY,NOTE,valid_price
+from dashboard.europe_flights import BRANDS,CARRIERS,DAY,NOTE,valid_price,duration_limit
 from scripts.prepare_google_flights import capture
 CONTEXT=dict(profile='europe_flights',version=1,currency='EUR',adults=1,cabin='economy',trip_type='one_way',airline_filter='none',parser='google-dated-segments-v1',max_duration=28800)
 
@@ -33,17 +33,31 @@ def seed_pilot(cache,cfg):
   q['capture_context']=CONTEXT;q['reused_source']=str(source.relative_to(ROOT));p.write_text(json.dumps(q,separators=(',',':'))+'\n')
 
 
+def capture_path(cache,key,cfg):
+ """Reuse only an exact compatible prior capture with no parser rejections."""
+ path=cache/('-'.join(key)+'.json')
+ if path.exists() or not cfg.get('legacy_cache'):return path
+ legacy=Path(cfg['legacy_cache'])/path.name
+ if not legacy.exists():return path
+ q=json.loads(legacy.read_text())
+ if ((q.get('date'),q.get('origin'),q.get('destination'))==key
+     and q.get('capture_context') in cfg.get('reuse_contexts',[])
+     and not q.get('rejected_flights') and 'curr=EUR' in q.get('url','')):
+  return legacy
+ return path
+
+
 def prepare(cache,output,cfg):
  air={a['code']:a for a in cfg['manifest']['airports']};queries=[];missing=[];failed=[];records={}
  start=int(datetime.fromisoformat(DAY).replace(tzinfo=timezone.utc).timestamp());end=start+86400
  for key in cfg['queries']:
-  p=cache/('-'.join(key)+'.json')
+  p=capture_path(cache,key,cfg)
   if not p.exists():
    missing.append(list(key));error=p.with_suffix('.error.json')
    if error.exists():failed.append(json.loads(error.read_text()))
    continue
   q=json.loads(p.read_text())
-  if (q['date'],q['origin'],q['destination'])!=key or q.get('capture_context')!=CONTEXT:raise ValueError('Incompatible European query cache context')
+  if (q['date'],q['origin'],q['destination'])!=key or q.get('capture_context') not in [cfg.get('capture_context',CONTEXT),*cfg.get('reuse_contexts',[])]:raise ValueError('Incompatible European query cache context')
   captured=datetime.fromisoformat(q['captured_at'].replace('Z','+00:00'))
   if captured.tzinfo is None:raise ValueError('Source capture timestamp requires a timezone')
   target=[];others=0
@@ -51,7 +65,7 @@ def prepare(cache,output,cfg):
    if (f['origin'],f['destination'],f['source_date'])!=(key[1],key[2],key[0]):raise ValueError('Wrong exact European segment identity')
    brand=CARRIERS.get(f['carrier'])
    if not brand or brand not in cfg.get('allowed_brands',BRANDS):others+=1;continue
-   if not 60<=f['arrival']-f['departure']<=28800:raise ValueError('Invalid European source duration')
+   if not 60<=f['arrival']-f['departure']<=min(cfg.get('max_duration',28800),duration_limit(brand)):raise ValueError('Invalid European source duration')
    if f.get('price') and (not valid_price(f['price']) or f['price']['currency']!=cfg['currency']):raise ValueError('Invalid European quote')
    a,b=air[f['origin']],air[f['destination']]
    if not (a['europe'] or b['europe']):raise ValueError('Flight outside European membership')
@@ -70,7 +84,7 @@ def prepare(cache,output,cfg):
   qs=[q for q in queries if (q['origin'],q['destination']) in pairs];absent=[q for q in missing if tuple(q[1:]) in pairs];errors=[q for q in failed if (q['origin'],q['destination']) in pairs];codes={c for p in pairs for c in p}
   return dict(candidate_airports=len(codes),airports_planned=len(codes),airports_searched=len({q[k] for q in qs for k in ('origin','destination')}),routes_planned=len(pairs),routes_searched=len({(q['origin'],q['destination']) for q in qs}),routes_with_search_results=len({(q['origin'],q['destination']) for q in qs if q['target_records']}),queries_planned=len(qs)+len(absent),queries_captured=len(qs),queries_not_returned=sum(q['target_status']=='not_returned' for q in qs),queries_rejected=sum(q['status']=='rejected_source_records' for q in qs),queries_only_other_carriers=sum(q['target_status']=='only_other_carriers' for q in qs),queries_with_target_results=sum(q['target_status']=='target_results' for q in qs),failed_or_missing_queries=len(absent),failed_queries=len(errors),unattempted_queries=len(absent)-len(errors),rejected_records=sum(len(q.get('rejected_flights',[])) for q in qs),**counts([f for f in fs if scope=='both' or f['flight_scope']==scope]))
  cov=coverage('both')
- meta=dict(profile='europe_flights',start_date=DAY,end_date=DAY,timezone='UTC',scope='both',source='Public Google Flights dated nonstop segments',source_url='https://www.google.com/travel/flights',queries=queries,uncollected_queries=missing,failed_queries=failed,coverage=cov,coverage_by_scope={scope:coverage(scope) for scope in ['domestic','international','both']},coverage_by_brand={brand:counts([f for f in fs if f['brand']==brand]) for brand in BRANDS},fare_context=dict(currency='EUR',adults=1,cabin='economy',trip_type='one_way'),priced_flights=priced,airlines=sorted({f['airline'] for f in fs}),replay_note=NOTE,route_source_sha256=cfg['manifest']['route_source_sha256'],route_source_urls=cfg['manifest']['source_urls'],unresolved_airports=[],query_date_policy=cfg.get('query_date_policy','utc_day_overlap'),capture_context=CONTEXT,selection=cfg['manifest']['selection'])
+ meta=dict(profile='europe_flights',start_date=DAY,end_date=DAY,timezone='UTC',scope='both',source='Public Google Flights dated nonstop segments',source_url='https://www.google.com/travel/flights',queries=queries,uncollected_queries=missing,failed_queries=failed,coverage=cov,coverage_by_scope={scope:coverage(scope) for scope in ['domestic','international','both']},coverage_by_brand={brand:counts([f for f in fs if f['brand']==brand]) for brand in BRANDS},fare_context=dict(currency='EUR',adults=1,cabin='economy',trip_type='one_way'),priced_flights=priced,airlines=sorted({f['airline'] for f in fs}),replay_note=NOTE,route_source_sha256=cfg['manifest']['route_source_sha256'],route_source_urls=cfg['manifest']['source_urls'],unresolved_airports=[],query_date_policy=cfg.get('query_date_policy','utc_day_overlap'),capture_context=cfg.get('capture_context',CONTEXT),selection=cfg['manifest']['selection'])
  stop=cache/'collection-stop.json'
  if stop.exists():meta['collection_stop']=json.loads(stop.read_text())
  doc=dict(airports=[air[c] for c in sorted(used)],flights=fs,metadata=meta);payload=gzip.compress(json.dumps(doc,ensure_ascii=False,separators=(',',':'),sort_keys=True).encode(),compresslevel=9,mtime=0);output.parent.mkdir(parents=True,exist_ok=True);tmp=output.with_suffix('.tmp');tmp.write_bytes(payload);tmp.replace(output)
@@ -78,7 +92,7 @@ def prepare(cache,output,cfg):
 
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--brand',choices=list(BRANDS));p.add_argument('--cache',type=Path,default=ROOT/'.cache/google-flights-europe-eur-v1');p.add_argument('--output',type=Path);p.add_argument('--concurrency',type=int,choices=[1,2],default=2);p.add_argument('--prepare-only',action='store_true');p.add_argument('--collect-only',action='store_true');p.add_argument('--dry-run',action='store_true');a=p.parse_args();cfg=config(a.brand);a.cache.mkdir(parents=True,exist_ok=True)
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--brand',choices=['ryanair','easyjet','wizzair']);p.add_argument('--cache',type=Path,default=ROOT/'.cache/google-flights-europe-eur-v1');p.add_argument('--output',type=Path);p.add_argument('--concurrency',type=int,choices=[1,2],default=2);p.add_argument('--prepare-only',action='store_true');p.add_argument('--collect-only',action='store_true');p.add_argument('--dry-run',action='store_true');a=p.parse_args();cfg=config(a.brand);a.cache.mkdir(parents=True,exist_ok=True)
  if a.output is None:a.output=(a.cache/f'prepared-{a.brand}.json.gz') if a.brand else ROOT/'data/sources/europe_flights_google_seed.json.gz'
  with (a.cache/'.preparation.lock').open('a') as lock:
   try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)

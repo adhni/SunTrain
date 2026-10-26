@@ -1,10 +1,10 @@
-# Europe flights — Ryanair, easyJet and Wizz Air
+# Europe flights — sources and coverage
 
-**Europe · Flights** is a regional view for **2 November 2026**, covering **Ryanair, easyJet and Wizz Air**, with verified source-carrier aliases.
+**Europe · Flights** is a regional view for **2 November 2026**, covering **Ryanair, easyJet, Wizz Air and nine main European flag carriers**, with verified source-carrier codes. See [the three-group expansion notes](EUROPE_GROUPS_NOTES.md) for the shared single-date collection, long-haul coverage and group filters.
 Ryanair and easyJet retain their full pinned Europe-connected candidate
 catalogues. Wizz Air adds a secondary route-map inventory, validated through
 dated Google Flights captures. The airline's direct route page returned a human
-verification challenge; no claim of a complete official Wizz catalogue is made. Other airlines can follow later.
+verification challenge; no claim of a complete official Wizz catalogue is made. Additional airlines can follow later.
 
 It opens on **Both** and moving planes, with no airport selected. Domestic and
 International use the countries of the actual endpoint airports, not airline
@@ -359,7 +359,7 @@ fullscreen navigation, themes, Indonesian and mobile layout. Unrelated local
 notes and the untracked Europe plan remain unchanged.
 
 
-## Wizz expansion coverage and validation
+## Wizz baseline before flag-carrier expansion
 
 All **2,658 / 2,658 Wizz local-day searches** completed with zero failed,
 unattempted or rejected queries/records. Of these, **905** returned Wizz flights,
@@ -394,7 +394,7 @@ remain a separate source unit. Source subtotals overlap and must not simply
 be added. No shared International-network integration or country snapshot
 change is included in this expansion. The initial map includes Baku.
 
-Final compressed archive: **1,057,914 bytes**, SHA-256
+Archive after Wizz, before the flag-carrier expansion: **1,057,914 bytes**, SHA-256
 `b2824d42584d9349236592959a988085e681a829c96de6cdb8bd210d7891a2db`.
 
 Validation: **250 Python tests and 100 JavaScript tests passed**, including

@@ -1,9 +1,8 @@
-# Europe flights — Ryanair and easyJet starter
+# Europe flights — Ryanair expansion and easyJet starter
 
-**Europe · Flights** is a regional view for **2 November 2026**, initially limited
-to **Ryanair and easyJet**, with verified source-carrier aliases. The user chose
-a **broad starter across Europe**, rather than a full published-network search.
-Other airlines can be added to this same view later.
+**Europe · Flights** is a regional view for **2 November 2026**, limited to **Ryanair and easyJet**, with verified source-carrier aliases.
+Ryanair now searches its full published Europe-connected airport-pair catalogue;
+easyJet retains its original broad starter. Other airlines can follow later.
 
 It opens on **Both** and moving planes, with no airport selected. Domestic and
 International use the countries of the actual endpoint airports, not airline
@@ -51,14 +50,15 @@ verified for all pilot queries. Affiliate codes are supported independently;
 Google's U2 presentation does not prove a specific operating subsidiary.
 
 The [public Ryanair STN–DUB November timetable](https://services-api.ryanair.com/timtbl/3/schedules/STN/DUB/years/2026/months/11)
-returned ten November 2 flights; all ten flight numbers and departure/arrival
-clocks matched the Google pilot exactly. This is a representative comparison,
-not evidence of full Ryanair coverage. No independent dated easyJet timetable
-comparison is claimed: its local public timetable request was denied. Both
-brands have usable dated Google records; official route lists remain discovery
-evidence and never create dated flights or prices.
+returned ten November 2 flights; all ten numbers and departure/arrival clocks
+matched the Google pilot exactly. Additional checks covered STN–RAK (RK codes),
+TFS–STN (Canary time zone and longer flights), and BGY–CTA (domestic flights).
+The full collection uses this public monthly timetable, not thousands of Google
+searches. No independent dated easyJet timetable comparison is claimed: its
+local public timetable request was denied. Route lists are discovery evidence;
+only returned dated schedules create flights.
 
-## Starter selection and exact airports
+## Route selection and exact airports
 
 `data/sources/europe_flights_discovery.json` retains the full normalized discovery
 inventory, source URLs, hashes, airport zones and partner exclusion. Eligible
@@ -68,13 +68,24 @@ Wholly non-European pairs, including Moroccan domestic routes, are deferred.
 External endpoints such as Morocco, Egypt and Cape Verde can appear when the
 other endpoint is in the reviewed Europe set.
 
-The requested starter uses a deterministic selection: represent each published
-country, then the reviewed major/secondary airport list, then round-robin
-additional links across those airports. It chooses up to **80 undirected pairs
-per brand**, yielding **160 directions per brand**, **306 unique directions**
-and **84 airports**, across **48 candidate countries/territories**. Source pairs
-are searched in their published directions; no reverse flight is invented.
-Candidate coverage is not returned service coverage.
+Ryanair's **5,305 directional entries represent 2,653 unique airport pairs**
+across **224 airports**. Directions are requests, not separate undirected routes;
+a few published entries lack a reverse counterpart. Every eligible published
+direction is requested once for November 2026. A route not operating on November
+2 does not create a replay flight.
+
+easyJet retains the original deterministic selection of **80 undirected pairs /
+160 published directions**. It covers published countries, reviewed major and
+secondary airports, then round-robin additional links. The union manifest has
+**5,443 directions and 245 candidate airports**. Source directions are never
+invented by reversing another flight. Candidate coverage is not returned service
+coverage.
+
+`europe_flights_starter_routes.json` freezes the original Google selection:
+306 union directions and 84 airports. `europe_flights_google_seed.json.gz`
+retains that captured snapshot as a small reproducible source seed, including
+all 180 easyJet records and original quotes. The larger
+`europe_flights_routes.json` is the current timetable search manifest.
 
 STN/LTN/LGW/SEN, CDG/ORY/BVA, FCO/CIA and MXP/LIN/BGY remain separate.
 **BSL is physically in France** even when its commercial name refers to Basel;
@@ -93,14 +104,33 @@ loads only airports represented by returned flights.
 
 ## Capture, dates and fares
 
-The regional UTC day requires **744 exact origin/date queries** across the 306
-selected directions. The origin-local date range covers the UTC window plus an
-eight-hour carry-in allowance; adjacent November 1/3 queries retain overnight
-services. Eight hours is the documented regional duration ceiling, not an
-invented flight time. Existing timestamp/DST/source-duration validation applies.
-Repeated identities deduplicate; conflicting records fail rather than silently
-win. Airport boards use half-open event ownership, including arrivals exactly
-at the replay midnight.
+The timetable collector requests **5,305 airport-pair/month payloads** with
+at most two concurrent HTTP requests. Each compressed cache envelope records the
+URL, UTC capture timestamp, raw response hash, exact pair, collection context
+and complete monthly payload. HTTP errors remain gaps. 401/403/429 or captcha
+stops collection; successful captures are retained, with no challenge retry.
+
+The source supplies local departure and arrival clocks, departure day, carrier
+code and flight number. It does **not** supply prices, aircraft, arrival date or
+a source duration. Arrival day is accepted only when there is exactly one UTC
+interpretation lasting **one minute to eight hours**. Adjacent departure dates
+November 1–3 retain flights overlapping the UTC replay window. DST folds and
+nonexistent clocks cannot silently choose an instant. Records with ambiguous
+or invalid timing are reported and excluded. The eight-hour ceiling is a
+regional validation bound, not a claimed source duration.
+
+Official schedules take precedence for matching identities. A seed quote and
+source aircraft are retained only when the exact identity and both UTC times
+match. Changed times remove the quote and are reported in `schedule_updates`.
+New timetable records have no price and unspecified aircraft. A validated Google
+seed flight not returned by the timetable remains a separately counted Google
+fallback; an empty timetable does not prove cancellation. Repeated identical
+identities deduplicate and conflicting official records are rejected.
+
+The original Google collection used **744 exact origin/date queries** across
+306 selected directions, including adjacent days. Original Google parsing
+retains source-duration validation. Airport boards use half-open event windows;
+arrivals at the opening midnight belong to that day.
 
 Public Google searches request **EUR, one adult, economy, one-way**. Only exact
 dated nonstop segment offers can become a fare. The cheapest positive captured
@@ -128,10 +158,20 @@ refresh is added.
 ## Rebuilding and local storage
 
 ```bash
+# Reproduce the full Ryanair + easyJet starter manifest from pinned discovery.
 .venv/bin/python scripts/prepare_europe_flight_airports.py
-PYTHONPATH=.cache/browser-tools .venv/bin/python scripts/prepare_europe_flights.py --concurrency 2
-.venv/bin/python scripts/prepare_europe_flights.py --prepare-only
+# Collect missing official monthly payloads, then publish the combined snapshot.
+.venv/bin/python scripts/prepare_ryanair_flights.py --concurrency 2
+# Rebuild without network from the source seed and timetable captures.
+.venv/bin/python scripts/prepare_ryanair_flights.py --prepare-only
 ```
+
+The original Google collector remains available for refreshing its seed:
+`prepare_europe_flights.py --prepare-only` now writes
+`data/sources/europe_flights_google_seed.json.gz`, never the expanded runtime
+archive. Re-run the Ryanair preparation after changing that seed. Collecting
+new Google captures additionally requires `PYTHONPATH=.cache/browser-tools`.
+The committed seed permits timetable-only rebuilds without the old Google cache.
 
 `data/reference/europe_flights/2026-11-02.json.gz` is the deterministic regional
 snapshot, with fixed gzip mtime and atomic replacement. Its runtime override is
@@ -140,35 +180,87 @@ and `SUNTRAIN_INTERNATIONAL_NETWORK_REFERENCE`. Unsupported dates are rejected.
 HTTP gzip revisions/ETags include the regional reference; a changed file
 invalidates generated responses.
 
-`.cache/google-flights-europe-eur-v1/` holds resumable source queries and
-diagnostics. Removing it means public queries are needed again for preparation;
-the committed replay still works. `.cache/google-flights-europe-pilot-eur-v1/`
-holds the reusable pilot. `.cache/europe-flights-audit/` contains optional raw
-catalogues, pilot comparisons, logs and screenshots; pinned URLs/hashes and
-committed normalized discovery permit recovery. Generated `.cache/europe-http/`
-responses regenerate. The earlier untracked `EUROPE_FLIGHTS_PLAN.md` is preserved.
+`.cache/ryanair-timetables-v1/` stores resumable compressed monthly source
+captures; deleting it requires downloading the public timetables again to rebuild.
+The committed combined snapshot still works without it. Failed requests have
+`.error.json` diagnostics; a stop reason is recorded separately. Collection and
+preparation share an exclusive cache lock. Output uses fixed gzip mtime, sorted
+records and atomic replacement for byte-for-byte reproducibility.
+
+`.cache/google-flights-europe-eur-v1/` holds the original 744 Google queries;
+`.cache/google-flights-europe-pilot-eur-v1/` holds the pilot. These are needed only
+to refresh the preserved Google seed. `.cache/europe-flights-audit/` and
+`.cache/ryanair-expansion-audit/` contain optional comparisons, logs and browser
+screenshots. `.cache/europe-http/` contains generated responses that regenerate.
+The untracked Europe plan and unrelated country notes are preserved.
 
 ## Captured coverage and validation
 
-All **744 / 744 planned queries** completed, with **zero failed or unattempted queries** and **zero rejected source records**. This is the requested broad starter, not the airlines' complete networks.
+All **5,305 / 5,305 official monthly requests** completed, with **zero failures,
+unattempted requests, rejected timing records or changed seed schedules**.
+Full catalogue query completion is not a claim that every Ryanair service was captured. Seasonal
+routes, source omissions and rejected timings remain possible gaps. easyJet
+continues to be a sample. Prices cover selected seed flights only.
 
-| Brand | Records | Airports | Directional routes | Priced records |
+Request counts are reported separately in `coverage_by_source`: official
+**airport-pair/month** requests and Google **airport-pair/date** queries are
+different units. Combined counters count source requests, never imply thousands
+of dated Google searches. `coverage_by_brand` separates officially confirmed
+Ryanair records from Google-only fallbacks. Empty results mean **not returned**,
+never **no service**.
+
+| Brand | Flight records | Airports returned | Directions returned | Priced records |
 | --- | ---: | ---: | ---: | ---: |
-| Ryanair group | 336 | 52 | 115 | 336 |
-| easyJet | 180 | 39 | 83 | 180 |
+| Ryanair group | 3,476 | 171 | 2,500 | 336 |
+| easyJet (unchanged starter) | 180 | 39 | 83 | 180 |
 
-The combined replay has **516 overlapping records**, **511 departures inside the UTC day**, **64 airports**, **184 directional routes** and **38 countries/territories**. All **516** records have captured **EUR** quotes. Source carriers are **FR: 304, RK: 32, U2: 180**. No competing airline is included and no marketing code is replaced by a guessed operating affiliate.
+The combined replay contains **3,656 overlapping records**, **3,606 departures
+owned by the UTC day**, **182 airports**, **2,569 directions** and **40
+countries/territories**. There are **525 domestic** and **3,131 international**
+records; carriers are **FR: 3,396; RK: 80; U2: 180**. Fifty flights depart before
+the UTC day and remain because of arrival overlap. Frequency lines count only
+the 3,606 owned departures.
 
-There are **92 domestic records** and **424 international records**, classified by the actual endpoint countries. The scope-level query counts are independently computed from their relevant airport pairs. Five records depart before the UTC day and remain available because of arrival overlap; frequency totals count only the 511 owned departures.
+All **336 original Ryanair records** are confirmed by identical official flight
+identities and UTC schedules; **zero Google-only fallbacks** are needed. All
+**516 original EUR quotes** remain unchanged. The **3,140 new timetable records**
+have no captured price. All **180 easyJet records** match the source seed exactly.
+The original Google search collection remains 744/744 complete.
 
-Across all origin-local search dates, **451 queries returned target-brand records**, **23 returned only other carriers**, and **270 returned no direct records**. These categories sum to 744. A single query had unverified fare context; no unverified quote was assigned. Successful empty queries and other-carrier results are saved and are not “no service” claims. A target-brand result on an adjacent date also does not imply a flight overlaps November 2.
+Of 5,305 monthly timetables, **1,983 returned no monthly days**. A total of
+**2,805 directions returned no eligible replay-day flight**, including seasonal
+or otherwise non-operating-on-this-day entries. These are source-result gaps,
+not assertions of no service. Fifty-three of Ryanair's 224 candidate airports
+returned no Ryanair flight overlapping the day:
 
-Twenty candidate airports did not return target-brand records overlapping the replay day: **ADB, AMM, BJV, DBV, DJE, INI, IOM, KTT, LCA, NAP, PRN, PUY, SCR, SEN, SJJ, SKP, TBS, TIV, VIL, WAW**. The starter includes only selected links at each represented airport; unsearched links, seasonal changes, sold-out/unreturned services and other airlines remain gaps. All source schedules and fares remain partial dated captures.
+AMM, BJV, BOJ, BVE, BZR, CCF, CDT, CHQ, CUF, DLE, DLM, EFL, EGC, FSC, GNB, HER, INI, JMK, JSI, JTR, KGS, KLU, KLX, LCA, LEI, LRH, LXS, MAH, MMX, NAP, NWI, NYO, OSI, PAD, PED, PIS, PUY, PVK, RDZ, RHO, RJK, SCN, SJJ, SPU, SZY, VAR, VIL, VOL, VST, VXO, XCR, ZAD, ZTH.
 
-Snapshot gzip: **67,999 bytes** (about 66.4 KiB), SHA-256 `14056960dab139809a8da18eddc3cc99b4a062703321ea3c8088a85d52da0e68`. The uncompressed replay payload is approximately **1.19 MiB**; no partition is needed at this size. The archive and selected route manifest reproduce byte for byte from cached/committed inputs. The shared international archive and all previous country reference data are unchanged; unrelated local notes and the untracked Europe plan were checked unchanged too.
+The union manifest has 63 candidate airports without an overlapping target-brand
+flight (the Ryanair gaps above plus ADB, DJE, IOM, KTT, PRN, SCR, SEN, SKP, TBS
+and TIV). Search completion does not make easyJet's selected sample complete,
+and missing flights, other airlines and unsupported source times remain gaps.
 
-**286 Python tests and 100 JavaScript tests passed**, including original flight countries and transit regressions. Coverage includes brand/affiliate maps, competitor exclusion, unchanged source identities, exact airports/BSL country, Europe membership, domestic versus cross-border scopes, EUR minimum quotes, UTC/local/overnight/DST handling, duplicate/conflict rejection, missing versus empty/other-carrier results, cache context, HTTP gzip/ETags/revisions and unsupported dates.
+The snapshot is **425,662 bytes** (about 416 KiB), SHA-256
+`b7f4346d05631f5808e11b85ad21822b3e93929f0df73bb6bfc9e562ad3b16ff`.
+The generated replay is about **10.1 MiB uncompressed / 2.8 MiB gzip**. The
+expanded route manifest and snapshot reproduce byte for byte from pinned inputs
+and cached captures. The shared international archive and previous country
+reference files remain unchanged.
 
-The Europe browser suite passed for both brand groups and RK-specific filtering, real-country scopes, GB–IE/GB–MA/IT–IT filters, STN/LGW/DUB/BGY/GVA/BSL boards, arrivals/Destinations, EUR previews, fullscreen pagination/back, UTC versus Swiss local clocks, all five themes, Indonesian, 390px mobile layout, frequency totals, cache reuse and return to the existing Nepal view. Desktop/mobile screenshots were visually checked.
+**Validation:** 266 Python tests and 100 JavaScript tests passed, including the
+existing flight-country, international-network, Melbourne replay, HTTP cache
+and translation regressions. New checks cover the full exact-airport manifest,
+RK identity, overnight and previous-local-day arrivals, island zones, one-minute
+flights, invalid clocks, DST ambiguity/nonexistent times, duplicate/conflicting
+identities, exact quote reuse, changed-schedule quote removal, Google fallback,
+missing/failed/empty requests, resumability and stop-on-access-challenge behaviour.
 
-The existing international-network browser suite also passed, covering earlier country views and filters, foreign local boards, fullscreen navigation, frequency totals, themes, Indonesian and mobile layout.
+The expanded Europe browser suite passed with all 3,656 records: both brands,
+RK filtering, domestic/international scopes, country pairs, STN/LGW/DUB/BGY/GVA/BSL
+boards, departures/arrivals/Destinations, EUR previews, fullscreen/back, local
+clocks, all themes, Indonesian and 390px mobile layout. The coverage display
+separates monthly timetable requests from dated searches in both languages.
+Frequency totals match the owned departures and filters reuse the cached day.
+Desktop map and mobile board screenshots were visually checked. The existing
+international-network browser suite also passed, including older country
+views, filters, local boards, themes, mobile and fullscreen navigation.

@@ -10,7 +10,7 @@ CONTEXT=dict(profile='europe_flights',version=1,currency='EUR',adults=1,cabin='e
 
 
 def config():
- m=json.loads((ROOT/'data/sources/europe_flights_routes.json').read_text());zones={a['code']:a['timezone'] for a in m['airports']};start=datetime.fromisoformat(DAY).replace(tzinfo=timezone.utc);end=start+timedelta(days=1);queries=[]
+ m=json.loads((ROOT/'data/sources/europe_flights_starter_routes.json').read_text());zones={a['code']:a['timezone'] for a in m['airports']};start=datetime.fromisoformat(DAY).replace(tzinfo=timezone.utc);end=start+timedelta(days=1);queries=[]
  for a,b in m['routes']:
   zone=ZoneInfo(zones[a]);first=(start-timedelta(hours=8)).astimezone(zone).date();last=(end-timedelta(seconds=1)).astimezone(zone).date()
   queries.extend(((first+timedelta(days=n)).isoformat(),a,b) for n in range((last-first).days+1))
@@ -72,7 +72,7 @@ def prepare(cache,output,cfg):
 
 
 def main():
- p=argparse.ArgumentParser(description=__doc__);p.add_argument('--cache',type=Path,default=ROOT/'.cache/google-flights-europe-eur-v1');p.add_argument('--output',type=Path,default=ROOT/f'data/reference/europe_flights/{DAY}.json.gz');p.add_argument('--concurrency',type=int,choices=[1,2],default=2);p.add_argument('--prepare-only',action='store_true');p.add_argument('--dry-run',action='store_true');a=p.parse_args();cfg=config();a.cache.mkdir(parents=True,exist_ok=True)
+ p=argparse.ArgumentParser(description=__doc__);p.add_argument('--cache',type=Path,default=ROOT/'.cache/google-flights-europe-eur-v1');p.add_argument('--output',type=Path,default=ROOT/'data/sources/europe_flights_google_seed.json.gz');p.add_argument('--concurrency',type=int,choices=[1,2],default=2);p.add_argument('--prepare-only',action='store_true');p.add_argument('--dry-run',action='store_true');a=p.parse_args();cfg=config();a.cache.mkdir(parents=True,exist_ok=True)
  with (a.cache/'.preparation.lock').open('a') as lock:
   try:fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
   except BlockingIOError:raise RuntimeError('Another Europe preparation is running')

@@ -4,9 +4,9 @@ Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia
 
 ## Europe flights
 
-Choose **Europe · Flights** for **2 November 2026**, starting with **Ryanair and easyJet**. This broad starter searches 306 published directions across 84 airports; it is a sample of the two networks. Opens on **Both**, with Domestic / International based on actual airport countries, a **UTC** timeline and local airport boards. Filter by brand, original carrier code, exact airport or From country / To country. New fares use **EUR**, keeping the cheapest verified captured quote per exact flight. STN/LTN/LGW, CDG/ORY/BVA, FCO/CIA and MXP/LIN/BGY remain separate. Other airlines and shared International network integration can follow later. See [Europe flight notes](EUROPE_FLIGHTS_NOTES.md) for source discovery, actual coverage, gaps and rebuilding.
+Choose **Europe · Flights** for **2 November 2026**. Ryanair now searches its full published Europe-connected catalogue: **5,305 directions / 2,653 airport pairs**. easyJet retains its original starter sample. Opens on **Both**, with Domestic / International based on actual airport countries, a **UTC** timeline and local airport boards. Filter by brand, original carrier code, exact airport or From country / To country. Existing exact-match **EUR** quotes remain; newly added timetable flights show **Price unavailable**. STN/LTN/LGW, CDG/ORY/BVA, FCO/CIA and MXP/LIN/BGY remain separate. Other airlines and shared International network integration can follow later. See [Europe flight notes](EUROPE_FLIGHTS_NOTES.md) for actual coverage, source gaps and rebuilding.
 
-The starter contains **516 flight records across 64 airports and 38 countries/territories**: **336 Ryanair-group** and **180 easyJet**, all with captured EUR quotes. It includes 92 domestic and 424 international records. All 744 selected origin/date queries completed; coverage remains partial.
+The snapshot contains **3,476 Ryanair-group records across 171 airports**, plus the unchanged **180 easyJet records**. Combined: **3,656 records across 182 airports and 40 countries/territories**, with 516 captured EUR quotes. All 5,305 Ryanair monthly timetable requests completed; routes not returned for this date remain documented gaps.
 
 ## Nepal flights
 

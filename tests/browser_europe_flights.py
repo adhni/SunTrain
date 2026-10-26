@@ -15,6 +15,12 @@ with sync_playwright() as p:
  assert page.evaluate('suntrainReplay.filters.flightScope')=='both' and not page.evaluate('suntrainReplay.frequencyView')
  assert page.locator('#replay-country-controls').is_visible() and page.locator('#replay-flight-scope-field').is_visible()
  assert 'UTC' in page.locator('#replay-clock-date').inner_text()
+ page.evaluate('dash_clientside.set_props("view-tabs",{value:"overview"})')
+ page.wait_for_function('document.querySelector("#city-overview-content").textContent.includes("monthly route timetables captured")')
+ assert 'dated flight searches captured' in page.locator('#city-overview-content').inner_text()
+ page.locator('#language-select').select_option('id');page.wait_for_function('document.querySelector("#city-overview-content").textContent.includes("jadwal rute bulanan tersimpan")')
+ page.locator('#language-select').select_option('en');page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"})')
+ page.wait_for_function('suntrainReplay.active && suntrainReplay.mapReady && !suntrainReplay.loading')
  assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.flight_brand)).size')==2
  assert page.evaluate('suntrainReplay.day.stations.some(a=>a.code==="STN") && suntrainReplay.day.stations.some(a=>a.code==="LGW")')
  count=len(downloads);total=page.evaluate('suntrainReplay.filtered.length')

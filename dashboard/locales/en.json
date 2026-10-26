@@ -943,6 +943,9 @@
   "Nepal · Flights overview": "Nepal · Flights overview",
   "Europe · Flights": "Europe · Flights",
   "Ryanair and easyJet · selected European routes · 2 November 2026. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.": "Ryanair and easyJet · selected European routes · 2 November 2026. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.",
+  "Ryanair timetables and selected easyJet routes · 2 November 2026. Timeline: UTC; airport boards use local dates and times. Prices are available for selected flights only; paths are illustrative.": "Ryanair timetables and selected easyJet routes · 2 November 2026. Timeline: UTC; airport boards use local dates and times. Prices are available for selected flights only; paths are illustrative.",
   "Return to the Europe · Flights starting view": "Return to the Europe · Flights starting view",
-  "Europe · Flights overview": "Europe · Flights overview"
+  "Europe · Flights overview": "Europe · Flights overview",
+  "{n} / {total} monthly route timetables captured": "{n} / {total} monthly route timetables captured",
+  "{n} / {total} dated flight searches captured · Coverage is partial": "{n} / {total} dated flight searches captured · Coverage is partial"
 }

@@ -3,6 +3,7 @@ from dashboard.asean_flights import PROFILES as ASEAN_PROFILES, city_settings as
 
 PROFILES={**ASEAN_PROFILES,'NZ':dict(slug='new_zealand',name='New Zealand',zone='Pacific/Auckland',label='NZDT',clock='New Zealand time (NZDT, UTC+13)',bounds=[[165,-48],[179,-33]],domestic=True,default_scope='domestic')}
 PROFILES.update({
+ 'NP':dict(slug='nepal',name='Nepal',zone='Asia/Kathmandu',label='NPT',clock='Nepal time (NPT, UTC+5:45)',bounds=[[80,26.2],[88.3,30.5]],domestic=True,default_scope='domestic'),
  'TW':dict(slug='taiwan',name='Taiwan',zone='Asia/Taipei',label='CST',clock='Taiwan time (UTC+8)',bounds=[[117.7,21.7],[122.3,26.6]],domestic=True,default_scope='domestic',worldwide=True),
  'HK':dict(slug='hong_kong',name='Hong Kong',zone='Asia/Hong_Kong',label='HKT',clock='Hong Kong time (HKT, UTC+8)',bounds=[[113.8,22.1],[114.5,22.6]],domestic=False,default_scope='international',airport='HKG',worldwide=True),
 })

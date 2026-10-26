@@ -238,3 +238,10 @@ test('Taiwan and Hong Kong clocks retain separate local zone labels',()=>{
  assert.match(captureTime(at,'Asia/Taipei'),/CST/);
  assert.match(captureTime(at,'Asia/Hong_Kong'),/HKT/);
 });
+
+test('Nepal midnight and fare timestamps retain the quarter-hour offset',()=>{
+ const {captureTime}=require('../assets/02_flights.js');
+ const at='2026-11-01T18:15:00Z';
+ assert.match(formatCallTime(Date.parse(at)/1000,'Asia/Kathmandu'),/2 Nov.*00:00 NPT/);
+ assert.match(captureTime(at,'Asia/Kathmandu'),/NPT/);
+});

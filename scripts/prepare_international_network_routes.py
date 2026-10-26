@@ -50,6 +50,7 @@ HISTORICAL = {
 
 def eligible(a, b):
     return (within_footprint(a,b)
+            and not any(x['country']=='NP' and x['code']=='PKR' for x in (a,b))
             and all(x['country'] not in {'AE','QA'} or x['code'] in HUBS for x in (a,b))
             and not ({a['code'],b['code']} & {'MWX','ITM',*RETIRED_AIRPORTS}))
 
@@ -91,7 +92,7 @@ def prepare():
         timezone='UTC',max_duration=86400,currency='mixed',countries=COUNTRIES,hubs=sorted(HUBS),
         base_directional_routes=base_count,airports=catalogue,routes=[list(p) for p in sorted(pairs)],
         evidence=evidence,input_manifests=inputs,source_urls=SOURCES,
-        source_documents={k:dict(url=SOURCES[k],**v) for k,v in SOURCE_DOCUMENTS.items()},source_reviewed_date='2026-10-25',
+        source_documents={k:dict(url=SOURCES[k],**v) for k,v in SOURCE_DOCUMENTS.items()},source_reviewed_date='2026-10-26',
         route_hash_basis='SHA256 of curated candidates and input manifest pins; not raw-page bytes',
         unresolved_airports=[],coverage_scope='Existing inter-country candidates plus major East Asian gateways; regional gaps remain')
     doc['route_source_sha256']=hashlib.sha256(json.dumps(dict(evidence=evidence,inputs=inputs,documents=SOURCE_DOCUMENTS),sort_keys=True).encode()).hexdigest()

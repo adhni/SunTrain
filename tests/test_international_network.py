@@ -56,8 +56,8 @@ def bundle(tmp_path,monkeypatch,records=None):
 
 def test_manifest_has_exact_countries_and_focused_east_asian_candidates():
     cfg=config();m=cfg['manifest'];air={a['code']:a for a in m['airports']}
-    assert m['base_directional_routes']==2504 and len(m['routes'])==2792 and len(air)==289
-    assert len(set(cfg['queries']))==len(cfg['queries'])==9440
+    assert m['base_directional_routes']==2550 and len(m['routes'])==2838 and len(air)==291
+    assert len(set(cfg['queries']))==len(cfg['queries'])==9601
     assert all(eligible(air[a],air[b]) and [b,a] in m['routes'] for a,b in m['routes'])
     assert all(a['country'] not in {'AE','QA'} or a['code'] in network.HUBS for a in air.values())
     assert not {'ITM','MWX','BJS','TYO','SEL'} & air.keys()

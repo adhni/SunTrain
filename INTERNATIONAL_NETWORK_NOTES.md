@@ -4,7 +4,7 @@
 
 The **International network · Flights** replay connects Australia, Indonesia,
 Malaysia, Singapore, India, Thailand, the Philippines, Vietnam, Brunei, Cambodia, Laos, Myanmar,
-Timor-Leste, New Zealand, Taiwan, Hong Kong, mainland China, Japan and South Korea, plus the Gulf
+Timor-Leste, Nepal, New Zealand, Taiwan, Hong Kong, mainland China, Japan and South Korea, plus the Gulf
 hubs **DXB, AUH and DOH**, plus **worldwide international connections from Taiwan and Hong Kong**. Foreign endpoints are included without creating unrelated national views or expanding every older country’s worldwide search manifest. It covers **2 November 2026, 00:00–24:00 UTC**.
 Moving planes is the default; frequency lines remain available. Directional
 From country / To country filters combine with airline codes and exact airports.
@@ -12,7 +12,7 @@ Airport boards retain local dates/zones and explicitly show the converted day
 window, which can cross two local calendar dates.
 
 Country views retain their own clocks and day windows. China, Japan and South
-Korea, Thailand, the Philippines, Vietnam, Laos, Myanmar, New Zealand and Taiwan offer Domestic / International / Both, defaulting to domestic. Cambodia and Timor-Leste default to International and retain an empty Domestic scope with explicit coverage gaps. Brunei and Hong Kong have only International. Their
+Korea, Thailand, the Philippines, Vietnam, Laos, Myanmar, Nepal, New Zealand and Taiwan offer Domestic / International / Both, defaulting to domestic. Cambodia and Timor-Leste default to International and retain an empty Domestic scope with explicit coverage gaps. Brunei and Hong Kong have only International. Their
 international scope covers the selected group, except Taiwan and Hong Kong whose scope is worldwide.
 Other flight views retain existing worldwide routes outside the shared group.
 Indonesia's dates after 2 November and all original domestic bundles are unchanged.
@@ -22,11 +22,12 @@ live tracking, paid sources or automatic refresh.
 
 ## Candidate evidence
 
-The manifest contains **2,792 directional candidates across 289 airports**. It
+The manifest contains **2,838 directional candidates across 291 airports**. It
 preserves the previous 2,102 directions and adds **690 worldwide Taiwan/Hong Kong
-directions**. The builder imports 2,504 directions from country manifests and adds
-the original 288 East Asian directions. Sources and exact airport resolutions are
-documented in [Taiwan and Hong Kong flight notes](TAIWAN_HONG_KONG_FLIGHTS_NOTES.md),
+directions**. The builder imports 2,550 directions from country manifests and adds
+the original 288 East Asian directions. Nepal adds 46 directions beyond the 2,792-direction Taiwan/Hong Kong release; its two HKG directions were already present. Sources and exact airport resolutions are
+documented in [Nepal flight notes](NEPAL_FLIGHTS_NOTES.md),
+[Taiwan and Hong Kong flight notes](TAIWAN_HONG_KONG_FLIGHTS_NOTES.md),
 [New Zealand flight notes](NEW_ZEALAND_FLIGHTS_NOTES.md),
 [ASEAN flight notes](ASEAN_FLIGHTS_NOTES.md),
 [Vietnam flight notes](VIETNAM_FLIGHTS_NOTES.md),
@@ -76,7 +77,7 @@ untouched. Myanmar uses Asia/Yangon, UTC+6:30.
 
 ## Collection, ownership and fares
 
-The shared archive requires **9,440 unique airport/date queries**, the union needed by the
+The shared archive requires **9,601 unique airport/date queries**, the union needed by the
 UTC network day and each endpoint country's local day. Dates are calculated in
 the origin airport's zone with a conservative 24-hour international duration cap;
 this includes necessary adjacent dates rather than assuming every search is Nov 2.
@@ -94,6 +95,7 @@ The TW/HK extension preserves all 7,180 prior queries. Its one worldwide capture
 queue contains 2,260 new airport/date queries, including the union needed by both
 local views, UTC and all existing endpoint-country views. Each query is searched
 once, including TW–HK pairs. Public captures are reused before new searches.
+Nepal preserves all 9,440 prior queries and adds 161: 51 reused and 110 new public searches. Its local day uses Asia/Kathmandu (UTC+5:45); international is limited to existing flight countries/hubs. The official Dubai–Pokhara sector resolves to PHH/VNPR; the older PKR/VNPK international probe is excluded without relabelling historical records.
 
 Cached successful empty searches are reused too. Latest captures own schedules
 for the same exact airport/date query; removed flights are not resurrected from
@@ -152,13 +154,13 @@ coverage audit and browser screenshots. Generated replay HTTP caches regenerate.
 
 ## Actual coverage and validation
 
-The final UTC view contains **6,463 overlapping flight records**, **5,652 departures within 2 November UTC**, **213 airports** and **113 carriers**. **5,164 records have captured quotes** (4,690 USD, 474 MYR); **1,299 remain unpriced**. The archive retains **9,087 records** across all country-local windows. Distinct flight numbers are not inferred physical aircraft movements.
+The final UTC view contains **6,560 overlapping flight records**, **5,741 departures within 2 November UTC**, **216 airports** and **116 carriers**. **5,244 records have captured quotes** (4,765 USD, 479 MYR); **1,316 remain unpriced**. The archive retains **9,227 records** across all country-local windows. Distinct flight numbers are not inferred physical aircraft movements.
 
-Archive collection: **9,440 / 9,440 queries captured**, **0 missing**, **0 failed**. The UTC projection's own 8,373 queries include 3,188 unreturned results. Empty queries mean not returned, not no service. There are 9 rejected source records, 11 unverified fare-context queries, and 0 unresolved selected airports. Coverage remains partial. The Taiwan/Hong Kong extension preserves all **6,767 previous archive records** and **7,180 previous queries** unchanged, including schedules, fares and provenance. Existing country bundles remain unchanged; their international projections gain relevant TW/HK connections without changing local day ownership.
+Archive collection: **9,601 / 9,601 queries captured**, **0 missing**, **0 failed**. The UTC projection's own 8,511 queries include 3,240 unreturned results. Empty queries mean not returned, not no service. There are 9 rejected source records, 12 unverified fare-context queries, and 0 unresolved selected airports. Coverage remains partial. Nepal preserves all **9,087 previous archive records** and **9,440 previous queries** unchanged, including schedules, fares, airport identities and provenance. Existing country bundles remain unchanged; their shared international projections gain relevant Nepal connections without changing local day ownership.
 
-Gzip: **1,072,844 bytes**, SHA-256 `d62153c15145ea1f14b46821740e601daede2aa698fb64f36dffaea3fd800177`. Offline preparation reproduces the bytes exactly.
+Gzip: **1,090,398 bytes**, SHA-256 `8fc8bae3c78be5b00fb6a727ada4f6835054b1c8d51b3ff81d935431a04f72e0`. Offline preparation reproduces the bytes exactly.
 
-The table lists directional routes represented by overlapping records, departures owned by the UTC day, priced overlapping records and captured/planned searches. Gulf endpoints remain DXB/AUH/DOH only. Country-local figures use different windows; see [Taiwan and Hong Kong flight notes](TAIWAN_HONG_KONG_FLIGHTS_NOTES.md).
+The table lists directional routes represented by overlapping records, departures owned by the UTC day, priced overlapping records and captured/planned searches. Gulf endpoints remain DXB/AUH/DOH only. Country-local figures use different windows; see [Nepal flight notes](NEPAL_FLIGHTS_NOTES.md).
 
 | Country pair | Routes returned | UTC-day departures | Priced records | Queries |
 | --- | ---: | ---: | ---: | ---: |
@@ -172,6 +174,7 @@ The table lists directional routes represented by overlapping records, departure
 | AE-KH | 0 | 0 | 0 | 18 / 18 |
 | AE-KR | 4 | 8 | 11 | 12 / 12 |
 | AE-MY | 4 | 10 | 14 | 24 / 24 |
+| AE-NP | 6 | 22 | 25 | 18 / 18 |
 | AE-NZ | 2 | 2 | 3 | 12 / 12 |
 | AE-PH | 6 | 18 | 26 | 24 / 24 |
 | AE-QA | 4 | 36 | 36 | 12 / 12 |
@@ -222,6 +225,7 @@ The table lists directional routes represented by overlapping records, departure
 | CN-LA | 4 | 9 | 2 | 18 / 18 |
 | CN-MM | 5 | 8 | 4 | 18 / 18 |
 | CN-MY | 57 | 158 | 105 | 300 / 300 |
+| CN-NP | 8 | 12 | 5 | 42 / 42 |
 | CN-NZ | 7 | 9 | 9 | 48 / 48 |
 | CN-PH | 4 | 21 | 17 | 12 / 12 |
 | CN-QA | 11 | 11 | 19 | 48 / 48 |
@@ -289,6 +293,7 @@ The table lists directional routes represented by overlapping records, departure
 | IN-KR | 2 | 4 | 5 | 6 / 6 |
 | IN-MM | 4 | 4 | 0 | 24 / 24 |
 | IN-MY | 23 | 51 | 47 | 96 / 96 |
+| IN-NP | 6 | 26 | 25 | 30 / 30 |
 | IN-PH | 2 | 2 | 2 | 6 / 6 |
 | IN-QA | 26 | 61 | 81 | 96 / 96 |
 | IN-SG | 25 | 72 | 84 | 144 / 144 |
@@ -297,6 +302,7 @@ The table lists directional routes represented by overlapping records, departure
 | IT-TW | 2 | 2 | 3 | 12 / 12 |
 | JP-KR | 48 | 393 | 391 | 156 / 156 |
 | JP-MY | 9 | 23 | 23 | 48 / 48 |
+| JP-NP | 2 | 1 | 2 | 6 / 6 |
 | JP-NZ | 2 | 2 | 3 | 6 / 6 |
 | JP-PH | 13 | 37 | 43 | 48 / 48 |
 | JP-QA | 6 | 8 | 13 | 18 / 18 |
@@ -316,6 +322,7 @@ The table lists directional routes represented by overlapping records, departure
 | KR-LA | 2 | 2 | 2 | 18 / 18 |
 | KR-MM | 0 | 0 | 0 | 6 / 6 |
 | KR-MY | 4 | 12 | 12 | 42 / 42 |
+| KR-NP | 0 | 0 | 0 | 6 / 6 |
 | KR-NZ | 2 | 2 | 3 | 6 / 6 |
 | KR-PH | 6 | 33 | 37 | 30 / 30 |
 | KR-QA | 2 | 2 | 4 | 6 / 6 |
@@ -332,6 +339,7 @@ The table lists directional routes represented by overlapping records, departure
 | MM-TH | 10 | 40 | 14 | 30 / 30 |
 | MM-VN | 2 | 2 | 0 | 12 / 12 |
 | MO-TW | 6 | 31 | 32 | 18 / 18 |
+| MY-NP | 2 | 10 | 5 | 12 / 12 |
 | MY-NZ | 2 | 4 | 4 | 6 / 6 |
 | MY-PH | 5 | 17 | 20 | 30 / 30 |
 | MY-QA | 2 | 10 | 15 | 18 / 18 |
@@ -341,6 +349,9 @@ The table lists directional routes represented by overlapping records, departure
 | MY-TW | 8 | 16 | 17 | 24 / 24 |
 | MY-VN | 12 | 46 | 45 | 36 / 36 |
 | NL-TW | 2 | 2 | 4 | 6 / 6 |
+| NP-QA | 2 | 11 | 11 | 6 / 6 |
+| NP-SG | 1 | 1 | 1 | 6 / 6 |
+| NP-TH | 2 | 6 | 6 | 12 / 12 |
 | NZ-QA | 0 | 0 | 0 | 6 / 6 |
 | NZ-SG | 4 | 10 | 14 | 12 / 12 |
 | NZ-TW | 1 | 1 | 1 | 6 / 6 |

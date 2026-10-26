@@ -1,6 +1,12 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia, Canada, France, Germany, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Myanmar, the Netherlands, New Zealand, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia, Canada, France, Germany, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Myanmar, the Netherlands, Nepal, New Zealand, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## Nepal flights
+
+Choose **Nepal · Flights** for **2 November 2026**, with Domestic / International / Both and an **NPT (UTC+5:45)** replay clock. International connects only to existing SunTrain flight countries and DXB/AUH/DOH, and appears in the shared UTC network. New quotes request USD; reused fares retain their original currency. KTM, PKR, PHH and BWA remain separate. Reuses airline/airport filters, local boards, Destinations, fullscreen views and frequency lines. Mountain flights and source airport-code ambiguities remain documented gaps. See [Nepal flight notes](NEPAL_FLIGHTS_NOTES.md) for sources, actual coverage and rebuilding.
+
+The Nepal snapshot has **203 domestic records across 14 airports** and **105 international records**, with **126 captured fares**. All 104 domestic and 110 new international searches completed; many domestic prices and mountain services remain unavailable.
 
 ## Taiwan and Hong Kong flights
 
@@ -30,7 +36,7 @@ Choose **Thailand · Flights** for **2 November 2026**, using **ICT (UTC+7)** an
 
 ## International flight network
 
-Choose **International network · Flights** to explore connections between our existing flight locations, DXB/AUH/DOH, and worldwide Taiwan/Hong Kong routes on **2 November 2026 (UTC)**. Moving planes open by default; filter **From country / To country**, airline or exact airport, or switch to frequency lines. Airport boards use local dates and times. Existing USD/MYR quotes retain their original currencies without conversion. China, Japan, South Korea, Thailand, the Philippines, Vietnam, Cambodia, Laos, Myanmar, Timor-Leste, New Zealand and Taiwan offer **Domestic / International / Both**. Taiwan and Hong Kong also include worldwide endpoints; other locations retain their existing shared-network scope. Other existing worldwide routes remain available in their country views. The UTC view contains **5,652 departures**, **213 airports** and **1,773 returned directional routes**, with 6,463 overlapping flight records. See [international network notes](INTERNATIONAL_NETWORK_NOTES.md) for coverage, sources and offline rebuilding.
+Choose **International network · Flights** to explore connections between our existing flight locations, DXB/AUH/DOH, and worldwide Taiwan/Hong Kong routes on **2 November 2026 (UTC)**. Moving planes open by default; filter **From country / To country**, airline or exact airport, or switch to frequency lines. Airport boards use local dates and times. Existing USD/MYR quotes retain their original currencies without conversion. China, Japan, South Korea, Thailand, the Philippines, Vietnam, Cambodia, Laos, Myanmar, Timor-Leste, New Zealand and Taiwan offer **Domestic / International / Both**. Taiwan and Hong Kong also include worldwide endpoints; other locations retain their existing shared-network scope. Other existing worldwide routes remain available in their country views. The UTC view contains **5,741 departures**, **216 airports** and **1,802 returned directional routes**, with 6,560 overlapping flight records. See [international network notes](INTERNATIONAL_NETWORK_NOTES.md) for coverage, sources and offline rebuilding.
 
 ## Mainland Chinese flights
 

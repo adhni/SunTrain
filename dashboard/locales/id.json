@@ -950,5 +950,17 @@
   "Europe · Flights overview": "Ringkasan Eropa · Penerbangan",
   "{n} / {total} monthly route timetables captured": "{n} / {total} jadwal rute bulanan tersimpan",
   "{n} / {total} dated flight searches captured · Coverage is partial": "{n} / {total} pencarian penerbangan bertanggal tersimpan · Cakupan belum lengkap",
-  "Ryanair, easyJet, Wizz Air and nine European flag carriers · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.": "Ryanair, easyJet, Wizz Air dan sembilan maskapai utama Eropa · Cuplikan jadwal 2 November 2026. Linimasa: UTC; papan bandara memakai tanggal dan waktu setempat. Tarif tercatat mempertahankan mata uang aslinya. Cakupan dan harga tidak lengkap; lintasan bersifat ilustratif."
+  "Ryanair, easyJet, Wizz Air and nine European flag carriers · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.": "Ryanair, easyJet, Wizz Air dan sembilan maskapai utama Eropa · Cuplikan jadwal 2 November 2026. Linimasa: UTC; papan bandara memakai tanggal dan waktu setempat. Tarif tercatat mempertahankan mata uang aslinya. Cakupan dan harga tidak lengkap; lintasan bersifat ilustratif.",
+  "United States · Flights": "Amerika Serikat · Penerbangan",
+  "United States · Domestic flights between the top 10 airports · 2 November 2026 departures, including overnight arrivals. Timeline: Eastern time (EST, UTC−5); airport boards use local time. All returned airlines; captured USD fares and coverage are partial. Paths are illustrative.": "Amerika Serikat · Penerbangan domestik antara 10 bandara teratas · Keberangkatan 2 November 2026, termasuk kedatangan setelah tengah malam. Linimasa: waktu Timur (EST, UTC−5); papan bandara menggunakan waktu setempat. Semua maskapai yang ditemukan; tarif tercatat dalam USD dan cakupan hanya sebagian. Jalur bersifat ilustratif.",
+  "Airport times are local. The replay clock uses Eastern time (EST, UTC−5).": "Waktu bandara menggunakan waktu setempat. Jam pemutaran menggunakan waktu Timur (EST, UTC−5).",
+  "Return to the United States · Flights starting view": "Kembali ke tampilan awal Amerika Serikat · Penerbangan",
+  "United States · Flights overview": "Ringkasan Amerika Serikat · Penerbangan",
+  "United States": "Amerika Serikat",
+  "US domestic flights between ten selected airports.": "Penerbangan domestik AS antara sepuluh bandara terpilih.",
+  "Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included.": "Keberangkatan pada 2 November 2026 dalam waktu setempat setiap bandara asal; termasuk kedatangan setelah tengah malam.",
+  "Timeline: Eastern time (EST, UTC−5); airport boards use local time.": "Linimasa: waktu Timur (EST, UTC−5); papan bandara menggunakan waktu setempat.",
+  "Captured USD fares and coverage are partial.": "Tarif tercatat dalam USD dan cakupan hanya sebagian.",
+  "Empty results mean not returned, not no service.": "Hasil kosong berarti tidak ditemukan, bukan tidak ada layanan.",
+  "Paths are illustrative.": "Jalur bersifat ilustratif."
 }

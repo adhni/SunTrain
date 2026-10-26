@@ -1207,6 +1207,7 @@
                     const zoneLabel=({'Asia/Kathmandu':'NPT','Asia/Taipei':'CST','Asia/Hong_Kong':'HKT','Pacific/Auckland':'NZDT','Asia/Brunei':'BNT','Asia/Phnom_Penh':'ICT','Asia/Vientiane':'ICT','Asia/Yangon':'MMT','Asia/Dili':'TLT'})[this.day.timezone] || (this.day.timezone==='Asia/Ho_Chi_Minh'?'ICT':this.day.timezone==='Asia/Manila'?'PHT':this.day.timezone==='Asia/Bangkok'?'ICT':this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':this.day.timezone==='Asia/Kolkata'?'IST':this.day.timezone==='Asia/Seoul'?'KST':this.day.timezone==='Asia/Tokyo'?'JST':this.day.timezone==='Asia/Shanghai'?(root.suntrainI18n?.translate('China time (UTC+8)') || 'China time (UTC+8)'):null);
                     if (zoneLabel) dateText=dateText.replace(/GMT\+(?:13|[789]|[56][.:]30|5[.:]45)/,zoneLabel);
                     if(this.day.timezone==='UTC')dateText=dateText.replace(/GMT(?:\+0)?/,'UTC');
+                    if(this.day.timezone==='America/New_York')dateText=dateText.replace(/GMT-5/,'EST').replace(/GMT-4/,'EDT');
                     setText("replay-clock-date",dateText);
                     setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");

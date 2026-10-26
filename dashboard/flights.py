@@ -28,6 +28,9 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'NZ': ('Air New Zealand', '#65b7ad'), 'QR': ('Qatar Airways', '#b57f9c'),
             'CX': ('Cathay Pacific', '#54aa93'), 'UA': ('United', '#649ce0'),
             'AA': ('American', '#a0afc6'), 'DL': ('Delta', '#cf7b89'),
+            'WN': ('Southwest Airlines', '#e8bd54'), 'B6': ('JetBlue', '#79a6dd'),
+            'F9': ('Frontier Airlines', '#74b58a'), 'XE': ('JSX', '#b98ad2'),
+            'AS': ('Alaska Airlines', '#74bbc0'),
             'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
             'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9'), 'AK': ('AirAsia', '#e95055'),
             'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa'),
@@ -181,14 +184,14 @@ def snapshot_coverage(reference):
         failed_or_missing_queries=len(missing), unattempted_queries=len(missing), failed_queries=0)
 
 
-def continuous_arc(a, b):
+def continuous_arc(a, b, anchor=135):
     """Keep Pacific flights continuous instead of interpolating across the world.
 
     Use Australia's world copy for both directions so reverse frequency arcs align.
     Longitudes beyond 180 are intentional and supported by MapLibre world copies.
     """
     points = great_circle(a, b)
-    previous = 135
+    previous = anchor
     for point in points:
         point[0] += 360 * round((previous - point[0]) / 360)
         previous = point[0]
@@ -311,6 +314,11 @@ def replay_day(business_date, city='australia_flights'):
     zone = ZoneInfo(replay_settings(city)['timezone'])
     start = int(datetime.combine(day, time(), zone).timestamp())
     end = int(datetime.combine(day + timedelta(days=1), time(), zone).timestamp())
+    if city in PROFILE_CITIES and PROFILE_CITIES[city][1].get('origin_local_day'):
+        # All 2 November local departures, including the West Coast's late
+        # flights and their overnight arrivals, share this bounded replay.
+        ends=[int(datetime.combine(day+timedelta(days=1),time(),ZoneInfo(a['timezone'])).timestamp()) for a in reference['airports']]
+        end=max([end,*ends,*[f['arrival']+1 for f in reference['flights']]])
     airports = reference['airports']
     indices = {a['code']: i for i, a in enumerate(airports)}
     services, paths = [], {}
@@ -323,7 +331,7 @@ def replay_day(business_date, city='australia_flights'):
         route = f"{flight['origin']} → {flight['destination']}"
         key = flight['origin'] + '-' + flight['destination']
         if key not in paths:
-            coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']])
+            coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']],anchor=-98 if city=='united_states_flights' else 135)
             paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
         carrier = flight.get('carrier') or ('JQ' if city == 'australia_flights' else 'Unknown')
         operator, color = airline_style(carrier, flight.get('airline'))

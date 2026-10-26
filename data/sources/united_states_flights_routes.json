@@ -1,0 +1,512 @@
+{
+  "country": "US",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "America/New_York",
+  "currency": "USD",
+  "max_duration": 28800,
+  "coverage_scope": "Nonstop flights between the FAA CY2025 top ten airports by total passenger boardings; all returned airlines. Other US airports excluded.",
+  "query_date_policy": "origin_local_departure_day_only",
+  "replay_note": "US domestic flights between ten selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. Captured USD fares and coverage are partial. Empty results mean not returned, not no service. Paths are illustrative.",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.faa.gov/airports/planning_capacity/passenger_allcargo_stats/passenger/arp-cy2025-commercial-service-enplanements.xlsx",
+  "route_source_sha256": "91c8d4457e9558b8bcb65c2a27cd9b95062e3c7b443e58e9714ba77942777b40",
+  "route_basis": "All 90 directional pairs among the top ten; candidates, not evidence of service. Ranking includes domestic and international passenger boardings.",
+  "airports": [
+    {
+      "code": "ATL",
+      "icao": "KATL",
+      "name": "Hartsfield Jackson Atlanta International Airport (ATL)",
+      "municipality": "Atlanta",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 33.6367,
+      "lon": -84.428101,
+      "rank": 1,
+      "enplanements_2025": 51459786
+    },
+    {
+      "code": "DFW",
+      "icao": "KDFW",
+      "name": "Dallas Fort Worth International Airport (DFW)",
+      "municipality": "Dallas-Fort Worth",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 32.896801,
+      "lon": -97.038002,
+      "rank": 2,
+      "enplanements_2025": 41297009
+    },
+    {
+      "code": "ORD",
+      "icao": "KORD",
+      "name": "Chicago O'Hare International Airport (ORD)",
+      "municipality": "Chicago",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 41.9786,
+      "lon": -87.9048,
+      "rank": 3,
+      "enplanements_2025": 40680735
+    },
+    {
+      "code": "DEN",
+      "icao": "KDEN",
+      "name": "Denver International Airport (DEN)",
+      "municipality": "Denver",
+      "country": "US",
+      "timezone": "America/Denver",
+      "mode": "flight",
+      "lat": 39.860027,
+      "lon": -104.673792,
+      "rank": 4,
+      "enplanements_2025": 39976695
+    },
+    {
+      "code": "LAX",
+      "icao": "KLAX",
+      "name": "Los Angeles International Airport (LAX)",
+      "municipality": "Los Angeles",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 33.942501,
+      "lon": -118.407997,
+      "rank": 5,
+      "enplanements_2025": 36497303
+    },
+    {
+      "code": "JFK",
+      "icao": "KJFK",
+      "name": "John F. Kennedy International Airport (JFK)",
+      "municipality": "New York",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.639447,
+      "lon": -73.779317,
+      "rank": 6,
+      "enplanements_2025": 30792806
+    },
+    {
+      "code": "MCO",
+      "icao": "KMCO",
+      "name": "Orlando International Airport (MCO)",
+      "municipality": "Orlando",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 28.429399490356445,
+      "lon": -81.30899810791016,
+      "rank": 7,
+      "enplanements_2025": 27999709
+    },
+    {
+      "code": "LAS",
+      "icao": "KLAS",
+      "name": "Harry Reid International Airport (LAS)",
+      "municipality": "Las Vegas",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 36.083361,
+      "lon": -115.151817,
+      "rank": 8,
+      "enplanements_2025": 26531765
+    },
+    {
+      "code": "MIA",
+      "icao": "KMIA",
+      "name": "Miami International Airport (MIA)",
+      "municipality": "Miami",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 25.796011,
+      "lon": -80.289751,
+      "rank": 9,
+      "enplanements_2025": 26450972
+    },
+    {
+      "code": "SFO",
+      "icao": "KSFO",
+      "name": "San Francisco International Airport (SFO)",
+      "municipality": "San Francisco",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 37.619806,
+      "lon": -122.374821,
+      "rank": 10,
+      "enplanements_2025": 26251850
+    }
+  ],
+  "routes": [
+    [
+      "ATL",
+      "DEN"
+    ],
+    [
+      "ATL",
+      "DFW"
+    ],
+    [
+      "ATL",
+      "JFK"
+    ],
+    [
+      "ATL",
+      "LAS"
+    ],
+    [
+      "ATL",
+      "LAX"
+    ],
+    [
+      "ATL",
+      "MCO"
+    ],
+    [
+      "ATL",
+      "MIA"
+    ],
+    [
+      "ATL",
+      "ORD"
+    ],
+    [
+      "ATL",
+      "SFO"
+    ],
+    [
+      "DEN",
+      "ATL"
+    ],
+    [
+      "DEN",
+      "DFW"
+    ],
+    [
+      "DEN",
+      "JFK"
+    ],
+    [
+      "DEN",
+      "LAS"
+    ],
+    [
+      "DEN",
+      "LAX"
+    ],
+    [
+      "DEN",
+      "MCO"
+    ],
+    [
+      "DEN",
+      "MIA"
+    ],
+    [
+      "DEN",
+      "ORD"
+    ],
+    [
+      "DEN",
+      "SFO"
+    ],
+    [
+      "DFW",
+      "ATL"
+    ],
+    [
+      "DFW",
+      "DEN"
+    ],
+    [
+      "DFW",
+      "JFK"
+    ],
+    [
+      "DFW",
+      "LAS"
+    ],
+    [
+      "DFW",
+      "LAX"
+    ],
+    [
+      "DFW",
+      "MCO"
+    ],
+    [
+      "DFW",
+      "MIA"
+    ],
+    [
+      "DFW",
+      "ORD"
+    ],
+    [
+      "DFW",
+      "SFO"
+    ],
+    [
+      "JFK",
+      "ATL"
+    ],
+    [
+      "JFK",
+      "DEN"
+    ],
+    [
+      "JFK",
+      "DFW"
+    ],
+    [
+      "JFK",
+      "LAS"
+    ],
+    [
+      "JFK",
+      "LAX"
+    ],
+    [
+      "JFK",
+      "MCO"
+    ],
+    [
+      "JFK",
+      "MIA"
+    ],
+    [
+      "JFK",
+      "ORD"
+    ],
+    [
+      "JFK",
+      "SFO"
+    ],
+    [
+      "LAS",
+      "ATL"
+    ],
+    [
+      "LAS",
+      "DEN"
+    ],
+    [
+      "LAS",
+      "DFW"
+    ],
+    [
+      "LAS",
+      "JFK"
+    ],
+    [
+      "LAS",
+      "LAX"
+    ],
+    [
+      "LAS",
+      "MCO"
+    ],
+    [
+      "LAS",
+      "MIA"
+    ],
+    [
+      "LAS",
+      "ORD"
+    ],
+    [
+      "LAS",
+      "SFO"
+    ],
+    [
+      "LAX",
+      "ATL"
+    ],
+    [
+      "LAX",
+      "DEN"
+    ],
+    [
+      "LAX",
+      "DFW"
+    ],
+    [
+      "LAX",
+      "JFK"
+    ],
+    [
+      "LAX",
+      "LAS"
+    ],
+    [
+      "LAX",
+      "MCO"
+    ],
+    [
+      "LAX",
+      "MIA"
+    ],
+    [
+      "LAX",
+      "ORD"
+    ],
+    [
+      "LAX",
+      "SFO"
+    ],
+    [
+      "MCO",
+      "ATL"
+    ],
+    [
+      "MCO",
+      "DEN"
+    ],
+    [
+      "MCO",
+      "DFW"
+    ],
+    [
+      "MCO",
+      "JFK"
+    ],
+    [
+      "MCO",
+      "LAS"
+    ],
+    [
+      "MCO",
+      "LAX"
+    ],
+    [
+      "MCO",
+      "MIA"
+    ],
+    [
+      "MCO",
+      "ORD"
+    ],
+    [
+      "MCO",
+      "SFO"
+    ],
+    [
+      "MIA",
+      "ATL"
+    ],
+    [
+      "MIA",
+      "DEN"
+    ],
+    [
+      "MIA",
+      "DFW"
+    ],
+    [
+      "MIA",
+      "JFK"
+    ],
+    [
+      "MIA",
+      "LAS"
+    ],
+    [
+      "MIA",
+      "LAX"
+    ],
+    [
+      "MIA",
+      "MCO"
+    ],
+    [
+      "MIA",
+      "ORD"
+    ],
+    [
+      "MIA",
+      "SFO"
+    ],
+    [
+      "ORD",
+      "ATL"
+    ],
+    [
+      "ORD",
+      "DEN"
+    ],
+    [
+      "ORD",
+      "DFW"
+    ],
+    [
+      "ORD",
+      "JFK"
+    ],
+    [
+      "ORD",
+      "LAS"
+    ],
+    [
+      "ORD",
+      "LAX"
+    ],
+    [
+      "ORD",
+      "MCO"
+    ],
+    [
+      "ORD",
+      "MIA"
+    ],
+    [
+      "ORD",
+      "SFO"
+    ],
+    [
+      "SFO",
+      "ATL"
+    ],
+    [
+      "SFO",
+      "DEN"
+    ],
+    [
+      "SFO",
+      "DFW"
+    ],
+    [
+      "SFO",
+      "JFK"
+    ],
+    [
+      "SFO",
+      "LAS"
+    ],
+    [
+      "SFO",
+      "LAX"
+    ],
+    [
+      "SFO",
+      "MCO"
+    ],
+    [
+      "SFO",
+      "MIA"
+    ],
+    [
+      "SFO",
+      "ORD"
+    ]
+  ],
+  "unresolved_airports": []
+}

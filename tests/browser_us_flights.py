@@ -1,5 +1,8 @@
-"""Top-ten US map, four local zones, fares, boards and existing replay smoke checks."""
+"""Top-twenty US map, six IANA zones, fares, boards and existing replay smoke checks."""
 import os
+import json
+from datetime import datetime
+from zoneinfo import ZoneInfo
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
@@ -21,7 +24,7 @@ with sync_playwright() as p:
     assert page.evaluate('suntrainReplay.filters.flightScope')=='domestic'
     assert not page.locator('#replay-flight-scope-field').is_visible()
     assert 'EST' in page.locator('#replay-clock-date').inner_text()
-    assert page.evaluate('suntrainReplay.day.stations.length')==10
+    assert page.evaluate('suntrainReplay.day.stations.length')==20
     assert page.evaluate('suntrainReplay.day.end-suntrainReplay.day.start>27*3600')
     assert page.evaluate('suntrainReplay.graph.getBounds().contains([-118.408,33.942]) && suntrainReplay.graph.getBounds().contains([-73.778,40.641])')
     assert page.evaluate('Object.values(suntrainReplay.day.paths).every(p=>p.coordinates.every(c=>c[0]<0))')
@@ -36,7 +39,10 @@ with sync_playwright() as p:
         page.wait_for_function('(c)=>suntrainReplay.filters.carriers[0]===c && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.carrier===c)',arg=carrier)
     page.evaluate('dash_clientside.set_props("replay-carriers",{value:[]})')
     page.wait_for_function('!suntrainReplay.filters.carriers.length')
-    for code,zone,offset in [('ATL','America/New_York','GMT-5'),('DFW','America/Chicago','GMT-6'),('ORD','America/Chicago','GMT-6'),('DEN','America/Denver','GMT-7'),('LAX','America/Los_Angeles','GMT-8'),('JFK','America/New_York','GMT-5'),('MCO','America/New_York','GMT-5'),('LAS','America/Los_Angeles','GMT-8'),('MIA','America/New_York','GMT-5'),('SFO','America/Los_Angeles','GMT-8')]:
+    airports=json.loads(Path('data/sources/united_states_flights_routes.json').read_text())['airports']
+    for airport in airports:
+        code,zone=airport['code'],airport['timezone']
+        offset='GMT'+str(int(datetime(2026,11,2,tzinfo=ZoneInfo(zone)).utcoffset().total_seconds()/3600))
         page.evaluate('(code)=>dash_clientside.set_props("replay-airports",{value:[code]})',code)
         page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].code===code)',arg=code)
         page.evaluate('(code)=>{suntrainReplay.seek(suntrainReplay.day.start);suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))}',code)
@@ -77,5 +83,5 @@ with sync_playwright() as p:
         page.wait_for_function('(city)=>suntrainReplay.day.city===city && !suntrainReplay.loading && suntrainReplay.filtered.length',arg=city,timeout=120000)
         assert page.evaluate('suntrainReplay.day.end-suntrainReplay.day.start')==86400
     assert not errors,errors
-    print(f'{total} US records: top ten, four zones, USD, airline/airport filters, boards, overnight timeline, frequency, themes, Indonesian, mobile and Australia/Melbourne passed',flush=True)
+    print(f'{total} US records: top twenty, six IANA zones, USD, airline/airport filters, boards, overnight timeline, frequency, themes, Indonesian, mobile and Australia/Melbourne passed',flush=True)
     browser.close()

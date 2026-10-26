@@ -1,4 +1,4 @@
-"""Pin the FAA's ten busiest airports and probe every exact directional pair."""
+"""Pin the FAA's twenty busiest airports and probe every exact directional pair."""
 import csv
 import json
 from pathlib import Path
@@ -13,10 +13,10 @@ from scripts.prepare_australian_flights import AIRPORT_URL, AIRPORT_HASH, pinned
 FAA_URL = 'https://www.faa.gov/airports/planning_capacity/passenger_allcargo_stats/passenger/arp-cy2025-commercial-service-enplanements.xlsx'
 FAA_HASH = '91c8d4457e9558b8bcb65c2a27cd9b95062e3c7b443e58e9714ba77942777b40'
 ZONES = {
-    **dict.fromkeys('ATL JFK MCO MIA'.split(), 'America/New_York'),
-    **dict.fromkeys('DFW ORD'.split(), 'America/Chicago'),
-    'DEN': 'America/Denver',
-    **dict.fromkeys('LAX LAS SFO'.split(), 'America/Los_Angeles'),
+    **dict.fromkeys('ATL JFK MCO MIA CLT EWR BOS LGA FLL'.split(), 'America/New_York'),
+    **dict.fromkeys('DFW ORD IAH MSP'.split(), 'America/Chicago'),
+    'DEN': 'America/Denver', 'PHX': 'America/Phoenix', 'DTW': 'America/Detroit',
+    **dict.fromkeys('LAX LAS SFO SEA'.split(), 'America/Los_Angeles'),
 }
 
 
@@ -31,11 +31,11 @@ def ranking(path):
                 value = cell.find('m:v', ns)
                 if value is not None:
                     values[''.join(c for c in cell.attrib['r'] if c.isalpha())] = strings[int(value.text)] if cell.attrib.get('t') == 's' else value.text
-            if values.get('A', '').isdigit() and 1 <= int(values['A']) <= 10:
+            if values.get('A', '').isdigit() and 1 <= int(values['A']) <= 20:
                 ranked.append(dict(rank=int(values['A']), code=values['D'], enplanements_2025=int(values['I'])))
     ranked.sort(key=lambda a: a['rank'])
-    if [a['rank'] for a in ranked] != list(range(1, 11)) or {a['code'] for a in ranked} != set(ZONES):
-        raise ValueError('Pinned FAA top-ten ranking differs from the reviewed airports')
+    if [a['rank'] for a in ranked] != list(range(1, 21)) or {a['code'] for a in ranked} != set(ZONES):
+        raise ValueError('Pinned FAA top-twenty ranking differs from the reviewed airports')
     return ranked
 
 
@@ -59,12 +59,12 @@ def prepare():
             lat=float(a['latitude_deg']), lon=float(a['longitude_deg']), **{k:v for k,v in item.items() if k != 'code'}))
     manifest = dict(country='US', scope='domestic', start_date='2026-11-02', end_date='2026-11-02',
         timezone='America/New_York', currency='USD', max_duration=28800,
-        coverage_scope='Nonstop flights between the FAA CY2025 top ten airports by total passenger boardings; all returned airlines. Other US airports excluded.',
+        coverage_scope='Nonstop flights between the FAA CY2025 top twenty airports by total passenger boardings; all returned airlines. Other US airports excluded.',
         query_date_policy='origin_local_departure_day_only',
-        replay_note='US domestic flights between ten selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. Captured USD fares and coverage are partial. Empty results mean not returned, not no service. Paths are illustrative.',
+        replay_note='US domestic flights between twenty selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. Captured USD fares and coverage are partial. Empty results mean not returned, not no service. Paths are illustrative.',
         airport_source_url=AIRPORT_URL, airport_source_sha256=AIRPORT_HASH,
         route_source_url=FAA_URL, route_source_sha256=FAA_HASH,
-        route_basis='All 90 directional pairs among the top ten; candidates, not evidence of service. Ranking includes domestic and international passenger boardings.',
+        route_basis='All 380 directional pairs among the top twenty; candidates, not evidence of service. Ranking includes domestic and international passenger boardings.',
         airports=airports, routes=sorted((a,b) for a in ZONES for b in ZONES if a != b), unresolved_airports=[])
     output = ROOT / 'data/sources/united_states_flights_routes.json'
     output.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n')

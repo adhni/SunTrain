@@ -6,14 +6,14 @@
   "timezone": "America/New_York",
   "currency": "USD",
   "max_duration": 28800,
-  "coverage_scope": "Nonstop flights between the FAA CY2025 top ten airports by total passenger boardings; all returned airlines. Other US airports excluded.",
+  "coverage_scope": "Nonstop flights between the FAA CY2025 top twenty airports by total passenger boardings; all returned airlines. Other US airports excluded.",
   "query_date_policy": "origin_local_departure_day_only",
-  "replay_note": "US domestic flights between ten selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. Captured USD fares and coverage are partial. Empty results mean not returned, not no service. Paths are illustrative.",
+  "replay_note": "US domestic flights between twenty selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. Captured USD fares and coverage are partial. Empty results mean not returned, not no service. Paths are illustrative.",
   "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
   "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
   "route_source_url": "https://www.faa.gov/airports/planning_capacity/passenger_allcargo_stats/passenger/arp-cy2025-commercial-service-enplanements.xlsx",
   "route_source_sha256": "91c8d4457e9558b8bcb65c2a27cd9b95062e3c7b443e58e9714ba77942777b40",
-  "route_basis": "All 90 directional pairs among the top ten; candidates, not evidence of service. Ranking includes domestic and international passenger boardings.",
+  "route_basis": "All 380 directional pairs among the top twenty; candidates, not evidence of service. Ranking includes domestic and international passenger boardings.",
   "airports": [
     {
       "code": "ATL",
@@ -144,11 +144,149 @@
       "lon": -122.374821,
       "rank": 10,
       "enplanements_2025": 26251850
+    },
+    {
+      "code": "CLT",
+      "icao": "KCLT",
+      "name": "Charlotte Douglas International Airport (CLT)",
+      "municipality": "Charlotte",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 35.2140007019043,
+      "lon": -80.94309997558594,
+      "rank": 11,
+      "enplanements_2025": 25873555
+    },
+    {
+      "code": "SEA",
+      "icao": "KSEA",
+      "name": "Seattle–Tacoma International Airport (SEA)",
+      "municipality": "Seattle",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 47.447943,
+      "lon": -122.310276,
+      "rank": 12,
+      "enplanements_2025": 25417071
+    },
+    {
+      "code": "PHX",
+      "icao": "KPHX",
+      "name": "Phoenix Sky Harbor International Airport (PHX)",
+      "municipality": "Phoenix",
+      "country": "US",
+      "timezone": "America/Phoenix",
+      "mode": "flight",
+      "lat": 33.435302,
+      "lon": -112.005905,
+      "rank": 13,
+      "enplanements_2025": 25094817
+    },
+    {
+      "code": "EWR",
+      "icao": "KEWR",
+      "name": "Newark Liberty International Airport (EWR)",
+      "municipality": "Newark",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.6894,
+      "lon": -74.170545,
+      "rank": 14,
+      "enplanements_2025": 23464492
+    },
+    {
+      "code": "IAH",
+      "icao": "KIAH",
+      "name": "George Bush Intercontinental Airport (IAH)",
+      "municipality": "Houston",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 29.9844,
+      "lon": -95.3414,
+      "rank": 15,
+      "enplanements_2025": 23265028
+    },
+    {
+      "code": "BOS",
+      "icao": "KBOS",
+      "name": "Boston Logan International Airport (BOS)",
+      "municipality": "Boston",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 42.36197,
+      "lon": -71.0079,
+      "rank": 16,
+      "enplanements_2025": 21021153
+    },
+    {
+      "code": "MSP",
+      "icao": "KMSP",
+      "name": "Minneapolis–Saint Paul International Airport / Wold–Chamberlain Field (MSP)",
+      "municipality": "Minneapolis",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 44.880081,
+      "lon": -93.221741,
+      "rank": 17,
+      "enplanements_2025": 17488261
+    },
+    {
+      "code": "DTW",
+      "icao": "KDTW",
+      "name": "Detroit Metropolitan Wayne County Airport (DTW)",
+      "municipality": "Detroit",
+      "country": "US",
+      "timezone": "America/Detroit",
+      "mode": "flight",
+      "lat": 42.21377,
+      "lon": -83.353786,
+      "rank": 18,
+      "enplanements_2025": 16294768
+    },
+    {
+      "code": "LGA",
+      "icao": "KLGA",
+      "name": "LaGuardia Airport (LGA)",
+      "municipality": "New York",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.777199,
+      "lon": -73.872597,
+      "rank": 19,
+      "enplanements_2025": 16278532
+    },
+    {
+      "code": "FLL",
+      "icao": "KFLL",
+      "name": "Fort Lauderdale Hollywood International Airport (FLL)",
+      "municipality": "Fort Lauderdale",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 26.072599,
+      "lon": -80.152702,
+      "rank": 20,
+      "enplanements_2025": 15646752
     }
   ],
   "routes": [
     [
       "ATL",
+      "BOS"
+    ],
+    [
+      "ATL",
+      "CLT"
+    ],
+    [
+      "ATL",
       "DEN"
     ],
     [
@@ -157,6 +295,22 @@
     ],
     [
       "ATL",
+      "DTW"
+    ],
+    [
+      "ATL",
+      "EWR"
+    ],
+    [
+      "ATL",
+      "FLL"
+    ],
+    [
+      "ATL",
+      "IAH"
+    ],
+    [
+      "ATL",
       "JFK"
     ],
     [
@@ -169,6 +323,10 @@
     ],
     [
       "ATL",
+      "LGA"
+    ],
+    [
+      "ATL",
       "MCO"
     ],
     [
@@ -177,19 +335,207 @@
     ],
     [
       "ATL",
+      "MSP"
+    ],
+    [
+      "ATL",
       "ORD"
+    ],
+    [
+      "ATL",
+      "PHX"
+    ],
+    [
+      "ATL",
+      "SEA"
     ],
     [
       "ATL",
       "SFO"
     ],
     [
+      "BOS",
+      "ATL"
+    ],
+    [
+      "BOS",
+      "CLT"
+    ],
+    [
+      "BOS",
+      "DEN"
+    ],
+    [
+      "BOS",
+      "DFW"
+    ],
+    [
+      "BOS",
+      "DTW"
+    ],
+    [
+      "BOS",
+      "EWR"
+    ],
+    [
+      "BOS",
+      "FLL"
+    ],
+    [
+      "BOS",
+      "IAH"
+    ],
+    [
+      "BOS",
+      "JFK"
+    ],
+    [
+      "BOS",
+      "LAS"
+    ],
+    [
+      "BOS",
+      "LAX"
+    ],
+    [
+      "BOS",
+      "LGA"
+    ],
+    [
+      "BOS",
+      "MCO"
+    ],
+    [
+      "BOS",
+      "MIA"
+    ],
+    [
+      "BOS",
+      "MSP"
+    ],
+    [
+      "BOS",
+      "ORD"
+    ],
+    [
+      "BOS",
+      "PHX"
+    ],
+    [
+      "BOS",
+      "SEA"
+    ],
+    [
+      "BOS",
+      "SFO"
+    ],
+    [
+      "CLT",
+      "ATL"
+    ],
+    [
+      "CLT",
+      "BOS"
+    ],
+    [
+      "CLT",
+      "DEN"
+    ],
+    [
+      "CLT",
+      "DFW"
+    ],
+    [
+      "CLT",
+      "DTW"
+    ],
+    [
+      "CLT",
+      "EWR"
+    ],
+    [
+      "CLT",
+      "FLL"
+    ],
+    [
+      "CLT",
+      "IAH"
+    ],
+    [
+      "CLT",
+      "JFK"
+    ],
+    [
+      "CLT",
+      "LAS"
+    ],
+    [
+      "CLT",
+      "LAX"
+    ],
+    [
+      "CLT",
+      "LGA"
+    ],
+    [
+      "CLT",
+      "MCO"
+    ],
+    [
+      "CLT",
+      "MIA"
+    ],
+    [
+      "CLT",
+      "MSP"
+    ],
+    [
+      "CLT",
+      "ORD"
+    ],
+    [
+      "CLT",
+      "PHX"
+    ],
+    [
+      "CLT",
+      "SEA"
+    ],
+    [
+      "CLT",
+      "SFO"
+    ],
+    [
       "DEN",
       "ATL"
     ],
     [
       "DEN",
+      "BOS"
+    ],
+    [
+      "DEN",
+      "CLT"
+    ],
+    [
+      "DEN",
       "DFW"
+    ],
+    [
+      "DEN",
+      "DTW"
+    ],
+    [
+      "DEN",
+      "EWR"
+    ],
+    [
+      "DEN",
+      "FLL"
+    ],
+    [
+      "DEN",
+      "IAH"
     ],
     [
       "DEN",
@@ -205,6 +551,10 @@
     ],
     [
       "DEN",
+      "LGA"
+    ],
+    [
+      "DEN",
       "MCO"
     ],
     [
@@ -213,7 +563,19 @@
     ],
     [
       "DEN",
+      "MSP"
+    ],
+    [
+      "DEN",
       "ORD"
+    ],
+    [
+      "DEN",
+      "PHX"
+    ],
+    [
+      "DEN",
+      "SEA"
     ],
     [
       "DEN",
@@ -225,7 +587,31 @@
     ],
     [
       "DFW",
+      "BOS"
+    ],
+    [
+      "DFW",
+      "CLT"
+    ],
+    [
+      "DFW",
       "DEN"
+    ],
+    [
+      "DFW",
+      "DTW"
+    ],
+    [
+      "DFW",
+      "EWR"
+    ],
+    [
+      "DFW",
+      "FLL"
+    ],
+    [
+      "DFW",
+      "IAH"
     ],
     [
       "DFW",
@@ -241,6 +627,10 @@
     ],
     [
       "DFW",
+      "LGA"
+    ],
+    [
+      "DFW",
       "MCO"
     ],
     [
@@ -249,15 +639,339 @@
     ],
     [
       "DFW",
+      "MSP"
+    ],
+    [
+      "DFW",
       "ORD"
+    ],
+    [
+      "DFW",
+      "PHX"
+    ],
+    [
+      "DFW",
+      "SEA"
     ],
     [
       "DFW",
       "SFO"
     ],
     [
+      "DTW",
+      "ATL"
+    ],
+    [
+      "DTW",
+      "BOS"
+    ],
+    [
+      "DTW",
+      "CLT"
+    ],
+    [
+      "DTW",
+      "DEN"
+    ],
+    [
+      "DTW",
+      "DFW"
+    ],
+    [
+      "DTW",
+      "EWR"
+    ],
+    [
+      "DTW",
+      "FLL"
+    ],
+    [
+      "DTW",
+      "IAH"
+    ],
+    [
+      "DTW",
+      "JFK"
+    ],
+    [
+      "DTW",
+      "LAS"
+    ],
+    [
+      "DTW",
+      "LAX"
+    ],
+    [
+      "DTW",
+      "LGA"
+    ],
+    [
+      "DTW",
+      "MCO"
+    ],
+    [
+      "DTW",
+      "MIA"
+    ],
+    [
+      "DTW",
+      "MSP"
+    ],
+    [
+      "DTW",
+      "ORD"
+    ],
+    [
+      "DTW",
+      "PHX"
+    ],
+    [
+      "DTW",
+      "SEA"
+    ],
+    [
+      "DTW",
+      "SFO"
+    ],
+    [
+      "EWR",
+      "ATL"
+    ],
+    [
+      "EWR",
+      "BOS"
+    ],
+    [
+      "EWR",
+      "CLT"
+    ],
+    [
+      "EWR",
+      "DEN"
+    ],
+    [
+      "EWR",
+      "DFW"
+    ],
+    [
+      "EWR",
+      "DTW"
+    ],
+    [
+      "EWR",
+      "FLL"
+    ],
+    [
+      "EWR",
+      "IAH"
+    ],
+    [
+      "EWR",
+      "JFK"
+    ],
+    [
+      "EWR",
+      "LAS"
+    ],
+    [
+      "EWR",
+      "LAX"
+    ],
+    [
+      "EWR",
+      "LGA"
+    ],
+    [
+      "EWR",
+      "MCO"
+    ],
+    [
+      "EWR",
+      "MIA"
+    ],
+    [
+      "EWR",
+      "MSP"
+    ],
+    [
+      "EWR",
+      "ORD"
+    ],
+    [
+      "EWR",
+      "PHX"
+    ],
+    [
+      "EWR",
+      "SEA"
+    ],
+    [
+      "EWR",
+      "SFO"
+    ],
+    [
+      "FLL",
+      "ATL"
+    ],
+    [
+      "FLL",
+      "BOS"
+    ],
+    [
+      "FLL",
+      "CLT"
+    ],
+    [
+      "FLL",
+      "DEN"
+    ],
+    [
+      "FLL",
+      "DFW"
+    ],
+    [
+      "FLL",
+      "DTW"
+    ],
+    [
+      "FLL",
+      "EWR"
+    ],
+    [
+      "FLL",
+      "IAH"
+    ],
+    [
+      "FLL",
+      "JFK"
+    ],
+    [
+      "FLL",
+      "LAS"
+    ],
+    [
+      "FLL",
+      "LAX"
+    ],
+    [
+      "FLL",
+      "LGA"
+    ],
+    [
+      "FLL",
+      "MCO"
+    ],
+    [
+      "FLL",
+      "MIA"
+    ],
+    [
+      "FLL",
+      "MSP"
+    ],
+    [
+      "FLL",
+      "ORD"
+    ],
+    [
+      "FLL",
+      "PHX"
+    ],
+    [
+      "FLL",
+      "SEA"
+    ],
+    [
+      "FLL",
+      "SFO"
+    ],
+    [
+      "IAH",
+      "ATL"
+    ],
+    [
+      "IAH",
+      "BOS"
+    ],
+    [
+      "IAH",
+      "CLT"
+    ],
+    [
+      "IAH",
+      "DEN"
+    ],
+    [
+      "IAH",
+      "DFW"
+    ],
+    [
+      "IAH",
+      "DTW"
+    ],
+    [
+      "IAH",
+      "EWR"
+    ],
+    [
+      "IAH",
+      "FLL"
+    ],
+    [
+      "IAH",
+      "JFK"
+    ],
+    [
+      "IAH",
+      "LAS"
+    ],
+    [
+      "IAH",
+      "LAX"
+    ],
+    [
+      "IAH",
+      "LGA"
+    ],
+    [
+      "IAH",
+      "MCO"
+    ],
+    [
+      "IAH",
+      "MIA"
+    ],
+    [
+      "IAH",
+      "MSP"
+    ],
+    [
+      "IAH",
+      "ORD"
+    ],
+    [
+      "IAH",
+      "PHX"
+    ],
+    [
+      "IAH",
+      "SEA"
+    ],
+    [
+      "IAH",
+      "SFO"
+    ],
+    [
       "JFK",
       "ATL"
+    ],
+    [
+      "JFK",
+      "BOS"
+    ],
+    [
+      "JFK",
+      "CLT"
     ],
     [
       "JFK",
@@ -266,6 +980,22 @@
     [
       "JFK",
       "DFW"
+    ],
+    [
+      "JFK",
+      "DTW"
+    ],
+    [
+      "JFK",
+      "EWR"
+    ],
+    [
+      "JFK",
+      "FLL"
+    ],
+    [
+      "JFK",
+      "IAH"
     ],
     [
       "JFK",
@@ -277,6 +1007,10 @@
     ],
     [
       "JFK",
+      "LGA"
+    ],
+    [
+      "JFK",
       "MCO"
     ],
     [
@@ -285,7 +1019,19 @@
     ],
     [
       "JFK",
+      "MSP"
+    ],
+    [
+      "JFK",
       "ORD"
+    ],
+    [
+      "JFK",
+      "PHX"
+    ],
+    [
+      "JFK",
+      "SEA"
     ],
     [
       "JFK",
@@ -297,11 +1043,35 @@
     ],
     [
       "LAS",
+      "BOS"
+    ],
+    [
+      "LAS",
+      "CLT"
+    ],
+    [
+      "LAS",
       "DEN"
     ],
     [
       "LAS",
       "DFW"
+    ],
+    [
+      "LAS",
+      "DTW"
+    ],
+    [
+      "LAS",
+      "EWR"
+    ],
+    [
+      "LAS",
+      "FLL"
+    ],
+    [
+      "LAS",
+      "IAH"
     ],
     [
       "LAS",
@@ -313,6 +1083,10 @@
     ],
     [
       "LAS",
+      "LGA"
+    ],
+    [
+      "LAS",
       "MCO"
     ],
     [
@@ -321,7 +1095,19 @@
     ],
     [
       "LAS",
+      "MSP"
+    ],
+    [
+      "LAS",
       "ORD"
+    ],
+    [
+      "LAS",
+      "PHX"
+    ],
+    [
+      "LAS",
+      "SEA"
     ],
     [
       "LAS",
@@ -333,11 +1119,35 @@
     ],
     [
       "LAX",
+      "BOS"
+    ],
+    [
+      "LAX",
+      "CLT"
+    ],
+    [
+      "LAX",
       "DEN"
     ],
     [
       "LAX",
       "DFW"
+    ],
+    [
+      "LAX",
+      "DTW"
+    ],
+    [
+      "LAX",
+      "EWR"
+    ],
+    [
+      "LAX",
+      "FLL"
+    ],
+    [
+      "LAX",
+      "IAH"
     ],
     [
       "LAX",
@@ -349,6 +1159,10 @@
     ],
     [
       "LAX",
+      "LGA"
+    ],
+    [
+      "LAX",
       "MCO"
     ],
     [
@@ -357,10 +1171,98 @@
     ],
     [
       "LAX",
+      "MSP"
+    ],
+    [
+      "LAX",
       "ORD"
     ],
     [
       "LAX",
+      "PHX"
+    ],
+    [
+      "LAX",
+      "SEA"
+    ],
+    [
+      "LAX",
+      "SFO"
+    ],
+    [
+      "LGA",
+      "ATL"
+    ],
+    [
+      "LGA",
+      "BOS"
+    ],
+    [
+      "LGA",
+      "CLT"
+    ],
+    [
+      "LGA",
+      "DEN"
+    ],
+    [
+      "LGA",
+      "DFW"
+    ],
+    [
+      "LGA",
+      "DTW"
+    ],
+    [
+      "LGA",
+      "EWR"
+    ],
+    [
+      "LGA",
+      "FLL"
+    ],
+    [
+      "LGA",
+      "IAH"
+    ],
+    [
+      "LGA",
+      "JFK"
+    ],
+    [
+      "LGA",
+      "LAS"
+    ],
+    [
+      "LGA",
+      "LAX"
+    ],
+    [
+      "LGA",
+      "MCO"
+    ],
+    [
+      "LGA",
+      "MIA"
+    ],
+    [
+      "LGA",
+      "MSP"
+    ],
+    [
+      "LGA",
+      "ORD"
+    ],
+    [
+      "LGA",
+      "PHX"
+    ],
+    [
+      "LGA",
+      "SEA"
+    ],
+    [
+      "LGA",
       "SFO"
     ],
     [
@@ -369,11 +1271,35 @@
     ],
     [
       "MCO",
+      "BOS"
+    ],
+    [
+      "MCO",
+      "CLT"
+    ],
+    [
+      "MCO",
       "DEN"
     ],
     [
       "MCO",
       "DFW"
+    ],
+    [
+      "MCO",
+      "DTW"
+    ],
+    [
+      "MCO",
+      "EWR"
+    ],
+    [
+      "MCO",
+      "FLL"
+    ],
+    [
+      "MCO",
+      "IAH"
     ],
     [
       "MCO",
@@ -389,7 +1315,15 @@
     ],
     [
       "MCO",
+      "LGA"
+    ],
+    [
+      "MCO",
       "MIA"
+    ],
+    [
+      "MCO",
+      "MSP"
     ],
     [
       "MCO",
@@ -397,6 +1331,14 @@
     ],
     [
       "MCO",
+      "PHX"
+    ],
+    [
+      "MCO",
+      "SEA"
+    ],
+    [
+      "MCO",
       "SFO"
     ],
     [
@@ -405,11 +1347,35 @@
     ],
     [
       "MIA",
+      "BOS"
+    ],
+    [
+      "MIA",
+      "CLT"
+    ],
+    [
+      "MIA",
       "DEN"
     ],
     [
       "MIA",
       "DFW"
+    ],
+    [
+      "MIA",
+      "DTW"
+    ],
+    [
+      "MIA",
+      "EWR"
+    ],
+    [
+      "MIA",
+      "FLL"
+    ],
+    [
+      "MIA",
+      "IAH"
     ],
     [
       "MIA",
@@ -422,6 +1388,10 @@
     [
       "MIA",
       "LAX"
+    ],
+    [
+      "MIA",
+      "LGA"
     ],
     [
       "MIA",
@@ -429,10 +1399,98 @@
     ],
     [
       "MIA",
+      "MSP"
+    ],
+    [
+      "MIA",
       "ORD"
     ],
     [
       "MIA",
+      "PHX"
+    ],
+    [
+      "MIA",
+      "SEA"
+    ],
+    [
+      "MIA",
+      "SFO"
+    ],
+    [
+      "MSP",
+      "ATL"
+    ],
+    [
+      "MSP",
+      "BOS"
+    ],
+    [
+      "MSP",
+      "CLT"
+    ],
+    [
+      "MSP",
+      "DEN"
+    ],
+    [
+      "MSP",
+      "DFW"
+    ],
+    [
+      "MSP",
+      "DTW"
+    ],
+    [
+      "MSP",
+      "EWR"
+    ],
+    [
+      "MSP",
+      "FLL"
+    ],
+    [
+      "MSP",
+      "IAH"
+    ],
+    [
+      "MSP",
+      "JFK"
+    ],
+    [
+      "MSP",
+      "LAS"
+    ],
+    [
+      "MSP",
+      "LAX"
+    ],
+    [
+      "MSP",
+      "LGA"
+    ],
+    [
+      "MSP",
+      "MCO"
+    ],
+    [
+      "MSP",
+      "MIA"
+    ],
+    [
+      "MSP",
+      "ORD"
+    ],
+    [
+      "MSP",
+      "PHX"
+    ],
+    [
+      "MSP",
+      "SEA"
+    ],
+    [
+      "MSP",
       "SFO"
     ],
     [
@@ -441,11 +1499,35 @@
     ],
     [
       "ORD",
+      "BOS"
+    ],
+    [
+      "ORD",
+      "CLT"
+    ],
+    [
+      "ORD",
       "DEN"
     ],
     [
       "ORD",
       "DFW"
+    ],
+    [
+      "ORD",
+      "DTW"
+    ],
+    [
+      "ORD",
+      "EWR"
+    ],
+    [
+      "ORD",
+      "FLL"
+    ],
+    [
+      "ORD",
+      "IAH"
     ],
     [
       "ORD",
@@ -458,6 +1540,10 @@
     [
       "ORD",
       "LAX"
+    ],
+    [
+      "ORD",
+      "LGA"
     ],
     [
       "ORD",
@@ -469,6 +1555,170 @@
     ],
     [
       "ORD",
+      "MSP"
+    ],
+    [
+      "ORD",
+      "PHX"
+    ],
+    [
+      "ORD",
+      "SEA"
+    ],
+    [
+      "ORD",
+      "SFO"
+    ],
+    [
+      "PHX",
+      "ATL"
+    ],
+    [
+      "PHX",
+      "BOS"
+    ],
+    [
+      "PHX",
+      "CLT"
+    ],
+    [
+      "PHX",
+      "DEN"
+    ],
+    [
+      "PHX",
+      "DFW"
+    ],
+    [
+      "PHX",
+      "DTW"
+    ],
+    [
+      "PHX",
+      "EWR"
+    ],
+    [
+      "PHX",
+      "FLL"
+    ],
+    [
+      "PHX",
+      "IAH"
+    ],
+    [
+      "PHX",
+      "JFK"
+    ],
+    [
+      "PHX",
+      "LAS"
+    ],
+    [
+      "PHX",
+      "LAX"
+    ],
+    [
+      "PHX",
+      "LGA"
+    ],
+    [
+      "PHX",
+      "MCO"
+    ],
+    [
+      "PHX",
+      "MIA"
+    ],
+    [
+      "PHX",
+      "MSP"
+    ],
+    [
+      "PHX",
+      "ORD"
+    ],
+    [
+      "PHX",
+      "SEA"
+    ],
+    [
+      "PHX",
+      "SFO"
+    ],
+    [
+      "SEA",
+      "ATL"
+    ],
+    [
+      "SEA",
+      "BOS"
+    ],
+    [
+      "SEA",
+      "CLT"
+    ],
+    [
+      "SEA",
+      "DEN"
+    ],
+    [
+      "SEA",
+      "DFW"
+    ],
+    [
+      "SEA",
+      "DTW"
+    ],
+    [
+      "SEA",
+      "EWR"
+    ],
+    [
+      "SEA",
+      "FLL"
+    ],
+    [
+      "SEA",
+      "IAH"
+    ],
+    [
+      "SEA",
+      "JFK"
+    ],
+    [
+      "SEA",
+      "LAS"
+    ],
+    [
+      "SEA",
+      "LAX"
+    ],
+    [
+      "SEA",
+      "LGA"
+    ],
+    [
+      "SEA",
+      "MCO"
+    ],
+    [
+      "SEA",
+      "MIA"
+    ],
+    [
+      "SEA",
+      "MSP"
+    ],
+    [
+      "SEA",
+      "ORD"
+    ],
+    [
+      "SEA",
+      "PHX"
+    ],
+    [
+      "SEA",
       "SFO"
     ],
     [
@@ -477,11 +1727,35 @@
     ],
     [
       "SFO",
+      "BOS"
+    ],
+    [
+      "SFO",
+      "CLT"
+    ],
+    [
+      "SFO",
       "DEN"
     ],
     [
       "SFO",
       "DFW"
+    ],
+    [
+      "SFO",
+      "DTW"
+    ],
+    [
+      "SFO",
+      "EWR"
+    ],
+    [
+      "SFO",
+      "FLL"
+    ],
+    [
+      "SFO",
+      "IAH"
     ],
     [
       "SFO",
@@ -497,6 +1771,10 @@
     ],
     [
       "SFO",
+      "LGA"
+    ],
+    [
+      "SFO",
       "MCO"
     ],
     [
@@ -505,7 +1783,19 @@
     ],
     [
       "SFO",
+      "MSP"
+    ],
+    [
+      "SFO",
       "ORD"
+    ],
+    [
+      "SFO",
+      "PHX"
+    ],
+    [
+      "SFO",
+      "SEA"
     ]
   ],
   "unresolved_airports": []

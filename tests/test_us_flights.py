@@ -27,15 +27,16 @@ def put(cache, origin, destination, records):
     (cache/f'{DAY}-{origin}-{destination}.json').write_text(json.dumps(query))
 
 
-def test_top_ten_exact_airports_all_directions_single_date_and_no_network_expansion():
-    assert list(AIR)==['ATL','DFW','ORD','DEN','LAX','JFK','MCO','LAS','MIA','SFO']
-    assert [a['rank'] for a in AIR.values()]==list(range(1,11))
+def test_top_twenty_exact_airports_all_directions_single_date_and_no_network_expansion():
+    assert list(AIR)==['ATL','DFW','ORD','DEN','LAX','JFK','MCO','LAS','MIA','SFO','CLT','SEA','PHX','EWR','IAH','BOS','MSP','DTW','LGA','FLL']
+    assert [a['rank'] for a in AIR.values()]==list(range(1,21))
     assert AIR['JFK']['icao']=='KJFK' and AIR['ORD']['icao']=='KORD'
-    assert not {'EWR','LGA','MDW','DAL','SNA','OAK'}&AIR.keys()
-    assert len(CFG['manifest']['routes'])==90
+    assert {AIR[c]['icao'] for c in ['JFK','EWR','LGA']}=={'KJFK','KEWR','KLGA'}
+    assert not {'MDW','DAL','SNA','OAK'}&AIR.keys()
+    assert len(CFG['manifest']['routes'])==380
     assert set(map(tuple,CFG['manifest']['routes']))=={(a,b) for a in AIR for b in AIR if a!=b}
     queries=list(expected_queries(DAY,CFG['manifest']['routes'],CFG))
-    assert len(queries)==90 and {d for d,_,_ in queries}=={DAY}
+    assert len(queries)==380 and {d for d,_,_ in queries}=={DAY}
     assert list(expected_queries(DAY,[('JFK','LAX')],CFG))==[(DAY,'JFK','LAX')]
     assert CFG['currency']=='USD' and not CITIES[CITY]['flight_scopes']
     assert CFG['capture_wait_until']=='domcontentloaded' and 'capture_wait_until' not in country_config('AU')
@@ -47,9 +48,12 @@ def test_top_ten_exact_airports_all_directions_single_date_and_no_network_expans
 
 def test_four_time_zones_post_dst_red_eye_duplicates_and_cheapest_price():
     zones=CFG['zones']
-    assert len(set(zones.values()))==4
+    assert len(set(zones.values()))==6
     for code,offset in [('JFK',-5),('DFW',-6),('DEN',-7),('LAX',-8)]:
         assert datetime(2026,11,2,tzinfo=ZoneInfo(zones[code])).utcoffset().total_seconds()==offset*3600
+    assert zones['PHX']=='America/Phoenix' and zones['DTW']=='America/Detroit'
+    assert datetime(2026,7,2,tzinfo=ZoneInfo(zones['PHX'])).utcoffset().total_seconds()==-7*3600
+    assert datetime(2026,7,2,tzinfo=ZoneInfo(zones['DEN'])).utcoffset().total_seconds()==-6*3600
     row=segment('LAX','JFK',[23,30],[7,45],315,carrier='B6',number='100')
     row[21]=[2026,11,3]
     fs=parse_results(scripts(row,row),'LAX','JFK',DAY,zones)
@@ -60,6 +64,13 @@ def test_four_time_zones_post_dst_red_eye_duplicates_and_cheapest_price():
     assert len(parse_results(scripts(row,other),'LAX','JFK',DAY,zones))==2
     with pytest.raises(ValueError,match='duration'):
         parse_results(scripts(row),'LAX','JFK',DAY,{**zones,'LAX':'America/New_York'})
+
+
+def test_new_york_airports_remain_three_exact_source_identities():
+    rows=scripts(*(segment(a,'BOS',[9,0],[10,0],60,carrier='UA',number='100') for a in ['JFK','EWR','LGA']))
+    records=[parse_results(rows,a,'BOS',DAY,CFG['zones'])[0] for a in ['JFK','EWR','LGA']]
+    assert [f['origin'] for f in records]==['JFK','EWR','LGA']
+    assert len({f['id'] for f in records})==3
 
 
 def test_late_west_coast_and_early_east_coast_both_replay_all_arrivals_http_and_reproducibility(tmp_path,monkeypatch):
@@ -87,10 +98,10 @@ def test_late_west_coast_and_early_east_coast_both_replay_all_arrivals_http_and_
     assert response.status_code==200 and json.loads(gzip.decompress(response.data))['timezone']=='America/New_York'
     assert client.get(info['url'],headers={'Accept-Encoding':'gzip','If-None-Match':response.headers['ETag']}).status_code==304
     assert client.get(info['url'].replace(DAY,'2026-11-03')).status_code==404
-    with pytest.raises(ValueError,match='approved manifest'):prepare(cache,out,DAY,[('JFK','EWR')],CFG)
+    with pytest.raises(ValueError,match='approved manifest'):prepare(cache,out,DAY,[('JFK','OAK')],CFG)
 
 
-@pytest.mark.parametrize('change',[{'country':'CA'},{'timezone':'America/New_York'},{'code':'EWR'}])
+@pytest.mark.parametrize('change',[{'country':'CA'},{'timezone':'America/New_York'},{'code':'OAK'}])
 def test_wrong_country_zone_or_unselected_airport_rejected(tmp_path,change):
     raw=dict(metadata=dict(fare_context=dict(currency='USD',adults=1,cabin='economy',trip_type='one_way')),
         airports=[{**AIR['LAX'],**change}],flights=[])
@@ -115,7 +126,7 @@ def test_prepared_snapshot_matches_bounded_search_plan():
     path=flights.reference_path(DAY,CITY)
     if not path.exists():pytest.skip('US capture in progress')
     with gzip.open(path,'rt') as stream:raw=json.load(stream)
-    assert len(raw['metadata']['queries'])+len(raw['metadata']['uncollected_queries'])==90
+    assert len(raw['metadata']['queries'])+len(raw['metadata']['uncollected_queries'])==380
     assert len({f['id'] for f in raw['flights']})==len(raw['flights'])
     assert all(f['origin'] in AIR and f['destination'] in AIR for f in raw['flights'])
     assert all(datetime.fromtimestamp(f['departure'],ZoneInfo(AIR[f['origin']]['timezone'])).date().isoformat()==DAY for f in raw['flights'])

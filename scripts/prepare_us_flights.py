@@ -1,4 +1,4 @@
-"""Capture 90 top-ten US airport directions on one local departure date, in USD."""
+"""Capture 380 top-twenty US airport directions on one local departure date, in USD."""
 import argparse
 import asyncio
 import json
@@ -26,7 +26,8 @@ def main():
     pairs=PROBES if args.validate_only else PROBES+[tuple(p) for p in cfg['manifest']['routes'] if tuple(p) not in PROBES]
     if args.dry_run:
         queries=list(expected_queries(DAY,pairs,cfg))
-        print(json.dumps(dict(airports=10,queries=len(queries),dates=sorted({q[0] for q in queries}),cached=sum((args.cache/f'{d}-{a}-{b}.json').exists() for d,a,b in queries))))
+        cached=sum((args.cache/f'{d}-{a}-{b}.json').exists() for d,a,b in queries)
+        print(json.dumps(dict(airports=len(cfg['manifest']['airports']),queries=len(queries),dates=sorted({q[0] for q in queries}),cached=cached,new_searches=len(queries)-cached)))
         return 0
     stopped=None
     if not args.prepare_only:

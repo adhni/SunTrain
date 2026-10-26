@@ -94,6 +94,9 @@ def airline_style(carrier, name):
 
 
 def reference_path(business_date=None, city='australia_flights'):
+    if city=='europe_flights':
+        from dashboard.europe_flights import reference_path as europe_path
+        return europe_path()
     if city in PROFILE_CITIES:
         _,p=PROFILE_CITIES[city]
         if not p['domestic']:
@@ -141,6 +144,7 @@ def reference_paths(business_date=None, city='australia_flights', include_networ
 
 
 def _reference_paths(business_date=None, city='australia_flights'):
+    if city=='europe_flights':return [reference_path(business_date,city)]
     if city=='international_network':return [reference_path(business_date,city)]
     if city=='gulf_flights':
         from dashboard.gulf_flights import reference_paths as hub_paths
@@ -192,6 +196,9 @@ def continuous_arc(a, b):
 
 
 def load_reference(business_date, city):
+    if city=='europe_flights':
+        from dashboard.europe_flights import load_reference as europe_reference
+        return europe_reference(business_date)
     from dashboard.international_network import enabled,load_archive,project,overlay
     if city=='international_network' or (city in PROFILE_CITIES and not PROFILE_CITIES[city][1]['domestic']):return project(load_archive(),city)
     reference=_load_reference(business_date,city)
@@ -320,10 +327,15 @@ def replay_day(business_date, city='australia_flights'):
             paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
         carrier = flight.get('carrier') or ('JQ' if city == 'australia_flights' else 'Unknown')
         operator, color = airline_style(carrier, flight.get('airline'))
+        if city=='europe_flights':
+            from dashboard.europe_flights import COLORS,BRAND_GROUPS
+            color=COLORS[flight['brand']]
         services.append(dict(id=flight['id'], number=flight['number'], mode='flight', operator=operator,
             line=route, route_id=key, direction='Scheduled service', origin=a['name'], destination=b['name'],
             color=color, carrier=carrier, flight_scope=flight['flight_scope'], aircraft=flight.get('aircraft') or ('Airbus A' + flight['equipment'] if flight.get('equipment') else 'Aircraft not specified'),
             operating_airline=flight.get('airline', operator), source_page=flight.get('source_page'),
+            **({'flight_brand':flight['brand']} if flight.get('brand') else {}),
+            **({'flight_group':BRAND_GROUPS[flight['brand']]} if city=='europe_flights' and flight.get('brand') in BRAND_GROUPS else {}),
             **({'price':flight['price']} if flight.get('price') else {}),
             stops=[[origin, flight['departure'], flight['departure']], [destination, flight['arrival'], flight['arrival']]],
             legs=[key], timing_uncertain=False))

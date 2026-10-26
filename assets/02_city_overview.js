@@ -135,7 +135,11 @@
             const hub=filters.airports?.length===1?filters.airports[0]:null;
             const c = day.schedule.coverage_by_hub?.[hub] || day.schedule.coverage_by_scope?.[filters.flightScope || 'domestic'] || day.schedule.coverage;
             host.append(element('p', `${c.airports_returned} airports returned · ${c.airports_searched} airports searched · Schedule snapshot`, 'replay-muted'));
-            host.append(element('p', `${c.queries_captured} queries captured · ${c.queries_planned} queries planned · Coverage is partial`, 'replay-muted'));
+            if (c.source_counts) {
+                const s=c.source_counts;
+                host.append(element('p', `${s.monthly_captured} / ${s.monthly_planned} monthly route timetables captured`, 'replay-muted'));
+                host.append(element('p', `${s.dated_captured} / ${s.dated_planned} dated flight searches captured · Coverage is partial`, 'replay-muted'));
+            } else host.append(element('p', `${c.queries_captured} queries captured · ${c.queries_planned} queries planned · Coverage is partial`, 'replay-muted'));
             if (c.rejected_records) host.append(element('p', `${c.rejected_records} source records omitted after validation`, 'replay-muted'));
             if (c.failed_queries || c.unattempted_queries) host.append(element('p', `${c.failed_queries} queries failed · ${c.unattempted_queries} queries pending`, 'replay-muted'));
         }

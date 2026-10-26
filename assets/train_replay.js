@@ -120,7 +120,7 @@
         const inScope = (values, value) => !values.length || values.includes(value);
         return (service.mode !== 'flight' || ((!filters.fromCountries?.length || filters.fromCountries.includes(day.stations[service.stops[0][0]].country)) &&
             (!filters.toCountries?.length || filters.toCountries.includes(day.stations[service.stops.at(-1)[0]].country)) &&
-            (!filters.carriers?.length || filters.carriers.includes(service.carrier)) &&
+            (!filters.carriers?.length || filters.carriers.includes(service.carrier) || (!!service.flight_brand && filters.carriers.includes('brand:'+service.flight_brand)) || (!!service.flight_group && filters.carriers.includes('group:'+service.flight_group))) &&
             (!filters.airports?.length ||
                 ((filters.airportDirection !== 'arrivals') && filters.airports.includes(day.stations[service.stops[0][0]].code)) ||
                 ((filters.airportDirection !== 'departures') && filters.airports.includes(day.stations[service.stops.at(-1)[0]].code))))) &&
@@ -681,7 +681,9 @@
             if (flights) root.dash_clientside.set_props('replay-operators', {options: [...new Set(day.services.map(s => s.operator))].sort()});
             if (flights) {
                 const carriers = new Map(day.services.map(s => [s.carrier, s.operator]));
-                root.dash_clientside.set_props('replay-carriers', {options: [...carriers].sort((a,b) => a[0].localeCompare(b[0])).map(([value,name]) => ({value, label: `${value} · ${name}`}))});
+                const groups=Object.entries(day.flight_groups || {}).map(([group,name])=>({value:'group:'+group,label:name}));
+                const brands=Object.entries(day.flight_brands || {}).map(([brand,name])=>({value:'brand:'+brand,label:name}));
+                root.dash_clientside.set_props('replay-carriers', {options: [...groups,...brands,...[...carriers].sort((a,b) => a[0].localeCompare(b[0])).map(([value,name]) => ({value, label: `${value} · ${name}`}))]});
                 const airportProps={options: day.stations.map(a => ({value: a.code, label: `${a.code} · ${a.name}`})).sort((a,b) => a.value.localeCompare(b.value))};
                 if(!sameDay && day.flight_hubs?.length)airportProps.value=[day.default_airport || day.flight_hubs[0]];
                 root.dash_clientside.set_props('replay-airports',airportProps);
@@ -1298,7 +1300,10 @@
                 if (trigger === "replay-back") this.seek(this.now - 60);
                 if (trigger === "replay-forward") this.seek(this.now + 60);
             }
-            if (trigger === "replay-fit" || airportsChanged || (this.day.flight_scopes &&
+            // Europe keeps its regional starting view even with worldwide flights.
+            // Clearing an airport returns there; explicit Fit selection still fits all.
+            if (this.day.city === 'europe_flights' && airportsChanged && !filters.airports.length) this.metroView();
+            else if (trigger === "replay-fit" || airportsChanged || (this.day.flight_scopes && this.day.city !== 'europe_flights' &&
                 ((scopeChanged && !newDay) || (newDay && filters.flightScope !== "domestic")))) this.fit();
             this.paint(true);
             this.graph.resize();

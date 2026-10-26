@@ -50,6 +50,18 @@ test('Captured MYR and USD fares format minor units without inventing missing pr
     assert.match(formatCallTime(at,'Asia/Kuching'), /08:00 MYT/);
 });
 
+test('Europe EUR quotes and brand filters preserve source carrier codes',()=>{
+ assert.match(priceLabel({price:{amount_minor:1299,currency:'EUR'}}),/EUR\s*12\.99/);
+ const day={stations:[{country:'GB'},{country:'MA'}]};
+ const flight={mode:'flight',carrier:'RK',flight_brand:'ryanair',stops:[[0,0,0],[1,3600,3600]],flight_scope:'international'};
+ const filters={modes:[],operators:[],lines:[],directions:[],stations:[],number:'',flightScope:'both',carriers:['brand:ryanair']};
+ assert.equal(core.matches(flight,filters,day),true);
+ assert.equal(core.matches(flight,{...filters,carriers:['RK']},day),true);
+ assert.equal(core.matches(flight,{...filters,carriers:['FR']},day),false);
+ assert.equal(core.matches(flight,{...filters,carriers:['brand:easyjet']},day),false);
+ assert.equal(core.matches({...flight,carrier:'U2',flight_brand:'easyjet'},{...filters,carriers:['brand:easyjet']},day),true);
+});
+
 test('Gulf airport clocks differ by one hour and capture times keep their zone',()=>{
     const {captureTime}=require('../assets/02_flights.js');
     const at=Date.parse('2026-11-02T00:00:00Z')/1000;
@@ -244,4 +256,17 @@ test('Nepal midnight and fare timestamps retain the quarter-hour offset',()=>{
  const at='2026-11-01T18:15:00Z';
  assert.match(formatCallTime(Date.parse(at)/1000,'Asia/Kathmandu'),/2 Nov.*00:00 NPT/);
  assert.match(captureTime(at,'Asia/Kathmandu'),/NPT/);
+});
+
+test('European group, airline and code filters compose with exact airport direction',()=>{
+ const day={stations:[{code:'LHR',country:'GB'},{code:'JFK',country:'US'}]};
+ const flight={mode:'flight',carrier:'BA',flight_brand:'british_airways',flight_group:'iag',stops:[[0,0,0],[1,3600,3600]],flight_scope:'international'};
+ const filters={modes:[],operators:[],lines:[],directions:[],stations:[],number:'',flightScope:'both',carriers:['group:iag']};
+ assert.equal(core.matches(flight,filters,day),true);
+ assert.equal(core.matches(flight,{...filters,carriers:['group:lufthansa_group']},day),false);
+ assert.equal(core.matches(flight,{...filters,carriers:['brand:british_airways']},day),true);
+ assert.equal(core.matches(flight,{...filters,carriers:['BA']},day),true);
+ assert.equal(core.matches(flight,{...filters,airports:['JFK'],airportDirection:'departures'},day),false);
+ assert.equal(core.matches(flight,{...filters,airports:['JFK'],airportDirection:'arrivals'},day),true);
+ assert.equal(core.matches({...flight,flight_group:undefined},filters,day),false);
 });

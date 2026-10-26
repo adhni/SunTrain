@@ -20,7 +20,7 @@
     }
     function priceLabel(service) {
         const p=service.price;
-        if (!p || !Number.isSafeInteger(p.amount_minor) || p.amount_minor<=0 || !['MYR','USD'].includes(p.currency)) return 'Price unavailable';
+        if (!p || !Number.isSafeInteger(p.amount_minor) || p.amount_minor<=0 || !['MYR','USD','EUR'].includes(p.currency)) return 'Price unavailable';
         return new Intl.NumberFormat(root.suntrainI18n?.locale || 'en-MY', {style:'currency',currency:p.currency,currencyDisplay:'code'}).format(p.amount_minor/100);
     }
     function captureTime(at, timezone) {

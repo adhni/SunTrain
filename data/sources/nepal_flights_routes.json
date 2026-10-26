@@ -1,0 +1,691 @@
+{
+  "country": "NP",
+  "scope": "domestic",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Kathmandu",
+  "currency": "USD",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "BDP",
+      "icao": "VNCG",
+      "name": "Bhadrapur Airport (BDP)",
+      "municipality": "Bhadrapur",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 26.5708007812,
+      "lon": 88.07959747310001,
+      "island_group": "Central and eastern trunk"
+    },
+    {
+      "code": "BHR",
+      "icao": "VNBP",
+      "name": "Bharatpur Airport (BHR)",
+      "municipality": "Bharatpur",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.678101,
+      "lon": 84.429398,
+      "island_group": "Central and eastern trunk"
+    },
+    {
+      "code": "BIR",
+      "icao": "VNVT",
+      "name": "Biratnagar Airport (BIR)",
+      "municipality": "Biratnagar",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 26.48150062561035,
+      "lon": 87.26399993896484,
+      "island_group": "Central and eastern trunk"
+    },
+    {
+      "code": "BWA",
+      "icao": "VNBW",
+      "name": "Gautam Buddha International Airport (BWA)",
+      "municipality": "Siddharthanagar (Bhairahawa)",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.504636,
+      "lon": 83.410381,
+      "island_group": "Western trunk"
+    },
+    {
+      "code": "DHI",
+      "icao": "VNDH",
+      "name": "Dhangarhi Airport (DHI)",
+      "municipality": "Dhangarhi",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.755283,
+      "lon": 80.583398,
+      "island_group": "Western trunk"
+    },
+    {
+      "code": "DOP",
+      "icao": "VNDP",
+      "name": "Dolpa Airport (DOP)",
+      "municipality": "Dolpa",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.985659,
+      "lon": 82.818703,
+      "island_group": "Mountain and remote"
+    },
+    {
+      "code": "IMK",
+      "icao": "VNST",
+      "name": "Simikot Airport (IMK)",
+      "municipality": "Simikot",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 29.9711,
+      "lon": 81.818901,
+      "island_group": "Mountain and remote"
+    },
+    {
+      "code": "JKR",
+      "icao": "VNJP",
+      "name": "Janakpur Airport (JKR)",
+      "municipality": "Janakpur",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 26.708799,
+      "lon": 85.922401,
+      "island_group": "Central and eastern trunk"
+    },
+    {
+      "code": "JMO",
+      "icao": "VNJS",
+      "name": "Jomsom Airport (JMO)",
+      "municipality": "Jomsom",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.780426,
+      "lon": 83.723,
+      "island_group": "Mountain and remote"
+    },
+    {
+      "code": "JUM",
+      "icao": "VNJL",
+      "name": "Jumla Airport (JUM)",
+      "municipality": "Jumla",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 29.2742,
+      "lon": 82.193298,
+      "island_group": "Mountain and remote"
+    },
+    {
+      "code": "KEP",
+      "icao": "VNNG",
+      "name": "Nepalgunj Airport (KEP)",
+      "municipality": "Nepalgunj",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.1036,
+      "lon": 81.667,
+      "island_group": "Western trunk"
+    },
+    {
+      "code": "KTM",
+      "icao": "VNKT",
+      "name": "Tribhuvan International Airport (KTM)",
+      "municipality": "Kathmandu",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.6966,
+      "lon": 85.3591,
+      "island_group": "Central and eastern trunk"
+    },
+    {
+      "code": "LUA",
+      "icao": "VNLK",
+      "name": "Tenzing-Hillary Airport (LUA)",
+      "municipality": "Lukla",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.686768,
+      "lon": 86.729479,
+      "island_group": "Mountain and remote"
+    },
+    {
+      "code": "PHH",
+      "icao": "VNPR",
+      "name": "Pokhara International Airport (PHH)",
+      "municipality": "Pokhara",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.1838,
+      "lon": 84.0147,
+      "island_group": "Pokhara"
+    },
+    {
+      "code": "PKR",
+      "icao": "VNPK",
+      "name": "Pokhara Domestic Airport (PKR)",
+      "municipality": "Pokhara",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.200621,
+      "lon": 83.981203,
+      "island_group": "Pokhara"
+    },
+    {
+      "code": "PPL",
+      "icao": "VNPL",
+      "name": "Phaplu Airport (PPL)",
+      "municipality": "Phaplu",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.517752,
+      "lon": 86.585019,
+      "island_group": "Mountain and remote"
+    },
+    {
+      "code": "RHP",
+      "icao": "VNRC",
+      "name": "Ramechhap Airport (RHP)",
+      "municipality": "Ramechhap",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.393999,
+      "lon": 86.061401,
+      "island_group": "Mountain and remote"
+    },
+    {
+      "code": "RJB",
+      "icao": "VNRB",
+      "name": "Rajbiraj Airport (RJB)",
+      "municipality": "Rajbiraj",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 26.510066,
+      "lon": 86.733902,
+      "island_group": "Central and eastern trunk"
+    },
+    {
+      "code": "SIF",
+      "icao": "VNSI",
+      "name": "Simara Airport (SIF)",
+      "municipality": "Simara",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.159803,
+      "lon": 84.980021,
+      "island_group": "Central and eastern trunk"
+    },
+    {
+      "code": "SKH",
+      "icao": "VNSK",
+      "name": "Surkhet Airport (SKH)",
+      "municipality": "Surkhet",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.586,
+      "lon": 81.636002,
+      "island_group": "Western trunk"
+    },
+    {
+      "code": "TMI",
+      "icao": "VNTR",
+      "name": "Tumling Tar Airport (TMI)",
+      "municipality": "Tumling Tar",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.315001,
+      "lon": 87.193298,
+      "island_group": "Central and eastern trunk"
+    }
+  ],
+  "routes": [
+    [
+      "BDP",
+      "KTM"
+    ],
+    [
+      "BHR",
+      "KTM"
+    ],
+    [
+      "BHR",
+      "PHH"
+    ],
+    [
+      "BHR",
+      "PKR"
+    ],
+    [
+      "BIR",
+      "KTM"
+    ],
+    [
+      "BWA",
+      "KTM"
+    ],
+    [
+      "BWA",
+      "PHH"
+    ],
+    [
+      "BWA",
+      "PKR"
+    ],
+    [
+      "DHI",
+      "KTM"
+    ],
+    [
+      "DOP",
+      "KEP"
+    ],
+    [
+      "IMK",
+      "KEP"
+    ],
+    [
+      "JKR",
+      "KTM"
+    ],
+    [
+      "JMO",
+      "PKR"
+    ],
+    [
+      "JUM",
+      "KEP"
+    ],
+    [
+      "KEP",
+      "DOP"
+    ],
+    [
+      "KEP",
+      "IMK"
+    ],
+    [
+      "KEP",
+      "JUM"
+    ],
+    [
+      "KEP",
+      "KTM"
+    ],
+    [
+      "KEP",
+      "PHH"
+    ],
+    [
+      "KEP",
+      "PKR"
+    ],
+    [
+      "KTM",
+      "BDP"
+    ],
+    [
+      "KTM",
+      "BHR"
+    ],
+    [
+      "KTM",
+      "BIR"
+    ],
+    [
+      "KTM",
+      "BWA"
+    ],
+    [
+      "KTM",
+      "DHI"
+    ],
+    [
+      "KTM",
+      "JKR"
+    ],
+    [
+      "KTM",
+      "KEP"
+    ],
+    [
+      "KTM",
+      "LUA"
+    ],
+    [
+      "KTM",
+      "PHH"
+    ],
+    [
+      "KTM",
+      "PKR"
+    ],
+    [
+      "KTM",
+      "PPL"
+    ],
+    [
+      "KTM",
+      "RJB"
+    ],
+    [
+      "KTM",
+      "SIF"
+    ],
+    [
+      "KTM",
+      "SKH"
+    ],
+    [
+      "KTM",
+      "TMI"
+    ],
+    [
+      "LUA",
+      "KTM"
+    ],
+    [
+      "LUA",
+      "RHP"
+    ],
+    [
+      "PHH",
+      "BHR"
+    ],
+    [
+      "PHH",
+      "BWA"
+    ],
+    [
+      "PHH",
+      "KEP"
+    ],
+    [
+      "PHH",
+      "KTM"
+    ],
+    [
+      "PKR",
+      "BHR"
+    ],
+    [
+      "PKR",
+      "BWA"
+    ],
+    [
+      "PKR",
+      "JMO"
+    ],
+    [
+      "PKR",
+      "KEP"
+    ],
+    [
+      "PKR",
+      "KTM"
+    ],
+    [
+      "PPL",
+      "KTM"
+    ],
+    [
+      "RHP",
+      "LUA"
+    ],
+    [
+      "RJB",
+      "KTM"
+    ],
+    [
+      "SIF",
+      "KTM"
+    ],
+    [
+      "SKH",
+      "KTM"
+    ],
+    [
+      "TMI",
+      "KTM"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "KTM",
+      "destination": "BDP",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BWA",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BHR",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BIR",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DHI",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "JKR",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "KEP",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "PHH",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "PKR",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "SIF",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "SKH",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "RJB",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "KTM",
+      "destination": "TMI",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Official trunk route; generic Pokhara label explicitly probed at PHH and PKR without remapping captured identities"
+    },
+    {
+      "origin": "PHH",
+      "destination": "BWA",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Published Pokhara cross-country route; exact-airport probes at the two separate airports"
+    },
+    {
+      "origin": "PHH",
+      "destination": "BHR",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Published Pokhara cross-country route; exact-airport probes at the two separate airports"
+    },
+    {
+      "origin": "PHH",
+      "destination": "KEP",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Published Pokhara cross-country route; exact-airport probes at the two separate airports"
+    },
+    {
+      "origin": "PKR",
+      "destination": "BWA",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Published Pokhara cross-country route; exact-airport probes at the two separate airports"
+    },
+    {
+      "origin": "PKR",
+      "destination": "BHR",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Published Pokhara cross-country route; exact-airport probes at the two separate airports"
+    },
+    {
+      "origin": "PKR",
+      "destination": "KEP",
+      "scope": "domestic",
+      "source": "https://www.buddhaair.com/detail/flight-information",
+      "kind": "Published Pokhara cross-country route; exact-airport probes at the two separate airports"
+    },
+    {
+      "origin": "KTM",
+      "destination": "LUA",
+      "scope": "domestic",
+      "source": "https://www.taraair.com/destination.jsp",
+      "kind": "Published remote destination candidate; dated capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "PPL",
+      "scope": "domestic",
+      "source": "https://www.taraair.com/destination.jsp",
+      "kind": "Published remote destination candidate; dated capture required"
+    },
+    {
+      "origin": "RHP",
+      "destination": "LUA",
+      "scope": "domestic",
+      "source": "https://www.taraair.com/destination.jsp",
+      "kind": "Explicit Ramechhap–Lukla route, not Kathmandu substitution"
+    },
+    {
+      "origin": "PKR",
+      "destination": "JMO",
+      "scope": "domestic",
+      "source": "https://www.taraair.com/destination.jsp",
+      "kind": "Pokhara domestic STOL candidate; no international airport substitution"
+    },
+    {
+      "origin": "KEP",
+      "destination": "DOP",
+      "scope": "domestic",
+      "source": "https://www.sitaair.com.np/destination.jsp",
+      "kind": "Published Nepalgunj–Dolpa candidate; dated capture required"
+    },
+    {
+      "origin": "KEP",
+      "destination": "IMK",
+      "scope": "domestic",
+      "source": "https://www.taraair.com/destination.jsp",
+      "kind": "Remote destination/hub probes; scheduled/charter/frequency descriptions do not create dated records"
+    },
+    {
+      "origin": "KEP",
+      "destination": "JUM",
+      "scope": "domestic",
+      "source": "https://www.taraair.com/destination.jsp",
+      "kind": "Remote destination/hub probes; scheduled/charter/frequency descriptions do not create dated records"
+    }
+  ],
+  "input_manifests": [],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.buddhaair.com/detail/flight-information",
+  "source_urls": {
+    "buddha": "https://www.buddhaair.com/detail/flight-information",
+    "yeti": "https://yetiairlines.com/",
+    "tara": "https://www.taraair.com/destination.jsp",
+    "sita": "https://www.sitaair.com.np/destination.jsp",
+    "winter": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+    "pokhara": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/202/46c/6ad20246c8fd7187955340.pdf"
+  },
+  "source_documents": {
+    "winter": {
+      "url": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "sha256": "f5d934d4dc29f296ea8ad94725d29ddccf8a111b757d8f0cf8c6445eb368c01d",
+      "bytes": 396345,
+      "reviewed": "2026-10-26"
+    },
+    "pokhara": {
+      "url": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/202/46c/6ad20246c8fd7187955340.pdf",
+      "sha256": "2116438ef40b10bd8ba3f903513b387bee3310a7d3f7c97f0000d5fc42331d4d",
+      "bytes": 95505,
+      "reviewed": "2026-10-26"
+    }
+  },
+  "source_reviewed_date": "2026-10-26",
+  "unresolved_airports": [],
+  "deferred_airports": [
+    "Rara/Talcha has no unique active IATA in the pinned catalogue; no invented code",
+    "Other small commuter/charter/scenic services"
+  ],
+  "coverage_scope": "Selected trunk and remote domestic routes; international limited to existing SunTrain flight locations",
+  "route_source_sha256": "e6cffa952e99445829f48b46d3c2e56fdb7147170d63915bc8098a60fad3f067"
+}

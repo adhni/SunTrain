@@ -26,6 +26,7 @@
     "MM": "Myanmar",
     "TL": "Timor-Leste",
     "NZ": "New Zealand",
+    "NP": "Nepal",
     "TW": "Taiwan",
     "HK": "Hong Kong",
     "AT": "Austria",
@@ -50,7 +51,6 @@
     "MP": "Northern Mariana Islands",
     "MV": "Maldives",
     "NL": "Netherlands",
-    "NP": "Nepal",
     "PG": "Papua New Guinea",
     "PW": "Palau",
     "RU": "Russia",
@@ -64,7 +64,7 @@
     "DOH",
     "DXB"
   ],
-  "base_directional_routes": 2504,
+  "base_directional_routes": 2550,
   "airports": [
     {
       "code": "ADD",
@@ -342,6 +342,17 @@
       "mode": "flight",
       "lat": 3.12385010719,
       "lon": 113.019996643
+    },
+    {
+      "code": "BWA",
+      "icao": "VNBW",
+      "name": "Gautam Buddha International Airport (BWA)",
+      "municipality": "Siddharthanagar (Bhairahawa)",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.504636,
+      "lon": 83.410381
     },
     {
       "code": "BWN",
@@ -2269,6 +2280,17 @@
       "lon": 115.96700286865234
     },
     {
+      "code": "PHH",
+      "icao": "VNPR",
+      "name": "Pokhara International Airport (PHH)",
+      "municipality": "Pokhara",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.1838,
+      "lon": 84.0147
+    },
+    {
       "code": "PHX",
       "icao": "KPHX",
       "name": "Phoenix Sky Harbor International Airport (PHX)",
@@ -3607,6 +3629,10 @@
     ],
     [
       "AUH",
+      "KTM"
+    ],
+    [
+      "AUH",
       "KUL"
     ],
     [
@@ -3903,6 +3929,10 @@
     ],
     [
       "BKK",
+      "KTM"
+    ],
+    [
+      "BKK",
       "KUL"
     ],
     [
@@ -4052,6 +4082,10 @@
     [
       "BLR",
       "KBV"
+    ],
+    [
+      "BLR",
+      "KTM"
     ],
     [
       "BLR",
@@ -4219,6 +4253,10 @@
     ],
     [
       "BOM",
+      "KTM"
+    ],
+    [
+      "BOM",
       "KUL"
     ],
     [
@@ -4272,6 +4310,10 @@
     [
       "BTU",
       "SIN"
+    ],
+    [
+      "BWA",
+      "KUL"
     ],
     [
       "BWN",
@@ -4479,6 +4521,10 @@
     ],
     [
       "CAN",
+      "KTM"
+    ],
+    [
+      "CAN",
       "KUL"
     ],
     [
@@ -4604,6 +4650,10 @@
     [
       "CCU",
       "KMG"
+    ],
+    [
+      "CCU",
+      "KTM"
     ],
     [
       "CCU",
@@ -5627,6 +5677,10 @@
     ],
     [
       "DEL",
+      "KTM"
+    ],
+    [
+      "DEL",
       "KUL"
     ],
     [
@@ -5879,6 +5933,10 @@
     ],
     [
       "DMK",
+      "KTM"
+    ],
+    [
+      "DMK",
       "KUL"
     ],
     [
@@ -6128,6 +6186,10 @@
     [
       "DOH",
       "KTI"
+    ],
+    [
+      "DOH",
+      "KTM"
     ],
     [
       "DOH",
@@ -6643,6 +6705,10 @@
     ],
     [
       "DXB",
+      "KTM"
+    ],
+    [
+      "DXB",
       "KUL"
     ],
     [
@@ -6688,6 +6754,10 @@
     [
       "DXB",
       "PER"
+    ],
+    [
+      "DXB",
+      "PHH"
     ],
     [
       "DXB",
@@ -7244,6 +7314,10 @@
     [
       "HGH",
       "KIX"
+    ],
+    [
+      "HGH",
+      "KTM"
     ],
     [
       "HGH",
@@ -8455,6 +8529,10 @@
     ],
     [
       "ICN",
+      "KTM"
+    ],
+    [
+      "ICN",
       "KUL"
     ],
     [
@@ -9211,6 +9289,10 @@
     ],
     [
       "KMG",
+      "KTM"
+    ],
+    [
+      "KMG",
       "KUL"
     ],
     [
@@ -9427,7 +9509,91 @@
     ],
     [
       "KTM",
+      "AUH"
+    ],
+    [
+      "KTM",
+      "BKK"
+    ],
+    [
+      "KTM",
+      "BLR"
+    ],
+    [
+      "KTM",
+      "BOM"
+    ],
+    [
+      "KTM",
+      "CAN"
+    ],
+    [
+      "KTM",
+      "CCU"
+    ],
+    [
+      "KTM",
+      "DEL"
+    ],
+    [
+      "KTM",
+      "DMK"
+    ],
+    [
+      "KTM",
+      "DOH"
+    ],
+    [
+      "KTM",
+      "DXB"
+    ],
+    [
+      "KTM",
+      "HGH"
+    ],
+    [
+      "KTM",
       "HKG"
+    ],
+    [
+      "KTM",
+      "ICN"
+    ],
+    [
+      "KTM",
+      "KMG"
+    ],
+    [
+      "KTM",
+      "KUL"
+    ],
+    [
+      "KTM",
+      "LXA"
+    ],
+    [
+      "KTM",
+      "NRT"
+    ],
+    [
+      "KTM",
+      "PVG"
+    ],
+    [
+      "KTM",
+      "SIN"
+    ],
+    [
+      "KTM",
+      "SZX"
+    ],
+    [
+      "KTM",
+      "TFU"
+    ],
+    [
+      "KTM",
+      "VNS"
     ],
     [
       "KUA",
@@ -9480,6 +9646,10 @@
     [
       "KUL",
       "BTJ"
+    ],
+    [
+      "KUL",
+      "BWA"
     ],
     [
       "KUL",
@@ -9660,6 +9830,10 @@
     [
       "KUL",
       "KTI"
+    ],
+    [
+      "KUL",
+      "KTM"
     ],
     [
       "KUL",
@@ -9992,6 +10166,10 @@
     [
       "LXA",
       "HKG"
+    ],
+    [
+      "LXA",
+      "KTM"
     ],
     [
       "LYI",
@@ -10811,6 +10989,10 @@
     ],
     [
       "NRT",
+      "KTM"
+    ],
+    [
+      "NRT",
       "KUL"
     ],
     [
@@ -11274,6 +11456,10 @@
       "SIN"
     ],
     [
+      "PHH",
+      "DXB"
+    ],
+    [
       "PHX",
       "TPE"
     ],
@@ -11696,6 +11882,10 @@
     [
       "PVG",
       "KTI"
+    ],
+    [
+      "PVG",
+      "KTM"
     ],
     [
       "PVG",
@@ -12551,6 +12741,10 @@
     ],
     [
       "SIN",
+      "KTM"
+    ],
+    [
+      "SIN",
       "KUA"
     ],
     [
@@ -13147,6 +13341,10 @@
     ],
     [
       "SZX",
+      "KTM"
+    ],
+    [
+      "SZX",
       "KUL"
     ],
     [
@@ -13336,6 +13534,10 @@
     [
       "TFU",
       "KTI"
+    ],
+    [
+      "TFU",
+      "KTM"
     ],
     [
       "TFU",
@@ -14060,6 +14262,10 @@
     [
       "VNS",
       "DXB"
+    ],
+    [
+      "VNS",
+      "KTM"
     ],
     [
       "VTE",
@@ -18968,6 +19174,18 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "DEL",
+      "destination": "KTM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DEL",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "BKK",
       "destination": "DEL",
       "source": "data/sources/india_international_routes.json",
@@ -19844,6 +20062,18 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "BOM",
+      "destination": "KTM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BOM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "DXB",
       "destination": "LKO",
       "source": "data/sources/india_international_routes.json",
@@ -20212,6 +20442,18 @@
     {
       "origin": "SGN",
       "destination": "AMD",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BLR",
+      "destination": "KTM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BLR",
       "source": "data/sources/india_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -20876,6 +21118,18 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "CCU",
+      "destination": "KTM",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "CCU",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "AUH",
       "destination": "PNQ",
       "source": "data/sources/india_international_routes.json",
@@ -20920,6 +21174,18 @@
     {
       "origin": "RGN",
       "destination": "MAA",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "VNS",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "VNS",
+      "destination": "KTM",
       "source": "data/sources/india_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -24050,6 +24316,12 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "KTM",
+      "destination": "KUL",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "KUA",
       "destination": "SIN",
       "source": "data/sources/malaysia_international_routes.json",
@@ -24370,6 +24642,12 @@
     {
       "origin": "KUL",
       "destination": "KTI",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KTM",
       "source": "data/sources/malaysia_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -25565,6 +25843,294 @@
       "origin": "SIN",
       "destination": "RGN",
       "source": "data/sources/myanmar_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AUH",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BKK",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BLR",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BOM",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "BWA",
+      "destination": "KUL",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CAN",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "CCU",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DEL",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DMK",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DOH",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "PHH",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HGH",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "ICN",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KMG",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "AUH",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BKK",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BLR",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BOM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "CAN",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "CCU",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DEL",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DMK",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DOH",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DXB",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "HGH",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "HKG",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "ICN",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "KMG",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "KUL",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "LXA",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "NRT",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "PVG",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "SIN",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "SZX",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "TFU",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "VNS",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "BWA",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "LXA",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "NRT",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PHH",
+      "destination": "DXB",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "PVG",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SZX",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "TFU",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "VNS",
+      "destination": "KTM",
+      "source": "data/sources/nepal_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
@@ -27110,6 +27676,12 @@
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
     {
+      "origin": "KTM",
+      "destination": "SIN",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
       "origin": "KUA",
       "destination": "SIN",
       "source": "data/sources/singapore_international_routes.json",
@@ -27808,6 +28380,12 @@
     {
       "origin": "SIN",
       "destination": "KTI",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KTM",
       "source": "data/sources/singapore_international_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -33561,6 +34139,12 @@
     },
     {
       "origin": "AUH",
+      "destination": "KTM",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "AUH",
       "destination": "KUL",
       "source": "data/sources/gulf_flights_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -34107,6 +34691,12 @@
     },
     {
       "origin": "DOH",
+      "destination": "KTM",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DOH",
       "destination": "KUL",
       "source": "data/sources/gulf_flights_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -34468,6 +35058,12 @@
     {
       "origin": "DXB",
       "destination": "KTI",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "DXB",
+      "destination": "KTM",
       "source": "data/sources/gulf_flights_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
     },
@@ -34869,6 +35465,24 @@
     },
     {
       "origin": "KTI",
+      "destination": "DXB",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "AUH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DOH",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing published/probe candidate; not dated service evidence"
+    },
+    {
+      "origin": "KTM",
       "destination": "DXB",
       "source": "data/sources/gulf_flights_routes.json",
       "kind": "Existing published/probe candidate; not dated service evidence"
@@ -36418,6 +37032,10 @@
       "sha256": "2d86896b9f471e9ec4e0d44e3410c41c985e378c877b3580827a95de2d6cd765"
     },
     {
+      "path": "data/sources/nepal_international_routes.json",
+      "sha256": "67ecc8b67193b4145f533d1d82680cbadba64b8025669ee60e815b657b6574f9"
+    },
+    {
       "path": "data/sources/new_zealand_international_routes.json",
       "sha256": "b986348f3ec1c9add1af9bf826ae87546b073ceaefaf3be5bf64719272b8cfe6"
     },
@@ -36476,9 +37094,9 @@
       "bytes": 214277
     }
   },
-  "source_reviewed_date": "2026-10-25",
+  "source_reviewed_date": "2026-10-26",
   "route_hash_basis": "SHA256 of curated candidates and input manifest pins; not raw-page bytes",
   "unresolved_airports": [],
   "coverage_scope": "Existing inter-country candidates plus major East Asian gateways; regional gaps remain",
-  "route_source_sha256": "ed4dd90f5d7be9fd9e0a3e8554001bf0ecc5deb277c975a659b286eae1a11102"
+  "route_source_sha256": "6cb05f97ae4a4807c120a1224ae0c039228f20d81e6cb4c280d71f7cd1f73f0f"
 }

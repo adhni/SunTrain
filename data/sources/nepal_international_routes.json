@@ -1,0 +1,862 @@
+{
+  "country": "NP",
+  "scope": "international",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Kathmandu",
+  "currency": "USD",
+  "max_duration": 86400,
+  "airports": [
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BLR",
+      "icao": "VOBL",
+      "name": "Kempegowda International Airport Bengaluru (BLR)",
+      "municipality": "Bengaluru",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 13.1979,
+      "lon": 77.706299
+    },
+    {
+      "code": "BOM",
+      "icao": "VABB",
+      "name": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+      "municipality": "Mumbai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 19.088699,
+      "lon": 72.867897
+    },
+    {
+      "code": "BWA",
+      "icao": "VNBW",
+      "name": "Gautam Buddha International Airport (BWA)",
+      "municipality": "Siddharthanagar (Bhairahawa)",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.504636,
+      "lon": 83.410381,
+      "island_group": "Western trunk"
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CCU",
+      "icao": "VECC",
+      "name": "Netaji Subhash Chandra Bose International Airport (CCU)",
+      "municipality": "Kolkata",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 22.654012,
+      "lon": 88.44765
+    },
+    {
+      "code": "DEL",
+      "icao": "VIDP",
+      "name": "Indira Gandhi International Airport (DEL)",
+      "municipality": "New Delhi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 28.55563,
+      "lon": 77.09519
+    },
+    {
+      "code": "DMK",
+      "icao": "VTBD",
+      "name": "Don Mueang International Airport (DMK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.9126,
+      "lon": 100.607002
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "HGH",
+      "icao": "ZSHC",
+      "name": "Hangzhou Xiaoshan International Airport (HGH)",
+      "municipality": "Hangzhou",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.23609,
+      "lon": 120.428865
+    },
+    {
+      "code": "HKG",
+      "icao": "VHHH",
+      "name": "Hong Kong International Airport (HKG)",
+      "municipality": "Hong Kong",
+      "country": "HK",
+      "timezone": "Asia/Hong_Kong",
+      "mode": "flight",
+      "lat": 22.31184,
+      "lon": 113.914862
+    },
+    {
+      "code": "ICN",
+      "icao": "RKSI",
+      "name": "Incheon International Airport (ICN)",
+      "municipality": "Seoul",
+      "country": "KR",
+      "timezone": "Asia/Seoul",
+      "mode": "flight",
+      "lat": 37.469101,
+      "lon": 126.450996
+    },
+    {
+      "code": "KMG",
+      "icao": "ZPPP",
+      "name": "Kunming Changshui International Airport (KMG)",
+      "municipality": "Kunming",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 25.110313,
+      "lon": 102.936743
+    },
+    {
+      "code": "KTM",
+      "icao": "VNKT",
+      "name": "Tribhuvan International Airport (KTM)",
+      "municipality": "Kathmandu",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 27.6966,
+      "lon": 85.3591,
+      "island_group": "Central and eastern trunk"
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "LXA",
+      "icao": "ZULS",
+      "name": "Lhasa Gonggar International Airport (LXA)",
+      "municipality": "Shannan (Gonggar)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 29.298001,
+      "lon": 90.911951
+    },
+    {
+      "code": "NRT",
+      "icao": "RJAA",
+      "name": "Narita International Airport (NRT)",
+      "municipality": "Narita",
+      "country": "JP",
+      "timezone": "Asia/Tokyo",
+      "mode": "flight",
+      "lat": 35.76858,
+      "lon": 140.388714
+    },
+    {
+      "code": "PHH",
+      "icao": "VNPR",
+      "name": "Pokhara International Airport (PHH)",
+      "municipality": "Pokhara",
+      "country": "NP",
+      "timezone": "Asia/Kathmandu",
+      "mode": "flight",
+      "lat": 28.1838,
+      "lon": 84.0147,
+      "island_group": "Pokhara"
+    },
+    {
+      "code": "PVG",
+      "icao": "ZSPD",
+      "name": "Shanghai Pudong International Airport (PVG)",
+      "municipality": "Shanghai (Pudong)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 31.1434,
+      "lon": 121.805
+    },
+    {
+      "code": "SIN",
+      "icao": "WSSS",
+      "name": "Singapore Changi Airport (SIN)",
+      "municipality": "Singapore",
+      "country": "SG",
+      "timezone": "Asia/Singapore",
+      "mode": "flight",
+      "lat": 1.35019,
+      "lon": 103.994003
+    },
+    {
+      "code": "SZX",
+      "icao": "ZGSZ",
+      "name": "Shenzhen Bao'an International Airport (SZX)",
+      "municipality": "Shenzhen",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 22.639474,
+      "lon": 113.803262
+    },
+    {
+      "code": "TFU",
+      "icao": "ZUTF",
+      "name": "Chengdu Tianfu International Airport (TFU)",
+      "municipality": "Chengdu (Jianyang)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 30.31252,
+      "lon": 104.441284
+    },
+    {
+      "code": "VNS",
+      "icao": "VEBN",
+      "name": "Lal Bahadur Shastri International Airport (VNS)",
+      "municipality": "Varanasi",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 25.452171,
+      "lon": 82.862549
+    }
+  ],
+  "routes": [
+    [
+      "AUH",
+      "KTM"
+    ],
+    [
+      "BKK",
+      "KTM"
+    ],
+    [
+      "BLR",
+      "KTM"
+    ],
+    [
+      "BOM",
+      "KTM"
+    ],
+    [
+      "BWA",
+      "KUL"
+    ],
+    [
+      "CAN",
+      "KTM"
+    ],
+    [
+      "CCU",
+      "KTM"
+    ],
+    [
+      "DEL",
+      "KTM"
+    ],
+    [
+      "DMK",
+      "KTM"
+    ],
+    [
+      "DOH",
+      "KTM"
+    ],
+    [
+      "DXB",
+      "KTM"
+    ],
+    [
+      "DXB",
+      "PHH"
+    ],
+    [
+      "HGH",
+      "KTM"
+    ],
+    [
+      "HKG",
+      "KTM"
+    ],
+    [
+      "ICN",
+      "KTM"
+    ],
+    [
+      "KMG",
+      "KTM"
+    ],
+    [
+      "KTM",
+      "AUH"
+    ],
+    [
+      "KTM",
+      "BKK"
+    ],
+    [
+      "KTM",
+      "BLR"
+    ],
+    [
+      "KTM",
+      "BOM"
+    ],
+    [
+      "KTM",
+      "CAN"
+    ],
+    [
+      "KTM",
+      "CCU"
+    ],
+    [
+      "KTM",
+      "DEL"
+    ],
+    [
+      "KTM",
+      "DMK"
+    ],
+    [
+      "KTM",
+      "DOH"
+    ],
+    [
+      "KTM",
+      "DXB"
+    ],
+    [
+      "KTM",
+      "HGH"
+    ],
+    [
+      "KTM",
+      "HKG"
+    ],
+    [
+      "KTM",
+      "ICN"
+    ],
+    [
+      "KTM",
+      "KMG"
+    ],
+    [
+      "KTM",
+      "KUL"
+    ],
+    [
+      "KTM",
+      "LXA"
+    ],
+    [
+      "KTM",
+      "NRT"
+    ],
+    [
+      "KTM",
+      "PVG"
+    ],
+    [
+      "KTM",
+      "SIN"
+    ],
+    [
+      "KTM",
+      "SZX"
+    ],
+    [
+      "KTM",
+      "TFU"
+    ],
+    [
+      "KTM",
+      "VNS"
+    ],
+    [
+      "KUL",
+      "BWA"
+    ],
+    [
+      "KUL",
+      "KTM"
+    ],
+    [
+      "LXA",
+      "KTM"
+    ],
+    [
+      "NRT",
+      "KTM"
+    ],
+    [
+      "PHH",
+      "DXB"
+    ],
+    [
+      "PVG",
+      "KTM"
+    ],
+    [
+      "SIN",
+      "KTM"
+    ],
+    [
+      "SZX",
+      "KTM"
+    ],
+    [
+      "TFU",
+      "KTM"
+    ],
+    [
+      "VNS",
+      "KTM"
+    ]
+  ],
+  "evidence": [
+    {
+      "origin": "KTM",
+      "destination": "AUH",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DEL",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "TFU",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BLR",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "VNS",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "CCU",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "HKG",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "CAN",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "KMG",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DXB",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DOH",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "LXA",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "SZX",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "HGH",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "PVG",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BKK",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BOM",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "ICN",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "NRT",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DMK",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "CAAN winter 2026/27 sector candidate; both directions searched, dated nonstop capture required"
+    },
+    {
+      "origin": "BWA",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "kind": "Published WMKK–VNBW sector, reverse is a search candidate only"
+    },
+    {
+      "origin": "PHH",
+      "destination": "DXB",
+      "scope": "international",
+      "source": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/202/46c/6ad20246c8fd7187955340.pdf",
+      "kind": "Official OMDB–VNPR winter sector; PKR/VNPK is a different airport"
+    },
+    {
+      "origin": "HKG",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/hong_kong_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "HKG",
+      "scope": "international",
+      "source": "data/sources/hong_kong_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "DEL",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DEL",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "BOM",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BOM",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "BLR",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "BLR",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "CCU",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "CCU",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "VNS",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "VNS",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/india_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "KUL",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KUL",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/malaysia_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "SIN",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "SIN",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/singapore_international_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "AUH",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "DOH",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "DXB",
+      "destination": "KTM",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "AUH",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DOH",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    },
+    {
+      "origin": "KTM",
+      "destination": "DXB",
+      "scope": "international",
+      "source": "data/sources/gulf_flights_routes.json",
+      "kind": "Existing exact-airport candidate; cached identities never remapped"
+    }
+  ],
+  "input_manifests": [
+    {
+      "path": "data/sources/hong_kong_international_routes.json",
+      "sha256": "ffaf379c4ec1c022f00eb827aa49b406e6f10a64faeb387aad511fd9edbb5511"
+    },
+    {
+      "path": "data/sources/india_international_routes.json",
+      "sha256": "b419b11ec71ffc8f48a3745a69c6c3f2b8d0d6f04aabd73d0142333e54683a3d"
+    },
+    {
+      "path": "data/sources/malaysia_international_routes.json",
+      "sha256": "94f91fcc8380423ea350c6f77ba21af8536b14b0b81148b520b03200b092cd73"
+    },
+    {
+      "path": "data/sources/singapore_international_routes.json",
+      "sha256": "6d1d8a79eb7de4066ea448e1040c12d17661a418b76348df8db3c707d5aa2219"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    }
+  ],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+  "source_urls": {
+    "buddha": "https://www.buddhaair.com/detail/flight-information",
+    "yeti": "https://yetiairlines.com/",
+    "tara": "https://www.taraair.com/destination.jsp",
+    "sita": "https://www.sitaair.com.np/destination.jsp",
+    "winter": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+    "pokhara": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/202/46c/6ad20246c8fd7187955340.pdf"
+  },
+  "source_documents": {
+    "winter": {
+      "url": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+      "sha256": "f5d934d4dc29f296ea8ad94725d29ddccf8a111b757d8f0cf8c6445eb368c01d",
+      "bytes": 396345,
+      "reviewed": "2026-10-26"
+    },
+    "pokhara": {
+      "url": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/202/46c/6ad20246c8fd7187955340.pdf",
+      "sha256": "2116438ef40b10bd8ba3f903513b387bee3310a7d3f7c97f0000d5fc42331d4d",
+      "bytes": 95505,
+      "reviewed": "2026-10-26"
+    }
+  },
+  "source_reviewed_date": "2026-10-26",
+  "unresolved_airports": [],
+  "deferred_airports": [
+    "Rara/Talcha has no unique active IATA in the pinned catalogue; no invented code",
+    "Other small commuter/charter/scenic services"
+  ],
+  "coverage_scope": "Selected trunk and remote domestic routes; international limited to existing SunTrain flight locations",
+  "route_source_sha256": "42eda0eff827a8d9d42b114214265442cb23e089e198683c273f3e335d319233"
+}

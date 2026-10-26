@@ -1,0 +1,14 @@
+{
+  "winter": {
+    "url": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/204/625/6ad20462584b8147669061.pdf",
+    "sha256": "f5d934d4dc29f296ea8ad94725d29ddccf8a111b757d8f0cf8c6445eb368c01d",
+    "bytes": 396345,
+    "reviewed": "2026-10-26"
+  },
+  "pokhara": {
+    "url": "https://www.caanepal.gov.np/storage/app/uploads/public/6ad/202/46c/6ad20246c8fd7187955340.pdf",
+    "sha256": "2116438ef40b10bd8ba3f903513b387bee3310a7d3f7c97f0000d5fc42331d4d",
+    "bytes": 95505,
+    "reviewed": "2026-10-26"
+  }
+}

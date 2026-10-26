@@ -79,7 +79,10 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'JX': ('STARLUX Airlines', '#b5a276'), 'IT': ('Tigerair Taiwan', '#dfbe62'),
             'B7': ('UNI Air', '#8ebe7e'), 'AE': ('Mandarin Airlines', '#b39dc9'),
             'HX': ('Hong Kong Airlines', '#cf838b'), 'UO': ('HK Express', '#b197d6'),
-            'HB': ('Greater Bay Airlines', '#79b8ca')}
+            'HB': ('Greater Bay Airlines', '#79b8ca'),
+            'U4': ('Buddha Air', '#77b99d'), 'YT': ('Yeti Airlines', '#b3c97b'),
+            'N9': ('Shree Airlines', '#d9a56e'), 'RA': ('Nepal Airlines', '#d9818a'),
+            'H9': ('Himalaya Airlines', '#94a5d7')}
 
 
 def airline_style(carrier, name):

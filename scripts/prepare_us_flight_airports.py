@@ -1,5 +1,6 @@
-"""Pin the FAA's thirty busiest airports and probe every exact directional pair."""
+"""Build the US top 30, Canada top 5 and Mexico top 5 exact-airport catalogue."""
 import csv
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -19,6 +20,10 @@ ZONES = {
     'PHX': 'America/Phoenix', 'DTW': 'America/Detroit', 'HNL': 'Pacific/Honolulu',
     **dict.fromkeys('LAX LAS SFO SEA SAN'.split(), 'America/Los_Angeles'),
 }
+US_CODES=set(ZONES)
+EXTRA_PATH=ROOT/'data/sources/north_america_airport_selection.json'
+EXTRA=json.loads(EXTRA_PATH.read_text())
+ZONES.update({a['code']:a['timezone'] for a in EXTRA['airports']})
 
 
 def ranking(path):
@@ -35,7 +40,7 @@ def ranking(path):
             if values.get('A', '').isdigit() and 1 <= int(values['A']) <= 30:
                 ranked.append(dict(rank=int(values['A']), code=values['D'], enplanements_2025=int(values['I'])))
     ranked.sort(key=lambda a: a['rank'])
-    if [a['rank'] for a in ranked] != list(range(1, 31)) or {a['code'] for a in ranked} != set(ZONES):
+    if [a['rank'] for a in ranked] != list(range(1, 31)) or {a['code'] for a in ranked} != US_CODES:
         raise ValueError('Pinned FAA top-thirty ranking differs from the reviewed airports')
     return ranked
 
@@ -44,28 +49,30 @@ def prepare():
     cache = ROOT / '.cache/us-flights-audit'
     cache.mkdir(parents=True, exist_ok=True)
     source = pinned_download(FAA_URL, cache / 'faa-cy2025.xlsx', FAA_HASH)
-    ranked = ranking(source)
+    ranked = ranking(source)+EXTRA['airports']
     raw = pinned_download(AIRPORT_URL, ROOT / '.cache/australia-flights-audit/ourairports-airports.csv', AIRPORT_HASH)
     with raw.open(encoding='utf-8-sig') as stream:
         rows = list(csv.DictReader(stream))
     airports = []
     for item in ranked:
         code = item['code']
-        matches = [a for a in rows if a['iata_code'] == code and a['iso_country'] == 'US' and a['type'] != 'closed']
+        country=item.get('country','US')
+        matches = [a for a in rows if a['iata_code'] == code and a['iso_country'] == country and a['type'] != 'closed']
         if len(matches) != 1:
             raise ValueError(f'Unresolved exact airport: {code}')
         a = matches[0]
         airports.append(dict(code=code, icao=a.get('icao_code') or a['ident'], name=f"{a['name']} ({code})",
-            municipality=a['municipality'], country='US', timezone=ZONES[code], mode='flight',
-            lat=float(a['latitude_deg']), lon=float(a['longitude_deg']), **{k:v for k,v in item.items() if k != 'code'}))
-    manifest = dict(country='US', scope='domestic', start_date='2026-11-02', end_date='2026-11-02',
+            municipality=a['municipality'], country=country, timezone=ZONES[code], mode='flight',
+            lat=float(a['latitude_deg']), lon=float(a['longitude_deg']), **{k:v for k,v in item.items() if k not in {'code','country','timezone'}}))
+    manifest = dict(country='US', countries=['US','CA','MX'],scope='regional', start_date='2026-11-02', end_date='2026-11-02',
         timezone='America/New_York', currency='USD', max_duration=57600,
-        coverage_scope='Nonstop flights between the FAA CY2025 top thirty airports by total passenger boardings; all returned airlines. Other US airports excluded.',
+        coverage_scope='Nonstop flights between the US top 30, Canada top 5 and Mexico top 5 selected airports; domestic and cross-border, all returned airlines. Other airports excluded.',
         query_date_policy='origin_local_departure_day_only',
-        replay_note='US domestic flights between thirty selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. Captured USD fares and coverage are partial. Empty results mean not returned, not no service. Paths are illustrative.',
+        replay_note='North American domestic and cross-border flights between forty selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. All captured fares use USD, including Canadian and Mexican domestic flights. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.',
         airport_source_url=AIRPORT_URL, airport_source_sha256=AIRPORT_HASH,
         route_source_url=FAA_URL, route_source_sha256=FAA_HASH,
-        route_basis='All 870 directional pairs among the top thirty; candidates, not evidence of service. Ranking includes domestic and international passenger boardings.',
+        route_basis='All 1560 directional pairs between 40 selected exact airports; candidates, not evidence of service. US ranks use total boardings, Canadian and Mexican ranks use their published passenger metrics.',
+        additional_selection_source='data/sources/north_america_airport_selection.json',additional_selection_sha256=hashlib.sha256(EXTRA_PATH.read_bytes()).hexdigest(),
         airports=airports, routes=sorted((a,b) for a in ZONES for b in ZONES if a != b), unresolved_airports=[])
     output = ROOT / 'data/sources/united_states_flights_routes.json'
     output.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + '\n')

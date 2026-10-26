@@ -18,7 +18,7 @@ CITIES = {'australia_flights':('AU','Australia/Melbourne'),'indonesia_flights':(
           'india_flights':('IN','Asia/Kolkata'),'china_flights':('CN','Asia/Shanghai'),
           'japan_flights':('JP','Asia/Tokyo'),'south_korea_flights':('KR','Asia/Seoul'),
           'gulf_flights':(None,'Asia/Dubai'),'thailand_flights':('TH','Asia/Bangkok'),'philippines_flights':('PH','Asia/Manila'),'vietnam_flights':('VN','Asia/Ho_Chi_Minh')}
-COUNTRIES.update({c:p['name'] for c,p in PROFILES.items() if not p.get('domestic_only')})
+COUNTRIES.update({c:p['name'] for c,p in PROFILES.items() if not p.get('standalone')})
 CORE_COUNTRIES=set(COUNTRIES)
 # These endpoints are eligible only on a Taiwan/Hong Kong route. Adding them
 # must not silently collect every older country's worldwide route catalogue.
@@ -28,7 +28,7 @@ COUNTRIES.update({'AT':'Austria','BD':'Bangladesh','BE':'Belgium','CA':'Canada',
  'MO':'Macau','MP':'Northern Mariana Islands','MV':'Maldives','NL':'Netherlands','NP':'Nepal',
  'PG':'Papua New Guinea','PW':'Palau','RU':'Russia','SA':'Saudi Arabia','TR':'Turkey',
  'US':'United States','ZA':'South Africa'})
-CITIES.update({city:(c,p['zone']) for city,(c,p) in PROFILE_CITIES.items() if not p.get('domestic_only')})
+CITIES.update({city:(c,p['zone']) for city,(c,p) in PROFILE_CITIES.items() if not p.get('standalone')})
 HUBS = {'DXB','AUH','DOH'}
 # Earlier Indonesian and Malaysian snapshots stored OurAirports' stable `ident`; newer
 # catalogues use the same row's `icao_code`. These are exact pinned row aliases,
@@ -157,7 +157,7 @@ def load_archive():
             raise ValueError('Philippine airports require Asia/Manila')
         if any(x['country']=='VN' and x['timezone']!='Asia/Ho_Chi_Minh' for x in (a,b)):
             raise ValueError('Vietnamese airports require Asia/Ho_Chi_Minh')
-        if any(x['country'] in PROFILES and not PROFILES[x['country']].get('domestic_only') and x['timezone']!=PROFILES[x['country']]['zone'] for x in (a,b)):
+        if any(x['country'] in PROFILES and not PROFILES[x['country']].get('standalone') and x['timezone']!=PROFILES[x['country']]['zone'] for x in (a,b)):
             raise ValueError('Country airports require their explicit national IANA zone')
         if f['origin'] in RETIRED_AIRPORTS or f['destination'] in RETIRED_AIRPORTS:raise ValueError('Retired Cambodian commercial endpoint')
         price=f.get('price')

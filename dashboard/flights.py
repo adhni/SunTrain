@@ -33,6 +33,11 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'AS': ('Alaska Airlines', '#74bbc0'),
             'SY': ('Sun Country Airlines', '#d99763'), 'G4': ('Allegiant Air', '#9b91cf'),
             'MX': ('Breeze Airways', '#6cc6d6'),
+            'AC': ('Air Canada', '#dc747c'), 'WS': ('WestJet', '#63b5aa'),
+            'TS': ('Air Transat', '#6b9ed5'), 'PD': ('Porter Airlines', '#b5a282'),
+            'F8': ('Flair Airlines', '#9bbb5c'), 'AM': ('Aeromexico', '#8a9dd2'),
+            'Y4': ('Volaris', '#b88ad1'), 'VB': ('Viva', '#7fbe78'),
+            '4N': ('Air North', '#be9b70'),
             'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
             'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9'), 'AK': ('AirAsia', '#e95055'),
             'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa'),
@@ -319,7 +324,7 @@ def replay_day(business_date, city='australia_flights'):
     if city in PROFILE_CITIES and PROFILE_CITIES[city][1].get('origin_local_day'):
         # All 2 November local departures, including the West Coast's late
         # flights and their overnight arrivals, share this bounded replay.
-        ends=[int(datetime.combine(day+timedelta(days=1),time(),ZoneInfo(a['timezone'])).timestamp()) for a in reference['airports']]
+        ends=[int(datetime.combine(day+timedelta(days=1),time(),ZoneInfo(a.get('replay_timezone',a['timezone']))).timestamp()) for a in reference['airports']]
         end=max([end,*ends,*[f['arrival']+1 for f in reference['flights']]])
     airports = reference['airports']
     indices = {a['code']: i for i, a in enumerate(airports)}

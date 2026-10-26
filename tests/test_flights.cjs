@@ -6,6 +6,13 @@ const {summarize} = require('../assets/02_city_overview.js');
 const {bearing} = require('../assets/02_flights.js');
 const {priceLabel} = require('../assets/02_flights.js');
 
+test('Frozen Canadian replay clocks retain November 2026 offsets on older devices',()=>{
+ const at=Date.parse('2026-11-02T06:30:00Z')/1000;
+ assert.match(formatCallTime(at,'Etc/GMT+7'),/1 Nov.*23:30 GMT-7/);
+ assert.match(formatCallTime(at,'Etc/GMT+6'),/2 Nov.*00:30 GMT-6/);
+ assert.match(formatCallTime(at,'America/Toronto'),/2 Nov.*01:30 GMT-5/);
+});
+
 test('Thai flight boards and captured fares use ICT UTC+7 independently of WIB',()=>{
  const {captureTime}=require('../assets/02_flights.js');
  const at=Date.parse('2026-11-01T17:00:00Z')/1000;

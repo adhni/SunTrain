@@ -172,7 +172,8 @@
         render() {
             const replay = this.replay;
             const flights = replay.day.replay_kind === 'flights', arrivals = flights && this.event === 'arrival';
-            this.timezone = flights && this.station !== null ? replay.day.stations[this.station].timezone : replay.day.timezone;
+            const airport=flights && this.station !== null ? replay.day.stations[this.station] : null;
+            this.timezone = airport ? airport.replay_timezone || airport.timezone : replay.day.timezone;
             this.host.replaceChildren(); this.signature = null;
             this.title = node("h3", this.station === null ? (flights ? 'Airports' : "Station departures") : replay.day.stations[this.station].name);
             this.title.tabIndex = -1; this.title.id = "departure-title";

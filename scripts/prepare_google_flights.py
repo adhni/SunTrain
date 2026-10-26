@@ -133,6 +133,8 @@ def country_config(country='AU', scope='domestic'):
         if p.get('origin_local_day'):
             config['capture_wait_until']='domcontentloaded'
             config['max_duration']=manifest['max_duration']
+            config['scope']=manifest['scope']
+            config['zones']={a['code']:a.get('replay_timezone',a['timezone']) for a in manifest['airports']}
         return config
     if country == 'AU' and scope == 'domestic':
         return dict(country='AU', zones=ZONES, timezone='Australia/Melbourne', end_date=None, manifest=None)
@@ -451,6 +453,9 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
                 metadata['query_date_policy']='origin_local_departure_day_only'
                 metadata['priced_flights']=sum('price' in f for f in reference['flights'])
                 metadata['airlines']=sorted({f['airline'] for f in reference['flights']})
+                if len(config['manifest'].get('countries',[]))>1:
+                    metadata.pop('country',None)
+                    metadata.update(profile='north_america',countries=config['manifest']['countries'],scope='regional',additional_selection_sha256=config['manifest']['additional_selection_sha256'])
         if config['country']=='VN':
             metadata['scope']='domestic'
             metadata['coverage_scope']=config['manifest']['coverage_scope']

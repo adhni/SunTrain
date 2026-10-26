@@ -1022,7 +1022,7 @@
                 for (const [index, label, column] of [[0, 'Departure', 2], [1, 'Arrival', 1]]) {
                     const airport = this.day.stations[service.stops[index][0]], row = node('li', undefined, 'replay-journey-stop');
                     row.append(node('span', label, 'replay-journey-label'), node('strong', airport.name),
-                        node('span', root.suntrainDepartures.formatCallTime(service.stops[index][column], airport.timezone), 'replay-journey-time'));
+                        node('span', root.suntrainDepartures.formatCallTime(service.stops[index][column], airport.replay_timezone || airport.timezone), 'replay-journey-time'));
                     list.append(row);
                 }
                 host.replaceChildren(node('div', text, 'replay-journey-state'), list);

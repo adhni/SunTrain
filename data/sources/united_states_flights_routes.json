@@ -1,19 +1,26 @@
 {
   "country": "US",
-  "scope": "domestic",
+  "countries": [
+    "US",
+    "CA",
+    "MX"
+  ],
+  "scope": "regional",
   "start_date": "2026-11-02",
   "end_date": "2026-11-02",
   "timezone": "America/New_York",
   "currency": "USD",
   "max_duration": 57600,
-  "coverage_scope": "Nonstop flights between the FAA CY2025 top thirty airports by total passenger boardings; all returned airlines. Other US airports excluded.",
+  "coverage_scope": "Nonstop flights between the US top 30, Canada top 5 and Mexico top 5 selected airports; domestic and cross-border, all returned airlines. Other airports excluded.",
   "query_date_policy": "origin_local_departure_day_only",
-  "replay_note": "US domestic flights between thirty selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. Captured USD fares and coverage are partial. Empty results mean not returned, not no service. Paths are illustrative.",
+  "replay_note": "North American domestic and cross-border flights between forty selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. All captured fares use USD, including Canadian and Mexican domestic flights. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.",
   "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
   "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
   "route_source_url": "https://www.faa.gov/airports/planning_capacity/passenger_allcargo_stats/passenger/arp-cy2025-commercial-service-enplanements.xlsx",
   "route_source_sha256": "91c8d4457e9558b8bcb65c2a27cd9b95062e3c7b443e58e9714ba77942777b40",
-  "route_basis": "All 870 directional pairs among the top thirty; candidates, not evidence of service. Ranking includes domestic and international passenger boardings.",
+  "route_basis": "All 1560 directional pairs between 40 selected exact airports; candidates, not evidence of service. US ranks use total boardings, Canadian and Mexican ranks use their published passenger metrics.",
+  "additional_selection_source": "data/sources/north_america_airport_selection.json",
+  "additional_selection_sha256": "ad83dada03dc62044a4650b61a6f7743534e1201cdd116938402faf675836bd4",
   "airports": [
     {
       "code": "ATL",
@@ -404,6 +411,149 @@
       "lon": -157.92567,
       "rank": 30,
       "enplanements_2025": 10430353
+    },
+    {
+      "code": "YYZ",
+      "icao": "CYYZ",
+      "name": "Toronto Pearson International Airport (YYZ)",
+      "municipality": "Toronto",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "mode": "flight",
+      "lat": 43.675935,
+      "lon": -79.629421,
+      "rank": 1,
+      "ranking_year": 2024,
+      "passenger_statistic": 45.6
+    },
+    {
+      "code": "YVR",
+      "icao": "CYVR",
+      "name": "Vancouver International Airport (YVR)",
+      "municipality": "Vancouver",
+      "country": "CA",
+      "timezone": "America/Vancouver",
+      "mode": "flight",
+      "lat": 49.193901,
+      "lon": -123.183998,
+      "rank": 2,
+      "ranking_year": 2024,
+      "passenger_statistic": 25.3,
+      "replay_timezone": "Etc/GMT+7"
+    },
+    {
+      "code": "YUL",
+      "icao": "CYUL",
+      "name": "Montreal / Pierre Elliott Trudeau International Airport (YUL)",
+      "municipality": "Montréal",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "mode": "flight",
+      "lat": 45.467837,
+      "lon": -73.742294,
+      "rank": 3,
+      "ranking_year": 2024,
+      "passenger_statistic": 21.5
+    },
+    {
+      "code": "YYC",
+      "icao": "CYYC",
+      "name": "Calgary International Airport (YYC)",
+      "municipality": "Calgary",
+      "country": "CA",
+      "timezone": "America/Edmonton",
+      "mode": "flight",
+      "lat": 51.118822,
+      "lon": -114.009933,
+      "rank": 4,
+      "ranking_year": 2024,
+      "passenger_statistic": 18.4,
+      "replay_timezone": "Etc/GMT+6"
+    },
+    {
+      "code": "YEG",
+      "icao": "CYEG",
+      "name": "Edmonton International Airport (YEG)",
+      "municipality": "Edmonton",
+      "country": "CA",
+      "timezone": "America/Edmonton",
+      "mode": "flight",
+      "lat": 53.3097,
+      "lon": -113.580002,
+      "rank": 5,
+      "ranking_year": 2024,
+      "passenger_statistic": 7.5,
+      "replay_timezone": "Etc/GMT+6"
+    },
+    {
+      "code": "MEX",
+      "icao": "MMMX",
+      "name": "Mexico City Benito Juárez International Airport (MEX)",
+      "municipality": "Mexico City",
+      "country": "MX",
+      "timezone": "America/Mexico_City",
+      "mode": "flight",
+      "lat": 19.435822,
+      "lon": -99.07033,
+      "rank": 1,
+      "ranking_year": 2025,
+      "passenger_statistic": 44605.8
+    },
+    {
+      "code": "CUN",
+      "icao": "MMUN",
+      "name": "Cancún International Airport (CUN)",
+      "municipality": "Cancún",
+      "country": "MX",
+      "timezone": "America/Cancun",
+      "mode": "flight",
+      "lat": 21.040817,
+      "lon": -86.87347,
+      "rank": 2,
+      "ranking_year": 2025,
+      "passenger_statistic": 29478.7
+    },
+    {
+      "code": "GDL",
+      "icao": "MMGL",
+      "name": "Guadalajara International Airport (GDL)",
+      "municipality": "Guadalajara",
+      "country": "MX",
+      "timezone": "America/Mexico_City",
+      "mode": "flight",
+      "lat": 20.523342,
+      "lon": -103.310108,
+      "rank": 3,
+      "ranking_year": 2025,
+      "passenger_statistic": 18773.7
+    },
+    {
+      "code": "MTY",
+      "icao": "MMMY",
+      "name": "Monterrey International Airport (MTY)",
+      "municipality": "Monterrey",
+      "country": "MX",
+      "timezone": "America/Monterrey",
+      "mode": "flight",
+      "lat": 25.778521,
+      "lon": -100.106989,
+      "rank": 4,
+      "ranking_year": 2025,
+      "passenger_statistic": 15777.1
+    },
+    {
+      "code": "TIJ",
+      "icao": "MMTJ",
+      "name": "General Abelardo L. Rodriguez International Airport (TIJ)",
+      "municipality": "Tijuana",
+      "country": "MX",
+      "timezone": "America/Tijuana",
+      "mode": "flight",
+      "lat": 32.541043,
+      "lon": -116.969976,
+      "rank": 5,
+      "ranking_year": 2025,
+      "passenger_statistic": 12765.8
     }
   ],
   "routes": [
@@ -429,6 +579,10 @@
     ],
     [
       "ATL",
+      "CUN"
+    ],
+    [
+      "ATL",
       "DCA"
     ],
     [
@@ -453,6 +607,10 @@
     ],
     [
       "ATL",
+      "GDL"
+    ],
+    [
+      "ATL",
       "HNL"
     ],
     [
@@ -485,6 +643,10 @@
     ],
     [
       "ATL",
+      "MEX"
+    ],
+    [
+      "ATL",
       "MIA"
     ],
     [
@@ -493,6 +655,10 @@
     ],
     [
       "ATL",
+      "MTY"
+    ],
+    [
+      "ATL",
       "ORD"
     ],
     [
@@ -521,7 +687,31 @@
     ],
     [
       "ATL",
+      "TIJ"
+    ],
+    [
+      "ATL",
       "TPA"
+    ],
+    [
+      "ATL",
+      "YEG"
+    ],
+    [
+      "ATL",
+      "YUL"
+    ],
+    [
+      "ATL",
+      "YVR"
+    ],
+    [
+      "ATL",
+      "YYC"
+    ],
+    [
+      "ATL",
+      "YYZ"
     ],
     [
       "AUS",
@@ -542,6 +732,10 @@
     [
       "AUS",
       "CLT"
+    ],
+    [
+      "AUS",
+      "CUN"
     ],
     [
       "AUS",
@@ -566,6 +760,10 @@
     [
       "AUS",
       "FLL"
+    ],
+    [
+      "AUS",
+      "GDL"
     ],
     [
       "AUS",
@@ -601,6 +799,10 @@
     ],
     [
       "AUS",
+      "MEX"
+    ],
+    [
+      "AUS",
       "MIA"
     ],
     [
@@ -609,6 +811,10 @@
     ],
     [
       "AUS",
+      "MTY"
+    ],
+    [
+      "AUS",
       "ORD"
     ],
     [
@@ -637,7 +843,31 @@
     ],
     [
       "AUS",
+      "TIJ"
+    ],
+    [
+      "AUS",
       "TPA"
+    ],
+    [
+      "AUS",
+      "YEG"
+    ],
+    [
+      "AUS",
+      "YUL"
+    ],
+    [
+      "AUS",
+      "YVR"
+    ],
+    [
+      "AUS",
+      "YYC"
+    ],
+    [
+      "AUS",
+      "YYZ"
     ],
     [
       "BNA",
@@ -658,6 +888,10 @@
     [
       "BNA",
       "CLT"
+    ],
+    [
+      "BNA",
+      "CUN"
     ],
     [
       "BNA",
@@ -682,6 +916,10 @@
     [
       "BNA",
       "FLL"
+    ],
+    [
+      "BNA",
+      "GDL"
     ],
     [
       "BNA",
@@ -717,6 +955,10 @@
     ],
     [
       "BNA",
+      "MEX"
+    ],
+    [
+      "BNA",
       "MIA"
     ],
     [
@@ -725,6 +967,10 @@
     ],
     [
       "BNA",
+      "MTY"
+    ],
+    [
+      "BNA",
       "ORD"
     ],
     [
@@ -753,7 +999,31 @@
     ],
     [
       "BNA",
+      "TIJ"
+    ],
+    [
+      "BNA",
       "TPA"
+    ],
+    [
+      "BNA",
+      "YEG"
+    ],
+    [
+      "BNA",
+      "YUL"
+    ],
+    [
+      "BNA",
+      "YVR"
+    ],
+    [
+      "BNA",
+      "YYC"
+    ],
+    [
+      "BNA",
+      "YYZ"
     ],
     [
       "BOS",
@@ -774,6 +1044,10 @@
     [
       "BOS",
       "CLT"
+    ],
+    [
+      "BOS",
+      "CUN"
     ],
     [
       "BOS",
@@ -798,6 +1072,10 @@
     [
       "BOS",
       "FLL"
+    ],
+    [
+      "BOS",
+      "GDL"
     ],
     [
       "BOS",
@@ -833,6 +1111,10 @@
     ],
     [
       "BOS",
+      "MEX"
+    ],
+    [
+      "BOS",
       "MIA"
     ],
     [
@@ -841,6 +1123,10 @@
     ],
     [
       "BOS",
+      "MTY"
+    ],
+    [
+      "BOS",
       "ORD"
     ],
     [
@@ -869,7 +1155,31 @@
     ],
     [
       "BOS",
+      "TIJ"
+    ],
+    [
+      "BOS",
       "TPA"
+    ],
+    [
+      "BOS",
+      "YEG"
+    ],
+    [
+      "BOS",
+      "YUL"
+    ],
+    [
+      "BOS",
+      "YVR"
+    ],
+    [
+      "BOS",
+      "YYC"
+    ],
+    [
+      "BOS",
+      "YYZ"
     ],
     [
       "BWI",
@@ -890,6 +1200,10 @@
     [
       "BWI",
       "CLT"
+    ],
+    [
+      "BWI",
+      "CUN"
     ],
     [
       "BWI",
@@ -914,6 +1228,10 @@
     [
       "BWI",
       "FLL"
+    ],
+    [
+      "BWI",
+      "GDL"
     ],
     [
       "BWI",
@@ -949,6 +1267,10 @@
     ],
     [
       "BWI",
+      "MEX"
+    ],
+    [
+      "BWI",
       "MIA"
     ],
     [
@@ -957,6 +1279,10 @@
     ],
     [
       "BWI",
+      "MTY"
+    ],
+    [
+      "BWI",
       "ORD"
     ],
     [
@@ -985,7 +1311,31 @@
     ],
     [
       "BWI",
+      "TIJ"
+    ],
+    [
+      "BWI",
       "TPA"
+    ],
+    [
+      "BWI",
+      "YEG"
+    ],
+    [
+      "BWI",
+      "YUL"
+    ],
+    [
+      "BWI",
+      "YVR"
+    ],
+    [
+      "BWI",
+      "YYC"
+    ],
+    [
+      "BWI",
+      "YYZ"
     ],
     [
       "CLT",
@@ -1006,6 +1356,10 @@
     [
       "CLT",
       "BWI"
+    ],
+    [
+      "CLT",
+      "CUN"
     ],
     [
       "CLT",
@@ -1030,6 +1384,10 @@
     [
       "CLT",
       "FLL"
+    ],
+    [
+      "CLT",
+      "GDL"
     ],
     [
       "CLT",
@@ -1065,6 +1423,10 @@
     ],
     [
       "CLT",
+      "MEX"
+    ],
+    [
+      "CLT",
       "MIA"
     ],
     [
@@ -1073,6 +1435,10 @@
     ],
     [
       "CLT",
+      "MTY"
+    ],
+    [
+      "CLT",
       "ORD"
     ],
     [
@@ -1101,7 +1467,187 @@
     ],
     [
       "CLT",
+      "TIJ"
+    ],
+    [
+      "CLT",
       "TPA"
+    ],
+    [
+      "CLT",
+      "YEG"
+    ],
+    [
+      "CLT",
+      "YUL"
+    ],
+    [
+      "CLT",
+      "YVR"
+    ],
+    [
+      "CLT",
+      "YYC"
+    ],
+    [
+      "CLT",
+      "YYZ"
+    ],
+    [
+      "CUN",
+      "ATL"
+    ],
+    [
+      "CUN",
+      "AUS"
+    ],
+    [
+      "CUN",
+      "BNA"
+    ],
+    [
+      "CUN",
+      "BOS"
+    ],
+    [
+      "CUN",
+      "BWI"
+    ],
+    [
+      "CUN",
+      "CLT"
+    ],
+    [
+      "CUN",
+      "DCA"
+    ],
+    [
+      "CUN",
+      "DEN"
+    ],
+    [
+      "CUN",
+      "DFW"
+    ],
+    [
+      "CUN",
+      "DTW"
+    ],
+    [
+      "CUN",
+      "EWR"
+    ],
+    [
+      "CUN",
+      "FLL"
+    ],
+    [
+      "CUN",
+      "GDL"
+    ],
+    [
+      "CUN",
+      "HNL"
+    ],
+    [
+      "CUN",
+      "IAD"
+    ],
+    [
+      "CUN",
+      "IAH"
+    ],
+    [
+      "CUN",
+      "JFK"
+    ],
+    [
+      "CUN",
+      "LAS"
+    ],
+    [
+      "CUN",
+      "LAX"
+    ],
+    [
+      "CUN",
+      "LGA"
+    ],
+    [
+      "CUN",
+      "MCO"
+    ],
+    [
+      "CUN",
+      "MEX"
+    ],
+    [
+      "CUN",
+      "MIA"
+    ],
+    [
+      "CUN",
+      "MSP"
+    ],
+    [
+      "CUN",
+      "MTY"
+    ],
+    [
+      "CUN",
+      "ORD"
+    ],
+    [
+      "CUN",
+      "PHL"
+    ],
+    [
+      "CUN",
+      "PHX"
+    ],
+    [
+      "CUN",
+      "SAN"
+    ],
+    [
+      "CUN",
+      "SEA"
+    ],
+    [
+      "CUN",
+      "SFO"
+    ],
+    [
+      "CUN",
+      "SLC"
+    ],
+    [
+      "CUN",
+      "TIJ"
+    ],
+    [
+      "CUN",
+      "TPA"
+    ],
+    [
+      "CUN",
+      "YEG"
+    ],
+    [
+      "CUN",
+      "YUL"
+    ],
+    [
+      "CUN",
+      "YVR"
+    ],
+    [
+      "CUN",
+      "YYC"
+    ],
+    [
+      "CUN",
+      "YYZ"
     ],
     [
       "DCA",
@@ -1129,6 +1675,10 @@
     ],
     [
       "DCA",
+      "CUN"
+    ],
+    [
+      "DCA",
       "DEN"
     ],
     [
@@ -1146,6 +1696,10 @@
     [
       "DCA",
       "FLL"
+    ],
+    [
+      "DCA",
+      "GDL"
     ],
     [
       "DCA",
@@ -1181,6 +1735,10 @@
     ],
     [
       "DCA",
+      "MEX"
+    ],
+    [
+      "DCA",
       "MIA"
     ],
     [
@@ -1189,6 +1747,10 @@
     ],
     [
       "DCA",
+      "MTY"
+    ],
+    [
+      "DCA",
       "ORD"
     ],
     [
@@ -1217,7 +1779,31 @@
     ],
     [
       "DCA",
+      "TIJ"
+    ],
+    [
+      "DCA",
       "TPA"
+    ],
+    [
+      "DCA",
+      "YEG"
+    ],
+    [
+      "DCA",
+      "YUL"
+    ],
+    [
+      "DCA",
+      "YVR"
+    ],
+    [
+      "DCA",
+      "YYC"
+    ],
+    [
+      "DCA",
+      "YYZ"
     ],
     [
       "DEN",
@@ -1245,6 +1831,10 @@
     ],
     [
       "DEN",
+      "CUN"
+    ],
+    [
+      "DEN",
       "DCA"
     ],
     [
@@ -1262,6 +1852,10 @@
     [
       "DEN",
       "FLL"
+    ],
+    [
+      "DEN",
+      "GDL"
     ],
     [
       "DEN",
@@ -1297,6 +1891,10 @@
     ],
     [
       "DEN",
+      "MEX"
+    ],
+    [
+      "DEN",
       "MIA"
     ],
     [
@@ -1305,6 +1903,10 @@
     ],
     [
       "DEN",
+      "MTY"
+    ],
+    [
+      "DEN",
       "ORD"
     ],
     [
@@ -1333,7 +1935,31 @@
     ],
     [
       "DEN",
+      "TIJ"
+    ],
+    [
+      "DEN",
       "TPA"
+    ],
+    [
+      "DEN",
+      "YEG"
+    ],
+    [
+      "DEN",
+      "YUL"
+    ],
+    [
+      "DEN",
+      "YVR"
+    ],
+    [
+      "DEN",
+      "YYC"
+    ],
+    [
+      "DEN",
+      "YYZ"
     ],
     [
       "DFW",
@@ -1361,6 +1987,10 @@
     ],
     [
       "DFW",
+      "CUN"
+    ],
+    [
+      "DFW",
       "DCA"
     ],
     [
@@ -1378,6 +2008,10 @@
     [
       "DFW",
       "FLL"
+    ],
+    [
+      "DFW",
+      "GDL"
     ],
     [
       "DFW",
@@ -1413,6 +2047,10 @@
     ],
     [
       "DFW",
+      "MEX"
+    ],
+    [
+      "DFW",
       "MIA"
     ],
     [
@@ -1421,6 +2059,10 @@
     ],
     [
       "DFW",
+      "MTY"
+    ],
+    [
+      "DFW",
       "ORD"
     ],
     [
@@ -1449,7 +2091,31 @@
     ],
     [
       "DFW",
+      "TIJ"
+    ],
+    [
+      "DFW",
       "TPA"
+    ],
+    [
+      "DFW",
+      "YEG"
+    ],
+    [
+      "DFW",
+      "YUL"
+    ],
+    [
+      "DFW",
+      "YVR"
+    ],
+    [
+      "DFW",
+      "YYC"
+    ],
+    [
+      "DFW",
+      "YYZ"
     ],
     [
       "DTW",
@@ -1477,6 +2143,10 @@
     ],
     [
       "DTW",
+      "CUN"
+    ],
+    [
+      "DTW",
       "DCA"
     ],
     [
@@ -1494,6 +2164,10 @@
     [
       "DTW",
       "FLL"
+    ],
+    [
+      "DTW",
+      "GDL"
     ],
     [
       "DTW",
@@ -1529,6 +2203,10 @@
     ],
     [
       "DTW",
+      "MEX"
+    ],
+    [
+      "DTW",
       "MIA"
     ],
     [
@@ -1537,6 +2215,10 @@
     ],
     [
       "DTW",
+      "MTY"
+    ],
+    [
+      "DTW",
       "ORD"
     ],
     [
@@ -1565,7 +2247,31 @@
     ],
     [
       "DTW",
+      "TIJ"
+    ],
+    [
+      "DTW",
       "TPA"
+    ],
+    [
+      "DTW",
+      "YEG"
+    ],
+    [
+      "DTW",
+      "YUL"
+    ],
+    [
+      "DTW",
+      "YVR"
+    ],
+    [
+      "DTW",
+      "YYC"
+    ],
+    [
+      "DTW",
+      "YYZ"
     ],
     [
       "EWR",
@@ -1593,6 +2299,10 @@
     ],
     [
       "EWR",
+      "CUN"
+    ],
+    [
+      "EWR",
       "DCA"
     ],
     [
@@ -1610,6 +2320,10 @@
     [
       "EWR",
       "FLL"
+    ],
+    [
+      "EWR",
+      "GDL"
     ],
     [
       "EWR",
@@ -1645,6 +2359,10 @@
     ],
     [
       "EWR",
+      "MEX"
+    ],
+    [
+      "EWR",
       "MIA"
     ],
     [
@@ -1653,6 +2371,10 @@
     ],
     [
       "EWR",
+      "MTY"
+    ],
+    [
+      "EWR",
       "ORD"
     ],
     [
@@ -1681,7 +2403,31 @@
     ],
     [
       "EWR",
+      "TIJ"
+    ],
+    [
+      "EWR",
       "TPA"
+    ],
+    [
+      "EWR",
+      "YEG"
+    ],
+    [
+      "EWR",
+      "YUL"
+    ],
+    [
+      "EWR",
+      "YVR"
+    ],
+    [
+      "EWR",
+      "YYC"
+    ],
+    [
+      "EWR",
+      "YYZ"
     ],
     [
       "FLL",
@@ -1709,6 +2455,10 @@
     ],
     [
       "FLL",
+      "CUN"
+    ],
+    [
+      "FLL",
       "DCA"
     ],
     [
@@ -1726,6 +2476,10 @@
     [
       "FLL",
       "EWR"
+    ],
+    [
+      "FLL",
+      "GDL"
     ],
     [
       "FLL",
@@ -1761,6 +2515,10 @@
     ],
     [
       "FLL",
+      "MEX"
+    ],
+    [
+      "FLL",
       "MIA"
     ],
     [
@@ -1769,6 +2527,10 @@
     ],
     [
       "FLL",
+      "MTY"
+    ],
+    [
+      "FLL",
       "ORD"
     ],
     [
@@ -1797,7 +2559,187 @@
     ],
     [
       "FLL",
+      "TIJ"
+    ],
+    [
+      "FLL",
       "TPA"
+    ],
+    [
+      "FLL",
+      "YEG"
+    ],
+    [
+      "FLL",
+      "YUL"
+    ],
+    [
+      "FLL",
+      "YVR"
+    ],
+    [
+      "FLL",
+      "YYC"
+    ],
+    [
+      "FLL",
+      "YYZ"
+    ],
+    [
+      "GDL",
+      "ATL"
+    ],
+    [
+      "GDL",
+      "AUS"
+    ],
+    [
+      "GDL",
+      "BNA"
+    ],
+    [
+      "GDL",
+      "BOS"
+    ],
+    [
+      "GDL",
+      "BWI"
+    ],
+    [
+      "GDL",
+      "CLT"
+    ],
+    [
+      "GDL",
+      "CUN"
+    ],
+    [
+      "GDL",
+      "DCA"
+    ],
+    [
+      "GDL",
+      "DEN"
+    ],
+    [
+      "GDL",
+      "DFW"
+    ],
+    [
+      "GDL",
+      "DTW"
+    ],
+    [
+      "GDL",
+      "EWR"
+    ],
+    [
+      "GDL",
+      "FLL"
+    ],
+    [
+      "GDL",
+      "HNL"
+    ],
+    [
+      "GDL",
+      "IAD"
+    ],
+    [
+      "GDL",
+      "IAH"
+    ],
+    [
+      "GDL",
+      "JFK"
+    ],
+    [
+      "GDL",
+      "LAS"
+    ],
+    [
+      "GDL",
+      "LAX"
+    ],
+    [
+      "GDL",
+      "LGA"
+    ],
+    [
+      "GDL",
+      "MCO"
+    ],
+    [
+      "GDL",
+      "MEX"
+    ],
+    [
+      "GDL",
+      "MIA"
+    ],
+    [
+      "GDL",
+      "MSP"
+    ],
+    [
+      "GDL",
+      "MTY"
+    ],
+    [
+      "GDL",
+      "ORD"
+    ],
+    [
+      "GDL",
+      "PHL"
+    ],
+    [
+      "GDL",
+      "PHX"
+    ],
+    [
+      "GDL",
+      "SAN"
+    ],
+    [
+      "GDL",
+      "SEA"
+    ],
+    [
+      "GDL",
+      "SFO"
+    ],
+    [
+      "GDL",
+      "SLC"
+    ],
+    [
+      "GDL",
+      "TIJ"
+    ],
+    [
+      "GDL",
+      "TPA"
+    ],
+    [
+      "GDL",
+      "YEG"
+    ],
+    [
+      "GDL",
+      "YUL"
+    ],
+    [
+      "GDL",
+      "YVR"
+    ],
+    [
+      "GDL",
+      "YYC"
+    ],
+    [
+      "GDL",
+      "YYZ"
     ],
     [
       "HNL",
@@ -1825,6 +2767,10 @@
     ],
     [
       "HNL",
+      "CUN"
+    ],
+    [
+      "HNL",
       "DCA"
     ],
     [
@@ -1846,6 +2792,10 @@
     [
       "HNL",
       "FLL"
+    ],
+    [
+      "HNL",
+      "GDL"
     ],
     [
       "HNL",
@@ -1877,6 +2827,10 @@
     ],
     [
       "HNL",
+      "MEX"
+    ],
+    [
+      "HNL",
       "MIA"
     ],
     [
@@ -1885,6 +2839,10 @@
     ],
     [
       "HNL",
+      "MTY"
+    ],
+    [
+      "HNL",
       "ORD"
     ],
     [
@@ -1913,7 +2871,31 @@
     ],
     [
       "HNL",
+      "TIJ"
+    ],
+    [
+      "HNL",
       "TPA"
+    ],
+    [
+      "HNL",
+      "YEG"
+    ],
+    [
+      "HNL",
+      "YUL"
+    ],
+    [
+      "HNL",
+      "YVR"
+    ],
+    [
+      "HNL",
+      "YYC"
+    ],
+    [
+      "HNL",
+      "YYZ"
     ],
     [
       "IAD",
@@ -1941,6 +2923,10 @@
     ],
     [
       "IAD",
+      "CUN"
+    ],
+    [
+      "IAD",
       "DCA"
     ],
     [
@@ -1962,6 +2948,10 @@
     [
       "IAD",
       "FLL"
+    ],
+    [
+      "IAD",
+      "GDL"
     ],
     [
       "IAD",
@@ -1993,6 +2983,10 @@
     ],
     [
       "IAD",
+      "MEX"
+    ],
+    [
+      "IAD",
       "MIA"
     ],
     [
@@ -2001,6 +2995,10 @@
     ],
     [
       "IAD",
+      "MTY"
+    ],
+    [
+      "IAD",
       "ORD"
     ],
     [
@@ -2029,7 +3027,31 @@
     ],
     [
       "IAD",
+      "TIJ"
+    ],
+    [
+      "IAD",
       "TPA"
+    ],
+    [
+      "IAD",
+      "YEG"
+    ],
+    [
+      "IAD",
+      "YUL"
+    ],
+    [
+      "IAD",
+      "YVR"
+    ],
+    [
+      "IAD",
+      "YYC"
+    ],
+    [
+      "IAD",
+      "YYZ"
     ],
     [
       "IAH",
@@ -2057,6 +3079,10 @@
     ],
     [
       "IAH",
+      "CUN"
+    ],
+    [
+      "IAH",
       "DCA"
     ],
     [
@@ -2078,6 +3104,10 @@
     [
       "IAH",
       "FLL"
+    ],
+    [
+      "IAH",
+      "GDL"
     ],
     [
       "IAH",
@@ -2109,6 +3139,10 @@
     ],
     [
       "IAH",
+      "MEX"
+    ],
+    [
+      "IAH",
       "MIA"
     ],
     [
@@ -2117,6 +3151,10 @@
     ],
     [
       "IAH",
+      "MTY"
+    ],
+    [
+      "IAH",
       "ORD"
     ],
     [
@@ -2145,7 +3183,31 @@
     ],
     [
       "IAH",
+      "TIJ"
+    ],
+    [
+      "IAH",
       "TPA"
+    ],
+    [
+      "IAH",
+      "YEG"
+    ],
+    [
+      "IAH",
+      "YUL"
+    ],
+    [
+      "IAH",
+      "YVR"
+    ],
+    [
+      "IAH",
+      "YYC"
+    ],
+    [
+      "IAH",
+      "YYZ"
     ],
     [
       "JFK",
@@ -2173,6 +3235,10 @@
     ],
     [
       "JFK",
+      "CUN"
+    ],
+    [
+      "JFK",
       "DCA"
     ],
     [
@@ -2194,6 +3260,10 @@
     [
       "JFK",
       "FLL"
+    ],
+    [
+      "JFK",
+      "GDL"
     ],
     [
       "JFK",
@@ -2225,6 +3295,10 @@
     ],
     [
       "JFK",
+      "MEX"
+    ],
+    [
+      "JFK",
       "MIA"
     ],
     [
@@ -2233,6 +3307,10 @@
     ],
     [
       "JFK",
+      "MTY"
+    ],
+    [
+      "JFK",
       "ORD"
     ],
     [
@@ -2261,7 +3339,31 @@
     ],
     [
       "JFK",
+      "TIJ"
+    ],
+    [
+      "JFK",
       "TPA"
+    ],
+    [
+      "JFK",
+      "YEG"
+    ],
+    [
+      "JFK",
+      "YUL"
+    ],
+    [
+      "JFK",
+      "YVR"
+    ],
+    [
+      "JFK",
+      "YYC"
+    ],
+    [
+      "JFK",
+      "YYZ"
     ],
     [
       "LAS",
@@ -2289,6 +3391,10 @@
     ],
     [
       "LAS",
+      "CUN"
+    ],
+    [
+      "LAS",
       "DCA"
     ],
     [
@@ -2310,6 +3416,10 @@
     [
       "LAS",
       "FLL"
+    ],
+    [
+      "LAS",
+      "GDL"
     ],
     [
       "LAS",
@@ -2341,6 +3451,10 @@
     ],
     [
       "LAS",
+      "MEX"
+    ],
+    [
+      "LAS",
       "MIA"
     ],
     [
@@ -2349,6 +3463,10 @@
     ],
     [
       "LAS",
+      "MTY"
+    ],
+    [
+      "LAS",
       "ORD"
     ],
     [
@@ -2377,7 +3495,31 @@
     ],
     [
       "LAS",
+      "TIJ"
+    ],
+    [
+      "LAS",
       "TPA"
+    ],
+    [
+      "LAS",
+      "YEG"
+    ],
+    [
+      "LAS",
+      "YUL"
+    ],
+    [
+      "LAS",
+      "YVR"
+    ],
+    [
+      "LAS",
+      "YYC"
+    ],
+    [
+      "LAS",
+      "YYZ"
     ],
     [
       "LAX",
@@ -2405,6 +3547,10 @@
     ],
     [
       "LAX",
+      "CUN"
+    ],
+    [
+      "LAX",
       "DCA"
     ],
     [
@@ -2426,6 +3572,10 @@
     [
       "LAX",
       "FLL"
+    ],
+    [
+      "LAX",
+      "GDL"
     ],
     [
       "LAX",
@@ -2457,6 +3607,10 @@
     ],
     [
       "LAX",
+      "MEX"
+    ],
+    [
+      "LAX",
       "MIA"
     ],
     [
@@ -2465,6 +3619,10 @@
     ],
     [
       "LAX",
+      "MTY"
+    ],
+    [
+      "LAX",
       "ORD"
     ],
     [
@@ -2493,7 +3651,31 @@
     ],
     [
       "LAX",
+      "TIJ"
+    ],
+    [
+      "LAX",
       "TPA"
+    ],
+    [
+      "LAX",
+      "YEG"
+    ],
+    [
+      "LAX",
+      "YUL"
+    ],
+    [
+      "LAX",
+      "YVR"
+    ],
+    [
+      "LAX",
+      "YYC"
+    ],
+    [
+      "LAX",
+      "YYZ"
     ],
     [
       "LGA",
@@ -2521,6 +3703,10 @@
     ],
     [
       "LGA",
+      "CUN"
+    ],
+    [
+      "LGA",
       "DCA"
     ],
     [
@@ -2542,6 +3728,10 @@
     [
       "LGA",
       "FLL"
+    ],
+    [
+      "LGA",
+      "GDL"
     ],
     [
       "LGA",
@@ -2573,6 +3763,10 @@
     ],
     [
       "LGA",
+      "MEX"
+    ],
+    [
+      "LGA",
       "MIA"
     ],
     [
@@ -2581,6 +3775,10 @@
     ],
     [
       "LGA",
+      "MTY"
+    ],
+    [
+      "LGA",
       "ORD"
     ],
     [
@@ -2609,7 +3807,31 @@
     ],
     [
       "LGA",
+      "TIJ"
+    ],
+    [
+      "LGA",
       "TPA"
+    ],
+    [
+      "LGA",
+      "YEG"
+    ],
+    [
+      "LGA",
+      "YUL"
+    ],
+    [
+      "LGA",
+      "YVR"
+    ],
+    [
+      "LGA",
+      "YYC"
+    ],
+    [
+      "LGA",
+      "YYZ"
     ],
     [
       "MCO",
@@ -2637,6 +3859,10 @@
     ],
     [
       "MCO",
+      "CUN"
+    ],
+    [
+      "MCO",
       "DCA"
     ],
     [
@@ -2658,6 +3884,10 @@
     [
       "MCO",
       "FLL"
+    ],
+    [
+      "MCO",
+      "GDL"
     ],
     [
       "MCO",
@@ -2689,11 +3919,19 @@
     ],
     [
       "MCO",
+      "MEX"
+    ],
+    [
+      "MCO",
       "MIA"
     ],
     [
       "MCO",
       "MSP"
+    ],
+    [
+      "MCO",
+      "MTY"
     ],
     [
       "MCO",
@@ -2725,7 +3963,187 @@
     ],
     [
       "MCO",
+      "TIJ"
+    ],
+    [
+      "MCO",
       "TPA"
+    ],
+    [
+      "MCO",
+      "YEG"
+    ],
+    [
+      "MCO",
+      "YUL"
+    ],
+    [
+      "MCO",
+      "YVR"
+    ],
+    [
+      "MCO",
+      "YYC"
+    ],
+    [
+      "MCO",
+      "YYZ"
+    ],
+    [
+      "MEX",
+      "ATL"
+    ],
+    [
+      "MEX",
+      "AUS"
+    ],
+    [
+      "MEX",
+      "BNA"
+    ],
+    [
+      "MEX",
+      "BOS"
+    ],
+    [
+      "MEX",
+      "BWI"
+    ],
+    [
+      "MEX",
+      "CLT"
+    ],
+    [
+      "MEX",
+      "CUN"
+    ],
+    [
+      "MEX",
+      "DCA"
+    ],
+    [
+      "MEX",
+      "DEN"
+    ],
+    [
+      "MEX",
+      "DFW"
+    ],
+    [
+      "MEX",
+      "DTW"
+    ],
+    [
+      "MEX",
+      "EWR"
+    ],
+    [
+      "MEX",
+      "FLL"
+    ],
+    [
+      "MEX",
+      "GDL"
+    ],
+    [
+      "MEX",
+      "HNL"
+    ],
+    [
+      "MEX",
+      "IAD"
+    ],
+    [
+      "MEX",
+      "IAH"
+    ],
+    [
+      "MEX",
+      "JFK"
+    ],
+    [
+      "MEX",
+      "LAS"
+    ],
+    [
+      "MEX",
+      "LAX"
+    ],
+    [
+      "MEX",
+      "LGA"
+    ],
+    [
+      "MEX",
+      "MCO"
+    ],
+    [
+      "MEX",
+      "MIA"
+    ],
+    [
+      "MEX",
+      "MSP"
+    ],
+    [
+      "MEX",
+      "MTY"
+    ],
+    [
+      "MEX",
+      "ORD"
+    ],
+    [
+      "MEX",
+      "PHL"
+    ],
+    [
+      "MEX",
+      "PHX"
+    ],
+    [
+      "MEX",
+      "SAN"
+    ],
+    [
+      "MEX",
+      "SEA"
+    ],
+    [
+      "MEX",
+      "SFO"
+    ],
+    [
+      "MEX",
+      "SLC"
+    ],
+    [
+      "MEX",
+      "TIJ"
+    ],
+    [
+      "MEX",
+      "TPA"
+    ],
+    [
+      "MEX",
+      "YEG"
+    ],
+    [
+      "MEX",
+      "YUL"
+    ],
+    [
+      "MEX",
+      "YVR"
+    ],
+    [
+      "MEX",
+      "YYC"
+    ],
+    [
+      "MEX",
+      "YYZ"
     ],
     [
       "MIA",
@@ -2753,6 +4171,10 @@
     ],
     [
       "MIA",
+      "CUN"
+    ],
+    [
+      "MIA",
       "DCA"
     ],
     [
@@ -2774,6 +4196,10 @@
     [
       "MIA",
       "FLL"
+    ],
+    [
+      "MIA",
+      "GDL"
     ],
     [
       "MIA",
@@ -2809,7 +4235,15 @@
     ],
     [
       "MIA",
+      "MEX"
+    ],
+    [
+      "MIA",
       "MSP"
+    ],
+    [
+      "MIA",
+      "MTY"
     ],
     [
       "MIA",
@@ -2841,7 +4275,31 @@
     ],
     [
       "MIA",
+      "TIJ"
+    ],
+    [
+      "MIA",
       "TPA"
+    ],
+    [
+      "MIA",
+      "YEG"
+    ],
+    [
+      "MIA",
+      "YUL"
+    ],
+    [
+      "MIA",
+      "YVR"
+    ],
+    [
+      "MIA",
+      "YYC"
+    ],
+    [
+      "MIA",
+      "YYZ"
     ],
     [
       "MSP",
@@ -2869,6 +4327,10 @@
     ],
     [
       "MSP",
+      "CUN"
+    ],
+    [
+      "MSP",
       "DCA"
     ],
     [
@@ -2890,6 +4352,10 @@
     [
       "MSP",
       "FLL"
+    ],
+    [
+      "MSP",
+      "GDL"
     ],
     [
       "MSP",
@@ -2925,7 +4391,15 @@
     ],
     [
       "MSP",
+      "MEX"
+    ],
+    [
+      "MSP",
       "MIA"
+    ],
+    [
+      "MSP",
+      "MTY"
     ],
     [
       "MSP",
@@ -2957,7 +4431,187 @@
     ],
     [
       "MSP",
+      "TIJ"
+    ],
+    [
+      "MSP",
       "TPA"
+    ],
+    [
+      "MSP",
+      "YEG"
+    ],
+    [
+      "MSP",
+      "YUL"
+    ],
+    [
+      "MSP",
+      "YVR"
+    ],
+    [
+      "MSP",
+      "YYC"
+    ],
+    [
+      "MSP",
+      "YYZ"
+    ],
+    [
+      "MTY",
+      "ATL"
+    ],
+    [
+      "MTY",
+      "AUS"
+    ],
+    [
+      "MTY",
+      "BNA"
+    ],
+    [
+      "MTY",
+      "BOS"
+    ],
+    [
+      "MTY",
+      "BWI"
+    ],
+    [
+      "MTY",
+      "CLT"
+    ],
+    [
+      "MTY",
+      "CUN"
+    ],
+    [
+      "MTY",
+      "DCA"
+    ],
+    [
+      "MTY",
+      "DEN"
+    ],
+    [
+      "MTY",
+      "DFW"
+    ],
+    [
+      "MTY",
+      "DTW"
+    ],
+    [
+      "MTY",
+      "EWR"
+    ],
+    [
+      "MTY",
+      "FLL"
+    ],
+    [
+      "MTY",
+      "GDL"
+    ],
+    [
+      "MTY",
+      "HNL"
+    ],
+    [
+      "MTY",
+      "IAD"
+    ],
+    [
+      "MTY",
+      "IAH"
+    ],
+    [
+      "MTY",
+      "JFK"
+    ],
+    [
+      "MTY",
+      "LAS"
+    ],
+    [
+      "MTY",
+      "LAX"
+    ],
+    [
+      "MTY",
+      "LGA"
+    ],
+    [
+      "MTY",
+      "MCO"
+    ],
+    [
+      "MTY",
+      "MEX"
+    ],
+    [
+      "MTY",
+      "MIA"
+    ],
+    [
+      "MTY",
+      "MSP"
+    ],
+    [
+      "MTY",
+      "ORD"
+    ],
+    [
+      "MTY",
+      "PHL"
+    ],
+    [
+      "MTY",
+      "PHX"
+    ],
+    [
+      "MTY",
+      "SAN"
+    ],
+    [
+      "MTY",
+      "SEA"
+    ],
+    [
+      "MTY",
+      "SFO"
+    ],
+    [
+      "MTY",
+      "SLC"
+    ],
+    [
+      "MTY",
+      "TIJ"
+    ],
+    [
+      "MTY",
+      "TPA"
+    ],
+    [
+      "MTY",
+      "YEG"
+    ],
+    [
+      "MTY",
+      "YUL"
+    ],
+    [
+      "MTY",
+      "YVR"
+    ],
+    [
+      "MTY",
+      "YYC"
+    ],
+    [
+      "MTY",
+      "YYZ"
     ],
     [
       "ORD",
@@ -2985,6 +4639,10 @@
     ],
     [
       "ORD",
+      "CUN"
+    ],
+    [
+      "ORD",
       "DCA"
     ],
     [
@@ -3006,6 +4664,10 @@
     [
       "ORD",
       "FLL"
+    ],
+    [
+      "ORD",
+      "GDL"
     ],
     [
       "ORD",
@@ -3041,11 +4703,19 @@
     ],
     [
       "ORD",
+      "MEX"
+    ],
+    [
+      "ORD",
       "MIA"
     ],
     [
       "ORD",
       "MSP"
+    ],
+    [
+      "ORD",
+      "MTY"
     ],
     [
       "ORD",
@@ -3073,7 +4743,31 @@
     ],
     [
       "ORD",
+      "TIJ"
+    ],
+    [
+      "ORD",
       "TPA"
+    ],
+    [
+      "ORD",
+      "YEG"
+    ],
+    [
+      "ORD",
+      "YUL"
+    ],
+    [
+      "ORD",
+      "YVR"
+    ],
+    [
+      "ORD",
+      "YYC"
+    ],
+    [
+      "ORD",
+      "YYZ"
     ],
     [
       "PHL",
@@ -3101,6 +4795,10 @@
     ],
     [
       "PHL",
+      "CUN"
+    ],
+    [
+      "PHL",
       "DCA"
     ],
     [
@@ -3122,6 +4820,10 @@
     [
       "PHL",
       "FLL"
+    ],
+    [
+      "PHL",
+      "GDL"
     ],
     [
       "PHL",
@@ -3157,11 +4859,19 @@
     ],
     [
       "PHL",
+      "MEX"
+    ],
+    [
+      "PHL",
       "MIA"
     ],
     [
       "PHL",
       "MSP"
+    ],
+    [
+      "PHL",
+      "MTY"
     ],
     [
       "PHL",
@@ -3189,7 +4899,31 @@
     ],
     [
       "PHL",
+      "TIJ"
+    ],
+    [
+      "PHL",
       "TPA"
+    ],
+    [
+      "PHL",
+      "YEG"
+    ],
+    [
+      "PHL",
+      "YUL"
+    ],
+    [
+      "PHL",
+      "YVR"
+    ],
+    [
+      "PHL",
+      "YYC"
+    ],
+    [
+      "PHL",
+      "YYZ"
     ],
     [
       "PHX",
@@ -3217,6 +4951,10 @@
     ],
     [
       "PHX",
+      "CUN"
+    ],
+    [
+      "PHX",
       "DCA"
     ],
     [
@@ -3238,6 +4976,10 @@
     [
       "PHX",
       "FLL"
+    ],
+    [
+      "PHX",
+      "GDL"
     ],
     [
       "PHX",
@@ -3273,11 +5015,19 @@
     ],
     [
       "PHX",
+      "MEX"
+    ],
+    [
+      "PHX",
       "MIA"
     ],
     [
       "PHX",
       "MSP"
+    ],
+    [
+      "PHX",
+      "MTY"
     ],
     [
       "PHX",
@@ -3305,7 +5055,31 @@
     ],
     [
       "PHX",
+      "TIJ"
+    ],
+    [
+      "PHX",
       "TPA"
+    ],
+    [
+      "PHX",
+      "YEG"
+    ],
+    [
+      "PHX",
+      "YUL"
+    ],
+    [
+      "PHX",
+      "YVR"
+    ],
+    [
+      "PHX",
+      "YYC"
+    ],
+    [
+      "PHX",
+      "YYZ"
     ],
     [
       "SAN",
@@ -3333,6 +5107,10 @@
     ],
     [
       "SAN",
+      "CUN"
+    ],
+    [
+      "SAN",
       "DCA"
     ],
     [
@@ -3354,6 +5132,10 @@
     [
       "SAN",
       "FLL"
+    ],
+    [
+      "SAN",
+      "GDL"
     ],
     [
       "SAN",
@@ -3389,11 +5171,19 @@
     ],
     [
       "SAN",
+      "MEX"
+    ],
+    [
+      "SAN",
       "MIA"
     ],
     [
       "SAN",
       "MSP"
+    ],
+    [
+      "SAN",
+      "MTY"
     ],
     [
       "SAN",
@@ -3421,7 +5211,31 @@
     ],
     [
       "SAN",
+      "TIJ"
+    ],
+    [
+      "SAN",
       "TPA"
+    ],
+    [
+      "SAN",
+      "YEG"
+    ],
+    [
+      "SAN",
+      "YUL"
+    ],
+    [
+      "SAN",
+      "YVR"
+    ],
+    [
+      "SAN",
+      "YYC"
+    ],
+    [
+      "SAN",
+      "YYZ"
     ],
     [
       "SEA",
@@ -3449,6 +5263,10 @@
     ],
     [
       "SEA",
+      "CUN"
+    ],
+    [
+      "SEA",
       "DCA"
     ],
     [
@@ -3470,6 +5288,10 @@
     [
       "SEA",
       "FLL"
+    ],
+    [
+      "SEA",
+      "GDL"
     ],
     [
       "SEA",
@@ -3505,11 +5327,19 @@
     ],
     [
       "SEA",
+      "MEX"
+    ],
+    [
+      "SEA",
       "MIA"
     ],
     [
       "SEA",
       "MSP"
+    ],
+    [
+      "SEA",
+      "MTY"
     ],
     [
       "SEA",
@@ -3537,7 +5367,31 @@
     ],
     [
       "SEA",
+      "TIJ"
+    ],
+    [
+      "SEA",
       "TPA"
+    ],
+    [
+      "SEA",
+      "YEG"
+    ],
+    [
+      "SEA",
+      "YUL"
+    ],
+    [
+      "SEA",
+      "YVR"
+    ],
+    [
+      "SEA",
+      "YYC"
+    ],
+    [
+      "SEA",
+      "YYZ"
     ],
     [
       "SFO",
@@ -3565,6 +5419,10 @@
     ],
     [
       "SFO",
+      "CUN"
+    ],
+    [
+      "SFO",
       "DCA"
     ],
     [
@@ -3586,6 +5444,10 @@
     [
       "SFO",
       "FLL"
+    ],
+    [
+      "SFO",
+      "GDL"
     ],
     [
       "SFO",
@@ -3621,11 +5483,19 @@
     ],
     [
       "SFO",
+      "MEX"
+    ],
+    [
+      "SFO",
       "MIA"
     ],
     [
       "SFO",
       "MSP"
+    ],
+    [
+      "SFO",
+      "MTY"
     ],
     [
       "SFO",
@@ -3653,7 +5523,31 @@
     ],
     [
       "SFO",
+      "TIJ"
+    ],
+    [
+      "SFO",
       "TPA"
+    ],
+    [
+      "SFO",
+      "YEG"
+    ],
+    [
+      "SFO",
+      "YUL"
+    ],
+    [
+      "SFO",
+      "YVR"
+    ],
+    [
+      "SFO",
+      "YYC"
+    ],
+    [
+      "SFO",
+      "YYZ"
     ],
     [
       "SLC",
@@ -3681,6 +5575,10 @@
     ],
     [
       "SLC",
+      "CUN"
+    ],
+    [
+      "SLC",
       "DCA"
     ],
     [
@@ -3702,6 +5600,10 @@
     [
       "SLC",
       "FLL"
+    ],
+    [
+      "SLC",
+      "GDL"
     ],
     [
       "SLC",
@@ -3737,11 +5639,19 @@
     ],
     [
       "SLC",
+      "MEX"
+    ],
+    [
+      "SLC",
       "MIA"
     ],
     [
       "SLC",
       "MSP"
+    ],
+    [
+      "SLC",
+      "MTY"
     ],
     [
       "SLC",
@@ -3769,7 +5679,187 @@
     ],
     [
       "SLC",
+      "TIJ"
+    ],
+    [
+      "SLC",
       "TPA"
+    ],
+    [
+      "SLC",
+      "YEG"
+    ],
+    [
+      "SLC",
+      "YUL"
+    ],
+    [
+      "SLC",
+      "YVR"
+    ],
+    [
+      "SLC",
+      "YYC"
+    ],
+    [
+      "SLC",
+      "YYZ"
+    ],
+    [
+      "TIJ",
+      "ATL"
+    ],
+    [
+      "TIJ",
+      "AUS"
+    ],
+    [
+      "TIJ",
+      "BNA"
+    ],
+    [
+      "TIJ",
+      "BOS"
+    ],
+    [
+      "TIJ",
+      "BWI"
+    ],
+    [
+      "TIJ",
+      "CLT"
+    ],
+    [
+      "TIJ",
+      "CUN"
+    ],
+    [
+      "TIJ",
+      "DCA"
+    ],
+    [
+      "TIJ",
+      "DEN"
+    ],
+    [
+      "TIJ",
+      "DFW"
+    ],
+    [
+      "TIJ",
+      "DTW"
+    ],
+    [
+      "TIJ",
+      "EWR"
+    ],
+    [
+      "TIJ",
+      "FLL"
+    ],
+    [
+      "TIJ",
+      "GDL"
+    ],
+    [
+      "TIJ",
+      "HNL"
+    ],
+    [
+      "TIJ",
+      "IAD"
+    ],
+    [
+      "TIJ",
+      "IAH"
+    ],
+    [
+      "TIJ",
+      "JFK"
+    ],
+    [
+      "TIJ",
+      "LAS"
+    ],
+    [
+      "TIJ",
+      "LAX"
+    ],
+    [
+      "TIJ",
+      "LGA"
+    ],
+    [
+      "TIJ",
+      "MCO"
+    ],
+    [
+      "TIJ",
+      "MEX"
+    ],
+    [
+      "TIJ",
+      "MIA"
+    ],
+    [
+      "TIJ",
+      "MSP"
+    ],
+    [
+      "TIJ",
+      "MTY"
+    ],
+    [
+      "TIJ",
+      "ORD"
+    ],
+    [
+      "TIJ",
+      "PHL"
+    ],
+    [
+      "TIJ",
+      "PHX"
+    ],
+    [
+      "TIJ",
+      "SAN"
+    ],
+    [
+      "TIJ",
+      "SEA"
+    ],
+    [
+      "TIJ",
+      "SFO"
+    ],
+    [
+      "TIJ",
+      "SLC"
+    ],
+    [
+      "TIJ",
+      "TPA"
+    ],
+    [
+      "TIJ",
+      "YEG"
+    ],
+    [
+      "TIJ",
+      "YUL"
+    ],
+    [
+      "TIJ",
+      "YVR"
+    ],
+    [
+      "TIJ",
+      "YYC"
+    ],
+    [
+      "TIJ",
+      "YYZ"
     ],
     [
       "TPA",
@@ -3797,6 +5887,10 @@
     ],
     [
       "TPA",
+      "CUN"
+    ],
+    [
+      "TPA",
       "DCA"
     ],
     [
@@ -3818,6 +5912,10 @@
     [
       "TPA",
       "FLL"
+    ],
+    [
+      "TPA",
+      "GDL"
     ],
     [
       "TPA",
@@ -3853,11 +5951,19 @@
     ],
     [
       "TPA",
+      "MEX"
+    ],
+    [
+      "TPA",
       "MIA"
     ],
     [
       "TPA",
       "MSP"
+    ],
+    [
+      "TPA",
+      "MTY"
     ],
     [
       "TPA",
@@ -3886,6 +5992,810 @@
     [
       "TPA",
       "SLC"
+    ],
+    [
+      "TPA",
+      "TIJ"
+    ],
+    [
+      "TPA",
+      "YEG"
+    ],
+    [
+      "TPA",
+      "YUL"
+    ],
+    [
+      "TPA",
+      "YVR"
+    ],
+    [
+      "TPA",
+      "YYC"
+    ],
+    [
+      "TPA",
+      "YYZ"
+    ],
+    [
+      "YEG",
+      "ATL"
+    ],
+    [
+      "YEG",
+      "AUS"
+    ],
+    [
+      "YEG",
+      "BNA"
+    ],
+    [
+      "YEG",
+      "BOS"
+    ],
+    [
+      "YEG",
+      "BWI"
+    ],
+    [
+      "YEG",
+      "CLT"
+    ],
+    [
+      "YEG",
+      "CUN"
+    ],
+    [
+      "YEG",
+      "DCA"
+    ],
+    [
+      "YEG",
+      "DEN"
+    ],
+    [
+      "YEG",
+      "DFW"
+    ],
+    [
+      "YEG",
+      "DTW"
+    ],
+    [
+      "YEG",
+      "EWR"
+    ],
+    [
+      "YEG",
+      "FLL"
+    ],
+    [
+      "YEG",
+      "GDL"
+    ],
+    [
+      "YEG",
+      "HNL"
+    ],
+    [
+      "YEG",
+      "IAD"
+    ],
+    [
+      "YEG",
+      "IAH"
+    ],
+    [
+      "YEG",
+      "JFK"
+    ],
+    [
+      "YEG",
+      "LAS"
+    ],
+    [
+      "YEG",
+      "LAX"
+    ],
+    [
+      "YEG",
+      "LGA"
+    ],
+    [
+      "YEG",
+      "MCO"
+    ],
+    [
+      "YEG",
+      "MEX"
+    ],
+    [
+      "YEG",
+      "MIA"
+    ],
+    [
+      "YEG",
+      "MSP"
+    ],
+    [
+      "YEG",
+      "MTY"
+    ],
+    [
+      "YEG",
+      "ORD"
+    ],
+    [
+      "YEG",
+      "PHL"
+    ],
+    [
+      "YEG",
+      "PHX"
+    ],
+    [
+      "YEG",
+      "SAN"
+    ],
+    [
+      "YEG",
+      "SEA"
+    ],
+    [
+      "YEG",
+      "SFO"
+    ],
+    [
+      "YEG",
+      "SLC"
+    ],
+    [
+      "YEG",
+      "TIJ"
+    ],
+    [
+      "YEG",
+      "TPA"
+    ],
+    [
+      "YEG",
+      "YUL"
+    ],
+    [
+      "YEG",
+      "YVR"
+    ],
+    [
+      "YEG",
+      "YYC"
+    ],
+    [
+      "YEG",
+      "YYZ"
+    ],
+    [
+      "YUL",
+      "ATL"
+    ],
+    [
+      "YUL",
+      "AUS"
+    ],
+    [
+      "YUL",
+      "BNA"
+    ],
+    [
+      "YUL",
+      "BOS"
+    ],
+    [
+      "YUL",
+      "BWI"
+    ],
+    [
+      "YUL",
+      "CLT"
+    ],
+    [
+      "YUL",
+      "CUN"
+    ],
+    [
+      "YUL",
+      "DCA"
+    ],
+    [
+      "YUL",
+      "DEN"
+    ],
+    [
+      "YUL",
+      "DFW"
+    ],
+    [
+      "YUL",
+      "DTW"
+    ],
+    [
+      "YUL",
+      "EWR"
+    ],
+    [
+      "YUL",
+      "FLL"
+    ],
+    [
+      "YUL",
+      "GDL"
+    ],
+    [
+      "YUL",
+      "HNL"
+    ],
+    [
+      "YUL",
+      "IAD"
+    ],
+    [
+      "YUL",
+      "IAH"
+    ],
+    [
+      "YUL",
+      "JFK"
+    ],
+    [
+      "YUL",
+      "LAS"
+    ],
+    [
+      "YUL",
+      "LAX"
+    ],
+    [
+      "YUL",
+      "LGA"
+    ],
+    [
+      "YUL",
+      "MCO"
+    ],
+    [
+      "YUL",
+      "MEX"
+    ],
+    [
+      "YUL",
+      "MIA"
+    ],
+    [
+      "YUL",
+      "MSP"
+    ],
+    [
+      "YUL",
+      "MTY"
+    ],
+    [
+      "YUL",
+      "ORD"
+    ],
+    [
+      "YUL",
+      "PHL"
+    ],
+    [
+      "YUL",
+      "PHX"
+    ],
+    [
+      "YUL",
+      "SAN"
+    ],
+    [
+      "YUL",
+      "SEA"
+    ],
+    [
+      "YUL",
+      "SFO"
+    ],
+    [
+      "YUL",
+      "SLC"
+    ],
+    [
+      "YUL",
+      "TIJ"
+    ],
+    [
+      "YUL",
+      "TPA"
+    ],
+    [
+      "YUL",
+      "YEG"
+    ],
+    [
+      "YUL",
+      "YVR"
+    ],
+    [
+      "YUL",
+      "YYC"
+    ],
+    [
+      "YUL",
+      "YYZ"
+    ],
+    [
+      "YVR",
+      "ATL"
+    ],
+    [
+      "YVR",
+      "AUS"
+    ],
+    [
+      "YVR",
+      "BNA"
+    ],
+    [
+      "YVR",
+      "BOS"
+    ],
+    [
+      "YVR",
+      "BWI"
+    ],
+    [
+      "YVR",
+      "CLT"
+    ],
+    [
+      "YVR",
+      "CUN"
+    ],
+    [
+      "YVR",
+      "DCA"
+    ],
+    [
+      "YVR",
+      "DEN"
+    ],
+    [
+      "YVR",
+      "DFW"
+    ],
+    [
+      "YVR",
+      "DTW"
+    ],
+    [
+      "YVR",
+      "EWR"
+    ],
+    [
+      "YVR",
+      "FLL"
+    ],
+    [
+      "YVR",
+      "GDL"
+    ],
+    [
+      "YVR",
+      "HNL"
+    ],
+    [
+      "YVR",
+      "IAD"
+    ],
+    [
+      "YVR",
+      "IAH"
+    ],
+    [
+      "YVR",
+      "JFK"
+    ],
+    [
+      "YVR",
+      "LAS"
+    ],
+    [
+      "YVR",
+      "LAX"
+    ],
+    [
+      "YVR",
+      "LGA"
+    ],
+    [
+      "YVR",
+      "MCO"
+    ],
+    [
+      "YVR",
+      "MEX"
+    ],
+    [
+      "YVR",
+      "MIA"
+    ],
+    [
+      "YVR",
+      "MSP"
+    ],
+    [
+      "YVR",
+      "MTY"
+    ],
+    [
+      "YVR",
+      "ORD"
+    ],
+    [
+      "YVR",
+      "PHL"
+    ],
+    [
+      "YVR",
+      "PHX"
+    ],
+    [
+      "YVR",
+      "SAN"
+    ],
+    [
+      "YVR",
+      "SEA"
+    ],
+    [
+      "YVR",
+      "SFO"
+    ],
+    [
+      "YVR",
+      "SLC"
+    ],
+    [
+      "YVR",
+      "TIJ"
+    ],
+    [
+      "YVR",
+      "TPA"
+    ],
+    [
+      "YVR",
+      "YEG"
+    ],
+    [
+      "YVR",
+      "YUL"
+    ],
+    [
+      "YVR",
+      "YYC"
+    ],
+    [
+      "YVR",
+      "YYZ"
+    ],
+    [
+      "YYC",
+      "ATL"
+    ],
+    [
+      "YYC",
+      "AUS"
+    ],
+    [
+      "YYC",
+      "BNA"
+    ],
+    [
+      "YYC",
+      "BOS"
+    ],
+    [
+      "YYC",
+      "BWI"
+    ],
+    [
+      "YYC",
+      "CLT"
+    ],
+    [
+      "YYC",
+      "CUN"
+    ],
+    [
+      "YYC",
+      "DCA"
+    ],
+    [
+      "YYC",
+      "DEN"
+    ],
+    [
+      "YYC",
+      "DFW"
+    ],
+    [
+      "YYC",
+      "DTW"
+    ],
+    [
+      "YYC",
+      "EWR"
+    ],
+    [
+      "YYC",
+      "FLL"
+    ],
+    [
+      "YYC",
+      "GDL"
+    ],
+    [
+      "YYC",
+      "HNL"
+    ],
+    [
+      "YYC",
+      "IAD"
+    ],
+    [
+      "YYC",
+      "IAH"
+    ],
+    [
+      "YYC",
+      "JFK"
+    ],
+    [
+      "YYC",
+      "LAS"
+    ],
+    [
+      "YYC",
+      "LAX"
+    ],
+    [
+      "YYC",
+      "LGA"
+    ],
+    [
+      "YYC",
+      "MCO"
+    ],
+    [
+      "YYC",
+      "MEX"
+    ],
+    [
+      "YYC",
+      "MIA"
+    ],
+    [
+      "YYC",
+      "MSP"
+    ],
+    [
+      "YYC",
+      "MTY"
+    ],
+    [
+      "YYC",
+      "ORD"
+    ],
+    [
+      "YYC",
+      "PHL"
+    ],
+    [
+      "YYC",
+      "PHX"
+    ],
+    [
+      "YYC",
+      "SAN"
+    ],
+    [
+      "YYC",
+      "SEA"
+    ],
+    [
+      "YYC",
+      "SFO"
+    ],
+    [
+      "YYC",
+      "SLC"
+    ],
+    [
+      "YYC",
+      "TIJ"
+    ],
+    [
+      "YYC",
+      "TPA"
+    ],
+    [
+      "YYC",
+      "YEG"
+    ],
+    [
+      "YYC",
+      "YUL"
+    ],
+    [
+      "YYC",
+      "YVR"
+    ],
+    [
+      "YYC",
+      "YYZ"
+    ],
+    [
+      "YYZ",
+      "ATL"
+    ],
+    [
+      "YYZ",
+      "AUS"
+    ],
+    [
+      "YYZ",
+      "BNA"
+    ],
+    [
+      "YYZ",
+      "BOS"
+    ],
+    [
+      "YYZ",
+      "BWI"
+    ],
+    [
+      "YYZ",
+      "CLT"
+    ],
+    [
+      "YYZ",
+      "CUN"
+    ],
+    [
+      "YYZ",
+      "DCA"
+    ],
+    [
+      "YYZ",
+      "DEN"
+    ],
+    [
+      "YYZ",
+      "DFW"
+    ],
+    [
+      "YYZ",
+      "DTW"
+    ],
+    [
+      "YYZ",
+      "EWR"
+    ],
+    [
+      "YYZ",
+      "FLL"
+    ],
+    [
+      "YYZ",
+      "GDL"
+    ],
+    [
+      "YYZ",
+      "HNL"
+    ],
+    [
+      "YYZ",
+      "IAD"
+    ],
+    [
+      "YYZ",
+      "IAH"
+    ],
+    [
+      "YYZ",
+      "JFK"
+    ],
+    [
+      "YYZ",
+      "LAS"
+    ],
+    [
+      "YYZ",
+      "LAX"
+    ],
+    [
+      "YYZ",
+      "LGA"
+    ],
+    [
+      "YYZ",
+      "MCO"
+    ],
+    [
+      "YYZ",
+      "MEX"
+    ],
+    [
+      "YYZ",
+      "MIA"
+    ],
+    [
+      "YYZ",
+      "MSP"
+    ],
+    [
+      "YYZ",
+      "MTY"
+    ],
+    [
+      "YYZ",
+      "ORD"
+    ],
+    [
+      "YYZ",
+      "PHL"
+    ],
+    [
+      "YYZ",
+      "PHX"
+    ],
+    [
+      "YYZ",
+      "SAN"
+    ],
+    [
+      "YYZ",
+      "SEA"
+    ],
+    [
+      "YYZ",
+      "SFO"
+    ],
+    [
+      "YYZ",
+      "SLC"
+    ],
+    [
+      "YYZ",
+      "TIJ"
+    ],
+    [
+      "YYZ",
+      "TPA"
+    ],
+    [
+      "YYZ",
+      "YEG"
+    ],
+    [
+      "YYZ",
+      "YUL"
+    ],
+    [
+      "YYZ",
+      "YVR"
+    ],
+    [
+      "YYZ",
+      "YYC"
     ]
   ],
   "unresolved_airports": []

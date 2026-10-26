@@ -1,0 +1,121 @@
+{
+  "source_reviewed_date": "2026-10-27",
+  "hash_basis": "Normalized reviewed ranking facts, not raw source document bytes",
+  "sources": {
+    "CA": {
+      "year": 2024,
+      "url": "https://tdih-cdit.tc.canada.ca/en/addendum-tables/2024/table-a14-top-20-busiest-canadian-airports-terms-enplaneddeplaned-revenue-0",
+      "metric": "Enplaned/deplaned revenue passengers; millions rounded to one decimal",
+      "status": "Transport Canada ECATS published ranking",
+      "document_url": "https://tdih-cdit.tc.canada.ca/sites/default/files/addendum-tables/2024/A14-en.pdf",
+      "document_sha256": "051eba81c41341c3eec6ffb5381348ebd74ef935d05464eeeff62d9f7b283074"
+    },
+    "MX": {
+      "year": 2025,
+      "url": "https://micrs.sct.gob.mx/images/DireccionesGrales/DGP/estadistica/Principales-Estadisticas/PE_2025.pdf",
+      "pages": [
+        31,
+        32
+      ],
+      "metric": "Total commercial passengers served; thousands rounded to one decimal",
+      "status": "SICT preliminary 2025 statistics"
+    }
+  },
+  "timezone_sources": [
+    {
+      "zone": "America/Vancouver",
+      "url": "https://www2.gov.bc.ca/gov/content/governments/celebrating-british-columbia/daylight-saving-time",
+      "november_2026_offset": -25200
+    },
+    {
+      "zone": "America/Edmonton",
+      "url": "https://www.alberta.ca/albertas-new-time-system-abt",
+      "november_2026_offset": -21600
+    }
+  ],
+  "airports": [
+    {
+      "code": "YYZ",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "rank": 1,
+      "ranking_year": 2024,
+      "passenger_statistic": 45.6
+    },
+    {
+      "code": "YVR",
+      "country": "CA",
+      "timezone": "America/Vancouver",
+      "rank": 2,
+      "ranking_year": 2024,
+      "passenger_statistic": 25.3,
+      "replay_timezone": "Etc/GMT+7"
+    },
+    {
+      "code": "YUL",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "rank": 3,
+      "ranking_year": 2024,
+      "passenger_statistic": 21.5
+    },
+    {
+      "code": "YYC",
+      "country": "CA",
+      "timezone": "America/Edmonton",
+      "rank": 4,
+      "ranking_year": 2024,
+      "passenger_statistic": 18.4,
+      "replay_timezone": "Etc/GMT+6"
+    },
+    {
+      "code": "YEG",
+      "country": "CA",
+      "timezone": "America/Edmonton",
+      "rank": 5,
+      "ranking_year": 2024,
+      "passenger_statistic": 7.5,
+      "replay_timezone": "Etc/GMT+6"
+    },
+    {
+      "code": "MEX",
+      "country": "MX",
+      "timezone": "America/Mexico_City",
+      "rank": 1,
+      "ranking_year": 2025,
+      "passenger_statistic": 44605.8
+    },
+    {
+      "code": "CUN",
+      "country": "MX",
+      "timezone": "America/Cancun",
+      "rank": 2,
+      "ranking_year": 2025,
+      "passenger_statistic": 29478.7
+    },
+    {
+      "code": "GDL",
+      "country": "MX",
+      "timezone": "America/Mexico_City",
+      "rank": 3,
+      "ranking_year": 2025,
+      "passenger_statistic": 18773.7
+    },
+    {
+      "code": "MTY",
+      "country": "MX",
+      "timezone": "America/Monterrey",
+      "rank": 4,
+      "ranking_year": 2025,
+      "passenger_statistic": 15777.1
+    },
+    {
+      "code": "TIJ",
+      "country": "MX",
+      "timezone": "America/Tijuana",
+      "rank": 5,
+      "ranking_year": 2025,
+      "passenger_statistic": 12765.8
+    }
+  ]
+}

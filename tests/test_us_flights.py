@@ -27,16 +27,17 @@ def put(cache, origin, destination, records):
     (cache/f'{DAY}-{origin}-{destination}.json').write_text(json.dumps(query))
 
 
-def test_top_twenty_exact_airports_all_directions_single_date_and_no_network_expansion():
-    assert list(AIR)==['ATL','DFW','ORD','DEN','LAX','JFK','MCO','LAS','MIA','SFO','CLT','SEA','PHX','EWR','IAH','BOS','MSP','DTW','LGA','FLL']
-    assert [a['rank'] for a in AIR.values()]==list(range(1,21))
+def test_top_thirty_exact_airports_all_directions_single_date_and_no_network_expansion():
+    assert list(AIR)==['ATL','DFW','ORD','DEN','LAX','JFK','MCO','LAS','MIA','SFO','CLT','SEA','PHX','EWR','IAH','BOS','MSP','DTW','LGA','FLL','PHL','IAD','SLC','SAN','BNA','BWI','TPA','DCA','AUS','HNL']
+    assert [a['rank'] for a in AIR.values()]==list(range(1,31))
     assert AIR['JFK']['icao']=='KJFK' and AIR['ORD']['icao']=='KORD'
     assert {AIR[c]['icao'] for c in ['JFK','EWR','LGA']}=={'KJFK','KEWR','KLGA'}
+    assert {AIR[c]['icao'] for c in ['IAD','DCA','BWI']}=={'KIAD','KDCA','KBWI'}
     assert not {'MDW','DAL','SNA','OAK'}&AIR.keys()
-    assert len(CFG['manifest']['routes'])==380
+    assert len(CFG['manifest']['routes'])==870
     assert set(map(tuple,CFG['manifest']['routes']))=={(a,b) for a in AIR for b in AIR if a!=b}
     queries=list(expected_queries(DAY,CFG['manifest']['routes'],CFG))
-    assert len(queries)==380 and {d for d,_,_ in queries}=={DAY}
+    assert len(queries)==870 and {d for d,_,_ in queries}=={DAY}
     assert list(expected_queries(DAY,[('JFK','LAX')],CFG))==[(DAY,'JFK','LAX')]
     assert CFG['currency']=='USD' and not CITIES[CITY]['flight_scopes']
     assert CFG['capture_wait_until']=='domcontentloaded' and 'capture_wait_until' not in country_config('AU')
@@ -48,12 +49,14 @@ def test_top_twenty_exact_airports_all_directions_single_date_and_no_network_exp
 
 def test_four_time_zones_post_dst_red_eye_duplicates_and_cheapest_price():
     zones=CFG['zones']
-    assert len(set(zones.values()))==6
+    assert len(set(zones.values()))==7
     for code,offset in [('JFK',-5),('DFW',-6),('DEN',-7),('LAX',-8)]:
         assert datetime(2026,11,2,tzinfo=ZoneInfo(zones[code])).utcoffset().total_seconds()==offset*3600
     assert zones['PHX']=='America/Phoenix' and zones['DTW']=='America/Detroit'
     assert datetime(2026,7,2,tzinfo=ZoneInfo(zones['PHX'])).utcoffset().total_seconds()==-7*3600
     assert datetime(2026,7,2,tzinfo=ZoneInfo(zones['DEN'])).utcoffset().total_seconds()==-6*3600
+    assert zones['HNL']=='Pacific/Honolulu'
+    assert datetime(2026,7,2,tzinfo=ZoneInfo(zones['HNL'])).utcoffset().total_seconds()==-10*3600
     row=segment('LAX','JFK',[23,30],[7,45],315,carrier='B6',number='100')
     row[21]=[2026,11,3]
     fs=parse_results(scripts(row,row),'LAX','JFK',DAY,zones)
@@ -71,6 +74,21 @@ def test_new_york_airports_remain_three_exact_source_identities():
     records=[parse_results(rows,a,'BOS',DAY,CFG['zones'])[0] for a in ['JFK','EWR','LGA']]
     assert [f['origin'] for f in records]==['JFK','EWR','LGA']
     assert len({f['id'] for f in records})==3
+
+
+def test_hawaii_long_overnight_flights_source_duration_and_runtime_limit(tmp_path):
+    row=segment('HNL','BOS',[14,0],[6,0],660,carrier='AS',number='100');row[21]=[2026,11,3]
+    assert CFG['max_duration']==57600 and country_config('NZ')['max_duration']==28800
+    with pytest.raises(ValueError,match='duration'):parse_results(scripts(row),'HNL','BOS',DAY,CFG['zones'])
+    fs=parse_results(scripts(row),'HNL','BOS',DAY,CFG['zones'],max_duration=CFG['max_duration'])
+    assert fs[0]['arrival']-fs[0]['departure']==11*3600
+    cache=tmp_path/'cache';out=tmp_path/'day.gz';put(cache,'HNL','BOS',fs)
+    prepare(cache,out,DAY,[('HNL','BOS')],CFG)
+    assert load_domestic(out,'US')['flights'][0]['flight_scope']=='domestic'
+    bounds=CITIES[CITY]['bounds']
+    assert all(bounds[0][0]<=a['lon']<=bounds[1][0] and bounds[0][1]<=a['lat']<=bounds[1][1] for a in AIR.values())
+    row[11]=600
+    with pytest.raises(ValueError,match='duration'):parse_results(scripts(row),'HNL','BOS',DAY,CFG['zones'],max_duration=CFG['max_duration'])
 
 
 def test_late_west_coast_and_early_east_coast_both_replay_all_arrivals_http_and_reproducibility(tmp_path,monkeypatch):
@@ -126,7 +144,7 @@ def test_prepared_snapshot_matches_bounded_search_plan():
     path=flights.reference_path(DAY,CITY)
     if not path.exists():pytest.skip('US capture in progress')
     with gzip.open(path,'rt') as stream:raw=json.load(stream)
-    assert len(raw['metadata']['queries'])+len(raw['metadata']['uncollected_queries'])==380
+    assert len(raw['metadata']['queries'])+len(raw['metadata']['uncollected_queries'])==870
     assert len({f['id'] for f in raw['flights']})==len(raw['flights'])
     assert all(f['origin'] in AIR and f['destination'] in AIR for f in raw['flights'])
     assert all(datetime.fromtimestamp(f['departure'],ZoneInfo(AIR[f['origin']]['timezone'])).date().isoformat()==DAY for f in raw['flights'])

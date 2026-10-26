@@ -132,6 +132,7 @@ def country_config(country='AU', scope='domestic'):
             config.update(queries=[(manifest['start_date'],a,b) for a,b in manifest['routes']],reject_invalid_segments=True)
         if p.get('origin_local_day'):
             config['capture_wait_until']='domcontentloaded'
+            config['max_duration']=manifest['max_duration']
         return config
     if country == 'AU' and scope == 'domestic':
         return dict(country='AU', zones=ZONES, timezone='Australia/Melbourne', end_date=None, manifest=None)

@@ -42,7 +42,7 @@ def load_domestic(path,code,profiles=None):
     if len(air)!=len(reference['airports']) or any(a['country']!=code or a['timezone']!=p.get('airport_zones',{}).get(a['code'],p['zone']) or a['code'] in RETIRED_AIRPORTS or (p.get('airport_zones') and a['code'] not in p['airport_zones']) for a in air.values()):
         raise ValueError('Country domestic airports require exact national identities and zones')
     for f in reference['flights']:
-        if f['origin'] not in air or f['destination'] not in air or not 60<=f['arrival']-f['departure']<=28800:
+        if f['origin'] not in air or f['destination'] not in air or not 60<=f['arrival']-f['departure']<=p.get('max_duration',28800):
             raise ValueError('Invalid domestic segment')
         if p.get('origin_local_day'):
             if f['origin']==f['destination'] or datetime.fromtimestamp(f['departure'],ZoneInfo(air[f['origin']]['timezone'])).date().isoformat()!=DAY:

@@ -1,4 +1,4 @@
-"""Top-twenty US map, six IANA zones, fares, boards and existing replay smoke checks."""
+"""Top-thirty US map, seven IANA zones, fares, boards and existing replay smoke checks."""
 import os
 import json
 from datetime import datetime
@@ -24,9 +24,11 @@ with sync_playwright() as p:
     assert page.evaluate('suntrainReplay.filters.flightScope')=='domestic'
     assert not page.locator('#replay-flight-scope-field').is_visible()
     assert 'EST' in page.locator('#replay-clock-date').inner_text()
-    assert page.evaluate('suntrainReplay.day.stations.length')==20
+    assert page.evaluate('suntrainReplay.day.stations.length')==30
     assert page.evaluate('suntrainReplay.day.end-suntrainReplay.day.start>27*3600')
     assert page.evaluate('suntrainReplay.graph.getBounds().contains([-118.408,33.942]) && suntrainReplay.graph.getBounds().contains([-73.778,40.641])')
+    assert page.evaluate('suntrainReplay.graph.getBounds().contains([-157.92,21.32])')
+    assert page.evaluate('suntrainReplay.filtered.some(s=>s.stops[1][1]-s.stops[0][1]>8*3600)')
     assert page.evaluate('Object.values(suntrainReplay.day.paths).every(p=>p.coordinates.every(c=>c[0]<0))')
     count=len(downloads);total=page.evaluate('suntrainReplay.filtered.length')
     page.screenshot(path=str(AUDIT/'map.png'))
@@ -83,5 +85,5 @@ with sync_playwright() as p:
         page.wait_for_function('(city)=>suntrainReplay.day.city===city && !suntrainReplay.loading && suntrainReplay.filtered.length',arg=city,timeout=120000)
         assert page.evaluate('suntrainReplay.day.end-suntrainReplay.day.start')==86400
     assert not errors,errors
-    print(f'{total} US records: top twenty, six IANA zones, USD, airline/airport filters, boards, overnight timeline, frequency, themes, Indonesian, mobile and Australia/Melbourne passed',flush=True)
+    print(f'{total} US records: top thirty, seven IANA zones, USD, airline/airport filters, boards, overnight timeline, frequency, themes, Indonesian, mobile and Australia/Melbourne passed',flush=True)
     browser.close()

@@ -78,7 +78,7 @@ def test_prepared_full_easyjet_has_complete_search_accounting_and_preserves_ryan
  assert stats['failed']==stats['unattempted']==0
  assert not meta['uncollected_queries'] and not meta['failed_queries']
  google=[q for q in meta['queries'] if q.get('source')!='ryanair_public_timetable']
- expected=set(g.config()['queries'])|set(g.config('easyjet')['queries'])
+ expected=set(g.config()['queries'])|set(g.config('easyjet')['queries'])|set(g.config('wizzair')['queries'])
  assert len(google)==len(expected)==len({(q['date'],q['origin'],q['destination']) for q in google})
  assert all(q['capture_context']==g.CONTEXT for q in google)
  ryanair=[f for f in doc['flights'] if f['brand']=='ryanair']

@@ -93,7 +93,7 @@ def test_runtime_rejects_wrong_region_brand_fare_scope_or_duplicate(tmp_path,mon
 def test_cache_identity_http_revision_date_rejection_and_existing_network_isolation(tmp_path,monkeypatch):
  cfg,cache,out=fixture(tmp_path,monkeypatch);monkeypatch.setenv('SUNTRAIN_REPLAY_CACHE',str(tmp_path/'http'));day=flights.replay_day(DAY,'europe_flights')
  assert day['timezone']=='UTC' and day['start']==START and day['flight_brands']==e.BRANDS
- assert {s['flight_brand'] for s in day['services']}==set(e.BRANDS)
+ assert {s['flight_brand'] for s in day['services']}=={'ryanair','easyjet'}
  assert flights.reference_paths(DAY,'europe_flights')==[out]
  app=Flask(__name__);replay_http.register_replay_routes(app);client=app.test_client();info=replay_http.descriptor(DAY,'europe_flights');response=client.get(info['url'],headers={'Accept-Encoding':'gzip'})
  assert response.status_code==200 and json.loads(gzip.decompress(response.data))['city']=='europe_flights'
@@ -104,7 +104,7 @@ def test_cache_identity_http_revision_date_rejection_and_existing_network_isolat
  with pytest.raises(ValueError,match='context'):prepare(cache,out,cfg)
 
 
-def test_prepared_europe_both_brands_scopes_and_clean_source_identity():
+def test_prepared_europe_brands_scopes_and_clean_source_identity():
  r=e.load_reference(DAY);assert r['flights'] and {f['brand'] for f in r['flights']}==set(e.BRANDS)
  assert {f['flight_scope'] for f in r['flights']}=={'domestic','international'}
  assert not r['metadata']['uncollected_queries'] and len({f['id'] for f in r['flights']})==len(r['flights'])

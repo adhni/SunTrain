@@ -14,9 +14,13 @@ def config(brand=None):
  if brand:m={**m,'routes':m['routes_by_brand'][brand]}
  zones={a['code']:a['timezone'] for a in m['airports']};start=datetime.fromisoformat(DAY).replace(tzinfo=timezone.utc);end=start+timedelta(days=1);queries=[]
  for a,b in m['routes']:
+  # Wizz uses one local departure date; accept the documented UTC-boundary gap.
+  if brand=='wizzair':
+   queries.append((DAY,a,b));continue
   zone=ZoneInfo(zones[a]);first=(start-timedelta(hours=8)).astimezone(zone).date();last=(end-timedelta(seconds=1)).astimezone(zone).date()
   queries.extend(((first+timedelta(days=n)).isoformat(),a,b) for n in range((last-first).days+1))
- return dict(country='REGION',scope='region',timezone='UTC',end_date=DAY,zones=zones,manifest=m,queries=sorted(set(queries)),capture_prices=True,currency='EUR',max_duration=28800,capture_context=CONTEXT,reject_invalid_segments=True,allowed_brands=[brand] if brand else list(BRANDS))
+ ordered=sorted(set(queries))
+ return dict(country='REGION',scope='region',timezone='UTC',end_date=DAY,zones=zones,manifest=m,queries=ordered,query_date_policy=('local_departure_day_only' if brand=='wizzair' else 'utc_day_overlap'),capture_prices=True,currency='EUR',max_duration=28800,capture_context=CONTEXT,reject_invalid_segments=True,allowed_brands=[brand] if brand else ['ryanair','easyjet'])
 
 
 def seed_pilot(cache,cfg):
@@ -66,7 +70,7 @@ def prepare(cache,output,cfg):
   qs=[q for q in queries if (q['origin'],q['destination']) in pairs];absent=[q for q in missing if tuple(q[1:]) in pairs];errors=[q for q in failed if (q['origin'],q['destination']) in pairs];codes={c for p in pairs for c in p}
   return dict(candidate_airports=len(codes),airports_planned=len(codes),airports_searched=len({q[k] for q in qs for k in ('origin','destination')}),routes_planned=len(pairs),routes_searched=len({(q['origin'],q['destination']) for q in qs}),routes_with_search_results=len({(q['origin'],q['destination']) for q in qs if q['target_records']}),queries_planned=len(qs)+len(absent),queries_captured=len(qs),queries_not_returned=sum(q['target_status']=='not_returned' for q in qs),queries_rejected=sum(q['status']=='rejected_source_records' for q in qs),queries_only_other_carriers=sum(q['target_status']=='only_other_carriers' for q in qs),queries_with_target_results=sum(q['target_status']=='target_results' for q in qs),failed_or_missing_queries=len(absent),failed_queries=len(errors),unattempted_queries=len(absent)-len(errors),rejected_records=sum(len(q.get('rejected_flights',[])) for q in qs),**counts([f for f in fs if scope=='both' or f['flight_scope']==scope]))
  cov=coverage('both')
- meta=dict(profile='europe_flights',start_date=DAY,end_date=DAY,timezone='UTC',scope='both',source='Public Google Flights dated nonstop segments',source_url='https://www.google.com/travel/flights',queries=queries,uncollected_queries=missing,failed_queries=failed,coverage=cov,coverage_by_scope={scope:coverage(scope) for scope in ['domestic','international','both']},coverage_by_brand={brand:counts([f for f in fs if f['brand']==brand]) for brand in BRANDS},fare_context=dict(currency='EUR',adults=1,cabin='economy',trip_type='one_way'),priced_flights=priced,airlines=sorted({f['airline'] for f in fs}),replay_note=NOTE,route_source_sha256=cfg['manifest']['route_source_sha256'],route_source_urls=cfg['manifest']['source_urls'],unresolved_airports=[],capture_context=CONTEXT,selection=cfg['manifest']['selection'])
+ meta=dict(profile='europe_flights',start_date=DAY,end_date=DAY,timezone='UTC',scope='both',source='Public Google Flights dated nonstop segments',source_url='https://www.google.com/travel/flights',queries=queries,uncollected_queries=missing,failed_queries=failed,coverage=cov,coverage_by_scope={scope:coverage(scope) for scope in ['domestic','international','both']},coverage_by_brand={brand:counts([f for f in fs if f['brand']==brand]) for brand in BRANDS},fare_context=dict(currency='EUR',adults=1,cabin='economy',trip_type='one_way'),priced_flights=priced,airlines=sorted({f['airline'] for f in fs}),replay_note=NOTE,route_source_sha256=cfg['manifest']['route_source_sha256'],route_source_urls=cfg['manifest']['source_urls'],unresolved_airports=[],query_date_policy=cfg.get('query_date_policy','utc_day_overlap'),capture_context=CONTEXT,selection=cfg['manifest']['selection'])
  stop=cache/'collection-stop.json'
  if stop.exists():meta['collection_stop']=json.loads(stop.read_text())
  doc=dict(airports=[air[c] for c in sorted(used)],flights=fs,metadata=meta);payload=gzip.compress(json.dumps(doc,ensure_ascii=False,separators=(',',':'),sort_keys=True).encode(),compresslevel=9,mtime=0);output.parent.mkdir(parents=True,exist_ok=True);tmp=output.with_suffix('.tmp');tmp.write_bytes(payload);tmp.replace(output)

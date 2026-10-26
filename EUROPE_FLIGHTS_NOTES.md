@@ -1,9 +1,10 @@
-# Europe flights — Ryanair and easyJet
+# Europe flights — Ryanair, easyJet and Wizz Air
 
-**Europe · Flights** is a regional view for **2 November 2026**, limited to **Ryanair and easyJet**, with verified source-carrier aliases.
-Both brands now search their full pinned Europe-connected airport-pair
-catalogues: Ryanair public monthly timetables and dated Google Flights searches
-for easyJet. Other airlines can follow later.
+**Europe · Flights** is a regional view for **2 November 2026**, covering **Ryanair, easyJet and Wizz Air**, with verified source-carrier aliases.
+Ryanair and easyJet retain their full pinned Europe-connected candidate
+catalogues. Wizz Air adds a secondary route-map inventory, validated through
+dated Google Flights captures. The airline's direct route page returned a human
+verification challenge; no claim of a complete official Wizz catalogue is made. Other airlines can follow later.
 
 It opens on **Both** and moving planes, with no airport selected. Domestic and
 International use the countries of the actual endpoint airports, not airline
@@ -102,6 +103,55 @@ Ryanair's per-airport IANA zones supplement explicit country and island mappings
 All 280 discovery airports resolve uniquely in the pinned catalogue. The app
 loads only airports represented by returned flights.
 
+## Wizz Air discovery and collection
+
+Reviewed **27 October 2026**. Wizz Air's
+[own route map](https://www.wizzair.com/en-gb/flights/wizz-route-map) returned a
+405 AWS WAF human-verification page in a normal browser. Collection stopped on
+that site without attempting a bypass. FlightConnections also denied the local
+HTTP client, so its maps are not used as a bulk source.
+
+[Seats Frog's public Wizz route map](https://www.seatsfrog.com/airlines/w6/route-map)
+provides **1,329 candidate airport pairs / 2,658 search directions across 187
+candidate airports**. This is a secondary inventory, including announced or
+historical routes, not proof of service on November 2. The public page's point
+and arc data resolve endpoints to exact IATA codes; pinned OurAirports data,
+not the secondary map coordinates, supplies replay airport identities and
+positions. `wizzair_routes_discovery.json` stores normalized pairs, source URL,
+raw-page hash, review dates, access limitations and primary cross-checks. All
+26 Wizz-group Barcelona pairs reviewed in Aena's directory are present in the
+candidate inventory; that sample does not establish network completeness.
+
+Aena's [Wizz Air](https://www.aena.es/en/josep-tarradellas-barcelona-el-prat/aerolineas/wizz-air.html),
+[Malta](https://www.aena.es/en/josep-tarradellas-barcelona-el-prat/airlines/wizz-air-malta.html)
+and [UK](https://www.aena.es/en/josep-tarradellas-barcelona-el-prat/airlines/wizz-air-uk.html)
+directories verify **W6/WZZ, W4/WMT and W9/WUK**. These codes map to the Wizz Air
+brand, while source flight numbers and airline labels remain unchanged. Other
+historical subsidiaries are not inferred from airline names. Wizz uses magenta
+(`#e660b6`), distinct from Ryanair blue and easyJet orange.
+
+The dated pilot returned W62201/203/205 BUD–LTN and W43142/146 FCO–OTP with EUR
+quotes. Existing cached W9 captures include W95724 AGP–LGW and W95386 ALC–LTN.
+Wizz searches only **2 November in each departure airport's local time**:
+**2,658 airport-pair/date queries**, rather than the original 7,800-query plan.
+The broad adjacent-day run was stopped; successful captures remain reusable
+in the cache, but adjacent dates are not requested or included in this Wizz
+preparation. This deliberately leaves a UTC-boundary gap: previous-local-day
+carry-ins and next-local-day departures falling inside the UTC replay window
+may be absent. It does not change the existing Ryanair/easyJet snapshots or
+claim complete UTC-day coverage. Each requested pair is a candidate, not a
+confirmed operating route. Existing same-date captures are reused before any
+network request, with at most two searches running concurrently.
+
+Exact dated segments, source
+duration and airport/time-zone validation remain mandatory; each flight keeps
+the cheapest verified EUR quote. OTP/BBU, LTN/LGW, SPX and RMO retain their exact
+identities. Armenia, Azerbaijan, UAE and Saudi airports have explicit IANA zones.
+
+The full three-brand manifest contains **9,357 unique candidate directions and
+320 airports**. A candidate route, future announcement, empty response or query
+completion never creates an operating-flight claim.
+
 ## Capture, dates and fares
 
 The full easyJet catalogue requires **6,694 exact airport-pair/date searches**,
@@ -179,16 +229,18 @@ refresh is added.
 .venv/bin/python scripts/prepare_europe_flight_airports.py
 # Collect missing easyJet searches only, retaining original EUR capture context.
 PYTHONPATH=.cache/browser-tools .venv/bin/python scripts/prepare_europe_flights.py --brand easyjet --collect-only --concurrency 2
+PYTHONPATH=.cache/browser-tools .venv/bin/python scripts/prepare_europe_flights.py --brand wizzair --collect-only --concurrency 2
 # Build easyJet from cache and combine with the cached Ryanair timetables.
 .venv/bin/python scripts/prepare_ryanair_flights.py --prepare-only
 ```
 
-The final preparation creates a temporary deterministic
-`.cache/google-flights-europe-eur-v1/prepared-easyjet.json.gz`, then combines it
+The final preparation creates temporary deterministic
+`prepared-easyjet.json.gz` and `prepared-wizzair.json.gz` files in the Google
+cache, then combines them
 with the original committed Google seed and Ryanair captures. No additional
 large source snapshot is committed. The Google cache and Ryanair cache have
 exclusive preparation locks; final preparation refuses to run while easyJet
-collection is active. `--easyjet-cache` and `--cache` select their respective
+collection is active. `--google-cache` (also accepted as `--easyjet-cache`) and `--cache` select their respective
 cache directories. `--ryanair-only` explicitly reproduces the earlier Ryanair
 plus easyJet-starter stage; it is not the default for the full manifest.
 
@@ -211,16 +263,18 @@ The committed combined snapshot still works without it. Failed requests have
 preparation share an exclusive cache lock. Output uses fixed gzip mtime, sorted
 records and atomic replacement for byte-for-byte reproducibility.
 
-`.cache/google-flights-europe-eur-v1/` holds all 7,037 unique Google captures
-(original searches plus the full easyJet collection), using about 28 MiB locally;
-`.cache/google-flights-europe-pilot-eur-v1/` holds the pilot. The full cache is needed to rebuild expanded easyJet records;
+`.cache/google-flights-europe-eur-v1/` contains 11,020 saved dated captures
+(about 11.1 MiB including prepared intermediates). The final replay uses 9,539
+unique queries; the rest include retained adjacent-date Wizz captures from the
+stopped broad run.
+`.cache/google-flights-europe-pilot-eur-v1/` holds the pilot. The full cache is needed to rebuild expanded easyJet and Wizz records;
 the committed starter seed needs it only for a refresh. `.cache/europe-flights-audit/` and
 `.cache/ryanair-expansion-audit/` and `.cache/easyjet-expansion-audit/` contain
 optional comparisons, logs and browser
 screenshots. `.cache/europe-http/` contains generated responses that regenerate.
 The untracked Europe plan and unrelated country notes are preserved.
 
-## Captured coverage and validation
+## Ryanair/easyJet baseline before Wizz expansion
 
 All **6,694 / 6,694 easyJet origin/date searches** completed, covering all
 **2,564 published directions and 164 candidate airports**, with **zero failed,
@@ -303,3 +357,57 @@ board screenshots were visually checked. The existing international-network
 browser suite also passed across prior country views and filters, local boards,
 fullscreen navigation, themes, Indonesian and mobile layout. Unrelated local
 notes and the untracked Europe plan remain unchanged.
+
+
+## Wizz expansion coverage and validation
+
+All **2,658 / 2,658 Wizz local-day searches** completed with zero failed,
+unattempted or rejected queries/records. Of these, **905** returned Wizz flights,
+**226** returned only other carriers, and **1,527** returned no direct flight
+records. Empty responses mean **not returned**, never **no service**.
+
+| Brand | Flight records | Airports returned | Directions returned | Priced records |
+| --- | ---: | ---: | ---: | ---: |
+| Ryanair group (unchanged) | 3,476 | 171 | 2,500 | 336 |
+| easyJet (unchanged) | 1,449 | 119 | 940 | 1,449 |
+| Wizz Air | 1,061 | 130 | 905 | 1,061 |
+
+Wizz returned flights across **37 countries/territories**, with original
+carriers **W6: 490, W4: 501, W9: 70**, including **62 domestic** and **999
+international** records. All Wizz quotes are verified EUR, one adult, economy,
+one way. Missing airport pairs, seasonal service, future/historical route
+candidates, source omissions and the deliberate UTC-boundary gap remain
+limitations. This is not a complete Wizz network claim.
+
+The combined replay contains **5,986 records**, **256 airports**, **3,923
+unique directions**, **50 countries/territories**, and **2,846 EUR quotes**.
+Its **5,907 UTC-owned departures** drive frequency lines; 79 earlier departures
+remain because their arrivals overlap the replay day. All **4,925 baseline
+Ryanair/easyJet records compare equal field for field**.
+
+The final source accounting has **9,539 unique dated Google captures** plus
+**5,305 monthly Ryanair timetables**. Wizz reuses 156 queries already referenced
+by the starter/easyJet data. Its collector also reused the earlier Wizz pilot
+and partial-run captures. Google query identities and missing queries are
+deduplicated across all three brand preparations; monthly Ryanair requests
+remain a separate source unit. Source subtotals overlap and must not simply
+be added. No shared International-network integration or country snapshot
+change is included in this expansion. The initial map includes Baku.
+
+Final compressed archive: **1,057,914 bytes**, SHA-256
+`b2824d42584d9349236592959a988085e681a829c96de6cdb8bd210d7891a2db`.
+
+Validation: **250 Python tests and 100 JavaScript tests passed**, including
+flight-country regressions, Melbourne replay, HTTP gzip/ETags, date rejection,
+exact airport identities, UTC/local and overnight timing, brand/carrier
+validation, one-date Wizz query planning, shared capture accounting, duplicate
+identities, quote selection and source gaps. The full manifest and final
+archive reproduce byte for byte from pinned inputs and cached captures.
+
+The browser suite passed against all **5,986 records**, covering all three
+brand filters and RK/W6/W4/W9 carrier filters, real-country scopes, airport
+boards including BUD/OTP/LTN, departures/arrivals/Destinations, fullscreen/back,
+EUR previews, UTC/local clocks, frequency totals, cache reuse, themes,
+English/Indonesian, 390px mobile layout and reset to the existing Nepal view.
+Desktop map and mobile board screenshots were visually checked. Unrelated
+country notes and the local Europe plan remain unchanged.

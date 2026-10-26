@@ -4,6 +4,7 @@ import json
 import os
 from pathlib import Path
 from dashboard.flight_profiles import city_settings as profile_city_settings
+from dashboard.europe_flights import SETTINGS as EUROPE_FLIGHT_SETTINGS
 
 GERMANY_REGIONAL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/germany/regional-operators.json").read_text())
@@ -13,6 +14,7 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'europe_flights': EUROPE_FLIGHT_SETTINGS,
     'vietnam_flights': {
         'replay_kind':'flights','name':'Vietnam · Flights','timezone':'Asia/Ho_Chi_Minh',
         'bounds':[[102.0,8.0],[110.0,23.5]],'passenger_data':False,
@@ -567,5 +569,6 @@ def replay_settings(city="melbourne"):
             "city_name": settings["name"], "replay_kind": settings.get("replay_kind", "transit"),
             "flight_scopes": bool(settings.get("flight_scopes")),
             "flight_country_filters": bool(settings.get("flight_country_filters")),
+            **({'flight_brands':settings['flight_brands']} if settings.get('flight_brands') else {}),
             **({'flight_hubs':settings['flight_hubs'],'default_airport':settings.get('default_airport'),
                 **({'flight_hub_labels':settings['flight_hub_labels']} if settings.get('flight_hub_labels') else {})} if settings.get('flight_hubs') else {})}

@@ -50,6 +50,18 @@ test('Captured MYR and USD fares format minor units without inventing missing pr
     assert.match(formatCallTime(at,'Asia/Kuching'), /08:00 MYT/);
 });
 
+test('Europe EUR quotes and brand filters preserve source carrier codes',()=>{
+ assert.match(priceLabel({price:{amount_minor:1299,currency:'EUR'}}),/EUR\s*12\.99/);
+ const day={stations:[{country:'GB'},{country:'MA'}]};
+ const flight={mode:'flight',carrier:'RK',flight_brand:'ryanair',stops:[[0,0,0],[1,3600,3600]],flight_scope:'international'};
+ const filters={modes:[],operators:[],lines:[],directions:[],stations:[],number:'',flightScope:'both',carriers:['brand:ryanair']};
+ assert.equal(core.matches(flight,filters,day),true);
+ assert.equal(core.matches(flight,{...filters,carriers:['RK']},day),true);
+ assert.equal(core.matches(flight,{...filters,carriers:['FR']},day),false);
+ assert.equal(core.matches(flight,{...filters,carriers:['brand:easyjet']},day),false);
+ assert.equal(core.matches({...flight,carrier:'U2',flight_brand:'easyjet'},{...filters,carriers:['brand:easyjet']},day),true);
+});
+
 test('Gulf airport clocks differ by one hour and capture times keep their zone',()=>{
     const {captureTime}=require('../assets/02_flights.js');
     const at=Date.parse('2026-11-02T00:00:00Z')/1000;

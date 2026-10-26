@@ -2,6 +2,12 @@
 
 Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia, Canada, France, Germany, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Myanmar, the Netherlands, Nepal, New Zealand, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Europe flights
+
+Choose **Europe · Flights** for **2 November 2026**, starting with **Ryanair and easyJet**. This broad starter searches 306 published directions across 84 airports; it is a sample of the two networks. Opens on **Both**, with Domestic / International based on actual airport countries, a **UTC** timeline and local airport boards. Filter by brand, original carrier code, exact airport or From country / To country. New fares use **EUR**, keeping the cheapest verified captured quote per exact flight. STN/LTN/LGW, CDG/ORY/BVA, FCO/CIA and MXP/LIN/BGY remain separate. Other airlines and shared International network integration can follow later. See [Europe flight notes](EUROPE_FLIGHTS_NOTES.md) for source discovery, actual coverage, gaps and rebuilding.
+
+The starter contains **516 flight records across 64 airports and 38 countries/territories**: **336 Ryanair-group** and **180 easyJet**, all with captured EUR quotes. It includes 92 domestic and 424 international records. All 744 selected origin/date queries completed; coverage remains partial.
+
 ## Nepal flights
 
 Choose **Nepal · Flights** for **2 November 2026**, with Domestic / International / Both and an **NPT (UTC+5:45)** replay clock. International connects only to existing SunTrain flight countries and DXB/AUH/DOH, and appears in the shared UTC network. New quotes request USD; reused fares retain their original currency. KTM, PKR, PHH and BWA remain separate. Reuses airline/airport filters, local boards, Destinations, fullscreen views and frequency lines. Mountain flights and source airport-code ambiguities remain documented gaps. See [Nepal flight notes](NEPAL_FLIGHTS_NOTES.md) for sources, actual coverage and rebuilding.

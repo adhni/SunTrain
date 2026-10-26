@@ -225,6 +225,9 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
     config = config or country_config()
     for day, origin, destination in expected_queries(search_date, pairs, config, end_date):
         path = query_path(cache,day,origin,destination,config)
+        if path.exists() and config.get('capture_context'):
+            if json.loads(path.read_text()).get('capture_context')!=config['capture_context']:
+                raise ValueError('Incompatible capture context; use a separate cache')
         if not path.exists():
             path.parent.mkdir(parents=True,exist_ok=True)
             pending.put_nowait((origin, destination, day, path))
@@ -257,7 +260,7 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                         # Functions avoid the page's Trusted Types restriction on eval strings.
                         await page.wait_for_function('''() => [...document.scripts].some(s => s.textContent.includes("key: 'ds:1'"))''', timeout=15000)
                         scripts = await page.locator('script').all_text_contents()
-                        rejected = [] if config['country'] in {'ID','MY','IN','KR','JP','CN','TH','PH','VN'} or config.get('scope') in {'international','hubs'} else None
+                        rejected = [] if config.get('reject_invalid_segments') or config['country'] in {'ID','MY','IN','KR','JP','CN','TH','PH','VN'} or config.get('scope') in {'international','hubs'} else None
                         records = parse_results(scripts, origin, destination, day, config['zones'], rejected, config.get('max_duration', 8 * 3600))
                         body = await page.locator('body').inner_text()
                         if '/sorry/' in page.url or 'unusual traffic' in body.lower():
@@ -280,6 +283,7 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                             captured_at=captured_at, flights=records,
                             page_sha256=hashlib.sha256('\n'.join(scripts).encode()).hexdigest(),
                             status='results' if records else ('rejected_source_records' if rejected else 'no_matching_direct_flights'))
+                        if config.get('capture_context'):result['capture_context']=config['capture_context']
                         if price_error:result['price_error']=price_error
                         if rejected:
                             result['rejected_flights'] = rejected

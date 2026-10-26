@@ -1,0 +1,3621 @@
+{
+  "profile": "europe_flights",
+  "scope": "both",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "UTC",
+  "currency": "EUR",
+  "max_duration": 28800,
+  "airports": [
+    {
+      "code": "ADB",
+      "icao": "LTBJ",
+      "name": "Adnan Menderes International Airport (ADB)",
+      "municipality": "Gaziemir",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "europe": true,
+      "mode": "flight",
+      "lat": 38.2924,
+      "lon": 27.157
+    },
+    {
+      "code": "AGP",
+      "icao": "LEMG",
+      "name": "Málaga-Costa del Sol Airport (AGP)",
+      "municipality": "Málaga",
+      "country": "ES",
+      "timezone": "Europe/Madrid",
+      "europe": true,
+      "mode": "flight",
+      "lat": 36.678234,
+      "lon": -4.500208
+    },
+    {
+      "code": "ALC",
+      "icao": "LEAL",
+      "name": "Alicante-Elche Miguel Hernández Airport (ALC)",
+      "municipality": "Alicante",
+      "country": "ES",
+      "timezone": "Europe/Madrid",
+      "europe": true,
+      "mode": "flight",
+      "lat": 38.2822,
+      "lon": -0.558156
+    },
+    {
+      "code": "AMM",
+      "icao": "OJAI",
+      "name": "Queen Alia International Airport (AMM)",
+      "municipality": "Amman",
+      "country": "JO",
+      "timezone": "Asia/Amman",
+      "europe": false,
+      "mode": "flight",
+      "lat": 31.7226009369,
+      "lon": 35.9931983948
+    },
+    {
+      "code": "AMS",
+      "icao": "EHAM",
+      "name": "Amsterdam Airport Schiphol (AMS)",
+      "municipality": "Amsterdam",
+      "country": "NL",
+      "timezone": "Europe/Amsterdam",
+      "europe": true,
+      "mode": "flight",
+      "lat": 52.308601,
+      "lon": 4.76389
+    },
+    {
+      "code": "ARN",
+      "icao": "ESSA",
+      "name": "Stockholm-Arlanda Airport (ARN)",
+      "municipality": "Stockholm",
+      "country": "SE",
+      "timezone": "Europe/Stockholm",
+      "europe": true,
+      "mode": "flight",
+      "lat": 59.64849,
+      "lon": 17.928829
+    },
+    {
+      "code": "ATH",
+      "icao": "LGAV",
+      "name": "Athens Eleftherios Venizelos International Airport (ATH)",
+      "municipality": "Spata-Artemida",
+      "country": "GR",
+      "timezone": "Europe/Athens",
+      "europe": true,
+      "mode": "flight",
+      "lat": 37.936401,
+      "lon": 23.9445
+    },
+    {
+      "code": "BCN",
+      "icao": "LEBL",
+      "name": "Josep Tarradellas Barcelona-El Prat Airport (BCN)",
+      "municipality": "Barcelona",
+      "country": "ES",
+      "timezone": "Europe/Madrid",
+      "europe": true,
+      "mode": "flight",
+      "lat": 41.2971,
+      "lon": 2.07846
+    },
+    {
+      "code": "BEG",
+      "icao": "LYBE",
+      "name": "Belgrade Nikola Tesla Airport (BEG)",
+      "municipality": "Belgrade",
+      "country": "RS",
+      "timezone": "Europe/Belgrade",
+      "europe": true,
+      "mode": "flight",
+      "lat": 44.818401,
+      "lon": 20.309099
+    },
+    {
+      "code": "BER",
+      "icao": "EDDB",
+      "name": "Berlin Brandenburg Airport (BER)",
+      "municipality": "Berlin",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "europe": true,
+      "mode": "flight",
+      "lat": 52.361738,
+      "lon": 13.502341
+    },
+    {
+      "code": "BFS",
+      "icao": "EGAA",
+      "name": "Belfast International Airport (BFS)",
+      "municipality": "Belfast",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "europe": true,
+      "mode": "flight",
+      "lat": 54.6575012207,
+      "lon": -6.2158298492399995
+    },
+    {
+      "code": "BGY",
+      "icao": "LIME",
+      "name": "Il Caravaggio International Airport (BGY)",
+      "municipality": "Orio al Serio (BG)",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 45.669362,
+      "lon": 9.708851
+    },
+    {
+      "code": "BJV",
+      "icao": "LTFE",
+      "name": "Milas Bodrum International Airport (BJV)",
+      "municipality": "Bodrum",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "europe": true,
+      "mode": "flight",
+      "lat": 37.249314,
+      "lon": 27.66401
+    },
+    {
+      "code": "BRS",
+      "icao": "EGGD",
+      "name": "Bristol Airport (BRS)",
+      "municipality": "Bristol",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "europe": true,
+      "mode": "flight",
+      "lat": 51.382326,
+      "lon": -2.716453
+    },
+    {
+      "code": "BRU",
+      "icao": "EBBR",
+      "name": "Brussels Airport (BRU)",
+      "municipality": "Zaventem",
+      "country": "BE",
+      "timezone": "Europe/Brussels",
+      "europe": true,
+      "mode": "flight",
+      "lat": 50.901402,
+      "lon": 4.48444
+    },
+    {
+      "code": "BSL",
+      "icao": "LFSB",
+      "name": "EuroAirport Basel–Mulhouse–Freiburg (BSL)",
+      "municipality": "Bâle / Mulhouse",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "europe": true,
+      "mode": "flight",
+      "lat": 47.60068,
+      "lon": 7.521117
+    },
+    {
+      "code": "BTS",
+      "icao": "LZIB",
+      "name": "M. R. Štefánik Airport (BTS)",
+      "municipality": "Bratislava",
+      "country": "SK",
+      "timezone": "Europe/Bratislava",
+      "europe": true,
+      "mode": "flight",
+      "lat": 48.1702,
+      "lon": 17.2127
+    },
+    {
+      "code": "BUD",
+      "icao": "LHBP",
+      "name": "Budapest Liszt Ferenc International Airport (BUD)",
+      "municipality": "Budapest",
+      "country": "HU",
+      "timezone": "Europe/Budapest",
+      "europe": true,
+      "mode": "flight",
+      "lat": 47.43018,
+      "lon": 19.262393
+    },
+    {
+      "code": "BVA",
+      "icao": "LFOB",
+      "name": "Beauvais-Tillé airport (BVA)",
+      "municipality": "Beauvais",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "europe": true,
+      "mode": "flight",
+      "lat": 49.454399,
+      "lon": 2.11278
+    },
+    {
+      "code": "CDG",
+      "icao": "LFPG",
+      "name": "Charles de Gaulle International Airport (CDG)",
+      "municipality": "Paris (Roissy-en-France, Val-d'Oise)",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "europe": true,
+      "mode": "flight",
+      "lat": 49.00896,
+      "lon": 2.554117
+    },
+    {
+      "code": "CGN",
+      "icao": "EDDK",
+      "name": "Cologne Bonn Airport (CGN)",
+      "municipality": "Köln (Cologne)",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "europe": true,
+      "mode": "flight",
+      "lat": 50.865898,
+      "lon": 7.14274
+    },
+    {
+      "code": "CIA",
+      "icao": "LIRA",
+      "name": "Ciampino–G. B. Pastine International Airport (CIA)",
+      "municipality": "Rome",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 41.798769,
+      "lon": 12.595331
+    },
+    {
+      "code": "CPH",
+      "icao": "EKCH",
+      "name": "Copenhagen Kastrup Airport (CPH)",
+      "municipality": "Copenhagen",
+      "country": "DK",
+      "timezone": "Europe/Copenhagen",
+      "europe": true,
+      "mode": "flight",
+      "lat": 55.617900848389,
+      "lon": 12.656000137329
+    },
+    {
+      "code": "CTA",
+      "icao": "LICC",
+      "name": "Catania-Fontanarossa Airport (CTA)",
+      "municipality": "Catania",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 37.466801,
+      "lon": 15.0664
+    },
+    {
+      "code": "DBV",
+      "icao": "LDDU",
+      "name": "Dubrovnik Ruđer Bošković Airport (DBV)",
+      "municipality": "Dubrovnik",
+      "country": "HR",
+      "timezone": "Europe/Zagreb",
+      "europe": true,
+      "mode": "flight",
+      "lat": 42.562247,
+      "lon": 18.265543
+    },
+    {
+      "code": "DJE",
+      "icao": "DTTJ",
+      "name": "Djerba Zarzis International Airport (DJE)",
+      "municipality": "Mellita",
+      "country": "TN",
+      "timezone": "Africa/Tunis",
+      "europe": false,
+      "mode": "flight",
+      "lat": 33.873719,
+      "lon": 10.7773
+    },
+    {
+      "code": "DUB",
+      "icao": "EIDW",
+      "name": "Dublin Airport (DUB)",
+      "municipality": "Dublin",
+      "country": "IE",
+      "timezone": "Europe/Dublin",
+      "europe": true,
+      "mode": "flight",
+      "lat": 53.428713,
+      "lon": -6.262121
+    },
+    {
+      "code": "EDI",
+      "icao": "EGPH",
+      "name": "Edinburgh Airport (EDI)",
+      "municipality": "Ingliston, Edinburgh",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "europe": true,
+      "mode": "flight",
+      "lat": 55.950145,
+      "lon": -3.372288
+    },
+    {
+      "code": "EIN",
+      "icao": "EHEH",
+      "name": "Eindhoven Airport (EIN)",
+      "municipality": "Eindhoven",
+      "country": "NL",
+      "timezone": "Europe/Amsterdam",
+      "europe": true,
+      "mode": "flight",
+      "lat": 51.4500999451,
+      "lon": 5.37452983856
+    },
+    {
+      "code": "FCO",
+      "icao": "LIRF",
+      "name": "Rome–Fiumicino Leonardo da Vinci International Airport (FCO)",
+      "municipality": "Rome",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 41.804532,
+      "lon": 12.251998
+    },
+    {
+      "code": "GIB",
+      "icao": "LXGB",
+      "name": "Gibraltar Airport (GIB)",
+      "municipality": "Gibraltar",
+      "country": "GI",
+      "timezone": "Europe/Gibraltar",
+      "europe": true,
+      "mode": "flight",
+      "lat": 36.151679,
+      "lon": -5.34978
+    },
+    {
+      "code": "GVA",
+      "icao": "LSGG",
+      "name": "Geneva International Airport (GVA)",
+      "municipality": "Geneva",
+      "country": "CH",
+      "timezone": "Europe/Zurich",
+      "europe": true,
+      "mode": "flight",
+      "lat": 46.238098,
+      "lon": 6.10895
+    },
+    {
+      "code": "HEL",
+      "icao": "EFHK",
+      "name": "Helsinki Vantaa Airport (HEL)",
+      "municipality": "Helsinki (Vantaa)",
+      "country": "FI",
+      "timezone": "Europe/Helsinki",
+      "europe": true,
+      "mode": "flight",
+      "lat": 60.318363,
+      "lon": 24.963341
+    },
+    {
+      "code": "HHN",
+      "icao": "EDFH",
+      "name": "Frankfurt-Hahn Airport (HHN)",
+      "municipality": "Frankfurt am Main (Lautzenhausen)",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "europe": true,
+      "mode": "flight",
+      "lat": 49.946353,
+      "lon": 7.261734
+    },
+    {
+      "code": "HRG",
+      "icao": "HEGN",
+      "name": "Hurghada International Airport (HRG)",
+      "municipality": "Hurghada",
+      "country": "EG",
+      "timezone": "Africa/Cairo",
+      "europe": false,
+      "mode": "flight",
+      "lat": 27.176776,
+      "lon": 33.796692
+    },
+    {
+      "code": "INI",
+      "icao": "LYNI",
+      "name": "Niš Constantine the Great Airport (INI)",
+      "municipality": "Niš",
+      "country": "RS",
+      "timezone": "Europe/Belgrade",
+      "europe": true,
+      "mode": "flight",
+      "lat": 43.336538,
+      "lon": 21.856242
+    },
+    {
+      "code": "IOM",
+      "icao": "EGNS",
+      "name": "Isle of Man Airport (IOM)",
+      "municipality": "Castletown, Rushen",
+      "country": "IM",
+      "timezone": "Europe/Isle_of_Man",
+      "europe": true,
+      "mode": "flight",
+      "lat": 54.083081,
+      "lon": -4.623871
+    },
+    {
+      "code": "JER",
+      "icao": "EGJJ",
+      "name": "Jersey Airport (JER)",
+      "municipality": "St. Peter",
+      "country": "JE",
+      "timezone": "Europe/Jersey",
+      "europe": true,
+      "mode": "flight",
+      "lat": 49.207901,
+      "lon": -2.19551
+    },
+    {
+      "code": "KEF",
+      "icao": "BIKF",
+      "name": "Keflavik International Airport (KEF)",
+      "municipality": "Reykjavík",
+      "country": "IS",
+      "timezone": "Atlantic/Reykjavik",
+      "europe": true,
+      "mode": "flight",
+      "lat": 63.985001,
+      "lon": -22.6056
+    },
+    {
+      "code": "KRK",
+      "icao": "EPKK",
+      "name": "Kraków John Paul II International Airport (KRK)",
+      "municipality": "Balice",
+      "country": "PL",
+      "timezone": "Europe/Warsaw",
+      "europe": true,
+      "mode": "flight",
+      "lat": 50.077702,
+      "lon": 19.7848
+    },
+    {
+      "code": "KTT",
+      "icao": "EFKT",
+      "name": "Kittilä International Airport (KTT)",
+      "municipality": "Kittilä",
+      "country": "FI",
+      "timezone": "Europe/Helsinki",
+      "europe": true,
+      "mode": "flight",
+      "lat": 67.700996,
+      "lon": 24.8468
+    },
+    {
+      "code": "LCA",
+      "icao": "LCLK",
+      "name": "Larnaca International Airport (LCA)",
+      "municipality": "Larnaca",
+      "country": "CY",
+      "timezone": "Asia/Nicosia",
+      "europe": true,
+      "mode": "flight",
+      "lat": 34.875099,
+      "lon": 33.624901
+    },
+    {
+      "code": "LGW",
+      "icao": "EGKK",
+      "name": "London Gatwick Airport (LGW)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "europe": true,
+      "mode": "flight",
+      "lat": 51.148744,
+      "lon": -0.185739
+    },
+    {
+      "code": "LIN",
+      "icao": "LIML",
+      "name": "Milano Linate Airport (LIN)",
+      "municipality": "Segrate (MI)",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 45.445099,
+      "lon": 9.27674
+    },
+    {
+      "code": "LIS",
+      "icao": "LPPT",
+      "name": "Lisbon Humberto Delgado Airport (LIS)",
+      "municipality": "Lisbon",
+      "country": "PT",
+      "timezone": "Europe/Lisbon",
+      "europe": true,
+      "mode": "flight",
+      "lat": 38.7813,
+      "lon": -9.13592
+    },
+    {
+      "code": "LJU",
+      "icao": "LJLJ",
+      "name": "Ljubljana Jože Pučnik Airport (LJU)",
+      "municipality": "Zgornji Brnik",
+      "country": "SI",
+      "timezone": "Europe/Ljubljana",
+      "europe": true,
+      "mode": "flight",
+      "lat": 46.223701,
+      "lon": 14.4576
+    },
+    {
+      "code": "LTN",
+      "icao": "EGGW",
+      "name": "London Luton Airport (LTN)",
+      "municipality": "Luton, Luton",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "europe": true,
+      "mode": "flight",
+      "lat": 51.874699,
+      "lon": -0.368333
+    },
+    {
+      "code": "LUX",
+      "icao": "ELLX",
+      "name": "Luxembourg-Findel International Airport (LUX)",
+      "municipality": "Luxembourg",
+      "country": "LU",
+      "timezone": "Europe/Luxembourg",
+      "europe": true,
+      "mode": "flight",
+      "lat": 49.626845,
+      "lon": 6.212134
+    },
+    {
+      "code": "MAD",
+      "icao": "LEMD",
+      "name": "Adolfo Suárez Madrid–Barajas Airport (MAD)",
+      "municipality": "Madrid",
+      "country": "ES",
+      "timezone": "Europe/Madrid",
+      "europe": true,
+      "mode": "flight",
+      "lat": 40.493407,
+      "lon": -3.572249
+    },
+    {
+      "code": "MAN",
+      "icao": "EGCC",
+      "name": "Manchester Airport (MAN)",
+      "municipality": "Manchester, Greater Manchester",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "europe": true,
+      "mode": "flight",
+      "lat": 53.349375,
+      "lon": -2.279521
+    },
+    {
+      "code": "MLA",
+      "icao": "LMML",
+      "name": "Malta International Airport (MLA)",
+      "municipality": "Valletta",
+      "country": "MT",
+      "timezone": "Europe/Malta",
+      "europe": true,
+      "mode": "flight",
+      "lat": 35.845932,
+      "lon": 14.491546
+    },
+    {
+      "code": "MXP",
+      "icao": "LIMC",
+      "name": "Milan Malpensa International Airport (MXP)",
+      "municipality": "Ferno (VA)",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 45.6306,
+      "lon": 8.72811
+    },
+    {
+      "code": "NAP",
+      "icao": "LIRN",
+      "name": "Naples International Airport (NAP)",
+      "municipality": "Napoli",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 40.886002,
+      "lon": 14.2908
+    },
+    {
+      "code": "NCE",
+      "icao": "LFMN",
+      "name": "Nice-Côte d'Azur Airport (NCE)",
+      "municipality": "Nice, Alpes-Maritimes",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "europe": true,
+      "mode": "flight",
+      "lat": 43.658401,
+      "lon": 7.21587
+    },
+    {
+      "code": "OPO",
+      "icao": "LPPR",
+      "name": "Francisco de Sá Carneiro Airport (OPO)",
+      "municipality": "Porto",
+      "country": "PT",
+      "timezone": "Europe/Lisbon",
+      "europe": true,
+      "mode": "flight",
+      "lat": 41.2481002808,
+      "lon": -8.68138980865
+    },
+    {
+      "code": "ORY",
+      "icao": "LFPO",
+      "name": "Paris-Orly Airport (ORY)",
+      "municipality": "Paris (Orly, Val-de-Marne)",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "europe": true,
+      "mode": "flight",
+      "lat": 48.729499,
+      "lon": 2.358963
+    },
+    {
+      "code": "OSL",
+      "icao": "ENGM",
+      "name": "Oslo-Gardermoen International Airport (OSL)",
+      "municipality": "Oslo (Gardermoen)",
+      "country": "NO",
+      "timezone": "Europe/Oslo",
+      "europe": true,
+      "mode": "flight",
+      "lat": 60.193901,
+      "lon": 11.1004
+    },
+    {
+      "code": "OTP",
+      "icao": "LROP",
+      "name": "Bucharest Henri Coandă International Airport (OTP)",
+      "municipality": "Otopeni",
+      "country": "RO",
+      "timezone": "Europe/Bucharest",
+      "europe": true,
+      "mode": "flight",
+      "lat": 44.571792,
+      "lon": 26.103285
+    },
+    {
+      "code": "PFO",
+      "icao": "LCPH",
+      "name": "Paphos International Airport (PFO)",
+      "municipality": "Paphos",
+      "country": "CY",
+      "timezone": "Asia/Nicosia",
+      "europe": true,
+      "mode": "flight",
+      "lat": 34.717999,
+      "lon": 32.485699
+    },
+    {
+      "code": "PMO",
+      "icao": "LICJ",
+      "name": "Falcone–Borsellino Airport (PMO)",
+      "municipality": "Palermo",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 38.175999,
+      "lon": 13.091
+    },
+    {
+      "code": "PRG",
+      "icao": "LKPR",
+      "name": "Václav Havel Airport Prague (PRG)",
+      "municipality": "Prague",
+      "country": "CZ",
+      "timezone": "Europe/Prague",
+      "europe": true,
+      "mode": "flight",
+      "lat": 50.100874,
+      "lon": 14.259911
+    },
+    {
+      "code": "PRN",
+      "icao": "BKPR",
+      "name": "Priština Adem Jashari International Airport (PRN)",
+      "municipality": "Prishtina",
+      "country": "XK",
+      "timezone": "Europe/Belgrade",
+      "europe": true,
+      "mode": "flight",
+      "lat": 42.5728,
+      "lon": 21.035801
+    },
+    {
+      "code": "PUY",
+      "icao": "LDPL",
+      "name": "Pula Airport (PUY)",
+      "municipality": "Pula",
+      "country": "HR",
+      "timezone": "Europe/Zagreb",
+      "europe": true,
+      "mode": "flight",
+      "lat": 44.893501,
+      "lon": 13.9222
+    },
+    {
+      "code": "RAK",
+      "icao": "GMMX",
+      "name": "Marrakesh Menara Airport (RAK)",
+      "municipality": "Marrakesh",
+      "country": "MA",
+      "timezone": "Africa/Casablanca",
+      "europe": false,
+      "mode": "flight",
+      "lat": 31.604807,
+      "lon": -8.035788
+    },
+    {
+      "code": "RIX",
+      "icao": "EVRA",
+      "name": "Riga International Airport (RIX)",
+      "municipality": "Riga",
+      "country": "LV",
+      "timezone": "Europe/Riga",
+      "europe": true,
+      "mode": "flight",
+      "lat": 56.920752,
+      "lon": 23.970711
+    },
+    {
+      "code": "SCR",
+      "icao": "ESKS",
+      "name": "Scandinavian Mountains Airport (SCR)",
+      "municipality": "Malung-Sälen",
+      "country": "SE",
+      "timezone": "Europe/Stockholm",
+      "europe": true,
+      "mode": "flight",
+      "lat": 61.16508,
+      "lon": 12.83352
+    },
+    {
+      "code": "SEN",
+      "icao": "EGMC",
+      "name": "London Southend Airport (SEN)",
+      "municipality": "Southend-on-Sea, Essex",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "europe": true,
+      "mode": "flight",
+      "lat": 51.570562,
+      "lon": 0.693627
+    },
+    {
+      "code": "SID",
+      "icao": "GVAC",
+      "name": "Amílcar Cabral International Airport (SID)",
+      "municipality": "Espargos",
+      "country": "CV",
+      "timezone": "Atlantic/Cape_Verde",
+      "europe": false,
+      "mode": "flight",
+      "lat": 16.7414,
+      "lon": -22.9494
+    },
+    {
+      "code": "SJJ",
+      "icao": "LQSA",
+      "name": "Sarajevo International Airport (SJJ)",
+      "municipality": "Sarajevo",
+      "country": "BA",
+      "timezone": "Europe/Sarajevo",
+      "europe": true,
+      "mode": "flight",
+      "lat": 43.8246,
+      "lon": 18.331499
+    },
+    {
+      "code": "SKG",
+      "icao": "LGTS",
+      "name": "Thessaloniki Macedonia International Airport (SKG)",
+      "municipality": "Thessaloniki",
+      "country": "GR",
+      "timezone": "Europe/Athens",
+      "europe": true,
+      "mode": "flight",
+      "lat": 40.51928,
+      "lon": 22.970009
+    },
+    {
+      "code": "SKP",
+      "icao": "LWSK",
+      "name": "Skopje International Airport (SKP)",
+      "municipality": "Ilinden",
+      "country": "MK",
+      "timezone": "Europe/Skopje",
+      "europe": true,
+      "mode": "flight",
+      "lat": 41.958087,
+      "lon": 21.622581
+    },
+    {
+      "code": "SOF",
+      "icao": "LBSF",
+      "name": "Sofia Airport (SOF)",
+      "municipality": "Sofia",
+      "country": "BG",
+      "timezone": "Europe/Sofia",
+      "europe": true,
+      "mode": "flight",
+      "lat": 42.696357,
+      "lon": 23.417671
+    },
+    {
+      "code": "STN",
+      "icao": "EGSS",
+      "name": "London Stansted Airport (STN)",
+      "municipality": "London, Essex",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "europe": true,
+      "mode": "flight",
+      "lat": 51.884998,
+      "lon": 0.235
+    },
+    {
+      "code": "TBS",
+      "icao": "UGTB",
+      "name": "Tbilisi International Airport (TBS)",
+      "municipality": "Tbilisi",
+      "country": "GE",
+      "timezone": "Asia/Tbilisi",
+      "europe": true,
+      "mode": "flight",
+      "lat": 41.669201,
+      "lon": 44.9547
+    },
+    {
+      "code": "TGD",
+      "icao": "LYPG",
+      "name": "Podgorica Airport / Podgorica Golubovci Airbase (TGD)",
+      "municipality": "Podgorica",
+      "country": "ME",
+      "timezone": "Europe/Podgorica",
+      "europe": true,
+      "mode": "flight",
+      "lat": 42.359402,
+      "lon": 19.2519
+    },
+    {
+      "code": "TIA",
+      "icao": "LATI",
+      "name": "Tirana International Airport Mother Teresa (TIA)",
+      "municipality": "Rinas",
+      "country": "AL",
+      "timezone": "Europe/Tirane",
+      "europe": true,
+      "mode": "flight",
+      "lat": 41.4147,
+      "lon": 19.7206
+    },
+    {
+      "code": "TIV",
+      "icao": "LYTV",
+      "name": "Tivat Airport (TIV)",
+      "municipality": "Tivat",
+      "country": "ME",
+      "timezone": "Europe/Podgorica",
+      "europe": true,
+      "mode": "flight",
+      "lat": 42.404701,
+      "lon": 18.723301
+    },
+    {
+      "code": "TLL",
+      "icao": "EETN",
+      "name": "Lennart Meri Tallinn Airport (TLL)",
+      "municipality": "Tallinn",
+      "country": "EE",
+      "timezone": "Europe/Tallinn",
+      "europe": true,
+      "mode": "flight",
+      "lat": 59.413246,
+      "lon": 24.83264
+    },
+    {
+      "code": "VCE",
+      "icao": "LIPZ",
+      "name": "Venice Marco Polo Airport (VCE)",
+      "municipality": "Venezia (VE)",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "europe": true,
+      "mode": "flight",
+      "lat": 45.505299,
+      "lon": 12.3519
+    },
+    {
+      "code": "VIE",
+      "icao": "LOWW",
+      "name": "Vienna International Airport (VIE)",
+      "municipality": "Vienna",
+      "country": "AT",
+      "timezone": "Europe/Vienna",
+      "europe": true,
+      "mode": "flight",
+      "lat": 48.110298,
+      "lon": 16.5697
+    },
+    {
+      "code": "VIL",
+      "icao": "GMMH",
+      "name": "Dakhla Airport (VIL)",
+      "municipality": "Dakhla",
+      "country": "EH",
+      "timezone": "Africa/El_Aaiun",
+      "europe": false,
+      "mode": "flight",
+      "lat": 23.7183,
+      "lon": -15.932
+    },
+    {
+      "code": "VNO",
+      "icao": "EYVI",
+      "name": "Vilnius International Airport (VNO)",
+      "municipality": "Vilnius",
+      "country": "LT",
+      "timezone": "Europe/Vilnius",
+      "europe": true,
+      "mode": "flight",
+      "lat": 54.634102,
+      "lon": 25.285801
+    },
+    {
+      "code": "WAW",
+      "icao": "EPWA",
+      "name": "Warsaw Chopin Airport (WAW)",
+      "municipality": "Warsaw",
+      "country": "PL",
+      "timezone": "Europe/Warsaw",
+      "europe": true,
+      "mode": "flight",
+      "lat": 52.165699,
+      "lon": 20.9671
+    },
+    {
+      "code": "WMI",
+      "icao": "EPMO",
+      "name": "Warsaw Modlin Airport (WMI)",
+      "municipality": "Nowy Dwór Mazowiecki",
+      "country": "PL",
+      "timezone": "Europe/Warsaw",
+      "europe": true,
+      "mode": "flight",
+      "lat": 52.451099,
+      "lon": 20.6518
+    }
+  ],
+  "routes": [
+    [
+      "ADB",
+      "LTN"
+    ],
+    [
+      "AGP",
+      "LGW"
+    ],
+    [
+      "AGP",
+      "LTN"
+    ],
+    [
+      "AGP",
+      "STN"
+    ],
+    [
+      "ALC",
+      "LGW"
+    ],
+    [
+      "AMM",
+      "MAD"
+    ],
+    [
+      "AMS",
+      "DUB"
+    ],
+    [
+      "AMS",
+      "LTN"
+    ],
+    [
+      "AMS",
+      "STN"
+    ],
+    [
+      "ARN",
+      "STN"
+    ],
+    [
+      "ATH",
+      "LGW"
+    ],
+    [
+      "ATH",
+      "STN"
+    ],
+    [
+      "BCN",
+      "BRS"
+    ],
+    [
+      "BCN",
+      "HHN"
+    ],
+    [
+      "BCN",
+      "LGW"
+    ],
+    [
+      "BCN",
+      "LTN"
+    ],
+    [
+      "BCN",
+      "MAN"
+    ],
+    [
+      "BCN",
+      "SEN"
+    ],
+    [
+      "BCN",
+      "STN"
+    ],
+    [
+      "BEG",
+      "CDG"
+    ],
+    [
+      "BER",
+      "DUB"
+    ],
+    [
+      "BER",
+      "LGW"
+    ],
+    [
+      "BER",
+      "LTN"
+    ],
+    [
+      "BER",
+      "PRN"
+    ],
+    [
+      "BER",
+      "STN"
+    ],
+    [
+      "BFS",
+      "BRS"
+    ],
+    [
+      "BFS",
+      "EDI"
+    ],
+    [
+      "BFS",
+      "LGW"
+    ],
+    [
+      "BFS",
+      "LTN"
+    ],
+    [
+      "BFS",
+      "MAN"
+    ],
+    [
+      "BFS",
+      "STN"
+    ],
+    [
+      "BGY",
+      "CTA"
+    ],
+    [
+      "BGY",
+      "DUB"
+    ],
+    [
+      "BGY",
+      "STN"
+    ],
+    [
+      "BJV",
+      "STN"
+    ],
+    [
+      "BRS",
+      "BCN"
+    ],
+    [
+      "BRS",
+      "BFS"
+    ],
+    [
+      "BRS",
+      "DUB"
+    ],
+    [
+      "BRS",
+      "EDI"
+    ],
+    [
+      "BRS",
+      "FCO"
+    ],
+    [
+      "BRU",
+      "DUB"
+    ],
+    [
+      "BRU",
+      "FCO"
+    ],
+    [
+      "BSL",
+      "LTN"
+    ],
+    [
+      "BSL",
+      "NCE"
+    ],
+    [
+      "BSL",
+      "STN"
+    ],
+    [
+      "BTS",
+      "STN"
+    ],
+    [
+      "BUD",
+      "LGW"
+    ],
+    [
+      "BUD",
+      "STN"
+    ],
+    [
+      "BVA",
+      "DUB"
+    ],
+    [
+      "BVA",
+      "EDI"
+    ],
+    [
+      "CDG",
+      "BEG"
+    ],
+    [
+      "CDG",
+      "LTN"
+    ],
+    [
+      "CDG",
+      "STN"
+    ],
+    [
+      "CGN",
+      "DUB"
+    ],
+    [
+      "CGN",
+      "STN"
+    ],
+    [
+      "CIA",
+      "EDI"
+    ],
+    [
+      "CIA",
+      "STN"
+    ],
+    [
+      "CPH",
+      "LGW"
+    ],
+    [
+      "CPH",
+      "STN"
+    ],
+    [
+      "CTA",
+      "BGY"
+    ],
+    [
+      "CTA",
+      "LGW"
+    ],
+    [
+      "CTA",
+      "LTN"
+    ],
+    [
+      "CTA",
+      "STN"
+    ],
+    [
+      "DBV",
+      "STN"
+    ],
+    [
+      "DJE",
+      "LTN"
+    ],
+    [
+      "DUB",
+      "AMS"
+    ],
+    [
+      "DUB",
+      "BER"
+    ],
+    [
+      "DUB",
+      "BGY"
+    ],
+    [
+      "DUB",
+      "BRS"
+    ],
+    [
+      "DUB",
+      "BRU"
+    ],
+    [
+      "DUB",
+      "BVA"
+    ],
+    [
+      "DUB",
+      "CGN"
+    ],
+    [
+      "DUB",
+      "EDI"
+    ],
+    [
+      "DUB",
+      "FCO"
+    ],
+    [
+      "DUB",
+      "LGW"
+    ],
+    [
+      "DUB",
+      "LIS"
+    ],
+    [
+      "DUB",
+      "LTN"
+    ],
+    [
+      "DUB",
+      "MAD"
+    ],
+    [
+      "DUB",
+      "MAN"
+    ],
+    [
+      "DUB",
+      "MXP"
+    ],
+    [
+      "DUB",
+      "OPO"
+    ],
+    [
+      "DUB",
+      "STN"
+    ],
+    [
+      "EDI",
+      "BFS"
+    ],
+    [
+      "EDI",
+      "BRS"
+    ],
+    [
+      "EDI",
+      "BVA"
+    ],
+    [
+      "EDI",
+      "CIA"
+    ],
+    [
+      "EDI",
+      "DUB"
+    ],
+    [
+      "EDI",
+      "FCO"
+    ],
+    [
+      "EDI",
+      "LGW"
+    ],
+    [
+      "EDI",
+      "LIN"
+    ],
+    [
+      "EDI",
+      "LTN"
+    ],
+    [
+      "EDI",
+      "SEN"
+    ],
+    [
+      "EDI",
+      "STN"
+    ],
+    [
+      "EDI",
+      "VCE"
+    ],
+    [
+      "EIN",
+      "STN"
+    ],
+    [
+      "FCO",
+      "BRS"
+    ],
+    [
+      "FCO",
+      "BRU"
+    ],
+    [
+      "FCO",
+      "DUB"
+    ],
+    [
+      "FCO",
+      "EDI"
+    ],
+    [
+      "FCO",
+      "LGW"
+    ],
+    [
+      "FCO",
+      "ORY"
+    ],
+    [
+      "GIB",
+      "LGW"
+    ],
+    [
+      "GVA",
+      "LGW"
+    ],
+    [
+      "GVA",
+      "LTN"
+    ],
+    [
+      "GVA",
+      "STN"
+    ],
+    [
+      "HEL",
+      "STN"
+    ],
+    [
+      "HHN",
+      "BCN"
+    ],
+    [
+      "HHN",
+      "STN"
+    ],
+    [
+      "HRG",
+      "LTN"
+    ],
+    [
+      "INI",
+      "VIE"
+    ],
+    [
+      "IOM",
+      "LTN"
+    ],
+    [
+      "JER",
+      "LTN"
+    ],
+    [
+      "KEF",
+      "LTN"
+    ],
+    [
+      "KRK",
+      "LGW"
+    ],
+    [
+      "KRK",
+      "STN"
+    ],
+    [
+      "KTT",
+      "LTN"
+    ],
+    [
+      "LCA",
+      "LTN"
+    ],
+    [
+      "LGW",
+      "AGP"
+    ],
+    [
+      "LGW",
+      "ALC"
+    ],
+    [
+      "LGW",
+      "ATH"
+    ],
+    [
+      "LGW",
+      "BCN"
+    ],
+    [
+      "LGW",
+      "BER"
+    ],
+    [
+      "LGW",
+      "BFS"
+    ],
+    [
+      "LGW",
+      "BUD"
+    ],
+    [
+      "LGW",
+      "CPH"
+    ],
+    [
+      "LGW",
+      "CTA"
+    ],
+    [
+      "LGW",
+      "DUB"
+    ],
+    [
+      "LGW",
+      "EDI"
+    ],
+    [
+      "LGW",
+      "FCO"
+    ],
+    [
+      "LGW",
+      "GIB"
+    ],
+    [
+      "LGW",
+      "GVA"
+    ],
+    [
+      "LGW",
+      "KRK"
+    ],
+    [
+      "LGW",
+      "LIN"
+    ],
+    [
+      "LGW",
+      "LIS"
+    ],
+    [
+      "LGW",
+      "MAD"
+    ],
+    [
+      "LGW",
+      "MLA"
+    ],
+    [
+      "LGW",
+      "MXP"
+    ],
+    [
+      "LGW",
+      "NAP"
+    ],
+    [
+      "LGW",
+      "OPO"
+    ],
+    [
+      "LGW",
+      "SCR"
+    ],
+    [
+      "LGW",
+      "SID"
+    ],
+    [
+      "LGW",
+      "SKG"
+    ],
+    [
+      "LGW",
+      "SOF"
+    ],
+    [
+      "LGW",
+      "VCE"
+    ],
+    [
+      "LGW",
+      "VIE"
+    ],
+    [
+      "LIN",
+      "EDI"
+    ],
+    [
+      "LIN",
+      "LGW"
+    ],
+    [
+      "LIS",
+      "DUB"
+    ],
+    [
+      "LIS",
+      "LGW"
+    ],
+    [
+      "LIS",
+      "LTN"
+    ],
+    [
+      "LIS",
+      "LUX"
+    ],
+    [
+      "LIS",
+      "STN"
+    ],
+    [
+      "LIS",
+      "TIA"
+    ],
+    [
+      "LJU",
+      "LTN"
+    ],
+    [
+      "LTN",
+      "ADB"
+    ],
+    [
+      "LTN",
+      "AGP"
+    ],
+    [
+      "LTN",
+      "AMS"
+    ],
+    [
+      "LTN",
+      "BCN"
+    ],
+    [
+      "LTN",
+      "BER"
+    ],
+    [
+      "LTN",
+      "BFS"
+    ],
+    [
+      "LTN",
+      "BSL"
+    ],
+    [
+      "LTN",
+      "CDG"
+    ],
+    [
+      "LTN",
+      "CTA"
+    ],
+    [
+      "LTN",
+      "DJE"
+    ],
+    [
+      "LTN",
+      "DUB"
+    ],
+    [
+      "LTN",
+      "EDI"
+    ],
+    [
+      "LTN",
+      "GVA"
+    ],
+    [
+      "LTN",
+      "HRG"
+    ],
+    [
+      "LTN",
+      "IOM"
+    ],
+    [
+      "LTN",
+      "JER"
+    ],
+    [
+      "LTN",
+      "KEF"
+    ],
+    [
+      "LTN",
+      "KTT"
+    ],
+    [
+      "LTN",
+      "LCA"
+    ],
+    [
+      "LTN",
+      "LIS"
+    ],
+    [
+      "LTN",
+      "LJU"
+    ],
+    [
+      "LTN",
+      "MAD"
+    ],
+    [
+      "LTN",
+      "MXP"
+    ],
+    [
+      "LTN",
+      "NAP"
+    ],
+    [
+      "LTN",
+      "OPO"
+    ],
+    [
+      "LTN",
+      "PMO"
+    ],
+    [
+      "LTN",
+      "PRG"
+    ],
+    [
+      "LTN",
+      "PUY"
+    ],
+    [
+      "LTN",
+      "RAK"
+    ],
+    [
+      "LTN",
+      "TBS"
+    ],
+    [
+      "LTN",
+      "TIV"
+    ],
+    [
+      "LTN",
+      "VCE"
+    ],
+    [
+      "LUX",
+      "LIS"
+    ],
+    [
+      "LUX",
+      "STN"
+    ],
+    [
+      "MAD",
+      "AMM"
+    ],
+    [
+      "MAD",
+      "DUB"
+    ],
+    [
+      "MAD",
+      "LGW"
+    ],
+    [
+      "MAD",
+      "LTN"
+    ],
+    [
+      "MAD",
+      "STN"
+    ],
+    [
+      "MAD",
+      "VIL"
+    ],
+    [
+      "MAN",
+      "BCN"
+    ],
+    [
+      "MAN",
+      "BFS"
+    ],
+    [
+      "MAN",
+      "DUB"
+    ],
+    [
+      "MAN",
+      "OSL"
+    ],
+    [
+      "MAN",
+      "WAW"
+    ],
+    [
+      "MLA",
+      "LGW"
+    ],
+    [
+      "MLA",
+      "STN"
+    ],
+    [
+      "MXP",
+      "DUB"
+    ],
+    [
+      "MXP",
+      "LGW"
+    ],
+    [
+      "MXP",
+      "LTN"
+    ],
+    [
+      "MXP",
+      "STN"
+    ],
+    [
+      "NAP",
+      "LGW"
+    ],
+    [
+      "NAP",
+      "LTN"
+    ],
+    [
+      "NAP",
+      "STN"
+    ],
+    [
+      "NCE",
+      "BSL"
+    ],
+    [
+      "OPO",
+      "DUB"
+    ],
+    [
+      "OPO",
+      "LGW"
+    ],
+    [
+      "OPO",
+      "LTN"
+    ],
+    [
+      "OPO",
+      "ORY"
+    ],
+    [
+      "OPO",
+      "STN"
+    ],
+    [
+      "ORY",
+      "FCO"
+    ],
+    [
+      "ORY",
+      "OPO"
+    ],
+    [
+      "ORY",
+      "SKP"
+    ],
+    [
+      "OSL",
+      "MAN"
+    ],
+    [
+      "OSL",
+      "STN"
+    ],
+    [
+      "OTP",
+      "STN"
+    ],
+    [
+      "PFO",
+      "STN"
+    ],
+    [
+      "PMO",
+      "LTN"
+    ],
+    [
+      "PMO",
+      "STN"
+    ],
+    [
+      "PRG",
+      "LTN"
+    ],
+    [
+      "PRG",
+      "STN"
+    ],
+    [
+      "PRN",
+      "BER"
+    ],
+    [
+      "PUY",
+      "LTN"
+    ],
+    [
+      "RAK",
+      "LTN"
+    ],
+    [
+      "RAK",
+      "STN"
+    ],
+    [
+      "RIX",
+      "STN"
+    ],
+    [
+      "SCR",
+      "LGW"
+    ],
+    [
+      "SEN",
+      "BCN"
+    ],
+    [
+      "SEN",
+      "EDI"
+    ],
+    [
+      "SID",
+      "LGW"
+    ],
+    [
+      "SJJ",
+      "STN"
+    ],
+    [
+      "SKG",
+      "LGW"
+    ],
+    [
+      "SKG",
+      "STN"
+    ],
+    [
+      "SKP",
+      "ORY"
+    ],
+    [
+      "SOF",
+      "LGW"
+    ],
+    [
+      "SOF",
+      "STN"
+    ],
+    [
+      "STN",
+      "AGP"
+    ],
+    [
+      "STN",
+      "AMS"
+    ],
+    [
+      "STN",
+      "ARN"
+    ],
+    [
+      "STN",
+      "ATH"
+    ],
+    [
+      "STN",
+      "BCN"
+    ],
+    [
+      "STN",
+      "BER"
+    ],
+    [
+      "STN",
+      "BFS"
+    ],
+    [
+      "STN",
+      "BGY"
+    ],
+    [
+      "STN",
+      "BJV"
+    ],
+    [
+      "STN",
+      "BSL"
+    ],
+    [
+      "STN",
+      "BTS"
+    ],
+    [
+      "STN",
+      "BUD"
+    ],
+    [
+      "STN",
+      "CDG"
+    ],
+    [
+      "STN",
+      "CGN"
+    ],
+    [
+      "STN",
+      "CIA"
+    ],
+    [
+      "STN",
+      "CPH"
+    ],
+    [
+      "STN",
+      "CTA"
+    ],
+    [
+      "STN",
+      "DBV"
+    ],
+    [
+      "STN",
+      "DUB"
+    ],
+    [
+      "STN",
+      "EDI"
+    ],
+    [
+      "STN",
+      "EIN"
+    ],
+    [
+      "STN",
+      "GVA"
+    ],
+    [
+      "STN",
+      "HEL"
+    ],
+    [
+      "STN",
+      "HHN"
+    ],
+    [
+      "STN",
+      "KRK"
+    ],
+    [
+      "STN",
+      "LIS"
+    ],
+    [
+      "STN",
+      "LUX"
+    ],
+    [
+      "STN",
+      "MAD"
+    ],
+    [
+      "STN",
+      "MLA"
+    ],
+    [
+      "STN",
+      "MXP"
+    ],
+    [
+      "STN",
+      "NAP"
+    ],
+    [
+      "STN",
+      "OPO"
+    ],
+    [
+      "STN",
+      "OSL"
+    ],
+    [
+      "STN",
+      "OTP"
+    ],
+    [
+      "STN",
+      "PFO"
+    ],
+    [
+      "STN",
+      "PMO"
+    ],
+    [
+      "STN",
+      "PRG"
+    ],
+    [
+      "STN",
+      "RAK"
+    ],
+    [
+      "STN",
+      "RIX"
+    ],
+    [
+      "STN",
+      "SJJ"
+    ],
+    [
+      "STN",
+      "SKG"
+    ],
+    [
+      "STN",
+      "SOF"
+    ],
+    [
+      "STN",
+      "TGD"
+    ],
+    [
+      "STN",
+      "TIA"
+    ],
+    [
+      "STN",
+      "TLL"
+    ],
+    [
+      "STN",
+      "VCE"
+    ],
+    [
+      "STN",
+      "VIE"
+    ],
+    [
+      "STN",
+      "VNO"
+    ],
+    [
+      "STN",
+      "WMI"
+    ],
+    [
+      "TBS",
+      "LTN"
+    ],
+    [
+      "TGD",
+      "STN"
+    ],
+    [
+      "TIA",
+      "LIS"
+    ],
+    [
+      "TIA",
+      "STN"
+    ],
+    [
+      "TIV",
+      "LTN"
+    ],
+    [
+      "TLL",
+      "STN"
+    ],
+    [
+      "VCE",
+      "EDI"
+    ],
+    [
+      "VCE",
+      "LGW"
+    ],
+    [
+      "VCE",
+      "LTN"
+    ],
+    [
+      "VCE",
+      "STN"
+    ],
+    [
+      "VIE",
+      "INI"
+    ],
+    [
+      "VIE",
+      "LGW"
+    ],
+    [
+      "VIE",
+      "STN"
+    ],
+    [
+      "VIL",
+      "MAD"
+    ],
+    [
+      "VNO",
+      "STN"
+    ],
+    [
+      "WAW",
+      "MAN"
+    ],
+    [
+      "WMI",
+      "STN"
+    ]
+  ],
+  "routes_by_brand": {
+    "ryanair": [
+      [
+        "AGP",
+        "LTN"
+      ],
+      [
+        "AGP",
+        "STN"
+      ],
+      [
+        "ALC",
+        "LGW"
+      ],
+      [
+        "AMM",
+        "MAD"
+      ],
+      [
+        "AMS",
+        "DUB"
+      ],
+      [
+        "ARN",
+        "STN"
+      ],
+      [
+        "ATH",
+        "STN"
+      ],
+      [
+        "BCN",
+        "BRS"
+      ],
+      [
+        "BCN",
+        "HHN"
+      ],
+      [
+        "BCN",
+        "LTN"
+      ],
+      [
+        "BCN",
+        "STN"
+      ],
+      [
+        "BER",
+        "DUB"
+      ],
+      [
+        "BER",
+        "STN"
+      ],
+      [
+        "BFS",
+        "EDI"
+      ],
+      [
+        "BFS",
+        "MAN"
+      ],
+      [
+        "BFS",
+        "STN"
+      ],
+      [
+        "BGY",
+        "CTA"
+      ],
+      [
+        "BGY",
+        "DUB"
+      ],
+      [
+        "BGY",
+        "STN"
+      ],
+      [
+        "BJV",
+        "STN"
+      ],
+      [
+        "BRS",
+        "BCN"
+      ],
+      [
+        "BRS",
+        "DUB"
+      ],
+      [
+        "BRU",
+        "DUB"
+      ],
+      [
+        "BSL",
+        "STN"
+      ],
+      [
+        "BTS",
+        "STN"
+      ],
+      [
+        "BUD",
+        "STN"
+      ],
+      [
+        "BVA",
+        "DUB"
+      ],
+      [
+        "BVA",
+        "EDI"
+      ],
+      [
+        "CGN",
+        "DUB"
+      ],
+      [
+        "CGN",
+        "STN"
+      ],
+      [
+        "CIA",
+        "EDI"
+      ],
+      [
+        "CIA",
+        "STN"
+      ],
+      [
+        "CPH",
+        "STN"
+      ],
+      [
+        "CTA",
+        "BGY"
+      ],
+      [
+        "CTA",
+        "LTN"
+      ],
+      [
+        "CTA",
+        "STN"
+      ],
+      [
+        "DBV",
+        "STN"
+      ],
+      [
+        "DUB",
+        "AMS"
+      ],
+      [
+        "DUB",
+        "BER"
+      ],
+      [
+        "DUB",
+        "BGY"
+      ],
+      [
+        "DUB",
+        "BRS"
+      ],
+      [
+        "DUB",
+        "BRU"
+      ],
+      [
+        "DUB",
+        "BVA"
+      ],
+      [
+        "DUB",
+        "CGN"
+      ],
+      [
+        "DUB",
+        "EDI"
+      ],
+      [
+        "DUB",
+        "FCO"
+      ],
+      [
+        "DUB",
+        "LGW"
+      ],
+      [
+        "DUB",
+        "LIS"
+      ],
+      [
+        "DUB",
+        "LTN"
+      ],
+      [
+        "DUB",
+        "MAD"
+      ],
+      [
+        "DUB",
+        "MAN"
+      ],
+      [
+        "DUB",
+        "MXP"
+      ],
+      [
+        "DUB",
+        "OPO"
+      ],
+      [
+        "DUB",
+        "STN"
+      ],
+      [
+        "EDI",
+        "BFS"
+      ],
+      [
+        "EDI",
+        "BVA"
+      ],
+      [
+        "EDI",
+        "CIA"
+      ],
+      [
+        "EDI",
+        "DUB"
+      ],
+      [
+        "EDI",
+        "FCO"
+      ],
+      [
+        "EDI",
+        "STN"
+      ],
+      [
+        "EIN",
+        "STN"
+      ],
+      [
+        "FCO",
+        "DUB"
+      ],
+      [
+        "FCO",
+        "EDI"
+      ],
+      [
+        "HEL",
+        "STN"
+      ],
+      [
+        "HHN",
+        "BCN"
+      ],
+      [
+        "HHN",
+        "STN"
+      ],
+      [
+        "INI",
+        "VIE"
+      ],
+      [
+        "KRK",
+        "STN"
+      ],
+      [
+        "LGW",
+        "ALC"
+      ],
+      [
+        "LGW",
+        "DUB"
+      ],
+      [
+        "LIS",
+        "DUB"
+      ],
+      [
+        "LIS",
+        "STN"
+      ],
+      [
+        "LTN",
+        "AGP"
+      ],
+      [
+        "LTN",
+        "BCN"
+      ],
+      [
+        "LTN",
+        "CTA"
+      ],
+      [
+        "LTN",
+        "DUB"
+      ],
+      [
+        "LTN",
+        "NAP"
+      ],
+      [
+        "LTN",
+        "VCE"
+      ],
+      [
+        "LUX",
+        "STN"
+      ],
+      [
+        "MAD",
+        "AMM"
+      ],
+      [
+        "MAD",
+        "DUB"
+      ],
+      [
+        "MAD",
+        "STN"
+      ],
+      [
+        "MAD",
+        "VIL"
+      ],
+      [
+        "MAN",
+        "BFS"
+      ],
+      [
+        "MAN",
+        "DUB"
+      ],
+      [
+        "MAN",
+        "WAW"
+      ],
+      [
+        "MLA",
+        "STN"
+      ],
+      [
+        "MXP",
+        "DUB"
+      ],
+      [
+        "MXP",
+        "STN"
+      ],
+      [
+        "NAP",
+        "LTN"
+      ],
+      [
+        "NAP",
+        "STN"
+      ],
+      [
+        "OPO",
+        "DUB"
+      ],
+      [
+        "OPO",
+        "STN"
+      ],
+      [
+        "OSL",
+        "STN"
+      ],
+      [
+        "OTP",
+        "STN"
+      ],
+      [
+        "PFO",
+        "STN"
+      ],
+      [
+        "PMO",
+        "STN"
+      ],
+      [
+        "PRG",
+        "STN"
+      ],
+      [
+        "RAK",
+        "STN"
+      ],
+      [
+        "RIX",
+        "STN"
+      ],
+      [
+        "SJJ",
+        "STN"
+      ],
+      [
+        "SKG",
+        "STN"
+      ],
+      [
+        "SOF",
+        "STN"
+      ],
+      [
+        "STN",
+        "AGP"
+      ],
+      [
+        "STN",
+        "ARN"
+      ],
+      [
+        "STN",
+        "ATH"
+      ],
+      [
+        "STN",
+        "BCN"
+      ],
+      [
+        "STN",
+        "BER"
+      ],
+      [
+        "STN",
+        "BFS"
+      ],
+      [
+        "STN",
+        "BGY"
+      ],
+      [
+        "STN",
+        "BJV"
+      ],
+      [
+        "STN",
+        "BSL"
+      ],
+      [
+        "STN",
+        "BTS"
+      ],
+      [
+        "STN",
+        "BUD"
+      ],
+      [
+        "STN",
+        "CGN"
+      ],
+      [
+        "STN",
+        "CIA"
+      ],
+      [
+        "STN",
+        "CPH"
+      ],
+      [
+        "STN",
+        "CTA"
+      ],
+      [
+        "STN",
+        "DBV"
+      ],
+      [
+        "STN",
+        "DUB"
+      ],
+      [
+        "STN",
+        "EDI"
+      ],
+      [
+        "STN",
+        "EIN"
+      ],
+      [
+        "STN",
+        "HEL"
+      ],
+      [
+        "STN",
+        "HHN"
+      ],
+      [
+        "STN",
+        "KRK"
+      ],
+      [
+        "STN",
+        "LIS"
+      ],
+      [
+        "STN",
+        "LUX"
+      ],
+      [
+        "STN",
+        "MAD"
+      ],
+      [
+        "STN",
+        "MLA"
+      ],
+      [
+        "STN",
+        "MXP"
+      ],
+      [
+        "STN",
+        "NAP"
+      ],
+      [
+        "STN",
+        "OPO"
+      ],
+      [
+        "STN",
+        "OSL"
+      ],
+      [
+        "STN",
+        "OTP"
+      ],
+      [
+        "STN",
+        "PFO"
+      ],
+      [
+        "STN",
+        "PMO"
+      ],
+      [
+        "STN",
+        "PRG"
+      ],
+      [
+        "STN",
+        "RAK"
+      ],
+      [
+        "STN",
+        "RIX"
+      ],
+      [
+        "STN",
+        "SJJ"
+      ],
+      [
+        "STN",
+        "SKG"
+      ],
+      [
+        "STN",
+        "SOF"
+      ],
+      [
+        "STN",
+        "TGD"
+      ],
+      [
+        "STN",
+        "TIA"
+      ],
+      [
+        "STN",
+        "TLL"
+      ],
+      [
+        "STN",
+        "VCE"
+      ],
+      [
+        "STN",
+        "VIE"
+      ],
+      [
+        "STN",
+        "VNO"
+      ],
+      [
+        "STN",
+        "WMI"
+      ],
+      [
+        "TGD",
+        "STN"
+      ],
+      [
+        "TIA",
+        "STN"
+      ],
+      [
+        "TLL",
+        "STN"
+      ],
+      [
+        "VCE",
+        "LTN"
+      ],
+      [
+        "VCE",
+        "STN"
+      ],
+      [
+        "VIE",
+        "INI"
+      ],
+      [
+        "VIE",
+        "STN"
+      ],
+      [
+        "VIL",
+        "MAD"
+      ],
+      [
+        "VNO",
+        "STN"
+      ],
+      [
+        "WAW",
+        "MAN"
+      ],
+      [
+        "WMI",
+        "STN"
+      ]
+    ],
+    "easyjet": [
+      [
+        "ADB",
+        "LTN"
+      ],
+      [
+        "AGP",
+        "LGW"
+      ],
+      [
+        "AGP",
+        "LTN"
+      ],
+      [
+        "AMS",
+        "LTN"
+      ],
+      [
+        "AMS",
+        "STN"
+      ],
+      [
+        "ATH",
+        "LGW"
+      ],
+      [
+        "BCN",
+        "LGW"
+      ],
+      [
+        "BCN",
+        "LTN"
+      ],
+      [
+        "BCN",
+        "MAN"
+      ],
+      [
+        "BCN",
+        "SEN"
+      ],
+      [
+        "BEG",
+        "CDG"
+      ],
+      [
+        "BER",
+        "LGW"
+      ],
+      [
+        "BER",
+        "LTN"
+      ],
+      [
+        "BER",
+        "PRN"
+      ],
+      [
+        "BFS",
+        "BRS"
+      ],
+      [
+        "BFS",
+        "LGW"
+      ],
+      [
+        "BFS",
+        "LTN"
+      ],
+      [
+        "BFS",
+        "MAN"
+      ],
+      [
+        "BFS",
+        "STN"
+      ],
+      [
+        "BRS",
+        "BFS"
+      ],
+      [
+        "BRS",
+        "EDI"
+      ],
+      [
+        "BRS",
+        "FCO"
+      ],
+      [
+        "BRU",
+        "FCO"
+      ],
+      [
+        "BSL",
+        "LTN"
+      ],
+      [
+        "BSL",
+        "NCE"
+      ],
+      [
+        "BUD",
+        "LGW"
+      ],
+      [
+        "CDG",
+        "BEG"
+      ],
+      [
+        "CDG",
+        "LTN"
+      ],
+      [
+        "CDG",
+        "STN"
+      ],
+      [
+        "CPH",
+        "LGW"
+      ],
+      [
+        "CTA",
+        "LGW"
+      ],
+      [
+        "CTA",
+        "LTN"
+      ],
+      [
+        "DJE",
+        "LTN"
+      ],
+      [
+        "EDI",
+        "BRS"
+      ],
+      [
+        "EDI",
+        "LGW"
+      ],
+      [
+        "EDI",
+        "LIN"
+      ],
+      [
+        "EDI",
+        "LTN"
+      ],
+      [
+        "EDI",
+        "SEN"
+      ],
+      [
+        "EDI",
+        "STN"
+      ],
+      [
+        "EDI",
+        "VCE"
+      ],
+      [
+        "FCO",
+        "BRS"
+      ],
+      [
+        "FCO",
+        "BRU"
+      ],
+      [
+        "FCO",
+        "LGW"
+      ],
+      [
+        "FCO",
+        "ORY"
+      ],
+      [
+        "GIB",
+        "LGW"
+      ],
+      [
+        "GVA",
+        "LGW"
+      ],
+      [
+        "GVA",
+        "LTN"
+      ],
+      [
+        "GVA",
+        "STN"
+      ],
+      [
+        "HRG",
+        "LTN"
+      ],
+      [
+        "IOM",
+        "LTN"
+      ],
+      [
+        "JER",
+        "LTN"
+      ],
+      [
+        "KEF",
+        "LTN"
+      ],
+      [
+        "KRK",
+        "LGW"
+      ],
+      [
+        "KTT",
+        "LTN"
+      ],
+      [
+        "LCA",
+        "LTN"
+      ],
+      [
+        "LGW",
+        "AGP"
+      ],
+      [
+        "LGW",
+        "ATH"
+      ],
+      [
+        "LGW",
+        "BCN"
+      ],
+      [
+        "LGW",
+        "BER"
+      ],
+      [
+        "LGW",
+        "BFS"
+      ],
+      [
+        "LGW",
+        "BUD"
+      ],
+      [
+        "LGW",
+        "CPH"
+      ],
+      [
+        "LGW",
+        "CTA"
+      ],
+      [
+        "LGW",
+        "EDI"
+      ],
+      [
+        "LGW",
+        "FCO"
+      ],
+      [
+        "LGW",
+        "GIB"
+      ],
+      [
+        "LGW",
+        "GVA"
+      ],
+      [
+        "LGW",
+        "KRK"
+      ],
+      [
+        "LGW",
+        "LIN"
+      ],
+      [
+        "LGW",
+        "LIS"
+      ],
+      [
+        "LGW",
+        "MAD"
+      ],
+      [
+        "LGW",
+        "MLA"
+      ],
+      [
+        "LGW",
+        "MXP"
+      ],
+      [
+        "LGW",
+        "NAP"
+      ],
+      [
+        "LGW",
+        "OPO"
+      ],
+      [
+        "LGW",
+        "SCR"
+      ],
+      [
+        "LGW",
+        "SID"
+      ],
+      [
+        "LGW",
+        "SKG"
+      ],
+      [
+        "LGW",
+        "SOF"
+      ],
+      [
+        "LGW",
+        "VCE"
+      ],
+      [
+        "LGW",
+        "VIE"
+      ],
+      [
+        "LIN",
+        "EDI"
+      ],
+      [
+        "LIN",
+        "LGW"
+      ],
+      [
+        "LIS",
+        "LGW"
+      ],
+      [
+        "LIS",
+        "LTN"
+      ],
+      [
+        "LIS",
+        "LUX"
+      ],
+      [
+        "LIS",
+        "TIA"
+      ],
+      [
+        "LJU",
+        "LTN"
+      ],
+      [
+        "LTN",
+        "ADB"
+      ],
+      [
+        "LTN",
+        "AGP"
+      ],
+      [
+        "LTN",
+        "AMS"
+      ],
+      [
+        "LTN",
+        "BCN"
+      ],
+      [
+        "LTN",
+        "BER"
+      ],
+      [
+        "LTN",
+        "BFS"
+      ],
+      [
+        "LTN",
+        "BSL"
+      ],
+      [
+        "LTN",
+        "CDG"
+      ],
+      [
+        "LTN",
+        "CTA"
+      ],
+      [
+        "LTN",
+        "DJE"
+      ],
+      [
+        "LTN",
+        "EDI"
+      ],
+      [
+        "LTN",
+        "GVA"
+      ],
+      [
+        "LTN",
+        "HRG"
+      ],
+      [
+        "LTN",
+        "IOM"
+      ],
+      [
+        "LTN",
+        "JER"
+      ],
+      [
+        "LTN",
+        "KEF"
+      ],
+      [
+        "LTN",
+        "KTT"
+      ],
+      [
+        "LTN",
+        "LCA"
+      ],
+      [
+        "LTN",
+        "LIS"
+      ],
+      [
+        "LTN",
+        "LJU"
+      ],
+      [
+        "LTN",
+        "MAD"
+      ],
+      [
+        "LTN",
+        "MXP"
+      ],
+      [
+        "LTN",
+        "NAP"
+      ],
+      [
+        "LTN",
+        "OPO"
+      ],
+      [
+        "LTN",
+        "PMO"
+      ],
+      [
+        "LTN",
+        "PRG"
+      ],
+      [
+        "LTN",
+        "PUY"
+      ],
+      [
+        "LTN",
+        "RAK"
+      ],
+      [
+        "LTN",
+        "TBS"
+      ],
+      [
+        "LTN",
+        "TIV"
+      ],
+      [
+        "LUX",
+        "LIS"
+      ],
+      [
+        "MAD",
+        "LGW"
+      ],
+      [
+        "MAD",
+        "LTN"
+      ],
+      [
+        "MAN",
+        "BCN"
+      ],
+      [
+        "MAN",
+        "BFS"
+      ],
+      [
+        "MAN",
+        "OSL"
+      ],
+      [
+        "MLA",
+        "LGW"
+      ],
+      [
+        "MXP",
+        "LGW"
+      ],
+      [
+        "MXP",
+        "LTN"
+      ],
+      [
+        "NAP",
+        "LGW"
+      ],
+      [
+        "NAP",
+        "LTN"
+      ],
+      [
+        "NCE",
+        "BSL"
+      ],
+      [
+        "OPO",
+        "LGW"
+      ],
+      [
+        "OPO",
+        "LTN"
+      ],
+      [
+        "OPO",
+        "ORY"
+      ],
+      [
+        "ORY",
+        "FCO"
+      ],
+      [
+        "ORY",
+        "OPO"
+      ],
+      [
+        "ORY",
+        "SKP"
+      ],
+      [
+        "OSL",
+        "MAN"
+      ],
+      [
+        "PMO",
+        "LTN"
+      ],
+      [
+        "PRG",
+        "LTN"
+      ],
+      [
+        "PRN",
+        "BER"
+      ],
+      [
+        "PUY",
+        "LTN"
+      ],
+      [
+        "RAK",
+        "LTN"
+      ],
+      [
+        "SCR",
+        "LGW"
+      ],
+      [
+        "SEN",
+        "BCN"
+      ],
+      [
+        "SEN",
+        "EDI"
+      ],
+      [
+        "SID",
+        "LGW"
+      ],
+      [
+        "SKG",
+        "LGW"
+      ],
+      [
+        "SKP",
+        "ORY"
+      ],
+      [
+        "SOF",
+        "LGW"
+      ],
+      [
+        "STN",
+        "AMS"
+      ],
+      [
+        "STN",
+        "BFS"
+      ],
+      [
+        "STN",
+        "CDG"
+      ],
+      [
+        "STN",
+        "EDI"
+      ],
+      [
+        "STN",
+        "GVA"
+      ],
+      [
+        "TBS",
+        "LTN"
+      ],
+      [
+        "TIA",
+        "LIS"
+      ],
+      [
+        "TIV",
+        "LTN"
+      ],
+      [
+        "VCE",
+        "EDI"
+      ],
+      [
+        "VCE",
+        "LGW"
+      ],
+      [
+        "VIE",
+        "LGW"
+      ]
+    ]
+  },
+  "europe_countries": [
+    "AD",
+    "AL",
+    "AT",
+    "AX",
+    "BA",
+    "BE",
+    "BG",
+    "BY",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DK",
+    "EE",
+    "ES",
+    "FI",
+    "FO",
+    "FR",
+    "GB",
+    "GE",
+    "GG",
+    "GI",
+    "GR",
+    "HR",
+    "HU",
+    "IE",
+    "IM",
+    "IS",
+    "IT",
+    "JE",
+    "LI",
+    "LT",
+    "LU",
+    "LV",
+    "MC",
+    "MD",
+    "ME",
+    "MK",
+    "MT",
+    "NL",
+    "NO",
+    "PL",
+    "PT",
+    "RO",
+    "RS",
+    "SE",
+    "SI",
+    "SK",
+    "SM",
+    "TR",
+    "UA",
+    "VA",
+    "XK"
+  ],
+  "source_urls": {
+    "ryanair": "https://www.ryanair.com/api/views/locate/3/aggregate/all/en",
+    "easyjet": "https://www.easyjet.com/en/flights-timetables"
+  },
+  "source_documents": {
+    "ryanair": {
+      "url": "https://www.ryanair.com/api/views/locate/3/aggregate/all/en",
+      "bytes": 300220,
+      "sha256": "9763b2abe81ffe01161d43d928d4c2a0762b3dd923ea8e6c6991e04fa8b1f78e",
+      "kind": "Raw public booking-widget catalogue; only airport: route entries used",
+      "excluded_partner_routes": [
+        [
+          "PMO",
+          "MLA|Air Malta"
+        ]
+      ]
+    },
+    "easyjet": {
+      "url": "https://www.easyjet.com/en/flights-timetables",
+      "bytes": 97542,
+      "sha256": "18801e8ec7f72ca29e5438c4e4887905ba28fd67816e071b28c09a2a10e504d6",
+      "kind": "Normalized exact-airport route facts reviewed through web tool; local HTML client returned Access Denied; this is not a raw HTML hash"
+    }
+  },
+  "source_reviewed_date": "2026-10-26",
+  "discovered_routes_by_brand": {
+    "ryanair": 5305,
+    "easyjet": 2564
+  },
+  "discovered_unique_routes": 7409,
+  "selection": "Broad starter requested by user: published-country coverage, reviewed major/secondary airports, then deterministic round-robin; up to 80 undirected pairs per brand",
+  "unresolved_airports": [],
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_sha256": "ab0f9cae184ef1d7ccaeb31c500aa1382be10ca594b38e004a9f86806ceb57a4"
+}

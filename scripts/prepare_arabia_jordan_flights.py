@@ -8,11 +8,11 @@ from scripts.sourced_flights import prepare_cached,seed,budget,collection_routes
 from scripts.prepare_google_flights import capture,country_config
 from scripts.sourced_flight_routes import DAY
 
-def main():
+def main(countries=None):
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--prepare-only',action='store_true');parser.add_argument('--dry-run',action='store_true')
     args=parser.parse_args()
-    for code,p in COUNTRIES.items():
+    for code,p in (countries or COUNTRIES).items():
         slug=p['slug'];cache=ROOT/f'.cache/google-flights-{slug}-usd-v1';cfg=country_config(code)
         cfg['capture_context']=dict(parser=f'{slug}-origin-local-v1',max_duration=86400,currency='USD',adults=1,cabin='economy',trip_type='one_way')
         if not args.prepare_only:print(json.dumps(dict(country=code,**seed(cache,cfg))),flush=True)

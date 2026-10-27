@@ -1,0 +1,7784 @@
+{
+  "profile": "pakistan",
+  "countries": [
+    "AE",
+    "AF",
+    "AZ",
+    "BD",
+    "BH",
+    "CA",
+    "CN",
+    "ET",
+    "FR",
+    "GB",
+    "IQ",
+    "IR",
+    "KW",
+    "LK",
+    "MY",
+    "OM",
+    "PK",
+    "QA",
+    "SA",
+    "TH",
+    "TR",
+    "UZ"
+  ],
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Karachi",
+  "currency": "USD",
+  "scope": "regional",
+  "max_duration": 86400,
+  "query_date_policy": "origin_local_departure_day_only",
+  "launch_airports": [
+    "BHV",
+    "CJL",
+    "DBA",
+    "DEA",
+    "GIL",
+    "GWD",
+    "HDD",
+    "ISB",
+    "KDD",
+    "KDU",
+    "KHI",
+    "LHE",
+    "LYP",
+    "MFG",
+    "MUX",
+    "PEW",
+    "PZH",
+    "RYK",
+    "SKT",
+    "SKZ",
+    "TUK",
+    "UET",
+    "WNS"
+  ],
+  "worldwide_hubs": [
+    "BHV",
+    "CJL",
+    "DBA",
+    "DEA",
+    "GIL",
+    "GWD",
+    "HDD",
+    "ISB",
+    "KDD",
+    "KDU",
+    "KHI",
+    "LHE",
+    "LYP",
+    "MFG",
+    "MUX",
+    "PEW",
+    "PZH",
+    "RYK",
+    "SKT",
+    "SKZ",
+    "TUK",
+    "UET",
+    "WNS"
+  ],
+  "airports": [
+    {
+      "code": "AAN",
+      "icao": "OMAL",
+      "name": "Al Ain International Airport (AAN)",
+      "municipality": "Al Ain",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.2617,
+      "lon": 55.6092
+    },
+    {
+      "code": "ADD",
+      "icao": "HAAB",
+      "name": "Addis Ababa Bole International Airport (ADD)",
+      "municipality": "Addis Ababa",
+      "country": "ET",
+      "timezone": "Africa/Addis_Ababa",
+      "mode": "flight",
+      "lat": 8.97789,
+      "lon": 38.799301
+    },
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "BAH",
+      "icao": "OBBI",
+      "name": "Bahrain International Airport (BAH)",
+      "municipality": "Manama",
+      "country": "BH",
+      "timezone": "Asia/Bahrain",
+      "mode": "flight",
+      "lat": 26.267295,
+      "lon": 50.63764
+    },
+    {
+      "code": "BGW",
+      "icao": "ORBI",
+      "name": "Baghdad International Airport / New Al Muthana Air Base (BGW)",
+      "municipality": "Baghdad",
+      "country": "IQ",
+      "timezone": "Asia/Baghdad",
+      "mode": "flight",
+      "lat": 33.262501,
+      "lon": 44.2346
+    },
+    {
+      "code": "BHV",
+      "icao": "OPBW",
+      "name": "Bahawalpur Airport (BHV)",
+      "municipality": "Bahawalpur",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 29.348100662231445,
+      "lon": 71.71800231933594
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "CAN",
+      "icao": "ZGGG",
+      "name": "Guangzhou Baiyun International Airport (CAN)",
+      "municipality": "Guangzhou (Huadu)",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 23.392401,
+      "lon": 113.299004
+    },
+    {
+      "code": "CDG",
+      "icao": "LFPG",
+      "name": "Charles de Gaulle International Airport (CDG)",
+      "municipality": "Paris (Roissy-en-France, Val-d'Oise)",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "mode": "flight",
+      "lat": 49.00896,
+      "lon": 2.554117
+    },
+    {
+      "code": "CJL",
+      "icao": "OPCH",
+      "name": "Chitral Airport (CJL)",
+      "municipality": "Chitral",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 35.886213,
+      "lon": 71.799922
+    },
+    {
+      "code": "CMB",
+      "icao": "VCBI",
+      "name": "Bandaranaike International Colombo Airport (CMB)",
+      "municipality": "Colombo",
+      "country": "LK",
+      "timezone": "Asia/Colombo",
+      "mode": "flight",
+      "lat": 7.180759906768799,
+      "lon": 79.88410186767578
+    },
+    {
+      "code": "DAC",
+      "icao": "VGHS",
+      "name": "Hazrat Shahjalal International Airport (DAC)",
+      "municipality": "Dhaka",
+      "country": "BD",
+      "timezone": "Asia/Dhaka",
+      "mode": "flight",
+      "lat": 23.843347,
+      "lon": 90.397783
+    },
+    {
+      "code": "DBA",
+      "icao": "OPDB",
+      "name": "Dalbandin Airport (DBA)",
+      "municipality": "Dalbandin",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 28.878299713100002,
+      "lon": 64.3998031616
+    },
+    {
+      "code": "DEA",
+      "icao": "OPDG",
+      "name": "Dera Ghazi Khan Airport (DEA)",
+      "municipality": "Dera Ghazi Khan",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 29.961000442504883,
+      "lon": 70.48590087890625
+    },
+    {
+      "code": "DMM",
+      "icao": "OEDF",
+      "name": "King Fahd International Airport (DMM)",
+      "municipality": "Ad Dammam",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 26.4691,
+      "lon": 49.798209
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "ELQ",
+      "icao": "OEGS",
+      "name": "Prince Naif bin Abdulaziz International Airport (ELQ)",
+      "municipality": "Qassim",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 26.302799,
+      "lon": 43.774399
+    },
+    {
+      "code": "GIL",
+      "icao": "OPGT",
+      "name": "Gilgit Airport (GIL)",
+      "municipality": "Gilgit",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 35.918800354003906,
+      "lon": 74.33360290527344
+    },
+    {
+      "code": "GWD",
+      "icao": "OPGW",
+      "name": "New Gwadar International Airport (GWD)",
+      "municipality": "Gurandani",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 25.296733,
+      "lon": 62.498822
+    },
+    {
+      "code": "GYD",
+      "icao": "UBBB",
+      "name": "Heydar Aliyev International Airport (GYD)",
+      "municipality": "Baku",
+      "country": "AZ",
+      "timezone": "Asia/Baku",
+      "mode": "flight",
+      "lat": 40.47278,
+      "lon": 50.050931
+    },
+    {
+      "code": "HDD",
+      "icao": "OPKD",
+      "name": "Hyderabad Airport (HDD)",
+      "municipality": "Hyderabad",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 25.3181,
+      "lon": 68.366096
+    },
+    {
+      "code": "IKA",
+      "icao": "OIIE",
+      "name": "Imam Khomeini International Airport (IKA)",
+      "municipality": "Tehran",
+      "country": "IR",
+      "timezone": "Asia/Tehran",
+      "mode": "flight",
+      "lat": 35.416099548339844,
+      "lon": 51.152198791503906
+    },
+    {
+      "code": "ISB",
+      "icao": "OPIS",
+      "name": "Islamabad International Airport (ISB)",
+      "municipality": "Attock",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 33.549,
+      "lon": 72.82566
+    },
+    {
+      "code": "IST",
+      "icao": "LTFM",
+      "name": "İstanbul Airport (IST)",
+      "municipality": "Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 41.274874,
+      "lon": 28.732136
+    },
+    {
+      "code": "JED",
+      "icao": "OEJN",
+      "name": "King Abdulaziz International Airport (JED)",
+      "municipality": "Jeddah",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 21.680241,
+      "lon": 39.157436
+    },
+    {
+      "code": "KBL",
+      "icao": "OAKB",
+      "name": "Kabul International Airport (KBL)",
+      "municipality": "Kabul",
+      "country": "AF",
+      "timezone": "Asia/Kabul",
+      "mode": "flight",
+      "lat": 34.565899,
+      "lon": 69.212303
+    },
+    {
+      "code": "KDD",
+      "icao": "OPKH",
+      "name": "Khuzdar Airport (KDD)",
+      "municipality": "Khuzdar",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 27.790599823,
+      "lon": 66.6473007202
+    },
+    {
+      "code": "KDU",
+      "icao": "OPSD",
+      "name": "Skardu International Airport (KDU)",
+      "municipality": "Skardu",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 35.33866,
+      "lon": 75.538648
+    },
+    {
+      "code": "KHG",
+      "icao": "ZWSH",
+      "name": "Kashgar Laining International Airport (KHG)",
+      "municipality": "Kashgar",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 39.542273,
+      "lon": 76.02023
+    },
+    {
+      "code": "KHI",
+      "icao": "OPKC",
+      "name": "Jinnah International Airport (KHI)",
+      "municipality": "Karachi",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 24.9065,
+      "lon": 67.160797
+    },
+    {
+      "code": "KUL",
+      "icao": "WMKK",
+      "name": "Kuala Lumpur International Airport (KUL)",
+      "municipality": "Sepang",
+      "country": "MY",
+      "timezone": "Asia/Kuala_Lumpur",
+      "mode": "flight",
+      "lat": 2.74558,
+      "lon": 101.709999
+    },
+    {
+      "code": "KWI",
+      "icao": "OKKK",
+      "name": "Kuwait International Airport (KWI)",
+      "municipality": "Kuwait City",
+      "country": "KW",
+      "timezone": "Asia/Kuwait",
+      "mode": "flight",
+      "lat": 29.224487,
+      "lon": 47.969813
+    },
+    {
+      "code": "LGW",
+      "icao": "EGKK",
+      "name": "London Gatwick Airport (LGW)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 51.148744,
+      "lon": -0.185739
+    },
+    {
+      "code": "LHE",
+      "icao": "OPLA",
+      "name": "Allama Iqbal International Airport (LHE)",
+      "municipality": "Lahore",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 31.521601,
+      "lon": 74.403603
+    },
+    {
+      "code": "LHR",
+      "icao": "EGLL",
+      "name": "London Heathrow Airport (LHR)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 51.470748,
+      "lon": -0.459909
+    },
+    {
+      "code": "LYP",
+      "icao": "OPFA",
+      "name": "Faisalabad International Airport (LYP)",
+      "municipality": "Faisalabad",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 31.364923,
+      "lon": 72.995319
+    },
+    {
+      "code": "MAN",
+      "icao": "EGCC",
+      "name": "Manchester Airport (MAN)",
+      "municipality": "Manchester, Greater Manchester",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 53.349375,
+      "lon": -2.279521
+    },
+    {
+      "code": "MCT",
+      "icao": "OOMS",
+      "name": "Muscat International Airport (MCT)",
+      "municipality": "Muscat/Seeb",
+      "country": "OM",
+      "timezone": "Asia/Muscat",
+      "mode": "flight",
+      "lat": 23.600218,
+      "lon": 58.285268
+    },
+    {
+      "code": "MED",
+      "icao": "OEMA",
+      "name": "Prince Mohammad Bin Abdulaziz Airport (MED)",
+      "municipality": "Medina",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 24.5534,
+      "lon": 39.705101
+    },
+    {
+      "code": "MFG",
+      "icao": "OPMF",
+      "name": "Muzaffarabad Airport (MFG)",
+      "municipality": "Muzaffarabad",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 34.338835,
+      "lon": 73.508886
+    },
+    {
+      "code": "MHD",
+      "icao": "OIMM",
+      "name": "Mashhad International Airport (MHD)",
+      "municipality": "Mashhad",
+      "country": "IR",
+      "timezone": "Asia/Tehran",
+      "mode": "flight",
+      "lat": 36.234821,
+      "lon": 59.642949
+    },
+    {
+      "code": "MUX",
+      "icao": "OPMT",
+      "name": "Multan International Airport (MUX)",
+      "municipality": "Multan",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 30.203199,
+      "lon": 71.419098
+    },
+    {
+      "code": "PEK",
+      "icao": "ZBAA",
+      "name": "Beijing Capital International Airport (PEK)",
+      "municipality": "Beijing",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 40.077349,
+      "lon": 116.596702
+    },
+    {
+      "code": "PEW",
+      "icao": "OPPS",
+      "name": "Bacha Khan International Airport (PEW)",
+      "municipality": "Peshawar",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 33.9939,
+      "lon": 71.514603
+    },
+    {
+      "code": "PZH",
+      "icao": "OPZB",
+      "name": "Zhob Airport (PZH)",
+      "municipality": "Fort Sandeman",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 31.358400344848633,
+      "lon": 69.4636001586914
+    },
+    {
+      "code": "RKT",
+      "icao": "OMRK",
+      "name": "Ras Al Khaimah International Airport (RKT)",
+      "municipality": "Ras Al Khaimah",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.613501,
+      "lon": 55.938801
+    },
+    {
+      "code": "RUH",
+      "icao": "OERK",
+      "name": "King Khalid International Airport (RUH)",
+      "municipality": "Riyadh",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 24.9576,
+      "lon": 46.698799
+    },
+    {
+      "code": "RYK",
+      "icao": "OPRK",
+      "name": "Shaikh Zaid Airport (RYK)",
+      "municipality": "Rahim Yar Khan",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 28.383899688720703,
+      "lon": 70.27960205078125
+    },
+    {
+      "code": "SAW",
+      "icao": "LTFJ",
+      "name": "Istanbul Sabiha Gökçen International Airport (SAW)",
+      "municipality": "Pendik, Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 40.898602,
+      "lon": 29.3092
+    },
+    {
+      "code": "SHJ",
+      "icao": "OMSJ",
+      "name": "Sharjah International Airport (SHJ)",
+      "municipality": "Sharjah",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.3286,
+      "lon": 55.5172
+    },
+    {
+      "code": "SKT",
+      "icao": "OPST",
+      "name": "Sialkot International Airport (SKT)",
+      "municipality": "Sialkot",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 32.535941,
+      "lon": 74.364623
+    },
+    {
+      "code": "SKZ",
+      "icao": "OPSK",
+      "name": "Begum Nusrat Bhutto International Airport Sukkur (SKZ)",
+      "municipality": "Sukkur",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 27.722,
+      "lon": 68.791702
+    },
+    {
+      "code": "TAS",
+      "icao": "UZTT",
+      "name": "Tashkent International Airport (TAS)",
+      "municipality": "Tashkent",
+      "country": "UZ",
+      "timezone": "Asia/Tashkent",
+      "mode": "flight",
+      "lat": 41.2579,
+      "lon": 69.281197
+    },
+    {
+      "code": "TUK",
+      "icao": "OPTU",
+      "name": "Turbat International Airport (TUK)",
+      "municipality": "Turbat",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 25.984767,
+      "lon": 63.028856
+    },
+    {
+      "code": "UET",
+      "icao": "OPQT",
+      "name": "Quetta International Airport (UET)",
+      "municipality": "Quetta",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 30.2514,
+      "lon": 66.937798
+    },
+    {
+      "code": "URC",
+      "icao": "ZWWW",
+      "name": "Ürümqi Tianshan International Airport (URC)",
+      "municipality": "Ürümqi",
+      "country": "CN",
+      "timezone": "Asia/Shanghai",
+      "mode": "flight",
+      "lat": 43.913584,
+      "lon": 87.479372
+    },
+    {
+      "code": "WNS",
+      "icao": "OPNH",
+      "name": "Shaheed Benazirabad Airport (WNS)",
+      "municipality": "Nawabashah",
+      "country": "PK",
+      "timezone": "Asia/Karachi",
+      "mode": "flight",
+      "lat": 26.2194,
+      "lon": 68.390099
+    },
+    {
+      "code": "YYZ",
+      "icao": "CYYZ",
+      "name": "Toronto Pearson International Airport (YYZ)",
+      "municipality": "Toronto",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "mode": "flight",
+      "lat": 43.675935,
+      "lon": -79.629421
+    }
+  ],
+  "routes": [
+    [
+      "AAN",
+      "ISB"
+    ],
+    [
+      "ADD",
+      "KHI"
+    ],
+    [
+      "AUH",
+      "ISB"
+    ],
+    [
+      "AUH",
+      "KHI"
+    ],
+    [
+      "AUH",
+      "LHE"
+    ],
+    [
+      "AUH",
+      "LYP"
+    ],
+    [
+      "AUH",
+      "MUX"
+    ],
+    [
+      "AUH",
+      "PEW"
+    ],
+    [
+      "AUH",
+      "SKT"
+    ],
+    [
+      "BAH",
+      "ISB"
+    ],
+    [
+      "BAH",
+      "KHI"
+    ],
+    [
+      "BAH",
+      "LHE"
+    ],
+    [
+      "BGW",
+      "ISB"
+    ],
+    [
+      "BGW",
+      "KHI"
+    ],
+    [
+      "BGW",
+      "LHE"
+    ],
+    [
+      "BHV",
+      "ISB"
+    ],
+    [
+      "BHV",
+      "KHI"
+    ],
+    [
+      "BKK",
+      "ISB"
+    ],
+    [
+      "BKK",
+      "KHI"
+    ],
+    [
+      "BKK",
+      "LHE"
+    ],
+    [
+      "CAN",
+      "ISB"
+    ],
+    [
+      "CAN",
+      "LHE"
+    ],
+    [
+      "CDG",
+      "ISB"
+    ],
+    [
+      "CMB",
+      "KHI"
+    ],
+    [
+      "CMB",
+      "LHE"
+    ],
+    [
+      "DAC",
+      "KHI"
+    ],
+    [
+      "DMM",
+      "ISB"
+    ],
+    [
+      "DMM",
+      "KHI"
+    ],
+    [
+      "DMM",
+      "LHE"
+    ],
+    [
+      "DMM",
+      "MUX"
+    ],
+    [
+      "DMM",
+      "SKT"
+    ],
+    [
+      "DOH",
+      "ISB"
+    ],
+    [
+      "DOH",
+      "KHI"
+    ],
+    [
+      "DOH",
+      "LHE"
+    ],
+    [
+      "DOH",
+      "MUX"
+    ],
+    [
+      "DOH",
+      "PEW"
+    ],
+    [
+      "DOH",
+      "SKT"
+    ],
+    [
+      "DXB",
+      "ISB"
+    ],
+    [
+      "DXB",
+      "KHI"
+    ],
+    [
+      "DXB",
+      "LHE"
+    ],
+    [
+      "DXB",
+      "LYP"
+    ],
+    [
+      "DXB",
+      "MUX"
+    ],
+    [
+      "DXB",
+      "PEW"
+    ],
+    [
+      "DXB",
+      "SKT"
+    ],
+    [
+      "DXB",
+      "UET"
+    ],
+    [
+      "ELQ",
+      "ISB"
+    ],
+    [
+      "GIL",
+      "ISB"
+    ],
+    [
+      "GWD",
+      "KHI"
+    ],
+    [
+      "GYD",
+      "ISB"
+    ],
+    [
+      "GYD",
+      "LHE"
+    ],
+    [
+      "IKA",
+      "ISB"
+    ],
+    [
+      "IKA",
+      "KHI"
+    ],
+    [
+      "IKA",
+      "LHE"
+    ],
+    [
+      "ISB",
+      "AAN"
+    ],
+    [
+      "ISB",
+      "AUH"
+    ],
+    [
+      "ISB",
+      "BAH"
+    ],
+    [
+      "ISB",
+      "BGW"
+    ],
+    [
+      "ISB",
+      "BHV"
+    ],
+    [
+      "ISB",
+      "BKK"
+    ],
+    [
+      "ISB",
+      "CAN"
+    ],
+    [
+      "ISB",
+      "CDG"
+    ],
+    [
+      "ISB",
+      "DMM"
+    ],
+    [
+      "ISB",
+      "DOH"
+    ],
+    [
+      "ISB",
+      "DXB"
+    ],
+    [
+      "ISB",
+      "ELQ"
+    ],
+    [
+      "ISB",
+      "GIL"
+    ],
+    [
+      "ISB",
+      "GYD"
+    ],
+    [
+      "ISB",
+      "IKA"
+    ],
+    [
+      "ISB",
+      "IST"
+    ],
+    [
+      "ISB",
+      "JED"
+    ],
+    [
+      "ISB",
+      "KBL"
+    ],
+    [
+      "ISB",
+      "KDU"
+    ],
+    [
+      "ISB",
+      "KHG"
+    ],
+    [
+      "ISB",
+      "KHI"
+    ],
+    [
+      "ISB",
+      "KUL"
+    ],
+    [
+      "ISB",
+      "KWI"
+    ],
+    [
+      "ISB",
+      "LGW"
+    ],
+    [
+      "ISB",
+      "LHE"
+    ],
+    [
+      "ISB",
+      "LHR"
+    ],
+    [
+      "ISB",
+      "MAN"
+    ],
+    [
+      "ISB",
+      "MCT"
+    ],
+    [
+      "ISB",
+      "MED"
+    ],
+    [
+      "ISB",
+      "MUX"
+    ],
+    [
+      "ISB",
+      "PEK"
+    ],
+    [
+      "ISB",
+      "RKT"
+    ],
+    [
+      "ISB",
+      "RUH"
+    ],
+    [
+      "ISB",
+      "RYK"
+    ],
+    [
+      "ISB",
+      "SHJ"
+    ],
+    [
+      "ISB",
+      "SKZ"
+    ],
+    [
+      "ISB",
+      "TAS"
+    ],
+    [
+      "ISB",
+      "UET"
+    ],
+    [
+      "ISB",
+      "URC"
+    ],
+    [
+      "ISB",
+      "YYZ"
+    ],
+    [
+      "IST",
+      "ISB"
+    ],
+    [
+      "IST",
+      "KHI"
+    ],
+    [
+      "IST",
+      "LHE"
+    ],
+    [
+      "JED",
+      "ISB"
+    ],
+    [
+      "JED",
+      "KHI"
+    ],
+    [
+      "JED",
+      "LHE"
+    ],
+    [
+      "JED",
+      "LYP"
+    ],
+    [
+      "JED",
+      "MUX"
+    ],
+    [
+      "JED",
+      "PEW"
+    ],
+    [
+      "JED",
+      "SKT"
+    ],
+    [
+      "KBL",
+      "ISB"
+    ],
+    [
+      "KDU",
+      "ISB"
+    ],
+    [
+      "KDU",
+      "KHI"
+    ],
+    [
+      "KDU",
+      "LHE"
+    ],
+    [
+      "KHG",
+      "ISB"
+    ],
+    [
+      "KHI",
+      "ADD"
+    ],
+    [
+      "KHI",
+      "AUH"
+    ],
+    [
+      "KHI",
+      "BAH"
+    ],
+    [
+      "KHI",
+      "BGW"
+    ],
+    [
+      "KHI",
+      "BHV"
+    ],
+    [
+      "KHI",
+      "BKK"
+    ],
+    [
+      "KHI",
+      "CMB"
+    ],
+    [
+      "KHI",
+      "DAC"
+    ],
+    [
+      "KHI",
+      "DMM"
+    ],
+    [
+      "KHI",
+      "DOH"
+    ],
+    [
+      "KHI",
+      "DXB"
+    ],
+    [
+      "KHI",
+      "GWD"
+    ],
+    [
+      "KHI",
+      "IKA"
+    ],
+    [
+      "KHI",
+      "ISB"
+    ],
+    [
+      "KHI",
+      "IST"
+    ],
+    [
+      "KHI",
+      "JED"
+    ],
+    [
+      "KHI",
+      "KDU"
+    ],
+    [
+      "KHI",
+      "KUL"
+    ],
+    [
+      "KHI",
+      "KWI"
+    ],
+    [
+      "KHI",
+      "LHE"
+    ],
+    [
+      "KHI",
+      "LYP"
+    ],
+    [
+      "KHI",
+      "MCT"
+    ],
+    [
+      "KHI",
+      "MED"
+    ],
+    [
+      "KHI",
+      "MHD"
+    ],
+    [
+      "KHI",
+      "MUX"
+    ],
+    [
+      "KHI",
+      "PEK"
+    ],
+    [
+      "KHI",
+      "PEW"
+    ],
+    [
+      "KHI",
+      "RUH"
+    ],
+    [
+      "KHI",
+      "RYK"
+    ],
+    [
+      "KHI",
+      "SAW"
+    ],
+    [
+      "KHI",
+      "SHJ"
+    ],
+    [
+      "KHI",
+      "SKT"
+    ],
+    [
+      "KHI",
+      "SKZ"
+    ],
+    [
+      "KHI",
+      "TAS"
+    ],
+    [
+      "KHI",
+      "TUK"
+    ],
+    [
+      "KHI",
+      "UET"
+    ],
+    [
+      "KHI",
+      "YYZ"
+    ],
+    [
+      "KUL",
+      "ISB"
+    ],
+    [
+      "KUL",
+      "KHI"
+    ],
+    [
+      "KUL",
+      "LHE"
+    ],
+    [
+      "KWI",
+      "ISB"
+    ],
+    [
+      "KWI",
+      "KHI"
+    ],
+    [
+      "KWI",
+      "LHE"
+    ],
+    [
+      "LGW",
+      "ISB"
+    ],
+    [
+      "LHE",
+      "AUH"
+    ],
+    [
+      "LHE",
+      "BAH"
+    ],
+    [
+      "LHE",
+      "BGW"
+    ],
+    [
+      "LHE",
+      "BKK"
+    ],
+    [
+      "LHE",
+      "CAN"
+    ],
+    [
+      "LHE",
+      "CMB"
+    ],
+    [
+      "LHE",
+      "DMM"
+    ],
+    [
+      "LHE",
+      "DOH"
+    ],
+    [
+      "LHE",
+      "DXB"
+    ],
+    [
+      "LHE",
+      "GYD"
+    ],
+    [
+      "LHE",
+      "IKA"
+    ],
+    [
+      "LHE",
+      "ISB"
+    ],
+    [
+      "LHE",
+      "IST"
+    ],
+    [
+      "LHE",
+      "JED"
+    ],
+    [
+      "LHE",
+      "KDU"
+    ],
+    [
+      "LHE",
+      "KHI"
+    ],
+    [
+      "LHE",
+      "KUL"
+    ],
+    [
+      "LHE",
+      "KWI"
+    ],
+    [
+      "LHE",
+      "LHR"
+    ],
+    [
+      "LHE",
+      "MAN"
+    ],
+    [
+      "LHE",
+      "MCT"
+    ],
+    [
+      "LHE",
+      "MED"
+    ],
+    [
+      "LHE",
+      "MHD"
+    ],
+    [
+      "LHE",
+      "RKT"
+    ],
+    [
+      "LHE",
+      "RUH"
+    ],
+    [
+      "LHE",
+      "SHJ"
+    ],
+    [
+      "LHE",
+      "TAS"
+    ],
+    [
+      "LHE",
+      "UET"
+    ],
+    [
+      "LHE",
+      "YYZ"
+    ],
+    [
+      "LHR",
+      "ISB"
+    ],
+    [
+      "LHR",
+      "LHE"
+    ],
+    [
+      "LYP",
+      "AUH"
+    ],
+    [
+      "LYP",
+      "DXB"
+    ],
+    [
+      "LYP",
+      "JED"
+    ],
+    [
+      "LYP",
+      "KHI"
+    ],
+    [
+      "LYP",
+      "MED"
+    ],
+    [
+      "MAN",
+      "ISB"
+    ],
+    [
+      "MAN",
+      "LHE"
+    ],
+    [
+      "MCT",
+      "ISB"
+    ],
+    [
+      "MCT",
+      "KHI"
+    ],
+    [
+      "MCT",
+      "LHE"
+    ],
+    [
+      "MCT",
+      "MUX"
+    ],
+    [
+      "MCT",
+      "PEW"
+    ],
+    [
+      "MCT",
+      "SKT"
+    ],
+    [
+      "MED",
+      "ISB"
+    ],
+    [
+      "MED",
+      "KHI"
+    ],
+    [
+      "MED",
+      "LHE"
+    ],
+    [
+      "MED",
+      "LYP"
+    ],
+    [
+      "MED",
+      "MUX"
+    ],
+    [
+      "MED",
+      "SKT"
+    ],
+    [
+      "MHD",
+      "KHI"
+    ],
+    [
+      "MHD",
+      "LHE"
+    ],
+    [
+      "MUX",
+      "AUH"
+    ],
+    [
+      "MUX",
+      "DMM"
+    ],
+    [
+      "MUX",
+      "DOH"
+    ],
+    [
+      "MUX",
+      "DXB"
+    ],
+    [
+      "MUX",
+      "ISB"
+    ],
+    [
+      "MUX",
+      "JED"
+    ],
+    [
+      "MUX",
+      "KHI"
+    ],
+    [
+      "MUX",
+      "MCT"
+    ],
+    [
+      "MUX",
+      "MED"
+    ],
+    [
+      "MUX",
+      "RUH"
+    ],
+    [
+      "PEK",
+      "ISB"
+    ],
+    [
+      "PEK",
+      "KHI"
+    ],
+    [
+      "PEW",
+      "AUH"
+    ],
+    [
+      "PEW",
+      "DOH"
+    ],
+    [
+      "PEW",
+      "DXB"
+    ],
+    [
+      "PEW",
+      "JED"
+    ],
+    [
+      "PEW",
+      "KHI"
+    ],
+    [
+      "PEW",
+      "MCT"
+    ],
+    [
+      "PEW",
+      "RUH"
+    ],
+    [
+      "RKT",
+      "ISB"
+    ],
+    [
+      "RKT",
+      "LHE"
+    ],
+    [
+      "RUH",
+      "ISB"
+    ],
+    [
+      "RUH",
+      "KHI"
+    ],
+    [
+      "RUH",
+      "LHE"
+    ],
+    [
+      "RUH",
+      "MUX"
+    ],
+    [
+      "RUH",
+      "PEW"
+    ],
+    [
+      "RUH",
+      "SKT"
+    ],
+    [
+      "RYK",
+      "ISB"
+    ],
+    [
+      "RYK",
+      "KHI"
+    ],
+    [
+      "SAW",
+      "KHI"
+    ],
+    [
+      "SHJ",
+      "ISB"
+    ],
+    [
+      "SHJ",
+      "KHI"
+    ],
+    [
+      "SHJ",
+      "LHE"
+    ],
+    [
+      "SKT",
+      "AUH"
+    ],
+    [
+      "SKT",
+      "DMM"
+    ],
+    [
+      "SKT",
+      "DOH"
+    ],
+    [
+      "SKT",
+      "DXB"
+    ],
+    [
+      "SKT",
+      "JED"
+    ],
+    [
+      "SKT",
+      "KHI"
+    ],
+    [
+      "SKT",
+      "MCT"
+    ],
+    [
+      "SKT",
+      "MED"
+    ],
+    [
+      "SKT",
+      "RUH"
+    ],
+    [
+      "SKZ",
+      "ISB"
+    ],
+    [
+      "SKZ",
+      "KHI"
+    ],
+    [
+      "TAS",
+      "ISB"
+    ],
+    [
+      "TAS",
+      "KHI"
+    ],
+    [
+      "TAS",
+      "LHE"
+    ],
+    [
+      "TUK",
+      "KHI"
+    ],
+    [
+      "UET",
+      "DXB"
+    ],
+    [
+      "UET",
+      "ISB"
+    ],
+    [
+      "UET",
+      "KHI"
+    ],
+    [
+      "UET",
+      "LHE"
+    ],
+    [
+      "URC",
+      "ISB"
+    ],
+    [
+      "YYZ",
+      "ISB"
+    ],
+    [
+      "YYZ",
+      "KHI"
+    ],
+    [
+      "YYZ",
+      "LHE"
+    ]
+  ],
+  "new_collection_routes": [
+    [
+      "AAN",
+      "ISB"
+    ],
+    [
+      "ADD",
+      "KHI"
+    ],
+    [
+      "AUH",
+      "ISB"
+    ],
+    [
+      "AUH",
+      "KHI"
+    ],
+    [
+      "AUH",
+      "LHE"
+    ],
+    [
+      "AUH",
+      "LYP"
+    ],
+    [
+      "AUH",
+      "MUX"
+    ],
+    [
+      "AUH",
+      "PEW"
+    ],
+    [
+      "AUH",
+      "SKT"
+    ],
+    [
+      "BAH",
+      "ISB"
+    ],
+    [
+      "BAH",
+      "KHI"
+    ],
+    [
+      "BAH",
+      "LHE"
+    ],
+    [
+      "BGW",
+      "ISB"
+    ],
+    [
+      "BGW",
+      "KHI"
+    ],
+    [
+      "BGW",
+      "LHE"
+    ],
+    [
+      "BHV",
+      "ISB"
+    ],
+    [
+      "BHV",
+      "KHI"
+    ],
+    [
+      "BKK",
+      "ISB"
+    ],
+    [
+      "BKK",
+      "KHI"
+    ],
+    [
+      "BKK",
+      "LHE"
+    ],
+    [
+      "CAN",
+      "ISB"
+    ],
+    [
+      "CAN",
+      "LHE"
+    ],
+    [
+      "CDG",
+      "ISB"
+    ],
+    [
+      "CMB",
+      "KHI"
+    ],
+    [
+      "CMB",
+      "LHE"
+    ],
+    [
+      "DAC",
+      "KHI"
+    ],
+    [
+      "DMM",
+      "ISB"
+    ],
+    [
+      "DMM",
+      "KHI"
+    ],
+    [
+      "DMM",
+      "LHE"
+    ],
+    [
+      "DMM",
+      "MUX"
+    ],
+    [
+      "DMM",
+      "SKT"
+    ],
+    [
+      "DOH",
+      "ISB"
+    ],
+    [
+      "DOH",
+      "KHI"
+    ],
+    [
+      "DOH",
+      "LHE"
+    ],
+    [
+      "DOH",
+      "MUX"
+    ],
+    [
+      "DOH",
+      "PEW"
+    ],
+    [
+      "DOH",
+      "SKT"
+    ],
+    [
+      "DXB",
+      "ISB"
+    ],
+    [
+      "DXB",
+      "KHI"
+    ],
+    [
+      "DXB",
+      "LHE"
+    ],
+    [
+      "DXB",
+      "LYP"
+    ],
+    [
+      "DXB",
+      "MUX"
+    ],
+    [
+      "DXB",
+      "PEW"
+    ],
+    [
+      "DXB",
+      "SKT"
+    ],
+    [
+      "DXB",
+      "UET"
+    ],
+    [
+      "ELQ",
+      "ISB"
+    ],
+    [
+      "GIL",
+      "ISB"
+    ],
+    [
+      "GWD",
+      "KHI"
+    ],
+    [
+      "GYD",
+      "ISB"
+    ],
+    [
+      "GYD",
+      "LHE"
+    ],
+    [
+      "IKA",
+      "ISB"
+    ],
+    [
+      "IKA",
+      "KHI"
+    ],
+    [
+      "IKA",
+      "LHE"
+    ],
+    [
+      "ISB",
+      "AAN"
+    ],
+    [
+      "ISB",
+      "AUH"
+    ],
+    [
+      "ISB",
+      "BAH"
+    ],
+    [
+      "ISB",
+      "BGW"
+    ],
+    [
+      "ISB",
+      "BHV"
+    ],
+    [
+      "ISB",
+      "BKK"
+    ],
+    [
+      "ISB",
+      "CAN"
+    ],
+    [
+      "ISB",
+      "CDG"
+    ],
+    [
+      "ISB",
+      "DMM"
+    ],
+    [
+      "ISB",
+      "DOH"
+    ],
+    [
+      "ISB",
+      "DXB"
+    ],
+    [
+      "ISB",
+      "ELQ"
+    ],
+    [
+      "ISB",
+      "GIL"
+    ],
+    [
+      "ISB",
+      "GYD"
+    ],
+    [
+      "ISB",
+      "IKA"
+    ],
+    [
+      "ISB",
+      "IST"
+    ],
+    [
+      "ISB",
+      "JED"
+    ],
+    [
+      "ISB",
+      "KBL"
+    ],
+    [
+      "ISB",
+      "KDU"
+    ],
+    [
+      "ISB",
+      "KHG"
+    ],
+    [
+      "ISB",
+      "KHI"
+    ],
+    [
+      "ISB",
+      "KUL"
+    ],
+    [
+      "ISB",
+      "KWI"
+    ],
+    [
+      "ISB",
+      "LGW"
+    ],
+    [
+      "ISB",
+      "LHE"
+    ],
+    [
+      "ISB",
+      "LHR"
+    ],
+    [
+      "ISB",
+      "MAN"
+    ],
+    [
+      "ISB",
+      "MCT"
+    ],
+    [
+      "ISB",
+      "MED"
+    ],
+    [
+      "ISB",
+      "MUX"
+    ],
+    [
+      "ISB",
+      "PEK"
+    ],
+    [
+      "ISB",
+      "RKT"
+    ],
+    [
+      "ISB",
+      "RUH"
+    ],
+    [
+      "ISB",
+      "RYK"
+    ],
+    [
+      "ISB",
+      "SHJ"
+    ],
+    [
+      "ISB",
+      "SKZ"
+    ],
+    [
+      "ISB",
+      "TAS"
+    ],
+    [
+      "ISB",
+      "UET"
+    ],
+    [
+      "ISB",
+      "URC"
+    ],
+    [
+      "ISB",
+      "YYZ"
+    ],
+    [
+      "IST",
+      "ISB"
+    ],
+    [
+      "IST",
+      "KHI"
+    ],
+    [
+      "IST",
+      "LHE"
+    ],
+    [
+      "JED",
+      "ISB"
+    ],
+    [
+      "JED",
+      "KHI"
+    ],
+    [
+      "JED",
+      "LHE"
+    ],
+    [
+      "JED",
+      "LYP"
+    ],
+    [
+      "JED",
+      "MUX"
+    ],
+    [
+      "JED",
+      "PEW"
+    ],
+    [
+      "JED",
+      "SKT"
+    ],
+    [
+      "KBL",
+      "ISB"
+    ],
+    [
+      "KDU",
+      "ISB"
+    ],
+    [
+      "KDU",
+      "KHI"
+    ],
+    [
+      "KDU",
+      "LHE"
+    ],
+    [
+      "KHG",
+      "ISB"
+    ],
+    [
+      "KHI",
+      "ADD"
+    ],
+    [
+      "KHI",
+      "AUH"
+    ],
+    [
+      "KHI",
+      "BAH"
+    ],
+    [
+      "KHI",
+      "BGW"
+    ],
+    [
+      "KHI",
+      "BHV"
+    ],
+    [
+      "KHI",
+      "BKK"
+    ],
+    [
+      "KHI",
+      "CMB"
+    ],
+    [
+      "KHI",
+      "DAC"
+    ],
+    [
+      "KHI",
+      "DMM"
+    ],
+    [
+      "KHI",
+      "DOH"
+    ],
+    [
+      "KHI",
+      "DXB"
+    ],
+    [
+      "KHI",
+      "GWD"
+    ],
+    [
+      "KHI",
+      "IKA"
+    ],
+    [
+      "KHI",
+      "ISB"
+    ],
+    [
+      "KHI",
+      "IST"
+    ],
+    [
+      "KHI",
+      "JED"
+    ],
+    [
+      "KHI",
+      "KDU"
+    ],
+    [
+      "KHI",
+      "KUL"
+    ],
+    [
+      "KHI",
+      "KWI"
+    ],
+    [
+      "KHI",
+      "LHE"
+    ],
+    [
+      "KHI",
+      "LYP"
+    ],
+    [
+      "KHI",
+      "MCT"
+    ],
+    [
+      "KHI",
+      "MED"
+    ],
+    [
+      "KHI",
+      "MHD"
+    ],
+    [
+      "KHI",
+      "MUX"
+    ],
+    [
+      "KHI",
+      "PEK"
+    ],
+    [
+      "KHI",
+      "PEW"
+    ],
+    [
+      "KHI",
+      "RUH"
+    ],
+    [
+      "KHI",
+      "RYK"
+    ],
+    [
+      "KHI",
+      "SAW"
+    ],
+    [
+      "KHI",
+      "SHJ"
+    ],
+    [
+      "KHI",
+      "SKT"
+    ],
+    [
+      "KHI",
+      "SKZ"
+    ],
+    [
+      "KHI",
+      "TAS"
+    ],
+    [
+      "KHI",
+      "TUK"
+    ],
+    [
+      "KHI",
+      "UET"
+    ],
+    [
+      "KHI",
+      "YYZ"
+    ],
+    [
+      "KUL",
+      "ISB"
+    ],
+    [
+      "KUL",
+      "KHI"
+    ],
+    [
+      "KUL",
+      "LHE"
+    ],
+    [
+      "KWI",
+      "ISB"
+    ],
+    [
+      "KWI",
+      "KHI"
+    ],
+    [
+      "KWI",
+      "LHE"
+    ],
+    [
+      "LGW",
+      "ISB"
+    ],
+    [
+      "LHE",
+      "AUH"
+    ],
+    [
+      "LHE",
+      "BAH"
+    ],
+    [
+      "LHE",
+      "BGW"
+    ],
+    [
+      "LHE",
+      "BKK"
+    ],
+    [
+      "LHE",
+      "CAN"
+    ],
+    [
+      "LHE",
+      "CMB"
+    ],
+    [
+      "LHE",
+      "DMM"
+    ],
+    [
+      "LHE",
+      "DOH"
+    ],
+    [
+      "LHE",
+      "DXB"
+    ],
+    [
+      "LHE",
+      "GYD"
+    ],
+    [
+      "LHE",
+      "IKA"
+    ],
+    [
+      "LHE",
+      "ISB"
+    ],
+    [
+      "LHE",
+      "IST"
+    ],
+    [
+      "LHE",
+      "JED"
+    ],
+    [
+      "LHE",
+      "KDU"
+    ],
+    [
+      "LHE",
+      "KHI"
+    ],
+    [
+      "LHE",
+      "KUL"
+    ],
+    [
+      "LHE",
+      "KWI"
+    ],
+    [
+      "LHE",
+      "LHR"
+    ],
+    [
+      "LHE",
+      "MAN"
+    ],
+    [
+      "LHE",
+      "MCT"
+    ],
+    [
+      "LHE",
+      "MED"
+    ],
+    [
+      "LHE",
+      "MHD"
+    ],
+    [
+      "LHE",
+      "RKT"
+    ],
+    [
+      "LHE",
+      "RUH"
+    ],
+    [
+      "LHE",
+      "SHJ"
+    ],
+    [
+      "LHE",
+      "TAS"
+    ],
+    [
+      "LHE",
+      "UET"
+    ],
+    [
+      "LHE",
+      "YYZ"
+    ],
+    [
+      "LHR",
+      "ISB"
+    ],
+    [
+      "LHR",
+      "LHE"
+    ],
+    [
+      "LYP",
+      "AUH"
+    ],
+    [
+      "LYP",
+      "DXB"
+    ],
+    [
+      "LYP",
+      "JED"
+    ],
+    [
+      "LYP",
+      "KHI"
+    ],
+    [
+      "LYP",
+      "MED"
+    ],
+    [
+      "MAN",
+      "ISB"
+    ],
+    [
+      "MAN",
+      "LHE"
+    ],
+    [
+      "MCT",
+      "ISB"
+    ],
+    [
+      "MCT",
+      "KHI"
+    ],
+    [
+      "MCT",
+      "LHE"
+    ],
+    [
+      "MCT",
+      "MUX"
+    ],
+    [
+      "MCT",
+      "PEW"
+    ],
+    [
+      "MCT",
+      "SKT"
+    ],
+    [
+      "MED",
+      "ISB"
+    ],
+    [
+      "MED",
+      "KHI"
+    ],
+    [
+      "MED",
+      "LHE"
+    ],
+    [
+      "MED",
+      "LYP"
+    ],
+    [
+      "MED",
+      "MUX"
+    ],
+    [
+      "MED",
+      "SKT"
+    ],
+    [
+      "MHD",
+      "KHI"
+    ],
+    [
+      "MHD",
+      "LHE"
+    ],
+    [
+      "MUX",
+      "AUH"
+    ],
+    [
+      "MUX",
+      "DMM"
+    ],
+    [
+      "MUX",
+      "DOH"
+    ],
+    [
+      "MUX",
+      "DXB"
+    ],
+    [
+      "MUX",
+      "ISB"
+    ],
+    [
+      "MUX",
+      "JED"
+    ],
+    [
+      "MUX",
+      "KHI"
+    ],
+    [
+      "MUX",
+      "MCT"
+    ],
+    [
+      "MUX",
+      "MED"
+    ],
+    [
+      "MUX",
+      "RUH"
+    ],
+    [
+      "PEK",
+      "ISB"
+    ],
+    [
+      "PEK",
+      "KHI"
+    ],
+    [
+      "PEW",
+      "AUH"
+    ],
+    [
+      "PEW",
+      "DOH"
+    ],
+    [
+      "PEW",
+      "DXB"
+    ],
+    [
+      "PEW",
+      "JED"
+    ],
+    [
+      "PEW",
+      "KHI"
+    ],
+    [
+      "PEW",
+      "MCT"
+    ],
+    [
+      "PEW",
+      "RUH"
+    ],
+    [
+      "RKT",
+      "ISB"
+    ],
+    [
+      "RKT",
+      "LHE"
+    ],
+    [
+      "RUH",
+      "ISB"
+    ],
+    [
+      "RUH",
+      "KHI"
+    ],
+    [
+      "RUH",
+      "LHE"
+    ],
+    [
+      "RUH",
+      "MUX"
+    ],
+    [
+      "RUH",
+      "PEW"
+    ],
+    [
+      "RUH",
+      "SKT"
+    ],
+    [
+      "RYK",
+      "ISB"
+    ],
+    [
+      "RYK",
+      "KHI"
+    ],
+    [
+      "SAW",
+      "KHI"
+    ],
+    [
+      "SHJ",
+      "ISB"
+    ],
+    [
+      "SHJ",
+      "KHI"
+    ],
+    [
+      "SHJ",
+      "LHE"
+    ],
+    [
+      "SKT",
+      "AUH"
+    ],
+    [
+      "SKT",
+      "DMM"
+    ],
+    [
+      "SKT",
+      "DOH"
+    ],
+    [
+      "SKT",
+      "DXB"
+    ],
+    [
+      "SKT",
+      "JED"
+    ],
+    [
+      "SKT",
+      "KHI"
+    ],
+    [
+      "SKT",
+      "MCT"
+    ],
+    [
+      "SKT",
+      "MED"
+    ],
+    [
+      "SKT",
+      "RUH"
+    ],
+    [
+      "SKZ",
+      "ISB"
+    ],
+    [
+      "SKZ",
+      "KHI"
+    ],
+    [
+      "TAS",
+      "ISB"
+    ],
+    [
+      "TAS",
+      "KHI"
+    ],
+    [
+      "TAS",
+      "LHE"
+    ],
+    [
+      "TUK",
+      "KHI"
+    ],
+    [
+      "UET",
+      "DXB"
+    ],
+    [
+      "UET",
+      "ISB"
+    ],
+    [
+      "UET",
+      "KHI"
+    ],
+    [
+      "UET",
+      "LHE"
+    ],
+    [
+      "URC",
+      "ISB"
+    ],
+    [
+      "YYZ",
+      "ISB"
+    ],
+    [
+      "YYZ",
+      "KHI"
+    ],
+    [
+      "YYZ",
+      "LHE"
+    ]
+  ],
+  "archive_snapshot": {
+    "path": "data/reference/europe_flights/2026-11-02.json.gz",
+    "sha256": "5b6ceefc54ad2ffd1196fe7056134dfe2c799868e10ee263484f707b1252d882"
+  },
+  "archive_reuse_routes": [],
+  "reuse_sources": [
+    {
+      "origin": "ADD",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-ADD-KHI.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-ADD-KHI.json"
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-AUH-ISB.json"
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-AUH-KHI.json"
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-AUH-LHE.json"
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "MUX",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-AUH-MUX.json"
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "PEW",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-AUH-PEW.json"
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "SKT",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-AUH-SKT.json"
+      ]
+    },
+    {
+      "origin": "BAH",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-bahrain-usd-v1/2026-11-02-BAH-ISB.json",
+        ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-BAH-ISB.json"
+      ]
+    },
+    {
+      "origin": "BAH",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-bahrain-usd-v1/2026-11-02-BAH-KHI.json",
+        ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-BAH-KHI.json"
+      ]
+    },
+    {
+      "origin": "BAH",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-bahrain-usd-v1/2026-11-02-BAH-LHE.json",
+        ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-BAH-LHE.json"
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-DMM-ISB.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-DMM-ISB.json"
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-DMM-LHE.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-DMM-LHE.json"
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "SKT",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-DMM-SKT.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-DMM-SKT.json"
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-DOH-ISB.json"
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-DOH-KHI.json"
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-DOH-LHE.json"
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "PEW",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-DOH-PEW.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-ISB.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-KHI.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-LHE.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "LYP",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-LYP.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "MUX",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-MUX.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "PEW",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-PEW.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "SKT",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-SKT.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "UET",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-UET.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "AUH",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-ISB-AUH.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "BAH",
+      "paths": [
+        ".cache/google-flights-bahrain-usd-v1/2026-11-02-ISB-BAH.json",
+        ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-ISB-BAH.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "DMM",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-ISB-DMM.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-ISB-DMM.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "DOH",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-ISB-DOH.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-ISB-DXB.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "IST",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-ISB-IST.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-ISB-IST.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "JED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-ISB-JED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-ISB-JED.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "LGW",
+      "paths": [
+        ".cache/google-flights-europe-groups-eur-v1/2026-11-02-ISB-LGW.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "MCT",
+      "paths": [
+        ".cache/google-flights-oman-usd-v1/2026-11-02-ISB-MCT.json",
+        ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-ISB-MCT.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "MED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-ISB-MED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-ISB-MED.json"
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "RUH",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-ISB-RUH.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-ISB-RUH.json"
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-IST-ISB.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-IST-ISB.json"
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-IST-KHI.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-IST-KHI.json"
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-IST-LHE.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-IST-LHE.json"
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-ISB.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-ISB.json"
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-KHI.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-KHI.json"
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-LHE.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-LHE.json"
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "MUX",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-MUX.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-MUX.json"
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "PEW",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-PEW.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-PEW.json"
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "SKT",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-SKT.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-SKT.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "ADD",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-KHI-ADD.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-KHI-ADD.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "AUH",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-KHI-AUH.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "BAH",
+      "paths": [
+        ".cache/google-flights-bahrain-usd-v1/2026-11-02-KHI-BAH.json",
+        ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-KHI-BAH.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "DMM",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-KHI-DMM.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-KHI-DMM.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "DOH",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-KHI-DOH.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-KHI-DXB.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "IST",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-KHI-IST.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-KHI-IST.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "JED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-KHI-JED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-KHI-JED.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "MCT",
+      "paths": [
+        ".cache/google-flights-oman-usd-v1/2026-11-02-KHI-MCT.json",
+        ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-KHI-MCT.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "MED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-KHI-MED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-KHI-MED.json"
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "SAW",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-KHI-SAW.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-KHI-SAW.json"
+      ]
+    },
+    {
+      "origin": "KUL",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-malaysia-international/2026-11-02-KUL-LHE.json"
+      ]
+    },
+    {
+      "origin": "KWI",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-kuwait-usd-v1/2026-11-02-KWI-KHI.json",
+        ".cache/google-flights-kuwait-usd-v1/new-usd/2026-11-02-KWI-KHI.json"
+      ]
+    },
+    {
+      "origin": "KWI",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-kuwait-usd-v1/2026-11-02-KWI-LHE.json",
+        ".cache/google-flights-kuwait-usd-v1/new-usd/2026-11-02-KWI-LHE.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "AUH",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-LHE-AUH.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "BAH",
+      "paths": [
+        ".cache/google-flights-bahrain-usd-v1/2026-11-02-LHE-BAH.json",
+        ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-LHE-BAH.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "DMM",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-LHE-DMM.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-LHE-DMM.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "DOH",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-LHE-DOH.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-LHE-DXB.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "JED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-LHE-JED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-LHE-JED.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "KUL",
+      "paths": [
+        ".cache/google-flights-malaysia-international/2026-11-02-LHE-KUL.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "KWI",
+      "paths": [
+        ".cache/google-flights-kuwait-usd-v1/2026-11-02-LHE-KWI.json",
+        ".cache/google-flights-kuwait-usd-v1/new-usd/2026-11-02-LHE-KWI.json"
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "RUH",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-LHE-RUH.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-LHE-RUH.json"
+      ]
+    },
+    {
+      "origin": "LYP",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-LYP-DXB.json"
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-oman-usd-v1/2026-11-02-MCT-ISB.json",
+        ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-MCT-ISB.json"
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-oman-usd-v1/2026-11-02-MCT-KHI.json",
+        ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-MCT-KHI.json"
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "PEW",
+      "paths": [
+        ".cache/google-flights-oman-usd-v1/2026-11-02-MCT-PEW.json",
+        ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-MCT-PEW.json"
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "SKT",
+      "paths": [
+        ".cache/google-flights-oman-usd-v1/2026-11-02-MCT-SKT.json",
+        ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-MCT-SKT.json"
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-MED-KHI.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-MED-KHI.json"
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "AUH",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-MUX-AUH.json"
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "DOH",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-MUX-DOH.json"
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-MUX-DXB.json"
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "JED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-MUX-JED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-MUX-JED.json"
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "MED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-MUX-MED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-MUX-MED.json"
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "AUH",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-PEW-AUH.json"
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "DOH",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-PEW-DOH.json"
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-PEW-DXB.json"
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "JED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-PEW-JED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-PEW-JED.json"
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "MCT",
+      "paths": [
+        ".cache/google-flights-oman-usd-v1/2026-11-02-PEW-MCT.json",
+        ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-PEW-MCT.json"
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "RUH",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-PEW-RUH.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-PEW-RUH.json"
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "ISB",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-RUH-ISB.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-RUH-ISB.json"
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "LHE",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-RUH-LHE.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-RUH-LHE.json"
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "PEW",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-RUH-PEW.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-RUH-PEW.json"
+      ]
+    },
+    {
+      "origin": "SAW",
+      "destination": "KHI",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-SAW-KHI.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-SAW-KHI.json"
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "AUH",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-SKT-AUH.json"
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "DOH",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-SKT-DOH.json"
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-SKT-DXB.json"
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "MCT",
+      "paths": [
+        ".cache/google-flights-oman-usd-v1/2026-11-02-SKT-MCT.json",
+        ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-SKT-MCT.json"
+      ]
+    },
+    {
+      "origin": "UET",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-UET-DXB.json"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "origin": "AAN",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADD",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-ADD-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-ADD-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-AUH-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-AUH-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-AUH-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "LYP",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-AUH-MUX.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "PEW",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-AUH-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-AUH-SKT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "BAH",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/bahrain_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/2026-11-02-BAH-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-BAH-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "BAH",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/bahrain_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/2026-11-02-BAH-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-BAH-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "BAH",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/bahrain_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/2026-11-02-BAH-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-BAH-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "BGW",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BGW",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BGW",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BHV",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BHV",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BKK",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BKK",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BKK",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "CAN",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "CAN",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "CDG",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "CMB",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "CMB",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DAC",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-DMM-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-DMM-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-DMM-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-DMM-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-DMM-SKT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-DMM-SKT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-DOH-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-DOH-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-DOH-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "PEW",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-DOH-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "LYP",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-LYP.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-MUX.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "PEW",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-SKT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "UET",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-UET.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ELQ",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "GIL",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "GWD",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "GYD",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "GYD",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "IKA",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "IKA",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "IKA",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "AAN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-ISB-AUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "BAH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/bahrain_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/2026-11-02-ISB-BAH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-ISB-BAH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "BGW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "BHV",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "BKK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "CAN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "CDG",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "DMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-ISB-DMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-ISB-DMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "DOH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-ISB-DOH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-ISB-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "ELQ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "GIL",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "GYD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "IKA",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "IST",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-ISB-IST.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-ISB-IST.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-ISB-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-ISB-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "KBL",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "KDU",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "KHG",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "KUL",
+      "sources": [
+        {
+          "source": "data/sources/malaysia_international_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "KWI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "LGW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_groups_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-europe-groups-eur-v1/2026-11-02-ISB-LGW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "LHR",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "MAN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "MCT",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/2026-11-02-ISB-MCT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-ISB-MCT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "MED",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-ISB-MED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-ISB-MED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "PEK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "RKT",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-ISB-RUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-ISB-RUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "RYK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "SHJ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "SKZ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "TAS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "UET",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "URC",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ISB",
+      "destination": "YYZ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-IST-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-IST-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-IST-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-IST-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-IST-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-IST-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "LYP",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-MUX.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-MUX.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "PEW",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-SKT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-SKT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KBL",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KDU",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KDU",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KDU",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHG",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "ADD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-KHI-ADD.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-KHI-ADD.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-KHI-AUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "BAH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/bahrain_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/2026-11-02-KHI-BAH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-KHI-BAH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "BGW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "BHV",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "BKK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "CMB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "DAC",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "DMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-KHI-DMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-KHI-DMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "DOH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-KHI-DOH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-KHI-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "GWD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "IKA",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "IST",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-KHI-IST.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-KHI-IST.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-KHI-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-KHI-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "KDU",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "KUL",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/malaysia_international_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "KWI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "LYP",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "MCT",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/2026-11-02-KHI-MCT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-KHI-MCT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "MED",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-KHI-MED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-KHI-MED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "MHD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "PEK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "PEW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "RYK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "SAW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-KHI-SAW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-KHI-SAW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "SHJ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "SKZ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "TAS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "TUK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "UET",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KHI",
+      "destination": "YYZ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KUL",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "data/sources/malaysia_international_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KUL",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/malaysia_international_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KUL",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/malaysia_international_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-malaysia-international/2026-11-02-KUL-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KWI",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KWI",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-kuwait-usd-v1/2026-11-02-KWI-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-kuwait-usd-v1/new-usd/2026-11-02-KWI-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "KWI",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-kuwait-usd-v1/2026-11-02-KWI-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-kuwait-usd-v1/new-usd/2026-11-02-KWI-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LGW",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_groups_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-LHE-AUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "BAH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/bahrain_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/2026-11-02-LHE-BAH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-bahrain-usd-v1/new-usd/2026-11-02-LHE-BAH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "BGW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "BKK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "CAN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "CMB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "DMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-LHE-DMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-LHE-DMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "DOH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-LHE-DOH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-LHE-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "GYD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "IKA",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "IST",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-LHE-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-LHE-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "KDU",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "KUL",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/malaysia_international_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-malaysia-international/2026-11-02-LHE-KUL.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "KWI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-kuwait-usd-v1/2026-11-02-LHE-KWI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-kuwait-usd-v1/new-usd/2026-11-02-LHE-KWI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "LHR",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "MAN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "MCT",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "MED",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "MHD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "RKT",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-LHE-RUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-LHE-RUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "SHJ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "TAS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "UET",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHE",
+      "destination": "YYZ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHR",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHR",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LYP",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LYP",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-LYP-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LYP",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LYP",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LYP",
+      "destination": "MED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MAN",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MAN",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/2026-11-02-MCT-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-MCT-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/2026-11-02-MCT-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-MCT-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "PEW",
+      "sources": [
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/2026-11-02-MCT-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-MCT-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/2026-11-02-MCT-SKT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-MCT-SKT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-MED-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-MED-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "LYP",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MHD",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MHD",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-MUX-AUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "DMM",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "DOH",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-MUX-DOH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-MUX-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-MUX-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-MUX-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "MCT",
+      "sources": [
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "MED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-MUX-MED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-MUX-MED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MUX",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "PEK",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "PEK",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-PEW-AUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "DOH",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-PEW-DOH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-PEW-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-PEW-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-PEW-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "MCT",
+      "sources": [
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/2026-11-02-PEW-MCT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-PEW-MCT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "PEW",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-PEW-RUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-PEW-RUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "RKT",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RKT",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-RUH-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-RUH-ISB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-RUH-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-RUH-LHE.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "MUX",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "PEW",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-RUH-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-RUH-PEW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "SKT",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RYK",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RYK",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SAW",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-SAW-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-SAW-KHI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "SHJ",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SHJ",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SHJ",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-SKT-AUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "DMM",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "DOH",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-SKT-DOH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-SKT-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "MCT",
+      "sources": [
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/2026-11-02-SKT-MCT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-oman-usd-v1/new-usd/2026-11-02-SKT-MCT.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "MED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SKT",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SKZ",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SKZ",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "TAS",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "TAS",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "TAS",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "TUK",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "UET",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-UET-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "UET",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "UET",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "UET",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "URC",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "YYZ",
+      "destination": "ISB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "YYZ",
+      "destination": "KHI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "YYZ",
+      "destination": "LHE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    }
+  ],
+  "route_source_sha256": "df308da4deda64a764ea9733d0df4e39de489511a452f4dc04f4bee3607a9c6e",
+  "additional_selection_sha256": "df308da4deda64a764ea9733d0df4e39de489511a452f4dc04f4bee3607a9c6e",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "timezone_source_url": "https://raw.githubusercontent.com/jpatokal/openflights/e539814f664cf31e662710555b27e9688610a911/data/airports.dat",
+  "timezone_source_sha256": "9387cdb38df5bd664da823f8ccb69fdd9b33a1888f5b7cca09c34a3cd9ff59f9",
+  "timezone_overrides": {
+    "GNJ": "Asia/Baku",
+    "GRV": "Europe/Moscow",
+    "GSV": "Europe/Saratov",
+    "KVO": "Europe/Belgrade",
+    "MRA": "Africa/Tripoli",
+    "KRT": "Africa/Khartoum",
+    "JCL": "Europe/Prague",
+    "KCF": "Asia/Karachi",
+    "DDU": "Asia/Karachi",
+    "BHW": "Asia/Karachi",
+    "WGB": "Asia/Karachi",
+    "BHV": "Asia/Karachi",
+    "CJL": "Asia/Karachi",
+    "CHB": "Asia/Karachi",
+    "DBA": "Asia/Karachi",
+    "DEA": "Asia/Karachi",
+    "DSK": "Asia/Karachi",
+    "LYP": "Asia/Karachi",
+    "GWD": "Asia/Karachi",
+    "GIL": "Asia/Karachi",
+    "ISB": "Asia/Karachi",
+    "JAG": "Asia/Karachi",
+    "KHI": "Asia/Karachi",
+    "HDD": "Asia/Karachi",
+    "KDD": "Asia/Karachi",
+    "OHT": "Asia/Karachi",
+    "LHE": "Asia/Karachi",
+    "LRG": "Asia/Karachi",
+    "XJM": "Asia/Karachi",
+    "MFG": "Asia/Karachi",
+    "MWD": "Asia/Karachi",
+    "MJD": "Asia/Karachi",
+    "MPD": "Asia/Karachi",
+    "ATG": "Asia/Karachi",
+    "MUX": "Asia/Karachi",
+    "WNS": "Asia/Karachi",
+    "ORW": "Asia/Karachi",
+    "PAJ": "Asia/Karachi",
+    "PJG": "Asia/Karachi",
+    "PSI": "Asia/Karachi",
+    "PEW": "Asia/Karachi",
+    "UET": "Asia/Karachi",
+    "RYK": "Asia/Karachi",
+    "RAZ": "Asia/Karachi",
+    "SBQ": "Asia/Karachi",
+    "KDU": "Asia/Karachi",
+    "SKZ": "Asia/Karachi",
+    "SYW": "Asia/Karachi",
+    "SGI": "Asia/Karachi",
+    "SDT": "Asia/Karachi",
+    "SKT": "Asia/Karachi",
+    "SUL": "Asia/Karachi",
+    "RZS": "Asia/Karachi",
+    "TLB": "Asia/Karachi",
+    "BDN": "Asia/Karachi",
+    "TFT": "Asia/Karachi",
+    "TUK": "Asia/Karachi",
+    "WAF": "Asia/Karachi",
+    "PZH": "Asia/Karachi",
+    "BHC": "Asia/Karachi",
+    "GRT": "Asia/Karachi",
+    "REQ": "Asia/Karachi",
+    "ZIZ": "Asia/Karachi",
+    "HMB": "Africa/Cairo",
+    "KSQ": "Asia/Samarkand",
+    "NMA": "Asia/Tashkent"
+  },
+  "input_manifests": [
+    {
+      "path": "data/sources/africa_flights_routes.json",
+      "sha256": "b2626f0236a3c3b663773b37d8e09a43f37101bb3156ba3ba7afde11b934d937"
+    },
+    {
+      "path": "data/sources/bahrain_flights_routes.json",
+      "sha256": "de988d0a913e921c359f50f5c2e8e5bd57e0f3e74badc6d87e04a9b52475237f"
+    },
+    {
+      "path": "data/sources/europe_groups_routes.json",
+      "sha256": "12e8b25fb1b9a4d38480dcf5a4cf4e3a90db7da75e002562354b33513f6fa59e"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    },
+    {
+      "path": "data/sources/kuwait_flights_routes.json",
+      "sha256": "12c51f382c79674ad4c6a0aa594420beca16d50995b521d2bb399dc8a430492a"
+    },
+    {
+      "path": "data/sources/malaysia_international_routes.json",
+      "sha256": "94f91fcc8380423ea350c6f77ba21af8536b14b0b81148b520b03200b092cd73"
+    },
+    {
+      "path": "data/sources/oman_flights_routes.json",
+      "sha256": "2393f7f267d440f02f641b2ee5c73282f121ba7046910928c59541bb4b8ccdc9"
+    },
+    {
+      "path": "data/sources/saudi_flights_routes.json",
+      "sha256": "1fba01862128dcf97e1b5adaf296595d1916c98f9369b98ed720985ccbdd5151"
+    },
+    {
+      "path": "data/sources/turkiye_flights_routes.json",
+      "sha256": "588fd02c699e0eff6fa92ae11c584cae1c59819a6b4489d3f8bbb6fd020bed65"
+    }
+  ],
+  "route_source_url": "data/sources/pakistan_flights_discovery.json",
+  "source_gaps": [
+    {
+      "airport": "PEW",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/pew/: HTTP 404"
+    },
+    {
+      "airport": "MUX",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/mux/: HTTP 404"
+    },
+    {
+      "airport": "SKT",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/skt/: HTTP 404"
+    },
+    {
+      "airport": "UET",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/uet/: HTTP 404"
+    },
+    {
+      "airport": "GWD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gwd/: HTTP 404"
+    },
+    {
+      "airport": "GIL",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gil/: HTTP 404"
+    },
+    {
+      "airport": "KDU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kdu/: HTTP 404"
+    },
+    {
+      "airport": "TUK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tuk/: HTTP 404"
+    },
+    {
+      "airport": "SKZ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/skz/: HTTP 404"
+    },
+    {
+      "airport": "BHV",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/bhv/: HTTP 404"
+    },
+    {
+      "airport": "CJL",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/cjl/: HTTP 404"
+    },
+    {
+      "airport": "DBA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/dba/: HTTP 404"
+    },
+    {
+      "airport": "DEA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/dea/: HTTP 404"
+    },
+    {
+      "airport": "RYK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ryk/: HTTP 404"
+    },
+    {
+      "airport": "HDD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/hdd/: HTTP 404"
+    },
+    {
+      "airport": "KDD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kdd/: HTTP 404"
+    },
+    {
+      "airport": "MFG",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/mfg/: HTTP 404"
+    },
+    {
+      "airport": "WNS",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/wns/: HTTP 404"
+    },
+    {
+      "airport": "PZH",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/pzh/: HTTP 404"
+    },
+    {
+      "airport": "LYP",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/lyp/: HTTP 404"
+    }
+  ],
+  "deferred_routes": [],
+  "unresolved_airports": [],
+  "coverage_scope": "Published domestic and worldwide international routes from the selected Pakistan civilian airports, both directions; other existing national captures reused without new searches. Seasonal candidates are not dated service evidence; coverage is partial.",
+  "replay_note": "Pakistan · Flights departing 2 November 2026 in each origin airport’s local time, including overnight arrivals. Timeline: Pakistan time (UTC+5); airport boards use local time. New quotes use USD; reused quotes retain their original currencies. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.",
+  "collection_strategy": "Published Pakistan airport routes, one origin-local date; reused quotes unchanged, new captures USD"
+}

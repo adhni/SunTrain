@@ -1,0 +1,337 @@
+{
+  "reviewed_at": "2026-10-27T10:32:16.595851+00:00",
+  "launch_airports": [
+    "KHI",
+    "ISB",
+    "LHE",
+    "PEW",
+    "LYP",
+    "MUX",
+    "SKT",
+    "UET",
+    "GWD",
+    "GIL",
+    "KDU",
+    "TUK",
+    "SKZ",
+    "BHV",
+    "CJL",
+    "DBA",
+    "DEA",
+    "RYK",
+    "HDD",
+    "KDD",
+    "MFG",
+    "WNS",
+    "PZH"
+  ],
+  "worldwide_hubs": [
+    "KHI",
+    "ISB",
+    "LHE",
+    "PEW",
+    "LYP",
+    "MUX",
+    "SKT",
+    "UET",
+    "GWD",
+    "GIL",
+    "KDU",
+    "TUK",
+    "SKZ",
+    "BHV",
+    "CJL",
+    "DBA",
+    "DEA",
+    "RYK",
+    "HDD",
+    "KDD",
+    "MFG",
+    "WNS",
+    "PZH"
+  ],
+  "airport_maps": [
+    {
+      "airport": "KHI",
+      "destinations": [
+        "ADD",
+        "AUH",
+        "BAH",
+        "BGW",
+        "BHV",
+        "BKK",
+        "CMB",
+        "DAC",
+        "DMM",
+        "DOH",
+        "DXB",
+        "GWD",
+        "IKA",
+        "ISB",
+        "IST",
+        "JED",
+        "KDU",
+        "KUL",
+        "KWI",
+        "LHE",
+        "LYP",
+        "MCT",
+        "MED",
+        "MHD",
+        "MUX",
+        "PEK",
+        "PEW",
+        "RUH",
+        "RYK",
+        "SAW",
+        "SHJ",
+        "SKT",
+        "SKZ",
+        "TAS",
+        "TUK",
+        "UET",
+        "YYZ"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/khi/",
+          "sha256": "77972d5a7d31ebf8d7564302f862d3b179c77d4b7cca1d6230564bf431c0f82a",
+          "bytes": 42330
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/khi-routes.svg",
+          "sha256": "0ca32ce90c91e54b52d0e138196ecd7055198ad6ff717c93a81827907862c730",
+          "bytes": 181271
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "ISB",
+      "destinations": [
+        "AAN",
+        "AUH",
+        "BAH",
+        "BGW",
+        "BHV",
+        "BKK",
+        "CAN",
+        "CDG",
+        "DMM",
+        "DOH",
+        "DXB",
+        "ELQ",
+        "GIL",
+        "GYD",
+        "IKA",
+        "IST",
+        "JED",
+        "KBL",
+        "KDU",
+        "KHG",
+        "KHI",
+        "KWI",
+        "LGW",
+        "LHE",
+        "LHR",
+        "MAN",
+        "MCT",
+        "MED",
+        "MUX",
+        "PEK",
+        "RKT",
+        "RUH",
+        "RYK",
+        "SHJ",
+        "SKZ",
+        "TAS",
+        "UET",
+        "URC",
+        "YYZ"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/isb/",
+          "sha256": "2f471e8d84f0a70f66f2b73b8bb704e083abfd492a5894b3093ee5d80b101168",
+          "bytes": 43606
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/isb-routes.svg",
+          "sha256": "39d82ea62ffaae6cdce778a9fed7f122bbbbadea3cee80f573541b642fe2c195",
+          "bytes": 176216
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "LHE",
+      "destinations": [
+        "AUH",
+        "BAH",
+        "BGW",
+        "BKK",
+        "CAN",
+        "CMB",
+        "DMM",
+        "DOH",
+        "DXB",
+        "GYD",
+        "IKA",
+        "ISB",
+        "IST",
+        "JED",
+        "KDU",
+        "KHI",
+        "KUL",
+        "KWI",
+        "LHR",
+        "MAN",
+        "MCT",
+        "MED",
+        "MHD",
+        "RKT",
+        "RUH",
+        "SHJ",
+        "TAS",
+        "UET",
+        "YYZ"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/lhe/",
+          "sha256": "349c78e1685dd1239c85ed743b5dc8845aff02c36ff4c821889ae56a29d9b6d3",
+          "bytes": 39057
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/lhe-routes.svg",
+          "sha256": "0cda366058653f5b720189e32f9802fa07bc420706cf87a081e84b4deea90827",
+          "bytes": 182389
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "PEW",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/pew/: HTTP 404"
+    },
+    {
+      "airport": "MUX",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/mux/: HTTP 404"
+    },
+    {
+      "airport": "SKT",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/skt/: HTTP 404"
+    },
+    {
+      "airport": "UET",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/uet/: HTTP 404"
+    },
+    {
+      "airport": "GWD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gwd/: HTTP 404"
+    },
+    {
+      "airport": "GIL",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gil/: HTTP 404"
+    },
+    {
+      "airport": "KDU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kdu/: HTTP 404"
+    },
+    {
+      "airport": "TUK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tuk/: HTTP 404"
+    },
+    {
+      "airport": "SKZ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/skz/: HTTP 404"
+    },
+    {
+      "airport": "BHV",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/bhv/: HTTP 404"
+    },
+    {
+      "airport": "CJL",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/cjl/: HTTP 404"
+    },
+    {
+      "airport": "DBA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/dba/: HTTP 404"
+    },
+    {
+      "airport": "DEA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/dea/: HTTP 404"
+    },
+    {
+      "airport": "RYK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ryk/: HTTP 404"
+    },
+    {
+      "airport": "HDD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/hdd/: HTTP 404"
+    },
+    {
+      "airport": "KDD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kdd/: HTTP 404"
+    },
+    {
+      "airport": "MFG",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/mfg/: HTTP 404"
+    },
+    {
+      "airport": "WNS",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/wns/: HTTP 404"
+    },
+    {
+      "airport": "PZH",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/pzh/: HTTP 404"
+    },
+    {
+      "airport": "LYP",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/lyp/: HTTP 404"
+    }
+  ]
+}

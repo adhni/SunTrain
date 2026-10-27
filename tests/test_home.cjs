@@ -23,3 +23,11 @@ test('pin grouping handles empty catalogues and chains of overlapping markers', 
     assert.equal(groups.length,1);
     assert.deepEqual(groups[0].coordinates,[30,0]);
 });
+
+// The home map displays one world, so Pacific's 190° centre must be −170°.
+test('Pacific dateline bounds produce a pin in the displayed world', () => {
+    const pacific={id:'pacific_flights',bounds:[[128,-33],[252,33]]};
+    const groups=groupPlaces([pacific],([x,y])=>{assert.equal(x,-170);return {x,y};});
+    assert.deepEqual(groups[0].coordinates,[-170,0]);
+    assert.deepEqual(pacific.bounds,[[128,-33],[252,33]]);
+});

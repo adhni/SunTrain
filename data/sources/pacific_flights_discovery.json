@@ -1,0 +1,2267 @@
+{
+  "reviewed_at": "2026-10-27T11:28:28.275580+00:00",
+  "launch_airports": [
+    "POM",
+    "LAE",
+    "HGU",
+    "GKA",
+    "RAB",
+    "GUR",
+    "MAS",
+    "KVG",
+    "WWK",
+    "HIR",
+    "MUA",
+    "VLI",
+    "SON",
+    "TAH",
+    "NOU",
+    "GEA",
+    "LIF",
+    "ILP",
+    "UVE",
+    "MEE",
+    "NAN",
+    "SUV",
+    "LBS",
+    "TVU",
+    "SVU",
+    "KDV",
+    "APW",
+    "PPG",
+    "TBU",
+    "VAV",
+    "HPA",
+    "RAR",
+    "AIT",
+    "PPT",
+    "BOB",
+    "RFP",
+    "HUH",
+    "MOZ",
+    "RGI",
+    "NHV",
+    "GMR",
+    "IUE",
+    "FUN",
+    "INU",
+    "TRW",
+    "CXI",
+    "MAJ",
+    "KWA",
+    "PNI",
+    "TKK",
+    "KSA",
+    "YAP",
+    "ROR",
+    "GUM",
+    "SPN",
+    "ROP",
+    "TIQ",
+    "HNL",
+    "OGG",
+    "KOA",
+    "LIH",
+    "ITO",
+    "MKK",
+    "LNY",
+    "HNM",
+    "JHM",
+    "NLK",
+    "WLS",
+    "FUT",
+    "CHT",
+    "IPC"
+  ],
+  "worldwide_hubs": [
+    "POM",
+    "LAE",
+    "HGU",
+    "GKA",
+    "RAB",
+    "GUR",
+    "MAS",
+    "KVG",
+    "WWK",
+    "HIR",
+    "MUA",
+    "VLI",
+    "SON",
+    "TAH",
+    "NOU",
+    "GEA",
+    "LIF",
+    "ILP",
+    "UVE",
+    "MEE",
+    "NAN",
+    "SUV",
+    "LBS",
+    "TVU",
+    "SVU",
+    "KDV",
+    "APW",
+    "PPG",
+    "TBU",
+    "VAV",
+    "HPA",
+    "RAR",
+    "AIT",
+    "PPT",
+    "BOB",
+    "RFP",
+    "HUH",
+    "MOZ",
+    "RGI",
+    "NHV",
+    "GMR",
+    "IUE",
+    "FUN",
+    "INU",
+    "TRW",
+    "CXI",
+    "MAJ",
+    "KWA",
+    "PNI",
+    "TKK",
+    "KSA",
+    "YAP",
+    "ROR",
+    "GUM",
+    "SPN",
+    "ROP",
+    "TIQ",
+    "HNL",
+    "OGG",
+    "KOA",
+    "LIH",
+    "ITO",
+    "MKK",
+    "LNY",
+    "HNM",
+    "JHM",
+    "NLK",
+    "WLS",
+    "FUT",
+    "CHT",
+    "IPC"
+  ],
+  "airport_maps": [
+    {
+      "airport": "POM",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/pom/: HTTP 404"
+    },
+    {
+      "airport": "LAE",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/lae/: HTTP 404"
+    },
+    {
+      "airport": "HGU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/hgu/: HTTP 404"
+    },
+    {
+      "airport": "GKA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gka/: HTTP 404"
+    },
+    {
+      "airport": "RAB",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/rab/: HTTP 404"
+    },
+    {
+      "airport": "GUR",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gur/: HTTP 404"
+    },
+    {
+      "airport": "MAS",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/mas/: HTTP 404"
+    },
+    {
+      "airport": "KVG",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kvg/: HTTP 404"
+    },
+    {
+      "airport": "WWK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/wwk/: HTTP 404"
+    },
+    {
+      "airport": "HIR",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/hir/: HTTP 404"
+    },
+    {
+      "airport": "MUA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/mua/: HTTP 404"
+    },
+    {
+      "airport": "VLI",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/vli/: HTTP 404"
+    },
+    {
+      "airport": "SON",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/son/: HTTP 404"
+    },
+    {
+      "airport": "TAH",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tah/: HTTP 404"
+    },
+    {
+      "airport": "NOU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/nou/: HTTP 404"
+    },
+    {
+      "airport": "GEA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gea/: HTTP 404"
+    },
+    {
+      "airport": "LIF",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/lif/: HTTP 404"
+    },
+    {
+      "airport": "ILP",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ilp/: HTTP 404"
+    },
+    {
+      "airport": "UVE",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/uve/: HTTP 404"
+    },
+    {
+      "airport": "MEE",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/mee/: HTTP 404"
+    },
+    {
+      "airport": "NAN",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/nan/: HTTP 404"
+    },
+    {
+      "airport": "SUV",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/suv/: HTTP 404"
+    },
+    {
+      "airport": "LBS",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/lbs/: HTTP 404"
+    },
+    {
+      "airport": "TVU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tvu/: HTTP 404"
+    },
+    {
+      "airport": "SVU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/svu/: HTTP 404"
+    },
+    {
+      "airport": "KDV",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kdv/: HTTP 404"
+    },
+    {
+      "airport": "APW",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/apw/: HTTP 404"
+    },
+    {
+      "airport": "PPG",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ppg/: HTTP 404"
+    },
+    {
+      "airport": "TBU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tbu/: HTTP 404"
+    },
+    {
+      "airport": "VAV",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/vav/: HTTP 404"
+    },
+    {
+      "airport": "HPA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/hpa/: HTTP 404"
+    },
+    {
+      "airport": "RAR",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/rar/: HTTP 404"
+    },
+    {
+      "airport": "AIT",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ait/: HTTP 404"
+    },
+    {
+      "airport": "PPT",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ppt/: HTTP 404"
+    },
+    {
+      "airport": "BOB",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/bob/: HTTP 404"
+    },
+    {
+      "airport": "RFP",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/rfp/: HTTP 404"
+    },
+    {
+      "airport": "HUH",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/huh/: HTTP 404"
+    },
+    {
+      "airport": "MOZ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/moz/: HTTP 404"
+    },
+    {
+      "airport": "RGI",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/rgi/: HTTP 404"
+    },
+    {
+      "airport": "NHV",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/nhv/: HTTP 404"
+    },
+    {
+      "airport": "GMR",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gmr/: HTTP 404"
+    },
+    {
+      "airport": "IUE",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/iue/: HTTP 404"
+    },
+    {
+      "airport": "FUN",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/fun/: HTTP 404"
+    },
+    {
+      "airport": "INU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/inu/: HTTP 404"
+    },
+    {
+      "airport": "TRW",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/trw/: HTTP 404"
+    },
+    {
+      "airport": "CXI",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/cxi/: HTTP 404"
+    },
+    {
+      "airport": "MAJ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/maj/: HTTP 404"
+    },
+    {
+      "airport": "KWA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kwa/: HTTP 404"
+    },
+    {
+      "airport": "PNI",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/pni/: HTTP 404"
+    },
+    {
+      "airport": "TKK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tkk/: HTTP 404"
+    },
+    {
+      "airport": "KSA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ksa/: HTTP 404"
+    },
+    {
+      "airport": "YAP",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/yap/: HTTP 404"
+    },
+    {
+      "airport": "ROR",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ror/: HTTP 404"
+    },
+    {
+      "airport": "GUM",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/gum/: HTTP 404"
+    },
+    {
+      "airport": "SPN",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/spn/: HTTP 404"
+    },
+    {
+      "airport": "ROP",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/rop/: HTTP 404"
+    },
+    {
+      "airport": "TIQ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tiq/: HTTP 404"
+    },
+    {
+      "airport": "HNL",
+      "destinations": [
+        "AKL",
+        "ANC",
+        "APW",
+        "ATL",
+        "BOI",
+        "BOS",
+        "BUR",
+        "CXI",
+        "DEN",
+        "DFW",
+        "DTW",
+        "EWR",
+        "GEG",
+        "GUM",
+        "HND",
+        "IAD",
+        "IAH",
+        "ICN",
+        "ITO",
+        "JFK",
+        "JHM",
+        "KIX",
+        "KOA",
+        "LAS",
+        "LAX",
+        "LGB",
+        "LIH",
+        "LNY",
+        "LUP",
+        "MAJ",
+        "MKK",
+        "MNL",
+        "MSP",
+        "NAN",
+        "NGO",
+        "NRT",
+        "OAK",
+        "OGG",
+        "ONT",
+        "ORD",
+        "PDX",
+        "PHX",
+        "PPG",
+        "PPT",
+        "RAR",
+        "SAN",
+        "SEA",
+        "SFO",
+        "SJC",
+        "SLC",
+        "SMF",
+        "SYD",
+        "YEG",
+        "YVR",
+        "YYC",
+        "YYZ"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/hnl/",
+          "sha256": "f6791422065d686f63f7b0b4abca813d274697a6d70f39209579f51ed79a4b93",
+          "bytes": 51726
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/hnl-routes.svg",
+          "sha256": "31ba98818b2f5665a468b636e20dd27216e8a60bad35fe54f7fc706d7c9810e7",
+          "bytes": 136096
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "OGG",
+      "destinations": [
+        "ANC",
+        "ATL",
+        "DEN",
+        "DFW",
+        "HNL",
+        "HNM",
+        "ITO",
+        "KOA",
+        "LAS",
+        "LAX",
+        "LGB",
+        "LIH",
+        "LNY",
+        "MKK",
+        "MSP",
+        "MUE",
+        "OAK",
+        "ORD",
+        "PDX",
+        "PHX",
+        "SAN",
+        "SEA",
+        "SFO",
+        "SJC",
+        "SLC",
+        "SMF",
+        "YEG",
+        "YVR",
+        "YYC"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/ogg/",
+          "sha256": "d300a9e33dd42baf2b94d391fba90a1c1fc48f9f081fd6a948649fa9e04af35c",
+          "bytes": 37667
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/ogg-routes.svg",
+          "sha256": "0d988220c5bf82a51941119922a70483d380ada503589ee041cfe6a6a80c92af",
+          "bytes": 54851
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "KOA",
+      "destinations": [
+        "ANC",
+        "DEN",
+        "DFW",
+        "HNL",
+        "LAS",
+        "LAX",
+        "LIH",
+        "MUE",
+        "OGG",
+        "ORD",
+        "PDX",
+        "PHX",
+        "SAN",
+        "SEA",
+        "SFO",
+        "SJC",
+        "SLC",
+        "SMF",
+        "YVR",
+        "YYC"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/koa/",
+          "sha256": "40380d0cb17cd0a3acb50b62a45e0eb782c06a1e9d048dbb415ee28b7e8510bc",
+          "bytes": 33165
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/koa-routes.svg",
+          "sha256": "7610e8e23a3d7c92fb9fc1f303fc56d9b06cefeb6982992df60ef052200d9a3f",
+          "bytes": 49549
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "LIH",
+      "destinations": [
+        "DEN",
+        "HNL",
+        "KOA",
+        "LAS",
+        "LAX",
+        "OAK",
+        "OGG",
+        "PDX",
+        "PHX",
+        "SAN",
+        "SEA",
+        "SFO",
+        "SJC",
+        "SMF"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/lih/",
+          "sha256": "44112a28e7242e9c49ec3c03f834bf2a95b07ab116500fefaf26da0da69833d0",
+          "bytes": 29738
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/lih-routes.svg",
+          "sha256": "2fa26e369fd37a423e6c7c453cf175a8594349ab4feb218b0192305337743ca0",
+          "bytes": 32741
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "ITO",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ito/: HTTP 404"
+    },
+    {
+      "airport": "MKK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/mkk/: HTTP 404"
+    },
+    {
+      "airport": "LNY",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/lny/: HTTP 404"
+    },
+    {
+      "airport": "HNM",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/hnm/: HTTP 404"
+    },
+    {
+      "airport": "JHM",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/jhm/: HTTP 404"
+    },
+    {
+      "airport": "NLK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/nlk/: HTTP 404"
+    },
+    {
+      "airport": "WLS",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/wls/: HTTP 404"
+    },
+    {
+      "airport": "FUT",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/fut/: HTTP 404"
+    },
+    {
+      "airport": "CHT",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/cht/: HTTP 404"
+    },
+    {
+      "airport": "IPC",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ipc/: HTTP 404"
+    }
+  ],
+  "supplemental_airport_maps": [
+    {
+      "airport": "AIT",
+      "destinations": [
+        "AIU",
+        "RAR"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "APW",
+      "destinations": [
+        "AKL",
+        "BNE",
+        "HNL",
+        "NAN",
+        "SYD"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "BOB",
+      "destinations": [
+        "HUH",
+        "MAU",
+        "MOZ",
+        "PPT",
+        "RFP",
+        "RGI",
+        "TIH"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "CXI",
+      "destinations": [
+        "HNL",
+        "NAN"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "FUN",
+      "destinations": [
+        "SUV"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "FUT",
+      "destinations": [
+        "WLS"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "GEA",
+      "destinations": [
+        "BMY",
+        "ILP",
+        "KNQ",
+        "KOC",
+        "LIF",
+        "MEE",
+        "TGJ",
+        "TOU",
+        "UVE"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "GKA",
+      "destinations": [
+        "HGU",
+        "LAE",
+        "MAG",
+        "POM"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "GMR",
+      "destinations": [
+        "HOI",
+        "PPT"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "GUM",
+      "destinations": [
+        "CNS",
+        "CTS",
+        "FUK",
+        "HKG",
+        "HNL",
+        "ICN",
+        "KIX",
+        "MNL",
+        "NGO",
+        "NRT",
+        "OKJ",
+        "PUS",
+        "ROP",
+        "ROR",
+        "SDJ",
+        "SPN",
+        "TKK",
+        "TPE",
+        "YAP"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "GUR",
+      "destinations": [
+        "LSA",
+        "MIS",
+        "PNP",
+        "POM"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "HGU",
+      "destinations": [
+        "GKA",
+        "LAE",
+        "MAG",
+        "MXH",
+        "POM",
+        "TBG",
+        "TIZ",
+        "UNG",
+        "WWK"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "HIR",
+      "destinations": [
+        "ATD",
+        "BNE",
+        "BNY",
+        "CHY",
+        "EGM",
+        "FRE",
+        "GZO",
+        "IRA",
+        "JJA",
+        "KGE",
+        "MUA",
+        "NAN",
+        "NNB",
+        "POM",
+        "RBV",
+        "RNA",
+        "RNL",
+        "RUS",
+        "SCZ",
+        "VAO",
+        "VLI"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "HNL",
+      "destinations": [
+        "AKL",
+        "ANC",
+        "APW",
+        "ATL",
+        "BLI",
+        "BNE",
+        "CTS",
+        "CXI",
+        "DEN",
+        "DFW",
+        "EWR",
+        "FUK",
+        "GUM",
+        "HND",
+        "IAD",
+        "IAH",
+        "ICN",
+        "ITO",
+        "JFK",
+        "JHM",
+        "KIX",
+        "KOA",
+        "LAS",
+        "LAX",
+        "LIH",
+        "LNY",
+        "MAJ",
+        "MEL",
+        "MKK",
+        "MNL",
+        "NAN",
+        "NGO",
+        "NRT",
+        "OAK",
+        "OGG",
+        "ORD",
+        "PDX",
+        "PEK",
+        "PHX",
+        "PPG",
+        "PPT",
+        "PVG",
+        "SAN",
+        "SDJ",
+        "SEA",
+        "SFO",
+        "SJC",
+        "SLC",
+        "SMF",
+        "SYD",
+        "TPE",
+        "YVR"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "HNM",
+      "destinations": [
+        "OGG"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "HUH",
+      "destinations": [
+        "BOB",
+        "MOZ",
+        "PPT",
+        "RFP"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "ILP",
+      "destinations": [
+        "GEA"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "INU",
+      "destinations": [
+        "BNE",
+        "MAJ",
+        "TRW"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "IPC",
+      "destinations": [
+        "PPT",
+        "SCL"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "ITO",
+      "destinations": [
+        "HNL",
+        "LAX",
+        "OGG"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "IUE",
+      "destinations": [
+        "AKL"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "JHM",
+      "destinations": [
+        "HNL",
+        "KOA"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "KDV",
+      "destinations": [
+        "NAN",
+        "SUV"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "KOA",
+      "destinations": [
+        "DEN",
+        "HNL",
+        "JHM",
+        "LAX",
+        "OAK",
+        "OGG",
+        "PHX",
+        "SEA",
+        "SFO",
+        "SJC",
+        "YVR"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "KSA",
+      "destinations": [
+        "KWA",
+        "PNI"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "KVG",
+      "destinations": [
+        "MAS",
+        "POM",
+        "RAB"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "KWA",
+      "destinations": [
+        "KSA",
+        "MAJ",
+        "PNI"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "LAE",
+      "destinations": [
+        "DAU",
+        "GKA",
+        "HGU",
+        "HKN",
+        "MAG",
+        "MAS",
+        "PNP",
+        "POM",
+        "RAB"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "LBS",
+      "destinations": [
+        "NAN",
+        "SUV"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "LIF",
+      "destinations": [
+        "GEA",
+        "TGJ",
+        "UVE"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "LIH",
+      "destinations": [
+        "DEN",
+        "HNL",
+        "LAX",
+        "OAK",
+        "OGG",
+        "PHX",
+        "SAN",
+        "SEA",
+        "SFO",
+        "SJC",
+        "YVR"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "LNY",
+      "destinations": [
+        "HNL",
+        "MKK",
+        "OGG"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "MAJ",
+      "destinations": [
+        "HNL",
+        "INU",
+        "KWA",
+        "TRW"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "MAS",
+      "destinations": [
+        "KVG",
+        "LAE",
+        "MAG",
+        "POM",
+        "RAB"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "MEE",
+      "destinations": [
+        "GEA"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "MKK",
+      "destinations": [
+        "HNL",
+        "LNY",
+        "OGG"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "MOZ",
+      "destinations": [
+        "BOB",
+        "HUH",
+        "PPT",
+        "RFP"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "MUA",
+      "destinations": [
+        "EGM",
+        "GZO",
+        "HIR",
+        "KGE",
+        "RBV"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "NAN",
+      "destinations": [
+        "AKL",
+        "APW",
+        "BNE",
+        "CHC",
+        "CXI",
+        "HIR",
+        "HKG",
+        "HNL",
+        "ICN",
+        "KDV",
+        "LAX",
+        "LBS",
+        "MEL",
+        "NOU",
+        "POM",
+        "RTA",
+        "SUV",
+        "SVU",
+        "SYD",
+        "TBU",
+        "TRW",
+        "TVU",
+        "VLI",
+        "WLS"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "NHV",
+      "destinations": [
+        "AUQ",
+        "PPT",
+        "UAH",
+        "UAP"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "NLK",
+      "destinations": [
+        "AKL",
+        "BNE",
+        "SYD"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "NOU",
+      "destinations": [
+        "AKL",
+        "BNE",
+        "KIX",
+        "NAN",
+        "NRT",
+        "PPT",
+        "SYD",
+        "VLI",
+        "WLS"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "OGG",
+      "destinations": [
+        "DEN",
+        "DFW",
+        "HNL",
+        "HNM",
+        "ITO",
+        "KOA",
+        "LAX",
+        "LIH",
+        "LNY",
+        "MKK",
+        "MUE",
+        "OAK",
+        "ORD",
+        "PDX",
+        "PHX",
+        "SAN",
+        "SEA",
+        "SFO",
+        "SJC",
+        "SMF",
+        "YVR"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "PNI",
+      "destinations": [
+        "KSA",
+        "KWA",
+        "TKK"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "POM",
+      "destinations": [
+        "BNE",
+        "BUA",
+        "BUL",
+        "CEB",
+        "CMU",
+        "CNS",
+        "DAU",
+        "DPS",
+        "GKA",
+        "GUR",
+        "HGU",
+        "HIR",
+        "HKG",
+        "HKN",
+        "KVG",
+        "LAE",
+        "LNV",
+        "MAG",
+        "MAS",
+        "MDU",
+        "MNL",
+        "MXH",
+        "NAN",
+        "NRT",
+        "PNP",
+        "RAB",
+        "SIN",
+        "SYD",
+        "TBG",
+        "TFI",
+        "TIZ",
+        "UNG",
+        "VAI",
+        "WBM",
+        "WWK"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "PPG",
+      "destinations": [
+        "HNL"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "PPT",
+      "destinations": [
+        "AHE",
+        "AKL",
+        "AUQ",
+        "AXR",
+        "BOB",
+        "FAV",
+        "GMR",
+        "HNL",
+        "HOI",
+        "HUH",
+        "IPC",
+        "KKR",
+        "KXU",
+        "LAX",
+        "MAU",
+        "MKP",
+        "MOZ",
+        "MVT",
+        "NHV",
+        "NOU",
+        "NRT",
+        "RAR",
+        "RFP",
+        "RGI",
+        "RKA",
+        "RMT",
+        "RUR",
+        "RVV",
+        "TIH",
+        "TKX",
+        "TUB",
+        "XMH"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "RAB",
+      "destinations": [
+        "BUA",
+        "CNS",
+        "HKN",
+        "KVG",
+        "LAE",
+        "LNV",
+        "MAS",
+        "POM"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "RAR",
+      "destinations": [
+        "AIT",
+        "AIU",
+        "AKL",
+        "LAX",
+        "MGS",
+        "MOI",
+        "MUK",
+        "PPT",
+        "SYD"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "RFP",
+      "destinations": [
+        "BOB",
+        "HUH",
+        "MAU",
+        "MOZ",
+        "PPT"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "RGI",
+      "destinations": [
+        "BOB",
+        "FAV",
+        "MVT",
+        "PPT",
+        "TIH",
+        "XMH"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "ROP",
+      "destinations": [
+        "GUM",
+        "SPN"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "ROR",
+      "destinations": [
+        "GUM",
+        "ICN",
+        "MNL",
+        "NRT",
+        "TPE",
+        "YAP"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "SON",
+      "destinations": [
+        "BNE",
+        "LNE",
+        "LOD",
+        "MWF",
+        "NUS",
+        "SLH",
+        "SSR",
+        "VLI",
+        "WLH",
+        "ZGU"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "SPN",
+      "destinations": [
+        "CAN",
+        "GUM",
+        "ICN",
+        "KIX",
+        "NGO",
+        "NRT",
+        "PEK",
+        "PUS",
+        "PVG",
+        "ROP"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "SUV",
+      "destinations": [
+        "AKL",
+        "FUN",
+        "ICI",
+        "KDV",
+        "LBS",
+        "LKB",
+        "NAN",
+        "SVU",
+        "SYD",
+        "TBU",
+        "TVU",
+        "VBV"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "SVU",
+      "destinations": [
+        "NAN",
+        "SUV",
+        "TVU"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "TAH",
+      "destinations": [
+        "AUY",
+        "AWD",
+        "FTA",
+        "IPA",
+        "VLI"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "TBU",
+      "destinations": [
+        "AKL",
+        "NAN",
+        "SUV",
+        "SYD"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "TKK",
+      "destinations": [
+        "GUM",
+        "PNI"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "TRW",
+      "destinations": [
+        "INU",
+        "MAJ",
+        "NAN"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "TVU",
+      "destinations": [
+        "NAN",
+        "SUV",
+        "SVU"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "UVE",
+      "destinations": [
+        "GEA",
+        "LIF"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "VLI",
+      "destinations": [
+        "AKL",
+        "BNE",
+        "CCV",
+        "DLY",
+        "EAE",
+        "HIR",
+        "IPA",
+        "LNB",
+        "LNE",
+        "LPM",
+        "NAN",
+        "NOU",
+        "NUS",
+        "PBJ",
+        "SON",
+        "SWJ",
+        "SYD",
+        "TAH",
+        "TGH",
+        "ULB",
+        "VLS"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "WLS",
+      "destinations": [
+        "FUT",
+        "NAN",
+        "NOU"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "WWK",
+      "destinations": [
+        "HGU",
+        "MAG",
+        "POM",
+        "VAI"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "YAP",
+      "destinations": [
+        "GUM",
+        "ROR"
+      ],
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ],
+      "description": "2014-era OpenFlights zero-stop route candidates; NOT current service evidence or flight timings.",
+      "kind": "Historical sourced search candidates only"
+    },
+    {
+      "airport": "NOU",
+      "destinations": [
+        "ILP",
+        "LIF",
+        "MEE",
+        "UVE"
+      ],
+      "documents": [
+        {
+          "url": "https://www.newcaledonia.travel/frequently-asked-questions/domestic-flights/",
+          "facts_sha256": "d19b62fbce880c6b130d81f99687e9161befe74e7af06fad64a30d770145ce03",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ],
+      "description": "Official October 2026 tourism status confirms domestic network moved from GEA to NOU in March 2026; cancelled routes remain search candidates only.",
+      "kind": "Primary published route facts, not flight timings"
+    },
+    {
+      "airport": "NAN",
+      "destinations": [
+        "FUN"
+      ],
+      "documents": [
+        {
+          "url": "https://parliament.gov.fj/wp-content/uploads/2026/03/11Fiji-Airways-Annual-Report-2024-2.pdf",
+          "facts_sha256": "833300f354b1204254a6c24bf2603c532f69090af5781fdf23f8958956dd4589",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ],
+      "description": "Official Fiji Airways annual report records Nadi–Funafuti introduced January 2024; dated capture required.",
+      "kind": "Primary published route facts, not flight timings"
+    },
+    {
+      "airport": "NAN",
+      "destinations": [
+        "SFO"
+      ],
+      "documents": [
+        {
+          "url": "https://www.flysfo.com/vi/node/14876",
+          "facts_sha256": "209cbc060b5a01ce79270695409dba879336f46cd4b24443edabfa8cacceb80a",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ],
+      "description": "SFO airport publishes nonstop Nadi service; dated capture required.",
+      "kind": "Primary published route facts, not flight timings"
+    },
+    {
+      "airport": "PPT",
+      "destinations": [
+        "SFO"
+      ],
+      "documents": [
+        {
+          "url": "https://www.airtahiti.com/en/coming-to-polynesia",
+          "facts_sha256": "bf96687c048182f2ccc62e590672984332d1cb372e8b1650769e4f20dca99cdc",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ],
+      "description": "Air Tahiti identifies San Francisco nonstop access; Paris itineraries stop in the US and are excluded.",
+      "kind": "Primary published route facts, not flight timings"
+    },
+    {
+      "airport": "APW",
+      "destinations": [
+        "PPG"
+      ],
+      "documents": [
+        {
+          "url": "https://www.talofaairways.com/routes/",
+          "facts_sha256": "e4a4c42ffa1014bebda0618ae587585f809e699a563c1f307d8aaae12df4151d",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ],
+      "description": "Talofa publishes Faleolo–Pago Pago service; route candidate only, not a dated schedule.",
+      "kind": "Primary published route facts, not flight timings"
+    },
+    {
+      "airport": "CHT",
+      "destinations": [
+        "CHC",
+        "WLG"
+      ],
+      "documents": [
+        {
+          "url": "https://www.airchathams.co.nz/blog/upcoming-changes-to-chatham-islands-air-services",
+          "facts_sha256": "4a6f0502fb03eb46209ee26d21659fc02d86360a836b3177d31347ed055da296",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ],
+      "description": "Air Chathams published October 2026 Wellington/Christchurch network; dated times must come from capture.",
+      "kind": "Primary published route facts, not flight timings"
+    }
+  ],
+  "historical_route_source": {
+    "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+    "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+    "cache_path": ".cache/pacific-flights-audit/openflights-routes.dat",
+    "age_warning": "Historical 2014-era route archive; current service must be established only by dated captured flights"
+  },
+  "supplemental_source_warning": "OpenFlights routes stopped updating June 2014. Historical candidates only; dated Google captures determine returned flights."
+}

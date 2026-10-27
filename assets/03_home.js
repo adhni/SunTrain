@@ -1,12 +1,17 @@
 (function (root) {
     "use strict";
 
+    function placeCenter(place) {
+        const [[west, south], [east, north]] = place.bounds;
+        const longitude = (west + east) / 2;
+        // Dateline-spanning bounds may use longitudes beyond 180 degrees.
+        return [longitude > 180 || longitude < -180 ? ((longitude + 180) % 360 + 360) % 360 - 180 : longitude, (south + north) / 2];
+    }
     function groupPlaces(places, project, radius = 42) {
         // A few dozen catalogue points: group nearby screen positions without
         // downloading any schedules or adding another geographic dependency.
         const points = places.map(place => {
-            const [[west, south], [east, north]] = place.bounds;
-            const coordinates = [(west + east) / 2, (south + north) / 2];
+            const coordinates = placeCenter(place);
             return {place, coordinates, point: project(coordinates)};
         });
         const parents = points.map((_, i) => i);
@@ -25,7 +30,7 @@
             members, coordinates: [0, 1].map(axis => members.reduce((sum, item) => sum + item.coordinates[axis], 0) / members.length),
         }));
     }
-    if (typeof module !== "undefined" && module.exports) module.exports = {groupPlaces};
+    if (typeof module !== "undefined" && module.exports) module.exports = {groupPlaces, placeCenter};
     if (!root.document) return;
 
     const $ = id => document.getElementById(id);
@@ -107,7 +112,6 @@
             this.openPlace=id;
             const place = this.places.find(place => place.id === id);
             if (!place) return;
-            const [[west, south], [east, north]] = place.bounds;
             const content = node("div", undefined, "home-place-card");
             content.append(node("span", "NEXT STOP", "replay-eyebrow"), node("h3", place.name));
             content.append(node("p", [...new Set(place.modes.map(mode => root.suntrainI18n?.translate(modeNames[mode] || "Buses") || modeNames[mode] || "Buses"))].join(" · "), "home-place-modes"));
@@ -120,7 +124,7 @@
             this.popup?.remove();
             this.map.fitBounds(place.bounds, {padding: {top: 140, bottom: 65, left: 40, right: 40}, maxZoom: 7, duration: this.duration()});
             this.popup = new root.maplibregl.Popup({className: "home-popup", offset: 22, maxWidth: "310px"})
-                .setLngLat([(west + east) / 2, (south + north) / 2]).setDOMContent(content).addTo(this.map);
+                .setLngLat(placeCenter(place)).setDOMContent(content).addTo(this.map);
         }
     }
     const home = new WorldMap();

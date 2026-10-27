@@ -15,9 +15,11 @@ from scripts.prepare_gulf_airports import TZ_HASH,TZ_URL
 DAY='2026-11-02'
 
 
-def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_reason,timezone_overrides=None):
+def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_reason,timezone_overrides=None,national_countries=None,national_airports=None,include_previous_candidates=True):
     discovery=json.loads((ROOT/f'data/sources/{profile}_flights_discovery.json').read_text())
     hubs=set(discovery['launch_airports']);worldwide=set(discovery['worldwide_hubs'])
+    members=set(national_countries or [country]);extras=set(national_airports or [])
+    def belongs(airport):return airport['country'] in members or airport['code'] in extras
     for path,digest in [(ROOT/'.cache/australia-flights-audit/ourairports-airports.csv',AIRPORT_HASH),(ROOT/'.cache/gulf-flights-audit/openflights-airports.dat',TZ_HASH)]:
         if hashlib.sha256(path.read_bytes()).hexdigest()!=digest:raise ValueError('Pinned airport/timezone source changed')
     with (ROOT/'.cache/australia-flights-audit/ourairports-airports.csv').open(encoding='utf-8-sig') as stream:
@@ -37,7 +39,8 @@ def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_rea
     # National airports use the configured IANA zone; foreign airports retain their own.
     overrides={'GNJ':'Asia/Baku','GRV':'Europe/Moscow','GSV':'Europe/Saratov',
         'KVO':'Europe/Belgrade','MRA':'Africa/Tripoli','KRT':'Africa/Khartoum','JCL':'Europe/Prague'}
-    overrides.update({code:timezone for code,rows in active.items() if len(rows)==1 and rows[0]['iso_country']==country})
+    if national_countries is None:
+        overrides.update({code:timezone for code,rows in active.items() if len(rows)==1 and rows[0]['iso_country']==country})
     overrides.update(timezone_overrides or {})
     zones.update(overrides)
     unresolved={};airports={}
@@ -53,9 +56,9 @@ def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_rea
     def add(a,b,source,kind,new=True):
         aa,bb=airport(a),airport(b)
         if a==b or not aa or not bb:return
-        if new and aa['country']!=bb['country'] and (any(x['country']==country and x['code'] not in hubs for x in (aa,bb)) or not set((a,b)) & worldwide):
+        if new and aa['country']!=bb['country'] and (any(belongs(x) and x['code'] not in hubs for x in (aa,bb)) or not set((a,b)) & worldwide):
             deferred.append(dict(origin=a,destination=b,reason=deferred_reason,source=source));return
-        if not any(x['country']==country for x in (aa,bb)):return
+        if not any(belongs(x) for x in (aa,bb)):return
         evidence.setdefault((a,b),[]).append(dict(source=source,kind=kind,new_collection=new))
     for row in discovery['airport_maps']+discovery.get('supplemental_airport_maps',[]):
         for b in row['destinations']:
@@ -63,7 +66,7 @@ def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_rea
                 add(a,c,row['documents'][-1]['url'],'Published outbound map; reverse query is a candidate only')
     for path,m in manifests:
         for pair in m.get('routes',[]):
-            if len(pair)==2 and set(pair)&hubs:
+            if include_previous_candidates and len(pair)==2 and set(pair)&hubs:
                 add(*pair,str(path.relative_to(ROOT)),'Previously sourced exact-airport candidate')
     # Reuse positive captures even beyond the launch footprint, without new queries.
     reusable={}
@@ -73,7 +76,7 @@ def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_rea
             match=re.fullmatch(rf'{DAY}-([A-Z0-9]{{3}})-([A-Z0-9]{{3}})\.json',path.name)
             if not match:continue
             a,b=match.groups();aa,bb=airport(a),airport(b)
-            if not aa or not bb or not any(x['country']==country for x in (aa,bb)):continue
+            if not aa or not bb or not any(belongs(x) for x in (aa,bb)):continue
             q=json.loads(path.read_text())
             if not q.get('flights') or q.get('rejected_flights') or q.get('status')!='results':continue
             add(a,b,str(path.relative_to(ROOT)),'Previously captured dated national route; reuse only',new=False)
@@ -84,7 +87,7 @@ def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_rea
     for f in archive['flights']:
         if f.get('schedule_source')!='ryanair_public_timetable' or f.get('source_date')!=DAY:continue
         a,b=f['origin'],f['destination'];aa,bb=airport(a),airport(b)
-        if aa and bb and any(x['country']==country for x in (aa,bb)):
+        if aa and bb and any(belongs(x) for x in (aa,bb)):
             add(a,b,str(archive_path.relative_to(ROOT)),'Existing dated official timetable capture; reuse only',new=False)
             archive_routes.add((a,b))
     used=hubs|{c for pair in evidence for c in pair}

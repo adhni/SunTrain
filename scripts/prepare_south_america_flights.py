@@ -1,4 +1,4 @@
-"""Capture 90 selected South American airport directions on one local departure date, in USD."""
+"""Capture 702 selected South American airport directions on one local departure date, in USD."""
 import argparse
 import asyncio
 import json
@@ -10,7 +10,7 @@ sys.path.insert(0,str(ROOT))
 from scripts.prepare_google_flights import capture,country_config,prepare,expected_queries
 
 DAY='2026-11-02'
-PROBES=[('GRU','CGH'),('BOG','MDE'),('SCL','LIM'),('LIM','SCL'),('BOG','GRU'),('AEP','GIG')]
+PROBES=[('GRU','CGH'),('BOG','MDE'),('SCL','LIM'),('LIM','SCL'),('BOG','GRU'),('AEP','GIG'),('VCP','REC'),('UIO','BOG'),('MVD','ASU'),('VVI','GRU'),('CCS','BOG'),('GEO','PBM')]
 
 
 def main():

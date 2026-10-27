@@ -208,6 +208,14 @@
         }
         return service.direction ? (/^Direction /.test(service.direction) ? service.direction : `Direction ${service.direction}`) : "Scheduled service";
     }
+    function cataloguedAirports(day, filters) {
+        if (day.replay_kind !== 'flights' || !day.flight_country_filters) return [];
+        const selected = filters.airports || [];
+        if (selected.length) return day.stations.flatMap((a,i) => selected.includes(a.code) ? [i] : []);
+        if (filters.carriers?.length || filters.lines?.length || filters.stations?.length || filters.number) return [];
+        const countries = new Set([...(filters.fromCountries || []), ...(filters.toCountries || [])]);
+        return day.stations.flatMap((a,i) => !countries.size || countries.has(a.country) ? [i] : []);
+    }
     function markerScale(load, sizeByPassengers) {
         return sizeByPassengers && Number.isFinite(load) ? 0.8 + 0.4 * Math.sqrt(Math.min(3000, Math.max(0, load)) / 3000) : 1;
     }
@@ -216,7 +224,7 @@
         return ["interpolate", ["linear"], ["zoom"], ...root.suntrainVehicles.radiusStops.flatMap(([zoom, radius]) =>
             [zoom, ["+", halo, ["*", radius, scale]]])];
     }
-    const core = {ActiveServices, pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor, firstDeparture, departureActivity};
+    const core = {ActiveServices, pointAlong, servicePosition, matches, lineColor, routeFeatures, hydrate, stopTime, vehicleColor, firstDeparture, departureActivity, cataloguedAirports};
     if (typeof module !== "undefined" && module.exports) module.exports = core;
     if (!root.document) return;
 
@@ -1072,6 +1080,7 @@
                     ((this.departures?.visible || this.departures?.previewCall) && this.departures.station != null && [...stopIds(service)].includes(this.departures.station))))
                     for (const id of service.legs) ids.add(id);
             }
+            for (const id of cataloguedAirports(this.day, this.filters)) stationIds.add(id);
             const routes = routeFeatures(this.day.paths, ids);
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
             const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})).filter(s => Number.isFinite(s.lon) && Number.isFinite(s.lat)) : [];

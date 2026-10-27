@@ -34,8 +34,9 @@
         page = Math.max(0, Math.min(page, pages - 1));
         return {rows: calls.slice(low + page * PAGE_SIZE, low + (page + 1) * PAGE_SIZE), total, page, pages};
     }
-    function stationCatalogue(services, stations) {
+    function stationCatalogue(services, stations, includeAirports = false) {
         const records = new Map(), seen = new Map();
+        if (includeAirports) stations.forEach((a,id) => records.set(id, {id, name:a.name, routes:new Set()}));
         for (const service of services) {
             const topology = service.stopIds || service.stops;
             const rawMode=(service.mode || "train").replaceAll("_", " ");
@@ -52,7 +53,7 @@
         return [...records.values()].map(row => {
             const station = stations[row.id], routes = [...row.routes].sort().join(" / ");
             const location = Number.isFinite(station.lat) && Number.isFinite(station.lon) ? `${station.lat.toFixed(5)}, ${station.lon.toFixed(5)}` : "Location unavailable";
-            return {...row, label: `${row.name} · ${routes} · ${location}`};
+            return {...row, label: [row.name, routes, location].filter(Boolean).join(" · ")};
         }).sort((a, b) => a.name.localeCompare(b.name) || a.id - b.id);
     }
     const airportZoneLabels = {'Asia/Kathmandu':'NPT','Asia/Taipei':'CST','Asia/Hong_Kong':'HKT','Pacific/Auckland':'NZDT','Asia/Brunei':'BNT','Asia/Phnom_Penh':'ICT','Asia/Vientiane':'ICT','Asia/Yangon':'MMT','Asia/Rangoon':'MMT','Asia/Dili':'TLT','Asia/Ho_Chi_Minh':'ICT','Asia/Manila':'PHT','Asia/Bangkok':'ICT','Asia/Jakarta': 'WIB', 'Asia/Pontianak': 'WIB', 'Asia/Makassar': 'WITA', 'Asia/Jayapura': 'WIT', 'Asia/Kuala_Lumpur': 'MYT', 'Asia/Kuching': 'MYT', 'Asia/Singapore':'SGT','Asia/Kolkata':'IST','Asia/Seoul':'KST','Asia/Tokyo':'JST','Asia/Shanghai':'CST'};
@@ -69,7 +70,13 @@
         const time = new Intl.DateTimeFormat(locale, {timeZone: timezone, hour: '2-digit', minute: '2-digit', hourCycle: 'h23'}).format(new Date(at * 1000));
         return time + (day.format(new Date(at * 1000)) !== day.format(new Date(now * 1000)) ? ' · ' + date.format(new Date(at * 1000)) : '');
     }
-    const api = {stationCalls, upcomingPage, stationCatalogue, formatCallTime, formatBoardTime};
+    function flightEmptyMessage(day, station) {
+        if (station == null) return 'Choose an airport to explore its flights.';
+        if (!day.services.some(s => s.mode === 'flight' && s.stops.some(stop => stop[0] === station)))
+            return 'No captured flights for this airport in this snapshot.';
+        return 'No upcoming flights match. Try an earlier replay time or change the filters.';
+    }
+    const api = {stationCalls, upcomingPage, stationCatalogue, formatCallTime, formatBoardTime, flightEmptyMessage};
     if (typeof module !== "undefined" && module.exports) module.exports = api;
     if (!root.document) return;
     const $ = id => document.getElementById(id);
@@ -240,7 +247,7 @@
             }
         }
         updateChoices() {
-            if (!this.catalogue) this.catalogue = stationCatalogue(this.services, this.replay.day.stations);
+            if (!this.catalogue) this.catalogue = stationCatalogue(this.services, this.replay.day.stations, this.replay.day.replay_kind === 'flights');
             const query = this.search.value.trim().toLocaleLowerCase();
             const matches = this.catalogue.filter(row => row.label.toLocaleLowerCase().includes(query));
             this.choices.replaceChildren();
@@ -265,7 +272,7 @@
             const signature = JSON.stringify([this.page, result.total, result.rows.map(row => row.key)]);
             if (!force && signature === this.signature) return;
             this.signature = signature; this.list.replaceChildren();
-            if (!result.rows.length) this.list.append(node("p", this.station === null ? (flights ? 'Choose an airport to explore its flights.' : "Choose a stop to explore its journeys.") : (flights ? 'No upcoming flights match. Try an earlier replay time or change the filters.' : "No upcoming departures match the current filters. Try an earlier replay time or change the filters."), "replay-muted"));
+            if (!result.rows.length) this.list.append(node("p", flights ? flightEmptyMessage(replay.day, this.station) : (this.station === null ? "Choose a stop to explore its journeys." : "No upcoming departures match the current filters. Try an earlier replay time or change the filters."), "replay-muted"));
             for (const call of result.rows) {
                 const service = call.service;
                 const row = button("", () => replay.select(service.id, call)); row.className = "departure-row";

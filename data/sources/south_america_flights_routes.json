@@ -5,7 +5,14 @@
     "CO",
     "CL",
     "PE",
-    "AR"
+    "AR",
+    "EC",
+    "UY",
+    "PY",
+    "BO",
+    "VE",
+    "GY",
+    "SR"
   ],
   "scope": "regional",
   "start_date": "2026-11-02",
@@ -14,16 +21,30 @@
   "currency": "USD",
   "max_duration": 28800,
   "query_date_policy": "origin_local_departure_day_only",
-  "coverage_scope": "Nonstop flights between ten top South American airports; domestic and cross-border, all returned airlines. Other airports excluded.",
-  "replay_note": "South American domestic and cross-border flights between ten selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: UTC; airport boards use local time. All captured fares use USD, including domestic flights. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.",
+  "coverage_scope": "Nonstop flights between 27 selected South American airports: the reviewed top twenty plus national gateways for all twelve sovereign countries; domestic and cross-border, all returned airlines. Other airports excluded.",
+  "replay_note": "South American domestic and cross-border flights between 27 selected airports covering all twelve South American countries. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: UTC; airport boards use local time. All captured fares use USD, including domestic flights. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.",
   "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
   "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
   "route_source_url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
-  "route_source_sha256": "bad55a5f54ec92893add92328b99a1e32073e07f33ec74b3b11394a25fdadc8e",
+  "route_source_sha256": "0702255f3ea25e4e03f42a97a6e3002b31fb0e58271eede7562dc9c6154f6f5e",
   "route_source_hash_basis": "SHA256 of committed normalized airport selection facts, not source webpage bytes",
-  "route_basis": "All 90 ordered pairs among the South American top ten in the reviewed ACI-LAC 2025 consolidated passenger ranking; search candidates, not evidence of service.",
+  "route_basis": "All 702 ordered pairs among the reviewed top twenty plus seven national gateways; published traffic metrics differ; search candidates, not evidence of service.",
   "additional_selection_source": "data/sources/south_america_airport_selection.json",
-  "additional_selection_sha256": "bad55a5f54ec92893add92328b99a1e32073e07f33ec74b3b11394a25fdadc8e",
+  "additional_selection_sha256": "0702255f3ea25e4e03f42a97a6e3002b31fb0e58271eede7562dc9c6154f6f5e",
+  "country_gateways": {
+    "AR": "AEP",
+    "BO": "VVI",
+    "BR": "GRU",
+    "CL": "SCL",
+    "CO": "BOG",
+    "EC": "UIO",
+    "GY": "GEO",
+    "PY": "ASU",
+    "PE": "LIM",
+    "SR": "PBM",
+    "UY": "MVD",
+    "VE": "CCS"
+  },
   "airports": [
     {
       "code": "GRU",
@@ -164,11 +185,277 @@
       "lat": -19.63571,
       "lon": -43.966928,
       "mode": "flight"
+    },
+    {
+      "code": "VCP",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 11,
+      "passengers_2025": 12826553,
+      "selection_source_url": "https://www.viracopos.com/pt_br/noticias/com-12-8-milhoes-de-passageiros-2025-viracopos-atinge-novo-recorde-anual-e-mira-novas-rotas-em-2026.htm",
+      "selection_basis": "top_twenty",
+      "icao": "SBKP",
+      "name": "Viracopos International Airport (VCP)",
+      "municipality": "Campinas",
+      "lat": -23.007404,
+      "lon": -47.134502,
+      "mode": "flight"
+    },
+    {
+      "code": "EZE",
+      "country": "AR",
+      "timezone": "America/Argentina/Buenos_Aires",
+      "rank": 12,
+      "passengers_2025": 12002179,
+      "selection_source_url": "https://www.panrotas.com.br/aviacao/pesquisas-e-estatisticas/2026/07/america-latina-movimenta-440-milhoes-de-passageiros-em-2025-veja-ranking-dos-aeroportos_230465.html",
+      "selection_basis": "top_twenty",
+      "icao": "SAEZ",
+      "name": "Ezeiza International Airport - Ministro Pistarini (EZE)",
+      "municipality": "Buenos Aires (Ezeiza)",
+      "lat": -34.8222,
+      "lon": -58.5358,
+      "mode": "flight"
+    },
+    {
+      "code": "REC",
+      "country": "BR",
+      "timezone": "America/Recife",
+      "rank": 13,
+      "passengers_2025": 9938051,
+      "selection_source_url": "https://www.aena.es/doc/pressdetail/260113-aena-estadisticas-2025en.pdf",
+      "selection_basis": "top_twenty",
+      "icao": "SBRF",
+      "name": "Recife/Guararapes - Gilberto Freyre International Airport (REC)",
+      "municipality": "Recife",
+      "lat": -8.12747,
+      "lon": -34.922961,
+      "mode": "flight"
+    },
+    {
+      "code": "SSA",
+      "country": "BR",
+      "timezone": "America/Bahia",
+      "rank": 14,
+      "passengers_2025": 8100000,
+      "selection_source_url": "https://www.salvador-airport.com.br/pt-br/noticia/salvador-bahia-airport-encerra-2025-com-aumento-de-63-no-trafego-de-passageiros",
+      "selection_basis": "top_twenty",
+      "passenger_statistic_precision": "Operator total rounded to 8.1 million",
+      "icao": "SBSV",
+      "name": "Deputado Luiz Eduardo Magalhães International Airport (SSA)",
+      "municipality": "Salvador",
+      "lat": -12.908611,
+      "lon": -38.322498,
+      "mode": "flight"
+    },
+    {
+      "code": "CTG",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 15,
+      "passengers_2025": 7756298,
+      "selection_source_url": "https://aeropuertocartagena.com.co/historico-aeropuerto-internacional-rafael-nunez-de-cartagena-supero-los-7-7-millones-de-pasajeros-movilizados-en-2025/",
+      "selection_basis": "top_twenty",
+      "icao": "SKCG",
+      "name": "Rafael Nuñez International Airport (CTG)",
+      "municipality": "Cartagena",
+      "lat": 10.4424,
+      "lon": -75.513,
+      "mode": "flight"
+    },
+    {
+      "code": "POA",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 16,
+      "passengers_2025": 7512942,
+      "selection_source_url": "https://www.fraport.com/en/newsroom/press-releases/2026/traffic-figures/fraport-traffic-figures-2025.html",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SBPA",
+      "name": "Porto Alegre-Salgado Filho International Airport (POA)",
+      "municipality": "Porto Alegre",
+      "lat": -29.993984,
+      "lon": -51.167482,
+      "mode": "flight"
+    },
+    {
+      "code": "CLO",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 17,
+      "passengers_2025": 6903591,
+      "selection_source_url": "https://www.cali.gov.co/boletines/publicaciones/193534/la-conectividad-aerea-impulsa-a-cali-como-destino-internacional/",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SKCL",
+      "name": "Alfonso Bonilla Aragon International Airport (CLO)",
+      "municipality": "Cali",
+      "lat": 3.542717,
+      "lon": -76.381898,
+      "mode": "flight"
+    },
+    {
+      "code": "SDU",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 18,
+      "passengers_2025": 6201200,
+      "selection_source_url": "https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_Latin_America",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SBRJ",
+      "name": "Santos Dumont Airport (SDU)",
+      "municipality": "Rio de Janeiro",
+      "lat": -22.910397,
+      "lon": -43.16282,
+      "mode": "flight"
+    },
+    {
+      "code": "FOR",
+      "country": "BR",
+      "timezone": "America/Fortaleza",
+      "rank": 19,
+      "passengers_2025": 6166329,
+      "selection_source_url": "https://www.fraport.com/en/newsroom/press-releases/2026/traffic-figures/fraport-traffic-figures-2025.html",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SBFZ",
+      "name": "Pinto Martins International Airport (FOR)",
+      "municipality": "Fortaleza",
+      "lat": -3.775833,
+      "lon": -38.532222,
+      "mode": "flight"
+    },
+    {
+      "code": "CWB",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 20,
+      "passengers_2025": 6082222,
+      "selection_source_url": "https://aeroportos.motiva.com.br/noticias/",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SBCT",
+      "name": "Curitiba-Afonso Pena International Airport (CWB)",
+      "municipality": "Curitiba",
+      "lat": -25.5285,
+      "lon": -49.1758,
+      "mode": "flight"
+    },
+    {
+      "code": "UIO",
+      "country": "EC",
+      "timezone": "America/Guayaquil",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://www.quitoinforma.gob.ec/2026/01/09/el-aeropuerto-de-quito-movilizo-a-5-4-millones-de-pasajeros-en-2025/",
+      "icao": "SEQM",
+      "name": "Mariscal Sucre International Airport (UIO)",
+      "municipality": "Quito",
+      "lat": -0.125399,
+      "lon": -78.354306,
+      "mode": "flight"
+    },
+    {
+      "code": "MVD",
+      "country": "UY",
+      "timezone": "America/Montevideo",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://investors.corporacionamericaairports.com/files/doc_news/2026/Jan/20/CAAP-Passenger-Traffic-December-2025.pdf",
+      "icao": "SUMU",
+      "name": "Carrasco General Cesáreo L. Berisso International Airport (MVD)",
+      "municipality": "Ciudad de la Costa",
+      "lat": -34.835647,
+      "lon": -56.026497,
+      "mode": "flight"
+    },
+    {
+      "code": "ASU",
+      "country": "PY",
+      "timezone": "America/Asuncion",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://www.dinac.gov.py/estadisticas/ResumenEstadisticoTransporteAereoComercial-2025_Enero-Diciembre.pdf",
+      "icao": "SGAS",
+      "name": "Silvio Pettirossi International Airport (ASU)",
+      "municipality": "Asunción",
+      "lat": -25.240156,
+      "lon": -57.519227,
+      "mode": "flight"
+    },
+    {
+      "code": "VVI",
+      "country": "BO",
+      "timezone": "America/La_Paz",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://naabol.gob.bo/naabol-consolida-avances-estrategicos-en-el-hub-de-viru-viru-en-sus-primeros-100-dias-de-gestion/",
+      "icao": "SLVR",
+      "name": "Viru Viru International Airport (VVI)",
+      "municipality": "Santa Cruz",
+      "lat": -17.6448,
+      "lon": -63.135399,
+      "mode": "flight"
+    },
+    {
+      "code": "CCS",
+      "country": "VE",
+      "timezone": "America/Caracas",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://elpais.com/america/2026-09-01/el-aeropuerto-internacional-de-caracas-vuelve-a-operar-dos-meses-despues-del-terremoto.html",
+      "selection_source_status": "Secondary description of the principal national airport; operator site timed out, no comparable current annual total claimed",
+      "icao": "SVMI",
+      "name": "Maiquetía Simón Bolívar International Airport (CCS)",
+      "municipality": "Maiquetía",
+      "lat": 10.602214,
+      "lon": -66.991174,
+      "mode": "flight"
+    },
+    {
+      "code": "GEO",
+      "country": "GY",
+      "timezone": "America/Guyana",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://statisticsguyana.gov.gy/subjects/demography-vital-and-social-statistics/arrivals-and-departures-cheddi-jagan-international-airport-guyana-2013-to-2026/",
+      "icao": "SYCJ",
+      "name": "Cheddi Jagan International Airport (GEO)",
+      "municipality": "Georgetown",
+      "lat": 6.49855,
+      "lon": -58.254101,
+      "mode": "flight"
+    },
+    {
+      "code": "PBM",
+      "country": "SR",
+      "timezone": "America/Paramaribo",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://gov.sr/thema/luchthaven/",
+      "icao": "SMJP",
+      "name": "Johan Adolf Pengel International Airport (PBM)",
+      "municipality": "Paramaribo",
+      "lat": 5.45283,
+      "lon": -55.187801,
+      "mode": "flight"
     }
   ],
   "routes": [
     [
       "AEP",
+      "ASU"
+    ],
+    [
+      "AEP",
       "BOG"
     ],
     [
@@ -177,7 +464,15 @@
     ],
     [
       "AEP",
+      "CCS"
+    ],
+    [
+      "AEP",
       "CGH"
+    ],
+    [
+      "AEP",
+      "CLO"
     ],
     [
       "AEP",
@@ -185,6 +480,26 @@
     ],
     [
       "AEP",
+      "CTG"
+    ],
+    [
+      "AEP",
+      "CWB"
+    ],
+    [
+      "AEP",
+      "EZE"
+    ],
+    [
+      "AEP",
+      "FOR"
+    ],
+    [
+      "AEP",
+      "GEO"
+    ],
+    [
+      "AEP",
       "GIG"
     ],
     [
@@ -201,7 +516,147 @@
     ],
     [
       "AEP",
+      "MVD"
+    ],
+    [
+      "AEP",
+      "PBM"
+    ],
+    [
+      "AEP",
+      "POA"
+    ],
+    [
+      "AEP",
+      "REC"
+    ],
+    [
+      "AEP",
       "SCL"
+    ],
+    [
+      "AEP",
+      "SDU"
+    ],
+    [
+      "AEP",
+      "SSA"
+    ],
+    [
+      "AEP",
+      "UIO"
+    ],
+    [
+      "AEP",
+      "VCP"
+    ],
+    [
+      "AEP",
+      "VVI"
+    ],
+    [
+      "ASU",
+      "AEP"
+    ],
+    [
+      "ASU",
+      "BOG"
+    ],
+    [
+      "ASU",
+      "BSB"
+    ],
+    [
+      "ASU",
+      "CCS"
+    ],
+    [
+      "ASU",
+      "CGH"
+    ],
+    [
+      "ASU",
+      "CLO"
+    ],
+    [
+      "ASU",
+      "CNF"
+    ],
+    [
+      "ASU",
+      "CTG"
+    ],
+    [
+      "ASU",
+      "CWB"
+    ],
+    [
+      "ASU",
+      "EZE"
+    ],
+    [
+      "ASU",
+      "FOR"
+    ],
+    [
+      "ASU",
+      "GEO"
+    ],
+    [
+      "ASU",
+      "GIG"
+    ],
+    [
+      "ASU",
+      "GRU"
+    ],
+    [
+      "ASU",
+      "LIM"
+    ],
+    [
+      "ASU",
+      "MDE"
+    ],
+    [
+      "ASU",
+      "MVD"
+    ],
+    [
+      "ASU",
+      "PBM"
+    ],
+    [
+      "ASU",
+      "POA"
+    ],
+    [
+      "ASU",
+      "REC"
+    ],
+    [
+      "ASU",
+      "SCL"
+    ],
+    [
+      "ASU",
+      "SDU"
+    ],
+    [
+      "ASU",
+      "SSA"
+    ],
+    [
+      "ASU",
+      "UIO"
+    ],
+    [
+      "ASU",
+      "VCP"
+    ],
+    [
+      "ASU",
+      "VVI"
     ],
     [
       "BOG",
@@ -209,7 +664,15 @@
     ],
     [
       "BOG",
+      "ASU"
+    ],
+    [
+      "BOG",
       "BSB"
+    ],
+    [
+      "BOG",
+      "CCS"
     ],
     [
       "BOG",
@@ -217,7 +680,31 @@
     ],
     [
       "BOG",
+      "CLO"
+    ],
+    [
+      "BOG",
       "CNF"
+    ],
+    [
+      "BOG",
+      "CTG"
+    ],
+    [
+      "BOG",
+      "CWB"
+    ],
+    [
+      "BOG",
+      "EZE"
+    ],
+    [
+      "BOG",
+      "FOR"
+    ],
+    [
+      "BOG",
+      "GEO"
     ],
     [
       "BOG",
@@ -237,7 +724,43 @@
     ],
     [
       "BOG",
+      "MVD"
+    ],
+    [
+      "BOG",
+      "PBM"
+    ],
+    [
+      "BOG",
+      "POA"
+    ],
+    [
+      "BOG",
+      "REC"
+    ],
+    [
+      "BOG",
       "SCL"
+    ],
+    [
+      "BOG",
+      "SDU"
+    ],
+    [
+      "BOG",
+      "SSA"
+    ],
+    [
+      "BOG",
+      "UIO"
+    ],
+    [
+      "BOG",
+      "VCP"
+    ],
+    [
+      "BOG",
+      "VVI"
     ],
     [
       "BSB",
@@ -245,7 +768,15 @@
     ],
     [
       "BSB",
+      "ASU"
+    ],
+    [
+      "BSB",
       "BOG"
+    ],
+    [
+      "BSB",
+      "CCS"
     ],
     [
       "BSB",
@@ -253,7 +784,31 @@
     ],
     [
       "BSB",
+      "CLO"
+    ],
+    [
+      "BSB",
       "CNF"
+    ],
+    [
+      "BSB",
+      "CTG"
+    ],
+    [
+      "BSB",
+      "CWB"
+    ],
+    [
+      "BSB",
+      "EZE"
+    ],
+    [
+      "BSB",
+      "FOR"
+    ],
+    [
+      "BSB",
+      "GEO"
     ],
     [
       "BSB",
@@ -273,11 +828,155 @@
     ],
     [
       "BSB",
+      "MVD"
+    ],
+    [
+      "BSB",
+      "PBM"
+    ],
+    [
+      "BSB",
+      "POA"
+    ],
+    [
+      "BSB",
+      "REC"
+    ],
+    [
+      "BSB",
       "SCL"
+    ],
+    [
+      "BSB",
+      "SDU"
+    ],
+    [
+      "BSB",
+      "SSA"
+    ],
+    [
+      "BSB",
+      "UIO"
+    ],
+    [
+      "BSB",
+      "VCP"
+    ],
+    [
+      "BSB",
+      "VVI"
+    ],
+    [
+      "CCS",
+      "AEP"
+    ],
+    [
+      "CCS",
+      "ASU"
+    ],
+    [
+      "CCS",
+      "BOG"
+    ],
+    [
+      "CCS",
+      "BSB"
+    ],
+    [
+      "CCS",
+      "CGH"
+    ],
+    [
+      "CCS",
+      "CLO"
+    ],
+    [
+      "CCS",
+      "CNF"
+    ],
+    [
+      "CCS",
+      "CTG"
+    ],
+    [
+      "CCS",
+      "CWB"
+    ],
+    [
+      "CCS",
+      "EZE"
+    ],
+    [
+      "CCS",
+      "FOR"
+    ],
+    [
+      "CCS",
+      "GEO"
+    ],
+    [
+      "CCS",
+      "GIG"
+    ],
+    [
+      "CCS",
+      "GRU"
+    ],
+    [
+      "CCS",
+      "LIM"
+    ],
+    [
+      "CCS",
+      "MDE"
+    ],
+    [
+      "CCS",
+      "MVD"
+    ],
+    [
+      "CCS",
+      "PBM"
+    ],
+    [
+      "CCS",
+      "POA"
+    ],
+    [
+      "CCS",
+      "REC"
+    ],
+    [
+      "CCS",
+      "SCL"
+    ],
+    [
+      "CCS",
+      "SDU"
+    ],
+    [
+      "CCS",
+      "SSA"
+    ],
+    [
+      "CCS",
+      "UIO"
+    ],
+    [
+      "CCS",
+      "VCP"
+    ],
+    [
+      "CCS",
+      "VVI"
     ],
     [
       "CGH",
       "AEP"
+    ],
+    [
+      "CGH",
+      "ASU"
     ],
     [
       "CGH",
@@ -289,7 +988,35 @@
     ],
     [
       "CGH",
+      "CCS"
+    ],
+    [
+      "CGH",
+      "CLO"
+    ],
+    [
+      "CGH",
       "CNF"
+    ],
+    [
+      "CGH",
+      "CTG"
+    ],
+    [
+      "CGH",
+      "CWB"
+    ],
+    [
+      "CGH",
+      "EZE"
+    ],
+    [
+      "CGH",
+      "FOR"
+    ],
+    [
+      "CGH",
+      "GEO"
     ],
     [
       "CGH",
@@ -309,11 +1036,155 @@
     ],
     [
       "CGH",
+      "MVD"
+    ],
+    [
+      "CGH",
+      "PBM"
+    ],
+    [
+      "CGH",
+      "POA"
+    ],
+    [
+      "CGH",
+      "REC"
+    ],
+    [
+      "CGH",
       "SCL"
+    ],
+    [
+      "CGH",
+      "SDU"
+    ],
+    [
+      "CGH",
+      "SSA"
+    ],
+    [
+      "CGH",
+      "UIO"
+    ],
+    [
+      "CGH",
+      "VCP"
+    ],
+    [
+      "CGH",
+      "VVI"
+    ],
+    [
+      "CLO",
+      "AEP"
+    ],
+    [
+      "CLO",
+      "ASU"
+    ],
+    [
+      "CLO",
+      "BOG"
+    ],
+    [
+      "CLO",
+      "BSB"
+    ],
+    [
+      "CLO",
+      "CCS"
+    ],
+    [
+      "CLO",
+      "CGH"
+    ],
+    [
+      "CLO",
+      "CNF"
+    ],
+    [
+      "CLO",
+      "CTG"
+    ],
+    [
+      "CLO",
+      "CWB"
+    ],
+    [
+      "CLO",
+      "EZE"
+    ],
+    [
+      "CLO",
+      "FOR"
+    ],
+    [
+      "CLO",
+      "GEO"
+    ],
+    [
+      "CLO",
+      "GIG"
+    ],
+    [
+      "CLO",
+      "GRU"
+    ],
+    [
+      "CLO",
+      "LIM"
+    ],
+    [
+      "CLO",
+      "MDE"
+    ],
+    [
+      "CLO",
+      "MVD"
+    ],
+    [
+      "CLO",
+      "PBM"
+    ],
+    [
+      "CLO",
+      "POA"
+    ],
+    [
+      "CLO",
+      "REC"
+    ],
+    [
+      "CLO",
+      "SCL"
+    ],
+    [
+      "CLO",
+      "SDU"
+    ],
+    [
+      "CLO",
+      "SSA"
+    ],
+    [
+      "CLO",
+      "UIO"
+    ],
+    [
+      "CLO",
+      "VCP"
+    ],
+    [
+      "CLO",
+      "VVI"
     ],
     [
       "CNF",
       "AEP"
+    ],
+    [
+      "CNF",
+      "ASU"
     ],
     [
       "CNF",
@@ -325,7 +1196,35 @@
     ],
     [
       "CNF",
+      "CCS"
+    ],
+    [
+      "CNF",
       "CGH"
+    ],
+    [
+      "CNF",
+      "CLO"
+    ],
+    [
+      "CNF",
+      "CTG"
+    ],
+    [
+      "CNF",
+      "CWB"
+    ],
+    [
+      "CNF",
+      "EZE"
+    ],
+    [
+      "CNF",
+      "FOR"
+    ],
+    [
+      "CNF",
+      "GEO"
     ],
     [
       "CNF",
@@ -345,11 +1244,571 @@
     ],
     [
       "CNF",
+      "MVD"
+    ],
+    [
+      "CNF",
+      "PBM"
+    ],
+    [
+      "CNF",
+      "POA"
+    ],
+    [
+      "CNF",
+      "REC"
+    ],
+    [
+      "CNF",
       "SCL"
+    ],
+    [
+      "CNF",
+      "SDU"
+    ],
+    [
+      "CNF",
+      "SSA"
+    ],
+    [
+      "CNF",
+      "UIO"
+    ],
+    [
+      "CNF",
+      "VCP"
+    ],
+    [
+      "CNF",
+      "VVI"
+    ],
+    [
+      "CTG",
+      "AEP"
+    ],
+    [
+      "CTG",
+      "ASU"
+    ],
+    [
+      "CTG",
+      "BOG"
+    ],
+    [
+      "CTG",
+      "BSB"
+    ],
+    [
+      "CTG",
+      "CCS"
+    ],
+    [
+      "CTG",
+      "CGH"
+    ],
+    [
+      "CTG",
+      "CLO"
+    ],
+    [
+      "CTG",
+      "CNF"
+    ],
+    [
+      "CTG",
+      "CWB"
+    ],
+    [
+      "CTG",
+      "EZE"
+    ],
+    [
+      "CTG",
+      "FOR"
+    ],
+    [
+      "CTG",
+      "GEO"
+    ],
+    [
+      "CTG",
+      "GIG"
+    ],
+    [
+      "CTG",
+      "GRU"
+    ],
+    [
+      "CTG",
+      "LIM"
+    ],
+    [
+      "CTG",
+      "MDE"
+    ],
+    [
+      "CTG",
+      "MVD"
+    ],
+    [
+      "CTG",
+      "PBM"
+    ],
+    [
+      "CTG",
+      "POA"
+    ],
+    [
+      "CTG",
+      "REC"
+    ],
+    [
+      "CTG",
+      "SCL"
+    ],
+    [
+      "CTG",
+      "SDU"
+    ],
+    [
+      "CTG",
+      "SSA"
+    ],
+    [
+      "CTG",
+      "UIO"
+    ],
+    [
+      "CTG",
+      "VCP"
+    ],
+    [
+      "CTG",
+      "VVI"
+    ],
+    [
+      "CWB",
+      "AEP"
+    ],
+    [
+      "CWB",
+      "ASU"
+    ],
+    [
+      "CWB",
+      "BOG"
+    ],
+    [
+      "CWB",
+      "BSB"
+    ],
+    [
+      "CWB",
+      "CCS"
+    ],
+    [
+      "CWB",
+      "CGH"
+    ],
+    [
+      "CWB",
+      "CLO"
+    ],
+    [
+      "CWB",
+      "CNF"
+    ],
+    [
+      "CWB",
+      "CTG"
+    ],
+    [
+      "CWB",
+      "EZE"
+    ],
+    [
+      "CWB",
+      "FOR"
+    ],
+    [
+      "CWB",
+      "GEO"
+    ],
+    [
+      "CWB",
+      "GIG"
+    ],
+    [
+      "CWB",
+      "GRU"
+    ],
+    [
+      "CWB",
+      "LIM"
+    ],
+    [
+      "CWB",
+      "MDE"
+    ],
+    [
+      "CWB",
+      "MVD"
+    ],
+    [
+      "CWB",
+      "PBM"
+    ],
+    [
+      "CWB",
+      "POA"
+    ],
+    [
+      "CWB",
+      "REC"
+    ],
+    [
+      "CWB",
+      "SCL"
+    ],
+    [
+      "CWB",
+      "SDU"
+    ],
+    [
+      "CWB",
+      "SSA"
+    ],
+    [
+      "CWB",
+      "UIO"
+    ],
+    [
+      "CWB",
+      "VCP"
+    ],
+    [
+      "CWB",
+      "VVI"
+    ],
+    [
+      "EZE",
+      "AEP"
+    ],
+    [
+      "EZE",
+      "ASU"
+    ],
+    [
+      "EZE",
+      "BOG"
+    ],
+    [
+      "EZE",
+      "BSB"
+    ],
+    [
+      "EZE",
+      "CCS"
+    ],
+    [
+      "EZE",
+      "CGH"
+    ],
+    [
+      "EZE",
+      "CLO"
+    ],
+    [
+      "EZE",
+      "CNF"
+    ],
+    [
+      "EZE",
+      "CTG"
+    ],
+    [
+      "EZE",
+      "CWB"
+    ],
+    [
+      "EZE",
+      "FOR"
+    ],
+    [
+      "EZE",
+      "GEO"
+    ],
+    [
+      "EZE",
+      "GIG"
+    ],
+    [
+      "EZE",
+      "GRU"
+    ],
+    [
+      "EZE",
+      "LIM"
+    ],
+    [
+      "EZE",
+      "MDE"
+    ],
+    [
+      "EZE",
+      "MVD"
+    ],
+    [
+      "EZE",
+      "PBM"
+    ],
+    [
+      "EZE",
+      "POA"
+    ],
+    [
+      "EZE",
+      "REC"
+    ],
+    [
+      "EZE",
+      "SCL"
+    ],
+    [
+      "EZE",
+      "SDU"
+    ],
+    [
+      "EZE",
+      "SSA"
+    ],
+    [
+      "EZE",
+      "UIO"
+    ],
+    [
+      "EZE",
+      "VCP"
+    ],
+    [
+      "EZE",
+      "VVI"
+    ],
+    [
+      "FOR",
+      "AEP"
+    ],
+    [
+      "FOR",
+      "ASU"
+    ],
+    [
+      "FOR",
+      "BOG"
+    ],
+    [
+      "FOR",
+      "BSB"
+    ],
+    [
+      "FOR",
+      "CCS"
+    ],
+    [
+      "FOR",
+      "CGH"
+    ],
+    [
+      "FOR",
+      "CLO"
+    ],
+    [
+      "FOR",
+      "CNF"
+    ],
+    [
+      "FOR",
+      "CTG"
+    ],
+    [
+      "FOR",
+      "CWB"
+    ],
+    [
+      "FOR",
+      "EZE"
+    ],
+    [
+      "FOR",
+      "GEO"
+    ],
+    [
+      "FOR",
+      "GIG"
+    ],
+    [
+      "FOR",
+      "GRU"
+    ],
+    [
+      "FOR",
+      "LIM"
+    ],
+    [
+      "FOR",
+      "MDE"
+    ],
+    [
+      "FOR",
+      "MVD"
+    ],
+    [
+      "FOR",
+      "PBM"
+    ],
+    [
+      "FOR",
+      "POA"
+    ],
+    [
+      "FOR",
+      "REC"
+    ],
+    [
+      "FOR",
+      "SCL"
+    ],
+    [
+      "FOR",
+      "SDU"
+    ],
+    [
+      "FOR",
+      "SSA"
+    ],
+    [
+      "FOR",
+      "UIO"
+    ],
+    [
+      "FOR",
+      "VCP"
+    ],
+    [
+      "FOR",
+      "VVI"
+    ],
+    [
+      "GEO",
+      "AEP"
+    ],
+    [
+      "GEO",
+      "ASU"
+    ],
+    [
+      "GEO",
+      "BOG"
+    ],
+    [
+      "GEO",
+      "BSB"
+    ],
+    [
+      "GEO",
+      "CCS"
+    ],
+    [
+      "GEO",
+      "CGH"
+    ],
+    [
+      "GEO",
+      "CLO"
+    ],
+    [
+      "GEO",
+      "CNF"
+    ],
+    [
+      "GEO",
+      "CTG"
+    ],
+    [
+      "GEO",
+      "CWB"
+    ],
+    [
+      "GEO",
+      "EZE"
+    ],
+    [
+      "GEO",
+      "FOR"
+    ],
+    [
+      "GEO",
+      "GIG"
+    ],
+    [
+      "GEO",
+      "GRU"
+    ],
+    [
+      "GEO",
+      "LIM"
+    ],
+    [
+      "GEO",
+      "MDE"
+    ],
+    [
+      "GEO",
+      "MVD"
+    ],
+    [
+      "GEO",
+      "PBM"
+    ],
+    [
+      "GEO",
+      "POA"
+    ],
+    [
+      "GEO",
+      "REC"
+    ],
+    [
+      "GEO",
+      "SCL"
+    ],
+    [
+      "GEO",
+      "SDU"
+    ],
+    [
+      "GEO",
+      "SSA"
+    ],
+    [
+      "GEO",
+      "UIO"
+    ],
+    [
+      "GEO",
+      "VCP"
+    ],
+    [
+      "GEO",
+      "VVI"
     ],
     [
       "GIG",
       "AEP"
+    ],
+    [
+      "GIG",
+      "ASU"
     ],
     [
       "GIG",
@@ -361,11 +1820,39 @@
     ],
     [
       "GIG",
+      "CCS"
+    ],
+    [
+      "GIG",
       "CGH"
     ],
     [
       "GIG",
+      "CLO"
+    ],
+    [
+      "GIG",
       "CNF"
+    ],
+    [
+      "GIG",
+      "CTG"
+    ],
+    [
+      "GIG",
+      "CWB"
+    ],
+    [
+      "GIG",
+      "EZE"
+    ],
+    [
+      "GIG",
+      "FOR"
+    ],
+    [
+      "GIG",
+      "GEO"
     ],
     [
       "GIG",
@@ -381,11 +1868,51 @@
     ],
     [
       "GIG",
+      "MVD"
+    ],
+    [
+      "GIG",
+      "PBM"
+    ],
+    [
+      "GIG",
+      "POA"
+    ],
+    [
+      "GIG",
+      "REC"
+    ],
+    [
+      "GIG",
       "SCL"
+    ],
+    [
+      "GIG",
+      "SDU"
+    ],
+    [
+      "GIG",
+      "SSA"
+    ],
+    [
+      "GIG",
+      "UIO"
+    ],
+    [
+      "GIG",
+      "VCP"
+    ],
+    [
+      "GIG",
+      "VVI"
     ],
     [
       "GRU",
       "AEP"
+    ],
+    [
+      "GRU",
+      "ASU"
     ],
     [
       "GRU",
@@ -397,11 +1924,39 @@
     ],
     [
       "GRU",
+      "CCS"
+    ],
+    [
+      "GRU",
       "CGH"
     ],
     [
       "GRU",
+      "CLO"
+    ],
+    [
+      "GRU",
       "CNF"
+    ],
+    [
+      "GRU",
+      "CTG"
+    ],
+    [
+      "GRU",
+      "CWB"
+    ],
+    [
+      "GRU",
+      "EZE"
+    ],
+    [
+      "GRU",
+      "FOR"
+    ],
+    [
+      "GRU",
+      "GEO"
     ],
     [
       "GRU",
@@ -417,11 +1972,51 @@
     ],
     [
       "GRU",
+      "MVD"
+    ],
+    [
+      "GRU",
+      "PBM"
+    ],
+    [
+      "GRU",
+      "POA"
+    ],
+    [
+      "GRU",
+      "REC"
+    ],
+    [
+      "GRU",
       "SCL"
+    ],
+    [
+      "GRU",
+      "SDU"
+    ],
+    [
+      "GRU",
+      "SSA"
+    ],
+    [
+      "GRU",
+      "UIO"
+    ],
+    [
+      "GRU",
+      "VCP"
+    ],
+    [
+      "GRU",
+      "VVI"
     ],
     [
       "LIM",
       "AEP"
+    ],
+    [
+      "LIM",
+      "ASU"
     ],
     [
       "LIM",
@@ -433,11 +2028,39 @@
     ],
     [
       "LIM",
+      "CCS"
+    ],
+    [
+      "LIM",
       "CGH"
     ],
     [
       "LIM",
+      "CLO"
+    ],
+    [
+      "LIM",
       "CNF"
+    ],
+    [
+      "LIM",
+      "CTG"
+    ],
+    [
+      "LIM",
+      "CWB"
+    ],
+    [
+      "LIM",
+      "EZE"
+    ],
+    [
+      "LIM",
+      "FOR"
+    ],
+    [
+      "LIM",
+      "GEO"
     ],
     [
       "LIM",
@@ -453,11 +2076,51 @@
     ],
     [
       "LIM",
+      "MVD"
+    ],
+    [
+      "LIM",
+      "PBM"
+    ],
+    [
+      "LIM",
+      "POA"
+    ],
+    [
+      "LIM",
+      "REC"
+    ],
+    [
+      "LIM",
       "SCL"
+    ],
+    [
+      "LIM",
+      "SDU"
+    ],
+    [
+      "LIM",
+      "SSA"
+    ],
+    [
+      "LIM",
+      "UIO"
+    ],
+    [
+      "LIM",
+      "VCP"
+    ],
+    [
+      "LIM",
+      "VVI"
     ],
     [
       "MDE",
       "AEP"
+    ],
+    [
+      "MDE",
+      "ASU"
     ],
     [
       "MDE",
@@ -469,11 +2132,39 @@
     ],
     [
       "MDE",
+      "CCS"
+    ],
+    [
+      "MDE",
       "CGH"
     ],
     [
       "MDE",
+      "CLO"
+    ],
+    [
+      "MDE",
       "CNF"
+    ],
+    [
+      "MDE",
+      "CTG"
+    ],
+    [
+      "MDE",
+      "CWB"
+    ],
+    [
+      "MDE",
+      "EZE"
+    ],
+    [
+      "MDE",
+      "FOR"
+    ],
+    [
+      "MDE",
+      "GEO"
     ],
     [
       "MDE",
@@ -489,11 +2180,467 @@
     ],
     [
       "MDE",
+      "MVD"
+    ],
+    [
+      "MDE",
+      "PBM"
+    ],
+    [
+      "MDE",
+      "POA"
+    ],
+    [
+      "MDE",
+      "REC"
+    ],
+    [
+      "MDE",
       "SCL"
+    ],
+    [
+      "MDE",
+      "SDU"
+    ],
+    [
+      "MDE",
+      "SSA"
+    ],
+    [
+      "MDE",
+      "UIO"
+    ],
+    [
+      "MDE",
+      "VCP"
+    ],
+    [
+      "MDE",
+      "VVI"
+    ],
+    [
+      "MVD",
+      "AEP"
+    ],
+    [
+      "MVD",
+      "ASU"
+    ],
+    [
+      "MVD",
+      "BOG"
+    ],
+    [
+      "MVD",
+      "BSB"
+    ],
+    [
+      "MVD",
+      "CCS"
+    ],
+    [
+      "MVD",
+      "CGH"
+    ],
+    [
+      "MVD",
+      "CLO"
+    ],
+    [
+      "MVD",
+      "CNF"
+    ],
+    [
+      "MVD",
+      "CTG"
+    ],
+    [
+      "MVD",
+      "CWB"
+    ],
+    [
+      "MVD",
+      "EZE"
+    ],
+    [
+      "MVD",
+      "FOR"
+    ],
+    [
+      "MVD",
+      "GEO"
+    ],
+    [
+      "MVD",
+      "GIG"
+    ],
+    [
+      "MVD",
+      "GRU"
+    ],
+    [
+      "MVD",
+      "LIM"
+    ],
+    [
+      "MVD",
+      "MDE"
+    ],
+    [
+      "MVD",
+      "PBM"
+    ],
+    [
+      "MVD",
+      "POA"
+    ],
+    [
+      "MVD",
+      "REC"
+    ],
+    [
+      "MVD",
+      "SCL"
+    ],
+    [
+      "MVD",
+      "SDU"
+    ],
+    [
+      "MVD",
+      "SSA"
+    ],
+    [
+      "MVD",
+      "UIO"
+    ],
+    [
+      "MVD",
+      "VCP"
+    ],
+    [
+      "MVD",
+      "VVI"
+    ],
+    [
+      "PBM",
+      "AEP"
+    ],
+    [
+      "PBM",
+      "ASU"
+    ],
+    [
+      "PBM",
+      "BOG"
+    ],
+    [
+      "PBM",
+      "BSB"
+    ],
+    [
+      "PBM",
+      "CCS"
+    ],
+    [
+      "PBM",
+      "CGH"
+    ],
+    [
+      "PBM",
+      "CLO"
+    ],
+    [
+      "PBM",
+      "CNF"
+    ],
+    [
+      "PBM",
+      "CTG"
+    ],
+    [
+      "PBM",
+      "CWB"
+    ],
+    [
+      "PBM",
+      "EZE"
+    ],
+    [
+      "PBM",
+      "FOR"
+    ],
+    [
+      "PBM",
+      "GEO"
+    ],
+    [
+      "PBM",
+      "GIG"
+    ],
+    [
+      "PBM",
+      "GRU"
+    ],
+    [
+      "PBM",
+      "LIM"
+    ],
+    [
+      "PBM",
+      "MDE"
+    ],
+    [
+      "PBM",
+      "MVD"
+    ],
+    [
+      "PBM",
+      "POA"
+    ],
+    [
+      "PBM",
+      "REC"
+    ],
+    [
+      "PBM",
+      "SCL"
+    ],
+    [
+      "PBM",
+      "SDU"
+    ],
+    [
+      "PBM",
+      "SSA"
+    ],
+    [
+      "PBM",
+      "UIO"
+    ],
+    [
+      "PBM",
+      "VCP"
+    ],
+    [
+      "PBM",
+      "VVI"
+    ],
+    [
+      "POA",
+      "AEP"
+    ],
+    [
+      "POA",
+      "ASU"
+    ],
+    [
+      "POA",
+      "BOG"
+    ],
+    [
+      "POA",
+      "BSB"
+    ],
+    [
+      "POA",
+      "CCS"
+    ],
+    [
+      "POA",
+      "CGH"
+    ],
+    [
+      "POA",
+      "CLO"
+    ],
+    [
+      "POA",
+      "CNF"
+    ],
+    [
+      "POA",
+      "CTG"
+    ],
+    [
+      "POA",
+      "CWB"
+    ],
+    [
+      "POA",
+      "EZE"
+    ],
+    [
+      "POA",
+      "FOR"
+    ],
+    [
+      "POA",
+      "GEO"
+    ],
+    [
+      "POA",
+      "GIG"
+    ],
+    [
+      "POA",
+      "GRU"
+    ],
+    [
+      "POA",
+      "LIM"
+    ],
+    [
+      "POA",
+      "MDE"
+    ],
+    [
+      "POA",
+      "MVD"
+    ],
+    [
+      "POA",
+      "PBM"
+    ],
+    [
+      "POA",
+      "REC"
+    ],
+    [
+      "POA",
+      "SCL"
+    ],
+    [
+      "POA",
+      "SDU"
+    ],
+    [
+      "POA",
+      "SSA"
+    ],
+    [
+      "POA",
+      "UIO"
+    ],
+    [
+      "POA",
+      "VCP"
+    ],
+    [
+      "POA",
+      "VVI"
+    ],
+    [
+      "REC",
+      "AEP"
+    ],
+    [
+      "REC",
+      "ASU"
+    ],
+    [
+      "REC",
+      "BOG"
+    ],
+    [
+      "REC",
+      "BSB"
+    ],
+    [
+      "REC",
+      "CCS"
+    ],
+    [
+      "REC",
+      "CGH"
+    ],
+    [
+      "REC",
+      "CLO"
+    ],
+    [
+      "REC",
+      "CNF"
+    ],
+    [
+      "REC",
+      "CTG"
+    ],
+    [
+      "REC",
+      "CWB"
+    ],
+    [
+      "REC",
+      "EZE"
+    ],
+    [
+      "REC",
+      "FOR"
+    ],
+    [
+      "REC",
+      "GEO"
+    ],
+    [
+      "REC",
+      "GIG"
+    ],
+    [
+      "REC",
+      "GRU"
+    ],
+    [
+      "REC",
+      "LIM"
+    ],
+    [
+      "REC",
+      "MDE"
+    ],
+    [
+      "REC",
+      "MVD"
+    ],
+    [
+      "REC",
+      "PBM"
+    ],
+    [
+      "REC",
+      "POA"
+    ],
+    [
+      "REC",
+      "SCL"
+    ],
+    [
+      "REC",
+      "SDU"
+    ],
+    [
+      "REC",
+      "SSA"
+    ],
+    [
+      "REC",
+      "UIO"
+    ],
+    [
+      "REC",
+      "VCP"
+    ],
+    [
+      "REC",
+      "VVI"
     ],
     [
       "SCL",
       "AEP"
+    ],
+    [
+      "SCL",
+      "ASU"
     ],
     [
       "SCL",
@@ -505,11 +2652,39 @@
     ],
     [
       "SCL",
+      "CCS"
+    ],
+    [
+      "SCL",
       "CGH"
     ],
     [
       "SCL",
+      "CLO"
+    ],
+    [
+      "SCL",
       "CNF"
+    ],
+    [
+      "SCL",
+      "CTG"
+    ],
+    [
+      "SCL",
+      "CWB"
+    ],
+    [
+      "SCL",
+      "EZE"
+    ],
+    [
+      "SCL",
+      "FOR"
+    ],
+    [
+      "SCL",
+      "GEO"
     ],
     [
       "SCL",
@@ -526,6 +2701,562 @@
     [
       "SCL",
       "MDE"
+    ],
+    [
+      "SCL",
+      "MVD"
+    ],
+    [
+      "SCL",
+      "PBM"
+    ],
+    [
+      "SCL",
+      "POA"
+    ],
+    [
+      "SCL",
+      "REC"
+    ],
+    [
+      "SCL",
+      "SDU"
+    ],
+    [
+      "SCL",
+      "SSA"
+    ],
+    [
+      "SCL",
+      "UIO"
+    ],
+    [
+      "SCL",
+      "VCP"
+    ],
+    [
+      "SCL",
+      "VVI"
+    ],
+    [
+      "SDU",
+      "AEP"
+    ],
+    [
+      "SDU",
+      "ASU"
+    ],
+    [
+      "SDU",
+      "BOG"
+    ],
+    [
+      "SDU",
+      "BSB"
+    ],
+    [
+      "SDU",
+      "CCS"
+    ],
+    [
+      "SDU",
+      "CGH"
+    ],
+    [
+      "SDU",
+      "CLO"
+    ],
+    [
+      "SDU",
+      "CNF"
+    ],
+    [
+      "SDU",
+      "CTG"
+    ],
+    [
+      "SDU",
+      "CWB"
+    ],
+    [
+      "SDU",
+      "EZE"
+    ],
+    [
+      "SDU",
+      "FOR"
+    ],
+    [
+      "SDU",
+      "GEO"
+    ],
+    [
+      "SDU",
+      "GIG"
+    ],
+    [
+      "SDU",
+      "GRU"
+    ],
+    [
+      "SDU",
+      "LIM"
+    ],
+    [
+      "SDU",
+      "MDE"
+    ],
+    [
+      "SDU",
+      "MVD"
+    ],
+    [
+      "SDU",
+      "PBM"
+    ],
+    [
+      "SDU",
+      "POA"
+    ],
+    [
+      "SDU",
+      "REC"
+    ],
+    [
+      "SDU",
+      "SCL"
+    ],
+    [
+      "SDU",
+      "SSA"
+    ],
+    [
+      "SDU",
+      "UIO"
+    ],
+    [
+      "SDU",
+      "VCP"
+    ],
+    [
+      "SDU",
+      "VVI"
+    ],
+    [
+      "SSA",
+      "AEP"
+    ],
+    [
+      "SSA",
+      "ASU"
+    ],
+    [
+      "SSA",
+      "BOG"
+    ],
+    [
+      "SSA",
+      "BSB"
+    ],
+    [
+      "SSA",
+      "CCS"
+    ],
+    [
+      "SSA",
+      "CGH"
+    ],
+    [
+      "SSA",
+      "CLO"
+    ],
+    [
+      "SSA",
+      "CNF"
+    ],
+    [
+      "SSA",
+      "CTG"
+    ],
+    [
+      "SSA",
+      "CWB"
+    ],
+    [
+      "SSA",
+      "EZE"
+    ],
+    [
+      "SSA",
+      "FOR"
+    ],
+    [
+      "SSA",
+      "GEO"
+    ],
+    [
+      "SSA",
+      "GIG"
+    ],
+    [
+      "SSA",
+      "GRU"
+    ],
+    [
+      "SSA",
+      "LIM"
+    ],
+    [
+      "SSA",
+      "MDE"
+    ],
+    [
+      "SSA",
+      "MVD"
+    ],
+    [
+      "SSA",
+      "PBM"
+    ],
+    [
+      "SSA",
+      "POA"
+    ],
+    [
+      "SSA",
+      "REC"
+    ],
+    [
+      "SSA",
+      "SCL"
+    ],
+    [
+      "SSA",
+      "SDU"
+    ],
+    [
+      "SSA",
+      "UIO"
+    ],
+    [
+      "SSA",
+      "VCP"
+    ],
+    [
+      "SSA",
+      "VVI"
+    ],
+    [
+      "UIO",
+      "AEP"
+    ],
+    [
+      "UIO",
+      "ASU"
+    ],
+    [
+      "UIO",
+      "BOG"
+    ],
+    [
+      "UIO",
+      "BSB"
+    ],
+    [
+      "UIO",
+      "CCS"
+    ],
+    [
+      "UIO",
+      "CGH"
+    ],
+    [
+      "UIO",
+      "CLO"
+    ],
+    [
+      "UIO",
+      "CNF"
+    ],
+    [
+      "UIO",
+      "CTG"
+    ],
+    [
+      "UIO",
+      "CWB"
+    ],
+    [
+      "UIO",
+      "EZE"
+    ],
+    [
+      "UIO",
+      "FOR"
+    ],
+    [
+      "UIO",
+      "GEO"
+    ],
+    [
+      "UIO",
+      "GIG"
+    ],
+    [
+      "UIO",
+      "GRU"
+    ],
+    [
+      "UIO",
+      "LIM"
+    ],
+    [
+      "UIO",
+      "MDE"
+    ],
+    [
+      "UIO",
+      "MVD"
+    ],
+    [
+      "UIO",
+      "PBM"
+    ],
+    [
+      "UIO",
+      "POA"
+    ],
+    [
+      "UIO",
+      "REC"
+    ],
+    [
+      "UIO",
+      "SCL"
+    ],
+    [
+      "UIO",
+      "SDU"
+    ],
+    [
+      "UIO",
+      "SSA"
+    ],
+    [
+      "UIO",
+      "VCP"
+    ],
+    [
+      "UIO",
+      "VVI"
+    ],
+    [
+      "VCP",
+      "AEP"
+    ],
+    [
+      "VCP",
+      "ASU"
+    ],
+    [
+      "VCP",
+      "BOG"
+    ],
+    [
+      "VCP",
+      "BSB"
+    ],
+    [
+      "VCP",
+      "CCS"
+    ],
+    [
+      "VCP",
+      "CGH"
+    ],
+    [
+      "VCP",
+      "CLO"
+    ],
+    [
+      "VCP",
+      "CNF"
+    ],
+    [
+      "VCP",
+      "CTG"
+    ],
+    [
+      "VCP",
+      "CWB"
+    ],
+    [
+      "VCP",
+      "EZE"
+    ],
+    [
+      "VCP",
+      "FOR"
+    ],
+    [
+      "VCP",
+      "GEO"
+    ],
+    [
+      "VCP",
+      "GIG"
+    ],
+    [
+      "VCP",
+      "GRU"
+    ],
+    [
+      "VCP",
+      "LIM"
+    ],
+    [
+      "VCP",
+      "MDE"
+    ],
+    [
+      "VCP",
+      "MVD"
+    ],
+    [
+      "VCP",
+      "PBM"
+    ],
+    [
+      "VCP",
+      "POA"
+    ],
+    [
+      "VCP",
+      "REC"
+    ],
+    [
+      "VCP",
+      "SCL"
+    ],
+    [
+      "VCP",
+      "SDU"
+    ],
+    [
+      "VCP",
+      "SSA"
+    ],
+    [
+      "VCP",
+      "UIO"
+    ],
+    [
+      "VCP",
+      "VVI"
+    ],
+    [
+      "VVI",
+      "AEP"
+    ],
+    [
+      "VVI",
+      "ASU"
+    ],
+    [
+      "VVI",
+      "BOG"
+    ],
+    [
+      "VVI",
+      "BSB"
+    ],
+    [
+      "VVI",
+      "CCS"
+    ],
+    [
+      "VVI",
+      "CGH"
+    ],
+    [
+      "VVI",
+      "CLO"
+    ],
+    [
+      "VVI",
+      "CNF"
+    ],
+    [
+      "VVI",
+      "CTG"
+    ],
+    [
+      "VVI",
+      "CWB"
+    ],
+    [
+      "VVI",
+      "EZE"
+    ],
+    [
+      "VVI",
+      "FOR"
+    ],
+    [
+      "VVI",
+      "GEO"
+    ],
+    [
+      "VVI",
+      "GIG"
+    ],
+    [
+      "VVI",
+      "GRU"
+    ],
+    [
+      "VVI",
+      "LIM"
+    ],
+    [
+      "VVI",
+      "MDE"
+    ],
+    [
+      "VVI",
+      "MVD"
+    ],
+    [
+      "VVI",
+      "PBM"
+    ],
+    [
+      "VVI",
+      "POA"
+    ],
+    [
+      "VVI",
+      "REC"
+    ],
+    [
+      "VVI",
+      "SCL"
+    ],
+    [
+      "VVI",
+      "SDU"
+    ],
+    [
+      "VVI",
+      "SSA"
+    ],
+    [
+      "VVI",
+      "UIO"
+    ],
+    [
+      "VVI",
+      "VCP"
     ]
   ],
   "unresolved_airports": []

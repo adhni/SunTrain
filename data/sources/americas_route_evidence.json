@@ -1,0 +1,656 @@
+{
+  "reviewed_on": "2026-10-27",
+  "departure_date": "2026-11-02",
+  "purpose": "Published nonstop route candidates only. Not dated service evidence; reverse searches do not imply a reverse flight operates on this day.",
+  "discovery_scope": "27 existing South American airports to 50 existing North American, Central American and Caribbean airports; airports outside those catalogues excluded.",
+  "sources": {
+    "GRU": {
+      "url": "https://www.flightconnections.com/flights-from-são-paulo-gru",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "BOG": {
+      "url": "https://www.flightconnections.com/flights-from-bogotá-bog",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "SCL": {
+      "url": "https://www.flightconnections.com/flights-from-santiago-de-chile-scl",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "LIM": {
+      "url": "https://www.flightconnections.com/flights-from-lima-lim",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "GIG": {
+      "url": "https://www.flightconnections.com/flights-from-rio-de-janeiro-gig",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "BSB": {
+      "url": "https://www.flightconnections.com/flights-from-brasília-bsb",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "MDE": {
+      "url": "https://www.flightconnections.com/flights-from-medellín-mde",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CNF": {
+      "url": "https://www.flightconnections.com/flights-from-belo-horizonte-cnf",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "VCP": {
+      "url": "https://www.flightconnections.com/flights-from-são-paulo-vcp",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "EZE": {
+      "url": "https://www.flightconnections.com/flights-from-buenos-aires-eze",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "REC": {
+      "url": "https://www.flightconnections.com/flights-from-recife-rec",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "SSA": {
+      "url": "https://www.flightconnections.com/flights-from-salvador-da-bahia-ssa",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CTG": {
+      "url": "https://www.flightconnections.com/flights-from-cartagena-ctg",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "POA": {
+      "url": "https://www.flightconnections.com/flights-from-porto-alegre-poa",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CLO": {
+      "url": "https://www.flightconnections.com/flights-from-cali-clo",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "FOR": {
+      "url": "https://www.flightconnections.com/flights-from-fortaleza-for",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "UIO": {
+      "url": "https://www.flightconnections.com/flights-from-quito-uio",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "MVD": {
+      "url": "https://www.flightconnections.com/flights-from-montevideo-mvd",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "ASU": {
+      "url": "https://www.flightconnections.com/flights-from-asunción-asu",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "VVI": {
+      "url": "https://www.flightconnections.com/flights-from-santa-cruz-de-la-sierra-vvi",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CCS": {
+      "url": "https://www.flightconnections.com/flights-from-caracas-ccs",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "GEO": {
+      "url": "https://www.flightconnections.com/flights-from-georgetown-geo",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "PBM": {
+      "url": "https://www.flightconnections.com/flights-from-paramaribo-pbm",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CGH": {
+      "url": "https://www.flightconnections.com/flights-from-são-paulo-cgh",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "AEP": {
+      "url": "https://www.flightconnections.com/flights-from-buenos-aires-aep",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "SDU": {
+      "url": "https://www.flightconnections.com/flights-from-rio-de-janeiro-sdu",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CWB": {
+      "url": "https://www.flightconnections.com/flights-from-curitiba-cwb",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "panama": {
+      "url": "https://es.tourismpanama.com/planea-tu-viaje/llegar-aqui/vuelos-directos-america-del-sur/",
+      "kind": "Official tourism authority exact-airport direct-route list"
+    },
+    "sjo": {
+      "url": "https://www.sjoairport.com/conectividad/",
+      "kind": "Official airport connectivity list; selected city names resolved to existing exact airports"
+    },
+    "quito_mexico": {
+      "url": "https://www.aviacioncivil.gob.ec/ecuador-y-mexico-retoman-conexiones-aereas/",
+      "kind": "Official aviation authority direct-route announcement"
+    }
+  },
+  "airport_reviews": [
+    {
+      "airport": "GRU",
+      "destinations": [
+        "ATL",
+        "AUA",
+        "BOS",
+        "DFW",
+        "EWR",
+        "IAD",
+        "IAH",
+        "JFK",
+        "LAX",
+        "MCO",
+        "MEX",
+        "MIA",
+        "ORD",
+        "PTY",
+        "PUJ",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "GRU"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "BOG",
+      "destinations": [
+        "ATL",
+        "AUA",
+        "BOS",
+        "CUN",
+        "DFW",
+        "EWR",
+        "FLL",
+        "GDL",
+        "GUA",
+        "IAD",
+        "IAH",
+        "JFK",
+        "MBJ",
+        "MCO",
+        "MEX",
+        "MIA",
+        "MTY",
+        "ORD",
+        "PTY",
+        "PUJ",
+        "SAL",
+        "SDQ",
+        "SJO",
+        "SJU",
+        "TPA",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "BOG"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "SCL",
+      "destinations": [
+        "ATL",
+        "CUN",
+        "IAH",
+        "JFK",
+        "LAX",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "SCL"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "LIM",
+      "destinations": [
+        "ATL",
+        "AUA",
+        "CUN",
+        "EWR",
+        "IAH",
+        "JFK",
+        "LAX",
+        "MBJ",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SAL",
+        "SDQ",
+        "SJO",
+        "SLC",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "LIM"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "GIG",
+      "destinations": [
+        "ATL",
+        "DFW",
+        "IAH",
+        "JFK",
+        "MIA",
+        "PTY",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "GIG"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "BSB",
+      "destinations": [
+        "MCO",
+        "MIA",
+        "PTY"
+      ],
+      "source_ids": [
+        "BSB"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "MDE",
+      "destinations": [
+        "AUA",
+        "CUN",
+        "FLL",
+        "GDL",
+        "GUA",
+        "IAH",
+        "JFK",
+        "MBJ",
+        "MCO",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SAL",
+        "SDQ",
+        "SJO",
+        "SJU"
+      ],
+      "source_ids": [
+        "MDE"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "CNF",
+      "destinations": [
+        "MCO",
+        "PTY"
+      ],
+      "source_ids": [
+        "CNF"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "VCP",
+      "destinations": [
+        "FLL",
+        "MCO"
+      ],
+      "source_ids": [
+        "VCP"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "EZE",
+      "destinations": [
+        "ATL",
+        "AUA",
+        "CUN",
+        "DFW",
+        "IAH",
+        "JFK",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SDQ"
+      ],
+      "source_ids": [
+        "EZE"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "REC",
+      "destinations": [
+        "MCO"
+      ],
+      "source_ids": [
+        "REC"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "SSA",
+      "destinations": [
+        "PTY"
+      ],
+      "source_ids": [
+        "SSA"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "CTG",
+      "destinations": [
+        "ATL",
+        "FLL",
+        "IAD",
+        "IAH",
+        "JFK",
+        "MCO",
+        "MEX",
+        "MIA",
+        "PTY",
+        "SDQ",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "CTG"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "POA",
+      "destinations": [
+        "PTY"
+      ],
+      "source_ids": [
+        "POA"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "CLO",
+      "destinations": [
+        "AUA",
+        "FLL",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ"
+      ],
+      "source_ids": [
+        "CLO"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "FOR",
+      "destinations": [
+        "MCO",
+        "MIA"
+      ],
+      "source_ids": [
+        "FOR"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "UIO",
+      "destinations": [
+        "ATL",
+        "IAH",
+        "JFK",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SAL",
+        "SJO",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "UIO"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "MVD",
+      "destinations": [
+        "MIA",
+        "PTY",
+        "PUJ"
+      ],
+      "source_ids": [
+        "MVD"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "ASU",
+      "destinations": [
+        "PTY"
+      ],
+      "source_ids": [
+        "ASU"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "VVI",
+      "destinations": [
+        "MIA",
+        "PTY"
+      ],
+      "source_ids": [
+        "VVI"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "CCS",
+      "destinations": [
+        "IAH",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SDQ"
+      ],
+      "source_ids": [
+        "CCS"
+      ],
+      "status": "Published candidates found",
+      "notes": "Directory candidates require dated verification; geopolitical or seasonal listings may be stale."
+    },
+    {
+      "airport": "GEO",
+      "destinations": [
+        "JFK",
+        "MIA",
+        "PTY",
+        "YYZ"
+      ],
+      "source_ids": [
+        "GEO"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "PBM",
+      "destinations": [
+        "AUA",
+        "PTY",
+        "SDQ"
+      ],
+      "source_ids": [
+        "PBM"
+      ],
+      "status": "Published candidates found",
+      "notes": "Do not treat a Miami itinerary via GEO as a PBM–MIA nonstop."
+    },
+    {
+      "airport": "CGH",
+      "destinations": [],
+      "source_ids": [
+        "CGH"
+      ],
+      "status": "No in-scope candidates in reviewed listing; not a claim of no service",
+      "notes": "Directory lists domestic departures only; do not copy routes from the other city airport."
+    },
+    {
+      "airport": "AEP",
+      "destinations": [],
+      "source_ids": [
+        "AEP"
+      ],
+      "status": "No in-scope candidates in reviewed listing; not a claim of no service",
+      "notes": "Reviewed international destinations remain within South America; do not copy EZE routes."
+    },
+    {
+      "airport": "SDU",
+      "destinations": [],
+      "source_ids": [
+        "SDU"
+      ],
+      "status": "No in-scope candidates in reviewed listing; not a claim of no service",
+      "notes": "Directory lists domestic departures only; do not copy routes from the other city airport."
+    },
+    {
+      "airport": "CWB",
+      "destinations": [],
+      "source_ids": [
+        "CWB"
+      ],
+      "status": "No in-scope candidates in reviewed listing; not a claim of no service",
+      "notes": "Reviewed directory lists no US, Canada, Central American or Caribbean nonstops."
+    }
+  ],
+  "corroboration": [
+    {
+      "airport": "PTY",
+      "destinations": [
+        "BOG",
+        "CLO",
+        "CTG",
+        "MDE",
+        "GRU",
+        "GIG",
+        "CNF",
+        "BSB",
+        "POA",
+        "SSA",
+        "UIO",
+        "EZE",
+        "LIM",
+        "CCS",
+        "SCL",
+        "MVD",
+        "ASU",
+        "VVI",
+        "GEO",
+        "PBM"
+      ],
+      "source_id": "panama"
+    },
+    {
+      "airport": "SJO",
+      "destinations": [
+        "UIO",
+        "BOG",
+        "MDE",
+        "CTG"
+      ],
+      "source_id": "sjo"
+    },
+    {
+      "airport": "UIO",
+      "destinations": [
+        "MEX"
+      ],
+      "source_id": "quito_mexico"
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "origin": "GRU",
+      "destination": "YYC",
+      "reason": "Directory country section explicitly lists December–February operation; starts after 2 November.",
+      "source_id": "GRU"
+    },
+    {
+      "origin": "SCL",
+      "destination": "DFW",
+      "reason": "Directory country section explicitly lists December–March operation; starts after 2 November.",
+      "source_id": "SCL"
+    }
+  ],
+  "limitations": [
+    "Directory and official lists can be incomplete or stale; shortlist is not an exhaustive Americas route inventory.",
+    "No airport-pair Cartesian searches, airline-by-airline searches or extra dates.",
+    "City marketing offers, connecting itineraries, cargo and destinations outside existing airport catalogues are excluded.",
+    "Document hashes cover normalized committed facts, not original HTML page bytes."
+  ]
+}

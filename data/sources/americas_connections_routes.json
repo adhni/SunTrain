@@ -1,0 +1,6609 @@
+{
+  "profile": "americas_connections",
+  "scope": "regional",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "UTC",
+  "currency": "USD",
+  "max_duration": 57600,
+  "query_date_policy": "origin_local_departure_day_only",
+  "concurrency": 2,
+  "airports": [
+    {
+      "code": "AEP",
+      "country": "AR",
+      "timezone": "America/Argentina/Buenos_Aires",
+      "rank": 7,
+      "lac_rank": 11,
+      "passengers_2025": 17814653,
+      "icao": "SABE",
+      "name": "Aeroparque Jorge Newbery (AEP)",
+      "municipality": "Buenos Aires",
+      "lat": -34.559419,
+      "lon": -58.415536,
+      "mode": "flight"
+    },
+    {
+      "code": "ASU",
+      "country": "PY",
+      "timezone": "America/Asuncion",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://www.dinac.gov.py/estadisticas/ResumenEstadisticoTransporteAereoComercial-2025_Enero-Diciembre.pdf",
+      "icao": "SGAS",
+      "name": "Silvio Pettirossi International Airport (ASU)",
+      "municipality": "Asunción",
+      "lat": -25.240156,
+      "lon": -57.519227,
+      "mode": "flight"
+    },
+    {
+      "code": "ATL",
+      "icao": "KATL",
+      "name": "Hartsfield Jackson Atlanta International Airport (ATL)",
+      "municipality": "Atlanta",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 33.6367,
+      "lon": -84.428101,
+      "rank": 1,
+      "enplanements_2025": 51459786
+    },
+    {
+      "code": "AUA",
+      "icao": "TNCA",
+      "name": "Queen Beatrix International Airport (AUA)",
+      "municipality": "Oranjestad",
+      "country": "AW",
+      "timezone": "America/Aruba",
+      "mode": "flight",
+      "lat": 12.501056,
+      "lon": -70.014281,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 10,
+      "ranking_year": 2025,
+      "passenger_statistic": 3414277,
+      "selection_source_url": "https://www.airportaruba.com/storage/app/media/PDF/AAA-ANNUAL-REPORT-2025.pdf",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "AUS",
+      "icao": "KAUS",
+      "name": "Austin Bergstrom International Airport (AUS)",
+      "municipality": "Austin",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 30.197535,
+      "lon": -97.662015,
+      "rank": 29,
+      "enplanements_2025": 10651727
+    },
+    {
+      "code": "BNA",
+      "icao": "KBNA",
+      "name": "Nashville International Airport (BNA)",
+      "municipality": "Nashville",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 36.1245,
+      "lon": -86.6782,
+      "rank": 25,
+      "enplanements_2025": 12549304
+    },
+    {
+      "code": "BOG",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 2,
+      "lac_rank": 2,
+      "passengers_2025": 45464526,
+      "icao": "SKBO",
+      "name": "El Dorado International Airport (BOG)",
+      "municipality": "Bogota",
+      "lat": 4.70159,
+      "lon": -74.1469,
+      "mode": "flight"
+    },
+    {
+      "code": "BOS",
+      "icao": "KBOS",
+      "name": "Boston Logan International Airport (BOS)",
+      "municipality": "Boston",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 42.36197,
+      "lon": -71.0079,
+      "rank": 16,
+      "enplanements_2025": 21021153
+    },
+    {
+      "code": "BSB",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 8,
+      "lac_rank": 12,
+      "passengers_2025": 16977287,
+      "icao": "SBBR",
+      "name": "Presidente Juscelino Kubitschek International Airport (BSB)",
+      "municipality": "Brasília",
+      "lat": -15.869167,
+      "lon": -47.920834,
+      "mode": "flight"
+    },
+    {
+      "code": "BWI",
+      "icao": "KBWI",
+      "name": "Baltimore/Washington International Thurgood Marshall Airport (BWI)",
+      "municipality": "Baltimore",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 39.1754,
+      "lon": -76.668297,
+      "rank": 26,
+      "enplanements_2025": 12274134
+    },
+    {
+      "code": "CCS",
+      "country": "VE",
+      "timezone": "America/Caracas",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://elpais.com/america/2026-09-01/el-aeropuerto-internacional-de-caracas-vuelve-a-operar-dos-meses-despues-del-terremoto.html",
+      "selection_source_status": "Secondary description of the principal national airport; operator site timed out, no comparable current annual total claimed",
+      "icao": "SVMI",
+      "name": "Maiquetía Simón Bolívar International Airport (CCS)",
+      "municipality": "Maiquetía",
+      "lat": 10.602214,
+      "lon": -66.991174,
+      "mode": "flight"
+    },
+    {
+      "code": "CGH",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 5,
+      "lac_rank": 7,
+      "passengers_2025": 24491178,
+      "icao": "SBSP",
+      "name": "Congonhas–Deputado Freitas Nobre Airport (CGH)",
+      "municipality": "São Paulo",
+      "lat": -23.627657,
+      "lon": -46.654601,
+      "mode": "flight"
+    },
+    {
+      "code": "CLO",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 17,
+      "passengers_2025": 6903591,
+      "selection_source_url": "https://www.cali.gov.co/boletines/publicaciones/193534/la-conectividad-aerea-impulsa-a-cali-como-destino-internacional/",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SKCL",
+      "name": "Alfonso Bonilla Aragon International Airport (CLO)",
+      "municipality": "Cali",
+      "lat": 3.542717,
+      "lon": -76.381898,
+      "mode": "flight"
+    },
+    {
+      "code": "CLT",
+      "icao": "KCLT",
+      "name": "Charlotte Douglas International Airport (CLT)",
+      "municipality": "Charlotte",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 35.2140007019043,
+      "lon": -80.94309997558594,
+      "rank": 11,
+      "enplanements_2025": 25873555
+    },
+    {
+      "code": "CNF",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 10,
+      "lac_rank": 16,
+      "passengers_2025": 13114989,
+      "icao": "SBCF",
+      "name": "Tancredo Neves International Airport (CNF)",
+      "municipality": "Belo Horizonte",
+      "lat": -19.63571,
+      "lon": -43.966928,
+      "mode": "flight"
+    },
+    {
+      "code": "CTG",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 15,
+      "passengers_2025": 7756298,
+      "selection_source_url": "https://aeropuertocartagena.com.co/historico-aeropuerto-internacional-rafael-nunez-de-cartagena-supero-los-7-7-millones-de-pasajeros-movilizados-en-2025/",
+      "selection_basis": "top_twenty",
+      "icao": "SKCG",
+      "name": "Rafael Nuñez International Airport (CTG)",
+      "municipality": "Cartagena",
+      "lat": 10.4424,
+      "lon": -75.513,
+      "mode": "flight"
+    },
+    {
+      "code": "CUN",
+      "icao": "MMUN",
+      "name": "Cancún International Airport (CUN)",
+      "municipality": "Cancún",
+      "country": "MX",
+      "timezone": "America/Cancun",
+      "mode": "flight",
+      "lat": 21.040817,
+      "lon": -86.87347,
+      "rank": 2,
+      "ranking_year": 2025,
+      "passenger_statistic": 29478.7
+    },
+    {
+      "code": "CWB",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 20,
+      "passengers_2025": 6082222,
+      "selection_source_url": "https://aeroportos.motiva.com.br/noticias/",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SBCT",
+      "name": "Curitiba-Afonso Pena International Airport (CWB)",
+      "municipality": "Curitiba",
+      "lat": -25.5285,
+      "lon": -49.1758,
+      "mode": "flight"
+    },
+    {
+      "code": "DCA",
+      "icao": "KDCA",
+      "name": "Ronald Reagan Washington National Airport (DCA)",
+      "municipality": "Washington",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 38.8521,
+      "lon": -77.037697,
+      "rank": 28,
+      "enplanements_2025": 12003594
+    },
+    {
+      "code": "DEN",
+      "icao": "KDEN",
+      "name": "Denver International Airport (DEN)",
+      "municipality": "Denver",
+      "country": "US",
+      "timezone": "America/Denver",
+      "mode": "flight",
+      "lat": 39.860027,
+      "lon": -104.673792,
+      "rank": 4,
+      "enplanements_2025": 39976695
+    },
+    {
+      "code": "DFW",
+      "icao": "KDFW",
+      "name": "Dallas Fort Worth International Airport (DFW)",
+      "municipality": "Dallas-Fort Worth",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 32.896801,
+      "lon": -97.038002,
+      "rank": 2,
+      "enplanements_2025": 41297009
+    },
+    {
+      "code": "DTW",
+      "icao": "KDTW",
+      "name": "Detroit Metropolitan Wayne County Airport (DTW)",
+      "municipality": "Detroit",
+      "country": "US",
+      "timezone": "America/Detroit",
+      "mode": "flight",
+      "lat": 42.21377,
+      "lon": -83.353786,
+      "rank": 18,
+      "enplanements_2025": 16294768
+    },
+    {
+      "code": "EWR",
+      "icao": "KEWR",
+      "name": "Newark Liberty International Airport (EWR)",
+      "municipality": "Newark",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.6894,
+      "lon": -74.170545,
+      "rank": 14,
+      "enplanements_2025": 23464492
+    },
+    {
+      "code": "EZE",
+      "country": "AR",
+      "timezone": "America/Argentina/Buenos_Aires",
+      "rank": 12,
+      "passengers_2025": 12002179,
+      "selection_source_url": "https://www.panrotas.com.br/aviacao/pesquisas-e-estatisticas/2026/07/america-latina-movimenta-440-milhoes-de-passageiros-em-2025-veja-ranking-dos-aeroportos_230465.html",
+      "selection_basis": "top_twenty",
+      "icao": "SAEZ",
+      "name": "Ezeiza International Airport - Ministro Pistarini (EZE)",
+      "municipality": "Buenos Aires (Ezeiza)",
+      "lat": -34.8222,
+      "lon": -58.5358,
+      "mode": "flight"
+    },
+    {
+      "code": "FLL",
+      "icao": "KFLL",
+      "name": "Fort Lauderdale Hollywood International Airport (FLL)",
+      "municipality": "Fort Lauderdale",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 26.072599,
+      "lon": -80.152702,
+      "rank": 20,
+      "enplanements_2025": 15646752
+    },
+    {
+      "code": "FOR",
+      "country": "BR",
+      "timezone": "America/Fortaleza",
+      "rank": 19,
+      "passengers_2025": 6166329,
+      "selection_source_url": "https://www.fraport.com/en/newsroom/press-releases/2026/traffic-figures/fraport-traffic-figures-2025.html",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SBFZ",
+      "name": "Pinto Martins International Airport (FOR)",
+      "municipality": "Fortaleza",
+      "lat": -3.775833,
+      "lon": -38.532222,
+      "mode": "flight"
+    },
+    {
+      "code": "GDL",
+      "icao": "MMGL",
+      "name": "Guadalajara International Airport (GDL)",
+      "municipality": "Guadalajara",
+      "country": "MX",
+      "timezone": "America/Mexico_City",
+      "mode": "flight",
+      "lat": 20.523342,
+      "lon": -103.310108,
+      "rank": 3,
+      "ranking_year": 2025,
+      "passenger_statistic": 18773.7
+    },
+    {
+      "code": "GEO",
+      "country": "GY",
+      "timezone": "America/Guyana",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://statisticsguyana.gov.gy/subjects/demography-vital-and-social-statistics/arrivals-and-departures-cheddi-jagan-international-airport-guyana-2013-to-2026/",
+      "icao": "SYCJ",
+      "name": "Cheddi Jagan International Airport (GEO)",
+      "municipality": "Georgetown",
+      "lat": 6.49855,
+      "lon": -58.254101,
+      "mode": "flight"
+    },
+    {
+      "code": "GIG",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 6,
+      "lac_rank": 10,
+      "passengers_2025": 17906990,
+      "icao": "SBGL",
+      "name": "Rio de Janeiro Galeão – Tom Jobim International Airport (GIG)",
+      "municipality": "Rio De Janeiro",
+      "lat": -22.809999,
+      "lon": -43.250557,
+      "mode": "flight"
+    },
+    {
+      "code": "GRU",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 1,
+      "lac_rank": 1,
+      "passengers_2025": 47174529,
+      "icao": "SBGR",
+      "name": "São Paulo/Guarulhos–Governor André Franco Montoro International Airport (GRU)",
+      "municipality": "São Paulo",
+      "lat": -23.431274,
+      "lon": -46.469954,
+      "mode": "flight"
+    },
+    {
+      "code": "GUA",
+      "icao": "MGGT",
+      "name": "La Aurora International Airport (GUA)",
+      "municipality": "Guatemala City",
+      "country": "GT",
+      "timezone": "America/Guatemala",
+      "mode": "flight",
+      "lat": 14.582896,
+      "lon": -90.527515,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 7,
+      "ranking_year": 2025,
+      "passenger_statistic": 5129535,
+      "selection_source_url": "https://lahora.gt/nacionales/hloarca/2026/01/26/vuelos-se-incrementan-en-aeropuerto-la-aurora-y-se-proyectan-dos-nuevas-rutas/",
+      "selection_source_status": "Secondary transcription; government source currently renders without accessible table"
+    },
+    {
+      "code": "HNL",
+      "icao": "PHNL",
+      "name": "Daniel K. Inouye International Airport (HNL)",
+      "municipality": "Honolulu, Oahu",
+      "country": "US",
+      "timezone": "Pacific/Honolulu",
+      "mode": "flight",
+      "lat": 21.318387,
+      "lon": -157.92567,
+      "rank": 30,
+      "enplanements_2025": 10430353
+    },
+    {
+      "code": "IAD",
+      "icao": "KIAD",
+      "name": "Washington Dulles International Airport (IAD)",
+      "municipality": "Dulles",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 38.9445,
+      "lon": -77.455803,
+      "rank": 22,
+      "enplanements_2025": 13859569
+    },
+    {
+      "code": "IAH",
+      "icao": "KIAH",
+      "name": "George Bush Intercontinental Airport (IAH)",
+      "municipality": "Houston",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 29.9844,
+      "lon": -95.3414,
+      "rank": 15,
+      "enplanements_2025": 23265028
+    },
+    {
+      "code": "JFK",
+      "icao": "KJFK",
+      "name": "John F. Kennedy International Airport (JFK)",
+      "municipality": "New York",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.639447,
+      "lon": -73.779317,
+      "rank": 6,
+      "enplanements_2025": 30792806
+    },
+    {
+      "code": "LAS",
+      "icao": "KLAS",
+      "name": "Harry Reid International Airport (LAS)",
+      "municipality": "Las Vegas",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 36.083361,
+      "lon": -115.151817,
+      "rank": 8,
+      "enplanements_2025": 26531765
+    },
+    {
+      "code": "LAX",
+      "icao": "KLAX",
+      "name": "Los Angeles International Airport (LAX)",
+      "municipality": "Los Angeles",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 33.942501,
+      "lon": -118.407997,
+      "rank": 5,
+      "enplanements_2025": 36497303
+    },
+    {
+      "code": "LGA",
+      "icao": "KLGA",
+      "name": "LaGuardia Airport (LGA)",
+      "municipality": "New York",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.777199,
+      "lon": -73.872597,
+      "rank": 19,
+      "enplanements_2025": 16278532
+    },
+    {
+      "code": "LIM",
+      "country": "PE",
+      "timezone": "America/Lima",
+      "rank": 4,
+      "lac_rank": 6,
+      "passengers_2025": 25496109,
+      "icao": "SPJC",
+      "name": "Jorge Chávez International Airport (LIM)",
+      "municipality": "Lima",
+      "lat": -12.0219,
+      "lon": -77.114305,
+      "mode": "flight"
+    },
+    {
+      "code": "MBJ",
+      "icao": "MKJS",
+      "name": "Sangster International Airport (MBJ)",
+      "municipality": "Montego Bay",
+      "country": "JM",
+      "timezone": "America/Jamaica",
+      "mode": "flight",
+      "lat": 18.50342,
+      "lon": -77.91323,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 8,
+      "ranking_year": 2025,
+      "passenger_statistic": 4495370,
+      "selection_source_url": "https://www.mbjairport.com/history-facts",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "MCO",
+      "icao": "KMCO",
+      "name": "Orlando International Airport (MCO)",
+      "municipality": "Orlando",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 28.429399490356445,
+      "lon": -81.30899810791016,
+      "rank": 7,
+      "enplanements_2025": 27999709
+    },
+    {
+      "code": "MDE",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 9,
+      "lac_rank": 14,
+      "passengers_2025": 14242523,
+      "icao": "SKRG",
+      "name": "Jose Maria Córdova International Airport (MDE)",
+      "municipality": "Medellín",
+      "lat": 6.16454,
+      "lon": -75.4231,
+      "mode": "flight"
+    },
+    {
+      "code": "MEX",
+      "icao": "MMMX",
+      "name": "Mexico City Benito Juárez International Airport (MEX)",
+      "municipality": "Mexico City",
+      "country": "MX",
+      "timezone": "America/Mexico_City",
+      "mode": "flight",
+      "lat": 19.435822,
+      "lon": -99.07033,
+      "rank": 1,
+      "ranking_year": 2025,
+      "passenger_statistic": 44605.8
+    },
+    {
+      "code": "MIA",
+      "icao": "KMIA",
+      "name": "Miami International Airport (MIA)",
+      "municipality": "Miami",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 25.796011,
+      "lon": -80.289751,
+      "rank": 9,
+      "enplanements_2025": 26450972
+    },
+    {
+      "code": "MSP",
+      "icao": "KMSP",
+      "name": "Minneapolis–Saint Paul International Airport / Wold–Chamberlain Field (MSP)",
+      "municipality": "Minneapolis",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 44.880081,
+      "lon": -93.221741,
+      "rank": 17,
+      "enplanements_2025": 17488261
+    },
+    {
+      "code": "MTY",
+      "icao": "MMMY",
+      "name": "Monterrey International Airport (MTY)",
+      "municipality": "Monterrey",
+      "country": "MX",
+      "timezone": "America/Monterrey",
+      "mode": "flight",
+      "lat": 25.778521,
+      "lon": -100.106989,
+      "rank": 4,
+      "ranking_year": 2025,
+      "passenger_statistic": 15777.1
+    },
+    {
+      "code": "MVD",
+      "country": "UY",
+      "timezone": "America/Montevideo",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://investors.corporacionamericaairports.com/files/doc_news/2026/Jan/20/CAAP-Passenger-Traffic-December-2025.pdf",
+      "icao": "SUMU",
+      "name": "Carrasco General Cesáreo L. Berisso International Airport (MVD)",
+      "municipality": "Ciudad de la Costa",
+      "lat": -34.835647,
+      "lon": -56.026497,
+      "mode": "flight"
+    },
+    {
+      "code": "NAS",
+      "icao": "MYNN",
+      "name": "Lynden Pindling International Airport (NAS)",
+      "municipality": "Nassau",
+      "country": "BS",
+      "timezone": "America/Nassau",
+      "mode": "flight",
+      "lat": 25.039,
+      "lon": -77.466202,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 9,
+      "ranking_year": 2025,
+      "passenger_statistic": 3991820,
+      "selection_source_url": "https://www.vantagegroup.com/wp-content/uploads/2026/07/Vantage_ImpactReport_2025_Final.pdf",
+      "selection_source_status": "Airport operator or government report reviewed",
+      "selection_source_page": 59
+    },
+    {
+      "code": "ORD",
+      "icao": "KORD",
+      "name": "Chicago O'Hare International Airport (ORD)",
+      "municipality": "Chicago",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 41.9786,
+      "lon": -87.9048,
+      "rank": 3,
+      "enplanements_2025": 40680735
+    },
+    {
+      "code": "PBM",
+      "country": "SR",
+      "timezone": "America/Paramaribo",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://gov.sr/thema/luchthaven/",
+      "icao": "SMJP",
+      "name": "Johan Adolf Pengel International Airport (PBM)",
+      "municipality": "Paramaribo",
+      "lat": 5.45283,
+      "lon": -55.187801,
+      "mode": "flight"
+    },
+    {
+      "code": "PHL",
+      "icao": "KPHL",
+      "name": "Philadelphia International Airport (PHL)",
+      "municipality": "Philadelphia",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 39.871899,
+      "lon": -75.241096,
+      "rank": 21,
+      "enplanements_2025": 14779849
+    },
+    {
+      "code": "PHX",
+      "icao": "KPHX",
+      "name": "Phoenix Sky Harbor International Airport (PHX)",
+      "municipality": "Phoenix",
+      "country": "US",
+      "timezone": "America/Phoenix",
+      "mode": "flight",
+      "lat": 33.435302,
+      "lon": -112.005905,
+      "rank": 13,
+      "enplanements_2025": 25094817
+    },
+    {
+      "code": "POA",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 16,
+      "passengers_2025": 7512942,
+      "selection_source_url": "https://www.fraport.com/en/newsroom/press-releases/2026/traffic-figures/fraport-traffic-figures-2025.html",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SBPA",
+      "name": "Porto Alegre-Salgado Filho International Airport (POA)",
+      "municipality": "Porto Alegre",
+      "lat": -29.993984,
+      "lon": -51.167482,
+      "mode": "flight"
+    },
+    {
+      "code": "PTY",
+      "icao": "MPTO",
+      "name": "Tocumen International Airport (PTY)",
+      "municipality": "Tocumen",
+      "country": "PA",
+      "timezone": "America/Panama",
+      "mode": "flight",
+      "lat": 9.07136,
+      "lon": -79.383499,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 1,
+      "ranking_year": 2025,
+      "passenger_statistic": 20981855,
+      "selection_source_url": "https://www.datosabiertos.gob.pa/dataset/4cfac507-e49a-46b5-8811-e5334631c97d/resource/e36f2764-ca5d-45be-b52f-f596d35045a7/download/movimientomensualdepasajerosaitsa2025.pdf",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "PUJ",
+      "icao": "MDPC",
+      "name": "Punta Cana International Airport (PUJ)",
+      "municipality": "Punta Cana",
+      "country": "DO",
+      "timezone": "America/Santo_Domingo",
+      "mode": "flight",
+      "lat": 18.567093,
+      "lon": -68.364558,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 3,
+      "ranking_year": 2025,
+      "passenger_statistic": 11000000,
+      "selection_source_url": "https://www.puntacanainternationalairport.com/es/about-us/news-projects/item/aeropuerto-de-punta-cana-marca-un-hito-historico-y-cierra-2025-con-record-consecutivo-de-vuelos-y-pasajeros",
+      "selection_source_status": "Airport operator or government report reviewed",
+      "passenger_statistic_precision": "Rounded; PUJ reports more than this value"
+    },
+    {
+      "code": "REC",
+      "country": "BR",
+      "timezone": "America/Recife",
+      "rank": 13,
+      "passengers_2025": 9938051,
+      "selection_source_url": "https://www.aena.es/doc/pressdetail/260113-aena-estadisticas-2025en.pdf",
+      "selection_basis": "top_twenty",
+      "icao": "SBRF",
+      "name": "Recife/Guararapes - Gilberto Freyre International Airport (REC)",
+      "municipality": "Recife",
+      "lat": -8.12747,
+      "lon": -34.922961,
+      "mode": "flight"
+    },
+    {
+      "code": "SAL",
+      "icao": "MSLP",
+      "name": "El Salvador International Airport Saint Óscar Arnulfo Romero y Galdámez (SAL)",
+      "municipality": "San Salvador (San Luis Talpa)",
+      "country": "SV",
+      "timezone": "America/El_Salvador",
+      "mode": "flight",
+      "lat": 13.44447,
+      "lon": -89.055784,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 6,
+      "ranking_year": 2025,
+      "passenger_statistic": 5200000,
+      "selection_source_url": "https://www.cepa.gob.sv/aeropuerto-internacional-de-el-salvador-registra-crecimiento-durante-la-temporada-de-fin-de-ano-y-consolida-resultados-positivos-al-cierre-de-2025/",
+      "selection_source_status": "Airport operator or government report reviewed",
+      "passenger_statistic_precision": "Rounded; PUJ reports more than this value"
+    },
+    {
+      "code": "SAN",
+      "icao": "KSAN",
+      "name": "San Diego International Airport (SAN)",
+      "municipality": "San Diego",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 32.733601,
+      "lon": -117.190002,
+      "rank": 24,
+      "enplanements_2025": 12675684
+    },
+    {
+      "code": "SCL",
+      "country": "CL",
+      "timezone": "America/Santiago",
+      "rank": 3,
+      "lac_rank": 5,
+      "passengers_2025": 25941576,
+      "icao": "SCEL",
+      "name": "Comodoro Arturo Merino Benítez International Airport (SCL)",
+      "municipality": "Santiago",
+      "lat": -33.393001556396484,
+      "lon": -70.78579711914062,
+      "mode": "flight"
+    },
+    {
+      "code": "SDQ",
+      "icao": "MDSD",
+      "name": "Las Américas International Airport (SDQ)",
+      "municipality": "Santo Domingo",
+      "country": "DO",
+      "timezone": "America/Santo_Domingo",
+      "mode": "flight",
+      "lat": 18.42970085144,
+      "lon": -69.668899536133,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 5,
+      "ranking_year": 2025,
+      "passenger_statistic": 5221168,
+      "selection_source_url": "https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_the_Caribbean",
+      "selection_source_status": "Secondary transcription; government source currently renders without accessible table"
+    },
+    {
+      "code": "SDU",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 18,
+      "passengers_2025": 6201200,
+      "selection_source_url": "https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_Latin_America",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions",
+      "icao": "SBRJ",
+      "name": "Santos Dumont Airport (SDU)",
+      "municipality": "Rio de Janeiro",
+      "lat": -22.910397,
+      "lon": -43.16282,
+      "mode": "flight"
+    },
+    {
+      "code": "SEA",
+      "icao": "KSEA",
+      "name": "Seattle–Tacoma International Airport (SEA)",
+      "municipality": "Seattle",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 47.447943,
+      "lon": -122.310276,
+      "rank": 12,
+      "enplanements_2025": 25417071
+    },
+    {
+      "code": "SFO",
+      "icao": "KSFO",
+      "name": "San Francisco International Airport (SFO)",
+      "municipality": "San Francisco",
+      "country": "US",
+      "timezone": "America/Los_Angeles",
+      "mode": "flight",
+      "lat": 37.619806,
+      "lon": -122.374821,
+      "rank": 10,
+      "enplanements_2025": 26251850
+    },
+    {
+      "code": "SJO",
+      "icao": "MROC",
+      "name": "Juan Santamaría International Airport (SJO)",
+      "municipality": "San José (Alajuela)",
+      "country": "CR",
+      "timezone": "America/Costa_Rica",
+      "mode": "flight",
+      "lat": 9.99386,
+      "lon": -84.208801,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 4,
+      "ranking_year": 2025,
+      "passenger_statistic": 6403220,
+      "selection_source_url": "https://www.sjoairport.com/aeropuerto-juan-santamaria-2025-fue-un-ano-historico-en-la-ejecucion-de-obras-estrategicas-para-fortalecer-su-capacidad-operativa-y-de-trafico-aereo/",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "SJU",
+      "icao": "TJSJ",
+      "name": "Luis Munoz Marin International Airport (SJU)",
+      "municipality": "San Juan",
+      "country": "PR",
+      "timezone": "America/Puerto_Rico",
+      "mode": "flight",
+      "lat": 18.4394,
+      "lon": -66.001801,
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 2,
+      "ranking_year": 2025,
+      "passenger_statistic": 13643686,
+      "selection_source_url": "https://www.prnewswire.com/news-releases/asur-announces-total-passenger-traffic-for-december-2025-302654211.html",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "SLC",
+      "icao": "KSLC",
+      "name": "Salt Lake City International Airport (SLC)",
+      "municipality": "Salt Lake City",
+      "country": "US",
+      "timezone": "America/Denver",
+      "mode": "flight",
+      "lat": 40.78886,
+      "lon": -111.979866,
+      "rank": 23,
+      "enplanements_2025": 13429128
+    },
+    {
+      "code": "SSA",
+      "country": "BR",
+      "timezone": "America/Bahia",
+      "rank": 14,
+      "passengers_2025": 8100000,
+      "selection_source_url": "https://www.salvador-airport.com.br/pt-br/noticia/salvador-bahia-airport-encerra-2025-com-aumento-de-63-no-trafego-de-passageiros",
+      "selection_basis": "top_twenty",
+      "passenger_statistic_precision": "Operator total rounded to 8.1 million",
+      "icao": "SBSV",
+      "name": "Deputado Luiz Eduardo Magalhães International Airport (SSA)",
+      "municipality": "Salvador",
+      "lat": -12.908611,
+      "lon": -38.322498,
+      "mode": "flight"
+    },
+    {
+      "code": "TIJ",
+      "icao": "MMTJ",
+      "name": "General Abelardo L. Rodriguez International Airport (TIJ)",
+      "municipality": "Tijuana",
+      "country": "MX",
+      "timezone": "America/Tijuana",
+      "mode": "flight",
+      "lat": 32.541043,
+      "lon": -116.969976,
+      "rank": 5,
+      "ranking_year": 2025,
+      "passenger_statistic": 12765.8
+    },
+    {
+      "code": "TPA",
+      "icao": "KTPA",
+      "name": "Tampa International Airport (TPA)",
+      "municipality": "Tampa",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 27.9755,
+      "lon": -82.533203,
+      "rank": 27,
+      "enplanements_2025": 12110427
+    },
+    {
+      "code": "UIO",
+      "country": "EC",
+      "timezone": "America/Guayaquil",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://www.quitoinforma.gob.ec/2026/01/09/el-aeropuerto-de-quito-movilizo-a-5-4-millones-de-pasajeros-en-2025/",
+      "icao": "SEQM",
+      "name": "Mariscal Sucre International Airport (UIO)",
+      "municipality": "Quito",
+      "lat": -0.125399,
+      "lon": -78.354306,
+      "mode": "flight"
+    },
+    {
+      "code": "VCP",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 11,
+      "passengers_2025": 12826553,
+      "selection_source_url": "https://www.viracopos.com/pt_br/noticias/com-12-8-milhoes-de-passageiros-2025-viracopos-atinge-novo-recorde-anual-e-mira-novas-rotas-em-2026.htm",
+      "selection_basis": "top_twenty",
+      "icao": "SBKP",
+      "name": "Viracopos International Airport (VCP)",
+      "municipality": "Campinas",
+      "lat": -23.007404,
+      "lon": -47.134502,
+      "mode": "flight"
+    },
+    {
+      "code": "VVI",
+      "country": "BO",
+      "timezone": "America/La_Paz",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://naabol.gob.bo/naabol-consolida-avances-estrategicos-en-el-hub-de-viru-viru-en-sus-primeros-100-dias-de-gestion/",
+      "icao": "SLVR",
+      "name": "Viru Viru International Airport (VVI)",
+      "municipality": "Santa Cruz",
+      "lat": -17.6448,
+      "lon": -63.135399,
+      "mode": "flight"
+    },
+    {
+      "code": "YEG",
+      "icao": "CYEG",
+      "name": "Edmonton International Airport (YEG)",
+      "municipality": "Edmonton",
+      "country": "CA",
+      "timezone": "America/Edmonton",
+      "mode": "flight",
+      "lat": 53.3097,
+      "lon": -113.580002,
+      "rank": 5,
+      "ranking_year": 2024,
+      "passenger_statistic": 7.5,
+      "replay_timezone": "Etc/GMT+6"
+    },
+    {
+      "code": "YUL",
+      "icao": "CYUL",
+      "name": "Montreal / Pierre Elliott Trudeau International Airport (YUL)",
+      "municipality": "Montréal",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "mode": "flight",
+      "lat": 45.467837,
+      "lon": -73.742294,
+      "rank": 3,
+      "ranking_year": 2024,
+      "passenger_statistic": 21.5
+    },
+    {
+      "code": "YVR",
+      "icao": "CYVR",
+      "name": "Vancouver International Airport (YVR)",
+      "municipality": "Vancouver",
+      "country": "CA",
+      "timezone": "America/Vancouver",
+      "mode": "flight",
+      "lat": 49.193901,
+      "lon": -123.183998,
+      "rank": 2,
+      "ranking_year": 2024,
+      "passenger_statistic": 25.3,
+      "replay_timezone": "Etc/GMT+7"
+    },
+    {
+      "code": "YYC",
+      "icao": "CYYC",
+      "name": "Calgary International Airport (YYC)",
+      "municipality": "Calgary",
+      "country": "CA",
+      "timezone": "America/Edmonton",
+      "mode": "flight",
+      "lat": 51.118822,
+      "lon": -114.009933,
+      "rank": 4,
+      "ranking_year": 2024,
+      "passenger_statistic": 18.4,
+      "replay_timezone": "Etc/GMT+6"
+    },
+    {
+      "code": "YYZ",
+      "icao": "CYYZ",
+      "name": "Toronto Pearson International Airport (YYZ)",
+      "municipality": "Toronto",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "mode": "flight",
+      "lat": 43.675935,
+      "lon": -79.629421,
+      "rank": 1,
+      "ranking_year": 2024,
+      "passenger_statistic": 45.6
+    }
+  ],
+  "regions": {
+    "north": [
+      "ATL",
+      "AUA",
+      "AUS",
+      "BNA",
+      "BOS",
+      "BWI",
+      "CLT",
+      "CUN",
+      "DCA",
+      "DEN",
+      "DFW",
+      "DTW",
+      "EWR",
+      "FLL",
+      "GDL",
+      "GUA",
+      "HNL",
+      "IAD",
+      "IAH",
+      "JFK",
+      "LAS",
+      "LAX",
+      "LGA",
+      "MBJ",
+      "MCO",
+      "MEX",
+      "MIA",
+      "MSP",
+      "MTY",
+      "NAS",
+      "ORD",
+      "PHL",
+      "PHX",
+      "PTY",
+      "PUJ",
+      "SAL",
+      "SAN",
+      "SDQ",
+      "SEA",
+      "SFO",
+      "SJO",
+      "SJU",
+      "SLC",
+      "TIJ",
+      "TPA",
+      "YEG",
+      "YUL",
+      "YVR",
+      "YYC",
+      "YYZ"
+    ],
+    "south": [
+      "AEP",
+      "ASU",
+      "BOG",
+      "BSB",
+      "CCS",
+      "CGH",
+      "CLO",
+      "CNF",
+      "CTG",
+      "CWB",
+      "EZE",
+      "FOR",
+      "GEO",
+      "GIG",
+      "GRU",
+      "LIM",
+      "MDE",
+      "MVD",
+      "PBM",
+      "POA",
+      "REC",
+      "SCL",
+      "SDU",
+      "SSA",
+      "UIO",
+      "VCP",
+      "VVI"
+    ]
+  },
+  "routes": [
+    [
+      "ASU",
+      "PTY"
+    ],
+    [
+      "ATL",
+      "BOG"
+    ],
+    [
+      "ATL",
+      "CTG"
+    ],
+    [
+      "ATL",
+      "EZE"
+    ],
+    [
+      "ATL",
+      "GIG"
+    ],
+    [
+      "ATL",
+      "GRU"
+    ],
+    [
+      "ATL",
+      "LIM"
+    ],
+    [
+      "ATL",
+      "SCL"
+    ],
+    [
+      "ATL",
+      "UIO"
+    ],
+    [
+      "AUA",
+      "BOG"
+    ],
+    [
+      "AUA",
+      "CLO"
+    ],
+    [
+      "AUA",
+      "EZE"
+    ],
+    [
+      "AUA",
+      "GRU"
+    ],
+    [
+      "AUA",
+      "LIM"
+    ],
+    [
+      "AUA",
+      "MDE"
+    ],
+    [
+      "AUA",
+      "PBM"
+    ],
+    [
+      "BOG",
+      "ATL"
+    ],
+    [
+      "BOG",
+      "AUA"
+    ],
+    [
+      "BOG",
+      "BOS"
+    ],
+    [
+      "BOG",
+      "CUN"
+    ],
+    [
+      "BOG",
+      "DFW"
+    ],
+    [
+      "BOG",
+      "EWR"
+    ],
+    [
+      "BOG",
+      "FLL"
+    ],
+    [
+      "BOG",
+      "GDL"
+    ],
+    [
+      "BOG",
+      "GUA"
+    ],
+    [
+      "BOG",
+      "IAD"
+    ],
+    [
+      "BOG",
+      "IAH"
+    ],
+    [
+      "BOG",
+      "JFK"
+    ],
+    [
+      "BOG",
+      "MBJ"
+    ],
+    [
+      "BOG",
+      "MCO"
+    ],
+    [
+      "BOG",
+      "MEX"
+    ],
+    [
+      "BOG",
+      "MIA"
+    ],
+    [
+      "BOG",
+      "MTY"
+    ],
+    [
+      "BOG",
+      "ORD"
+    ],
+    [
+      "BOG",
+      "PTY"
+    ],
+    [
+      "BOG",
+      "PUJ"
+    ],
+    [
+      "BOG",
+      "SAL"
+    ],
+    [
+      "BOG",
+      "SDQ"
+    ],
+    [
+      "BOG",
+      "SJO"
+    ],
+    [
+      "BOG",
+      "SJU"
+    ],
+    [
+      "BOG",
+      "TPA"
+    ],
+    [
+      "BOG",
+      "YUL"
+    ],
+    [
+      "BOG",
+      "YYZ"
+    ],
+    [
+      "BOS",
+      "BOG"
+    ],
+    [
+      "BOS",
+      "GRU"
+    ],
+    [
+      "BSB",
+      "MCO"
+    ],
+    [
+      "BSB",
+      "MIA"
+    ],
+    [
+      "BSB",
+      "PTY"
+    ],
+    [
+      "CCS",
+      "IAH"
+    ],
+    [
+      "CCS",
+      "MIA"
+    ],
+    [
+      "CCS",
+      "PTY"
+    ],
+    [
+      "CCS",
+      "PUJ"
+    ],
+    [
+      "CCS",
+      "SDQ"
+    ],
+    [
+      "CLO",
+      "AUA"
+    ],
+    [
+      "CLO",
+      "FLL"
+    ],
+    [
+      "CLO",
+      "MEX"
+    ],
+    [
+      "CLO",
+      "MIA"
+    ],
+    [
+      "CLO",
+      "PTY"
+    ],
+    [
+      "CLO",
+      "PUJ"
+    ],
+    [
+      "CNF",
+      "MCO"
+    ],
+    [
+      "CNF",
+      "PTY"
+    ],
+    [
+      "CTG",
+      "ATL"
+    ],
+    [
+      "CTG",
+      "FLL"
+    ],
+    [
+      "CTG",
+      "IAD"
+    ],
+    [
+      "CTG",
+      "IAH"
+    ],
+    [
+      "CTG",
+      "JFK"
+    ],
+    [
+      "CTG",
+      "MCO"
+    ],
+    [
+      "CTG",
+      "MEX"
+    ],
+    [
+      "CTG",
+      "MIA"
+    ],
+    [
+      "CTG",
+      "PTY"
+    ],
+    [
+      "CTG",
+      "SDQ"
+    ],
+    [
+      "CTG",
+      "SJO"
+    ],
+    [
+      "CTG",
+      "YUL"
+    ],
+    [
+      "CTG",
+      "YYZ"
+    ],
+    [
+      "CUN",
+      "BOG"
+    ],
+    [
+      "CUN",
+      "EZE"
+    ],
+    [
+      "CUN",
+      "LIM"
+    ],
+    [
+      "CUN",
+      "MDE"
+    ],
+    [
+      "CUN",
+      "SCL"
+    ],
+    [
+      "DFW",
+      "BOG"
+    ],
+    [
+      "DFW",
+      "EZE"
+    ],
+    [
+      "DFW",
+      "GIG"
+    ],
+    [
+      "DFW",
+      "GRU"
+    ],
+    [
+      "EWR",
+      "BOG"
+    ],
+    [
+      "EWR",
+      "GRU"
+    ],
+    [
+      "EWR",
+      "LIM"
+    ],
+    [
+      "EZE",
+      "ATL"
+    ],
+    [
+      "EZE",
+      "AUA"
+    ],
+    [
+      "EZE",
+      "CUN"
+    ],
+    [
+      "EZE",
+      "DFW"
+    ],
+    [
+      "EZE",
+      "IAH"
+    ],
+    [
+      "EZE",
+      "JFK"
+    ],
+    [
+      "EZE",
+      "MEX"
+    ],
+    [
+      "EZE",
+      "MIA"
+    ],
+    [
+      "EZE",
+      "PTY"
+    ],
+    [
+      "EZE",
+      "PUJ"
+    ],
+    [
+      "EZE",
+      "SDQ"
+    ],
+    [
+      "FLL",
+      "BOG"
+    ],
+    [
+      "FLL",
+      "CLO"
+    ],
+    [
+      "FLL",
+      "CTG"
+    ],
+    [
+      "FLL",
+      "MDE"
+    ],
+    [
+      "FLL",
+      "VCP"
+    ],
+    [
+      "FOR",
+      "MCO"
+    ],
+    [
+      "FOR",
+      "MIA"
+    ],
+    [
+      "GDL",
+      "BOG"
+    ],
+    [
+      "GDL",
+      "MDE"
+    ],
+    [
+      "GEO",
+      "JFK"
+    ],
+    [
+      "GEO",
+      "MIA"
+    ],
+    [
+      "GEO",
+      "PTY"
+    ],
+    [
+      "GEO",
+      "YYZ"
+    ],
+    [
+      "GIG",
+      "ATL"
+    ],
+    [
+      "GIG",
+      "DFW"
+    ],
+    [
+      "GIG",
+      "IAH"
+    ],
+    [
+      "GIG",
+      "JFK"
+    ],
+    [
+      "GIG",
+      "MIA"
+    ],
+    [
+      "GIG",
+      "PTY"
+    ],
+    [
+      "GIG",
+      "YUL"
+    ],
+    [
+      "GIG",
+      "YYZ"
+    ],
+    [
+      "GRU",
+      "ATL"
+    ],
+    [
+      "GRU",
+      "AUA"
+    ],
+    [
+      "GRU",
+      "BOS"
+    ],
+    [
+      "GRU",
+      "DFW"
+    ],
+    [
+      "GRU",
+      "EWR"
+    ],
+    [
+      "GRU",
+      "IAD"
+    ],
+    [
+      "GRU",
+      "IAH"
+    ],
+    [
+      "GRU",
+      "JFK"
+    ],
+    [
+      "GRU",
+      "LAX"
+    ],
+    [
+      "GRU",
+      "MCO"
+    ],
+    [
+      "GRU",
+      "MEX"
+    ],
+    [
+      "GRU",
+      "MIA"
+    ],
+    [
+      "GRU",
+      "ORD"
+    ],
+    [
+      "GRU",
+      "PTY"
+    ],
+    [
+      "GRU",
+      "PUJ"
+    ],
+    [
+      "GRU",
+      "YUL"
+    ],
+    [
+      "GRU",
+      "YYZ"
+    ],
+    [
+      "GUA",
+      "BOG"
+    ],
+    [
+      "GUA",
+      "MDE"
+    ],
+    [
+      "IAD",
+      "BOG"
+    ],
+    [
+      "IAD",
+      "CTG"
+    ],
+    [
+      "IAD",
+      "GRU"
+    ],
+    [
+      "IAH",
+      "BOG"
+    ],
+    [
+      "IAH",
+      "CCS"
+    ],
+    [
+      "IAH",
+      "CTG"
+    ],
+    [
+      "IAH",
+      "EZE"
+    ],
+    [
+      "IAH",
+      "GIG"
+    ],
+    [
+      "IAH",
+      "GRU"
+    ],
+    [
+      "IAH",
+      "LIM"
+    ],
+    [
+      "IAH",
+      "MDE"
+    ],
+    [
+      "IAH",
+      "SCL"
+    ],
+    [
+      "IAH",
+      "UIO"
+    ],
+    [
+      "JFK",
+      "BOG"
+    ],
+    [
+      "JFK",
+      "CTG"
+    ],
+    [
+      "JFK",
+      "EZE"
+    ],
+    [
+      "JFK",
+      "GEO"
+    ],
+    [
+      "JFK",
+      "GIG"
+    ],
+    [
+      "JFK",
+      "GRU"
+    ],
+    [
+      "JFK",
+      "LIM"
+    ],
+    [
+      "JFK",
+      "MDE"
+    ],
+    [
+      "JFK",
+      "SCL"
+    ],
+    [
+      "JFK",
+      "UIO"
+    ],
+    [
+      "LAX",
+      "GRU"
+    ],
+    [
+      "LAX",
+      "LIM"
+    ],
+    [
+      "LAX",
+      "SCL"
+    ],
+    [
+      "LIM",
+      "ATL"
+    ],
+    [
+      "LIM",
+      "AUA"
+    ],
+    [
+      "LIM",
+      "CUN"
+    ],
+    [
+      "LIM",
+      "EWR"
+    ],
+    [
+      "LIM",
+      "IAH"
+    ],
+    [
+      "LIM",
+      "JFK"
+    ],
+    [
+      "LIM",
+      "LAX"
+    ],
+    [
+      "LIM",
+      "MBJ"
+    ],
+    [
+      "LIM",
+      "MEX"
+    ],
+    [
+      "LIM",
+      "MIA"
+    ],
+    [
+      "LIM",
+      "PTY"
+    ],
+    [
+      "LIM",
+      "PUJ"
+    ],
+    [
+      "LIM",
+      "SAL"
+    ],
+    [
+      "LIM",
+      "SDQ"
+    ],
+    [
+      "LIM",
+      "SJO"
+    ],
+    [
+      "LIM",
+      "SLC"
+    ],
+    [
+      "LIM",
+      "YUL"
+    ],
+    [
+      "LIM",
+      "YYZ"
+    ],
+    [
+      "MBJ",
+      "BOG"
+    ],
+    [
+      "MBJ",
+      "LIM"
+    ],
+    [
+      "MBJ",
+      "MDE"
+    ],
+    [
+      "MCO",
+      "BOG"
+    ],
+    [
+      "MCO",
+      "BSB"
+    ],
+    [
+      "MCO",
+      "CNF"
+    ],
+    [
+      "MCO",
+      "CTG"
+    ],
+    [
+      "MCO",
+      "FOR"
+    ],
+    [
+      "MCO",
+      "GRU"
+    ],
+    [
+      "MCO",
+      "MDE"
+    ],
+    [
+      "MCO",
+      "REC"
+    ],
+    [
+      "MCO",
+      "VCP"
+    ],
+    [
+      "MDE",
+      "AUA"
+    ],
+    [
+      "MDE",
+      "CUN"
+    ],
+    [
+      "MDE",
+      "FLL"
+    ],
+    [
+      "MDE",
+      "GDL"
+    ],
+    [
+      "MDE",
+      "GUA"
+    ],
+    [
+      "MDE",
+      "IAH"
+    ],
+    [
+      "MDE",
+      "JFK"
+    ],
+    [
+      "MDE",
+      "MBJ"
+    ],
+    [
+      "MDE",
+      "MCO"
+    ],
+    [
+      "MDE",
+      "MEX"
+    ],
+    [
+      "MDE",
+      "MIA"
+    ],
+    [
+      "MDE",
+      "PTY"
+    ],
+    [
+      "MDE",
+      "PUJ"
+    ],
+    [
+      "MDE",
+      "SAL"
+    ],
+    [
+      "MDE",
+      "SDQ"
+    ],
+    [
+      "MDE",
+      "SJO"
+    ],
+    [
+      "MDE",
+      "SJU"
+    ],
+    [
+      "MEX",
+      "BOG"
+    ],
+    [
+      "MEX",
+      "CLO"
+    ],
+    [
+      "MEX",
+      "CTG"
+    ],
+    [
+      "MEX",
+      "EZE"
+    ],
+    [
+      "MEX",
+      "GRU"
+    ],
+    [
+      "MEX",
+      "LIM"
+    ],
+    [
+      "MEX",
+      "MDE"
+    ],
+    [
+      "MEX",
+      "SCL"
+    ],
+    [
+      "MEX",
+      "UIO"
+    ],
+    [
+      "MIA",
+      "BOG"
+    ],
+    [
+      "MIA",
+      "BSB"
+    ],
+    [
+      "MIA",
+      "CCS"
+    ],
+    [
+      "MIA",
+      "CLO"
+    ],
+    [
+      "MIA",
+      "CTG"
+    ],
+    [
+      "MIA",
+      "EZE"
+    ],
+    [
+      "MIA",
+      "FOR"
+    ],
+    [
+      "MIA",
+      "GEO"
+    ],
+    [
+      "MIA",
+      "GIG"
+    ],
+    [
+      "MIA",
+      "GRU"
+    ],
+    [
+      "MIA",
+      "LIM"
+    ],
+    [
+      "MIA",
+      "MDE"
+    ],
+    [
+      "MIA",
+      "MVD"
+    ],
+    [
+      "MIA",
+      "SCL"
+    ],
+    [
+      "MIA",
+      "UIO"
+    ],
+    [
+      "MIA",
+      "VVI"
+    ],
+    [
+      "MTY",
+      "BOG"
+    ],
+    [
+      "MVD",
+      "MIA"
+    ],
+    [
+      "MVD",
+      "PTY"
+    ],
+    [
+      "MVD",
+      "PUJ"
+    ],
+    [
+      "ORD",
+      "BOG"
+    ],
+    [
+      "ORD",
+      "GRU"
+    ],
+    [
+      "PBM",
+      "AUA"
+    ],
+    [
+      "PBM",
+      "PTY"
+    ],
+    [
+      "PBM",
+      "SDQ"
+    ],
+    [
+      "POA",
+      "PTY"
+    ],
+    [
+      "PTY",
+      "ASU"
+    ],
+    [
+      "PTY",
+      "BOG"
+    ],
+    [
+      "PTY",
+      "BSB"
+    ],
+    [
+      "PTY",
+      "CCS"
+    ],
+    [
+      "PTY",
+      "CLO"
+    ],
+    [
+      "PTY",
+      "CNF"
+    ],
+    [
+      "PTY",
+      "CTG"
+    ],
+    [
+      "PTY",
+      "EZE"
+    ],
+    [
+      "PTY",
+      "GEO"
+    ],
+    [
+      "PTY",
+      "GIG"
+    ],
+    [
+      "PTY",
+      "GRU"
+    ],
+    [
+      "PTY",
+      "LIM"
+    ],
+    [
+      "PTY",
+      "MDE"
+    ],
+    [
+      "PTY",
+      "MVD"
+    ],
+    [
+      "PTY",
+      "PBM"
+    ],
+    [
+      "PTY",
+      "POA"
+    ],
+    [
+      "PTY",
+      "SCL"
+    ],
+    [
+      "PTY",
+      "SSA"
+    ],
+    [
+      "PTY",
+      "UIO"
+    ],
+    [
+      "PTY",
+      "VVI"
+    ],
+    [
+      "PUJ",
+      "BOG"
+    ],
+    [
+      "PUJ",
+      "CCS"
+    ],
+    [
+      "PUJ",
+      "CLO"
+    ],
+    [
+      "PUJ",
+      "EZE"
+    ],
+    [
+      "PUJ",
+      "GRU"
+    ],
+    [
+      "PUJ",
+      "LIM"
+    ],
+    [
+      "PUJ",
+      "MDE"
+    ],
+    [
+      "PUJ",
+      "MVD"
+    ],
+    [
+      "PUJ",
+      "SCL"
+    ],
+    [
+      "PUJ",
+      "UIO"
+    ],
+    [
+      "REC",
+      "MCO"
+    ],
+    [
+      "SAL",
+      "BOG"
+    ],
+    [
+      "SAL",
+      "LIM"
+    ],
+    [
+      "SAL",
+      "MDE"
+    ],
+    [
+      "SAL",
+      "UIO"
+    ],
+    [
+      "SCL",
+      "ATL"
+    ],
+    [
+      "SCL",
+      "CUN"
+    ],
+    [
+      "SCL",
+      "IAH"
+    ],
+    [
+      "SCL",
+      "JFK"
+    ],
+    [
+      "SCL",
+      "LAX"
+    ],
+    [
+      "SCL",
+      "MEX"
+    ],
+    [
+      "SCL",
+      "MIA"
+    ],
+    [
+      "SCL",
+      "PTY"
+    ],
+    [
+      "SCL",
+      "PUJ"
+    ],
+    [
+      "SCL",
+      "YUL"
+    ],
+    [
+      "SCL",
+      "YYZ"
+    ],
+    [
+      "SDQ",
+      "BOG"
+    ],
+    [
+      "SDQ",
+      "CCS"
+    ],
+    [
+      "SDQ",
+      "CTG"
+    ],
+    [
+      "SDQ",
+      "EZE"
+    ],
+    [
+      "SDQ",
+      "LIM"
+    ],
+    [
+      "SDQ",
+      "MDE"
+    ],
+    [
+      "SDQ",
+      "PBM"
+    ],
+    [
+      "SJO",
+      "BOG"
+    ],
+    [
+      "SJO",
+      "CTG"
+    ],
+    [
+      "SJO",
+      "LIM"
+    ],
+    [
+      "SJO",
+      "MDE"
+    ],
+    [
+      "SJO",
+      "UIO"
+    ],
+    [
+      "SJU",
+      "BOG"
+    ],
+    [
+      "SJU",
+      "MDE"
+    ],
+    [
+      "SLC",
+      "LIM"
+    ],
+    [
+      "SSA",
+      "PTY"
+    ],
+    [
+      "TPA",
+      "BOG"
+    ],
+    [
+      "UIO",
+      "ATL"
+    ],
+    [
+      "UIO",
+      "IAH"
+    ],
+    [
+      "UIO",
+      "JFK"
+    ],
+    [
+      "UIO",
+      "MEX"
+    ],
+    [
+      "UIO",
+      "MIA"
+    ],
+    [
+      "UIO",
+      "PTY"
+    ],
+    [
+      "UIO",
+      "PUJ"
+    ],
+    [
+      "UIO",
+      "SAL"
+    ],
+    [
+      "UIO",
+      "SJO"
+    ],
+    [
+      "UIO",
+      "YUL"
+    ],
+    [
+      "UIO",
+      "YYZ"
+    ],
+    [
+      "VCP",
+      "FLL"
+    ],
+    [
+      "VCP",
+      "MCO"
+    ],
+    [
+      "VVI",
+      "MIA"
+    ],
+    [
+      "VVI",
+      "PTY"
+    ],
+    [
+      "YUL",
+      "BOG"
+    ],
+    [
+      "YUL",
+      "CTG"
+    ],
+    [
+      "YUL",
+      "GIG"
+    ],
+    [
+      "YUL",
+      "GRU"
+    ],
+    [
+      "YUL",
+      "LIM"
+    ],
+    [
+      "YUL",
+      "SCL"
+    ],
+    [
+      "YUL",
+      "UIO"
+    ],
+    [
+      "YYZ",
+      "BOG"
+    ],
+    [
+      "YYZ",
+      "CTG"
+    ],
+    [
+      "YYZ",
+      "GEO"
+    ],
+    [
+      "YYZ",
+      "GIG"
+    ],
+    [
+      "YYZ",
+      "GRU"
+    ],
+    [
+      "YYZ",
+      "LIM"
+    ],
+    [
+      "YYZ",
+      "SCL"
+    ],
+    [
+      "YYZ",
+      "UIO"
+    ]
+  ],
+  "queries": [
+    [
+      "2026-11-02",
+      "ASU",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "ATL",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "ATL",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "ATL",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "ATL",
+      "GIG"
+    ],
+    [
+      "2026-11-02",
+      "ATL",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "ATL",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "ATL",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "ATL",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "AUA",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "AUA",
+      "CLO"
+    ],
+    [
+      "2026-11-02",
+      "AUA",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "AUA",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "AUA",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "AUA",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "AUA",
+      "PBM"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "ATL"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "AUA"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "BOS"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "CUN"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "DFW"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "EWR"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "FLL"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "GDL"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "GUA"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "IAD"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "MBJ"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "MTY"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "ORD"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "SAL"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "SDQ"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "SJO"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "SJU"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "TPA"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "YUL"
+    ],
+    [
+      "2026-11-02",
+      "BOG",
+      "YYZ"
+    ],
+    [
+      "2026-11-02",
+      "BOS",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "BOS",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "BSB",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "BSB",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "BSB",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "CCS",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "CCS",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "CCS",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "CCS",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "CCS",
+      "SDQ"
+    ],
+    [
+      "2026-11-02",
+      "CLO",
+      "AUA"
+    ],
+    [
+      "2026-11-02",
+      "CLO",
+      "FLL"
+    ],
+    [
+      "2026-11-02",
+      "CLO",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "CLO",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "CLO",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "CLO",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "CNF",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "CNF",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "ATL"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "FLL"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "IAD"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "SDQ"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "SJO"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "YUL"
+    ],
+    [
+      "2026-11-02",
+      "CTG",
+      "YYZ"
+    ],
+    [
+      "2026-11-02",
+      "CUN",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "CUN",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "CUN",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "CUN",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "CUN",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "DFW",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "DFW",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "DFW",
+      "GIG"
+    ],
+    [
+      "2026-11-02",
+      "DFW",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "EWR",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "EWR",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "EWR",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "ATL"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "AUA"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "CUN"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "DFW"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "EZE",
+      "SDQ"
+    ],
+    [
+      "2026-11-02",
+      "FLL",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "FLL",
+      "CLO"
+    ],
+    [
+      "2026-11-02",
+      "FLL",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "FLL",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "FLL",
+      "VCP"
+    ],
+    [
+      "2026-11-02",
+      "FOR",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "FOR",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "GDL",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "GDL",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "GEO",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "GEO",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "GEO",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "GEO",
+      "YYZ"
+    ],
+    [
+      "2026-11-02",
+      "GIG",
+      "ATL"
+    ],
+    [
+      "2026-11-02",
+      "GIG",
+      "DFW"
+    ],
+    [
+      "2026-11-02",
+      "GIG",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "GIG",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "GIG",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "GIG",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "GIG",
+      "YUL"
+    ],
+    [
+      "2026-11-02",
+      "GIG",
+      "YYZ"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "ATL"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "AUA"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "BOS"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "DFW"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "EWR"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "IAD"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "LAX"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "ORD"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "YUL"
+    ],
+    [
+      "2026-11-02",
+      "GRU",
+      "YYZ"
+    ],
+    [
+      "2026-11-02",
+      "GUA",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "GUA",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "IAD",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "IAD",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "IAD",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "CCS"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "GIG"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "IAH",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "GEO"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "GIG"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "JFK",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "LAX",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "LAX",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "LAX",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "ATL"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "AUA"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "CUN"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "EWR"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "LAX"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "MBJ"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "SAL"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "SDQ"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "SJO"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "SLC"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "YUL"
+    ],
+    [
+      "2026-11-02",
+      "LIM",
+      "YYZ"
+    ],
+    [
+      "2026-11-02",
+      "MBJ",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "MBJ",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "MBJ",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "BSB"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "CNF"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "FOR"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "REC"
+    ],
+    [
+      "2026-11-02",
+      "MCO",
+      "VCP"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "AUA"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "CUN"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "FLL"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "GDL"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "GUA"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "MBJ"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "SAL"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "SDQ"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "SJO"
+    ],
+    [
+      "2026-11-02",
+      "MDE",
+      "SJU"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "CLO"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "MEX",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "BSB"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "CCS"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "CLO"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "FOR"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "GEO"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "GIG"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "MVD"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "MIA",
+      "VVI"
+    ],
+    [
+      "2026-11-02",
+      "MTY",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "MVD",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "MVD",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "MVD",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "ORD",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "ORD",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "PBM",
+      "AUA"
+    ],
+    [
+      "2026-11-02",
+      "PBM",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "PBM",
+      "SDQ"
+    ],
+    [
+      "2026-11-02",
+      "POA",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "ASU"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "BSB"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "CCS"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "CLO"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "CNF"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "GEO"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "GIG"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "MVD"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "PBM"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "POA"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "SSA"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "PTY",
+      "VVI"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "CCS"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "CLO"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "MVD"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "PUJ",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "REC",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "SAL",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "SAL",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "SAL",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "SAL",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "ATL"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "CUN"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "LAX"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "YUL"
+    ],
+    [
+      "2026-11-02",
+      "SCL",
+      "YYZ"
+    ],
+    [
+      "2026-11-02",
+      "SDQ",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "SDQ",
+      "CCS"
+    ],
+    [
+      "2026-11-02",
+      "SDQ",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "SDQ",
+      "EZE"
+    ],
+    [
+      "2026-11-02",
+      "SDQ",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "SDQ",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "SDQ",
+      "PBM"
+    ],
+    [
+      "2026-11-02",
+      "SJO",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "SJO",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "SJO",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "SJO",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "SJO",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "SJU",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "SJU",
+      "MDE"
+    ],
+    [
+      "2026-11-02",
+      "SLC",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "SSA",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "TPA",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "ATL"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "IAH"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "JFK"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "MEX"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "PUJ"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "SAL"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "SJO"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "YUL"
+    ],
+    [
+      "2026-11-02",
+      "UIO",
+      "YYZ"
+    ],
+    [
+      "2026-11-02",
+      "VCP",
+      "FLL"
+    ],
+    [
+      "2026-11-02",
+      "VCP",
+      "MCO"
+    ],
+    [
+      "2026-11-02",
+      "VVI",
+      "MIA"
+    ],
+    [
+      "2026-11-02",
+      "VVI",
+      "PTY"
+    ],
+    [
+      "2026-11-02",
+      "YUL",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "YUL",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "YUL",
+      "GIG"
+    ],
+    [
+      "2026-11-02",
+      "YUL",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "YUL",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "YUL",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "YUL",
+      "UIO"
+    ],
+    [
+      "2026-11-02",
+      "YYZ",
+      "BOG"
+    ],
+    [
+      "2026-11-02",
+      "YYZ",
+      "CTG"
+    ],
+    [
+      "2026-11-02",
+      "YYZ",
+      "GEO"
+    ],
+    [
+      "2026-11-02",
+      "YYZ",
+      "GIG"
+    ],
+    [
+      "2026-11-02",
+      "YYZ",
+      "GRU"
+    ],
+    [
+      "2026-11-02",
+      "YYZ",
+      "LIM"
+    ],
+    [
+      "2026-11-02",
+      "YYZ",
+      "SCL"
+    ],
+    [
+      "2026-11-02",
+      "YYZ",
+      "UIO"
+    ]
+  ],
+  "possible_cross_region_directions": 2700,
+  "evidence": [
+    {
+      "origin": "ASU",
+      "destination": "PTY",
+      "source_ids": [
+        "ASU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "ATL",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "AUA",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "BOS",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "CUN",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "DFW",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "EWR",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "FLL",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "GDL",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "GUA",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "IAD",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "IAH",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "JFK",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "MBJ",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "MCO",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "MEX",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "MIA",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "MTY",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "ORD",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "PTY",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "PUJ",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "SAL",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "SDQ",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "SJO",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "SJU",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "TPA",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "YUL",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BOG",
+      "destination": "YYZ",
+      "source_ids": [
+        "BOG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BSB",
+      "destination": "MCO",
+      "source_ids": [
+        "BSB"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BSB",
+      "destination": "MIA",
+      "source_ids": [
+        "BSB"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "BSB",
+      "destination": "PTY",
+      "source_ids": [
+        "BSB"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CCS",
+      "destination": "IAH",
+      "source_ids": [
+        "CCS"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CCS",
+      "destination": "MIA",
+      "source_ids": [
+        "CCS"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CCS",
+      "destination": "PTY",
+      "source_ids": [
+        "CCS"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CCS",
+      "destination": "PUJ",
+      "source_ids": [
+        "CCS"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CCS",
+      "destination": "SDQ",
+      "source_ids": [
+        "CCS"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CLO",
+      "destination": "AUA",
+      "source_ids": [
+        "CLO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CLO",
+      "destination": "FLL",
+      "source_ids": [
+        "CLO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CLO",
+      "destination": "MEX",
+      "source_ids": [
+        "CLO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CLO",
+      "destination": "MIA",
+      "source_ids": [
+        "CLO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CLO",
+      "destination": "PTY",
+      "source_ids": [
+        "CLO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CLO",
+      "destination": "PUJ",
+      "source_ids": [
+        "CLO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CNF",
+      "destination": "MCO",
+      "source_ids": [
+        "CNF"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CNF",
+      "destination": "PTY",
+      "source_ids": [
+        "CNF"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "ATL",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "FLL",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "IAD",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "IAH",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "JFK",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "MCO",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "MEX",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "MIA",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "PTY",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "SDQ",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "YUL",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "CTG",
+      "destination": "YYZ",
+      "source_ids": [
+        "CTG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "ATL",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "AUA",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "CUN",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "DFW",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "IAH",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "JFK",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "MEX",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "MIA",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "PTY",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "PUJ",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "EZE",
+      "destination": "SDQ",
+      "source_ids": [
+        "EZE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "FOR",
+      "destination": "MCO",
+      "source_ids": [
+        "FOR"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "FOR",
+      "destination": "MIA",
+      "source_ids": [
+        "FOR"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GEO",
+      "destination": "JFK",
+      "source_ids": [
+        "GEO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GEO",
+      "destination": "MIA",
+      "source_ids": [
+        "GEO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GEO",
+      "destination": "PTY",
+      "source_ids": [
+        "GEO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GEO",
+      "destination": "YYZ",
+      "source_ids": [
+        "GEO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GIG",
+      "destination": "ATL",
+      "source_ids": [
+        "GIG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GIG",
+      "destination": "DFW",
+      "source_ids": [
+        "GIG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GIG",
+      "destination": "IAH",
+      "source_ids": [
+        "GIG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GIG",
+      "destination": "JFK",
+      "source_ids": [
+        "GIG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GIG",
+      "destination": "MIA",
+      "source_ids": [
+        "GIG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GIG",
+      "destination": "PTY",
+      "source_ids": [
+        "GIG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GIG",
+      "destination": "YUL",
+      "source_ids": [
+        "GIG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GIG",
+      "destination": "YYZ",
+      "source_ids": [
+        "GIG"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "ATL",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "AUA",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "BOS",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "DFW",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "EWR",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "IAD",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "IAH",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "JFK",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "LAX",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "MCO",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "MEX",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "MIA",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "ORD",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "PTY",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "PUJ",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "YUL",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "GRU",
+      "destination": "YYZ",
+      "source_ids": [
+        "GRU"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "ATL",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "AUA",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "CUN",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "EWR",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "IAH",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "JFK",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "LAX",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "MBJ",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "MEX",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "MIA",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "PTY",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "PUJ",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "SAL",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "SDQ",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "SJO",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "SLC",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "YUL",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "LIM",
+      "destination": "YYZ",
+      "source_ids": [
+        "LIM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "AUA",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "CUN",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "FLL",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "GDL",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "GUA",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "IAH",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "JFK",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "MBJ",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "MCO",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "MEX",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "MIA",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "PTY",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "PUJ",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "SAL",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "SDQ",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "SJO",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MDE",
+      "destination": "SJU",
+      "source_ids": [
+        "MDE"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MVD",
+      "destination": "MIA",
+      "source_ids": [
+        "MVD"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MVD",
+      "destination": "PTY",
+      "source_ids": [
+        "MVD"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "MVD",
+      "destination": "PUJ",
+      "source_ids": [
+        "MVD"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PBM",
+      "destination": "AUA",
+      "source_ids": [
+        "PBM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PBM",
+      "destination": "PTY",
+      "source_ids": [
+        "PBM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PBM",
+      "destination": "SDQ",
+      "source_ids": [
+        "PBM"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "POA",
+      "destination": "PTY",
+      "source_ids": [
+        "POA"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "ASU",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "BOG",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "BSB",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "CCS",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "CLO",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "CNF",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "CTG",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "EZE",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "GEO",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "GIG",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "GRU",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "LIM",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "MDE",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "MVD",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "PBM",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "POA",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "SCL",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "SSA",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "UIO",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "PTY",
+      "destination": "VVI",
+      "source_ids": [
+        "panama"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "REC",
+      "destination": "MCO",
+      "source_ids": [
+        "REC"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "ATL",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "CUN",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "IAH",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "JFK",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "LAX",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "MEX",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "MIA",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "PTY",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "PUJ",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "YUL",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SCL",
+      "destination": "YYZ",
+      "source_ids": [
+        "SCL"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SJO",
+      "destination": "BOG",
+      "source_ids": [
+        "sjo"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SJO",
+      "destination": "CTG",
+      "source_ids": [
+        "sjo"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SJO",
+      "destination": "MDE",
+      "source_ids": [
+        "sjo"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SJO",
+      "destination": "UIO",
+      "source_ids": [
+        "sjo"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "SSA",
+      "destination": "PTY",
+      "source_ids": [
+        "SSA"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "ATL",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "IAH",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "JFK",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "MEX",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "MEX",
+      "source_ids": [
+        "quito_mexico"
+      ],
+      "kind": "Official direct-route candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "MIA",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "PTY",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "PUJ",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "SAL",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "SJO",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "YUL",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "UIO",
+      "destination": "YYZ",
+      "source_ids": [
+        "UIO"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "VCP",
+      "destination": "FLL",
+      "source_ids": [
+        "VCP"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "VCP",
+      "destination": "MCO",
+      "source_ids": [
+        "VCP"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "VVI",
+      "destination": "MIA",
+      "source_ids": [
+        "VVI"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    },
+    {
+      "origin": "VVI",
+      "destination": "PTY",
+      "source_ids": [
+        "VVI"
+      ],
+      "kind": "Published nonstop candidate; dated capture required",
+      "direction_policy": "Search both directions independently; no reverse-day service inferred"
+    }
+  ],
+  "sources": {
+    "GRU": {
+      "url": "https://www.flightconnections.com/flights-from-são-paulo-gru",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "BOG": {
+      "url": "https://www.flightconnections.com/flights-from-bogotá-bog",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "SCL": {
+      "url": "https://www.flightconnections.com/flights-from-santiago-de-chile-scl",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "LIM": {
+      "url": "https://www.flightconnections.com/flights-from-lima-lim",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "GIG": {
+      "url": "https://www.flightconnections.com/flights-from-rio-de-janeiro-gig",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "BSB": {
+      "url": "https://www.flightconnections.com/flights-from-brasília-bsb",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "MDE": {
+      "url": "https://www.flightconnections.com/flights-from-medellín-mde",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CNF": {
+      "url": "https://www.flightconnections.com/flights-from-belo-horizonte-cnf",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "VCP": {
+      "url": "https://www.flightconnections.com/flights-from-são-paulo-vcp",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "EZE": {
+      "url": "https://www.flightconnections.com/flights-from-buenos-aires-eze",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "REC": {
+      "url": "https://www.flightconnections.com/flights-from-recife-rec",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "SSA": {
+      "url": "https://www.flightconnections.com/flights-from-salvador-da-bahia-ssa",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CTG": {
+      "url": "https://www.flightconnections.com/flights-from-cartagena-ctg",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "POA": {
+      "url": "https://www.flightconnections.com/flights-from-porto-alegre-poa",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CLO": {
+      "url": "https://www.flightconnections.com/flights-from-cali-clo",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "FOR": {
+      "url": "https://www.flightconnections.com/flights-from-fortaleza-for",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "UIO": {
+      "url": "https://www.flightconnections.com/flights-from-quito-uio",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "MVD": {
+      "url": "https://www.flightconnections.com/flights-from-montevideo-mvd",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "ASU": {
+      "url": "https://www.flightconnections.com/flights-from-asunción-asu",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "VVI": {
+      "url": "https://www.flightconnections.com/flights-from-santa-cruz-de-la-sierra-vvi",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CCS": {
+      "url": "https://www.flightconnections.com/flights-from-caracas-ccs",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "GEO": {
+      "url": "https://www.flightconnections.com/flights-from-georgetown-geo",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "PBM": {
+      "url": "https://www.flightconnections.com/flights-from-paramaribo-pbm",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CGH": {
+      "url": "https://www.flightconnections.com/flights-from-são-paulo-cgh",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "AEP": {
+      "url": "https://www.flightconnections.com/flights-from-buenos-aires-aep",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "SDU": {
+      "url": "https://www.flightconnections.com/flights-from-rio-de-janeiro-sdu",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "CWB": {
+      "url": "https://www.flightconnections.com/flights-from-curitiba-cwb",
+      "kind": "Secondary public nonstop destination directory",
+      "retrieval": "Reviewed public web-tool text excerpts; raw HTML not pinned."
+    },
+    "panama": {
+      "url": "https://es.tourismpanama.com/planea-tu-viaje/llegar-aqui/vuelos-directos-america-del-sur/",
+      "kind": "Official tourism authority exact-airport direct-route list"
+    },
+    "sjo": {
+      "url": "https://www.sjoairport.com/conectividad/",
+      "kind": "Official airport connectivity list; selected city names resolved to existing exact airports"
+    },
+    "quito_mexico": {
+      "url": "https://www.aviacioncivil.gob.ec/ecuador-y-mexico-retoman-conexiones-aereas/",
+      "kind": "Official aviation authority direct-route announcement"
+    }
+  },
+  "airport_reviews": [
+    {
+      "airport": "GRU",
+      "destinations": [
+        "ATL",
+        "AUA",
+        "BOS",
+        "DFW",
+        "EWR",
+        "IAD",
+        "IAH",
+        "JFK",
+        "LAX",
+        "MCO",
+        "MEX",
+        "MIA",
+        "ORD",
+        "PTY",
+        "PUJ",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "GRU"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "BOG",
+      "destinations": [
+        "ATL",
+        "AUA",
+        "BOS",
+        "CUN",
+        "DFW",
+        "EWR",
+        "FLL",
+        "GDL",
+        "GUA",
+        "IAD",
+        "IAH",
+        "JFK",
+        "MBJ",
+        "MCO",
+        "MEX",
+        "MIA",
+        "MTY",
+        "ORD",
+        "PTY",
+        "PUJ",
+        "SAL",
+        "SDQ",
+        "SJO",
+        "SJU",
+        "TPA",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "BOG"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "SCL",
+      "destinations": [
+        "ATL",
+        "CUN",
+        "IAH",
+        "JFK",
+        "LAX",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "SCL"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "LIM",
+      "destinations": [
+        "ATL",
+        "AUA",
+        "CUN",
+        "EWR",
+        "IAH",
+        "JFK",
+        "LAX",
+        "MBJ",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SAL",
+        "SDQ",
+        "SJO",
+        "SLC",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "LIM"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "GIG",
+      "destinations": [
+        "ATL",
+        "DFW",
+        "IAH",
+        "JFK",
+        "MIA",
+        "PTY",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "GIG"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "BSB",
+      "destinations": [
+        "MCO",
+        "MIA",
+        "PTY"
+      ],
+      "source_ids": [
+        "BSB"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "MDE",
+      "destinations": [
+        "AUA",
+        "CUN",
+        "FLL",
+        "GDL",
+        "GUA",
+        "IAH",
+        "JFK",
+        "MBJ",
+        "MCO",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SAL",
+        "SDQ",
+        "SJO",
+        "SJU"
+      ],
+      "source_ids": [
+        "MDE"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "CNF",
+      "destinations": [
+        "MCO",
+        "PTY"
+      ],
+      "source_ids": [
+        "CNF"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "VCP",
+      "destinations": [
+        "FLL",
+        "MCO"
+      ],
+      "source_ids": [
+        "VCP"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "EZE",
+      "destinations": [
+        "ATL",
+        "AUA",
+        "CUN",
+        "DFW",
+        "IAH",
+        "JFK",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SDQ"
+      ],
+      "source_ids": [
+        "EZE"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "REC",
+      "destinations": [
+        "MCO"
+      ],
+      "source_ids": [
+        "REC"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "SSA",
+      "destinations": [
+        "PTY"
+      ],
+      "source_ids": [
+        "SSA"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "CTG",
+      "destinations": [
+        "ATL",
+        "FLL",
+        "IAD",
+        "IAH",
+        "JFK",
+        "MCO",
+        "MEX",
+        "MIA",
+        "PTY",
+        "SDQ",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "CTG"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "POA",
+      "destinations": [
+        "PTY"
+      ],
+      "source_ids": [
+        "POA"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "CLO",
+      "destinations": [
+        "AUA",
+        "FLL",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ"
+      ],
+      "source_ids": [
+        "CLO"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "FOR",
+      "destinations": [
+        "MCO",
+        "MIA"
+      ],
+      "source_ids": [
+        "FOR"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "UIO",
+      "destinations": [
+        "ATL",
+        "IAH",
+        "JFK",
+        "MEX",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SAL",
+        "SJO",
+        "YUL",
+        "YYZ"
+      ],
+      "source_ids": [
+        "UIO"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "MVD",
+      "destinations": [
+        "MIA",
+        "PTY",
+        "PUJ"
+      ],
+      "source_ids": [
+        "MVD"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "ASU",
+      "destinations": [
+        "PTY"
+      ],
+      "source_ids": [
+        "ASU"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "VVI",
+      "destinations": [
+        "MIA",
+        "PTY"
+      ],
+      "source_ids": [
+        "VVI"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "CCS",
+      "destinations": [
+        "IAH",
+        "MIA",
+        "PTY",
+        "PUJ",
+        "SDQ"
+      ],
+      "source_ids": [
+        "CCS"
+      ],
+      "status": "Published candidates found",
+      "notes": "Directory candidates require dated verification; geopolitical or seasonal listings may be stale."
+    },
+    {
+      "airport": "GEO",
+      "destinations": [
+        "JFK",
+        "MIA",
+        "PTY",
+        "YYZ"
+      ],
+      "source_ids": [
+        "GEO"
+      ],
+      "status": "Published candidates found",
+      "notes": "Seasonal entries without a clear out-of-window start remain candidates; never invent schedules."
+    },
+    {
+      "airport": "PBM",
+      "destinations": [
+        "AUA",
+        "PTY",
+        "SDQ"
+      ],
+      "source_ids": [
+        "PBM"
+      ],
+      "status": "Published candidates found",
+      "notes": "Do not treat a Miami itinerary via GEO as a PBM–MIA nonstop."
+    },
+    {
+      "airport": "CGH",
+      "destinations": [],
+      "source_ids": [
+        "CGH"
+      ],
+      "status": "No in-scope candidates in reviewed listing; not a claim of no service",
+      "notes": "Directory lists domestic departures only; do not copy routes from the other city airport."
+    },
+    {
+      "airport": "AEP",
+      "destinations": [],
+      "source_ids": [
+        "AEP"
+      ],
+      "status": "No in-scope candidates in reviewed listing; not a claim of no service",
+      "notes": "Reviewed international destinations remain within South America; do not copy EZE routes."
+    },
+    {
+      "airport": "SDU",
+      "destinations": [],
+      "source_ids": [
+        "SDU"
+      ],
+      "status": "No in-scope candidates in reviewed listing; not a claim of no service",
+      "notes": "Directory lists domestic departures only; do not copy routes from the other city airport."
+    },
+    {
+      "airport": "CWB",
+      "destinations": [],
+      "source_ids": [
+        "CWB"
+      ],
+      "status": "No in-scope candidates in reviewed listing; not a claim of no service",
+      "notes": "Reviewed directory lists no US, Canada, Central American or Caribbean nonstops."
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "origin": "GRU",
+      "destination": "YYC",
+      "reason": "Directory country section explicitly lists December–February operation; starts after 2 November.",
+      "source_id": "GRU"
+    },
+    {
+      "origin": "SCL",
+      "destination": "DFW",
+      "reason": "Directory country section explicitly lists December–March operation; starts after 2 November.",
+      "source_id": "SCL"
+    }
+  ],
+  "evidence_path": "data/sources/americas_route_evidence.json",
+  "route_source_sha256": "fa73896472410341d2be7d6256efb7fe908fe3524193fd99db28f66e6a99b679",
+  "route_source_hash_basis": "SHA256 of committed normalized discovery facts; not raw source-page bytes",
+  "input_manifests": [
+    {
+      "path": "data/sources/united_states_flights_routes.json",
+      "sha256": "f40f7303f4595d2979436e5f5af7e69a641e588d3349b10d17a283a0c617a5fc"
+    },
+    {
+      "path": "data/sources/south_america_flights_routes.json",
+      "sha256": "2b99414fe9f5fdcfc3f094c7776c1711b653aba6e830b54698abd1e47e9b3a5b"
+    }
+  ],
+  "reviewed_on": "2026-10-27",
+  "limitations": [
+    "Directory and official lists can be incomplete or stale; shortlist is not an exhaustive Americas route inventory.",
+    "No airport-pair Cartesian searches, airline-by-airline searches or extra dates.",
+    "City marketing offers, connecting itineraries, cargo and destinations outside existing airport catalogues are excluded.",
+    "Document hashes cover normalized committed facts, not original HTML page bytes."
+  ]
+}

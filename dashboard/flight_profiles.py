@@ -45,6 +45,16 @@ PROFILES.update({
  'TW':dict(slug='taiwan',name='Taiwan',zone='Asia/Taipei',label='CST',clock='Taiwan time (UTC+8)',bounds=[[117.7,21.7],[122.3,26.6]],domestic=True,default_scope='domestic',worldwide=True),
  'HK':dict(slug='hong_kong',name='Hong Kong',zone='Asia/Hong_Kong',label='HKT',clock='Hong Kong time (HKT, UTC+8)',bounds=[[113.8,22.1],[114.5,22.6]],domestic=False,default_scope='international',airport='HKG',worldwide=True),
 })
+PROFILES['AMERICAS']=dict(
+    slug='americas',name='Americas',zone='UTC',label='UTC',clock='UTC',
+    bounds=[[-161,-57],[-33,55]],arc_anchor=-98,max_duration=57600,
+    domestic=True,standalone=True,default_scope='both',origin_local_day=True,flight_country_filters=True,
+    airport_countries={**dict.fromkeys(PROFILES['US']['airport_zones'],'US'),
+        **PROFILES['US']['airport_countries'],**PROFILES['SOUTH_AMERICA']['airport_countries']},
+    airport_zones={**PROFILES['US']['airport_zones'],**PROFILES['SOUTH_AMERICA']['airport_zones']},
+    airport_replay_zones=PROFILES['US']['airport_replay_zones'],flight_jurisdictions=PROFILES['US']['flight_jurisdictions'],
+    description='Americas · Flights between 77 selected airports across North America, Central America, the Caribbean and South America · 2 November 2026 departures, including overnight arrivals. Timeline: UTC; airport boards use local time. All captured fares use USD. Coverage and prices are partial; paths are illustrative.',
+)
 BY_CITY={p['slug']+'_flights':(c,p) for c,p in PROFILES.items()}
 
 

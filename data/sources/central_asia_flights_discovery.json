@@ -1,0 +1,1530 @@
+{
+  "reviewed_at": "2026-10-27T12:06:52.558720+00:00",
+  "launch_airports": [
+    "ALA",
+    "NQZ",
+    "CIT",
+    "SCO",
+    "GUW",
+    "AKX",
+    "URA",
+    "KSN",
+    "KGF",
+    "KZO",
+    "UKK",
+    "PWQ",
+    "PLX",
+    "PPK",
+    "KOV",
+    "DMB",
+    "DZN",
+    "HSA",
+    "TAS",
+    "SKD",
+    "BHK",
+    "UGC",
+    "NCU",
+    "FEG",
+    "NMA",
+    "AZN",
+    "TMJ",
+    "NVI",
+    "KSQ",
+    "BSZ",
+    "OSS",
+    "IKU",
+    "IKG",
+    "DYU",
+    "LBD",
+    "TJU",
+    "KQT",
+    "ASB",
+    "KRW",
+    "TAZ",
+    "CRZ",
+    "MYP",
+    "BKN",
+    "KEA"
+  ],
+  "worldwide_hubs": [
+    "ALA",
+    "NQZ",
+    "CIT",
+    "SCO",
+    "GUW",
+    "AKX",
+    "URA",
+    "KSN",
+    "KGF",
+    "KZO",
+    "UKK",
+    "PWQ",
+    "PLX",
+    "PPK",
+    "KOV",
+    "DMB",
+    "DZN",
+    "HSA",
+    "TAS",
+    "SKD",
+    "BHK",
+    "UGC",
+    "NCU",
+    "FEG",
+    "NMA",
+    "AZN",
+    "TMJ",
+    "NVI",
+    "KSQ",
+    "BSZ",
+    "OSS",
+    "IKU",
+    "IKG",
+    "DYU",
+    "LBD",
+    "TJU",
+    "KQT",
+    "ASB",
+    "KRW",
+    "TAZ",
+    "CRZ",
+    "MYP",
+    "BKN",
+    "KEA"
+  ],
+  "airport_maps": [
+    {
+      "airport": "ALA",
+      "destinations": [
+        "ADB",
+        "AKX",
+        "AUH",
+        "AYK",
+        "AYT",
+        "BJV",
+        "BKK",
+        "BOM",
+        "BSZ",
+        "BUS",
+        "BXH",
+        "CAN",
+        "CIT",
+        "CKG",
+        "CXR",
+        "DAD",
+        "DEL",
+        "DLM",
+        "DMB",
+        "DMK",
+        "DOH",
+        "DXB",
+        "DYU",
+        "DZN",
+        "ESB",
+        "EVN",
+        "FRA",
+        "GUW",
+        "GYD",
+        "GZP",
+        "HAN",
+        "HGH",
+        "HKG",
+        "HKT",
+        "HSA",
+        "ICN",
+        "IKU",
+        "IST",
+        "KGF",
+        "KJA",
+        "KOV",
+        "KSN",
+        "KUL",
+        "KUT",
+        "KZN",
+        "KZO",
+        "LCA",
+        "LED",
+        "LGK",
+        "LHR",
+        "MCT",
+        "MLE",
+        "MRV",
+        "MSQ",
+        "MXP",
+        "NCU",
+        "NQZ",
+        "NRT",
+        "OVB",
+        "PEK",
+        "PKX",
+        "PLX",
+        "PPK",
+        "PQC",
+        "PRG",
+        "PUS",
+        "PVG",
+        "PWQ",
+        "SAW",
+        "SCO",
+        "SHJ",
+        "SKD",
+        "SLL",
+        "SSH",
+        "SVO",
+        "SVX",
+        "SYX",
+        "TAS",
+        "TBS",
+        "TFU",
+        "TGD",
+        "UBN",
+        "UGC",
+        "UKK",
+        "URA",
+        "URC",
+        "USJ",
+        "UZR",
+        "VKO",
+        "WAW",
+        "XIY",
+        "YIN"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/ala/",
+          "sha256": "763c22701fef2cbbfcd97794c81c1b7fbeb54d4df1999bee7a9289fc8548933a",
+          "bytes": 67465
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/ala-routes.svg",
+          "sha256": "54fff186c0ebd99811a5a210c8990e3430f4c364ddef2d1550fb96ef3905e2b0",
+          "bytes": 159432
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "NQZ",
+      "destinations": [
+        "ADB",
+        "AKX",
+        "ALA",
+        "AYK",
+        "AYT",
+        "BEG",
+        "BJV",
+        "BKK",
+        "BSZ",
+        "BUS",
+        "CAN",
+        "CIT",
+        "CXR",
+        "DAD",
+        "DLM",
+        "DMB",
+        "DXB",
+        "DYU",
+        "DZN",
+        "ESB",
+        "EVN",
+        "FRA",
+        "GUW",
+        "GYD",
+        "GZP",
+        "HKT",
+        "HSA",
+        "ICN",
+        "IKU",
+        "IST",
+        "KSN",
+        "KUT",
+        "KZN",
+        "KZO",
+        "LCA",
+        "LED",
+        "MLE",
+        "MRV",
+        "MSQ",
+        "OMS",
+        "OVB",
+        "PEK",
+        "PLX",
+        "PQC",
+        "PRG",
+        "PWQ",
+        "SAW",
+        "SCO",
+        "SKD",
+        "SLL",
+        "SSH",
+        "SVO",
+        "SVX",
+        "SYX",
+        "TAS",
+        "TBS",
+        "TDK",
+        "TGD",
+        "UBN",
+        "UKK",
+        "URA",
+        "URC",
+        "UZR",
+        "VKO",
+        "WAW",
+        "XIY",
+        "YIN"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/nqz/",
+          "sha256": "6be1cb439e6e580feb97d316b0e3726aa8f0577db283dd634f20b49e78e1fdbb",
+          "bytes": 55025
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/nqz-routes.svg",
+          "sha256": "166c09fd21f9121f547fdb099048956f61169d9a0222397b04f14afb12256683",
+          "bytes": 134675
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "CIT",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/cit/: HTTP 404"
+    },
+    {
+      "airport": "SCO",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/sco/: HTTP 404"
+    },
+    {
+      "airport": "GUW",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/guw/: HTTP 404"
+    },
+    {
+      "airport": "AKX",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/akx/: HTTP 404"
+    },
+    {
+      "airport": "URA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ura/: HTTP 404"
+    },
+    {
+      "airport": "KSN",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ksn/: HTTP 404"
+    },
+    {
+      "airport": "KGF",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kgf/: HTTP 404"
+    },
+    {
+      "airport": "KZO",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kzo/: HTTP 404"
+    },
+    {
+      "airport": "UKK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ukk/: HTTP 404"
+    },
+    {
+      "airport": "PWQ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/pwq/: HTTP 404"
+    },
+    {
+      "airport": "PLX",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/plx/: HTTP 404"
+    },
+    {
+      "airport": "PPK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ppk/: HTTP 404"
+    },
+    {
+      "airport": "KOV",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kov/: HTTP 404"
+    },
+    {
+      "airport": "DMB",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/dmb/: HTTP 404"
+    },
+    {
+      "airport": "DZN",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/dzn/: HTTP 404"
+    },
+    {
+      "airport": "HSA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/hsa/: HTTP 404"
+    },
+    {
+      "airport": "TAS",
+      "destinations": [
+        "ADB",
+        "AER",
+        "AKX",
+        "ALA",
+        "AMM",
+        "AUH",
+        "AYT",
+        "AZN",
+        "BHK",
+        "BJV",
+        "BKK",
+        "BOM",
+        "BSZ",
+        "BUS",
+        "CAN",
+        "CDG",
+        "CXR",
+        "DAD",
+        "DEL",
+        "DME",
+        "DOH",
+        "DXB",
+        "DYU",
+        "ESB",
+        "EVN",
+        "FCO",
+        "FEG",
+        "FRA",
+        "GOJ",
+        "GRV",
+        "GYD",
+        "HGH",
+        "HKT",
+        "HRI",
+        "HYD",
+        "ICN",
+        "IKT",
+        "IKU",
+        "ISB",
+        "IST",
+        "IYO",
+        "JED",
+        "JFK",
+        "KBL",
+        "KHI",
+        "KHV",
+        "KJA",
+        "KRR",
+        "KSN",
+        "KSQ",
+        "KUF",
+        "KUL",
+        "KZN",
+        "LED",
+        "LGW",
+        "LHE",
+        "LHR",
+        "MCT",
+        "MCX",
+        "MED",
+        "MLE",
+        "MRV",
+        "MSQ",
+        "MUC",
+        "MXP",
+        "NCU",
+        "NJC",
+        "NMA",
+        "NQZ",
+        "NRT",
+        "NVI",
+        "OMN",
+        "OMS",
+        "OQN",
+        "OSS",
+        "OVB",
+        "PEE",
+        "PEK",
+        "PKX",
+        "PQC",
+        "PRG",
+        "PVG",
+        "RBZ",
+        "RIX",
+        "SGC",
+        "SHJ",
+        "SKD",
+        "SSH",
+        "SVO",
+        "SVX",
+        "SYX",
+        "TBS",
+        "TFU",
+        "TJM",
+        "TLV",
+        "TMJ",
+        "TZX",
+        "UFA",
+        "UGC",
+        "URC",
+        "VKO",
+        "VVO",
+        "WAW",
+        "XIY",
+        "ZIA"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/tas/",
+          "sha256": "1b434b9cabf9eee2aeddd12fea4f05db18ea1dbfaa50ff1fa7f65651fc7e472e",
+          "bytes": 76092
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/tas-routes.svg",
+          "sha256": "961352a33b36d958a83739fd722b286514461334bd618b7766ace83601a20e46",
+          "bytes": 214671
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "SKD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/skd/: HTTP 404"
+    },
+    {
+      "airport": "BHK",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/bhk/: HTTP 404"
+    },
+    {
+      "airport": "UGC",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ugc/: HTTP 404"
+    },
+    {
+      "airport": "NCU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ncu/: HTTP 404"
+    },
+    {
+      "airport": "FEG",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/feg/: HTTP 404"
+    },
+    {
+      "airport": "NMA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/nma/: HTTP 404"
+    },
+    {
+      "airport": "AZN",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/azn/: HTTP 404"
+    },
+    {
+      "airport": "TMJ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tmj/: HTTP 404"
+    },
+    {
+      "airport": "NVI",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/nvi/: HTTP 404"
+    },
+    {
+      "airport": "KSQ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ksq/: HTTP 404"
+    },
+    {
+      "airport": "BSZ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/bsz/: HTTP 404"
+    },
+    {
+      "airport": "OSS",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/oss/: HTTP 404"
+    },
+    {
+      "airport": "IKU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/iku/: HTTP 404"
+    },
+    {
+      "airport": "IKG",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ikg/: HTTP 404"
+    },
+    {
+      "airport": "DYU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/dyu/: HTTP 404"
+    },
+    {
+      "airport": "LBD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/lbd/: HTTP 404"
+    },
+    {
+      "airport": "TJU",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/tju/: HTTP 404"
+    },
+    {
+      "airport": "KQT",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kqt/: HTTP 404"
+    },
+    {
+      "airport": "ASB",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/asb/: HTTP 404"
+    },
+    {
+      "airport": "KRW",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/krw/: HTTP 404"
+    },
+    {
+      "airport": "TAZ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/taz/: HTTP 404"
+    },
+    {
+      "airport": "CRZ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/crz/: HTTP 404"
+    },
+    {
+      "airport": "MYP",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/myp/: HTTP 404"
+    },
+    {
+      "airport": "BKN",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/bkn/: HTTP 404"
+    },
+    {
+      "airport": "KEA",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/kea/: HTTP 404"
+    }
+  ],
+  "supplemental_airport_maps": [
+    {
+      "airport": "BSZ",
+      "destinations": [
+        "ALA",
+        "AYT",
+        "CXR",
+        "DME",
+        "DXB",
+        "ESB",
+        "GYD",
+        "IKG",
+        "ISB",
+        "IST",
+        "KJA",
+        "LED",
+        "NQZ",
+        "OSS",
+        "OVB",
+        "PKX",
+        "SAW",
+        "SHJ",
+        "SVO",
+        "SVX",
+        "TAS",
+        "URC",
+        "XIY"
+      ],
+      "description": "Reviewed October 2026 nonstop top-20 list and explicit airport-code facts; not the complete airport network.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-bishkek-bsz",
+          "facts_sha256": "ab7403c1a21dfb8769af2f25db2317860d25a61ecaee1efd2c1740744e0a0828",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "DYU",
+      "destinations": [
+        "ALA",
+        "BSZ",
+        "CEK",
+        "DEL",
+        "DME",
+        "DXB",
+        "GYD",
+        "IST",
+        "JED",
+        "KJA",
+        "KUF",
+        "KZN",
+        "LBD",
+        "LED",
+        "MUC",
+        "NQZ",
+        "OVB",
+        "SVX",
+        "TAS",
+        "UFA",
+        "URC",
+        "VKO",
+        "XIY",
+        "ZIA"
+      ],
+      "description": "Reviewed October 2026 nonstop top-20 list and explicit airport-code facts; not the complete airport network.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-dushanbe-dyu",
+          "facts_sha256": "d60b6ab3d95fcadee291edde4304033186ecee86d9fd03b60892f3be572bcd0c",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "SKD",
+      "destinations": [
+        "ADB",
+        "AER",
+        "ALA",
+        "DME",
+        "GYD",
+        "IST",
+        "KZN",
+        "LED",
+        "MRV",
+        "NQZ",
+        "OVB",
+        "SVO",
+        "SVX",
+        "SYX",
+        "TAS",
+        "TLV",
+        "UFA",
+        "VKO",
+        "XIY",
+        "ZIA"
+      ],
+      "description": "Reviewed October 2026 nonstop top-20 list; future-only and connecting sections excluded.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-samarkand-skd",
+          "facts_sha256": "385caa38857d0f4008b17e757d908c45cb4a3cbb29ce534227fd15a75b1fee89",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "OSS",
+      "destinations": [
+        "BSZ",
+        "DME",
+        "IKG",
+        "IKT",
+        "KHG",
+        "KJA",
+        "LED",
+        "NJC",
+        "OVB",
+        "SAW",
+        "SGC",
+        "SVO",
+        "SVX",
+        "TAS",
+        "TJM",
+        "URC",
+        "VKO",
+        "ZIA"
+      ],
+      "description": "Reviewed October 2026 nonstop list; zero-flight KWI candidate omitted.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-osh-oss",
+          "facts_sha256": "334d6c56673dd3ce23d4c8508ba502209cae85d68e9ad2b9d644f3afb65e8eb1",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "LBD",
+      "destinations": [
+        "DME",
+        "DYU",
+        "KHG",
+        "KJA",
+        "KUF",
+        "KZN",
+        "LED",
+        "MRV",
+        "OVB",
+        "SGC",
+        "SVX",
+        "TJM",
+        "UFA",
+        "ZIA"
+      ],
+      "description": "Reviewed October 2026 nonstop list, not frequency-derived flight timings.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-khujand-lbd",
+          "facts_sha256": "1845be40f68bce8db2994fa33ebe4914a79410a621d85535c0fe29ca00ca5f76",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "UGC",
+      "destinations": [
+        "ALA",
+        "BHK",
+        "DME",
+        "IST",
+        "KUF",
+        "LED",
+        "MCX",
+        "TAS",
+        "VKO",
+        "ZIA"
+      ],
+      "description": "Reviewed October 2026 nonstop list; zero-flight CDG/FCO/MXP candidates omitted.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-urgench-ugc",
+          "facts_sha256": "bb56854ed5236c92a9f6912bc68d3027abf98b26756d195a6b980ae168e48c4b",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "FEG",
+      "destinations": [
+        "DME",
+        "IKT",
+        "IST",
+        "JED",
+        "KZN",
+        "LED",
+        "OVB",
+        "TAS",
+        "VKO",
+        "ZIA"
+      ],
+      "description": "Reviewed October 2026 nonstop list, not frequency-derived flight timings.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-fergana-feg",
+          "facts_sha256": "1b987da2b48360800cb64620a2d6a99125011d694dfdddf5448ce86f375fed39",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "NMA",
+      "destinations": [
+        "AER",
+        "DEL",
+        "DME",
+        "IKT",
+        "JED",
+        "KJA",
+        "KUF",
+        "KZN",
+        "LED",
+        "MCX",
+        "NJC",
+        "OMS",
+        "PEE",
+        "SVX",
+        "TAS",
+        "UFA",
+        "VKO",
+        "ZIA"
+      ],
+      "description": "Reviewed October 2026 nonstop list; zero-flight KWI candidate omitted.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-namangan-nma",
+          "facts_sha256": "e6e149eb1d08d5ce6027d0e3d320d26b2be7078cfcc7cc6b67e82d54d5463ace",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "ASB",
+      "destinations": [
+        "BKN",
+        "CRZ",
+        "KEA",
+        "KRW",
+        "MYP",
+        "TAZ"
+      ],
+      "description": "Published official domestic routes only; weekly timings are not imported.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://turkmenistanairlines.tm/en/services/show/napravlenie-i-raspisanie-reysov",
+          "facts_sha256": "c26106da5440463ed5dc2fe4d271ebf1af5c484406c49c74a04974dd7cf7081b",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "TAZ",
+      "destinations": [
+        "BKN",
+        "CRZ",
+        "MYP"
+      ],
+      "description": "Published official cross-regional domestic route candidates.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://turkmenistanairlines.tm/en/services/show/napravlenie-i-raspisanie-reysov",
+          "facts_sha256": "92ecfeff875e0f88108f1fb831fcc5eae8f92d42a461125f8610430791a39496",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "BKN",
+      "destinations": [
+        "CRZ",
+        "KEA",
+        "MYP"
+      ],
+      "description": "Published official cross-regional domestic route candidates.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://turkmenistanairlines.tm/en/services/show/napravlenie-i-raspisanie-reysov",
+          "facts_sha256": "4d081e6d05a889ff11a0b8b845e530d63f9181f185f87d18f23c368db2f56685",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "ASB",
+      "destinations": [
+        "AUH",
+        "BKK",
+        "DEL",
+        "FRA",
+        "ICN",
+        "IST",
+        "JED",
+        "KUL",
+        "LGW",
+        "MXP",
+        "PEK",
+        "SGN"
+      ],
+      "description": "Published international exact-IATA route map; dated service and fares require Google capture.",
+      "kind": "Reviewed published nonstop route facts, not dated service",
+      "documents": [
+        {
+          "url": "https://turkmenistanairlines.com/flight-map",
+          "facts_sha256": "9adc18e4f13b61e9a322f08dfa65d3f7a5e51aee38330b97d740d35aa43ea206",
+          "facts_reviewed_at": "2026-10-27"
+        }
+      ]
+    },
+    {
+      "airport": "AKX",
+      "destinations": [
+        "ALA",
+        "NQZ",
+        "SCO"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "ALA",
+      "destinations": [
+        "AKX",
+        "CIT",
+        "DMB",
+        "DZN",
+        "GUW",
+        "KGF",
+        "KOV",
+        "KSN",
+        "KZO",
+        "NQZ",
+        "PLX",
+        "PPK",
+        "PWQ",
+        "SCO",
+        "UKK"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "AZN",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "BHK",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "BSZ",
+      "destinations": [
+        "OSS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "CIT",
+      "destinations": [
+        "ALA",
+        "NQZ",
+        "SCO"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "DMB",
+      "destinations": [
+        "ALA",
+        "NQZ"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "DZN",
+      "destinations": [
+        "ALA",
+        "NQZ"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "FEG",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "GUW",
+      "destinations": [
+        "ALA",
+        "NQZ",
+        "SCO",
+        "URA"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "KGF",
+      "destinations": [
+        "ALA",
+        "KZO",
+        "UKK"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "KOV",
+      "destinations": [
+        "ALA"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "KSN",
+      "destinations": [
+        "ALA",
+        "NQZ"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "KSQ",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "KZO",
+      "destinations": [
+        "ALA",
+        "KGF",
+        "NQZ",
+        "SCO"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "NCU",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "NMA",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "NQZ",
+      "destinations": [
+        "AKX",
+        "ALA",
+        "CIT",
+        "DMB",
+        "DZN",
+        "GUW",
+        "KSN",
+        "KZO",
+        "PLX",
+        "PPK",
+        "PWQ",
+        "SCO",
+        "UKK",
+        "URA"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "NVI",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "OSS",
+      "destinations": [
+        "BSZ"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "PLX",
+      "destinations": [
+        "ALA",
+        "NQZ",
+        "UKK"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "PPK",
+      "destinations": [
+        "ALA",
+        "NQZ"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "PWQ",
+      "destinations": [
+        "ALA",
+        "NQZ"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "SCO",
+      "destinations": [
+        "AKX",
+        "ALA",
+        "CIT",
+        "GUW",
+        "KZO",
+        "NQZ",
+        "URA"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "SKD",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "TAS",
+      "destinations": [
+        "AZN",
+        "BHK",
+        "FEG",
+        "KSQ",
+        "NCU",
+        "NMA",
+        "NVI",
+        "SKD",
+        "TMJ",
+        "UGC"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "TMJ",
+      "destinations": [
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "UGC",
+      "destinations": [
+        "BHK",
+        "TAS"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "UKK",
+      "destinations": [
+        "ALA",
+        "KGF",
+        "NQZ",
+        "PLX"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    },
+    {
+      "airport": "URA",
+      "destinations": [
+        "GUW",
+        "NQZ",
+        "SCO"
+      ],
+      "kind": "Historical domestic candidates only",
+      "description": "2014-era domestic-only OpenFlights routes; FRU/TSE normalized for candidate queries only, never flight-record identities. NOT current service or dated timings.",
+      "documents": [
+        {
+          "url": "https://raw.githubusercontent.com/jpatokal/openflights/master/data/routes.dat",
+          "sha256": "bd373706238134f619c624c606dccc74c05c2582a977c489c81de501735f2390",
+          "bytes": 2377148
+        }
+      ]
+    }
+  ],
+  "supplemental_source_warning": "Historical archive stopped updating June 2014; domestic candidates only. Reviewed current lists are partial. No frequencies or connecting itineraries become flights.",
+  "supplemental_discovery_gaps": [
+    "Public FlightConnections raw download returned HTTP 403; no further raw downloads attempted. Only reviewed public indexed nonstop route facts are pinned, without a fabricated raw-page checksum."
+  ],
+  "supplemental_airport_code_changes": [
+    {
+      "old": "FRU",
+      "current": "BSZ",
+      "icao": "UCFM",
+      "source": "https://www.trinityairways.com/app/customerCenter/notice/retrieve/12418"
+    },
+    {
+      "old": "TSE",
+      "current": "NQZ",
+      "icao": "UACC",
+      "source": "https://www.gov.kz/uploads/2022/2/14/f4bd7a89429f465aae98022132afc98f_original.3460307.pdf"
+    }
+  ]
+}

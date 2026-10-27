@@ -114,6 +114,8 @@ from dashboard.pakistan_bangladesh_flights import profiles as pakistan_banglades
 PROFILES.update(pakistan_bangladesh_profiles())
 from dashboard.pacific_flights import profile as pacific_profile
 PROFILES['PACIFIC']=pacific_profile()
+from dashboard.central_asia_flights import profile as central_asia_profile
+PROFILES['CENTRAL_ASIA']=central_asia_profile()
 BY_CITY={p['slug']+'_flights':(c,p) for c,p in PROFILES.items()}
 
 

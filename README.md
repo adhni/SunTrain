@@ -4,6 +4,8 @@ Historical transport replay across Argentina, Australia, Austria, Belgium, Boliv
 
 ## Türkiye flights
 
+Choose **Central Asia · Flights** for **2 November 2026**: **604 captured flights** across Kazakhstan, Uzbekistan, Kyrgyzstan, Tajikistan and Turkmenistan. Uses sourced directions, one origin-local departure date, new USD quotes, current airport identities and local clocks. Coverage is partial; see [Central Asia flight notes](CENTRAL_ASIA_FLIGHTS_NOTES.md) for country-level coverage and source gaps.
+
 Choose **Pacific Islands · Flights** for **2 November 2026**: **877 captured flights** across Melanesia, Micronesia, Polynesia and Hawaii, plus international connections. Uses one origin-local departure date, USD for new fares, local airport boards and a UTC timeline across the date line. Coverage is partial; see [Pacific flight notes](PACIFIC_FLIGHTS_NOTES.md) for actual island-group coverage, source age and rebuilding.
 
 Choose **Pakistan · Flights** or **Bangladesh · Flights** for **2 November 2026**. Pakistan contains **293 captured flights** (64 domestic, 229 international); Bangladesh **243** (99 domestic, 144 international). Uses sourced routes, one origin-local departure date, correct local clocks (Pakistan UTC+5, Bangladesh UTC+6), USD for new fares and original reused currencies. Includes filters, local/fullscreen airport boards, Destinations, fare previews and frequency lines. Coverage and fares are partial; see [Pakistan and Bangladesh flight notes](PAKISTAN_BANGLADESH_FLIGHTS_NOTES.md) for source gaps, actual coverage and rebuilding.

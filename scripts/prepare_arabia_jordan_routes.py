@@ -8,8 +8,8 @@ from dashboard.arabia_jordan_flights import COUNTRIES
 from scripts.sourced_flight_routes import build as build_country,DAY
 
 
-def build(code):
-    p=COUNTRIES[code];slug=p['slug'];name=p['name']
+def build(code,countries=None):
+    p=(countries or COUNTRIES)[code];slug=p['slug'];name=p['name']
     cache=ROOT/f'.cache/google-flights-{slug}-usd-v1'
     note=f"{name} · Flights departing 2 November 2026 in each origin airport’s local time, including overnight arrivals. Timeline: {p['clock']}; airport boards use local time. New quotes use USD; reused quotes retain their original currencies. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative."
     m=build_country(slug,code,p['zone'],cache,

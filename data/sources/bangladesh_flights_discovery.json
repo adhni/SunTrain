@@ -1,0 +1,166 @@
+{
+  "reviewed_at": "2026-10-27T10:32:16.596838+00:00",
+  "launch_airports": [
+    "DAC",
+    "CGP",
+    "ZYL",
+    "CXB",
+    "JSR",
+    "RJH",
+    "SPD",
+    "BZL"
+  ],
+  "worldwide_hubs": [
+    "DAC",
+    "CGP",
+    "ZYL",
+    "CXB",
+    "JSR",
+    "RJH",
+    "SPD",
+    "BZL"
+  ],
+  "airport_maps": [
+    {
+      "airport": "DAC",
+      "destinations": [
+        "ADD",
+        "AUH",
+        "BAH",
+        "BKK",
+        "BOM",
+        "BZL",
+        "CAI",
+        "CAN",
+        "CCU",
+        "CGP",
+        "CMB",
+        "CXB",
+        "DEL",
+        "DMM",
+        "DOH",
+        "DXB",
+        "EVN",
+        "FCO",
+        "HKG",
+        "HYD",
+        "IST",
+        "JED",
+        "JSR",
+        "KHI",
+        "KMG",
+        "KTM",
+        "KUL",
+        "KWI",
+        "LHR",
+        "MAA",
+        "MCT",
+        "MED",
+        "MLE",
+        "NRT",
+        "PBH",
+        "PEK",
+        "PKX",
+        "RJH",
+        "RUH",
+        "SHJ",
+        "SIN",
+        "SPD",
+        "ZYL"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/dac/",
+          "sha256": "71c71f8eb4338fe5139f89eaa6dbce6e71950e9a3c33f052b1ca4ce90dbf826a",
+          "bytes": 46325
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/dac-routes.svg",
+          "sha256": "64f0933f2279eee11b4ac00ccfaaeb56f2d33f3bd7d48cbdbe886ee37d8f5fe8",
+          "bytes": 142269
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "CGP",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/cgp/: HTTP 404"
+    },
+    {
+      "airport": "ZYL",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/zyl/: HTTP 404"
+    },
+    {
+      "airport": "CXB",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/cxb/: HTTP 404"
+    },
+    {
+      "airport": "JSR",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/jsr/: HTTP 404"
+    },
+    {
+      "airport": "RJH",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/rjh/: HTTP 404"
+    },
+    {
+      "airport": "SPD",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/spd/: HTTP 404"
+    },
+    {
+      "airport": "BZL",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/bzl/: HTTP 404"
+    }
+  ],
+  "supplemental_airport_maps": [
+    {
+      "airport": "CXB",
+      "destinations": [
+        "CGP",
+        "SPD",
+        "ZYL"
+      ],
+      "documents": [
+        {
+          "url": "https://file-chittagong.portal.gov.bd/uploads/81db240c-6dae-45b9-b738-2ae6a3ee3ec2/68c/a7a/ecb/68ca7aecb0d2b352134283.pdf",
+          "facts_sha256": "1e84b84085e02263bdbcff488322767c016e99e15a5b5b8d4312f3e9cf42b4d3",
+          "capture_method": "Exact historical city-pair facts reviewed through public web-tool text; explicit city-to-IATA mapping; hash covers normalized facts, not original PDF"
+        }
+      ],
+      "reviewed_at": "2026-10-27T10:35:40.622083+00:00",
+      "description": "Official Bangladesh government statistics, table 7.28, historical Biman routes through 2023–24. Candidates only, not current dated flight evidence.",
+      "kind": "Historical official passenger-route candidates; reverse searches separately"
+    },
+    {
+      "airport": "CGP",
+      "destinations": [
+        "ZYL"
+      ],
+      "documents": [
+        {
+          "url": "https://file-chittagong.portal.gov.bd/uploads/81db240c-6dae-45b9-b738-2ae6a3ee3ec2/68c/a7a/ecb/68ca7aecb0d2b352134283.pdf",
+          "facts_sha256": "d9625a32ba8314d3e823ea593557dfbb8db00dc21d59d2a50863df75c15e970c",
+          "capture_method": "Exact historical city-pair facts reviewed through public web-tool text; explicit city-to-IATA mapping; hash covers normalized facts, not original PDF"
+        }
+      ],
+      "reviewed_at": "2026-10-27T10:35:40.622342+00:00",
+      "description": "Official Bangladesh government statistics, table 7.28, historical Biman routes through 2023–24. Candidates only, not current dated flight evidence.",
+      "kind": "Historical official passenger-route candidates; reverse searches separately"
+    }
+  ],
+  "supplemental_source_note": "Direct PDF retrieval reset the connection; normalized facts use the successful prior public web-tool inspection. No original PDF hash is claimed."
+}

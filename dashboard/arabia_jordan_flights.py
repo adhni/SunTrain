@@ -10,9 +10,9 @@ COUNTRIES={
 }
 ROOT=Path(__file__).resolve().parents[1]
 
-def profiles():
+def profiles(countries=None):
     result={}
-    for code,p in COUNTRIES.items():
+    for code,p in (countries or COUNTRIES).items():
         m=json.loads((ROOT/f"data/sources/{p['slug']}_flights_routes.json").read_text())
         result[code]={**{k:v for k,v in p.items() if k!='scopes'},'domestic':True,'standalone':True,'origin_local_day':True,
             'default_scope':'both' if p['scopes'] else 'international','flight_scopes':p['scopes'],

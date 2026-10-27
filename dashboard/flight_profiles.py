@@ -82,6 +82,19 @@ def _africa_profile():
 
 
 PROFILES['AFRICA']=_africa_profile()
+def _turkiye_profile():
+    import json
+    from pathlib import Path
+    manifest=json.loads((Path(__file__).resolve().parents[1]/'data/sources/turkiye_flights_routes.json').read_text())
+    return dict(slug='turkiye',name='Türkiye',zone='Europe/Istanbul',label='TRT',clock='Türkiye time (UTC+3)',
+        bounds=[[25.5,35.5],[45,42.5]],arc_anchor=35,max_duration=86400,
+        currency='mixed',capture_currency='USD',price_currencies=['USD','EUR','MYR'],
+        domestic=True,standalone=True,origin_local_day=True,default_scope='both',flight_country_filters=True,regional_start_view=True,
+        airport_countries={a['code']:a['country'] for a in manifest['airports']},
+        airport_zones={a['code']:a['timezone'] for a in manifest['airports']},description=manifest['replay_note'])
+
+
+PROFILES['TR']=_turkiye_profile()
 BY_CITY={p['slug']+'_flights':(c,p) for c,p in PROFILES.items()}
 
 

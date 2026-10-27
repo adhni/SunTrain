@@ -4,6 +4,8 @@ Historical transport replay across Argentina, Australia, Austria, Belgium, Boliv
 
 ## Türkiye flights
 
+Choose **Canada · Flights** or **Mexico · Flights** for **2 November 2026**, with **2,284 Canadian-view flights** (1,211 domestic) and **2,014 Mexican-view flights** (1,155 domestic), sourced Canada/US/Mexico connections and reused worldwide captures. New fares use USD; airport boards use local clocks, including the dated 2026 Canadian changes and Mexico’s regional zones. The timeline uses UTC. Coverage remains partial; see [Canada and Mexico flight notes](CANADA_MEXICO_FLIGHTS_NOTES.md) for the reviewed gateways, source gaps and rebuilding.
+
 Choose **Central Asia · Flights** for **2 November 2026**: **604 captured flights** across Kazakhstan, Uzbekistan, Kyrgyzstan, Tajikistan and Turkmenistan. Uses sourced directions, one origin-local departure date, new USD quotes, current airport identities and local clocks. Coverage is partial; see [Central Asia flight notes](CENTRAL_ASIA_FLIGHTS_NOTES.md) for country-level coverage and source gaps.
 
 Choose **Pacific Islands · Flights** for **2 November 2026**: **877 captured flights** across Melanesia, Micronesia, Polynesia and Hawaii, plus international connections. Uses one origin-local departure date, USD for new fares, local airport boards and a UTC timeline across the date line. Coverage is partial; see [Pacific flight notes](PACIFIC_FLIGHTS_NOTES.md) for actual island-group coverage, source age and rebuilding.

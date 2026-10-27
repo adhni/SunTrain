@@ -4,7 +4,7 @@ Historical transport replay across Argentina, Australia, Austria, Belgium, Boliv
 
 ## Türkiye flights
 
-Choose **Türkiye · Flights** for **2 November 2026**, with **1,662 captured flights** (206 domestic, 1,456 international): worldwide sourced connections from **IST and SAW**, a domestic starter among **IST, SAW, ESB, ADB and AYT**, and reused Turkish captures beyond that footprint. All returned airlines are eligible. Uses one origin-local departure date, a **Türkiye time (UTC+3)** timeline, local airport boards, new **USD** quotes and unchanged reused currencies. Includes country/airline/airport filters, Destinations, fullscreen boards and frequency lines. Coverage is partial; see [Türkiye flight notes](TURKIYE_FLIGHTS_NOTES.md) for the exact scope, source evidence, actual totals and rebuilding.
+Choose **Türkiye · Flights** for **2 November 2026**, with **2,249 captured flights** (793 domestic, 1,456 international): worldwide sourced connections from **IST and SAW**, published domestic routes from **IST, SAW, ESB, ADB and AYT** across **49 Turkish airport candidates** (41 returning domestic flights), and reused Turkish captures beyond that footprint. All returned airlines are eligible. Uses one origin-local departure date, a **Türkiye time (UTC+3)** timeline, local airport boards, new **USD** quotes and unchanged reused currencies. Includes country/airline/airport filters, Destinations, fullscreen boards and frequency lines. Coverage is partial; see [Türkiye flight notes](TURKIYE_FLIGHTS_NOTES.md) for the exact scope, source evidence, actual totals and rebuilding.
 
 ## Africa flights
 

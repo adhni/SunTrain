@@ -39,9 +39,16 @@ def test_manifest_uses_sources_one_date_and_separate_airport_identities():
     reused={(r['origin'],r['destination']) for r in m['reuse_sources']}|set(map(tuple,m['archive_reuse_routes']))
     for a,b in m['routes']:
         assert any(air[c]['country']=='TR' for c in (a,b))
-        if any(air[c]['country']=='TR' and c not in hubs for c in (a,b)):assert (a,b) in reused
+        if air[a]['country']!=air[b]['country'] and any(air[c]['country']=='TR' and c not in hubs for c in (a,b)):assert (a,b) in reused
     for a,b in m['new_collection_routes']:
-        assert all(air[c]['country']!='TR' or c in hubs for c in (a,b))
+        if air[a]['country']!=air[b]['country']:assert all(air[c]['country']!='TR' or c in hubs for c in (a,b))
+    domestic={(a,b) for a,b in m['new_collection_routes'] if air[a]['country']==air[b]['country']=='TR'}
+    assert len(domestic)==306 and len({c for pair in domestic for c in pair})==49
+    assert {('IST','TZX'),('TZX','IST'),('SAW','VAN'),('VAN','SAW'),('ESB','COV'),('COV','ESB')}<=domestic
+    assert ('VAN','TZX') not in domestic  # No unsupported regional all-pairs expansion.
+    for a,b in domestic:
+        assert {a,b}&hubs
+        assert any(source['source'].endswith('-routes.svg') for row in m['evidence'] if (row['origin'],row['destination'])==(a,b) for source in row['sources'])
     assert air['IST']['icao']=='LTFM' and air['SAW']['icao']=='LTFJ'
     assert not m['archive_reuse_routes']
     assert 'ISL' not in hubs
@@ -160,13 +167,20 @@ def test_reference_records_unique_and_origin_local_date():
     assert all(datetime.fromtimestamp(f['departure'],ZoneInfo(cfg['zones'][f['origin']])).date().isoformat()==DAY for f in raw['flights'])
     assert sum(v['flights'] for v in raw['metadata']['coverage_by_geography'].values())==len(raw['flights'])
     assert raw['metadata']['queries_reused']==142
-    assert len(raw['flights'])==1662 and len({f['carrier'] for f in raw['flights']})==73
-    assert raw['metadata']['coverage']['queries_captured']==840
-    assert raw['metadata']['coverage']['routes_returned']==629
+    assert len(raw['flights'])==2249 and len({f['carrier'] for f in raw['flights']})==73
+    assert raw['metadata']['coverage']['queries_captured']==1128
+    assert raw['metadata']['coverage']['routes_returned']==859
     assert not raw['metadata']['uncollected_queries'] and not raw['metadata']['failed_queries']
-    assert sum(bool(f.get('price')) for f in raw['flights'])==1614
-    assert raw['metadata']['coverage_by_geography']['domestic']['flights']==206
+    assert sum(bool(f.get('price')) for f in raw['flights'])==2201
+    assert raw['metadata']['coverage_by_geography']['domestic']['flights']==793
     assert raw['metadata']['coverage_by_geography']['international']['flights']==1456
+    domestic_airports={f[k] for f in raw['flights'] if f['flight_scope']=='domestic' for k in ('origin','destination')}
+    assert len(domestic_airports)==41 and {'TZX','VAN','COV'}<=domestic_airports
+    queries={(q['origin'],q['destination']):q for q in raw['metadata']['queries']}
+    assert queries['IST','ESB']['status']=='results'
+    assert queries['IST','ESB']['domestic_recheck']['previous_flights']==0
+    assert queries['IST','ESB']['domestic_recheck']['flights_returned']==12
+    assert sum('domestic_recheck' in q for q in queries.values())==7
     from scripts.prepare_turkiye_routes import ROOT
     with gzip.open(ROOT/'data/reference/europe_flights/2026-11-02.json.gz','rt') as stream:old=json.load(stream)
     air={a['code']:a for a in old['airports']}

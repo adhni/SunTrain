@@ -32,7 +32,7 @@ def prepare_cached(cache,output,cfg):
         with gzip.open(prepared,'rt') as stream:r=json.load(stream)
     m=r['metadata'];m['fare_context'].update(currency='mixed',currencies=['USD','EUR','MYR'],new_capture_currency='USD')
     m.update(queries_reused=sum(bool(q.get('reused_source')) for q in m['queries']),
-        collection_strategy='Sourced Istanbul worldwide and selected domestic routes, one origin-local date; reused quotes unchanged, new captures USD',
+        collection_strategy='Sourced Istanbul worldwide and published domestic routes from five hubs, one origin-local date; reused quotes unchanged, new captures USD',
         source_gaps=cfg['manifest']['source_gaps'],unresolved_airports=cfg['manifest']['unresolved_airports'])
     air={a['code']:a for a in r['airports']}
     m['coverage_by_geography']={}

@@ -48,7 +48,7 @@ with sync_playwright() as p:
     print('Cross-region countries, scopes and airline filters passed',flush=True)
     # Every exact airport is selectable, including separate city airports and both hemispheres.
     airports=json.loads(Path('data/sources/turkiye_flights_routes.json').read_text())['airports']
-    for airport in [a for a in airports if a['code'] in json.loads(Path('data/sources/turkiye_flights_routes.json').read_text())['launch_airports']]:
+    for airport in [a for a in airports if a['code'] in json.loads(Path('data/sources/turkiye_flights_routes.json').read_text())['launch_airports'] or a['code'] in {'TZX','VAN','COV'}]:
         code=airport['code'];zone=airport.get('replay_timezone',airport['timezone'])
         page.evaluate('(code)=>dash_clientside.set_props("replay-airports",{value:[code]})',code)
         page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].code===code)',arg=code)
@@ -97,5 +97,5 @@ with sync_playwright() as p:
         if expected:
             assert page.evaluate('suntrainReplay.day.services.length')==expected
     assert not errors,errors
-    print(f'{total} services: country filters, five starter airport boards, original currencies, frequency, fullscreen/back, themes, Indonesian, mobile and existing regional/transit regressions passed',flush=True)
+    print(f'{total} services: country filters, five hub and three regional airport boards, original currencies, frequency, fullscreen/back, themes, Indonesian, mobile and existing regional/transit regressions passed',flush=True)
     browser.close()

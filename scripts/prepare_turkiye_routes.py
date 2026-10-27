@@ -1,4 +1,4 @@
-"""Build exact-airport Türkiye candidates; worldwide Istanbul hubs and a five-airport domestic starter."""
+"""Build exact-airport Türkiye candidates; worldwide Istanbul hubs and published domestic routes from five hubs."""
 import csv
 import gzip
 import hashlib
@@ -53,8 +53,8 @@ def build():
     def add(a,b,source,kind,new=True):
         aa,bb=airport(a),airport(b)
         if a==b or not aa or not bb:return
-        if new and (any(x['country']=='TR' and x['code'] not in hubs for x in (aa,bb)) or (aa['country']!=bb['country'] and not set((a,b)) & worldwide)):
-            deferred.append(dict(origin=a,destination=b,reason='Outside the five-airport domestic / two-hub worldwide starter',source=source));return
+        if new and aa['country']!=bb['country'] and (any(x['country']=='TR' and x['code'] not in hubs for x in (aa,bb)) or not set((a,b)) & worldwide):
+            deferred.append(dict(origin=a,destination=b,reason='Outside the two-hub worldwide international footprint',source=source));return
         if not any(x['country']=='TR' for x in (aa,bb)):return
         evidence.setdefault((a,b),[]).append(dict(source=source,kind=kind,new_collection=new))
     for row in discovery['airport_maps']:
@@ -106,7 +106,7 @@ def build():
         route_source_url='data/sources/turkiye_flights_discovery.json',
         source_gaps=[r for r in discovery['airport_maps'] if r.get('error')],
         deferred_routes=deferred,unresolved_airports=[dict(code=c,reason=v) for c,v in sorted(unresolved.items()) if c in used or any(c in (r['airport'],) or c in r['destinations'] for r in discovery['airport_maps'])],
-        coverage_scope='IST and SAW worldwide sourced connections; domestic candidates between IST, SAW, ESB, ADB and AYT; additional existing Turkish captures reused without new searches. Not all Turkish airports or routes; seasonal candidates are not dated evidence.',
+        coverage_scope='IST and SAW worldwide sourced connections; published domestic candidates from IST, SAW, ESB, ADB and AYT to Turkish regional airports; additional existing Turkish captures reused without new searches. Not all Turkish airports or routes; seasonal candidates are not dated evidence.',
         replay_note='Türkiye · Flights departing 2 November 2026 in each origin airport’s local time, including overnight arrivals. Timeline: Türkiye time (UTC+3); airport boards use local time. New quotes use USD; reused quotes retain their original currencies. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.')
 
 if __name__=='__main__':

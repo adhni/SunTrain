@@ -127,7 +127,7 @@ def country_config(country='AU', scope='domestic'):
             if p.get('worldwide'):raise ValueError('Use prepare_taiwan_hong_kong_flights.py for worldwide international flights')
             raise ValueError('This country profile uses prepare_international_network.py for international flights')
         manifest=json.loads((ROOT/f"data/sources/{p['slug']}_flights_routes.json").read_text())
-        config=dict(country=country,zones={a['code']:a['timezone'] for a in manifest['airports']},timezone=p['zone'],end_date=manifest['end_date'],manifest=manifest,scope='domestic',capture_prices=True,currency='USD',max_duration=28800,allow_empty_snapshot=True)
+        config=dict(country=country,zones={a['code']:a['timezone'] for a in manifest['airports']},timezone=p['zone'],end_date=manifest['end_date'],manifest=manifest,scope='domestic',capture_prices=True,currency=p.get('currency','USD'),max_duration=28800,allow_empty_snapshot=True)
         if manifest.get('query_date_policy')=='origin_local_departure_day_only':
             config.update(queries=[(manifest['start_date'],a,b) for a,b in manifest['routes']],reject_invalid_segments=True)
         if p.get('origin_local_day'):

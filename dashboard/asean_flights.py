@@ -28,16 +28,17 @@ def description(profile):
 def city_settings(profiles=None):
     selected={p["slug"]+"_flights":(c,p) for c,p in (profiles or PROFILES).items()}
     return {city:dict(replay_kind='flights',name=p['name']+' · Flights',timezone=p['zone'],bounds=p['bounds'],passenger_data=False,
-        start_date=DAY,end_date=DAY,flight_scopes=p['domestic'] and not p.get('domestic_only'),flight_country_filters=p.get('flight_country_filters',False),default_flight_scope=p['default_scope'],default_airport=p.get('airport'),description=description(p),
+        start_date=DAY,end_date=DAY,flight_scopes=p.get('flight_scopes',p['domestic'] and not p.get('domestic_only')),flight_country_filters=p.get('flight_country_filters',False),default_flight_scope=p['default_scope'],default_airport=p.get('airport'),description=description(p),
         default_modes=['flight'],modes=[('Flights','flight')],operators=[],directions=[('Scheduled service','Scheduled service')]) for city,(_,p) in selected.items()}
 
 
 def load_domestic(path,code,profiles=None):
     p=(profiles or PROFILES)[code]
+    currency=p.get('currency','USD')
     with gzip.open(Path(path),'rt') as stream:reference=json.load(stream)
     context=reference['metadata'].get('fare_context',{})
-    if tuple(context.get(k) for k in ('currency','adults','cabin','trip_type'))!=('USD',1,'economy','one_way'):
-        raise ValueError('Country domestic fares require USD, one adult, economy, one-way')
+    if tuple(context.get(k) for k in ('currency','adults','cabin','trip_type'))!=(currency,1,'economy','one_way'):
+        raise ValueError(f'Country domestic fares require {currency}, one adult, economy, one-way')
     air={a['code']:a for a in reference['airports']};records={}
     if len(air)!=len(reference['airports']) or any(a['country']!=p.get('airport_countries',{}).get(a['code'],code) or a['timezone']!=p.get('airport_zones',{}).get(a['code'],p['zone']) or a['code'] in RETIRED_AIRPORTS or (p.get('airport_zones') and a['code'] not in p['airport_zones']) for a in air.values()):
         raise ValueError('Country domestic airports require exact national identities and zones')
@@ -53,8 +54,8 @@ def load_domestic(path,code,profiles=None):
             if f['origin']==f['destination'] or datetime.fromtimestamp(f['departure'],ZoneInfo(airport.get('replay_timezone',airport['timezone']))).date().isoformat()!=DAY:
                 raise ValueError('Flight outside origin-local departure day')
         price=f.get('price')
-        if price and (tuple(price.get(k) for k in ('currency','adults','cabin','trip_type'))!=('USD',1,'economy','one_way') or type(price.get('amount_minor')) is not int or price['amount_minor']<=0):
-            raise ValueError('Country domestic prices require positive USD minor units; no implicit conversion')
+        if price and (tuple(price.get(k) for k in ('currency','adults','cabin','trip_type'))!=(currency,1,'economy','one_way') or type(price.get('amount_minor')) is not int or price['amount_minor']<=0):
+            raise ValueError(f'Country domestic prices require positive {currency} minor units; no implicit conversion')
         record={**f,'flight_scope':'domestic' if jurisdiction(air[f['origin']]['country'])==jurisdiction(air[f['destination']]['country']) else 'international'}
         if f['id'] in records and records[f['id']]!=record:raise ValueError('Conflicting country flight identity')
         records[f['id']]=record

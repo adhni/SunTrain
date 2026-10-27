@@ -55,6 +55,19 @@ PROFILES['AMERICAS']=dict(
     airport_replay_zones=PROFILES['US']['airport_replay_zones'],flight_jurisdictions=PROFILES['US']['flight_jurisdictions'],
     description='Americas · Flights between 77 selected airports across North America, Central America, the Caribbean and South America · 2 November 2026 departures, including overnight arrivals. Timeline: UTC; airport boards use local time. All captured fares use USD. Coverage and prices are partial; paths are illustrative.',
 )
+def _europe_americas_profile():
+    import json
+    from pathlib import Path
+    manifest=json.loads((Path(__file__).resolve().parents[1]/'data/sources/europe_americas_flights_routes.json').read_text())
+    return dict(slug='europe_americas',name='Europe–Americas',zone='UTC',label='UTC',clock='UTC',
+        bounds=[[-130,-57],[20,65]],arc_anchor=-55,max_duration=86400,currency='EUR',
+        domestic=True,standalone=True,origin_local_day=True,default_scope='international',flight_scopes=False,flight_country_filters=True,
+        airport_countries={a['code']:a['country'] for a in manifest['airports']},
+        airport_zones={a['code']:a['timezone'] for a in manifest['airports']},
+        description='Europe–Americas · Connections between selected airports · 2 November 2026 departures, including overnight arrivals. All airlines returned on the sourced routes are included. Timeline: UTC; airport boards use local time. Reused EUR prices retain their original currency. Coverage and prices are partial; paths are illustrative.')
+
+
+PROFILES['EUROPE_AMERICAS']=_europe_americas_profile()
 BY_CITY={p['slug']+'_flights':(c,p) for c,p in PROFILES.items()}
 
 

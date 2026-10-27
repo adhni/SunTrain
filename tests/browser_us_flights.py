@@ -25,12 +25,14 @@ with sync_playwright() as p:
     assert page.locator('#replay-flight-scope-field').is_visible()
     assert page.locator('#replay-country-controls').is_visible()
     assert 'EST' in page.locator('#replay-clock-date').inner_text()
-    assert page.evaluate('suntrainReplay.day.stations.length')==40
+    assert page.evaluate('suntrainReplay.day.stations.length')==50
     assert page.evaluate('suntrainReplay.day.end-suntrainReplay.day.start>27*3600')
     assert page.evaluate('suntrainReplay.graph.getBounds().contains([-118.408,33.942]) && suntrainReplay.graph.getBounds().contains([-73.778,40.641])')
     assert page.evaluate('suntrainReplay.graph.getBounds().contains([-157.92,21.32])')
     assert page.evaluate('suntrainReplay.filtered.some(s=>s.stops[1][1]-s.stops[0][1]>8*3600)')
     assert page.evaluate('Object.values(suntrainReplay.day.paths).every(p=>p.coordinates.every(c=>c[0]<0))')
+    assert page.evaluate('suntrainReplay.graph.getBounds().contains([-66,18.4]) && suntrainReplay.graph.getBounds().contains([-79.4,9.1])')
+    assert page.evaluate('new Date(suntrainReplay.day.start*1000).toISOString()')=='2026-11-02T04:00:00.000Z'
     count=len(downloads);total=page.evaluate('suntrainReplay.filtered.length')
     page.screenshot(path=str(AUDIT/'map.png'))
     page.evaluate('dash_clientside.set_props("replay-display",{value:["routes"]})')
@@ -40,8 +42,8 @@ with sync_playwright() as p:
     for scope in ['domestic','international','both']:
         page.evaluate('(scope)=>dash_clientside.set_props("replay-flight-scope",{value:scope})',scope)
         page.wait_for_function('(scope)=>suntrainReplay.filters.flightScope===scope && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>scope==="both" || s.flight_scope===scope)',arg=scope)
-        assert page.evaluate('(scope)=>suntrainReplay.filtered.every(s=>scope==="both" || (suntrainReplay.day.stations[s.stops[0][0]].country===suntrainReplay.day.stations[s.stops[1][0]].country)===(scope==="domestic"))',scope)
-    for origin,destination in [('CA','CA'),('MX','MX'),('US','CA'),('CA','MX'),('MX','US')]:
+        assert page.evaluate('(scope)=>suntrainReplay.filtered.every(s=>scope==="both" || ((suntrainReplay.day.stations[s.stops[0][0]].country.replace(/^PR$/,"US"))===(suntrainReplay.day.stations[s.stops[1][0]].country.replace(/^PR$/,"US")))===(scope==="domestic"))',scope)
+    for origin,destination in [('CA','CA'),('MX','MX'),('US','CA'),('CA','MX'),('MX','US'),('PR','US'),('US','PR'),('PA','CR'),('DO','US'),('AW','CA')]:
         page.evaluate('([a,b])=>{dash_clientside.set_props("replay-from-countries",{value:[a]});dash_clientside.set_props("replay-to-countries",{value:[b]})}',[origin,destination])
         page.wait_for_function('([a,b])=>suntrainReplay.filters.fromCountries[0]===a && suntrainReplay.filters.toCountries[0]===b && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].country===a && suntrainReplay.day.stations[s.stops[1][0]].country===b)',arg=[origin,destination])
         assert page.evaluate('suntrainReplay.filtered.some(s=>s.price?.currency==="USD") && suntrainReplay.filtered.every(s=>!s.price || s.price.currency==="USD")')
@@ -96,5 +98,5 @@ with sync_playwright() as p:
         page.wait_for_function('(city)=>suntrainReplay.day.city===city && !suntrainReplay.loading && suntrainReplay.filtered.length',arg=city,timeout=120000)
         assert page.evaluate('suntrainReplay.day.end-suntrainReplay.day.start')==86400
     assert not errors,errors
-    print(f'{total} regional records: US/Canada/Mexico, forty airports, USD, airline/airport filters, boards, overnight timeline, frequency, themes, Indonesian, mobile and Australia/Melbourne passed',flush=True)
+    print(f'{total} regional records: US/Canada/Mexico/Central America/Caribbean, fifty airports, USD, airline/airport filters, boards, overnight timeline, frequency, themes, Indonesian, mobile and Australia/Melbourne passed',flush=True)
     browser.close()

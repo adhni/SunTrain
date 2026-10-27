@@ -38,6 +38,11 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'F8': ('Flair Airlines', '#9bbb5c'), 'AM': ('Aeromexico', '#8a9dd2'),
             'Y4': ('Volaris', '#b88ad1'), 'VB': ('Viva', '#7fbe78'),
             '4N': ('Air North', '#be9b70'),
+            'CM': ('Copa Airlines', '#749fd0'), 'AV': ('Avianca', '#dc7c89'),
+            'DM': ('Arajet', '#a38ad4'), 'Q6': ('Volaris Costa Rica', '#bd85c4'),
+            'WU': ('Western Air', '#b197d0'), 'S6': ('Sunrise Airways', '#e5a45b'),
+            'UP': ('Bahamasair', '#65b5bb'), 'N3': ('Volaris El Salvador', '#a98ccd'),
+            'AR': ('Aerolineas Argentinas', '#78b4d5'),
             'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
             'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9'), 'AK': ('AirAsia', '#e95055'),
             'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa'),
@@ -322,8 +327,10 @@ def replay_day(business_date, city='australia_flights'):
     start = int(datetime.combine(day, time(), zone).timestamp())
     end = int(datetime.combine(day + timedelta(days=1), time(), zone).timestamp())
     if city in PROFILE_CITIES and PROFILE_CITIES[city][1].get('origin_local_day'):
-        # All 2 November local departures, including the West Coast's late
-        # flights and their overnight arrivals, share this bounded replay.
+        # Bound all origin-local days, including Atlantic midnight departures
+        # before Eastern midnight and western overnight arrivals.
+        starts=[int(datetime.combine(day,time(),ZoneInfo(a.get('replay_timezone',a['timezone']))).timestamp()) for a in reference['airports']]
+        start=min([start,*starts])
         ends=[int(datetime.combine(day+timedelta(days=1),time(),ZoneInfo(a.get('replay_timezone',a['timezone']))).timestamp()) for a in reference['airports']]
         end=max([end,*ends,*[f['arrival']+1 for f in reference['flights']]])
     airports = reference['airports']

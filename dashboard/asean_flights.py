@@ -43,6 +43,8 @@ def load_domestic(path,code,profiles=None):
         raise ValueError('Country domestic airports require exact national identities and zones')
     if any(a.get('replay_timezone')!=p.get('airport_replay_zones',{}).get(a['code']) for a in air.values()):
         raise ValueError('Airport replay time zones differ from the dated configuration')
+    jurisdictions=p.get('flight_jurisdictions',{})
+    def jurisdiction(country):return jurisdictions.get(country,country)
     for f in reference['flights']:
         if f['origin'] not in air or f['destination'] not in air or not 60<=f['arrival']-f['departure']<=p.get('max_duration',28800):
             raise ValueError('Invalid domestic segment')
@@ -53,14 +55,14 @@ def load_domestic(path,code,profiles=None):
         price=f.get('price')
         if price and (tuple(price.get(k) for k in ('currency','adults','cabin','trip_type'))!=('USD',1,'economy','one_way') or type(price.get('amount_minor')) is not int or price['amount_minor']<=0):
             raise ValueError('Country domestic prices require positive USD minor units; no implicit conversion')
-        record={**f,'flight_scope':'domestic' if air[f['origin']]['country']==air[f['destination']]['country'] else 'international'}
+        record={**f,'flight_scope':'domestic' if jurisdiction(air[f['origin']]['country'])==jurisdiction(air[f['destination']]['country']) else 'international'}
         if f['id'] in records and records[f['id']]!=record:raise ValueError('Conflicting country flight identity')
         records[f['id']]=record
     result={**reference,'flights':list(records.values())}
     if p.get('airport_countries'):
         from dashboard.flights import snapshot_coverage
         metadata={**reference['metadata']};coverages={'both':metadata.get('coverage',snapshot_coverage(result))}
-        countries={a:p.get('airport_countries',{}).get(a,code) for a in p['airport_zones']}
+        countries={a:jurisdiction(p.get('airport_countries',{}).get(a,code)) for a in p['airport_zones']}
         for scope in ('domestic','international'):
             def belongs(a,b):return (countries[a]==countries[b])==(scope=='domestic')
             queries=[q for q in metadata.get('queries',[]) if belongs(q['origin'],q['destination'])]

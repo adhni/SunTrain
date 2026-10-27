@@ -32,16 +32,21 @@ def test_regional_exact_airports_all_directions_single_date_and_no_network_expan
     assert [a['rank'] for a in AIR.values() if a['country']=='US']==list(range(1,31))
     assert {c for c,a in AIR.items() if a['country']=='CA'}=={'YYZ','YVR','YUL','YYC','YEG'}
     assert {c for c,a in AIR.items() if a['country']=='MX'}=={'MEX','CUN','GDL','MTY','TIJ'}
-    assert not {'YTZ','NLU','TLC','YOW'}&AIR.keys()
+    assert set(list(AIR)[40:])=={'PTY','SJU','PUJ','SJO','SDQ','SAL','GUA','MBJ','NAS','AUA'}
+    assert len(AIR)==50 and AIR['SJU']['country']=='PR' and AIR['SJU']['icao']=='TJSJ'
+    assert AIR['SJO']['icao']=='MROC' and AIR['SJU']['icao']!=AIR['SJO']['icao']
+    assert not {'YTZ','NLU','TLC','YOW','HAV','KIN'}&AIR.keys()
     assert AIR['JFK']['icao']=='KJFK' and AIR['ORD']['icao']=='KORD'
     assert {AIR[c]['icao'] for c in ['JFK','EWR','LGA']}=={'KJFK','KEWR','KLGA'}
     assert {AIR[c]['icao'] for c in ['IAD','DCA','BWI']}=={'KIAD','KDCA','KBWI'}
     assert not {'MDW','DAL','SNA','OAK'}&AIR.keys()
-    assert len(CFG['manifest']['routes'])==1560
-    assert sum(AIR[a]['country']==AIR[b]['country'] for a,b in CFG['manifest']['routes'])==910
+    assert len(CFG['manifest']['routes'])==2450
+    assert sum(AIR[a]['country']==AIR[b]['country'] for a,b in CFG['manifest']['routes'])==912
+    jurisdictions={'PR':'US'}
+    assert sum(jurisdictions.get(AIR[a]['country'],AIR[a]['country'])==jurisdictions.get(AIR[b]['country'],AIR[b]['country']) for a,b in CFG['manifest']['routes'])==972
     assert set(map(tuple,CFG['manifest']['routes']))=={(a,b) for a in AIR for b in AIR if a!=b}
     queries=list(expected_queries(DAY,CFG['manifest']['routes'],CFG))
-    assert len(queries)==1560 and {d for d,_,_ in queries}=={DAY}
+    assert len(queries)==2450 and {d for d,_,_ in queries}=={DAY}
     assert list(expected_queries(DAY,[('JFK','LAX')],CFG))==[(DAY,'JFK','LAX')]
     assert CFG['currency']=='USD' and CITIES[CITY]['flight_scopes'] and CITIES[CITY]['default_flight_scope']=='both'
     assert CITIES[CITY]['flight_country_filters'] and CITIES[CITY]['name']=='North America · Flights'
@@ -54,7 +59,7 @@ def test_regional_exact_airports_all_directions_single_date_and_no_network_expan
 
 def test_four_time_zones_post_dst_red_eye_duplicates_and_cheapest_price():
     zones=CFG['zones']
-    assert len(set(zones.values()))==14
+    assert len(set(zones.values()))==23
     for code,offset in [('JFK',-5),('DFW',-6),('DEN',-7),('LAX',-8)]:
         assert datetime(2026,11,2,tzinfo=ZoneInfo(zones[code])).utcoffset().total_seconds()==offset*3600
     assert zones['PHX']=='America/Phoenix' and zones['DTW']=='America/Detroit'
@@ -110,7 +115,7 @@ def test_canadian_and_mexican_domestic_and_cross_border_usd(tmp_path):
     assert all(bypair[p]['flight_scope']=='domestic' for p in pairs[:4])
     assert all(bypair[p]['flight_scope']=='international' for p in pairs[4:])
     assert all(f['price']['currency']=='USD' and f['price']['amount_minor']==15000 for f in raw['flights'])
-    assert raw['metadata']['countries']==['US','CA','MX'] and raw['metadata']['scope']=='regional' and 'country' not in raw['metadata']
+    assert raw['metadata']['countries']==CFG['manifest']['countries'] and raw['metadata']['scope']=='regional' and 'country' not in raw['metadata']
     assert raw['metadata']['coverage_by_scope']['domestic']['queries_planned']==4
     assert raw['metadata']['coverage_by_scope']['international']['queries_planned']==2
     for currency in ['CAD','MXN']:
@@ -184,10 +189,37 @@ def test_prepared_snapshot_matches_bounded_search_plan():
     path=flights.reference_path(DAY,CITY)
     if not path.exists():pytest.skip('US capture in progress')
     with gzip.open(path,'rt') as stream:raw=json.load(stream)
-    assert len(raw['metadata']['queries'])+len(raw['metadata']['uncollected_queries'])==1560
+    assert len(raw['metadata']['queries'])+len(raw['metadata']['uncollected_queries'])==2450
     assert len({f['id'] for f in raw['flights']})==len(raw['flights'])
     assert all(f['origin'] in AIR and f['destination'] in AIR for f in raw['flights'])
-    assert all(datetime.fromtimestamp(f['departure'],ZoneInfo(AIR[f['origin']]['timezone'])).date().isoformat()==DAY for f in raw['flights'])
+    assert all(datetime.fromtimestamp(f['departure'],ZoneInfo(AIR[f['origin']].get('replay_timezone',AIR[f['origin']]['timezone']))).date().isoformat()==DAY for f in raw['flights'])
     replay=flights.replay_day(DAY,CITY)
     assert len(replay['services'])==len(raw['flights'])
     assert all(s['stops'][0][1]>=replay['start'] and s['stops'][1][1]<replay['end'] for s in replay['services'])
+
+
+def test_atlantic_midnight_domestic_territory_scope_and_regional_clocks(tmp_path,monkeypatch):
+    cache=tmp_path/'cache';out=tmp_path/'day.gz'
+    examples=[('SJU','MIA',[0,30],[2,30],180),('MIA','SJU',[9,0],[13,0],180),
+              ('SJU','PUJ',[9,0],[10,0],60),('SDQ','PUJ',[9,0],[9,30],30),
+              ('PTY','SJO',[9,0],[9,30],90),('GUA','SAL',[9,0],[10,0],60),
+              ('NAS','MBJ',[9,0],[10,0],60),('AUA','YYZ',[9,0],[13,0],300)]
+    pairs=[]
+    for i,(a,b,d,arr,minutes) in enumerate(examples):
+        row=segment(a,b,d,arr,minutes,carrier='CM',number=str(i))
+        put(cache,a,b,parse_results(scripts(row),a,b,DAY,CFG['zones']));pairs.append((a,b))
+    prepare(cache,out,DAY,pairs,CFG);raw=load_domestic(out,'US')
+    bypair={(f['origin'],f['destination']):f for f in raw['flights']}
+    for pair in [('SJU','MIA'),('MIA','SJU'),('SDQ','PUJ')]:assert bypair[pair]['flight_scope']=='domestic'
+    assert bypair['SJU','PUJ']['flight_scope']=='international'
+    assert raw['metadata']['coverage_by_scope']['domestic']['queries_planned']==3
+    assert raw['metadata']['coverage_by_scope']['international']['queries_planned']==5
+    monkeypatch.setenv('SUNTRAIN_UNITED_STATES_FLIGHTS_REFERENCE',str(out))
+    replay=flights.replay_day(DAY,CITY)
+    assert datetime.fromtimestamp(replay['start'],ZoneInfo('UTC')).isoformat()=='2026-11-02T04:00:00+00:00'
+    assert len(replay['services'])==8
+    assert min(s['stops'][0][1] for s in replay['services'])==replay['start']+1800
+    for code,offset in [('SJU',-4),('PUJ',-4),('SDQ',-4),('AUA',-4),('PTY',-5),('MBJ',-5),('NAS',-5),('SJO',-6),('SAL',-6),('GUA',-6)]:
+        assert datetime(2026,11,2,tzinfo=ZoneInfo(CFG['zones'][code])).utcoffset().total_seconds()==offset*3600
+    # Puerto Rico stays selectable under PR; scope follows US flight jurisdiction.
+    assert next(a for a in replay['stations'] if a['code']=='SJU')['country']=='PR'

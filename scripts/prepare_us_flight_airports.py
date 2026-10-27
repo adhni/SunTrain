@@ -1,4 +1,4 @@
-"""Build the US top 30, Canada top 5 and Mexico top 5 exact-airport catalogue."""
+"""Build the selected 50-airport North American regional catalogue."""
 import csv
 import hashlib
 import json
@@ -64,14 +64,14 @@ def prepare():
         airports.append(dict(code=code, icao=a.get('icao_code') or a['ident'], name=f"{a['name']} ({code})",
             municipality=a['municipality'], country=country, timezone=ZONES[code], mode='flight',
             lat=float(a['latitude_deg']), lon=float(a['longitude_deg']), **{k:v for k,v in item.items() if k not in {'code','country','timezone'}}))
-    manifest = dict(country='US', countries=['US','CA','MX'],scope='regional', start_date='2026-11-02', end_date='2026-11-02',
+    manifest = dict(country='US', countries=list(dict.fromkeys(a['country'] for a in airports)),scope='regional', start_date='2026-11-02', end_date='2026-11-02',
         timezone='America/New_York', currency='USD', max_duration=57600,
-        coverage_scope='Nonstop flights between the US top 30, Canada top 5 and Mexico top 5 selected airports; domestic and cross-border, all returned airlines. Other airports excluded.',
+        coverage_scope='Nonstop flights between 50 selected airports across the US, Canada, Mexico, Central America and the Caribbean; domestic and cross-border, all returned airlines. Other airports excluded.',
         query_date_policy='origin_local_departure_day_only',
-        replay_note='North American domestic and cross-border flights between forty selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. All captured fares use USD, including Canadian and Mexican domestic flights. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.',
+        replay_note='North American domestic and cross-border flights between fifty selected airports across the US, Canada, Mexico, Central America and the Caribbean. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: Eastern time (EST, UTC−5); airport boards use local time. All captured fares use USD, including domestic flights. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.',
         airport_source_url=AIRPORT_URL, airport_source_sha256=AIRPORT_HASH,
         route_source_url=FAA_URL, route_source_sha256=FAA_HASH,
-        route_basis='All 1560 directional pairs between 40 selected exact airports; candidates, not evidence of service. US ranks use total boardings, Canadian and Mexican ranks use their published passenger metrics.',
+        route_basis='All 2450 directional pairs between 50 selected exact airports; candidates, not evidence of service. US ranks use total boardings, Canadian, Mexican and regional selections use their reported passenger metrics; definitions differ and regional statistics are incomplete.',
         additional_selection_source='data/sources/north_america_airport_selection.json',additional_selection_sha256=hashlib.sha256(EXTRA_PATH.read_bytes()).hexdigest(),
         airports=airports, routes=sorted((a,b) for a in ZONES for b in ZONES if a != b), unresolved_airports=[])
     output = ROOT / 'data/sources/united_states_flights_routes.json'

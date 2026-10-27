@@ -2,6 +2,10 @@
 
 Historical transport replay across Argentina, Australia, Austria, Belgium, Bolivia, Brazil, Brunei, Cambodia, Canada, Chile, Colombia, Ecuador, France, Germany, Guyana, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Mexico, Myanmar, the Netherlands, Nepal, New Zealand, Paraguay, Peru, the Philippines, Portugal, Qatar, Spain, South Korea, Suriname, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Uruguay, Venezuela, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Africa flights
+
+Choose **Africa · Flights** for **2,468 captured flights**: domestic, intra-African and worldwide connections from **30 selected African airports**, plus reusable captures beyond the starter. Uses sourced routes, one origin-local departure date (**2 November 2026**) and all returned airlines; no all-pairs or multi-day expansion. New fares use **USD**; reused fares retain their original currencies. Includes local airport boards, Destinations, fullscreen views, airline/airport/country filters and frequency lines. Coverage is partial; see [Africa flight notes](AFRICA_FLIGHTS_NOTES.md) for the airport footprint, source gaps, actual capture totals and resuming collection.
+
 ## Europe–Americas connections
 
 Choose **Europe–Americas · Flights** for **748 flights across 31 airlines**, connecting selected airports on both sides of the Atlantic. Reuses **444 existing sourced directional captures**, with **zero new searches or extra dates**. Includes all returned airlines on those routes, **743 original EUR prices**, local airport boards and a UTC timeline spanning 2 November 2026 origin-local departures and overnight arrivals. Existing regional views remain available. Coverage is partial: see [Europe–Americas flight notes](EUROPE_AMERICAS_FLIGHTS_NOTES.md) for the 14 European / 58 Americas airport footprint, source provenance, gaps and offline preparation.

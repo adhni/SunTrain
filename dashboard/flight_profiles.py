@@ -68,6 +68,20 @@ def _europe_americas_profile():
 
 
 PROFILES['EUROPE_AMERICAS']=_europe_americas_profile()
+def _africa_profile():
+    import json
+    from pathlib import Path
+    manifest=json.loads((Path(__file__).resolve().parents[1]/'data/sources/africa_flights_routes.json').read_text())
+    return dict(slug='africa',name='Africa',zone='UTC',label='UTC',clock='UTC',
+        bounds=[[-25,-36],[65,38]],arc_anchor=20,max_duration=86400,
+        currency='mixed',capture_currency='USD',price_currencies=['USD','EUR','MYR'],
+        domestic=True,standalone=True,origin_local_day=True,default_scope='both',flight_country_filters=True,regional_start_view=True,
+        airport_countries={a['code']:a['country'] for a in manifest['airports']},
+        airport_zones={a['code']:a['timezone'] for a in manifest['airports']},
+        description=manifest['replay_note'])
+
+
+PROFILES['AFRICA']=_africa_profile()
 BY_CITY={p['slug']+'_flights':(c,p) for c,p in PROFILES.items()}
 
 

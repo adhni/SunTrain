@@ -1310,10 +1310,11 @@
                 if (trigger === "replay-back") this.seek(this.now - 60);
                 if (trigger === "replay-forward") this.seek(this.now + 60);
             }
-            // Europe keeps its regional starting view even with worldwide flights.
+            // Regional explorers keep their starting view with worldwide flights.
             // Clearing an airport returns there; explicit Fit selection still fits all.
-            if (this.day.city === 'europe_flights' && airportsChanged && !filters.airports.length) this.metroView();
-            else if (trigger === "replay-fit" || airportsChanged || (this.day.flight_scopes && this.day.city !== 'europe_flights' &&
+            const regionalStart = this.day.city === 'europe_flights' || this.day.regional_start_view;
+            if (regionalStart && airportsChanged && !filters.airports.length) this.metroView();
+            else if (trigger === "replay-fit" || airportsChanged || (this.day.flight_scopes && !regionalStart &&
                 ((scopeChanged && !newDay) || (newDay && filters.flightScope !== "domestic")))) this.fit();
             this.paint(true);
             this.graph.resize();

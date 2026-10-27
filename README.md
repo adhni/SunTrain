@@ -20,7 +20,7 @@ Choose **Türkiye · Flights** for **2 November 2026**, with **2,249 captured fl
 
 ## Africa flights
 
-Choose **Africa · Flights** for **2,468 captured flights**: domestic, intra-African and worldwide connections from **30 selected African airports**, plus reusable captures beyond the starter. Uses sourced routes, one origin-local departure date (**2 November 2026**) and all returned airlines; no all-pairs or multi-day expansion. New fares use **USD**; reused fares retain their original currencies. Includes local airport boards, Destinations, fullscreen views, airline/airport/country filters and frequency lines. Coverage is partial; see [Africa flight notes](AFRICA_FLIGHTS_NOTES.md) for the airport footprint, source gaps, actual capture totals and resuming collection.
+Choose **Africa · Flights** for **3,693 captured flights**, covering domestic, intra-African and worldwide connections. The expansion recovers **96 flights without searches** and adds **1,129 flights** through **658 previously deferred published directions**, preserving all 2,468 original records exactly. Uses **2 November 2026 origin-local departures**, one shared queue, two workers and all returned airlines. New fares use **USD**; reused quotes retain their original currencies. Includes local/fullscreen airport boards, Destinations, frequency lines and airline/airport/country filters. Coverage is partial: see [Africa expansion notes](AFRICA_EXPANSION_NOTES.md) for actual coverage, source gaps, provenance and rebuilding, and [the original starter notes](AFRICA_FLIGHTS_NOTES.md) for its earlier footprint.
 
 ## Europe–Americas connections
 

@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
-AUDIT=Path('.cache/africa-flights-audit')
+AUDIT=Path('.cache/africa-expansion-audit')
 AUDIT.mkdir(parents=True,exist_ok=True)
 
 with sync_playwright() as p:
@@ -31,7 +31,7 @@ with sync_playwright() as p:
     for scope in ['domestic','international','both']:
         page.evaluate('(scope)=>dash_clientside.set_props("replay-flight-scope",{value:scope})',scope)
         page.wait_for_function('(scope)=>suntrainReplay.filters.flightScope===scope && suntrainReplay.filtered.length && (scope==="both" || suntrainReplay.filtered.every(s=>s.flight_scope===scope))',arg=scope)
-    for a,b in [('NG','NG'),('ET','ET'),('ET','KE'),('KE','GH')]:
+    for a,b in [('NG','NG'),('ET','ET'),('ZA','ZA'),('DZ','DZ'),('ET','KE'),('KE','GH')]:
         expected=page.evaluate('([a,b])=>suntrainReplay.day.services.filter(s=>suntrainReplay.day.stations[s.stops[0][0]].country===a && suntrainReplay.day.stations[s.stops[1][0]].country===b).length',[a,b])
         if not expected:continue
         page.evaluate('([a,b])=>{dash_clientside.set_props("replay-from-countries",{value:[a]});dash_clientside.set_props("replay-to-countries",{value:[b]})}',[a,b])
@@ -48,7 +48,8 @@ with sync_playwright() as p:
     print('Cross-region countries, scopes and airline filters passed',flush=True)
     # Every exact airport is selectable, including separate city airports and both hemispheres.
     airports=json.loads(Path('data/sources/africa_flights_routes.json').read_text())['airports']
-    for airport in [a for a in airports if a['code'] in json.loads(Path('data/sources/africa_flights_routes.json').read_text())['launch_airports']]:
+    selected=set(json.loads(Path('data/sources/africa_flights_routes.json').read_text())['launch_airports'])|{'HLA','PLZ','PHC','KAN','DIR','GDQ','KIS','JRO','FBM','LFW','TNR'}
+    for airport in [a for a in airports if a['code'] in selected]:
         code=airport['code'];zone=airport.get('replay_timezone',airport['timezone'])
         page.evaluate('(code)=>dash_clientside.set_props("replay-airports",{value:[code]})',code)
         page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].code===code)',arg=code)
@@ -97,5 +98,5 @@ with sync_playwright() as p:
         if expected:
             assert page.evaluate('suntrainReplay.day.services.length')==expected
     assert not errors,errors
-    print(f'{total} services: country filters, 30 starter airport boards, original currencies, frequency, fullscreen/back, themes, Indonesian, mobile and existing regional/transit regressions passed',flush=True)
+    print(f'{total} services: country filters, starter and expanded airport boards, original currencies, frequency, fullscreen/back, themes, Indonesian, mobile and existing regional/transit regressions passed',flush=True)
     browser.close()

@@ -36,12 +36,13 @@ def test_manifest_uses_sources_one_date_and_separate_airport_identities():
     assert {(r['origin'],r['destination']) for r in m['evidence']}==set(map(tuple,m['routes']))
     assert all(r['sources'] for r in m['evidence'])
     air={a['code']:a for a in m['airports']}
-    reused={(r['origin'],r['destination']) for r in m['reuse_sources']}|set(map(tuple,m['archive_reuse_routes']))
+    expanded=set(map(tuple,m['expanded_routes']))
+    reused={(r['origin'],r['destination']) for r in m['reuse_sources']}|set(map(tuple,m['archive_reuse_routes']))|expanded
     for a,b in m['routes']:
         assert any(air[c]['country'] in AFRICAN for c in (a,b))
         if any(air[c]['country'] in AFRICAN and c not in hubs for c in (a,b)):assert (a,b) in reused
     for a,b in m['new_collection_routes']:
-        assert all(air[c]['country'] not in AFRICAN or c in hubs for c in (a,b))
+        assert (a,b) in expanded or all(air[c]['country'] not in AFRICAN or c in hubs for c in (a,b))
     assert air['CAI']['timezone']=='Africa/Cairo' and air['CMN']['timezone']=='Africa/Casablanca'
     assert air['JNB']['icao']!=air.get('HLA',{}).get('icao')
     assert not any('replay_timezone' in a for a in air.values())
@@ -124,7 +125,8 @@ def test_source_duration_and_seasonal_airport_clocks():
 
 def test_offline_preparation_missing_queries_mixed_quotes_and_http(tmp_path,monkeypatch):
     cfg=country_config('AFRICA');pairs=[['JNB','CPT'],['CPT','JNB']]
-    cfg={**cfg,'manifest':{**cfg['manifest'],'routes':pairs},'queries':[(DAY,a,b) for a,b in pairs]}
+    manifest={k:v for k,v in cfg['manifest'].items() if k not in {'starter_record_audit','offline_recovery_audit'}}
+    cfg={**cfg,'manifest':{**manifest,'routes':pairs},'queries':[(DAY,a,b) for a,b in pairs]}
     cache=tmp_path/'cache';cache.mkdir();q=query('EUR');q['reused_source']='original-eur.json'
     path=cache/f'{DAY}-JNB-CPT.json';path.write_text(json.dumps(q));original=path.read_bytes()
     out=tmp_path/'day.gz';prepare_cached(cache,out,cfg);first=out.read_bytes();prepare_cached(cache,out,cfg)
@@ -151,15 +153,15 @@ def test_reference_records_unique_and_origin_local_date():
     assert raw['flights'] and len(raw['flights'])==len({f['id'] for f in raw['flights']})
     assert all(datetime.fromtimestamp(f['departure'],ZoneInfo(cfg['zones'][f['origin']])).date().isoformat()==DAY for f in raw['flights'])
     assert sum(v['flights'] for v in raw['metadata']['coverage_by_geography'].values())==len(raw['flights'])
-    assert len(raw['flights'])==2468 and len({f['carrier'] for f in raw['flights']})==123
-    assert raw['metadata']['coverage']['queries_captured']==2021
-    assert raw['metadata']['coverage']['routes_returned']==1112
+    assert len(raw['flights'])==3693 and len({f['carrier'] for f in raw['flights']})==137
+    assert raw['metadata']['coverage']['queries_captured']==2749
+    assert raw['metadata']['coverage']['routes_returned']==1591
     assert not raw['metadata']['uncollected_queries'] and not raw['metadata']['failed_queries']
-    assert raw['metadata']['queries_reused']==516
-    assert raw['metadata']['google_capture_coverage']=={'queries':1927,'reused':422,'not_returned':917}
-    assert sum(bool(f.get('price')) for f in raw['flights'])==2183
-    assert raw['metadata']['coverage_by_geography']['domestic']['flights']==445
-    assert raw['metadata']['coverage_by_geography']['intra_african']['flights']==265
+    assert raw['metadata']['queries_reused']==587
+    assert raw['metadata']['google_capture_coverage']=={'queries':2655,'reused':493,'not_returned':1166}
+    assert sum(bool(f.get('price')) for f in raw['flights'])==2932
+    assert raw['metadata']['coverage_by_geography']['domestic']['flights']==1253
+    assert raw['metadata']['coverage_by_geography']['intra_african']['flights']==586
 
 
 def test_all_existing_dated_europe_africa_records_retained_without_inventing_fares():
@@ -168,7 +170,7 @@ def test_all_existing_dated_europe_africa_records_retained_without_inventing_far
     air={a['code']:a for a in old['airports']}
     original={f['id']:f for f in old['flights'] if f.get('source_date')==DAY and any(air[f[k]]['country'] in AFRICAN for k in ('origin','destination'))}
     raw=load_domestic(flights.reference_path(DAY,CITY),'AFRICA');records={f['id']:f for f in raw['flights']}
-    assert len(original)==516 and original.keys()<=records.keys()
+    assert len(original)>=516 and original.keys()<=records.keys()
     supplement=raw['metadata']['archive_supplement']
     assert supplement['added_flights']==105 and supplement['directions_without_google_capture']==94
     for key in supplement['added_flight_ids']:

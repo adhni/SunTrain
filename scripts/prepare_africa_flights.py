@@ -52,11 +52,14 @@ def seed(cache,cfg):
             parts=path.stem.split('-')
             if len(parts)!=5 or tuple(parts[-2:]) not in allowed:continue
             a,b=parts[-2:];key=(DAY,a,b)
-            if (cache/path.name).exists():continue
+            target=cache/path.name
+            refresh=(a,b) in set(map(tuple,cfg.get('refresh_empty_queries',[])))
+            if target.exists() and (not refresh or json.loads(target.read_text()).get('flights')):continue
             try:
                 q=validate_query(json.loads(path.read_text()),key,cfg)
             except (ValueError,KeyError,TypeError) as e:
                 rejected[str(e)]+=1;continue
+            if target.exists() and not q['flights']:continue
             previous=candidates.get(key)
             instant=lambda record:datetime.fromisoformat(record['captured_at'].replace('Z','+00:00')).timestamp()
             if previous is None or instant(q)>instant(previous[1]):candidates[key]=(path,q)
@@ -64,6 +67,7 @@ def seed(cache,cfg):
     for key,(path,q) in sorted(candidates.items()):
         target=cache/f'{DAY}-{key[1]}-{key[2]}.json'
         payload={**q,'reused_source':str(path.relative_to(ROOT)),'reused_capture_sha256':hashlib.sha256(path.read_bytes()).hexdigest()}
+        if target.exists():payload['previous_empty_capture']=json.loads(target.read_text())
         temporary=target.with_suffix('.tmp');temporary.write_text(json.dumps(payload,separators=(',',':'))+'\n');temporary.replace(target)
     return dict(seeded=len(candidates),incompatible_sources=dict(sorted(rejected.items())))
 
@@ -158,6 +162,15 @@ def prepare_cached(cache,output,cfg):
             queries_not_returned=sum(q['status']=='no_matching_direct_flights' for q in queries),failed_queries=len(failed),
             unattempted_queries=len(planned)-len(queries)-len(failed),flights=len(records))
     m['coverage_by_african_region']=regional
+    if cfg['manifest'].get('starter_record_audit'):
+        records={f['id']:f for f in r['flights']}
+        for key in ['starter_record_audit','offline_recovery_audit']:
+            audit=cfg['manifest'][key]
+            if not set(audit['ids'])<=records.keys():raise ValueError('Previously preserved African flight records are missing')
+            original=[records[key] for key in audit['ids']]
+            digest=hashlib.sha256(json.dumps(sorted(original,key=lambda f:f['id']),sort_keys=True,separators=(',',':')).encode()).hexdigest()
+            if len(original)!=audit['count'] or digest!=audit['sha256']:raise ValueError('Previously preserved African flight records changed')
+        m['expansion']=dict(starter_manifest=cfg['manifest']['starter_manifest'],original_records_preserved=cfg['manifest']['starter_record_audit']['count'],offline_recovered_flights=cfg['manifest']['offline_recovery_audit']['count'],deferred_directions_reviewed=658,deferred_directions_selected=len(cfg['manifest']['expanded_routes']),excluded=cfg['manifest']['expansion_exclusions'],resolved_starter_airports=cfg['manifest']['resolved_starter_airports'])
     output.parent.mkdir(parents=True,exist_ok=True)
     temporary=output.with_suffix('.tmp')
     with temporary.open('wb') as raw,gzip.GzipFile(filename='',fileobj=raw,mode='wb',mtime=0) as stream:stream.write(json.dumps(r,separators=(',',':')).encode())
@@ -167,12 +180,22 @@ def prepare_cached(cache,output,cfg):
     return dict(flights=len(r['flights']),airports=len(air),reused=m['queries_reused'],coverage=m['coverage_by_geography'])
 
 
+def publish_captures(fresh,cache,pairs):
+    """Publish only this run's pending queries, preserving reviewed reused results."""
+    allowed={f'{DAY}-{a}-{b}{suffix}' for a,b in pairs for suffix in ('.json','.error.json')}
+    for path in fresh.glob(f'{DAY}-*.json'):
+        if path.name not in allowed:continue
+        target=cache/path.name;temporary=target.with_name(target.name+'.tmp')
+        shutil.copyfile(path,temporary);temporary.replace(target)
+
+
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--cache',type=Path,default=CACHE)
     parser.add_argument('--output',type=Path,default=ROOT/f'data/reference/africa_flights/{DAY}.json.gz')
     parser.add_argument('--seed',action='store_true');parser.add_argument('--dry-run',action='store_true');parser.add_argument('--prepare-only',action='store_true')
     args=parser.parse_args();cfg=country_config('AFRICA')
+    cfg['refresh_empty_queries']=cfg['manifest'].get('refresh_empty_queries',[])
     cfg['capture_context']=dict(parser='africa-origin-local-v1',max_duration=86400,currency='USD',adults=1,cabin='economy',trip_type='one_way')
     if args.seed:print(json.dumps(seed(args.cache,cfg)),flush=True)
     print(json.dumps(budget(args.cache,cfg)),flush=True)
@@ -186,9 +209,7 @@ def main():
         except RuntimeError as error:
             stopped=error;(args.cache/'collection-stop.json').write_text(json.dumps(dict(reason=str(error))))
         finally:
-            for path in fresh.glob(f'{DAY}-*.json'):
-                target=args.cache/path.name;temporary=target.with_name(target.name+'.tmp')
-                shutil.copyfile(path,temporary);temporary.replace(target)
+            publish_captures(fresh,args.cache,pending)
     print(json.dumps(prepare_cached(args.cache,args.output,cfg)),flush=True)
     if stopped:print(str(stopped),file=sys.stderr);return 2
     return 0

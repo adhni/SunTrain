@@ -184,7 +184,9 @@ def test_reference_records_unique_and_origin_local_date():
     from scripts.prepare_turkiye_routes import ROOT
     with gzip.open(ROOT/'data/reference/europe_flights/2026-11-02.json.gz','rt') as stream:old=json.load(stream)
     air={a['code']:a for a in old['airports']}
-    original={f['id'] for f in old['flights'] if f.get('source_date')==DAY and any(air[f[k]]['country']=='TR' for k in ('origin','destination'))}
+    from dashboard.europe_flights import OTHER_NETWORKS
+    # Türkiye's frozen snapshot predates the additional European networks.
+    original={f['id'] for f in old['flights'] if f.get('brand') not in OTHER_NETWORKS and f.get('source_date')==DAY and any(air[f[k]]['country']=='TR' for k in ('origin','destination'))}
     assert len(original)==38 and original<={f['id'] for f in raw['flights']}
 
 

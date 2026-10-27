@@ -25,6 +25,12 @@ CACHE=ROOT/'.cache/google-flights-africa-usd-v1'
 
 
 def build():
+    from scripts.expand_africa_routes import build as expand
+    return expand()
+
+
+def build_starter():
+    """Historical starter discovery; the default CLI uses frozen expansion evidence."""
     discovery=json.loads((ROOT/'data/sources/africa_flights_discovery.json').read_text())
     hubs=set(discovery['launch_airports'])
     for path,digest in [(ROOT/'.cache/australia-flights-audit/ourairports-airports.csv',AIRPORT_HASH),(ROOT/'.cache/gulf-flights-audit/openflights-airports.dat',TZ_HASH)]:

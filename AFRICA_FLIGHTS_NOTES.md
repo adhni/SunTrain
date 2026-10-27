@@ -1,5 +1,7 @@
 # Africa flights
 
+This documents the original starter. The later [cached recovery and deferred-route expansion](AFRICA_EXPANSION_NOTES.md) adds domestic/regional depth while preserving the original records.
+
 One independent **Africa · Flights** explorer for departures on **2 November 2026 in each origin airport’s local time**, including dated overnight arrivals. Domestic, intra-African and intercontinental services share the existing planes, airline/code and exact-airport filters, From/To countries, local airport boards, Destinations, fullscreen boards and frequency lines. The timeline is UTC. The starting map stays over Africa; **Fit selection** reaches overseas endpoints.
 
 ## Footprint and discovery

@@ -1,0 +1,85 @@
+{
+  "reviewed_at": "2026-10-27T10:06:14.221427+00:00",
+  "launch_airports": [
+    "BAH"
+  ],
+  "worldwide_hubs": [
+    "BAH"
+  ],
+  "airport_maps": [
+    {
+      "airport": "BAH",
+      "destinations": [
+        "ADD",
+        "AGP",
+        "AMM",
+        "ATH",
+        "AUH",
+        "BKK",
+        "BLR",
+        "BOM",
+        "CAI",
+        "CAN",
+        "CCJ",
+        "CDG",
+        "CMN",
+        "CNN",
+        "COK",
+        "DAC",
+        "DBB",
+        "DEL",
+        "DMM",
+        "DOH",
+        "DXB",
+        "ELQ",
+        "FCO",
+        "FRA",
+        "GOI",
+        "GYD",
+        "HYD",
+        "ISB",
+        "IST",
+        "IXE",
+        "JED",
+        "JFK",
+        "KHI",
+        "KUL",
+        "KWI",
+        "LCA",
+        "LGW",
+        "LHE",
+        "LHR",
+        "MAA",
+        "MAN",
+        "MCT",
+        "MED",
+        "MLE",
+        "MNL",
+        "MUC",
+        "MXP",
+        "NBO",
+        "PVG",
+        "RUH",
+        "SAW",
+        "SHJ",
+        "SIN",
+        "SVO",
+        "TRV"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/bah/",
+          "sha256": "709f783d725f157d50c8857c6f139ab0e7647fcc60954f902ca07dc5fe03fc17",
+          "bytes": 50150
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/bah-routes.svg",
+          "sha256": "563484a6e4eb4ba7ebbd38f1c93215635e9cf7d1e9c6fb2e17eada048348a750",
+          "bytes": 189151
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    }
+  ]
+}

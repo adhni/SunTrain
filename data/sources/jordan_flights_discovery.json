@@ -1,0 +1,148 @@
+{
+  "reviewed_at": "2026-10-27T10:06:14.222051+00:00",
+  "launch_airports": [
+    "AMM",
+    "AQJ",
+    "ADJ"
+  ],
+  "worldwide_hubs": [
+    "AMM",
+    "AQJ",
+    "ADJ"
+  ],
+  "airport_maps": [
+    {
+      "airport": "AMM",
+      "destinations": [
+        "ADD",
+        "ADE",
+        "ADJ",
+        "ALG",
+        "ALP",
+        "ALY",
+        "AMS",
+        "AQJ",
+        "ARN",
+        "ATH",
+        "AUH",
+        "AYT",
+        "BAH",
+        "BCN",
+        "BEG",
+        "BEN",
+        "BER",
+        "BEY",
+        "BGW",
+        "BKK",
+        "BOM",
+        "BRU",
+        "BSR",
+        "BUD",
+        "BUS",
+        "CAI",
+        "CDG",
+        "CMN",
+        "DAM",
+        "DFW",
+        "DLM",
+        "DME",
+        "DMM",
+        "DOH",
+        "DTW",
+        "DUS",
+        "DXB",
+        "EBL",
+        "ESB",
+        "FCO",
+        "FRA",
+        "GVA",
+        "HAM",
+        "HBE",
+        "HRG",
+        "IAD",
+        "IST",
+        "ISU",
+        "JED",
+        "JFK",
+        "KWI",
+        "LCA",
+        "LHR",
+        "LYS",
+        "MAD",
+        "MAN",
+        "MCT",
+        "MED",
+        "MJI",
+        "MRA",
+        "MUC",
+        "MXP",
+        "NJF",
+        "ORD",
+        "OTP",
+        "RUH",
+        "SAW",
+        "SHJ",
+        "SSH",
+        "STN",
+        "STR",
+        "TAS",
+        "TBS",
+        "TIA",
+        "TUN",
+        "TZX",
+        "VIE",
+        "YUL",
+        "ZRH"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/amm/",
+          "sha256": "19fa3096740408d6bd8351b15c0c4a3366c19efdfd9c6e1c4afa508fcc359788",
+          "bytes": 63310
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "sha256": "a1b41339aac6a59e2caced7e9ead1b47fc700645898ea1591f85bcacaa19c7e4",
+          "bytes": 196139
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "AQJ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/aqj/: HTTP 404"
+    },
+    {
+      "airport": "ADJ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/adj/: HTTP 404"
+    }
+  ],
+  "supplemental_airport_maps": [
+    {
+      "airport": "AQJ",
+      "destinations": [
+        "AMM",
+        "AUH",
+        "BEY",
+        "CAI",
+        "RUH"
+      ],
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "facts_sha256": "ce5e405dde288f2408d29d7c0058c5a82910d0f0b085edc772fe53ad2bdbc511",
+          "capture_method": "Exact IATA labels transcribed from the already inspected public web-tool nonstop destination list; hash covers normalized facts, not original HTML"
+        }
+      ],
+      "reviewed_at": "2026-10-27T10:08:36.057469+00:00",
+      "description": "Nonstop destinations section only; seasonal/zero-frequency candidates included, connecting destinations excluded",
+      "kind": "Secondary published nonstop candidates; not dated evidence"
+    }
+  ],
+  "supplemental_source_note": "A later direct HTTP download was access-limited and stopped without retry. Frozen exact labels use the earlier successful public web-tool inspection; no raw HTML hash is claimed."
+}

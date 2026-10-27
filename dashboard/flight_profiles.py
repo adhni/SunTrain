@@ -95,6 +95,21 @@ def _turkiye_profile():
 
 
 PROFILES['TR']=_turkiye_profile()
+def _saudi_profile():
+    import json
+    from pathlib import Path
+    manifest=json.loads((Path(__file__).resolve().parents[1]/'data/sources/saudi_flights_routes.json').read_text())
+    return dict(slug='saudi',name='Saudi Arabia',zone='Asia/Riyadh',label='AST',clock='Saudi time (UTC+3)',
+        bounds=[[34,16],[56,33]],arc_anchor=45,max_duration=86400,
+        currency='mixed',capture_currency='USD',price_currencies=['USD','EUR','MYR'],
+        domestic=True,standalone=True,origin_local_day=True,default_scope='both',flight_country_filters=True,regional_start_view=True,
+        airport_countries={a['code']:a['country'] for a in manifest['airports']},
+        airport_zones={a['code']:a['timezone'] for a in manifest['airports']},description=manifest['replay_note'])
+
+
+PROFILES['SA']=_saudi_profile()
+from dashboard.arabia_jordan_flights import profiles as arabia_jordan_profiles
+PROFILES.update(arabia_jordan_profiles())
 BY_CITY={p['slug']+'_flights':(c,p) for c,p in PROFILES.items()}
 
 

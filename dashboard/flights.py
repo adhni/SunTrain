@@ -111,6 +111,11 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'MK': ('Air Mauritius', '#d77f91'), 'HM': ('Air Seychelles', '#74b9ae'),
             'TC': ('Air Tanzania', '#9cbf79'), 'HC': ('Air Senegal', '#c9b16d'),
             'AH': ('Air Algerie', '#cf929d'), 'TU': ('Tunisair', '#d88782'),
+            'WY': ('Oman Air', '#5daea8'), 'OV': ('SalamAir', '#9dbd65'),
+            'KU': ('Kuwait Airways', '#77acd6'), 'J9': ('Jazeera Airways', '#7c96bd'),
+            'GF': ('Gulf Air', '#b2a175'), 'RJ': ('Royal Jordanian', '#cc858d'),
+            'SV': ('Saudia', '#67b28b'), 'XY': ('flynas', '#57bfc0'),
+            'F3': ('flyadeal', '#b08bce'),
             'TK': ('Turkish Airlines', '#dd7b82'), 'PC': ('Pegasus', '#d9b84f'),
             'VF': ('AJet', '#73b6cf'), 'XQ': ('SunExpress', '#d69e61')}
 

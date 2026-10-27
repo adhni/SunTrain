@@ -1,0 +1,5655 @@
+{
+  "profile": "jordan",
+  "countries": [
+    "AE",
+    "AL",
+    "AT",
+    "BE",
+    "BG",
+    "BH",
+    "CA",
+    "CH",
+    "CY",
+    "CZ",
+    "DE",
+    "DZ",
+    "EG",
+    "ES",
+    "ET",
+    "FR",
+    "GB",
+    "GE",
+    "GR",
+    "HU",
+    "IN",
+    "IQ",
+    "IT",
+    "JO",
+    "KW",
+    "LB",
+    "LY",
+    "MA",
+    "NL",
+    "OM",
+    "PL",
+    "QA",
+    "RO",
+    "RS",
+    "RU",
+    "SA",
+    "SE",
+    "SY",
+    "TH",
+    "TN",
+    "TR",
+    "US",
+    "UZ",
+    "YE"
+  ],
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "Asia/Amman",
+  "currency": "USD",
+  "scope": "regional",
+  "max_duration": 86400,
+  "query_date_policy": "origin_local_departure_day_only",
+  "launch_airports": [
+    "ADJ",
+    "AMM",
+    "AQJ"
+  ],
+  "worldwide_hubs": [
+    "ADJ",
+    "AMM",
+    "AQJ"
+  ],
+  "airports": [
+    {
+      "code": "ADD",
+      "icao": "HAAB",
+      "name": "Addis Ababa Bole International Airport (ADD)",
+      "municipality": "Addis Ababa",
+      "country": "ET",
+      "timezone": "Africa/Addis_Ababa",
+      "mode": "flight",
+      "lat": 8.97789,
+      "lon": 38.799301
+    },
+    {
+      "code": "ADE",
+      "icao": "OYAA",
+      "name": "Aden International Airport (ADE)",
+      "municipality": "Aden",
+      "country": "YE",
+      "timezone": "Asia/Aden",
+      "mode": "flight",
+      "lat": 12.829564,
+      "lon": 45.029976
+    },
+    {
+      "code": "ADJ",
+      "icao": "OJAM",
+      "name": "Marka International (Amman Civil) Airport (ADJ)",
+      "municipality": "Amman",
+      "country": "JO",
+      "timezone": "Asia/Amman",
+      "mode": "flight",
+      "lat": 31.9727,
+      "lon": 35.9916
+    },
+    {
+      "code": "ALG",
+      "icao": "DAAG",
+      "name": "Houari Boumediene Airport (ALG)",
+      "municipality": "Algiers",
+      "country": "DZ",
+      "timezone": "Africa/Algiers",
+      "mode": "flight",
+      "lat": 36.693886,
+      "lon": 3.214531
+    },
+    {
+      "code": "ALP",
+      "icao": "OSAP",
+      "name": "Aleppo International Airport (ALP)",
+      "municipality": "Aleppo",
+      "country": "SY",
+      "timezone": "Asia/Damascus",
+      "mode": "flight",
+      "lat": 36.181262,
+      "lon": 37.226869
+    },
+    {
+      "code": "AMM",
+      "icao": "OJAI",
+      "name": "Queen Alia International Airport (AMM)",
+      "municipality": "Amman",
+      "country": "JO",
+      "timezone": "Asia/Amman",
+      "mode": "flight",
+      "lat": 31.7226009369,
+      "lon": 35.9931983948
+    },
+    {
+      "code": "AMS",
+      "icao": "EHAM",
+      "name": "Amsterdam Airport Schiphol (AMS)",
+      "municipality": "Amsterdam",
+      "country": "NL",
+      "timezone": "Europe/Amsterdam",
+      "mode": "flight",
+      "lat": 52.308601,
+      "lon": 4.76389
+    },
+    {
+      "code": "AQJ",
+      "icao": "OJAQ",
+      "name": "King Hussein International Airport (AQJ)",
+      "municipality": "Aqaba",
+      "country": "JO",
+      "timezone": "Asia/Amman",
+      "mode": "flight",
+      "lat": 29.611601,
+      "lon": 35.018101
+    },
+    {
+      "code": "ARN",
+      "icao": "ESSA",
+      "name": "Stockholm-Arlanda Airport (ARN)",
+      "municipality": "Stockholm",
+      "country": "SE",
+      "timezone": "Europe/Stockholm",
+      "mode": "flight",
+      "lat": 59.64849,
+      "lon": 17.928829
+    },
+    {
+      "code": "ATH",
+      "icao": "LGAV",
+      "name": "Athens Eleftherios Venizelos International Airport (ATH)",
+      "municipality": "Spata-Artemida",
+      "country": "GR",
+      "timezone": "Europe/Athens",
+      "mode": "flight",
+      "lat": 37.936401,
+      "lon": 23.9445
+    },
+    {
+      "code": "AUH",
+      "icao": "OMAA",
+      "name": "Zayed International Airport (AUH)",
+      "municipality": "Abu Dhabi",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 24.440966,
+      "lon": 54.649237
+    },
+    {
+      "code": "AYT",
+      "icao": "LTAI",
+      "name": "Antalya International Airport (AYT)",
+      "municipality": "Antalya",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 36.898701,
+      "lon": 30.800501
+    },
+    {
+      "code": "BAH",
+      "icao": "OBBI",
+      "name": "Bahrain International Airport (BAH)",
+      "municipality": "Manama",
+      "country": "BH",
+      "timezone": "Asia/Bahrain",
+      "mode": "flight",
+      "lat": 26.267295,
+      "lon": 50.63764
+    },
+    {
+      "code": "BCN",
+      "icao": "LEBL",
+      "name": "Josep Tarradellas Barcelona-El Prat Airport (BCN)",
+      "municipality": "Barcelona",
+      "country": "ES",
+      "timezone": "Europe/Madrid",
+      "mode": "flight",
+      "lat": 41.2971,
+      "lon": 2.07846
+    },
+    {
+      "code": "BEG",
+      "icao": "LYBE",
+      "name": "Belgrade Nikola Tesla Airport (BEG)",
+      "municipality": "Belgrade",
+      "country": "RS",
+      "timezone": "Europe/Belgrade",
+      "mode": "flight",
+      "lat": 44.818401,
+      "lon": 20.309099
+    },
+    {
+      "code": "BEN",
+      "icao": "HLLB",
+      "name": "Benina International Airport (BEN)",
+      "municipality": "Benina",
+      "country": "LY",
+      "timezone": "Africa/Tripoli",
+      "mode": "flight",
+      "lat": 32.096802,
+      "lon": 20.269501
+    },
+    {
+      "code": "BER",
+      "icao": "EDDB",
+      "name": "Berlin Brandenburg Airport (BER)",
+      "municipality": "Berlin",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 52.361738,
+      "lon": 13.502341
+    },
+    {
+      "code": "BEY",
+      "icao": "OLBA",
+      "name": "Beirut Rafic Hariri International Airport (BEY)",
+      "municipality": "Beirut",
+      "country": "LB",
+      "timezone": "Asia/Beirut",
+      "mode": "flight",
+      "lat": 33.819833,
+      "lon": 35.487443
+    },
+    {
+      "code": "BGW",
+      "icao": "ORBI",
+      "name": "Baghdad International Airport / New Al Muthana Air Base (BGW)",
+      "municipality": "Baghdad",
+      "country": "IQ",
+      "timezone": "Asia/Baghdad",
+      "mode": "flight",
+      "lat": 33.262501,
+      "lon": 44.2346
+    },
+    {
+      "code": "BGY",
+      "icao": "LIME",
+      "name": "Il Caravaggio International Airport (BGY)",
+      "municipality": "Orio al Serio (BG)",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "mode": "flight",
+      "lat": 45.669362,
+      "lon": 9.708851
+    },
+    {
+      "code": "BKK",
+      "icao": "VTBS",
+      "name": "Suvarnabhumi Airport (BKK)",
+      "municipality": "Bangkok",
+      "country": "TH",
+      "timezone": "Asia/Bangkok",
+      "mode": "flight",
+      "lat": 13.6811,
+      "lon": 100.747002
+    },
+    {
+      "code": "BOM",
+      "icao": "VABB",
+      "name": "Chhatrapati Shivaji Maharaj International Airport (BOM)",
+      "municipality": "Mumbai",
+      "country": "IN",
+      "timezone": "Asia/Kolkata",
+      "mode": "flight",
+      "lat": 19.088699,
+      "lon": 72.867897
+    },
+    {
+      "code": "BRU",
+      "icao": "EBBR",
+      "name": "Brussels Airport (BRU)",
+      "municipality": "Zaventem",
+      "country": "BE",
+      "timezone": "Europe/Brussels",
+      "mode": "flight",
+      "lat": 50.901402,
+      "lon": 4.48444
+    },
+    {
+      "code": "BSR",
+      "icao": "ORMM",
+      "name": "Basra International Airport (BSR)",
+      "municipality": "Basra",
+      "country": "IQ",
+      "timezone": "Asia/Baghdad",
+      "mode": "flight",
+      "lat": 30.549101,
+      "lon": 47.662102
+    },
+    {
+      "code": "BUD",
+      "icao": "LHBP",
+      "name": "Budapest Liszt Ferenc International Airport (BUD)",
+      "municipality": "Budapest",
+      "country": "HU",
+      "timezone": "Europe/Budapest",
+      "mode": "flight",
+      "lat": 47.43018,
+      "lon": 19.262393
+    },
+    {
+      "code": "BUS",
+      "icao": "UGSB",
+      "name": "Alexander Kartveli Batumi International Airport (BUS)",
+      "municipality": "Batumi",
+      "country": "GE",
+      "timezone": "Asia/Tbilisi",
+      "mode": "flight",
+      "lat": 41.60939,
+      "lon": 41.600315
+    },
+    {
+      "code": "BVA",
+      "icao": "LFOB",
+      "name": "Beauvais-Tillé airport (BVA)",
+      "municipality": "Beauvais",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "mode": "flight",
+      "lat": 49.454399,
+      "lon": 2.11278
+    },
+    {
+      "code": "CAI",
+      "icao": "HECA",
+      "name": "Cairo International Airport (CAI)",
+      "municipality": "Cairo",
+      "country": "EG",
+      "timezone": "Africa/Cairo",
+      "mode": "flight",
+      "lat": 30.111534,
+      "lon": 31.396694
+    },
+    {
+      "code": "CDG",
+      "icao": "LFPG",
+      "name": "Charles de Gaulle International Airport (CDG)",
+      "municipality": "Paris (Roissy-en-France, Val-d'Oise)",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "mode": "flight",
+      "lat": 49.00896,
+      "lon": 2.554117
+    },
+    {
+      "code": "CMN",
+      "icao": "GMMN",
+      "name": "Mohammed V International Airport (CMN)",
+      "municipality": "Casablanca",
+      "country": "MA",
+      "timezone": "Africa/Casablanca",
+      "mode": "flight",
+      "lat": 33.3675,
+      "lon": -7.58997
+    },
+    {
+      "code": "DAM",
+      "icao": "OSDI",
+      "name": "Damascus International Airport (DAM)",
+      "municipality": "Damascus",
+      "country": "SY",
+      "timezone": "Asia/Damascus",
+      "mode": "flight",
+      "lat": 33.4114990234375,
+      "lon": 36.51559829711914
+    },
+    {
+      "code": "DFW",
+      "icao": "KDFW",
+      "name": "Dallas Fort Worth International Airport (DFW)",
+      "municipality": "Dallas-Fort Worth",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 32.896801,
+      "lon": -97.038002
+    },
+    {
+      "code": "DLM",
+      "icao": "LTBS",
+      "name": "Dalaman International Airport (DLM)",
+      "municipality": "Dalaman",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 36.7131,
+      "lon": 28.7925
+    },
+    {
+      "code": "DME",
+      "icao": "UUDD",
+      "name": "Domodedovo International Airport (DME)",
+      "municipality": "Moscow",
+      "country": "RU",
+      "timezone": "Europe/Moscow",
+      "mode": "flight",
+      "lat": 55.408798,
+      "lon": 37.9063
+    },
+    {
+      "code": "DMM",
+      "icao": "OEDF",
+      "name": "King Fahd International Airport (DMM)",
+      "municipality": "Ad Dammam",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 26.4691,
+      "lon": 49.798209
+    },
+    {
+      "code": "DOH",
+      "icao": "OTHH",
+      "name": "Hamad International Airport (DOH)",
+      "municipality": "Doha",
+      "country": "QA",
+      "timezone": "Asia/Qatar",
+      "mode": "flight",
+      "lat": 25.273056,
+      "lon": 51.608056
+    },
+    {
+      "code": "DTW",
+      "icao": "KDTW",
+      "name": "Detroit Metropolitan Wayne County Airport (DTW)",
+      "municipality": "Detroit",
+      "country": "US",
+      "timezone": "America/Detroit",
+      "mode": "flight",
+      "lat": 42.21377,
+      "lon": -83.353786
+    },
+    {
+      "code": "DUS",
+      "icao": "EDDL",
+      "name": "Düsseldorf Airport (DUS)",
+      "municipality": "Düsseldorf",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 51.289501,
+      "lon": 6.76678
+    },
+    {
+      "code": "DXB",
+      "icao": "OMDB",
+      "name": "Dubai International Airport (DXB)",
+      "municipality": "Dubai",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.24979,
+      "lon": 55.370992
+    },
+    {
+      "code": "EBL",
+      "icao": "ORER",
+      "name": "Erbil International Airport (EBL)",
+      "municipality": "Arbil",
+      "country": "IQ",
+      "timezone": "Asia/Baghdad",
+      "mode": "flight",
+      "lat": 36.236047,
+      "lon": 43.946615
+    },
+    {
+      "code": "ESB",
+      "icao": "LTAC",
+      "name": "Esenboğa International Airport (ESB)",
+      "municipality": "Ankara",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 40.128101,
+      "lon": 32.995098
+    },
+    {
+      "code": "FCO",
+      "icao": "LIRF",
+      "name": "Rome–Fiumicino Leonardo da Vinci International Airport (FCO)",
+      "municipality": "Rome",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "mode": "flight",
+      "lat": 41.804532,
+      "lon": 12.251998
+    },
+    {
+      "code": "FKB",
+      "icao": "EDSB",
+      "name": "Karlsruhe Baden-Baden Airport (FKB)",
+      "municipality": "Rheinmünster",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 48.7794,
+      "lon": 8.0805
+    },
+    {
+      "code": "FMM",
+      "icao": "EDJA",
+      "name": "Memmingen Allgau Airport (FMM)",
+      "municipality": "Memmingen",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 47.988092,
+      "lon": 10.238248
+    },
+    {
+      "code": "FRA",
+      "icao": "EDDF",
+      "name": "Frankfurt Main Airport (FRA)",
+      "municipality": "Frankfurt am Main",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 50.026706,
+      "lon": 8.55835
+    },
+    {
+      "code": "GVA",
+      "icao": "LSGG",
+      "name": "Geneva International Airport (GVA)",
+      "municipality": "Geneva",
+      "country": "CH",
+      "timezone": "Europe/Paris",
+      "mode": "flight",
+      "lat": 46.238098,
+      "lon": 6.10895
+    },
+    {
+      "code": "HAM",
+      "icao": "EDDH",
+      "name": "Hamburg Helmut Schmidt Airport (HAM)",
+      "municipality": "Hamburg",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 53.630402,
+      "lon": 9.98823
+    },
+    {
+      "code": "HBE",
+      "icao": "HEAX",
+      "name": "Alexandria International Airport (HBE)",
+      "municipality": "Alexandria",
+      "country": "EG",
+      "timezone": "Africa/Cairo",
+      "mode": "flight",
+      "lat": 30.93249,
+      "lon": 29.696437
+    },
+    {
+      "code": "HRG",
+      "icao": "HEGN",
+      "name": "Hurghada International Airport (HRG)",
+      "municipality": "Hurghada",
+      "country": "EG",
+      "timezone": "Africa/Cairo",
+      "mode": "flight",
+      "lat": 27.176776,
+      "lon": 33.796692
+    },
+    {
+      "code": "IAD",
+      "icao": "KIAD",
+      "name": "Washington Dulles International Airport (IAD)",
+      "municipality": "Dulles",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 38.9445,
+      "lon": -77.455803
+    },
+    {
+      "code": "IST",
+      "icao": "LTFM",
+      "name": "İstanbul Airport (IST)",
+      "municipality": "Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 41.274874,
+      "lon": 28.732136
+    },
+    {
+      "code": "ISU",
+      "icao": "ORSJ",
+      "name": "Jalal Talabani International Airport (ISU)",
+      "municipality": "Sulaymaniyah",
+      "country": "IQ",
+      "timezone": "Asia/Baghdad",
+      "mode": "flight",
+      "lat": 35.560487,
+      "lon": 45.315137
+    },
+    {
+      "code": "JED",
+      "icao": "OEJN",
+      "name": "King Abdulaziz International Airport (JED)",
+      "municipality": "Jeddah",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 21.680241,
+      "lon": 39.157436
+    },
+    {
+      "code": "JFK",
+      "icao": "KJFK",
+      "name": "John F. Kennedy International Airport (JFK)",
+      "municipality": "New York",
+      "country": "US",
+      "timezone": "America/New_York",
+      "mode": "flight",
+      "lat": 40.639447,
+      "lon": -73.779317
+    },
+    {
+      "code": "KRK",
+      "icao": "EPKK",
+      "name": "Kraków John Paul II International Airport (KRK)",
+      "municipality": "Balice",
+      "country": "PL",
+      "timezone": "Europe/Warsaw",
+      "mode": "flight",
+      "lat": 50.077702,
+      "lon": 19.7848
+    },
+    {
+      "code": "KWI",
+      "icao": "OKKK",
+      "name": "Kuwait International Airport (KWI)",
+      "municipality": "Kuwait City",
+      "country": "KW",
+      "timezone": "Asia/Kuwait",
+      "mode": "flight",
+      "lat": 29.224487,
+      "lon": 47.969813
+    },
+    {
+      "code": "LCA",
+      "icao": "LCLK",
+      "name": "Larnaca International Airport (LCA)",
+      "municipality": "Larnaca",
+      "country": "CY",
+      "timezone": "Asia/Nicosia",
+      "mode": "flight",
+      "lat": 34.875099,
+      "lon": 33.624901
+    },
+    {
+      "code": "LHR",
+      "icao": "EGLL",
+      "name": "London Heathrow Airport (LHR)",
+      "municipality": "London",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 51.470748,
+      "lon": -0.459909
+    },
+    {
+      "code": "LYS",
+      "icao": "LFLL",
+      "name": "Lyon Saint-Exupéry Airport (LYS)",
+      "municipality": "Colombier-Saugnieu, Rhône",
+      "country": "FR",
+      "timezone": "Europe/Paris",
+      "mode": "flight",
+      "lat": 45.725996,
+      "lon": 5.090139
+    },
+    {
+      "code": "MAD",
+      "icao": "LEMD",
+      "name": "Adolfo Suárez Madrid–Barajas Airport (MAD)",
+      "municipality": "Madrid",
+      "country": "ES",
+      "timezone": "Europe/Madrid",
+      "mode": "flight",
+      "lat": 40.493407,
+      "lon": -3.572249
+    },
+    {
+      "code": "MAN",
+      "icao": "EGCC",
+      "name": "Manchester Airport (MAN)",
+      "municipality": "Manchester, Greater Manchester",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 53.349375,
+      "lon": -2.279521
+    },
+    {
+      "code": "MCT",
+      "icao": "OOMS",
+      "name": "Muscat International Airport (MCT)",
+      "municipality": "Muscat/Seeb",
+      "country": "OM",
+      "timezone": "Asia/Muscat",
+      "mode": "flight",
+      "lat": 23.600218,
+      "lon": 58.285268
+    },
+    {
+      "code": "MED",
+      "icao": "OEMA",
+      "name": "Prince Mohammad Bin Abdulaziz Airport (MED)",
+      "municipality": "Medina",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 24.5534,
+      "lon": 39.705101
+    },
+    {
+      "code": "MJI",
+      "icao": "HLLM",
+      "name": "Mitiga International Airport (MJI)",
+      "municipality": "Tripoli",
+      "country": "LY",
+      "timezone": "Africa/Tripoli",
+      "mode": "flight",
+      "lat": 32.89177,
+      "lon": 13.287878
+    },
+    {
+      "code": "MRA",
+      "icao": "HLMS",
+      "name": "Misrata International Airport (MRA)",
+      "municipality": "Misrata",
+      "country": "LY",
+      "timezone": "Africa/Tripoli",
+      "mode": "flight",
+      "lat": 32.325001,
+      "lon": 15.061
+    },
+    {
+      "code": "MUC",
+      "icao": "EDDM",
+      "name": "Munich Airport (MUC)",
+      "municipality": "Munich",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 48.353802,
+      "lon": 11.7861
+    },
+    {
+      "code": "MXP",
+      "icao": "LIMC",
+      "name": "Milan Malpensa International Airport (MXP)",
+      "municipality": "Ferno (VA)",
+      "country": "IT",
+      "timezone": "Europe/Rome",
+      "mode": "flight",
+      "lat": 45.6306,
+      "lon": 8.72811
+    },
+    {
+      "code": "NJF",
+      "icao": "ORNI",
+      "name": "Al Najaf International Airport (NJF)",
+      "municipality": "Najaf",
+      "country": "IQ",
+      "timezone": "Asia/Baghdad",
+      "mode": "flight",
+      "lat": 31.991116,
+      "lon": 44.405019
+    },
+    {
+      "code": "ORD",
+      "icao": "KORD",
+      "name": "Chicago O'Hare International Airport (ORD)",
+      "municipality": "Chicago",
+      "country": "US",
+      "timezone": "America/Chicago",
+      "mode": "flight",
+      "lat": 41.9786,
+      "lon": -87.9048
+    },
+    {
+      "code": "OTP",
+      "icao": "LROP",
+      "name": "Bucharest Henri Coandă International Airport (OTP)",
+      "municipality": "Otopeni",
+      "country": "RO",
+      "timezone": "Europe/Bucharest",
+      "mode": "flight",
+      "lat": 44.571792,
+      "lon": 26.103285
+    },
+    {
+      "code": "POZ",
+      "icao": "EPPO",
+      "name": "Poznań-Ławica Airport (POZ)",
+      "municipality": "Poznań",
+      "country": "PL",
+      "timezone": "Europe/Warsaw",
+      "mode": "flight",
+      "lat": 52.421598,
+      "lon": 16.823359
+    },
+    {
+      "code": "PRG",
+      "icao": "LKPR",
+      "name": "Václav Havel Airport Prague (PRG)",
+      "municipality": "Prague",
+      "country": "CZ",
+      "timezone": "Europe/Prague",
+      "mode": "flight",
+      "lat": 50.100874,
+      "lon": 14.259911
+    },
+    {
+      "code": "RUH",
+      "icao": "OERK",
+      "name": "King Khalid International Airport (RUH)",
+      "municipality": "Riyadh",
+      "country": "SA",
+      "timezone": "Asia/Riyadh",
+      "mode": "flight",
+      "lat": 24.9576,
+      "lon": 46.698799
+    },
+    {
+      "code": "SAW",
+      "icao": "LTFJ",
+      "name": "Istanbul Sabiha Gökçen International Airport (SAW)",
+      "municipality": "Pendik, Istanbul",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 40.898602,
+      "lon": 29.3092
+    },
+    {
+      "code": "SHJ",
+      "icao": "OMSJ",
+      "name": "Sharjah International Airport (SHJ)",
+      "municipality": "Sharjah",
+      "country": "AE",
+      "timezone": "Asia/Dubai",
+      "mode": "flight",
+      "lat": 25.3286,
+      "lon": 55.5172
+    },
+    {
+      "code": "SOF",
+      "icao": "LBSF",
+      "name": "Sofia Airport (SOF)",
+      "municipality": "Sofia",
+      "country": "BG",
+      "timezone": "Europe/Sofia",
+      "mode": "flight",
+      "lat": 42.696357,
+      "lon": 23.417671
+    },
+    {
+      "code": "SSH",
+      "icao": "HESH",
+      "name": "Sharm El Sheikh International Airport (SSH)",
+      "municipality": "Sharm El Sheikh",
+      "country": "EG",
+      "timezone": "Africa/Cairo",
+      "mode": "flight",
+      "lat": 27.977272,
+      "lon": 34.394717
+    },
+    {
+      "code": "STN",
+      "icao": "EGSS",
+      "name": "London Stansted Airport (STN)",
+      "municipality": "London, Essex",
+      "country": "GB",
+      "timezone": "Europe/London",
+      "mode": "flight",
+      "lat": 51.884998,
+      "lon": 0.235
+    },
+    {
+      "code": "STR",
+      "icao": "EDDS",
+      "name": "Stuttgart Airport (STR)",
+      "municipality": "Stuttgart",
+      "country": "DE",
+      "timezone": "Europe/Berlin",
+      "mode": "flight",
+      "lat": 48.689899,
+      "lon": 9.22196
+    },
+    {
+      "code": "TAS",
+      "icao": "UZTT",
+      "name": "Tashkent International Airport (TAS)",
+      "municipality": "Tashkent",
+      "country": "UZ",
+      "timezone": "Asia/Tashkent",
+      "mode": "flight",
+      "lat": 41.2579,
+      "lon": 69.281197
+    },
+    {
+      "code": "TBS",
+      "icao": "UGTB",
+      "name": "Tbilisi International Airport (TBS)",
+      "municipality": "Tbilisi",
+      "country": "GE",
+      "timezone": "Asia/Tbilisi",
+      "mode": "flight",
+      "lat": 41.669201,
+      "lon": 44.9547
+    },
+    {
+      "code": "TIA",
+      "icao": "LATI",
+      "name": "Tirana International Airport Mother Teresa (TIA)",
+      "municipality": "Rinas",
+      "country": "AL",
+      "timezone": "Europe/Tirane",
+      "mode": "flight",
+      "lat": 41.4147,
+      "lon": 19.7206
+    },
+    {
+      "code": "TUN",
+      "icao": "DTTA",
+      "name": "Tunis Carthage International Airport (TUN)",
+      "municipality": "Tunis",
+      "country": "TN",
+      "timezone": "Africa/Tunis",
+      "mode": "flight",
+      "lat": 36.851002,
+      "lon": 10.2272
+    },
+    {
+      "code": "TZX",
+      "icao": "LTCG",
+      "name": "Trabzon International Airport (TZX)",
+      "municipality": "Trabzon",
+      "country": "TR",
+      "timezone": "Europe/Istanbul",
+      "mode": "flight",
+      "lat": 40.995098,
+      "lon": 39.7897
+    },
+    {
+      "code": "VIE",
+      "icao": "LOWW",
+      "name": "Vienna International Airport (VIE)",
+      "municipality": "Vienna",
+      "country": "AT",
+      "timezone": "Europe/Vienna",
+      "mode": "flight",
+      "lat": 48.110298,
+      "lon": 16.5697
+    },
+    {
+      "code": "YUL",
+      "icao": "CYUL",
+      "name": "Montreal / Pierre Elliott Trudeau International Airport (YUL)",
+      "municipality": "Montréal",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "mode": "flight",
+      "lat": 45.467837,
+      "lon": -73.742294
+    },
+    {
+      "code": "ZRH",
+      "icao": "LSZH",
+      "name": "Zürich Airport (ZRH)",
+      "municipality": "Zurich",
+      "country": "CH",
+      "timezone": "Europe/Zurich",
+      "mode": "flight",
+      "lat": 47.458056,
+      "lon": 8.548056
+    }
+  ],
+  "routes": [
+    [
+      "ADD",
+      "AMM"
+    ],
+    [
+      "ADE",
+      "AMM"
+    ],
+    [
+      "ADJ",
+      "AMM"
+    ],
+    [
+      "ADJ",
+      "HRG"
+    ],
+    [
+      "ADJ",
+      "IST"
+    ],
+    [
+      "ADJ",
+      "JED"
+    ],
+    [
+      "ADJ",
+      "KWI"
+    ],
+    [
+      "ADJ",
+      "MED"
+    ],
+    [
+      "ADJ",
+      "RUH"
+    ],
+    [
+      "ADJ",
+      "SSH"
+    ],
+    [
+      "ALG",
+      "AMM"
+    ],
+    [
+      "ALP",
+      "AMM"
+    ],
+    [
+      "AMM",
+      "ADD"
+    ],
+    [
+      "AMM",
+      "ADE"
+    ],
+    [
+      "AMM",
+      "ADJ"
+    ],
+    [
+      "AMM",
+      "ALG"
+    ],
+    [
+      "AMM",
+      "ALP"
+    ],
+    [
+      "AMM",
+      "AMS"
+    ],
+    [
+      "AMM",
+      "AQJ"
+    ],
+    [
+      "AMM",
+      "ARN"
+    ],
+    [
+      "AMM",
+      "ATH"
+    ],
+    [
+      "AMM",
+      "AUH"
+    ],
+    [
+      "AMM",
+      "AYT"
+    ],
+    [
+      "AMM",
+      "BAH"
+    ],
+    [
+      "AMM",
+      "BCN"
+    ],
+    [
+      "AMM",
+      "BEG"
+    ],
+    [
+      "AMM",
+      "BEN"
+    ],
+    [
+      "AMM",
+      "BER"
+    ],
+    [
+      "AMM",
+      "BEY"
+    ],
+    [
+      "AMM",
+      "BGW"
+    ],
+    [
+      "AMM",
+      "BGY"
+    ],
+    [
+      "AMM",
+      "BKK"
+    ],
+    [
+      "AMM",
+      "BOM"
+    ],
+    [
+      "AMM",
+      "BRU"
+    ],
+    [
+      "AMM",
+      "BSR"
+    ],
+    [
+      "AMM",
+      "BUD"
+    ],
+    [
+      "AMM",
+      "BUS"
+    ],
+    [
+      "AMM",
+      "BVA"
+    ],
+    [
+      "AMM",
+      "CAI"
+    ],
+    [
+      "AMM",
+      "CDG"
+    ],
+    [
+      "AMM",
+      "CMN"
+    ],
+    [
+      "AMM",
+      "DAM"
+    ],
+    [
+      "AMM",
+      "DFW"
+    ],
+    [
+      "AMM",
+      "DLM"
+    ],
+    [
+      "AMM",
+      "DME"
+    ],
+    [
+      "AMM",
+      "DMM"
+    ],
+    [
+      "AMM",
+      "DOH"
+    ],
+    [
+      "AMM",
+      "DTW"
+    ],
+    [
+      "AMM",
+      "DUS"
+    ],
+    [
+      "AMM",
+      "DXB"
+    ],
+    [
+      "AMM",
+      "EBL"
+    ],
+    [
+      "AMM",
+      "ESB"
+    ],
+    [
+      "AMM",
+      "FCO"
+    ],
+    [
+      "AMM",
+      "FKB"
+    ],
+    [
+      "AMM",
+      "FMM"
+    ],
+    [
+      "AMM",
+      "FRA"
+    ],
+    [
+      "AMM",
+      "GVA"
+    ],
+    [
+      "AMM",
+      "HAM"
+    ],
+    [
+      "AMM",
+      "HBE"
+    ],
+    [
+      "AMM",
+      "HRG"
+    ],
+    [
+      "AMM",
+      "IAD"
+    ],
+    [
+      "AMM",
+      "IST"
+    ],
+    [
+      "AMM",
+      "ISU"
+    ],
+    [
+      "AMM",
+      "JED"
+    ],
+    [
+      "AMM",
+      "JFK"
+    ],
+    [
+      "AMM",
+      "KRK"
+    ],
+    [
+      "AMM",
+      "KWI"
+    ],
+    [
+      "AMM",
+      "LCA"
+    ],
+    [
+      "AMM",
+      "LHR"
+    ],
+    [
+      "AMM",
+      "LYS"
+    ],
+    [
+      "AMM",
+      "MAD"
+    ],
+    [
+      "AMM",
+      "MAN"
+    ],
+    [
+      "AMM",
+      "MCT"
+    ],
+    [
+      "AMM",
+      "MED"
+    ],
+    [
+      "AMM",
+      "MJI"
+    ],
+    [
+      "AMM",
+      "MRA"
+    ],
+    [
+      "AMM",
+      "MUC"
+    ],
+    [
+      "AMM",
+      "MXP"
+    ],
+    [
+      "AMM",
+      "NJF"
+    ],
+    [
+      "AMM",
+      "ORD"
+    ],
+    [
+      "AMM",
+      "OTP"
+    ],
+    [
+      "AMM",
+      "POZ"
+    ],
+    [
+      "AMM",
+      "PRG"
+    ],
+    [
+      "AMM",
+      "RUH"
+    ],
+    [
+      "AMM",
+      "SAW"
+    ],
+    [
+      "AMM",
+      "SHJ"
+    ],
+    [
+      "AMM",
+      "SOF"
+    ],
+    [
+      "AMM",
+      "SSH"
+    ],
+    [
+      "AMM",
+      "STN"
+    ],
+    [
+      "AMM",
+      "STR"
+    ],
+    [
+      "AMM",
+      "TAS"
+    ],
+    [
+      "AMM",
+      "TBS"
+    ],
+    [
+      "AMM",
+      "TIA"
+    ],
+    [
+      "AMM",
+      "TUN"
+    ],
+    [
+      "AMM",
+      "TZX"
+    ],
+    [
+      "AMM",
+      "VIE"
+    ],
+    [
+      "AMM",
+      "YUL"
+    ],
+    [
+      "AMM",
+      "ZRH"
+    ],
+    [
+      "AMS",
+      "AMM"
+    ],
+    [
+      "AQJ",
+      "AMM"
+    ],
+    [
+      "AQJ",
+      "AUH"
+    ],
+    [
+      "AQJ",
+      "BEY"
+    ],
+    [
+      "AQJ",
+      "CAI"
+    ],
+    [
+      "AQJ",
+      "RUH"
+    ],
+    [
+      "ARN",
+      "AMM"
+    ],
+    [
+      "ATH",
+      "AMM"
+    ],
+    [
+      "AUH",
+      "AMM"
+    ],
+    [
+      "AUH",
+      "AQJ"
+    ],
+    [
+      "AYT",
+      "AMM"
+    ],
+    [
+      "BAH",
+      "AMM"
+    ],
+    [
+      "BCN",
+      "AMM"
+    ],
+    [
+      "BEG",
+      "AMM"
+    ],
+    [
+      "BEN",
+      "AMM"
+    ],
+    [
+      "BER",
+      "AMM"
+    ],
+    [
+      "BEY",
+      "AMM"
+    ],
+    [
+      "BEY",
+      "AQJ"
+    ],
+    [
+      "BGW",
+      "AMM"
+    ],
+    [
+      "BGY",
+      "AMM"
+    ],
+    [
+      "BKK",
+      "AMM"
+    ],
+    [
+      "BOM",
+      "AMM"
+    ],
+    [
+      "BRU",
+      "AMM"
+    ],
+    [
+      "BSR",
+      "AMM"
+    ],
+    [
+      "BUD",
+      "AMM"
+    ],
+    [
+      "BUS",
+      "AMM"
+    ],
+    [
+      "BVA",
+      "AMM"
+    ],
+    [
+      "CAI",
+      "AMM"
+    ],
+    [
+      "CAI",
+      "AQJ"
+    ],
+    [
+      "CDG",
+      "AMM"
+    ],
+    [
+      "CMN",
+      "AMM"
+    ],
+    [
+      "DAM",
+      "AMM"
+    ],
+    [
+      "DFW",
+      "AMM"
+    ],
+    [
+      "DLM",
+      "AMM"
+    ],
+    [
+      "DME",
+      "AMM"
+    ],
+    [
+      "DMM",
+      "AMM"
+    ],
+    [
+      "DOH",
+      "AMM"
+    ],
+    [
+      "DTW",
+      "AMM"
+    ],
+    [
+      "DUS",
+      "AMM"
+    ],
+    [
+      "DXB",
+      "AMM"
+    ],
+    [
+      "EBL",
+      "AMM"
+    ],
+    [
+      "ESB",
+      "AMM"
+    ],
+    [
+      "FCO",
+      "AMM"
+    ],
+    [
+      "FKB",
+      "AMM"
+    ],
+    [
+      "FMM",
+      "AMM"
+    ],
+    [
+      "FRA",
+      "AMM"
+    ],
+    [
+      "GVA",
+      "AMM"
+    ],
+    [
+      "HAM",
+      "AMM"
+    ],
+    [
+      "HBE",
+      "AMM"
+    ],
+    [
+      "HRG",
+      "ADJ"
+    ],
+    [
+      "HRG",
+      "AMM"
+    ],
+    [
+      "IAD",
+      "AMM"
+    ],
+    [
+      "IST",
+      "ADJ"
+    ],
+    [
+      "IST",
+      "AMM"
+    ],
+    [
+      "ISU",
+      "AMM"
+    ],
+    [
+      "JED",
+      "ADJ"
+    ],
+    [
+      "JED",
+      "AMM"
+    ],
+    [
+      "JFK",
+      "AMM"
+    ],
+    [
+      "KRK",
+      "AMM"
+    ],
+    [
+      "KWI",
+      "ADJ"
+    ],
+    [
+      "KWI",
+      "AMM"
+    ],
+    [
+      "LCA",
+      "AMM"
+    ],
+    [
+      "LHR",
+      "AMM"
+    ],
+    [
+      "LYS",
+      "AMM"
+    ],
+    [
+      "MAD",
+      "AMM"
+    ],
+    [
+      "MAN",
+      "AMM"
+    ],
+    [
+      "MCT",
+      "AMM"
+    ],
+    [
+      "MED",
+      "ADJ"
+    ],
+    [
+      "MED",
+      "AMM"
+    ],
+    [
+      "MJI",
+      "AMM"
+    ],
+    [
+      "MRA",
+      "AMM"
+    ],
+    [
+      "MUC",
+      "AMM"
+    ],
+    [
+      "MXP",
+      "AMM"
+    ],
+    [
+      "NJF",
+      "AMM"
+    ],
+    [
+      "ORD",
+      "AMM"
+    ],
+    [
+      "OTP",
+      "AMM"
+    ],
+    [
+      "POZ",
+      "AMM"
+    ],
+    [
+      "PRG",
+      "AMM"
+    ],
+    [
+      "RUH",
+      "ADJ"
+    ],
+    [
+      "RUH",
+      "AMM"
+    ],
+    [
+      "RUH",
+      "AQJ"
+    ],
+    [
+      "SAW",
+      "AMM"
+    ],
+    [
+      "SHJ",
+      "AMM"
+    ],
+    [
+      "SOF",
+      "AMM"
+    ],
+    [
+      "SSH",
+      "ADJ"
+    ],
+    [
+      "SSH",
+      "AMM"
+    ],
+    [
+      "STN",
+      "AMM"
+    ],
+    [
+      "STR",
+      "AMM"
+    ],
+    [
+      "TAS",
+      "AMM"
+    ],
+    [
+      "TBS",
+      "AMM"
+    ],
+    [
+      "TIA",
+      "AMM"
+    ],
+    [
+      "TUN",
+      "AMM"
+    ],
+    [
+      "TZX",
+      "AMM"
+    ],
+    [
+      "VIE",
+      "AMM"
+    ],
+    [
+      "YUL",
+      "AMM"
+    ],
+    [
+      "ZRH",
+      "AMM"
+    ]
+  ],
+  "new_collection_routes": [
+    [
+      "ADD",
+      "AMM"
+    ],
+    [
+      "ADE",
+      "AMM"
+    ],
+    [
+      "ADJ",
+      "AMM"
+    ],
+    [
+      "ADJ",
+      "HRG"
+    ],
+    [
+      "ADJ",
+      "IST"
+    ],
+    [
+      "ADJ",
+      "JED"
+    ],
+    [
+      "ADJ",
+      "KWI"
+    ],
+    [
+      "ADJ",
+      "MED"
+    ],
+    [
+      "ADJ",
+      "RUH"
+    ],
+    [
+      "ADJ",
+      "SSH"
+    ],
+    [
+      "ALG",
+      "AMM"
+    ],
+    [
+      "ALP",
+      "AMM"
+    ],
+    [
+      "AMM",
+      "ADD"
+    ],
+    [
+      "AMM",
+      "ADE"
+    ],
+    [
+      "AMM",
+      "ADJ"
+    ],
+    [
+      "AMM",
+      "ALG"
+    ],
+    [
+      "AMM",
+      "ALP"
+    ],
+    [
+      "AMM",
+      "AMS"
+    ],
+    [
+      "AMM",
+      "AQJ"
+    ],
+    [
+      "AMM",
+      "ARN"
+    ],
+    [
+      "AMM",
+      "ATH"
+    ],
+    [
+      "AMM",
+      "AUH"
+    ],
+    [
+      "AMM",
+      "AYT"
+    ],
+    [
+      "AMM",
+      "BAH"
+    ],
+    [
+      "AMM",
+      "BCN"
+    ],
+    [
+      "AMM",
+      "BEG"
+    ],
+    [
+      "AMM",
+      "BEN"
+    ],
+    [
+      "AMM",
+      "BER"
+    ],
+    [
+      "AMM",
+      "BEY"
+    ],
+    [
+      "AMM",
+      "BGW"
+    ],
+    [
+      "AMM",
+      "BGY"
+    ],
+    [
+      "AMM",
+      "BKK"
+    ],
+    [
+      "AMM",
+      "BOM"
+    ],
+    [
+      "AMM",
+      "BRU"
+    ],
+    [
+      "AMM",
+      "BSR"
+    ],
+    [
+      "AMM",
+      "BUD"
+    ],
+    [
+      "AMM",
+      "BUS"
+    ],
+    [
+      "AMM",
+      "BVA"
+    ],
+    [
+      "AMM",
+      "CAI"
+    ],
+    [
+      "AMM",
+      "CDG"
+    ],
+    [
+      "AMM",
+      "CMN"
+    ],
+    [
+      "AMM",
+      "DAM"
+    ],
+    [
+      "AMM",
+      "DFW"
+    ],
+    [
+      "AMM",
+      "DLM"
+    ],
+    [
+      "AMM",
+      "DME"
+    ],
+    [
+      "AMM",
+      "DMM"
+    ],
+    [
+      "AMM",
+      "DOH"
+    ],
+    [
+      "AMM",
+      "DTW"
+    ],
+    [
+      "AMM",
+      "DUS"
+    ],
+    [
+      "AMM",
+      "DXB"
+    ],
+    [
+      "AMM",
+      "EBL"
+    ],
+    [
+      "AMM",
+      "ESB"
+    ],
+    [
+      "AMM",
+      "FCO"
+    ],
+    [
+      "AMM",
+      "FKB"
+    ],
+    [
+      "AMM",
+      "FMM"
+    ],
+    [
+      "AMM",
+      "FRA"
+    ],
+    [
+      "AMM",
+      "GVA"
+    ],
+    [
+      "AMM",
+      "HAM"
+    ],
+    [
+      "AMM",
+      "HBE"
+    ],
+    [
+      "AMM",
+      "HRG"
+    ],
+    [
+      "AMM",
+      "IAD"
+    ],
+    [
+      "AMM",
+      "IST"
+    ],
+    [
+      "AMM",
+      "ISU"
+    ],
+    [
+      "AMM",
+      "JED"
+    ],
+    [
+      "AMM",
+      "JFK"
+    ],
+    [
+      "AMM",
+      "KRK"
+    ],
+    [
+      "AMM",
+      "KWI"
+    ],
+    [
+      "AMM",
+      "LCA"
+    ],
+    [
+      "AMM",
+      "LHR"
+    ],
+    [
+      "AMM",
+      "LYS"
+    ],
+    [
+      "AMM",
+      "MAD"
+    ],
+    [
+      "AMM",
+      "MAN"
+    ],
+    [
+      "AMM",
+      "MCT"
+    ],
+    [
+      "AMM",
+      "MED"
+    ],
+    [
+      "AMM",
+      "MJI"
+    ],
+    [
+      "AMM",
+      "MRA"
+    ],
+    [
+      "AMM",
+      "MUC"
+    ],
+    [
+      "AMM",
+      "MXP"
+    ],
+    [
+      "AMM",
+      "NJF"
+    ],
+    [
+      "AMM",
+      "ORD"
+    ],
+    [
+      "AMM",
+      "OTP"
+    ],
+    [
+      "AMM",
+      "POZ"
+    ],
+    [
+      "AMM",
+      "PRG"
+    ],
+    [
+      "AMM",
+      "RUH"
+    ],
+    [
+      "AMM",
+      "SAW"
+    ],
+    [
+      "AMM",
+      "SHJ"
+    ],
+    [
+      "AMM",
+      "SOF"
+    ],
+    [
+      "AMM",
+      "SSH"
+    ],
+    [
+      "AMM",
+      "STN"
+    ],
+    [
+      "AMM",
+      "STR"
+    ],
+    [
+      "AMM",
+      "TAS"
+    ],
+    [
+      "AMM",
+      "TBS"
+    ],
+    [
+      "AMM",
+      "TIA"
+    ],
+    [
+      "AMM",
+      "TUN"
+    ],
+    [
+      "AMM",
+      "TZX"
+    ],
+    [
+      "AMM",
+      "VIE"
+    ],
+    [
+      "AMM",
+      "YUL"
+    ],
+    [
+      "AMM",
+      "ZRH"
+    ],
+    [
+      "AMS",
+      "AMM"
+    ],
+    [
+      "AQJ",
+      "AMM"
+    ],
+    [
+      "AQJ",
+      "AUH"
+    ],
+    [
+      "AQJ",
+      "BEY"
+    ],
+    [
+      "AQJ",
+      "CAI"
+    ],
+    [
+      "AQJ",
+      "RUH"
+    ],
+    [
+      "ARN",
+      "AMM"
+    ],
+    [
+      "ATH",
+      "AMM"
+    ],
+    [
+      "AUH",
+      "AMM"
+    ],
+    [
+      "AUH",
+      "AQJ"
+    ],
+    [
+      "AYT",
+      "AMM"
+    ],
+    [
+      "BAH",
+      "AMM"
+    ],
+    [
+      "BCN",
+      "AMM"
+    ],
+    [
+      "BEG",
+      "AMM"
+    ],
+    [
+      "BEN",
+      "AMM"
+    ],
+    [
+      "BER",
+      "AMM"
+    ],
+    [
+      "BEY",
+      "AMM"
+    ],
+    [
+      "BEY",
+      "AQJ"
+    ],
+    [
+      "BGW",
+      "AMM"
+    ],
+    [
+      "BGY",
+      "AMM"
+    ],
+    [
+      "BKK",
+      "AMM"
+    ],
+    [
+      "BOM",
+      "AMM"
+    ],
+    [
+      "BRU",
+      "AMM"
+    ],
+    [
+      "BSR",
+      "AMM"
+    ],
+    [
+      "BUD",
+      "AMM"
+    ],
+    [
+      "BUS",
+      "AMM"
+    ],
+    [
+      "BVA",
+      "AMM"
+    ],
+    [
+      "CAI",
+      "AMM"
+    ],
+    [
+      "CAI",
+      "AQJ"
+    ],
+    [
+      "CDG",
+      "AMM"
+    ],
+    [
+      "CMN",
+      "AMM"
+    ],
+    [
+      "DAM",
+      "AMM"
+    ],
+    [
+      "DFW",
+      "AMM"
+    ],
+    [
+      "DLM",
+      "AMM"
+    ],
+    [
+      "DME",
+      "AMM"
+    ],
+    [
+      "DMM",
+      "AMM"
+    ],
+    [
+      "DOH",
+      "AMM"
+    ],
+    [
+      "DTW",
+      "AMM"
+    ],
+    [
+      "DUS",
+      "AMM"
+    ],
+    [
+      "DXB",
+      "AMM"
+    ],
+    [
+      "EBL",
+      "AMM"
+    ],
+    [
+      "ESB",
+      "AMM"
+    ],
+    [
+      "FCO",
+      "AMM"
+    ],
+    [
+      "FKB",
+      "AMM"
+    ],
+    [
+      "FMM",
+      "AMM"
+    ],
+    [
+      "FRA",
+      "AMM"
+    ],
+    [
+      "GVA",
+      "AMM"
+    ],
+    [
+      "HAM",
+      "AMM"
+    ],
+    [
+      "HBE",
+      "AMM"
+    ],
+    [
+      "HRG",
+      "ADJ"
+    ],
+    [
+      "HRG",
+      "AMM"
+    ],
+    [
+      "IAD",
+      "AMM"
+    ],
+    [
+      "IST",
+      "ADJ"
+    ],
+    [
+      "IST",
+      "AMM"
+    ],
+    [
+      "ISU",
+      "AMM"
+    ],
+    [
+      "JED",
+      "ADJ"
+    ],
+    [
+      "JED",
+      "AMM"
+    ],
+    [
+      "JFK",
+      "AMM"
+    ],
+    [
+      "KRK",
+      "AMM"
+    ],
+    [
+      "KWI",
+      "ADJ"
+    ],
+    [
+      "KWI",
+      "AMM"
+    ],
+    [
+      "LCA",
+      "AMM"
+    ],
+    [
+      "LHR",
+      "AMM"
+    ],
+    [
+      "LYS",
+      "AMM"
+    ],
+    [
+      "MAD",
+      "AMM"
+    ],
+    [
+      "MAN",
+      "AMM"
+    ],
+    [
+      "MCT",
+      "AMM"
+    ],
+    [
+      "MED",
+      "ADJ"
+    ],
+    [
+      "MED",
+      "AMM"
+    ],
+    [
+      "MJI",
+      "AMM"
+    ],
+    [
+      "MRA",
+      "AMM"
+    ],
+    [
+      "MUC",
+      "AMM"
+    ],
+    [
+      "MXP",
+      "AMM"
+    ],
+    [
+      "NJF",
+      "AMM"
+    ],
+    [
+      "ORD",
+      "AMM"
+    ],
+    [
+      "OTP",
+      "AMM"
+    ],
+    [
+      "POZ",
+      "AMM"
+    ],
+    [
+      "PRG",
+      "AMM"
+    ],
+    [
+      "RUH",
+      "ADJ"
+    ],
+    [
+      "RUH",
+      "AMM"
+    ],
+    [
+      "RUH",
+      "AQJ"
+    ],
+    [
+      "SAW",
+      "AMM"
+    ],
+    [
+      "SHJ",
+      "AMM"
+    ],
+    [
+      "SOF",
+      "AMM"
+    ],
+    [
+      "SSH",
+      "ADJ"
+    ],
+    [
+      "SSH",
+      "AMM"
+    ],
+    [
+      "STN",
+      "AMM"
+    ],
+    [
+      "STR",
+      "AMM"
+    ],
+    [
+      "TAS",
+      "AMM"
+    ],
+    [
+      "TBS",
+      "AMM"
+    ],
+    [
+      "TIA",
+      "AMM"
+    ],
+    [
+      "TUN",
+      "AMM"
+    ],
+    [
+      "TZX",
+      "AMM"
+    ],
+    [
+      "VIE",
+      "AMM"
+    ],
+    [
+      "YUL",
+      "AMM"
+    ],
+    [
+      "ZRH",
+      "AMM"
+    ]
+  ],
+  "archive_snapshot": {
+    "path": "data/reference/europe_flights/2026-11-02.json.gz",
+    "sha256": "5b6ceefc54ad2ffd1196fe7056134dfe2c799868e10ee263484f707b1252d882"
+  },
+  "archive_reuse_routes": [],
+  "reuse_sources": [
+    {
+      "origin": "ADD",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-ADD-AMM.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-ADD-AMM.json"
+      ]
+    },
+    {
+      "origin": "ALG",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-ALG-AMM.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-ALG-AMM.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ALG",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-AMM-ALG.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-AMM-ALG.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "AUH",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-AMM-AUH.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BOM",
+      "paths": [
+        ".cache/google-flights-india-international/2026-11-02-AMM-BOM.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "CAI",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-AMM-CAI.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-AMM-CAI.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DMM",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-AMM-DMM.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-AMM-DMM.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DOH",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-AMM-DOH.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DXB",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-AMM-DXB.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "FRA",
+      "paths": [
+        ".cache/google-flights-europe-groups-eur-v1/2026-11-02-AMM-FRA.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "IST",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-AMM-IST.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-AMM-IST.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "JED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-AMM-JED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-AMM-JED.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "LHR",
+      "paths": [
+        ".cache/google-flights-europe-groups-eur-v1/2026-11-02-AMM-LHR.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MAD",
+      "paths": [
+        ".cache/google-flights-europe-eur-v1/2026-11-02-AMM-MAD.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MED",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-AMM-MED.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-AMM-MED.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "RUH",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-AMM-RUH.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-AMM-RUH.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "SAW",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-AMM-SAW.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-AMM-SAW.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "SSH",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-AMM-SSH.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-AMM-SSH.json"
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "TUN",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-AMM-TUN.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-AMM-TUN.json"
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-gulf/AUH/2026-11-02-AUH-AMM.json"
+      ]
+    },
+    {
+      "origin": "BOM",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-india-international/2026-11-02-BOM-AMM.json"
+      ]
+    },
+    {
+      "origin": "CAI",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-CAI-AMM.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-CAI-AMM.json"
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-DMM-AMM.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-DMM-AMM.json"
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-gulf/DOH/2026-11-02-DOH-AMM.json"
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-gulf/DXB/2026-11-02-DXB-AMM.json"
+      ]
+    },
+    {
+      "origin": "FRA",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-europe-groups-eur-v1/2026-11-02-FRA-AMM.json"
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-IST-AMM.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-IST-AMM.json"
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-AMM.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-AMM.json"
+      ]
+    },
+    {
+      "origin": "LHR",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-europe-groups-eur-v1/2026-11-02-LHR-AMM.json"
+      ]
+    },
+    {
+      "origin": "MAD",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-europe-eur-v1/2026-11-02-MAD-AMM.json"
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-saudi-usd-v1/2026-11-02-MED-AMM.json",
+        ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-MED-AMM.json"
+      ]
+    },
+    {
+      "origin": "SAW",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-turkiye-usd-v1/2026-11-02-SAW-AMM.json",
+        ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-SAW-AMM.json"
+      ]
+    },
+    {
+      "origin": "SSH",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-SSH-AMM.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-SSH-AMM.json"
+      ]
+    },
+    {
+      "origin": "TUN",
+      "destination": "AMM",
+      "paths": [
+        ".cache/google-flights-africa-usd-v1/2026-11-02-TUN-AMM.json",
+        ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-TUN-AMM.json"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "origin": "ADD",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-ADD-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-ADD-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ADE",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADJ",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADJ",
+      "destination": "HRG",
+      "sources": [
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADJ",
+      "destination": "IST",
+      "sources": [
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADJ",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADJ",
+      "destination": "KWI",
+      "sources": [
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADJ",
+      "destination": "MED",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADJ",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ADJ",
+      "destination": "SSH",
+      "sources": [
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ALG",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-ALG-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-ALG-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ALP",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ADD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ADE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ADJ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ALG",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-AMM-ALG.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-AMM-ALG.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ALP",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "AMS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "AQJ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ARN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ATH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-AMM-AUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "AYT",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BAH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/bahrain_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BCN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BEG",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BEN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BER",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BEY",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BGW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BGY",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BKK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BOM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/india_international_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-india-international/2026-11-02-AMM-BOM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BRU",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BSR",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BUD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BUS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "BVA",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "CAI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-AMM-CAI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-AMM-CAI.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "CDG",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "CMN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DAM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DFW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DLM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DME",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-AMM-DMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-AMM-DMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DOH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-AMM-DOH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DTW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DUS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "DXB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-AMM-DXB.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "EBL",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ESB",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "FCO",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "FKB",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "FMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "FRA",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_groups_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-europe-groups-eur-v1/2026-11-02-AMM-FRA.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "GVA",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "HAM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "HBE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "HRG",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "IAD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "IST",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-AMM-IST.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-AMM-IST.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ISU",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "JED",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-AMM-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-AMM-JED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "JFK",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "KRK",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "KWI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "LCA",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "LHR",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_groups_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-europe-groups-eur-v1/2026-11-02-AMM-LHR.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "LYS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MAD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_starter_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-europe-eur-v1/2026-11-02-AMM-MAD.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MAN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MCT",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MED",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-AMM-MED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-AMM-MED.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MJI",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MRA",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MUC",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "MXP",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "NJF",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ORD",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "OTP",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "POZ",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "PRG",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-AMM-RUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-AMM-RUH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "SAW",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-AMM-SAW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-AMM-SAW.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "SHJ",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "SOF",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "SSH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-AMM-SSH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-AMM-SSH.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "STN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "STR",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "TAS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "TBS",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "TIA",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "TUN",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-AMM-TUN.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-AMM-TUN.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "TZX",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "VIE",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_groups_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "YUL",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMM",
+      "destination": "ZRH",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AMS",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AQJ",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AQJ",
+      "destination": "AUH",
+      "sources": [
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AQJ",
+      "destination": "BEY",
+      "sources": [
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AQJ",
+      "destination": "CAI",
+      "sources": [
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AQJ",
+      "destination": "RUH",
+      "sources": [
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ARN",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ATH",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/AUH/2026-11-02-AUH-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "AUH",
+      "destination": "AQJ",
+      "sources": [
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "AYT",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BAH",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/bahrain_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BCN",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BEG",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BEN",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BER",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BEY",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BEY",
+      "destination": "AQJ",
+      "sources": [
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BGW",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BGY",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BKK",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BOM",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/india_international_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-india-international/2026-11-02-BOM-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "BRU",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BSR",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BUD",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BUS",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "BVA",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "CAI",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-CAI-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-CAI-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "CAI",
+      "destination": "AQJ",
+      "sources": [
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "CDG",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "CMN",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DAM",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DFW",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DLM",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DME",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DMM",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-DMM-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-DMM-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DOH",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DOH/2026-11-02-DOH-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "DTW",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DUS",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "DXB",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/gulf_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-gulf/DXB/2026-11-02-DXB-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "EBL",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ESB",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "FCO",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "FKB",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "FMM",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "FRA",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_groups_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-europe-groups-eur-v1/2026-11-02-FRA-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "GVA",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "HAM",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "HBE",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "HRG",
+      "destination": "ADJ",
+      "sources": [
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "HRG",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "IAD",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "ADJ",
+      "sources": [
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "IST",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-IST-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-IST-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "ISU",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "ADJ",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "JED",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-JED-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-JED-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "JFK",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KRK",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KWI",
+      "destination": "ADJ",
+      "sources": [
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "KWI",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/kuwait_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LCA",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "LHR",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_groups_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-europe-groups-eur-v1/2026-11-02-LHR-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "LYS",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MAD",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_starter_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-europe-eur-v1/2026-11-02-MAD-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MAN",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MCT",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/oman_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "ADJ",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MED",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/2026-11-02-MED-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-saudi-usd-v1/new-usd/2026-11-02-MED-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "MJI",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MRA",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MUC",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "MXP",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "NJF",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ORD",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "OTP",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "POZ",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "PRG",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "ADJ",
+      "sources": [
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "RUH",
+      "destination": "AQJ",
+      "sources": [
+        {
+          "source": "https://www.flightconnections.com/flights-from-aqaba-aqj",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/saudi_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SAW",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/turkiye_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/2026-11-02-SAW-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-turkiye-usd-v1/new-usd/2026-11-02-SAW-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "SHJ",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SOF",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SSH",
+      "destination": "ADJ",
+      "sources": [
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "SSH",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-SSH-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-SSH-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "STN",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "STR",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "TAS",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "TBS",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "TIA",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "TUN",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/africa_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/2026-11-02-TUN-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        },
+        {
+          "source": ".cache/google-flights-africa-usd-v1/new-usd/2026-11-02-TUN-AMM.json",
+          "kind": "Previously captured dated national route; reuse only",
+          "new_collection": false
+        }
+      ]
+    },
+    {
+      "origin": "TZX",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "VIE",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_flights_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        },
+        {
+          "source": "data/sources/europe_groups_routes.json",
+          "kind": "Previously sourced exact-airport candidate",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "YUL",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    },
+    {
+      "origin": "ZRH",
+      "destination": "AMM",
+      "sources": [
+        {
+          "source": "https://www.gcpromap.com/assets/images/airports/amm-routes.svg",
+          "kind": "Published outbound map; reverse query is a candidate only",
+          "new_collection": true
+        }
+      ]
+    }
+  ],
+  "route_source_sha256": "6c838141e0519cbf8b099638e75f24f75d1f67f294135070456da5180d781a06",
+  "additional_selection_sha256": "6c838141e0519cbf8b099638e75f24f75d1f67f294135070456da5180d781a06",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "timezone_source_url": "https://raw.githubusercontent.com/jpatokal/openflights/e539814f664cf31e662710555b27e9688610a911/data/airports.dat",
+  "timezone_source_sha256": "9387cdb38df5bd664da823f8ccb69fdd9b33a1888f5b7cca09c34a3cd9ff59f9",
+  "timezone_overrides": {
+    "GNJ": "Asia/Baku",
+    "GRV": "Europe/Moscow",
+    "GSV": "Europe/Saratov",
+    "KVO": "Europe/Belgrade",
+    "MRA": "Africa/Tripoli",
+    "KRT": "Africa/Khartoum",
+    "JCL": "Europe/Prague",
+    "AMM": "Asia/Amman",
+    "ADJ": "Asia/Amman",
+    "AQJ": "Asia/Amman",
+    "OMF": "Asia/Amman",
+    "HMB": "Africa/Cairo",
+    "KSQ": "Asia/Samarkand",
+    "NMA": "Asia/Tashkent"
+  },
+  "input_manifests": [
+    {
+      "path": "data/sources/africa_flights_routes.json",
+      "sha256": "b2626f0236a3c3b663773b37d8e09a43f37101bb3156ba3ba7afde11b934d937"
+    },
+    {
+      "path": "data/sources/bahrain_flights_routes.json",
+      "sha256": "de988d0a913e921c359f50f5c2e8e5bd57e0f3e74badc6d87e04a9b52475237f"
+    },
+    {
+      "path": "data/sources/europe_flights_routes.json",
+      "sha256": "a67eba420ca0b9408f1cba5b1f43a46fba070966c8d2e1fcfd6240243380ac0e"
+    },
+    {
+      "path": "data/sources/europe_flights_starter_routes.json",
+      "sha256": "666b7b6bfa723d16256b590abdfc41f92fa8171bfc6dcbbea15fe11fcb7b595a"
+    },
+    {
+      "path": "data/sources/europe_groups_routes.json",
+      "sha256": "12e8b25fb1b9a4d38480dcf5a4cf4e3a90db7da75e002562354b33513f6fa59e"
+    },
+    {
+      "path": "data/sources/gulf_flights_routes.json",
+      "sha256": "87e71cb7c8bdb0f4679188dff1f81550c0f1a33d3a9b5fc8e4647a99fd7b635d"
+    },
+    {
+      "path": "data/sources/india_international_routes.json",
+      "sha256": "b419b11ec71ffc8f48a3745a69c6c3f2b8d0d6f04aabd73d0142333e54683a3d"
+    },
+    {
+      "path": "data/sources/kuwait_flights_routes.json",
+      "sha256": "12c51f382c79674ad4c6a0aa594420beca16d50995b521d2bb399dc8a430492a"
+    },
+    {
+      "path": "data/sources/oman_flights_routes.json",
+      "sha256": "2393f7f267d440f02f641b2ee5c73282f121ba7046910928c59541bb4b8ccdc9"
+    },
+    {
+      "path": "data/sources/saudi_flights_routes.json",
+      "sha256": "1fba01862128dcf97e1b5adaf296595d1916c98f9369b98ed720985ccbdd5151"
+    },
+    {
+      "path": "data/sources/turkiye_flights_routes.json",
+      "sha256": "588fd02c699e0eff6fa92ae11c584cae1c59819a6b4489d3f8bbb6fd020bed65"
+    }
+  ],
+  "route_source_url": "data/sources/jordan_flights_discovery.json",
+  "source_gaps": [
+    {
+      "airport": "AQJ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/aqj/: HTTP 404"
+    },
+    {
+      "airport": "ADJ",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/adj/: HTTP 404"
+    }
+  ],
+  "deferred_routes": [],
+  "unresolved_airports": [
+    {
+      "code": "ALY",
+      "reason": "Ambiguous/missing active IATA identity or explicit timezone"
+    }
+  ],
+  "coverage_scope": "Published domestic and worldwide international routes from the selected Jordan civilian airports, both directions; other existing national captures reused without new searches. Seasonal candidates are not dated service evidence; coverage is partial.",
+  "replay_note": "Jordan · Flights departing 2 November 2026 in each origin airport’s local time, including overnight arrivals. Timeline: Jordan time (UTC+3); airport boards use local time. New quotes use USD; reused quotes retain their original currencies. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.",
+  "collection_strategy": "Published Jordan airport routes, one origin-local date; reused quotes unchanged, new captures USD"
+}

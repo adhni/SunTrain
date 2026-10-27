@@ -21,14 +21,14 @@ with sync_playwright() as p:
  page.locator('#language-select').select_option('id');page.wait_for_function('document.querySelector("#city-overview-content").textContent.includes("jadwal rute bulanan tersimpan")')
  page.locator('#language-select').select_option('en');page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"})')
  page.wait_for_function('suntrainReplay.active && suntrainReplay.mapReady && !suntrainReplay.loading')
- assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.flight_brand)).size')==12
+ assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.flight_brand)).size')==21
  assert page.evaluate('suntrainReplay.day.stations.some(a=>a.code==="STN") && suntrainReplay.day.stations.some(a=>a.code==="LGW")')
  assert page.evaluate('suntrainReplay.graph.getBounds().getSouth()>0'),'Europe should keep its regional initial frame'
  count=len(downloads);total=page.evaluate('suntrainReplay.filtered.length')
  page.evaluate('dash_clientside.set_props("replay-display",{value:["routes"]})');page.wait_for_function('!suntrainReplay.graph.getSource("replay-stations")._data.features.length')
  page.evaluate('dash_clientside.set_props("replay-display",{value:["routes","stations"]})');page.wait_for_function('suntrainReplay.graph.getSource("replay-stations")._data.features.length')
  page.screenshot(path='.cache/europe-flights-audit/map.png')
- for brand in ['ryanair','easyjet','wizzair','lufthansa','swiss','austrian','brussels','british_airways','iberia','aer_lingus','air_france','klm']:
+ for brand in ['ryanair','easyjet','wizzair','lufthansa','swiss','austrian','brussels','british_airways','iberia','aer_lingus','air_france','klm','sas','norwegian','finnair','lot','tap','aegean','airbaltic','icelandair','ita']:
   page.evaluate('(brand)=>dash_clientside.set_props("replay-carriers",{value:["brand:"+brand]})',brand)
   page.wait_for_function('(brand)=>suntrainReplay.filters.carriers[0]==="brand:"+brand && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.flight_brand===brand)',arg=brand)
   assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.color)).size')==1
@@ -36,7 +36,9 @@ with sync_playwright() as p:
   page.evaluate('(group)=>dash_clientside.set_props("replay-carriers",{value:["group:"+group]})',group)
   page.wait_for_function('(group)=>suntrainReplay.filters.carriers[0]==="group:"+group && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.flight_group===group)',arg=group)
   assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.color)).size')==1
- for carrier in ['RK','W6','W4','W9','LH','LX','OS','SN','BA','IB','EI','AF','KL']:
+ carriers=page.evaluate('[...new Set(suntrainReplay.day.services.map(s=>s.carrier))]')
+ for carrier in ['RK','W6','W4','W9','LH','LX','OS','SN','BA','IB','EI','AF','KL','SK','DY','D8','AY','LO','TP','A3','OA','BT','FI','AZ']:
+  if carrier not in carriers:continue
   page.evaluate('(carrier)=>dash_clientside.set_props("replay-carriers",{value:[carrier]})',carrier)
   page.wait_for_function('(carrier)=>suntrainReplay.filters.carriers[0]===carrier && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.carrier===carrier)',arg=carrier)
  page.evaluate('dash_clientside.set_props("replay-carriers",{value:[]})');page.wait_for_function('!suntrainReplay.filters.carriers.length')
@@ -49,7 +51,7 @@ with sync_playwright() as p:
   page.wait_for_function('([a,b])=>suntrainReplay.filters.fromCountries[0]===a && suntrainReplay.filters.toCountries[0]===b && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].country===a && suntrainReplay.day.stations[s.stops[1][0]].country===b)',arg=[origin,destination])
  page.evaluate('dash_clientside.set_props("replay-from-countries",{value:[]});dash_clientside.set_props("replay-to-countries",{value:[]});dash_clientside.set_props("replay-airport-direction",{value:"departures"})')
  page.wait_for_function('!suntrainReplay.filters.fromCountries.length && !suntrainReplay.filters.toCountries.length && suntrainReplay.filters.airportDirection==="departures"')
- for code in ['STN','LGW','DUB','BGY','GVA','BSL','NCE','MXP','BUD','OTP','LTN','FRA','ZRH','VIE','BRU','LHR','MAD','AMS','CDG','JFK']:
+ for code in ['STN','LGW','DUB','BGY','GVA','BSL','NCE','MXP','BUD','OTP','LTN','FRA','ZRH','VIE','BRU','LHR','MAD','AMS','CDG','JFK','CPH','OSL','HEL','WAW','LIS','ATH','RIX','KEF','RKV','FCO']:
   page.evaluate('(code)=>dash_clientside.set_props("replay-airports",{value:[code]})',code)
   page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].code===code)',arg=code)
   page.evaluate('(code)=>{suntrainReplay.seek(suntrainReplay.day.start);suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))}',code)

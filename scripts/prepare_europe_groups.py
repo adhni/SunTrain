@@ -16,16 +16,22 @@ def config():
  return dict(country='REGION',scope='region',timezone='UTC',end_date=DAY,zones={a['code']:a['timezone'] for a in m['airports']},manifest=m,queries=[(DAY,a,b) for a,b in m['routes']],query_date_policy='local_departure_day_only',capture_prices=True,currency='EUR',max_duration=86400,capture_context=CONTEXT,reject_invalid_segments=True,allowed_brands=list(FLAG_CARRIERS),legacy_cache=str(LEGACY),reuse_contexts=[google.CONTEXT])
 
 
-def prepare_all(cache,output,cfg):
+def prepare_all(cache,output,cfg,networks_path=None):
  from scripts import prepare_ryanair_flights as r
  path=cache/'prepared-groups.json.gz';google.prepare(cache,path,cfg)
  # Rebuild all previous brands from their frozen inputs, never from a mutable
  # prior combined archive. The final archive therefore reproduces from caches.
- legacy=Path(cfg['legacy_cache'])
+ legacy=Path(cfg['legacy_cache']);legacy.mkdir(parents=True,exist_ok=True)
  with (legacy/'.preparation.lock').open('a') as lock:
   fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
   for brand in ['easyjet','wizzair']:google.prepare(legacy,legacy/f'prepared-{brand}.json.gz',google.config(brand))
-  r.prepare(ROOT/'.cache/ryanair-timetables-v1',output,r.manifest(),ROOT/'data/sources/europe_flights_google_seed.json.gz',legacy/'prepared-easyjet.json.gz',legacy/'prepared-wizzair.json.gz',path)
+  if networks_path is None and (ROOT/'data/sources/europe_networks_routes.json').exists():
+   from scripts.prepare_europe_networks import CACHE as network_cache,prepare_extra
+   network_cache.mkdir(parents=True,exist_ok=True)
+   with (network_cache/'.preparation.lock').open('a') as network_lock:
+    fcntl.flock(network_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+    networks_path=prepare_extra(network_cache)
+  r.prepare(ROOT/'.cache/ryanair-timetables-v1',output,r.manifest(),ROOT/'data/sources/europe_flights_google_seed.json.gz',legacy/'prepared-easyjet.json.gz',legacy/'prepared-wizzair.json.gz',path,networks_path)
 
 
 def main():

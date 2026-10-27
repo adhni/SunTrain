@@ -1,5 +1,7 @@
 # Europe: nine main flag carriers
 
+This documents the original three-group expansion. The later [additional European networks](EUROPE_NETWORKS_NOTES.md) add nine more networks while preserving this cohort's records and limited group-filter roster.
+
 The **2 November 2026** Europe replay adds the main flag carriers from three
 groups. The collection is one shared queue, not nine separate searches of the
 same airport pair.

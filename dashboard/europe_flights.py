@@ -18,11 +18,22 @@ FLAG_CARRIERS={
  'air_france':('AF','Air France','air_france_klm'),
  'klm':('KL','KLM','air_france_klm')}
 BRANDS.update({brand:v[1] for brand,v in FLAG_CARRIERS.items()})
+OTHER_NETWORKS={
+ 'sas':('SAS',('SK',),'#81a7df'),
+ 'norwegian':('Norwegian',('DY','D8'),'#e67f80'),
+ 'finnair':('Finnair',('AY',),'#a4b3d1'),
+ 'lot':('LOT Polish Airlines',('LO',),'#839bd1'),
+ 'tap':('TAP Air Portugal',('TP',),'#91c46f'),
+ 'aegean':('Aegean / Olympic Air',('A3','OA'),'#78b6d7'),
+ 'airbaltic':('airBaltic',('BT',),'#bed66d'),
+ 'icelandair':('Icelandair',('FI',),'#e1bb67'),
+ 'ita':('ITA Airways',('AZ',),'#74b5e5')}
+BRANDS.update({brand:v[0] for brand,v in OTHER_NETWORKS.items()})
 BRAND_GROUPS={brand:v[2] for brand,v in FLAG_CARRIERS.items()}
 GROUP_COLORS={'lufthansa_group':'#efcf58','iag':'#43c9bc','air_france_klm':'#b4a1f3'}
 
 
-def duration_limit(brand):return 86400 if brand in FLAG_CARRIERS else 28800
+def duration_limit(brand):return 86400 if brand in FLAG_CARRIERS or brand in OTHER_NETWORKS else 28800
 
 
 # Reviewed carrier codes, never airline-name substring matching.
@@ -30,9 +41,11 @@ CARRIERS={'FR':'ryanair','RK':'ryanair','RR':'ryanair','AL':'ryanair',
  'U2':'easyjet','EC':'easyjet','DS':'easyjet','EZY':'easyjet','EJU':'easyjet','EZS':'easyjet',
  'W6':'wizzair','W4':'wizzair','W9':'wizzair','WZZ':'wizzair','WMT':'wizzair','WUK':'wizzair'}
 CARRIERS.update({v[0]:brand for brand,v in FLAG_CARRIERS.items()})
+CARRIERS.update({code:brand for brand,(_,codes,_) in OTHER_NETWORKS.items() for code in codes})
 COLORS={'ryanair':'#82ace0','easyjet':'#f59c57','wizzair':'#e660b6'}
 COLORS.update({brand:GROUP_COLORS[group] for brand,group in BRAND_GROUPS.items()})
-NOTE='Ryanair, easyJet, Wizz Air and nine European flag carriers · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.'
+COLORS.update({brand:v[2] for brand,v in OTHER_NETWORKS.items()})
+NOTE='European airline networks · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.'
 SETTINGS=dict(replay_kind='flights',name='Europe · Flights',timezone='UTC',bounds=[[-26,13],[57,70]],passenger_data=False,
  start_date=DAY,end_date=DAY,flight_scopes=True,default_flight_scope='both',flight_country_filters=True,flight_brands=BRANDS,flight_groups=GROUPS,
  description=NOTE,default_modes=['flight'],modes=[('Flights','flight')],operators=[],directions=[('Scheduled service','Scheduled service')])

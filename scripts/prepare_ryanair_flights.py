@@ -5,20 +5,23 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 import requests
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
-from dashboard.europe_flights import BRANDS,CARRIERS,DAY,NOTE,valid_price,duration_limit,FLAG_CARRIERS
+from dashboard.europe_flights import BRANDS,CARRIERS,DAY,NOTE,valid_price,duration_limit,FLAG_CARRIERS,OTHER_NETWORKS
 CONTEXT=dict(source='ryanair_public_timetable',version=1,year=2026,month=11)
 BASE='https://services-api.ryanair.com/timtbl/3/schedules'
 LABELS={'FR':'Ryanair','RK':'Ryanair UK','RR':'Buzz','AL':'Malta Air'}
 
 
 def manifest():
- m=json.loads((ROOT/'data/sources/europe_flights_routes.json').read_text());path=ROOT/'data/sources/europe_groups_routes.json'
- if not path.exists():return m
- groups=json.loads(path.read_text());air={a['code']:a for a in m['airports']}
- for a in groups['airports']:
-  if a['code'] in air and any(air[a['code']][k]!=a[k] for k in ['country','timezone','icao']):raise ValueError('Conflicting group airport identity')
-  air.setdefault(a['code'],a)
- return {**m,'selection':m['selection']+'; nine main flag-carrier worldwide route candidates','airports':[air[c] for c in sorted(air)],'routes':sorted({tuple(p) for p in m['routes']+groups['routes']}),'routes_by_brand':{**m['routes_by_brand'],**groups['routes_by_brand']},'source_urls':{**m['source_urls'],**groups['source_urls']},'group_route_source_sha256':groups['route_source_sha256']}
+ m=json.loads((ROOT/'data/sources/europe_flights_routes.json').read_text());air={a['code']:a for a in m['airports']}
+ for kind in ['groups','networks']:
+  path=ROOT/f'data/sources/europe_{kind}_routes.json'
+  if not path.exists():continue
+  extra=json.loads(path.read_text())
+  for a in extra['airports']:
+   if a['code'] in air and any(air[a['code']][k]!=a[k] for k in ['country','timezone','icao']):raise ValueError('Conflicting group airport identity')
+   air.setdefault(a['code'],a)
+  m={**m,'selection':m['selection']+'; '+extra['selection'],'routes':sorted({tuple(p) for p in m['routes']+extra['routes']}),'routes_by_brand':{**m['routes_by_brand'],**extra['routes_by_brand']},'source_urls':{**m['source_urls'],**extra['source_urls']},('group_route_source_sha256' if kind=='groups' else 'network_route_source_sha256'):extra['route_source_sha256']}
+ return {**m,'airports':[air[c] for c in sorted(air)]}
 
 def url(a,b):return f'{BASE}/{a}/{b}/years/2026/months/11'
 def path_for(cache,a,b):return cache/f'2026-11-{a}-{b}.json.gz'
@@ -137,10 +140,11 @@ def merge_easyjet(seed,extra,m):
  return merge_google_brand(seed,extra,m,'easyjet')
 
 
-def prepare(cache,output,m,seed_path,easyjet_path=None,wizzair_path=None,groups_path=None):
- seed=read(seed_path);starter_query_count=len(seed['metadata']['queries']);paths={brand:path for brand,path in [('easyjet',easyjet_path),('wizzair',wizzair_path),('groups',groups_path)] if path};snapshots={brand:read(path) for brand,path in paths.items()};reused={}
+def prepare(cache,output,m,seed_path,easyjet_path=None,wizzair_path=None,groups_path=None,networks_path=None):
+ seed=read(seed_path);starter_query_count=len(seed['metadata']['queries']);paths={brand:path for brand,path in [('easyjet',easyjet_path),('wizzair',wizzair_path),('groups',groups_path),('networks',networks_path)] if path};snapshots={brand:read(path) for brand,path in paths.items()};reused={}
  for brand,extra in snapshots.items():
-  previous=len(seed['metadata']['queries']);seed=merge_google_brand(seed,extra,m,brand,list(FLAG_CARRIERS) if brand=='groups' else None);reused[brand]=previous+len(extra['metadata']['queries'])-len(seed['metadata']['queries'])
+  members=FLAG_CARRIERS if brand=='groups' else (OTHER_NETWORKS if brand=='networks' else None)
+  previous=len(seed['metadata']['queries']);seed=merge_google_brand(seed,extra,m,brand,list(members) if members else None);reused[brand]=previous+len(extra['metadata']['queries'])-len(seed['metadata']['queries'])
  captured_keys={(q['date'],q['origin'],q['destination']) for q in seed['metadata']['queries']}
  google_missing=sorted({tuple(q) for extra in snapshots.values() for q in extra['metadata']['uncollected_queries'] if tuple(q) not in captured_keys})
  google_failed=list({(q['date'],q['origin'],q['destination']):q for extra in snapshots.values() for q in extra['metadata']['failed_queries'] if (q['date'],q['origin'],q['destination']) in google_missing}.values())
@@ -180,11 +184,15 @@ def prepare(cache,output,m,seed_path,easyjet_path=None,wizzair_path=None,groups_
   extra_meta=extra['metadata'];source_count=extra_meta['coverage'];meta['capture_context']['sources']['google_'+brand]=extra_meta['capture_context']
   meta[brand+'_seed_sha256']=hashlib.sha256(paths[brand].read_bytes()).hexdigest()
   meta['coverage_by_source']['google_'+brand]=dict(request_unit='airport_pair_date',query_date_policy=extra_meta.get('query_date_policy','utc_day_overlap'),planned=source_count['queries_planned'],captured=len(extra_meta['queries']),failed=source_count.get('failed_queries',len(extra_meta['failed_queries'])),unattempted=source_count.get('unattempted_queries',len(extra_meta['uncollected_queries'])-len(extra_meta['failed_queries'])),reused_google_queries=reused[brand],**({'reused_starter_queries':reused[brand]} if brand=='easyjet' else {}))
-  for member in (FLAG_CARRIERS if brand=='groups' else [brand]):
+  for member in (FLAG_CARRIERS if brand=='groups' else (OTHER_NETWORKS if brand=='networks' else [brand])):
    pairs={tuple(p) for p in m['routes_by_brand'][member]}
-   meta['coverage_by_brand'][member].update(routes_planned=len(pairs),queries_planned=len(pairs) if brand=='groups' else source_count['queries_planned'],queries_captured=sum((q['origin'],q['destination']) in pairs for q in extra_meta['queries']))
+   meta['coverage_by_brand'][member].update(routes_planned=len(pairs),queries_planned=len(pairs) if brand in {'groups','networks'} else source_count['queries_planned'],queries_captured=sum((q['origin'],q['destination']) in pairs for q in extra_meta['queries']))
   if extra_meta.get('collection_stop'):meta[brand+'_collection_stop']=extra_meta['collection_stop']
+  if brand=='networks':
+   meta['network_discovery_gaps']=extra_meta.get('source_gaps',[])
+   meta['network_excluded_airports']=extra_meta.get('excluded_airports',[])
  if m.get('group_route_source_sha256'):meta['group_route_source_sha256']=m['group_route_source_sha256']
+ if m.get('network_route_source_sha256'):meta['network_route_source_sha256']=m['network_route_source_sha256']
  if m.get('wizzair_inventory'):meta['wizzair_inventory']=m['wizzair_inventory']
  stop=cache/'collection-stop.json'
  if stop.exists():meta['collection_stop']=json.loads(stop.read_text())
@@ -219,6 +227,12 @@ def main():
     with (CACHE/'.preparation.lock').open('a') as group_lock:
      fcntl.flock(group_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
      path=CACHE/'prepared-groups.json.gz';prepare_google(CACHE,path,group_config());extras['groups_path']=path
+   if not a.ryanair_only and 'sas' in m['routes_by_brand']:
+    from scripts.prepare_europe_networks import CACHE as network_cache,prepare_extra
+    network_cache.mkdir(parents=True,exist_ok=True)
+    with (network_cache/'.preparation.lock').open('a') as network_lock:
+     fcntl.flock(network_lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
+     extras['networks_path']=prepare_extra(network_cache)
    prepare(a.cache,a.output,m,a.seed,**extras)
   if stopped:print(f'{stopped}; captures preserved; no access-challenge retry',file=sys.stderr);return 2
  return 0

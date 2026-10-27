@@ -102,7 +102,15 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'HB': ('Greater Bay Airlines', '#79b8ca'),
             'U4': ('Buddha Air', '#77b99d'), 'YT': ('Yeti Airlines', '#b3c97b'),
             'N9': ('Shree Airlines', '#d9a56e'), 'RA': ('Nepal Airlines', '#d9818a'),
-            'H9': ('Himalaya Airlines', '#94a5d7')}
+            'H9': ('Himalaya Airlines', '#94a5d7'),
+            'ET': ('Ethiopian', '#77b88b'), 'KQ': ('Kenya Airways', '#dc7b83'),
+            'MS': ('EgyptAir', '#81a7dc'), 'AT': ('Royal Air Maroc', '#d68b9c'),
+            'FA': ('FlySafair', '#d78fbc'), '4Z': ('Airlink', '#9daee0'),
+            'SA': ('South African', '#d2b66d'), 'WB': ('RwandAir', '#83b9d4'),
+            'P4': ('Air Peace', '#86a9df'), 'HF': ("Air Cote D'Ivoire", '#dfad70'),
+            'MK': ('Air Mauritius', '#d77f91'), 'HM': ('Air Seychelles', '#74b9ae'),
+            'TC': ('Air Tanzania', '#9cbf79'), 'HC': ('Air Senegal', '#c9b16d'),
+            'AH': ('Air Algerie', '#cf929d'), 'TU': ('Tunisair', '#d88782')}
 
 
 def airline_style(carrier, name):

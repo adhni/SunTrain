@@ -569,6 +569,7 @@ def replay_settings(city="melbourne"):
             "city_name": settings["name"], "replay_kind": settings.get("replay_kind", "transit"),
             "flight_scopes": bool(settings.get("flight_scopes")),
             "flight_country_filters": bool(settings.get("flight_country_filters")),
+            **({'regional_start_view':True} if settings.get('regional_start_view') else {}),
             **({'flight_brands':settings['flight_brands']} if settings.get('flight_brands') else {}),
             **({'flight_groups':settings['flight_groups']} if settings.get('flight_groups') else {}),
             **({'flight_hubs':settings['flight_hubs'],'default_airport':settings.get('default_airport'),

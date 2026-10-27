@@ -2,6 +2,10 @@
 
 Historical transport replay across Argentina, Australia, Austria, Belgium, Bolivia, Brazil, Brunei, Cambodia, Canada, Chile, Colombia, Ecuador, France, Germany, Guyana, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Mexico, Myanmar, the Netherlands, Nepal, New Zealand, Paraguay, Peru, the Philippines, Portugal, Qatar, Spain, South Korea, Suriname, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Uruguay, Venezuela, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Europe–Americas connections
+
+Choose **Europe–Americas · Flights** for **748 flights across 31 airlines**, connecting selected airports on both sides of the Atlantic. Reuses **444 existing sourced directional captures**, with **zero new searches or extra dates**. Includes all returned airlines on those routes, **743 original EUR prices**, local airport boards and a UTC timeline spanning 2 November 2026 origin-local departures and overnight arrivals. Existing regional views remain available. Coverage is partial: see [Europe–Americas flight notes](EUROPE_AMERICAS_FLIGHTS_NOTES.md) for the 14 European / 58 Americas airport footprint, source provenance, gaps and offline preparation.
+
 ## Americas flights
 
 Choose **Americas · Flights** to explore the existing 77 selected airports together, including new connections between the two regional networks. Uses a sourced shortlist of **169 cross-region airport pairs / 338 directional searches**, avoiding 2,362 possible searches, and reuses both existing regional archives. One origin-local departure date, **2 November 2026**, with **USD** fares, a UTC timeline, local airport boards, country/airline/airport filters and frequency lines. North America and South America remain separate options. Coverage is partial; published candidates do not guarantee a flight on this date. See [Americas flight notes](AMERICAS_FLIGHTS_NOTES.md) for route evidence, capture totals and rebuilding.

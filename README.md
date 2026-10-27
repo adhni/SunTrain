@@ -1,6 +1,10 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia, Canada, France, Germany, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Mexico, Myanmar, the Netherlands, Nepal, New Zealand, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Argentina, Australia, Austria, Belgium, Brazil, Brunei, Cambodia, Canada, Chile, Colombia, France, Germany, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Mexico, Myanmar, the Netherlands, Nepal, New Zealand, Peru, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## South America flights
+
+Choose **South America · Flights** for **2 November 2026 departures**, covering **GRU, BOG, SCL, LIM, CGH, GIG, AEP, BSB, MDE and CNF**: the South American top ten in the reviewed 2025 ACI-LAC passenger ranking. Searches cover all airlines between those ten airports, with **Domestic / International / Both**, exact-airport/airline and From country / To country filters. The snapshot contains **537 flights across 10 airlines**, **523 USD quotes** and **14 unavailable prices**, from **90 single-date directional searches** in about **21 KiB gzip**. 58 directions returned flights; 32 did not return matching records. Reuses local airport boards, departures/arrivals, Destinations, fullscreen views and frequency lines. The UTC timeline includes overnight arrivals. This is partial coverage between the selected airports; other airports and intercontinental flights are excluded. See [South America flight notes](SOUTH_AMERICA_FLIGHTS_NOTES.md) for ranking provenance, actual coverage, time zones, gaps and rebuilding.
 
 ## North America flights
 

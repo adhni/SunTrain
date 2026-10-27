@@ -1,0 +1,532 @@
+{
+  "profile": "south_america",
+  "countries": [
+    "BR",
+    "CO",
+    "CL",
+    "PE",
+    "AR"
+  ],
+  "scope": "regional",
+  "start_date": "2026-11-02",
+  "end_date": "2026-11-02",
+  "timezone": "UTC",
+  "currency": "USD",
+  "max_duration": 28800,
+  "query_date_policy": "origin_local_departure_day_only",
+  "coverage_scope": "Nonstop flights between ten top South American airports; domestic and cross-border, all returned airlines. Other airports excluded.",
+  "replay_note": "South American domestic and cross-border flights between ten selected airports. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: UTC; airport boards use local time. All captured fares use USD, including domestic flights. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.",
+  "airport_source_url": "https://raw.githubusercontent.com/davidmegginson/ourairports-data/3b10d0b967cc04c62eb6411939e4e9936a88e701/airports.csv",
+  "airport_source_sha256": "a19e9690fc3bffa8c0af18c4de9a6c8e711e64d4647837c58c12269fe348cf17",
+  "route_source_url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
+  "route_source_sha256": "bad55a5f54ec92893add92328b99a1e32073e07f33ec74b3b11394a25fdadc8e",
+  "route_source_hash_basis": "SHA256 of committed normalized airport selection facts, not source webpage bytes",
+  "route_basis": "All 90 ordered pairs among the South American top ten in the reviewed ACI-LAC 2025 consolidated passenger ranking; search candidates, not evidence of service.",
+  "additional_selection_source": "data/sources/south_america_airport_selection.json",
+  "additional_selection_sha256": "bad55a5f54ec92893add92328b99a1e32073e07f33ec74b3b11394a25fdadc8e",
+  "airports": [
+    {
+      "code": "GRU",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 1,
+      "lac_rank": 1,
+      "passengers_2025": 47174529,
+      "icao": "SBGR",
+      "name": "São Paulo/Guarulhos–Governor André Franco Montoro International Airport (GRU)",
+      "municipality": "São Paulo",
+      "lat": -23.431274,
+      "lon": -46.469954,
+      "mode": "flight"
+    },
+    {
+      "code": "BOG",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 2,
+      "lac_rank": 2,
+      "passengers_2025": 45464526,
+      "icao": "SKBO",
+      "name": "El Dorado International Airport (BOG)",
+      "municipality": "Bogota",
+      "lat": 4.70159,
+      "lon": -74.1469,
+      "mode": "flight"
+    },
+    {
+      "code": "SCL",
+      "country": "CL",
+      "timezone": "America/Santiago",
+      "rank": 3,
+      "lac_rank": 5,
+      "passengers_2025": 25941576,
+      "icao": "SCEL",
+      "name": "Comodoro Arturo Merino Benítez International Airport (SCL)",
+      "municipality": "Santiago",
+      "lat": -33.393001556396484,
+      "lon": -70.78579711914062,
+      "mode": "flight"
+    },
+    {
+      "code": "LIM",
+      "country": "PE",
+      "timezone": "America/Lima",
+      "rank": 4,
+      "lac_rank": 6,
+      "passengers_2025": 25496109,
+      "icao": "SPJC",
+      "name": "Jorge Chávez International Airport (LIM)",
+      "municipality": "Lima",
+      "lat": -12.0219,
+      "lon": -77.114305,
+      "mode": "flight"
+    },
+    {
+      "code": "CGH",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 5,
+      "lac_rank": 7,
+      "passengers_2025": 24491178,
+      "icao": "SBSP",
+      "name": "Congonhas–Deputado Freitas Nobre Airport (CGH)",
+      "municipality": "São Paulo",
+      "lat": -23.627657,
+      "lon": -46.654601,
+      "mode": "flight"
+    },
+    {
+      "code": "GIG",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 6,
+      "lac_rank": 10,
+      "passengers_2025": 17906990,
+      "icao": "SBGL",
+      "name": "Rio de Janeiro Galeão – Tom Jobim International Airport (GIG)",
+      "municipality": "Rio De Janeiro",
+      "lat": -22.809999,
+      "lon": -43.250557,
+      "mode": "flight"
+    },
+    {
+      "code": "AEP",
+      "country": "AR",
+      "timezone": "America/Argentina/Buenos_Aires",
+      "rank": 7,
+      "lac_rank": 11,
+      "passengers_2025": 17814653,
+      "icao": "SABE",
+      "name": "Aeroparque Jorge Newbery (AEP)",
+      "municipality": "Buenos Aires",
+      "lat": -34.559419,
+      "lon": -58.415536,
+      "mode": "flight"
+    },
+    {
+      "code": "BSB",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 8,
+      "lac_rank": 12,
+      "passengers_2025": 16977287,
+      "icao": "SBBR",
+      "name": "Presidente Juscelino Kubitschek International Airport (BSB)",
+      "municipality": "Brasília",
+      "lat": -15.869167,
+      "lon": -47.920834,
+      "mode": "flight"
+    },
+    {
+      "code": "MDE",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 9,
+      "lac_rank": 14,
+      "passengers_2025": 14242523,
+      "icao": "SKRG",
+      "name": "Jose Maria Córdova International Airport (MDE)",
+      "municipality": "Medellín",
+      "lat": 6.16454,
+      "lon": -75.4231,
+      "mode": "flight"
+    },
+    {
+      "code": "CNF",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 10,
+      "lac_rank": 16,
+      "passengers_2025": 13114989,
+      "icao": "SBCF",
+      "name": "Tancredo Neves International Airport (CNF)",
+      "municipality": "Belo Horizonte",
+      "lat": -19.63571,
+      "lon": -43.966928,
+      "mode": "flight"
+    }
+  ],
+  "routes": [
+    [
+      "AEP",
+      "BOG"
+    ],
+    [
+      "AEP",
+      "BSB"
+    ],
+    [
+      "AEP",
+      "CGH"
+    ],
+    [
+      "AEP",
+      "CNF"
+    ],
+    [
+      "AEP",
+      "GIG"
+    ],
+    [
+      "AEP",
+      "GRU"
+    ],
+    [
+      "AEP",
+      "LIM"
+    ],
+    [
+      "AEP",
+      "MDE"
+    ],
+    [
+      "AEP",
+      "SCL"
+    ],
+    [
+      "BOG",
+      "AEP"
+    ],
+    [
+      "BOG",
+      "BSB"
+    ],
+    [
+      "BOG",
+      "CGH"
+    ],
+    [
+      "BOG",
+      "CNF"
+    ],
+    [
+      "BOG",
+      "GIG"
+    ],
+    [
+      "BOG",
+      "GRU"
+    ],
+    [
+      "BOG",
+      "LIM"
+    ],
+    [
+      "BOG",
+      "MDE"
+    ],
+    [
+      "BOG",
+      "SCL"
+    ],
+    [
+      "BSB",
+      "AEP"
+    ],
+    [
+      "BSB",
+      "BOG"
+    ],
+    [
+      "BSB",
+      "CGH"
+    ],
+    [
+      "BSB",
+      "CNF"
+    ],
+    [
+      "BSB",
+      "GIG"
+    ],
+    [
+      "BSB",
+      "GRU"
+    ],
+    [
+      "BSB",
+      "LIM"
+    ],
+    [
+      "BSB",
+      "MDE"
+    ],
+    [
+      "BSB",
+      "SCL"
+    ],
+    [
+      "CGH",
+      "AEP"
+    ],
+    [
+      "CGH",
+      "BOG"
+    ],
+    [
+      "CGH",
+      "BSB"
+    ],
+    [
+      "CGH",
+      "CNF"
+    ],
+    [
+      "CGH",
+      "GIG"
+    ],
+    [
+      "CGH",
+      "GRU"
+    ],
+    [
+      "CGH",
+      "LIM"
+    ],
+    [
+      "CGH",
+      "MDE"
+    ],
+    [
+      "CGH",
+      "SCL"
+    ],
+    [
+      "CNF",
+      "AEP"
+    ],
+    [
+      "CNF",
+      "BOG"
+    ],
+    [
+      "CNF",
+      "BSB"
+    ],
+    [
+      "CNF",
+      "CGH"
+    ],
+    [
+      "CNF",
+      "GIG"
+    ],
+    [
+      "CNF",
+      "GRU"
+    ],
+    [
+      "CNF",
+      "LIM"
+    ],
+    [
+      "CNF",
+      "MDE"
+    ],
+    [
+      "CNF",
+      "SCL"
+    ],
+    [
+      "GIG",
+      "AEP"
+    ],
+    [
+      "GIG",
+      "BOG"
+    ],
+    [
+      "GIG",
+      "BSB"
+    ],
+    [
+      "GIG",
+      "CGH"
+    ],
+    [
+      "GIG",
+      "CNF"
+    ],
+    [
+      "GIG",
+      "GRU"
+    ],
+    [
+      "GIG",
+      "LIM"
+    ],
+    [
+      "GIG",
+      "MDE"
+    ],
+    [
+      "GIG",
+      "SCL"
+    ],
+    [
+      "GRU",
+      "AEP"
+    ],
+    [
+      "GRU",
+      "BOG"
+    ],
+    [
+      "GRU",
+      "BSB"
+    ],
+    [
+      "GRU",
+      "CGH"
+    ],
+    [
+      "GRU",
+      "CNF"
+    ],
+    [
+      "GRU",
+      "GIG"
+    ],
+    [
+      "GRU",
+      "LIM"
+    ],
+    [
+      "GRU",
+      "MDE"
+    ],
+    [
+      "GRU",
+      "SCL"
+    ],
+    [
+      "LIM",
+      "AEP"
+    ],
+    [
+      "LIM",
+      "BOG"
+    ],
+    [
+      "LIM",
+      "BSB"
+    ],
+    [
+      "LIM",
+      "CGH"
+    ],
+    [
+      "LIM",
+      "CNF"
+    ],
+    [
+      "LIM",
+      "GIG"
+    ],
+    [
+      "LIM",
+      "GRU"
+    ],
+    [
+      "LIM",
+      "MDE"
+    ],
+    [
+      "LIM",
+      "SCL"
+    ],
+    [
+      "MDE",
+      "AEP"
+    ],
+    [
+      "MDE",
+      "BOG"
+    ],
+    [
+      "MDE",
+      "BSB"
+    ],
+    [
+      "MDE",
+      "CGH"
+    ],
+    [
+      "MDE",
+      "CNF"
+    ],
+    [
+      "MDE",
+      "GIG"
+    ],
+    [
+      "MDE",
+      "GRU"
+    ],
+    [
+      "MDE",
+      "LIM"
+    ],
+    [
+      "MDE",
+      "SCL"
+    ],
+    [
+      "SCL",
+      "AEP"
+    ],
+    [
+      "SCL",
+      "BOG"
+    ],
+    [
+      "SCL",
+      "BSB"
+    ],
+    [
+      "SCL",
+      "CGH"
+    ],
+    [
+      "SCL",
+      "CNF"
+    ],
+    [
+      "SCL",
+      "GIG"
+    ],
+    [
+      "SCL",
+      "GRU"
+    ],
+    [
+      "SCL",
+      "LIM"
+    ],
+    [
+      "SCL",
+      "MDE"
+    ]
+  ],
+  "unresolved_airports": []
+}

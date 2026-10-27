@@ -455,7 +455,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
                 metadata['airlines']=sorted({f['airline'] for f in reference['flights']})
                 if len(config['manifest'].get('countries',[]))>1:
                     metadata.pop('country',None)
-                    metadata.update(profile='north_america',countries=config['manifest']['countries'],scope='regional',additional_selection_sha256=config['manifest']['additional_selection_sha256'])
+                    metadata.update(profile=config['manifest'].get('profile','north_america'),countries=config['manifest']['countries'],scope='regional',additional_selection_sha256=config['manifest']['additional_selection_sha256'])
         if config['country']=='VN':
             metadata['scope']='domestic'
             metadata['coverage_scope']=config['manifest']['coverage_scope']
@@ -508,6 +508,8 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
         metadata['unresolved_airports'] = config['manifest']['unresolved_airports']
         metadata['route_source_url'] = config['manifest']['route_source_url']
         metadata['route_source_sha256'] = config['manifest']['route_source_sha256']
+        if config['manifest'].get('route_source_hash_basis'):
+            metadata['route_source_hash_basis']=config['manifest']['route_source_hash_basis']
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix('.tmp')
     with temporary.open('wb') as raw, gzip.GzipFile(filename='', fileobj=raw, mode='wb', mtime=0) as stream:

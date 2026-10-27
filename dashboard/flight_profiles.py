@@ -5,7 +5,7 @@ PROFILES={**ASEAN_PROFILES,'NZ':dict(slug='new_zealand',name='New Zealand',zone=
 PROFILES.update({
  'US':dict(
      slug='united_states',name='North America',zone='America/New_York',label='EST',
-     clock='Eastern time (EST, UTC−5)',bounds=[[-161,7],[-64,55]],max_duration=57600,
+     clock='Eastern time (EST, UTC−5)',bounds=[[-161,7],[-64,55]],arc_anchor=-98,max_duration=57600,
      domestic=True,standalone=True,default_scope='both',origin_local_day=True,flight_country_filters=True,
      airport_countries={**dict.fromkeys('YYZ YVR YUL YYC YEG'.split(),'CA'),**dict.fromkeys('MEX CUN GDL MTY TIJ'.split(),'MX'), 'PTY':'PA','SJU':'PR','PUJ':'DO','SDQ':'DO','SJO':'CR','SAL':'SV','GUA':'GT','MBJ':'JM','NAS':'BS','AUA':'AW'},
      flight_jurisdictions={'PR':'US'},
@@ -25,6 +25,16 @@ PROFILES.update({
          'MBJ':'America/Jamaica','NAS':'America/Nassau','AUA':'America/Aruba',
      },
      description='North America · Flights between 50 selected airports across the US, Canada, Mexico, Central America and the Caribbean · 2 November 2026 departures, including overnight arrivals. Timeline: Eastern time (EST, UTC−5); airport boards use local time. All captured fares use USD, including domestic flights. Coverage and prices are partial; paths are illustrative.',
+ ),
+ 'SOUTH_AMERICA':dict(
+     slug='south_america',name='South America',zone='UTC',label='UTC',clock='UTC',
+     bounds=[[-82,-57],[-33,13]],arc_anchor=-60,max_duration=28800,
+     domestic=True,standalone=True,default_scope='both',origin_local_day=True,flight_country_filters=True,
+     airport_countries={'GRU':'BR','BOG':'CO','SCL':'CL','LIM':'PE','CGH':'BR','GIG':'BR','AEP':'AR','BSB':'BR','MDE':'CO','CNF':'BR'},
+     airport_zones={**dict.fromkeys('GRU CGH GIG BSB CNF'.split(),'America/Sao_Paulo'),
+         **dict.fromkeys('BOG MDE'.split(),'America/Bogota'),'SCL':'America/Santiago',
+         'LIM':'America/Lima','AEP':'America/Argentina/Buenos_Aires'},
+     description='South America · Flights between ten top airports · 2 November 2026 departures, including overnight arrivals. Timeline: UTC; airport boards use local time. All captured fares use USD, including domestic flights. Coverage and prices are partial; paths are illustrative.',
  ),
  'NP':dict(slug='nepal',name='Nepal',zone='Asia/Kathmandu',label='NPT',clock='Nepal time (NPT, UTC+5:45)',bounds=[[80,26.2],[88.3,30.5]],domestic=True,default_scope='domestic'),
  'TW':dict(slug='taiwan',name='Taiwan',zone='Asia/Taipei',label='CST',clock='Taiwan time (UTC+8)',bounds=[[117.7,21.7],[122.3,26.6]],domestic=True,default_scope='domestic',worldwide=True),

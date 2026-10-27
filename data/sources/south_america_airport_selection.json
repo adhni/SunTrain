@@ -1,0 +1,96 @@
+{
+  "source_reviewed_date": "2026-10-27",
+  "ranking_year": 2025,
+  "metric": "ACI-LAC consolidated annual passenger traffic; South American subset of its Latin America and Caribbean top twenty",
+  "source_url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
+  "ranking_image_url": "https://aci-lac.aero/wp-content/uploads/2026/07/TOP20-PAX-1-scaled.png",
+  "transcription_url": "https://www.panrotas.com.br/aviacao/pesquisas-e-estatisticas/2026/07/america-latina-movimenta-440-milhoes-de-passageiros-em-2025-veja-ranking-dos-aeroportos_230465.html",
+  "hash_basis": "Committed normalized reviewed selection facts; raw image hash recorded separately when available",
+  "notes": [
+    "Use this single published ranking consistently; operator totals can differ in scope.",
+    "Cutoff: CNF precedes VCP (12826553) and EZE (12002179) in this ranking. GRU/CGH, AEP/EZE and MDE/EOH remain exact airports, never city codes."
+  ],
+  "airports": [
+    {
+      "code": "GRU",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 1,
+      "lac_rank": 1,
+      "passengers_2025": 47174529
+    },
+    {
+      "code": "BOG",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 2,
+      "lac_rank": 2,
+      "passengers_2025": 45464526
+    },
+    {
+      "code": "SCL",
+      "country": "CL",
+      "timezone": "America/Santiago",
+      "rank": 3,
+      "lac_rank": 5,
+      "passengers_2025": 25941576
+    },
+    {
+      "code": "LIM",
+      "country": "PE",
+      "timezone": "America/Lima",
+      "rank": 4,
+      "lac_rank": 6,
+      "passengers_2025": 25496109
+    },
+    {
+      "code": "CGH",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 5,
+      "lac_rank": 7,
+      "passengers_2025": 24491178
+    },
+    {
+      "code": "GIG",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 6,
+      "lac_rank": 10,
+      "passengers_2025": 17906990
+    },
+    {
+      "code": "AEP",
+      "country": "AR",
+      "timezone": "America/Argentina/Buenos_Aires",
+      "rank": 7,
+      "lac_rank": 11,
+      "passengers_2025": 17814653
+    },
+    {
+      "code": "BSB",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 8,
+      "lac_rank": 12,
+      "passengers_2025": 16977287
+    },
+    {
+      "code": "MDE",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 9,
+      "lac_rank": 14,
+      "passengers_2025": 14242523
+    },
+    {
+      "code": "CNF",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 10,
+      "lac_rank": 16,
+      "passengers_2025": 13114989
+    }
+  ],
+  "source_status": "ACI-LAC consolidated 2025 announcement reviewed; full numeric table transcribed from the linked Panrotas reproduction. The primary ranking graphic URL returned HTTP 404 on review."
+}

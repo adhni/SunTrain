@@ -43,6 +43,10 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'WU': ('Western Air', '#b197d0'), 'S6': ('Sunrise Airways', '#e5a45b'),
             'UP': ('Bahamasair', '#65b5bb'), 'N3': ('Volaris El Salvador', '#a98ccd'),
             'AR': ('Aerolineas Argentinas', '#78b4d5'),
+            'LA': ('LATAM', '#ac89c8'), 'G3': ('Gol', '#df9b66'),
+            'AD': ('Azul', '#6da9ce'),
+            'JA': ('JetSMART', '#de7d86'), 'H2': ('Sky Airline', '#9ebd60'),
+            'FO': ('Flybondi', '#dfc15c'), 'P5': ('Wingo', '#b191ce'),
             'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
             'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9'), 'AK': ('AirAsia', '#e95055'),
             'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa'),
@@ -330,7 +334,7 @@ def replay_day(business_date, city='australia_flights'):
         # Bound all origin-local days, including Atlantic midnight departures
         # before Eastern midnight and western overnight arrivals.
         starts=[int(datetime.combine(day,time(),ZoneInfo(a.get('replay_timezone',a['timezone']))).timestamp()) for a in reference['airports']]
-        start=min([start,*starts])
+        start=min(starts,default=start)
         ends=[int(datetime.combine(day+timedelta(days=1),time(),ZoneInfo(a.get('replay_timezone',a['timezone']))).timestamp()) for a in reference['airports']]
         end=max([end,*ends,*[f['arrival']+1 for f in reference['flights']]])
     airports = reference['airports']
@@ -345,7 +349,7 @@ def replay_day(business_date, city='australia_flights'):
         route = f"{flight['origin']} → {flight['destination']}"
         key = flight['origin'] + '-' + flight['destination']
         if key not in paths:
-            coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']],anchor=-98 if city=='united_states_flights' else 135)
+            coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']],anchor=PROFILE_CITIES.get(city,(None,{}))[1].get('arc_anchor',135))
             paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
         carrier = flight.get('carrier') or ('JQ' if city == 'australia_flights' else 'Unknown')
         operator, color = airline_style(carrier, flight.get('airline'))

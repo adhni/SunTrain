@@ -2,6 +2,10 @@
 
 Historical transport replay across Argentina, Australia, Austria, Belgium, Bolivia, Brazil, Brunei, Cambodia, Canada, Chile, Colombia, Ecuador, France, Germany, Guyana, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Mexico, Myanmar, the Netherlands, Nepal, New Zealand, Paraguay, Peru, the Philippines, Portugal, Qatar, Spain, South Korea, Suriname, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Uruguay, Venezuela, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+## Türkiye flights
+
+Choose **Türkiye · Flights** for **2 November 2026**, with **2,249 captured flights** (793 domestic, 1,456 international): worldwide sourced connections from **IST and SAW**, published domestic routes from **IST, SAW, ESB, ADB and AYT** across **49 Turkish airport candidates** (41 returning domestic flights), and reused Turkish captures beyond that footprint. All returned airlines are eligible. Uses one origin-local departure date, a **Türkiye time (UTC+3)** timeline, local airport boards, new **USD** quotes and unchanged reused currencies. Includes country/airline/airport filters, Destinations, fullscreen boards and frequency lines. Coverage is partial; see [Türkiye flight notes](TURKIYE_FLIGHTS_NOTES.md) for the exact scope, source evidence, actual totals and rebuilding.
+
 ## Africa flights
 
 Choose **Africa · Flights** for **2,468 captured flights**: domestic, intra-African and worldwide connections from **30 selected African airports**, plus reusable captures beyond the starter. Uses sourced routes, one origin-local departure date (**2 November 2026**) and all returned airlines; no all-pairs or multi-day expansion. New fares use **USD**; reused fares retain their original currencies. Includes local airport boards, Destinations, fullscreen views, airline/airport/country filters and frequency lines. Coverage is partial; see [Africa flight notes](AFRICA_FLIGHTS_NOTES.md) for the airport footprint, source gaps, actual capture totals and resuming collection.

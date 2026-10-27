@@ -110,7 +110,9 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'P4': ('Air Peace', '#86a9df'), 'HF': ("Air Cote D'Ivoire", '#dfad70'),
             'MK': ('Air Mauritius', '#d77f91'), 'HM': ('Air Seychelles', '#74b9ae'),
             'TC': ('Air Tanzania', '#9cbf79'), 'HC': ('Air Senegal', '#c9b16d'),
-            'AH': ('Air Algerie', '#cf929d'), 'TU': ('Tunisair', '#d88782')}
+            'AH': ('Air Algerie', '#cf929d'), 'TU': ('Tunisair', '#d88782'),
+            'TK': ('Turkish Airlines', '#dd7b82'), 'PC': ('Pegasus', '#d9b84f'),
+            'VF': ('AJet', '#73b6cf'), 'XQ': ('SunExpress', '#d69e61')}
 
 
 def airline_style(carrier, name):

@@ -28,7 +28,8 @@ def test_only_nine_main_carrier_codes_and_three_group_colours():
  assert {v[0] for v in e.FLAG_CARRIERS.values()}==set('LH LX OS SN BA IB EI AF KL'.split())
  assert len({e.COLORS[b] for b in e.FLAG_CARRIERS})==3
  assert all(e.CARRIERS[v[0]]==b and e.duration_limit(b)==86400 for b,v in e.FLAG_CARRIERS.items())
- assert all(c not in e.CARRIERS for c in ['EW','4Y','WK','AZ','VY','LL','HV','TO','SK','VS','XQ','A5','WA','EN'])
+ assert all(c not in e.CARRIERS for c in ['EW','4Y','WK','VY','LL','HV','TO','VS','XQ','A5','WA','EN'])
+ assert e.CARRIERS['AZ']=='ita' and e.CARRIERS['SK']=='sas'
  assert e.duration_limit('ryanair')==e.duration_limit('wizzair')==28800
 
 

@@ -79,7 +79,8 @@ def test_prepared_full_easyjet_has_complete_search_accounting_and_preserves_ryan
  assert not meta['uncollected_queries'] and not meta['failed_queries']
  google=[q for q in meta['queries'] if q.get('source')!='ryanair_public_timetable']
  from scripts.prepare_europe_groups import config as groups_config,CONTEXT as groups_context
- expected=set(groups_config()['queries'])|set(g.config()['queries'])|set(g.config('easyjet')['queries'])|set(g.config('wizzair')['queries'])
+ from scripts.prepare_europe_networks import config as networks_config
+ expected=set(groups_config()['queries'])|set(networks_config()['queries'])|set(g.config()['queries'])|set(g.config('easyjet')['queries'])|set(g.config('wizzair')['queries'])
  assert len(google)==len(expected)==len({(q['date'],q['origin'],q['destination']) for q in google})
  assert all(q['capture_context'] in [g.CONTEXT,groups_context] for q in google)
  ryanair=[f for f in doc['flights'] if f['brand']=='ryanair']

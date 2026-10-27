@@ -17,7 +17,7 @@ def query(a='STN',b='DUB',day=2,dep='06:35',arr='07:55',carrier='FR',number='203
 def test_full_manifest_preserves_exact_airports_and_both_catalogues():
  m=r.manifest();assert len(m['routes_by_brand']['ryanair'])==5305
  assert len(m['routes_by_brand']['easyjet'])==2564
- assert len(m['routes'])==11843 and len(m['airports'])==515
+ assert len(m['routes'])==13727 and len(m['airports'])==589
  airports={a['code']:a for a in m['airports']}
  assert airports['TFS']['timezone']=='Atlantic/Canary'
  assert airports['BGY']['icao']!=airports['MXP']['icao']

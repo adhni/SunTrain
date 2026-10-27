@@ -57,7 +57,7 @@ def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_rea
             deferred.append(dict(origin=a,destination=b,reason=deferred_reason,source=source));return
         if not any(x['country']==country for x in (aa,bb)):return
         evidence.setdefault((a,b),[]).append(dict(source=source,kind=kind,new_collection=new))
-    for row in discovery['airport_maps']:
+    for row in discovery['airport_maps']+discovery.get('supplemental_airport_maps',[]):
         for b in row['destinations']:
             for a,c in [(row['airport'],b),(b,row['airport'])]:
                 add(a,c,row['documents'][-1]['url'],'Published outbound map; reverse query is a candidate only')
@@ -105,5 +105,5 @@ def build(profile,country,timezone,cache,coverage_scope,replay_note,deferred_rea
         input_manifests=[dict(path=str(path.relative_to(ROOT)),sha256=hashlib.sha256(path.read_bytes()).hexdigest()) for path,_ in manifests if any(str(path.relative_to(ROOT))==e['source'] for row in basis for e in row['sources'])],
         route_source_url=f'data/sources/{profile}_flights_discovery.json',
         source_gaps=[r for r in discovery['airport_maps'] if r.get('error')],
-        deferred_routes=deferred,unresolved_airports=[dict(code=c,reason=v) for c,v in sorted(unresolved.items()) if c in used or any(c in (r['airport'],) or c in r['destinations'] for r in discovery['airport_maps'])],
+        deferred_routes=deferred,unresolved_airports=[dict(code=c,reason=v) for c,v in sorted(unresolved.items()) if c in used or any(c in (r['airport'],) or c in r['destinations'] for r in discovery['airport_maps']+discovery.get('supplemental_airport_maps',[]))],
         coverage_scope=coverage_scope,replay_note=replay_note)

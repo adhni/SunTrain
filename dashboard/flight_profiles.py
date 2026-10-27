@@ -108,6 +108,8 @@ def _saudi_profile():
 
 
 PROFILES['SA']=_saudi_profile()
+from dashboard.arabia_jordan_flights import profiles as arabia_jordan_profiles
+PROFILES.update(arabia_jordan_profiles())
 BY_CITY={p['slug']+'_flights':(c,p) for c,p in PROFILES.items()}
 
 

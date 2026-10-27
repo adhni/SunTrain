@@ -1,0 +1,195 @@
+{
+  "reviewed_at": "2026-10-27T10:06:14.219273+00:00",
+  "launch_airports": [
+    "MCT",
+    "SLL",
+    "KHS",
+    "DQM",
+    "OHS",
+    "MSH"
+  ],
+  "worldwide_hubs": [
+    "MCT",
+    "SLL",
+    "KHS",
+    "DQM",
+    "OHS",
+    "MSH"
+  ],
+  "airport_maps": [
+    {
+      "airport": "MCT",
+      "destinations": [
+        "ADD",
+        "AER",
+        "AHB",
+        "ALA",
+        "AMM",
+        "AMS",
+        "AUH",
+        "BAH",
+        "BEY",
+        "BGW",
+        "BKK",
+        "BLR",
+        "BOM",
+        "CAI",
+        "CCJ",
+        "CDG",
+        "CGK",
+        "CGP",
+        "CMB",
+        "CNN",
+        "COK",
+        "DAC",
+        "DAM",
+        "DAR",
+        "DEL",
+        "DMM",
+        "DOH",
+        "DQM",
+        "DXB",
+        "EBL",
+        "EVN",
+        "FAU",
+        "FCO",
+        "FRA",
+        "HKT",
+        "HYD",
+        "IKA",
+        "ISB",
+        "IST",
+        "IXE",
+        "JAI",
+        "JED",
+        "KGL",
+        "KHI",
+        "KHS",
+        "KNO",
+        "KRT",
+        "KUL",
+        "KWI",
+        "LHE",
+        "LHR",
+        "LKO",
+        "MAA",
+        "MED",
+        "MGQ",
+        "MHD",
+        "MLE",
+        "MNL",
+        "MSH",
+        "MUC",
+        "MUX",
+        "MXP",
+        "NBO",
+        "NJF",
+        "OMM",
+        "PEW",
+        "PKX",
+        "PRG",
+        "PZU",
+        "RUH",
+        "SAW",
+        "SHJ",
+        "SIN",
+        "SJJ",
+        "SKT",
+        "SLL",
+        "SPX",
+        "SVO",
+        "SYZ",
+        "TAS",
+        "THR",
+        "TIF",
+        "TRV",
+        "TRZ",
+        "TZX",
+        "UKH",
+        "VIE",
+        "WAW",
+        "ZNZ",
+        "ZRH",
+        "ZYL"
+      ],
+      "documents": [
+        {
+          "url": "https://www.gcpromap.com/airports/mct/",
+          "sha256": "5f1d8e87715b474c4141655e63a526e4796dbd4f790414521271c14e0e4a69fe",
+          "bytes": 67719
+        },
+        {
+          "url": "https://www.gcpromap.com/assets/images/airports/mct-routes.svg",
+          "sha256": "61b253b626032d9ac72135be6b41d0729497139bb5b7248728c607591f15457e",
+          "bytes": 154451
+        }
+      ],
+      "description": "Schedule period: July 2026 to June 2027. Updated  October 12, 2026 .",
+      "kind": "Secondary published outbound nonstop airport map; seasonal candidates, not dated service evidence"
+    },
+    {
+      "airport": "SLL",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/sll/: HTTP 404"
+    },
+    {
+      "airport": "KHS",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/khs/: HTTP 404"
+    },
+    {
+      "airport": "DQM",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/dqm/: HTTP 404"
+    },
+    {
+      "airport": "OHS",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/ohs/: HTTP 404"
+    },
+    {
+      "airport": "MSH",
+      "destinations": [],
+      "documents": [],
+      "error": "https://www.gcpromap.com/airports/msh/: HTTP 404"
+    }
+  ],
+  "supplemental_airport_maps": [
+    {
+      "airport": "SLL",
+      "destinations": [
+        "ALA",
+        "AUH",
+        "BGW",
+        "CCJ",
+        "CGP",
+        "COK",
+        "DMM",
+        "DOH",
+        "DXB",
+        "JED",
+        "KWI",
+        "MCT",
+        "NQZ",
+        "OHS",
+        "PRG",
+        "SHJ"
+      ],
+      "documents": [
+        {
+          "url": "https://www.flightconnections.com/flights-from-salalah-sll",
+          "facts_sha256": "d2345fb4a6d74b12c2d99a7879ded96e4c5b239bba8bedf7b8b5feae3d026633",
+          "capture_method": "Exact IATA labels transcribed from the already inspected public web-tool nonstop destination list; hash covers normalized facts, not original HTML"
+        }
+      ],
+      "reviewed_at": "2026-10-27T10:08:36.056314+00:00",
+      "description": "Nonstop destinations section only; seasonal/zero-frequency candidates included, connecting destinations excluded",
+      "kind": "Secondary published nonstop candidates; not dated evidence"
+    }
+  ],
+  "supplemental_source_note": "A later direct HTTP download was access-limited and stopped without retry. Frozen exact labels use the earlier successful public web-tool inspection; no raw HTML hash is claimed."
+}

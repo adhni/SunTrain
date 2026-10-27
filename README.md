@@ -1,6 +1,10 @@
 # SunTrain
 
-Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia, Canada, France, Germany, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Myanmar, the Netherlands, Nepal, New Zealand, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+Historical transport replay across Australia, Austria, Belgium, Brunei, Cambodia, Canada, France, Germany, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Mexico, Myanmar, the Netherlands, Nepal, New Zealand, the Philippines, Portugal, Qatar, Spain, South Korea, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
+
+## North America flights
+
+Choose **North America · Flights** for **2 November 2026 departures**, covering **50 selected airports**: the US top 30, Canada top 5, Mexico top 5 and ten major Central American/Caribbean airports. New: **PTY, SJU, PUJ, SJO, SDQ, SAL, GUA, MBJ, NAS and AUA**. Opens on **Both**, with **Domestic / International** and **From country / To country** filters. Puerto Rico keeps its own country-selector entry; mainland US–Puerto Rico flights count as domestic. **All captured fares use USD, including domestic flights.** The snapshot has **9,668 flight records across 29 airlines**, **9,553 USD quotes** and **115 unavailable prices**, from **2,450 directional searches** in about **478 KiB gzip**. 1,474 directions returned flights; 976 returned no matching records. All previous 1,560 captures and 8,838 records are preserved. Local airport boards and the Eastern-time timeline include early Atlantic-time departures and overnight arrivals. Reuses airport/airline filters, departures/arrivals, Destinations, fullscreen boards and frequency lines. Coverage remains partial; the regional airport selection uses differing published passenger metrics. See [North America flight notes](NORTH_AMERICA_FLIGHTS_NOTES.md) for sources, precise coverage, gaps and rebuilding.
 
 ## Europe flights
 

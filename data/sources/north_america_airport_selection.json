@@ -1,0 +1,262 @@
+{
+  "source_reviewed_date": "2026-10-27",
+  "hash_basis": "Normalized reviewed ranking facts, not raw source document bytes",
+  "sources": {
+    "CA": {
+      "year": 2024,
+      "url": "https://tdih-cdit.tc.canada.ca/en/addendum-tables/2024/table-a14-top-20-busiest-canadian-airports-terms-enplaneddeplaned-revenue-0",
+      "metric": "Enplaned/deplaned revenue passengers; millions rounded to one decimal",
+      "status": "Transport Canada ECATS published ranking",
+      "document_url": "https://tdih-cdit.tc.canada.ca/sites/default/files/addendum-tables/2024/A14-en.pdf",
+      "document_sha256": "051eba81c41341c3eec6ffb5381348ebd74ef935d05464eeeff62d9f7b283074"
+    },
+    "MX": {
+      "year": 2025,
+      "url": "https://micrs.sct.gob.mx/images/DireccionesGrales/DGP/estadistica/Principales-Estadisticas/PE_2025.pdf",
+      "pages": [
+        31,
+        32
+      ],
+      "metric": "Total commercial passengers served; thousands rounded to one decimal",
+      "status": "SICT preliminary 2025 statistics"
+    },
+    "Central America and Caribbean": {
+      "year": 2025,
+      "metric": "Reported annual passenger totals; operator definitions and rounding differ",
+      "status": "Reviewed regional top-ten selection, not a harmonized ACI ranking; incomplete comparable statistics, notably Cuba",
+      "urls": [
+        "https://www.datosabiertos.gob.pa/dataset/4cfac507-e49a-46b5-8811-e5334631c97d/resource/e36f2764-ca5d-45be-b52f-f596d35045a7/download/movimientomensualdepasajerosaitsa2025.pdf",
+        "https://www.prnewswire.com/news-releases/asur-announces-total-passenger-traffic-for-december-2025-302654211.html",
+        "https://www.puntacanainternationalairport.com/es/about-us/news-projects/item/aeropuerto-de-punta-cana-marca-un-hito-historico-y-cierra-2025-con-record-consecutivo-de-vuelos-y-pasajeros",
+        "https://www.sjoairport.com/aeropuerto-juan-santamaria-2025-fue-un-ano-historico-en-la-ejecucion-de-obras-estrategicas-para-fortalecer-su-capacidad-operativa-y-de-trafico-aereo/",
+        "https://www.bancentral.gov.do/a/d/2537-sector-turismo",
+        "https://www.cepa.gob.sv/aeropuerto-internacional-de-el-salvador-registra-crecimiento-durante-la-temporada-de-fin-de-ano-y-consolida-resultados-positivos-al-cierre-de-2025/",
+        "https://www.dgac.gob.gt/",
+        "https://www.vantagegroup.com/hub/building-tomorrows-gateways-vantage-groups-2025-impact-report/",
+        "https://www.airportaruba.com/storage/app/media/PDF/AAA-ANNUAL-REPORT-2025.pdf",
+        "https://www.vantagegroup.com/wp-content/uploads/2026/07/Vantage_ImpactReport_2025_Final.pdf",
+        "https://www.mbjairport.com/history-facts",
+        "https://lahora.gt/nacionales/hloarca/2026/01/26/vuelos-se-incrementan-en-aeropuerto-la-aurora-y-se-proyectan-dos-nuevas-rutas/",
+        "https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_the_Caribbean"
+      ],
+      "notes": [
+        "PUJ operator reports more than 11 million; 11000000 is a rounded lower bound, not an exact count. SAL rounded to 5.2 million.",
+        "SDQ and GUA totals require reviewing linked government tables; secondary transcriptions supplied selection candidates.",
+        "Caribbean island airports and seven Central American countries, excluding Mexico already selected; no claim of a complete statistical census."
+      ],
+      "document_sha256": {
+        "Vantage_ImpactReport_2025_Final.pdf": "0591589b0884533c761a1e5ca12e077d3d626865846120e864ff02eb096fae4b"
+      }
+    }
+  },
+  "timezone_sources": [
+    {
+      "zone": "America/Vancouver",
+      "url": "https://www2.gov.bc.ca/gov/content/governments/celebrating-british-columbia/daylight-saving-time",
+      "november_2026_offset": -25200
+    },
+    {
+      "zone": "America/Edmonton",
+      "url": "https://www.alberta.ca/albertas-new-time-system-abt",
+      "november_2026_offset": -21600
+    }
+  ],
+  "airports": [
+    {
+      "code": "YYZ",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "rank": 1,
+      "ranking_year": 2024,
+      "passenger_statistic": 45.6
+    },
+    {
+      "code": "YVR",
+      "country": "CA",
+      "timezone": "America/Vancouver",
+      "rank": 2,
+      "ranking_year": 2024,
+      "passenger_statistic": 25.3,
+      "replay_timezone": "Etc/GMT+7"
+    },
+    {
+      "code": "YUL",
+      "country": "CA",
+      "timezone": "America/Toronto",
+      "rank": 3,
+      "ranking_year": 2024,
+      "passenger_statistic": 21.5
+    },
+    {
+      "code": "YYC",
+      "country": "CA",
+      "timezone": "America/Edmonton",
+      "rank": 4,
+      "ranking_year": 2024,
+      "passenger_statistic": 18.4,
+      "replay_timezone": "Etc/GMT+6"
+    },
+    {
+      "code": "YEG",
+      "country": "CA",
+      "timezone": "America/Edmonton",
+      "rank": 5,
+      "ranking_year": 2024,
+      "passenger_statistic": 7.5,
+      "replay_timezone": "Etc/GMT+6"
+    },
+    {
+      "code": "MEX",
+      "country": "MX",
+      "timezone": "America/Mexico_City",
+      "rank": 1,
+      "ranking_year": 2025,
+      "passenger_statistic": 44605.8
+    },
+    {
+      "code": "CUN",
+      "country": "MX",
+      "timezone": "America/Cancun",
+      "rank": 2,
+      "ranking_year": 2025,
+      "passenger_statistic": 29478.7
+    },
+    {
+      "code": "GDL",
+      "country": "MX",
+      "timezone": "America/Mexico_City",
+      "rank": 3,
+      "ranking_year": 2025,
+      "passenger_statistic": 18773.7
+    },
+    {
+      "code": "MTY",
+      "country": "MX",
+      "timezone": "America/Monterrey",
+      "rank": 4,
+      "ranking_year": 2025,
+      "passenger_statistic": 15777.1
+    },
+    {
+      "code": "TIJ",
+      "country": "MX",
+      "timezone": "America/Tijuana",
+      "rank": 5,
+      "ranking_year": 2025,
+      "passenger_statistic": 12765.8
+    },
+    {
+      "code": "PTY",
+      "country": "PA",
+      "timezone": "America/Panama",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 1,
+      "ranking_year": 2025,
+      "passenger_statistic": 20981855,
+      "selection_source_url": "https://www.datosabiertos.gob.pa/dataset/4cfac507-e49a-46b5-8811-e5334631c97d/resource/e36f2764-ca5d-45be-b52f-f596d35045a7/download/movimientomensualdepasajerosaitsa2025.pdf",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "SJU",
+      "country": "PR",
+      "timezone": "America/Puerto_Rico",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 2,
+      "ranking_year": 2025,
+      "passenger_statistic": 13643686,
+      "selection_source_url": "https://www.prnewswire.com/news-releases/asur-announces-total-passenger-traffic-for-december-2025-302654211.html",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "PUJ",
+      "country": "DO",
+      "timezone": "America/Santo_Domingo",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 3,
+      "ranking_year": 2025,
+      "passenger_statistic": 11000000,
+      "selection_source_url": "https://www.puntacanainternationalairport.com/es/about-us/news-projects/item/aeropuerto-de-punta-cana-marca-un-hito-historico-y-cierra-2025-con-record-consecutivo-de-vuelos-y-pasajeros",
+      "selection_source_status": "Airport operator or government report reviewed",
+      "passenger_statistic_precision": "Rounded; PUJ reports more than this value"
+    },
+    {
+      "code": "SJO",
+      "country": "CR",
+      "timezone": "America/Costa_Rica",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 4,
+      "ranking_year": 2025,
+      "passenger_statistic": 6403220,
+      "selection_source_url": "https://www.sjoairport.com/aeropuerto-juan-santamaria-2025-fue-un-ano-historico-en-la-ejecucion-de-obras-estrategicas-para-fortalecer-su-capacidad-operativa-y-de-trafico-aereo/",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "SDQ",
+      "country": "DO",
+      "timezone": "America/Santo_Domingo",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 5,
+      "ranking_year": 2025,
+      "passenger_statistic": 5221168,
+      "selection_source_url": "https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_the_Caribbean",
+      "selection_source_status": "Secondary transcription; government source currently renders without accessible table"
+    },
+    {
+      "code": "SAL",
+      "country": "SV",
+      "timezone": "America/El_Salvador",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 6,
+      "ranking_year": 2025,
+      "passenger_statistic": 5200000,
+      "selection_source_url": "https://www.cepa.gob.sv/aeropuerto-internacional-de-el-salvador-registra-crecimiento-durante-la-temporada-de-fin-de-ano-y-consolida-resultados-positivos-al-cierre-de-2025/",
+      "selection_source_status": "Airport operator or government report reviewed",
+      "passenger_statistic_precision": "Rounded; PUJ reports more than this value"
+    },
+    {
+      "code": "GUA",
+      "country": "GT",
+      "timezone": "America/Guatemala",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 7,
+      "ranking_year": 2025,
+      "passenger_statistic": 5129535,
+      "selection_source_url": "https://lahora.gt/nacionales/hloarca/2026/01/26/vuelos-se-incrementan-en-aeropuerto-la-aurora-y-se-proyectan-dos-nuevas-rutas/",
+      "selection_source_status": "Secondary transcription; government source currently renders without accessible table"
+    },
+    {
+      "code": "MBJ",
+      "country": "JM",
+      "timezone": "America/Jamaica",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 8,
+      "ranking_year": 2025,
+      "passenger_statistic": 4495370,
+      "selection_source_url": "https://www.mbjairport.com/history-facts",
+      "selection_source_status": "Airport operator or government report reviewed"
+    },
+    {
+      "code": "NAS",
+      "country": "BS",
+      "timezone": "America/Nassau",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 9,
+      "ranking_year": 2025,
+      "passenger_statistic": 3991820,
+      "selection_source_url": "https://www.vantagegroup.com/wp-content/uploads/2026/07/Vantage_ImpactReport_2025_Final.pdf",
+      "selection_source_status": "Airport operator or government report reviewed",
+      "selection_source_page": 59
+    },
+    {
+      "code": "AUA",
+      "country": "AW",
+      "timezone": "America/Aruba",
+      "selection_group": "Central America and Caribbean",
+      "regional_rank": 10,
+      "ranking_year": 2025,
+      "passenger_statistic": 3414277,
+      "selection_source_url": "https://www.airportaruba.com/storage/app/media/PDF/AAA-ANNUAL-REPORT-2025.pdf",
+      "selection_source_status": "Airport operator or government report reviewed"
+    }
+  ]
+}

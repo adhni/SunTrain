@@ -28,6 +28,21 @@ AIRLINES = {'QF': ('Qantas', '#e53935'), 'VA': ('Virgin Australia', '#aa76db'),
             'NZ': ('Air New Zealand', '#65b7ad'), 'QR': ('Qatar Airways', '#b57f9c'),
             'CX': ('Cathay Pacific', '#54aa93'), 'UA': ('United', '#649ce0'),
             'AA': ('American', '#a0afc6'), 'DL': ('Delta', '#cf7b89'),
+            'WN': ('Southwest Airlines', '#e8bd54'), 'B6': ('JetBlue', '#79a6dd'),
+            'F9': ('Frontier Airlines', '#74b58a'), 'XE': ('JSX', '#b98ad2'),
+            'AS': ('Alaska Airlines', '#74bbc0'),
+            'SY': ('Sun Country Airlines', '#d99763'), 'G4': ('Allegiant Air', '#9b91cf'),
+            'MX': ('Breeze Airways', '#6cc6d6'),
+            'AC': ('Air Canada', '#dc747c'), 'WS': ('WestJet', '#63b5aa'),
+            'TS': ('Air Transat', '#6b9ed5'), 'PD': ('Porter Airlines', '#b5a282'),
+            'F8': ('Flair Airlines', '#9bbb5c'), 'AM': ('Aeromexico', '#8a9dd2'),
+            'Y4': ('Volaris', '#b88ad1'), 'VB': ('Viva', '#7fbe78'),
+            '4N': ('Air North', '#be9b70'),
+            'CM': ('Copa Airlines', '#749fd0'), 'AV': ('Avianca', '#dc7c89'),
+            'DM': ('Arajet', '#a38ad4'), 'Q6': ('Volaris Costa Rica', '#bd85c4'),
+            'WU': ('Western Air', '#b197d0'), 'S6': ('Sunrise Airways', '#e5a45b'),
+            'UP': ('Bahamasair', '#65b5bb'), 'N3': ('Volaris El Salvador', '#a98ccd'),
+            'AR': ('Aerolineas Argentinas', '#78b4d5'),
             'FJ': ('Fiji Airways', '#b9956e'), 'TR': ('Scoot', '#e5c547'),
             'MH': ('Malaysia Airlines', '#7c9ada'), 'TG': ('THAI', '#b690d9'), 'AK': ('AirAsia', '#e95055'),
             'FY': ('Firefly', '#ef9b48'), 'MY': ('AirBorneo', '#53b6aa'),
@@ -181,14 +196,14 @@ def snapshot_coverage(reference):
         failed_or_missing_queries=len(missing), unattempted_queries=len(missing), failed_queries=0)
 
 
-def continuous_arc(a, b):
+def continuous_arc(a, b, anchor=135):
     """Keep Pacific flights continuous instead of interpolating across the world.
 
     Use Australia's world copy for both directions so reverse frequency arcs align.
     Longitudes beyond 180 are intentional and supported by MapLibre world copies.
     """
     points = great_circle(a, b)
-    previous = 135
+    previous = anchor
     for point in points:
         point[0] += 360 * round((previous - point[0]) / 360)
         previous = point[0]
@@ -311,6 +326,13 @@ def replay_day(business_date, city='australia_flights'):
     zone = ZoneInfo(replay_settings(city)['timezone'])
     start = int(datetime.combine(day, time(), zone).timestamp())
     end = int(datetime.combine(day + timedelta(days=1), time(), zone).timestamp())
+    if city in PROFILE_CITIES and PROFILE_CITIES[city][1].get('origin_local_day'):
+        # Bound all origin-local days, including Atlantic midnight departures
+        # before Eastern midnight and western overnight arrivals.
+        starts=[int(datetime.combine(day,time(),ZoneInfo(a.get('replay_timezone',a['timezone']))).timestamp()) for a in reference['airports']]
+        start=min([start,*starts])
+        ends=[int(datetime.combine(day+timedelta(days=1),time(),ZoneInfo(a.get('replay_timezone',a['timezone']))).timestamp()) for a in reference['airports']]
+        end=max([end,*ends,*[f['arrival']+1 for f in reference['flights']]])
     airports = reference['airports']
     indices = {a['code']: i for i, a in enumerate(airports)}
     services, paths = [], {}
@@ -323,7 +345,7 @@ def replay_day(business_date, city='australia_flights'):
         route = f"{flight['origin']} → {flight['destination']}"
         key = flight['origin'] + '-' + flight['destination']
         if key not in paths:
-            coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']])
+            coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']],anchor=-98 if city=='united_states_flights' else 135)
             paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
         carrier = flight.get('carrier') or ('JQ' if city == 'australia_flights' else 'Unknown')
         operator, color = airline_style(carrier, flight.get('airline'))

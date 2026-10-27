@@ -127,7 +127,15 @@ def country_config(country='AU', scope='domestic'):
             if p.get('worldwide'):raise ValueError('Use prepare_taiwan_hong_kong_flights.py for worldwide international flights')
             raise ValueError('This country profile uses prepare_international_network.py for international flights')
         manifest=json.loads((ROOT/f"data/sources/{p['slug']}_flights_routes.json").read_text())
-        return dict(country=country,zones={a['code']:a['timezone'] for a in manifest['airports']},timezone=p['zone'],end_date=manifest['end_date'],manifest=manifest,scope='domestic',capture_prices=True,currency='USD',max_duration=28800,allow_empty_snapshot=True)
+        config=dict(country=country,zones={a['code']:a['timezone'] for a in manifest['airports']},timezone=p['zone'],end_date=manifest['end_date'],manifest=manifest,scope='domestic',capture_prices=True,currency='USD',max_duration=28800,allow_empty_snapshot=True)
+        if manifest.get('query_date_policy')=='origin_local_departure_day_only':
+            config.update(queries=[(manifest['start_date'],a,b) for a,b in manifest['routes']],reject_invalid_segments=True)
+        if p.get('origin_local_day'):
+            config['capture_wait_until']='domcontentloaded'
+            config['max_duration']=manifest['max_duration']
+            config['scope']=manifest['scope']
+            config['zones']={a['code']:a.get('replay_timezone',a['timezone']) for a in manifest['airports']}
+        return config
     if country == 'AU' and scope == 'domestic':
         return dict(country='AU', zones=ZONES, timezone='Australia/Melbourne', end_date=None, manifest=None)
     if country not in {'AU', 'ID', 'MY', 'SG', 'IN', 'KR', 'JP', 'CN', 'TH', 'PH', 'VN'}:
@@ -254,7 +262,7 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                         params.update(curr=config['currency']);params['q']+=' one adult economy'
                     url = 'https://www.google.com/travel/flights?' + urlencode(params)
                     try:
-                        await page.goto(url, wait_until='commit', timeout=45000)
+                        await page.goto(url, wait_until=config.get('capture_wait_until','commit'), timeout=45000)
                         if '/sorry/' in page.url:
                             raise RuntimeError('Search access limited; collection stopped')
                         # Functions avoid the page's Trusted Types restriction on eval strings.
@@ -430,6 +438,24 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             metadata['replay_note']='Captured domestic schedules only. Empty results mean not returned, not no service. Coverage and prices are partial; paths are illustrative.'
             for key in ('deferred_airports','deferred_routes'):
                 if key in config['manifest']:metadata[key]=config['manifest'][key]
+        if config['manifest'].get('query_date_policy')=='origin_local_departure_day_only':
+            from dashboard.flight_profiles import PROFILES
+            if PROFILES.get(config['country'],{}).get('origin_local_day'):
+                # One origin-local date across multiple zones spans more than 24h.
+                # Include the complete dated captures and their overnight arrivals.
+                reference['flights']=sorted(records.values(),key=lambda f:(f['departure'],f['id']))
+                reference['airports']=airports
+                represented={f[k] for f in reference['flights'] for k in ('origin','destination')}
+                for f in reference['flights']:
+                    if datetime.fromtimestamp(f['departure'],ZoneInfo(config['zones'][f['origin']])).date().isoformat()!=day:
+                        raise ValueError('Flight outside origin-local departure day')
+                metadata['replay_note']=config['manifest']['replay_note']
+                metadata['query_date_policy']='origin_local_departure_day_only'
+                metadata['priced_flights']=sum('price' in f for f in reference['flights'])
+                metadata['airlines']=sorted({f['airline'] for f in reference['flights']})
+                if len(config['manifest'].get('countries',[]))>1:
+                    metadata.pop('country',None)
+                    metadata.update(profile='north_america',countries=config['manifest']['countries'],scope='regional',additional_selection_sha256=config['manifest']['additional_selection_sha256'])
         if config['country']=='VN':
             metadata['scope']='domestic'
             metadata['coverage_scope']=config['manifest']['coverage_scope']

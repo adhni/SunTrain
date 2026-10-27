@@ -1022,7 +1022,7 @@
                 for (const [index, label, column] of [[0, 'Departure', 2], [1, 'Arrival', 1]]) {
                     const airport = this.day.stations[service.stops[index][0]], row = node('li', undefined, 'replay-journey-stop');
                     row.append(node('span', label, 'replay-journey-label'), node('strong', airport.name),
-                        node('span', root.suntrainDepartures.formatCallTime(service.stops[index][column], airport.timezone), 'replay-journey-time'));
+                        node('span', root.suntrainDepartures.formatCallTime(service.stops[index][column], airport.replay_timezone || airport.timezone), 'replay-journey-time'));
                     list.append(row);
                 }
                 host.replaceChildren(node('div', text, 'replay-journey-state'), list);
@@ -1207,6 +1207,7 @@
                     const zoneLabel=({'Asia/Kathmandu':'NPT','Asia/Taipei':'CST','Asia/Hong_Kong':'HKT','Pacific/Auckland':'NZDT','Asia/Brunei':'BNT','Asia/Phnom_Penh':'ICT','Asia/Vientiane':'ICT','Asia/Yangon':'MMT','Asia/Dili':'TLT'})[this.day.timezone] || (this.day.timezone==='Asia/Ho_Chi_Minh'?'ICT':this.day.timezone==='Asia/Manila'?'PHT':this.day.timezone==='Asia/Bangkok'?'ICT':this.day.timezone==='Asia/Jakarta'?'WIB':this.day.timezone==='Asia/Kuala_Lumpur'?'MYT':this.day.timezone==='Asia/Singapore'?'SGT':this.day.timezone==='Asia/Kolkata'?'IST':this.day.timezone==='Asia/Seoul'?'KST':this.day.timezone==='Asia/Tokyo'?'JST':this.day.timezone==='Asia/Shanghai'?(root.suntrainI18n?.translate('China time (UTC+8)') || 'China time (UTC+8)'):null);
                     if (zoneLabel) dateText=dateText.replace(/GMT\+(?:13|[789]|[56][.:]30|5[.:]45)/,zoneLabel);
                     if(this.day.timezone==='UTC')dateText=dateText.replace(/GMT(?:\+0)?/,'UTC');
+                    if(this.day.timezone==='America/New_York')dateText=dateText.replace(/GMT-5/,'EST').replace(/GMT-4/,'EDT');
                     setText("replay-clock-date",dateText);
                     setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");

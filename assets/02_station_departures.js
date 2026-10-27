@@ -172,7 +172,8 @@
         render() {
             const replay = this.replay;
             const flights = replay.day.replay_kind === 'flights', arrivals = flights && this.event === 'arrival';
-            this.timezone = flights && this.station !== null ? replay.day.stations[this.station].timezone : replay.day.timezone;
+            const airport=flights && this.station !== null ? replay.day.stations[this.station] : null;
+            this.timezone = airport ? airport.replay_timezone || airport.timezone : replay.day.timezone;
             this.host.replaceChildren(); this.signature = null;
             this.title = node("h3", this.station === null ? (flights ? 'Airports' : "Station departures") : replay.day.stations[this.station].name);
             this.title.tabIndex = -1; this.title.id = "departure-title";
@@ -195,7 +196,7 @@
                     control.disabled = event === 'destinations' && this.station === null;
                     control.dataset.event = event; control.setAttribute('aria-pressed', String(event === this.event)); tabs.append(control);
                 }
-                const countryClocks={'Asia/Kathmandu':'Nepal time (NPT, UTC+5:45)','Asia/Taipei':'Taiwan time (UTC+8)','Asia/Hong_Kong':'Hong Kong time (HKT, UTC+8)','Pacific/Auckland':'New Zealand time (NZDT, UTC+13)','Asia/Brunei':'Brunei time (BNT, UTC+8)','Asia/Phnom_Penh':'Cambodia time (ICT, UTC+7)','Asia/Vientiane':'Laos time (ICT, UTC+7)','Asia/Yangon':'Myanmar time (MMT, UTC+6:30)','Asia/Dili':'Timor-Leste time (TLT, UTC+9)'};
+                const countryClocks={'America/New_York':'Eastern time (EST, UTC−5)','Asia/Kathmandu':'Nepal time (NPT, UTC+5:45)','Asia/Taipei':'Taiwan time (UTC+8)','Asia/Hong_Kong':'Hong Kong time (HKT, UTC+8)','Pacific/Auckland':'New Zealand time (NZDT, UTC+13)','Asia/Brunei':'Brunei time (BNT, UTC+8)','Asia/Phnom_Penh':'Cambodia time (ICT, UTC+7)','Asia/Vientiane':'Laos time (ICT, UTC+7)','Asia/Yangon':'Myanmar time (MMT, UTC+6:30)','Asia/Dili':'Timor-Leste time (TLT, UTC+9)'};
                 const clockNote=countryClocks[replay.day.timezone]?`Airport times are local. The replay clock uses ${countryClocks[replay.day.timezone]}.`:replay.day.timezone==='Asia/Ho_Chi_Minh'?'Airport times are local. The replay clock uses Vietnam time (ICT, UTC+7).':replay.day.timezone==='Asia/Manila'?'Airport times are local. The replay clock uses Philippine time (UTC+8).':replay.day.timezone==='Asia/Bangkok'?'Airport times are local. The replay clock uses ICT (UTC+7).':replay.day.timezone==='UTC'?'Airport times and dates are local. The replay clock uses UTC.':replay.day.timezone==='Asia/Shanghai'?(replay.day.flight_scopes?'Airport times are local. The replay clock uses China time (UTC+8).':'Airport times and the replay clock use China time (UTC+8).'):replay.day.timezone==='Asia/Tokyo'?'Airport times are local. The replay clock uses JST.':replay.day.timezone==='Asia/Seoul'?'Airport times are local. The replay clock uses KST.':replay.day.timezone==='Asia/Kolkata'?'Airport times are local. The replay clock uses IST.':replay.day.timezone==='Asia/Singapore'?'Airport times are local. The replay clock uses SGT.':replay.day.timezone==='Asia/Dubai'?'Airport times are local. The replay clock uses Dubai time (UTC+4).':replay.day.timezone === 'Asia/Jakarta' ? 'Airport times are local. The replay clock uses WIB.' : replay.day.timezone === 'Asia/Kuala_Lumpur' ? 'Airport times are local. The replay clock uses MYT.' : 'Airport times are local. The replay clock uses Melbourne time.';
                 this.host.append(tabs,node('p',clockNote,'replay-muted replay-small'));
                 if (replay.day.schedule?.fare_context) this.host.append(node('p', 'Captured fares · 1 adult · Economy · One-way. Prices may change.', 'replay-muted replay-small'));

@@ -444,7 +444,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
                 # One origin-local date across multiple zones spans more than 24h.
                 # Include the complete dated captures and their overnight arrivals.
                 reference['flights']=sorted(records.values(),key=lambda f:(f['departure'],f['id']))
-                reference['airports']=airports
+                reference['airports']=sorted(config['manifest']['airports'],key=lambda a:a['code'])
                 represented={f[k] for f in reference['flights'] for k in ('origin','destination')}
                 for f in reference['flights']:
                     if datetime.fromtimestamp(f['departure'],ZoneInfo(config['zones'][f['origin']])).date().isoformat()!=day:
@@ -455,7 +455,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
                 metadata['airlines']=sorted({f['airline'] for f in reference['flights']})
                 if len(config['manifest'].get('countries',[]))>1:
                     metadata.pop('country',None)
-                    metadata.update(profile='north_america',countries=config['manifest']['countries'],scope='regional',additional_selection_sha256=config['manifest']['additional_selection_sha256'])
+                    metadata.update(profile=config['manifest'].get('profile','north_america'),countries=config['manifest']['countries'],scope='regional',additional_selection_sha256=config['manifest']['additional_selection_sha256'])
         if config['country']=='VN':
             metadata['scope']='domestic'
             metadata['coverage_scope']=config['manifest']['coverage_scope']
@@ -497,7 +497,7 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
             queries_rejected=sum(q['status'] == 'rejected_source_records' for q in queries),
             rejected_records=sum(len(q.get('rejected_flights', [])) for q in queries), failed_or_missing_queries=len(missing),
             island_groups={g: dict(candidate_airports=sum(a.get('island_group', a.get('country', config['country']))==g for a in config['manifest']['airports']),
-                airports_returned=sum(a.get('island_group', a.get('country', config['country']))==g for a in reference['airports']))
+                airports_returned=sum(a['code'] in represented and a.get('island_group', a.get('country', config['country']))==g for a in reference['airports']))
                 for g in sorted({a.get('island_group', a.get('country', config['country'])) for a in config['manifest']['airports']})})
         if config.get('scope') == 'international':
             metadata['coverage']['candidate_foreign_airports'] = sum(a['country'] != config['country'] for a in config['manifest']['airports'])
@@ -508,6 +508,10 @@ def prepare(cache, output, day, pairs, config=None, end_date=None):
         metadata['unresolved_airports'] = config['manifest']['unresolved_airports']
         metadata['route_source_url'] = config['manifest']['route_source_url']
         metadata['route_source_sha256'] = config['manifest']['route_source_sha256']
+        if config['manifest'].get('country_gateways'):
+            metadata['country_gateways']=config['manifest']['country_gateways']
+        if config['manifest'].get('route_source_hash_basis'):
+            metadata['route_source_hash_basis']=config['manifest']['route_source_hash_basis']
     output.parent.mkdir(parents=True, exist_ok=True)
     temporary = output.with_suffix('.tmp')
     with temporary.open('wb') as raw, gzip.GzipFile(filename='', fileobj=raw, mode='wb', mtime=0) as stream:

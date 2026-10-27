@@ -1,0 +1,335 @@
+{
+  "source_reviewed_date": "2026-10-27",
+  "ranking_year": 2025,
+  "metric": "Original top ten use the reviewed ACI-LAC consolidated ranking; expansion supplements published 2025 operator/government traffic and transcribed comparisons. Not a harmonized statistical census.",
+  "source_url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
+  "ranking_image_url": "https://aci-lac.aero/wp-content/uploads/2026/07/TOP20-PAX-1-scaled.png",
+  "transcription_url": "https://www.panrotas.com.br/aviacao/pesquisas-e-estatisticas/2026/07/america-latina-movimenta-440-milhoes-de-passageiros-em-2025-veja-ranking-dos-aeroportos_230465.html",
+  "hash_basis": "Committed normalized reviewed selection facts; raw image hash recorded separately when available",
+  "notes": [
+    "Preserve original top-ten airport identities and captures. Top-twenty expansion uses differing published passenger metrics and rounded values. Membership is reviewed; ordering near the cutoff is not a claim of perfectly comparable traffic.",
+    "National gateways have no invented continental rank or annual total. Complete comparable recent traffic for Venezuela and some small national gateways remains a source limitation.",
+    "All twelve sovereign countries are represented. French Guiana and overseas island territories are not countries in this coverage guarantee.",
+    "GRU/CGH/VCP, GIG/SDU and AEP/EZE are separate exact airports."
+  ],
+  "airports": [
+    {
+      "code": "GRU",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 1,
+      "lac_rank": 1,
+      "passengers_2025": 47174529
+    },
+    {
+      "code": "BOG",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 2,
+      "lac_rank": 2,
+      "passengers_2025": 45464526
+    },
+    {
+      "code": "SCL",
+      "country": "CL",
+      "timezone": "America/Santiago",
+      "rank": 3,
+      "lac_rank": 5,
+      "passengers_2025": 25941576
+    },
+    {
+      "code": "LIM",
+      "country": "PE",
+      "timezone": "America/Lima",
+      "rank": 4,
+      "lac_rank": 6,
+      "passengers_2025": 25496109
+    },
+    {
+      "code": "CGH",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 5,
+      "lac_rank": 7,
+      "passengers_2025": 24491178
+    },
+    {
+      "code": "GIG",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 6,
+      "lac_rank": 10,
+      "passengers_2025": 17906990
+    },
+    {
+      "code": "AEP",
+      "country": "AR",
+      "timezone": "America/Argentina/Buenos_Aires",
+      "rank": 7,
+      "lac_rank": 11,
+      "passengers_2025": 17814653
+    },
+    {
+      "code": "BSB",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 8,
+      "lac_rank": 12,
+      "passengers_2025": 16977287
+    },
+    {
+      "code": "MDE",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 9,
+      "lac_rank": 14,
+      "passengers_2025": 14242523
+    },
+    {
+      "code": "CNF",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 10,
+      "lac_rank": 16,
+      "passengers_2025": 13114989
+    },
+    {
+      "code": "VCP",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 11,
+      "passengers_2025": 12826553,
+      "selection_source_url": "https://www.viracopos.com/pt_br/noticias/com-12-8-milhoes-de-passageiros-2025-viracopos-atinge-novo-recorde-anual-e-mira-novas-rotas-em-2026.htm",
+      "selection_basis": "top_twenty"
+    },
+    {
+      "code": "EZE",
+      "country": "AR",
+      "timezone": "America/Argentina/Buenos_Aires",
+      "rank": 12,
+      "passengers_2025": 12002179,
+      "selection_source_url": "https://www.panrotas.com.br/aviacao/pesquisas-e-estatisticas/2026/07/america-latina-movimenta-440-milhoes-de-passageiros-em-2025-veja-ranking-dos-aeroportos_230465.html",
+      "selection_basis": "top_twenty"
+    },
+    {
+      "code": "REC",
+      "country": "BR",
+      "timezone": "America/Recife",
+      "rank": 13,
+      "passengers_2025": 9938051,
+      "selection_source_url": "https://www.aena.es/doc/pressdetail/260113-aena-estadisticas-2025en.pdf",
+      "selection_basis": "top_twenty"
+    },
+    {
+      "code": "SSA",
+      "country": "BR",
+      "timezone": "America/Bahia",
+      "rank": 14,
+      "passengers_2025": 8100000,
+      "selection_source_url": "https://www.salvador-airport.com.br/pt-br/noticia/salvador-bahia-airport-encerra-2025-com-aumento-de-63-no-trafego-de-passageiros",
+      "selection_basis": "top_twenty",
+      "passenger_statistic_precision": "Operator total rounded to 8.1 million"
+    },
+    {
+      "code": "CTG",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 15,
+      "passengers_2025": 7756298,
+      "selection_source_url": "https://aeropuertocartagena.com.co/historico-aeropuerto-internacional-rafael-nunez-de-cartagena-supero-los-7-7-millones-de-pasajeros-movilizados-en-2025/",
+      "selection_basis": "top_twenty"
+    },
+    {
+      "code": "POA",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 16,
+      "passengers_2025": 7512942,
+      "selection_source_url": "https://www.fraport.com/en/newsroom/press-releases/2026/traffic-figures/fraport-traffic-figures-2025.html",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions"
+    },
+    {
+      "code": "CLO",
+      "country": "CO",
+      "timezone": "America/Bogota",
+      "rank": 17,
+      "passengers_2025": 6903591,
+      "selection_source_url": "https://www.cali.gov.co/boletines/publicaciones/193534/la-conectividad-aerea-impulsa-a-cali-como-destino-internacional/",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions"
+    },
+    {
+      "code": "SDU",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 18,
+      "passengers_2025": 6201200,
+      "selection_source_url": "https://en.wikipedia.org/wiki/List_of_the_busiest_airports_in_Latin_America",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions"
+    },
+    {
+      "code": "FOR",
+      "country": "BR",
+      "timezone": "America/Fortaleza",
+      "rank": 19,
+      "passengers_2025": 6166329,
+      "selection_source_url": "https://www.fraport.com/en/newsroom/press-releases/2026/traffic-figures/fraport-traffic-figures-2025.html",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions"
+    },
+    {
+      "code": "CWB",
+      "country": "BR",
+      "timezone": "America/Sao_Paulo",
+      "rank": 20,
+      "passengers_2025": 6082222,
+      "selection_source_url": "https://aeroportos.motiva.com.br/noticias/",
+      "selection_basis": "top_twenty",
+      "selection_source_status": "Numeric total transcribed from published comparisons; linked operator/government source corroborates the airport or yearly traffic but may use different definitions"
+    },
+    {
+      "code": "UIO",
+      "country": "EC",
+      "timezone": "America/Guayaquil",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://www.quitoinforma.gob.ec/2026/01/09/el-aeropuerto-de-quito-movilizo-a-5-4-millones-de-pasajeros-en-2025/"
+    },
+    {
+      "code": "MVD",
+      "country": "UY",
+      "timezone": "America/Montevideo",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://investors.corporacionamericaairports.com/files/doc_news/2026/Jan/20/CAAP-Passenger-Traffic-December-2025.pdf"
+    },
+    {
+      "code": "ASU",
+      "country": "PY",
+      "timezone": "America/Asuncion",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://www.dinac.gov.py/estadisticas/ResumenEstadisticoTransporteAereoComercial-2025_Enero-Diciembre.pdf"
+    },
+    {
+      "code": "VVI",
+      "country": "BO",
+      "timezone": "America/La_Paz",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://naabol.gob.bo/naabol-consolida-avances-estrategicos-en-el-hub-de-viru-viru-en-sus-primeros-100-dias-de-gestion/"
+    },
+    {
+      "code": "CCS",
+      "country": "VE",
+      "timezone": "America/Caracas",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://elpais.com/america/2026-09-01/el-aeropuerto-internacional-de-caracas-vuelve-a-operar-dos-meses-despues-del-terremoto.html",
+      "selection_source_status": "Secondary description of the principal national airport; operator site timed out, no comparable current annual total claimed"
+    },
+    {
+      "code": "GEO",
+      "country": "GY",
+      "timezone": "America/Guyana",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://statisticsguyana.gov.gy/subjects/demography-vital-and-social-statistics/arrivals-and-departures-cheddi-jagan-international-airport-guyana-2013-to-2026/"
+    },
+    {
+      "code": "PBM",
+      "country": "SR",
+      "timezone": "America/Paramaribo",
+      "rank": null,
+      "national_rank": 1,
+      "selection_basis": "national_gateway",
+      "selection_source_url": "https://gov.sr/thema/luchthaven/"
+    }
+  ],
+  "source_status": "ACI-LAC consolidated 2025 announcement reviewed; full numeric table transcribed from the linked Panrotas reproduction. The primary ranking graphic URL returned HTTP 404 on review.",
+  "country_gateways": {
+    "AR": "AEP",
+    "BO": "VVI",
+    "BR": "GRU",
+    "CL": "SCL",
+    "CO": "BOG",
+    "EC": "UIO",
+    "GY": "GEO",
+    "PY": "ASU",
+    "PE": "LIM",
+    "SR": "PBM",
+    "UY": "MVD",
+    "VE": "CCS"
+  },
+  "selection_policy": "Reviewed 2025 top-twenty traffic selection plus busiest national gateway for all twelve sovereign South American countries. Counts have differing operator definitions; unavailable comparable national totals are not invented. Territories are outside the country guarantee.",
+  "national_gateway_sources": {
+    "BR": {
+      "airport": "GRU",
+      "url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "CO": {
+      "airport": "BOG",
+      "url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "CL": {
+      "airport": "SCL",
+      "url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "PE": {
+      "airport": "LIM",
+      "url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "AR": {
+      "airport": "AEP",
+      "url": "https://aci-lac.aero/noticias/?sg=aci-lac-publica-datos-consolidados-del-trafico-aereo-en-america-latina-y-el-caribe-en-2025",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "EC": {
+      "airport": "UIO",
+      "url": "https://www.quitoinforma.gob.ec/2026/01/09/el-aeropuerto-de-quito-movilizo-a-5-4-millones-de-pasajeros-en-2025/",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "UY": {
+      "airport": "MVD",
+      "url": "https://investors.corporacionamericaairports.com/files/doc_news/2026/Jan/20/CAAP-Passenger-Traffic-December-2025.pdf",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "PY": {
+      "airport": "ASU",
+      "url": "https://www.dinac.gov.py/estadisticas/ResumenEstadisticoTransporteAereoComercial-2025_Enero-Diciembre.pdf",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "BO": {
+      "airport": "VVI",
+      "url": "https://naabol.gob.bo/naabol-consolida-avances-estrategicos-en-el-hub-de-viru-viru-en-sus-primeros-100-dias-de-gestion/",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "VE": {
+      "airport": "CCS",
+      "url": "https://elpais.com/america/2026-09-01/el-aeropuerto-internacional-de-caracas-vuelve-a-operar-dos-meses-despues-del-terremoto.html",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "GY": {
+      "airport": "GEO",
+      "url": "https://statisticsguyana.gov.gy/subjects/demography-vital-and-social-statistics/arrivals-and-departures-cheddi-jagan-international-airport-guyana-2013-to-2026/",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    },
+    "SR": {
+      "airport": "PBM",
+      "url": "https://gov.sr/thema/luchthaven/",
+      "basis": "Published national gateway/traffic evidence; recent comparable annual totals not available for every country"
+    }
+  }
+}

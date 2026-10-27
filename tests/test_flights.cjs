@@ -277,3 +277,36 @@ test('European group, airline and code filters compose with exact airport direct
  assert.equal(core.matches(flight,{...filters,airports:['JFK'],airportDirection:'arrivals'},day),true);
  assert.equal(core.matches({...flight,flight_group:undefined},filters,day),false);
 });
+
+
+test('Regional airport markers retain unreturned gateways and respect geographic filters',()=>{
+ const day={replay_kind:'flights',flight_country_filters:true,stations:[{code:'AEP',country:'AR'},{code:'PBM',country:'SR'},{code:'GEO',country:'GY'}],services:[]};
+ assert.deepEqual(core.cataloguedAirports(day,{}),[0,1,2]);
+ assert.deepEqual(core.cataloguedAirports(day,{fromCountries:['GY']}),[2]);
+ assert.deepEqual(core.cataloguedAirports(day,{fromCountries:['AR'],toCountries:['GY']}),[0,2]);
+ assert.deepEqual(core.cataloguedAirports(day,{carriers:['LA']}),[]);
+ assert.deepEqual(core.cataloguedAirports(day,{airports:['PBM'],carriers:['LA']}),[1]);
+ assert.deepEqual(core.cataloguedAirports(day,{lines:['AEP-GEO']}),[]);
+ assert.deepEqual(core.cataloguedAirports({...day,replay_kind:'transit'},{}),[]);
+});
+
+
+test('An unreturned airport explains the capture gap instead of suggesting an earlier time',()=>{
+ const {flightEmptyMessage}=require('../assets/02_station_departures.js');
+ const day={services:[{mode:'flight',stops:[[0,0,0],[1,100,100]]}]};
+ assert.match(flightEmptyMessage(day,2),/No captured flights/);
+ assert.match(flightEmptyMessage(day,0),/No upcoming flights/);
+ assert.match(flightEmptyMessage(day,1),/No upcoming flights/);
+ assert.match(flightEmptyMessage(day,null),/Choose an airport/);
+});
+
+
+test('Flight board airport choices retain planned airports with no captured flights',()=>{
+ const {stationCatalogue}=require('../assets/02_station_departures.js');
+ const stations=[{name:'Cheddi Jagan (GEO)',lat:6,lon:-58},{name:'Johan Adolf Pengel (PBM)',lat:5,lon:-55}];
+ assert.equal(stationCatalogue([],stations).length,0);
+ const choices=stationCatalogue([],stations,true);
+ assert.equal(choices.length,2);
+ assert.match(choices[1].label,/PBM/);
+ assert.doesNotMatch(choices[1].label,/ ·  · /);
+});

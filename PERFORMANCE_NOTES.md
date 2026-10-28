@@ -14,7 +14,7 @@ Runtime timing vectors use read-only NumPy buffers (NumPy is already required by
 
 The versioned gzip HTTP cache is the persistent reusable representation within a running deployment. Parsed references and prepared-day caches are cleared before and after each uncached build. Garbage collection releases obsolete containers; a successful or failed build leaves no retained parsed schedules. A worker-wide generation lock prevents different dates/modes from building concurrently. A second request for the same version rechecks the compressed cache after waiting, so it does not rebuild the response.
 
-Cache-hit downloads bypass generation entirely and remain available while an unrelated cold request builds. Open file descriptors preserve an in-flight response during cache eviction. The existing 256 MiB compressed cache limit, ETags, gzip negotiation and immutable versioned URLs remain. `FORMAT_VERSION` is now 3.
+Cache-hit downloads bypass generation entirely and remain available while an unrelated cold request builds. Open file descriptors preserve an in-flight response during cache eviction. The existing 256 MiB compressed cache limit, ETags, gzip negotiation and immutable versioned URLs remain. `FORMAT_VERSION` is now 26 (29 October 2026).
 
 Serialization passes individual services, patterns and paths through a 64 KiB output buffer into gzip, avoiding a second complete day-sized JSON byte string. Pattern order from preparation is preserved so adjacent route/timing profiles compress together. Per-pattern geometry quality totals are reused rather than recomputed for every occurrence.
 
@@ -61,3 +61,34 @@ Browser validation covers every city, optional buses, filters/details, clock pre
 Toronto's existing seven-day reference now includes streetcars, with the same shared timing/topology representation. Chicago and Perth buses reuse the existing optional daily-bundle loader, so their initial rail requests do not open bus data and bus-only requests do not open rail. The bus bundles add about 116 MB to the repository; that collection is not transferred to a visiting browser. A request opens one selected city/day and sends only its selected modes. Rail sources and coverage remain unchanged.
 
 An isolated local Python 3.9 HTTP-generation sequence measured Chicago buses (24 November 2025) at **1.520 s / 4.061 MB gzip**, then Perth buses (5 October 2026) at **1.399 s / 3.126 MB gzip**. Process peak RSS was about **180.5 MiB**, then **195.5 MiB**, respectively. These measurements exclude the separate web-server master and are local cold-build measurements, not Render or phone guarantees. Existing cache limits, build serialization and schedule release still apply.
+
+
+## Departure boards and flight downloads (29 October 2026)
+
+Departure picker options now render airport/station names and route lists directly as text. Only their interface tokens (transport names and missing-location text) are translated; switching English/Indonesian rebuilds choices while preserving the board state. This removes the expensive translation-pattern matching on long source labels without changing the global translation engine.
+
+Flight HTTP responses omit only the top-level `schedule.queries` and `schedule.wizzair_inventory` fields. Complete collection evidence remains in the committed reference files and Python replay objects. Coverage summaries, credits, fares, notes, unknown metadata and nested fields remain available. The HTTP format advances from 25 to **26** to invalidate old response URLs; gzip, ETags, conditional responses and immutable caching remain in place.
+
+Paired local Chrome measurements used one Gunicorn worker, four threads, a dedicated ignored response cache and three fresh-browser samples per condition. Each Europe replay was fully loaded before opening Heathrow from the unfiltered map at the default time. The timer ended after the airport filter/board synchronization and two animation frames. The final measurements used both production changes with no browser monkeypatches. These are local software-WebGL measurements, not public-host or physical-phone guarantees.
+
+| Board opening, median of 3 | Before | After | Improvement |
+| --- | ---: | ---: | ---: |
+| Desktop | 3.30 s | 1.24 s | 62.5% |
+| 390 × 844 viewport, 4× CPU throttling | 11.04 s | 2.52 s | 77.1% |
+
+Generated downloads, gzip level 3; MB means 1,000,000 bytes:
+
+| Replay | Before | After | Flights preserved |
+| --- | ---: | ---: | ---: |
+| Europe | 8.759 MB | 7.412 MB | 13,073 |
+| Africa | 2.187 MB | 1.960 MB | 3,693 |
+| Americas | 3.247 MB | 3.019 MB | 11,783 |
+| Singapore | 0.396 MB | 0.340 MB | 1,101 |
+
+For all four flight snapshots, decoded responses matched the baseline exactly after excluding the revision and the two intentionally removed audit fields. Reference-file SHA-256 hashes were unchanged. Melbourne's decoded response was also unchanged apart from revision; its gzip size differed by 42 bytes because the revision string changed. All four flight download budgets and both board-time/improvement targets were met.
+
+Validation passed **80 targeted Python tests and 108 JavaScript tests**. Europe (30 airport boards), Africa, bilingual replay/calendar/mobile/fullscreen, and homepage/coverage/source-credit browser checks passed without page errors. New tests prevent option data entering translation matching, preserve literal HTML-like text, cover language round trips and verify HTTP source immutability, empty/missing audit fields, transit preservation, gzip/plain equivalence, cached 304s and format invalidation.
+
+The transit-departure browser script completed all assertions successfully on two runs, but local Chrome stalled at `browser.close()` afterward and required interrupting those audit-owned test processes. Explicit context closure did not resolve that shutdown issue, so no speculative cleanup change was retained. This is a browser-harness limitation; its process exit is not reported as a clean pass.
+
+Detailed samples, preservation comparisons and logs are under ignored `.cache/performance-small-fixes/`. Audit-only servers and generated HTTP/baseline gzip files were cleaned up after validation. Route geometry, cache prewarming and hosting changes remain deferred. No flight searches, source-data preparation, hosting changes or deployment were performed.

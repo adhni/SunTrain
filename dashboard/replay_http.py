@@ -19,7 +19,7 @@ from flask import abort, request, send_file
 from dashboard import data, replay, transit
 from dashboard.cities import city_settings
 
-FORMAT_VERSION = 25
+FORMAT_VERSION = 26
 CACHE_LIMIT = 256 * 1024 * 1024
 # Different dates/modes share a memory budget inside one Gunicorn worker.
 BUILD_LOCK = threading.Lock()
@@ -142,6 +142,10 @@ def write_day(info, stream):
     if (payload.get("schedule") or {}).get("replay_note"):
         payload["schedule"] = {**payload["schedule"], "note_messages": [
             {"key": text, "params": {}} for text in re.split(r"(?<=[.!?])\s+", payload["schedule"]["replay_note"]) if text]}
+    if payload.get("replay_kind") == "flights" and payload.get("schedule"):
+        # Collection evidence stays in the references; the browser uses coverage summaries.
+        payload["schedule"] = {key: value for key, value in payload["schedule"].items()
+                               if key not in {"queries", "wizzair_inventory"}}
     buffer = bytearray()
     for part in json_fragments(payload):
         buffer.extend(part)

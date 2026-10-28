@@ -8,6 +8,14 @@ with sync_playwright() as p:
  page.on('pageerror',lambda e:errors.append(str(e)))
  page.on('request',lambda r:downloads.append(r.url) if '/api/replay/' in r.url else None)
  page.goto(os.environ.get('SUNTRAIN_TEST_URL','http://127.0.0.1:8879'),wait_until='domcontentloaded')
+ page.wait_for_function('window.suntrainI18n')
+ page.evaluate('''() => {
+  const bind = suntrainI18n.bind;
+  suntrainI18n.bind = function(element, ...args) {
+   if (element.tagName === 'OPTION') throw new Error('Airport data passed to translation matching');
+   return bind(element, ...args);
+  };
+ }''')
  page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
  page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"europe_flights"})')
  page.wait_for_function('window.suntrainReplay?.day?.city==="europe_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && !suntrainReplay.needsFit && suntrainReplay.filtered.length',timeout=120000)
@@ -70,7 +78,25 @@ with sync_playwright() as p:
    assert 'GMT+1' in page.locator('#replay-departures').inner_text() and 'UTC' in page.locator('#replay-departures').inner_text()
    page.get_by_role('button',name='Expand board',exact=True).click();page.screenshot(path='.cache/europe-flights-audit/board.png')
    for theme in ['light','dark','sunrise','blueprint','heritage']:page.locator('#theme-toggle').select_option(theme)
-   page.locator('#theme-toggle').select_option('dark');page.locator('#language-select').select_option('id');page.wait_for_function('document.documentElement.lang==="id"')
+   page.locator('#theme-toggle').select_option('dark')
+   airport_name=page.evaluate('suntrainReplay.day.stations[suntrainReplay.departures.station].name')
+   page.locator('#replay-departures details').evaluate('(element)=>{element.open=true}')
+   page.locator('#departure-search').fill(airport_name)
+   page.get_by_role('button',name='Next',exact=True).click()
+   board_state='''() => ({station:suntrainReplay.departures.station,page:suntrainReplay.departures.page,
+    search:document.querySelector('#departure-search').value,expanded:suntrainReplay.departures.expanded,
+    picker:document.querySelector('#replay-departures details').open,now:suntrainReplay.now})'''
+   before_locale=page.evaluate(board_state);download_count=len(downloads)
+   for language,mode in [('id','Penerbangan'),('en','Flight'),('id','Penerbangan')]:
+    page.locator('#language-select').select_option(language)
+    page.wait_for_function('(language)=>document.documentElement.lang===language',arg=language)
+    assert page.evaluate(board_state)==before_locale
+    choices=page.locator('#replay-departures select option')
+    assert choices.count()==1
+    assert airport_name in choices.first.text_content() and mode in choices.first.text_content()
+    assert choices.first.get_attribute('title')==choices.first.text_content()
+    assert choices.first.get_attribute('data-l10n') is None
+    assert len(downloads)==download_count
    assert 'Keberangkatan' in page.locator('#replay-departures').inner_text()
    page.set_viewport_size({'width':390,'height':844});page.wait_for_function('document.querySelector(".replay-detail-card").getBoundingClientRect().height===innerHeight')
    page.evaluate('() => new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')

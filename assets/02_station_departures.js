@@ -52,7 +52,8 @@
         }
         return [...records.values()].map(row => {
             const station = stations[row.id], routes = [...row.routes].sort().join(" / ");
-            const location = Number.isFinite(station.lat) && Number.isFinite(station.lon) ? `${station.lat.toFixed(5)}, ${station.lon.toFixed(5)}` : "Location unavailable";
+            const location = Number.isFinite(station.lat) && Number.isFinite(station.lon) ? `${station.lat.toFixed(5)}, ${station.lon.toFixed(5)}` :
+                (root.suntrainI18n?.translate("Location unavailable") || "Location unavailable");
             return {...row, label: [row.name, routes, location].filter(Boolean).join(" · ")};
         }).sort((a, b) => a.name.localeCompare(b.name) || a.id - b.id);
     }
@@ -252,7 +253,9 @@
             const matches = this.catalogue.filter(row => row.label.toLocaleLowerCase().includes(query));
             this.choices.replaceChildren();
             for (const row of matches.slice(0, 60)) {
-                const option = node("option", row.label); option.value = String(row.id); option.title = row.label;
+                // Names and route lists are source data; their interface tokens are already localized.
+                const option = document.createElement("option"); option.textContent = row.label;
+                option.value = String(row.id); option.title = row.label;
                 this.choices.append(option);
             }
             this.choices.value = this.station === null ? "" : String(this.station);

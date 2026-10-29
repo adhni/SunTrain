@@ -100,6 +100,45 @@ def test_preparation_cache_reads_once_isolates_mutation_and_releases(tmp_path,mo
     assert read_reference(path)=={'flights':[3]}
 
 
+def test_compact_http_uses_only_snapshot_preserves_records_and_cache(tmp_path, monkeypatch):
+    from flask import Flask
+    from dashboard import flights, replay_http as http
+    monkeypatch.setenv('SUNTRAIN_REPLAY_CACHE', str(tmp_path/'http'))
+    original = flights.load_reference
+    calls = []
+    def load(day, city):
+        assert city == 'world_flights', 'HTTP rebuilt a member view'
+        calls.append(city)
+        return original(day, city)
+    monkeypatch.setattr(flights, 'load_reference', load)
+    app=Flask(__name__);http.register_replay_routes(app)
+    client=app.test_client();info=http.descriptor(world.DAY,'world_flights')
+    response=client.get(info['url'], headers={'Accept-Encoding':'gzip'})
+    assert response.status_code==200 and len(response.data)<=5*1024*1024
+    payload=json.loads(gzip.decompress(response.data))
+    assert calls==['world_flights'] and len(payload['services'])==53591
+    assert payload['flight_geometry']=='great_circle_v1'
+    assert payload['flight_view_kind']=='network' and payload['timezone']=='UTC'
+    assert payload['initial']==world.START+36000 and payload['end']==world.END
+    assert len(payload['paths'])==16823
+    assert all('coordinates' not in p and len(p['endpoints'])==2 for p in payload['paths'].values())
+    assert not {'queries','wizzair_inventory'} & payload['schedule'].keys()
+    source=world.load_reference(world.DAY)
+    assert {s['id'] for s in payload['services']}=={f['id'] for f in source['flights']}
+    by_id={f['id']:f for f in source['flights']}
+    for service in payload['services']:
+        f=by_id[service['id']]
+        assert service.get('price')==f.get('price')
+        assert service.get('fare_quotes')==f.get('fare_quotes')
+        assert service.get('aircraft_variants')==f.get('aircraft_variants')
+        assert payload['stations'][service['stops'][0][0]]['code']==f['origin']
+        assert payload['stations'][service['stops'][1][0]]['code']==f['destination']
+        assert service['stops'][0][2]==f['departure'] and service['stops'][1][1]==f['arrival']
+    cached=client.get(info['url'],headers={'Accept-Encoding':'gzip','If-None-Match':response.headers['ETag']})
+    assert cached.status_code==304 and calls==['world_flights']
+    assert client.get(info['url'].replace(world.DAY,'2026-11-03')).status_code==404
+
+
 def test_prepared_real_union_counts_inputs_and_reproducibility(tmp_path,monkeypatch):
     snapshot=world.load_reference(world.DAY);meta=snapshot['metadata']
     assert len(snapshot['flights'])==53591 and meta['union_before_utc_window']==60112

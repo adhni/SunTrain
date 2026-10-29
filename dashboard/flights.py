@@ -154,6 +154,9 @@ def airline_style(carrier, name):
 
 
 def reference_path(business_date=None, city='australia_flights'):
+    if city == 'world_flights':
+        from dashboard.world_flights import reference_path as world_path
+        return world_path()
     if city=='europe_flights':
         from dashboard.europe_flights import reference_path as europe_path
         return europe_path()
@@ -204,6 +207,7 @@ def reference_paths(business_date=None, city='australia_flights', include_networ
 
 
 def _reference_paths(business_date=None, city='australia_flights'):
+    if city == 'world_flights': return [reference_path(business_date, city)]
     if city=='europe_flights':return [reference_path(business_date,city)]
     if city=='international_network':return [reference_path(business_date,city)]
     if city=='gulf_flights':
@@ -256,6 +260,9 @@ def continuous_arc(a, b, anchor=135):
 
 
 def load_reference(business_date, city):
+    if city == 'world_flights':
+        from dashboard.world_flights import load_reference as world_reference
+        return world_reference(business_date)
     if city=='europe_flights':
         from dashboard.europe_flights import load_reference as europe_reference
         return europe_reference(business_date)
@@ -380,6 +387,7 @@ def replay_window(reference, business_date, city):
 
 def replay_day(business_date, city='australia_flights'):
     from dashboard.replay import cumulative_distances
+    from dashboard.europe_flights import CARRIERS, BRAND_GROUPS
     reference = load_reference(business_date, city)
     start, end = replay_window(reference, business_date, city)
     day = date.fromisoformat(business_date)
@@ -396,20 +404,25 @@ def replay_day(business_date, city='australia_flights'):
         route = f"{flight['origin']} → {flight['destination']}"
         key = flight['origin'] + '-' + flight['destination']
         if key not in paths:
-            coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']],anchor=PROFILE_CITIES.get(city,(None,{}))[1].get('arc_anchor',135))
-            paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
+            if city == 'world_flights':
+                paths[key] = dict(quality='illustrative', endpoints=[origin, destination], segments=64, anchor=0)
+            else:
+                coordinates = continuous_arc([a['lon'], a['lat']], [b['lon'], b['lat']],anchor=PROFILE_CITIES.get(city,(None,{}))[1].get('arc_anchor',135))
+                paths[key] = dict(quality='illustrative', coordinates=coordinates, distances=cumulative_distances(coordinates))
         carrier = flight.get('carrier') or ('JQ' if city == 'australia_flights' else 'Unknown')
         operator, color = airline_style(carrier, flight.get('airline'))
         if city=='europe_flights':
             from dashboard.europe_flights import COLORS,BRAND_GROUPS
             color=COLORS[flight['brand']]
+        brand = flight.get('brand') or (CARRIERS.get(carrier) if city == 'world_flights' else None)
         services.append(dict(id=flight['id'], number=flight['number'], mode='flight', operator=operator,
             line=route, route_id=key, direction='Scheduled service', origin=a['name'], destination=b['name'],
             color=color, carrier=carrier, flight_scope=flight['flight_scope'], aircraft=flight.get('aircraft') or ('Airbus A' + flight['equipment'] if flight.get('equipment') else 'Aircraft not specified'),
             operating_airline=flight.get('airline', operator), source_page=flight.get('source_page'),
-            **({'flight_brand':flight['brand']} if flight.get('brand') else {}),
-            **({'flight_group':BRAND_GROUPS[flight['brand']]} if city=='europe_flights' and flight.get('brand') in BRAND_GROUPS else {}),
+            **({'flight_brand':brand} if brand else {}),
+            **({'flight_group':BRAND_GROUPS[brand]} if city in {'europe_flights', 'world_flights'} and brand in BRAND_GROUPS else {}),
             **({'price':flight['price']} if flight.get('price') else {}),
+            **({k: flight[k] for k in ('fare_quotes', 'aircraft_variants') if k in flight} if city == 'world_flights' else {}),
             stops=[[origin, flight['departure'], flight['departure']], [destination, flight['arrival'], flight['arrival']]],
             legs=[key], timing_uncertain=False))
     return dict(**replay_settings(city), business_date=business_date,
@@ -417,5 +430,6 @@ def replay_day(business_date, city='australia_flights'):
         initial=min(end, max(start, int(datetime.combine(day, time(10), zone).timestamp()))),
         day_start_hour=0,
         services=services, stations=airports, paths=paths, geometry={},
+        **({'flight_geometry': 'great_circle_v1'} if city == 'world_flights' else {}),
         approximate_legs=0, total_legs=len(services), excluded_services=0,
         schedule={**reference['metadata'], 'available': True})

@@ -14,6 +14,17 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'world_flights': {
+        'replay_kind': 'flights', 'name': 'World · Flights', 'timezone': 'UTC',
+        'bounds': [[-180, -60], [180, 82]], 'passenger_data': False,
+        'start_date': '2026-11-02', 'end_date': '2026-11-02',
+        'flight_scopes': True, 'flight_country_filters': True,
+        'flight_brands': EUROPE_FLIGHT_SETTINGS['flight_brands'],
+        'flight_groups': EUROPE_FLIGHT_SETTINGS['flight_groups'],
+        'description': 'World · Combined domestic and international captures · 2 November 2026. Timeline: UTC; airport boards use local time. Coverage is partial, including gaps near UTC midnight. Captured fares retain their original currencies; paths are illustrative.',
+        'default_modes': ['flight'], 'modes': [('Flights', 'flight')], 'operators': [],
+        'directions': [('Scheduled service', 'Scheduled service')], 'home_marker': False,
+    },
     'europe_flights': EUROPE_FLIGHT_SETTINGS,
     'vietnam_flights': {
         'replay_kind':'flights','name':'Vietnam · Flights','timezone':'Asia/Ho_Chi_Minh',
@@ -566,7 +577,7 @@ FLIGHT_REGION_VIEWS = frozenset({
     'europe_flights', 'africa_flights', 'united_states_flights',
     'south_america_flights', 'americas_flights', 'pacific_flights', 'central_asia_flights',
 })
-FLIGHT_NETWORK_VIEWS = frozenset({'international_network', 'europe_americas_flights'})
+FLIGHT_NETWORK_VIEWS = frozenset({'international_network', 'europe_americas_flights', 'world_flights'})
 for _city, _settings in CITIES.items():
     if _settings.get('replay_kind') == 'flights':
         _settings['flight_view_kind'] = ('hub' if _city in FLIGHT_HUB_VIEWS else

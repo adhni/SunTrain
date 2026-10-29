@@ -32,27 +32,76 @@
     function openingBounds(day) {
         if (!['hub', 'network'].includes(day.flight_view_kind)) return day.bounds;
         const ids = new Set(day.services.flatMap(s => s.stops.map(stop => stop[0])));
-        return bounds([...ids].map(id => day.stations[id])) || day.bounds;
+        return bounds([...ids].map(id => day.stations[id]), day.flight_geometry ? 0 : 135) || day.bounds;
+    }
+    function greatCircle(a, b, segments = 64, anchor = 0) {
+        const rad = Math.PI / 180;
+        const vector = ([lon, lat]) => [Math.cos(lat*rad)*Math.cos(lon*rad), Math.cos(lat*rad)*Math.sin(lon*rad), Math.sin(lat*rad)];
+        const u = vector(a), v = vector(b), angle = Math.acos(Math.max(-1, Math.min(1, u.reduce((n,x,i)=>n+x*v[i],0))));
+        const coordinates = [], distances = [0];
+        for (let i=0; i<=segments; i++) {
+            const f = i / segments;
+            const p = angle < 1e-10 ? u : u.map((x,j)=>(Math.sin((1-f)*angle)*x + Math.sin(f*angle)*v[j])/Math.sin(angle));
+            coordinates.push(angle < 1e-10 ? [...a] : [Math.round(Math.atan2(p[1],p[0])/rad*1e6)/1e6,
+                Math.round(Math.atan2(p[2],Math.hypot(p[0],p[1]))/rad*1e6)/1e6]);
+        }
+        coordinates[0] = [...a]; coordinates[segments] = [...b];
+        let previous = anchor;
+        for (const p of coordinates) {
+            const shift = (previous-p[0])/360, lower = Math.floor(shift);
+            // Python's existing arc generator rounds exact world-copy ties to even.
+            const worlds = shift-lower === 0.5 ? (lower%2 === 0 ? lower : lower+1) : Math.round(shift);
+            p[0] += 360*worlds; previous = p[0];
+        }
+        for (let i=1; i<coordinates.length; i++) {
+            const a=coordinates[i-1], b=coordinates[i];
+            const x=(b[0]-a[0])*rad*Math.cos((a[1]+b[1])/2*rad), y=(b[1]-a[1])*rad;
+            distances.push(Math.round((distances[i-1]+Math.hypot(x,y)*6371000)*100)/100);
+        }
+        return {coordinates, distances};
+    }
+    function hydratePaths(day) {
+        if (day.flight_geometry !== 'great_circle_v1' || day._flightPathsHydrated) return;
+        day._flightPathsHydrated = true; day._generatedFlightPaths = 0;
+        for (const path of Object.values(day.paths)) {
+            const generate = () => {
+                const [a,b] = path.endpoints.map(i=>day.stations[i]);
+                const arc = greatCircle([a.lon,a.lat], [b.lon,b.lat], path.segments, path.anchor);
+                Object.defineProperties(path, {coordinates: {value:arc.coordinates, enumerable:true, configurable:true},
+                    distances: {value:arc.distances, enumerable:true, configurable:true}});
+                day._generatedFlightPaths++;
+                return arc;
+            };
+            Object.defineProperties(path, {coordinates: {get:()=>generate().coordinates, enumerable:true, configurable:true},
+                distances: {get:()=>generate().distances, enumerable:true, configurable:true}});
+        }
+    }
+    function paintInterval(day, zoom) {
+        return day.flight_geometry === 'great_circle_v1' && zoom < marker.planeZoom ? 250 : 60;
     }
     // Project the nearest world copy; routes may contain longitudes beyond ±180°.
     function project(map, coordinate) {
         const lon = coordinate[0] + 360 * Math.round((map.getCenter().lng - coordinate[0]) / 360);
         return map.project([lon, coordinate[1]]);
     }
-    function viewport(map) {
+    function viewport(map, padding = 0) {
         const centre = map.getCenter().lng;
         const wrap = lon => lon + 360 * Math.round((centre - lon) / 360);
         // An unrotated, level Mercator viewport is a geographic rectangle.
         // Read it once instead of projecting every flight and reading layout per point.
-        if (map.getBounds && !map.getBearing() && !map.getPitch()) {
+        if (map.getBounds && !map.getBearing() && !map.getPitch() && (!padding || map.unproject)) {
             const box = map.getBounds();
-            const west = box.getWest(), east = box.getEast(), south = box.getSouth(), north = box.getNorth();
+            let west = box.getWest(), east = box.getEast(), south = box.getSouth(), north = box.getNorth();
+            if (padding) {
+                const canvas=map.getContainer(), sw=map.unproject([-padding,canvas.clientHeight+padding]), ne=map.unproject([canvas.clientWidth+padding,-padding]);
+                west=sw.lng; east=ne.lng; south=sw.lat; north=ne.lat;
+            }
             return ([lon, lat]) => lat >= south && lat <= north && wrap(lon) >= west && wrap(lon) <= east;
         }
         const canvas = map.getContainer(), width = canvas.clientWidth, height = canvas.clientHeight;
         return ([lon, lat]) => {
             const p = map.project([wrap(lon), lat]);
-            return p.x >= 0 && p.y >= 0 && p.x <= width && p.y <= height;
+            return p.x >= -padding && p.y >= -padding && p.x <= width+padding && p.y <= height+padding;
         };
     }
     function inside(map, coordinate) {
@@ -83,6 +132,7 @@
         return next;
     }
     function scopeLabel(day) {
+        if (day.flight_geometry === 'great_circle_v1') return 'Combined captures';
         if (day.city === 'europe_flights') return 'Selected airline networks';
         if (['united_states_flights', 'south_america_flights', 'americas_flights'].includes(day.city)) return 'Selected airports';
         return day.flight_view_kind === 'hub' ? 'Airport connections' : 'Selected routes';
@@ -118,7 +168,7 @@
         ctx.fillStyle = '#fff'; ctx.fillText(code, 44, 20);
         return ctx.getImageData(0, 0, 88, 40);
     }
-    const api = {bearing, bounds, marker, movingLayers, planeKey, openingBounds, project, inside,
+    const api = {bearing, bounds, marker, movingLayers, planeKey, openingBounds, greatCircle, hydratePaths, paintInterval, project, viewport, inside,
         visibleCount, nearest, nextDeparture, scopeLabel, priceLabel, captureTime, planeImage, airportImage};
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     root.suntrainFlights = api;

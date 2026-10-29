@@ -140,6 +140,7 @@
         });
     }
     function hydrate(day) {
+        root.suntrainFlights?.hydratePaths(day);
         // Attach shared references only: never duplicate stop arrays for individual trips.
         for (const service of day.services) {
             if (!service.pattern || service.stops || service.stopIds) continue;
@@ -327,8 +328,12 @@
                     if (this.coverageFrame) return;
                     this.coverageFrame = requestAnimationFrame(() => {
                         this.coverageFrame = null; this.updateFlightCoverage?.();
+                        if (this.day?.flight_geometry && !this.followSelected && performance.now() - (this.lastMapPaint || 0) >= 250) {
+                            this.lastMapPaint = performance.now(); this.paint(true);
+                        }
                     });
                 });
+                this.graph.on("moveend", () => { if (this.day?.flight_geometry && !this.followSelected && !this.busy) this.paint(true); });
                 // Train playback must not wait for external background tiles.
                 this.graph.once("style.load", () => {
                     for (const id of ["routes", "stations", "selected-route", "trains", "selected-train", "demand", "frequency"]) {
@@ -741,6 +746,18 @@
             attribution.replaceChildren();
             if (day.schedule) {
                 if (day.replay_kind === 'flights') {
+                    if (day.schedule.combined_capture) {
+                        const links = new Map();
+                        for (const member of Object.values(day.schedule.member_views)) if (member.source_url) links.set(member.source_url, member.source);
+                        attribution.append(node('span', 'Combined SunTrain flight captures'), document.createTextNode(' · '));
+                        for (const [url, label] of links) {
+                            const link=node('a',label);link.href=url;link.target='_blank';link.rel='noopener noreferrer';
+                            attribution.append(link,document.createTextNode(' · '));
+                        }
+                        const airports=node('a','Airport coordinates: OurAirports · Public Domain');
+                        airports.href=day.schedule.airport_source_url;airports.target='_blank';airports.rel='noopener noreferrer';
+                        attribution.append(airports);return;
+                    }
                     const source = node('a', day.schedule.source);
                     source.href = day.schedule.source_url; source.target = '_blank'; source.rel = 'noopener noreferrer';
                     const airports = node('a', 'Airport coordinates: OurAirports · Public Domain');
@@ -867,7 +884,10 @@
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
             this.matchingFlights = this.day.replay_kind === 'flights' ? new Set(this.filtered.map(s => s.id)).size : 0;
             this.flightEvent = this.day.replay_kind === 'flights' && filters.airports?.length && filters.airportDirection === 'arrivals' ? 'arrival' : 'departure';
-            this.frequencyFeatures = this.day.replay_kind === 'flights' ? root.suntrainFlightNetwork.frequencyNetwork(this.filtered, this.day, this.flightEvent) : [];
+            this.frequencyDirty = true;
+            this.frequencyFeatures = this.day.replay_kind === 'flights' && (!this.day.flight_geometry || this.frequencyView)
+                ? root.suntrainFlightNetwork.frequencyNetwork(this.filtered, this.day, this.flightEvent) : [];
+            if (!this.day.flight_geometry || this.frequencyView) this.frequencyDirty = false;
             if (this.day.replay_kind === 'flights' && this.departures?.station != null) {
                 if (filters.airportDirection === 'arrivals' && filters.airports?.length) this.departures.event = 'arrival';
                 else if (filters.airportDirection === 'departures' && this.departures.event !== 'destinations') this.departures.event = 'departure';
@@ -976,7 +996,7 @@
             if (!this.playing || !this.active || document.hidden) { this.pause(); return; }
             this.now = Math.min(this.day.end, this.now + (timestamp - this.previousTick) / 1000 * this.speed);
             this.previousTick = timestamp;
-            if (timestamp - this.lastPaint >= 60) { this.lastPaint = timestamp; this.paint(); }
+            if (timestamp - this.lastPaint >= root.suntrainFlights.paintInterval(this.day, this.graph.getZoom())) { this.lastPaint = timestamp; this.paint(); }
             if (this.now >= this.day.end) { this.pause(); this.paint(true); }
             else this.frame = requestAnimationFrame(t => this.tick(t));
         }
@@ -1232,6 +1252,7 @@
             try {
                 const trains = [], vehicleDots = [];
                 const zoom = this.graph.getZoom();
+                const worldViewport = this.day.flight_geometry ? root.suntrainFlights.viewport(this.graph, 12) : null;
                 let selectedPosition = null, selectedMarker = null, activeCount = 0, missingCount = 0;
                 for (const service of this.activeIndex.at(this.now)) {
                     const position = servicePosition(service, this.now, this.day);
@@ -1246,6 +1267,7 @@
                     const coordinates = kind ? root.suntrainVehicles.footprint(service, position, this.day, this.now, spacing, pointAlong) : [[position.lon, position.lat]];
                     const properties = {id: service.id, color: vehicleColor(service, this.day.city), body: kind, mode: service.mode || "train",
                         sizeFactor, load: position.load, approximate: position.approximate, dotCount: coordinates.length};
+                    const inViewport = !worldViewport || worldViewport(coordinates[0]);
                     if (service.mode === 'flight') {
                         properties.planeIcon = root.suntrainFlights.planeKey(service);
                         properties.selected = service.id === this.selected?.id;
@@ -1256,7 +1278,7 @@
                     }
                     const marker = pointFeature(coordinates[0], {...properties, part: 0});
                     trains.push(marker);
-                    for (let part = 0; part < coordinates.length; part++)
+                    for (let part = 0; inViewport && part < coordinates.length; part++)
                         vehicleDots.push(pointFeature(coordinates[part], {...properties, part}));
                     if (service.id === this.selected?.id) selectedMarker = marker;
                 }
@@ -1364,6 +1386,10 @@
             const filterSignature = JSON.stringify([filters, display]);
             if (newDay || this.filterSignature !== filterSignature) {
                 this.filterSignature = filterSignature; this.applyFilters(filters, display || []);
+            }
+            if (frequency && this.frequencyDirty) {
+                this.frequencyFeatures = root.suntrainFlightNetwork.frequencyNetwork(this.filtered, this.day, this.flightEvent);
+                this.frequencyDirty = false; this.staticDirty = true;
             }
             $("replay-legend").hidden = frequency || !this.filtered.length || this.mapMode === "demand";
             const arrivals = this.flightEvent === 'arrival';

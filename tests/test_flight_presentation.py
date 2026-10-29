@@ -10,12 +10,12 @@ HUBS = {'singapore_flights', 'hong_kong_flights', 'brunei_flights', 'timor_leste
         'bahrain_flights', 'kuwait_flights', 'gulf_flights'}
 REGIONS = {'europe_flights', 'africa_flights', 'united_states_flights', 'south_america_flights',
            'americas_flights', 'pacific_flights', 'central_asia_flights'}
-NETWORKS = {'international_network', 'europe_americas_flights'}
+NETWORKS = {'international_network', 'europe_americas_flights', 'world_flights'}
 FLIGHTS = {city: s for city, s in CITIES.items() if s.get('replay_kind') == 'flights'}
 
 
-def test_all_40_views_have_explicit_policy_and_all_captured_default():
-    assert len(FLIGHTS) == 40
+def test_all_41_views_have_explicit_policy_and_all_captured_default():
+    assert len(FLIGHTS) == 41
     for city, settings in FLIGHTS.items():
         expected = ('hub' if city in HUBS else 'region' if city in REGIONS else
                     'network' if city in NETWORKS else 'country')
@@ -23,7 +23,7 @@ def test_all_40_views_have_explicit_policy_and_all_captured_default():
         assert settings['default_flight_scope'] == 'both'
         assert 'regional_start_view' not in settings
     assert 'flight_view_kind' not in replay_settings('melbourne')
-    assert replay_http.FORMAT_VERSION == 27
+    assert replay_http.FORMAT_VERSION == 28
 
 
 @pytest.mark.parametrize('city', FLIGHTS)

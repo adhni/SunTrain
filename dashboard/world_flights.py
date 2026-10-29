@@ -116,15 +116,19 @@ def merge_views(views, start=START, end=END):
             if flight.get('source_page'): row['pages'].add(flight['source_page'])
             if flight.get('source_date'): row['dates'].add(flight['source_date'])
             name = aircraft_name(flight)
-            if name != 'Aircraft not specified': row['aircraft'].setdefault(name, set()).add(city)
-            quote = flight.get('price')
-            if quote:
+            if name != 'Aircraft not specified' and not flight.get('aircraft_variants'):
+                row['aircraft'].setdefault(name, set()).add(city)
+            quotes = ([flight['price']] if flight.get('price') else []) + flight.get('fare_quotes', [])
+            for quote in quotes:
+                quote = {k: v for k, v in quote.items() if k != 'views'}
                 if (quote.get('currency') not in CURRENCIES or type(quote.get('amount_minor')) is not int
                     or quote['amount_minor'] <= 0 or tuple(quote.get(k) for k in ('adults', 'cabin', 'trip_type')) != (1, 'economy', 'one_way')):
                     raise ValueError(f'Incompatible captured fare: {flight["id"]}')
                 row['quotes'].setdefault(canonical_json(quote), {'quote': dict(quote), 'views': set()})['views'].add(city)
+            for variant in flight.get('aircraft_variants', []):
+                row['aircraft'].setdefault(variant['aircraft'], set()).add(city)
         metadata = reference['metadata']
-        member_counts[city] = {'name': metadata.get('profile', city), 'flights_in_view': local_count,
+        member_counts[city] = {'name': metadata.get('name', metadata.get('profile', city)), 'flights_in_view': local_count,
             'flights_overlapping_utc': selected, 'source': metadata.get('source', city),
             'source_url': metadata.get('source_url'), 'source_date': metadata.get('source_date'),
             'coverage': metadata.get('coverage', {}),
@@ -169,15 +173,23 @@ def prepare(output=None):
     from dashboard.cities import CITIES
     from dashboard.flights import load_reference, replay_window
     from dashboard.flight_sources import cached_reference_reads
+    from dashboard import international_expansion
     members = sorted(city for city, settings in CITIES.items() if settings.get('replay_kind') == 'flights' and city != 'world_flights')
-    def views():
+    def views(supplement):
         for city in members:
             settings = CITIES[city]
             if not settings['start_date'] <= DAY <= settings['end_date']: raise ValueError(f'World date unavailable: {city}')
             reference = load_reference(DAY, city)
+            if supplement is not None:
+                reference = international_expansion.overlay(reference, supplement)
             yield city, reference, replay_window(reference, DAY, city)
+        if supplement is not None:
+            yield international_expansion.PROFILE, supplement, (START, END)
     with cached_reference_reads() as inputs:
-        result = merge_views(views())
+        supplement = international_expansion.load_reference()
+        result = merge_views(views(supplement))
+        if supplement is not None:
+            international_expansion.validate_inputs(supplement, inputs)
         result['metadata']['inputs'] = {str(path.relative_to(ROOT)) if path.is_relative_to(ROOT) else str(path): values
                                        for path, values in sorted(inputs.items())}
     destination = Path(output or reference_path()); destination.parent.mkdir(parents=True, exist_ok=True)

@@ -262,7 +262,13 @@ async def _capture(cache, search_date, pairs, concurrency, config=None, end_date
                         params.update(curr=config['currency']);params['q']+=' one adult economy'
                     url = 'https://www.google.com/travel/flights?' + urlencode(params)
                     try:
-                        await page.goto(url, wait_until=config.get('capture_wait_until','commit'), timeout=45000)
+                        # Optional campaign-level reservation, persisted before
+                        # network access so failed/crashed requests count too.
+                        if config.get('on_query_start'):
+                            config['on_query_start']((day, origin, destination))
+                        response = await page.goto(url, wait_until=config.get('capture_wait_until','commit'), timeout=45000)
+                        if response is not None and response.status in {403, 429}:
+                            raise RuntimeError('Search access limited; collection stopped')
                         if '/sorry/' in page.url:
                             raise RuntimeError('Search access limited; collection stopped')
                         # Functions avoid the page's Trusted Types restriction on eval strings.

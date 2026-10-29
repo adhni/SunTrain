@@ -1,5 +1,7 @@
 # Replay performance and memory
 
+The 30 October World international expansion increases the snapshot to 55,599 flights and 5.18 MiB gzip. Its actual peak is 7,973 active flights. Median first-map readiness measured 7.89 s desktop / 12.69 s at 4× CPU, board response 1.24 s / 1.77 s, and peak paint p95 24.6 ms / 165.5 ms. The 4× CPU peak exceeds the earlier 150 ms target; desktop first-map/board targets also remain missed. Full collection evidence, baseline comparisons, method and limitations are in [INTERNATIONAL_EXPANSION_NOTES.md](INTERNATIONAL_EXPANSION_NOTES.md).
+
 All existing historical date ranges, routes, passenger records and geometry are retained. Melbourne trains keep FY2023–24; trams/buses keep five weeks. This change does not create daily files for every city or change hosting plans.
 
 ## Representation and rebuilding

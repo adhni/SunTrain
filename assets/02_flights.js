@@ -18,6 +18,50 @@
         return [[west+shift, Math.min(...stations.map(s=>s.lat))],
             [east+shift, Math.max(...stations.map(s=>s.lat))]];
     }
+    const marker = Object.freeze({planeZoom: 4.5, dotRadius: 2.2, dotStroke: 0.8,
+        planeSize: 16, selectedSize: 22, pickingRadius: 12});
+    const movingLayers = ['replay-flight-dots', 'replay-planes', 'replay-selected-plane', 'replay-selected-flight'];
+    function planeKey(service) {
+        return 'plane-' + JSON.stringify([service.carrier || 'Unknown', service.color || '#f57c28']);
+    }
+    function openingBounds(day) {
+        if (!['hub', 'network'].includes(day.flight_view_kind)) return day.bounds;
+        const ids = new Set(day.services.flatMap(s => s.stops.map(stop => stop[0])));
+        return bounds([...ids].map(id => day.stations[id])) || day.bounds;
+    }
+    // Project the nearest world copy; routes may contain longitudes beyond ±180°.
+    function project(map, coordinate) {
+        const lon = coordinate[0] + 360 * Math.round((map.getCenter().lng - coordinate[0]) / 360);
+        return map.project([lon, coordinate[1]]);
+    }
+    function inside(map, coordinate) {
+        const p = project(map, coordinate), canvas = map.getContainer();
+        return p.x >= 0 && p.y >= 0 && p.x <= canvas.clientWidth && p.y <= canvas.clientHeight;
+    }
+    function visibleCount(map, features) {
+        return new Set(features.filter(f => inside(map, f.geometry.coordinates)).map(f => f.properties.id)).size;
+    }
+    function nearest(map, features, point) {
+        let match = null, distance = marker.pickingRadius ** 2;
+        for (const feature of features) {
+            const p = project(map, feature.geometry.coordinates), d = (p.x-point.x)**2 + (p.y-point.y)**2;
+            if (d <= distance) { match = feature; distance = d; }
+        }
+        return match;
+    }
+    function nextDeparture(map, services, day, now) {
+        let next = null;
+        for (const service of services) {
+            const stop = service.stops[0], at = stop[2], airport = day.stations[stop[0]];
+            if (at > now && at <= day.end && (next === null || at < next) && inside(map, [airport.lon, airport.lat])) next = at;
+        }
+        return next;
+    }
+    function scopeLabel(day) {
+        if (day.city === 'europe_flights') return 'Selected airline networks';
+        if (['united_states_flights', 'south_america_flights', 'americas_flights'].includes(day.city)) return 'Selected airports';
+        return day.flight_view_kind === 'hub' ? 'Airport connections' : 'Selected routes';
+    }
     function priceLabel(service) {
         const p=service.price;
         if (!p || !Number.isSafeInteger(p.amount_minor) || p.amount_minor<=0 || !['MYR','USD','EUR'].includes(p.currency)) return 'Price unavailable';
@@ -49,7 +93,8 @@
         ctx.fillStyle = '#fff'; ctx.fillText(code, 44, 20);
         return ctx.getImageData(0, 0, 88, 40);
     }
-    const api = {bearing, bounds, priceLabel, captureTime, planeImage, airportImage};
+    const api = {bearing, bounds, marker, movingLayers, planeKey, openingBounds, project, inside,
+        visibleCount, nearest, nextDeparture, scopeLabel, priceLabel, captureTime, planeImage, airportImage};
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     root.suntrainFlights = api;
 })(typeof window !== 'undefined' ? window : globalThis);

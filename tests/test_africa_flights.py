@@ -46,7 +46,7 @@ def test_manifest_uses_sources_one_date_and_separate_airport_identities():
     assert air['CAI']['timezone']=='Africa/Cairo' and air['CMN']['timezone']=='Africa/Casablanca'
     assert air['JNB']['icao']!=air.get('HLA',{}).get('icao')
     assert not any('replay_timezone' in a for a in air.values())
-    assert CITIES[CITY]['default_flight_scope']=='both' and CITIES[CITY]['regional_start_view']
+    assert CITIES[CITY]['default_flight_scope']=='both' and CITIES[CITY]['flight_view_kind']=='region'
     assert CITY not in international_network.CITIES
     assert country_config('US')['currency']=='USD' and country_config('EUROPE_AMERICAS')['currency']=='EUR'
 
@@ -137,7 +137,7 @@ def test_offline_preparation_missing_queries_mixed_quotes_and_http(tmp_path,monk
     assert raw['metadata']['queries_reused']==1
     monkeypatch.setenv('SUNTRAIN_AFRICA_FLIGHTS_REFERENCE',str(out));monkeypatch.setenv('SUNTRAIN_REPLAY_CACHE',str(tmp_path/'http'))
     replay=flights.replay_day(DAY,CITY);assert len(replay['services'])==1 and replay['timezone']=='UTC'
-    assert replay['regional_start_view']
+    assert replay['flight_view_kind']=='region'
     app=Flask(__name__);replay_http.register_replay_routes(app);client=app.test_client();url=replay_http.descriptor(DAY,CITY)['url']
     response=client.get(url,headers={'Accept-Encoding':'gzip'});assert response.status_code==200
     assert json.loads(gzip.decompress(response.data))['city']==CITY

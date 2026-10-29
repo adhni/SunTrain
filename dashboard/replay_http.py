@@ -19,7 +19,7 @@ from flask import abort, request, send_file
 from dashboard import data, replay, transit
 from dashboard.cities import city_settings
 
-FORMAT_VERSION = 26
+FORMAT_VERSION = 28
 CACHE_LIMIT = 256 * 1024 * 1024
 # Different dates/modes share a memory budget inside one Gunicorn worker.
 BUILD_LOCK = threading.Lock()
@@ -179,7 +179,9 @@ def compressed_day(info):
             try:
                 with tempfile.NamedTemporaryFile(dir=directory, suffix=".tmp", delete=False) as stream:
                     temporary = Path(stream.name)
-                    with gzip.GzipFile(filename="", fileobj=stream, mode="wb", compresslevel=3, mtime=0) as compressed:
+                    # The large global snapshot trades cold-build CPU for a <5 MiB
+                    # download. Existing location responses keep their fast level 3.
+                    with gzip.GzipFile(filename="", fileobj=stream, mode="wb", compresslevel=9 if info.get('city') == 'world_flights' else 3, mtime=0) as compressed:
                         write_day(info, compressed)
             finally:
                 # write_day's local payload is gone before cached bytes are served.

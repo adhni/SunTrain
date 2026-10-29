@@ -34,6 +34,10 @@
         page = Math.max(0, Math.min(page, pages - 1));
         return {rows: calls.slice(low + page * PAGE_SIZE, low + (page + 1) * PAGE_SIZE), total, page, pages};
     }
+    function airportCatalogue(stations) {
+        return stations.map((station,id)=>({id,name:station.name,routes:'',label:`${station.code} · ${station.name}`}))
+            .sort((a,b)=>a.name.localeCompare(b.name) || a.id-b.id);
+    }
     function stationCatalogue(services, stations, includeAirports = false) {
         const records = new Map(), seen = new Map();
         if (includeAirports) stations.forEach((a,id) => records.set(id, {id, name:a.name, routes:new Set()}));
@@ -77,7 +81,7 @@
             return 'No captured flights for this airport in this snapshot.';
         return 'No upcoming flights match. Try an earlier replay time or change the filters.';
     }
-    const api = {stationCalls, upcomingPage, stationCatalogue, formatCallTime, formatBoardTime, flightEmptyMessage};
+    const api = {stationCalls, upcomingPage, stationCatalogue, airportCatalogue, formatCallTime, formatBoardTime, flightEmptyMessage};
     if (typeof module !== "undefined" && module.exports) module.exports = api;
     if (!root.document) return;
     const $ = id => document.getElementById(id);
@@ -248,7 +252,8 @@
             }
         }
         updateChoices() {
-            if (!this.catalogue) this.catalogue = stationCatalogue(this.services, this.replay.day.stations, this.replay.day.replay_kind === 'flights');
+            if (!this.catalogue) this.catalogue = this.replay.day.flight_geometry ? airportCatalogue(this.replay.day.stations) :
+                stationCatalogue(this.services, this.replay.day.stations, this.replay.day.replay_kind === 'flights');
             const query = this.search.value.trim().toLocaleLowerCase();
             const matches = this.catalogue.filter(row => row.label.toLocaleLowerCase().includes(query));
             this.choices.replaceChildren();

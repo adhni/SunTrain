@@ -17,6 +17,9 @@ with sync_playwright() as p:
     assert page.evaluate('suntrainReplay.day.timezone')=='Asia/Bangkok'
     assert page.evaluate('suntrainReplay.day.schedule.fare_context.currency')=='mixed'
     assert 'ICT' in page.locator('#replay-clock-date').inner_text()
+    assert page.evaluate('suntrainReplay.filters.flightScope')=='both'
+    page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"domestic"})')
+    page.wait_for_function('suntrainReplay.filters.flightScope==="domestic"')
     assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
     assert page.evaluate('suntrainReplay.graph.getBounds().getNorth()-suntrainReplay.graph.getBounds().getSouth()<40')
     count=len(downloads)

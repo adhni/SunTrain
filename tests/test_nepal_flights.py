@@ -23,7 +23,7 @@ def test_exact_airports_and_international_only_to_existing_flight_locations():
  assert AIR['PKR']['lat']!=AIR['PHH']['lat']
  assert AIR['LUA']['icao']!=AIR['RHP']['icao']
  assert all(a['country']=='NP' and a['timezone']=='Asia/Kathmandu' for a in AIR.values())
- assert CFG['currency']=='USD' and CITIES['nepal_flights']['default_flight_scope']=='domestic'
+ assert CFG['currency']=='USD' and CITIES['nepal_flights']['default_flight_scope']=='both'
  m=json.loads(Path('data/sources/nepal_international_routes.json').read_text());air={a['code']:a for a in m['airports']}
  assert len(m['routes'])==48 and ['PHH','DXB'] in m['routes'] and 'PKR' not in air
  assert {'KTM','PHH','BWA'}=={a['code'] for a in air.values() if a['country']=='NP'}

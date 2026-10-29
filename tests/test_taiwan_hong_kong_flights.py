@@ -48,7 +48,7 @@ def test_worldwide_inventory_is_not_restricted_to_old_network_and_keeps_exact_ai
  assert ['AUH','LHR'] not in shared['routes'] and ['MEL','LAX'] not in shared['routes']
  assert ['HKG','TPE'] in shared['routes'] and all(a['country'] in n.COUNTRIES for a in bycode.values())
  assert CITIES['taiwan_flights']['flight_scopes'] and not CITIES['hong_kong_flights']['flight_scopes']
- assert CITIES['hong_kong_flights']['default_flight_scope']=='international'
+ assert CITIES['hong_kong_flights']['default_flight_scope']=='both'
  assert 'worldwide' in CITIES['taiwan_flights']['description']
  assert 'worldwide' in CITIES['hong_kong_flights']['description'].lower()
 

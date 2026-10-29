@@ -23,7 +23,7 @@ def test_exact_north_south_airports_focused_candidates_and_seasonal_gaps():
     assert AIR['AKL']['icao']=='NZAA' and AIR['WLG']['icao']=='NZWN' and AIR['CHC']['icao']=='NZCH'
     assert all(a['country']=='NZ' and a['timezone']=='Pacific/Auckland' for a in AIR.values())
     assert {a['island_group'] for a in AIR.values()}=={'North Island','South Island'}
-    assert CFG['currency']=='USD' and CITIES['new_zealand_flights']['default_flight_scope']=='domestic'
+    assert CFG['currency']=='USD' and CITIES['new_zealand_flights']['default_flight_scope']=='both'
     assert 'CHT' not in AIR and CFG['manifest']['deferred_airports']
     m=json.loads(Path('data/sources/new_zealand_international_routes.json').read_text());air={a['code']:a for a in m['airports']}
     assert len(m['routes'])==90 and m['base_directional_routes']==70

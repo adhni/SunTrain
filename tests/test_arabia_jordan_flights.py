@@ -33,7 +33,7 @@ def test_source_footprint_and_correct_national_clock(code,tmp_path):
     if code=='KW':assert a['KWI']['icao']=='OKKK'
     if code=='BH':assert a['BAH']['icao']=='OBBI'
     if code in {'KW','BH'}:
-        assert not CITIES[city]['flight_scopes'] and CITIES[city]['default_flight_scope']=='international'
+        assert not CITIES[city]['flight_scopes'] and CITIES[city]['default_flight_scope']=='both'
         assert not any(a[x]['country']==a[y]['country']==code for x,y in m['routes'])
     if code=='JO':
         assert a['AMM']['icao']=='OJAI' and a['ADJ']['icao']=='OJAM' and a['AQJ']['icao']=='OJAQ'

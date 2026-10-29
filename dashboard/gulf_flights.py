@@ -1,4 +1,5 @@
 """Merge owned Gulf captures into one hub explorer without duplicate flights."""
+from dashboard.flight_sources import read_reference
 from pathlib import Path
 import gzip
 import json
@@ -16,7 +17,7 @@ def reference_paths(business_date=None):
 def load_reference(business_date):
     refs=[]
     for path in reference_paths(business_date):
-        with gzip.open(path,'rt') as f:refs.append(json.load(f))
+        refs.append(read_reference(path))
     airports={};flights={};queries={};missing=set();failed={}
     for ref in refs:
         context=ref['metadata'].get('fare_context')

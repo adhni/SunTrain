@@ -16,7 +16,7 @@ with sync_playwright() as p:
     assert page.evaluate('suntrainReplay.day.timezone')=='Asia/Jakarta'
     assert page.locator('#replay-range-start').inner_text()=='00:00'
     assert 'WIB' in page.locator('#replay-clock-date').inner_text()
-    page.wait_for_function('suntrainReplay.graph.queryRenderedFeatures({layers:["replay-planes"]}).length>0')
+    page.wait_for_function('suntrainReplay.graph.queryRenderedFeatures({layers:["replay-planes","replay-flight-dots"]}).length>0')
     assert page.evaluate('suntrainReplay.graph.getSource("replay-routes")._data.features.length')==0
     assert page.evaluate('suntrainReplay.activePositions.every(f=>Number.isFinite(f.properties.bearing))')
     count=len(downloads)

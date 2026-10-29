@@ -10,7 +10,9 @@ with sync_playwright() as p:
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"thailand_flights"})')
     page.wait_for_function('window.suntrainReplay?.day?.city==="thailand_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && !suntrainReplay.needsFit && suntrainReplay.filtered.length',timeout=120000)
-    assert page.evaluate('suntrainReplay.filters.flightScope')=='domestic'
+    assert page.evaluate('suntrainReplay.filters.flightScope')=='both'
+    page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"domestic"})')
+    page.wait_for_function('suntrainReplay.filters.flightScope==="domestic"')
     domestic=page.evaluate('suntrainReplay.filtered.length');assert domestic==615
     page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"international"})')
     page.wait_for_function('suntrainReplay.filters.flightScope==="international" && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.flight_scope==="international")')

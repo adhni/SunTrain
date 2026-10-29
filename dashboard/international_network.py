@@ -1,4 +1,5 @@
 """One shared capture archive, projected into UTC and country-local replay days."""
+from dashboard.flight_sources import read_reference
 from datetime import datetime, timedelta
 from functools import lru_cache
 import gzip
@@ -50,8 +51,7 @@ def reference_path():
 def _has_consumer(path, mtime_ns, size, city):
     # A previous shared snapshot may predate this country. Fingerprints keep this
     # inexpensive while allowing an atomically replaced archive to enable it.
-    with gzip.open(path, "rt") as stream:
-        return city in json.load(stream)["metadata"].get("queries_by_view", {})
+    return city in read_reference(path)["metadata"].get("queries_by_view", {})
 
 
 def enabled(business_date, city):
@@ -141,7 +141,7 @@ def project(reference, city):
 
 
 def load_archive():
-    with gzip.open(reference_path(),'rt') as stream:reference = json.load(stream)
+    reference = read_reference(reference_path())
     airports = {a['code']:a for a in reference['airports']}
     for f in reference['flights']:
         a,b = airports[f['origin']],airports[f['destination']]

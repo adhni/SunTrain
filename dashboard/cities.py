@@ -14,6 +14,17 @@ SWISS_RAIL_OPERATORS = json.loads((Path(__file__).resolve().parents[1] /
     "data/reference/switzerland/rail-operators.json").read_text())
 
 CITIES = {
+    'world_flights': {
+        'replay_kind': 'flights', 'name': 'World · Flights', 'timezone': 'UTC',
+        'bounds': [[-180, -60], [180, 82]], 'passenger_data': False,
+        'start_date': '2026-11-02', 'end_date': '2026-11-02',
+        'flight_scopes': True, 'flight_country_filters': True,
+        'flight_brands': EUROPE_FLIGHT_SETTINGS['flight_brands'],
+        'flight_groups': EUROPE_FLIGHT_SETTINGS['flight_groups'],
+        'description': 'World · Combined domestic and international captures · 2 November 2026. Timeline: UTC; airport boards use local time. Coverage is partial, including gaps near UTC midnight. Captured fares retain their original currencies; paths are illustrative.',
+        'default_modes': ['flight'], 'modes': [('Flights', 'flight')], 'operators': [],
+        'directions': [('Scheduled service', 'Scheduled service')], 'home_marker': False,
+    },
     'europe_flights': EUROPE_FLIGHT_SETTINGS,
     'vietnam_flights': {
         'replay_kind':'flights','name':'Vietnam · Flights','timezone':'Asia/Ho_Chi_Minh',
@@ -557,6 +568,24 @@ for _city, _settings in {
 
 CITIES.update(profile_city_settings())
 
+# Presentation policy is independent of collector profiles and capture scope.
+FLIGHT_HUB_VIEWS = frozenset({
+    'singapore_flights', 'hong_kong_flights', 'brunei_flights',
+    'timor_leste_flights', 'bahrain_flights', 'kuwait_flights', 'gulf_flights',
+})
+FLIGHT_REGION_VIEWS = frozenset({
+    'europe_flights', 'africa_flights', 'united_states_flights',
+    'south_america_flights', 'americas_flights', 'pacific_flights', 'central_asia_flights',
+})
+FLIGHT_NETWORK_VIEWS = frozenset({'international_network', 'europe_americas_flights', 'world_flights'})
+for _city, _settings in CITIES.items():
+    if _settings.get('replay_kind') == 'flights':
+        _settings['flight_view_kind'] = ('hub' if _city in FLIGHT_HUB_VIEWS else
+            'region' if _city in FLIGHT_REGION_VIEWS else
+            'network' if _city in FLIGHT_NETWORK_VIEWS else 'country')
+        _settings['default_flight_scope'] = 'both'
+        _settings.pop('regional_start_view', None)
+
 def city_settings(city="melbourne"):
     if city not in CITIES:
         raise ValueError(f"Unknown replay city: {city}")
@@ -569,7 +598,7 @@ def replay_settings(city="melbourne"):
             "city_name": settings["name"], "replay_kind": settings.get("replay_kind", "transit"),
             "flight_scopes": bool(settings.get("flight_scopes")),
             "flight_country_filters": bool(settings.get("flight_country_filters")),
-            **({'regional_start_view':True} if settings.get('regional_start_view') else {}),
+            **({'flight_view_kind': settings['flight_view_kind']} if 'flight_view_kind' in settings else {}),
             **({'flight_brands':settings['flight_brands']} if settings.get('flight_brands') else {}),
             **({'flight_groups':settings['flight_groups']} if settings.get('flight_groups') else {}),
             **({'flight_hubs':settings['flight_hubs'],'default_airport':settings.get('default_airport'),

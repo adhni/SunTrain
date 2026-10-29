@@ -9,6 +9,7 @@ from dashboard.transit import PERIOD_END, PERIOD_START
 
 def home_places():
     return [{"id": key, "name": settings["name"], "bounds": settings["bounds"],
+             "home_marker": settings.get("home_marker", True),
              "modes": [mode for _, mode in settings["modes"]],
              "start": settings.get("start_date", PERIOD_START),
              "end": settings.get("end_date", PERIOD_END)}
@@ -29,6 +30,7 @@ def build_home_panel():
                       ])]),
             html.Span(f"{len(places)} places to explore", className="home-count"),
         ]),
+        html.Button("World flights", id="home-world-flights", className="finder-chip home-world-flights"),
         html.Div(className="home-world", children=[
             html.Div(className="home-search", children=[
                 html.Label("Where shall we go?", htmlFor="home-place"),

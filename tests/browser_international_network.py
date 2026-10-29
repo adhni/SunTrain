@@ -77,10 +77,10 @@ with sync_playwright() as p:
     page.locator('#language-select').select_option('en')
     for city,zone in [('china_flights','Asia/Shanghai'),('japan_flights','Asia/Tokyo'),('south_korea_flights','Asia/Seoul'),('thailand_flights','Asia/Bangkok')]:
         page.evaluate('(city)=>dash_clientside.set_props("replay-city",{value:city})',city)
-        page.wait_for_function('(city)=>suntrainReplay.day.city===city && !suntrainReplay.loading && suntrainReplay.filtered.length && suntrainReplay.filters.flightScope==="domestic"',arg=city,timeout=120000)
+        page.wait_for_function('(city)=>suntrainReplay.day.city===city && !suntrainReplay.loading && suntrainReplay.filtered.length && suntrainReplay.filters.flightScope==="both"',arg=city,timeout=120000)
         assert page.locator('#replay-flight-scope-field').is_visible()
         assert not page.locator('#replay-country-controls').is_visible()
-        assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
+        assert page.evaluate('suntrainReplay.filtered.length===suntrainReplay.day.services.length')
         assert page.evaluate('suntrainReplay.day.timezone')==zone
         page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"international"})')
         page.wait_for_function('suntrainReplay.filters.flightScope==="international" && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.flight_scope==="international")')

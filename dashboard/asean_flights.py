@@ -1,4 +1,5 @@
 """Small shared profiles for the five remaining ASEAN flight locations."""
+from dashboard.flight_sources import read_reference
 import gzip
 import json
 from datetime import datetime
@@ -36,7 +37,7 @@ def city_settings(profiles=None):
 def load_domestic(path,code,profiles=None):
     p=(profiles or PROFILES)[code]
     currency=p.get('currency','USD')
-    with gzip.open(Path(path),'rt') as stream:reference=json.load(stream)
+    reference=read_reference(path)
     context=reference['metadata'].get('fare_context',{})
     if tuple(context.get(k) for k in ('currency','adults','cabin','trip_type'))!=(currency,1,'economy','one_way'):
         raise ValueError(f'Country domestic fares require {currency}, one adult, economy, one-way')

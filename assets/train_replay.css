@@ -309,3 +309,17 @@ body.replay-board-lock { overflow: hidden; }
 #replay-flight-hubs-field { grid-column: 1 / -1; }
 .replay-hub-buttons .finder-chip { width: auto; padding: 9px 12px; }
 #replay-flight-hubs [aria-pressed="true"] { background: var(--accent); color: var(--surface); border-color: var(--accent); }
+
+.replay-flight-moving #replay-matching-count { display: block; margin-top: 2px; }
+.replay-flight-key { position: absolute; bottom: 40px; left: 12px; z-index: 2; max-width: calc(100% - 24px); padding: 7px 10px; background: var(--surface); color: var(--muted); border: 1px solid var(--line); border-radius: 6px; font-size: .68rem; line-height: 1.6; pointer-events: none; }
+.replay-flight-key-symbols { display: flex; align-items: center; gap: 6px; color: var(--ink); }
+.replay-flight-key-dot { width: 5px; height: 5px; background: var(--accent); border: .8px solid var(--ink); border-radius: 50%; }
+.replay-flight-key-airport { width: 7px; height: 7px; margin-left: 8px; border: 1px solid var(--muted); border-radius: 50%; }
+.replay-flight-empty { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 2; width: max-content; max-width: calc(100% - 32px); padding: 10px 14px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--ink); text-align: center; font-size: .76rem; box-shadow: 0 2px 12px #18232d12; }
+.replay-flight-empty p { margin: 4px 0; }
+.replay-flight-empty .finder-chip { margin-top: 5px; }
+.replay-flight-view .replay-frequency-help { bottom: 108px; }
+@media (max-width: 520px) {
+  .replay-flight-key { left: 8px; font-size: .62rem; padding: 5px 8px; }
+  .replay-flight-empty { font-size: .7rem; }
+}

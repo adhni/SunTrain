@@ -11,10 +11,11 @@ with sync_playwright() as p:
     page.goto(os.environ.get('SUNTRAIN_TEST_URL','http://127.0.0.1:8868'),wait_until='domcontentloaded')
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"singapore_flights"})')
-    page.wait_for_function('suntrainReplay?.day?.city==="singapore_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filters.airports[0]==="SIN" && suntrainReplay.filtered.length',timeout=120000)
+    page.wait_for_function('suntrainReplay?.day?.city==="singapore_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && !suntrainReplay.filters.airports.length && suntrainReplay.filtered.length===suntrainReplay.day.services.length',timeout=120000)
     assert not page.locator('#replay-flight-scope-field').is_visible()
     assert page.locator('[data-hub="all"]').inner_text()=='All airports'
-    assert page.evaluate('suntrainReplay.day.schedule.fare_context.currency')=='USD'
+    fare_context=page.evaluate('suntrainReplay.day.schedule.fare_context')
+    assert fare_context['currency']=='USD' or (fare_context['currency']=='mixed' and 'USD' in fare_context['currencies'])
     assert 'SGT' in page.locator('#replay-clock-date').inner_text()
     page.screenshot(path='.cache/singapore-flights-map.png')
     count=len(downloads)

@@ -54,7 +54,7 @@ def build_replay_panel(metadata, default_date):
             ]),
             field("Transport", dcc.Dropdown(id="replay-modes", options=[{"label": "Trains", "value": "train"},
                   {"label": "Trams", "value": "tram"}, {"label": "Buses", "value": "bus"}], value=["train"], multi=True, placeholder="All modes"), id="replay-transport-field"),
-            field("Flights", dcc.Dropdown(id="replay-flight-scope", options=[{"label": label, "value": value} for label, value in [("Domestic", "domestic"), ("International", "international"), ("Both", "both")]], value="domestic", clearable=False, searchable=False), id="replay-flight-scope-field", style={"display": "none"}),
+            field("Flights", dcc.Dropdown(id="replay-flight-scope", options=[{"label": label, "value": value} for label, value in [("Domestic", "domestic"), ("International", "international"), ("All captured", "both")]], value="both", clearable=False, searchable=False), id="replay-flight-scope-field", style={"display": "none"}),
             field("Route / line", dcc.Dropdown(id="replay-lines", options=metadata["lines"], value=[], multi=True, placeholder="All routes / lines")),
             html.Div(id="replay-flight-controls", className="replay-flight-controls", style={"display": "none"}, children=[
                 field("Hub",html.Div(id='replay-flight-hubs',className='replay-hub-buttons'),id='replay-flight-hubs-field',style={'display':'none'}),
@@ -106,6 +106,17 @@ def build_replay_panel(metadata, default_date):
                         ]),
                     ]),
                     html.P("Thicker lines mean more captured flights that day (both directions). Click a line to explore.", id="replay-frequency-help", className="replay-frequency-help", hidden=True),
+                    html.Div([
+                        html.Div([html.Span(className="replay-flight-key-dot", **{"aria-hidden": True}), html.Span("Moving flights"),
+                                  html.Span(className="replay-flight-key-airport", **{"aria-hidden": True}), html.Span("Airports")], className="replay-flight-key-symbols"),
+                        html.Div([html.Span(id="replay-flight-scope-note"), html.Span(" · Partial coverage")]),
+                        html.Div(id="replay-world-coverage", hidden=True),
+                    ], id="replay-flight-key", className="replay-flight-key", hidden=True),
+                    html.Div([
+                        html.P("No selected flights on this map at this time."),
+                        html.Button("Next departure", id="replay-next-departure", className="finder-chip", hidden=True),
+                        html.P("Try the timeline or Fit flights.", id="replay-flight-empty-hint"),
+                    ], id="replay-flight-empty", className="replay-flight-empty", hidden=True),
                     html.Div(id="replay-map", className="replay-map", role="region", **{"aria-label": "Historical train, tram and bus replay and train passenger demand map"}),
                     html.Details(id="replay-demand-legend", className="replay-demand-legend", hidden=True, open=True,
                                **{"aria-label": "Passenger boarding scale"}, children=[
@@ -225,8 +236,8 @@ def register_replay_callbacks(app, metadata):
                 ([{"label": message("Size trains by passengers"), "value": "load"}] if settings["passenger_data"] else []),
                 ["routes", "stations"],
                 {"display": "none"} if settings.get('replay_kind')=='flights' else {},
-                {} if settings.get("flight_scopes") else {"display": "none"}, settings.get("default_flight_scope", "both" if settings.get('flight_hubs') or settings.get('flight_country_filters') else "domestic"),
-                {} if settings.get("replay_kind") == "flights" else {"display": "none"}, [], [settings['default_airport']] if settings.get('default_airport') else [], "planes", "both",
+                {} if settings.get("flight_scopes") else {"display": "none"}, settings.get("default_flight_scope", "both"),
+                {} if settings.get("replay_kind") == "flights" else {"display": "none"}, [], [], "planes", "both",
                 {"display": "none"} if settings.get("replay_kind") == "flights" else {},
                 {"display": "none"} if settings.get("replay_kind") == "flights" else {},[],[])
 

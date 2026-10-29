@@ -14,15 +14,15 @@ with sync_playwright() as p:
     page.wait_for_function('suntrainReplay?.day?.city==="indonesia_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
     assert page.locator('#replay-flight-scope-field').is_visible()
     assert not page.locator('#replay-transport-field').is_visible()
-    assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
+    assert page.evaluate('suntrainReplay.filters.flightScope==="both" && suntrainReplay.filtered.length===suntrainReplay.day.services.length')
     count=len(downloads)
     page.locator('#replay-flight-scope').click()
     page.get_by_text('International',exact=True).click()
     page.wait_for_function('suntrainReplay.filters.flightScope==="international" && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>s.flight_scope==="international")')
     assert len(downloads)==count
-    assert page.evaluate('suntrainReplay.graph.getBounds().getWest()<10')
+    assert page.evaluate('suntrainReplay.graph.getBounds().contains([106.65,-6.12])')
     assert page.evaluate('suntrainReplay.graph.getSource("replay-routes")._data.features.length')==0
-    page.wait_for_function('suntrainReplay.graph.queryRenderedFeatures({layers:["replay-planes"]}).length>0')
+    page.wait_for_function('suntrainReplay.graph.queryRenderedFeatures({layers:["replay-planes","replay-flight-dots"]}).length>0')
     page.screenshot(path='.cache/indonesia-international-map.png')
     page.evaluate('suntrainReplay.seek(suntrainReplay.day.start)')
     print('International filter, map fit and cached switching passed',flush=True)
@@ -88,7 +88,7 @@ with sync_playwright() as p:
     page.wait_for_function('suntrainReplay.day.city==="australia_flights" && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
     assert page.locator('#replay-flight-scope-field').is_visible()
     assert not page.locator('#replay-transport-field').is_visible()
-    assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
+    assert page.evaluate('suntrainReplay.filters.flightScope==="both" && suntrainReplay.filtered.length===suntrainReplay.day.services.length')
     assert not errors,errors
     print('Both scopes, airline filters, themes, Indonesian, mobile, overview and Australian defaults passed',flush=True)
     browser.close()

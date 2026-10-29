@@ -69,7 +69,9 @@
     }
     function pointAlong(path, fraction) {
         if (!path || !["track", "shape", "illustrative"].includes(path.quality) || path.coordinates.length < 2) return null;
-        const points = path.coordinates, distances = path.distances;
+        return interpolatePath(path.coordinates,path.distances,fraction);
+    }
+    function interpolatePath(points, distances, fraction) {
         if (fraction <= 0 || !distances.length || !distances[distances.length - 1]) return points[0];
         if (fraction >= 1) return points[points.length - 1];
         const distance = fraction * distances[distances.length - 1];
@@ -88,6 +90,17 @@
         else for (const stop of service.stops) yield stop[0];
     }
     function servicePosition(service, now, day) {
+        if (day.flight_geometry && service.mode==='flight') {
+            const departure=service.stops[0][2], arrival=service.stops[1][1];
+            if (now<departure || now>arrival) return null;
+            if (now===arrival) {
+                const airport=day.stations[service.stops[1][0]];
+                return {lon:airport.lon,lat:airport.lat};
+            }
+            const path=day.paths[service.legs[0]];
+            const point=interpolatePath(path.coordinates,path.distances,(now-departure)/(arrival-departure));
+            return {lon:point[0],lat:point[1]};
+        }
         const length = stopCount(service);
         // Transit patterns retain relative times; train stops already use epoch seconds.
         now -= service.timeOffset || 0;
@@ -140,6 +153,7 @@
         });
     }
     function hydrate(day) {
+        root.suntrainFlights?.hydratePaths(day);
         // Attach shared references only: never duplicate stop arrays for individual trips.
         for (const service of day.services) {
             if (!service.pattern || service.stops || service.stopIds) continue;
@@ -231,6 +245,14 @@
     let clockFormat, dateFormat, shortTime, shortDate;
     const $ = id => document.getElementById(id);
     const setText = (id, text) => { const element = $(id); if (element) { if (root.suntrainI18n) root.suntrainI18n.bind(element, text); else if(element.textContent !== String(text)) element.textContent = text; } };
+    // These counters are regenerated on locale changes; substitute numbers once.
+    function setMessage(id, key, params) {
+        const element = $(id);
+        if (!element) return;
+        const text = root.suntrainI18n?.t(key, params) || key.replace(/\{([^}]+)\}/g, (_, name) => params[name]);
+        element.removeAttribute('data-l10n');
+        if (element.textContent !== text) element.textContent = text;
+    }
     function node(tag, text, className) {
         const result = document.createElement(tag);
         if (text !== undefined) { if (root.suntrainI18n) root.suntrainI18n.bind(result, text); else result.textContent = text; }
@@ -268,9 +290,13 @@
                 }
                 this.departures?.updateJourneyLocale();
                 const fare=document.querySelector('.replay-flight-fare');
-                if (fare && this.selected) fare.textContent=root.suntrainFlights.priceLabel(this.selected);
-                const captured=document.querySelector('[data-fare-captured-at]');
-                if (captured) root.suntrainI18n.bind(captured, 'Captured: '+root.suntrainFlights.captureTime(captured.dataset.fareCapturedAt,this.day.timezone));
+                if (fare && this.selected) root.suntrainI18n.bind(fare,root.suntrainFlights.priceLabel(this.selected));
+                for (const captured of document.querySelectorAll('[data-fare-captured-at]'))
+                    root.suntrainI18n.bind(captured, 'Captured: '+root.suntrainFlights.captureTime(captured.dataset.fareCapturedAt,this.day.timezone));
+                for (const amount of document.querySelectorAll('[data-flight-quote]')) {
+                    const price=this.selected?.fare_quotes?.[Number(amount.dataset.flightQuote)];
+                    if (price) amount.textContent=root.suntrainFlights.priceLabel({price});
+                }
                 this.paint(true);
                 this.updateLegend();
             });
@@ -294,6 +320,10 @@
                 this.graph.addControl(new root.maplibregl.NavigationControl({showCompass: false}), "top-right");
                 this.graph.addControl(new root.maplibregl.ScaleControl({unit: "metric"}));
                 $("replay-melbourne").addEventListener("click", () => this.metroView());
+                $("replay-next-departure").addEventListener("click", () => {
+                    const at = root.suntrainFlights.nextDeparture(this.graph, this.filtered, this.day, this.now);
+                    if (at !== null) { this.pause(); this.seek(at); }
+                });
                 $("replay-fullscreen").addEventListener("click", () => this.toggleFullscreen());
                 $("replay-fullscreen-filters").addEventListener("click", () => {
                     const visible = $("replay-panel").classList.toggle("replay-show-filters");
@@ -311,6 +341,16 @@
                 });
                 this.graph.on("dragstart", () => this.setFollow(false));
                 this.graph.on("zoom", () => this.paint(true));
+                this.graph.on("move", () => {
+                    if (this.coverageFrame) return;
+                    this.coverageFrame = requestAnimationFrame(() => {
+                        this.coverageFrame = null; this.updateFlightCoverage?.();
+                        if (this.day?.flight_geometry && !this.followSelected && performance.now() - (this.lastMapPaint || 0) >= 250) {
+                            this.lastMapPaint = performance.now(); this.paint(true);
+                        }
+                    });
+                });
+                this.graph.on("moveend", () => { if (this.day?.flight_geometry && !this.followSelected && !this.busy) this.paint(true); });
                 // Train playback must not wait for external background tiles.
                 this.graph.once("style.load", () => {
                     for (const id of ["routes", "stations", "selected-route", "trains", "selected-train", "demand", "frequency"]) {
@@ -362,16 +402,38 @@
                         filter: ["!=", ["get", "mode"], "flight"],
                         paint: {"circle-color": ["get", "color"], "circle-radius": markerRadius(),
                             "circle-stroke-color": "#fff", "circle-stroke-width": 0.9, "circle-opacity": 0.95}});
+                    const flightMarker = root.suntrainFlights.marker;
                     this.graph.addImage('suntrain-plane', root.suntrainFlights.planeImage(), {pixelRatio: 2});
+                    this.graph.on('styleimagemissing', event => {
+                        if (!this.day?.flight_geometry || this.graph.hasImage(event.id)) return;
+                        if (event.id.startsWith('plane-[')) {
+                            const [carrier,color]=JSON.parse(event.id.slice(6));
+                            if (root.suntrainFlights.planeKey({carrier,color})===event.id)
+                                this.graph.addImage(event.id,root.suntrainFlights.planeImage(color),{pixelRatio:2});
+                        } else if (event.id.startsWith('airport-')) {
+                            const code=event.id.slice(8);
+                            if (this.day.stations.some(airport=>airport.code===code))
+                                this.graph.addImage(event.id,root.suntrainFlights.airportImage(code),{pixelRatio:2});
+                        }
+                    });
                     this.graph.addLayer({id: 'replay-selected-plane', type: 'circle', source: 'replay-selected-train',
                         filter: ['==', ['get', 'mode'], 'flight'],
                         paint: {'circle-radius': 15, 'circle-opacity': 0, 'circle-stroke-color': '#fff', 'circle-stroke-width': 2}});
-                    this.graph.addLayer({id: 'replay-planes', type: 'symbol', source: 'replay-trains',
-                        filter: ['==', ['get', 'mode'], 'flight'], layout: {
-                            'icon-image': ['coalesce', ['get', 'planeIcon'], 'suntrain-plane'], 'icon-size': ['interpolate', ['linear'], ['zoom'], 3, 0.45, 8, 0.85, 12, 1],
+                    this.graph.addLayer({id: 'replay-flight-dots', type: 'circle', source: 'replay-trains', maxzoom: flightMarker.planeZoom,
+                        filter: ['all', ['==', ['get', 'mode'], 'flight'], ['!=', ['get', 'selected'], true]],
+                        paint: {'circle-radius': flightMarker.dotRadius, 'circle-color': ['get', 'color'],
+                            'circle-stroke-width': flightMarker.dotStroke, 'circle-stroke-color': '#fff'}});
+                    this.graph.addLayer({id: 'replay-planes', type: 'symbol', source: 'replay-trains', minzoom: flightMarker.planeZoom,
+                        filter: ['all', ['==', ['get', 'mode'], 'flight'], ['!=', ['get', 'selected'], true]], layout: {
+                            'icon-image': ['coalesce', ['get', 'planeIcon'], 'suntrain-plane'], 'icon-size': flightMarker.planeSize / 32,
                             'icon-rotate': ['coalesce', ['get', 'bearing'], 0], 'icon-rotation-alignment': 'map',
                             'icon-allow-overlap': true, 'icon-ignore-placement': true},
                         paint: {'icon-opacity': ['coalesce', ['get', 'opacity'], 1]}});
+                    this.graph.addLayer({id: 'replay-selected-flight', type: 'symbol', source: 'replay-selected-train',
+                        filter: ['==', ['get', 'mode'], 'flight'], layout: {
+                            'icon-image': ['coalesce', ['get', 'planeIcon'], 'suntrain-plane'], 'icon-size': flightMarker.selectedSize / 32,
+                            'icon-rotate': ['coalesce', ['get', 'bearing'], 0], 'icon-rotation-alignment': 'map',
+                            'icon-allow-overlap': true, 'icon-ignore-placement': true}});
                     this.graph.addLayer({id: 'replay-airport-labels', type: 'symbol', source: 'replay-stations',
                         filter: ['==', ['get', 'mode'], 'flight'], layout: {
                             'icon-image': ['concat', 'airport-', ['get', 'code']],
@@ -390,8 +452,8 @@
                     this.graph.on("click", e => {
                         const label = this.graph.queryRenderedFeatures(e.point, {layers: ['replay-airport-labels']})[0];
                         if (label) { this.departures.open(Number(label.properties.id)); return; }
-                        const vehicles = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-planes"]});
-                        if (vehicles.length) { this.select(vehicles[0].properties.id); return; }
+                        const vehicle = this.vehicleNear(e.point);
+                        if (vehicle) { this.select(vehicle.properties.id); return; }
                         const station = this.stationNear(e.point);
                         if (!station) {
                             const connection = this.graph.queryRenderedFeatures(e.point, {layers: ['replay-frequency']})[0];
@@ -402,15 +464,15 @@
                         else { this.demandPinned = true; this.showDemandPopup(Number(station.properties.id)); }
                     });
                     this.graph.on("mousemove", e => {
-                        const features = this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-planes"]});
-                        if (!features.length) {
+                        const feature = this.vehicleNear(e.point);
+                        if (!feature) {
                             if (this.vehicleHover) { this.vehicleHover = false; this.popup.remove(); this.graph.getCanvas().style.cursor = ""; }
                             return;
                         }
                         this.vehicleHover = true;
                         this.graph.getCanvas().style.cursor = "pointer";
                         this.demandPinned = false; this.demandPopupId = null;
-                        const feature = features[0], service = this.filtered.find(s => s.id === feature.properties.id);
+                        const service = this.filtered.find(s => s.id === feature.properties.id);
                         if (!service) return;
                         const content = node("div", undefined, "replay-map-tooltip");
                         content.append(node("strong", `${service.line} · ${service.number}`),
@@ -422,7 +484,7 @@
                     });
                     this.graph.on("mouseout", () => { this.stationHover = false; this.vehicleHover = false; this.graph.getCanvas().style.cursor = ""; if (!this.demandPinned) this.popup.remove(); });
                     for (const event of ["click", "mousemove"]) this.graph.on(event, "replay-demand-stations", e => {
-                        if (this.graph.queryRenderedFeatures(e.point, {layers: ["replay-trains", "replay-planes"]}).length) return;
+                        if (this.vehicleNear(e.point)) return;
                         this.graph.getCanvas().style.cursor = "pointer";
                         if (event === "mousemove" && this.demandPinned) return;
                         this.demandPinned = event === "click";
@@ -615,11 +677,19 @@
             root.dash_clientside.set_props("replay-follow", {children: this.followSelected ? "Following service" : "Follow service", disabled: !this.selected || this.mapMode === "demand"});
             $("replay-follow")?.setAttribute("aria-pressed", String(this.followSelected));
         }
+        vehicleNear(point) {
+            if (this.day?.replay_kind === 'flights') {
+                if (this.frequencyView || this.mapMode === 'demand') return null;
+                if (this.graph.queryRenderedFeatures(point, {layers: ['replay-airport-labels']}).length) return null;
+                return root.suntrainFlights.nearest(this.graph, this.activePositions || [], point);
+            }
+            return this.graph.queryRenderedFeatures(point, {layers: ['replay-trains']})[0] || null;
+        }
         metroView() {
             if (!this.mapReady) return;
             this.setFollow(false);
             this.graph.resize();
-            this.graph.fitBounds(this.day?.bounds || MELBOURNE_BOUNDS, {padding: 25, duration: 0});
+            this.graph.fitBounds(this.openingFrame || this.day?.bounds || MELBOURNE_BOUNDS, {padding: 25, duration: 0});
             this.needsFit = false;
         }
         localeFormatters(day) {
@@ -639,7 +709,7 @@
             const sameDay = this.day?.city === day.city && this.day?.business_date === day.business_date;
             const previousNow = this.now;
             this.pause(); this.generation++;
-            if (this.day?.city !== day.city) this.needsFit = true;
+            if (!sameDay) this.needsFit = true;
             this.localeFormatters(day);
             this.filtered = []; this.filterSignature = null; this.activeIndex = null; this.activePositions = [];
             this.demandIndex = null; this.demandSnapshot = null; this.qualityBySchedule.clear();
@@ -647,6 +717,7 @@
             if (this.mapReady) for (const id of ["replay-trains", "replay-selected-train", "replay-routes", "replay-stations", "replay-selected-route", "replay-demand", "replay-frequency"])
                 this.graph.getSource(id)?.setData(collection([]));
             this.day = hydrate(day);
+            this.openingFrame = root.suntrainFlights.openingBounds(day);
             if (root.suntrainI18n) {
                 root.suntrainI18n.sourceNames.clear();
                 for (const station of day.stations) root.suntrainI18n.sourceNames.add(station.name);
@@ -677,6 +748,10 @@
                 all.addEventListener('click',()=>chooseHub(null));hubs.append(all);
             }
             setText('replay-open-departures', flights ? 'Airports' : 'Departures');
+            setText('replay-fit', flights ? 'Fit flights' : 'Fit selection');
+            setText('replay-flight-scope-note', root.suntrainFlights.scopeLabel(day));
+            $('replay-panel').classList.toggle('replay-flight-view', flights);
+            this.totalFlights = flights ? new Set(day.services.map(s => s.id)).size : 0;
             setText('replay-legend-label', flights ? 'Flights' : 'Line colours');
             const restartLabel = flights ? 'Restart at midnight' : 'Restart at 03:00';
             for (const attr of ['title', 'aria-label']) root.suntrainI18n.bind($('replay-restart'), restartLabel, attr);
@@ -693,13 +768,25 @@
                 const brands=Object.entries(day.flight_brands || {}).map(([brand,name])=>({value:'brand:'+brand,label:name}));
                 root.dash_clientside.set_props('replay-carriers', {options: [...groups,...brands,...[...carriers].sort((a,b) => a[0].localeCompare(b[0])).map(([value,name]) => ({value, label: `${value} · ${name}`}))]});
                 const airportProps={options: day.stations.map(a => ({value: a.code, label: `${a.code} · ${a.name}`})).sort((a,b) => a.value.localeCompare(b.value))};
-                if(!sameDay && day.flight_hubs?.length)airportProps.value=[day.default_airport || day.flight_hubs[0]];
+                if (!sameDay) airportProps.value = [];
                 root.dash_clientside.set_props('replay-airports',airportProps);
             }
             const attribution = $("replay-attribution");
             attribution.replaceChildren();
             if (day.schedule) {
                 if (day.replay_kind === 'flights') {
+                    if (day.schedule.combined_capture) {
+                        const links = new Map();
+                        for (const member of Object.values(day.schedule.member_views)) if (member.source_url) links.set(member.source_url, member.source);
+                        attribution.append(node('span', 'Combined SunTrain flight captures'), document.createTextNode(' · '));
+                        for (const [url, label] of links) {
+                            const link=node('a',label);link.href=url;link.target='_blank';link.rel='noopener noreferrer';
+                            attribution.append(link,document.createTextNode(' · '));
+                        }
+                        const airports=node('a','Airport coordinates: OurAirports · Public Domain');
+                        airports.href=day.schedule.airport_source_url;airports.target='_blank';airports.rel='noopener noreferrer';
+                        attribution.append(airports);return;
+                    }
                     const source = node('a', day.schedule.source);
                     source.href = day.schedule.source_url; source.target = '_blank'; source.rel = 'noopener noreferrer';
                     const airports = node('a', 'Airport coordinates: OurAirports · Public Domain');
@@ -824,8 +911,12 @@
             const sizeHelp = $("replay-size-help");
             if (sizeHelp) sizeHelp.hidden = !display.includes("load");
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
+            this.matchingFlights = this.day.replay_kind === 'flights' ? new Set(this.filtered.map(s => s.id)).size : 0;
             this.flightEvent = this.day.replay_kind === 'flights' && filters.airports?.length && filters.airportDirection === 'arrivals' ? 'arrival' : 'departure';
-            this.frequencyFeatures = this.day.replay_kind === 'flights' ? root.suntrainFlightNetwork.frequencyNetwork(this.filtered, this.day, this.flightEvent) : [];
+            this.frequencyDirty = true;
+            this.frequencyFeatures = this.day.replay_kind === 'flights' && (!this.day.flight_geometry || this.frequencyView)
+                ? root.suntrainFlightNetwork.frequencyNetwork(this.filtered, this.day, this.flightEvent) : [];
+            if (!this.day.flight_geometry || this.frequencyView) this.frequencyDirty = false;
             if (this.day.replay_kind === 'flights' && this.departures?.station != null) {
                 if (filters.airportDirection === 'arrivals' && filters.airports?.length) this.departures.event = 'arrival';
                 else if (filters.airportDirection === 'departures' && this.departures.event !== 'destinations') this.departures.event = 'departure';
@@ -870,6 +961,36 @@
             for(const text of pieces)qualityHost.append(node("span",text),document.createTextNode(" "));
             setText("replay-matching-count", ` · ${this.filtered.length.toLocaleString(root.suntrainI18n?.locale || "en-AU")} services in this day`);
         }
+        updateFlightCoverage() {
+            const flights = this.active && !this.loading && this.mapReady && this.day?.replay_kind === 'flights';
+            const moving = flights && !this.frequencyView;
+            $('replay-flight-key').hidden = !flights;
+            const world = flights && this.day.schedule?.combined_capture;
+            $('replay-world-coverage').hidden = !world;
+            if (world) {
+                const c=this.day.schedule.coverage, number=n=>n.toLocaleString(root.suntrainI18n?.locale || 'en-AU');
+                setMessage('replay-world-coverage','{n} unique flights · {routes} routes · {airports} airports',
+                    {n:number(c.flights),routes:number(c.routes_returned),airports:number(c.airports_returned)});
+            }
+            $('replay-flight-empty').hidden = true;
+            $('replay-panel').classList.toggle('replay-flight-moving', !!moving);
+            if (!moving) return;
+            const api = root.suntrainFlights;
+            const visible = api.visibleCount(this.graph, this.activePositions || [], !!world);
+            const active = world ? this.activePositions.length : new Set((this.activePositions || []).map(f => f.properties.id)).size;
+            const number = n => n.toLocaleString(root.suntrainI18n?.locale || 'en-AU');
+            this.visibleFlights = visible;
+            setMessage('replay-active-count', '{n}', {n: number(visible)});
+            setMessage('replay-active-label', ' on map · {n} active', {n: number(active)});
+            setMessage('replay-matching-count', this.matchingFlights === this.totalFlights ? '{n} captured flights' : '{n} of {total} captured flights',
+                {n: number(this.matchingFlights), total: number(this.totalFlights)});
+            if (this.matchingFlights && !visible) {
+                $('replay-flight-empty').hidden = false;
+                const next = api.nextDeparture(this.graph, this.filtered, this.day, this.now);
+                $('replay-next-departure').hidden = next === null;
+                $('replay-flight-empty-hint').hidden = next !== null;
+            }
+        }
         focusFlightConnection(a, b) {
             if (this.filters.airports?.includes(this.day.stations[b].code) && !this.filters.airports.includes(this.day.stations[a].code)) [a, b] = [b, a];
             const lines = [...new Set(this.day.services.filter(s => s.mode === 'flight' &&
@@ -911,7 +1032,7 @@
             if (!this.playing || !this.active || document.hidden) { this.pause(); return; }
             this.now = Math.min(this.day.end, this.now + (timestamp - this.previousTick) / 1000 * this.speed);
             this.previousTick = timestamp;
-            if (timestamp - this.lastPaint >= 60) { this.lastPaint = timestamp; this.paint(); }
+            if (timestamp - this.lastPaint >= root.suntrainFlights.paintInterval(this.day, this.graph.getZoom())) { this.lastPaint = timestamp; this.paint(); }
             if (this.now >= this.day.end) { this.pause(); this.paint(true); }
             else this.frame = requestAnimationFrame(t => this.tick(t));
         }
@@ -947,16 +1068,19 @@
             if (service.mode === 'flight') {
                 this.selectedHasLoads = false;
                 host.append(line, node('h3', service.number), node('p', `${service.origin} → ${service.destination}`, 'replay-detail-route'),
-                    node('p', `${service.operator} · ${service.aircraft}`, 'replay-muted replay-small'),
+                    node('p', service.operator, 'replay-muted replay-small'),
+                    node('p', service.aircraft, 'replay-muted replay-small'),
                     node('p', 'Scheduled replay · illustrative paths', 'replay-detail-note'));
                 if (this.day.schedule?.fare_context) {
                     host.append(node('p', root.suntrainFlights.priceLabel(service), 'replay-flight-fare'),
-                        node('p', 'Lowest captured fare · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.', 'replay-muted replay-small'));
+                        node('p', this.day.schedule.combined_capture ? 'Lowest captured fare in this currency · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.' :
+                            'Lowest captured fare · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.', 'replay-muted replay-small'));
                     if (service.price?.captured_at) {
                         const captured=node('p', 'Captured: '+root.suntrainFlights.captureTime(service.price.captured_at,this.day.timezone), 'replay-muted replay-small');
                         captured.dataset.fareCapturedAt=service.price.captured_at;host.append(captured);
                     }
                 }
+                this.captureDetails(service, host);
                 const live = node('div', undefined, 'replay-service-status'); live.id = 'replay-service-status'; host.append(live);
                 const duration = Math.round((service.stops[1][1] - service.stops[0][2]) / 60);
                 host.append(node('p', `${Math.floor(duration / 60)} h ${duration % 60} min`, 'replay-muted replay-small'));
@@ -982,6 +1106,38 @@
             host.append(allStops);
             this.paint(true);
             if (departureCall) { host.tabIndex = -1; host.focus(); }
+        }
+        captureDetails(service, host) {
+            if (service.aircraft_variants?.length) {
+                const list=node('ul',undefined,'replay-small replay-aircraft-alternatives');
+                for (const variant of service.aircraft_variants) list.append(node('li',variant.aircraft));
+                host.append(list);
+            }
+            if (!service.fare_quotes?.length) return;
+            const details=node('details',undefined,'replay-small replay-captured-quotes');
+            details.append(node('summary','Captured fare quotes'),node('p','Cheapest in each currency · No currency conversion','replay-muted'));
+            details.append(node('p','Display preference: USD, then EUR, then MYR.','replay-muted'));
+            const amount = quote => {
+                const span=node('span');span.dataset.flightQuote=String(service.fare_quotes.indexOf(quote));
+                span.textContent=root.suntrainFlights.priceLabel({price:quote});return span;
+            };
+            const cheapest=node('ul');
+            for (const quote of root.suntrainFlights.cheapestQuotes(service)) {
+                const item=node('li');item.append(amount(quote));cheapest.append(item);
+            }
+            details.append(cheapest);
+            const all=node('details');all.append(node('summary','All captured quotes'));
+            const list=node('ul');
+            const names=JSON.parse($('city-overview').dataset.cities);
+            for (const quote of service.fare_quotes) {
+                const item=node('li');item.append(amount(quote));
+                if (quote.captured_at) {
+                    const captured=node('p','Captured: '+root.suntrainFlights.captureTime(quote.captured_at,this.day.timezone),'replay-muted');
+                    captured.dataset.fareCapturedAt=quote.captured_at;item.append(captured);
+                }
+                item.append(node('p',(quote.views || []).map(view=>names[view] || view).join(' · '),'replay-muted'));list.append(item);
+            }
+            all.append(list);details.append(all);host.append(details);
         }
         renderStopTable(service, host) {
             const scroll = node("div", undefined, "replay-stop-list"), table = node("table");
@@ -1070,8 +1226,11 @@
         }
         updateStaticLayers() {
             const ids = new Set(), stationIds = new Set();
-            for (const service of this.filtered) if (service.mode === 'flight' && !this.graph.hasImage('plane-' + service.carrier))
-                this.graph.addImage('plane-' + service.carrier, root.suntrainFlights.planeImage(service.color), {pixelRatio: 2});
+            this.graph.setLayerZoomRange('replay-airport-labels',this.day.flight_geometry ? 4.5 : 0,24);
+            for (const service of this.day.flight_geometry ? [] : this.filtered) if (service.mode === 'flight') {
+                const key = root.suntrainFlights.planeKey(service);
+                if (!this.graph.hasImage(key)) this.graph.addImage(key, root.suntrainFlights.planeImage(service.color), {pixelRatio: 2});
+            }
             for (const service of uniqueSchedules(this.filtered)) {
                 if (this.mapMode === "demand" && service.mode !== "train") continue;
                 for (const id of stopIds(service)) stationIds.add(id);
@@ -1084,7 +1243,7 @@
             const routes = routeFeatures(this.day.paths, ids);
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
             const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})).filter(s => Number.isFinite(s.lon) && Number.isFinite(s.lat)) : [];
-            for (const station of stations) if (station.code && !this.graph.hasImage('airport-' + station.code))
+            for (const station of this.day.flight_geometry ? [] : stations) if (station.code && !this.graph.hasImage('airport-' + station.code))
                 this.graph.addImage('airport-' + station.code, root.suntrainFlights.airportImage(station.code), {pixelRatio: 2});
             this.graph.getSource('replay-frequency').setData(collection(this.frequencyFeatures || []));
             this.graph.getSource("replay-routes").setData(collection(routes));
@@ -1098,7 +1257,7 @@
             const changed = this.mapMode !== mode || this.demandWindow !== minutes;
             this.mapMode = mode; this.demandWindow = minutes;
             $("replay-panel").classList.toggle("replay-demand-only", mode === "demand");
-            for (const id of ["replay-trains", "replay-planes", "replay-selected-plane", "replay-vehicle-outline", "replay-selected-train", "replay-selected-route"])
+            for (const id of ["replay-trains", ...root.suntrainFlights.movingLayers, "replay-vehicle-outline", "replay-selected-train", "replay-selected-route"])
                 this.graph.setLayoutProperty(id, "visibility", mode === "demand" ? "none" : "visible");
             for (const id of ["replay-demand-glow", "replay-demand-stations"])
                 this.graph.setLayoutProperty(id, "visibility", mode === "trains" ? "none" : "visible");
@@ -1165,6 +1324,7 @@
             try {
                 const trains = [], vehicleDots = [];
                 const zoom = this.graph.getZoom();
+                const worldViewport = this.day.flight_geometry ? root.suntrainFlights.viewport(this.graph, 12) : null;
                 let selectedPosition = null, selectedMarker = null, activeCount = 0, missingCount = 0;
                 for (const service of this.activeIndex.at(this.now)) {
                     const position = servicePosition(service, this.now, this.day);
@@ -1172,6 +1332,22 @@
                     activeCount++;
                     if (service.id === this.selected?.id) selectedPosition = position;
                     if (position.lon === null || position.lat === null) { missingCount++; continue; }
+                    if (worldViewport) {
+                        const coordinates=[position.lon,position.lat], selected=service.id===this.selected?.id;
+                        const properties={id:service.id,color:service.color,mode:'flight',selected};
+                        const visible=worldViewport(coordinates);
+                        // Dots need no artwork or heading. Retain off-screen identities
+                        // for global counts and picking without sending them to MapLibre.
+                        if (selected || visible && zoom>=root.suntrainFlights.marker.planeZoom) {
+                            properties.planeIcon=root.suntrainFlights.planeKey(service);
+                            const path=this.day.paths[service.legs[0]],f=(this.now-service.stops[0][2])/(service.stops[1][1]-service.stops[0][2]);
+                            properties.bearing=root.suntrainFlights.bearing(pointAlong(path,Math.max(0,f-.001)),pointAlong(path,Math.min(1,f+.001)));
+                        }
+                        const marker=pointFeature(coordinates,properties);trains.push(marker);
+                        if (visible) vehicleDots.push(marker);
+                        if (selected) selectedMarker=marker;
+                        continue;
+                    }
                     const kind = root.suntrainVehicles.bodyKind(this.day.city, service.mode);
                     const sizeFactor = markerScale(position.load, this.display.includes("load")) * (this.day.city === "melbourne" ? 0.75 : 1);
                     const spacing = kind ? root.suntrainVehicles.spacingPixels(zoom, sizeFactor) *
@@ -1179,8 +1355,10 @@
                     const coordinates = kind ? root.suntrainVehicles.footprint(service, position, this.day, this.now, spacing, pointAlong) : [[position.lon, position.lat]];
                     const properties = {id: service.id, color: vehicleColor(service, this.day.city), body: kind, mode: service.mode || "train",
                         sizeFactor, load: position.load, approximate: position.approximate, dotCount: coordinates.length};
+                    const inViewport = !worldViewport || worldViewport(coordinates[0]);
                     if (service.mode === 'flight') {
-                        properties.planeIcon = 'plane-' + service.carrier;
+                        properties.planeIcon = root.suntrainFlights.planeKey(service);
+                        properties.selected = service.id === this.selected?.id;
                         const path = this.day.paths[service.legs[0]];
                         const f = (this.now - service.stops[0][2]) / (service.stops[1][1] - service.stops[0][2]);
                         const a = pointAlong(path, Math.max(0, f - 0.001)), b = pointAlong(path, Math.min(1, f + 0.001));
@@ -1188,7 +1366,7 @@
                     }
                     const marker = pointFeature(coordinates[0], {...properties, part: 0});
                     trains.push(marker);
-                    for (let part = 0; part < coordinates.length; part++)
+                    for (let part = 0; inViewport && part < coordinates.length; part++)
                         vehicleDots.push(pointFeature(coordinates[part], {...properties, part}));
                     if (service.id === this.selected?.id) selectedMarker = marker;
                 }
@@ -1218,7 +1396,8 @@
                     if(this.day.timezone==='UTC')dateText=dateText.replace(/GMT(?:\+0)?/,'UTC');
                     if(this.day.timezone==='America/New_York')dateText=dateText.replace(/GMT-5/,'EST').replace(/GMT-4/,'EDT');
                     setText("replay-clock-date",dateText);
-                    setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
+                    if (this.day.replay_kind !== 'flights' || this.frequencyView)
+                        setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");
                     if (slider) {
@@ -1228,6 +1407,7 @@
                     }
                     this.detailStatus(selectedPosition);
                     this.departures?.update();
+                    this.updateFlightCoverage();
                 }
                 this.frameCount++; this.renderMilliseconds += performance.now() - started;
             } catch (error) {
@@ -1238,7 +1418,7 @@
                 if (this.paintAgain) { this.paintAgain = false; requestAnimationFrame(() => this.paint(true)); }
             }
         }
-        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne", flightScope = "domestic", carriers = [], airports = [], flightView = "planes", airportDirection = "both", fromCountries = [], toCountries = []) {
+        async sync(day, tab, date, modes, operators, lines, directions, stations, number, display, mode, demandWindow, speed, trigger, city = "melbourne", flightScope = "both", carriers = [], airports = [], flightView = "planes", airportDirection = "both", fromCountries = [], toCountries = []) {
             if (!this.departures) this.departures = new root.suntrainDepartures.Board(this, core);
             this.lastTrigger = trigger;
             this.active = tab === "replay";
@@ -1252,6 +1432,7 @@
                 this.demandMinute = null; this.demandSnapshot = null; this.demandPopupId = null; this.popup?.remove();
                 if ($("replay-demand-legend")) $("replay-demand-legend").hidden = true;
                 setText("replay-position-note", "");
+                this.updateFlightCoverage();
                 root.dash_clientside.set_props("replay-play", {disabled: true});
                 if ($("replay-map")) $("replay-map").classList.add("replay-is-loading");
                 setText("replay-active-count", "—"); setText("replay-matching-count", day?.error ? " · Could not load this day" : " · Loading this day…");
@@ -1262,7 +1443,7 @@
             $("replay-map")?.classList.remove("replay-is-loading");
             const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);
-            const filters = {fromCountries:fromCountries || [],toCountries:toCountries || [],airportDirection, carriers: carriers || [], airports: airports || [], flightScope: flightScope || "domestic", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
+            const filters = {fromCountries:fromCountries || [],toCountries:toCountries || [],airportDirection, carriers: carriers || [], airports: airports || [], flightScope: flightScope || "both", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             for (const control of document.querySelectorAll('[data-hub]')) {
                 const active=control.dataset.hub==='all'?!filters.airports.length:filters.airports.length===1 && filters.airports[0]===control.dataset.hub;
                 control.setAttribute('aria-pressed',String(active));
@@ -1282,7 +1463,7 @@
             if (frequency && !this.frequencyView) { this.pause(); this.setFollow(false); }
             if (this.frequencyView !== frequency) this.staticDirty = true;
             this.frequencyView = frequency;
-            if (this.day.replay_kind === 'flights') for (const id of ['replay-planes', 'replay-selected-plane']) this.graph.setLayoutProperty(id, 'visibility', frequency ? 'none' : 'visible');
+            if (this.day.replay_kind === 'flights') for (const id of [...root.suntrainFlights.movingLayers, 'replay-selected-route']) this.graph.setLayoutProperty(id, 'visibility', frequency ? 'none' : 'visible');
             this.graph.setLayoutProperty('replay-frequency', 'visibility', frequency ? 'visible' : 'none');
             this.graph.setLayoutProperty('replay-routes', 'visibility', frequency ? 'none' : 'visible');
             $('replay-frequency-help').hidden = !frequency;
@@ -1290,10 +1471,13 @@
             setText('replay-active-label', frequency ? ' connections' : ' active services');
             const airportsChanged = JSON.stringify(this.filters?.airports || []) !== JSON.stringify(filters.airports);
             if (airportsChanged && this.departures.visible && (!filters.airports.length || !filters.airports.includes(this.day.stations[this.departures.station]?.code))) this.departures.close();
-            const scopeChanged = this.filters?.flightScope !== filters.flightScope;
             const filterSignature = JSON.stringify([filters, display]);
             if (newDay || this.filterSignature !== filterSignature) {
                 this.filterSignature = filterSignature; this.applyFilters(filters, display || []);
+            }
+            if (frequency && this.frequencyDirty) {
+                this.frequencyFeatures = root.suntrainFlightNetwork.frequencyNetwork(this.filtered, this.day, this.flightEvent);
+                this.frequencyDirty = false; this.staticDirty = true;
             }
             $("replay-legend").hidden = frequency || !this.filtered.length || this.mapMode === "demand";
             const arrivals = this.flightEvent === 'arrival';
@@ -1310,12 +1494,7 @@
                 if (trigger === "replay-back") this.seek(this.now - 60);
                 if (trigger === "replay-forward") this.seek(this.now + 60);
             }
-            // Regional explorers keep their starting view with worldwide flights.
-            // Clearing an airport returns there; explicit Fit selection still fits all.
-            const regionalStart = this.day.city === 'europe_flights' || this.day.regional_start_view;
-            if (regionalStart && airportsChanged && !filters.airports.length) this.metroView();
-            else if (trigger === "replay-fit" || airportsChanged || (this.day.flight_scopes && !regionalStart &&
-                ((scopeChanged && !newDay) || (newDay && filters.flightScope !== "domestic")))) this.fit();
+            if (trigger === "replay-fit") this.fit();
             this.paint(true);
             this.graph.resize();
         }

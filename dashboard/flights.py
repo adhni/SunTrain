@@ -1,4 +1,5 @@
 """Pinned flight schedules adapted to the existing replay payload."""
+from dashboard.flight_sources import read_reference
 from datetime import date, datetime, time, timedelta
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -271,8 +272,7 @@ def _load_reference(business_date, city):
         return hub_reference(business_date)
     references = []
     for path in reference_paths(business_date, city, include_network=False):
-        with gzip.open(path, 'rt') as stream:
-            references.append(json.load(stream))
+        references.append(read_reference(path))
     country = {'indonesia_flights':'ID','australia_flights':'AU','malaysia_flights':'MY','singapore_flights':'SG','india_flights':'IN','south_korea_flights':'KR','japan_flights':'JP','china_flights':'CN','thailand_flights':'TH','philippines_flights':'PH','vietnam_flights':'VN'}[city]
     airports, flights = {}, {}
     for reference in references:
@@ -363,9 +363,7 @@ def _load_reference(business_date, city):
     return dict(airports=list(airports.values()), flights=list(flights.values()), metadata=metadata)
 
 
-def replay_day(business_date, city='australia_flights'):
-    from dashboard.replay import cumulative_distances
-    reference = load_reference(business_date, city)
+def replay_window(reference, business_date, city):
     day = date.fromisoformat(business_date)
     zone = ZoneInfo(replay_settings(city)['timezone'])
     start = int(datetime.combine(day, time(), zone).timestamp())
@@ -377,6 +375,15 @@ def replay_day(business_date, city='australia_flights'):
         start=min(starts,default=start)
         ends=[int(datetime.combine(day+timedelta(days=1),time(),ZoneInfo(a.get('replay_timezone',a['timezone']))).timestamp()) for a in reference['airports']]
         end=max([end,*ends,*[f['arrival']+1 for f in reference['flights']]])
+    return start, end
+
+
+def replay_day(business_date, city='australia_flights'):
+    from dashboard.replay import cumulative_distances
+    reference = load_reference(business_date, city)
+    start, end = replay_window(reference, business_date, city)
+    day = date.fromisoformat(business_date)
+    zone = ZoneInfo(replay_settings(city)['timezone'])
     airports = reference['airports']
     indices = {a['code']: i for i, a in enumerate(airports)}
     services, paths = [], {}

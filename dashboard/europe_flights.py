@@ -1,4 +1,5 @@
 """Europe is a region with explicit launch brands, not a synthetic country."""
+from dashboard.flight_sources import read_reference
 import gzip,json,os
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -61,7 +62,7 @@ def valid_price(p):
 
 def load_reference(day):
  if day!=DAY:raise ValueError('Unsupported Europe flight date')
- with gzip.open(reference_path(),'rt') as f:r=json.load(f)
+ r=read_reference(reference_path())
  meta=r['metadata']
  if (meta.get('profile'),meta.get('start_date'),meta.get('end_date'),meta.get('timezone'))!=('europe_flights',DAY,DAY,'UTC'):raise ValueError('Invalid Europe snapshot context')
  if tuple(meta.get('fare_context',{}).get(k) for k in ('currency','adults','cabin','trip_type'))!=('EUR',1,'economy','one_way'):raise ValueError('Invalid Europe query fare context')

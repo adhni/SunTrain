@@ -258,6 +258,19 @@ def test_missing_published_capture_cannot_erase_prepared_records(tmp_path,monkey
     assert path.read_bytes()==before
 
 
+def test_followup_manifest_survives_published_raw_capture_validation(tmp_path,monkeypatch):
+    cache,_=setup_prepare(tmp_path,monkeypatch,[query([flight(price=quote())])])
+    path=tmp_path/'prepared.gz'
+    preparation.prepare(cache,path)
+    monkeypatch.setenv('SUNTRAIN_WORLD_INTERNATIONAL_REFERENCE',str(path))
+    source=tmp_path/'followup.json.gz'
+    discovery.save(source,dict(collection=dict(searches_attempted=1),unresolved_airports={}))
+    result=preparation.prepare(cache,path,source=source)
+    assert result['flights'][0]['price']==quote()
+    assert result['metadata']['source_manifest']==dict(
+        path=str(source),sha256=discovery.digest(source.read_bytes()))
+
+
 def test_merged_journals_keep_newer_local_attempts_and_reject_conflicts(tmp_path):
     first=dict(query=list(KEY),attempted_at='2026-10-30T00:00:00Z')
     second=dict(query=[world.DAY,'BBB','AAA'],attempted_at='2026-10-30T00:01:00Z')

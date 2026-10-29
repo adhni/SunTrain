@@ -63,10 +63,11 @@ def record_query_key(flight, airports):
     return local.date().isoformat(), flight['origin'], flight['destination']
 
 
-def prepare(cache=CACHE, output=None, include_fresh=True):
+def prepare(cache=CACHE, output=None, include_fresh=True, source=None):
     # The committed prepared supplement remains usable without raw caches, but
     # rebuilding it must not silently discard evidence when a cache was cleared.
-    published = read(SOURCE) if SOURCE.exists() else {}
+    source_manifest_path = Path(source or SOURCE)
+    published = read(source_manifest_path) if source_manifest_path.exists() else {}
     if published.get('collection') and adapter.reference_path().exists():
         existing = read(adapter.reference_path())
         checked = set()
@@ -184,9 +185,9 @@ def prepare(cache=CACHE, output=None, include_fresh=True):
                     replay_note='International passenger additions for 2 November 2026 UTC; partial coverage. Existing country views are unchanged.',
                     fare_context=dict(currency='mixed', currencies=list(world.CURRENCIES), new_capture_currency='USD',
                                       adults=1, cabin='economy', trip_type='one_way'))
-    manifest = read(SOURCE) if SOURCE.exists() else None
+    manifest = read(source_manifest_path) if source_manifest_path.exists() else None
     if manifest:
-        metadata['source_manifest'] = dict(path=relative(SOURCE), sha256=digest(SOURCE.read_bytes()))
+        metadata['source_manifest'] = dict(path=relative(source_manifest_path), sha256=digest(source_manifest_path.read_bytes()))
         metadata['unresolved_airports'] = manifest['unresolved_airports']
     stop = CAPTURES / 'collection-stop.json'
     if stop.exists() and include_fresh:

@@ -31,3 +31,9 @@ test('Pacific dateline bounds produce a pin in the displayed world', () => {
     assert.deepEqual(groups[0].coordinates,[-170,0]);
     assert.deepEqual(pacific.bounds,[[128,-33],[252,33]]);
 });
+
+test('World flights is searchable without an arbitrary worldwide map pin',()=>{
+ const world={...place('world_flights',0,0),home_marker:false};
+ const melbourne=place('melbourne',145,-38);
+ assert.deepEqual(groupPlaces([world,melbourne],([x,y])=>({x,y})).flatMap(g=>g.members.map(m=>m.place.id)),['melbourne']);
+});

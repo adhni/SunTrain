@@ -181,7 +181,7 @@ def compressed_day(info):
                     temporary = Path(stream.name)
                     # The large global snapshot trades cold-build CPU for a <5 MiB
                     # download. Existing location responses keep their fast level 3.
-                    with gzip.GzipFile(filename="", fileobj=stream, mode="wb", compresslevel=9 if info['city'] == 'world_flights' else 3, mtime=0) as compressed:
+                    with gzip.GzipFile(filename="", fileobj=stream, mode="wb", compresslevel=9 if info.get('city') == 'world_flights' else 3, mtime=0) as compressed:
                         write_day(info, compressed)
             finally:
                 # write_day's local payload is gone before cached bytes are served.

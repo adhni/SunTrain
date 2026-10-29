@@ -76,7 +76,10 @@ def identity(flight):
 
 
 def aircraft_name(flight):
-    return flight.get('aircraft') or ('Airbus A' + flight['equipment'] if flight.get('equipment') else 'Aircraft not specified')
+    name = str(flight.get('aircraft') or '').strip()
+    if name.casefold() in {'', 'unknown', 'not specified', 'aircraft not specified', 'n/a'}:
+        return 'Airbus A' + flight['equipment'] if flight.get('equipment') else 'Aircraft not specified'
+    return name
 
 
 def canonical_json(value):
@@ -183,6 +186,7 @@ def prepare(output=None):
         temporary = Path(stream.name)
         try:
             stream.write(gzip.compress(raw, compresslevel=9, mtime=0)); stream.flush()
+            temporary.chmod(0o644)
             temporary.replace(destination)
         finally:
             temporary.unlink(missing_ok=True)

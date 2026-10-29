@@ -131,7 +131,37 @@
         }
         host.replaceChildren(cards); host.setAttribute("aria-busy", "false");
         if (day.replay_kind === 'flights') host.append(element('p', 'Schedule snapshot. Loaded flights only; search coverage is partial.', 'replay-muted'));
-        if (day.schedule?.coverage) {
+        if (day.schedule?.combined_capture) {
+            const c=day.schedule.coverage;
+            const message=(key,params)=>{
+                const p=element('p',undefined,'replay-muted');
+                p.textContent=root.suntrainI18n?.t(key,params) || key.replace(/\{([^}]+)\}/g,(_,name)=>params[name]);
+                return p;
+            };
+            host.append(message('{n} unique flights · {routes} routes · {airports} airports',
+                {n:count(c.flights),routes:count(c.routes_returned),airports:count(c.airports_returned)}),
+                element('p','Combined captures · Partial coverage','replay-muted'));
+            const evidence=element('details',undefined,'world-source-evidence');
+            evidence.append(element('summary','Collection evidence by source'),
+                element('p','Source views overlap. Their search totals are not additive.','replay-muted'));
+            const names=JSON.parse($('city-overview').dataset.cities);
+            for (const [id,member] of Object.entries(day.schedule.member_views)) {
+                const item=element('details');item.append(element('summary',names[id] || id));
+                item.append(message('{n} captured entries overlap the UTC day',{n:count(member.flights_overlapping_utc)}));
+                for (const coverage of [member.coverage,member.shared_network_coverage].filter(Boolean)) {
+                    if (Number.isFinite(coverage.queries_captured) && Number.isFinite(coverage.queries_planned))
+                        item.append(message('{n} queries captured · {total} queries planned',
+                            {n:count(coverage.queries_captured),total:count(coverage.queries_planned)}));
+                    if (Number.isFinite(coverage.routes_returned))
+                        item.append(message('{n} routes returned in source view',{n:count(coverage.routes_returned)}));
+                }
+                if (member.source_url) {
+                    const link=element('a','Source');link.href=member.source_url;link.rel='noreferrer';link.target='_blank';item.append(link);
+                }
+                evidence.append(item);
+            }
+            host.append(evidence);
+        } else if (day.schedule?.coverage) {
             const hub=filters.airports?.length===1?filters.airports[0]:null;
             const c = day.schedule.coverage_by_hub?.[hub] || day.schedule.coverage_by_scope?.[filters.flightScope || 'domestic'] || day.schedule.coverage;
             host.append(element('p', `${c.airports_returned} airports returned · ${c.airports_searched} airports searched · Schedule snapshot`, 'replay-muted'));

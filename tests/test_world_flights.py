@@ -59,6 +59,9 @@ def test_preserve_all_quotes_choose_cheapest_per_currency_and_prefer_usd():
     result=world.merge_views(inputs)['flights'][0]
     assert result['price']==quote('USD',10000)
     assert len(result['fare_quotes'])==4 and result['aircraft']=='A320'
+    for unknown in ['Unknown','unknown','Aircraft not specified','N/A','']:
+        known=world.merge_views([view('a',[flight(aircraft=unknown)]),view('b',[flight(aircraft='A320')])])['flights'][0]
+        assert known['aircraft']=='A320' and 'aircraft_variants' not in known
     assert {q['currency'] for q in result['fare_quotes']}=={'USD','MYR','EUR'}
     with pytest.raises(ValueError,match='Incompatible captured fare'):
         world.merge_views([view('a',[flight(price=quote(adults=2))])])

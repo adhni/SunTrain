@@ -107,8 +107,14 @@
     function inside(map, coordinate) {
         return viewport(map)(coordinate);
     }
-    function visibleCount(map, features) {
-        const contains = viewport(map), identities = new Set();
+    function visibleCount(map, features, knownUnique = false) {
+        const contains = viewport(map);
+        if (knownUnique) {
+            let count=0;
+            for (const feature of features) if (contains(feature.geometry.coordinates)) count++;
+            return count;
+        }
+        const identities = new Set();
         for (const feature of features) if (contains(feature.geometry.coordinates)) identities.add(feature.properties.id);
         return identities.size;
     }
@@ -142,6 +148,14 @@
         if (!p || !Number.isSafeInteger(p.amount_minor) || p.amount_minor<=0 || !['MYR','USD','EUR'].includes(p.currency)) return 'Price unavailable';
         return new Intl.NumberFormat(root.suntrainI18n?.locale || 'en-MY', {style:'currency',currency:p.currency,currencyDisplay:'code'}).format(p.amount_minor/100);
     }
+    function cheapestQuotes(service) {
+        const cheapest = new Map();
+        for (const quote of service.fare_quotes || (service.price ? [service.price] : [])) {
+            if (!cheapest.has(quote.currency) || quote.amount_minor < cheapest.get(quote.currency).amount_minor)
+                cheapest.set(quote.currency, quote);
+        }
+        return ['USD', 'EUR', 'MYR'].filter(currency => cheapest.has(currency)).map(currency => cheapest.get(currency));
+    }
     function captureTime(at, timezone) {
         const text=new Intl.DateTimeFormat(root.suntrainI18n?.locale || 'en-AU', {
             timeZone:timezone,year:'numeric',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',hourCycle:'h23',timeZoneName:'shortOffset'
@@ -150,9 +164,12 @@
         const label={'Asia/Kathmandu':'NPT','Asia/Taipei':'CST','Asia/Hong_Kong':'HKT','Asia/Brunei':'BNT','Asia/Phnom_Penh':'ICT','Asia/Vientiane':'ICT','Asia/Yangon':'MMT','Asia/Rangoon':'MMT','Asia/Dili':'TLT','Asia/Ho_Chi_Minh':'ICT','Asia/Manila':'PHT','Asia/Bangkok':'ICT','Asia/Kuala_Lumpur':'MYT','Asia/Singapore':'SGT','Asia/Kolkata':'IST','Asia/Seoul':'KST','Asia/Tokyo':'JST','Asia/Shanghai':'CST'}[timezone];
         return timezone==='UTC'?text.replace(/GMT(?:\+0)?/,'UTC'):label?text.replace(/GMT\+(?:13|[789]|[56][.:]30|5[.:]45)/,label):text;
     }
+    let planeCanvas, airportCanvas;
     function planeImage(color = '#f57c28') {
-        const canvas = document.createElement('canvas'); canvas.width = canvas.height = 64;
-        const ctx = canvas.getContext('2d');
+        const canvas = planeCanvas || (planeCanvas=document.createElement('canvas'));
+        if (canvas.width!==64 || canvas.height!==64) canvas.width = canvas.height = 64;
+        const ctx = canvas.getContext('2d', {willReadFrequently: true});
+        ctx.clearRect(0,0,64,64);
         const points = [[32,5],[36,10],[37,25],[57,39],[57,44],[37,37],[36,50],[43,55],
             [43,59],[32,55],[21,59],[21,55],[28,50],[27,37],[7,44],[7,39],[27,25],[28,10]];
         ctx.beginPath(); points.forEach(([x,y], i) => i ? ctx.lineTo(x,y) : ctx.moveTo(x,y)); ctx.closePath();
@@ -161,15 +178,17 @@
         return ctx.getImageData(0, 0, 64, 64);
     }
     function airportImage(code) {
-        const canvas = document.createElement('canvas'); canvas.width = 88; canvas.height = 40;
-        const ctx = canvas.getContext('2d');
+        const canvas = airportCanvas || (airportCanvas=document.createElement('canvas'));
+        if (canvas.width!==88 || canvas.height!==40) {canvas.width=88;canvas.height=40;}
+        const ctx = canvas.getContext('2d', {willReadFrequently: true});
+        ctx.clearRect(0,0,88,40);
         ctx.font = 'bold 22px sans-serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
         ctx.lineJoin = 'round'; ctx.lineWidth = 6; ctx.strokeStyle = '#17212b'; ctx.strokeText(code, 44, 20);
         ctx.fillStyle = '#fff'; ctx.fillText(code, 44, 20);
         return ctx.getImageData(0, 0, 88, 40);
     }
     const api = {bearing, bounds, marker, movingLayers, planeKey, openingBounds, greatCircle, hydratePaths, paintInterval, project, viewport, inside,
-        visibleCount, nearest, nextDeparture, scopeLabel, priceLabel, captureTime, planeImage, airportImage};
+        visibleCount, nearest, nextDeparture, scopeLabel, priceLabel, cheapestQuotes, captureTime, planeImage, airportImage};
     if (typeof module !== 'undefined' && module.exports) module.exports = api;
     root.suntrainFlights = api;
 })(typeof window !== 'undefined' ? window : globalThis);

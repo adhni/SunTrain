@@ -69,7 +69,9 @@
     }
     function pointAlong(path, fraction) {
         if (!path || !["track", "shape", "illustrative"].includes(path.quality) || path.coordinates.length < 2) return null;
-        const points = path.coordinates, distances = path.distances;
+        return interpolatePath(path.coordinates,path.distances,fraction);
+    }
+    function interpolatePath(points, distances, fraction) {
         if (fraction <= 0 || !distances.length || !distances[distances.length - 1]) return points[0];
         if (fraction >= 1) return points[points.length - 1];
         const distance = fraction * distances[distances.length - 1];
@@ -88,6 +90,17 @@
         else for (const stop of service.stops) yield stop[0];
     }
     function servicePosition(service, now, day) {
+        if (day.flight_geometry && service.mode==='flight') {
+            const departure=service.stops[0][2], arrival=service.stops[1][1];
+            if (now<departure || now>arrival) return null;
+            if (now===arrival) {
+                const airport=day.stations[service.stops[1][0]];
+                return {lon:airport.lon,lat:airport.lat};
+            }
+            const path=day.paths[service.legs[0]];
+            const point=interpolatePath(path.coordinates,path.distances,(now-departure)/(arrival-departure));
+            return {lon:point[0],lat:point[1]};
+        }
         const length = stopCount(service);
         // Transit patterns retain relative times; train stops already use epoch seconds.
         now -= service.timeOffset || 0;
@@ -277,9 +290,13 @@
                 }
                 this.departures?.updateJourneyLocale();
                 const fare=document.querySelector('.replay-flight-fare');
-                if (fare && this.selected) fare.textContent=root.suntrainFlights.priceLabel(this.selected);
-                const captured=document.querySelector('[data-fare-captured-at]');
-                if (captured) root.suntrainI18n.bind(captured, 'Captured: '+root.suntrainFlights.captureTime(captured.dataset.fareCapturedAt,this.day.timezone));
+                if (fare && this.selected) root.suntrainI18n.bind(fare,root.suntrainFlights.priceLabel(this.selected));
+                for (const captured of document.querySelectorAll('[data-fare-captured-at]'))
+                    root.suntrainI18n.bind(captured, 'Captured: '+root.suntrainFlights.captureTime(captured.dataset.fareCapturedAt,this.day.timezone));
+                for (const amount of document.querySelectorAll('[data-flight-quote]')) {
+                    const price=this.selected?.fare_quotes?.[Number(amount.dataset.flightQuote)];
+                    if (price) amount.textContent=root.suntrainFlights.priceLabel({price});
+                }
                 this.paint(true);
                 this.updateLegend();
             });
@@ -387,6 +404,18 @@
                             "circle-stroke-color": "#fff", "circle-stroke-width": 0.9, "circle-opacity": 0.95}});
                     const flightMarker = root.suntrainFlights.marker;
                     this.graph.addImage('suntrain-plane', root.suntrainFlights.planeImage(), {pixelRatio: 2});
+                    this.graph.on('styleimagemissing', event => {
+                        if (!this.day?.flight_geometry || this.graph.hasImage(event.id)) return;
+                        if (event.id.startsWith('plane-[')) {
+                            const [carrier,color]=JSON.parse(event.id.slice(6));
+                            if (root.suntrainFlights.planeKey({carrier,color})===event.id)
+                                this.graph.addImage(event.id,root.suntrainFlights.planeImage(color),{pixelRatio:2});
+                        } else if (event.id.startsWith('airport-')) {
+                            const code=event.id.slice(8);
+                            if (this.day.stations.some(airport=>airport.code===code))
+                                this.graph.addImage(event.id,root.suntrainFlights.airportImage(code),{pixelRatio:2});
+                        }
+                    });
                     this.graph.addLayer({id: 'replay-selected-plane', type: 'circle', source: 'replay-selected-train',
                         filter: ['==', ['get', 'mode'], 'flight'],
                         paint: {'circle-radius': 15, 'circle-opacity': 0, 'circle-stroke-color': '#fff', 'circle-stroke-width': 2}});
@@ -936,12 +965,19 @@
             const flights = this.active && !this.loading && this.mapReady && this.day?.replay_kind === 'flights';
             const moving = flights && !this.frequencyView;
             $('replay-flight-key').hidden = !flights;
+            const world = flights && this.day.schedule?.combined_capture;
+            $('replay-world-coverage').hidden = !world;
+            if (world) {
+                const c=this.day.schedule.coverage, number=n=>n.toLocaleString(root.suntrainI18n?.locale || 'en-AU');
+                setMessage('replay-world-coverage','{n} unique flights · {routes} routes · {airports} airports',
+                    {n:number(c.flights),routes:number(c.routes_returned),airports:number(c.airports_returned)});
+            }
             $('replay-flight-empty').hidden = true;
             $('replay-panel').classList.toggle('replay-flight-moving', !!moving);
             if (!moving) return;
             const api = root.suntrainFlights;
-            const visible = api.visibleCount(this.graph, this.activePositions || []);
-            const active = new Set((this.activePositions || []).map(f => f.properties.id)).size;
+            const visible = api.visibleCount(this.graph, this.activePositions || [], !!world);
+            const active = world ? this.activePositions.length : new Set((this.activePositions || []).map(f => f.properties.id)).size;
             const number = n => n.toLocaleString(root.suntrainI18n?.locale || 'en-AU');
             this.visibleFlights = visible;
             setMessage('replay-active-count', '{n}', {n: number(visible)});
@@ -1032,16 +1068,19 @@
             if (service.mode === 'flight') {
                 this.selectedHasLoads = false;
                 host.append(line, node('h3', service.number), node('p', `${service.origin} → ${service.destination}`, 'replay-detail-route'),
-                    node('p', `${service.operator} · ${service.aircraft}`, 'replay-muted replay-small'),
+                    node('p', service.operator, 'replay-muted replay-small'),
+                    node('p', service.aircraft, 'replay-muted replay-small'),
                     node('p', 'Scheduled replay · illustrative paths', 'replay-detail-note'));
                 if (this.day.schedule?.fare_context) {
                     host.append(node('p', root.suntrainFlights.priceLabel(service), 'replay-flight-fare'),
-                        node('p', 'Lowest captured fare · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.', 'replay-muted replay-small'));
+                        node('p', this.day.schedule.combined_capture ? 'Lowest captured fare in this currency · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.' :
+                            'Lowest captured fare · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.', 'replay-muted replay-small'));
                     if (service.price?.captured_at) {
                         const captured=node('p', 'Captured: '+root.suntrainFlights.captureTime(service.price.captured_at,this.day.timezone), 'replay-muted replay-small');
                         captured.dataset.fareCapturedAt=service.price.captured_at;host.append(captured);
                     }
                 }
+                this.captureDetails(service, host);
                 const live = node('div', undefined, 'replay-service-status'); live.id = 'replay-service-status'; host.append(live);
                 const duration = Math.round((service.stops[1][1] - service.stops[0][2]) / 60);
                 host.append(node('p', `${Math.floor(duration / 60)} h ${duration % 60} min`, 'replay-muted replay-small'));
@@ -1067,6 +1106,38 @@
             host.append(allStops);
             this.paint(true);
             if (departureCall) { host.tabIndex = -1; host.focus(); }
+        }
+        captureDetails(service, host) {
+            if (service.aircraft_variants?.length) {
+                const list=node('ul',undefined,'replay-small replay-aircraft-alternatives');
+                for (const variant of service.aircraft_variants) list.append(node('li',variant.aircraft));
+                host.append(list);
+            }
+            if (!service.fare_quotes?.length) return;
+            const details=node('details',undefined,'replay-small replay-captured-quotes');
+            details.append(node('summary','Captured fare quotes'),node('p','Cheapest in each currency · No currency conversion','replay-muted'));
+            details.append(node('p','Display preference: USD, then EUR, then MYR.','replay-muted'));
+            const amount = quote => {
+                const span=node('span');span.dataset.flightQuote=String(service.fare_quotes.indexOf(quote));
+                span.textContent=root.suntrainFlights.priceLabel({price:quote});return span;
+            };
+            const cheapest=node('ul');
+            for (const quote of root.suntrainFlights.cheapestQuotes(service)) {
+                const item=node('li');item.append(amount(quote));cheapest.append(item);
+            }
+            details.append(cheapest);
+            const all=node('details');all.append(node('summary','All captured quotes'));
+            const list=node('ul');
+            const names=JSON.parse($('city-overview').dataset.cities);
+            for (const quote of service.fare_quotes) {
+                const item=node('li');item.append(amount(quote));
+                if (quote.captured_at) {
+                    const captured=node('p','Captured: '+root.suntrainFlights.captureTime(quote.captured_at,this.day.timezone),'replay-muted');
+                    captured.dataset.fareCapturedAt=quote.captured_at;item.append(captured);
+                }
+                item.append(node('p',(quote.views || []).map(view=>names[view] || view).join(' · '),'replay-muted'));list.append(item);
+            }
+            all.append(list);details.append(all);host.append(details);
         }
         renderStopTable(service, host) {
             const scroll = node("div", undefined, "replay-stop-list"), table = node("table");
@@ -1155,7 +1226,8 @@
         }
         updateStaticLayers() {
             const ids = new Set(), stationIds = new Set();
-            for (const service of this.filtered) if (service.mode === 'flight') {
+            this.graph.setLayerZoomRange('replay-airport-labels',this.day.flight_geometry ? 4.5 : 0,24);
+            for (const service of this.day.flight_geometry ? [] : this.filtered) if (service.mode === 'flight') {
                 const key = root.suntrainFlights.planeKey(service);
                 if (!this.graph.hasImage(key)) this.graph.addImage(key, root.suntrainFlights.planeImage(service.color), {pixelRatio: 2});
             }
@@ -1171,7 +1243,7 @@
             const routes = routeFeatures(this.day.paths, ids);
             const selected = this.selected ? routeFeatures(this.day.paths, this.selected.legs) : [];
             const stations = this.display.includes("stations") ? [...stationIds].map(i => ({...this.day.stations[i], id: i})).filter(s => Number.isFinite(s.lon) && Number.isFinite(s.lat)) : [];
-            for (const station of stations) if (station.code && !this.graph.hasImage('airport-' + station.code))
+            for (const station of this.day.flight_geometry ? [] : stations) if (station.code && !this.graph.hasImage('airport-' + station.code))
                 this.graph.addImage('airport-' + station.code, root.suntrainFlights.airportImage(station.code), {pixelRatio: 2});
             this.graph.getSource('replay-frequency').setData(collection(this.frequencyFeatures || []));
             this.graph.getSource("replay-routes").setData(collection(routes));
@@ -1260,6 +1332,22 @@
                     activeCount++;
                     if (service.id === this.selected?.id) selectedPosition = position;
                     if (position.lon === null || position.lat === null) { missingCount++; continue; }
+                    if (worldViewport) {
+                        const coordinates=[position.lon,position.lat], selected=service.id===this.selected?.id;
+                        const properties={id:service.id,color:service.color,mode:'flight',selected};
+                        const visible=worldViewport(coordinates);
+                        // Dots need no artwork or heading. Retain off-screen identities
+                        // for global counts and picking without sending them to MapLibre.
+                        if (selected || visible && zoom>=root.suntrainFlights.marker.planeZoom) {
+                            properties.planeIcon=root.suntrainFlights.planeKey(service);
+                            const path=this.day.paths[service.legs[0]],f=(this.now-service.stops[0][2])/(service.stops[1][1]-service.stops[0][2]);
+                            properties.bearing=root.suntrainFlights.bearing(pointAlong(path,Math.max(0,f-.001)),pointAlong(path,Math.min(1,f+.001)));
+                        }
+                        const marker=pointFeature(coordinates,properties);trains.push(marker);
+                        if (visible) vehicleDots.push(marker);
+                        if (selected) selectedMarker=marker;
+                        continue;
+                    }
                     const kind = root.suntrainVehicles.bodyKind(this.day.city, service.mode);
                     const sizeFactor = markerScale(position.load, this.display.includes("load")) * (this.day.city === "melbourne" ? 0.75 : 1);
                     const spacing = kind ? root.suntrainVehicles.spacingPixels(zoom, sizeFactor) *

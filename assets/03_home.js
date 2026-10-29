@@ -10,7 +10,7 @@
     function groupPlaces(places, project, radius = 42) {
         // A few dozen catalogue points: group nearby screen positions without
         // downloading any schedules or adding another geographic dependency.
-        const points = places.map(place => {
+        const points = places.filter(place => place.home_marker !== false).map(place => {
             const coordinates = placeCenter(place);
             return {place, coordinates, point: project(coordinates)};
         });
@@ -63,6 +63,7 @@
                     this.map.on("zoomend", () => this.renderMarkers());
                     this.map.on("resize", () => this.renderMarkers());
                     $("home-reset").addEventListener("click", () => this.reset(true));
+                    $("home-world-flights").addEventListener("click", () => this.openReplay("world_flights"));
                     document.addEventListener("suntrain:themechange", () => root.suntrainTheme.styleMap(this.map));
                     this.observer = new ResizeObserver(entries => {
                         if (entries[0].contentRect.width > 0) this.map.resize();
@@ -108,10 +109,14 @@
                 this.markers.push(new root.maplibregl.Marker({element: button}).setLngLat(group.coordinates).addTo(this.map));
             }
         }
+        openReplay(city) {
+            root.dash_clientside.set_props("home-choice", {data: {city, sequence: ++this.sequence}});
+        }
         showPlace(id) {
             this.openPlace=id;
             const place = this.places.find(place => place.id === id);
             if (!place) return;
+            if (place.home_marker === false) { this.openReplay(id); return; }
             const content = node("div", undefined, "home-place-card");
             content.append(node("span", "NEXT STOP", "replay-eyebrow"), node("h3", place.name));
             content.append(node("p", [...new Set(place.modes.map(mode => root.suntrainI18n?.translate(modeNames[mode] || "Buses") || modeNames[mode] || "Buses"))].join(" · "), "home-place-modes"));

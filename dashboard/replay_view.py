@@ -110,6 +110,7 @@ def build_replay_panel(metadata, default_date):
                         html.Div([html.Span(className="replay-flight-key-dot", **{"aria-hidden": True}), html.Span("Moving flights"),
                                   html.Span(className="replay-flight-key-airport", **{"aria-hidden": True}), html.Span("Airports")], className="replay-flight-key-symbols"),
                         html.Div([html.Span(id="replay-flight-scope-note"), html.Span(" · Partial coverage")]),
+                        html.Div(id="replay-world-coverage", hidden=True),
                     ], id="replay-flight-key", className="replay-flight-key", hidden=True),
                     html.Div([
                         html.P("No selected flights on this map at this time."),

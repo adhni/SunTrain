@@ -21,8 +21,13 @@
     const marker = Object.freeze({planeZoom: 4.5, dotRadius: 2.2, dotStroke: 0.8,
         planeSize: 16, selectedSize: 22, pickingRadius: 12});
     const movingLayers = ['replay-flight-dots', 'replay-planes', 'replay-selected-plane', 'replay-selected-flight'];
+    const planeKeys = new Map();
     function planeKey(service) {
-        return 'plane-' + JSON.stringify([service.carrier || 'Unknown', service.color || '#f57c28']);
+        const carrier = service.carrier || 'Unknown', colour = service.color || '#f57c28';
+        if (!planeKeys.has(carrier)) planeKeys.set(carrier, new Map());
+        const colours = planeKeys.get(carrier);
+        if (!colours.has(colour)) colours.set(colour, 'plane-' + JSON.stringify([carrier, colour]));
+        return colours.get(colour);
     }
     function openingBounds(day) {
         if (!['hub', 'network'].includes(day.flight_view_kind)) return day.bounds;
@@ -34,12 +39,29 @@
         const lon = coordinate[0] + 360 * Math.round((map.getCenter().lng - coordinate[0]) / 360);
         return map.project([lon, coordinate[1]]);
     }
+    function viewport(map) {
+        const centre = map.getCenter().lng;
+        const wrap = lon => lon + 360 * Math.round((centre - lon) / 360);
+        // An unrotated, level Mercator viewport is a geographic rectangle.
+        // Read it once instead of projecting every flight and reading layout per point.
+        if (map.getBounds && !map.getBearing() && !map.getPitch()) {
+            const box = map.getBounds();
+            const west = box.getWest(), east = box.getEast(), south = box.getSouth(), north = box.getNorth();
+            return ([lon, lat]) => lat >= south && lat <= north && wrap(lon) >= west && wrap(lon) <= east;
+        }
+        const canvas = map.getContainer(), width = canvas.clientWidth, height = canvas.clientHeight;
+        return ([lon, lat]) => {
+            const p = map.project([wrap(lon), lat]);
+            return p.x >= 0 && p.y >= 0 && p.x <= width && p.y <= height;
+        };
+    }
     function inside(map, coordinate) {
-        const p = project(map, coordinate), canvas = map.getContainer();
-        return p.x >= 0 && p.y >= 0 && p.x <= canvas.clientWidth && p.y <= canvas.clientHeight;
+        return viewport(map)(coordinate);
     }
     function visibleCount(map, features) {
-        return new Set(features.filter(f => inside(map, f.geometry.coordinates)).map(f => f.properties.id)).size;
+        const contains = viewport(map), identities = new Set();
+        for (const feature of features) if (contains(feature.geometry.coordinates)) identities.add(feature.properties.id);
+        return identities.size;
     }
     function nearest(map, features, point) {
         let match = null, distance = marker.pickingRadius ** 2;
@@ -51,9 +73,12 @@
     }
     function nextDeparture(map, services, day, now) {
         let next = null;
+        const contains = viewport(map), airports = new Map();
         for (const service of services) {
             const stop = service.stops[0], at = stop[2], airport = day.stations[stop[0]];
-            if (at > now && at <= day.end && (next === null || at < next) && inside(map, [airport.lon, airport.lat])) next = at;
+            if (at <= now || at > day.end || (next !== null && at >= next)) continue;
+            if (!airports.has(stop[0])) airports.set(stop[0], contains([airport.lon, airport.lat]));
+            if (airports.get(stop[0])) next = at;
         }
         return next;
     }

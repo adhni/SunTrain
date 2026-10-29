@@ -12,6 +12,9 @@ with sync_playwright() as p:
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"malaysia_flights"})')
     page.wait_for_function('window.suntrainReplay?.day?.city==="malaysia_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
+    assert page.evaluate('suntrainReplay.filters.flightScope')=='both'
+    page.evaluate('dash_clientside.set_props("replay-flight-scope",{value:"domestic"})')
+    page.wait_for_function('suntrainReplay.filters.flightScope==="domestic"')
     assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
     assert 'MYT' in page.locator('#replay-clock-date').inner_text()
     count=len(downloads)

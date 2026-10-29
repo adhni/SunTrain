@@ -12,8 +12,9 @@ with sync_playwright() as p:
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"gulf_flights"})')
     page.wait_for_function('window.suntrainReplay?.day?.city==="gulf_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
-    page.wait_for_function('suntrainReplay.filters.airports[0]==="DXB"')
-    assert page.evaluate('suntrainReplay.day.schedule.fare_context.currency')=='USD'
+    page.wait_for_function('!suntrainReplay.filters.airports.length && suntrainReplay.filtered.length===suntrainReplay.day.services.length')
+    fare_context=page.evaluate('suntrainReplay.day.schedule.fare_context')
+    assert fare_context['currency']=='USD' or (fare_context['currency']=='mixed' and 'USD' in fare_context['currencies'])
     assert not page.locator('#replay-flight-scope-field').is_visible()
     count=len(downloads)
     for code,zone,offset in [('DXB','Asia/Dubai','GMT+4'),('AUH','Asia/Dubai','GMT+4'),('DOH','Asia/Qatar','GMT+3')]:
@@ -46,7 +47,7 @@ with sync_playwright() as p:
         page.get_by_role('button',name='Back to airport board',exact=True).click()
         assert page.evaluate('suntrainReplay.departures.expanded')
         page.evaluate('suntrainReplay.departures.close()')
-    print('DXB default, three hub switches, isolated traffic, USD fares, local clocks, fullscreen and preview return passed',flush=True)
+    print('All-captured default, three hub switches, isolated traffic, USD fares, local clocks, fullscreen and preview return passed',flush=True)
     page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="DOH"))')
     page.locator('[data-hub="DXB"]').click()
     page.wait_for_function('!suntrainReplay.departures.visible && suntrainReplay.filters.airports[0]==="DXB"')

@@ -60,6 +60,7 @@ with sync_playwright() as p:
  page.evaluate('dash_clientside.set_props("replay-from-countries",{value:[]});dash_clientside.set_props("replay-to-countries",{value:[]});dash_clientside.set_props("replay-airport-direction",{value:"departures"})')
  page.wait_for_function('!suntrainReplay.filters.fromCountries.length && !suntrainReplay.filters.toCountries.length && suntrainReplay.filters.airportDirection==="departures"')
  for code in ['STN','LGW','DUB','BGY','GVA','BSL','NCE','MXP','BUD','OTP','LTN','FRA','ZRH','VIE','BRU','LHR','MAD','AMS','CDG','JFK','CPH','OSL','HEL','WAW','LIS','ATH','RIX','KEF','RKV','FCO']:
+  board_camera=page.evaluate('({center:suntrainReplay.graph.getCenter().toArray(),zoom:suntrainReplay.graph.getZoom()})')
   page.evaluate('(code)=>dash_clientside.set_props("replay-airports",{value:[code]})',code)
   page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.filtered.length && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].code===code)',arg=code)
   page.evaluate('(code)=>{suntrainReplay.seek(suntrainReplay.day.start);suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code===code))}',code)
@@ -70,7 +71,7 @@ with sync_playwright() as p:
    assert page.evaluate('suntrainReplay.now')==before and 'EUR' in page.locator('.replay-flight-fare').inner_text()
    page.get_by_role('button',name='Back to airport board',exact=True).click();assert page.evaluate('suntrainReplay.departures.expanded')
   if code=='JFK':
-   assert page.evaluate('suntrainReplay.graph.getBounds().contains([-73.7781,40.6413])')
+   assert page.evaluate('({center:suntrainReplay.graph.getCenter().toArray(),zoom:suntrainReplay.graph.getZoom()})')==board_camera,'Opening a foreign board keeps the camera steady'
    assert page.evaluate('suntrainReplay.departures.timezone')=='America/New_York'
    assert 'GMT-5' in page.locator('#replay-departures').inner_text()
   if code=='GVA':
@@ -115,6 +116,6 @@ with sync_playwright() as p:
  assert len(downloads)==count
  page.evaluate('dash_clientside.set_props("replay-city",{value:"nepal_flights"})')
  page.wait_for_function('suntrainReplay.day.city==="nepal_flights" && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
- assert page.evaluate('suntrainReplay.filters.flightScope')=='domestic' and not page.evaluate('suntrainReplay.day.flight_brands') and not page.evaluate('suntrainReplay.day.flight_groups')
+ assert page.evaluate('suntrainReplay.filters.flightScope')=='both' and not page.evaluate('suntrainReplay.day.flight_brands') and not page.evaluate('suntrainReplay.day.flight_groups')
  assert not errors,errors
  print(f'{total} records: brand/carrier filters, actual-country scopes, UTC/local clocks, EUR, boards, mobile, themes, Indonesian and existing-country reset passed',flush=True);browser.close()

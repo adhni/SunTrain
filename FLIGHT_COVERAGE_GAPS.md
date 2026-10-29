@@ -1,0 +1,11 @@
+# Flight capture gaps for a later collection pass
+
+The display consistency work uses the existing captures. No searches, source adapters, dates or reference files were added. “All captured” includes all records available in a view, not all flights operated in its country. Views overlap; their totals must not be added together.
+
+- **Sparse ASEAN snapshots:** Laos has 32 flights, including only two domestic flights; Myanmar has 89, Brunei 24 and Timor-Leste eight. Laos's captured domestic departures on 2 November are LK212 at 12:15 and LK213 at 13:20, airport-local time. An empty 10:00 domestic map is expected. Future expansion should validate missing published routes and dates before collecting targeted queries.
+- **European networks:** 13,073 captured flights represent selected airline networks. The frozen manifests contain 13,727 directional route candidates, with 6,210 returning flights for this snapshot. Completion of the 19,672 source requests does not establish European or national completeness. Other airlines and unreturned route/date candidates remain separate work.
+- **Americas airport collections:** North America (`united_states_flights`), South America and Americas cover selected airports. South America has 27 catalogued airports but only 25 with returned flights. Retained hollow airport markers and boards distinguish an unreturned airport from an absent airport. Expanding the airport catalogue requires separately sourced route evidence.
+- **Hub connections:** Singapore, Hong Kong, Gulf hubs, Bahrain, Kuwait, Brunei and Timor-Leste show captured connections around their hubs. Worldwide endpoint framing improves visibility; it does not extend destination or airline coverage.
+- **Other countries and regions:** These remain selected-route snapshots. Existing per-view source notes and coverage metadata distinguish returned routes, failed/missing queries and results not returned. Use those manifests and resumable caches for a later targeted pass. An empty search result is not evidence of no service.
+
+Keep original currencies/fares, exact airport identities and source timestamps when expanding. Frequency-only evidence must not become invented departure times. The presentation change does not authorize new collection or automatic refresh.

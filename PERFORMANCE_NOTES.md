@@ -92,3 +92,24 @@ Validation passed **80 targeted Python tests and 108 JavaScript tests**. Europe 
 The transit-departure browser script completed all assertions successfully on two runs, but local Chrome stalled at `browser.close()` afterward and required interrupting those audit-owned test processes. Explicit context closure did not resolve that shutdown issue, so no speculative cleanup change was retained. This is a browser-harness limitation; its process exit is not reported as a clean pass.
 
 Detailed samples, preservation comparisons and logs are under ignored `.cache/performance-small-fixes/`. Audit-only servers and generated HTTP/baseline gzip files were cleaned up after validation. Route geometry, cache prewarming and hosting changes remain deferred. No flight searches, source-data preparation, hosting changes or deployment were performed.
+
+## Consistent flight maps (29 October 2026)
+
+Flight HTTP format is now **27**, adding `flight_view_kind` and local-date 10:00 opening behavior. The compressed endpoint structure, cache policy and exclusion of download-only query metadata remain intact. The presentation uses individual dots below zoom 4.5, fixed 16 px plane canvases nearby and a 22 px selected plane at every zoom. Full behavior and coverage boundaries are in [FLIGHT_DISPLAY_NOTES.md](FLIGHT_DISPLAY_NOTES.md) and [FLIGHT_COVERAGE_GAPS.md](FLIGHT_COVERAGE_GAPS.md).
+
+The new viewport counter initially projected every active flight and repeatedly read canvas dimensions. Its first isolated samples averaged a median **12.1 ms desktop / 58.3 ms at 4× CPU** per playback paint. The final implementation reads one geographic viewport for a level, unrotated map, with exact screen projection retained for rotated/tilted maps. It also caches carrier/colour sprite keys and avoids writing/translating the flight count twice. Independent screen projection matched the optimized count across all 13 actual opening maps, including Pacific wrapping; identities are deduplicated without clustering.
+
+Final measurements used local Chrome/software WebGL, one Gunicorn worker/four threads, a warmed dedicated HTTP cache and three fresh browser contexts per condition. No other audit browser ran during the final samples. Europe was fully loaded, then played for three wall-clock seconds at 60× speed (about 1,768 active flights). Before measuring Heathrow board opening, the clock returned to 10:00. The board timer ended after filter/board synchronization and two animation frames, following the previous benchmark's completion rule.
+
+| Median of 3 | Earlier notes | Final |
+| --- | ---: | ---: |
+| Desktop Heathrow board | 1.24 s | **0.46 s** |
+| 390 × 844, 4× CPU Heathrow board | 2.52 s | **1.57 s** |
+| Desktop playback JS per paint | 6.9 ms | **7.8 ms** |
+| 390 × 844, 4× CPU playback JS per paint | 29.2 ms | **35.9 ms** |
+
+Board responsiveness improved in these samples, consistent with removing automatic camera fitting during airport filtering. Playback JS remains slightly higher than the earlier notes, despite the counter optimization. The earlier playback numbers were from a separate run, not a paired same-session baseline. These measurements do not establish physical-phone performance, GPU frame time or public-host latency. All final benchmark samples had no page errors and the benchmark browser shut down cleanly.
+
+Validation passed **473 flight/HTTP Python tests, 14 transit/i18n Python tests and 114 JavaScript tests**. The complete presentation browser run and ten existing browser regressions passed: Europe, Africa, Singapore, Gulf hubs, Australia international, Pacific, airport focus, bilingual calendar/fullscreen/mobile, transit departures and Melbourne map/vehicles. Final runs exited cleanly. One earlier presentation retry completed every assertion but stalled inside Chrome shutdown; it was interrupted and is recorded separately in `browser-optimized.log`, not counted as a clean pass. An overlapping experimental timing run was interrupted and excluded from the final samples. Two stale USD-only browser assertions were corrected for already-existing mixed-currency Singapore/Gulf metadata; their reruns passed without changing any fares.
+
+All 40 views' records, fares, airport objects, paths and capture metadata matched the pre-change adapter; all 292 reference hashes were preserved and `data/` has no diff. No flight searches or preparation runs were performed. The updated before/after selector, 13 screenshot pairs, metrics, source hashes, regression logs and raw timing samples are under ignored `.cache/flight-display-consistency/`. Audit-only generated HTTP responses are disposable; screenshots and measurements are retained.

@@ -106,6 +106,16 @@ def build_replay_panel(metadata, default_date):
                         ]),
                     ]),
                     html.P("Thicker lines mean more captured flights that day (both directions). Click a line to explore.", id="replay-frequency-help", className="replay-frequency-help", hidden=True),
+                    html.Div([
+                        html.Div([html.Span(className="replay-flight-key-dot", **{"aria-hidden": True}), html.Span("Moving flights"),
+                                  html.Span(className="replay-flight-key-airport", **{"aria-hidden": True}), html.Span("Airports")], className="replay-flight-key-symbols"),
+                        html.Div([html.Span(id="replay-flight-scope-note"), html.Span(" · Partial coverage")]),
+                    ], id="replay-flight-key", className="replay-flight-key", hidden=True),
+                    html.Div([
+                        html.P("No selected flights on this map at this time."),
+                        html.Button("Next departure", id="replay-next-departure", className="finder-chip", hidden=True),
+                        html.P("Try the timeline or Fit flights.", id="replay-flight-empty-hint"),
+                    ], id="replay-flight-empty", className="replay-flight-empty", hidden=True),
                     html.Div(id="replay-map", className="replay-map", role="region", **{"aria-label": "Historical train, tram and bus replay and train passenger demand map"}),
                     html.Details(id="replay-demand-legend", className="replay-demand-legend", hidden=True, open=True,
                                **{"aria-label": "Passenger boarding scale"}, children=[

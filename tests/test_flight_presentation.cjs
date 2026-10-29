@@ -42,3 +42,19 @@ test('next departure uses exact future timestamps at origins inside the viewport
  assert.equal(flight.nextDeparture(map,services,day,201),null);
  assert.equal(flight.nextDeparture(map,[{stops:[[0,501,501]]}],day,100),null);
 });
+
+test('level geographic viewport matches projection without projecting each marker',()=>{
+ let projections=0;
+ const geographic={...map,getBearing:()=>0,getPitch:()=>0,
+  getBounds:()=>({getWest:()=>130,getEast:()=>230,getSouth:()=>-50,getNorth:()=>50}),
+  project:coordinate=>{projections++;return map.project(coordinate);}};
+ const features=[feature('a',-179),feature('a',181),feature('b',130),feature('c',230),feature('d',231),feature('e',170,51)];
+ assert.equal(flight.visibleCount(geographic,features),flight.visibleCount(map,features));
+ assert.equal(projections,0);
+ // Rotated or pitched cameras retain the exact screen-projection path.
+ assert.equal(flight.visibleCount({...geographic,getBearing:()=>20},features),3);
+ assert.equal(projections,features.length);
+ projections=0;
+ assert.equal(flight.visibleCount({...geographic,getPitch:()=>30},features),3);
+ assert.equal(projections,features.length);
+});

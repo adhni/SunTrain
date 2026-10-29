@@ -1107,5 +1107,18 @@
   "Mexico · Flights departing 2 November 2026 in each origin airport’s local time, including overnight arrivals.": "Mexico · Flights departing 2 November 2026 in each origin airport’s local time, including overnight arrivals.",
   "Mexico · Flights departing 2 November 2026 in each origin airport’s local time, including overnight arrivals. Timeline: UTC; airport boards use local time. New quotes use USD; reused quotes retain their original currencies. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.": "Mexico · Flights departing 2 November 2026 in each origin airport’s local time, including overnight arrivals. Timeline: UTC; airport boards use local time. New quotes use USD; reused quotes retain their original currencies. Coverage and prices are partial. Empty results mean not returned, not no service. Paths are illustrative.",
   "European airline networks · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.": "European airline networks · 2 November 2026 schedule snapshot. Timeline: UTC; airport boards use local dates and times. Captured fares retain their original currencies. Coverage and prices are partial; paths are illustrative.",
-  "European airline networks · 2 November 2026 schedule snapshot.": "European airline networks · 2 November 2026 schedule snapshot."
+  "European airline networks · 2 November 2026 schedule snapshot.": "European airline networks · 2 November 2026 schedule snapshot.",
+  "All captured": "All captured",
+  "Fit flights": "Fit flights",
+  "Moving flights": "Moving flights",
+  "Selected airline networks": "Selected airline networks",
+  "Selected airports": "Selected airports",
+  "Selected routes": "Selected routes",
+  " · Partial coverage": " · Partial coverage",
+  " on map · {n} active": " on map · {n} active",
+  "{n} captured flights": "{n} captured flights",
+  "{n} of {total} captured flights": "{n} of {total} captured flights",
+  "No selected flights on this map at this time.": "No selected flights on this map at this time.",
+  "Next departure": "Next departure",
+  "Try the timeline or Fit flights.": "Try the timeline or Fit flights."
 }

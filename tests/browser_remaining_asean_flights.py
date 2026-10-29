@@ -17,7 +17,7 @@ with sync_playwright() as p:
         page.evaluate('(c)=>dash_clientside.set_props("replay-city",{value:c})',city)
         page.wait_for_function('(c)=>window.suntrainReplay?.day?.city===c && suntrainReplay.mapReady && !suntrainReplay.loading && !suntrainReplay.needsFit && suntrainReplay.filtered.length',arg=city,timeout=120000)
         assert page.evaluate('suntrainReplay.day.timezone')==profile['zone']
-        assert page.evaluate('suntrainReplay.filters.flightScope')==profile['default_scope']
+        assert page.evaluate('suntrainReplay.filters.flightScope')=='both'
         assert profile['label'] in page.locator('#replay-clock-date').inner_text()
         assert page.locator('#replay-flight-scope-field').is_visible()==profile['domestic']
         assert not page.evaluate('suntrainReplay.day.stations.some(a=>["PNH","REP"].includes(a.code))')

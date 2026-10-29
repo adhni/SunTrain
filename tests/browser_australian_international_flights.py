@@ -13,7 +13,7 @@ with sync_playwright() as p:
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"australia_flights"})')
     page.wait_for_function('suntrainReplay?.day?.city==="australia_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
     assert page.locator('#replay-flight-scope-field').is_visible()
-    assert page.evaluate('suntrainReplay.filtered.every(s=>s.flight_scope==="domestic")')
+    assert page.evaluate('suntrainReplay.filters.flightScope==="both" && suntrainReplay.filtered.length===suntrainReplay.day.services.length')
     count=len(downloads)
     page.locator('#replay-flight-scope').click()
     page.get_by_role('option',name='International',exact=True).click()

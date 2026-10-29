@@ -23,7 +23,7 @@ with sync_playwright() as p:
     assert page.evaluate('suntrainReplay.day.stations.length')==len(json.loads(Path('data/sources/africa_flights_routes.json').read_text())['airports'])
     assert page.evaluate('suntrainReplay.filters.flightScope')=='both'
     assert page.locator('#replay-flight-scope-field').is_visible()
-    assert page.evaluate('suntrainReplay.day.regional_start_view && Math.abs(suntrainReplay.graph.getCenter().lng-20)<10 && Math.abs(suntrainReplay.graph.getCenter().lat)<15')
+    assert page.evaluate('suntrainReplay.day.flight_view_kind==="region" && Math.abs(suntrainReplay.graph.getCenter().lng-20)<10 && Math.abs(suntrainReplay.graph.getCenter().lat)<15')
     total=page.evaluate('suntrainReplay.filtered.length');count=len(downloads)
     assert total>700
     page.screenshot(path=str(AUDIT/'map.png'))

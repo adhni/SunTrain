@@ -14,7 +14,7 @@ with sync_playwright() as p:
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"});dash_clientside.set_props("replay-city",{value:"australia_flights"})')
     page.wait_for_function('window.suntrainReplay?.day?.city === "australia_flights" && suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length', timeout=120000)
-    page.wait_for_function('suntrainReplay.graph.queryRenderedFeatures({layers:["replay-planes"]}).length > 0')
+    page.wait_for_function('suntrainReplay.graph.queryRenderedFeatures({layers:["replay-planes","replay-flight-dots"]}).length > 0')
     assert page.evaluate('suntrainReplay.day.stations.length') >= 18
     assert page.evaluate('new Set(suntrainReplay.filtered.map(s=>s.operator)).size') >= 3
     assert page.evaluate('suntrainReplay.day.stations.filter(a=>["MEL","AVV"].includes(a.code)).length') == 2

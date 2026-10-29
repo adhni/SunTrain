@@ -231,6 +231,14 @@
     let clockFormat, dateFormat, shortTime, shortDate;
     const $ = id => document.getElementById(id);
     const setText = (id, text) => { const element = $(id); if (element) { if (root.suntrainI18n) root.suntrainI18n.bind(element, text); else if(element.textContent !== String(text)) element.textContent = text; } };
+    // These counters are regenerated on locale changes; substitute numbers once.
+    function setMessage(id, key, params) {
+        const element = $(id);
+        if (!element) return;
+        const text = root.suntrainI18n?.t(key, params) || key.replace(/\{([^}]+)\}/g, (_, name) => params[name]);
+        element.removeAttribute('data-l10n');
+        if (element.textContent !== text) element.textContent = text;
+    }
     function node(tag, text, className) {
         const result = document.createElement(tag);
         if (text !== undefined) { if (root.suntrainI18n) root.suntrainI18n.bind(result, text); else result.textContent = text; }
@@ -294,6 +302,10 @@
                 this.graph.addControl(new root.maplibregl.NavigationControl({showCompass: false}), "top-right");
                 this.graph.addControl(new root.maplibregl.ScaleControl({unit: "metric"}));
                 $("replay-melbourne").addEventListener("click", () => this.metroView());
+                $("replay-next-departure").addEventListener("click", () => {
+                    const at = root.suntrainFlights.nextDeparture(this.graph, this.filtered, this.day, this.now);
+                    if (at !== null) { this.pause(); this.seek(at); }
+                });
                 $("replay-fullscreen").addEventListener("click", () => this.toggleFullscreen());
                 $("replay-fullscreen-filters").addEventListener("click", () => {
                     const visible = $("replay-panel").classList.toggle("replay-show-filters");
@@ -368,23 +380,24 @@
                         filter: ["!=", ["get", "mode"], "flight"],
                         paint: {"circle-color": ["get", "color"], "circle-radius": markerRadius(),
                             "circle-stroke-color": "#fff", "circle-stroke-width": 0.9, "circle-opacity": 0.95}});
+                    const flightMarker = root.suntrainFlights.marker;
                     this.graph.addImage('suntrain-plane', root.suntrainFlights.planeImage(), {pixelRatio: 2});
                     this.graph.addLayer({id: 'replay-selected-plane', type: 'circle', source: 'replay-selected-train',
                         filter: ['==', ['get', 'mode'], 'flight'],
                         paint: {'circle-radius': 15, 'circle-opacity': 0, 'circle-stroke-color': '#fff', 'circle-stroke-width': 2}});
-                    this.graph.addLayer({id: 'replay-flight-dots', type: 'circle', source: 'replay-trains', maxzoom: 4.5,
+                    this.graph.addLayer({id: 'replay-flight-dots', type: 'circle', source: 'replay-trains', maxzoom: flightMarker.planeZoom,
                         filter: ['all', ['==', ['get', 'mode'], 'flight'], ['!=', ['get', 'selected'], true]],
-                        paint: {'circle-radius': 2.2, 'circle-color': ['get', 'color'],
-                            'circle-stroke-width': 0.8, 'circle-stroke-color': '#fff'}});
-                    this.graph.addLayer({id: 'replay-planes', type: 'symbol', source: 'replay-trains', minzoom: 4.5,
+                        paint: {'circle-radius': flightMarker.dotRadius, 'circle-color': ['get', 'color'],
+                            'circle-stroke-width': flightMarker.dotStroke, 'circle-stroke-color': '#fff'}});
+                    this.graph.addLayer({id: 'replay-planes', type: 'symbol', source: 'replay-trains', minzoom: flightMarker.planeZoom,
                         filter: ['all', ['==', ['get', 'mode'], 'flight'], ['!=', ['get', 'selected'], true]], layout: {
-                            'icon-image': ['coalesce', ['get', 'planeIcon'], 'suntrain-plane'], 'icon-size': 0.5,
+                            'icon-image': ['coalesce', ['get', 'planeIcon'], 'suntrain-plane'], 'icon-size': flightMarker.planeSize / 32,
                             'icon-rotate': ['coalesce', ['get', 'bearing'], 0], 'icon-rotation-alignment': 'map',
                             'icon-allow-overlap': true, 'icon-ignore-placement': true},
                         paint: {'icon-opacity': ['coalesce', ['get', 'opacity'], 1]}});
                     this.graph.addLayer({id: 'replay-selected-flight', type: 'symbol', source: 'replay-selected-train',
                         filter: ['==', ['get', 'mode'], 'flight'], layout: {
-                            'icon-image': ['coalesce', ['get', 'planeIcon'], 'suntrain-plane'], 'icon-size': 0.6875,
+                            'icon-image': ['coalesce', ['get', 'planeIcon'], 'suntrain-plane'], 'icon-size': flightMarker.selectedSize / 32,
                             'icon-rotate': ['coalesce', ['get', 'bearing'], 0], 'icon-rotation-alignment': 'map',
                             'icon-allow-overlap': true, 'icon-ignore-placement': true}});
                     this.graph.addLayer({id: 'replay-airport-labels', type: 'symbol', source: 'replay-stations',
@@ -702,6 +715,9 @@
             }
             setText('replay-open-departures', flights ? 'Airports' : 'Departures');
             setText('replay-fit', flights ? 'Fit flights' : 'Fit selection');
+            setText('replay-flight-scope-note', root.suntrainFlights.scopeLabel(day));
+            $('replay-panel').classList.toggle('replay-flight-view', flights);
+            this.totalFlights = flights ? new Set(day.services.map(s => s.id)).size : 0;
             setText('replay-legend-label', flights ? 'Flights' : 'Line colours');
             const restartLabel = flights ? 'Restart at midnight' : 'Restart at 03:00';
             for (const attr of ['title', 'aria-label']) root.suntrainI18n.bind($('replay-restart'), restartLabel, attr);
@@ -849,6 +865,7 @@
             const sizeHelp = $("replay-size-help");
             if (sizeHelp) sizeHelp.hidden = !display.includes("load");
             this.filtered = this.day.services.filter(service => matches(service, filters, this.day));
+            this.matchingFlights = this.day.replay_kind === 'flights' ? new Set(this.filtered.map(s => s.id)).size : 0;
             this.flightEvent = this.day.replay_kind === 'flights' && filters.airports?.length && filters.airportDirection === 'arrivals' ? 'arrival' : 'departure';
             this.frequencyFeatures = this.day.replay_kind === 'flights' ? root.suntrainFlightNetwork.frequencyNetwork(this.filtered, this.day, this.flightEvent) : [];
             if (this.day.replay_kind === 'flights' && this.departures?.station != null) {
@@ -894,6 +911,29 @@
             const qualityHost=$("replay-quality");qualityHost.replaceChildren();
             for(const text of pieces)qualityHost.append(node("span",text),document.createTextNode(" "));
             setText("replay-matching-count", ` · ${this.filtered.length.toLocaleString(root.suntrainI18n?.locale || "en-AU")} services in this day`);
+        }
+        updateFlightCoverage() {
+            const flights = this.active && !this.loading && this.mapReady && this.day?.replay_kind === 'flights';
+            const moving = flights && !this.frequencyView;
+            $('replay-flight-key').hidden = !flights;
+            $('replay-flight-empty').hidden = true;
+            $('replay-panel').classList.toggle('replay-flight-moving', !!moving);
+            if (!moving) return;
+            const api = root.suntrainFlights;
+            const visible = api.visibleCount(this.graph, this.activePositions || []);
+            const active = new Set((this.activePositions || []).map(f => f.properties.id)).size;
+            const number = n => n.toLocaleString(root.suntrainI18n?.locale || 'en-AU');
+            this.visibleFlights = visible;
+            setMessage('replay-active-count', '{n}', {n: number(visible)});
+            setMessage('replay-active-label', ' on map · {n} active', {n: number(active)});
+            setMessage('replay-matching-count', this.matchingFlights === this.totalFlights ? '{n} captured flights' : '{n} of {total} captured flights',
+                {n: number(this.matchingFlights), total: number(this.totalFlights)});
+            if (this.matchingFlights && !visible) {
+                $('replay-flight-empty').hidden = false;
+                const next = api.nextDeparture(this.graph, this.filtered, this.day, this.now);
+                $('replay-next-departure').hidden = next === null;
+                $('replay-flight-empty-hint').hidden = next !== null;
+            }
         }
         focusFlightConnection(a, b) {
             if (this.filters.airports?.includes(this.day.stations[b].code) && !this.filters.airports.includes(this.day.stations[a].code)) [a, b] = [b, a];
@@ -1246,7 +1286,8 @@
                     if(this.day.timezone==='UTC')dateText=dateText.replace(/GMT(?:\+0)?/,'UTC');
                     if(this.day.timezone==='America/New_York')dateText=dateText.replace(/GMT-5/,'EST').replace(/GMT-4/,'EDT');
                     setText("replay-clock-date",dateText);
-                    setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
+                    if (this.day.replay_kind !== 'flights' || this.frequencyView)
+                        setText("replay-active-count", (this.frequencyView ? this.frequencyFeatures.length : activeCount).toLocaleString(root.suntrainI18n?.locale || "en-AU"));
                     setText("replay-position-note", missingCount ? ` · ${missingCount.toLocaleString(root.suntrainI18n?.locale || "en-AU")} vehicle position${missingCount === 1 ? "" : "s"} unavailable` : "");
                     const slider = $("replay-timeline")?.querySelector("input");
                     if (slider) {
@@ -1256,6 +1297,7 @@
                     }
                     this.detailStatus(selectedPosition);
                     this.departures?.update();
+                    this.updateFlightCoverage();
                 }
                 this.frameCount++; this.renderMilliseconds += performance.now() - started;
             } catch (error) {
@@ -1280,6 +1322,7 @@
                 this.demandMinute = null; this.demandSnapshot = null; this.demandPopupId = null; this.popup?.remove();
                 if ($("replay-demand-legend")) $("replay-demand-legend").hidden = true;
                 setText("replay-position-note", "");
+                this.updateFlightCoverage();
                 root.dash_clientside.set_props("replay-play", {disabled: true});
                 if ($("replay-map")) $("replay-map").classList.add("replay-is-loading");
                 setText("replay-active-count", "—"); setText("replay-matching-count", day?.error ? " · Could not load this day" : " · Loading this day…");
@@ -1290,7 +1333,7 @@
             $("replay-map")?.classList.remove("replay-is-loading");
             const newDay = !this.day || this.day.city !== day.city || this.day.business_date !== day.business_date || this.day.revision !== day.revision;
             if (newDay) this.load(day);
-            const filters = {fromCountries:fromCountries || [],toCountries:toCountries || [],airportDirection, carriers: carriers || [], airports: airports || [], flightScope: flightScope || "domestic", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
+            const filters = {fromCountries:fromCountries || [],toCountries:toCountries || [],airportDirection, carriers: carriers || [], airports: airports || [], flightScope: flightScope || "both", modes: modes || [], operators: operators || [], lines: lines || [], directions: directions || [], stations: stations || [], number: number || ""};
             for (const control of document.querySelectorAll('[data-hub]')) {
                 const active=control.dataset.hub==='all'?!filters.airports.length:filters.airports.length===1 && filters.airports[0]===control.dataset.hub;
                 control.setAttribute('aria-pressed',String(active));

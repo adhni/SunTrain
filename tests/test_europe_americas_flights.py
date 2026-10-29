@@ -34,7 +34,7 @@ def test_exact_published_pairs_no_cartesian_routes_or_extra_dates():
     assert ['LGW','JFK'] not in m['routes']
     assert {q[0] for q in expected_queries(DAY,m['routes'],cfg)}=={DAY}
     assert cfg['currency']=='EUR' and country_config('US')['currency']=='USD'
-    assert CITIES[CITY]['default_flight_scope']=='international' and not CITIES[CITY]['flight_scopes']
+    assert CITIES[CITY]['default_flight_scope']=='both' and not CITIES[CITY]['flight_scopes']
     assert CITY not in international_network.CITIES
     air={a['code']:a for a in m['airports']}
     assert air['YVR']['timezone']=='America/Vancouver' and 'replay_timezone' not in air['YVR']

@@ -406,7 +406,9 @@ def replay_day(business_date, city='australia_flights'):
             stops=[[origin, flight['departure'], flight['departure']], [destination, flight['arrival'], flight['arrival']]],
             legs=[key], timing_uncertain=False))
     return dict(**replay_settings(city), business_date=business_date,
-        start=start, end=end, initial=start + 10 * 3600, day_start_hour=0,
+        start=start, end=end,
+        initial=min(end, max(start, int(datetime.combine(day, time(10), zone).timestamp()))),
+        day_start_hour=0,
         services=services, stations=airports, paths=paths, geometry={},
         approximate_legs=0, total_legs=len(services), excluded_services=0,
         schedule={**reference['metadata'], 'available': True})

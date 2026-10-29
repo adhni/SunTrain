@@ -26,7 +26,7 @@ def test_all_eleven_asean_countries_and_exact_new_airports():
     for c,p in PROFILES.items():
         city=p['slug']+'_flights';assert CITIES[city]['timezone']==p['zone']
         assert CITIES[city]['flight_scopes']==p['domestic']
-        assert CITIES[city]['default_flight_scope']==p['default_scope']
+        assert CITIES[city]['default_flight_scope']=='both'
         assert all(a['timezone']==p['zone'] for a in air.values() if a['country']==c)
         m=json.loads(Path(f"data/sources/{p['slug']}_international_routes.json").read_text());bycode={a['code']:a for a in m['airports']}
         assert m['flight_records_remapped'] is False

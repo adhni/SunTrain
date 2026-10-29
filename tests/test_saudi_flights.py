@@ -49,7 +49,7 @@ def test_manifest_civilian_airports_sourced_pairs_and_four_worldwide_hubs(tmp_pa
     assert a['NMA']['timezone']=='Asia/Tashkent'
     assert m['source_gaps'] and {r['code'] for r in m['unresolved_airports']}=={'ALY'}
     assert CITY not in international_network.CITIES
-    assert CITIES[CITY]['default_flight_scope']=='both' and CITIES[CITY]['regional_start_view']
+    assert CITIES[CITY]['default_flight_scope']=='both' and CITIES[CITY]['flight_view_kind']=='country'
     assert set(collection_routes(tmp_path,cfg))==set(map(tuple,m['new_collection_routes']))
     assert not m['archive_reuse_routes']
 
@@ -85,7 +85,7 @@ def test_offline_missing_queries_mixed_prices_and_replay_http(tmp_path,monkeypat
     assert 'Saudi' in raw['metadata']['collection_strategy'] and 'Istanbul' not in raw['metadata']['collection_strategy']
     monkeypatch.setenv('SUNTRAIN_SAUDI_FLIGHTS_REFERENCE',str(out));monkeypatch.setenv('SUNTRAIN_REPLAY_CACHE',str(tmp_path/'http'))
     day=flights.replay_day(DAY,CITY)
-    assert day['timezone']=='Asia/Riyadh' and day['regional_start_view'] and len(day['services'])==1
+    assert day['timezone']=='Asia/Riyadh' and day['flight_view_kind']=='country' and len(day['services'])==1
     assert day['services'][0]['color']==flights.AIRLINES['SV'][1]
     app=Flask(__name__);replay_http.register_replay_routes(app);client=app.test_client();url=replay_http.descriptor(DAY,CITY)['url']
     response=client.get(url,headers={'Accept-Encoding':'gzip'});assert response.status_code==200

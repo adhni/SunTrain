@@ -13,6 +13,13 @@ with sync_playwright() as p:
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs", {value:"replay"})')
     page.wait_for_function('suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length',timeout=120000)
+    page.evaluate('''() => {
+        const bind = suntrainI18n.bind;
+        suntrainI18n.bind = function(element, ...args) {
+            if (element.tagName === 'OPTION') throw new Error('Stop data passed to translation matching');
+            return bind(element, ...args);
+        };
+    }''')
     page.locator('#replay-open-departures').click()
     page.locator('#departure-search').fill('Flinders')
     choices=page.locator('#replay-departures select option')

@@ -1,10 +1,61 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const vm = require('node:vm');
 const {stationCalls, upcomingPage, stationCatalogue, formatCallTime} = require('../assets/02_station_departures.js');
 const {hydrate, matches} = require('../assets/train_replay.js');
 const legacy = {id:'legacy', mode:'train', line:'Loop', operator:'Rail', number:'1', destination:'Terminus',
     stops:[[0,90,100],[1,110,120],[0,130,140],[2,150,150]], legs:['a','b','c']};
 const stations = [{name:'Central',lat:1,lon:1},{name:'Central',lat:2,lon:2},{name:'Terminus',lat:null,lon:null}];
+
+function browserBoardContext() {
+    const root = {document: {createElement: tag => ({tagName: tag.toUpperCase()})}, suntrainI18n: {
+        bind(element, text) {
+            assert.notEqual(element.tagName, 'OPTION', 'Source option labels must bypass translation matching');
+            element.textContent = text;
+        },
+    }};
+    root.window = root;
+    vm.runInNewContext(fs.readFileSync(require.resolve('../assets/02_station_departures.js'), 'utf8'), root);
+    return root;
+}
+
+test('picker keeps source labels as text, limits choices and searches without translating data', () => {
+    const root = browserBoardContext();
+    const choices = {children: [], replaceChildren() { this.children = []; }, append(option) { this.children.push(option); }};
+    const catalogue = Array.from({length: 70}, (_, id) => ({id, label: `Airport ${id} <b>ABC</b> · Flight · AAA → BBB`}));
+    const board = {catalogue, choices, station: 3, search: {value: ''}, choose: {}, matchCount: {}};
+    const update = () => root.suntrainDepartures.Board.prototype.updateChoices.call(board);
+    update();
+    assert.equal(choices.children.length, 60);
+    assert.equal(choices.value, '3');
+    assert.equal(board.choose.disabled, false);
+    assert.match(board.matchCount.textContent, /Showing 60 of 70 stops/);
+    assert.equal(choices.children[0].textContent, catalogue[0].label);
+    assert.equal(choices.children[0].title, catalogue[0].label);
+    assert.equal(choices.children[0].innerHTML, undefined);
+    board.search.value = 'AIRPORT 69'; board.station = 69; update();
+    assert.equal(choices.children.length, 1);
+    assert.equal(choices.children[0].value, '69');
+    assert.equal(choices.children[0].textContent, catalogue[69].label);
+});
+
+test('catalogue translates interface tokens while preserving source names and routes', () => {
+    const root = browserBoardContext();
+    let language = 'en';
+    root.suntrainI18n.translate = text => {
+        assert.ok(['Flight', 'Location unavailable'].includes(text), 'Only interface tokens should be translated');
+        return language === 'id' ? {'Flight': 'Penerbangan', 'Location unavailable': 'Lokasi tidak tersedia'}[text] : text;
+    };
+    const airports = [{name: 'Source <b>Airport</b> (ABC)', lat: null, lon: null}, {name: 'Other (DEF)', lat: 1, lon: 2}];
+    const service = {mode: 'flight', line: 'ABC → DEF', stops: [[0, 0, 0], [1, 60, 60]]};
+    const label = () => root.suntrainDepartures.stationCatalogue([service], airports, true).find(row => row.id === 0).label;
+    const english = label();
+    assert.equal(english, 'Source <b>Airport</b> (ABC) · Flight · ABC → DEF · Location unavailable');
+    language = 'id';
+    assert.equal(label(), 'Source <b>Airport</b> (ABC) · Penerbangan · ABC → DEF · Lokasi tidak tersedia');
+    language = 'en'; assert.equal(label(), english);
+});
 
 test('legacy and compact schedules give equivalent departures, preserving repeated visits and shared buffers', () => {
     const day = hydrate({transit_stop_patterns:{s:{stations:[0,1,0,2],legs:['a','b','c']}},

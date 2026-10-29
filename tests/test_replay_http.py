@@ -1,8 +1,10 @@
 from schedule_helpers import expanded_pattern
 import gzip
+import io
 import json
 import os
 import threading
+from copy import deepcopy
 from concurrent.futures import ThreadPoolExecutor
 
 import pytest
@@ -56,6 +58,73 @@ def test_compressed_cache_etags_and_plain_json(replay_client, monkeypatch):
         monkeypatch.setattr(http, "CACHE_LIMIT", 0)
         http.trim_cache(http.cache_directory(), http.cache_directory() / "other.json.gz")
         assert json.loads(gzip.decompress(stream.read())) == day
+
+
+@pytest.mark.parametrize("kind", ["flights", "transit"])
+@pytest.mark.parametrize("audit_fields", [(), ("queries",), ("wizzair_inventory",), ("queries", "wizzair_inventory")])
+def test_http_metadata_projection_preserves_data_and_source_objects(monkeypatch, kind, audit_fields):
+    schedule = {"replay_note": "Pinned snapshot. Coverage is partial.", "source": "Source credit",
+                "coverage": {"queries": ["nested evidence"], "queries_captured": 3, "failed_queries": 1},
+                "fare_context": {"currency": "USD"}, "uncollected_queries": ["AAA-BBB"],
+                "future_metadata": {"wizzair_inventory": ["nested inventory"]}}
+    for key in audit_fields:
+        schedule[key] = [{"origin": "AAA", "destination": "BBB"}]
+    source = {"replay_kind": kind, "schedule": schedule, "stations": [{"code": "AAA"}],
+              "services": [{"id": "exact-flight", "price": {"currency": "USD", "amount_minor": 12345}}],
+              "paths": {"AAA-BBB": {"coordinates": [[1.123456, 2.345678]]}}}
+    before = deepcopy(source)
+    monkeypatch.setattr(replay, "get_replay_day", lambda *a, **k: source)
+    info = {"business_date": "2026-11-02", "city": "example", "bus_data_loaded": False,
+            "modes": ["flight"], "revision": "test-revision"}
+    stream = io.BytesIO()
+    http.write_day(info, stream)
+    expected = {**deepcopy(source), "revision": info["revision"], "loaded_modes": info["modes"]}
+    expected["schedule"]["note_messages"] = [{"key": "Pinned snapshot.", "params": {}},
+                                             {"key": "Coverage is partial.", "params": {}}]
+    if kind == "flights":
+        for key in ("queries", "wizzair_inventory"):
+            expected["schedule"].pop(key, None)
+    assert json.loads(stream.getvalue()) == expected
+    assert source == before and source["schedule"] is schedule
+
+
+@pytest.mark.parametrize("schedule", [None, {}])
+def test_flight_metadata_projection_handles_empty_schedule(monkeypatch, schedule):
+    source = {"replay_kind": "flights", "schedule": schedule}
+    monkeypatch.setattr(replay, "get_replay_day", lambda *a, **k: source)
+    info = {"business_date": "2026-11-02", "city": "example", "bus_data_loaded": False,
+            "modes": ["flight"], "revision": "test-revision"}
+    stream = io.BytesIO()
+    http.write_day(info, stream)
+    assert json.loads(stream.getvalue())["schedule"] == schedule
+
+
+def test_projected_flight_download_preserves_compression_and_cache_contract(replay_client, monkeypatch):
+    source = {"replay_kind": "flights", "services": [{"id": "flight-one"}],
+              "schedule": {"queries": [{"origin": "AAA"}], "wizzair_inventory": {"AAA": ["BBB"]},
+                           "coverage": {"queries_captured": 1}, "source": "Source credit"}}
+    before = deepcopy(source)
+    info = http.descriptor("2026-11-02", "europe_flights")
+    monkeypatch.setattr(replay, "get_replay_day", lambda *a, **k: source)
+    response = replay_client.get(info["url"], headers={"Accept-Encoding": "gzip"})
+    assert response.status_code == 200 and response.headers["Content-Encoding"] == "gzip"
+    day = json.loads(gzip.decompress(response.data))
+    assert day["schedule"] == {"coverage": {"queries_captured": 1}, "source": "Source credit"}
+    assert day["services"] == source["services"] and source == before
+    assert "immutable" in response.headers["Cache-Control"] and response.headers["Vary"] == "Accept-Encoding"
+    monkeypatch.setattr(replay, "get_replay_day", lambda *a, **k: pytest.fail("Cached flight response rebuilt"))
+    cached = replay_client.get(info["url"], headers={"Accept-Encoding": "gzip", "If-None-Match": response.headers["ETag"]})
+    assert cached.status_code == 304 and not cached.data
+    plain = replay_client.get(info["url"])
+    assert plain.get_json() == day and "Content-Encoding" not in plain.headers
+
+
+def test_format_change_invalidates_previous_replay_url(replay_client, monkeypatch):
+    first = http.descriptor("2023-07-10", "melbourne")
+    monkeypatch.setattr(http, "FORMAT_VERSION", http.FORMAT_VERSION + 1)
+    second = http.descriptor("2023-07-10", "melbourne")
+    assert first["revision"] != second["revision"] and first["url"] != second["url"]
+    assert replay_client.get(first["url"]).status_code == 409
 
 
 def test_revision_changes_with_modes_and_source_and_rejects_invalid_requests(replay_client, monkeypatch, sample_parquet):

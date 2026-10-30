@@ -1,5 +1,7 @@
 # International long-haul and UTC-gap expansion
 
+Latest pass: [European winter gaps](INTERNATIONAL_EUROPE_WINTER_NOTES.md). This document retains the completed 200-query checkpoint and its original results.
+
 Bismillah, this pass extends **World · Flights** from **57,024 flights / 28,333 international records** on **2 November 2026 UTC**. It has an independent **200-search cap**, reviewed every 50. It uses the existing validated international supplement, exact-airport queries, all returned airlines and verified USD fares, retaining the cheapest compatible returned offer and existing quotes without conversion.
 
 | Workstream | Search cap | Selection |

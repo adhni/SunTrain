@@ -101,11 +101,20 @@ with sync_playwright() as p:
   assert page.evaluate('suntrainReplay.filtered.some(s=>s.number==="NH211")')
   assert page.evaluate(CAMERA)==original
   clear()
+ winter=[f for f in expected['flights'] if f['origin']=='BOD' and f['destination']=='LGW']
+ if winter:
+  set_filter('replay-from-countries',['FR'],'suntrainReplay.filters.fromCountries[0]==="FR"')
+  set_filter('replay-to-countries',['GB'],'suntrainReplay.filters.toCountries[0]==="GB"')
+  numbers=sorted(f['number'] for f in winter)
+  assert page.evaluate('suntrainReplay.filtered.filter(s=>s.route_id==="BOD-LGW").map(s=>s.number).sort()')==numbers
+  assert page.evaluate(CAMERA)==original
+  clear()
  set_filter('replay-carriers',['brand:lufthansa'],'suntrainReplay.filters.carriers[0]==="brand:lufthansa"')
  assert page.evaluate('suntrainReplay.filtered.length>0 && suntrainReplay.filtered.every(s=>s.flight_brand==="lufthansa")')
  clear()
  # Boards own only in-window events and use the airport's preserved local clock.
  boards=[('LHR','Europe/London'),('YVR','Etc/GMT+7'),('SYD','Australia/Sydney')]
+ if winter:boards.extend([('BOD','Europe/Paris'),('SXB','Europe/Paris')])
  if 'data/reference/south_america_domestic/2026-11-02.json.gz' in expected['metadata']['inputs']:
   boards.extend([('BRC','America/Argentina/Salta'),('CUZ','America/Lima'),('BBA','America/Coyhaique')])
  if 'world_international_expansion' in expected['metadata']['member_views']:
@@ -124,6 +133,7 @@ with sync_playwright() as p:
   page.locator('[data-event="departure"]').click()
   assert page.evaluate('suntrainReplay.departures.expanded')
   if code=='LHR':page.screenshot(path=str(OUT/'heathrow-board.png'))
+  if code=='BOD':page.screenshot(path=str(OUT/'bordeaux-board.png'))
   page.locator('.departure-row').first.click()
   page.get_by_role('button',name='Back to airport board',exact=True).click()
   assert page.evaluate('suntrainReplay.departures.expanded')

@@ -233,7 +233,9 @@ def collect(cache=CACHE, source=None, captures=None, validate=None, checkpoint_s
             return 0
         check_baseline(cache,manifest)
         known={tuple(r['query']) for r in read(ORIGINAL_CACHE/'cache-index.json.gz')['queries']}
-        batch=[tuple(q) for q in manifest['new_searches'] if tuple(q) not in budget.used and tuple(q) not in known][:min(checkpoint_size,remaining)]
+        rechecks={tuple(q) for q in manifest.get('verified_recheck_queries',[])}
+        batch=[tuple(q) for q in manifest['new_searches'] if tuple(q) not in budget.used
+            and (tuple(q) not in known or tuple(q) in rechecks)][:min(checkpoint_size,remaining)]
         if not batch:
             return 0
         zones={a['code']:a.get('replay_timezone',a['timezone']) for a in manifest['airports']}

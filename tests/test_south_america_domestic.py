@@ -84,7 +84,15 @@ def test_short_parser_empty_domestic_capture_is_compatible_but_not_international
 
 
 def test_published_manifest_has_exact_200_evidenced_queries_and_reviewed_chilean_zones():
-    m=read(campaign.SOURCE);campaign.check(m)
+    m=read(campaign.SOURCE)
+    # A completed domestic campaign must refuse to overwrite a newer supplement.
+    from tests.international_history import current_checkpoint,pins_historical_supplement
+    active=current_checkpoint(campaign.ROOT/'data/sources/world_international_boundaries.json.gz')
+    previous=m['baseline_inputs'][campaign.relative(international_expansion.reference_path())]['sha256']
+    if digest(international_expansion.reference_path().read_bytes())!=previous:
+        assert pins_historical_supplement(active,previous)
+        with pytest.raises(ValueError,match='Frozen input changed'):campaign.check(m)
+    else:campaign.check(m)
     assert m['search_limit']==200 and m['checkpoint_size']==50
     assert m['country_allocations']=={'AR':126,'PE':44,'CL':30}
     assert len(m['reused'])==2 and not m['deferred']
@@ -127,17 +135,28 @@ def test_collection_reviews_every_50_and_never_repeats_published_attempts(tmp_pa
 def test_original_world_reproduces_exactly_and_added_overlap_is_independently_counted(tmp_path,monkeypatch):
     m=read(campaign.SOURCE);extra=domestic.load_reference()
     combined=world.load_reference(world.DAY)
+    from tests.international_history import current_checkpoint,expected_world_metrics,pins_historical_supplement
+    checkpoint=current_checkpoint(campaign.ROOT/'data/sources/world_international_boundaries.json.gz')
+    expected=expected_world_metrics(checkpoint)
+    added_domestic=extra['metadata']['coverage']['new_world_identities']
     monkeypatch.setenv('SUNTRAIN_SOUTH_AMERICA_DOMESTIC_REFERENCE',str(tmp_path/'absent.gz'))
     out=tmp_path/'old-world.gz';baseline=world.prepare(out)
-    assert digest(out.read_bytes())==m['baseline_world_sha256']
-    assert len(baseline['flights'])==m['baseline_world_flights']==56231
+    previous=m['baseline_inputs'][campaign.relative(international_expansion.reference_path())]['sha256']
+    if digest(international_expansion.reference_path().read_bytes())==previous:
+        assert digest(out.read_bytes())==m['baseline_world_sha256']
+        assert len(baseline['flights'])==m['baseline_world_flights']==56231
+    else:
+        assert len(baseline['flights'])==expected['flights']-added_domestic
+        assert pins_historical_supplement(checkpoint,previous)
     old={world.identity(f) for f in baseline['flights']}
     added={world.identity(f) for f in extra['flights'] if f['departure']<world.END and f['arrival']>=world.START}-old
     assert {world.identity(f) for f in combined['flights']}==old|added
     assert len(added)==m['collection']['world_added']==extra['metadata']['coverage']['new_world_identities']
-    assert combined['metadata']['scopes']['international']==baseline['metadata']['scopes']['international']==28333
+    assert combined['metadata']['scopes']['international']==baseline['metadata']['scopes']['international']==expected['international_overlapping']
     assert combined['metadata']['scopes']['domestic']==27898+len(added)
-    for path,info in m['baseline_inputs'].items():assert digest((world.ROOT/path).read_bytes())==info['sha256']
+    for path,info in m['baseline_inputs'].items():
+        if path!=campaign.relative(international_expansion.reference_path()):
+            assert digest((world.ROOT/path).read_bytes())==info['sha256']
 
 
 def test_missing_published_capture_cannot_erase_the_portable_snapshot(tmp_path,monkeypatch):

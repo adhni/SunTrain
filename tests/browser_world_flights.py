@@ -95,6 +95,12 @@ with sync_playwright() as p:
    set_filter('replay-to-countries',[country],f'suntrainReplay.filters.toCountries[0]==="{country}" && suntrainReplay.filtered.length==={count}')
    assert page.evaluate(CAMERA)==original
   clear()
+ if any(f['origin']=='HND' and f['destination']=='LHR' and f['number']=='NH211' for f in expected['flights']):
+  set_filter('replay-from-countries',['JP'],'suntrainReplay.filters.fromCountries[0]==="JP"')
+  set_filter('replay-to-countries',['GB'],'suntrainReplay.filters.toCountries[0]==="GB"')
+  assert page.evaluate('suntrainReplay.filtered.some(s=>s.number==="NH211")')
+  assert page.evaluate(CAMERA)==original
+  clear()
  set_filter('replay-carriers',['brand:lufthansa'],'suntrainReplay.filters.carriers[0]==="brand:lufthansa"')
  assert page.evaluate('suntrainReplay.filtered.length>0 && suntrainReplay.filtered.every(s=>s.flight_brand==="lufthansa")')
  clear()

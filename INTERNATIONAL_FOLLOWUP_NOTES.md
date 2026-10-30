@@ -1,8 +1,9 @@
 # Targeted international follow-up
 
 This page records the completed 300-search pass. The later 100-search campaign
-and latest totals are in [INTERNATIONAL_BOUNDARY_NOTES.md](INTERNATIONAL_BOUNDARY_NOTES.md).
-Use that campaign's command to rebuild the current cumulative supplement; the
+is in [INTERNATIONAL_BOUNDARY_NOTES.md](INTERNATIONAL_BOUNDARY_NOTES.md).
+The current cumulative supplement and preparation command are documented in
+[INTERNATIONAL_LONGHAUL_NOTES.md](INTERNATIONAL_LONGHAUL_NOTES.md); the
 commands below describe this historical pass.
 
 This pass extends **World · Flights** for **2 November 2026 UTC**, starting from

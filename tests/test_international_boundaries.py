@@ -126,14 +126,12 @@ def test_airport_resolution_keeps_juba_current_and_pbi_separate_from_djt(tmp_pat
 def test_prepared_provenance_and_completed_campaign_counts():
     manifest=read(campaign.SOURCE);campaign.check_campaign(manifest)
     if not manifest['collection'].get('after'):return
-    supplement=campaign.adapter.load_reference()
-    assert supplement['metadata']['source_manifest']==dict(
-        path=campaign.relative(campaign.SOURCE),sha256=digest(campaign.SOURCE.read_bytes()))
+    from tests.international_history import current_checkpoint,expected_world_metrics
+    current=current_checkpoint(campaign.SOURCE)
     snapshot=world.load_reference(world.DAY)
     from dashboard import south_america_domestic as domestic
     added=domestic.load_reference()['metadata']['coverage']['new_world_identities'] if domestic.enabled() else 0
-    expected={**manifest['collection']['after']}
-    expected['flights']+=added
+    expected=expected_world_metrics(current)
     assert campaign.runner.preparation.metrics(snapshot)==expected
     assert snapshot['metadata']['scopes']['domestic']==27898+added
     assert manifest['collection']['searches_attempted']<=100

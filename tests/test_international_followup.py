@@ -119,11 +119,11 @@ def test_published_followup_hash_and_quote_provenance():
             and p['sha256']==digest(followup.SOURCE.read_bytes())
             for p in descendant['parent_campaigns'])
     after=followup.world.load_reference(followup.DAY)
-    current=manifest if active['path']==followup.relative(followup.SOURCE) else descendant
+    from tests.international_history import current_checkpoint,expected_world_metrics
+    current=current_checkpoint(followup.SOURCE)
     from dashboard import south_america_domestic as domestic
     added=domestic.load_reference()['metadata']['coverage']['new_world_identities'] if domestic.enabled() else 0
-    expected={**current['collection']['after']}
-    expected['flights']+=added
+    expected=expected_world_metrics(current)
     assert followup.preparation.metrics(after)==expected
     assert after['metadata']['scopes']['domestic']==27898+added
     for source in manifest['collection']['captures']:

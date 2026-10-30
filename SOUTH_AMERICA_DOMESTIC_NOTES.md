@@ -1,5 +1,7 @@
 # Argentina, Peru and Chile domestic expansion
 
+**Later expansion:** current World counts and the active international preparation command are in [INTERNATIONAL_LONGHAUL_NOTES.md](INTERNATIONAL_LONGHAUL_NOTES.md). Counts below describe this earlier pass.
+
 Bismillah, this pass used **200 new Google Flights searches**, reviewed after each 50, plus **two reusable USD captures**. It adds **909 dated domestic flights** to South America · Flights. Of these, **793 are new identities overlapping World’s UTC day**. World now contains **57,024 flights: 28,691 domestic and 28,333 international**.
 
 | Country | New searches | Reused | Positive directions | Empty directions | Captured flights | With USD fares | New in World |

@@ -1,5 +1,7 @@
 # Missing directions and UTC-boundary flights
 
+**Later expansion:** current World counts and the active international preparation command are in [INTERNATIONAL_LONGHAUL_NOTES.md](INTERNATIONAL_LONGHAUL_NOTES.md). Counts below describe this earlier pass.
+
 This campaign extends **World · Flights** from its 55,988-flight snapshot for
 **2 November 2026 UTC**. It has an independent **100-search** cap: **49 missing
 Asian/Gulf return-direction candidates and 51 adjacent-local-date candidates**.

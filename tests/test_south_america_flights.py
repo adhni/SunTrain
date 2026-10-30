@@ -113,9 +113,12 @@ def test_prepared_south_america_snapshot_matches_bounded_search_plan():
     path=flights.reference_path(DAY,CITY)
     if not path.exists():pytest.skip('Capture in progress')
     raw=load_domestic(path,CODE);replay=flights.replay_day(DAY,CITY)
+    combined=flights.load_reference(DAY,CITY)
     assert len(raw['metadata']['queries'])+len(raw['metadata']['uncollected_queries'])==702
     assert {a['code'] for a in raw['airports']}==set(AIR)
-    assert len(raw['flights'])==len({f['id'] for f in raw['flights']})==len(replay['services'])
+    assert len(raw['flights'])==len({f['id'] for f in raw['flights']})
+    assert len(combined['flights'])==len(replay['services'])
+    assert {f['id'] for f in raw['flights']}<={f['id'] for f in combined['flights']}
     assert all(datetime.fromtimestamp(f['departure'],ZoneInfo(CFG['zones'][f['origin']])).date().isoformat()==DAY for f in raw['flights'])
     assert all(replay['start']<=s['stops'][0][1] and s['stops'][1][1]<replay['end'] for s in replay['services'])
     assert all(not f.get('price') or f['price']['currency']=='USD' for f in raw['flights'])

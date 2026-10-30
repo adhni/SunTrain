@@ -45,7 +45,7 @@ def baseline_query_times(cache=CACHE):
                 times[key] = max(times.get(key, 0), when)
             official.update(f['id'] for f in reference['flights'] if f.get('schedule_source') == 'ryanair_public_timetable')
         expected = read(cache / 'baseline.json.gz')['metadata']['inputs']
-        if {relative(p): v for p, v in inputs.items()} != expected:
+        if {relative(p): v for p, v in adapter.baseline_inputs(inputs).items()} != expected:
             raise ValueError('Validated sources changed since the baseline was frozen')
     result = dict(times=times, protected_official_ids=sorted(official))
     save(path, result)

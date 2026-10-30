@@ -146,10 +146,12 @@ def test_compact_http_uses_only_snapshot_preserves_records_and_cache(tmp_path, m
 
 
 def test_prepared_real_union_counts_inputs_and_reproducibility(tmp_path,monkeypatch):
+    from dashboard import south_america_domestic as domestic
     snapshot=world.load_reference(world.DAY);meta=snapshot['metadata']
+    added=domestic.load_reference()['metadata']['coverage']['new_world_identities'] if domestic.enabled() else 0
     assert len(snapshot['flights'])==meta['coverage']['flights']
-    assert meta['scopes']['domestic']==27898 and meta['scopes']['international']>25693
-    assert len(meta['member_views'])==41 and len(meta['inputs'])==45
+    assert meta['scopes']['domestic']==27898+added and meta['scopes']['international']>25693
+    assert len(meta['member_views'])==41 and len(meta['inputs'])==45+int(domestic.enabled())
     assert len({world.identity(f) for f in snapshot['flights']})==len(snapshot['flights'])
     assert len({f['id'] for f in snapshot['flights']})==len(snapshot['flights'])
     paths={world.ROOT/p for p in meta['inputs']};read=Path.read_bytes;calls=[]
@@ -169,6 +171,7 @@ def test_prepared_real_union_counts_inputs_and_reproducibility(tmp_path,monkeypa
 
 def test_original_40_view_union_is_byte_identical_without_supplement(tmp_path,monkeypatch):
     monkeypatch.setenv('SUNTRAIN_WORLD_INTERNATIONAL_REFERENCE',str(tmp_path/'absent.gz'))
+    monkeypatch.setenv('SUNTRAIN_SOUTH_AMERICA_DOMESTIC_REFERENCE',str(tmp_path/'absent-domestic.gz'))
     output=tmp_path/'original.gz'
     original=world.prepare(output)
     assert len(original['flights'])==53591

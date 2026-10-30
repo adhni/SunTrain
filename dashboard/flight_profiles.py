@@ -39,7 +39,7 @@ PROFILES.update({
          'REC':'America/Recife','SSA':'America/Bahia','FOR':'America/Fortaleza',
          'CTG':'America/Bogota','CLO':'America/Bogota','UIO':'America/Guayaquil','MVD':'America/Montevideo',
          'ASU':'America/Asuncion','VVI':'America/La_Paz','CCS':'America/Caracas','GEO':'America/Guyana','PBM':'America/Paramaribo'},
-     description='South America · Flights between the top 20 airports plus every South American country’s busiest airport (27 total) · 2 November 2026 departures, including overnight arrivals. Timeline: UTC; airport boards use local time. All captured fares use USD, including domestic flights. Coverage and prices are partial; paths are illustrative.',
+     description='Selected South American airports, plus captured domestic routes in Argentina, Peru and Chile. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: UTC; airport boards use local time. Captured fares use USD. Coverage and prices are partial; paths are illustrative.',
  ),
  'NP':dict(slug='nepal',name='Nepal',zone='Asia/Kathmandu',label='NPT',clock='Nepal time (NPT, UTC+5:45)',bounds=[[80,26.2],[88.3,30.5]],domestic=True,default_scope='domestic'),
  'TW':dict(slug='taiwan',name='Taiwan',zone='Asia/Taipei',label='CST',clock='Taiwan time (UTC+8)',bounds=[[117.7,21.7],[122.3,26.6]],domestic=True,default_scope='domestic',worldwide=True),

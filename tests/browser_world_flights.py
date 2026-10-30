@@ -86,17 +86,28 @@ with sync_playwright() as p:
   assert page.evaluate('suntrainReplay.filtered.length>0 && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].country==="ES" && suntrainReplay.day.stations[s.stops[1][0]].country==="CU")')
   assert page.evaluate(CAMERA)==original
   clear()
+ if 'data/reference/south_america_domestic/2026-11-02.json.gz' in expected['metadata']['inputs']:
+  airport_country={a['code']:a['country'] for a in expected['airports']}
+  for country in ['AR','PE','CL']:
+   count=sum(airport_country[f['origin']]==country and airport_country[f['destination']]==country for f in expected['flights'])
+   assert count>0
+   set_filter('replay-from-countries',[country],f'suntrainReplay.filters.fromCountries[0]==="{country}"')
+   set_filter('replay-to-countries',[country],f'suntrainReplay.filters.toCountries[0]==="{country}" && suntrainReplay.filtered.length==={count}')
+   assert page.evaluate(CAMERA)==original
+  clear()
  set_filter('replay-carriers',['brand:lufthansa'],'suntrainReplay.filters.carriers[0]==="brand:lufthansa"')
  assert page.evaluate('suntrainReplay.filtered.length>0 && suntrainReplay.filtered.every(s=>s.flight_brand==="lufthansa")')
  clear()
  # Boards own only in-window events and use the airport's preserved local clock.
  boards=[('LHR','Europe/London'),('YVR','Etc/GMT+7'),('SYD','Australia/Sydney')]
+ if 'data/reference/south_america_domestic/2026-11-02.json.gz' in expected['metadata']['inputs']:
+  boards.extend([('BRC','America/Argentina/Salta'),('CUZ','America/Lima'),('BBA','America/Coyhaique')])
  if 'world_international_expansion' in expected['metadata']['member_views']:
   boards.extend([('HAV','America/Havana'),('BDA','Atlantic/Bermuda')])
  for code,zone in boards:
   page.evaluate('(code)=>{const r=suntrainReplay;r.seek(r.day.start);r.departures.open(r.day.stations.findIndex(a=>a.code===code));}',code)
   page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.departures.services===suntrainReplay.filtered',arg=code)
-  assert page.evaluate('suntrainReplay.departures.timezone')==zone
+  assert page.evaluate('suntrainReplay.departures.timezone')==zone, (code,zone)
   assert page.evaluate('suntrainReplay.departures.calls.every(c=>c.at>=suntrainReplay.day.start && c.at<suntrainReplay.day.end)')
   assert page.evaluate(CAMERA)==original
   for event in ['arrival','departure','destinations']:

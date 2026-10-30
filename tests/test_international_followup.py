@@ -120,8 +120,12 @@ def test_published_followup_hash_and_quote_provenance():
             for p in descendant['parent_campaigns'])
     after=followup.world.load_reference(followup.DAY)
     current=manifest if active['path']==followup.relative(followup.SOURCE) else descendant
-    assert followup.preparation.metrics(after)==current['collection']['after']
-    assert after['metadata']['scopes']['domestic']==27898
+    from dashboard import south_america_domestic as domestic
+    added=domestic.load_reference()['metadata']['coverage']['new_world_identities'] if domestic.enabled() else 0
+    expected={**current['collection']['after']}
+    expected['flights']+=added
+    assert followup.preparation.metrics(after)==expected
+    assert after['metadata']['scopes']['domestic']==27898+added
     for source in manifest['collection']['captures']:
         path=followup.ROOT/source['path']
         if not path.exists():

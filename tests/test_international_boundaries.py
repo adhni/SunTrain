@@ -130,8 +130,12 @@ def test_prepared_provenance_and_completed_campaign_counts():
     assert supplement['metadata']['source_manifest']==dict(
         path=campaign.relative(campaign.SOURCE),sha256=digest(campaign.SOURCE.read_bytes()))
     snapshot=world.load_reference(world.DAY)
-    assert campaign.runner.preparation.metrics(snapshot)==manifest['collection']['after']
-    assert snapshot['metadata']['scopes']['domestic']==27898
+    from dashboard import south_america_domestic as domestic
+    added=domestic.load_reference()['metadata']['coverage']['new_world_identities'] if domestic.enabled() else 0
+    expected={**manifest['collection']['after']}
+    expected['flights']+=added
+    assert campaign.runner.preparation.metrics(snapshot)==expected
+    assert snapshot['metadata']['scopes']['domestic']==27898+added
     assert manifest['collection']['searches_attempted']<=100
 
 

@@ -1,5 +1,7 @@
 # South America flights: top twenty plus every country’s busiest airport
 
+**Current expansion:** Argentina, Peru and Chile domestic captures now supplement this original airport collection. See [the domestic expansion notes](SOUTH_AMERICA_DOMESTIC_NOTES.md) for current counts, coverage gaps and validation. The selection and results below document the original 27-airport pass.
+
 A separate **South America · Flights** explorer for **2 November 2026 origin-local departures**, with all returned airlines and USD quotes. It covers nonstop flights **between 27 selected airports**, including domestic and international pairs. It is not a complete timetable for any airport or country; other airports and intercontinental flights are excluded.
 
 ## Selection and evidence

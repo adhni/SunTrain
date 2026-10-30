@@ -161,7 +161,7 @@ class Airports:
         return result
 
 
-def validate_query(query, key, airports, legacy_duration=None):
+def validate_query(query, key, airports, legacy_duration=None, scope='international'):
     if tuple(query.get(k) for k in ('date', 'origin', 'destination')) != tuple(key):
         raise ValueError('Wrong exact query identity')
     timestamp(query['captured_at'])
@@ -177,21 +177,24 @@ def validate_query(query, key, airports, legacy_duration=None):
     context = query.get('capture_context') or {}
     if context.get('airline_filter', 'none') != 'none':
         raise ValueError('Airline-limited search')
-    if not query['flights'] and context.get('max_duration', legacy_duration or 28800) < 86400:
+    maximum = 28800 if scope == 'domestic' else 86400
+    if scope not in {'domestic', 'international'}:
+        raise ValueError('Unknown query scope')
+    if not query['flights'] and context.get('max_duration', legacy_duration or 28800) < maximum:
         raise ValueError('Empty short-parser result is not a compatible international search')
     identities = {}
     a, b = airports.get(key[1]), airports.get(key[2])
     if not a or not b:
         raise ValueError('Unresolved airport')
-    if not is_international(a, b):
-        raise ValueError('Domestic query')
+    if is_international(a, b) != (scope == 'international'):
+        raise ValueError('Domestic query' if scope == 'international' else 'International query')
     zone = ZoneInfo(a.get('replay_timezone', a['timezone']))
     for flight in query['flights']:
         if tuple(flight.get(k) for k in ('source_date', 'origin', 'destination')) != tuple(key):
             raise ValueError('Wrong dated flight segment')
         if any(type(flight.get(k)) is not int for k in ('departure', 'arrival')):
             raise ValueError('Undated segment')
-        if not 60 <= flight['arrival'] - flight['departure'] <= 86400:
+        if not 60 <= flight['arrival'] - flight['departure'] <= maximum:
             raise ValueError('Invalid duration')
         if datetime.fromtimestamp(flight['departure'], zone).date().isoformat() != key[0]:
             raise ValueError('Wrong airport-local departure date')

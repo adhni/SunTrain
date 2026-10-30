@@ -85,6 +85,15 @@ def overlay(reference, supplement):
 
 def validate_inputs(supplement, inputs):
     expected = supplement['metadata']['baseline_inputs']
-    actual = {str(p.relative_to(world.ROOT)): value for p, value in inputs.items() if p != reference_path().resolve()}
+    actual = {str(p.relative_to(world.ROOT)): value for p, value in baseline_inputs(inputs).items() if p != reference_path().resolve()}
     if actual != expected:
         raise ValueError('Existing flight sources changed since the international expansion audit')
+
+
+def baseline_inputs(inputs):
+    """A separately validated domestic addition cannot replace any frozen input."""
+    from dashboard import south_america_domestic as domestic
+    extra=domestic.reference_path().resolve()
+    if extra not in inputs:return inputs
+    domestic.load_reference()  # Reject international records or invalid context before allowing the extra input.
+    return {p:v for p,v in inputs.items() if p!=extra}

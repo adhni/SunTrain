@@ -1,8 +1,9 @@
 # World international passenger expansion
 
 This page records the first, completed 1,000-search campaign. The subsequent
-300-search pass and current combined totals are documented in
-[INTERNATIONAL_FOLLOWUP_NOTES.md](INTERNATIONAL_FOLLOWUP_NOTES.md).
+300-search pass is documented in [INTERNATIONAL_FOLLOWUP_NOTES.md](INTERNATIONAL_FOLLOWUP_NOTES.md).
+The later 100-search campaign and latest combined totals are in
+[INTERNATIONAL_BOUNDARY_NOTES.md](INTERNATIONAL_BOUNDARY_NOTES.md).
 
 This campaign expands **World · Flights** for **2 November 2026 UTC**. It uses public dated passenger-flight captures, keeps individual flight numbers, and remains partial coverage. The 40 existing country/region views and their reference archives are unchanged. There is no additional homepage location, currency conversion, live tracking or automatic refresh.
 

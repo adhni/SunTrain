@@ -63,6 +63,19 @@ def record_query_key(flight, airports):
     return local.date().isoformat(), flight['origin'], flight['destination']
 
 
+def validate_campaign_transition(published, source, existing=None):
+    """Closed campaigns cannot overwrite a descendant's data or source ledger."""
+    if existing is None:
+        existing = read(adapter.reference_path()) if adapter.reference_path().exists() else {}
+    active = existing.get('metadata', {}).get('source_manifest')
+    if active and (ROOT/active['path']).resolve() != Path(source).resolve():
+        parents = published.get('parent_campaigns', [])
+        if published.get('parent_campaign'):
+            parents = [*parents, published['parent_campaign']]
+        if not any(p.get('path') == active['path'] and p.get('sha256') == active['sha256'] for p in parents):
+            raise ValueError('A newer campaign owns the supplement; use its preparation command')
+
+
 def prepare(cache=CACHE, output=None, include_fresh=True, source=None):
     # The committed prepared supplement remains usable without raw caches, but
     # rebuilding it must not silently discard evidence when a cache was cleared.
@@ -70,6 +83,7 @@ def prepare(cache=CACHE, output=None, include_fresh=True, source=None):
     published = read(source_manifest_path) if source_manifest_path.exists() else {}
     if published.get('collection') and adapter.reference_path().exists():
         existing = read(adapter.reference_path())
+        validate_campaign_transition(published, source_manifest_path, existing)
         checked = set()
         for query in existing['metadata']['queries']:
             for source in query['source_documents']:

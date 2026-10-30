@@ -106,7 +106,10 @@ class Airports:
     def __init__(self, baseline):
         self.known = {a['code']: world.canonical_airport(a) for a in baseline['airports']}
         self.rows = defaultdict(list)
-        self.zones = {**NEW_ZONES, 'XPL': 'America/Tegucigalpa'}
+        # Reviewed identity transitions: JUB's current HJJJ differs from old
+        # OpenFlights HSSJ; DJT replaces PBI for this November 2026 replay.
+        self.zones = {**NEW_ZONES, 'XPL': 'America/Tegucigalpa',
+                      'JUB': 'Africa/Juba', 'DJT': 'America/New_York'}
         self.unresolved = {}
         airport_file = ROOT / '.cache/australia-flights-audit/ourairports-airports.csv'
         zone_file = ROOT / '.cache/gulf-flights-audit/openflights-airports.dat'
@@ -135,6 +138,9 @@ class Airports:
         return not ca or not cb or is_international({'country': ca}, {'country': cb})
 
     def get(self, code):
+        if code == 'PBI':
+            self.unresolved[code] = 'Superseded IATA code since 2026-08-18; DJT requires an exact query, not a silent remap'
+            return None
         if code in RETIRED_AIRPORTS:
             self.unresolved[code] = 'Retired commercial endpoint; do not infer its replacement'
             return None

@@ -271,6 +271,24 @@ def test_followup_manifest_survives_published_raw_capture_validation(tmp_path,mo
         path=str(source),sha256=discovery.digest(source.read_bytes()))
 
 
+def test_closed_campaign_cannot_replace_newer_provenance_without_explicit_parent(tmp_path,monkeypatch):
+    cache,_=setup_prepare(tmp_path,monkeypatch,[query([flight(price=quote())])])
+    path=tmp_path/'prepared.gz'
+    result=preparation.prepare(cache,path)
+    active=dict(path=str(tmp_path/'active.gz'),sha256='reviewed-parent')
+    result['metadata']['source_manifest']=active
+    discovery.save(path,result)
+    monkeypatch.setenv('SUNTRAIN_WORLD_INTERNATIONAL_REFERENCE',str(path))
+    source=tmp_path/'campaign.gz'
+    manifest=dict(collection=dict(searches_attempted=1),unresolved_airports={})
+    discovery.save(source,manifest)
+    with pytest.raises(ValueError,match='newer campaign'):
+        preparation.prepare(cache,path,source=source)
+    assert discovery.read(path)==result
+    discovery.save(source,{**manifest,'parent_campaigns':[active]})
+    assert preparation.prepare(cache,path,source=source)['flights'][0]['price']==quote()
+
+
 def test_merged_journals_keep_newer_local_attempts_and_reject_conflicts(tmp_path):
     first=dict(query=list(KEY),attempted_at='2026-10-30T00:00:00Z')
     second=dict(query=[world.DAY,'BBB','AAA'],attempted_at='2026-10-30T00:01:00Z')

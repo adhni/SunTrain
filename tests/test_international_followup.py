@@ -111,10 +111,16 @@ def test_published_followup_hash_and_quote_provenance():
     # verify every published successful source and the prepared hash chain.
     if not manifest['collection'].get('captures'): return
     supplement=followup.adapter.load_reference()
-    assert supplement['metadata']['source_manifest']==dict(
-        path=followup.relative(followup.SOURCE),sha256=digest(followup.SOURCE.read_bytes()))
+    active=supplement['metadata']['source_manifest']
+    assert active['sha256']==digest((followup.ROOT/active['path']).read_bytes())
+    if active['path']!=followup.relative(followup.SOURCE):
+        descendant=read(followup.ROOT/active['path'])
+        assert any(p['path']==followup.relative(followup.SOURCE)
+            and p['sha256']==digest(followup.SOURCE.read_bytes())
+            for p in descendant['parent_campaigns'])
     after=followup.world.load_reference(followup.DAY)
-    assert followup.preparation.metrics(after)==manifest['collection']['after']
+    current=manifest if active['path']==followup.relative(followup.SOURCE) else descendant
+    assert followup.preparation.metrics(after)==current['collection']['after']
     assert after['metadata']['scopes']['domestic']==27898
     for source in manifest['collection']['captures']:
         path=followup.ROOT/source['path']

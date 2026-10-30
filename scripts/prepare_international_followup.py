@@ -128,12 +128,13 @@ def check_parent(manifest):
         raise ValueError('Do not repeat a first-pass attempt, including interrupted queries')
 
 
-def collection_summary(manifest, attempts):
-    airports = Airports(read(CACHE/'baseline.json.gz'))
+def collection_summary(manifest, attempts, cache=None, captures=None):
+    cache, captures = Path(cache or CACHE), Path(captures or CAPTURES)
+    airports = Airports(read(cache/'baseline.json.gz'))
     successful, failed, missing, rejected = [], [], [], []
     for attempt in attempts:
         key = tuple(attempt['query'])
-        path = CAPTURES/('-'.join(key)+'.json')
+        path = captures/('-'.join(key)+'.json')
         if path.exists():
             q = read(path)
             try:
@@ -156,7 +157,7 @@ def collection_summary(manifest, attempts):
         priced_records=sum(q['priced_records'] for q in successful),captures=successful,
         failed_queries=failed,interrupted_queries=missing,rejected_queries=rejected,
         workstreams=dict(Counter(streams[tuple(a['query'])] for a in attempts)))
-    stop=CAPTURES/'collection-stop.json'
+    stop=captures/'collection-stop.json'
     if stop.exists(): result['collection_stop']=read(stop)
     return result
 
@@ -169,21 +170,23 @@ def check_baseline(cache,manifest):
             raise ValueError('Frozen follow-up baseline missing or changed; do not reset the comparison')
 
 
-def publish_checkpoint(cache=CACHE):
-    manifest=read(SOURCE)
-    check_parent(manifest)
+def publish_checkpoint(cache=CACHE, source=None, captures=None, validate=None):
+    source, captures = Path(source or SOURCE), Path(captures or CAPTURES)
+    manifest=read(source)
+    (validate or check_parent)(manifest)
+    preparation.validate_campaign_transition(manifest,source)
     check_baseline(cache,manifest)
     parent=read(ORIGINAL_SOURCE)
-    manifest['unresolved_airports']=parent['unresolved_airports']
-    manifest['unresolved_routes']=parent['unresolved_routes']
-    attempts=merged_attempts(manifest,CAPTURES/'attempts.json')
-    if len(attempts)>300:
-        raise ValueError('The follow-up exceeded its 300-search cap')
-    summary=collection_summary(manifest,attempts)
+    manifest.setdefault('unresolved_airports',parent['unresolved_airports'])
+    manifest.setdefault('unresolved_routes',parent['unresolved_routes'])
+    attempts=merged_attempts(manifest,captures/'attempts.json')
+    if len(attempts)>manifest['search_limit']:
+        raise ValueError('The follow-up exceeded its search cap')
+    summary=collection_summary(manifest,attempts,cache,captures)
     manifest['collection']=summary
-    save(SOURCE,manifest)
+    save(source,manifest)
     audit(ORIGINAL_CACHE)
-    supplement=preparation.prepare(ORIGINAL_CACHE,source=SOURCE)
+    supplement=preparation.prepare(ORIGINAL_CACHE,source=source)
     result=world.prepare(cache/f'world-after-{len(attempts)}.json.gz')
     before=read(cache/'baseline.json.gz')
     previous={world.identity(f) for f in before['flights']}
@@ -198,8 +201,8 @@ def publish_checkpoint(cache=CACHE):
     score['delta']={k:score['after'][k]-score['before'][k] for k in score['before']}
     summary.update(score)
     manifest['collection']=summary
-    save(SOURCE,manifest)
-    supplement['metadata']['source_manifest']=dict(path=relative(SOURCE),sha256=digest(SOURCE.read_bytes()))
+    save(source,manifest)
+    supplement['metadata']['source_manifest']=dict(path=relative(source),sha256=digest(source.read_bytes()))
     save(adapter.reference_path(),supplement)
     result['metadata']['inputs'][relative(adapter.reference_path())]=dict(
         sha256=digest(adapter.reference_path().read_bytes()),bytes=adapter.reference_path().stat().st_size)
@@ -209,16 +212,17 @@ def publish_checkpoint(cache=CACHE):
     return summary
 
 
-def collect(cache=CACHE):
-    manifest=read(SOURCE)
-    check_parent(manifest)
-    CAPTURES.mkdir(parents=True,exist_ok=True)
-    with (CAPTURES/'.campaign.lock').open('a') as lock:
+def collect(cache=CACHE, source=None, captures=None, validate=None, checkpoint_size=100):
+    source, captures = Path(source or SOURCE), Path(captures or CAPTURES)
+    manifest=read(source)
+    (validate or check_parent)(manifest)
+    captures.mkdir(parents=True,exist_ok=True)
+    with (captures/'.campaign.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        stop=CAPTURES/'collection-stop.json'
+        stop=captures/'collection-stop.json'
         if stop.exists() or manifest['collection'].get('collection_stop'):
             raise RuntimeError('Collection stopped previously; do not retry an access challenge')
-        path=CAPTURES/'attempts.json'
+        path=captures/'attempts.json'
         attempts=merged_attempts(manifest,path)
         if not path.exists() or read(path)['attempts']!=attempts:
             save(path,dict(attempts=attempts))
@@ -229,7 +233,7 @@ def collect(cache=CACHE):
             return 0
         check_baseline(cache,manifest)
         known={tuple(r['query']) for r in read(ORIGINAL_CACHE/'cache-index.json.gz')['queries']}
-        batch=[tuple(q) for q in manifest['new_searches'] if tuple(q) not in budget.used and tuple(q) not in known][:min(100,remaining)]
+        batch=[tuple(q) for q in manifest['new_searches'] if tuple(q) not in budget.used and tuple(q) not in known][:min(checkpoint_size,remaining)]
         if not batch:
             return 0
         zones={a['code']:a.get('replay_timezone',a['timezone']) for a in manifest['airports']}
@@ -237,14 +241,14 @@ def collect(cache=CACHE):
             capture_prices=True,currency='USD',zones=zones,reject_invalid_segments=True,
             capture_context=dict(parser='world-international-followup-v1',max_duration=86400,currency='USD',
                 adults=1,cabin='economy',trip_type='one_way',airline_filter='none'),on_query_start=budget.start,queries=batch)
-        print(world.canonical_json(dict(batch=len(batch),attempted=len(attempts),cap=300)),flush=True)
+        print(world.canonical_json(dict(batch=len(batch),attempted=len(attempts),cap=manifest['search_limit'])),flush=True)
         stopped=False
         try:
-            asyncio.run(capture(CAPTURES,DAY,sorted({q[1:] for q in batch}),2,cfg))
+            asyncio.run(capture(captures,DAY,sorted({q[1:] for q in batch}),2,cfg))
         except RuntimeError as error:
             save(stop,dict(reason=str(error),at=datetime.now(timezone.utc).isoformat()))
             stopped=True
-        publish_checkpoint(cache)
+        publish_checkpoint(cache,source,captures,validate)
         return 2 if stopped else 0
 
 

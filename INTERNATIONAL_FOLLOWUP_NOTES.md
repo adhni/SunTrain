@@ -1,5 +1,10 @@
 # Targeted international follow-up
 
+This page records the completed 300-search pass. The later 100-search campaign
+and latest totals are in [INTERNATIONAL_BOUNDARY_NOTES.md](INTERNATIONAL_BOUNDARY_NOTES.md).
+Use that campaign's command to rebuild the current cumulative supplement; the
+commands below describe this historical pass.
+
 This pass extends **World · Flights** for **2 November 2026 UTC**, starting from
 55,599 flights. It uses a separate **300-search** budget: 150 European airline
 candidates, 100 gateway connections and 50 Asian/Gulf candidates. It does not

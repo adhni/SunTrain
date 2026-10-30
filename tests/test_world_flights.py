@@ -117,16 +117,19 @@ def test_compact_http_uses_only_snapshot_preserves_records_and_cache(tmp_path, m
     app=Flask(__name__);http.register_replay_routes(app)
     client=app.test_client();info=http.descriptor(world.DAY,'world_flights')
     response=client.get(info['url'], headers={'Accept-Encoding':'gzip'})
-    assert response.status_code==200 and len(response.data)<=5*1024*1024
+    assert response.status_code==200
     payload=json.loads(gzip.decompress(response.data))
-    assert calls==['world_flights'] and len(payload['services'])==53591
+    source=world.load_reference(world.DAY)
+    # Data expansion increases the total download; keep the compact transfer
+    # density bounded rather than pretending the original corpus is unchanged.
+    assert len(response.data)<=max(5*1024*1024,110*len(source['flights']))
+    assert calls==['world_flights'] and len(payload['services'])==len(source['flights'])
     assert payload['flight_geometry']=='great_circle_v1'
     assert payload['flight_view_kind']=='network' and payload['timezone']=='UTC'
     assert payload['initial']==world.START+36000 and payload['end']==world.END
-    assert len(payload['paths'])==16823
+    assert len(payload['paths'])==source['metadata']['coverage']['routes_returned']
     assert all('coordinates' not in p and len(p['endpoints'])==2 for p in payload['paths'].values())
     assert not {'queries','wizzair_inventory'} & payload['schedule'].keys()
-    source=world.load_reference(world.DAY)
     assert {s['id'] for s in payload['services']}=={f['id'] for f in source['flights']}
     by_id={f['id']:f for f in source['flights']}
     for service in payload['services']:
@@ -143,12 +146,14 @@ def test_compact_http_uses_only_snapshot_preserves_records_and_cache(tmp_path, m
 
 
 def test_prepared_real_union_counts_inputs_and_reproducibility(tmp_path,monkeypatch):
+    from dashboard import south_america_domestic as domestic
     snapshot=world.load_reference(world.DAY);meta=snapshot['metadata']
-    assert len(snapshot['flights'])==53591 and meta['union_before_utc_window']==60112
-    assert meta['scopes']=={'domestic':27898,'international':25693}
-    assert len(meta['member_views'])==40 and len(meta['inputs'])==44
-    assert len({world.identity(f) for f in snapshot['flights']})==53591
-    assert len({f['id'] for f in snapshot['flights']})==53591
+    added=domestic.load_reference()['metadata']['coverage']['new_world_identities'] if domestic.enabled() else 0
+    assert len(snapshot['flights'])==meta['coverage']['flights']
+    assert meta['scopes']['domestic']==27898+added and meta['scopes']['international']>25693
+    assert len(meta['member_views'])==41 and len(meta['inputs'])==45+int(domestic.enabled())
+    assert len({world.identity(f) for f in snapshot['flights']})==len(snapshot['flights'])
+    assert len({f['id'] for f in snapshot['flights']})==len(snapshot['flights'])
     paths={world.ROOT/p for p in meta['inputs']};read=Path.read_bytes;calls=[]
     def tracked(p):
         if p in paths:calls.append(p)
@@ -162,3 +167,14 @@ def test_prepared_real_union_counts_inputs_and_reproducibility(tmp_path,monkeypa
         assert hashlib.sha256(read(world.ROOT/path)).hexdigest()==info['sha256']
     with pytest.raises(ValueError,match='Unsupported World'):
         world.load_reference('2026-11-03')
+
+
+def test_original_40_view_union_is_byte_identical_without_supplement(tmp_path,monkeypatch):
+    monkeypatch.setenv('SUNTRAIN_WORLD_INTERNATIONAL_REFERENCE',str(tmp_path/'absent.gz'))
+    monkeypatch.setenv('SUNTRAIN_SOUTH_AMERICA_DOMESTIC_REFERENCE',str(tmp_path/'absent-domestic.gz'))
+    output=tmp_path/'original.gz'
+    original=world.prepare(output)
+    assert len(original['flights'])==53591
+    assert original['metadata']['scopes']=={'domestic':27898,'international':25693}
+    assert len(original['metadata']['inputs'])==44
+    assert hashlib.sha256(output.read_bytes()).hexdigest()=='2de7eb21702c1027c6d0976c49d76a16e8fdf2ee7ebf228e9a4dd4bb620d677a'

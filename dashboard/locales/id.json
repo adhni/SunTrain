@@ -1,5 +1,6 @@
 {
   "Language": "Bahasa",
+  "International expansion": "Perluasan internasional",
   "Theme": "Tema",
   "Light": "Terang",
   "Dark": "Gelap",
@@ -1143,5 +1144,6 @@
   "World · Combined domestic and international captures · 2 November 2026. Timeline: UTC; airport boards use local time. Coverage is partial, including gaps near UTC midnight. Captured fares retain their original currencies; paths are illustrative.": "Dunia · Gabungan hasil pengambilan domestik dan internasional · 2 November 2026. Linimasa: UTC; papan bandara menggunakan waktu setempat. Cakupan sebagian, termasuk kekurangan di sekitar tengah malam UTC. Harga tetap dalam mata uang aslinya; jalur bersifat ilustratif.",
   "Combined domestic and international captures from SunTrain flight views · 2 November 2026. Timeline: UTC; airport boards use local dates and times. Coverage is partial, including gaps near UTC midnight because local capture dates differ. Fares retain their original currencies without conversion; paths are illustrative.": "Gabungan hasil pengambilan domestik dan internasional dari tampilan penerbangan SunTrain · 2 November 2026. Linimasa: UTC; papan bandara menggunakan tanggal dan waktu setempat. Cakupan sebagian, termasuk kekurangan di sekitar tengah malam UTC karena tanggal pengambilan setempat berbeda. Harga tetap dalam mata uang aslinya tanpa konversi; jalur bersifat ilustratif.",
   "Lowest captured fare in this currency · 1 adult · Economy · One-way. Optional baggage and charges may cost extra.": "Harga terendah yang terekam dalam mata uang ini · 1 dewasa · Ekonomi · Sekali jalan. Bagasi opsional dan biaya lain dapat dikenakan.",
-  "Display preference: USD, then EUR, then MYR.": "Prioritas tampilan: USD, lalu EUR, lalu MYR."
+  "Display preference: USD, then EUR, then MYR.": "Prioritas tampilan: USD, lalu EUR, lalu MYR.",
+  "Selected South American airports, plus captured domestic routes in Argentina, Peru and Chile. Departures on 2 November 2026 in each origin airport’s local time; overnight arrivals included. Timeline: UTC; airport boards use local time. Captured fares use USD. Coverage and prices are partial; paths are illustrative.": "Bandara terpilih di Amerika Selatan, ditambah rute domestik tercatat di Argentina, Peru, dan Cile. Keberangkatan pada 2 November 2026 menurut waktu setempat bandara asal; termasuk kedatangan setelah tengah malam. Linimasa: UTC; papan bandara menggunakan waktu setempat. Tarif tercatat dalam USD. Cakupan dan harga hanya sebagian; jalur bersifat ilustratif."
 }

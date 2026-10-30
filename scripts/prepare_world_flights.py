@@ -1,4 +1,4 @@
-"""Prepare World flights solely from the existing validated flight views."""
+"""Prepare World from validated views and its optional international supplement."""
 import argparse
 import json
 from dashboard.world_flights import prepare

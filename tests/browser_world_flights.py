@@ -1,10 +1,17 @@
 """Global union, lazy geometry, filters, local boards, fares and view transitions."""
 import json
+import gzip
 import os
+from collections import Counter
 from pathlib import Path
 from playwright.sync_api import sync_playwright
 
-OUT=Path('.cache/world-flights');OUT.mkdir(parents=True,exist_ok=True)
+OUT=Path(os.environ.get('SUNTRAIN_WORLD_TEST_OUTPUT','.cache/world-flights'));OUT.mkdir(parents=True,exist_ok=True)
+with gzip.open(os.environ.get('SUNTRAIN_WORLD_FLIGHTS_REFERENCE','data/reference/world_flights/2026-11-02.json.gz'),'rt') as stream:
+ expected=json.load(stream)
+TOTAL=len(expected['flights']);SCOPES=Counter(f['flight_scope'] for f in expected['flights'])
+ROUTES=expected['metadata']['coverage']['routes_returned']
+ACTIVE_1500=sum(f['departure']<=1793577600+15*3600<=f['arrival'] for f in expected['flights'])
 CAMERA='({center:suntrainReplay.graph.getCenter().toArray().map(n=>+n.toFixed(6)),zoom:+suntrainReplay.graph.getZoom().toFixed(6)})'
 with sync_playwright() as p:
  browser=p.chromium.launch(channel='chrome',headless=True,args=['--enable-unsafe-swiftshader','--use-angle=swiftshader'])
@@ -24,20 +31,20 @@ with sync_playwright() as p:
   page.evaluate('([id,value])=>dash_clientside.set_props(id,{value})',[id,value]);page.wait_for_function(condition)
  def clear():
   page.evaluate('''()=>{suntrainReplay.departures.close();for(const id of ['replay-carriers','replay-airports','replay-lines','replay-from-countries','replay-to-countries'])dash_clientside.set_props(id,{value:[]});dash_clientside.set_props('replay-airport-direction',{value:'both'});dash_clientside.set_props('replay-flight-scope',{value:'both'});}''')
-  page.wait_for_function('suntrainReplay.filtered.length===53591')
+  page.wait_for_function('(n)=>suntrainReplay.filtered.length===n',arg=TOTAL)
  ready('world_flights')
  print('World opened.',flush=True)
  assert page.locator('#replay-clock').inner_text()=='10:00:00'
  assert page.evaluate('suntrainReplay.playing') is False
  assert page.evaluate('suntrainReplay.day.timezone')=='UTC'
- assert page.evaluate('suntrainReplay.filtered.length')==53591
- assert page.evaluate('suntrainReplay.day._generatedFlightPaths')<16823
- assert '53,591' in page.locator('#replay-world-coverage').inner_text()
+ assert page.evaluate('suntrainReplay.filtered.length')==TOTAL
+ assert page.evaluate('suntrainReplay.day._generatedFlightPaths')<ROUTES
+ assert f'{TOTAL:,}' in page.locator('#replay-world-coverage').inner_text()
  assert 'Combined captures' in page.locator('#replay-flight-key').inner_text()
  original=page.evaluate(CAMERA);now=page.evaluate('suntrainReplay.now')
  page.locator('#replay-map').screenshot(path=str(OUT/'global-1000.png'))
  page.evaluate('suntrainReplay.seek(suntrainReplay.day.start+15*3600)')
- assert page.evaluate('suntrainReplay.activePositions.length')==7584
+ assert page.evaluate('suntrainReplay.activePositions.length')==ACTIVE_1500
  page.locator('#replay-map').screenshot(path=str(OUT/'global-peak.png'))
  # Near the dateline, source transfer is limited to viewport+12px, counts use centres.
  page.evaluate('()=>{suntrainReplay.graph.jumpTo({center:[180,0],zoom:3});suntrainReplay.paint(true);}')
@@ -71,16 +78,51 @@ with sync_playwright() as p:
  page.locator('#replay-melbourne').click();page.wait_for_timeout(200)
  assert page.evaluate(CAMERA)==original
  clear()
- for scope,count in [('domestic',27898),('international',25693),('both',53591)]:
+ for scope,count in [('domestic',SCOPES['domestic']),('international',SCOPES['international']),('both',TOTAL)]:
   set_filter('replay-flight-scope',scope,f'suntrainReplay.filters.flightScope==="{scope}" && suntrainReplay.filtered.length==={count}')
+ if 'world_international_expansion' in expected['metadata']['member_views']:
+  set_filter('replay-from-countries',['ES'],'suntrainReplay.filters.fromCountries[0]==="ES"')
+  set_filter('replay-to-countries',['CU'],'suntrainReplay.filters.toCountries[0]==="CU"')
+  assert page.evaluate('suntrainReplay.filtered.length>0 && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].country==="ES" && suntrainReplay.day.stations[s.stops[1][0]].country==="CU")')
+  assert page.evaluate(CAMERA)==original
+  clear()
+ if 'data/reference/south_america_domestic/2026-11-02.json.gz' in expected['metadata']['inputs']:
+  airport_country={a['code']:a['country'] for a in expected['airports']}
+  for country in ['AR','PE','CL']:
+   count=sum(airport_country[f['origin']]==country and airport_country[f['destination']]==country for f in expected['flights'])
+   assert count>0
+   set_filter('replay-from-countries',[country],f'suntrainReplay.filters.fromCountries[0]==="{country}"')
+   set_filter('replay-to-countries',[country],f'suntrainReplay.filters.toCountries[0]==="{country}" && suntrainReplay.filtered.length==={count}')
+   assert page.evaluate(CAMERA)==original
+  clear()
+ if any(f['origin']=='HND' and f['destination']=='LHR' and f['number']=='NH211' for f in expected['flights']):
+  set_filter('replay-from-countries',['JP'],'suntrainReplay.filters.fromCountries[0]==="JP"')
+  set_filter('replay-to-countries',['GB'],'suntrainReplay.filters.toCountries[0]==="GB"')
+  assert page.evaluate('suntrainReplay.filtered.some(s=>s.number==="NH211")')
+  assert page.evaluate(CAMERA)==original
+  clear()
+ winter=[f for f in expected['flights'] if f['origin']=='BOD' and f['destination']=='LGW']
+ if winter:
+  set_filter('replay-from-countries',['FR'],'suntrainReplay.filters.fromCountries[0]==="FR"')
+  set_filter('replay-to-countries',['GB'],'suntrainReplay.filters.toCountries[0]==="GB"')
+  numbers=sorted(f['number'] for f in winter)
+  assert page.evaluate('suntrainReplay.filtered.filter(s=>s.route_id==="BOD-LGW").map(s=>s.number).sort()')==numbers
+  assert page.evaluate(CAMERA)==original
+  clear()
  set_filter('replay-carriers',['brand:lufthansa'],'suntrainReplay.filters.carriers[0]==="brand:lufthansa"')
  assert page.evaluate('suntrainReplay.filtered.length>0 && suntrainReplay.filtered.every(s=>s.flight_brand==="lufthansa")')
  clear()
  # Boards own only in-window events and use the airport's preserved local clock.
- for code,zone in [('LHR','Europe/London'),('YVR','Etc/GMT+7'),('SYD','Australia/Sydney')]:
+ boards=[('LHR','Europe/London'),('YVR','Etc/GMT+7'),('SYD','Australia/Sydney')]
+ if winter:boards.extend([('BOD','Europe/Paris'),('SXB','Europe/Paris')])
+ if 'data/reference/south_america_domestic/2026-11-02.json.gz' in expected['metadata']['inputs']:
+  boards.extend([('BRC','America/Argentina/Salta'),('CUZ','America/Lima'),('BBA','America/Coyhaique')])
+ if 'world_international_expansion' in expected['metadata']['member_views']:
+  boards.extend([('HAV','America/Havana'),('BDA','Atlantic/Bermuda')])
+ for code,zone in boards:
   page.evaluate('(code)=>{const r=suntrainReplay;r.seek(r.day.start);r.departures.open(r.day.stations.findIndex(a=>a.code===code));}',code)
   page.wait_for_function('(code)=>suntrainReplay.filters.airports[0]===code && suntrainReplay.departures.services===suntrainReplay.filtered',arg=code)
-  assert page.evaluate('suntrainReplay.departures.timezone')==zone
+  assert page.evaluate('suntrainReplay.departures.timezone')==zone, (code,zone)
   assert page.evaluate('suntrainReplay.departures.calls.every(c=>c.at>=suntrainReplay.day.start && c.at<suntrainReplay.day.end)')
   assert page.evaluate(CAMERA)==original
   for event in ['arrival','departure','destinations']:
@@ -91,6 +133,7 @@ with sync_playwright() as p:
   page.locator('[data-event="departure"]').click()
   assert page.evaluate('suntrainReplay.departures.expanded')
   if code=='LHR':page.screenshot(path=str(OUT/'heathrow-board.png'))
+  if code=='BOD':page.screenshot(path=str(OUT/'bordeaux-board.png'))
   page.locator('.departure-row').first.click()
   page.get_by_role('button',name='Back to airport board',exact=True).click()
   assert page.evaluate('suntrainReplay.departures.expanded')
@@ -129,7 +172,9 @@ with sync_playwright() as p:
  page.evaluate('dash_clientside.set_props("view-tabs",{value:"overview"})')
  page.wait_for_function('document.querySelector("#city-overview-content").textContent.includes("Collection evidence by source")')
  assert 'undefined' not in page.locator('#city-overview-content').inner_text()
- assert page.locator('.world-source-evidence > details').count()==40
+ assert page.locator('.world-source-evidence > details').count()==len(expected['metadata']['member_views'])
+ if 'world_international_expansion' in expected['metadata']['member_views']:
+  assert 'International expansion' in page.locator('.world-source-evidence > details > summary').all_text_contents()
  page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"})')
  page.set_viewport_size({'width':390,'height':844})
  for theme in ['light','dark','sunrise','blueprint','heritage']:

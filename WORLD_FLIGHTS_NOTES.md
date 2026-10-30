@@ -1,5 +1,7 @@
 # World · Flights
 
+**Later expansion:** current World counts and the active international preparation command are in [INTERNATIONAL_LONGHAUL_NOTES.md](INTERNATIONAL_LONGHAUL_NOTES.md). Counts below describe this earlier pass.
+
 World combines the 40 existing flight views for **2 November 2026, 00:00–24:00 UTC**, paused at **10:00 UTC**. It is a dated partial collection, not complete worldwide traffic. Existing country, hub and network views keep their URLs, records and presentation palettes.
 
 ## Prepared union

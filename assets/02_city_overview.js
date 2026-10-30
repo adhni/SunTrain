@@ -146,7 +146,7 @@
                 element('p','Source views overlap. Their search totals are not additive.','replay-muted'));
             const names=JSON.parse($('city-overview').dataset.cities);
             for (const [id,member] of Object.entries(day.schedule.member_views)) {
-                const item=element('details');item.append(element('summary',names[id] || id));
+                const item=element('details');item.append(element('summary',names[id] || member.name || id));
                 item.append(message('{n} captured entries overlap the UTC day',{n:count(member.flights_overlapping_utc)}));
                 for (const coverage of [member.coverage,member.shared_network_coverage].filter(Boolean)) {
                     if (Number.isFinite(coverage.queries_captured) && Number.isFinite(coverage.queries_planned))

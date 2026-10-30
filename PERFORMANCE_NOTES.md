@@ -1,5 +1,11 @@
 # Replay performance and memory
 
+The first 30 October World international expansion increased the collection to 55,599 flights and a 5.18 MiB gzip HTTP download. Its actual peak was 7,973 active flights. Median first-map readiness measured 7.89 s desktop / 12.69 s at 4× CPU, board response 1.24 s / 1.77 s, and peak paint p95 24.6 ms / 165.5 ms. The 4× CPU peak exceeds the earlier 150 ms target; desktop first-map/board targets also remain missed. Full collection evidence, baseline comparisons, method and limitations are in [INTERNATIONAL_EXPANSION_NOTES.md](INTERNATIONAL_EXPANSION_NOTES.md).
+
+The subsequent targeted 300-search pass brought World to **55,988 flights** and **5,479,477 bytes / 5.23 MiB gzip HTTP** (+0.8% download). Collection and validation results are in [INTERNATIONAL_FOLLOWUP_NOTES.md](INTERNATIONAL_FOLLOWUP_NOTES.md).
+
+The later 100-search missing-direction/UTC-boundary pass brings World to **56,231 flights** and **5,509,842 bytes / 5.25 MiB gzip HTTP** (+0.6% download). Rendering and HTTP format 28 are unchanged. The responsiveness/peak-paint measurements above apply to the earlier 55,599-flight snapshot; neither follow-up claims an updated performance benchmark. Results and airport-identity review are in [INTERNATIONAL_BOUNDARY_NOTES.md](INTERNATIONAL_BOUNDARY_NOTES.md).
+
 All existing historical date ranges, routes, passenger records and geometry are retained. Melbourne trains keep FY2023–24; trams/buses keep five weeks. This change does not create daily files for every city or change hosting plans.
 
 ## Representation and rebuilding
@@ -144,3 +150,15 @@ Final validation passed **495 relevant Python tests, 122 JavaScript tests and 12
 The union rebuild matches the committed gzip byte for byte and reads each of the 44 source archives once. HTTP tests verify the 5 MiB budget, exact service identities/fares/times/airports, descriptors, gzip/ETag/cache behaviour and invalid-date rejection. JavaScript tests compare lazy 64-segment arcs with the Python algorithm across long-haul, polar, dateline and coincident endpoints, and compare the World interpolation fast path with legacy positions at departure, arrival and intermediate times. Synthetic tests cover quote selection, unknown/conflicting aircraft, explicit airport aliases and unexpected conflicts.
 
 A separate preservation audit compared every field of all **40 existing replay payloads** with the completed display-consistency adapter and verified **all 292 original reference SHA-256 hashes**. They match exactly. The only `data/` addition is the derived World snapshot. The audit-only HTTP response directory is removed after validation; screenshots, timing evidence and logs are retained. PR creation, merging and deployment remain separate requests.
+
+## Argentina, Peru and Chile domestic capture expansion
+
+The 200-search domestic pass brings World to **57,024 flights** and South America to **2,538 flights / 99 airports**. Original capture archives remain unchanged; the separately validated domestic archive is the 46th World input. The prepared World gzip is **3,178,819 bytes (3.03 MiB)**; the actual replay HTTP gzip is **5,608,985 bytes (5.35 MiB)**. South America's replay gzip is **603,919 bytes**. The original 5 MiB World HTTP target remains exceeded as coverage grows; no identities or quotes were discarded to reduce transfer size.
+
+Three cached localhost HTTP download samples were 26.36/13.00/9.31 ms for World and 7.13/5.91/5.14 ms for South America. These measure response retrieval only. Earlier first-map and playback measurements above belong to their earlier datasets; they were not remeasured for this data-only expansion. Logs and measurement JSON are under ignored `.cache/south-america-domestic/`. See [the expansion notes](SOUTH_AMERICA_DOMESTIC_NOTES.md) for coverage, preservation and validation results.
+
+## Capped international long-haul pass
+
+The next 200 searches add 203 international records, bringing World to **57,227 flights / 28,536 international records** and 12,040 international directions. The prepared World gzip is **3,192,641 bytes**; the actual format-28 replay HTTP gzip is **5,632,812 bytes (5.37 MiB)**, +23,827 bytes over the preceding domestic expansion. The original 5 MiB transfer target remains exceeded as data coverage grows.
+
+A cached localhost response retrieval measured 24.42 ms. First-map readiness and throttled playback performance were not remeasured; earlier benchmark limitations remain. The final World browser regression checks global/peak playback, clipped viewport transfer, filters, local boards, lazy geometry and palettes with this dataset. See [INTERNATIONAL_LONGHAUL_NOTES.md](INTERNATIONAL_LONGHAUL_NOTES.md) for collection and validation details. Logs, screenshots, the added-flight CSV and measurement JSON are ignored under `.cache/international-longhaul/`.

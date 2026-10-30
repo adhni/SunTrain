@@ -213,7 +213,12 @@ def _reference_paths(business_date=None, city='australia_flights'):
     if city=='gulf_flights':
         from dashboard.gulf_flights import reference_paths as hub_paths
         return hub_paths(business_date)
-    if city in PROFILE_CITIES:return [reference_path(business_date,city)]
+    if city in PROFILE_CITIES:
+        paths=[reference_path(business_date,city)]
+        if city=='south_america_flights':
+            from dashboard import south_america_domestic as domestic
+            if domestic.enabled():paths.append(domestic.reference_path())
+        return paths
     paths = [reference_path(business_date, city)]
     if city in {'singapore_flights','south_korea_flights','japan_flights','china_flights','thailand_flights','philippines_flights','vietnam_flights'}:return paths
     prefix = {'indonesia_flights':'INDONESIA','australia_flights':'AUSTRALIA','malaysia_flights':'MALAYSIA','india_flights':'INDIA'}[city]
@@ -273,7 +278,12 @@ def load_reference(business_date, city):
 
 
 def _load_reference(business_date, city):
-    if city in PROFILE_CITIES:return load_profile_domestic(reference_path(business_date,city),PROFILE_CITIES[city][0])
+    if city in PROFILE_CITIES:
+        result=load_profile_domestic(reference_path(business_date,city),PROFILE_CITIES[city][0])
+        if city=='south_america_flights':
+            from dashboard import south_america_domestic as domestic
+            if domestic.enabled():result=domestic.overlay(result,domestic.load_reference())
+        return result
     if city=='gulf_flights':
         from dashboard.gulf_flights import load_reference as hub_reference
         return hub_reference(business_date)

@@ -1,0 +1,191 @@
+/* Discovery and replay share one map-led, viewport-sized shell. */
+.app:is(.home-active,.replay-active) { max-width: none; height: 100dvh; min-height: 0; padding: 0; display: flex; flex-direction: column; overflow: hidden; }
+.app.transport-active .workspace-header { margin: 0; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; flex-shrink: 0; z-index: 30; }
+.app.transport-active .brand-bar { min-height: 56px; height: 56px; padding: 8px 20px; gap: 12px; background: var(--surface); color: var(--ink); border-radius: 0; }
+.app.transport-active .brand-bar h1 { font-size: 1.65rem; }
+.app.transport-active .product-subtitle, .app.transport-active .view-tabs-parent { display: none; }
+.playground-navigation { margin-left: auto; }
+.playground-navigation, .playground-settings { position: relative; }
+.playground-settings { display: block; }
+.playground-navigation > summary, .playground-settings > summary { list-style: none; cursor: pointer; font-size: .8rem; font-weight: 650; padding: 9px 14px; border: 1px solid var(--line); border-radius: 24px; color: var(--ink); background: var(--surface); }
+summary::-webkit-details-marker { display: none; }
+.playground-navigation > div, .playground-settings[open] > :not(summary) { position: relative; z-index: 2; }
+.playground-navigation[open], .playground-settings[open] { z-index: 35; }
+.playground-navigation[open]::before, .playground-settings[open]::before { content: ''; position: absolute; top: 43px; right: 0; width: 230px; height: 160px; background: var(--surface); border: 1px solid var(--line); box-shadow: 0 8px 24px #0002; border-radius: 12px; }
+.playground-navigation > div { position: absolute; right: 0; top: 50px; width: 230px; padding: 4px 12px; }
+.playground-navigation button { display: block; width: 100%; padding: 11px; background: none; border: 0; border-radius: 6px; text-align: left; color: var(--ink); cursor: pointer; }
+.playground-navigation button:hover { background: var(--accent-soft); }
+.playground-settings[open] > .theme-picker { position: absolute; top: 54px; right: 10px; width: 210px; margin: 0; padding: 6px; color: var(--ink); display: flex; justify-content: space-between; }
+.playground-settings[open] > .language-picker { top: 104px; flex-wrap: wrap; }
+.playground-settings .dataset-note { display: none; }
+.playground-settings .theme-select { max-width: 135px; color: var(--ink); background: var(--surface-subtle); border-color: var(--line); }
+button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+/* Home: metadata only, with four decorative, self-contained map previews. */
+.home-panel { flex: 1; min-height: 0; position: relative; }
+.home-world { height: 100%; border: 0; border-radius: 0; box-shadow: none; }
+#home-map { height: 100%; }
+.home-search { left: 24px; top: 24px; width: 350px; max-width: calc(100% - 130px); padding: 18px; border-radius: 16px; box-shadow: 0 6px 28px #0002; background: var(--surface); }
+.home-search h2 { font-size: 1.6rem; letter-spacing: -.04em; margin: 0 0 15px; line-height: 1.15; }
+.home-search label { font-size: .7rem; color: var(--muted); }
+.home-kind-switch { display: flex; gap: 3px; margin-top: 12px; padding: 3px; background: var(--surface-subtle); border: 1px solid var(--line); border-radius: 8px; }
+.home-kind-switch button { flex: 1; padding: 8px 5px; border: 0; border-radius: 5px; color: var(--muted); background: none; font-size: .65rem; white-space: nowrap; cursor: pointer; }
+.home-kind-switch button[aria-pressed=true] { background: var(--accent-soft); color: var(--accent-deep); font-weight: 750; }
+.home-kind-switch button[data-home-kind=flights][aria-pressed=true] { background: #f5a24b; color: #17212b; }
+.home-count { display: block; margin-top: 9px; padding: 0; border: 0; font-size: .65rem; color: var(--muted); }
+.home-reset { top: 24px; right: 24px; border-radius: 20px; }
+#home-map .maplibregl-ctrl-top-right { top: 68px; right: 14px; }
+.home-discover { position: absolute; z-index: 3; left: 24px; bottom: 44px; width: min(960px, calc(100% - 48px)); padding: 12px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface); box-shadow: 0 6px 28px #0002; }
+.home-discover-heading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; padding-left: 3px; }
+.home-discover-heading strong { font-size: .8rem; }
+#home-surprise { width: auto; padding: 7px 12px; border-radius: 20px; font-size: .72rem; }
+.home-experiences { display: flex; gap: 10px; }
+.home-experience { min-width: 0; flex: 1; overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: var(--surface-subtle); }
+.home-experience[hidden] { display: none; }
+.home-experience-preview { display: block; width: 100%; height: 76px; object-fit: cover; }
+.home-experience-copy { position: relative; padding: 11px; }
+.home-experience h3 { margin: 0 0 7px; font-size: .8rem; font-weight: 700; line-height: 1.3; }
+.home-experience-time, .home-experience-zone { color: var(--muted); font-size: .6rem; }
+.home-experience-copy button { display: block; margin-top: 9px; padding: 7px 14px; border: 0; border-radius: 20px; font-weight: 700; font-size: .7rem; color: var(--surface); background: var(--accent-deep); cursor: pointer; }
+.home-experience-flights .home-experience-copy button { color: #17212b; background: #f5a24b; }
+.home-map-hint { left: auto; right: 24px; bottom: 25px; font-size: .6rem; }
+.home-cluster-list { max-height: min(360px, 45dvh); overflow-y: auto; min-width: 220px; }
+.home-cluster-list h3 { font-size: .95rem; margin: 3px 20px 12px 0; }
+.home-cluster-place { display: flex; align-items: center; gap: 10px; width: 100%; padding: 11px 6px; text-align: left; border: 0; border-bottom: 1px solid var(--line); border-radius: 4px; color: var(--ink); background: var(--surface); font-size: .8rem; cursor: pointer; }
+.home-cluster-place:hover { background: var(--accent-soft); }
+.home-place-flight { color: #f5a24b; }.home-place-transit { color: var(--accent); }
+.home-map-message:not(:empty) { position: absolute; z-index: 5; top: 0; right: 10px; max-width: 280px; padding: 15px; background: var(--surface); border: 1px solid var(--line); }
+/* Replay: the map and playback stay inside the first viewport. */
+.replay-active #replay-panel { flex: 1; min-height: 0; position: relative; display: flex !important; flex-direction: column; --replay-map-height: 100%; }
+.replay-explore-bar { display: flex; gap: 12px; align-items: center; padding: 9px 20px 5px; flex-shrink: 0; }
+.replay-explore-bar .finder-chip { width: auto; white-space: nowrap; padding: 10px 14px; border-radius: 24px; font-size: .75rem; }
+.replay-place-date { display: grid; grid-template-columns: minmax(170px, 290px) 155px; gap: 12px; align-items: end; flex: 1; }
+.replay-place-date > .finder-field { min-width: 0; }
+.replay-place-date .finder-label { display: none; }
+.replay-place-date #replay-date-open { border-color: transparent; background: transparent; }
+.replay-place-date #replay-city.dash-dropdown { border-color: transparent; background: transparent; font-size: 1.05rem; font-weight: 750; }
+.replay-place-date #replay-date-open { font-size: .75rem; padding: 8px; }
+.replay-explore-bar .replay-fullscreen-filter-button { display: inline-flex; }
+.replay-context { height: 28px; min-height: 28px; display: flex; gap: 8px; align-items: center; padding: 0 20px 8px; flex-shrink: 0; color: var(--muted); font-size: .62rem; }
+.replay-context .replay-badge { display: none; }
+.replay-filter-chips { max-height: 24px; align-items: center; display: flex; gap: 5px; overflow-x: auto; min-width: 0; }
+.replay-filter-chips button { display: inline-flex; align-items: center; gap: 5px; border: 1px solid var(--line); border-radius: 20px; padding: 3px 8px; color: var(--accent-deep); background: var(--accent-soft); font-size: .62rem; white-space: nowrap; cursor: pointer; }
+.replay-workspace { flex: 1; min-height: 0; display: flex; }
+.replay-map-card { display: flex; flex-direction: column; width: 100%; height: 100%; border: 0; border-radius: 0; }
+.replay-map-wrap { display: flex; flex: 1; min-height: 0; }
+.replay-map-wrap .replay-map { width: 100%; height: auto; flex: 1; min-height: 0; }
+.replay-transport { flex-shrink: 0; order: initial; padding: 8px 20px 5px; background: var(--surface); }
+.replay-transport-top { margin-bottom: 2px; }
+.replay-timeline { height: 30px; }
+.replay-timeline-heading { display: none; }
+.replay-map-actions { position: relative; border-radius: 24px; background: var(--surface); }
+.replay-map-actions .finder-chip { min-height: 32px; }
+.replay-map-counts { order: 1; border-radius: 12px; font-size: .65rem; }
+.replay-map-actions { order: 2; }
+.replay-view-switch { pointer-events: auto; order: 0; width: 100%; }
+.replay-view-switch > div { display: inline-flex; border: 1px solid var(--line); border-radius: 24px; padding: 3px; background: var(--surface); }
+.replay-view-switch label { display: flex !important; align-items: center; border-radius: 20px; padding: 7px 12px; color: var(--muted); cursor: pointer; font-size: .7rem; }
+.replay-view-switch label:has(input:checked) { color: var(--accent-deep); background: var(--accent-soft); font-weight: 700; }
+.replay-view-switch input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.replay-view-switch label:focus-within { outline: 2px solid var(--accent); }
+.replay-tools { position: relative; }
+.replay-tools > summary { padding: 9px 12px; list-style: none; font-weight: 650; cursor: pointer; font-size: .72rem; }
+.replay-tools-body { position: absolute; right: 0; top: 44px; width: 270px; max-height: min(420px, 60dvh); overflow-y: auto; padding: 12px; display: grid; gap: 8px; color: var(--ink); background: var(--surface); border: 1px solid var(--line); box-shadow: 0 8px 28px #0003; border-radius: 12px; }
+.replay-tools-body > .finder-chip { width: 100%; justify-content: flex-start; }
+.replay-tools-body .replay-options { width: 100%; }
+.replay-tools-body .replay-map-footer, .replay-tools-body .replay-demand-controls { display: grid; gap: 8px; padding: 8px 0; }
+.replay-tools-body .replay-map-footer { line-height: 1.6; }
+.replay-tools-body .replay-options > summary { padding: 10px 0; }
+.replay-about { position: absolute; z-index: 3; left: 16px; bottom: 120px; font-size: .65rem; color: var(--muted); max-width: min(440px, calc(100% - 32px)); }
+.replay-about > summary { width: fit-content; padding: 6px 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; cursor: pointer; list-style: none; }
+.replay-about[open] { max-height: min(420px, 55dvh); overflow-y: auto; padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 8px 24px #0002; }
+.replay-about[open] > summary { margin-bottom: 8px; }
+.replay-about p { line-height: 1.65; }
+.replay-flight-key { left: auto; right: 12px; bottom: 35px; font-size: .62rem; max-width: min(400px, calc(100% - 24px)); }
+.replay-flight-view .replay-frequency-help { bottom: 110px; }
+/* One modal filter drawer, reusing every existing Dash field. */
+#replay-panel .replay-filters { display: none; }
+#replay-panel.replay-show-filters .replay-filters { display: grid; position: absolute; z-index: 42; top: 0; right: 0; bottom: 0; width: min(410px, 100%); max-height: none; overflow-y: auto; align-content: start; grid-template-columns: minmax(0, 1fr); gap: 16px; padding: 20px; margin: 0; border: 0; border-left: 1px solid var(--line); border-radius: 0; box-shadow: -8px 0 35px #0002; }
+.replay-drawer-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.replay-drawer-heading h2 { margin: 0; font-size: 1.4rem; }
+.replay-drawer-heading .finder-chip, #replay-clear-filters { width: auto; padding: 8px 12px; font-size: .7rem; }
+.replay-filters .replay-flight-controls, .replay-filters .replay-country-controls, .replay-filters .replay-advanced-filters { grid-template-columns: minmax(0,1fr); gap: 16px; padding: 0; }
+.replay-filters .replay-more-filters { margin-top: 6px; }
+.replay-filters .replay-advanced-filters { padding-top: 16px; }
+.replay-drawer-backdrop { display: none; }
+.replay-show-filters .replay-drawer-backdrop { display: block; position: fixed; inset: 0; z-index: 41; border: 0; background: #0005; cursor: default; }
+.replay-detail-card { right: 18px; top: var(--replay-detail-top, 100px); width: 350px; max-width: calc(100% - 36px); max-height: calc(100% - var(--replay-detail-top, 100px) - 130px); border-radius: 14px; z-index: 5; }
+#replay-expand-details { display: none; }
+#replay-panel:is(:fullscreen,.replay-expanded) { padding: 0; }
+#replay-panel:is(:fullscreen,.replay-expanded) .replay-workspace { display: flex; }
+#replay-panel:is(:fullscreen,.replay-expanded) .replay-map { min-height: 0; }
+#replay-panel:is(:fullscreen,.replay-expanded) .replay-detail-card { top: var(--replay-detail-top, 100px); max-height: calc(100% - var(--replay-detail-top, 100px) - 130px); }
+#replay-panel.replay-board-expanded.replay-browsing .replay-detail-card { max-height: none; border-radius: 0; }
+@media (max-width: 640px) {
+  .app.transport-active .brand-bar { height: 50px; min-height: 50px; padding: 6px 12px; flex-wrap: nowrap; gap: 7px; }
+  .app.transport-active .brand-bar h1 { font-size: 1.45rem; }
+  .playground-navigation > summary, .playground-settings > summary { padding: 8px 11px; font-size: .72rem; }
+  .home-search { position: absolute; left: 12px; top: 12px; width: calc(100% - 24px); max-width: none; height: auto; padding: 13px; border: 1px solid var(--line); border-radius: 13px; }
+  .home-search h2 { font-size: 1.3rem; margin-bottom: 10px; }
+  .home-search label { display: none; }
+  .home-count { display: none; }
+  .home-kind-switch { margin-top: 9px; }
+  .home-kind-switch button { font-size: .65rem; min-height: 33px; }
+  .home-reset { top: 180px; right: 14px; font-size: .65rem; padding: 8px 10px; }
+  #home-map { height: 100%; }
+  #home-map .maplibregl-ctrl-top-right { top: 222px; right: 4px; }
+  .home-discover { left: 12px; bottom: 30px; width: calc(100% - 24px); padding: 10px; border-radius: 13px; }
+  .home-experiences { overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x proximity; padding-bottom: 3px; }
+  .home-experience { flex: 0 0 210px; scroll-snap-align: start; }
+  .home-experience-preview { height: 46px; }
+  .home-experience-copy { padding: 9px; }
+  .home-experience h3 { font-size: .76rem; margin-bottom: 3px; }
+  .home-experience-copy button { margin-top: 6px; padding: 6px 13px; }
+  .home-map-hint { display: none; }
+  .replay-explore-bar { padding: 6px 10px 2px; gap: 4px; flex-wrap: wrap; }
+  .replay-place-date { order: 2; flex: 1 0 100%; grid-template-columns: minmax(0, 1fr) 125px; gap: 3px; }
+  .replay-explore-bar .finder-chip { font-size: .65rem; padding: 6px 10px; min-height: 30px; }
+  #replay-fullscreen-filters { margin-left: auto; }
+  .replay-place-date #replay-city.dash-dropdown { font-size: .95rem; }
+  .replay-place-date #replay-date-open { font-size: .68rem; }
+  .replay-context { padding: 0 12px 6px; font-size: .57rem; height: 24px; min-height: 24px; }
+  .replay-map-toolbar { top: 8px; left: 8px; right: 8px; gap: 5px; }
+  .replay-map-counts { padding: 6px 8px; font-size: .58rem; max-width: 58%; }
+  .replay-map-toolbar strong { font-size: .9rem; }
+  .replay-map-actions { padding: 2px; gap: 0; }
+  .replay-map-actions .finder-chip, .replay-tools > summary { padding: 7px 8px; font-size: .6rem; }
+  .replay-map .maplibregl-ctrl-top-right { top: 95px; }
+  .replay-view-switch label { padding: 6px 12px; font-size: .64rem; }
+  .replay-tools-body { top: 37px; max-height: 45dvh; width: min(285px,calc(100vw - 28px)); }
+  .replay-transport { order: initial; padding: 7px 12px 8px; padding-bottom: max(8px, env(safe-area-inset-bottom)); }
+  .replay-transport-top { grid-template-columns: auto 1fr 75px; gap: 7px; align-items: center; }
+  .replay-buttons { grid-row: auto; grid-column: auto; gap: 4px; }
+  .replay-buttons button { min-height: 38px; padding: 6px 9px; }
+  .replay-play-button { min-width: 67px; }
+  .replay-step-button, #replay-restart { display: none; }
+  .replay-clock-wrap { text-align: center; }
+  #replay-clock { font-size: 1.08rem; }
+  #replay-clock-date { font-size: .56rem; }
+  .replay-timeline { height: 33px; }
+  .replay-flight-key { left: auto; right: 8px; bottom: 34px; padding: 5px 7px; font-size: .52rem; max-width: calc(100% - 20px); }
+  .replay-about { bottom: 114px; left: 10px; font-size: .58rem; }
+  .replay-flight-view .replay-frequency-help { bottom: 110px; }
+  .replay-detail-card, #replay-panel:is(:fullscreen,.replay-expanded) .replay-detail-card { position: absolute; inset: auto 0 103px; width: 100%; max-width: none; max-height: 32%; margin: 0; padding: 12px 16px; border-radius: 18px 18px 0 0; border-bottom: 0; box-shadow: 0 -6px 25px #0003; }
+  .replay-detail-heading { position: sticky; top: -12px; margin: -2px 0 0; padding: 7px 0; background: var(--surface); z-index: 2; gap: 8px; }
+  .replay-detail-heading .replay-eyebrow { margin-right: auto; font-size: .6rem; }
+  #replay-expand-details { display: inline-flex; font-size: .6rem; padding: 4px 7px; }
+  .replay-sheet-expanded .replay-detail-card, #replay-panel:is(:fullscreen,.replay-expanded).replay-sheet-expanded .replay-detail-card { max-height: 75%; }
+  #replay-panel.replay-board-expanded.replay-browsing .replay-detail-card { position: fixed; inset: 0; width: 100%; max-height: none; }
+  .replay-board-expanded #replay-expand-details { display: none; }
+  #replay-panel.replay-show-filters .replay-filters { top: auto; left: 0; width: 100%; max-height: 78%; padding: 18px 16px 24px; border-radius: 18px 18px 0 0; border-left: 0; border-top: 1px solid var(--line); }
+}
+@media (prefers-reduced-motion: reduce) { .home-pin-dot, .replay-map { transition: none; } }
+.replay-panel { position: relative; }
+.overview-active .replay-about { position: static; margin: 12px 20px; max-width: none; }
+.overview-active .replay-about[open] { max-height: none; }
+@media (max-height: 600px) {
+  .home-experience-preview { display: none; }
+  .home-search h2 { font-size: 1.2rem; margin-bottom: 8px; }
+  .home-search { padding: 12px; }
+}
+.replay-map-toolbar:has(#replay-tools[open]) { z-index: 8; }
+.home-popup { z-index: 6; }

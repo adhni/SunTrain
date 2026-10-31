@@ -5,6 +5,7 @@ import os
 from collections import Counter
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from browser_controls import click_tool, select_setting
 
 OUT=Path(os.environ.get('SUNTRAIN_WORLD_TEST_OUTPUT','.cache/world-flights'));OUT.mkdir(parents=True,exist_ok=True)
 with gzip.open(os.environ.get('SUNTRAIN_WORLD_FLIGHTS_REFERENCE','data/reference/world_flights/2026-11-02.json.gz'),'rt') as stream:
@@ -21,7 +22,7 @@ with sync_playwright() as p:
  page.wait_for_function('window.suntrainHome?.ready')
  assert page.evaluate('suntrainHome.places.find(p=>p.id==="world_flights").home_marker') is False
  assert page.locator('#home-world-flights').is_visible()
- page.locator('#home-world-flights').click()
+ page.evaluate('suntrainHome.openReplay("world_flights")')
  def ready(city):
   page.wait_for_function('(city)=>suntrainReplay.day?.city===city && suntrainReplay.mapReady && !suntrainReplay.loading && !suntrainReplay.needsFit && suntrainReplay.filtered.length===suntrainReplay.day.services.length',arg=city,timeout=120000)
   page.wait_for_timeout(200)
@@ -66,16 +67,16 @@ with sync_playwright() as p:
  assert page.evaluate('suntrainReplay.graph.getSource("replay-selected-route")._data.features.length')==1
  page.locator('#replay-map').screenshot(path=str(OUT/'nearby-planes.png'))
  page.locator('#replay-close-details').click()
- page.locator('#replay-melbourne').click();page.wait_for_timeout(150)
+ click_tool(page, '#replay-melbourne');page.wait_for_timeout(150)
  assert page.evaluate(CAMERA)==original
  now=page.evaluate('suntrainReplay.now')
  set_filter('replay-from-countries',['AU'],'suntrainReplay.filters.fromCountries[0]==="AU"')
  set_filter('replay-to-countries',['US'],'suntrainReplay.filters.toCountries[0]==="US"')
  assert page.evaluate('suntrainReplay.filtered.length>0 && suntrainReplay.filtered.every(s=>suntrainReplay.day.stations[s.stops[0][0]].country==="AU" && suntrainReplay.day.stations[s.stops[1][0]].country==="US")')
  assert page.evaluate(CAMERA)==original and page.evaluate('suntrainReplay.now')==now
- page.locator('#replay-fit').click();page.wait_for_timeout(250)
+ click_tool(page, '#replay-fit');page.wait_for_timeout(250)
  assert page.evaluate(CAMERA)!=original
- page.locator('#replay-melbourne').click();page.wait_for_timeout(200)
+ click_tool(page, '#replay-melbourne');page.wait_for_timeout(200)
  assert page.evaluate(CAMERA)==original
  clear()
  for scope,count in [('domestic',SCOPES['domestic']),('international',SCOPES['international']),('both',TOTAL)]:
@@ -146,10 +147,10 @@ with sync_playwright() as p:
  assert 'USD' in page.locator('.replay-captured-quotes').inner_text()
  assert 'No currency conversion' in page.locator('.replay-captured-quotes').inner_text()
  before=page.evaluate('({now:suntrainReplay.now,filters:suntrainReplay.filterSignature})')
- page.locator('#language-select').select_option('id')
+ select_setting(page, '#language-select', 'id')
  assert 'Tanpa konversi' in page.locator('.replay-captured-quotes').inner_text()
  assert before==page.evaluate('({now:suntrainReplay.now,filters:suntrainReplay.filterSignature})')
- page.locator('#language-select').select_option('en')
+ select_setting(page, '#language-select', 'en')
  conflicts=page.evaluate('suntrainReplay.filtered.filter(s=>s.aircraft_variants?.length).length')
  if conflicts:
   page.evaluate('()=>{const r=suntrainReplay;r.select(r.filtered.find(s=>s.aircraft_variants?.length).id);}')
@@ -178,11 +179,11 @@ with sync_playwright() as p:
  page.evaluate('dash_clientside.set_props("view-tabs",{value:"replay"})')
  page.set_viewport_size({'width':390,'height':844})
  for theme in ['light','dark','sunrise','blueprint','heritage']:
-  page.locator('#theme-toggle').select_option(theme)
+  select_setting(page, '#theme-toggle', theme)
   assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
- page.locator('#language-select').select_option('id')
+ select_setting(page, '#language-select', 'id')
  assert 'penerbangan unik' in page.locator('#replay-world-coverage').inner_text()
- page.locator('#replay-fullscreen').click();page.wait_for_timeout(200)
+ click_tool(page, '#replay-fullscreen');page.wait_for_timeout(200)
  page.keyboard.press('ArrowRight');page.keyboard.press('Escape')
  assert not page.evaluate('suntrainReplay.isFullscreen()')
  page.screenshot(path=str(OUT/'mobile.png'))

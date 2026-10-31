@@ -401,9 +401,18 @@ app.layout = html.Div(
                                         dcc.Tab(label="Overview", value="overview"),
                                     ],
                                 ),
-                                html.Div(
-                                    className="brand-tools",
+                                html.Details(className="playground-navigation", children=[
+                                    html.Summary("Menu"),
+                                    html.Div(children=[
+                                        html.Button("Explore", id="nav-explore"),
+                                        html.Button("Map", id="nav-map"),
+                                        html.Button("Overview", id="nav-overview"),
+                                    ]),
+                                ]),
+                                html.Details(
+                                    className="brand-tools playground-settings",
                                     children=[
+                                        html.Summary("Settings"),
                                         html.Div(id="analysis-dataset-note", className="dataset-note", children=[
                                             html.Strong("Melbourne analysis · FY 2023-2024"),
                                             html.Span("Business day: 03:00-02:59"),

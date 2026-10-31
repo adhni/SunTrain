@@ -170,6 +170,7 @@
     function apply(replay, place, force = false) {
         const id = place?.id || replay.day.city;
         const changed = replay.placeSignature !== `${replay.day.revision}:${id}`;
+        const placeChanged = place?.id !== replay.place?.id;
         replay.placeSignature = `${replay.day.revision}:${id}`;
         replay.place = place;
         if (!changed && !force) return;
@@ -185,7 +186,9 @@
                 place.kind === 'world' ? root.suntrainFlights.openingBounds(replay.day) : place.bounds;
             root.suntrainI18n.bind($('replay-flight-scope-note'), place.kind === 'world' ? 'Combined captures' : place.kind === 'experience' ? placeName(place) : 'To, from and within '+placeName(place));
         } else replay.placeCoverage = null;
-        if (changed && replay.mapReady) {
+        // Refresh counts on revisions without treating a mode reload as navigation.
+        // Replay.load already handles the camera for city/date changes in transit.
+        if (place && (placeChanged || replay.needsFit) && replay.mapReady) {
             replay.openingCamera = null;
             if (replay.departures?.station != null) replay.departures.reset();
             replay.metroView();

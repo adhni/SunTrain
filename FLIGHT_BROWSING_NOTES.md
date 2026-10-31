@@ -48,6 +48,12 @@ place's opening frame; Fit flights frames the matching flights. Other filter
 changes keep the camera steady. Moving flights, local boards, destinations,
 frequency, fullscreen and visibility controls use the same geographical filter.
 
+Data revisions refresh coverage without triggering navigation. Adding transit
+modes on the same city/date keeps the existing camera and clock; transit
+city/date changes retain the original replay loader's framing policy. The
+Melbourne regression explicitly checks that a bus-mode reload changes the
+revision while preserving centre, zoom, bearing, pitch and time (PR #81 review).
+
 The explorer keeps **one UTC day**, including overlapping flights already in
 World. Airport boards retain their local timestamps and existing dated Canadian
 offsets. Original collection views remain available through **Dated replays**

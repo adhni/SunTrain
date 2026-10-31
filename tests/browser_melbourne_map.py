@@ -13,13 +13,22 @@ with sync_playwright() as p:
     page.goto(os.environ.get('SUNTRAIN_TEST_URL', 'http://127.0.0.1:8861'), wait_until='domcontentloaded')
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs", {value:"replay"})')
-    page.wait_for_function('suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length', timeout=120000)
+    page.wait_for_function('suntrainReplay.mapReady && !suntrainReplay.loading && !suntrainReplay.needsFit && suntrainReplay.filtered.length', timeout=120000)
     page.evaluate('''() => {
         const r = suntrainReplay; r.pause(); r.seek(r.day.start + 5 * 3600);
         r.graph.jumpTo({center: [144.97, -37.815], zoom: 12});
-        dash_clientside.set_props('replay-modes', {value: ['train', 'tram', 'bus']});
     }''')
+    camera = '''({center:suntrainReplay.graph.getCenter().toArray().map(n=>+n.toFixed(6)),
+        zoom:+suntrainReplay.graph.getZoom().toFixed(6),bearing:suntrainReplay.graph.getBearing(),pitch:suntrainReplay.graph.getPitch()})'''
+    before_camera = page.evaluate(camera)
+    before_clock = page.evaluate('suntrainReplay.now')
+    before_revision = page.evaluate('suntrainReplay.day.revision')
+    page.evaluate("dash_clientside.set_props('replay-modes', {value: ['train', 'tram', 'bus']})")
     page.wait_for_function('suntrainReplay.filtered.some(s=>s.mode==="bus")')
+    assert page.evaluate('suntrainReplay.day.revision') != before_revision
+    assert page.evaluate(camera) == before_camera, 'Adding buses moved the camera'
+    assert page.evaluate('suntrainReplay.now') == before_clock
+    print('Adding transport modes preserves the camera and clock across a new revision', flush=True)
     page.wait_for_function('suntrainReplay.activePositions.some(f=>f.properties.body==="tram" && f.properties.dotCount===2)')
     assert page.evaluate('suntrainReplay.activePositions.some(f=>f.properties.body==="train" && f.properties.dotCount===3)')
     assert page.evaluate('suntrainReplay.activePositions.some(f=>f.properties.color==="#FF8200" && f.properties.body==="")')

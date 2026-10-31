@@ -24,6 +24,17 @@ test('pin grouping handles empty catalogues and chains of overlapping markers', 
     assert.deepEqual(groups[0].coordinates,[30,0]);
 });
 
+test('a dense country catalogue cannot chain into one continent-sized cluster', () => {
+    const places = Array.from({length:30},(_,i)=>place(String(i),i*20,0));
+    const groups = groupPlaces(places,([x,y])=>({x,y}));
+    assert.ok(groups.length>1);
+    assert.equal(groups.flatMap(g=>g.members).length,30);
+    for (const group of groups) {
+        const xs=group.members.map(m=>m.point.x);
+        assert.ok(Math.max(...xs)-Math.min(...xs)<=84);
+    }
+});
+
 // The home map displays one world, so Pacific's 190° centre must be −170°.
 test('Pacific dateline bounds produce a pin in the displayed world', () => {
     const pacific={id:'pacific_flights',bounds:[[128,-33],[252,33]]};

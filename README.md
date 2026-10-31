@@ -2,6 +2,14 @@
 
 Historical transport replay across Argentina, Australia, Austria, Belgium, Bolivia, Brazil, Brunei, Cambodia, Canada, Chile, Colombia, Ecuador, France, Germany, Guyana, Hong Kong, India, Indonesia, Italy, Japan, Laos, Luxembourg, Malaysia, Mexico, Myanmar, the Netherlands, Nepal, New Zealand, Paraguay, Peru, the Philippines, Portugal, Qatar, Spain, South Korea, Suriname, Switzerland, Taiwan, Thailand, Timor-Leste, the United Arab Emirates, the United Kingdom, the United States, Uruguay, Venezuela, Vietnam and Singapore, with passenger analysis for the Victorian train service passenger counts dataset.
 
+Flight discovery now browses **World → region → country/territory → airport**,
+combining existing captures on a shared **2 November 2026 UTC** timeline. Search
+place names or airport codes, follow the geographical breadcrumbs, and filter
+airlines by captured flight counts. Coverage is partial. See
+[flight browsing notes](FLIGHT_BROWSING_NOTES.md) for the grouping and behaviour.
+The collection notes below describe the original snapshots, still available by
+searching under **Dated replays**, including their original local-day windows.
+
 ## Türkiye flights
 
 Choose **Canada · Flights** or **Mexico · Flights** for **2 November 2026**, with **2,284 Canadian-view flights** (1,211 domestic) and **2,014 Mexican-view flights** (1,155 domestic), sourced Canada/US/Mexico connections and reused worldwide captures. New fares use USD; airport boards use local clocks, including the dated 2026 Canadian changes and Mexico’s regional zones. The timeline uses UTC. Coverage remains partial; see [Canada and Mexico flight notes](CANADA_MEXICO_FLIGHTS_NOTES.md) for the reviewed gateways, source gaps and rebuilding.

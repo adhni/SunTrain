@@ -8,6 +8,7 @@ from dash import ClientsideFunction, Input, Output, dcc, html
 
 from dashboard.cities import CITIES
 from dashboard.transit import PERIOD_END, PERIOD_START
+from dashboard.flight_places import catalogue
 
 
 EXPERIENCES = [
@@ -17,7 +18,7 @@ EXPERIENCES = [
      "date": "2024-05-27", "time": "08:00", "zone": "Australia/Melbourne", "modes": ["train"]},
     {"id": "tokyo", "city": "tokyo", "title": "Tokyo’s rail network", "kind": "transit",
      "date": "2026-10-20", "time": "08:00", "zone": "Asia/Tokyo", "modes": ["train", "subway"]},
-    {"id": "singapore", "city": "singapore_flights", "title": "Singapore’s connections", "kind": "flights",
+    {"id": "singapore", "city": "world_flights", "place": "country:SG", "title": "Singapore’s connections", "kind": "flights",
      "date": "2026-11-02", "time": "10:00", "zone": "Asia/Singapore", "modes": ["flight"]},
 ]
 for _experience in EXPERIENCES:
@@ -26,13 +27,23 @@ for _experience in EXPERIENCES:
 
 
 def home_places():
-    return [{"id": key, "name": settings["name"], "bounds": settings["bounds"],
-             "home_marker": settings.get("home_marker", True),
+    original = [{"id": key, "name": settings["name"], "bounds": settings["bounds"],
+             "kind": "world" if key == "world_flights" else "replay" if settings.get("replay_kind") == "flights" else "transit",
+             **({'timezone':settings['timezone'], 'collection_scope':'Selected airline networks' if key=='europe_flights' else
+                 'Selected airports' if key in {'united_states_flights','south_america_flights','americas_flights'} else
+                 'Airport connections' if settings.get('flight_view_kind')=='hub' else 'Selected routes'} if settings.get('replay_kind')=='flights' else {}),
+             "home_marker": False if settings.get("replay_kind") == "flights" else settings.get("home_marker", True),
              "modes": [mode for _, mode in settings["modes"]],
              "default_modes": settings.get("default_modes", [mode for _, mode in settings["modes"]]),
              "start": settings.get("start_date", PERIOD_START),
              "end": settings.get("end_date", PERIOD_END)}
             for key, settings in sorted(CITIES.items(), key=lambda item: item[1]["name"].casefold())]
+    index = catalogue()
+    for place in original:
+        if place['kind'] == 'world':
+            place['count'] = index['flights']
+    return original + [{**place, 'city': 'world_flights', 'modes': ['flight'], 'default_modes': ['flight'],
+                       'start': index['date'], 'end': index['date']} for place in index['places']]
 
 
 def preview_src(experience):
@@ -58,18 +69,23 @@ def build_home_panel():
     places = home_places()
     return html.Section(id="home-panel", className="home-panel", **{
         "data-places": json.dumps(places), "data-experiences": json.dumps(EXPERIENCES)}, children=[
-        dcc.Store(id="home-map-state"), dcc.Store(id="home-choice"),
+        dcc.Store(id="home-map-state"), dcc.Store(id="home-choice"), dcc.Store(id="home-kind", data="all"),
         html.Div(className="home-world", children=[
             html.Div(id="home-map", role="region", **{"aria-label": "World map of available transport replays. Pan, zoom, or choose a place using search."}),
             html.Div(className="home-search", children=[
                 html.H2("The world, in motion."),
                 html.Label("Where shall we go?", htmlFor="home-place"),
-                dcc.Dropdown(id="home-place", options=[{"label": place["name"], "value": place["id"]} for place in places],
-                             placeholder="Find a city or country…", searchable=True, clearable=True),
+                dcc.Dropdown(id="home-place", options=[], optionHeight=58, maxHeight=370,
+                             placeholder="Find a place or airport…", searchable=True, clearable=True),
                 html.Div(className="home-kind-switch", role="group", **{"aria-label": "Explore transport"}, children=[
                     html.Button(label, **{"data-home-kind": value, "aria-pressed": value == "all"})
                     for value, label in [("all", "All"), ("transit", "Rail & local transport"), ("flights", "Flights")]
                 ]),
+                html.Div(id="home-flight-regions", className="home-flight-regions", hidden=True, children=[
+                    html.Button(label, **{'data-flight-place': key}) for key, label in [
+                        ('world_flights', 'World flights'), *[(p['id'], p['name']) for p in catalogue()['places'] if p['kind']=='region' and not p.get('region')]]
+                ]),
+                html.Small("Search countries, airports or saved replays", className="home-search-help"),
                 html.Span(f"{len(places)} places to explore", id="home-count", className="home-count"),
             ]),
             html.Button("World view", id="home-reset", className="finder-chip home-reset", title="Zoom out to the world"),
@@ -97,6 +113,19 @@ def build_home_panel():
 
 
 def register_home_callbacks(app):
+    app.clientside_callback(
+        ClientsideFunction(namespace="suntrainPlaces", function_name="homeOptions"),
+        Output("home-place", "options"), Input("home-place", "search_value"), Input("home-kind", "data"),
+        Input("home-place", "value"),
+    )
+    app.clientside_callback(
+        ClientsideFunction(namespace="suntrainPlaces", function_name="replayOptions"),
+        Output("replay-place", "options"), Input("replay-place", "search_value"), Input("replay-place", "value"),
+    )
+    app.clientside_callback(
+        ClientsideFunction(namespace="suntrainPlaces", function_name="choose"),
+        Output("place-selection", "data"), Input("replay-place", "value"), prevent_initial_call=True,
+    )
     app.clientside_callback(
         ClientsideFunction(namespace="suntrainHome", function_name="sync"),
         Output("home-map-state", "data"), Input("view-tabs", "value"), Input("home-place", "value"),

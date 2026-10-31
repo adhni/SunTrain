@@ -48,7 +48,7 @@
             for(const element of document.querySelectorAll(selector)){bind(element,text,'aria-label');bind(element,text,'title');}
         const labels=['Home','Transport Replay','Overview'];
         document.querySelectorAll('#view-tabs .tab').forEach((element,index)=>{if(labels[index]) bind(element,labels[index]);});
-        const placeholders={"home-place":"Find a city or country…","replay-modes":"All modes","replay-lines":"All routes / lines","replay-operators":"All operators / feeds","replay-directions":"All directions","replay-stations":"Any stop or station","replay-number":"e.g. 6200","replay-from-countries":"All countries","replay-to-countries":"All countries"};
+        const placeholders={"home-place":"Find a place or airport…","replay-place":"Find a place or airport…","replay-modes":"All modes","replay-lines":"All routes / lines","replay-operators":"All operators / feeds","replay-directions":"All directions","replay-stations":"Any stop or station","replay-number":"e.g. 6200","replay-from-countries":"All countries","replay-to-countries":"All countries"};
         for(const [id,key] of Object.entries(placeholders)){
             const element=document.getElementById(id);
             if(element && element.dataset.locale!==language && root.dash_clientside?.set_props){

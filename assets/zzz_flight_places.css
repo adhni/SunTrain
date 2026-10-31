@@ -1,0 +1,27 @@
+/* Shared, searchable place lists. Counts refer to the captured UTC day. */
+.dash-dropdown-option[data-explore-count] { position: relative; display: flex; margin: 0; padding: 8px 72px 8px 12px; min-height: 50px; }
+.dash-dropdown-option[data-explore-count] .dash-options-list-option-text { display: block; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .82rem; font-weight: 650; }
+[data-explore-detail]::after { content: attr(data-explore-detail); display: block; margin-top: 3px; overflow: hidden; text-overflow: ellipsis; color: var(--muted); font-size: .65rem; font-weight: 400; }
+.dash-dropdown-option[data-explore-count]:not([data-explore-count=""])::before { content: attr(data-explore-count); position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: .7rem; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; padding: 3px 7px; border-radius: 12px; background: var(--surface-subtle); }
+.dash-dropdown-option[data-explore-heading] { display: flex; margin: 0; padding: 5px 12px; min-height: 26px; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); font-weight: 750; font-size: .62rem; }
+.dash-dropdown-option[data-explore-heading] .dash-options-list-option-wrapper { display: none; }
+#home-place, #replay-place { --dropdown-menu-max-height: min(370px, 50dvh); }
+.replay-place-date #replay-place.dash-dropdown { border-color: transparent; background: transparent; }
+.replay-place-date #replay-place .dash-dropdown-value-item { font-size: 1.05rem; font-weight: 750; }
+.home-search-help { display: block; margin-top: 7px; color: var(--muted); font-size: .62rem; }
+.home-flight-regions { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 10px; padding-bottom: 3px; }
+.home-flight-regions[hidden], .replay-place-breadcrumbs[hidden] { display: none; }
+.home-flight-regions button { flex-shrink: 0; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--ink); padding: 6px 10px; font-size: .65rem; cursor: pointer; }
+.home-flight-regions button:hover { background: var(--accent-soft); }
+.replay-place-breadcrumbs { display: flex; align-items: center; gap: 6px; padding: 0 20px 5px; flex-shrink: 0; overflow-x: auto; min-height: 24px; }
+.replay-place-breadcrumbs button { flex-shrink: 0; border: 0; border-radius: 4px; background: transparent; color: var(--muted); cursor: pointer; font-size: .65rem; padding: 3px 1px; }
+.replay-place-breadcrumbs button[aria-current] { color: var(--ink); font-weight: 700; }
+.replay-place-breadcrumbs > span { color: var(--muted); }
+.airline-order-help { color: var(--muted); font-size: .65rem; line-height: 1.6; margin-top: -12px; }
+@media (max-width: 720px) {
+  .replay-place-date #replay-place .dash-dropdown-value-item { font-size: .95rem; }
+  .replay-place-breadcrumbs { padding: 0 12px 3px; gap: 5px; min-height: 21px; }
+  .replay-place-breadcrumbs button { font-size: .59rem; }
+  .home-search-help { display: none; }
+  .home-flight-regions { margin-top: 7px; flex-wrap: nowrap; overflow-x: auto; }
+}

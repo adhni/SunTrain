@@ -37,12 +37,14 @@ def build_replay_panel(metadata, default_date):
     return html.Div(id="replay-panel", className="tab-panel replay-panel", style={"display": "block"}, tabIndex=-1, children=[
         dcc.Store(id="replay-day", storage_type="memory"),
         dcc.Store(id="replay-client-state", storage_type="memory"),
+        dcc.Store(id="replay-flight-place"), dcc.Store(id="place-selection"),
+        html.Div(dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
+                     for key, value in CITIES.items()], value="melbourne", clearable=False), hidden=True),
         html.Div(className="replay-explore-bar", children=[
             html.Button("Back to explore", id="replay-back-explore", className="finder-chip"),
             html.Div(className="replay-place-date", children=[
-                field("Location", dcc.Dropdown(id="replay-city", options=[{"label": value["name"], "value": key}
-                      for key, value in sorted(CITIES.items(), key=lambda item: item[1]["name"].casefold())],
-                      value="melbourne", clearable=False, searchable=True)),
+                field("Location", dcc.Dropdown(id="replay-place", options=[], value="melbourne", optionHeight=58,
+                      maxHeight=370, placeholder="Find a place or airport…", clearable=False, searchable=True)),
                 html.Div(className="finder-field replay-calendar-field", children=[
                     html.Label("Date", htmlFor="replay-date-open", className="finder-label"),
                     dcc.Store(id="replay-date", data=default_date),
@@ -53,6 +55,7 @@ def build_replay_panel(metadata, default_date):
             ]),
             html.Button("Filters", id="replay-fullscreen-filters", className="finder-chip replay-fullscreen-filter-button", **{"aria-expanded": False, "aria-controls": "replay-filter-controls"}),
         ]),
+        html.Nav(id="replay-place-breadcrumbs", className="replay-place-breadcrumbs", hidden=True, **{"aria-label": "Flight places"}),
         html.Div(className="replay-context", children=[
             html.Span("Scheduled replay"), html.Span(badge, id="replay-period", className="replay-badge"),
             html.Div(id="replay-filter-chips", className="replay-filter-chips"),
@@ -66,7 +69,8 @@ def build_replay_panel(metadata, default_date):
             field("Route / line", dcc.Dropdown(id="replay-lines", options=metadata["lines"], value=[], multi=True, placeholder="All routes / lines")),
             html.Div(id="replay-flight-controls", className="replay-flight-controls", style={"display": "none"}, children=[
                 field("Hub",html.Div(id='replay-flight-hubs',className='replay-hub-buttons'),id='replay-flight-hubs-field',style={'display':'none'}),
-                field("Airline / code", dcc.Dropdown(id="replay-carriers", options=[], value=[], multi=True, placeholder="All airlines")),
+                field("Airline / code", dcc.Dropdown(id="replay-carriers", options=[], value=[], multi=True, optionHeight=58, maxHeight=350, placeholder="All airlines")),
+                html.Small("Most captured flights first · Counts follow your other filters", className="airline-order-help"),
                 field("Airport / code", dcc.Dropdown(id="replay-airports", options=[], value=[], multi=True, placeholder="All airports")),
                 field("Airport traffic", dcc.Dropdown(id="replay-airport-direction", options=[{"label": label, "value": value} for label, value in [("Departures", "departures"), ("Arrivals", "arrivals"), ("Both", "both")]], value="both", disabled=True, clearable=False, searchable=False)),
                 html.Div(id='replay-country-controls',className='replay-country-controls',style={'display':'none'},children=[
@@ -308,5 +312,6 @@ def register_replay_callbacks(app, metadata):
         Input("replay-city", "value"), Input("replay-flight-scope", "value"),
         Input("replay-carriers", "value"), Input("replay-airports", "value"), Input("replay-flight-view", "value"), Input("replay-airport-direction", "value"),
         Input('replay-from-countries','value'),Input('replay-to-countries','value'),
+        Input('replay-flight-place','data'),
     )
     return load_replay_day

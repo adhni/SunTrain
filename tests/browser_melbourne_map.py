@@ -13,13 +13,22 @@ with sync_playwright() as p:
     page.goto(os.environ.get('SUNTRAIN_TEST_URL', 'http://127.0.0.1:8861'), wait_until='domcontentloaded')
     page.wait_for_function('window.dash_clientside && document.querySelector("#replay-panel")')
     page.evaluate('dash_clientside.set_props("view-tabs", {value:"replay"})')
-    page.wait_for_function('suntrainReplay.mapReady && !suntrainReplay.loading && suntrainReplay.filtered.length', timeout=120000)
+    page.wait_for_function('suntrainReplay.mapReady && !suntrainReplay.loading && !suntrainReplay.needsFit && suntrainReplay.filtered.length', timeout=120000)
     page.evaluate('''() => {
         const r = suntrainReplay; r.pause(); r.seek(r.day.start + 5 * 3600);
         r.graph.jumpTo({center: [144.97, -37.815], zoom: 12});
-        dash_clientside.set_props('replay-modes', {value: ['train', 'tram', 'bus']});
     }''')
+    camera = '''({center:suntrainReplay.graph.getCenter().toArray().map(n=>+n.toFixed(6)),
+        zoom:+suntrainReplay.graph.getZoom().toFixed(6),bearing:suntrainReplay.graph.getBearing(),pitch:suntrainReplay.graph.getPitch()})'''
+    before_camera = page.evaluate(camera)
+    before_clock = page.evaluate('suntrainReplay.now')
+    before_revision = page.evaluate('suntrainReplay.day.revision')
+    page.evaluate("dash_clientside.set_props('replay-modes', {value: ['train', 'tram', 'bus']})")
     page.wait_for_function('suntrainReplay.filtered.some(s=>s.mode==="bus")')
+    assert page.evaluate('suntrainReplay.day.revision') != before_revision
+    assert page.evaluate(camera) == before_camera, 'Adding buses moved the camera'
+    assert page.evaluate('suntrainReplay.now') == before_clock
+    print('Adding transport modes preserves the camera and clock across a new revision', flush=True)
     page.wait_for_function('suntrainReplay.activePositions.some(f=>f.properties.body==="tram" && f.properties.dotCount===2)')
     assert page.evaluate('suntrainReplay.activePositions.some(f=>f.properties.body==="train" && f.properties.dotCount===3)')
     assert page.evaluate('suntrainReplay.activePositions.some(f=>f.properties.color==="#FF8200" && f.properties.body==="")')
@@ -69,12 +78,20 @@ with sync_playwright() as p:
     page.evaluate('(at)=>{const r=suntrainReplay;r.seek(at);r.graph.jumpTo({center:[144.97,-37.815],zoom:12});}', before_time)
     print('Real Melbourne curve frames, equal sizes and seeking passed', flush=True)
     # Discover a station by hover and click near its ring, without using search.
+    page.wait_for_function('suntrainReplay.graph.loaded() && !suntrainReplay.graph.isMoving()')
     hit = page.evaluate('''() => {
         const r=suntrainReplay, map=r.graph, height=map.getContainer().clientHeight;
+        const rect=map.getCanvas().getBoundingClientRect();
         for(const feature of map.queryRenderedFeatures({layers:['replay-stations']})) {
-            const point=map.project(feature.geometry.coordinates), target={x:point.x+7,y:point.y};
+            // Browser mouse events use integer CSS pixels. Quantize before
+            // picking so a nearby bus stop cannot win only after the click.
+            const point=map.project(feature.geometry.coordinates), target={x:Math.floor(rect.left+point.x+7)-rect.left,y:Math.floor(rect.top+point.y)-rect.top};
             if (point.y<160 || point.y>height-50 || point.x<50 || point.x>800) continue;
             if (map.queryRenderedFeatures([target.x,target.y],{layers:['replay-trains']}).length) continue;
+            const nearby=map.queryRenderedFeatures([[target.x-10,target.y-10],[target.x+10,target.y+10]],{layers:['replay-stations','replay-local-stops']});
+            const distance=f=>{const p=map.project(f.geometry.coordinates);return Math.hypot(p.x-target.x,p.y-target.y)};
+            // Co-located bus/train rings cannot establish an unambiguous ID.
+            if(nearby.some(f=>f.properties.id!==feature.properties.id && distance(f)<distance(feature)+2))continue;
             if (r.stationNear(target)?.properties.id === feature.properties.id)
                 return {...target,id:Number(feature.properties.id),name:feature.properties.name};
         }

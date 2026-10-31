@@ -350,9 +350,9 @@ def test_home_is_the_opening_view_and_keeps_replay_hidden_without_loading_schedu
     assert state[-1] == {"display": "block"}
     assert app_module.update_tab_visibility("replay")[-1] == {"display": "none"}
     places=home_places()
-    assert {place["id"] for place in places} == set(CITIES)
-    assert all(place["bounds"] == CITIES[place["id"]]["bounds"] for place in places)
-    assert all(set(place)=={"id","name","bounds","modes","default_modes","home_marker","start","end"} for place in places)
+    assert set(CITIES) <= {place["id"] for place in places}
+    assert all(place["bounds"] == CITIES[place["id"]]["bounds"] for place in places if place['id'] in CITIES)
+    assert all({"id","name","kind","bounds","modes","default_modes","home_marker","start","end"} <= set(place) for place in places)
 
     def walk(component):
         if isinstance(component,(list,tuple)):

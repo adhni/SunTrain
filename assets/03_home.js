@@ -16,9 +16,15 @@
         });
         const parents = points.map((_, i) => i);
         const find = i => parents[i] === i ? i : (parents[i] = find(parents[i]));
+        const extents = points.map(p=>[p.point.x,p.point.y,p.point.x,p.point.y]);
         for (let i = 0; i < points.length; i++) for (let j = 0; j < i; j++) {
-            if (Math.hypot(points[i].point.x - points[j].point.x, points[i].point.y - points[j].point.y) < radius)
-                parents[find(i)] = find(j);
+            if (Math.hypot(points[i].point.x - points[j].point.x, points[i].point.y - points[j].point.y) >= radius) continue;
+            const a=find(i), b=find(j); if(a===b)continue;
+            const box=[Math.min(extents[a][0],extents[b][0]),Math.min(extents[a][1],extents[b][1]),
+                Math.max(extents[a][2],extents[b][2]),Math.max(extents[a][3],extents[b][3])];
+            // Country discovery adds hundreds of pins. Bound each cluster's
+            // screen footprint instead of chaining an entire continent together.
+            if (box[2]-box[0] <= radius*2 && box[3]-box[1] <= radius*2) { parents[a]=b; extents[b]=box; }
         }
         const groups = new Map();
         points.forEach((point, i) => {
@@ -77,6 +83,8 @@
                         button.addEventListener('click', () => this.setKind(button.dataset.homeKind));
                     for (const button of document.querySelectorAll('[data-watch]'))
                         button.addEventListener('click', () => this.watch(button.dataset.watch));
+                    for (const button of document.querySelectorAll('[data-flight-place]'))
+                        button.addEventListener('click', () => this.openReplay(button.dataset.flightPlace));
                     $('home-surprise').addEventListener('click', () => {
                         const item = surprise(this.experiences, this.kind, this.lastExperience);
                         if (item) this.watch(item.id);
@@ -109,7 +117,9 @@
             for (const button of document.querySelectorAll('[data-home-kind]'))
                 button.setAttribute('aria-pressed', String(button.dataset.homeKind === kind));
             const places = eligiblePlaces(this.places, kind);
-            root.dash_clientside.set_props('home-place', {options: places.map(p => ({label:p.name, value:p.id})), value:null});
+            root.dash_clientside.set_props('home-kind', {data:kind});
+            root.dash_clientside.set_props('home-place', {value:null});
+            $('home-flight-regions').hidden = kind !== 'flights';
             root.suntrainI18n.bind($('home-count'), `${places.length} places to explore`);
             for (const tile of document.querySelectorAll('[data-experience]'))
                 tile.hidden = kind !== 'all' && tile.dataset.kind !== kind;
@@ -125,7 +135,7 @@
                 const kind=!flightCount?'transit':flightCount===group.members.length?'flights':'mixed';
                 const button = node("button", undefined, `home-pin home-pin-${kind}${cluster ? " home-cluster" : ""}`);
                 button.type = "button";
-                const title = cluster ? `Explore ${group.members.length} places` : `Explore ${group.members[0].place.name}`;
+                const title = cluster ? `Explore ${group.members.length} places` : `Explore ${root.suntrainPlaces.placeName(group.members[0].place)}`;
                 if(root.suntrainI18n) root.suntrainI18n.bind(button, title, "aria-label"); else button.setAttribute("aria-label", title); if(root.suntrainI18n)root.suntrainI18n.bind(button,title,"title");else button.title = title;
                 if(flightCount) {
                     if(root.suntrainI18n)root.suntrainI18n.bind(button,'Includes flights','aria-description');
@@ -133,7 +143,7 @@
                 }
                 const dot=node("span", cluster ? String(group.members.length) : flightCount ? '\u2708\uFE0E' : '▤', "home-pin-dot");
                 dot.setAttribute('aria-hidden','true');button.append(dot);
-                if (!cluster) button.append(node("span", group.members[0].place.name, "home-pin-label"));
+                if (!cluster) button.append(node("span", root.suntrainPlaces.placeName(group.members[0].place), "home-pin-label"));
                 button.addEventListener("click", event => {
                     event.stopPropagation();
                     if (!cluster) { this.showPlace(group.members[0].place.id); return; }
@@ -146,11 +156,11 @@
             this.popup?.remove(); this.openPlace = null;
             const content = node('div', undefined, 'home-cluster-list');
             content.append(node('h3', 'Choose a place'));
-            for (const {place} of group.members) {
+            for (const {place} of [...group.members].sort((a,b)=>root.suntrainPlaces.placeName(a.place).localeCompare(root.suntrainPlaces.placeName(b.place)))) {
                 const flight = place.modes.includes('flight');
                 const button = node('button', undefined, 'home-cluster-place');
                 button.type = 'button';
-                button.append(node('span', flight ? '✈︎' : '▤', flight ? 'home-place-flight' : 'home-place-transit'), node('span', place.name));
+                button.append(node('span', flight ? '✈︎' : '▤', flight ? 'home-place-flight' : 'home-place-transit'), node('span', root.suntrainPlaces.placeName(place)));
                 button.addEventListener('click', () => this.openReplay(place.id));
                 content.append(button);
             }
@@ -162,19 +172,30 @@
             const item = this.experiences.find(item => item.id === id);
             if (!item) return;
             this.lastExperience = id;
-            this.openReplay(item.city, id);
+            this.openReplay(item.place || item.city, id);
         }
         openReplay(city, experience = null) {
-            root.suntrainReplay?.pause();
+            this.places ||= JSON.parse($('home-panel').dataset.places);
+            const place = this.places?.find(p=>p.id===city);
+            if (!place) return;
+            const shared = place && ['world','region','country','airport','experience'].includes(place.kind);
+            const base = shared ? 'world_flights' : city;
+            const replay = root.suntrainReplay;
+            const continuing = !experience && shared && replay?.active && !replay.loading && replay.day?.city === base;
+            if (!continuing) replay?.pause();
             const sequence = ++this.sequence;
             this.pendingExperience = experience ? {item:this.experiences.find(item => item.id === experience), sequence} : null;
-            root.dash_clientside.set_props("home-choice", {data: {city, experience, sequence}});
+            this.navSelection = city;
+            root.dash_clientside.set_props('replay-place',{value:city});
+            root.dash_clientside.set_props('replay-flight-place',{data:shared?city:null});
+            if (!continuing) root.dash_clientside.set_props("home-choice", {data: {city:base, experience, sequence}});
             root.suntrainPlayground?.closePanels();
         }
         applyExperience(replay) {
             const pending = this.pendingExperience;
             if (!pending || !replay.active || replay.loading || !replay.mapReady || replay.day?.city !== pending.item.city) return;
             const item = pending.item;
+            if (item.city === 'world_flights' && replay.place?.id !== (item.place || 'world_flights')) return;
             if (!pending.configured) {
                 pending.configured = true;
                 for (const id of ['replay-lines', 'replay-operators', 'replay-directions', 'replay-stations', 'replay-carriers', 'replay-airports', 'replay-from-countries', 'replay-to-countries'])
@@ -189,7 +210,8 @@
                 root.dash_clientside.set_props('replay-date', {data:item.date});
                 return;
             }
-            if (replay.day.business_date !== item.date || replay.frequencyView || replay.filtered.length !== replay.day.services.length) return;
+            const expected = item.city === 'world_flights' ? replay.day.services.filter(s=>root.suntrainPlaces.matchesPlace(s,replay.place,replay.day)).length : replay.day.services.length;
+            if (replay.day.business_date !== item.date || replay.frequencyView || replay.filtered.length !== expected) return;
             if (JSON.stringify([...replay.day.loaded_modes].sort()) !== JSON.stringify([...item.modes].sort())) return;
             this.pendingExperience = null;
             replay.selected = null; replay.emptyDetails(); replay.departures.reset();
@@ -201,13 +223,14 @@
             const place = this.places.find(place => place.id === id);
             if (!place) return;
             if (place.home_marker === false) { this.openReplay(id); return; }
+            const name = root.suntrainPlaces.placeName(place);
             const content = node("div", undefined, "home-place-card");
-            content.append(node("span", "NEXT STOP", "replay-eyebrow"), node("h3", place.name));
+            content.append(node("span", "NEXT STOP", "replay-eyebrow"), node("h3", name));
             content.append(node("p", [...new Set(place.modes.map(mode => root.suntrainI18n?.translate(modeNames[mode] || "Buses") || modeNames[mode] || "Buses"))].join(" · "), "home-place-modes"));
             const formatDate = value => dateFormat.format(new Date(value + "T12:00:00Z"));
             content.append(node("p", place.start === place.end ? formatDate(place.start) : `${formatDate(place.start)} – ${formatDate(place.end)}`, "home-place-dates"));
             const open = node("button", "Open replay →", "home-open-replay"); open.type = "button";
-            if(root.suntrainI18n) root.suntrainI18n.bind(open, `Open ${place.name} replay`, "aria-label"); else open.setAttribute("aria-label", `Open ${place.name} replay`);
+            if(root.suntrainI18n) root.suntrainI18n.bind(open, `Open ${name} replay`, "aria-label"); else open.setAttribute("aria-label", `Open ${name} replay`);
             open.addEventListener("click", () => this.openReplay(place.id));
             content.append(open);
             this.popup?.remove();

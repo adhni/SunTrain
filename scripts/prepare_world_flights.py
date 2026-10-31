@@ -9,6 +9,9 @@ def main():
     parser.add_argument('--output', help='Derived .json.gz snapshot path')
     args = parser.parse_args()
     result = prepare(args.output)
+    if not args.output:
+        from dashboard.flight_places import prepare as prepare_places
+        prepare_places()
     print(json.dumps({**result['metadata']['coverage'], 'scopes': result['metadata']['scopes'],
                       'source_archives_read': len(result['metadata']['inputs'])}, indent=2))
 

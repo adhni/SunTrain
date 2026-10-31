@@ -37,3 +37,21 @@ test('World flights is searchable without an arbitrary worldwide map pin',()=>{
  const melbourne=place('melbourne',145,-38);
  assert.deepEqual(groupPlaces([world,melbourne],([x,y])=>({x,y})).flatMap(g=>g.members.map(m=>m.place.id)),['melbourne']);
 });
+
+const {eligiblePlaces, surprise} = require('../assets/03_home.js');
+test('transport choices apply to catalogue entries, including non-pin networks and mixed modes', () => {
+    const places = [
+        {id:'rail',modes:['train','tram']}, {id:'flight',modes:['flight'],home_marker:false},
+        {id:'mixed',modes:['train','flight']},
+    ];
+    assert.deepEqual(eligiblePlaces(places,'all').map(p=>p.id),['rail','flight','mixed']);
+    assert.deepEqual(eligiblePlaces(places,'transit').map(p=>p.id),['rail','mixed']);
+    assert.deepEqual(eligiblePlaces(places,'flights').map(p=>p.id),['flight','mixed']);
+});
+test('Surprise me respects transport choice, avoids repeats, and handles a single eligible scene', () => {
+    const scenes = [{id:'world',kind:'flights'}, {id:'melbourne',kind:'transit'}, {id:'tokyo',kind:'transit'}];
+    assert.equal(surprise(scenes,'transit','melbourne',()=>0).id,'tokyo');
+    assert.equal(surprise(scenes,'flights','world',()=>0).id,'world');
+    assert.equal(surprise(scenes,'all','world',()=>.99).id,'tokyo');
+    assert.equal(surprise([],'all',null,()=>0),null);
+});

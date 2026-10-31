@@ -3,6 +3,7 @@ import json
 import os
 from pathlib import Path
 from playwright.sync_api import sync_playwright
+from browser_controls import click_tool, select_setting
 
 OUT = Path('.cache/flight-display-consistency'); OUT.mkdir(parents=True, exist_ok=True)
 CASES = ['australia_flights','south_korea_flights','europe_flights','africa_flights','singapore_flights',
@@ -38,7 +39,7 @@ with sync_playwright() as p:
   assert page.locator('#replay-clock').inner_text()=='10:00:00'
   assert page.locator('#replay-flight-key').is_visible()
   assert 'Partial coverage' in page.locator('#replay-flight-key').inner_text()
-  assert page.locator('#replay-fit').inner_text()=='Fit flights'
+  assert page.locator('#replay-fit').text_content()=='Fit flights'
   row=page.evaluate(METRICS); original=page.evaluate(CAMERA); now=page.evaluate('suntrainReplay.now')
   projected=page.evaluate('''() => {const r=suntrainReplay,m=r.graph,c=m.getContainer();return new Set(r.activePositions.filter(f=>{
    const coordinate=f.geometry.coordinates,p=m.project([coordinate[0]+360*Math.round((m.getCenter().lng-coordinate[0])/360),coordinate[1]]);
@@ -47,7 +48,7 @@ with sync_playwright() as p:
   assert row['inViewport']==projected,(city,row['inViewport'],projected)
 
   page.locator('#replay-map').screenshot(path=str(OUT/(city+'-opening.png')))
-  page.locator('#replay-melbourne').click();page.wait_for_timeout(150)
+  click_tool(page, '#replay-melbourne');page.wait_for_timeout(150)
   assert page.evaluate(CAMERA)==original and page.evaluate('suntrainReplay.now')==now, (original,page.evaluate(CAMERA))
   rows.append(row);print(json.dumps(row),flush=True)
  if rows: (OUT/'maps.json').write_text(json.dumps(rows,indent=2))
@@ -85,9 +86,9 @@ with sync_playwright() as p:
  page.evaluate('suntrainReplay.departures.open(suntrainReplay.day.stations.findIndex(a=>a.code==="LHR"))')
  page.wait_for_function('suntrainReplay.filters.airports[0]==="LHR" && suntrainReplay.departures.services===suntrainReplay.filtered')
  assert page.evaluate(CAMERA)==before and page.evaluate('suntrainReplay.now')==now
- page.locator('#replay-fit').click();page.wait_for_timeout(150)
+ click_tool(page, '#replay-fit');page.wait_for_timeout(150)
  assert page.evaluate(CAMERA)!=before
- page.locator('#replay-melbourne').click();page.wait_for_timeout(150)
+ click_tool(page, '#replay-melbourne');page.wait_for_timeout(150)
  assert page.evaluate(CAMERA)==before and page.evaluate('suntrainReplay.now')==now
  print('Camera and board stability passed.',flush=True)
  # Frequency removes every moving representation, including a selected journey.
@@ -101,10 +102,10 @@ with sync_playwright() as p:
  # Airport labels take priority over nearby flights and remain directly selectable.
  page.locator('#replay-close-details').click()
  page.evaluate('() => {suntrainReplay.graph.jumpTo({center:[-.45,51.47],zoom:7});}');page.wait_for_timeout(400)
- label=page.evaluate('''() => {const r=suntrainReplay;for(const f of r.graph.queryRenderedFeatures({layers:['replay-airport-labels']})) {
+ label=page.wait_for_function('''() => {const r=suntrainReplay;for(const f of r.graph.queryRenderedFeatures({layers:['replay-airport-labels']})) {
  const p=suntrainFlights.project(r.graph,f.geometry.coordinates);p.y+=15;
  const label=r.graph.queryRenderedFeatures(p,{layers:['replay-airport-labels']})[0];
- if(label)return {id:Number(label.properties.id),point:p};}}''')
+ if(label)return {id:Number(label.properties.id),point:p};}}''').json_value()
  assert label
  page.evaluate('(hit)=>{const m=suntrainReplay.graph,ll=m.unproject([hit.point.x,hit.point.y]);m.fire("click",{point:m.project(ll),lngLat:ll});}',label)
  page.wait_for_function('(id)=>suntrainReplay.departures.visible && suntrainReplay.departures.station===id',arg=label['id'])
@@ -130,16 +131,16 @@ with sync_playwright() as p:
  load('taiwan_flights')
  state=page.evaluate('({camera:'+CAMERA+',now:suntrainReplay.now,filters:suntrainReplay.filterSignature})')
  for language in ['id','en']:
-  page.locator('#language-select').select_option(language)
+  select_setting(page, '#language-select', language)
   page.wait_for_function('(language)=>document.documentElement.lang===language',arg=language)
   assert page.evaluate('({camera:'+CAMERA+',now:suntrainReplay.now,filters:suntrainReplay.filterSignature})')==state
   assert ('tersimpan' if language=='id' else 'captured flights') in page.locator('#replay-matching-count').inner_text()
  page.set_viewport_size({'width':390,'height':844})
  for theme in ['light','dark','sunrise','blueprint','heritage']:
-  page.locator('#theme-toggle').select_option(theme)
+  select_setting(page, '#theme-toggle', theme)
   assert not page.evaluate('document.documentElement.scrollWidth>innerWidth')
   assert page.locator('#replay-matching-count').is_visible()
- page.locator('#replay-fullscreen').click();page.wait_for_timeout(150)
+ click_tool(page, '#replay-fullscreen');page.wait_for_timeout(150)
  page.keyboard.press('ArrowRight');page.keyboard.press('Escape')
  assert not page.evaluate('suntrainReplay.isFullscreen()')
  page.screenshot(path=str(OUT/'mobile.png'))

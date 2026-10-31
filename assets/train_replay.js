@@ -325,10 +325,6 @@
                     if (at !== null) { this.pause(); this.seek(at); }
                 });
                 $("replay-fullscreen").addEventListener("click", () => this.toggleFullscreen());
-                $("replay-fullscreen-filters").addEventListener("click", () => {
-                    const visible = $("replay-panel").classList.toggle("replay-show-filters");
-                    $("replay-fullscreen-filters").setAttribute("aria-expanded", String(visible));
-                });
                 $("replay-follow").addEventListener("click", () => {
                     this.setFollow(!this.followSelected);
                     if (this.followSelected) this.graph.setZoom(Math.max(10, this.graph.getZoom()));
@@ -689,7 +685,12 @@
             if (!this.mapReady) return;
             this.setFollow(false);
             this.graph.resize();
-            this.graph.fitBounds(this.openingFrame || this.day?.bounds || MELBOURNE_BOUNDS, {padding: 25, duration: 0});
+            const container = this.graph.getContainer(), size = `${container.clientWidth}x${container.clientHeight}`;
+            if (this.openingCamera?.size === size) this.graph.jumpTo(this.openingCamera.camera);
+            else {
+                this.graph.fitBounds(this.openingFrame || this.day?.bounds || MELBOURNE_BOUNDS, {padding: 25, duration: 0});
+                this.openingCamera = {size, camera: {center: this.graph.getCenter().toArray(), zoom: this.graph.getZoom(), bearing: 0, pitch: 0}};
+            }
             this.needsFit = false;
         }
         localeFormatters(day) {
@@ -709,7 +710,7 @@
             const sameDay = this.day?.city === day.city && this.day?.business_date === day.business_date;
             const previousNow = this.now;
             this.pause(); this.generation++;
-            if (!sameDay) this.needsFit = true;
+            if (!sameDay) { this.needsFit = true; this.openingCamera = null; }
             this.localeFormatters(day);
             this.filtered = []; this.filterSignature = null; this.activeIndex = null; this.activePositions = [];
             this.demandIndex = null; this.demandSnapshot = null; this.qualityBySchedule.clear();
@@ -1030,7 +1031,8 @@
         tick(timestamp) {
             this.frame = null;
             if (!this.playing || !this.active || document.hidden) { this.pause(); return; }
-            this.now = Math.min(this.day.end, this.now + (timestamp - this.previousTick) / 1000 * this.speed);
+            // A frame timestamp can predate play() when a scene starts during that frame.
+            this.now = Math.min(this.day.end, this.now + Math.max(0, timestamp - this.previousTick) / 1000 * this.speed);
             this.previousTick = timestamp;
             if (timestamp - this.lastPaint >= root.suntrainFlights.paintInterval(this.day, this.graph.getZoom())) { this.lastPaint = timestamp; this.paint(); }
             if (this.now >= this.day.end) { this.pause(); this.paint(true); }
@@ -1049,6 +1051,11 @@
         }
         showDetails(visible) {
             const panel = $("replay-panel");
+            if (!visible) {
+                panel?.classList.remove('replay-sheet-expanded');
+                $('replay-expand-details')?.setAttribute('aria-expanded', 'false');
+                setText('replay-expand-details', 'Expand details');
+            }
             if (!panel || panel.classList.contains("replay-has-selection") === visible) return;
             panel.classList.toggle("replay-has-selection", visible);
             if (this.graph) requestAnimationFrame(() => this.graph.resize());
@@ -1497,6 +1504,8 @@
             if (trigger === "replay-fit") this.fit();
             this.paint(true);
             this.graph.resize();
+            root.suntrainPlayground?.update(this);
+            root.suntrainHome?.applyExperience(this);
         }
     }
     const replay = new Replay();

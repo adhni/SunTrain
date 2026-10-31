@@ -1,6 +1,7 @@
 """Melbourne vehicle readability, station discovery and expanded board regression."""
 import os
 from playwright.sync_api import sync_playwright
+from browser_controls import click_tool, select_setting
 
 with sync_playwright() as p:
     browser = p.chromium.launch(channel='chrome', headless=True,
@@ -28,9 +29,9 @@ with sync_playwright() as p:
     assert page.evaluate("suntrainReplay.graph.getLayer('replay-trains').type === 'circle' && !suntrainReplay.graph.getLayer('replay-vehicle-bodies')")
     assert page.evaluate("suntrainReplay.graph.getSource('replay-trains')._data.features.length === suntrainReplay.activePositions.reduce((sum, f)=>sum+f.properties.dotCount,0)")
     for theme in ['light', 'dark', 'sunrise', 'blueprint', 'heritage']:
-        page.locator('#theme-toggle').select_option(theme)
+        select_setting(page, '#theme-toggle', theme)
         assert page.evaluate('suntrainReplay.graph.getPaintProperty("replay-trains","circle-stroke-color")==="#fff"')
-    page.locator('#theme-toggle').select_option('dark')
+    select_setting(page, '#theme-toggle', 'dark')
     page.screenshot(path='.cache/melbourne-vehicles.png', full_page=True)
     print('Vehicle rendering and five themes passed', flush=True)
     # Inspect several frames of a real Melbourne train through a curved leg.
@@ -127,7 +128,7 @@ with sync_playwright() as p:
     assert restored == {k:v for k,v in state.items() if k != 'now'}
     assert not page.evaluate('suntrainReplay.playing')
     # Works within the existing fullscreen map, without Escape closing both views.
-    page.locator('#replay-fullscreen').click()
+    click_tool(page, '#replay-fullscreen')
     page.wait_for_function('suntrainReplay.isFullscreen()')
     page.get_by_role('button', name='Expand departures', exact=True).click()
     page.keyboard.press('Escape')

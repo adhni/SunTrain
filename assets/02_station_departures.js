@@ -179,7 +179,7 @@
             if (eyebrow) root.suntrainI18n?.bind(eyebrow, replay.day.replay_kind === 'flights' ? 'AIRPORT BOARD' : 'STATION DEPARTURES');
             $("replay-open-departures").setAttribute("aria-expanded", "true");
             this.host.hidden = false; this.render(); replay.paint(true);
-            (this.station === null ? this.search : this.title).focus();
+            (this.station === null ? this.search : this.title).focus({preventScroll: true});
         }
         render() {
             const replay = this.replay;

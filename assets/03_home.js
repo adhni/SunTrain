@@ -30,7 +30,16 @@
             members, coordinates: [0, 1].map(axis => members.reduce((sum, item) => sum + item.coordinates[axis], 0) / members.length),
         }));
     }
-    if (typeof module !== "undefined" && module.exports) module.exports = {groupPlaces, placeCenter};
+    function eligiblePlaces(places, kind) {
+        return places.filter(place => kind === 'all' || (kind === 'flights'
+            ? place.modes.includes('flight') : place.modes.some(mode => mode !== 'flight')));
+    }
+    function surprise(experiences, kind, previous, random = Math.random) {
+        const eligible = experiences.filter(item => kind === 'all' || item.kind === kind);
+        const candidates = eligible.length > 1 ? eligible.filter(item => item.id !== previous) : eligible;
+        return candidates[Math.floor(random() * candidates.length)] || null;
+    }
+    if (typeof module !== "undefined" && module.exports) module.exports = {groupPlaces, placeCenter, eligiblePlaces, surprise};
     if (!root.document) return;
 
     const $ = id => document.getElementById(id);
@@ -46,11 +55,12 @@
     let dateFormat = new Intl.DateTimeFormat(root.suntrainI18n?.locale || "en-AU", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"});
 
     class WorldMap {
-        constructor() { this.markers = []; this.sequence = 0; }
+        constructor() { this.markers = []; this.sequence = 0; this.kind = 'all'; }
         duration() { return root.matchMedia("(prefers-reduced-motion: reduce)").matches ? 0 : 650; }
         async start() {
             if (this.starting) return this.starting;
             this.places = JSON.parse($("home-panel").dataset.places);
+            this.experiences = JSON.parse($("home-panel").dataset.experiences);
             this.starting = new Promise((resolve, reject) => {
                 try {
                     this.map = new root.maplibregl.Map({container: "home-map", style: root.suntrainTheme.mapStyle(),
@@ -63,7 +73,15 @@
                     this.map.on("zoomend", () => this.renderMarkers());
                     this.map.on("resize", () => this.renderMarkers());
                     $("home-reset").addEventListener("click", () => this.reset(true));
-                    $("home-world-flights").addEventListener("click", () => this.openReplay("world_flights"));
+                    for (const button of document.querySelectorAll('[data-home-kind]'))
+                        button.addEventListener('click', () => this.setKind(button.dataset.homeKind));
+                    for (const button of document.querySelectorAll('[data-watch]'))
+                        button.addEventListener('click', () => this.watch(button.dataset.watch));
+                    $('home-surprise').addEventListener('click', () => {
+                        const item = surprise(this.experiences, this.kind, this.lastExperience);
+                        if (item) this.watch(item.id);
+                    });
+                    this.formatExperiences();
                     document.addEventListener("suntrain:themechange", () => root.suntrainTheme.styleMap(this.map));
                     this.observer = new ResizeObserver(entries => {
                         if (entries[0].contentRect.width > 0) this.map.resize();
@@ -78,39 +96,105 @@
             this.map.fitBounds([[-170, -52], [180, 72]], {padding: 24, duration: animate ? this.duration() : 0});
             if (animate) root.dash_clientside.set_props("home-place", {value: null});
         }
+        formatExperiences() {
+            for (const item of this.experiences || []) {
+                const tile = document.querySelector(`[data-experience="${item.id}"]`);
+                const date = dateFormat.format(new Date(item.date + 'T12:00:00Z'));
+                tile.querySelector('.home-experience-time').textContent = date + ' · ' + item.time + (item.zone === 'UTC' ? ' UTC' : ' · ');
+            }
+        }
+        setKind(kind) {
+            this.kind = kind;
+            this.popup?.remove(); this.openPlace = null;
+            for (const button of document.querySelectorAll('[data-home-kind]'))
+                button.setAttribute('aria-pressed', String(button.dataset.homeKind === kind));
+            const places = eligiblePlaces(this.places, kind);
+            root.dash_clientside.set_props('home-place', {options: places.map(p => ({label:p.name, value:p.id})), value:null});
+            root.suntrainI18n.bind($('home-count'), `${places.length} places to explore`);
+            for (const tile of document.querySelectorAll('[data-experience]'))
+                tile.hidden = kind !== 'all' && tile.dataset.kind !== kind;
+            this.renderMarkers();
+        }
         renderMarkers() {
             if (!this.ready || !this.map.getContainer().clientWidth) return;
             this.markers.forEach(marker => marker.remove()); this.markers = [];
-            const groups = groupPlaces(this.places, coordinates => this.map.project(coordinates));
+            const groups = groupPlaces(eligiblePlaces(this.places, this.kind), coordinates => this.map.project(coordinates));
             for (const group of groups) {
                 const cluster = group.members.length > 1;
                 const flightCount=group.members.filter(member=>member.place.modes.includes('flight')).length;
                 const kind=!flightCount?'transit':flightCount===group.members.length?'flights':'mixed';
                 const button = node("button", undefined, `home-pin home-pin-${kind}${cluster ? " home-cluster" : ""}`);
                 button.type = "button";
-                const title = cluster ? `Zoom to ${group.members.length} places` : `Explore ${group.members[0].place.name}`;
+                const title = cluster ? `Explore ${group.members.length} places` : `Explore ${group.members[0].place.name}`;
                 if(root.suntrainI18n) root.suntrainI18n.bind(button, title, "aria-label"); else button.setAttribute("aria-label", title); if(root.suntrainI18n)root.suntrainI18n.bind(button,title,"title");else button.title = title;
                 if(flightCount) {
                     if(root.suntrainI18n)root.suntrainI18n.bind(button,'Includes flights','aria-description');
                     else button.setAttribute('aria-description','Includes flights');
                 }
-                const dot=node("span", cluster ? String(group.members.length) : flightCount ? '\u2708\uFE0E' : "", "home-pin-dot");
+                const dot=node("span", cluster ? String(group.members.length) : flightCount ? '\u2708\uFE0E' : '▤', "home-pin-dot");
                 dot.setAttribute('aria-hidden','true');button.append(dot);
                 if (!cluster) button.append(node("span", group.members[0].place.name, "home-pin-label"));
                 button.addEventListener("click", event => {
                     event.stopPropagation();
                     if (!cluster) { this.showPlace(group.members[0].place.id); return; }
-                    this.popup?.remove();
-                    const coordinates = group.members.map(member => member.coordinates);
-                    const bounds = new root.maplibregl.LngLatBounds(coordinates[0], coordinates[0]);
-                    coordinates.forEach(point => bounds.extend(point));
-                    this.map.fitBounds(bounds, {padding: 90, maxZoom: Math.min(10, this.map.getZoom() + 2.5), duration: this.duration()});
+                    this.showCluster(group);
                 });
                 this.markers.push(new root.maplibregl.Marker({element: button}).setLngLat(group.coordinates).addTo(this.map));
             }
         }
-        openReplay(city) {
-            root.dash_clientside.set_props("home-choice", {data: {city, sequence: ++this.sequence}});
+        showCluster(group) {
+            this.popup?.remove(); this.openPlace = null;
+            const content = node('div', undefined, 'home-cluster-list');
+            content.append(node('h3', 'Choose a place'));
+            for (const {place} of group.members) {
+                const flight = place.modes.includes('flight');
+                const button = node('button', undefined, 'home-cluster-place');
+                button.type = 'button';
+                button.append(node('span', flight ? '✈︎' : '▤', flight ? 'home-place-flight' : 'home-place-transit'), node('span', place.name));
+                button.addEventListener('click', () => this.openReplay(place.id));
+                content.append(button);
+            }
+            this.popup = new root.maplibregl.Popup({className:'home-popup', offset:22, maxWidth:'330px'})
+                .setLngLat(group.coordinates).setDOMContent(content).addTo(this.map);
+            content.querySelector('button')?.focus({preventScroll:true});
+        }
+        watch(id) {
+            const item = this.experiences.find(item => item.id === id);
+            if (!item) return;
+            this.lastExperience = id;
+            this.openReplay(item.city, id);
+        }
+        openReplay(city, experience = null) {
+            root.suntrainReplay?.pause();
+            const sequence = ++this.sequence;
+            this.pendingExperience = experience ? {item:this.experiences.find(item => item.id === experience), sequence} : null;
+            root.dash_clientside.set_props("home-choice", {data: {city, experience, sequence}});
+            root.suntrainPlayground?.closePanels();
+        }
+        applyExperience(replay) {
+            const pending = this.pendingExperience;
+            if (!pending || !replay.active || replay.loading || !replay.mapReady || replay.day?.city !== pending.item.city) return;
+            const item = pending.item;
+            if (!pending.configured) {
+                pending.configured = true;
+                for (const id of ['replay-lines', 'replay-operators', 'replay-directions', 'replay-stations', 'replay-carriers', 'replay-airports', 'replay-from-countries', 'replay-to-countries'])
+                    root.dash_clientside.set_props(id, {value:[]});
+                root.dash_clientside.set_props('replay-number', {value:''});
+                root.dash_clientside.set_props('replay-flight-scope', {value:'both'});
+                root.dash_clientside.set_props('replay-flight-view', {value:'planes'});
+                root.dash_clientside.set_props('replay-airport-direction', {value:'both'});
+                root.dash_clientside.set_props('replay-map-mode', {value:'trains'});
+                root.dash_clientside.set_props('replay-modes', {value:item.modes});
+                root.dash_clientside.set_props('replay-speed', {value:60});
+                root.dash_clientside.set_props('replay-date', {data:item.date});
+                return;
+            }
+            if (replay.day.business_date !== item.date || replay.frequencyView || replay.filtered.length !== replay.day.services.length) return;
+            if (JSON.stringify([...replay.day.loaded_modes].sort()) !== JSON.stringify([...item.modes].sort())) return;
+            this.pendingExperience = null;
+            replay.selected = null; replay.emptyDetails(); replay.departures.reset();
+            replay.pause(); replay.speed = 60; replay.metroView(); replay.seek(item.at);
+            if (!root.matchMedia('(prefers-reduced-motion: reduce)').matches) replay.play();
         }
         showPlace(id) {
             this.openPlace=id;
@@ -124,7 +208,7 @@
             content.append(node("p", place.start === place.end ? formatDate(place.start) : `${formatDate(place.start)} – ${formatDate(place.end)}`, "home-place-dates"));
             const open = node("button", "Open replay →", "home-open-replay"); open.type = "button";
             if(root.suntrainI18n) root.suntrainI18n.bind(open, `Open ${place.name} replay`, "aria-label"); else open.setAttribute("aria-label", `Open ${place.name} replay`);
-            open.addEventListener("click", () => root.dash_clientside.set_props("home-choice", {data: {city: place.id, sequence: ++this.sequence}}));
+            open.addEventListener("click", () => this.openReplay(place.id));
             content.append(open);
             this.popup?.remove();
             this.map.fitBounds(place.bounds, {padding: {top: 140, bottom: 65, left: 40, right: 40}, maxZoom: 7, duration: this.duration()});
@@ -136,6 +220,7 @@
     document.addEventListener("suntrain:languagechange", () => {
         dateFormat = new Intl.DateTimeFormat(root.suntrainI18n.locale, {day:"numeric",month:"short",year:"numeric",timeZone:"UTC"});
         home.renderMarkers();
+        home.formatExperiences();
         const place=home.places?.find(place=>place.id===home.openPlace);
         const dates=document.querySelector('.home-place-dates'), modes=document.querySelector('.home-place-modes');
         if(place && dates){const format=value=>dateFormat.format(new Date(value+'T12:00:00Z'));dates.textContent=place.start===place.end?format(place.start):format(place.start)+' – '+format(place.end);}
@@ -153,7 +238,7 @@
                 home.searchSelection = place;
                 return {ready: true};
             } catch (error) {
-                $("home-map-message").textContent = "The world map could not load. Open Transport Replay above to explore a place.";
+                $("home-map-message").textContent = "The world map could not load. Use Menu to open Map or Overview.";
                 return {ready: false};
             }
         },
